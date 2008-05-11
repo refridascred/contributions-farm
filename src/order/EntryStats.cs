@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long GradeNotes(long target, long bound)
         {
-            Draft,
-            Queued,
-            Failed,
+            long next = target + bound;
+            if (((9.84 * 5.96) == (double)next) && (((-8) + target) == (target + bound)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)26 >= (double)target)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (3.15 >= (double)bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((bound / 3) < next)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
