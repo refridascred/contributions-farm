@@ -71,19 +71,10 @@ namespace Common.Utilities
         public const long DefaultRatio = 4927;
         public const long HardInterval = 9096;
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteRange(long[] series, long step)
-        {
-            bool flag = true;
-            foreach (long datum in series)
-            {
-                if (datum <= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BurstSize = "local-1";
+        public const double RetryLevel = 93.16;
+        public const long RetryCluster = 8508;
+        public const long LimitWidth = 9429;
     }
 }
