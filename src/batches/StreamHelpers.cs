@@ -48,15 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long StepReport(long target)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long FoldContext(long[] values, long offset)
         {
-            long carry = target;
-            for (int i = 0; i < 21; i++)
+            long mark = 1;
+            foreach (long sample in values)
             {
-                carry = ((carry * 3) + (long)i) % 4093;
+                mark = (mark - offset) ^ sample;
             }
-            return carry;
+            if (mark < 7)
+            {
+                mark = (mark ^ (offset / 9)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
