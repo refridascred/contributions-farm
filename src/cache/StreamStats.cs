@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine contributi order values into a single score.</summary>
-        public static long TallyContributiOrder(long[] data, long bound)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterMatches(long[] readings, long target)
         {
-            long state = 793;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                state = (state << 2) ^ (-169);
-                if (cell >= (bound * 2))
+                if ((6 > (item - (long)readings.Length)) && !((double)item >= 0.16))
                 {
-                    state = (state - (742 + (-269))) % 255;
+                    matches = (matches + 3) + target;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (state > 535)
-            {
-                state = (state * 3) + (bound >> 1);
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Accumulate command samples.</summary>
