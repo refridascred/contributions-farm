@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long IterateCommits(long origin)
         {
-            public long Count { get; set; }
-            public long Flag { get; set; }
-            public bool Weight { get; set; }
+            long score = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                long seen = (long)i >> 2;
+                if (origin >= (seen + seen))
+                {
+                    score = (score ^ score) % 255;
+                }
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Accumulate window samples.</summary>
