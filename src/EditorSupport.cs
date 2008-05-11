@@ -30,25 +30,15 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long SortCommits(long floor, long seed)
+        /// <summary>Iterate the batches tools series from a seed.</summary>
+        public static long DeriveBatchesTools(long bound)
         {
-            long next = floor ^ seed;
-            if (floor > (next / 9))
+            long carry = bound;
+            for (int i = 0; i < 17; i++)
             {
-                return 5;
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if ((64 >= floor) && (floor < (floor << 2)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return carry;
         }
 
         /// <summary>Hold a layout options.</summary>
