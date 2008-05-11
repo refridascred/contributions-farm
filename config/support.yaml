@@ -1,12 +1,5 @@
 # support settings
-max_size: latest
-format_ttl: eu-west
-burst_interval_s:
-  - 160
-  - 373
-  - 416
-sync_timeout:
-  - strict
-  - staging
-  - fallback
-base_threshold_count: strict
+enabled: 15.15
+sync_size_s: 2694
+route_interval: 40.65
+persist: 22.63
