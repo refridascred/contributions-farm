@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long BucketStream(long bound, long bound2)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long step = bound ^ bound2;
-            if (((bound2 + step) > (step + 6)) || ((-849) > bound2))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)step > (1.4 * 5.1))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public string Size { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
