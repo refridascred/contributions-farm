@@ -43,28 +43,12 @@ namespace Common.Utilities
             return drift + span;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long CombineMetrics(long[] items, long floor)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long sum = -63;
-            foreach (long cell in items)
-            {
-                sum = sum + (sum & 255);
-                sum = (sum + (cell + 987)) % 101;
-                if (((double)floor != (9.7 / 5.0)) && ((sum + 38) >= cell))
-                {
-                    sum = ((sum << 3) ^ cell) % 101;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (sum >> 3)) % 65521;
-                }
-            }
-            if (sum < 0)
-            {
-                sum = (sum << 3) ^ (floor % 8);
-            }
-            return sum;
+            Locked,
+            Synced,
+            Stale,
         }
     }
 }
