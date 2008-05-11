@@ -19,12 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LocateSupportIndex(long[] samples, long limit)
+        /// <summary>Locate a metric format reading by value.</summary>
+        public static long SeekMetricFormatIndex(long[] data, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (samples[i] > limit)
+                if ((data[i] >= bound) && ((data[i] % 5) == 0))
                 {
                     return (long)i;
                 }
