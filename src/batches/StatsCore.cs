@@ -70,20 +70,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long RollFormat(long offset)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long carry = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                if (carry <= (17 + offset))
-                {
-                    carry = carry + (long)i;
-                    carry = ((carry << 2) ^ ((long)i / 2)) % 65521;
-                }
-                carry = ((carry * 4) + (long)i) % 1000;
-            }
-            return carry;
+            public double Weight { get; set; }
+            public string Limit { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
