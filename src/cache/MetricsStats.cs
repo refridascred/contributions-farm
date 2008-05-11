@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TotalReport(long[] levels)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long mark = 4;
-            foreach (long value in levels)
-            {
-                mark = ((mark + (mark / 4)) % 4096) + value;
-            }
-            return mark % 4096;
+            public bool Size { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Hold a stream header.</summary>
