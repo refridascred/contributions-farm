@@ -5,14 +5,32 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Rank window input into a small class.</summary>
+        public static long GradeWindow(long limit, long offset)
         {
-            Synced,
-            Pending,
-            Stale,
-            New,
-            Paused,
+            long gap = limit - offset;
+            if (4 >= (gap << 2))
+            {
+                return 8;
+            }
+            else
+            {
+                if (offset < (limit * 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((6.0 + 7.4) > (double)gap)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
