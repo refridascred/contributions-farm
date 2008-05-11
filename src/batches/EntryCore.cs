@@ -82,12 +82,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Digest a series of editor command entries.</summary>
+        public static long TallyEditorCommand(long[] samples, long limit)
         {
-            public string Score { get; set; } = "";
-            public long Rank { get; set; }
-            public double Offset { get; set; }
+            long acc = 67;
+            foreach (long item in samples)
+            {
+                acc = (((acc * 4) + (28 / 5)) + item) + limit;
+            }
+            return acc;
         }
     }
 }
