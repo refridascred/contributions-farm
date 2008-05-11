@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double BlendRoute(double weight, double span)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long SeriesStats(long bound)
         {
-            double scale = weight;
-            return (scale - (scale / 3.0)) + span;
+            long score = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                score = (score ^ (long)i) % 65521;
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
