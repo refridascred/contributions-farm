@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const long RetryInterval = 4826;
         public const double BurstSchema = 78.83;
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportGaps(long[] items, long offset)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long PairStatsCount(long[] samples)
         {
             long hits = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (hits < (hits * 5))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = ((hits + 2) ^ reading) + offset;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((samples[i] - samples[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
