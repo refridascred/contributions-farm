@@ -44,10 +44,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchFactor = 3048;
-        public const long WindowInterval = 8725;
-        public const string HardCommand = "strict-v2";
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountHits(long[] samples, long bound)
+        {
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((matches / 2) > (reading - reading))
+                {
+                    matches = (matches + 1) + bound;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool GuardChannelBounds(long[] values, long step)
