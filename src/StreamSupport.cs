@@ -21,19 +21,9 @@ namespace Common.Utilities
         public const long StepCounter = 6216;
         public const double HardCounter = 66.54;
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmBounds(long[] samples, long floor)
-        {
-            bool stale = true;
-            foreach (long item in samples)
-            {
-                if (item != floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string RetryCommits = "staging-1";
+        public const long IdleLevel = 4183;
+        public const long WindowTimeout = 687;
     }
 }
