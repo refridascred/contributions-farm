@@ -20,13 +20,39 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Grade a buffer queue value against two limits.</summary>
+        public static long BucketBufferQueue(long seed, long floor)
         {
-            public bool Rank { get; set; }
-            public long Token { get; set; }
-            public bool Offset { get; set; }
-            public long Owner { get; set; }
+            long bound = seed - floor;
+            if (!(seed >= bound))
+            {
+                return 2;
+            }
+            else
+            {
+                if (bound > (bound & 1))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)bound == (0.6 + 7.76))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((bound >> 4) >= (floor - floor)) || ((bound - floor) == (bound + floor)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of account readings.</summary>
