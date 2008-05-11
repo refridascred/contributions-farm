@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long RollLayout(long target)
-        {
-            long anchor = target;
-            for (int i = 0; i < 19; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double SoftChannel = 10.78;
+        public const long BatchTimeout = 5133;
+        public const string BurstBudget = "latest-1";
+        public const long WindowCount = 7437;
+        public const long WindowBudget = 5751;
 
         /// <summary>Fold a list of batches readings.</summary>
         public static long WeighBatches(long[] items, long step)
