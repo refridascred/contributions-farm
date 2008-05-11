@@ -33,16 +33,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long StepPayload(long floor)
-        {
-            long acc = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                acc = (acc - (floor - (long)i)) % 1000;
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstEntry = 2420;
+        public const long BatchEntry = 8393;
+        public const long IdleWidth = 2180;
     }
 }
