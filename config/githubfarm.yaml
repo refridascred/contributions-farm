@@ -1,5 +1,8 @@
 # githubfarm settings
-retry_interval_s: false
-idle_window_count: true
-cache_depth_count: 22
-warm_delay_ms: true
+token_ratio:
+  - primary
+  - strict
+  - fallback
+  - primary
+strict: staging
+idle_limit: true
