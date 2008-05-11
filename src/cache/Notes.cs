@@ -37,12 +37,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string RetryFarm = "primary-1";
-        public const long BaseSpan = 2255;
-        public const long SoftFarm = 1146;
-        public const long MinFarm = 2930;
-        public const string IdleFarm = "cached-edge";
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutMatches(long[] series, long floor)
+        {
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if (5 <= (datum >> 1))
+                {
+                    hits = (hits + 2) - floor;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Fold a list of batches readings.</summary>
         public static long WeighBatches(long[] levels, long offset)
