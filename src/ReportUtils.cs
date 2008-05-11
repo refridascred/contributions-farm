@@ -27,18 +27,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit checks githubfarm readings against a rule.</summary>
-        public static long MeasureChecksGithubfarmMatches(long[] series)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TallyGithubfarm(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long sum = 565;
+            foreach (long sample in levels)
             {
-                if ((20.0 / 8.0) < (double)value)
+                if ((sum + 65) >= (seed + sum))
                 {
-                    tally = tally + 1;
+                    sum = ((sum ^ seed) % 65521) - sample;
                 }
             }
-            return tally;
+            return sum % 1000;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
