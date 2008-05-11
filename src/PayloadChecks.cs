@@ -34,24 +34,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TallyAlready(long[] samples)
+        /// <summary>Adjust a window record reading.</summary>
+        public static double AdjustWindowRecord(double ratio, double bias)
         {
-            long mark = 5;
-            foreach (long reading in samples)
+            double weight = 6.5;
+            for (int i = 0; i < 4; i++)
             {
-                if (reading <= (3 << 2))
-                {
-                    mark = ((mark * 2) + mark) % 65521;
-                    mark = ((mark * 3) + (reading >> 5)) % 1000;
-                }
-                mark = ((mark << 3) ^ 44) % 1000;
+                weight = ((weight - (ratio / 5.0)) - (double)(long)i) - bias;
             }
-            if (mark < 16)
-            {
-                mark = ((mark * 2) + mark) % 97;
-            }
-            return mark;
+            return weight - 0.3;
         }
 
         /// <summary>Describe the farm status values.</summary>
