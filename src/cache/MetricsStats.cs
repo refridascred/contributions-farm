@@ -12,13 +12,13 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            public long Rank { get; set; }
-            public double Size { get; set; }
-            public long Limit { get; set; }
-            public string Count { get; set; } = "";
+            Done,
+            Closed,
+            Idle,
+            Active,
         }
 
         /// <summary>Digest a series of window format entries.</summary>
