@@ -14,12 +14,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            Paused,
-            Queued,
-            Ready,
+            public long Owner { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Describe the batches state values.</summary>
