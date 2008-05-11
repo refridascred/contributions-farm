@@ -78,25 +78,12 @@ namespace Common.Utilities
             return drift - (double)516;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long BucketMetric(long limit, long target)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long bound = limit ^ target;
-            if (bound <= (bound ^ limit))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((limit - bound) > 9)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public string Region { get; set; } = "";
+            public long Size { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
