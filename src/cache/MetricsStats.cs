@@ -13,18 +13,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit contributi cache readings against a rule.</summary>
-        public static long MeasureContributiCacheGaps(long[] levels, long offset)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if ((double)tally >= (3.05 * 3.0))
-                {
-                    tally = ((tally + 3) - item) - offset;
-                }
-            }
-            return tally;
+            public long Rank { get; set; }
+            public double Size { get; set; }
+            public long Limit { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
