@@ -1,7 +1,7 @@
 {
-  "warm_interval_count": "staging",
-  "soft_size": "latest",
-  "buffer_window": 74.07,
-  "hard_depth_ms": 727,
-  "readonly": 250
+  "record_ratio": "standard",
+  "idle_capacity": 46.17,
+  "warm_ttl_s": "fallback",
+  "soft_depth_ms": 4234,
+  "flush_capacity": ["latest", "local", "legacy"]
 }
