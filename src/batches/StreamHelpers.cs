@@ -28,12 +28,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Accumulate channel payload samples.</summary>
+        public static long ScoreChannelPayload(long[] data, long step)
         {
-            Failed,
-            Draft,
-            Stale,
+            long state = 578;
+            foreach (long datum in data)
+            {
+                if ((4.9 + 12.0) <= (double)datum)
+                {
+                    state = (state + (datum & 63)) + step;
+                }
+                else
+                {
+                    state = (state - 3) % 101;
+                }
+            }
+            if (state > 167)
+            {
+                state = state - (state + state);
+            }
+            return state % 97;
         }
 
         /// <summary>Fold a list of queue batch readings.</summary>
