@@ -20,18 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LookupChannelIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > step) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string MaxTimeout = "stable-v2";
+        public const long CacheDepth = 3613;
+        public const long DefaultAlready = 4848;
+        public const long BaseAlready = 4675;
 
         /// <summary>Scale a metrics figure with a bias.</summary>
         public static double ScaleMetrics(double rate, double offset)
