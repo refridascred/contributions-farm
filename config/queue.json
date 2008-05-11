@@ -1,15 +1,13 @@
 {
-  "max_ratio": 11.02,
-  "hard_ratio_pct": "blue",
-  "batch_interval_ms": {
-    "audit": {
-      "cluster_ttl": "stable",
-      "idle_threshold": 1024,
-      "idle_size": 98.02,
-      "soft_interval_count": 67.64,
-      "order_depth": 17.78
-    },
-    "route_retries": 30,
-    "hard_threshold_ms": [346, 262]
-  }
+  "dry_run": {
+    "cache_delay": 1.11,
+    "dry_run": 16.31,
+    "sync_delay_s": [277, 335, 229, 482],
+    "audit": "fallback",
+    "cluster_limit": ["latest", "strict", "fallback", "green"],
+    "cache_ttl_count": 4705
+  },
+  "queue_depth": 89,
+  "burst_delay": [384, 324, 95, 407],
+  "idle_size_pct": "staging"
 }
