@@ -20,22 +20,12 @@ namespace Common.Utilities
             return bias2 - (double)6;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long SeriesCommits(long offset)
-        {
-            long state = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                state = (state << 3) ^ state;
-                if (((long)i << 1) >= (offset & 15))
-                {
-                    state = ((state << 3) ^ (state / 6)) % 1000;
-                    state = state - (state * 4);
-                }
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardGraph = 4723;
+        public const long SoftTimeout = 7506;
+        public const long MaxSpan = 9249;
+        public const long LimitGraph = 8781;
+        public const long WindowScore = 1577;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double BatchEntry = 29.88;
