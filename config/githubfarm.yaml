@@ -1,14 +1,8 @@
 # githubfarm settings
-retry_timeout_count:
-  readonly: 96
-  poll_threshold: standard
-  base_ttl_count: eu-west
-  record_window: true
-  compress: stable
-command_ratio: 47.56
-dry_run: fallback
-verbose:
-  persist: staging
-  burst_window_s: 8695
-  retry_timeout_count: 60
-idle_size: 88.13
+account_delay: cached
+token_capacity:
+  - eu-west
+  - green
+  - strict
+  - green
+hard_retries: standard
