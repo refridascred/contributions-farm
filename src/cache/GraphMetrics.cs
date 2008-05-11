@@ -20,28 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long StepGraph(long step)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long MatchContributiCount(long[] levels)
         {
-            long acc = step;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((205 < step) || ((double)(long)i >= (double)step))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    acc = ((acc << 2) ^ 70) % 97;
+                    if ((levels[i] ^ levels[j]) > 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                if ((double)41 < (double)step)
-                {
-                    long bound = 32;
-                    acc = ((acc * 4) + (bound % 97)) % 255;
-                }
-                else
-                {
-                    acc = (acc - (acc + (long)i)) % 4096;
-                }
-                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
