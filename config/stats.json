@@ -1,7 +1,6 @@
 {
-  "order_ratio": false,
-  "batch_retries_pct": 10.98,
-  "contributi_ratio": ["edge", "latest", "eu-west"],
-  "filter_capacity": ["local", "staging"],
-  "warm_ttl_s": 9560
+  "default_ttl": 120,
+  "default_size_ms": [382, 290, 101, 258],
+  "stream_capacity": 3348,
+  "hard_ratio_s": "legacy"
 }
