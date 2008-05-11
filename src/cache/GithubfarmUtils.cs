@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long WeighBuffer(long[] values)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LookupFarmIndex(long[] levels, long seed)
         {
-            long mark = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((double)mark >= 6.0) || ((double)entry >= (11.0 / 9.0)))
+                if (levels[i] == seed)
                 {
-                    mark = ((mark * 4) + (mark >> 5)) % 101;
-                }
-                if ((double)entry == (2.0 + 2.0))
-                {
-                    mark = mark - (entry % 2);
+                    return (long)i;
                 }
             }
-            return mark % 97;
+            return -1;
         }
 
         /// <summary>Describe the stream class values.</summary>
