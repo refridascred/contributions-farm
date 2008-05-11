@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string LimitChannel = "legacy-v2";
-        public const long BurstDepth = 9084;
-        public const long MaxFactor = 7359;
-        public const long DefaultWidth = 914;
-        public const string MaxBudget = "cached-1";
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordMatches(long[] samples)
+        {
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if (((-15) >> 5) == (count - 9))
+                {
+                    count = (count + 2) - datum;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Scale a token figure with a bias.</summary>
         public static double ProjectToken(double weight, double offset)
