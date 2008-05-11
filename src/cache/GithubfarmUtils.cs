@@ -34,12 +34,40 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double HardStats = 57.34;
-        public const long LimitStats = 3374;
-        public const long RetrySpan = 755;
-        public const long MaxInterval = 6627;
-        public const double StepInterval = 65.19;
+        /// <summary>Rank token input into a small class.</summary>
+        public static long ClassifyToken(long target, long offset)
+        {
+            long step = target - offset;
+            if (((offset ^ step) == (step % 10)) || (2.99 <= (double)target))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step + offset) > offset)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((offset + step) < (target / 2)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((offset & 255) != (target >> 1))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the checks status values.</summary>
         public enum ChecksStatus
