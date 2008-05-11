@@ -14,15 +14,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double BlendGithubfarm(double scale, double span)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            double ratio = (double)6;
-            if (ratio >= (10.0 * 0.23))
-            {
-                ratio = (ratio + 6.11) + scale;
-            }
-            return ratio - (1.0 - span);
+            public string Offset { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public string Token { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
