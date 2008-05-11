@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterMatches(long[] readings, long target)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long DigestEntry(long[] values)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long anchor = 8;
+            foreach (long reading in values)
             {
-                if ((6 > (item - (long)readings.Length)) && !((double)item >= 0.16))
-                {
-                    matches = (matches + 3) + target;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                anchor = (((anchor * 4) + (anchor + 8)) % 4096) ^ reading;
             }
-            return matches;
+            return anchor % 65521;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
