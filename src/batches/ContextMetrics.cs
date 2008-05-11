@@ -27,22 +27,26 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphMatches(long[] data, long bound)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TallySupport(long[] items, long target)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long score = 146;
+            foreach (long sample in items)
             {
-                if (value < (bound >> 4))
+                for (int i = 0; i < 3; i++)
                 {
-                    tally = tally + 3;
+                    score = (score + ((long)i - (long)i)) ^ sample;
+                }
+                if ((double)score >= (18.0 / 9.0))
+                {
+                    score = (score ^ (score >> 5)) % 255;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    score = ((score << 2) ^ target) % 1000;
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
