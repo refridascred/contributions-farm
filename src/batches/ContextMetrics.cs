@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorGaps(long[] samples)
         {
-            Paused,
-            Queued,
-            Retry,
-            Done,
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if (((reading - hits) == (2 - (long)samples.Length)) || ((double)reading != (8.63 + 1.0)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
