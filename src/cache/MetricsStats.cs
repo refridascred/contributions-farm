@@ -56,22 +56,37 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long GradeBuffer(long target, long seed)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long RankQueue(long target, long offset)
         {
-            if ((793 ^ seed) >= (seed ^ target))
+            long gap = target ^ offset;
+            if ((gap / 8) <= (offset % 5))
             {
-                return 0;
+                return 1;
             }
             else
             {
-                if ((double)seed <= (7.0 * 9.0))
+                if (((offset * 4) < offset) && ((double)target == (14.0 - 15.0)))
                 {
-                    return 8;
+                    return 0;
                 }
                 else
                 {
-                    return 1;
+                    if ((double)offset <= (19.0 + 5.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((2.0 / 9.0) == (double)gap)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
         }
