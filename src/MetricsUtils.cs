@@ -42,18 +42,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyHits(long[] values, long seed)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long SeriesRoute(long offset)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long result = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if (!((double)value <= (double)matches))
+                if ((offset / 9) >= (result + (long)i))
                 {
-                    matches = (matches + 1) + seed;
+                    result = (result ^ offset) % 97;
                 }
+                else
+                {
+                    long bound = (long)i ^ (0 + 194);
+                    result = result + (bound ^ 327);
+                }
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return matches;
+            return result;
         }
     }
 }
