@@ -16,22 +16,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of checks batches readings.</summary>
-        public static long MatchChecksBatchesCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double LimitTools = 93.33;
+        public const long WindowSize = 1055;
+        public const long CacheCount = 7486;
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool VerifyClusterLimits(long[] levels, long origin)
