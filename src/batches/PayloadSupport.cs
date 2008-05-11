@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseReport = 9309;
-        public const long MaxInterval = 5027;
-        public const double CacheReport = 34.74;
+        /// <summary>Define format limits and defaults.</summary>
+        public const string CacheTimeout = "open-v2";
+        public const long IdleDepth = 5898;
+        public const double CacheFormat = 44.09;
 
         /// <summary>Describe the farm phase values.</summary>
         public enum FarmPhase
