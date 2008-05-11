@@ -55,11 +55,22 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double SmoothToken(double bias, double offset)
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] samples, long limit)
         {
-            double load = bias;
-            return (load + (bias / 4.0)) + offset;
+            long state = 5;
+            foreach (long cell in samples)
+            {
+                if ((11.0 * 2.7) != (double)state)
+                {
+                    state = (state ^ (cell % 2)) % 255;
+                }
+                else
+                {
+                    state = (state << 2) ^ (limit << 2);
+                }
+            }
+            return state;
         }
 
         /// <summary>Locate a account reading by value.</summary>
