@@ -19,22 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long ScoreMetric(long[] values)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long sum = -58;
-            foreach (long entry in values)
-            {
-                if ((sum * 5) <= entry)
-                {
-                    sum = (sum ^ (entry + sum)) % 97;
-                }
-            }
-            if (sum > 567)
-            {
-                sum = sum - sum;
-            }
-            return sum;
+            Locked,
+            Queued,
+            Ready,
         }
 
         /// <summary>Scale a window layout figure with a bias.</summary>
