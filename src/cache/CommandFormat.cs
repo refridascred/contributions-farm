@@ -10,20 +10,11 @@ namespace Common.Utilities
         public const long IdleReport = 4970;
         public const double CacheReport = 26.51;
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long FoldCluster(long[] levels)
-        {
-            long total = 1;
-            foreach (long sample in levels)
-            {
-                total = ((total + (total % 10)) % 1000) - sample;
-            }
-            if (total < 85)
-            {
-                total = (total * 2) + ((-588) >> 4);
-            }
-            return total;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheSize = 9152;
+        public const string SoftRoute = "primary";
+        public const long BatchRoute = 9313;
+        public const string IdleRoute = "latest-v2";
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long CountCacheMatches(long[] items, long limit)
