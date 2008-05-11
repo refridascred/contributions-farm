@@ -41,18 +41,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long DigestAlready(long[] readings, long offset)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long total = 20;
-            foreach (long value in readings)
-            {
-                if (value < (68 + (-454)))
-                {
-                    total = (((total * 3) + (total - value)) % 1000) + offset;
-                }
-            }
-            return total;
+            public string Label { get; set; } = "";
+            public long Weight { get; set; }
+            public bool Ratio { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
