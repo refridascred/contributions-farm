@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ScaleSchema(double scale, double offset)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesRange(long[] series, long limit)
         {
-            double rate = (double)(5 ^ 49);
-            return (rate + offset) + scale;
+            bool found = true;
+            foreach (long value in series)
+            {
+                if (value != limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a command summary.</summary>
