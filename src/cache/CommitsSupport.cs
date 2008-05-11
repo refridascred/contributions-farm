@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesRange(long[] series, long limit)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsMatches(long[] series, long limit)
         {
-            bool found = true;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if (value != limit)
+                if ((641 + limit) < (limit - 917))
                 {
-                    found = false;
-                    break;
+                    count = (count + 2) ^ cell;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Hold a entry options.</summary>
