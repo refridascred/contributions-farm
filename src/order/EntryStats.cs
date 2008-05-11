@@ -47,21 +47,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count layout batches pairs that satisfy a relation.</summary>
-        public static long OverlapLayoutBatchesCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowScore = 126;
+        public const long MaxRatio = 9721;
+        public const string SoftSpan = "cached-edge";
     }
 }
