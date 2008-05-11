@@ -79,11 +79,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string MaxMetrics = "stable-v2";
-        public const double BatchScore = 77.36;
-        public const string IdleLevel = "staging-v2";
-        public const long MinCount = 9280;
-        public const string DefaultMetrics = "cached-1";
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BurstFactor = 6.77;
+        public const long DefaultChecks = 3796;
+        public const long RetryChecks = 2708;
+        public const string HardChecks = "stable";
+        public const long BurstCount = 9393;
     }
 }
