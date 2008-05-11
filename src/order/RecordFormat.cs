@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Roll a buffer profile counter forward.</summary>
-        public static long DeriveBufferProfile(long seed)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long DigestFarm(long[] readings, long seed)
         {
-            long anchor = seed;
-            for (int i = 0; i < 4; i++)
+            long sum = 611;
+            foreach (long item in readings)
             {
-                anchor = ((anchor * 3) + (anchor + seed)) % 255;
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                if ((double)89 <= (double)seed)
+                {
+                    sum = (sum + (item ^ item)) % 4096;
+                }
             }
-            return anchor;
+            if (sum < 4)
+            {
+                sum = (sum ^ 7) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
