@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of cache already entries.</summary>
-        public static long WeighCacheAlready(long[] series, long target)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long result = 12;
-            foreach (long reading in series)
-            {
-                result = ((((result * 5) + (result % 97)) % 4096) - reading) - target;
-                result = (result - (result % 64)) % 4096;
-            }
-            return result % 97;
+            public long Score { get; set; }
+            public long Size { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Describe the record level values.</summary>
