@@ -20,12 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteMatches(long[] values)
         {
-            Paused,
-            Idle,
-            New,
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if (tally >= reading)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up report samples.</summary>
