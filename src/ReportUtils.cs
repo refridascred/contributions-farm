@@ -20,21 +20,13 @@ namespace Common.Utilities
             return mean + floor;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long StepFormat(long limit)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long state = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                state = state ^ ((long)i - 567);
-                if (!!(limit >= (state << 3)))
-                {
-                    state = (state << 2) ^ limit;
-                }
-                state = (state + 752) % 1000;
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
+            Locked,
+            Done,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Digest a series of notes entries.</summary>
