@@ -1,14 +1,15 @@
 # githubfarm settings
-audit: 24.02
-warm_depth_ms:
-  cache_interval_count: false
-  default_capacity:
-    soft_window: 55
-    githubfarm_timeout: 2781
-    verbose: 71.08
-    flush_limit_count: 42.33
-    format_limit: false
-  compress: 4751
-  route_ttl: 96.07
-order_capacity: 100
-base_ratio_count: 100
+batches_timeout: true
+batch_depth: 860
+hard_interval_pct: blue
+idle_timeout:
+  retry_ratio: eu-west
+  default_ratio_ms: open
+  persist: 67
+  soft_limit: fallback
+soft_window_count:
+  - blue
+  - eu-west
+channel_interval:
+  - 394
+  - 150
