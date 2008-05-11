@@ -14,19 +14,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsLimits(long[] values, long offset)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferOutliers(long[] series, long bound)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if (cell <= offset)
+                if (bound <= tally)
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 2) - datum;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Match up record samples.</summary>
