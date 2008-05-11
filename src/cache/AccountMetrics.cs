@@ -12,31 +12,19 @@ namespace Common.Utilities
         public const double StepSize = 34.66;
         public const long DefaultWidth = 5725;
 
-        /// <summary>Rank contributi profile input into a small class.</summary>
-        public static long ClassifyContributiProfile(long offset, long offset2)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] samples)
         {
-            if ((offset2 >= offset) && ((double)offset <= (5.4 + 5.1)))
+            long acc = 30;
+            foreach (long entry in samples)
             {
-                return 6;
+                acc = ((acc + (acc << 3)) % 4096) ^ entry;
             }
-            else
+            if (acc > 78)
             {
-                if ((1.0 * 6.1) >= (double)offset)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)offset < (8.12 * 8.2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                acc = (acc - (acc / 6)) % 65521;
             }
+            return acc % 4096;
         }
 
         /// <summary>Define route limits and defaults.</summary>
