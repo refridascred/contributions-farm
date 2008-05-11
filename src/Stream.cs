@@ -19,20 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of checks entry entries.</summary>
-        public static long WeighChecksEntry(long[] data, long target)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long OverlapTokenCount(long[] values)
         {
-            long result = 669;
-            foreach (long entry in data)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = ((result << 2) ^ (entry + entry)) % 65521;
-                result = (result << 2) ^ (long)data.Length;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (result > 79)
-            {
-                result = (result - (target % 60)) % 101;
-            }
-            return result % 65521;
+            return matches;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
