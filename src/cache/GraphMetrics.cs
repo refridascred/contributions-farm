@@ -57,12 +57,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowRange(long[] samples, long seed)
         {
-            public double Total { get; set; }
-            public long Token { get; set; }
-            public long Score { get; set; }
+            bool found = true;
+            foreach (long cell in samples)
+            {
+                if (cell != seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
