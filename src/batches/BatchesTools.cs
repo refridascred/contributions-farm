@@ -12,18 +12,11 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LocateChannelIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > seed) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardSize = 206;
+        public const long BurstTimeout = 5409;
+        public const long WindowCommand = 1264;
+        public const long HardCommand = 1920;
 
         /// <summary>Describe the route class values.</summary>
         public enum RouteClass
