@@ -1,6 +1,18 @@
 {
-  "base_ttl": 250,
-  "default_ttl_pct": [469, 75, 271],
-  "soft_retries": 28.51,
-  "batches_delay": 2.17
+  "idle_capacity": {
+    "max_capacity": "cached",
+    "retry_threshold": "staging",
+    "enabled": false,
+    "already_interval": {
+      "warm_capacity_s": [35, 85],
+      "warm_capacity": "blue",
+      "burst_ttl": 3075,
+      "cache_timeout_ms": ["open", "staging", "eu-west", "edge"],
+      "poll_timeout_count": true
+    },
+    "max_retries_ms": 100,
+    "strict": "primary"
+  },
+  "warm_size_pct": 78,
+  "compress": false
 }
