@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BaseInterval = 47.14;
-        public const long HardDepth = 5496;
-        public const double RetryFactor = 44.68;
-        public const long MaxSpan = 3702;
+        /// <summary>Match up editor samples.</summary>
+        public static long MatchEditorCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of context readings.</summary>
         public static long WeighContext(long[] items)
