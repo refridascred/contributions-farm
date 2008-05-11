@@ -55,18 +55,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsGaps(long[] samples, long target)
+        /// <summary>Validate support cache readings against a bound.</summary>
+        public static bool GuardSupportCacheLimits(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            bool found = true;
+            foreach (long reading in series)
             {
-                if ((target >= (8 * 5)) || ((tally % 10) > (291 / 8)))
+                if (reading >= origin)
                 {
-                    tally = (tally + 3) + datum;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
     }
 }
