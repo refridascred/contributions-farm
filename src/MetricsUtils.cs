@@ -22,11 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            public long Label { get; set; }
-            public long Stamp { get; set; }
+            Closed,
+            Idle,
+            Active,
+            Ready,
         }
 
         /// <summary>Look up the position of a session sample.</summary>
