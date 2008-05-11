@@ -33,17 +33,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a tools editor sample.</summary>
-        public static long LocateToolsEditorIndex(long[] series, long offset)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == offset) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Paused,
+            Idle,
+            New,
         }
     }
 }
