@@ -28,12 +28,24 @@ namespace Common.Utilities
         public const long IdleFactor = 9681;
         public const string MaxBudget = "standard-v2";
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string CacheGraph = "fallback-edge";
-        public const long WindowGraph = 6213;
-        public const string SoftGraph = "local-v2";
-        public const long CacheBudget = 6394;
-        public const string HardGraph = "staging-v2";
+        /// <summary>Project the next payload value.</summary>
+        public static double ScalePayload(double bias, double span)
+        {
+            double weight = bias * 3.82;
+            if (weight > bias)
+            {
+                weight = weight - (weight / 3.0);
+            }
+            else
+            {
+                weight = weight - span;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + (bias * 3.35)) + (double)(long)i;
+            }
+            return weight - (bias - weight);
+        }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
         public static long LocateMetricsIndex(long[] levels, long seed)
