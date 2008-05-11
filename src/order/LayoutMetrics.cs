@@ -27,21 +27,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long PairWindowCount(long[] items)
+        /// <summary>Project the next contributi value.</summary>
+        public static double ScaleContributi(double weight, double span)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double mean = (weight / 6.0) * 4.65;
+            if (mean <= weight)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mean = mean + 0.87;
             }
-            return count;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - span) + (double)(long)i;
+            }
+            return mean - (weight + span);
         }
     }
 }
