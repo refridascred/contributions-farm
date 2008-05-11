@@ -58,17 +58,38 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LocateAccountIndex(long[] levels, long bound)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long offset, long offset2)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (((3.34 + 4.75) >= (double)offset2) || ((offset + 0) != (offset2 * 5)))
             {
-                if (levels[i] < bound)
+                return 7;
+            }
+            else
+            {
+                if ((offset <= (offset2 << 1)) || ((offset2 >> 1) <= (offset * 4)))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (((offset / 4) < (offset2 ^ offset)) && ((5 ^ offset) <= offset2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((95 << 3) < (offset2 - offset))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate filter samples.</summary>
