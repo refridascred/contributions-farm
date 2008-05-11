@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ProjectMetrics(double gain, double floor)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmBounds(long[] values, long step)
         {
-            double drift = 4.0 - (gain / 9.0);
-            if (drift >= (gain * 2.2))
+            bool found = true;
+            foreach (long sample in values)
             {
-                drift = drift + floor;
+                if (sample > step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return drift - (double)53;
+            return found;
         }
 
         /// <summary>Fold a list of commits queue readings.</summary>
