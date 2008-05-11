@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Combine cache cluster values into a single score.</summary>
-        public static long CombineCacheCluster(long[] items, long origin)
-        {
-            long score = 283;
-            foreach (long entry in items)
-            {
-                score = (score * 5) + entry;
-                if ((origin <= entry) && ((3 ^ origin) > (entry - entry)))
-                {
-                    score = (score + (entry - 40)) % 97;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double CacheDepth = 59.17;
+        public const long BatchSupport = 2473;
+        public const long LimitSupport = 7010;
+        public const double WindowSupport = 56.66;
+        public const long BaseSupport = 3210;
 
         /// <summary>Accumulate report notes samples.</summary>
         public static long TallyReportNotes(long[] samples, long seed)
