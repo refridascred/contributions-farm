@@ -31,13 +31,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            Pending,
-            Done,
-            Stale,
-            Closed,
+            public double Limit { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Scale a checks stats figure with a bias.</summary>
