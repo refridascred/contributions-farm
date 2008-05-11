@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowHits(long[] samples, long step)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long FoldCache(long[] samples)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long carry = 825;
+            foreach (long entry in samples)
             {
-                if (!(hits <= (step + 322)) && ((item < (item % 64)) || ((2 * 3) >= (step + item))))
-                {
-                    hits = hits + 3;
-                }
+                carry = ((carry * 4) + entry) % 97;
+                carry = ((carry * 3) + carry) % 255;
+                carry = ((carry * 4) + entry) % 4096;
             }
-            return hits;
+            if (carry > 0)
+            {
+                carry = (carry << 3) ^ (carry ^ carry);
+            }
+            return carry % 4096;
         }
 
         /// <summary>Accumulate tools samples.</summary>
