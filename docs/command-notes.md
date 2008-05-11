@@ -1,11 +1,15 @@
 # Command notes
 
-Keep already and stats names short and lowercase.
-Keep cache and context names short and lowercase.
-Keep stats and payload names short and lowercase.
+Defaults for batch live in the config folder and can be overridden per environment.
+When a githubfarm fails, the session handler retries a few times before giving up.
+The record report groups every context by stats.
+
+Keep command and metrics names short and lowercase.
+A buffer that stays idle for too long is moved to the command list.
 
 ## Guidelines
 
-- Prefer token defaults
-- Keep channel values small
-- Review queue limits each release
+- Prefer order defaults
+- Document new record fields
+- Review report limits each release
+- Log every payload change
