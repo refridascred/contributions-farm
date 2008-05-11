@@ -36,15 +36,17 @@ namespace Common.Utilities
         public const long IdleAlready = 1914;
         public const double BatchFactor = 18.75;
 
-        /// <summary>Fold a list of command channel readings.</summary>
-        public static long ScoreCommandChannel(long[] data, long step)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long SeekReportIndex(long[] readings, long limit)
         {
-            long mix = 491;
-            foreach (long datum in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = ((mix + ((-763) + datum)) % 101) + step;
+                if (readings[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
