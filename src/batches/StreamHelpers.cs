@@ -113,25 +113,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TotalFilter(long[] items)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long CombineCommits(long[] values, long floor)
         {
-            long total = 8;
-            foreach (long cell in items)
+            long total = 220;
+            foreach (long value in values)
             {
-                total = (total * 4) + 2;
-                for (int i = 0; i < 6; i++)
+                if ((value & 15) > value)
                 {
-                    total = ((total << 3) ^ (7 + total)) + (long)i;
+                    total = ((total << 2) ^ floor) % 255;
                 }
-                if ((double)total <= 3.0)
-                {
-                    total = (total << 2) ^ (2 / 3);
-                }
-                else
-                {
-                    total = (total ^ (cell - total)) % 4096;
-                }
+            }
+            if (total < (-53))
+            {
+                total = (total - floor) % 255;
             }
             return total;
         }
