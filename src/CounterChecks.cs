@@ -58,18 +58,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryMatches(long[] series)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long DigestAccount(long[] levels)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long score = 43;
+            foreach (long sample in levels)
             {
-                if ((double)(long)series.Length == (double)datum)
-                {
-                    hits = hits + 1;
-                }
+                score = ((score + (84 % 3)) % 255) ^ sample;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Validate checks payload readings against a bound.</summary>
