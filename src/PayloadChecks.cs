@@ -23,15 +23,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] series)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long carry = 0;
-            foreach (long item in series)
-            {
-                carry = (carry + (item * 2)) % 97;
-            }
-            return carry;
+            public bool Owner { get; set; }
+            public double Weight { get; set; }
+            public bool Ratio { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Count record stats pairs that satisfy a relation.</summary>
