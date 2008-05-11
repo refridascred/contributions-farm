@@ -1,13 +1,7 @@
 {
-  "notes_ttl": {
-    "flush_limit": {
-      "profile_window": 4920,
-      "enabled": 76.49,
-      "cache_ttl": 2290
-    },
-    "burst_ttl_pct": "strict",
-    "audit": "legacy"
-  },
-  "idle_ratio_s": 76,
-  "idle_delay_count": 9.43
+  "hard_timeout_s": "legacy",
+  "flush_timeout_count": "legacy",
+  "base_window": ["edge", "standard", "latest", "eu-west"],
+  "audit": 81,
+  "cache_retries": 93.45
 }
