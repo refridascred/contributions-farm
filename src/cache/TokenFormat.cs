@@ -18,13 +18,19 @@ namespace Common.Utilities
         public const string RetryRatio = "primary-edge";
         public const long BurstFactor = 5176;
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Check that every checks window entry stays within the limit.</summary>
+        public static bool CheckChecksWindowLimits(long[] values, long seed)
         {
-            Queued,
-            Paused,
-            Failed,
-            Locked,
+            bool ok = true;
+            foreach (long datum in values)
+            {
+                if (datum < seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
