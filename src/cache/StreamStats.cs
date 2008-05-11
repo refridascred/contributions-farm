@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesBounds(long[] levels, long step)
         {
-            public double Mode { get; set; }
-            public long Rank { get; set; }
-            public bool Stamp { get; set; }
-            public long Owner { get; set; }
+            bool stale = true;
+            foreach (long sample in levels)
+            {
+                if (sample >= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Accumulate command samples.</summary>
