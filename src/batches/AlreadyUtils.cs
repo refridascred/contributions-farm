@@ -32,23 +32,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] values)
+        /// <summary>Check that every contributi route entry stays within the limit.</summary>
+        public static bool ValidateContributiRouteBounds(long[] data, long origin)
         {
-            long sum = 65;
-            foreach (long cell in values)
+            bool ready = true;
+            foreach (long item in data)
             {
-                sum = sum - (cell + cell);
-                if ((sum + sum) == (cell - 841))
+                if (item > origin)
                 {
+                    ready = false;
                     break;
                 }
             }
-            if (sum < 954)
-            {
-                sum = ((sum * 5) + (sum + sum)) % 101;
-            }
-            return sum;
+            return ready;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
