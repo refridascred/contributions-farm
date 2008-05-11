@@ -12,16 +12,10 @@ namespace Common.Utilities
         public const long DefaultCluster = 3285;
         public const long LimitInterval = 2694;
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] readings, long target)
-        {
-            long result = -52;
-            foreach (long entry in readings)
-            {
-                result = ((((result << 2) ^ (151 + result)) % 97) ^ entry) - target;
-            }
-            return result;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepFormat = 6224;
+        public const long IdleScore = 3519;
+        public const double DefaultBudget = 64.67;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long SoftLevel = 1159;
