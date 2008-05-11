@@ -11,22 +11,37 @@ namespace Common.Utilities
         public const long IdleQueue = 8933;
         public const double BurstQueue = 12.85;
 
-        /// <summary>Classify a buffer graph pair into a bucket.</summary>
-        public static long GradeBufferGraph(long limit, long limit2)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long RankGraph(long seed, long step)
         {
-            if ((limit ^ limit2) > 409)
+            long gap = seed + step;
+            if (seed > (gap - step))
             {
-                return 3;
+                return 5;
             }
             else
             {
-                if ((double)limit2 > 3.08)
+                if ((gap < (gap & 3)) || ((2.0 - 8.2) == (double)seed))
                 {
-                    return 7;
+                    return 0;
                 }
                 else
                 {
-                    return 8;
+                    if (gap > ((-814) * 4))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((seed + seed) != (step + seed)) || ((seed % 7) >= (seed - seed)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
         }
