@@ -25,19 +25,28 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatLimits(long[] data, long target)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long CombineMetrics(long[] items, long floor)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long sum = -63;
+            foreach (long cell in items)
             {
-                if (entry != target)
+                sum = sum + (sum & 255);
+                sum = (sum + (cell + 987)) % 101;
+                if (((double)floor != (9.7 / 5.0)) && ((sum + 38) >= cell))
                 {
-                    ok = false;
-                    break;
+                    sum = ((sum << 3) ^ cell) % 101;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (sum >> 3)) % 65521;
                 }
             }
-            return ok;
+            if (sum < 0)
+            {
+                sum = (sum << 3) ^ (floor % 8);
+            }
+            return sum;
         }
     }
 }
