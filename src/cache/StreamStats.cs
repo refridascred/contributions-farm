@@ -20,23 +20,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next schema notes value.</summary>
-        public static double SmoothSchemaNotes(double scale, double bias)
+        /// <summary>Accumulate command samples.</summary>
+        public static long WeighCommand(long[] levels, long seed)
         {
-            double scale2 = (16.0 - scale) - bias;
-            if (scale2 <= scale2)
+            long acc = 71;
+            foreach (long sample in levels)
             {
-                scale2 = scale2 - (1.08 * 9.7);
+                if ((sample % 7) > (seed & 3))
+                {
+                    acc = acc - (sample % 8);
+                    acc = (acc + acc) % 65521;
+                }
+                acc = (acc << 3) ^ (seed ^ 38);
             }
-            else
-            {
-                scale2 = scale2 + (double)5;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale2 = (scale2 - 9.64) + (double)(long)i;
-            }
-            return scale2 - (double)4;
+            return acc;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
