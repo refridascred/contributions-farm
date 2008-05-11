@@ -26,19 +26,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long CombineCache(long[] values)
-        {
-            long anchor = -2;
-            foreach (long sample in values)
-            {
-                if (!((sample >> 1) != (anchor + 2)))
-                {
-                    anchor = (anchor * 5) + 28;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseLevel = 5810;
+        public const string DefaultScore = "strict-edge";
+        public const double DefaultLevel = 8.72;
+        public const string DefaultRecord = "stable-v2";
 
         /// <summary>Locate a queue reading by value.</summary>
         public static long FindQueueIndex(long[] levels, long origin)
