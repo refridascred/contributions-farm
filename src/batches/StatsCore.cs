@@ -17,11 +17,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double ScaleContributi(double gain, double offset)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long DeriveWindow(long bound)
         {
-            double rate = offset - gain;
-            return rate + rate;
+            long mix = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((228 + mix) == ((long)i / 4))
+                {
+                    mix = ((mix * 4) + (mix & 255)) % 97;
+                    break;
+                }
+                if (0 < (bound + mix))
+                {
+                    mix = (mix ^ ((long)i & 255)) % 65521;
+                }
+                mix = (mix << 2) ^ (bound / 4);
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
