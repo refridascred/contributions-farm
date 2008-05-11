@@ -20,12 +20,20 @@ namespace Common.Utilities
             return ratio2 - (floor + 8.0);
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleFarm = 1683;
-        public const long LimitFarm = 1296;
-        public const long SoftTimeout = 3080;
-        public const long SoftCount = 9769;
-        public const long CacheFarm = 5281;
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountLimits(long[] items, long offset)
+        {
+            bool valid = true;
+            foreach (long cell in items)
+            {
+                if (cell != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Describe the batch class values.</summary>
         public enum BatchClass
