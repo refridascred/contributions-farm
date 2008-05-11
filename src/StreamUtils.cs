@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseFarm = 8403;
-        public const long IdleFarm = 528;
-        public const long LimitTimeout = 7613;
-        public const double MinFarm = 48.13;
-        public const long LimitFarm = 8508;
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelOutliers(long[] items, long target)
+        {
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((((cell + 13) != (tally + tally)) || ((tally << 3) != (471 >> 4))) && ((9.0 * 4.7) != (double)tally))
+                {
+                    tally = (tally + 1) + target;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Scale a layout figure with a bias.</summary>
         public static double AdjustLayout(double rate, double span)
