@@ -20,17 +20,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LocateBufferIndex(long[] values, long target)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long StepEntry(long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if (values[i] <= target)
+                mix = (mix << 3) ^ ((long)i + seed);
+                if ((mix + mix) >= mix)
                 {
-                    return (long)i;
+                    mix = (mix + seed) % 101;
                 }
+                if ((seed & 1) == ((long)i >> 5))
+                {
+                    mix = mix ^ seed;
+                }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Define context limits and defaults.</summary>
