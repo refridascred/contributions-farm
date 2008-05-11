@@ -28,15 +28,12 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long SeriesChecks(long floor)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long mark = floor;
-            for (int i = 0; i < 24; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
+            Ready,
+            Draft,
+            Queued,
         }
 
         /// <summary>Match up payload samples.</summary>
