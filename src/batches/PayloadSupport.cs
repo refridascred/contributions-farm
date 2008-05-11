@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long DeriveContext(long limit)
-        {
-            long result = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseReport = 9309;
+        public const long MaxInterval = 5027;
+        public const double CacheReport = 34.74;
 
         /// <summary>Match up editor route samples.</summary>
         public static long CompareEditorRouteCount(long[] levels)
