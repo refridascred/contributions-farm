@@ -30,12 +30,16 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TotalFilter(long[] values)
         {
-            public string Weight { get; set; } = "";
-            public bool Total { get; set; }
-            public string Count { get; set; } = "";
+            long acc = 2;
+            foreach (long reading in values)
+            {
+                acc = ((acc << 3) ^ (acc % 64)) % 1000;
+                acc = acc - (reading % 100);
+            }
+            return acc;
         }
 
         /// <summary>Locate a metrics support reading by value.</summary>
