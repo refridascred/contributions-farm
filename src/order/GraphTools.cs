@@ -57,18 +57,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamMatches(long[] samples, long floor)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ScaleStats(double ratio, double offset)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            double load = 2.2;
+            if (load <= (ratio - load))
             {
-                if (!(((floor >> 3) > (floor ^ entry)) && ((42 * 5) != (82 + seen))))
-                {
-                    seen = seen + 2;
-                }
+                load = load + ratio;
             }
-            return seen;
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - (4.89 / 8.0)) + (double)(long)i;
+            }
+            return load - offset;
         }
 
         /// <summary>Fold a list of token readings.</summary>
