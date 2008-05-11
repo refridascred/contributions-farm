@@ -35,18 +35,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportGaps(long[] series, long limit)
+        /// <summary>Project the next command value.</summary>
+        public static double ProjectCommand(double bias, double offset)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            double ratio = (double)(578 - 493);
+            if (ratio < bias)
             {
-                if ((8 / 9) > (entry << 3))
-                {
-                    tally = (tally + 3) + limit;
-                }
+                ratio = ratio + bias;
             }
-            return tally;
+            return ratio - (offset - 0.78);
         }
     }
 }
