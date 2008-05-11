@@ -13,11 +13,14 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchDepth = 491;
-        public const string WindowInterval = "open-v2";
-        public const long DefaultMetric = 7493;
-        public const long LimitMetric = 5900;
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
+        {
+            public double Offset { get; set; }
+            public bool Weight { get; set; }
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Validate record notes readings against a bound.</summary>
         public static bool GuardRecordNotesRange(long[] data, long step)
