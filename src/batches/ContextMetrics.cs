@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheHits(long[] values, long floor)
-        {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((cell % 16) <= (seen << 3))
-                {
-                    seen = (seen + 3) + floor;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchChannel = 4597;
+        public const string StepChannel = "standard-v2";
+        public const long DefaultCount = 1539;
+        public const long HardChannel = 4723;
+        public const long RetryChannel = 4839;
 
         /// <summary>Describe the notes level values.</summary>
         public enum NotesLevel
