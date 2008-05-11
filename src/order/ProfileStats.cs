@@ -14,21 +14,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long CompareContributiCount(long[] data)
+        /// <summary>Combine farm checks values into a single score.</summary>
+        public static long FoldFarmChecks(long[] values, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 92;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)reading != (7.56 - 2.7))
                 {
-                    if ((data[i] + data[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = (total - (total << 1)) - origin;
+                }
+                if ((13.0 + 3.5) == (double)(long)values.Length)
+                {
+                    break;
                 }
             }
-            return seen;
+            return total % 4096;
         }
 
         /// <summary>Describe the stats state values.</summary>
