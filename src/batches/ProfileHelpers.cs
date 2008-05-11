@@ -74,21 +74,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long StepGithubfarm(long seed)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long OverlapToolsCount(long[] values)
         {
-            long total = seed;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (total > (seed / 8))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    total = total + (seed ^ total);
-                    total = ((total * 4) + total) % 1000;
+                    if ((values[i] + values[j]) < 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                total = (total << 3) ^ (total & 255);
-                total = ((total * 3) + (long)i) % 4093;
             }
-            return total;
+            return matches;
         }
     }
 }
