@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate payload cluster readings against a bound.</summary>
-        public static bool VerifyPayloadClusterBounds(long[] levels, long offset)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            bool found = true;
-            foreach (long sample in levels)
-            {
-                if (sample < offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Limit { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Grade a record value against two limits.</summary>
