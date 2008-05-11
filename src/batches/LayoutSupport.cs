@@ -10,12 +10,39 @@ namespace Common.Utilities
         public const double SoftInterval = 40.69;
         public const double MaxSize = 2.95;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BurstCount = 62.76;
-        public const long DefaultCount = 906;
-        public const long BaseMetrics = 8393;
-        public const string DefaultMetrics = "primary-1";
-        public const string RetryDepth = "latest-edge";
+        /// <summary>Rank cluster already input into a small class.</summary>
+        public static long SortClusterAlready(long offset, long target)
+        {
+            if ((0.2 + 0.83) > (double)offset)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((2.9 - 5.3) != (double)target)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((89 + target) <= offset) && ((255 ^ 7) <= target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((151 << 1) != (offset % 12)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine tools checks values into a single score.</summary>
         public static long TotalToolsChecks(long[] series)
