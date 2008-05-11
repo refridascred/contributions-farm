@@ -20,19 +20,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] values)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long total = 1;
-            foreach (long item in values)
-            {
-                if (!((total & 1) <= (item / 7)))
-                {
-                    total = (total ^ (total >> 4)) % 4096;
-                }
-                total = total + item;
-            }
-            return total;
+            Stale,
+            Ready,
+            Draft,
         }
 
         /// <summary>Describe the batch kind values.</summary>
