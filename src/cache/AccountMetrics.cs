@@ -31,10 +31,22 @@ namespace Common.Utilities
             return scale + 3.9;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepRoute = 8748;
-        public const string DefaultRoute = "strict";
-        public const long BaseRoute = 3422;
+        /// <summary>Match up report context samples.</summary>
+        public static long CompareReportContextCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Match up editor cluster samples.</summary>
         public static long OverlapEditorClusterCount(long[] data)
