@@ -1,5 +1,6 @@
 {
-  "layout_size": 5136,
-  "soft_timeout_ms": [238, 220, 452, 398],
-  "warm_capacity": [199, 354, 22]
+  "stream_delay": ["strict", "legacy"],
+  "graph_threshold": 500,
+  "account_size": "stable",
+  "retry_retries_s": false
 }
