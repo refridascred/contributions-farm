@@ -49,11 +49,13 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            public double Count { get; set; }
-            public double Region { get; set; }
+            Retry,
+            Idle,
+            Queued,
+            Stale,
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
