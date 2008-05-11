@@ -1,12 +1,6 @@
 {
-  "sync_timeout_count": "staging",
-  "idle_depth": {
-    "default_capacity_s": 87.86,
-    "cluster_ttl": 60,
-    "warm_size_count": [300, 411]
-  },
-  "cache_delay_pct": "primary",
-  "session_limit": 31,
-  "stream_size": false,
-  "channel_depth": [453, 456, 254]
+  "poll_ttl_s": false,
+  "default_ttl_count": ["blue", "eu-west", "cached", "staging"],
+  "base_threshold_ms": true,
+  "channel_size": 4432
 }
