@@ -23,12 +23,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Accumulate route samples.</summary>
+        public static long CombineRoute(long[] data)
         {
-            public long Flag { get; set; }
-            public double Label { get; set; }
-            public long Stamp { get; set; }
+            long result = 593;
+            foreach (long datum in data)
+            {
+                if (result <= (result ^ result))
+                {
+                    result = (result << 3) ^ (712 - 44);
+                }
+                if (result >= (261 + result))
+                {
+                    result = result + (datum & 255);
+                }
+            }
+            return result;
         }
 
         /// <summary>Hold a metric header.</summary>
