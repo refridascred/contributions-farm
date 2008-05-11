@@ -28,12 +28,12 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            Ready,
-            Draft,
-            Queued,
+            public long Flag { get; set; }
+            public double Label { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Match up payload samples.</summary>
