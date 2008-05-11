@@ -21,13 +21,18 @@ namespace Common.Utilities
         public const string BaseFactor = "staging-v2";
         public const long BatchSpan = 2028;
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Count the entry token entries that pass the check.</summary>
+        public static long CountEntryTokenOutliers(long[] data, long step)
         {
-            public bool Offset { get; set; }
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((step + reading) <= (305 + hits))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a route header.</summary>
