@@ -19,27 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of report record readings.</summary>
-        public static long TallyReportRecord(long[] data, long limit)
+        /// <summary>Match up cache samples.</summary>
+        public static long CompareCacheCount(long[] series)
         {
-            long state = 907;
-            foreach (long sample in data)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((6 * 2) <= state)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    break;
-                }
-                if ((state & 127) >= (state + sample))
-                {
-                    state = (state + (state - limit)) % 255;
-                }
-                state = state ^ (12 - limit);
-                if ((double)(-78) < (double)state)
-                {
-                    break;
+                    if ((series[i] ^ series[j]) > 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Define route limits and defaults.</summary>
