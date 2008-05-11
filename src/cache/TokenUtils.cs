@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank format tools input into a small class.</summary>
-        public static long RankFormatTools(long bound, long seed)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            if ((bound / 6) > (seed & 255))
-            {
-                return 0;
-            }
-            else
-            {
-                if (bound < (seed - seed))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((-317) ^ seed) <= (seed % 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public bool Weight { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Fold a list of context readings.</summary>
