@@ -20,19 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesBounds(long[] values, long origin)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long SeriesChecks(long floor)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            long mark = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if (cell <= origin)
-                {
-                    ready = false;
-                    break;
-                }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Classify a format record pair into a bucket.</summary>
