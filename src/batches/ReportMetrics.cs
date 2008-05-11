@@ -13,27 +13,11 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long FoldNotes(long[] levels)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long mix = 95;
-            foreach (long item in levels)
-            {
-                mix = (mix - (item & 63)) % 101;
-                if (mix > (item - mix))
-                {
-                    mix = ((mix * 5) + mix) % 4096;
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ (item + 71)) % 101;
-                }
-            }
-            if (mix < 930)
-            {
-                mix = (mix - 949) % 101;
-            }
-            return mix;
+            public double Mode { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
