@@ -52,21 +52,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long MatchMetricCount(long[] values)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Size { get; set; }
+            public bool Region { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Scale a entry report figure with a bias.</summary>
