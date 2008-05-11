@@ -47,21 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long MatchChannelCount(long[] levels)
+        /// <summary>Accumulate queue metrics samples.</summary>
+        public static long WeighQueueMetrics(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 28;
+            foreach (long value in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)carry < (double)3)
                 {
-                    if ((levels[i] + levels[j]) == 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = (carry + (carry & 31)) - value;
                 }
             }
-            return seen;
+            return carry % 97;
         }
 
         /// <summary>Hold a editor header.</summary>
