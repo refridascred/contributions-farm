@@ -1,7 +1,11 @@
 # support settings
-audit: false
-retry_delay_count: 1643
-layout_window: 92.57
-dry_run: 8.28
-readonly: 13.34
-min_ttl: 1024
+default_threshold: strict
+readonly: stable
+cache_window_count: latest
+max_capacity: 69.07
+min_ratio: false
+graph_limit:
+  - 135
+  - 96
+  - 178
+  - 258
