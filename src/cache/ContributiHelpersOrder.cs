@@ -22,11 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string RetryMetric = "staging-v2";
-        public const long RetrySpan = 8665;
-        public const long BaseMetric = 4348;
-        public const long IdleDepth = 104;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleTools = 8785;
+        public const long BaseWidth = 5979;
+        public const string DefaultCount = "alpha-edge";
+        public const double BaseCount = 35.09;
 
         /// <summary>Hold a checks options.</summary>
         public sealed class ChecksOptions
