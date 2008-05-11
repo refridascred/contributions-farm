@@ -22,11 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleDepth = 9048;
-        public const long MaxScore = 547;
-        public const string LimitEditor = "local-edge";
-        public const long BaseScore = 8562;
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
+        {
+            New,
+            Dropped,
+            Stale,
+            Ready,
+        }
 
         /// <summary>Derive the next order githubfarm value from a seed.</summary>
         public static long StepOrderGithubfarm(long floor)
