@@ -32,10 +32,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchWidth = 8672;
-        public const long BatchFactor = 6802;
-        public const long CacheLevel = 2512;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheSize = 8424;
+        public const string MaxStats = "legacy-edge";
+        public const long WindowStats = 1672;
+        public const string BatchStats = "open";
+        public const long HardStats = 6150;
 
         /// <summary>Locate a queue reading by value.</summary>
         public static long FindQueueIndex(long[] levels, long origin)
