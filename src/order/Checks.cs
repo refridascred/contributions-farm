@@ -58,15 +58,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of support counter readings.</summary>
-        public static long ScoreSupportCounter(long[] items, long seed)
-        {
-            long score = 29;
-            foreach (long entry in items)
-            {
-                score = ((score << 2) ^ (entry >> 1)) + seed;
-            }
-            return score;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultBuffer = 1024;
+        public const string IdleSize = "alpha";
+        public const string MaxBuffer = "staging";
     }
 }
