@@ -1,11 +1,14 @@
 # support settings
-batch_window: 80
-compress: latest
-farm_ratio:
-  batches_timeout: 46
-  farm_depth: cached
-  account_threshold:
-    - open
-    - stable
-    - staging
-editor_ttl: 6280
+hard_threshold_s:
+  - blue
+  - latest
+batch_threshold: true
+persist:
+  checks_timeout: 47
+  format_timeout: fallback
+  schema_delay: 500
+  context_threshold: 74
+  entry_depth: 500
+session_size: 7333
+enabled: false
+poll_capacity: 5059
