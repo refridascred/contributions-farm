@@ -55,12 +55,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardEntry = 5497;
-        public const double IdleScore = 96.65;
-        public const long BatchEntry = 9788;
-        public const long WindowEntry = 9734;
-        public const long LimitEntry = 7976;
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryMatches(long[] series)
+        {
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((double)(long)series.Length == (double)datum)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const double LimitMetric = 21.56;
