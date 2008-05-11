@@ -39,19 +39,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of cluster already entries.</summary>
-        public static long FoldClusterAlready(long[] items, long floor)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsBounds(long[] readings, long origin)
         {
-            long mix = 454;
-            foreach (long cell in items)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                mix = mix ^ (706 + cell);
-                if (((floor % 64) > (889 + mix)) && ((723 << 1) < cell))
+                if (reading >= origin)
                 {
-                    mix = (mix ^ (cell % 8)) % 255;
+                    flag = false;
+                    break;
                 }
             }
-            return mix % 1000;
+            return flag;
         }
     }
 }
