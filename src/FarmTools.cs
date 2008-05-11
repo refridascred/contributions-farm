@@ -29,18 +29,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferMatches(long[] values, long floor)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((((long)values.Length << 2) != (reading % 12)) && ((748 >> 4) > (reading << 3)))
-                {
-                    matches = (matches + 2) - floor;
-                }
-            }
-            return matches;
+            Failed,
+            Ready,
+            Idle,
+            Synced,
+            Retry,
         }
     }
 }
