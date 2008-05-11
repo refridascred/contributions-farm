@@ -33,13 +33,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long ClassifyGithubfarm(long step, long limit)
         {
-            public string Level { get; set; } = "";
-            public bool Limit { get; set; }
-            public double Token { get; set; }
-            public long Mode { get; set; }
+            if (((-390) / 5) >= (step % 16))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((4 * 5) <= step)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((step + 22) != (step + limit)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((limit >> 5) <= (limit + 37))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
