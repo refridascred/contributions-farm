@@ -40,13 +40,31 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Classify a metrics support pair into a bucket.</summary>
+        public static long GradeMetricsSupport(long origin, long step)
         {
-            public long Weight { get; set; }
-            public long Stamp { get; set; }
-            public double Level { get; set; }
-            public long Score { get; set; }
+            if (!((step << 1) <= step))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((step ^ 7) == (origin - origin)) && ((step & 15) > origin))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((double)step <= 6.1) && ((step % 97) <= (origin + step)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Define format limits and defaults.</summary>
