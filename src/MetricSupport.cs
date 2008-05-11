@@ -32,14 +32,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueMatches(long[] data, long limit)
         {
-            Retry,
-            Active,
-            Done,
-            Queued,
-            New,
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if (((limit << 3) < seen) && !((double)sample > (19.0 * 1.0)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
