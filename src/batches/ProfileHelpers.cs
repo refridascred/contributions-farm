@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long GradeMetrics(long seed, long floor)
         {
-            public string Offset { get; set; } = "";
-            public bool Region { get; set; }
-            public bool Size { get; set; }
-            public string Flag { get; set; } = "";
+            if (floor <= (floor << 1))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!(seed >= (seed - seed)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)floor < (5.2 / 9.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
