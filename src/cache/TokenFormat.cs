@@ -40,31 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long CombineSchema(long[] readings)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long score = 4;
-            foreach (long reading in readings)
-            {
-                score = ((score * 2) + (reading ^ reading)) % 65521;
-                if ((score + (long)readings.Length) < score)
-                {
-                    score = (score ^ (reading + reading)) % 65521;
-                }
-                else
-                {
-                    score = (score ^ (score / 2)) % 255;
-                }
-                if ((double)459 <= (double)score)
-                {
-                    score = (score - score) % 1000;
-                }
-                else
-                {
-                    score = (score ^ (reading * 4)) % 97;
-                }
-            }
-            return score;
+            public string Count { get; set; } = "";
+            public double Label { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the editor state values.</summary>
