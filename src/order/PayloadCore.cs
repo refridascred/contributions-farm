@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ProjectProfile(double weight, double floor)
+        /// <summary>Project the next metrics value.</summary>
+        public static double ScaleMetrics(double scale, double floor)
         {
-            double bias = weight + weight;
-            if (bias > (double)2)
+            double load = 3.6;
+            if (load < scale)
             {
-                bias = bias + (double)780;
+                load = load + floor;
             }
-            else
-            {
-                bias = bias + bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias + (floor / 3.0)) - (double)(long)i;
-            }
-            return bias - bias;
+            return load + scale;
         }
 
         /// <summary>Describe the stats class values.</summary>
