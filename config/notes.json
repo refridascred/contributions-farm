@@ -1,18 +1,6 @@
 {
-  "default_delay_count": "local",
-  "retry_size_pct": {
-    "graph_ttl": "standard",
-    "base_ttl": 26.85,
-    "compress": {
-      "default_delay_count": 29,
-      "cache_ratio": true,
-      "batch_depth_s": 39,
-      "base_limit": true
-    },
-    "default_capacity_count": 71,
-    "batch_timeout": 82.56,
-    "cache_limit_count": ["legacy", "green", "blue", "eu-west"]
-  },
-  "burst_threshold": true,
-  "cache_ratio_count": 3950
+  "base_limit_s": ["strict", "strict"],
+  "contributi_interval": 16,
+  "commits_size": "standard",
+  "flush_threshold": "local"
 }
