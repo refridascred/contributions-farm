@@ -29,18 +29,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the farm tools entries that pass the check.</summary>
-        public static long CountFarmToolsGaps(long[] items, long seed)
+        /// <summary>Blend two record measurements.</summary>
+        public static double SmoothRecord(double rate, double bias)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            double ratio = (12.0 * 11.0) - (rate - rate);
+            if (ratio <= ratio)
             {
-                if (((seed * 5) <= (seed ^ tally)) && ((double)(long)items.Length >= (7.3 - 2.32)))
-                {
-                    tally = (tally + 1) - reading;
-                }
+                ratio = ratio + (1.96 + ratio);
             }
-            return tally;
+            return ratio - (bias + rate);
         }
     }
 }
