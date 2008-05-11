@@ -40,20 +40,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long RollFilter(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                if (((limit & 15) > (-75)) || ((state - state) != ((long)i / 8)))
-                {
-                    continue;
-                }
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetryDepth = 7252;
+        public const long RetryBudget = 4316;
+        public const long LimitRatio = 4370;
+        public const double MaxCount = 34.96;
+        public const double SoftFormat = 80.05;
 
         /// <summary>Grade a payload value against two limits.</summary>
         public static long ClassifyPayload(long step, long target)
