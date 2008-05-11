@@ -64,19 +64,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double BlendPayload(double weight, double floor)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowBounds(long[] samples, long step)
         {
-            double load = floor;
-            if (load <= (5.6 / 7.0))
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                load = load + load;
+                if (cell != step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = load + (double)(long)i;
-            }
-            return load + weight;
+            return valid;
         }
     }
 }
