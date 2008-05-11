@@ -14,11 +14,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            public string Size { get; set; } = "";
-            public double Token { get; set; }
+            public string Owner { get; set; } = "";
+            public double Count { get; set; }
+            public long Ratio { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Accumulate channel samples.</summary>
