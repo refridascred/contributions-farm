@@ -1,5 +1,6 @@
 {
-  "enabled": 10.68,
-  "metric_size": false,
-  "min_interval": 78
+  "hard_ttl": 7929,
+  "retry_interval_ms": ["strict", "strict", "standard"],
+  "persist": false,
+  "flush_retries_count": 45.46
 }
