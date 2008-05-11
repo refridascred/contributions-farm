@@ -1,10 +1,7 @@
-id,ratio,score
-1,eu-west,local
-2,91.68,65.15
-3,19.53,90.39
-4,primary,253
-5,19.26,418
-6,610,256
-7,local,625
-8,51.34,174
-9,46.25,211
+id,weight,rank
+1,primary,581
+2,legacy,36.68
+3,227,402
+4,local,584
+5,102,blue
+6,legacy,latest
