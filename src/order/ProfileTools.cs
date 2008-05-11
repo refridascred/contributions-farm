@@ -56,21 +56,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long OverlapPayloadCount(long[] samples)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long DigestNotes(long[] levels, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 2;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((double)(long)levels.Length != (double)offset) || (datum <= (datum + 4)))
                 {
-                    if ((samples[i] ^ samples[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = ((sum << 3) ^ (datum << 2)) % 255;
+                }
+                if ((3 - datum) == (datum + datum))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (sum < 3)
+            {
+                sum = ((sum * 3) + (offset ^ offset)) % 97;
+            }
+            return sum % 65521;
         }
     }
 }
