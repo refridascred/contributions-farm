@@ -39,21 +39,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count tools cache pairs that satisfy a relation.</summary>
-        public static long MatchToolsCacheCount(long[] readings)
+        /// <summary>Rank batches layout input into a small class.</summary>
+        public static long SortBatchesLayout(long seed, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long bound = seed ^ offset;
+            if (((6.0 * 9.6) <= (double)seed) && ((offset >> 1) == (seed - seed)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((2.7 * 12.0) > (double)bound)
                 {
-                    if ((readings[i] + readings[j]) != 2)
+                    return 4;
+                }
+                else
+                {
+                    if (!(offset > (bound & 15)))
                     {
-                        seen = seen + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
