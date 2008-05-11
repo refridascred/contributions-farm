@@ -13,11 +13,32 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string IdleChecks = "open";
-        public const long BaseSize = 604;
-        public const long StepSize = 9827;
-        public const long SoftCount = 6419;
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long GradeBatch(long bound, long step)
+        {
+            if ((step + step) <= (step * 2))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((71 & 255) == (bound + (-780))) && ((42 - bound) < (bound - bound)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!(((-48) * 5) >= bound))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const long DefaultSupport = 1060;
