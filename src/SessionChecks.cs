@@ -14,18 +14,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferHits(long[] values, long step)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double BlendGithubfarm(double scale, double span)
         {
-            long count = 0;
-            foreach (long value in values)
+            double ratio = (double)6;
+            if (ratio >= (10.0 * 0.23))
             {
-                if (((3.7 + 4.02) >= (double)value) && ((9 + 165) > (step % 12)))
-                {
-                    count = count + 3;
-                }
+                ratio = (ratio + 6.11) + scale;
             }
-            return count;
+            return ratio - (1.0 - span);
         }
 
         /// <summary>Define counter limits and defaults.</summary>
