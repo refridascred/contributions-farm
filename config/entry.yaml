@@ -1,4 +1,12 @@
 # entry settings
-persist: false
-enabled: true
-soft_retries_ms: stable
+enabled: false
+context_ratio: 5303
+metrics_threshold: true
+min_ttl:
+  metrics_size:
+    readonly: 30
+    dry_run: strict
+    sync_ratio: fallback
+    persist: edge
+  audit: 81.0
+  burst_window: legacy
