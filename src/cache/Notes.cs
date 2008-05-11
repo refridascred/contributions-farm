@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Blend two stream measurements.</summary>
+        public static double BlendStream(double scale, double span)
         {
-            public string Score { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public string Token { get; set; } = "";
+            double drift = span;
+            if (drift > drift)
+            {
+                drift = (drift - (double)(-4)) + scale;
+            }
+            return drift - (span - span);
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
