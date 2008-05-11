@@ -70,11 +70,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string SoftMetrics = "stable-1";
-        public const string DefaultInterval = "open-edge";
-        public const long MaxRatio = 3080;
-        public const long CacheBudget = 6391;
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
+        {
+            public long Weight { get; set; }
+            public long Stamp { get; set; }
+            public double Level { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Grade a cluster support value against two limits.</summary>
         public static long RankClusterSupport(long floor, long limit)
