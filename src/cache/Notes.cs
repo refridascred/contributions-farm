@@ -27,14 +27,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Blend two batch payload measurements.</summary>
+        public static double SmoothBatchPayload(double gain, double offset)
         {
-            Locked,
-            Retry,
-            Ready,
-            Done,
-            Stale,
+            double rate = gain;
+            if (rate > (rate - gain))
+            {
+                rate = rate + rate;
+            }
+            else
+            {
+                rate = rate - (double)54;
+            }
+            return rate + offset;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
