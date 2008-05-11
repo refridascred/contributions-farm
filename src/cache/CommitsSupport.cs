@@ -27,18 +27,14 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordMatches(long[] series)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((double)(long)series.Length == (9.44 / 8.0))
-                {
-                    seen = (seen + 3) ^ cell;
-                }
-            }
-            return seen;
+            Draft,
+            Ready,
+            Queued,
+            Done,
+            Stale,
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
