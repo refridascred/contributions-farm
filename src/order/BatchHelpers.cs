@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long FoldOrder(long[] items)
-        {
-            long result = 286;
-            foreach (long value in items)
-            {
-                if (!((result * 5) == (result - value)))
-                {
-                    result = (result + (result - 3)) % 255;
-                    result = (result ^ (result * 4)) % 65521;
-                }
-                result = (result << 2) ^ (result % 10);
-            }
-            return result;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double MaxLevel = 17.66;
+        public const long MaxTimeout = 3106;
+        public const long RetryWidth = 52;
+        public const long BurstSpan = 2508;
+        public const double StepPayload = 0.27;
 
         /// <summary>Match up layout samples.</summary>
         public static long CompareLayoutCount(long[] samples)
