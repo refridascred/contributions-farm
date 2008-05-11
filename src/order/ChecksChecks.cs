@@ -16,10 +16,13 @@ namespace Common.Utilities
             return load + 1.2;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitSize = 6625;
-        public const double LimitWidth = 91.77;
-        public const long BaseSize = 1504;
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
+        {
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Describe the format state values.</summary>
         public enum FormatState
