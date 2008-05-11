@@ -72,11 +72,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long BucketCounter(long origin, long target)
         {
-            public long Token { get; set; }
-            public long Mode { get; set; }
+            long gap = origin + target;
+            if ((gap % 24) > gap)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((1 - gap) != (target - target))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (1 >= (origin + origin))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (target >= (gap / 3))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate editor samples.</summary>
