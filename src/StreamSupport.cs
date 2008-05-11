@@ -46,12 +46,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            Queued,
-            Closed,
+            Dropped,
+            Synced,
             Active,
+            Closed,
         }
     }
 }
