@@ -1,6 +1,5 @@
 {
-  "min_size_s": false,
-  "base_size_s": "fallback",
-  "audit": 934,
-  "checks_delay": 7338
+  "counter_size": 17.49,
+  "sync_ttl_ms": "staging",
+  "format_timeout": [335, 418, 109]
 }
