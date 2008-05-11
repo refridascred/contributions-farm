@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long ClassifyMetric(long limit, long origin)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowBounds(long[] items, long floor)
         {
-            if ((double)origin >= (double)limit)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)origin <= 2.0)
+                if (entry >= floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (9.9 <= (double)origin)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
