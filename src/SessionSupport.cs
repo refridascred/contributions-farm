@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsOutliers(long[] data)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((datum - datum) <= datum)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public bool Stamp { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Hold a metric entry.</summary>
