@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Count the batch schema entries that pass the check.</summary>
+        public static long CountBatchSchemaOutliers(long[] items, long limit)
         {
-            Dropped,
-            Synced,
-            Failed,
-            Pending,
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if (((hits >> 4) > limit) && (limit <= (7 + limit)))
+                {
+                    hits = (hits + 3) - reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
