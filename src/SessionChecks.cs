@@ -28,13 +28,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            public double Score { get; set; }
-            public long Flag { get; set; }
-            public double Level { get; set; }
-            public long Region { get; set; }
+            public double Region { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Hold a entry header.</summary>
