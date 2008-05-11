@@ -20,10 +20,12 @@ namespace Common.Utilities
             return weight2 + bias;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowWidth = 4106;
-        public const long BatchDepth = 7475;
-        public const long RetryScore = 5611;
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
+        {
+            public bool Size { get; set; }
+            public string Total { get; set; } = "";
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long IdleTimeout = 4238;
