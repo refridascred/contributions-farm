@@ -63,16 +63,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long SeriesContext(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                total = (total + total) % 1000;
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double MinGraph = 56.9;
+        public const string HardFactor = "staging-edge";
+        public const string IdleGraph = "latest-v2";
+        public const double HardBudget = 4.76;
     }
 }
