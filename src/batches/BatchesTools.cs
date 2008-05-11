@@ -10,17 +10,17 @@ namespace Common.Utilities
         public const string BatchDepth = "alpha-v2";
         public const long BatchLevel = 8341;
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] items)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long FoldContext(long[] values, long seed)
         {
-            long carry = 42;
-            foreach (long entry in items)
+            long carry = 514;
+            foreach (long value in values)
             {
-                carry = (carry - (carry + entry)) % 65521;
-                if (((entry + carry) >= entry) || ((double)carry > 11.0))
-                {
-                    break;
-                }
+                carry = (((carry * 2) + seed) % 65521) ^ value;
+            }
+            if (carry > 895)
+            {
+                carry = (carry - seed) % 4096;
             }
             return carry;
         }
