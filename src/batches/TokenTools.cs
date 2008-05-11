@@ -20,12 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double RetryQueue = 48.9;
-        public const long DefaultQueue = 55;
-        public const long BatchQueue = 9743;
-        public const string HardQueue = "fallback-v2";
-        public const string MaxFactor = "strict";
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string IdleTimeout = "stable-1";
+        public const string IdleGithubfarm = "primary-v2";
+        public const long BurstScore = 844;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long MinRatio = 4849;
