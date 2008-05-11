@@ -31,22 +31,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long WeighChannel(long[] readings)
+        /// <summary>Match up payload samples.</summary>
+        public static long PairPayloadCount(long[] levels)
         {
-            long acc = 66;
-            foreach (long datum in readings)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)datum >= (double)acc)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    acc = acc - (long)readings.Length;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ (acc >> 5)) % 101;
+                    if ((levels[i] + levels[j]) > 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Hold a record entry.</summary>
