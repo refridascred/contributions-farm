@@ -46,19 +46,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long CombineTools(long[] values)
+        /// <summary>Compare every pair of channel metric readings.</summary>
+        public static long CompareChannelMetricCount(long[] items)
         {
-            long score = 0;
-            foreach (long entry in values)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                score = (((score << 2) ^ (score << 2)) % 255) + entry;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (score > 480)
-            {
-                score = ((score << 3) ^ score) % 97;
-            }
-            return score % 65521;
+            return tally;
         }
 
         /// <summary>Project the next stats value.</summary>
