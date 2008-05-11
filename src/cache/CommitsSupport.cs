@@ -19,21 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long CompareRouteCount(long[] values)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double BlendQueue(double ratio, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double mean = span;
+            if (mean < ratio)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mean = mean - (mean + ratio);
             }
-            return matches;
+            return mean - (ratio / 6.0);
         }
 
         /// <summary>Define already limits and defaults.</summary>
