@@ -10,12 +10,22 @@ namespace Common.Utilities
         public const string WindowSupport = "cached-edge";
         public const long CacheTimeout = 6788;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowTimeout = 8917;
-        public const double StepMetric = 23.91;
-        public const double HardMetric = 35.37;
-        public const double LimitMetric = 70.24;
-        public const long MaxRatio = 6284;
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long PairBufferCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const double BatchFactor = 9.8;
