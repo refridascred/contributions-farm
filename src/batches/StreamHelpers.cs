@@ -48,17 +48,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long FoldContext(long[] values, long offset)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long StepSupport(long offset)
         {
-            long mark = 1;
-            foreach (long sample in values)
+            long mark = offset;
+            for (int i = 0; i < 21; i++)
             {
-                mark = (mark - offset) ^ sample;
-            }
-            if (mark < 7)
-            {
-                mark = (mark ^ (offset / 9)) % 65521;
+                if ((offset * 3) == (offset >> 1))
+                {
+                    continue;
+                }
+                mark = ((mark * 2) + (long)i) % 101;
             }
             return mark;
         }
