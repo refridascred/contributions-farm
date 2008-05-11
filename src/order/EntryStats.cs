@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long BucketSupport(long bound, long target)
         {
-            public double Owner { get; set; }
-            public long Level { get; set; }
-            public bool Score { get; set; }
+            if ((double)bound < (double)target)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((bound > (target % 8)) && ((double)target >= (5.0 * 1.7)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((bound + bound) == (bound + 0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((6.3 + 3.9) >= (double)bound) || ((double)bound != (8.0 + 3.0)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a filter entry.</summary>
