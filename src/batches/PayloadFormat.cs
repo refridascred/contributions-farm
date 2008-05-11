@@ -19,13 +19,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Combine editor record values into a single score.</summary>
+        public static long ScoreEditorRecord(long[] values, long offset)
         {
-            public double Flag { get; set; }
-            public string Weight { get; set; } = "";
-            public double Owner { get; set; }
-            public double Ratio { get; set; }
+            long score = 51;
+            foreach (long entry in values)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    long gap = entry + (39 >> 5);
+                    score = (((score << 2) ^ (gap - score)) % 1000) ^ (long)i;
+                }
+                if (((offset >> 2) < (entry + 496)) && ((entry + score) < entry))
+                {
+                    score = (score + (offset * 5)) % 101;
+                }
+                else
+                {
+                    score = score - (offset - score);
+                }
+            }
+            if (score < (-26))
+            {
+                score = score + (score & 127);
+            }
+            return score;
         }
 
         /// <summary>Define context limits and defaults.</summary>
