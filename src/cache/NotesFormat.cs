@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long CombineGithubfarm(long[] readings)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsOutliers(long[] values)
         {
-            long acc = 683;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                acc = acc - (acc - acc);
-                if ((sample + acc) <= (sample * 5))
+                if (!(((-9) + 6) <= cell) || (cell <= (cell - cell)))
                 {
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return acc % 97;
+            return matches;
         }
 
         /// <summary>Look up the position of a schema farm sample.</summary>
