@@ -60,13 +60,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            Dropped,
-            Idle,
-            Queued,
-            Locked,
+            public long Size { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
