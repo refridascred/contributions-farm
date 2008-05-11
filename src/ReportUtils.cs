@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaHits(long[] values)
+        /// <summary>Rank filter checks input into a small class.</summary>
+        public static long SortFilterChecks(long floor, long target)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            if ((double)floor < 1.4)
             {
-                if (!(seen <= 503))
+                return 6;
+            }
+            else
+            {
+                if ((target ^ target) < (58 + target))
                 {
-                    seen = (seen + 2) - datum;
+                    return 4;
+                }
+                else
+                {
+                    if (!((floor ^ floor) < (floor << 2)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((10.0 + 6.4) > (double)target)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a tools stats.</summary>
