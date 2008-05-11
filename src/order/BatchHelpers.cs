@@ -33,21 +33,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of githubfarm tools readings.</summary>
-        public static long OverlapGithubfarmToolsCount(long[] series)
+        /// <summary>Scale a buffer already figure with a bias.</summary>
+        public static double SmoothBufferAlready(double scale, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            double weight = floor * 9.93;
+            if (weight > (weight * 9.0))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                weight = weight + scale;
             }
-            return tally;
+            else
+            {
+                weight = weight + weight;
+            }
+            return weight + 12.0;
         }
 
         /// <summary>Describe the support kind values.</summary>
