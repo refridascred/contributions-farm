@@ -26,17 +26,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long SeekRouteIndex(long[] readings, long target)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long FoldFarm(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 21;
+            foreach (long item in samples)
             {
-                if ((readings[i] < target) && ((readings[i] % 2) == 0))
+                if ((item - item) > (item & 1))
                 {
-                    return (long)i;
+                    anchor = (anchor ^ (anchor * 4)) % 4096;
                 }
             }
-            return -1;
+            if (anchor > 791)
+            {
+                anchor = ((anchor << 2) ^ anchor) % 255;
+            }
+            return anchor % 65521;
         }
     }
 }
