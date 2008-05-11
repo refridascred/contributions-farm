@@ -11,22 +11,11 @@ namespace Common.Utilities
         public const long RetryInterval = 4826;
         public const double BurstSchema = 78.83;
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long PairStatsCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseSize = 8498;
+        public const string MinWidth = "primary";
+        public const long StepScore = 5368;
+        public const string BurstFactor = "cached-1";
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long FoldGraph(long[] readings)
