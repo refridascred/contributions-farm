@@ -57,26 +57,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate channel payload samples.</summary>
-        public static long ScoreChannelPayload(long[] data, long step)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long MatchStreamCount(long[] values)
         {
-            long state = 578;
-            foreach (long datum in data)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((4.9 + 12.0) <= (double)datum)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    state = (state + (datum & 63)) + step;
-                }
-                else
-                {
-                    state = (state - 3) % 101;
+                    if ((values[i] + values[j]) > 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (state > 167)
-            {
-                state = state - (state + state);
-            }
-            return state % 97;
+            return matches;
         }
 
         /// <summary>Fold a list of queue batch readings.</summary>
