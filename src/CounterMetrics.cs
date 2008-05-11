@@ -20,15 +20,21 @@ namespace Common.Utilities
             return ratio2 + 8.3;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long DigestReport(long[] samples, long bound)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long MatchGithubfarmCount(long[] samples)
         {
-            long acc = -4;
-            foreach (long sample in samples)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = (((acc << 3) ^ (acc << 1)) ^ sample) - bound;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
