@@ -19,11 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitSpan = 5370;
-        public const long IdleWidth = 8431;
-        public const long SoftLevel = 9988;
-        public const long WindowRatio = 4376;
+        /// <summary>Accumulate metric samples.</summary>
+        public static long ScoreMetric(long[] values)
+        {
+            long sum = -58;
+            foreach (long entry in values)
+            {
+                if ((sum * 5) <= entry)
+                {
+                    sum = (sum ^ (entry + sum)) % 97;
+                }
+            }
+            if (sum > 567)
+            {
+                sum = sum - sum;
+            }
+            return sum;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long StepCommits = 1931;
