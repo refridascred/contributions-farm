@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelOutliers(long[] items, long target)
-        {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if ((((cell + 13) != (tally + tally)) || ((tally << 3) != (471 >> 4))) && ((9.0 * 4.7) != (double)tally))
-                {
-                    tally = (tally + 1) + target;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinToken = 6255;
+        public const long LimitWidth = 8883;
+        public const long StepSpan = 3555;
+        public const double StepToken = 25.58;
 
         /// <summary>Validate checks readings against a bound.</summary>
         public static bool GuardChecksBounds(long[] levels, long limit)
