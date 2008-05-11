@@ -31,11 +31,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double AdjustBatch(double ratio, double span)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long MatchOrderCount(long[] items)
         {
-            double drift = span;
-            return (drift + drift) + ratio;
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
