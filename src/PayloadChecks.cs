@@ -14,13 +14,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            public double Level { get; set; }
-            public long Mode { get; set; }
-            public long Score { get; set; }
-            public string Token { get; set; } = "";
+            Active,
+            Queued,
+            Retry,
+            Synced,
         }
 
         /// <summary>Accumulate channel samples.</summary>
