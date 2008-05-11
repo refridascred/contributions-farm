@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            Stale,
             Failed,
-            Dropped,
-            Ready,
+            Done,
+            New,
+            Queued,
         }
 
         /// <summary>Combine farm checks values into a single score.</summary>
