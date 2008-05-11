@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsOutliers(long[] values)
-        {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if (!(((-9) + 6) <= cell) || (cell <= (cell - cell)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstScore = 7114;
+        public const string BurstNotes = "primary-v2";
+        public const long MaxNotes = 1743;
+        public const long CacheBudget = 3180;
+        public const long StepNotes = 4521;
 
         /// <summary>Look up the position of a schema farm sample.</summary>
         public static long LocateSchemaFarmIndex(long[] levels, long seed)
