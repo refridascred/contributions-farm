@@ -1,8 +1,8 @@
 {
-  "base_ttl_s": 96.4,
-  "account_size": 91.91,
-  "enabled": 82.37,
-  "max_delay_s": "open",
-  "order_timeout": 7066,
-  "retry_limit_ms": [14, 279]
+  "min_retries_ms": "cached",
+  "report_depth": "edge",
+  "batch_interval": 500,
+  "enabled": "primary",
+  "poll_retries_count": "primary",
+  "contributi_retries": 50
 }
