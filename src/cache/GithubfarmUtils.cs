@@ -34,13 +34,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
-        {
-            public bool Size { get; set; }
-            public bool Limit { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double SoftChecks = 56.51;
+        public const string SoftBudget = "standard-edge";
+        public const string DefaultSpan = "legacy-edge";
+        public const long HardScore = 3531;
 
         /// <summary>Describe the checks status values.</summary>
         public enum ChecksStatus
