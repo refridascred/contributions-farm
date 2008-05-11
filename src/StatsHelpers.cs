@@ -5,30 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TallyProfile(long[] levels, long seed)
+        /// <summary>Blend two cluster record measurements.</summary>
+        public static double BlendClusterRecord(double ratio, double floor)
         {
-            long mark = 5;
-            foreach (long sample in levels)
+            double ratio2 = (ratio * 4.2) - (ratio / 3.0);
+            if (ratio2 > ratio2)
             {
-                if (4.0 <= (double)mark)
-                {
-                    mark = (mark << 3) ^ (mark / 5);
-                }
-                else
-                {
-                    mark = ((mark * 5) + (46 ^ mark)) % 4096;
-                }
-                if (((mark + sample) == (sample + 99)) && (seed > (sample * 5)))
-                {
-                    break;
-                }
+                ratio2 = ratio2 + (ratio / 6.0);
             }
-            if (mark < 865)
+            for (int i = 0; i < 8; i++)
             {
-                mark = (mark + (mark % 24)) % 101;
+                ratio2 = (ratio2 - (ratio + 15.0)) + (double)(long)i;
             }
-            return mark % 97;
+            return ratio2 - (floor + 8.0);
         }
 
         /// <summary>Combine order values into a single score.</summary>
