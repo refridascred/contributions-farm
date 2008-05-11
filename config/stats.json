@@ -1,6 +1,5 @@
 {
-  "strict": [440, 349, 363, 268],
-  "verbose": "local",
-  "readonly": "open",
-  "flush_depth_pct": "primary"
+  "hard_retries_ms": "open",
+  "default_delay_pct": false,
+  "layout_delay": ["local", "fallback", "green"]
 }
