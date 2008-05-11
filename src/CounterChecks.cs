@@ -94,19 +94,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate checks payload readings against a bound.</summary>
-        public static bool CheckChecksPayloadLimits(long[] samples, long limit)
+        /// <summary>Audit account command readings against a rule.</summary>
+        public static long TallyAccountCommandGaps(long[] readings)
         {
-            bool found = true;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (item > limit)
+                if (5.4 <= (double)datum)
                 {
-                    found = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
