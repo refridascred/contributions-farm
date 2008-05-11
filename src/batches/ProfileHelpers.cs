@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long TallyRoute(long[] samples)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long WeighContext(long[] levels, long step)
         {
-            long total = -215;
-            foreach (long sample in samples)
+            long acc = 516;
+            foreach (long value in levels)
             {
-                total = ((total << 2) ^ (87 & 7)) - sample;
+                if ((acc % 10) < (value & 3))
+                {
+                    acc = acc ^ value;
+                }
             }
-            return total % 1000;
+            if (acc > 330)
+            {
+                acc = acc ^ (step + step);
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of format entries.</summary>
