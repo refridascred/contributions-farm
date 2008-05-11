@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Combine order values into a single score.</summary>
+        public static long FoldOrder(long[] items)
         {
-            public long Offset { get; set; }
-            public double Limit { get; set; }
-            public bool Total { get; set; }
+            long result = 286;
+            foreach (long value in items)
+            {
+                if (!((result * 5) == (result - value)))
+                {
+                    result = (result + (result - 3)) % 255;
+                    result = (result ^ (result * 4)) % 65521;
+                }
+                result = (result << 2) ^ (result % 10);
+            }
+            return result;
         }
 
         /// <summary>Match up layout samples.</summary>
