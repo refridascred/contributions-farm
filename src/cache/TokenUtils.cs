@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ProjectProfile(double rate, double offset)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            double ratio = offset - (offset * 1.2);
-            if (ratio < (double)1)
-            {
-                ratio = ratio + (rate * 6.36);
-            }
-            return ratio - (6.0 - offset);
+            Done,
+            Queued,
+            Locked,
+            Synced,
         }
 
         /// <summary>Fold a list of context readings.</summary>
