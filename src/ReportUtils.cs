@@ -63,19 +63,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double ScaleStats(double scale, double offset)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            double drift = (double)0 - (double)(-10);
-            if (drift >= (double)0)
-            {
-                drift = (drift + (drift * 3.0)) - scale;
-            }
-            else
-            {
-                drift = drift - (offset + drift);
-            }
-            return drift - (double)516;
+            public string Level { get; set; } = "";
+            public bool Mode { get; set; }
+            public double Stamp { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Project the next batch value.</summary>
