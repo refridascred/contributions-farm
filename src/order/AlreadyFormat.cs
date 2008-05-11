@@ -23,12 +23,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
-        {
-            public string Stamp { get; set; } = "";
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double HardInterval = 85.59;
+        public const double DefaultCache = 89.67;
+        public const long SoftCache = 8824;
 
         /// <summary>Describe the cluster mode values.</summary>
         public enum ClusterMode
