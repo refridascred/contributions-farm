@@ -14,16 +14,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long WeighBatch(long[] data)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricMatches(long[] levels, long target)
         {
-            long state = -66;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                state = (state << 2) ^ state;
-                state = state ^ (reading % 64);
+                if (!((datum >= hits) || (0 > (target + datum))))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Hold a route options.</summary>
