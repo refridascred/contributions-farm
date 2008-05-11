@@ -57,21 +57,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long MatchStreamCount(long[] values)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyGaps(long[] values, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((sample + limit) == (tally ^ (long)values.Length))
                 {
-                    if ((values[i] + values[j]) > 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the checks class values.</summary>
