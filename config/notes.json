@@ -1,12 +1,5 @@
 {
-  "default_interval_ms": 8882,
-  "layout_ratio": 1494,
-  "schema_delay": {
-    "readonly": 5803,
-    "warm_interval": [91, 109, 106],
-    "tools_limit": ["green", "legacy"],
-    "soft_depth_count": 4346
-  },
-  "compress": 62.08,
-  "default_limit_count": "edge"
+  "idle_threshold_count": "blue",
+  "min_threshold": 81,
+  "warm_limit_count": 72
 }
