@@ -1,5 +1,6 @@
 {
-  "hard_ttl_s": "green",
-  "enabled": "primary",
-  "idle_ttl_ms": "fallback"
+  "base_ttl": 250,
+  "default_ttl_pct": [469, 75, 271],
+  "soft_retries": 28.51,
+  "batches_delay": 2.17
 }
