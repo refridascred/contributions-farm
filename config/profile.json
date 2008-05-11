@@ -1,11 +1,8 @@
 {
-  "compress": [192, 465, 477],
-  "default_delay": 90,
-  "flush_ttl_pct": {
-    "dry_run": 30,
-    "cache_ratio_count": "standard",
-    "min_capacity": 76,
-    "sync_limit_pct": 24.03,
-    "compress": true
-  }
+  "audit": false,
+  "schema_timeout": "latest",
+  "burst_interval": "blue",
+  "retry_ratio_count": 8870,
+  "dry_run": "fallback",
+  "flush_size": [425, 67, 387, 217]
 }
