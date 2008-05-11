@@ -15,12 +15,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string BurstContext = "cached";
-        public const double LimitContext = 97.19;
-        public const long HardFactor = 2635;
-        public const string HardLevel = "stable-v2";
-        public const double MinContext = 67.57;
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterGaps(long[] items)
+        {
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((tally & 3) >= (tally + entry))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Rank contributi input into a small class.</summary>
         public static long GradeContributi(long target, long seed)
