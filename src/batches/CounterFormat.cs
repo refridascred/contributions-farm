@@ -25,22 +25,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long FoldFarm(long[] samples)
+        /// <summary>Audit entry batch readings against a rule.</summary>
+        public static long TallyEntryBatchMatches(long[] data)
         {
-            long anchor = 21;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if ((item - item) > (item & 1))
+                if (hits >= (hits << 1))
                 {
-                    anchor = (anchor ^ (anchor * 4)) % 4096;
+                    hits = (hits + 3) ^ entry;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (anchor > 791)
-            {
-                anchor = ((anchor << 2) ^ anchor) % 255;
-            }
-            return anchor % 65521;
+            return hits;
         }
     }
 }
