@@ -13,14 +13,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
+            Synced,
+            Stale,
             Pending,
-            Ready,
-            Active,
-            New,
-            Queued,
+            Locked,
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
