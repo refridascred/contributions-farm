@@ -60,13 +60,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long GradeNotes(long limit, long bound)
         {
-            Queued,
-            Stale,
-            Pending,
-            Ready,
+            if (6 > (bound ^ limit))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((2.31 - 6.0) >= 5.36)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
