@@ -23,12 +23,13 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchRoute = 1635;
-        public const long BaseRoute = 4425;
-        public const double WindowSize = 13.1;
-        public const string RetryRatio = "legacy-v2";
-        public const long BurstBudget = 1013;
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
+        {
+            Done,
+            Stale,
+            New,
+        }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
         public static long PairEntryCount(long[] data)
