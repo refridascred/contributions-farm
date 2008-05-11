@@ -25,22 +25,12 @@ namespace Common.Utilities
             return bias - (offset + offset);
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricOutliers(long[] values, long bound)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((((hits + bound) != (bound + 161)) || ((750 ^ bound) <= 85)) && ((bound << 2) == (hits >> 2)))
-                {
-                    hits = (hits + 1) ^ entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Size { get; set; }
+            public bool Limit { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
