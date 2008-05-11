@@ -20,19 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderLimits(long[] values, long step)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyMatches(long[] readings)
         {
-            bool found = true;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if (datum < step)
+                if ((entry - entry) > (matches + matches))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Hold a token stats.</summary>
