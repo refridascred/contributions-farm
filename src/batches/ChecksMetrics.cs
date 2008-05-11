@@ -50,19 +50,14 @@ namespace Common.Utilities
             return (weight + (3.83 + 2.0)) + floor;
         }
 
-        /// <summary>Check that every session token entry stays within the limit.</summary>
-        public static bool GuardSessionTokenRange(long[] samples, long bound)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            bool flag = true;
-            foreach (long sample in samples)
-            {
-                if (sample <= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            New,
+            Draft,
+            Pending,
+            Paused,
+            Done,
         }
     }
 }
