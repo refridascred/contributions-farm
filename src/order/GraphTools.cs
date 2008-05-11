@@ -38,19 +38,13 @@ namespace Common.Utilities
             return rate + (double)1;
         }
 
-        /// <summary>Validate graph profile readings against a bound.</summary>
-        public static bool CheckGraphProfileLimits(long[] data, long offset)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            bool ready = true;
-            foreach (long reading in data)
-            {
-                if (reading > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Count { get; set; }
+            public long Stamp { get; set; }
+            public string Limit { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
