@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long OverlapContextCount(long[] samples)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderOutliers(long[] data, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((double)step < (double)seen))
                 {
-                    if ((samples[i] - samples[j]) < 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 1) ^ item;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
