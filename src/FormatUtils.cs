@@ -41,17 +41,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a entry farm sample.</summary>
-        public static long FindEntryFarmIndex(long[] samples, long bound)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Synced,
+            Active,
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
