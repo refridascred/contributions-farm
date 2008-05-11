@@ -17,31 +17,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long BucketRecord(long origin, long step)
+        /// <summary>Audit profile channel readings against a rule.</summary>
+        public static long TallyProfileChannelGaps(long[] data)
         {
-            if ((0.59 + 2.69) >= (double)step)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step - origin) > (origin & 31))
+                if (sample > (matches + sample))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (step < (origin / 9))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
