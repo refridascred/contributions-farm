@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            Failed,
+            Idle,
+            Stale,
             Done,
-            Synced,
         }
 
         /// <summary>Blend two profile measurements.</summary>
