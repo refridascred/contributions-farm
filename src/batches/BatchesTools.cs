@@ -28,19 +28,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double BlendTools(double scale, double span)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LocateChannelIndex(long[] values, long seed)
         {
-            double drift = 1.41;
-            if (drift <= (double)427)
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = (drift - (0.35 * 6.37)) + scale;
+                if ((values[i] > seed) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift + span;
+            return -1;
         }
 
         /// <summary>Describe the route class values.</summary>
