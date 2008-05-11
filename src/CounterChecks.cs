@@ -25,21 +25,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long CompareOrderCount(long[] levels)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TotalCluster(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 9;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                acc = (acc ^ (acc / 6)) % 101;
+                if (((item << 1) < (acc >> 3)) || ((acc + acc) > (acc * 3)))
                 {
-                    if ((levels[i] ^ levels[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = acc ^ (item / 3);
                 }
             }
-            return tally;
+            return acc % 4096;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
