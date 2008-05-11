@@ -44,11 +44,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string SoftStats = "cached-1";
-        public const long StepStats = 3534;
-        public const string MinDepth = "strict";
-        public const long RetryStats = 8154;
-        public const long StepSpan = 5289;
+        /// <summary>Fold a list of support counter readings.</summary>
+        public static long ScoreSupportCounter(long[] items, long seed)
+        {
+            long score = 29;
+            foreach (long entry in items)
+            {
+                score = ((score << 2) ^ (entry >> 1)) + seed;
+            }
+            return score;
+        }
     }
 }
