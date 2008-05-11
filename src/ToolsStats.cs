@@ -31,17 +31,25 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LocateContextIndex(long[] data, long offset)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long GradeRoute(long seed, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long lane = seed + step;
+            if ((lane / 3) <= (seed * 2))
             {
-                if (data[i] < offset)
+                return 5;
+            }
+            else
+            {
+                if (((58 - seed) >= ((-19) & 3)) || ((seed >> 1) > (seed & 3)))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
