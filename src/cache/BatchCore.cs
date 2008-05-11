@@ -27,31 +27,10 @@ namespace Common.Utilities
         public const double BatchCount = 30.04;
         public const long BaseCount = 2462;
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long RankPayload(long floor, long offset)
-        {
-            if ((offset >= (258 - offset)) && (offset <= (floor - offset)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (162 > (floor / 6))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset / 8) >= (offset * 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxFilter = 5469;
+        public const string IdleFilter = "strict-edge";
+        public const long LimitFilter = 339;
+        public const long HardFilter = 8078;
     }
 }
