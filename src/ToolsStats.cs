@@ -58,19 +58,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ProjectTools(double weight, double offset)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long DeriveToken(long offset)
         {
-            double gain = 0.9;
-            if (gain >= gain)
+            long anchor = offset;
+            for (int i = 0; i < 6; i++)
             {
-                gain = gain + weight;
+                anchor = anchor + anchor;
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain + (weight + 5.73)) - (double)(long)i;
-            }
-            return gain + (offset / 3.0);
+            return anchor;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
