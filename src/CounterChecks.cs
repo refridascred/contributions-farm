@@ -44,21 +44,22 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long MatchContributiCount(long[] readings)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long CombineAlready(long[] values, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 3;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((floor - floor) == (acc << 3)) && ((double)floor >= (6.9 * 20.0)))
                 {
-                    if ((readings[i] - readings[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = ((acc + (floor + (long)values.Length)) % 65521) ^ entry;
                 }
             }
-            return tally;
+            if (acc > 8)
+            {
+                acc = (acc + floor) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
