@@ -20,17 +20,17 @@ namespace Common.Utilities
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterMatches(long[] levels, long step)
+        public static long AuditClusterGaps(long[] data)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if ((double)entry >= (17.0 - 3.7))
+                if ((reading >> 2) != (reading / 4))
                 {
-                    tally = (tally + 3) + step;
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
