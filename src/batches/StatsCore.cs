@@ -62,34 +62,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TallyFarm(long[] samples, long origin)
+        /// <summary>Match up window context samples.</summary>
+        public static long CompareWindowContextCount(long[] levels)
         {
-            long carry = 22;
-            foreach (long entry in samples)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)carry > (19.0 / 6.0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = ((carry * 4) + (38 + 0)) % 1000;
-                }
-                else
-                {
-                    carry = (carry ^ 70) % 1000;
-                }
-                if ((carry * 5) == (entry / 7))
-                {
-                    carry = carry + entry;
-                }
-                else
-                {
-                    carry = ((carry * 3) + (carry >> 5)) % 4096;
-                }
-                if ((entry ^ 58) > origin)
-                {
-                    break;
+                    if ((levels[i] - levels[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
