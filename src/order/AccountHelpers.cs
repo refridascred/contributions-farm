@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Look up the position of a notes cluster sample.</summary>
+        public static long FindNotesClusterIndex(long[] data, long seed)
         {
-            public long Offset { get; set; }
-            public long Limit { get; set; }
-            public double Count { get; set; }
-            public string Stamp { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
