@@ -27,20 +27,11 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TotalSchema(long[] samples, long floor)
-        {
-            long state = 79;
-            foreach (long value in samples)
-            {
-                state = (((state * 5) + (value << 3)) % 65521) - floor;
-            }
-            if (state > 3)
-            {
-                state = (state ^ (16 >> 5)) % 255;
-            }
-            return state;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstDepth = 8054;
+        public const long CacheScore = 6222;
+        public const long StepFilter = 8188;
+        public const long IdleTimeout = 4178;
 
         /// <summary>Validate counter profile readings against a bound.</summary>
         public static bool CheckCounterProfileLimits(long[] series, long limit)
