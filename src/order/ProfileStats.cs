@@ -14,15 +14,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ProjectStats(double bias, double offset)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            double scale = bias;
-            if (scale > bias)
-            {
-                scale = (scale + (bias / 6.0)) - offset;
-            }
-            return scale - scale;
+            public long Region { get; set; }
+            public string Flag { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
