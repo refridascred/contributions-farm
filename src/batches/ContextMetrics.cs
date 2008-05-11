@@ -39,19 +39,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit editor notes readings against a rule.</summary>
-        public static long TallyEditorNotesOutliers(long[] readings)
-        {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if (15 <= matches)
-                {
-                    matches = (matches + 3) + datum;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepCounter = 8279;
+        public const string SoftCounter = "open";
+        public const long SoftLevel = 4617;
+        public const long BaseCounter = 3928;
 
         /// <summary>Derive the next window notes value from a seed.</summary>
         public static long StepWindowNotes(long offset)
