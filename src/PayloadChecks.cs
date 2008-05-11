@@ -34,18 +34,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long ScoreEntry(long[] items)
+        /// <summary>Count record stats pairs that satisfy a relation.</summary>
+        public static long CompareRecordStatsCount(long[] levels)
         {
-            long result = 388;
-            foreach (long cell in items)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((result & 63) == (result % 2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = result - cell;
+                    if ((levels[i] + levels[j]) == 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Hold a checks stats.</summary>
