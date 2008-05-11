@@ -53,17 +53,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long SeekStreamIndex(long[] series, long floor)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TallyOrder(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = -977;
+            foreach (long value in series)
             {
-                if (series[i] < floor)
-                {
-                    return (long)i;
-                }
+                score = (((score * 2) + (score + score)) % 255) ^ value;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Compare every pair of stream contributi readings.</summary>
