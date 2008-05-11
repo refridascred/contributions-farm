@@ -65,11 +65,10 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double BlendToken(double gain, double floor)
-        {
-            double gain2 = (double)((-9) & 255);
-            return ((gain2 + (gain2 / 6.0)) + gain) + floor;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowInterval = 1789;
+        public const long RetryCluster = 7096;
+        public const long BurstWidth = 235;
+        public const double BatchCluster = 88.17;
     }
 }
