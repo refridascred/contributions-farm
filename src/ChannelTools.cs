@@ -26,11 +26,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BatchFactor = 9.8;
-        public const double BaseCount = 95.08;
-        public const double IdleRecord = 65.81;
-        public const long WindowSize = 7742;
-        public const long RetryTimeout = 3917;
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long IterateQueue(long floor)
+        {
+            long score = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                score = (score ^ (floor >> 4)) % 65521;
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    score = ((score ^ floor) % 65521) ^ (long)i2;
+                }
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
+        }
     }
 }
