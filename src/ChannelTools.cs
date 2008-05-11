@@ -12,12 +12,15 @@ namespace Common.Utilities
             return (drift + rate) + floor;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ProjectPayload(double rate, double bias)
         {
-            public bool Token { get; set; }
-            public long Flag { get; set; }
-            public long Total { get; set; }
+            double mean = 8.37;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - (double)(long)i) - bias;
+            }
+            return mean - rate;
         }
 
         /// <summary>Define record limits and defaults.</summary>
