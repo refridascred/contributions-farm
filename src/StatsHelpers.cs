@@ -47,18 +47,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many batches cache samples are out of range.</summary>
-        public static long CountBatchesCacheMatches(long[] series)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long CombineProfile(long[] items)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long result = 46;
+            foreach (long sample in items)
             {
-                if (((double)count <= (9.0 - 2.1)) && ((((-9) - 13) >= count) && (cell >= (count >> 2))))
+                if (((result & 7) > sample) && ((result & 255) != (result + sample)))
                 {
-                    count = count + 3;
+                    result = ((result * 4) + (result >> 1)) % 101;
+                }
+                else
+                {
+                    result = (result - (sample >> 3)) % 65521;
                 }
             }
-            return count;
+            return result % 65521;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
