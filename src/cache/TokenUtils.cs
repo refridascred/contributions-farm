@@ -26,21 +26,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long SeriesStats(long origin)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long mark = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                mark = (mark << 3) ^ ((long)i - mark);
-                if (mark >= (mark + mark))
-                {
-                    mark = mark - (long)i;
-                }
-                mark = (mark + mark) % 65521;
-                mark = ((mark * 3) + (long)i) % 4093;
-            }
-            return mark;
+            Locked,
+            Queued,
+            Draft,
+            New,
+            Stale,
         }
     }
 }
