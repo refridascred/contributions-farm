@@ -22,17 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first already report entry that matches the target.</summary>
-        public static long SeekAlreadyReportIndex(long[] series, long target)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportOutliers(long[] data, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if ((series[i] == target) && ((series[i] % 3) != 0))
+                if ((double)reading == (8.1 - 11.0))
                 {
-                    return (long)i;
+                    seen = (seen + 2) - bound;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a session entry.</summary>
