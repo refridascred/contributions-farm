@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit route stream readings against a rule.</summary>
-        public static long MeasureRouteStreamOutliers(long[] series)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyMatches(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if ((sample >> 5) < (sample - 72))
+                if (5 >= limit)
                 {
-                    tally = tally + 2;
+                    hits = (hits + 3) + entry;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Rank record input into a small class.</summary>
