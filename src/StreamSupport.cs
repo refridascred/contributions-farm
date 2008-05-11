@@ -11,22 +11,12 @@ namespace Common.Utilities
         public const long IdleQueue = 8933;
         public const double BurstQueue = 12.85;
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheMatches(long[] data)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((reading & 255) == (reading * 5))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Count { get; set; }
+            public long Region { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the route mode values.</summary>
