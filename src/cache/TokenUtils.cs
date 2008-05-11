@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Rank format tools input into a small class.</summary>
+        public static long RankFormatTools(long bound, long seed)
         {
-            Done,
-            Queued,
-            Locked,
-            Synced,
+            if ((bound / 6) > (seed & 255))
+            {
+                return 0;
+            }
+            else
+            {
+                if (bound < (seed - seed))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((-317) ^ seed) <= (seed % 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of context readings.</summary>
