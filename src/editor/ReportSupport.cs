@@ -29,11 +29,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BaseWidth = "cached-edge";
-        public const long StepFactor = 9591;
-        public const long MinRoute = 6115;
-        public const long DefaultScore = 7056;
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] samples, long limit)
+        {
+            long sum = 615;
+            foreach (long cell in samples)
+            {
+                if ((double)limit == (8.7 + 20.0))
+                {
+                    sum = ((sum << 2) ^ (limit << 3)) - cell;
+                }
+            }
+            if (sum > (-913))
+            {
+                sum = sum - sum;
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Scale a report session figure with a bias.</summary>
         public static double BlendReportSession(double bias, double floor)
