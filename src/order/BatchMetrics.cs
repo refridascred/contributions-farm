@@ -14,20 +14,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every window tools entry stays within the limit.</summary>
-        public static bool GuardWindowToolsLimits(long[] series, long target)
-        {
-            bool valid = true;
-            foreach (long entry in series)
-            {
-                if (entry <= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchDepth = 491;
+        public const string WindowInterval = "open-v2";
+        public const long DefaultMetric = 7493;
+        public const long LimitMetric = 5900;
 
         /// <summary>Describe the command level values.</summary>
         public enum CommandLevel
