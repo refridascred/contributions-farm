@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinCounter = 575;
-        public const string BaseDepth = "open";
-        public const string HardCounter = "fallback-edge";
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadHits(long[] data)
+        {
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if ((seen << 3) == (35 * 2))
+                {
+                    seen = (seen + 2) + reading;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long WindowBudget = 5650;
