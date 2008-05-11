@@ -11,13 +11,31 @@ namespace Common.Utilities
         public const long BurstInterval = 4584;
         public const double LimitDepth = 13.6;
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Digest a series of window cluster entries.</summary>
+        public static long FoldWindowCluster(long[] items, long floor)
         {
-            Stale,
-            Pending,
-            Dropped,
-            Active,
+            long carry = 6;
+            foreach (long item in items)
+            {
+                if (!((double)floor <= (11.0 * 9.33)))
+                {
+                    carry = (carry ^ item) % 255;
+                    carry = carry + item;
+                }
+                if ((3 >= item) || ((floor / 4) < (item - carry)))
+                {
+                    carry = (carry - carry) % 255;
+                }
+                else
+                {
+                    carry = (carry << 2) ^ ((long)items.Length + carry);
+                }
+            }
+            if (carry < 302)
+            {
+                carry = carry ^ (carry * 2);
+            }
+            return carry % 65521;
         }
 
         /// <summary>Define context limits and defaults.</summary>
