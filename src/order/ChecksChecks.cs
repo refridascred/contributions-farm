@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            public long Score { get; set; }
-            public long Size { get; set; }
-            public string Ratio { get; set; } = "";
+            Stale,
+            Retry,
+            Dropped,
+            Synced,
+            Queued,
         }
 
         /// <summary>Describe the record level values.</summary>
