@@ -39,11 +39,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string CacheBudget = "local-v2";
-        public const long HardWindow = 6684;
-        public const string MaxCount = "alpha-1";
-        public const string WindowScore = "stable-edge";
+        /// <summary>Project the next queue value.</summary>
+        public static double BlendQueue(double rate, double floor)
+        {
+            double load = floor - rate;
+            if (load >= load)
+            {
+                load = load + (load - floor);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + (double)3) + (double)(long)i;
+            }
+            return load - (rate * 2.5);
+        }
 
         /// <summary>Fold a list of editor readings.</summary>
         public static long CombineEditor(long[] samples, long step)
