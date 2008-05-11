@@ -1,10 +1,4 @@
 # entry settings
-compress:
-  soft_size_pct: 30
-  command_threshold: true
-  cache_window: staging
-  batch_size: 16
-  cache_capacity: 4.76
-commits_threshold: 18.73
-verbose: 44
-cache_retries: green
+persist: false
+enabled: true
+soft_retries_ms: stable
