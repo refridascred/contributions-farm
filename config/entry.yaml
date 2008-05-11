@@ -1,7 +1,10 @@
 # entry settings
-poll_window: open
-window_ratio: 250
-verbose: 91.52
-commits_threshold: eu-west
-session_depth: legacy
-cache_capacity: open
+compress:
+  soft_size_pct: 30
+  command_threshold: true
+  cache_window: staging
+  batch_size: 16
+  cache_capacity: 4.76
+commits_threshold: 18.73
+verbose: 44
+cache_retries: green
