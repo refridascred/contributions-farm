@@ -52,21 +52,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long CompareGithubfarmCount(long[] values)
+        /// <summary>Combine tools checks values into a single score.</summary>
+        public static long TotalToolsChecks(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 393;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)state == (9.37 / 2.0))
                 {
-                    if ((values[i] ^ values[j]) > 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = ((state ^ 8) % 97) + sample;
+                }
+                else
+                {
+                    state = (state - (state >> 5)) % 255;
                 }
             }
-            return seen;
+            return state % 65521;
         }
 
         /// <summary>Classify a metrics support pair into a bucket.</summary>
