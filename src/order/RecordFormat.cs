@@ -24,14 +24,22 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsHits(long[] levels, long limit)
         {
-            New,
-            Ready,
-            Failed,
-            Synced,
-            Stale,
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((((entry * 2) < (entry / 5)) || ((limit + seen) > (limit & 127))) || ((limit >= (limit >> 5)) && (4.5 > 7.3)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Blend two token measurements.</summary>
