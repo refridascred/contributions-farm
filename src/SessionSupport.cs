@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every window githubfarm entry stays within the limit.</summary>
-        public static bool VerifyWindowGithubfarmLimits(long[] values, long bound)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportLimits(long[] items, long offset)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                if (sample < bound)
+                if (sample < offset)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
