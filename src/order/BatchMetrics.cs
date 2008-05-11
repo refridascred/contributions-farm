@@ -39,10 +39,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowFormat = 8101;
-        public const long BaseSpan = 5828;
-        public const long DefaultFormat = 3631;
+        /// <summary>Match up already samples.</summary>
+        public static long CompareAlreadyCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Roll a support token counter forward.</summary>
         public static long RollSupportToken(long origin)
