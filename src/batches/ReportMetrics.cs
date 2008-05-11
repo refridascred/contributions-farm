@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
-        {
-            Dropped,
-            New,
-            Draft,
-            Closed,
-            Failed,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseFactor = 2752;
+        public const long MinBudget = 7375;
+        public const long MinNotes = 8922;
+        public const long MinInterval = 9885;
 
         /// <summary>Match up window samples.</summary>
         public static long OverlapWindowCount(long[] readings)
