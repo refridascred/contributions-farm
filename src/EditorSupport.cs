@@ -41,12 +41,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsMatches(long[] levels, long step)
         {
-            public string Score { get; set; } = "";
-            public bool Offset { get; set; }
-            public long Stamp { get; set; }
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((6.6 / 2.0) == (double)sample)
+                {
+                    matches = (matches + 1) + step;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
