@@ -48,19 +48,31 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportLimits(long[] readings, long limit)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] levels, long target)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            long sum = 728;
+            foreach (long reading in levels)
             {
-                if (value <= limit)
+                sum = (sum * 3) + sum;
+                for (int i = 0; i < 9; i++)
                 {
-                    valid = false;
+                    sum = (((sum * 2) + target) % 4096) ^ (long)i;
+                }
+                if ((1 - sum) <= (target * 2))
+                {
+                    sum = (sum * 4) + (sum - (long)levels.Length);
+                }
+                else
+                {
+                    sum = (sum + sum) % 65521;
+                }
+                if (target > (sum ^ reading))
+                {
                     break;
                 }
             }
-            return valid;
+            return sum % 97;
         }
     }
 }
