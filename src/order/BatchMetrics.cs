@@ -20,14 +20,11 @@ namespace Common.Utilities
         public const long DefaultMetric = 7493;
         public const long LimitMetric = 5900;
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
-        {
-            New,
-            Locked,
-            Stale,
-            Done,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepSize = 6708;
+        public const double MaxChecks = 46.48;
+        public const double LimitChecks = 61.35;
+        public const long BaseLevel = 775;
 
         /// <summary>Define format limits and defaults.</summary>
         public const long WindowFormat = 8101;
