@@ -1,8 +1,9 @@
-id,state,region,count
-1,110,184,8.37
-2,3.74,642,cached
-3,fallback,57.44,643
-4,866,strict,864
-5,31.03,470,primary
-6,61.43,614,legacy
-7,fallback,418,824
+id,ratio,score,owner
+1,77.32,85.97,53.95
+2,359,48.58,64.4
+3,9.33,453,3.65
+4,59.5,128,legacy
+5,39.37,43.5,67.3
+6,latest,778,53.7
+7,469,252,staging
+8,16.31,staging,962
