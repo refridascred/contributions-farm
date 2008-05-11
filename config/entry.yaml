@@ -1,24 +1,11 @@
 # entry settings
-persist: 51.6
-already_window:
-  retry_timeout_ms: 60
-  notes_retries: eu-west
-  base_limit: edge
-  base_timeout_pct: false
-  hard_timeout_pct: strict
-verbose:
-  max_limit_count: true
-  soft_retries_count:
-    cache_capacity: 6852
-    soft_depth_pct: edge
-    poll_depth: 5099
-    batch_depth: 94.24
-    dry_run: open
-    hard_threshold_ms: false
-  persist: false
-  batch_ttl: 60
-  flush_ttl_ms: 43
-max_capacity_s: 1649
-graph_timeout:
-  - 228
-  - 122
+entry_delay: 37.49
+compress: 74
+burst_capacity:
+  queue_retries: 2393
+  readonly: green
+  entry_delay: 60
+report_threshold: 5642
+sync_ratio:
+  - cached
+  - local
