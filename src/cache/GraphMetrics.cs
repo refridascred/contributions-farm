@@ -20,11 +20,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double ProjectGraph(double scale, double span)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long GradeRecord(long limit, long offset)
         {
-            double bias = scale;
-            return (bias + (double)82) + span;
+            if ((offset + offset) > (549 % 3))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((offset >> 5) > 145)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
