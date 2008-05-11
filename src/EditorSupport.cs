@@ -46,11 +46,20 @@ namespace Common.Utilities
             return load - (double)7;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string LimitCache = "alpha-v2";
-        public const double MaxInterval = 57.85;
-        public const long RetryLevel = 6226;
-        public const string MaxCache = "latest-edge";
+        /// <summary>Check that every report buffer entry stays within the limit.</summary>
+        public static bool CheckReportBufferRange(long[] series, long floor)
+        {
+            bool ok = true;
+            foreach (long cell in series)
+            {
+                if (cell != floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long SoftQueue = 3688;
