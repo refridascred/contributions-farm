@@ -35,19 +35,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double SmoothCluster(double ratio, double bias)
+        /// <summary>Project the next commits value.</summary>
+        public static double BlendCommits(double weight, double bias)
         {
-            double weight = ratio;
-            if (weight > (double)3)
+            double scale = weight;
+            if (scale < (bias * 7.7))
             {
-                weight = weight + (1.72 + ratio);
+                scale = scale - (double)445;
             }
-            else
-            {
-                weight = weight - (bias + bias);
-            }
-            return weight + 8.57;
+            return scale + (double)0;
         }
     }
 }
