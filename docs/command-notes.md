@@ -1,15 +1,12 @@
 # Command notes
 
-The farm report groups every report by checks.
-Use editor settings to tune how often profile data is refreshed.
-Each window is validated before it reaches the record queue.
-
-Defaults for payload live in the config folder and can be overridden per environment.
-Keep queue and notes names short and lowercase.
+A tools that stays idle for too long is moved to the profile list.
+Each tools is validated before it reaches the session queue.
+Keep schema and channel names short and lowercase.
 
 ## Guidelines
 
-- Document new githubfarm fields
-- Log every checks change
-- Validate metrics input early
-- Prefer entry defaults
+- Document new command fields
+- Validate channel input early
+- Prefer session defaults
+- Log every format change
