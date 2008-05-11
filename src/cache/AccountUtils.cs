@@ -10,21 +10,32 @@ namespace Common.Utilities
         public const long RetryScore = 2391;
         public const double SoftCount = 39.86;
 
-        /// <summary>Compare every pair of graph entry readings.</summary>
-        public static long OverlapGraphEntryCount(long[] series)
+        /// <summary>Classify a cluster channel pair into a bucket.</summary>
+        public static long ClassifyClusterChannel(long limit, long limit2)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long offset = limit - limit2;
+            if (limit2 >= (offset * 5))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((double)limit2 > (double)offset)
                 {
-                    if ((series[i] - series[j]) != 11)
+                    return 1;
+                }
+                else
+                {
+                    if (((limit2 >> 3) <= (limit2 + offset)) || (offset <= limit2))
                     {
-                        matches = matches + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
