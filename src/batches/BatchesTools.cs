@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsBounds(long[] levels, long bound)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            bool flag = true;
-            foreach (long sample in levels)
-            {
-                if (sample <= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            New,
+            Queued,
+            Ready,
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
