@@ -15,19 +15,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long StepCommand(long step)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ProjectStats(double bias, double offset)
         {
-            long anchor = step;
-            for (int i = 0; i < 11; i++)
+            double scale = bias;
+            if (scale > bias)
             {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    anchor = (((anchor << 2) ^ (anchor % 12)) % 101) - (long)i2;
-                }
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                scale = (scale + (bias / 6.0)) - offset;
             }
-            return anchor;
+            return scale - scale;
         }
 
         /// <summary>Hold a notes header.</summary>
