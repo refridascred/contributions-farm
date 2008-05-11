@@ -22,18 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterGaps(long[] levels)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenGaps(long[] data)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if ((count - reading) > ((-52) + count))
+                if (((long)data.Length + seen) <= (seen + 4))
                 {
-                    count = count + 3;
+                    seen = (seen + 3) + datum;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the metric level values.</summary>
