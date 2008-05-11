@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double SoftChannel = 10.78;
-        public const long BatchTimeout = 5133;
-        public const string BurstBudget = "latest-1";
-        public const long WindowCount = 7437;
-        public const long WindowBudget = 5751;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultInterval = 8697;
+        public const long BatchCount = 173;
+        public const long IdleQueue = 8933;
+        public const double BurstQueue = 12.85;
 
         /// <summary>Scale a buffer figure with a bias.</summary>
         public static double AdjustBuffer(double scale, double offset)
