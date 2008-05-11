@@ -47,12 +47,16 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BaseCount = 61.1;
-        public const long BatchSize = 8225;
-        public const long HardStats = 3014;
-        public const string MinStats = "local-edge";
-        public const long BurstStats = 6118;
+        /// <summary>Fold a list of command channel readings.</summary>
+        public static long ScoreCommandChannel(long[] data, long step)
+        {
+            long mix = 491;
+            foreach (long datum in data)
+            {
+                mix = ((mix + ((-763) + datum)) % 101) + step;
+            }
+            return mix;
+        }
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long CountSupportGaps(long[] samples)
