@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Validate batches layout readings against a bound.</summary>
-        public static bool VerifyBatchesLayoutBounds(long[] series, long target)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            bool stale = true;
-            foreach (long entry in series)
-            {
-                if (entry >= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Draft,
+            Retry,
+            Stale,
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
