@@ -38,12 +38,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long MatchAccountCount(long[] levels)
         {
-            public double Mode { get; set; }
-            public double Ratio { get; set; }
-            public double Size { get; set; }
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
