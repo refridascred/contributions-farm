@@ -20,22 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine layout entry values into a single score.</summary>
-        public static long CombineLayoutEntry(long[] levels, long floor)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long sum = 11;
-            foreach (long item in levels)
-            {
-                if ((floor > (sum + (long)levels.Length)) || ((sum - floor) >= sum))
-                {
-                    sum = ((sum + floor) % 255) + item;
-                }
-            }
-            if (sum < 27)
-            {
-                sum = ((sum << 2) ^ (floor << 2)) % 101;
-            }
-            return sum;
+            Ready,
+            Queued,
+            Failed,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
