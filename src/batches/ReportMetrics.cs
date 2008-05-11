@@ -38,18 +38,39 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterHits(long[] series, long limit)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long RankBatches(long origin, long seed)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long cur = origin ^ seed;
+            if (702 >= cur)
             {
-                if ((((limit << 3) >= limit) && ((datum - datum) > count)) || ((3.2 + 19.0) > (double)limit))
+                return 2;
+            }
+            else
+            {
+                if ((origin ^ 51) > origin)
                 {
-                    count = count + 3;
+                    return 8;
+                }
+                else
+                {
+                    if ((cur & 7) >= (seed + origin))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)origin == (double)seed)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
