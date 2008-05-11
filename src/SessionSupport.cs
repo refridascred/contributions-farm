@@ -28,25 +28,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long ClassifyCommits(long floor, long seed)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long IterateEditor(long limit)
         {
-            long slot = floor - seed;
-            if (((double)seed != (7.0 / 5.0)) || ((1.0 + 5.0) <= (double)slot))
+            long mix = limit;
+            for (int i = 0; i < 16; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed + seed) <= (floor * 3))
+                if ((mix << 2) <= (53 / 7))
                 {
-                    return 5;
+                    mix = mix - limit;
+                    mix = (mix * 2) + (mix ^ limit);
                 }
                 else
                 {
-                    return 2;
+                    mix = mix ^ (limit % 5);
                 }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
+            return mix;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
