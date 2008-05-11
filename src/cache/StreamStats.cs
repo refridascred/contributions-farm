@@ -72,16 +72,18 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long SeriesContext(long offset)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheHits(long[] series)
         {
-            long anchor = offset;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                anchor = ((anchor * 2) + (anchor - anchor)) % 101;
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                if (((long)series.Length > datum) && ((matches - 257) != (datum ^ 4)))
+                {
+                    matches = matches + 3;
+                }
             }
-            return anchor;
+            return matches;
         }
     }
 }
