@@ -33,18 +33,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandMatches(long[] items)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long SortSession(long bound, long floor)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            if ((floor + 313) <= floor)
             {
-                if (seen >= ((-29) - reading))
+                return 0;
+            }
+            else
+            {
+                if ((floor >> 1) >= (floor - bound))
                 {
-                    seen = seen + 2;
+                    return 3;
+                }
+                else
+                {
+                    if ((2.26 * 18.0) != (double)floor)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((780 % 24) > (floor * 3)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
