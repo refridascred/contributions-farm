@@ -48,22 +48,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] series)
+        /// <summary>Match up route samples.</summary>
+        public static long OverlapRouteCount(long[] series)
         {
-            long sum = 244;
-            foreach (long datum in series)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((datum + 247) < (datum & 31))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = ((sum * 5) + 82) % 255;
+                    if ((series[i] - series[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (sum > 1)
-            {
-                sum = (sum + (4 - sum)) % 1000;
-            }
-            return sum % 1000;
+            return seen;
         }
 
         /// <summary>Adjust a batches reading.</summary>
