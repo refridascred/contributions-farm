@@ -26,11 +26,12 @@ namespace Common.Utilities
         public const string DefaultCount = "alpha-edge";
         public const double BaseCount = 35.09;
 
-        /// <summary>Project the next checks value.</summary>
-        public static double BlendChecks(double scale, double offset)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            double bias = scale;
-            return (bias + bias) + offset;
+            Done,
+            Queued,
+            Idle,
         }
     }
 }
