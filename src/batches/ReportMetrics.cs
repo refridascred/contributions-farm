@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsOutliers(long[] values, long step)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LookupEntryIndex(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (9.24 < (double)step)
+                if ((items[i] > seed) && ((items[i] % 2) == 0))
                 {
-                    hits = (hits + 2) + entry;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Match up metric samples.</summary>
