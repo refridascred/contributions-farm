@@ -22,18 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenGaps(long[] data)
+        /// <summary>Look up the position of a queue payload sample.</summary>
+        public static long FindQueuePayloadIndex(long[] values, long seed)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((long)data.Length + seen) <= (seen + 4))
+                if ((values[i] >= seed) && ((values[i] % 5) == 0))
                 {
-                    seen = (seen + 3) + datum;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
