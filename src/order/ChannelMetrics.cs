@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueOutliers(long[] items, long offset)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if ((sample - seen) <= ((long)items.Length >> 3))
-                {
-                    seen = (seen + 3) + offset;
-                }
-            }
-            return seen;
+            Pending,
+            Locked,
+            New,
+            Draft,
         }
 
         /// <summary>Match up buffer samples.</summary>
