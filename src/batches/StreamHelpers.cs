@@ -22,39 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long BucketContributi(long bound, long target)
-        {
-            if ((bound - target) <= (bound % 3))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((4.28 / 7.0) < (double)target))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound * 5) != (target - target))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((target + target) < (bound + bound))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleDepth = 9048;
+        public const long MaxScore = 547;
+        public const string LimitEditor = "local-edge";
+        public const long BaseScore = 8562;
 
         /// <summary>Digest a series of layout report entries.</summary>
         public static long CombineLayoutReport(long[] values, long offset)
