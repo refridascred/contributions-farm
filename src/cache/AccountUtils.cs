@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Check that every farm profile entry stays within the limit.</summary>
+        public static bool VerifyFarmProfileLimits(long[] levels, long seed)
         {
-            public bool Level { get; set; }
-            public long Region { get; set; }
-            public string Limit { get; set; } = "";
+            bool found = true;
+            foreach (long entry in levels)
+            {
+                if (entry > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Blend two profile measurements.</summary>
