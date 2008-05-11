@@ -53,18 +53,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit format window readings against a rule.</summary>
-        public static long MeasureFormatWindowGaps(long[] values)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long SeekStatsIndex(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long item in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!!(item <= (item % 100)))
+                if (values[i] > limit)
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Count channel checks pairs that satisfy a relation.</summary>
