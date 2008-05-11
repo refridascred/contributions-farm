@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchGaps(long[] levels, long limit)
         {
-            Done,
-            Queued,
-            New,
-            Idle,
-            Dropped,
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell & 3) < count)
+                {
+                    count = (count + 3) + limit;
+                }
+            }
+            return count;
         }
 
         /// <summary>Project the next queue value.</summary>
