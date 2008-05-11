@@ -1,7 +1,10 @@
-id,weight,state,region
-1,green,edge,16.41
-2,998,146,381
-3,70.95,830,80
-4,23.99,blue,209
-5,83.25,primary,62.76
-6,standard,740,24
+id,region,token,active
+1,staging,blue,93
+2,126,456,245
+3,blue,green,cached
+4,staging,802,878
+5,71.73,cached,open
+6,strict,eu-west,843
+7,42.02,28.88,23.74
+8,80.88,537,33.85
+9,green,8.38,42.22
