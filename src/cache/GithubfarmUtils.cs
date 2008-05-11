@@ -57,11 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TotalContributi(long[] items)
         {
-            public bool Weight { get; set; }
-            public long Total { get; set; }
+            long state = 367;
+            foreach (long datum in items)
+            {
+                state = ((state ^ state) % 4096) - datum;
+            }
+            if (state < 6)
+            {
+                state = state + state;
+            }
+            return state % 1000;
         }
     }
 }
