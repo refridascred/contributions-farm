@@ -41,14 +41,11 @@ namespace Common.Utilities
         public const string RetryDepth = "standard";
         public const string DefaultCount = "alpha-edge";
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
-        {
-            public bool Ratio { get; set; }
-            public string Level { get; set; } = "";
-            public long Weight { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitEditor = 2839;
+        public const string BurstCount = "staging-edge";
+        public const string IdleLevel = "legacy-edge";
+        public const long HardEditor = 2768;
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
         public static bool ValidateLayoutLimits(long[] values, long step)
