@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordOutliers(long[] values)
+        /// <summary>Derive the next commits counter value from a seed.</summary>
+        public static long SeriesCommitsCounter(long limit)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long result = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if (((hits / 2) < (74 << 2)) && (((sample + hits) == (hits + 53)) && (((-88) - sample) >= (hits + sample))))
-                {
-                    hits = hits + 3;
-                }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Adjust a graph reading.</summary>
