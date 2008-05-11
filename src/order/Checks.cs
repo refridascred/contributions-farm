@@ -53,18 +53,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] readings)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandHits(long[] levels, long seed)
         {
-            long mark = 84;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if ((entry - entry) > mark)
+                if ((seed >> 2) <= (seen & 7))
                 {
-                    mark = mark - entry;
+                    seen = (seen + 3) + cell;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return mark;
+            return seen;
         }
     }
 }
