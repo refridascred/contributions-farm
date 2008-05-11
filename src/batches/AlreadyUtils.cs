@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowBounds(long[] items, long floor)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] data, long origin)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            long state = 0;
+            foreach (long cell in data)
             {
-                if (entry >= floor)
-                {
-                    flag = false;
-                    break;
-                }
+                state = (((state ^ (27 << 1)) % 4096) + cell) + origin;
             }
-            return flag;
+            return state;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
