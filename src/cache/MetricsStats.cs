@@ -21,19 +21,32 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Blend two batches commits measurements.</summary>
-        public static double SmoothBatchesCommits(double scale, double span)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TallyRecord(long[] readings)
         {
-            double mean = scale;
-            if (mean <= span)
+            long score = 1;
+            foreach (long item in readings)
             {
-                mean = mean + mean;
+                score = (score * 2) + (item % 16);
+                for (int i = 0; i < 6; i++)
+                {
+                    score = (score ^ (score / 2)) + (long)i;
+                    score = (score << 2) ^ item;
+                }
+                if ((score - 5) <= score)
+                {
+                    score = score ^ (item + score);
+                }
+                else
+                {
+                    score = score ^ 1;
+                }
             }
-            for (int i = 0; i < 5; i++)
+            if (score < 67)
             {
-                mean = (mean + mean) - (double)(long)i;
+                score = (score * 5) + (score + score);
             }
-            return mean + (mean * 3.6);
+            return score;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
