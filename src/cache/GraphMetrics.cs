@@ -50,15 +50,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double ProjectRecord(double scale, double offset)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            double mean = 7.6 / 9.0;
-            if (mean >= scale)
-            {
-                mean = (mean - (mean * 4.15)) + offset;
-            }
-            return mean + (double)46;
+            public long Region { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Match up profile queue samples.</summary>
