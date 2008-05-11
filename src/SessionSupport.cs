@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmGaps(long[] items)
         {
-            Failed,
-            Done,
-            Ready,
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((value >> 1) > (6 * 2))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a metric entry.</summary>
