@@ -20,24 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank farm already input into a small class.</summary>
-        public static long RankFarmAlready(long origin, long target)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LocateBufferIndex(long[] values, long target)
         {
-            if ((double)origin > (double)target)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (origin < (target * 2))
+                if (values[i] <= target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
