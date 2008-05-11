@@ -20,21 +20,17 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Count stats profile pairs that satisfy a relation.</summary>
-        public static long OverlapStatsProfileCount(long[] items)
+        /// <summary>Look up the position of a schema farm sample.</summary>
+        public static long LocateSchemaFarmIndex(long[] levels, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (levels[i] > seed)
                 {
-                    if ((items[i] + items[j]) != 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Measure how many githubfarm graph samples are out of range.</summary>
