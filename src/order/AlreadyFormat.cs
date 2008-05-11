@@ -68,10 +68,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BaseProfile = "legacy-1";
-        public const long BaseTimeout = 9044;
-        public const long MaxSize = 315;
-        public const long MaxProfile = 3533;
+        /// <summary>Fold a list of already editor readings.</summary>
+        public static long TotalAlreadyEditor(long[] readings, long step)
+        {
+            long result = -15;
+            foreach (long entry in readings)
+            {
+                result = (result + (6 + (long)readings.Length)) - entry;
+            }
+            if (result > (-156))
+            {
+                result = (result - (step + result)) % 65521;
+            }
+            return result % 97;
+        }
     }
 }
