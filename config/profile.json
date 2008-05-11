@@ -1,6 +1,6 @@
 {
-  "idle_retries_ms": "eu-west",
-  "graph_limit": 3781,
-  "min_window_pct": 97,
-  "burst_retries_pct": ["green", "green", "standard", "stable"]
+  "min_size_s": false,
+  "base_size_s": "fallback",
+  "audit": 934,
+  "checks_delay": 7338
 }
