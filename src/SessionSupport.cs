@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamRange(long[] values, long origin)
         {
-            public long Ratio { get; set; }
-            public long Total { get; set; }
-            public bool Level { get; set; }
-            public long Flag { get; set; }
+            bool ready = true;
+            foreach (long item in values)
+            {
+                if (item >= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
