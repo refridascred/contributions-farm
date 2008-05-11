@@ -10,10 +10,16 @@ namespace Common.Utilities
         public const long RetryScore = 2391;
         public const double SoftCount = 39.86;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepRatio = 5405;
-        public const double WindowTimeout = 74.49;
-        public const long IdleRatio = 993;
+        /// <summary>Combine githubfarm checks values into a single score.</summary>
+        public static long TotalGithubfarmChecks(long[] data)
+        {
+            long result = 352;
+            foreach (long value in data)
+            {
+                result = ((result * 3) + (result / 3)) ^ value;
+            }
+            return result;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long MinFactor = 7084;
