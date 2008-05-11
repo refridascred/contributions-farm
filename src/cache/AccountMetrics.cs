@@ -12,23 +12,21 @@ namespace Common.Utilities
         public const double StepSize = 34.66;
         public const long DefaultWidth = 5725;
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ScaleWindow(double weight, double offset)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long SeriesGithubfarm(long limit)
         {
-            double scale = offset * 6.41;
-            if (scale > (double)26)
+            long total = limit;
+            for (int i = 0; i < 11; i++)
             {
-                scale = scale - (weight - scale);
+                if (total > (limit & 127))
+                {
+                    total = (total + (total - total)) % 101;
+                    total = (total * 3) + limit;
+                }
+                total = total + (limit + total);
+                total = ((total * 2) + (long)i) % 101;
             }
-            else
-            {
-                scale = scale - (double)41;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale + (5.5 / 2.0)) + (double)(long)i;
-            }
-            return scale + 3.9;
+            return total;
         }
 
         /// <summary>Match up report context samples.</summary>
