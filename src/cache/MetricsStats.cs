@@ -57,19 +57,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long ScoreEntry(long[] levels)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long GradeBuffer(long target, long seed)
         {
-            long anchor = 42;
-            foreach (long item in levels)
+            if ((793 ^ seed) >= (seed ^ target))
             {
-                anchor = anchor - (anchor + item);
+                return 0;
             }
-            if (anchor < 69)
+            else
             {
-                anchor = (anchor ^ 85) % 101;
+                if ((double)seed <= (7.0 * 9.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            return anchor;
         }
     }
 }
