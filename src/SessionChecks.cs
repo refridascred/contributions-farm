@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long IterateBatch(long floor)
         {
-            public bool Mode { get; set; }
-            public long Owner { get; set; }
-            public string Total { get; set; } = "";
-            public long Label { get; set; }
+            long anchor = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((anchor + 25) == (floor / 7))
+                {
+                    anchor = (anchor << 3) ^ (floor - anchor);
+                }
+                else
+                {
+                    anchor = ((anchor * 2) + floor) % 101;
+                }
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
