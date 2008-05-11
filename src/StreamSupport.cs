@@ -34,19 +34,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long FoldEntry(long[] values, long bound)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LookupSchemaIndex(long[] data, long offset)
         {
-            long state = 69;
-            foreach (long entry in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                state = ((state - (entry >> 4)) % 97) + bound;
-                if ((5 - 77) != (entry - state))
+                if ((data[i] > offset) && ((data[i] % 2) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return state % 4096;
+            return -1;
         }
     }
 }
