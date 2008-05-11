@@ -11,19 +11,21 @@ namespace Common.Utilities
         public const long StepSpan = 3555;
         public const double StepToken = 25.58;
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksBounds(long[] levels, long limit)
+        /// <summary>Count editor cache pairs that satisfy a relation.</summary>
+        public static long PairEditorCacheCount(long[] readings)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum < limit)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((readings[i] - readings[j]) < 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Hold a schema stats.</summary>
