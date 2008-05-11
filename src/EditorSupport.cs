@@ -40,16 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the batches tools series from a seed.</summary>
-        public static long DeriveBatchesTools(long bound)
-        {
-            long carry = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseContext = 2784;
+        public const double SoftContext = 79.41;
+        public const long SoftDepth = 2008;
+        public const double MinWidth = 19.39;
+        public const long StepContext = 2972;
 
         /// <summary>Scale a stream layout figure with a bias.</summary>
         public static double BlendStreamLayout(double gain, double floor)
