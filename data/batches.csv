@@ -1,6 +1,7 @@
-id,weight
-1,stable
-2,600
-3,604
-4,426
-5,528
+id,count,rank,region,ratio
+1,56.35,41.72,96.71,standard
+2,914,fallback,515,legacy
+3,450,52.84,local,473
+4,826,471,89.27,500
+5,279,blue,edge,751
+6,green,standard,42.36,58.24
