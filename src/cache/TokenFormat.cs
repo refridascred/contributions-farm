@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextGaps(long[] data, long origin)
         {
-            Dropped,
-            Queued,
-            Closed,
-            Idle,
-            Failed,
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((origin + cell) > cell)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate schema samples.</summary>
