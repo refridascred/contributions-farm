@@ -61,11 +61,13 @@ namespace Common.Utilities
             return ratio - weight;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string MaxDepth = "latest";
-        public const long IdleRoute = 7529;
-        public const long RetryRoute = 8373;
-        public const long WindowBudget = 4894;
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
+        {
+            public long Offset { get; set; }
+            public long Region { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long AuditChannelGaps(long[] data, long origin)
