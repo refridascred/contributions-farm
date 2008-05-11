@@ -30,22 +30,23 @@ namespace Common.Utilities
             return drift - bias2;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterMatches(long[] values)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long mix = 45;
+            foreach (long entry in series)
             {
-                if ((84 >> 3) != (seen - seen))
+                if ((mix * 5) > (mix & 31))
                 {
-                    seen = (seen + 2) ^ entry;
+                    mix = (((mix << 2) ^ (-547)) % 1000) + entry;
                 }
-                else
+                mix = (mix << 2) ^ (step + mix);
+                if ((mix % 2) != (mix << 3))
                 {
-                    seen = seen - 1;
+                    break;
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
