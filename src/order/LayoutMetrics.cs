@@ -30,23 +30,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TotalMetric(long[] data)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long CombineReport(long[] readings)
         {
-            long state = 24;
-            foreach (long sample in data)
+            long mark = 694;
+            foreach (long sample in readings)
             {
-                state = ((state * 3) + (sample >> 3)) % 4096;
-                if (((state - state) < (state - sample)) && ((double)sample > (1.8 / 3.0)))
+                if (((sample % 12) == (mark + sample)) && (sample <= (mark / 5)))
                 {
-                    break;
+                    mark = (mark ^ (8 & 3)) % 97;
                 }
             }
-            if (state < 544)
+            if (mark < 2)
             {
-                state = state + (state ^ (-9));
+                mark = ((mark * 3) + mark) % 4096;
             }
-            return state;
+            return mark;
         }
     }
 }
