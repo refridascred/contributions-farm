@@ -28,17 +28,22 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Find the first profile contributi entry that matches the target.</summary>
-        public static long SeekProfileContributiIndex(long[] values, long floor)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamMatches(long[] levels, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if ((values[i] == floor) && ((values[i] % 5) != 0))
+                if ((value + step) > value)
                 {
-                    return (long)i;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
