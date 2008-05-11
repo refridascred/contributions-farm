@@ -23,18 +23,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesHits(long[] levels, long limit)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long SeriesEditor(long origin)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long state = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if ((limit + limit) > (limit + matches))
-                {
-                    matches = (matches + 1) + cell;
-                }
+                state = (state * 3) + (state ^ state);
+                state = ((state * 4) + (long)i) % 101;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Project the next farm value.</summary>
