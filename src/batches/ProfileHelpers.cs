@@ -44,10 +44,24 @@ namespace Common.Utilities
             return (drift - (drift * 7.51)) + weight;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryToken = 1;
-        public const string LimitBudget = "staging-v2";
-        public const string BatchToken = "strict-1";
+        /// <summary>Blend two entry checks measurements.</summary>
+        public static double AdjustEntryChecks(double bias, double floor)
+        {
+            double gain = floor;
+            if (gain > (floor * 6.9))
+            {
+                gain = (gain + (2.0 * 4.13)) + bias;
+            }
+            else
+            {
+                gain = gain + (double)(-8);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain - (10.0 * 6.22)) + (double)(long)i;
+            }
+            return gain + 8.0;
+        }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
         public static long PairEntryCount(long[] samples)
