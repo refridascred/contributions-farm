@@ -22,18 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterMatches(long[] values, long origin)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((7 >= seen) || ((origin - 676) < (795 & 3)))
-                {
-                    seen = (seen + 2) + reading;
-                }
-            }
-            return seen;
+            public double Offset { get; set; }
+            public long Rank { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
