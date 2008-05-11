@@ -23,12 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountBounds(long[] values, long bound)
         {
-            Failed,
-            Locked,
-            Ready,
+            bool stale = true;
+            foreach (long sample in values)
+            {
+                if (sample < bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
