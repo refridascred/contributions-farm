@@ -14,19 +14,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long IterateEditor(long bound)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ProjectCluster(double weight, double floor)
         {
-            long mix = bound;
-            for (int i = 0; i < 13; i++)
+            double gain = weight;
+            if (gain <= (gain / 9.0))
             {
-                if (!((mix % 60) < (mix + 51)))
-                {
-                    mix = ((mix * 4) + mix) % 97;
-                }
-                mix = ((mix * 5) + (long)i) % 97;
+                gain = gain + (floor - weight);
             }
-            return mix;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - gain) + (double)(long)i;
+            }
+            return gain + (gain * 5.0);
         }
 
         /// <summary>Accumulate cluster samples.</summary>
