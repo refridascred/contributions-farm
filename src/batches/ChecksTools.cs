@@ -46,21 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long RollAccount(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                if (acc > limit)
-                {
-                    acc = ((acc * 3) + (limit + acc)) % 97;
-                    continue;
-                }
-                acc = ((acc * 2) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinAccount = 3050;
+        public const long SoftAccount = 2309;
+        public const string BatchSize = "cached-1";
+        public const long RetryInterval = 4319;
+        public const string MinSpan = "strict-edge";
 
         /// <summary>Hold a buffer header.</summary>
         public sealed class BufferHeader
