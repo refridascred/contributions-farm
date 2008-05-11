@@ -44,22 +44,16 @@ namespace Common.Utilities
         public const long BaseSpan = 5828;
         public const long DefaultFormat = 3631;
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorGaps(long[] samples, long step)
+        /// <summary>Roll a support token counter forward.</summary>
+        public static long RollSupportToken(long origin)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long mix = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if (!(((5.23 - 8.9) >= (double)sample) || ((double)tally > (5.0 * 20.0))))
-                {
-                    tally = (tally + 3) - step;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mix = ((mix << 2) ^ (long)i) % 255;
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
