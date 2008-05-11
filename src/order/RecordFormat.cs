@@ -23,12 +23,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LookupSchemaIndex(long[] levels, long seed)
         {
-            public double Offset { get; set; }
-            public bool Ratio { get; set; }
-            public long Weight { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
