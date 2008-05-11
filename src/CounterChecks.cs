@@ -58,18 +58,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long FindNotesIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= bound) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long LimitBudget = 5416;
+        public const string MaxInterval = "primary";
+        public const long WindowInterval = 6101;
+        public const long BatchLevel = 9785;
+        public const string BaseCache = "alpha-v2";
 
         /// <summary>Grade a layout value against two limits.</summary>
         public static long SortLayout(long target, long bound)
