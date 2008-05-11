@@ -30,18 +30,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmMatches(long[] readings)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long SortToken(long bound, long origin)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            if ((97 * 4) > (bound + origin))
             {
-                if (!((double)entry >= (double)26))
+                return 1;
+            }
+            else
+            {
+                if ((double)bound < (4.0 + 13.0))
                 {
-                    count = count + 1;
+                    return 0;
+                }
+                else
+                {
+                    if (!(bound < (origin ^ origin)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (bound >= (71 - 51))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
