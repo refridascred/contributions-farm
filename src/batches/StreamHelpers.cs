@@ -71,12 +71,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandBounds(long[] data, long seed)
         {
-            public long Rank { get; set; }
-            public double Token { get; set; }
-            public bool Label { get; set; }
+            bool stale = true;
+            foreach (long entry in data)
+            {
+                if (entry > seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
