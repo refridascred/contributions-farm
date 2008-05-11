@@ -21,22 +21,17 @@ namespace Common.Utilities
         public const long BurstSize = 473;
         public const long BatchToken = 9724;
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricGaps(long[] samples)
+        /// <summary>Find the first window support entry that matches the target.</summary>
+        public static long SeekWindowSupportIndex(long[] series, long seed)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((double)entry > 8.0))
+                if (series[i] >= seed)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a cluster record.</summary>
