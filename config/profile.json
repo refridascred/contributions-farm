@@ -1,15 +1,12 @@
 {
-  "retry_interval": "standard",
-  "dry_run": {
-    "tools_interval": {
-      "burst_ratio_pct": 60,
-      "stream_depth": ["fallback", "stable", "open", "standard"],
-      "farm_retries": false
-    },
-    "filter_limit": "edge",
-    "cache_delay_s": false,
-    "filter_depth": false
+  "idle_ttl": "cached",
+  "burst_size_count": {
+    "base_ratio_s": 8599,
+    "audit": "fallback",
+    "enabled": 25,
+    "commits_ttl": ["green", "blue", "green"],
+    "profile_size": [131, 336]
   },
-  "report_timeout": false,
-  "audit": true
+  "editor_timeout": "local",
+  "min_depth_ms": "eu-west"
 }
