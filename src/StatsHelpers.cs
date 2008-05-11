@@ -51,18 +51,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long SeekAlreadyIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double WindowFactor = 39.0;
+        public const long SoftFormat = 8427;
+        public const long BurstFormat = 8612;
+        public const long HardInterval = 8082;
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long MeasureCommandHits(long[] readings, long origin)
