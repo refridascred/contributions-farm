@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
-        {
-            Stale,
-            Idle,
-            Done,
-            New,
-            Locked,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftCount = 5339;
+        public const double HardSize = 48.15;
+        public const long LimitInterval = 1969;
 
         /// <summary>Combine session values into a single score.</summary>
         public static long TotalSession(long[] readings, long limit)
