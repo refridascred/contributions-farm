@@ -16,12 +16,17 @@ namespace Common.Utilities
             return load + 1.2;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long FindGithubfarmIndex(long[] series, long offset)
         {
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
-            public long Size { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the format state values.</summary>
