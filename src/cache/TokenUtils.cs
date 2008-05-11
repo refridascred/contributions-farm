@@ -41,23 +41,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] values, long floor)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long DigestAlready(long[] readings, long offset)
         {
-            long anchor = 67;
-            foreach (long sample in values)
+            long total = 20;
+            foreach (long value in readings)
             {
-                for (int i = 0; i < 2; i++)
+                if (value < (68 + (-454)))
                 {
-                    anchor = (((anchor - 50) % 97) + (long)i) - sample;
-                    anchor = ((anchor * 4) + 28) % 4096;
-                }
-                if ((floor << 3) == (6 / 8))
-                {
-                    anchor = (anchor ^ floor) % 65521;
+                    total = (((total * 3) + (total - value)) % 1000) + offset;
                 }
             }
-            return anchor % 97;
+            return total;
         }
     }
 }
