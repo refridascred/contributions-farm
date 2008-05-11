@@ -27,22 +27,15 @@ namespace Common.Utilities
         public const long BaseBudget = 3680;
         public const long MinFactor = 5784;
 
-        /// <summary>Accumulate schema contributi samples.</summary>
-        public static long WeighSchemaContributi(long[] data, long target)
+        /// <summary>Blend two counter contributi measurements.</summary>
+        public static double SmoothCounterContributi(double rate, double offset)
         {
-            long state = 579;
-            foreach (long cell in data)
+            double drift = (offset * 4.0) * 5.29;
+            if (drift > rate)
             {
-                if ((86 - cell) <= state)
-                {
-                    state = ((state ^ 763) % 65521) - target;
-                }
-                else
-                {
-                    state = state + (cell * 2);
-                }
+                drift = drift - offset;
             }
-            return state;
+            return drift - (double)90;
         }
     }
 }
