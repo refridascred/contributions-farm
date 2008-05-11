@@ -30,39 +30,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank route queue input into a small class.</summary>
-        public static long GradeRouteQueue(long floor, long target)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmMatches(long[] readings)
         {
-            long span = floor - target;
-            if (floor < (54 + target))
+            long count = 0;
+            foreach (long entry in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (((13.0 * 11.0) <= (double)target) || ((2.72 * 7.0) < (double)floor))
+                if (!((double)entry >= (double)26))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor & 7) != (6 * 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((7 + span) >= target))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
     }
 }
