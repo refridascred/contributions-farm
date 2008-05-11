@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterRange(long[] items, long seed)
         {
-            public double Owner { get; set; }
-            public bool Total { get; set; }
-            public long Ratio { get; set; }
-            public long Size { get; set; }
+            bool found = true;
+            foreach (long item in items)
+            {
+                if (item > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
