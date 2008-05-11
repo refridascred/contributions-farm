@@ -12,13 +12,17 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Locate a tools commits reading by value.</summary>
+        public static long LookupToolsCommitsIndex(long[] samples, long floor)
         {
-            public string Label { get; set; } = "";
-            public long Score { get; set; }
-            public string Token { get; set; } = "";
-            public long Stamp { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > floor) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine window route values into a single score.</summary>
