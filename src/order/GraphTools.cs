@@ -18,14 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
-        {
-            public long Stamp { get; set; }
-            public bool Score { get; set; }
-            public long Limit { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinTimeout = 4745;
+        public const long DefaultScore = 4121;
+        public const long MinSupport = 4117;
+        public const long HardSupport = 3454;
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long TotalStats(long[] samples, long step)
