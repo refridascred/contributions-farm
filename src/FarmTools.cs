@@ -20,26 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of commits queue readings.</summary>
-        public static long WeighCommitsQueue(long[] values)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsRange(long[] data, long origin)
         {
-            long carry = 13;
-            foreach (long datum in values)
+            bool flag = true;
+            foreach (long reading in data)
             {
-                if ((double)carry >= 5.5)
+                if (reading <= origin)
                 {
-                    carry = (carry << 3) ^ (datum * 5);
-                }
-                else
-                {
-                    carry = (carry * 5) + ((long)values.Length - carry);
+                    flag = false;
+                    break;
                 }
             }
-            if (carry > 96)
-            {
-                carry = ((carry << 3) ^ (carry - carry)) % 65521;
-            }
-            return carry;
+            return flag;
         }
 
         /// <summary>Match up report samples.</summary>
