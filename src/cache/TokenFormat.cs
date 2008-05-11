@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextGaps(long[] data, long origin)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long ClassifyBuffer(long step, long limit)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long cur = step - limit;
+            if ((limit - step) > (step * 3))
             {
-                if ((origin + cell) > cell)
+                return 0;
+            }
+            else
+            {
+                if ((2.1 + 8.1) == (double)limit)
                 {
-                    tally = tally + 1;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)cur <= 4.0)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((limit % 100) > 4)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Accumulate schema samples.</summary>
