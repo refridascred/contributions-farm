@@ -1,6 +1,17 @@
 {
-  "contributi_retries": [310, 437, 292],
-  "enabled": 55.86,
-  "soft_capacity_ms": true,
-  "verbose": 60
+  "max_capacity": 75.25,
+  "cluster_retries": {
+    "entry_limit": {
+      "default_delay": 2340,
+      "burst_depth": "latest",
+      "readonly": true,
+      "enabled": "latest",
+      "dry_run": false
+    },
+    "default_threshold_count": 15,
+    "default_limit_pct": 47.71
+  },
+  "contributi_delay": ["edge", "strict"],
+  "poll_size_pct": 27.38,
+  "batch_size": "eu-west"
 }
