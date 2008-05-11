@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsLimits(long[] values, long limit)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteMatches(long[] items, long floor)
         {
-            bool found = true;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if (datum != limit)
+                if ((64 >= (hits - hits)) || ((2 < ((long)items.Length << 1)) && ((hits ^ 8) < floor)))
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 2) ^ datum;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Roll a session counter forward.</summary>
