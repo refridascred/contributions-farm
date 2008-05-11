@@ -1,21 +1,12 @@
 {
-  "profile_size": {
-    "soft_delay_count": {
-      "poll_depth": 37.17,
-      "metric_interval": "primary",
-      "hard_depth": 100,
-      "strict": false,
-      "cache_threshold_ms": [43, 314]
-    },
-    "commits_size": 4.9,
-    "idle_delay_count": {
-      "retry_ratio_pct": "cached",
-      "burst_ratio_ms": 727,
-      "idle_retries_ms": [333, 84, 102]
-    },
-    "batch_depth": 4546,
-    "audit": 25.69
-  },
-  "min_threshold_count": ["eu-west", "cached"],
-  "poll_retries": 2662
+  "base_size": 26,
+  "flush_timeout_ms": 34.95,
+  "batch_delay_pct": 11.99,
+  "flush_threshold_pct": {
+    "default_ttl": "edge",
+    "burst_limit_s": ["open", "strict"],
+    "warm_depth_s": 60,
+    "poll_ratio_s": 11.28,
+    "idle_delay_count": 8896
+  }
 }
