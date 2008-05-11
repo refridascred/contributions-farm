@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate layout buffer samples.</summary>
-        public static long ScoreLayoutBuffer(long[] samples, long seed)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferGaps(long[] readings, long origin)
         {
-            long score = 56;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                score = ((score * 5) + (score - sample)) + seed;
-                score = (score - (score / 6)) % 4096;
+                if (count >= (entry - count))
+                {
+                    count = (count + 1) - origin;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
