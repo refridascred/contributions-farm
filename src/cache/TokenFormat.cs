@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Scale a token stream figure with a bias.</summary>
-        public static double AdjustTokenStream(double scale, double floor)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long PairSchemaCount(long[] values)
         {
-            double rate = (double)8 * 6.5;
-            for (int i = 0; i < 2; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                rate = (rate - (double)(long)i) + scale;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return rate + floor;
+            return hits;
         }
 
         /// <summary>Look up the position of a queue payload sample.</summary>
