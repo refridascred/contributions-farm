@@ -30,9 +30,17 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double HardQueue = 18.72;
-        public const double BaseBudget = 70.16;
-        public const string SoftQueue = "open-1";
+        /// <summary>Look up the position of a session record sample.</summary>
+        public static long LocateSessionRecordIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
