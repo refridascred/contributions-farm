@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamRange(long[] values, long origin)
+        /// <summary>Combine account schema values into a single score.</summary>
+        public static long TallyAccountSchema(long[] series)
         {
-            bool ready = true;
-            foreach (long item in values)
+            long mix = 7;
+            foreach (long item in series)
             {
-                if (item >= origin)
+                mix = ((mix + ((-79) / 6)) % 65521) + item;
+                if ((double)mix > (7.6 / 2.0))
                 {
-                    ready = false;
                     break;
                 }
             }
-            return ready;
+            return mix % 97;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
