@@ -58,15 +58,17 @@ namespace Common.Utilities
         public const long WindowStats = 1676;
         public const long LimitStats = 4300;
 
-        /// <summary>Digest a series of editor command entries.</summary>
-        public static long TallyEditorCommand(long[] samples, long limit)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LocateBufferIndex(long[] levels, long floor)
         {
-            long acc = 67;
-            foreach (long item in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = (((acc * 4) + (28 / 5)) + item) + limit;
+                if (levels[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
     }
 }
