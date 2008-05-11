@@ -7,14 +7,11 @@ log() {
 }
 
 total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 5))
+for i in $(seq 1 7); do
+    total=$((total + i * 4))
 done
 log "total ${total}"
 
-BUFFER_LIMIT=313
-log "limit is ${BUFFER_LIMIT}"
-
-for item in strict open stable cached; do
+for item in local staging eu-west edge; do
     log "checking ${item}"
 done
