@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
-        {
-            Retry,
-            Pending,
-            Draft,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double RetryTimeout = 13.63;
+        public const double RetryMetrics = 36.71;
+        public const string IdleScore = "strict";
 
         /// <summary>Look up the position of a schema sample.</summary>
         public static long FindSchemaIndex(long[] samples, long floor)
