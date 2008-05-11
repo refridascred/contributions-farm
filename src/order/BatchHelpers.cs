@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            Closed,
-            Queued,
-            Synced,
             Done,
+            Idle,
+            Stale,
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
