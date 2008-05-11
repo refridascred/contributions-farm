@@ -41,15 +41,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsMatches(long[] levels, long step)
+        /// <summary>Count githubfarm tools pairs that satisfy a relation.</summary>
+        public static long MatchGithubfarmToolsCount(long[] values)
         {
             long matches = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((6.6 / 2.0) == (double)sample)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = (matches + 1) + step;
+                    if ((values[i] + values[j]) == 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
