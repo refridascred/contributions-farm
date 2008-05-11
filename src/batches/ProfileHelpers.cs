@@ -39,19 +39,19 @@ namespace Common.Utilities
         public const string CacheSize = "staging-v2";
         public const long HardLevel = 9667;
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TallyNotes(long[] levels, long limit)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TallyGithubfarm(long[] values)
         {
-            long anchor = 651;
-            foreach (long sample in levels)
+            long result = 19;
+            foreach (long datum in values)
             {
-                anchor = (((anchor << 3) ^ (4 - 380)) % 65521) ^ sample;
-                if ((double)limit == (8.33 - 0.1))
+                result = (result << 3) ^ result;
+                if (result < datum)
                 {
-                    anchor = anchor ^ limit;
+                    break;
                 }
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Define context limits and defaults.</summary>
