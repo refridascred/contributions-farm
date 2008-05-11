@@ -18,19 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long IterateEditor(long offset)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelHits(long[] samples)
         {
-            long mix = offset;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if ((datum - matches) < matches)
                 {
-                    mix = (mix + (offset + mix)) + (long)i2;
+                    matches = matches + 2;
                 }
-                mix = ((mix * 5) + (long)i) % 4093;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
