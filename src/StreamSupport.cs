@@ -11,12 +11,24 @@ namespace Common.Utilities
         public const long IdleQueue = 8933;
         public const double BurstQueue = 12.85;
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Classify a buffer graph pair into a bucket.</summary>
+        public static long GradeBufferGraph(long limit, long limit2)
         {
-            public double Count { get; set; }
-            public long Region { get; set; }
-            public long Owner { get; set; }
+            if ((limit ^ limit2) > 409)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)limit2 > 3.08)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Describe the route mode values.</summary>
