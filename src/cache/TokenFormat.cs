@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count already filter pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyFilterCount(long[] values)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorGaps(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((10 + 404) > tally)
                 {
-                    if ((values[i] - values[j]) > 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 2) ^ item;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
