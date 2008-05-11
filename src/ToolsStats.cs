@@ -22,13 +22,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Locate a window reading by value.</summary>
+        public static long FindWindowIndex(long[] data, long step)
         {
-            Locked,
-            Pending,
-            Closed,
-            Idle,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == step) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank route input into a small class.</summary>
