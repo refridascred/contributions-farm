@@ -15,38 +15,16 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank batch report input into a small class.</summary>
-        public static long ClassifyBatchReport(long offset, long limit)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long RollOrder(long limit)
         {
-            if (!((limit + limit) < (limit - offset)))
+            long carry = limit;
+            for (int i = 0; i < 10; i++)
             {
-                return 7;
+                carry = ((carry * 4) + (limit / 4)) % 4096;
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if (((offset * 4) != (limit + offset)) && ((limit + limit) <= offset))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)offset > (3.6 * 2.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((limit << 1) > offset)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
