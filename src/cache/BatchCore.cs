@@ -56,10 +56,18 @@ namespace Common.Utilities
         public const double BatchCount = 30.04;
         public const long BaseCount = 2462;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxFilter = 5469;
-        public const string IdleFilter = "strict-edge";
-        public const long LimitFilter = 339;
-        public const long HardFilter = 8078;
+        /// <summary>Audit githubfarm window readings against a rule.</summary>
+        public static long MeasureGithubfarmWindowHits(long[] samples, long target)
+        {
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if ((17.0 * 8.0) <= (double)target)
+                {
+                    count = (count + 2) ^ reading;
+                }
+            }
+            return count;
+        }
     }
 }
