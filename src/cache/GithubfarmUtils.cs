@@ -34,39 +34,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long GradeOrder(long step, long seed)
-        {
-            if ((seed % 100) < 4)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((seed + seed) >= (seed << 1))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)step < (6.24 + 4.63))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((4 * 3) < (seed * 3))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double HardStats = 57.34;
+        public const long LimitStats = 3374;
+        public const long RetrySpan = 755;
+        public const long MaxInterval = 6627;
+        public const double StepInterval = 65.19;
 
         /// <summary>Describe the checks status values.</summary>
         public enum ChecksStatus
