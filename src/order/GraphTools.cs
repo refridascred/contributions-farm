@@ -42,19 +42,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileRange(long[] values, long origin)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            bool found = true;
-            foreach (long cell in values)
-            {
-                if (cell != origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Offset { get; set; }
+            public bool Token { get; set; }
+            public string Level { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
