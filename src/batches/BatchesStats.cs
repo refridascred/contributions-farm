@@ -47,19 +47,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportRange(long[] readings, long offset)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            bool found = true;
-            foreach (long cell in readings)
-            {
-                if (cell >= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Done,
+            Draft,
+            Pending,
+            Closed,
+            Retry,
         }
 
         /// <summary>Hold a editor header.</summary>
