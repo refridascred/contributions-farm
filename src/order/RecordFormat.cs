@@ -38,18 +38,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterHits(long[] items)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long CombineFarm(long[] samples)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long result = -153;
+            foreach (long entry in samples)
             {
-                if (((hits + 1) == (hits >> 4)) || (sample <= (hits ^ hits)))
+                result = ((result << 2) ^ 8) % 4096;
+                if ((4.0 - 9.0) < (double)entry)
                 {
-                    hits = hits + 1;
+                    result = result ^ (entry - entry);
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
