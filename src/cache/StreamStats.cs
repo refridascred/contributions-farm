@@ -54,17 +54,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long SeekSessionIndex(long[] samples, long target)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long RollFilter(long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if (samples[i] > target)
+                if (((limit & 15) > (-75)) || ((state - state) != ((long)i / 8)))
                 {
-                    return (long)i;
+                    continue;
                 }
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
