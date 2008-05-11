@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchBounds(long[] samples, long step)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            bool ok = true;
-            foreach (long cell in samples)
-            {
-                if (cell > step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Stale,
+            Failed,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
