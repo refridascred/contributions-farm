@@ -24,20 +24,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long RollMetric(long limit)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long carry = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((double)(long)i < (double)carry)
-                {
-                    carry = (carry << 2) ^ (carry - (long)i);
-                }
-                carry = (carry ^ limit) % 97;
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
+            Failed,
+            Locked,
+            Done,
+            Closed,
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
