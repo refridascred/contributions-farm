@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Digest a series of editor metrics entries.</summary>
+        public static long WeighEditorMetrics(long[] samples)
         {
-            public string Rank { get; set; } = "";
-            public bool Token { get; set; }
-            public long Label { get; set; }
-            public long Offset { get; set; }
+            long sum = 27;
+            foreach (long value in samples)
+            {
+                double drift = (double)(value % 8);
+                if ((drift - 2.48) < (double)88)
+                {
+                    drift = drift - (double)sum;
+                }
+                else
+                {
+                    sum = (sum - (sum + 12)) % 65521;
+                }
+                sum = (sum ^ (value % 7)) % 97;
+                if ((value - value) == ((-5) >> 3))
+                {
+                    break;
+                }
+            }
+            if (sum > 33)
+            {
+                sum = ((sum * 4) + sum) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Compare every pair of githubfarm tools readings.</summary>
