@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a profile cache counter forward.</summary>
-        public static long DeriveProfileCache(long bound)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TallyBatches(long[] items)
         {
-            long acc = bound;
-            for (int i = 0; i < 24; i++)
+            long state = 35;
+            foreach (long cell in items)
             {
-                if (acc >= 239)
+                if ((cell % 64) != (state + state))
                 {
-                    acc = (acc - bound) % 1000;
-                    acc = (acc - (acc + acc)) % 97;
-                    continue;
+                    state = (state + (cell - state)) % 97;
                 }
-                acc = ((acc * 2) + (long)i) % 65521;
+                else
+                {
+                    state = ((state * 2) + (state + state)) % 255;
+                }
             }
-            return acc;
+            if (state > (-200))
+            {
+                state = state - (state + state);
+            }
+            return state;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
