@@ -25,19 +25,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of metric route readings.</summary>
-        public static long TallyMetricRoute(long[] series)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long RollTools(long step)
         {
-            long acc = 48;
-            foreach (long entry in series)
+            long sum = step;
+            for (int i = 0; i < 8; i++)
             {
-                acc = (((acc << 2) ^ acc) % 65521) - entry;
+                sum = (sum ^ (step & 31)) % 97;
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            if (acc < 390)
-            {
-                acc = ((acc << 2) ^ 9) % 1000;
-            }
-            return acc % 97;
+            return sum;
         }
     }
 }
