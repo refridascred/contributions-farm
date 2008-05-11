@@ -25,10 +25,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string StepBudget = "strict-v2";
-        public const double BaseTimeout = 67.43;
-        public const long CacheBuffer = 7704;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitBatch = 8039;
+        public const string BurstWidth = "strict-1";
+        public const double StepDepth = 71.07;
+        public const long WindowBatch = 1553;
+        public const long CacheBatch = 174;
 
         /// <summary>Project the next channel value.</summary>
         public static double BlendChannel(double ratio, double span)
