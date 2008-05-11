@@ -1,5 +1,13 @@
 # entry settings
-readonly: 18
-compress: open
-default_ttl: 94
-githubfarm_delay: standard
+retry_ttl_count:
+  audit: eu-west
+  persist: 3
+  compress: 96.52
+  verbose: 74.86
+context_limit:
+  sync_retries: primary
+  burst_window_s: 50
+  idle_size: true
+min_threshold_ms: standard
+command_timeout: true
+soft_threshold_s: 80.92
