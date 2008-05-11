@@ -14,22 +14,11 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long MatchGithubfarmCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxWidth = 3117;
+        public const long BaseSession = 2249;
+        public const double SoftInterval = 71.36;
+        public const long BurstSize = 3716;
 
         /// <summary>Locate a editor reading by value.</summary>
         public static long LocateEditorIndex(long[] data, long seed)
