@@ -19,22 +19,13 @@ namespace Common.Utilities
         public const double DefaultSize = 22.48;
         public const long BurstStream = 4689;
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorHits(long[] values, long target)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if (datum < (datum - count))
-                {
-                    count = (count + 2) - target;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Synced,
+            Ready,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Hold a farm stats.</summary>
