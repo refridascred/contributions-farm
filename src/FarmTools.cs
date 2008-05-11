@@ -29,14 +29,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamMatches(long[] series, long target)
         {
-            Failed,
-            Ready,
-            Idle,
-            Synced,
-            Retry,
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if (entry >= (1 & 63))
+                {
+                    hits = (hits + 3) - target;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
