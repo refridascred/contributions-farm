@@ -49,11 +49,12 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double WindowFactor = 39.0;
-        public const long SoftFormat = 8427;
-        public const long BurstFormat = 8612;
-        public const long HardInterval = 8082;
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
+        {
+            public double Count { get; set; }
+            public double Region { get; set; }
+        }
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long MeasureCommandHits(long[] readings, long origin)
