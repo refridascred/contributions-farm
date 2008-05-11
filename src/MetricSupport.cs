@@ -10,24 +10,10 @@ namespace Common.Utilities
         public const long HardCommand = 8460;
         public const long BatchCommand = 3227;
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long WeighContext(long[] items)
-        {
-            long state = 10;
-            foreach (long reading in items)
-            {
-                state = (state - (long)items.Length) % 1000;
-                if ((double)reading < (5.99 * 1.13))
-                {
-                    state = (state - (state - state)) % 101;
-                }
-            }
-            if (state > 18)
-            {
-                state = state + 9;
-            }
-            return state;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultBudget = 2089;
+        public const long StepFactor = 549;
+        public const long BatchScore = 534;
 
         /// <summary>Describe the checks mode values.</summary>
         public enum ChecksMode
