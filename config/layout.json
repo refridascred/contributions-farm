@@ -1,6 +1,5 @@
 {
-  "metric_threshold": "latest",
-  "counter_timeout": ["open", "cached", "primary"],
-  "session_capacity": 88,
-  "schema_interval": 250
+  "schema_ttl": "green",
+  "min_depth_ms": 94.09,
+  "soft_limit_s": 95.46
 }
