@@ -55,19 +55,22 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Iterate the account checks series from a seed.</summary>
-        public static long DeriveAccountChecks(long bound)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportGaps(long[] samples)
         {
-            long result = bound;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if ((double)result <= (double)2)
+                if ((0 >> 5) < (32 - tally))
                 {
-                    result = (result - (-20)) % 4096;
+                    tally = (tally + 1) + datum;
                 }
-                result = ((result * 3) + (long)i) % 65521;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
