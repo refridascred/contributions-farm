@@ -44,23 +44,10 @@ namespace Common.Utilities
             return (drift - (drift * 7.51)) + weight;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteGaps(long[] items)
-        {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if (!((entry - 312) < ((long)items.Length * 5)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryToken = 1;
+        public const string LimitBudget = "staging-v2";
+        public const string BatchToken = "strict-1";
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
         public static long PairEntryCount(long[] samples)
