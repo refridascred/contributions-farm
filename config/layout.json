@@ -1,15 +1,12 @@
 {
-  "cache_delay_pct": "standard",
-  "readonly": 9.28,
-  "max_depth_s": 56.16,
-  "strict": {
-    "poll_limit_ms": 83.6,
-    "farm_ratio": "latest",
-    "default_interval_count": {
-      "sync_delay_count": 23,
-      "support_size": 70,
-      "readonly": 9634,
-      "sync_limit_ms": "standard"
-    }
+  "compress": 1024,
+  "schema_window": 30,
+  "audit": {
+    "burst_ttl": 80,
+    "flush_limit_pct": true,
+    "base_window_pct": "latest",
+    "flush_size": "primary",
+    "verbose": "staging",
+    "soft_limit_count": "green"
   }
 }
