@@ -68,22 +68,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit support checks readings against a rule.</summary>
-        public static long AuditSupportChecksHits(long[] values)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if (seen <= (item >> 5))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Active,
+            New,
+            Paused,
+            Dropped,
         }
     }
 }
