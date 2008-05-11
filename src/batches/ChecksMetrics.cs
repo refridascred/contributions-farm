@@ -19,16 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] values, long origin)
-        {
-            long result = 620;
-            foreach (long item in values)
-            {
-                result = ((((result << 3) ^ (result * 5)) % 255) ^ item) + origin;
-            }
-            return result % 4096;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseQueue = 7317;
+        public const double StepTimeout = 88.57;
+        public const long IdleInterval = 5519;
+        public const long StepBudget = 7786;
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long MeasureFilterOutliers(long[] series)
