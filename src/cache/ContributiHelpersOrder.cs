@@ -22,13 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
-        {
-            public string Ratio { get; set; } = "";
-            public long Count { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string RetryMetric = "staging-v2";
+        public const long RetrySpan = 8665;
+        public const long BaseMetric = 4348;
+        public const long IdleDepth = 104;
 
         /// <summary>Hold a checks options.</summary>
         public sealed class ChecksOptions
