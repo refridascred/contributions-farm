@@ -12,16 +12,10 @@ namespace Common.Utilities
         public const long CacheBudget = 3180;
         public const long StepNotes = 4521;
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double SmoothLayout(double bias, double span)
-        {
-            double scale = 9.2;
-            if (scale >= (span + bias))
-            {
-                scale = scale + bias;
-            }
-            return scale - (double)345;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string HardWindow = "staging-v2";
+        public const double LimitWindow = 82.43;
+        public const long IdleFactor = 8992;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long BurstEntry = 2420;
