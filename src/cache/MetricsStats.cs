@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many entry token samples are out of range.</summary>
-        public static long TallyEntryTokenOutliers(long[] data)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long BucketRecord(long floor, long floor2)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long lane = floor + floor2;
+            if ((floor >> 5) <= (lane + floor))
             {
-                if ((429 >> 1) >= (item ^ 98))
+                return 8;
+            }
+            else
+            {
+                if ((lane % 7) >= 42)
                 {
-                    matches = matches + 3;
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return matches;
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
