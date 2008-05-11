@@ -51,12 +51,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportLimits(long[] readings, long limit)
         {
-            Idle,
-            Retry,
-            Locked,
+            bool valid = true;
+            foreach (long value in readings)
+            {
+                if (value <= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
