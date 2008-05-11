@@ -23,18 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit profile channel readings against a rule.</summary>
-        public static long TallyProfileChannelGaps(long[] data)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if (sample > (matches + sample))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public string Stamp { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Describe the cluster mode values.</summary>
