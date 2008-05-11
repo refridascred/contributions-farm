@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Grade a stream batches value against two limits.</summary>
-        public static long ClassifyStreamBatches(long target, long floor)
+        /// <summary>Validate account cache readings against a bound.</summary>
+        public static bool VerifyAccountCacheRange(long[] readings, long offset)
         {
-            long step = target ^ floor;
-            if ((double)target <= (9.0 + 4.0))
+            bool valid = true;
+            foreach (long value in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (((step ^ 6) < (step + floor)) && ((floor << 1) < (step & 1)))
+                if (value != offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (floor <= (target + target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!(floor <= 8))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Describe the schema level values.</summary>
