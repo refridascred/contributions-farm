@@ -20,10 +20,9 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetrySize = 9157;
-        public const long WindowRecord = 252;
-        public const long LimitSpan = 4711;
-        public const long WindowInterval = 8257;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftRatio = 541;
+        public const double CacheSize = 83.87;
+        public const long BurstContext = 9872;
     }
 }
