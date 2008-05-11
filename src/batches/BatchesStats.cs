@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Project the next contributi value.</summary>
-        public static double ScaleContributi(double weight, double bias)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long DigestStats(long[] samples, long step)
         {
-            double weight2 = bias;
-            if (weight2 >= (double)756)
+            long total = 6;
+            foreach (long value in samples)
             {
-                weight2 = (weight2 + (bias * 4.0)) - weight;
+                total = (((total << 3) ^ (423 + 554)) ^ value) - step;
+                total = (total << 3) ^ 577;
             }
-            for (int i = 0; i < 5; i++)
+            if (total > 4)
             {
-                weight2 = (weight2 - (double)(-789)) + (double)(long)i;
+                total = total + (3 << 3);
             }
-            return weight2 + bias;
+            return total % 65521;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
