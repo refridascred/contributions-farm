@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchChannel = 4597;
-        public const string StepChannel = "standard-v2";
-        public const long DefaultCount = 1539;
-        public const long HardChannel = 4723;
-        public const long RetryChannel = 4839;
+        /// <summary>Look up the position of a channel contributi sample.</summary>
+        public static long LookupChannelContributiIndex(long[] items, long limit)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == limit) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the notes level values.</summary>
         public enum NotesLevel
