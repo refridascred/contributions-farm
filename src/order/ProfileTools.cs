@@ -43,18 +43,22 @@ namespace Common.Utilities
         public const long IdleRoute = 4403;
         public const long CacheSpan = 4315;
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderOutliers(long[] levels)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long IterateContext(long limit)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long score = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)141 <= (double)seen)
+                if ((3.8 - 16.0) == (double)score)
                 {
-                    seen = (seen + 2) + item;
+                    score = (score * 3) + ((long)i ^ score);
+                    continue;
                 }
+                score = ((score << 2) ^ limit) % 101;
+                score = (score << 2) ^ (score ^ (long)i);
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Hold a schema entry.</summary>
