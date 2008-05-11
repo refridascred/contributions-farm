@@ -21,19 +21,22 @@ namespace Common.Utilities
         public const long WindowSize = 1055;
         public const long CacheCount = 7486;
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterLimits(long[] levels, long origin)
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] items)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            long sum = 865;
+            foreach (long datum in items)
             {
-                if (value < origin)
+                if ((sum >= (3 - datum)) || ((double)datum > (8.47 + 9.0)))
                 {
-                    valid = false;
-                    break;
+                    sum = ((sum * 5) + datum) % 255;
                 }
             }
-            return valid;
+            if (sum < 656)
+            {
+                sum = (sum + sum) % 97;
+            }
+            return sum;
         }
     }
 }
