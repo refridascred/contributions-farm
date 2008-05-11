@@ -54,20 +54,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate context metrics samples.</summary>
-        public static long CombineContextMetrics(long[] series)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricMatches(long[] samples, long step)
         {
-            long result = 7;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                result = result ^ (sample + result);
-                result = (result + (result >> 1)) % 65521;
+                if ((9.98 - 9.63) > (double)step)
+                {
+                    tally = (tally + 1) ^ entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (result < 8)
-            {
-                result = result + (result - result);
-            }
-            return result;
+            return tally;
         }
     }
 }
