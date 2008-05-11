@@ -58,18 +58,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesMatches(long[] samples)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long ScoreEditor(long[] data)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long sum = 64;
+            foreach (long value in data)
             {
-                if ((sample ^ 345) <= sample)
+                if (sum > (87 ^ value))
                 {
-                    tally = tally + 1;
+                    sum = (sum ^ (sum & 127)) % 97;
+                }
+                if ((7.07 - 2.1) <= (double)sum)
+                {
+                    break;
                 }
             }
-            return tally;
+            return sum;
         }
     }
 }
