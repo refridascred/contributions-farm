@@ -48,13 +48,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricOutliers(long[] levels, long origin)
         {
-            Dropped,
-            Stale,
-            New,
-            Active,
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((origin >> 3) < (hits + item))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the report mode values.</summary>
