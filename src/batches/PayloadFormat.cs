@@ -63,10 +63,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double MinGraph = 56.9;
-        public const string HardFactor = "staging-edge";
-        public const string IdleGraph = "latest-v2";
-        public const double HardBudget = 4.76;
+        /// <summary>Define token limits and defaults.</summary>
+        public const string IdleToken = "fallback-v2";
+        public const double BatchDepth = 89.64;
+        public const long RetryToken = 314;
+        public const long BatchToken = 3819;
+        public const string CacheLevel = "stable";
     }
 }
