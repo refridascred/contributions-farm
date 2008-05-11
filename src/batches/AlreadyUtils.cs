@@ -32,19 +32,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every contributi route entry stays within the limit.</summary>
-        public static bool ValidateContributiRouteBounds(long[] data, long origin)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long MatchSchemaCount(long[] levels)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item > origin)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((levels[i] + levels[j]) < 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
