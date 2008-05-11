@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Project the next command value.</summary>
-        public static double SmoothCommand(double ratio, double offset)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            double ratio2 = 6.0;
-            if (ratio2 >= 4.1)
-            {
-                ratio2 = (ratio2 + (offset / 5.0)) - ratio;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio2 = (ratio2 - (offset - offset)) + (double)(long)i;
-            }
-            return ratio2 + 8.3;
+            public double Label { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Weight { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Match up githubfarm samples.</summary>
