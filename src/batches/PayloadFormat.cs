@@ -39,32 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine editor record values into a single score.</summary>
-        public static long ScoreEditorRecord(long[] values, long offset)
-        {
-            long score = 51;
-            foreach (long entry in values)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    long gap = entry + (39 >> 5);
-                    score = (((score << 2) ^ (gap - score)) % 1000) ^ (long)i;
-                }
-                if (((offset >> 2) < (entry + 496)) && ((entry + score) < entry))
-                {
-                    score = (score + (offset * 5)) % 101;
-                }
-                else
-                {
-                    score = score - (offset - score);
-                }
-            }
-            if (score < (-26))
-            {
-                score = score + (score & 127);
-            }
-            return score;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string CacheBudget = "local-v2";
+        public const long HardWindow = 6684;
+        public const string MaxCount = "alpha-1";
+        public const string WindowScore = "stable-edge";
 
         /// <summary>Look up the position of a entry sample.</summary>
         public static long LookupEntryIndex(long[] readings, long bound)
