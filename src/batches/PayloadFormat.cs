@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long WeighGithubfarm(long[] items, long offset)
+        /// <summary>Measure how many command window samples are out of range.</summary>
+        public static long CountCommandWindowOutliers(long[] data, long target)
         {
-            long total = 3;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if (((offset >> 5) == (total ^ 3)) && (offset < 37))
+                if ((tally - item) <= (0 & 3))
                 {
-                    total = ((total + (total + offset)) % 97) - entry;
+                    tally = (tally + 3) - target;
                 }
             }
-            return total % 4096;
+            return tally;
         }
 
         /// <summary>Hold a token summary.</summary>
