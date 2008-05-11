@@ -55,21 +55,18 @@ namespace Common.Utilities
             return gain + 8.0;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long PairEntryCount(long[] samples)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TallyFarm(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 92;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((9.48 * 4.8) > (double)anchor)
                 {
-                    if ((samples[i] - samples[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = ((anchor << 2) ^ sample) % 97;
                 }
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Describe the account mode values.</summary>
