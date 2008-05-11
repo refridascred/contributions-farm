@@ -31,24 +31,22 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Iterate the support schema series from a seed.</summary>
-        public static long SeriesSupportSchema(long target)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long DigestOrder(long[] readings)
         {
-            long sum = target;
-            for (int i = 0; i < 7; i++)
+            long score = 5;
+            foreach (long value in readings)
             {
-                if (!(target <= 60))
+                if ((score & 255) <= (90 - score))
                 {
-                    break;
+                    score = ((score << 2) ^ (score << 3)) ^ value;
                 }
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    sum = (sum ^ (sum + sum)) + (long)i2;
-                    sum = (sum * 3) + (sum - sum);
-                }
-                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return sum;
+            if (score < 4)
+            {
+                score = (score + score) % 97;
+            }
+            return score % 4096;
         }
 
         /// <summary>Define format limits and defaults.</summary>
