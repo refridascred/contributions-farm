@@ -33,13 +33,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long MatchCommandCount(long[] readings)
         {
-            Queued,
-            Paused,
-            Idle,
-            New,
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
