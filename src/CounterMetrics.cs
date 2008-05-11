@@ -46,18 +46,9 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the cache metrics entries that pass the check.</summary>
-        public static long TallyCacheMetricsOutliers(long[] series, long offset)
-        {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if (seen > (416 >> 5))
-                {
-                    seen = ((seen + 3) ^ item) - offset;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchStream = 6856;
+        public const string MinStream = "local";
+        public const double IdleCount = 30.4;
     }
 }
