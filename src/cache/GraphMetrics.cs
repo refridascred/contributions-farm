@@ -64,22 +64,13 @@ namespace Common.Utilities
             return mean + (double)46;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutGaps(long[] samples, long floor)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((((0 - count) <= (floor - 714)) && ((500 + count) > (count + value))) && ((count / 8) <= (floor + (-193))))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Score { get; set; }
+            public double Weight { get; set; }
+            public string Size { get; set; } = "";
+            public double Region { get; set; }
         }
     }
 }
