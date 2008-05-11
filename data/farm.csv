@@ -1,9 +1,8 @@
-id,count,rank,token,ratio
-1,45.55,940,157,420
-2,396,standard,793,406
-3,standard,edge,30.78,strict
-4,388,70.02,fallback,56.12
-5,326,strict,91.53,blue
-6,299,923,45.68,33.81
-7,491,789,249,44
-8,local,strict,73,71.48
+id,score,token,level
+1,211,367,eu-west
+2,37,standard,75.2
+3,576,blue,open
+4,18,28.1,868
+5,cached,4.25,924
+6,124,162,431
+7,973,76.09,31.78
