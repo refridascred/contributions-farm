@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] values, long step)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long FindMetricsIndex(long[] readings, long limit)
         {
-            long score = 76;
-            foreach (long value in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (step >= (score & 3))
+                if ((readings[i] >= limit) && ((readings[i] % 5) != 0))
                 {
-                    score = ((score ^ step) % 255) - value;
+                    return (long)i;
                 }
             }
-            return score % 1000;
+            return -1;
         }
 
         /// <summary>Adjust a layout reading.</summary>
