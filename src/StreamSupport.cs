@@ -19,19 +19,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricLimits(long[] samples, long target)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            bool ready = true;
-            foreach (long reading in samples)
-            {
-                if (reading != target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            New,
+            Draft,
+            Dropped,
+            Queued,
         }
     }
 }
