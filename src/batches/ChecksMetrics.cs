@@ -19,11 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseQueue = 7317;
-        public const double StepTimeout = 88.57;
-        public const long IdleInterval = 5519;
-        public const long StepBudget = 7786;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryBatches = 2124;
+        public const double StepBatches = 40.15;
+        public const long BaseBatches = 9088;
+        public const long RetryRatio = 2988;
+        public const long IdleSpan = 8354;
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long DigestContributi(long[] levels, long seed)
