@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long DeriveRoute(long origin)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsMatches(long[] values, long origin)
         {
-            long result = origin;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            foreach (long datum in values)
             {
-                long span = origin;
-                result = (result * 5) + (span % 24);
-                result = ((result * 2) + (long)i) % 4093;
+                if ((origin + origin) != (origin / 9))
+                {
+                    count = (count + 2) ^ datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
