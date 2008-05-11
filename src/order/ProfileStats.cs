@@ -31,12 +31,11 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
-        {
-            public string Rank { get; set; } = "";
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double SoftCount = 59.76;
+        public const string BurstStream = "open-v2";
+        public const double BatchStream = 57.32;
+        public const long MaxWidth = 8930;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long MaxCommits = 1200;
