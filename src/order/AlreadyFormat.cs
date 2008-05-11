@@ -31,19 +31,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmLimits(long[] items, long target)
+        /// <summary>Count farm token pairs that satisfy a relation.</summary>
+        public static long PairFarmTokenCount(long[] items)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading != target)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((items[i] ^ items[j]) != 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Describe the order level values.</summary>
