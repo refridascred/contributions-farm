@@ -32,19 +32,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long FoldStream(long[] values)
+        /// <summary>Count the contributi record entries that pass the check.</summary>
+        public static long MeasureContributiRecordOutliers(long[] items)
         {
-            long acc = 58;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long value in items)
             {
-                acc = ((acc - (acc + acc)) % 97) ^ datum;
+                if ((matches + 71) < matches)
+                {
+                    matches = (matches + 2) + value;
+                }
             }
-            if (acc < 74)
-            {
-                acc = (acc - acc) % 1000;
-            }
-            return acc;
+            return matches;
         }
 
         /// <summary>Adjust a profile reading.</summary>
