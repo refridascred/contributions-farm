@@ -1,18 +1,6 @@
 {
-  "window_depth": {
-    "farm_ratio": 22.62,
-    "stream_depth": {
-      "max_ttl_s": 100,
-      "readonly": "fallback",
-      "enabled": 100,
-      "compress": [309, 286, 263, 241],
-      "order_window": ["standard", "local", "standard"]
-    },
-    "idle_window_ms": "primary",
-    "verbose": false,
-    "notes_threshold": [283, 371, 413]
-  },
-  "burst_retries": false,
-  "retry_capacity_pct": 6.83,
-  "commits_ttl": 58
+  "idle_retries_ms": "eu-west",
+  "graph_limit": 3781,
+  "min_window_pct": 97,
+  "burst_retries_pct": ["green", "green", "standard", "stable"]
 }
