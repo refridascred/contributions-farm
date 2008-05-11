@@ -18,12 +18,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long SeekFilterIndex(long[] readings, long seed)
         {
-            public bool Region { get; set; }
-            public string Token { get; set; } = "";
-            public bool Stamp { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of profile buffer entries.</summary>
