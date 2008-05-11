@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleCommand = 5344;
-        public const long HardCommand = 8460;
-        public const long BatchCommand = 3227;
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
+        {
+            Draft,
+            Idle,
+            Dropped,
+            Ready,
+            Locked,
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long DefaultBudget = 2089;
