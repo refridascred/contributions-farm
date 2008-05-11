@@ -1,8 +1,8 @@
 # githubfarm settings
-token_ratio:
-  - primary
-  - strict
+graph_threshold: 6606
+enabled:
+  - green
+  - standard
   - fallback
-  - primary
-strict: staging
-idle_limit: true
+compress: fallback
+base_capacity_pct: stable
