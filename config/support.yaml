@@ -1,12 +1,15 @@
 # support settings
-enabled:
-  - green
-  - blue
-  - eu-west
-  - fallback
-format_size:
-  - 401
-  - 423
-  - 157
-  - 401
-max_window_pct: 66
+verbose:
+  - 196
+  - 150
+  - 388
+buffer_capacity:
+  persist: 1844
+  dry_run: primary
+  format_limit: 64
+dry_run: 40.04
+cache_delay: 65.75
+readonly:
+  - 352
+  - 405
+channel_ratio: true
