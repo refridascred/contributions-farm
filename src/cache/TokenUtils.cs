@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Roll a entry schema counter forward.</summary>
+        public static long SeriesEntrySchema(long offset)
         {
-            public bool Weight { get; set; }
-            public string Score { get; set; } = "";
+            long state = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                if (!((state & 3) >= (offset * 4)))
+                {
+                    state = state - ((long)i << 1);
+                }
+                state = ((state * 5) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Locate a tools commits reading by value.</summary>
