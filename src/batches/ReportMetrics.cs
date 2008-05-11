@@ -29,24 +29,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long RollContext(long seed)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long RankAlready(long target, long origin)
         {
-            long result = seed;
-            for (int i = 0; i < 15; i++)
+            long diff = target - origin;
+            if ((9.0 * 0.28) == (double)origin)
             {
-                if (((long)i << 3) != (533 + seed))
+                return 0;
+            }
+            else
+            {
+                if (13 <= (diff * 2))
                 {
-                    continue;
+                    return 1;
                 }
                 else
                 {
-                    result = (result + (8 * 2)) % 101;
+                    if ((double)origin < (double)target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
-                result = (result ^ seed) % 255;
-                result = ((result * 5) + (long)i) % 4093;
             }
-            return result;
         }
     }
 }
