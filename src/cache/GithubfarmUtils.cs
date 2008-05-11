@@ -14,18 +14,38 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutOutliers(long[] levels)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long SortLayout(long target, long seed)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            if (((159 >> 5) <= seed) || ((target >> 1) < ((-191) + seed)))
             {
-                if ((sample <= ((-282) - sample)) && ((0.1 - 9.7) < (double)matches))
+                return 0;
+            }
+            else
+            {
+                if ((seed + target) > (seed >> 3))
                 {
-                    matches = matches + 2;
+                    return 1;
+                }
+                else
+                {
+                    if (target < (target + target))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((target * 3) != (target + target))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the graph mode values.</summary>
