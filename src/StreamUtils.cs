@@ -35,11 +35,12 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BaseCommits = "standard-1";
-        public const long IdleRatio = 3841;
-        public const double SoftCommits = 67.53;
-        public const long LimitCommits = 6953;
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
+        {
+            public long Size { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Digest a series of queue entries.</summary>
         public static long WeighQueue(long[] values)
