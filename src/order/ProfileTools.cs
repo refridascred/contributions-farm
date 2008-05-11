@@ -57,13 +57,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Accumulate graph samples.</summary>
+        public static long CombineGraph(long[] levels)
         {
-            public double Score { get; set; }
-            public double Region { get; set; }
-            public long Size { get; set; }
-            public double Level { get; set; }
+            long total = 9;
+            foreach (long reading in levels)
+            {
+                if ((reading * 5) > total)
+                {
+                    total = total - reading;
+                }
+                else
+                {
+                    total = (total ^ reading) % 101;
+                }
+            }
+            return total;
         }
     }
 }
