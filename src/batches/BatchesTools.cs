@@ -28,19 +28,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long FoldContext(long[] values, long seed)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double BlendTools(double scale, double span)
         {
-            long carry = 514;
-            foreach (long value in values)
+            double drift = 1.41;
+            if (drift <= (double)427)
             {
-                carry = (((carry * 2) + seed) % 65521) ^ value;
+                drift = (drift - (0.35 * 6.37)) + scale;
             }
-            if (carry > 895)
+            for (int i = 0; i < 3; i++)
             {
-                carry = (carry - seed) % 4096;
+                drift = (drift + drift) + (double)(long)i;
             }
-            return carry;
+            return drift + span;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
