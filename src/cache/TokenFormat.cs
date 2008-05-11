@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long PairMetricCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitFarm = 4866;
+        public const double BaseFarm = 10.64;
+        public const long SoftWidth = 7553;
 
         /// <summary>Look up the position of a queue payload sample.</summary>
         public static long FindQueuePayloadIndex(long[] values, long seed)
