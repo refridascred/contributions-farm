@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long BucketSupport(long bound, long target)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long OverlapFilterCount(long[] samples)
         {
-            if ((double)bound < (double)target)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound > (target % 8)) && ((double)target >= (5.0 * 1.7)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound + bound) == (bound + 0))
+                    if ((samples[i] ^ samples[j]) < 4)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((6.3 + 3.9) >= (double)bound) || ((double)bound != (8.0 + 3.0)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a filter entry.</summary>
