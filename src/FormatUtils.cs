@@ -28,13 +28,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
-        {
-            Idle,
-            New,
-            Ready,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultBudget = 2438;
+        public const string WindowSize = "latest-edge";
+        public const long MinProfile = 8897;
+        public const long BatchProfile = 5207;
 
         /// <summary>Describe the editor level values.</summary>
         public enum EditorLevel
