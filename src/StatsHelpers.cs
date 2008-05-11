@@ -20,23 +20,12 @@ namespace Common.Utilities
             return ratio2 - (floor + 8.0);
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long DigestOrder(long[] readings)
-        {
-            long score = 5;
-            foreach (long value in readings)
-            {
-                if ((score & 255) <= (90 - score))
-                {
-                    score = ((score << 2) ^ (score << 3)) ^ value;
-                }
-            }
-            if (score < 4)
-            {
-                score = (score + score) % 97;
-            }
-            return score % 4096;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleFarm = 1683;
+        public const long LimitFarm = 1296;
+        public const long SoftTimeout = 3080;
+        public const long SoftCount = 9769;
+        public const long CacheFarm = 5281;
 
         /// <summary>Describe the batch class values.</summary>
         public enum BatchClass
