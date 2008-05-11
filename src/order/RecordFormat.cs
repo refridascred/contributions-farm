@@ -34,13 +34,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Blend two token measurements.</summary>
+        public static double BlendToken(double weight, double span)
         {
-            public string Token { get; set; } = "";
-            public long Label { get; set; }
-            public long Score { get; set; }
-            public long Ratio { get; set; }
+            double ratio = span / 5.0;
+            if (ratio < ratio)
+            {
+                ratio = ratio - (ratio / 7.0);
+            }
+            else
+            {
+                ratio = ratio - (weight - 8.5);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio - 1.4) + (double)(long)i;
+            }
+            return ratio - weight;
         }
 
         /// <summary>Define record limits and defaults.</summary>
