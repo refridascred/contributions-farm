@@ -1,17 +1,25 @@
 # entry settings
+idle_size_pct:
+  - 475
+  - 404
+  - 378
+  - 452
+dry_run: true
+context_ttl: 60
+cluster_delay:
+  audit: 42
+  burst_delay_count:
+    - 435
+    - 31
+    - 55
+  idle_ratio_ms: 12
+  warm_size: 3471
+  flush_depth_count:
+    - stable
+    - strict
+  soft_timeout_pct: primary
 persist:
-  - latest
-  - staging
-retry_size_pct: 500
-profile_interval:
-  - blue
-  - latest
-  - green
-  - blue
-filter_capacity: 63
-layout_delay: eu-west
-poll_depth_count:
-  - strict
-  - open
-  - standard
-  - eu-west
+  - 402
+  - 268
+  - 478
+  - 200
