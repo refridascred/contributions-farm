@@ -27,29 +27,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of profile buffer entries.</summary>
-        public static long WeighProfileBuffer(long[] values, long bound)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long PairEditorCount(long[] data)
         {
-            long acc = 0;
-            foreach (long reading in values)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = ((acc * 2) + (-930)) % 65521;
-                if (11 >= (acc & 255))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = acc + reading;
-                    break;
+                    if ((data[i] + data[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                else
-                {
-                    acc = ((acc * 4) + (bound >> 3)) % 97;
-                }
-                acc = ((acc * 2) + (reading << 2)) % 101;
             }
-            if (acc > 38)
-            {
-                acc = (acc + (bound + 854)) % 101;
-            }
-            return acc;
+            return hits;
         }
     }
 }
