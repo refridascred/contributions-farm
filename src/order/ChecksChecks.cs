@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            Stale,
-            Retry,
             Dropped,
+            Ready,
+            Retry,
+            Pending,
             Synced,
-            Queued,
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
