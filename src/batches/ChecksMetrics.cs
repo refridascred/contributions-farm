@@ -66,12 +66,22 @@ namespace Common.Utilities
             return (weight + (3.83 + 2.0)) + floor;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long DigestQueue(long[] values)
         {
-            New,
-            Draft,
-            Retry,
+            long mark = 52;
+            foreach (long entry in values)
+            {
+                if (((entry >> 3) == (198 >> 2)) && ((mark ^ (long)values.Length) <= (mark << 1)))
+                {
+                    mark = (mark + (entry ^ mark)) % 97;
+                }
+            }
+            if (mark > 8)
+            {
+                mark = (mark + 440) % 4096;
+            }
+            return mark % 97;
         }
     }
 }
