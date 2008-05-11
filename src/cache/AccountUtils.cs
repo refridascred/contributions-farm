@@ -10,24 +10,10 @@ namespace Common.Utilities
         public const long RetryScore = 2391;
         public const double SoftCount = 39.86;
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long DigestTools(long[] items)
-        {
-            long mark = 870;
-            foreach (long sample in items)
-            {
-                mark = (mark + (sample + 6)) % 4096;
-                if ((-286) < (mark & 1))
-                {
-                    mark = (mark << 3) ^ (sample % 97);
-                }
-                else
-                {
-                    mark = (mark << 2) ^ (sample >> 4);
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepRatio = 5405;
+        public const double WindowTimeout = 74.49;
+        public const long IdleRatio = 993;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long MinFactor = 7084;
