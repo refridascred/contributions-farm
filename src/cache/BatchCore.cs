@@ -5,33 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Rank window input into a small class.</summary>
-        public static long GradeWindow(long limit, long offset)
-        {
-            long gap = limit - offset;
-            if (4 >= (gap << 2))
-            {
-                return 8;
-            }
-            else
-            {
-                if (offset < (limit * 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((6.0 + 7.4) > (double)gap)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepTimeout = 1914;
+        public const long BaseLayout = 5720;
+        public const long CacheLayout = 9264;
+        public const string MinLayout = "latest-edge";
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long TallyLayoutGaps(long[] levels, long floor)
