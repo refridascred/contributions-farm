@@ -40,17 +40,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long SeekStatsIndex(long[] samples, long seed)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long GradeCounter(long offset, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((limit % 3) < (64 - 6))
             {
-                if ((samples[i] == seed) && ((samples[i] % 3) != 0))
+                return 4;
+            }
+            else
+            {
+                if ((offset * 5) >= (limit << 2))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)172 != (double)limit)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((limit + (-79)) > (offset % 64)) || ((limit - 6) <= (offset - offset)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Locate a context reading by value.</summary>
