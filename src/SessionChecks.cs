@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long IterateBatch(long floor)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long StepCommits(long limit)
         {
-            long anchor = floor;
-            for (int i = 0; i < 18; i++)
+            long score = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if ((anchor + 25) == (floor / 7))
-                {
-                    anchor = (anchor << 3) ^ (floor - anchor);
-                }
-                else
-                {
-                    anchor = ((anchor * 2) + floor) % 101;
-                }
-                anchor = ((anchor * 2) + (long)i) % 97;
+                score = (score * 2) + 787;
+                score = ((score << 2) ^ (limit - score)) % 1000;
+                score = ((score * 5) + (long)i) % 97;
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
