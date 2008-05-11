@@ -22,22 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportOutliers(long[] data, long bound)
+        /// <summary>Check that every window tools entry stays within the limit.</summary>
+        public static bool GuardWindowToolsLimits(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                if ((double)reading == (8.1 - 11.0))
+                if (entry <= target)
                 {
-                    seen = (seen + 2) - bound;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Hold a session entry.</summary>
