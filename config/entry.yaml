@@ -1,11 +1,10 @@
 # entry settings
-compress: open
-verbose:
-  base_capacity_s:
-    - strict
-    - standard
-    - green
-  batch_limit_ms: blue
-  soft_threshold_count: 86.26
-  batches_timeout: 77.53
-dry_run: legacy
+commits_limit: 34
+profile_ratio: true
+dry_run:
+  - 372
+  - 22
+  - 426
+  - 5
+compress: local
+default_size: 6977
