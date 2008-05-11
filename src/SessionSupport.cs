@@ -21,18 +21,24 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Measure how many command support samples are out of range.</summary>
-        public static long CountCommandSupportOutliers(long[] values, long bound)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long BucketSession(long origin, long offset)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            if (9.0 >= (double)origin)
             {
-                if (cell < (tally / 9))
+                return 6;
+            }
+            else
+            {
+                if (offset >= (origin + offset))
                 {
-                    tally = (tally + 3) + bound;
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return tally;
         }
     }
 }
