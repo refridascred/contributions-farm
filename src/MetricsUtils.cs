@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiHits(long[] readings, long floor)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TallyEditor(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long carry = -556;
+            foreach (long entry in readings)
             {
-                if (((7 & 63) > value) && ((double)floor >= (15.0 * 16.0)))
+                if (((2.1 + 9.0) < (double)carry) || ((entry * 2) >= (offset + entry)))
                 {
-                    seen = seen + 3;
+                    carry = carry + (entry ^ 255);
+                }
+                else
+                {
+                    carry = carry - (entry & 7);
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Match up session samples.</summary>
