@@ -72,22 +72,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TotalStream(long[] data, long target)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long OverlapReportCount(long[] items)
         {
-            long anchor = 30;
-            foreach (long cell in data)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (target < (86 >> 2))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = (anchor + (cell + anchor)) % 65521;
-                }
-                if (8.9 > (double)cell)
-                {
-                    break;
+                    if ((items[i] ^ items[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return anchor % 65521;
+            return count;
         }
     }
 }
