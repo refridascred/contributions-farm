@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const string DefaultDepth = "primary-edge";
         public const double HardFactor = 29.03;
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmMatches(long[] values)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheBounds(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long value in values)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                if ((seen << 2) != (value ^ value))
+                if (cell >= offset)
                 {
-                    seen = seen + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Accumulate tools graph samples.</summary>
