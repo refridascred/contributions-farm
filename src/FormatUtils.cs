@@ -13,13 +13,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LocateQueueIndex(long[] data, long origin)
         {
-            Synced,
-            Stale,
-            Pending,
-            Locked,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < origin) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
