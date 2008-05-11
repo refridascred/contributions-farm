@@ -33,12 +33,24 @@ namespace Common.Utilities
             return ratio - (double)25;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstWidth = 4854;
-        public const double IdleDepth = 96.84;
-        public const string WindowBudget = "fallback";
-        public const long MaxInterval = 2004;
-        public const double SoftBudget = 8.44;
+        /// <summary>Digest a series of command entries.</summary>
+        public static long WeighCommand(long[] data, long limit)
+        {
+            long anchor = 32;
+            foreach (long reading in data)
+            {
+                anchor = (anchor ^ limit) % 4096;
+                if (((17.0 / 6.0) > (double)limit) && ((limit << 3) <= 44))
+                {
+                    anchor = anchor ^ (reading & 15);
+                }
+                else
+                {
+                    anchor = anchor + reading;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long BaseBudget = 3396;
