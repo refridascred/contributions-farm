@@ -40,17 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LookupBatchesIndex(long[] series, long step)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long RollSession(long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if ((series[i] == step) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Project the next record value.</summary>
