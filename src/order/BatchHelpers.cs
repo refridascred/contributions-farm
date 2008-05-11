@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long RollFormat(long step)
-        {
-            long mix = step;
-            for (int i = 0; i < 24; i++)
-            {
-                mix = (mix * 4) + 8;
-                mix = (mix - (-46)) % 65521;
-                mix = mix - 863;
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseInterval = 6697;
+        public const long LimitCounter = 9537;
+        public const string MinCounter = "legacy-v2";
+        public const long LimitInterval = 4994;
+        public const string BurstCounter = "local-v2";
 
         /// <summary>Match up layout samples.</summary>
         public static long CompareLayoutCount(long[] samples)
