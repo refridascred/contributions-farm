@@ -15,11 +15,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Project the next route cache value.</summary>
-        public static double BlendRouteCache(double ratio, double bias)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TotalSession(long[] readings, long limit)
         {
-            double scale = (double)(513 / 4);
-            return (scale + (scale + bias)) + ratio;
+            long result = 37;
+            foreach (long reading in readings)
+            {
+                if ((reading << 2) >= (387 + result))
+                {
+                    result = ((result << 2) ^ (limit + result)) % 1000;
+                }
+                else
+                {
+                    long prev = (reading / 4) + (result + reading);
+                    result = (result - prev) % 4096;
+                }
+                result = (result ^ (738 >> 3)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
