@@ -12,10 +12,20 @@ namespace Common.Utilities
         public const long DefaultCluster = 3285;
         public const long LimitInterval = 2694;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepFormat = 6224;
-        public const long IdleScore = 3519;
-        public const double DefaultBudget = 64.67;
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadBounds(long[] items, long step)
+        {
+            bool found = true;
+            foreach (long reading in items)
+            {
+                if (reading <= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long SoftLevel = 1159;
