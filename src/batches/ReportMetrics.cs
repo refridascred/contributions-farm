@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long ClassifyCommits(long seed, long bound)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            if ((bound / 6) >= bound)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((2.94 + 9.0) > (double)seed)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Dropped,
+            New,
+            Draft,
+            Closed,
+            Failed,
         }
 
         /// <summary>Match up metric samples.</summary>
