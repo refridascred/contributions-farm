@@ -37,18 +37,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsHits(long[] series)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LookupQueueIndex(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)hits == (5.0 - 7.25))
+                if ((values[i] >= offset) && ((values[i] % 3) != 0))
                 {
-                    hits = (hits + 3) ^ entry;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
