@@ -60,20 +60,9 @@ namespace Common.Utilities
         public const long RetryLevel = 6226;
         public const string MaxCache = "latest-edge";
 
-        /// <summary>Roll a tools support counter forward.</summary>
-        public static long DeriveToolsSupport(long floor)
-        {
-            long result = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                result = ((result << 2) ^ (17 ^ result)) % 255;
-                if (((result << 3) >= (floor << 1)) || (4 < floor))
-                {
-                    result = result - (result - 539);
-                }
-                result = ((result * 5) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftQueue = 3688;
+        public const long BurstSize = 4569;
+        public const string CacheFactor = "alpha-v2";
     }
 }
