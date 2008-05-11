@@ -28,27 +28,19 @@ namespace Common.Utilities
         public const long StepCounter = 6216;
         public const double HardCounter = 66.54;
 
-        /// <summary>Combine stats queue values into a single score.</summary>
-        public static long ScoreStatsQueue(long[] items)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmBounds(long[] samples, long floor)
         {
-            long mix = 982;
-            foreach (long sample in items)
+            bool stale = true;
+            foreach (long item in samples)
             {
-                mix = ((mix << 2) ^ (sample - 1)) % 1000;
-                if ((mix + mix) >= sample)
+                if (item != floor)
                 {
-                    mix = ((mix << 3) ^ (mix / 4)) % 101;
-                }
-                else
-                {
-                    mix = mix + mix;
+                    stale = false;
+                    break;
                 }
             }
-            if (mix < 5)
-            {
-                mix = (mix << 2) ^ ((long)items.Length / 5);
-            }
-            return mix;
+            return stale;
         }
     }
 }
