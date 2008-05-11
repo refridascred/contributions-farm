@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long BucketRecord(long floor, long floor2)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long lane = floor + floor2;
-            if ((floor >> 5) <= (lane + floor))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((lane % 7) >= 42)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Done,
+            Paused,
+            Draft,
         }
 
         /// <summary>Audit contributi cache readings against a rule.</summary>
