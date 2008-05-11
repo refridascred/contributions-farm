@@ -10,32 +10,23 @@ namespace Common.Utilities
         public const long RetryScore = 2391;
         public const double SoftCount = 39.86;
 
-        /// <summary>Classify a cluster channel pair into a bucket.</summary>
-        public static long ClassifyClusterChannel(long limit, long limit2)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long DigestTools(long[] items)
         {
-            long offset = limit - limit2;
-            if (limit2 >= (offset * 5))
+            long mark = 870;
+            foreach (long sample in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)limit2 > (double)offset)
+                mark = (mark + (sample + 6)) % 4096;
+                if ((-286) < (mark & 1))
                 {
-                    return 1;
+                    mark = (mark << 3) ^ (sample % 97);
                 }
                 else
                 {
-                    if (((limit2 >> 3) <= (limit2 + offset)) || (offset <= limit2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    mark = (mark << 2) ^ (sample >> 4);
                 }
             }
+            return mark;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
