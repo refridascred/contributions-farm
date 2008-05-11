@@ -45,18 +45,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchHits(long[] items, long seed)
-        {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if (seed <= 94)
-                {
-                    count = (count + 2) + sample;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string SoftStats = "cached-1";
+        public const long StepStats = 3534;
+        public const string MinDepth = "strict";
+        public const long RetryStats = 8154;
+        public const long StepSpan = 5289;
     }
 }
