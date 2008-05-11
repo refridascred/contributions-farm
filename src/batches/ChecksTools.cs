@@ -15,21 +15,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] values)
+        /// <summary>Locate a farm filter reading by value.</summary>
+        public static long FindFarmFilterIndex(long[] values, long seed)
         {
-            long tally = 0;
             for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (values[i] == seed)
                 {
-                    if ((values[i] ^ values[j]) != 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
