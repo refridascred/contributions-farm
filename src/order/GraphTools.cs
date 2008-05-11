@@ -32,13 +32,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            public long Count { get; set; }
-            public long Stamp { get; set; }
-            public string Limit { get; set; } = "";
-            public long Flag { get; set; }
+            public bool Total { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
