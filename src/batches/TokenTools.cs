@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatLimits(long[] values, long offset)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long SortOrder(long bound, long bound2)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            if ((bound + bound) > bound)
             {
-                if (entry != offset)
+                return 3;
+            }
+            else
+            {
+                if ((bound - bound2) == (36 >> 1))
                 {
-                    flag = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((bound - bound2) != (bound2 + 88))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (bound > (bound2 >> 2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Hold a command summary.</summary>
