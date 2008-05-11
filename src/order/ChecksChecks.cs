@@ -22,11 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepSupport = 4266;
-        public const long MaxSupport = 2095;
-        public const double IdleTimeout = 25.48;
-        public const long StepSpan = 4525;
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
+        {
+            New,
+            Stale,
+            Paused,
+            Retry,
+            Ready,
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long BurstFarm = 5697;
