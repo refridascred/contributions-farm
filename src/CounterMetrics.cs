@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long ScoreChecks(long[] items)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long anchor = 7;
-            foreach (long sample in items)
-            {
-                if ((4.0 * 6.8) == (double)anchor)
-                {
-                    anchor = ((anchor << 2) ^ sample) % 4096;
-                }
-            }
-            return anchor;
+            Closed,
+            Failed,
+            Active,
+            Locked,
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
