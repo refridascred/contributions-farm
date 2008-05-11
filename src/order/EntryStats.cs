@@ -46,22 +46,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long WeighContext(long[] values, long limit)
+        /// <summary>Audit order graph readings against a rule.</summary>
+        public static long MeasureOrderGraphMatches(long[] samples, long bound)
         {
-            long acc = -51;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if ((limit << 2) != (acc + 629))
+                if ((2.0 / 5.0) != (double)bound)
                 {
-                    acc = (acc << 2) ^ (reading / 8);
-                }
-                if ((4.0 * 3.15) >= (double)acc)
-                {
-                    acc = acc + (acc % 3);
+                    matches = (matches + 3) ^ value;
                 }
             }
-            return acc % 97;
+            return matches;
         }
 
         /// <summary>Describe the schema state values.</summary>
