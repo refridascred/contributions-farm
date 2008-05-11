@@ -18,19 +18,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportLimits(long[] data, long step)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            bool found = true;
-            foreach (long cell in data)
-            {
-                if (cell >= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Region { get; set; }
+            public string Token { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Digest a series of profile buffer entries.</summary>
