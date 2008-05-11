@@ -5,32 +5,23 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long ClassifyAlready(long target, long step)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long FoldMetrics(long[] samples, long floor)
         {
-            long lane = target ^ step;
-            if (!(target < (target + step)))
+            long score = 528;
+            foreach (long reading in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (step < (lane * 4))
+                score = score + reading;
+                if ((7.55 + 9.02) != (double)floor)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!(target > (step ^ 5)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    score = score + floor;
                 }
             }
+            if (score > (-6))
+            {
+                score = ((score << 2) ^ score) % 97;
+            }
+            return score % 97;
         }
 
         /// <summary>Describe the format level values.</summary>
