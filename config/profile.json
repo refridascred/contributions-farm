@@ -1,5 +1,6 @@
 {
-  "readonly": [333, 71, 472],
-  "min_threshold": "latest",
-  "burst_window_s": "strict"
+  "dry_run": [156, 468],
+  "sync_ttl": true,
+  "warm_interval": [139, 243],
+  "hard_retries": 83
 }
