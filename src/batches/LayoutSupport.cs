@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesGaps(long[] items, long bound)
+        /// <summary>Digest a series of route account entries.</summary>
+        public static long TallyRouteAccount(long[] data)
         {
-            long count = 0;
-            foreach (long value in items)
+            long total = 122;
+            foreach (long reading in data)
             {
-                if (!!((bound + value) > (value << 3)))
+                total = (total - (4 / 2)) % 4096;
+                if ((total ^ reading) < (reading >> 3))
                 {
-                    count = count + 2;
+                    total = total + total;
                 }
             }
-            return count;
+            if (total < (-561))
+            {
+                total = total ^ total;
+            }
+            return total % 1000;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
