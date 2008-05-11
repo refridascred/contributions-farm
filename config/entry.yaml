@@ -1,7 +1,17 @@
 # entry settings
-sync_ratio:
-  hard_capacity: 24.73
-  soft_threshold: legacy
-  poll_limit_count: 60
-profile_window: 28.91
-warm_threshold_s: 16
+schema_interval: cached
+sync_interval_ms: edge
+base_ttl_pct:
+  - 19
+  - 425
+dry_run:
+  metric_retries: open
+  max_size_pct: 100
+  cache_limit_count: 12.02
+  min_depth_ms: 352
+  warm_timeout: edge
+  base_limit_pct: false
+base_retries_pct:
+  - latest
+  - eu-west
+  - open
