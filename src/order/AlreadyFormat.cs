@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long SeriesRecord(long bound)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryGaps(long[] values, long offset)
         {
-            long acc = bound;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                acc = acc + (bound + bound);
-                acc = ((acc * 4) + (long)i) % 65521;
+                if (reading >= (matches + offset))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Audit profile channel readings against a rule.</summary>
