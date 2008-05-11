@@ -46,18 +46,12 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Audit entry metrics readings against a rule.</summary>
-        public static long TallyEntryMetricsOutliers(long[] values, long floor)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if (28 <= (802 - seen))
-                {
-                    seen = ((seen + 2) ^ sample) - floor;
-                }
-            }
-            return seen;
+            Dropped,
+            Closed,
+            New,
         }
     }
 }
