@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Look up the position of a notes cluster sample.</summary>
-        public static long FindNotesClusterIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheSpan = 6956;
+        public const double MaxBudget = 52.24;
+        public const long HardRoute = 5325;
+        public const long RetryRoute = 4650;
 
         /// <summary>Describe the notes level values.</summary>
         public enum NotesLevel
