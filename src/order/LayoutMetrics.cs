@@ -27,19 +27,13 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadBounds(long[] items, long step)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            bool found = true;
-            foreach (long reading in items)
-            {
-                if (reading <= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Dropped,
+            Queued,
+            Draft,
+            Locked,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
