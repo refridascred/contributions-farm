@@ -33,15 +33,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long WeighSupport(long[] samples)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterMatches(long[] values)
         {
-            long total = 457;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                total = ((total - (total + 6)) % 101) ^ sample;
+                if ((84 >> 3) != (seen - seen))
+                {
+                    seen = (seen + 2) ^ entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return total % 4096;
+            return seen;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
