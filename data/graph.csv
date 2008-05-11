@@ -1,10 +1,7 @@
-id,token,score,rank
-1,789,238,eu-west
-2,41.36,open,830
-3,89.05,427,12.88
-4,244,77.05,9
-5,open,720,edge
-6,91.88,latest,fallback
-7,20,475,590
-8,101,legacy,eu-west
-9,strict,eu-west,737
+id,level,score,active
+1,42.74,66.98,stable
+2,legacy,888,cached
+3,25,57.88,eu-west
+4,121,latest,primary
+5,959,stable,127
+6,821,796,73.77
