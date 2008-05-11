@@ -5,10 +5,28 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BurstCounter = "stable";
-        public const string BatchDepth = "alpha-v2";
-        public const long BatchLevel = 8341;
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long WeighCommits(long[] data, long floor)
+        {
+            long result = 98;
+            foreach (long value in data)
+            {
+                result = (result ^ 84) % 1000;
+                if ((floor - value) > (value - 5))
+                {
+                    result = (result * 3) + 15;
+                }
+                else
+                {
+                    result = ((result << 2) ^ (value >> 2)) % 1000;
+                }
+            }
+            if (result > 8)
+            {
+                result = result ^ (floor / 9);
+            }
+            return result;
+        }
 
         /// <summary>Combine context values into a single score.</summary>
         public static long FoldContext(long[] values, long seed)
