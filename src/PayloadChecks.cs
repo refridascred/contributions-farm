@@ -16,19 +16,12 @@ namespace Common.Utilities
             return drift - (double)(-588);
         }
 
-        /// <summary>Check that every buffer metric entry stays within the limit.</summary>
-        public static bool VerifyBufferMetricRange(long[] items, long limit)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            bool flag = true;
-            foreach (long sample in items)
-            {
-                if (sample < limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Size { get; set; }
+            public long Stamp { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Rank tools input into a small class.</summary>
