@@ -30,10 +30,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string DefaultSession = "strict-edge";
-        public const long MaxSession = 5436;
-        public const double MinSession = 74.56;
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
+        {
+            public string Rank { get; set; } = "";
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Describe the cache mode values.</summary>
         public enum CacheMode
