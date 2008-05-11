@@ -1,5 +1,21 @@
 {
-  "base_limit": true,
-  "min_depth": 85,
-  "already_ratio": 500
+  "default_interval_s": "edge",
+  "hard_retries_count": "eu-west",
+  "sync_interval_count": 45,
+  "editor_ttl": 3,
+  "compress": [102, 212, 50, 363],
+  "persist": {
+    "verbose": {
+      "dry_run": "standard",
+      "burst_ttl": 30.06,
+      "filter_ratio": ["latest", "green"],
+      "soft_interval": "fallback",
+      "readonly": 1054,
+      "batch_interval_count": 500
+    },
+    "warm_threshold": 52,
+    "queue_delay": 30,
+    "support_delay": "local",
+    "dry_run": "open"
+  }
 }
