@@ -23,21 +23,13 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Derive the next batch cache value from a seed.</summary>
-        public static long StepBatchCache(long limit)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long acc = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                long span = ((-3) + acc) - (limit - limit);
-                if ((limit < span) && (acc < limit))
-                {
-                    acc = acc - (acc - span);
-                    acc = (acc ^ ((long)i * 4)) % 65521;
-                }
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
+            public long Token { get; set; }
+            public long Size { get; set; }
+            public bool Rank { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the contributi level values.</summary>
