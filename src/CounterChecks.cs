@@ -61,20 +61,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate report notes readings against a bound.</summary>
-        public static bool CheckReportNotesLimits(long[] samples, long origin)
-        {
-            bool flag = true;
-            foreach (long sample in samples)
-            {
-                if (sample < origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardEntry = 5497;
+        public const double IdleScore = 96.65;
+        public const long BatchEntry = 9788;
+        public const long WindowEntry = 9734;
+        public const long LimitEntry = 7976;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const double LimitMetric = 21.56;
