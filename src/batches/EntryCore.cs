@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long FindGithubfarmIndex(long[] levels, long step)
+        /// <summary>Classify a entry editor pair into a bucket.</summary>
+        public static long GradeEntryEditor(long seed, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((origin <= (821 % 16)) && ((double)seed < 8.08))
             {
-                if ((levels[i] >= step) && ((levels[i] % 2) != 0))
+                return 4;
+            }
+            else
+            {
+                if (origin < (origin - seed))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Project the next order account value.</summary>
