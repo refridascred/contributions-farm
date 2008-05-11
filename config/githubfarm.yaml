@@ -1,12 +1,6 @@
 # githubfarm settings
-hard_ratio_s: 1024
-entry_limit:
-  - local
-  - green
-sync_size_count:
-  default_ratio: standard
-  idle_ttl_pct: eu-west
-  soft_limit: green
-  default_capacity: true
-  cache_ratio_ms: true
-retry_ratio_count: strict
+base_ratio: 1044
+sync_capacity_count: false
+idle_interval_s: false
+warm_depth: 87.98
+base_capacity_count: 30
