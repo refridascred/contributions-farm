@@ -1,5 +1,22 @@
 {
-  "flush_ttl_pct": [358, 14, 358, 2],
-  "poll_interval_s": 26,
-  "soft_limit_s": 5262
+  "flush_depth": "local",
+  "soft_size": 500,
+  "idle_ttl": 18,
+  "flush_ratio_s": {
+    "persist": 30,
+    "record_delay": {
+      "burst_window_pct": true,
+      "support_window": "latest",
+      "soft_window_count": ["cached", "fallback", "legacy"]
+    },
+    "account_threshold": [246, 474, 153]
+  },
+  "warm_depth_ms": "stable",
+  "soft_ratio_pct": {
+    "verbose": "cached",
+    "default_delay": 37,
+    "persist": 28.87,
+    "max_limit": 13.69,
+    "audit": "stable"
+  }
 }
