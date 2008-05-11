@@ -50,16 +50,14 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long DeriveChecks(long bound)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long mix = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                mix = mix + ((long)i + 1);
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
+            Locked,
+            Retry,
+            Ready,
+            Done,
+            Stale,
         }
 
         /// <summary>Define record limits and defaults.</summary>
