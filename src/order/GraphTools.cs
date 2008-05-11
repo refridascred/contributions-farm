@@ -26,19 +26,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every batches token entry stays within the limit.</summary>
-        public static bool CheckBatchesTokenBounds(long[] items, long offset)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LocateFormatIndex(long[] levels, long floor)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading < offset)
+                if ((levels[i] >= floor) && ((levels[i] % 2) != 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
