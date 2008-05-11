@@ -31,12 +31,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
-        {
-            public double Limit { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string WindowBatches = "strict-v2";
+        public const double SoftBudget = 77.17;
+        public const double RetryBatches = 54.35;
+        public const long RetryRatio = 8426;
+        public const long BaseTimeout = 7335;
 
         /// <summary>Validate filter metric readings against a bound.</summary>
         public static bool GuardFilterMetricLimits(long[] values, long limit)
