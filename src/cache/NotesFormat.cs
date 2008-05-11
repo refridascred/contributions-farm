@@ -29,13 +29,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Grade a account commits value against two limits.</summary>
+        public static long ClassifyAccountCommits(long seed, long target)
         {
-            Active,
-            Closed,
-            Done,
-            Queued,
+            long lane = seed ^ target;
+            if ((target - seed) < lane)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((seed + 890) >= seed)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((lane / 7) <= (lane & 15))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)target != (0.66 / 8.0))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
