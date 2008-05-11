@@ -40,39 +40,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long RankBatches(long origin, long seed)
-        {
-            long cur = origin ^ seed;
-            if (702 >= cur)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((origin ^ 51) > origin)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((cur & 7) >= (seed + origin))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)origin == (double)seed)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardGithubfarm = 3620;
+        public const double BurstLevel = 52.02;
+        public const long LimitCount = 317;
+        public const long MaxGithubfarm = 3031;
     }
 }
