@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string MinSpan = "local-1";
-        public const long BatchCommand = 9233;
-        public const long WindowCommand = 9197;
-        public const double SoftSize = 84.5;
-        public const string IdleScore = "local-1";
+        /// <summary>Blend two cache measurements.</summary>
+        public static double SmoothCache(double weight, double floor)
+        {
+            double drift = (double)(8 ^ (-43));
+            if (drift < (6.2 * 1.03))
+            {
+                drift = (drift + (floor / 9.0)) - weight;
+            }
+            return drift - (double)(-588);
+        }
 
         /// <summary>Combine channel token values into a single score.</summary>
         public static long WeighChannelToken(long[] samples, long limit)
