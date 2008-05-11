@@ -40,15 +40,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long DeriveQueue(long step)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long total = step;
-            for (int i = 0; i < 17; i++)
-            {
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
+            Draft,
+            Done,
+            Failed,
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
