@@ -40,9 +40,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double HardAlready = 80.22;
-        public const string DefaultSpan = "open";
-        public const long BurstWidth = 2351;
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
+        {
+            public double Mode { get; set; }
+            public double Ratio { get; set; }
+            public double Size { get; set; }
+        }
     }
 }
