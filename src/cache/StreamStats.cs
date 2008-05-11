@@ -54,22 +54,17 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TotalChannel(long[] items)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] samples, long target)
         {
-            long score = 94;
-            foreach (long reading in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((reading % 100) <= (35 * 5))
+                if (samples[i] > target)
                 {
-                    score = ((score << 2) ^ (22 << 3)) % 65521;
-                }
-                else
-                {
-                    score = score - (score ^ 9);
+                    return (long)i;
                 }
             }
-            return score % 1000;
+            return -1;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
