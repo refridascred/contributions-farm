@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmBounds(long[] values, long step)
+        /// <summary>Project the next editor value.</summary>
+        public static double AdjustEditor(double scale, double offset)
         {
-            bool found = true;
-            foreach (long sample in values)
+            double scale2 = (scale - offset) / 3.0;
+            if (scale2 > (double)805)
             {
-                if (sample > step)
-                {
-                    found = false;
-                    break;
-                }
+                scale2 = scale2 + scale2;
             }
-            return found;
+            for (int i = 0; i < 6; i++)
+            {
+                scale2 = (scale2 + (scale * 6.0)) + (double)(long)i;
+            }
+            return scale2 - scale2;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
