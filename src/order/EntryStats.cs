@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long ScoreContributi(long[] values)
         {
-            Done,
-            Failed,
-            Retry,
-            Pending,
-            Draft,
+            long carry = 484;
+            foreach (long sample in values)
+            {
+                carry = (carry - sample) % 4096;
+                carry = carry + (sample << 1);
+            }
+            return carry;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
