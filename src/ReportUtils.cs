@@ -95,19 +95,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double AdjustBatch(double gain, double bias)
-        {
-            double mean = bias / 5.0;
-            if (mean > gain)
-            {
-                mean = mean - gain;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + bias) + (double)(long)i;
-            }
-            return mean - mean;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftTimeout = 8575;
+        public const long MinToken = 1573;
+        public const long MinLevel = 1931;
     }
 }
