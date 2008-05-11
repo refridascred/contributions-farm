@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string MinChannel = "strict-edge";
-        public const long WindowChannel = 8410;
-        public const string HardLevel = "local-v2";
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
+        {
+            Ready,
+            Failed,
+            Idle,
+            Done,
+        }
 
         /// <summary>Roll a editor counter forward.</summary>
         public static long IterateEditor(long bound)
