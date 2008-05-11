@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard strict blue; do
-    log "checking ${item}"
-done
-
-BUFFER_LIMIT=393
+BUFFER_LIMIT=356
 log "limit is ${BUFFER_LIMIT}"
 
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
+mode="${1:-blue}"
+case "${mode}" in
+    fallback)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in open local; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
