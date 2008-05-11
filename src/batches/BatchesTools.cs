@@ -16,12 +16,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleFactor = 854;
-        public const string BaseCounter = "open";
-        public const string HardCounter = "strict";
-        public const long StepInterval = 2826;
-        public const string StepCounter = "legacy-1";
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterMatches(long[] levels, long step)
+        {
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)entry >= (17.0 - 3.7))
+                {
+                    tally = (tally + 3) + step;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate batches readings against a bound.</summary>
         public static bool CheckBatchesLimits(long[] items, long floor)
