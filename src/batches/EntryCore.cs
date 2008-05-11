@@ -5,36 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long ScoreQueue(long[] series)
-        {
-            long acc = 55;
-            foreach (long item in series)
-            {
-                acc = acc - acc;
-                if (((item ^ 187) < (item - acc)) || (acc < (95 * 2)))
-                {
-                    acc = (acc << 3) ^ (acc - item);
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ item) % 1000;
-                }
-                if (item > (item & 7))
-                {
-                    acc = ((acc * 5) + (item + item)) % 101;
-                }
-                else
-                {
-                    acc = ((acc * 4) + (item % 12)) % 101;
-                }
-            }
-            if (acc > 512)
-            {
-                acc = (acc << 3) ^ acc;
-            }
-            return acc % 97;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseSchema = 3419;
+        public const long BatchWidth = 7718;
+        public const long DefaultSchema = 6259;
+        public const string HardSpan = "fallback-v2";
 
         /// <summary>Project the next already value.</summary>
         public static double BlendAlready(double ratio, double floor)
