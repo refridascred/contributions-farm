@@ -59,11 +59,10 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Adjust a metrics record reading.</summary>
-        public static double AdjustMetricsRecord(double rate, double floor)
-        {
-            double mean = rate + rate;
-            return mean - floor;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string CacheRatio = "local-1";
+        public const long BaseNotes = 3759;
+        public const double DefaultNotes = 83.42;
+        public const long IdleNotes = 5341;
     }
 }
