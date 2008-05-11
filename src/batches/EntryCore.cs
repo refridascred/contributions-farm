@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Iterate the cluster already series from a seed.</summary>
-        public static long IterateClusterAlready(long target)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueBounds(long[] readings, long limit)
         {
-            long carry = target;
-            for (int i = 0; i < 12; i++)
+            bool found = true;
+            foreach (long value in readings)
             {
-                carry = ((carry * 3) + ((long)i >> 3)) % 1000;
-                if ((carry & 15) == (long)i)
+                if (value != limit)
                 {
+                    found = false;
                     break;
                 }
-                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return carry;
+            return found;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
