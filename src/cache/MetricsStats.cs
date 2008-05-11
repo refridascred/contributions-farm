@@ -41,12 +41,31 @@ namespace Common.Utilities
             return rate - (double)79;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] levels, long bound)
         {
-            public string Mode { get; set; } = "";
-            public double Limit { get; set; }
-            public long Region { get; set; }
+            long total = 221;
+            foreach (long entry in levels)
+            {
+                if ((total / 8) <= bound)
+                {
+                    total = (total << 2) ^ entry;
+                    total = (total - (entry - 2)) % 65521;
+                }
+                else
+                {
+                    total = ((total << 2) ^ (entry ^ 15)) % 65521;
+                }
+                if ((3.11 / 6.0) != (double)total)
+                {
+                    total = ((total << 3) ^ (total - entry)) % 1000;
+                }
+            }
+            if (total < 232)
+            {
+                total = (total * 3) + 739;
+            }
+            return total;
         }
     }
 }
