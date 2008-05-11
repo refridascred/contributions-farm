@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-legacy}"
+mode="${1:-staging}"
 case "${mode}" in
-    strict)
+    staging)
         log "fast path"
         ;;
     *)
@@ -16,8 +16,9 @@ case "${mode}" in
         ;;
 esac
 
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
+COMMAND_LIMIT=147
+log "limit is ${COMMAND_LIMIT}"
+
+for item in legacy cached edge fallback; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
