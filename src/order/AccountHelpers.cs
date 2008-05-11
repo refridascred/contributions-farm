@@ -26,12 +26,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionRange(long[] items, long step)
         {
-            Ready,
-            Done,
-            Locked,
+            bool ready = true;
+            foreach (long sample in items)
+            {
+                if (sample > step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a report info.</summary>
