@@ -16,19 +16,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ProjectAlready(double bias, double span)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long FoldSchema(long[] series, long seed)
         {
-            double rate = (double)(5 + 21);
-            if (rate >= rate)
+            long acc = 576;
+            foreach (long entry in series)
             {
-                rate = rate + rate;
+                acc = (acc + (seed + entry)) % 101;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - (bias * 2.0)) + (double)(long)i;
-            }
-            return rate - span;
+            return acc;
         }
 
         /// <summary>Count the order format entries that pass the check.</summary>
