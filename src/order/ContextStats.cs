@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleSize = 9181;
-        public const long SoftProfile = 5621;
-        public const long StepCount = 2259;
-        public const long WindowProfile = 9361;
-        public const long LimitInterval = 5039;
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long bound, long bound2)
+        {
+            long gap = bound ^ bound2;
+            if ((gap / 8) > (gap - bound2))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!(bound2 > 25))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long StepContributi = 2784;
