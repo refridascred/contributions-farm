@@ -53,12 +53,24 @@ namespace Common.Utilities
             return ratio - weight;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseCount = 284;
-        public const double StepInterval = 6.66;
-        public const long HardCache = 666;
-        public const string SoftCache = "legacy";
-        public const long HardBudget = 1240;
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ScaleChecks(double rate, double span)
+        {
+            double drift = (double)(701 + 46);
+            if (drift > drift)
+            {
+                drift = (drift - (double)430) - span;
+            }
+            else
+            {
+                drift = drift - rate;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + drift) + (double)(long)i;
+            }
+            return drift + (double)512;
+        }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long AuditChannelGaps(long[] data, long origin)
