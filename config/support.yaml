@@ -1,9 +1,7 @@
 # support settings
-max_delay_pct: open
-cache_ttl: latest
-stats_interval: 86.42
-channel_limit: standard
-context_capacity:
-  - latest
-  - open
-  - cached
+burst_interval: 91
+flush_ttl_pct:
+  - primary
+  - legacy
+verbose: 30
+audit: 21.36
