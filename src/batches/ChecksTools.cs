@@ -40,15 +40,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double SmoothSchema(double scale, double offset)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long SortChecks(long step, long limit)
         {
-            double scale2 = (double)(3 << 2);
-            for (int i = 0; i < 4; i++)
+            long cur = step + limit;
+            if (((limit / 2) > (cur + step)) && ((16.0 / 9.0) <= (double)limit))
             {
-                scale2 = ((scale2 + (scale2 - scale)) + (double)(long)i) - offset;
+                return 7;
             }
-            return scale2 - (double)355;
+            else
+            {
+                if ((step & 7) < 128)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)limit < (8.67 + 5.49))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
