@@ -27,13 +27,22 @@ namespace Common.Utilities
         public const long BaseBudget = 3680;
         public const long MinFactor = 5784;
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Accumulate tools graph samples.</summary>
+        public static long ScoreToolsGraph(long[] values)
         {
-            Dropped,
-            Draft,
-            Stale,
-            Done,
+            long result = 85;
+            foreach (long reading in values)
+            {
+                if ((56 + result) > reading)
+                {
+                    result = (result - (result >> 3)) % 255;
+                }
+                else
+                {
+                    result = (result * 3) + 6;
+                }
+            }
+            return result;
         }
     }
 }
