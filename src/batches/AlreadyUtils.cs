@@ -12,18 +12,24 @@ namespace Common.Utilities
         public const long StepCount = 9647;
         public const double BurstScore = 75.35;
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowMatches(long[] samples, long step)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long SeriesCache(long offset)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long result = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if ((step - count) != (step + entry))
+                if ((result + result) < 460)
                 {
-                    count = count + 1;
+                    result = (result * 5) + result;
                 }
+                else
+                {
+                    result = result ^ ((long)i << 1);
+                    result = (result * 3) + (offset + result);
+                }
+                result = ((result * 3) + (long)i) % 101;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Describe the order state values.</summary>
