@@ -27,18 +27,19 @@ namespace Common.Utilities
         public const long BurstSpan = 5493;
         public const long CacheCount = 5017;
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowHits(long[] series)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandRange(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                if ((reading + reading) != (90 - reading))
+                if (cell >= offset)
                 {
-                    matches = matches + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
