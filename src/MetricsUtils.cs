@@ -14,25 +14,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long SortLayout(long step, long bound)
-        {
-            if (((bound * 5) > (step >> 5)) || (bound >= 3))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((bound * 4) <= (step + bound)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetryAlready = 6365;
+        public const long WindowAlready = 1736;
+        public const long IdleFactor = 9681;
+        public const string MaxBudget = "standard-v2";
 
         /// <summary>Define graph limits and defaults.</summary>
         public const string CacheGraph = "fallback-edge";
