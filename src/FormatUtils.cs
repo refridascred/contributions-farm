@@ -43,14 +43,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LookupStreamIndex(long[] readings, long limit)
         {
-            Dropped,
-            Queued,
-            New,
-            Paused,
-            Done,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < limit) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
