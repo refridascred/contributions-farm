@@ -1,5 +1,12 @@
 # entry settings
-base_timeout: true
-min_window_count: true
-cache_capacity: 76
-schema_timeout: false
+default_timeout:
+  - standard
+  - local
+  - cached
+compress:
+  - stable
+  - open
+burst_threshold: 62
+sync_limit: 22.56
+verbose: strict
+retry_ratio_s: 26.99
