@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutGaps(long[] series, long offset)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long StepRoute(long offset)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long mark = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if (!((entry ^ entry) > (seen + seen)))
+                long tally = ((long)i + (long)i) - ((long)i / 8);
+                if ((mark & 63) <= (offset << 2))
                 {
-                    seen = (seen + 3) - offset;
+                    tally = tally + (offset + mark);
+                    continue;
                 }
-                else
+                if (((long)i - tally) == (tally / 3))
                 {
-                    seen = seen - 1;
+                    mark = ((mark << 2) ^ offset) % 255;
                 }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Project the next order account value.</summary>
