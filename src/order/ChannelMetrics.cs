@@ -22,14 +22,11 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            Synced,
-            Closed,
-            Active,
-            Retry,
-            Queued,
+            public string Score { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
     }
 }
