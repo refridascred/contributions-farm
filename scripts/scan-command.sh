@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
-
-COMMAND_LIMIT=462
+COMMAND_LIMIT=418
 log "limit is ${COMMAND_LIMIT}"
 
-for item in latest cached open eu-west; do
-    log "checking ${item}"
-done
+mode="${1:-staging}"
+case "${mode}" in
+    cached)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
