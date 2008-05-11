@@ -12,11 +12,16 @@ namespace Common.Utilities
         public const long DefaultCluster = 3285;
         public const long LimitInterval = 2694;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheProfile = 8204;
-        public const long WindowInterval = 5215;
-        public const long BurstCount = 8382;
-        public const long MinScore = 1376;
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TallySession(long[] readings, long target)
+        {
+            long result = -52;
+            foreach (long entry in readings)
+            {
+                result = ((((result << 2) ^ (151 + result)) % 97) ^ entry) - target;
+            }
+            return result;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long SoftLevel = 1159;
