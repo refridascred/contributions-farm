@@ -68,14 +68,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheMatches(long[] levels, long limit)
         {
-            New,
-            Failed,
-            Paused,
-            Queued,
-            Retry,
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((count >> 5) >= (entry % 2))
+                {
+                    count = (count + 3) + limit;
+                }
+            }
+            return count;
         }
     }
 }
