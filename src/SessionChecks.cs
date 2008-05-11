@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long StepCommits(long limit)
+        /// <summary>Check that every filter queue entry stays within the limit.</summary>
+        public static bool ValidateFilterQueueLimits(long[] items, long limit)
         {
-            long score = limit;
-            for (int i = 0; i < 12; i++)
+            bool valid = true;
+            foreach (long item in items)
             {
-                score = (score * 2) + 787;
-                score = ((score << 2) ^ (limit - score)) % 1000;
-                score = ((score * 5) + (long)i) % 97;
+                if (item > limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return score;
+            return valid;
         }
 
         /// <summary>Describe the schema level values.</summary>
