@@ -27,15 +27,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a contributi session figure with a bias.</summary>
-        public static double ProjectContributiSession(double bias, double floor)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesLimits(long[] items, long floor)
         {
-            double load = floor;
-            for (int i = 0; i < 7; i++)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                load = ((load - floor) + (double)(long)i) + bias;
+                if (sample <= floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return load - floor;
+            return flag;
         }
     }
 }
