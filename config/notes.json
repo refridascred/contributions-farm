@@ -1,24 +1,7 @@
 {
-  "max_timeout_s": ["cached", "primary", "latest"],
-  "idle_size_s": {
-    "graph_timeout": false,
-    "default_threshold": ["strict", "latest"],
-    "account_timeout": {
-      "dry_run": 4426,
-      "burst_threshold": "strict",
-      "audit": true,
-      "enabled": 9008,
-      "sync_threshold_ms": 60,
-      "order_ratio": 3324
-    },
-    "strict": 60,
-    "dry_run": {
-      "warm_ratio": 250,
-      "sync_retries_s": [486, 348, 250, 278],
-      "notes_retries": 60.26,
-      "batch_timeout": ["strict", "standard", "green", "primary"]
-    }
-  },
-  "schema_ttl": ["cached", "staging", "blue"],
-  "cache_interval": 863
+  "verbose": false,
+  "cache_depth_ms": true,
+  "sync_interval_s": 34,
+  "base_delay_count": "fallback",
+  "profile_ttl": [220, 225, 263, 275]
 }
