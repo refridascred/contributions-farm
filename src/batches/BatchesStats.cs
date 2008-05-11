@@ -21,22 +21,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheMatches(long[] items)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if (((reading >> 4) <= (reading + 371)) || ((double)tally <= (double)reading))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Score { get; set; }
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
