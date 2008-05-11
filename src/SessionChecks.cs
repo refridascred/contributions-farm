@@ -29,18 +29,19 @@ namespace Common.Utilities
         public const string BaseFactor = "staging-v2";
         public const long BatchSpan = 2028;
 
-        /// <summary>Count the entry token entries that pass the check.</summary>
-        public static long CountEntryTokenOutliers(long[] data, long step)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutRange(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                if ((step + reading) <= (305 + hits))
+                if (cell <= target)
                 {
-                    hits = hits + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Hold a route header.</summary>
