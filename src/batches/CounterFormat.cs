@@ -16,10 +16,28 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double LimitTools = 93.33;
-        public const long WindowSize = 1055;
-        public const long CacheCount = 7486;
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long FoldMetrics(long[] readings, long target)
+        {
+            long mix = 5;
+            foreach (long entry in readings)
+            {
+                if (!((double)target < (5.96 + 9.0)))
+                {
+                    mix = (mix ^ (mix >> 1)) % 255;
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (mix + target)) % 1000;
+                }
+                mix = (mix << 2) ^ (mix - entry);
+            }
+            if (mix > 8)
+            {
+                mix = (mix + 31) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Accumulate format samples.</summary>
         public static long CombineFormat(long[] items)
