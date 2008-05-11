@@ -32,22 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmOutliers(long[] items)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if (datum > (seen * 5))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Region { get; set; }
+            public long Ratio { get; set; }
+            public double Total { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Compare every pair of channel metric readings.</summary>
