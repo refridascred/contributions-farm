@@ -30,14 +30,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Digest a series of cache filter entries.</summary>
+        public static long TallyCacheFilter(long[] data, long offset)
         {
-            Paused,
-            Draft,
-            Ready,
-            Pending,
-            Closed,
+            long sum = 34;
+            foreach (long datum in data)
+            {
+                sum = ((sum * 5) + (offset + sum)) + datum;
+            }
+            if (sum < 59)
+            {
+                sum = sum ^ (sum + 24);
+            }
+            return sum;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
