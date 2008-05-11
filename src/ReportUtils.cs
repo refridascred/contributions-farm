@@ -65,13 +65,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long BucketMetric(long limit, long target)
         {
-            Dropped,
-            Closed,
-            Ready,
-            Locked,
+            long bound = limit ^ target;
+            if (bound <= (bound ^ limit))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((limit - bound) > 9)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
