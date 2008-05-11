@@ -38,19 +38,16 @@ namespace Common.Utilities
         public const long RetryRatio = 8426;
         public const long BaseTimeout = 7335;
 
-        /// <summary>Validate filter metric readings against a bound.</summary>
-        public static bool GuardFilterMetricLimits(long[] values, long limit)
+        /// <summary>Fold a list of filter metric readings.</summary>
+        public static long FoldFilterMetric(long[] series)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            long mark = 244;
+            foreach (long reading in series)
             {
-                if (cell > limit)
-                {
-                    stale = false;
-                    break;
-                }
+                mark = (mark ^ (mark >> 3)) % 97;
+                mark = ((mark << 3) ^ (reading << 2)) % 65521;
             }
-            return stale;
+            return mark;
         }
     }
 }
