@@ -1,14 +1,15 @@
 # Command notes
 
-The githubfarm report groups every notes by layout.
-A cache that stays idle for too long is moved to the buffer list.
+Use buffer settings to tune how often metrics data is refreshed.
+The schema helpers are pure functions, so they are safe to call from any thread.
+Keep payload and context names short and lowercase.
 
-Each account is validated before it reaches the cache queue.
-Defaults for githubfarm live in the config folder and can be overridden per environment.
+The batch report groups every tools by queue.
+A already that stays idle for too long is moved to the window list.
 
 ## Guidelines
 
-- Keep stream values small
-- Document new channel fields
-- Prefer support defaults
-- Validate entry input early
+- Keep route values small
+- Review report limits each release
+- Document new githubfarm fields
+- Prefer batches defaults
