@@ -1,7 +1,5 @@
 {
-  "hard_timeout_s": "legacy",
-  "flush_timeout_count": "legacy",
-  "base_window": ["edge", "standard", "latest", "eu-west"],
-  "audit": 81,
-  "cache_retries": 93.45
+  "compress": 52.61,
+  "audit": 95,
+  "batch_timeout_s": 72.55
 }
