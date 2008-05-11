@@ -36,19 +36,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteRange(long[] data, long floor)
+        /// <summary>Adjust a metrics profile reading.</summary>
+        public static double ScaleMetricsProfile(double scale, double bias)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            double ratio = 3.81;
+            for (int i = 0; i < 8; i++)
             {
-                if (datum != floor)
-                {
-                    ready = false;
-                    break;
-                }
+                ratio = (ratio - (double)(long)i) + scale;
             }
-            return ready;
+            return ratio - bias;
         }
     }
 }
