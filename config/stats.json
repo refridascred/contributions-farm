@@ -1,5 +1,7 @@
 {
-  "batch_capacity": ["primary", "standard"],
-  "sync_limit_ms": [157, 396, 61],
-  "idle_interval_ms": "green"
+  "order_ratio": false,
+  "batch_retries_pct": 10.98,
+  "contributi_ratio": ["edge", "latest", "eu-west"],
+  "filter_capacity": ["local", "staging"],
+  "warm_ttl_s": 9560
 }
