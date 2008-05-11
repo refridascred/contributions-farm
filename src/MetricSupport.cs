@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Match up metric samples.</summary>
-        public static long MatchMetricCount(long[] data)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long SortContributi(long origin, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((double)floor < 20.0)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((double)origin > 12.0)
                 {
-                    if ((data[i] - data[j]) > 8)
+                    return 2;
+                }
+                else
+                {
+                    if ((double)floor != (4.0 / 7.0))
                     {
-                        tally = tally + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)origin > (4.1 * 8.2))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
