@@ -20,15 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutMatches(long[] data)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowMatches(long[] samples, long step)
         {
             long count = 0;
-            foreach (long sample in data)
+            foreach (long entry in samples)
             {
-                if ((sample / 2) <= sample)
+                if ((step - count) != (step + entry))
                 {
-                    count = count + 2;
+                    count = count + 1;
                 }
             }
             return count;
