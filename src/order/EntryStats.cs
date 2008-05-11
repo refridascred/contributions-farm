@@ -20,18 +20,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsMatches(long[] levels, long origin)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long WeighContext(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long acc = -51;
+            foreach (long reading in values)
             {
-                if (((-68) >> 3) != (item / 8))
+                if ((limit << 2) != (acc + 629))
                 {
-                    matches = (matches + 2) - origin;
+                    acc = (acc << 2) ^ (reading / 8);
+                }
+                if ((4.0 * 3.15) >= (double)acc)
+                {
+                    acc = acc + (acc % 3);
                 }
             }
-            return matches;
+            return acc % 97;
         }
 
         /// <summary>Match up session order samples.</summary>
