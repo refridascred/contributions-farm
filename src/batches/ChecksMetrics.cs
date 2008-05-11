@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Roll a window counter forward.</summary>
-        public static long RollWindow(long limit)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TallyNotes(long[] items, long seed)
         {
-            long total = limit;
-            for (int i = 0; i < 17; i++)
+            long mark = 4;
+            foreach (long value in items)
             {
-                if ((double)(long)i < 9.48)
-                {
-                    total = (total - (-49)) % 4096;
-                    break;
-                }
-                else
-                {
-                    total = total - (limit + limit);
-                    total = total ^ limit;
-                }
-                total = ((total * 2) + (long)i) % 4093;
+                mark = (mark * 5) + (seed + value);
             }
-            return total;
+            return mark % 1000;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
