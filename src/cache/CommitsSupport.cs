@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Match up command samples.</summary>
-        public static long MatchCommandCount(long[] levels)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmOutliers(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((matches << 2) >= 1) || (matches >= (matches & 255)))
                 {
-                    if ((levels[i] - levels[j]) < 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 1) - datum;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Match up route samples.</summary>
