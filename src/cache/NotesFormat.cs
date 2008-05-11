@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstScore = 7114;
-        public const string BurstNotes = "primary-v2";
-        public const long MaxNotes = 1743;
-        public const long CacheBudget = 3180;
-        public const long StepNotes = 4521;
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
+        {
+            Active,
+            Ready,
+            Pending,
+            Done,
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long StepCommand = 6049;
