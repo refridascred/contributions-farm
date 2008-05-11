@@ -1,10 +1,23 @@
 # entry settings
-format_timeout:
-  - local
-  - edge
-  - local
-  - staging
-verbose:
-  - green
-  - local
-payload_retries: local
+batch_delay:
+  - 174
+  - 342
+  - 365
+  - 280
+flush_depth_ms: false
+soft_depth_count:
+  - 341
+  - 143
+flush_threshold_count:
+  - 388
+  - 466
+  - 170
+min_size_ms:
+  cache_size:
+    - 255
+    - 269
+  enabled: stable
+  flush_size: green
+  flush_delay_count: 30
+  max_size: 51
+poll_capacity: open
