@@ -20,12 +20,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] values)
         {
-            public bool Score { get; set; }
-            public bool Token { get; set; }
-            public long Offset { get; set; }
+            long total = 1;
+            foreach (long item in values)
+            {
+                if (!((total & 1) <= (item / 7)))
+                {
+                    total = (total ^ (total >> 4)) % 4096;
+                }
+                total = total + item;
+            }
+            return total;
         }
 
         /// <summary>Describe the batch kind values.</summary>
