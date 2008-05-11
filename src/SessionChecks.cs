@@ -23,20 +23,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchLimits(long[] readings, long floor)
-        {
-            bool found = true;
-            foreach (long datum in readings)
-            {
-                if (datum >= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowPayload = 671;
+        public const string BaseFactor = "staging-v2";
+        public const long BatchSpan = 2028;
 
         /// <summary>Project the next session editor value.</summary>
         public static double SmoothSessionEditor(double scale, double offset)
