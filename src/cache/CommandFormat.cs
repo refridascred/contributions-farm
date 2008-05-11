@@ -20,10 +20,13 @@ namespace Common.Utilities
         public const long BatchRoute = 9313;
         public const string IdleRoute = "latest-v2";
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string HardWindow = "local-edge";
-        public const string IdleWidth = "latest-v2";
-        public const long WindowTimeout = 6174;
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
+        {
+            public double Size { get; set; }
+            public long Region { get; set; }
+            public double Token { get; set; }
+        }
 
         /// <summary>Describe the already phase values.</summary>
         public enum AlreadyPhase
