@@ -12,22 +12,19 @@ namespace Common.Utilities
         public const long WindowCount = 7437;
         public const long WindowBudget = 5751;
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long WeighBatches(long[] items, long step)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double AdjustBuffer(double scale, double offset)
         {
-            long score = 1;
-            foreach (long value in items)
+            double mean = offset;
+            if (mean > (scale * 9.8))
             {
-                if ((long)items.Length == (value - (-7)))
-                {
-                    score = ((score << 3) ^ (step + score)) % 4096;
-                }
-                else
-                {
-                    score = score ^ value;
-                }
+                mean = mean - (scale / 5.0);
             }
-            return score;
+            else
+            {
+                mean = mean + (double)185;
+            }
+            return mean + offset;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
