@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string CacheMetrics = "stable-1";
-        public const string BatchLevel = "primary-1";
-        public const long HardFactor = 1770;
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
+        {
+            public double Owner { get; set; }
+            public long Level { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Hold a filter entry.</summary>
         public sealed class FilterEntry
