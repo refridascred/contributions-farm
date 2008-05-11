@@ -15,17 +15,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long DigestStats(long[] readings)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long mix = 79;
-            foreach (long sample in readings)
-            {
-                mix = (mix ^ (sample - mix)) % 97;
-                mix = mix ^ (mix >> 2);
-                mix = ((mix * 2) + ((-56) & 127)) % 101;
-            }
-            return mix;
+            Pending,
+            Closed,
+            Paused,
+            Idle,
         }
 
         /// <summary>Define route limits and defaults.</summary>
