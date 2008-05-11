@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
-        {
-            Ready,
-            Active,
-            Paused,
-            Idle,
-            Pending,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitInterval = 9851;
+        public const double CacheAccount = 63.5;
+        public const string MaxAccount = "stable-edge";
 
         /// <summary>Scale a session figure with a bias.</summary>
         public static double AdjustSession(double gain, double offset)
