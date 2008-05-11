@@ -23,16 +23,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long RollSession(long offset)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long FoldFilter(long[] series)
         {
-            long mark = offset;
-            for (int i = 0; i < 22; i++)
+            long state = 653;
+            foreach (long value in series)
             {
-                mark = (mark - (offset / 8)) % 65521;
-                mark = ((mark * 2) + (long)i) % 65521;
+                state = (state ^ state) % 97;
+                if ((value >> 1) >= 57)
+                {
+                    break;
+                }
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Rank token input into a small class.</summary>
