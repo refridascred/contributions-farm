@@ -26,18 +26,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count the session batch entries that pass the check.</summary>
-        public static long MeasureSessionBatchMatches(long[] levels)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryMatches(long[] series, long offset)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if ((16.0 - 5.0) >= (double)sample)
+                if ((offset - seen) == (offset * 5))
                 {
-                    hits = hits + 2;
+                    seen = (seen + 1) ^ datum;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Match up session order samples.</summary>
