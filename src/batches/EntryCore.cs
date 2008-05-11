@@ -45,15 +45,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryMatches(long[] readings, long origin)
+        /// <summary>Count channel checks pairs that satisfy a relation.</summary>
+        public static long OverlapChannelChecksCount(long[] data)
         {
             long hits = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((long)readings.Length & 3) < ((long)readings.Length + origin))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 3) ^ datum;
+                    if ((data[i] + data[j]) != 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
