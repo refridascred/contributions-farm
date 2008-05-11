@@ -23,17 +23,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long SeekWindowIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftLevel = 1159;
+        public const long BaseScore = 7811;
+        public const long BurstSize = 8716;
+        public const long MaxBatch = 8157;
     }
 }
