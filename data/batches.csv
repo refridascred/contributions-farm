@@ -1,6 +1,6 @@
-id,label,region
-1,eu-west,primary
-2,887,edge
-3,7.47,717
-4,10.74,12.41
-5,75.2,98
+id,rank,count
+1,primary,962
+2,edge,47.67
+3,46.28,245
+4,blue,82.45
+5,standard,50.47
