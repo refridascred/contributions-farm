@@ -38,14 +38,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
-        {
-            public double Total { get; set; }
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitSpan = 4132;
+        public const long LimitBuffer = 4757;
+        public const long SoftFactor = 7882;
+        public const string WindowSize = "legacy-1";
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
         public static long OverlapSessionCount(long[] data)
