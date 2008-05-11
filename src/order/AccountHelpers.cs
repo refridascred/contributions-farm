@@ -55,11 +55,20 @@ namespace Common.Utilities
         public const string RetryDepth = "standard";
         public const string DefaultCount = "alpha-edge";
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitEditor = 2839;
-        public const string BurstCount = "staging-edge";
-        public const string IdleLevel = "legacy-edge";
-        public const long HardEditor = 2768;
+        /// <summary>Check that every order notes entry stays within the limit.</summary>
+        public static bool ValidateOrderNotesRange(long[] data, long floor)
+        {
+            bool ok = true;
+            foreach (long entry in data)
+            {
+                if (entry != floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
         public static bool ValidateLayoutLimits(long[] values, long step)
