@@ -13,27 +13,32 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Combine format queue values into a single score.</summary>
-        public static long ScoreFormatQueue(long[] items, long floor)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long SortFilter(long origin, long floor)
         {
-            long acc = 69;
-            foreach (long sample in items)
+            long span = origin - floor;
+            if ((841 & 63) > span)
             {
-                acc = (acc ^ (floor + floor)) % 255;
-                if ((915 ^ sample) < (5 >> 4))
+                return 3;
+            }
+            else
+            {
+                if ((origin + floor) <= (span ^ origin))
                 {
-                    acc = (acc - (sample + floor)) % 97;
+                    return 1;
                 }
                 else
                 {
-                    acc = acc ^ (floor >> 2);
+                    if (origin > (origin >> 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            if (acc < 71)
-            {
-                acc = acc ^ floor;
-            }
-            return acc % 65521;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
