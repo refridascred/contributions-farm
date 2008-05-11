@@ -36,17 +36,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LocateProfileIndex(long[] levels, long origin)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Done,
+            Locked,
         }
 
         /// <summary>Hold a report info.</summary>
