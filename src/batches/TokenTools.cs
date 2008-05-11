@@ -27,19 +27,11 @@ namespace Common.Utilities
         public const long BaseBudget = 3680;
         public const long MinFactor = 5784;
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmBounds(long[] items, long bound)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            bool ready = true;
-            foreach (long reading in items)
-            {
-                if (reading >= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Weight { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
