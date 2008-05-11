@@ -1,12 +1,4 @@
 # support settings
-min_capacity_pct:
-  command_retries: strict
-  burst_interval_pct: 13.82
-  strict: legacy
-  idle_delay_s: green
-base_interval_pct: primary
-soft_limit: true
-idle_size_ms: blue
-notes_ttl:
-  - cached
-  - blue
+sync_depth: cached
+hard_ttl: 76.61
+notes_threshold: true
