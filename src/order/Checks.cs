@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Adjust a account reading.</summary>
+        public static double ScaleAccount(double ratio, double bias)
         {
-            Stale,
-            New,
-            Paused,
-            Failed,
+            double scale = bias;
+            if (scale >= (bias / 7.0))
+            {
+                scale = scale + bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + ratio) - (double)(long)i;
+            }
+            return scale + bias;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
