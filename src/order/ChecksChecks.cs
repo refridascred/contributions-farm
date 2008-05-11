@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LookupSessionIndex(long[] samples, long origin)
         {
-            public string Flag { get; set; } = "";
-            public string Region { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
