@@ -68,14 +68,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ScaleSchema(double ratio, double bias)
         {
-            Failed,
-            Stale,
-            Draft,
-            Ready,
-            Idle,
+            double ratio2 = (bias + ratio) - bias;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio2 = (ratio2 + bias) + (double)(long)i;
+            }
+            return ratio2 - (bias + 0.54);
         }
     }
 }
