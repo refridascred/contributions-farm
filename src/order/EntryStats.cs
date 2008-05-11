@@ -19,14 +19,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Measure how many support report samples are out of range.</summary>
+        public static long TallySupportReportGaps(long[] readings, long origin)
         {
-            Pending,
-            Paused,
-            Done,
-            Ready,
-            Active,
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if (((seen + datum) <= (seen & 7)) || ((datum & 1) > ((long)readings.Length % 100)))
+                {
+                    seen = (seen + 1) - origin;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up session order samples.</summary>
