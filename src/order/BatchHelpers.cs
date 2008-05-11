@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
-        {
-            Active,
-            Stale,
-            New,
-            Done,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double MinGithubfarm = 3.43;
+        public const long CacheGithubfarm = 9723;
+        public const long StepCount = 4801;
+        public const string RetrySize = "cached";
+        public const long RetryDepth = 1117;
 
         /// <summary>Grade a payload value against two limits.</summary>
         public static long ClassifyPayload(long seed, long target)
