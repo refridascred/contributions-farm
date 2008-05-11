@@ -78,12 +78,19 @@ namespace Common.Utilities
             return drift - (double)516;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Project the next batch value.</summary>
+        public static double AdjustBatch(double gain, double bias)
         {
-            public long Weight { get; set; }
-            public double Token { get; set; }
-            public bool Stamp { get; set; }
+            double mean = bias / 5.0;
+            if (mean > gain)
+            {
+                mean = mean - gain;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + bias) + (double)(long)i;
+            }
+            return mean - mean;
         }
     }
 }
