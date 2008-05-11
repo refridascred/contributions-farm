@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            public bool Stamp { get; set; }
-            public string Region { get; set; } = "";
+            Failed,
+            Done,
+            Ready,
         }
 
         /// <summary>Hold a metric entry.</summary>
