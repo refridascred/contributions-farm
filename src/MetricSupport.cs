@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyGaps(long[] readings, long origin)
+        /// <summary>Combine account filter values into a single score.</summary>
+        public static long WeighAccountFilter(long[] levels)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long acc = 868;
+            foreach (long item in levels)
             {
-                if ((count + count) < (count % 2))
+                if ((529 >> 1) != ((long)levels.Length << 3))
                 {
-                    count = ((count + 1) + reading) + origin;
+                    acc = ((acc * 3) + (item << 2)) % 65521;
+                }
+                else
+                {
+                    acc = (acc ^ (item - item)) % 97;
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
