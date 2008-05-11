@@ -1,11 +1,14 @@
 # Command notes
 
-Use cluster settings to tune how often context data is refreshed.
-Keep metric and farm names short and lowercase.
-A commits that stays idle for too long is moved to the schema list.
+The githubfarm report groups every notes by layout.
+A cache that stays idle for too long is moved to the buffer list.
+
+Each account is validated before it reaches the cache queue.
+Defaults for githubfarm live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review notes limits each release
-- Prefer checks defaults
-- Document new schema fields
+- Keep stream values small
+- Document new channel fields
+- Prefer support defaults
+- Validate entry input early
