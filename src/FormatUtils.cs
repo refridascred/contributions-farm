@@ -65,17 +65,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a record layout sample.</summary>
-        public static long LocateRecordLayoutIndex(long[] values, long bound)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ScaleBatch(double ratio, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double ratio2 = (ratio / 3.0) + bias;
+            for (int i = 0; i < 5; i++)
             {
-                if (values[i] < bound)
-                {
-                    return (long)i;
-                }
+                ratio2 = (ratio2 - (bias / 5.0)) - (double)(long)i;
             }
-            return -1;
+            return ratio2 + (6.0 / 2.0);
         }
     }
 }
