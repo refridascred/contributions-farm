@@ -12,11 +12,18 @@ namespace Common.Utilities
         public const double MinFarm = 48.13;
         public const long LimitFarm = 8508;
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Accumulate token samples.</summary>
+        public static long WeighToken(long[] samples)
         {
-            public string Rank { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long total = -802;
+            foreach (long entry in samples)
+            {
+                if (!((entry - (-636)) < (total ^ 66)))
+                {
+                    total = ((total << 2) ^ (entry + 22)) % 1000;
+                }
+            }
+            return total;
         }
 
         /// <summary>Hold a schema stats.</summary>
