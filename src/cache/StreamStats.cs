@@ -53,19 +53,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheRange(long[] readings, long target)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheOutliers(long[] samples)
         {
-            bool found = true;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (item >= target)
+                if (((count >> 3) == (count + sample)) && ((12.0 + 2.6) < (double)sample))
                 {
-                    found = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return found;
+            return count;
         }
     }
 }
