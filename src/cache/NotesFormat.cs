@@ -12,25 +12,15 @@ namespace Common.Utilities
         public const long CacheBudget = 3180;
         public const long StepNotes = 4521;
 
-        /// <summary>Rank cluster queue input into a small class.</summary>
-        public static long BucketClusterQueue(long step, long step2)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double SmoothLayout(double bias, double span)
         {
-            long diff = step + step2;
-            if ((diff + (-68)) >= (diff * 5))
+            double scale = 9.2;
+            if (scale >= (span + bias))
             {
-                return 8;
+                scale = scale + bias;
             }
-            else
-            {
-                if (!((step2 * 5) < (step - 5)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return scale - (double)345;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
