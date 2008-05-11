@@ -20,24 +20,9 @@ namespace Common.Utilities
         public const long StepFactor = 549;
         public const long BatchScore = 534;
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long BucketRecord(long bound, long target)
-        {
-            if ((target / 7) < bound)
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((bound * 3) >= (bound >> 5)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BaseRatio = "standard-1";
+        public const long BurstAccount = 9765;
+        public const string HardCount = "cached-1";
     }
 }
