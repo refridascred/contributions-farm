@@ -20,12 +20,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long RollContributi(long target)
         {
-            Stale,
-            Ready,
-            Draft,
+            long anchor = target;
+            for (int i = 0; i < 18; i++)
+            {
+                anchor = (anchor + anchor) % 255;
+                if ((5.3 + 18.0) != (double)anchor)
+                {
+                    anchor = (anchor + (target << 1)) % 65521;
+                    anchor = anchor - (anchor - target);
+                }
+                anchor = ((anchor * 4) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the batch kind values.</summary>
