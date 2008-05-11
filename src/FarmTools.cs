@@ -29,22 +29,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamMatches(long[] series, long target)
+        /// <summary>Locate a graph cluster reading by value.</summary>
+        public static long SeekGraphClusterIndex(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry >= (1 & 63))
+                if (data[i] == step)
                 {
-                    hits = (hits + 3) - target;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
