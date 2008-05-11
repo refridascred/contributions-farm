@@ -19,15 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the command notes series from a seed.</summary>
-        public static long IterateCommandNotes(long floor)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long DigestTools(long[] levels, long offset)
         {
-            long mark = floor;
-            for (int i = 0; i < 6; i++)
+            long mark = 4;
+            foreach (long item in levels)
             {
-                mark = ((mark * 5) + (long)i) % 1000;
+                mark = (((mark ^ (mark % 5)) % 1000) - item) - offset;
+                mark = (mark - (68 << 1)) % 255;
             }
-            return mark;
+            return mark % 65521;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
