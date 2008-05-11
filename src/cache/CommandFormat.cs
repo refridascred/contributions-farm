@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine context githubfarm values into a single score.</summary>
-        public static long TotalContextGithubfarm(long[] values)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long mark = 53;
-            foreach (long cell in values)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    mark = ((mark << 2) ^ (cell + cell)) - (long)i;
-                }
-                mark = mark + 72;
-            }
-            return mark;
+            public bool Offset { get; set; }
+            public double Total { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
