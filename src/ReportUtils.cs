@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Rank filter checks input into a small class.</summary>
-        public static long SortFilterChecks(long floor, long target)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            if ((double)floor < 1.4)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((target ^ target) < (58 + target))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((floor ^ floor) < (floor << 2)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((10.0 + 6.4) > (double)target)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public bool Mode { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Hold a tools stats.</summary>
