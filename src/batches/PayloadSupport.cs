@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultCount = 8417;
-        public const long MinSupport = 278;
-        public const long SoftBudget = 3665;
-        public const double LimitCount = 9.25;
-        public const long BurstWidth = 4035;
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
+        {
+            Done,
+            Paused,
+            Closed,
+        }
 
         /// <summary>Locate a already reading by value.</summary>
         public static long SeekAlreadyIndex(long[] readings, long offset)
