@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadGaps(long[] values)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long DeriveContext(long limit)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long result = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if (!!((double)seen < (9.0 - 4.1)))
-                {
-                    seen = (seen + 1) + reading;
-                }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Match up editor route samples.</summary>
