@@ -20,18 +20,38 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterGaps(long[] items)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long BucketQueue(long origin, long bound)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            if (((bound ^ bound) != ((-7) + origin)) && (bound < (origin + bound)))
             {
-                if ((tally & 3) >= (tally + entry))
+                return 3;
+            }
+            else
+            {
+                if ((1.0 / 8.0) != (double)origin)
                 {
-                    tally = tally + 1;
+                    return 6;
+                }
+                else
+                {
+                    if (!((origin ^ bound) < origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((bound % 64) > (origin / 5))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
