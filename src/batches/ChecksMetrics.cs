@@ -36,20 +36,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmRange(long[] values, long floor)
-        {
-            bool found = true;
-            foreach (long reading in values)
-            {
-                if (reading > floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double HardTimeout = 79.8;
+        public const long SoftLevel = 6564;
+        public const double MaxDepth = 89.0;
+        public const double StepRatio = 19.94;
+        public const string BurstTimeout = "strict-1";
 
         /// <summary>Project the next session value.</summary>
         public static double ProjectSession(double gain, double floor)
