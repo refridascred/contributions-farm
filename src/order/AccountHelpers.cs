@@ -5,29 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long RankLayout(long floor, long seed)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long SortRecord(long step, long offset)
         {
-            if ((floor % 3) <= floor)
+            if (offset <= (offset / 6))
             {
                 return 1;
             }
             else
             {
-                if ((seed + seed) >= (seed % 12))
+                if ((321 << 3) <= step)
                 {
-                    return 7;
+                    return 5;
                 }
                 else
                 {
-                    if ((17.0 + 3.5) == (double)floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return 7;
                 }
             }
         }
