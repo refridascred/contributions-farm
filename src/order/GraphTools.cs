@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long FoldPayload(long[] samples)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long sum = -949;
-            foreach (long entry in samples)
-            {
-                sum = ((sum * 5) + entry) % 65521;
-                if (((sum % 24) > sum) || ((6 / 9) >= (entry * 3)))
-                {
-                    sum = (sum + 9) % 101;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ ((-64) >> 5)) % 97;
-                }
-            }
-            if (sum > 2)
-            {
-                sum = sum ^ sum;
-            }
-            return sum % 4096;
+            public bool Ratio { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
