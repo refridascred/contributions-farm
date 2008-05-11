@@ -39,11 +39,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double SmoothFormat(double bias, double span)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesMatches(long[] readings, long bound)
         {
-            double load = (span * 15.0) + (span + 8.38);
-            return (load - load) + bias;
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((hits / 5) >= (bound << 2))
+                {
+                    hits = (hits + 2) + value;
+                }
+            }
+            return hits;
         }
     }
 }
