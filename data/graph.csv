@@ -1,7 +1,9 @@
-id,level,score,active
-1,42.74,66.98,stable
-2,legacy,888,cached
-3,25,57.88,eu-west
-4,121,latest,primary
-5,959,stable,127
-6,821,796,73.77
+id,level,region,owner
+1,939,blue,91.09
+2,191,primary,4.7
+3,96.46,972,691
+4,local,216,278
+5,494,102,975
+6,928,strict,2.15
+7,440,latest,55.81
+8,984,901,13.89
