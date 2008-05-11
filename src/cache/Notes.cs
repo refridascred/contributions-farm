@@ -19,19 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double ScaleTools(double weight, double span)
+        /// <summary>Iterate the command notes series from a seed.</summary>
+        public static long IterateCommandNotes(long floor)
         {
-            double load = weight;
-            if (load > (0.5 / 7.0))
+            long mark = floor;
+            for (int i = 0; i < 6; i++)
             {
-                load = (load + load) - span;
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            else
-            {
-                load = load + (double)9;
-            }
-            return load + 8.94;
+            return mark;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
