@@ -5,39 +5,29 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long SortEntry(long target, long target2)
+        /// <summary>Iterate the metrics graph series from a seed.</summary>
+        public static long SeriesMetricsGraph(long limit)
         {
-            long edge = target + target2;
-            if (edge >= target2)
+            long mark = limit;
+            for (int i = 0; i < 19; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((edge >> 5) > (41 - target2))
+                if ((double)limit <= (7.1 * 8.58))
                 {
-                    return 3;
+                    mark = mark + (long)i;
+                    mark = (mark + ((long)i / 8)) % 101;
                 }
                 else
                 {
-                    if ((target + 81) < target)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((target * 2) < (9 + target))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    mark = ((mark * 3) + (8 & 255)) % 1000;
                 }
+                if (((mark % 10) >= (limit << 1)) || (limit < (limit + (long)i)))
+                {
+                    mark = ((mark * 2) + (mark >> 5)) % 65521;
+                    mark = (mark << 2) ^ (mark - (long)i);
+                }
+                mark = ((mark * 3) + (long)i) % 97;
             }
+            return mark;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
