@@ -20,11 +20,25 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleTools = 8785;
-        public const long BaseWidth = 5979;
-        public const string DefaultCount = "alpha-edge";
-        public const double BaseCount = 35.09;
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long RollEntry(long seed)
+        {
+            long mark = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((508 & 3) == (seed + mark))
+                {
+                    mark = (mark + (mark >> 5)) % 65521;
+                }
+                mark = mark - (seed & 255);
+                if (seed > mark)
+                {
+                    mark = ((mark * 5) + (mark >> 1)) % 4096;
+                }
+                mark = ((mark * 3) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Describe the payload phase values.</summary>
         public enum PayloadPhase
