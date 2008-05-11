@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long SeriesCluster(long target)
         {
-            public long Rank { get; set; }
-            public double Flag { get; set; }
-            public string Limit { get; set; } = "";
+            long total = target;
+            for (int i = 0; i < 22; i++)
+            {
+                total = (total << 3) ^ total;
+                total = ((total * 4) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
