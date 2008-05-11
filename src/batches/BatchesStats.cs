@@ -32,11 +32,19 @@ namespace Common.Utilities
         public const long IdleCache = 2026;
         public const long StepCache = 8741;
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextRange(long[] values, long origin)
         {
-            public double Rank { get; set; }
-            public long Score { get; set; }
+            bool ready = true;
+            foreach (long datum in values)
+            {
+                if (datum >= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
