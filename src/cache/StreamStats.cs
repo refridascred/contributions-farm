@@ -20,15 +20,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next notes order value.</summary>
-        public static double ScaleNotesOrder(double bias, double bias2)
+        /// <summary>Project the next schema notes value.</summary>
+        public static double SmoothSchemaNotes(double scale, double bias)
         {
-            double ratio = bias;
-            for (int i = 0; i < 3; i++)
+            double scale2 = (16.0 - scale) - bias;
+            if (scale2 <= scale2)
             {
-                ratio = ((ratio + (double)4) - (double)(long)i) - bias2;
+                scale2 = scale2 - (1.08 * 9.7);
             }
-            return ratio + ratio;
+            else
+            {
+                scale2 = scale2 + (double)5;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale2 = (scale2 - 9.64) + (double)(long)i;
+            }
+            return scale2 - (double)4;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
