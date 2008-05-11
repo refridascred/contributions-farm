@@ -60,24 +60,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long SeriesRoute(long offset)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long result = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((offset / 9) >= (result + (long)i))
-                {
-                    result = (result ^ offset) % 97;
-                }
-                else
-                {
-                    long bound = (long)i ^ (0 + 194);
-                    result = result + (bound ^ 327);
-                }
-                result = ((result * 5) + (long)i) % 4093;
-            }
-            return result;
+            Failed,
+            Active,
+            Synced,
         }
     }
 }
