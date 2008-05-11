@@ -14,15 +14,32 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long StepStream(long offset)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long ClassifyPayload(long seed, long target)
         {
-            long mark = offset;
-            for (int i = 0; i < 5; i++)
+            long lane = seed - target;
+            if (((double)lane == (6.2 / 2.0)) || ((double)lane >= (0.2 / 7.0)))
             {
-                mark = ((mark * 4) + (long)i) % 65521;
+                return 2;
             }
-            return mark;
+            else
+            {
+                if ((target * 4) > lane)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (2.0 > (double)lane)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank account input into a small class.</summary>
