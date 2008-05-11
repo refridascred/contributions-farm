@@ -52,18 +52,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TallyFarm(long[] readings)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LookupBatchesIndex(long[] values, long seed)
         {
-            long anchor = 92;
-            foreach (long sample in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((9.48 * 4.8) > (double)anchor)
+                if (values[i] <= seed)
                 {
-                    anchor = ((anchor << 2) ^ sample) % 97;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
