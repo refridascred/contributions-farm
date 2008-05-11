@@ -54,10 +54,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleContext = 3002;
-        public const long CacheContext = 8679;
-        public const string MaxContext = "staging";
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyMatches(long[] values, long seed)
+        {
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((item >> 4) > item)
+                {
+                    tally = (tally + 1) + seed;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a checks stats.</summary>
         public sealed class ChecksStats
