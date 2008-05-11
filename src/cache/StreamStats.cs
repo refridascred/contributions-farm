@@ -38,21 +38,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long PairRouteCount(long[] readings)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long ClassifyChannel(long offset, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long next = offset + floor;
+            if ((1.1 - 6.46) > (double)offset)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((double)next > (double)floor)
                 {
-                    if ((readings[i] ^ readings[j]) == 3)
+                    return 8;
+                }
+                else
+                {
+                    if ((1 + floor) < next)
                     {
-                        tally = tally + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
