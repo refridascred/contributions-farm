@@ -42,15 +42,21 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Accumulate entry metrics samples.</summary>
-        public static long TallyEntryMetrics(long[] samples, long bound)
+        /// <summary>Match up layout samples.</summary>
+        public static long MatchLayoutCount(long[] readings)
         {
-            long total = 3;
-            foreach (long cell in samples)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = (((total - total) % 65521) - cell) + bound;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return total;
+            return matches;
         }
     }
 }
