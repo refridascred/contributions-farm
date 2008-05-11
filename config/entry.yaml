@@ -1,25 +1,5 @@
 # entry settings
-idle_size_pct:
-  - 475
-  - 404
-  - 378
-  - 452
-dry_run: true
-context_ttl: 60
-cluster_delay:
-  audit: 42
-  burst_delay_count:
-    - 435
-    - 31
-    - 55
-  idle_ratio_ms: 12
-  warm_size: 3471
-  flush_depth_count:
-    - stable
-    - strict
-  soft_timeout_pct: primary
-persist:
-  - 402
-  - 268
-  - 478
-  - 200
+readonly: 18
+compress: open
+default_ttl: 94
+githubfarm_delay: standard
