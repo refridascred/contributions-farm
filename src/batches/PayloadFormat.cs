@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long RollCluster(long floor)
+        /// <summary>Match up cache samples.</summary>
+        public static long CompareCacheCount(long[] items)
         {
-            long anchor = floor;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((anchor + floor) < (anchor & 255))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    long prev = (long)i;
-                    anchor = (anchor * 3) + prev;
+                    if ((items[i] + items[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Hold a token summary.</summary>
