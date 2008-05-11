@@ -15,13 +15,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
-        {
-            public long Region { get; set; }
-            public long Count { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string BurstContext = "cached";
+        public const double LimitContext = 97.19;
+        public const long HardFactor = 2635;
+        public const string HardLevel = "stable-v2";
+        public const double MinContext = 67.57;
 
         /// <summary>Rank contributi input into a small class.</summary>
         public static long GradeContributi(long target, long seed)
