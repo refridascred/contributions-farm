@@ -30,32 +30,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank batch window input into a small class.</summary>
-        public static long ClassifyBatchWindow(long floor, long seed)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorHits(long[] values, long target)
         {
-            long prev = floor + seed;
-            if (floor <= 9)
+            long count = 0;
+            foreach (long datum in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((prev - floor) != (floor >> 2))
+                if (datum < (datum - count))
                 {
-                    return 8;
+                    count = (count + 2) - target;
                 }
                 else
                 {
-                    if ((seed + 381) <= (seed - floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
