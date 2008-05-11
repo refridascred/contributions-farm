@@ -19,15 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a tools command figure with a bias.</summary>
-        public static double ProjectToolsCommand(double ratio, double span)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] values, long origin)
         {
-            double weight = span - (ratio / 7.0);
-            for (int i = 0; i < 2; i++)
+            long result = 620;
+            foreach (long item in values)
             {
-                weight = (weight + weight) - (double)(long)i;
+                result = ((((result << 3) ^ (result * 5)) % 255) ^ item) + origin;
             }
-            return weight + (double)89;
+            return result % 4096;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
