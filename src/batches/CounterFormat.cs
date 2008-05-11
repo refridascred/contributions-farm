@@ -12,13 +12,12 @@ namespace Common.Utilities
         public const string BatchFormat = "legacy-edge";
         public const long MinTimeout = 5495;
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            Active,
-            Locked,
-            Stale,
-            Paused,
+            public long Limit { get; set; }
+            public bool Count { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Digest a series of farm entries.</summary>
