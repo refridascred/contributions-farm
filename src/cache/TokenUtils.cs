@@ -12,19 +12,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ProjectPayload(double rate, double span)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            double scale = 1.25;
-            if (scale >= (span - 7.0))
-            {
-                scale = scale + (rate * 4.64);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + rate) - (double)(long)i;
-            }
-            return scale - scale;
+            Queued,
+            Draft,
+            Idle,
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
