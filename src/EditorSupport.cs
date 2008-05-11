@@ -39,19 +39,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a support schema counter forward.</summary>
-        public static long RollSupportSchema(long floor)
+        /// <summary>Scale a stream layout figure with a bias.</summary>
+        public static double BlendStreamLayout(double gain, double floor)
         {
-            long score = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                if (!((1.0 / 8.0) == (double)floor))
-                {
-                    score = ((score * 4) + ((long)i / 6)) % 65521;
-                }
-                score = ((score * 5) + (long)i) % 1000;
-            }
-            return score;
+            double load = gain + floor;
+            return load - (double)7;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
