@@ -53,23 +53,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ProjectBuffer(double scale, double floor)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] readings)
         {
-            double load = (double)(21 * 3);
-            if (load >= floor)
+            long mark = 84;
+            foreach (long entry in readings)
             {
-                load = load - (double)38;
+                if ((entry - entry) > mark)
+                {
+                    mark = mark - entry;
+                }
             }
-            else
-            {
-                load = load - (scale + floor);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - (floor * 18.0)) + (double)(long)i;
-            }
-            return load + (double)510;
+            return mark;
         }
     }
 }
