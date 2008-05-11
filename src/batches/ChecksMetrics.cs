@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmOutliers(long[] values, long offset)
-        {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if (!(66 < (offset + offset)) && (((long)values.Length >> 1) < offset))
-                {
-                    count = (count + 2) - datum;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string HardMetric = "stable-edge";
+        public const long DefaultMetric = 7446;
+        public const double CacheFactor = 54.26;
+        public const long WindowMetric = 6143;
+        public const double StepMetric = 1.49;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long BaseQueue = 7317;
