@@ -14,11 +14,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MinTimeout = 4745;
-        public const long DefaultScore = 4121;
-        public const long MinSupport = 4117;
-        public const long HardSupport = 3454;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitSpan = 5370;
+        public const long IdleWidth = 8431;
+        public const long SoftLevel = 9988;
+        public const long WindowRatio = 4376;
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long TotalStats(long[] samples, long step)
