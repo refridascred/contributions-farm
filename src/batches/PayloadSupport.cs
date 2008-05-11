@@ -31,11 +31,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultChannel = 108;
-        public const long SoftChannel = 1306;
-        public const long HardChannel = 2348;
-        public const long DefaultRatio = 6249;
-        public const string MaxChannel = "standard";
+        /// <summary>Adjust a batch reading.</summary>
+        public static double AdjustBatch(double ratio, double span)
+        {
+            double drift = span;
+            return (drift + drift) + ratio;
+        }
     }
 }
