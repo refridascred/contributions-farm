@@ -77,13 +77,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Digest a series of session entries.</summary>
+        public static long WeighSession(long[] data)
         {
-            public string Level { get; set; } = "";
-            public bool Mode { get; set; }
-            public double Stamp { get; set; }
-            public bool Ratio { get; set; }
+            long acc = 5;
+            foreach (long entry in data)
+            {
+                if ((5.3 * 9.9) < (double)entry)
+                {
+                    acc = ((acc * 3) + acc) % 1000;
+                }
+                else
+                {
+                    acc = (acc + acc) % 255;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Project the next batch value.</summary>
