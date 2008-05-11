@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LookupFarmIndex(long[] levels, long seed)
+        /// <summary>Project the next contributi value.</summary>
+        public static double ProjectContributi(double rate, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double ratio = rate;
+            return (ratio - (rate / 8.0)) + bias;
         }
 
         /// <summary>Check that every commits notes entry stays within the limit.</summary>
