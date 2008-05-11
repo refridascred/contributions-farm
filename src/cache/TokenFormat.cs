@@ -33,13 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandMatches(long[] items)
         {
-            Closed,
-            Locked,
-            Synced,
-            Paused,
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if (seen >= ((-29) - reading))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
