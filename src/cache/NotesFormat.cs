@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
-        {
-            public long Flag { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowRoute = 5610;
+        public const long IdleRoute = 5701;
+        public const double BaseRoute = 50.27;
+        public const double LimitWidth = 13.78;
+        public const long RetryTimeout = 6650;
 
         /// <summary>Blend two stream measurements.</summary>
         public static double ScaleStream(double rate, double bias)
