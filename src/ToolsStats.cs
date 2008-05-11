@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Validate report record readings against a bound.</summary>
-        public static bool CheckReportRecordBounds(long[] levels, long bound)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            bool stale = true;
-            foreach (long sample in levels)
-            {
-                if (sample < bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Limit { get; set; }
+            public double Count { get; set; }
+            public bool Region { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Describe the schema level values.</summary>
