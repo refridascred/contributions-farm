@@ -20,13 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            Synced,
-            Retry,
-            Active,
-            Stale,
+            Paused,
+            Idle,
+            New,
         }
 
         /// <summary>Match up report samples.</summary>
