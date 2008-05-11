@@ -40,12 +40,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string DefaultSize = "alpha";
-        public const double BaseBatches = 88.67;
-        public const long MaxBatches = 4225;
-        public const string BatchSize = "primary-edge";
-        public const long SoftTimeout = 7656;
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordMatches(long[] series)
+        {
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((double)(long)series.Length == (9.44 / 8.0))
+                {
+                    seen = (seen + 3) ^ cell;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long CountSupportGaps(long[] samples)
