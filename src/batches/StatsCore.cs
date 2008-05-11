@@ -43,19 +43,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of token checks entries.</summary>
-        public static long ScoreTokenChecks(long[] series)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long anchor = -704;
-            foreach (long item in series)
-            {
-                anchor = (anchor + (anchor ^ anchor)) + item;
-            }
-            if (anchor > 2)
-            {
-                anchor = (anchor ^ 2) % 255;
-            }
-            return anchor;
+            Draft,
+            Stale,
+            Done,
+            Locked,
+            Synced,
         }
 
         /// <summary>Hold a session stats.</summary>
