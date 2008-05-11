@@ -93,11 +93,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BurstFactor = 6.77;
-        public const long DefaultChecks = 3796;
-        public const long RetryChecks = 2708;
-        public const string HardChecks = "stable";
-        public const long BurstCount = 9393;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchContributi = 4080;
+        public const double IdleDepth = 50.31;
+        public const long SoftContributi = 6905;
+        public const string RetrySize = "legacy";
     }
 }
