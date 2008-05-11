@@ -31,15 +31,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine support record values into a single score.</summary>
-        public static long TotalSupportRecord(long[] data)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long GradeAccount(long bound, long offset)
         {
-            long state = 98;
-            foreach (long cell in data)
+            long prev = bound + offset;
+            if (prev >= (bound - bound))
             {
-                state = (state ^ state) + cell;
+                return 4;
             }
-            return state;
+            else
+            {
+                if ((double)prev >= (10.0 - 20.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((prev * 2) >= (offset / 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)bound < 8.0)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
