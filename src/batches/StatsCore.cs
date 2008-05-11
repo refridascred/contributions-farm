@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long SeekPayloadIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double HardWindow = 5.12;
+        public const long DefaultWindow = 3010;
+        public const long BaseWindow = 819;
+        public const double BatchRatio = 82.36;
 
         /// <summary>Hold a entry header.</summary>
         public sealed class EntryHeader
