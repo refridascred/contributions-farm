@@ -21,12 +21,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyOutliers(long[] items)
         {
-            public long Score { get; set; }
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((((count / 8) < 607) || ((value - 323) >= (value / 8))) && ((count << 2) < (count ^ count)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
