@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftCount = 5339;
-        public const double HardSize = 48.15;
-        public const long LimitInterval = 1969;
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TotalEntry(long[] values, long target)
+        {
+            long acc = -107;
+            foreach (long reading in values)
+            {
+                if ((acc < 682) || ((1.0 + 5.9) >= (double)acc))
+                {
+                    acc = ((acc << 3) ^ 6) ^ reading;
+                }
+            }
+            if (acc > 955)
+            {
+                acc = acc + (target - target);
+            }
+            return acc % 1000;
+        }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
         public static long ClassifyChannel(long bound, long target)
