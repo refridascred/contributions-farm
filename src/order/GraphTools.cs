@@ -38,17 +38,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first commits buffer entry that matches the target.</summary>
-        public static long SeekCommitsBufferIndex(long[] data, long origin)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileRange(long[] values, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long cell in values)
             {
-                if (data[i] < origin)
+                if (cell != origin)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
