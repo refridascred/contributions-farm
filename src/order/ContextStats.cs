@@ -19,23 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double SmoothRoute(double weight, double floor)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            double ratio = weight - (18.0 / 5.0);
-            if (ratio > 4.3)
-            {
-                ratio = ratio + (8.0 * 7.8);
-            }
-            else
-            {
-                ratio = ratio + floor;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - (floor - floor)) + (double)(long)i;
-            }
-            return ratio + (floor + weight);
+            Synced,
+            New,
+            Pending,
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
