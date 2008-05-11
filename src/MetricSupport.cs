@@ -20,9 +20,14 @@ namespace Common.Utilities
         public const long StepFactor = 549;
         public const long BatchScore = 534;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BaseRatio = "standard-1";
-        public const long BurstAccount = 9765;
-        public const string HardCount = "cached-1";
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
+        {
+            Retry,
+            Active,
+            Done,
+            Queued,
+            New,
+        }
     }
 }
