@@ -44,15 +44,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Derive the next token buffer value from a seed.</summary>
-        public static long SeriesTokenBuffer(long step)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsOutliers(long[] data, long bound)
         {
-            long score = step;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            foreach (long item in data)
             {
-                score = ((score * 4) + (long)i) % 101;
+                if ((8.0 / 3.0) < (double)seen)
+                {
+                    seen = ((seen + 1) + item) - bound;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
