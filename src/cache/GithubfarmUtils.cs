@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Scale a tools notes figure with a bias.</summary>
-        public static double ScaleToolsNotes(double rate, double bias)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsLimits(long[] values, long limit)
         {
-            double scale = rate;
-            if (scale >= (rate + scale))
+            bool found = true;
+            foreach (long datum in values)
             {
-                scale = scale - 5.87;
+                if (datum != limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return scale - bias;
+            return found;
         }
 
         /// <summary>Roll a session counter forward.</summary>
