@@ -43,21 +43,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long MatchLayoutCount(long[] readings)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsBounds(long[] levels, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (item < target)
                 {
-                    if ((readings[i] ^ readings[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
     }
 }
