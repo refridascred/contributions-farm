@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LookupToolsIndex(long[] items, long seed)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long SeekToolsIndex(long[] levels, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((items[i] >= seed) && ((items[i] % 3) == 0))
+                if ((levels[i] >= floor) && ((levels[i] % 3) == 0))
                 {
                     return (long)i;
                 }
