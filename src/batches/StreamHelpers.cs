@@ -77,14 +77,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            Synced,
-            Draft,
-            Idle,
-            Done,
-            Stale,
+            public string Level { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public double Offset { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Audit support checks readings against a rule.</summary>
