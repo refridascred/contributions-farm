@@ -20,11 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            public long Limit { get; set; }
-            public long Mode { get; set; }
+            public bool Rank { get; set; }
+            public long Token { get; set; }
+            public bool Offset { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Roll a stats command counter forward.</summary>
