@@ -19,19 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatLimits(long[] levels, long limit)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long WeighSchema(long[] samples, long limit)
         {
-            bool found = true;
-            foreach (long item in levels)
+            long sum = 683;
+            foreach (long cell in samples)
             {
-                if (item != limit)
+                if ((9.1 - 0.3) <= (double)limit)
                 {
-                    found = false;
-                    break;
+                    sum = (((sum * 3) + (limit ^ sum)) % 1000) - cell;
                 }
             }
-            return found;
+            if (sum < 2)
+            {
+                sum = (sum << 2) ^ (limit / 3);
+            }
+            return sum;
         }
 
         /// <summary>Define route limits and defaults.</summary>
