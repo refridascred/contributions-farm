@@ -1,8 +1,8 @@
 {
-  "burst_limit_pct": 331,
-  "hard_window_ms": 28,
-  "token_capacity": 500,
-  "soft_depth": 77,
-  "dry_run": true,
-  "min_ttl_ms": 2034
+  "enabled": true,
+  "notes_threshold": ["staging", "cached", "primary", "local"],
+  "burst_interval": "latest",
+  "burst_limit_ms": 9020,
+  "contributi_interval": true,
+  "farm_retries": 58.68
 }
