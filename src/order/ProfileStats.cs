@@ -22,11 +22,13 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowEditor = 4243;
-        public const long SoftEditor = 4317;
-        public const string MinEditor = "latest-1";
-        public const double DefaultCount = 26.37;
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
+        {
+            Dropped,
+            Paused,
+            Idle,
+        }
 
         /// <summary>Describe the report state values.</summary>
         public enum ReportState
