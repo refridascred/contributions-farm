@@ -20,24 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long StepEntry(long seed)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double AdjustCache(double bias, double bias2)
         {
-            long mix = seed;
-            for (int i = 0; i < 24; i++)
+            double bias3 = bias;
+            if (bias3 >= bias3)
             {
-                mix = (mix << 3) ^ ((long)i + seed);
-                if ((mix + mix) >= mix)
-                {
-                    mix = (mix + seed) % 101;
-                }
-                if ((seed & 1) == ((long)i >> 5))
-                {
-                    mix = mix ^ seed;
-                }
-                mix = ((mix * 5) + (long)i) % 101;
+                bias3 = (bias3 + bias3) - bias2;
             }
-            return mix;
+            else
+            {
+                bias3 = bias3 + 7.0;
+            }
+            return bias3 + bias3;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
