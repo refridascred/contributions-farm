@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long DeriveToken(long limit)
+        /// <summary>Roll a profile cache counter forward.</summary>
+        public static long DeriveProfileCache(long bound)
         {
-            long score = limit;
-            for (int i = 0; i < 19; i++)
+            long acc = bound;
+            for (int i = 0; i < 24; i++)
             {
-                score = (score + ((long)i / 6)) % 4096;
-                score = (score * 5) + (score >> 2);
-                score = ((score * 3) + (long)i) % 1000;
+                if (acc >= 239)
+                {
+                    acc = (acc - bound) % 1000;
+                    acc = (acc - (acc + acc)) % 97;
+                    continue;
+                }
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return score;
+            return acc;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
