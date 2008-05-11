@@ -19,14 +19,12 @@ namespace Common.Utilities
         public const double DefaultSize = 22.48;
         public const long BurstStream = 4689;
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
-        {
-            Synced,
-            Ready,
-            Dropped,
-            Retry,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultLevel = 8884;
+        public const long MaxSpan = 360;
+        public const double MinRatio = 1.26;
+        public const long StepProfile = 3484;
+        public const string SoftProfile = "latest-edge";
 
         /// <summary>Hold a farm stats.</summary>
         public sealed class FarmStats
