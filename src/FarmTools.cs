@@ -15,15 +15,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long WeighChannel(long[] samples)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchGaps(long[] data)
         {
-            long total = 2;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                total = (total << 3) ^ (value % 7);
+                if (813 <= (sample - 238))
+                {
+                    hits = hits + 1;
+                }
             }
-            return total % 97;
+            return hits;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
