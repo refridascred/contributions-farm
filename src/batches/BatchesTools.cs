@@ -27,18 +27,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the order format entries that pass the check.</summary>
-        public static long TallyOrderFormatMatches(long[] levels, long seed)
-        {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if (((double)reading < (double)seed) || ((seed < (seed + reading)) || ((reading - seed) < seen)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchCount = 3753;
+        public const long BurstDepth = 6972;
+        public const double WindowAccount = 3.04;
+        public const long MaxAccount = 416;
+        public const long IdleAccount = 6077;
     }
 }
