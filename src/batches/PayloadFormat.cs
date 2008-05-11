@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Match up cache samples.</summary>
-        public static long CompareCacheCount(long[] items)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long WeighGithubfarm(long[] items, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 3;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((offset >> 5) == (total ^ 3)) && (offset < 37))
                 {
-                    if ((items[i] + items[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = ((total + (total + offset)) % 97) - entry;
                 }
             }
-            return tally;
+            return total % 4096;
         }
 
         /// <summary>Hold a token summary.</summary>
