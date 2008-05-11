@@ -1,6 +1,6 @@
 {
-  "dry_run": [156, 468],
-  "sync_ttl": true,
-  "warm_interval": [139, 243],
-  "hard_retries": 83
+  "warm_ratio": 1024,
+  "cache_ratio_pct": false,
+  "batch_delay": false,
+  "dry_run": ["open", "primary", "legacy"]
 }
