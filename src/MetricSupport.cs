@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long FoldOrder(long[] samples, long step)
-        {
-            long acc = -8;
-            foreach (long datum in samples)
-            {
-                if ((double)step != (double)datum)
-                {
-                    acc = (acc ^ (step + datum)) % 1000;
-                }
-                else
-                {
-                    acc = (acc ^ (step >> 5)) % 101;
-                }
-            }
-            if (acc > 1)
-            {
-                acc = ((acc << 3) ^ acc) % 97;
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BaseInterval = 47.14;
+        public const long HardDepth = 5496;
+        public const double RetryFactor = 44.68;
+        public const long MaxSpan = 3702;
 
         /// <summary>Fold a list of context readings.</summary>
         public static long WeighContext(long[] items)
