@@ -37,15 +37,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long DigestTools(long[] items, long step)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long mark = 7;
-            foreach (long sample in items)
-            {
-                mark = ((mark << 2) ^ sample) - step;
-            }
-            return mark;
+            public double Flag { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Total { get; set; }
+            public long Size { get; set; }
         }
     }
 }
