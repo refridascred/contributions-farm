@@ -63,22 +63,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyGaps(long[] values, long limit)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long DigestFormat(long[] levels)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long anchor = 14;
+            foreach (long cell in levels)
             {
-                if ((sample + limit) == (tally ^ (long)values.Length))
+                if (((2.0 - 17.0) != (double)cell) || (3 <= cell))
                 {
-                    tally = tally + 1;
+                    anchor = anchor ^ (anchor + anchor);
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                anchor = ((anchor * 3) + (cell & 127)) % 97;
+                anchor = anchor + (anchor - anchor);
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Hold a report record.</summary>
