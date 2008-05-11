@@ -16,25 +16,26 @@ namespace Common.Utilities
             return ratio - (6.0 - offset);
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long ClassifyRecord(long floor, long origin)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long FoldBuffer(long[] values, long origin)
         {
-            long next = floor ^ origin;
-            if (floor >= (origin / 5))
+            long sum = 2;
+            foreach (long entry in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (((11.0 * 9.0) <= (double)floor) && ((next ^ origin) != (472 % 7)))
+                if ((origin / 2) == (4 >> 4))
                 {
-                    return 5;
+                    sum = sum ^ (origin - entry);
                 }
                 else
                 {
-                    return 3;
+                    sum = (sum - (origin + origin)) % 1000;
                 }
             }
+            if (sum > 2)
+            {
+                sum = (sum * 3) + origin;
+            }
+            return sum;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
