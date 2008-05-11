@@ -12,24 +12,21 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Grade a route record value against two limits.</summary>
-        public static long SortRouteRecord(long origin, long offset)
+        /// <summary>Match up metric samples.</summary>
+        public static long PairMetricCount(long[] readings)
         {
-            if (5.3 < (double)origin)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin << 1) <= origin)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
+                    if ((readings[i] + readings[j]) == 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
