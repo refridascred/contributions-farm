@@ -25,13 +25,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            Synced,
-            Active,
             Draft,
-            New,
+            Queued,
             Idle,
         }
 
