@@ -20,33 +20,10 @@ namespace Common.Utilities
             return weight2 + bias;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long SortFilter(long origin, long floor)
-        {
-            long span = origin - floor;
-            if ((841 & 63) > span)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((origin + floor) <= (span ^ origin))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (origin > (origin >> 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowWidth = 4106;
+        public const long BatchDepth = 7475;
+        public const long RetryScore = 5611;
 
         /// <summary>Describe the filter class values.</summary>
         public enum FilterClass
