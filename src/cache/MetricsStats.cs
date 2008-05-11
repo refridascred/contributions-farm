@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandGaps(long[] data)
+        /// <summary>Measure how many entry token samples are out of range.</summary>
+        public static long TallyEntryTokenOutliers(long[] data)
         {
-            long count = 0;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if ((count + value) <= count)
+                if ((429 >> 1) >= (item ^ 98))
                 {
-                    count = count + 2;
+                    matches = matches + 3;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
