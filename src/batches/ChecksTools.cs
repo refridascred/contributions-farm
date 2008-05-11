@@ -30,19 +30,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksLimits(long[] samples, long target)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long SeriesLayout(long floor)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long acc = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if (value >= target)
+                if ((acc >> 1) > (acc << 3))
                 {
-                    found = false;
-                    break;
+                    continue;
                 }
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Hold a buffer header.</summary>
