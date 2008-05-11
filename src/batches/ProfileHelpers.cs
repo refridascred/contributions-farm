@@ -50,12 +50,22 @@ namespace Common.Utilities
             return (drift - (drift * 7.51)) + weight;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteGaps(long[] items)
         {
-            Ready,
-            Pending,
-            Failed,
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if (!((entry - 312) < ((long)items.Length * 5)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
