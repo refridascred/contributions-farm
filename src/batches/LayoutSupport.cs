@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of route account entries.</summary>
-        public static long TallyRouteAccount(long[] data)
-        {
-            long total = 122;
-            foreach (long reading in data)
-            {
-                total = (total - (4 / 2)) % 4096;
-                if ((total ^ reading) < (reading >> 3))
-                {
-                    total = total + total;
-                }
-            }
-            if (total < (-561))
-            {
-                total = total ^ total;
-            }
-            return total % 1000;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string SoftFactor = "latest-1";
+        public const double SoftInterval = 40.69;
+        public const double MaxSize = 2.95;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double BurstCount = 62.76;
