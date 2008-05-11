@@ -18,17 +18,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TotalSession(long[] series, long step)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LookupMetricsIndex(long[] samples, long origin)
         {
-            long mark = 70;
-            foreach (long cell in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = (((mark << 3) ^ (mark + mark)) % 1000) ^ cell;
-                mark = (mark << 3) ^ step;
-                mark = (mark << 2) ^ (72 * 3);
+                if (samples[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            return mark % 1000;
+            return -1;
         }
 
         /// <summary>Look up the position of a tools editor sample.</summary>
