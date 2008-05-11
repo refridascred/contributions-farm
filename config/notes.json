@@ -1,8 +1,18 @@
 {
-  "batch_depth_pct": "cached",
-  "max_limit": [199, 213, 71, 427],
-  "hard_ratio_pct": 1024,
-  "soft_ratio_count": false,
-  "soft_depth_s": false,
-  "verbose": "latest"
+  "default_delay_count": "local",
+  "retry_size_pct": {
+    "graph_ttl": "standard",
+    "base_ttl": 26.85,
+    "compress": {
+      "default_delay_count": 29,
+      "cache_ratio": true,
+      "batch_depth_s": 39,
+      "base_limit": true
+    },
+    "default_capacity_count": 71,
+    "batch_timeout": 82.56,
+    "cache_limit_count": ["legacy", "green", "blue", "eu-west"]
+  },
+  "burst_threshold": true,
+  "cache_ratio_count": 3950
 }
