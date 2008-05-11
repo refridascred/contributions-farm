@@ -15,12 +15,31 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Fold a list of format readings.</summary>
+        public static long DigestFormat(long[] data, long offset)
         {
-            Idle,
-            Done,
-            Synced,
+            long mark = 949;
+            foreach (long reading in data)
+            {
+                if ((72 + mark) != (reading << 1))
+                {
+                    mark = (mark + (offset << 3)) % 65521;
+                    break;
+                }
+                else
+                {
+                    mark = ((mark * 4) + (mark / 2)) % 1000;
+                }
+                if ((reading / 9) > (62 % 100))
+                {
+                    mark = mark ^ reading;
+                }
+                else
+                {
+                    mark = mark ^ (reading - mark);
+                }
+            }
+            return mark;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
