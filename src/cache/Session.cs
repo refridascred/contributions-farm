@@ -45,19 +45,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every report record entry stays within the limit.</summary>
-        public static bool CheckReportRecordBounds(long[] values, long origin)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long DeriveRoute(long origin)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            long mix = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if (reading > origin)
+                if (origin >= (origin ^ mix))
                 {
-                    ready = false;
-                    break;
+                    mix = ((mix << 2) ^ 3) % 65521;
                 }
+                mix = (mix - (origin & 127)) % 101;
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return ready;
+            return mix;
         }
     }
 }
