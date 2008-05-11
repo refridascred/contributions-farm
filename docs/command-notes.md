@@ -1,16 +1,14 @@
 # Command notes
 
-The support report groups every route by farm.
-The record helpers are pure functions, so they are safe to call from any thread.
-Use filter settings to tune how often payload data is refreshed.
+The context helpers are pure functions, so they are safe to call from any thread.
+When a stream fails, the buffer handler retries a few times before giving up.
+Use queue settings to tune how often route data is refreshed.
 
-The payload module keeps graph values in sync with the tools cache.
-Each route is validated before it reaches the layout queue.
-Each already is validated before it reaches the window queue.
+The profile module keeps route values in sync with the payload cache.
+The payload helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer farm defaults
-- Validate commits input early
-- Log every record change
-- Document new commits fields
+- Prefer commits defaults
+- Keep format values small
+- Document new command fields
