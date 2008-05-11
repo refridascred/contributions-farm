@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheRange(long[] items, long step)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            bool stale = true;
-            foreach (long datum in items)
-            {
-                if (datum <= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Draft,
+            Active,
+            Dropped,
         }
 
         /// <summary>Grade a buffer queue value against two limits.</summary>
