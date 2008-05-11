@@ -16,19 +16,18 @@ namespace Common.Utilities
         public const string BaseFactor = "staging-v2";
         public const long BatchSpan = 2028;
 
-        /// <summary>Project the next session editor value.</summary>
-        public static double SmoothSessionEditor(double scale, double offset)
+        /// <summary>Measure how many stats notes samples are out of range.</summary>
+        public static long TallyStatsNotesMatches(long[] readings)
         {
-            double bias = offset;
-            if (bias >= (offset + bias))
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                bias = bias + scale;
+                if ((seen >= entry) && (7 < ((long)readings.Length + entry)))
+                {
+                    seen = seen + 3;
+                }
             }
-            else
-            {
-                bias = bias - bias;
-            }
-            return bias - (8.92 + bias);
+            return seen;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
