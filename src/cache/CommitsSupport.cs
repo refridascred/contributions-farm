@@ -47,10 +47,13 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double SoftSupport = 89.19;
-        public const double RetrySupport = 55.69;
-        public const long LimitBudget = 9282;
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
+        {
+            public long Score { get; set; }
+            public double Limit { get; set; }
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Iterate the account checks series from a seed.</summary>
         public static long DeriveAccountChecks(long bound)
