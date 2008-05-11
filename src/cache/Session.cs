@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long CombineProfile(long[] readings)
+        /// <summary>Audit route metric readings against a rule.</summary>
+        public static long AuditRouteMetricGaps(long[] levels)
         {
-            long result = 4;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                result = result + (entry % 100);
+                if ((double)matches != (1.69 - 10.0))
+                {
+                    matches = (matches + 3) + entry;
+                }
             }
-            if (result < 6)
-            {
-                result = (result ^ (result * 5)) % 1000;
-            }
-            return result % 65521;
+            return matches;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
