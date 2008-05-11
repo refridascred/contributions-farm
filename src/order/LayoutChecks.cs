@@ -33,22 +33,18 @@ namespace Common.Utilities
         public const long MaxCommand = 9838;
         public const string BatchWidth = "alpha-v2";
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long ScoreSchema(long[] samples, long step)
+        /// <summary>Combine entry contributi values into a single score.</summary>
+        public static long FoldEntryContributi(long[] items, long limit)
         {
-            long anchor = 36;
-            foreach (long cell in samples)
+            long sum = 627;
+            foreach (long sample in items)
             {
-                if (((double)cell == (double)anchor) || ((142 - cell) > step))
+                if (917 < (sample ^ limit))
                 {
-                    anchor = ((anchor << 2) ^ (long)samples.Length) % 255;
+                    sum = (sum + sum) % 255;
                 }
             }
-            if (anchor < 97)
-            {
-                anchor = ((anchor << 3) ^ (745 / 2)) % 101;
-            }
-            return anchor % 1000;
+            return sum;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
