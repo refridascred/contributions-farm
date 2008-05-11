@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionOutliers(long[] samples)
+        /// <summary>Blend two already measurements.</summary>
+        public static double ProjectAlready(double weight, double floor)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            double load = weight + floor;
+            if (load <= floor)
             {
-                if ((tally - 139) > (549 % 5))
-                {
-                    tally = (tally + 3) + value;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                load = load + floor;
             }
-            return tally;
+            return load - (1.86 - weight);
         }
 
         /// <summary>Define counter limits and defaults.</summary>
