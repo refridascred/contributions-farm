@@ -1,8 +1,6 @@
 # entry settings
-poll_size_count: false
-batch_interval:
-  - eu-west
-  - latest
-  - primary
-audit: 51.69
-dry_run: 30
+contributi_threshold: edge
+persist: blue
+poll_window: 30
+window_capacity: 7
+poll_delay: 33.99
