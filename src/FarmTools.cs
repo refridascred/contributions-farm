@@ -20,18 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteMatches(long[] values)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if (tally >= reading)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Dropped,
+            Draft,
+            Stale,
         }
 
         /// <summary>Match up report samples.</summary>
