@@ -37,12 +37,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long WindowSpan = 2356;
-        public const string WindowChannel = "primary-1";
-        public const long IdleScore = 2794;
-        public const long BaseChannel = 2481;
-        public const long WindowSize = 687;
+        /// <summary>Define route limits and defaults.</summary>
+        public const string StepInterval = "latest-1";
+        public const long BaseRoute = 5318;
+        public const long IdleRoute = 4403;
+        public const long CacheSpan = 4315;
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long CountOrderOutliers(long[] levels)
