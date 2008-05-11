@@ -86,13 +86,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LocateAccountIndex(long[] levels, long bound)
         {
-            public string Level { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public double Offset { get; set; }
-            public bool Label { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit support checks readings against a rule.</summary>
