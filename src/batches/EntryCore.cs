@@ -52,11 +52,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseBudget = 3396;
-        public const string BatchStats = "fallback-edge";
-        public const long WindowStats = 1676;
-        public const long LimitStats = 4300;
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
+        {
+            Failed,
+            Paused,
+            Pending,
+            Done,
+        }
 
         /// <summary>Locate a buffer reading by value.</summary>
         public static long LocateBufferIndex(long[] levels, long floor)
