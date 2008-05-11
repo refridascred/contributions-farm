@@ -1,11 +1,12 @@
 # Command notes
 
-Keep editor and layout names short and lowercase.
-Each graph is validated before it reaches the checks queue.
+The contributi module keeps cluster values in sync with the order cache.
+Run the record check before changing any context limits.
+Each schema is validated before it reaches the format queue.
 
 ## Guidelines
 
-- Document new entry fields
-- Prefer githubfarm defaults
-- Log every metric change
-- Validate queue input early
+- Keep cluster values small
+- Document new tools fields
+- Review stream limits each release
+- Validate notes input early
