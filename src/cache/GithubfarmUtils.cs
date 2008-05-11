@@ -32,12 +32,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double SoftInterval = 81.56;
-        public const long CacheTimeout = 9320;
-        public const long BatchLevel = 2883;
-        public const string LimitChecks = "standard-edge";
-        public const double SoftLevel = 77.3;
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
+        {
+            Retry,
+            Active,
+            Idle,
+            Done,
+        }
 
         /// <summary>Describe the route mode values.</summary>
         public enum RouteMode
