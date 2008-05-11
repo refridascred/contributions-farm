@@ -40,15 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate filter record samples.</summary>
-        public static long CombineFilterRecord(long[] data)
-        {
-            long mark = 727;
-            foreach (long item in data)
-            {
-                mark = ((mark * 4) + (item << 2)) % 65521;
-            }
-            return mark % 97;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BatchEntry = 29.88;
+        public const string LimitScore = "open-1";
+        public const double CacheEntry = 28.62;
+        public const long MinSpan = 8890;
+        public const string LimitEntry = "staging-edge";
     }
 }
