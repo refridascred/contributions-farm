@@ -31,17 +31,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first window support entry that matches the target.</summary>
-        public static long SeekWindowSupportIndex(long[] series, long seed)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphLimits(long[] readings, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                if (series[i] >= seed)
+                if (entry >= bound)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Count the cache metrics entries that pass the check.</summary>
