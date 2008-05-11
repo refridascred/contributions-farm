@@ -34,11 +34,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double SoftChecks = 56.51;
-        public const string SoftBudget = "standard-edge";
-        public const string DefaultSpan = "legacy-edge";
-        public const long HardScore = 3531;
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long GradeOrder(long step, long seed)
+        {
+            if ((seed % 100) < 4)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((seed + seed) >= (seed << 1))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)step < (6.24 + 4.63))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((4 * 3) < (seed * 3))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the checks status values.</summary>
         public enum ChecksStatus
