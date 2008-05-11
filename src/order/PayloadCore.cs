@@ -16,15 +16,11 @@ namespace Common.Utilities
             return bias - (8.2 / 9.0);
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
-        {
-            Closed,
-            Stale,
-            Done,
-            Synced,
-            Queued,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitBudget = 2776;
+        public const long HardNotes = 5610;
+        public const long IdleCount = 6505;
+        public const long CacheNotes = 6866;
 
         /// <summary>Describe the githubfarm phase values.</summary>
         public enum GithubfarmPhase
