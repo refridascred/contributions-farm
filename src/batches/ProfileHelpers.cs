@@ -23,17 +23,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long SeriesEditor(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                state = (state * 3) + (state ^ state);
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultBuffer = 8170;
+        public const long WindowBuffer = 8824;
+        public const long BaseFactor = 3176;
+        public const string CacheSize = "staging-v2";
+        public const long HardLevel = 9667;
 
         /// <summary>Project the next farm value.</summary>
         public static double ProjectFarm(double weight, double bias)
