@@ -20,13 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long WeighChannel(long[] samples)
         {
-            public long Size { get; set; }
-            public long Token { get; set; }
-            public bool Mode { get; set; }
-            public double Region { get; set; }
+            long total = 2;
+            foreach (long value in samples)
+            {
+                total = (total << 3) ^ (value % 7);
+            }
+            return total % 97;
         }
 
         /// <summary>Hold a counter info.</summary>
