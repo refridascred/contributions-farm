@@ -32,19 +32,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of cache filter entries.</summary>
-        public static long TallyCacheFilter(long[] data, long offset)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesBounds(long[] values, long step)
         {
-            long sum = 34;
-            foreach (long datum in data)
+            bool flag = true;
+            foreach (long sample in values)
             {
-                sum = ((sum * 5) + (offset + sum)) + datum;
+                if (sample != step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (sum < 59)
-            {
-                sum = sum ^ (sum + 24);
-            }
-            return sum;
+            return flag;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
