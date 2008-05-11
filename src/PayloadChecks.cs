@@ -14,22 +14,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterHits(long[] samples)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if ((long)samples.Length < matches)
-                {
-                    matches = (matches + 1) + item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Size { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Accumulate channel samples.</summary>
