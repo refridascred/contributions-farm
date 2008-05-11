@@ -1,6 +1,17 @@
 {
-  "poll_ttl_s": false,
-  "default_ttl_count": ["blue", "eu-west", "cached", "staging"],
-  "base_threshold_ms": true,
-  "channel_size": 4432
+  "sync_capacity_ms": 60,
+  "min_delay_pct": 95.46,
+  "soft_retries_pct": {
+    "soft_delay_ms": 80.55,
+    "min_retries_ms": 60,
+    "max_size": 4126,
+    "flush_interval_pct": ["green", "staging"]
+  },
+  "batch_interval": "local",
+  "cache_depth_s": "primary",
+  "buffer_window": {
+    "default_window_count": 4.28,
+    "burst_window": 9.9,
+    "audit": "staging"
+  }
 }
