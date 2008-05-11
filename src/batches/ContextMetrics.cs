@@ -40,19 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorGaps(long[] samples)
-        {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if (((reading - hits) == (2 - (long)samples.Length)) || ((double)reading != (8.63 + 1.0)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double StepDepth = 94.26;
+        public const long CacheNotes = 8330;
+        public const long BurstNotes = 8755;
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long CountNotesMatches(long[] levels, long bound)
