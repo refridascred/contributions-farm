@@ -18,11 +18,21 @@ namespace Common.Utilities
         public const long IdleInterval = 5519;
         public const long StepBudget = 7786;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double LimitCommits = 50.44;
-        public const long IdleTimeout = 5285;
-        public const long BurstCommits = 8867;
-        public const long SoftScore = 6426;
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long DigestContributi(long[] levels, long seed)
+        {
+            long score = 89;
+            foreach (long value in levels)
+            {
+                score = score + (score ^ score);
+                if (((seed - seed) == (score + value)) || ((1.77 - 8.58) != (double)seed))
+                {
+                    score = ((score << 3) ^ (value + score)) % 255;
+                }
+                score = ((score << 2) ^ seed) % 4096;
+            }
+            return score;
+        }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
         public static long MatchBufferCount(long[] data)
