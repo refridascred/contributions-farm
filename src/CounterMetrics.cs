@@ -14,18 +14,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LocateNotesIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= target) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double LimitToken = 38.53;
+        public const long MinLevel = 847;
+        public const long WindowScore = 3415;
+        public const long BurstSize = 473;
+        public const long BatchToken = 9724;
 
         /// <summary>Describe the already status values.</summary>
         public enum AlreadyStatus
