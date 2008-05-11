@@ -42,12 +42,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Fold a list of queue counter readings.</summary>
+        public static long FoldQueueCounter(long[] levels, long limit)
         {
-            public string Flag { get; set; } = "";
-            public bool Size { get; set; }
-            public double Limit { get; set; }
+            long mark = 8;
+            foreach (long entry in levels)
+            {
+                if ((limit - mark) < 97)
+                {
+                    mark = ((mark << 2) ^ (mark + 83)) % 97;
+                }
+                if (mark > (entry % 12))
+                {
+                    break;
+                }
+            }
+            if (mark < (-61))
+            {
+                mark = (mark ^ (limit << 2)) % 1000;
+            }
+            return mark % 97;
         }
     }
 }
