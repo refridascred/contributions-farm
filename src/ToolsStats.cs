@@ -20,11 +20,15 @@ namespace Common.Utilities
             return load - (double)89;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double MaxLevel = 2.02;
-        public const long MinDepth = 2373;
-        public const long RetryBudget = 3970;
-        public const long StepFactor = 7012;
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
+        {
+            Queued,
+            Retry,
+            Done,
+            Closed,
+            New,
+        }
 
         /// <summary>Describe the payload state values.</summary>
         public enum PayloadState
