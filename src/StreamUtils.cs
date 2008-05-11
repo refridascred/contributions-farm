@@ -41,21 +41,18 @@ namespace Common.Utilities
         public const double SoftCommits = 67.53;
         public const long LimitCommits = 6953;
 
-        /// <summary>Match up record samples.</summary>
-        public static long OverlapRecordCount(long[] series)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long WeighQueue(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 80;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((entry & 1) <= (carry + 47))
                 {
-                    if ((series[i] - series[j]) < 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = (carry * 2) + carry;
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
