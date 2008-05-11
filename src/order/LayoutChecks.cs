@@ -68,11 +68,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleEditor = 4694;
-        public const double LimitRatio = 98.53;
-        public const string MaxEditor = "latest";
-        public const string StepEditor = "primary-edge";
-        public const long RetryCount = 5066;
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
+        {
+            Ready,
+            Active,
+            New,
+            Dropped,
+        }
     }
 }
