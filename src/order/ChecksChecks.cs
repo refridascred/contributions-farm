@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionMatches(long[] values)
+        /// <summary>Project the next support schema value.</summary>
+        public static double SmoothSupportSchema(double bias, double bias2)
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if (((cell / 3) >= (cell + seen)) || ((37 > (seen - cell)) || ((seen * 5) != (cell + cell))))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            double rate = (bias * 12.0) * 7.0;
+            return rate - bias2;
         }
 
         /// <summary>Define support limits and defaults.</summary>
