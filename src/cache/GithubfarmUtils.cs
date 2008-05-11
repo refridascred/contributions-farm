@@ -22,19 +22,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] items, long bound)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long RollSession(long offset)
         {
-            long score = 33;
-            foreach (long reading in items)
+            long mark = offset;
+            for (int i = 0; i < 22; i++)
             {
-                score = ((score ^ (score * 3)) % 101) - reading;
+                mark = (mark - (offset / 8)) % 65521;
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            if (score > 66)
-            {
-                score = (score ^ (bound >> 3)) % 97;
-            }
-            return score % 97;
+            return mark;
         }
 
         /// <summary>Hold a route info.</summary>
