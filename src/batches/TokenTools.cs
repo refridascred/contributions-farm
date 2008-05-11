@@ -25,9 +25,19 @@ namespace Common.Utilities
         public const string IdleGithubfarm = "primary-v2";
         public const long BurstScore = 844;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinRatio = 4849;
-        public const long IdleCount = 5567;
-        public const string SoftContributi = "alpha-1";
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmBounds(long[] items, long bound)
+        {
+            bool ready = true;
+            foreach (long reading in items)
+            {
+                if (reading >= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
