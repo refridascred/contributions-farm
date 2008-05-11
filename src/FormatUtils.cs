@@ -73,21 +73,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of stream contributi readings.</summary>
-        public static long PairStreamContributiCount(long[] values)
+        /// <summary>Look up the position of a record layout sample.</summary>
+        public static long LocateRecordLayoutIndex(long[] values, long bound)
         {
-            long hits = 0;
             for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (values[i] < bound)
                 {
-                    if ((values[i] + values[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
