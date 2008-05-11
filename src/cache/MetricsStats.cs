@@ -26,15 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double AdjustBatches(double gain, double bias)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            double mean = (double)8 * 0.2;
-            if (mean <= (mean * 0.3))
-            {
-                mean = (mean + gain) - bias;
-            }
-            return mean + gain;
+            public double Size { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Describe the tools level values.</summary>
