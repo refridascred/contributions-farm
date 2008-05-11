@@ -15,12 +15,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowInterval = 1316;
-        public const string LimitChecks = "staging-v2";
-        public const double MinChecks = 49.81;
-        public const double HardChecks = 1.73;
-        public const double CacheChecks = 63.06;
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsMatches(long[] readings)
+        {
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if (((entry % 24) < (entry / 9)) || ((count << 2) != (count / 9)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const string LimitBatches = "local-edge";
