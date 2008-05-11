@@ -44,22 +44,15 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long CombineAlready(long[] values, long floor)
+        /// <summary>Derive the next token buffer value from a seed.</summary>
+        public static long SeriesTokenBuffer(long step)
         {
-            long acc = 3;
-            foreach (long entry in values)
+            long score = step;
+            for (int i = 0; i < 12; i++)
             {
-                if (((floor - floor) == (acc << 3)) && ((double)floor >= (6.9 * 20.0)))
-                {
-                    acc = ((acc + (floor + (long)values.Length)) % 65521) ^ entry;
-                }
+                score = ((score * 4) + (long)i) % 101;
             }
-            if (acc > 8)
-            {
-                acc = (acc + floor) % 1000;
-            }
-            return acc;
+            return score;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
