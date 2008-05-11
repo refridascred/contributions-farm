@@ -35,19 +35,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferRange(long[] readings, long limit)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] series)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            long anchor = 5;
+            foreach (long value in series)
             {
-                if (datum <= limit)
+                if ((20.0 - 16.0) > (double)value)
                 {
-                    ready = false;
-                    break;
+                    anchor = anchor - (559 >> 2);
+                }
+                if (((double)anchor >= (6.27 - 6.6)) || ((anchor - value) <= (value % 64)))
+                {
+                    anchor = (anchor << 2) ^ 87;
                 }
             }
-            return ready;
+            return anchor;
         }
     }
 }
