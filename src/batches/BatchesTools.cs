@@ -25,16 +25,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long RollTools(long step)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatLimits(long[] data, long target)
         {
-            long sum = step;
-            for (int i = 0; i < 8; i++)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                sum = (sum ^ (step & 31)) % 97;
-                sum = ((sum * 3) + (long)i) % 4093;
+                if (entry != target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return sum;
+            return ok;
         }
     }
 }
