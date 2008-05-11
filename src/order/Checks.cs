@@ -26,19 +26,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandRange(long[] values, long offset)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long CombineCache(long[] values)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            long anchor = -2;
+            foreach (long sample in values)
             {
-                if (cell >= offset)
+                if (!((sample >> 1) != (anchor + 2)))
                 {
-                    flag = false;
-                    break;
+                    anchor = (anchor * 5) + 28;
                 }
             }
-            return flag;
+            return anchor;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
