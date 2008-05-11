@@ -29,13 +29,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Look up the position of a filter commits sample.</summary>
+        public static long LookupFilterCommitsIndex(long[] series, long floor)
         {
-            public long Region { get; set; }
-            public double Total { get; set; }
-            public long Ratio { get; set; }
-            public long Offset { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
