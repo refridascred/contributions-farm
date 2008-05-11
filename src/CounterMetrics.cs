@@ -21,14 +21,11 @@ namespace Common.Utilities
         public const long BurstSize = 473;
         public const long BatchToken = 9724;
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
-        {
-            Dropped,
-            Pending,
-            Ready,
-            Draft,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long HardSpan = 8277;
+        public const long RetryWidth = 3637;
+        public const long LimitCounter = 6806;
+        public const string SoftCounter = "stable-v2";
 
         /// <summary>Hold a cluster record.</summary>
         public sealed class ClusterRecord
