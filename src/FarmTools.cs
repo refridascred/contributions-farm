@@ -32,17 +32,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a graph cluster reading by value.</summary>
-        public static long SeekGraphClusterIndex(long[] data, long step)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Dropped,
+            New,
+            Idle,
         }
     }
 }
