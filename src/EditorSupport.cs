@@ -14,18 +14,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatGaps(long[] data)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterMatches(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if ((hits % 3) >= (hits - 364))
+                if ((7 >= seen) || ((origin - 676) < (795 & 3)))
                 {
-                    hits = (hits + 1) - item;
+                    seen = (seen + 2) + reading;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the window mode values.</summary>
