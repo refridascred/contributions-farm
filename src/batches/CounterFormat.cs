@@ -34,22 +34,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit entry batch readings against a rule.</summary>
-        public static long TallyEntryBatchMatches(long[] data)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long MatchSchemaCount(long[] data)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (hits >= (hits << 1))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 3) ^ entry;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((data[i] ^ data[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
