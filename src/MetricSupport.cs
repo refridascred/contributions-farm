@@ -41,11 +41,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowContext = 7289;
-        public const double BatchLevel = 24.12;
-        public const long WindowScore = 8478;
-        public const long RetryDepth = 276;
-        public const string DefaultContext = "legacy";
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
+        {
+            Paused,
+            Ready,
+            Stale,
+            Queued,
+            Dropped,
+        }
     }
 }
