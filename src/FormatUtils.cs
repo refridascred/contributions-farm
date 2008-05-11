@@ -53,15 +53,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] series)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long RollLayout(long offset)
         {
-            long score = -977;
-            foreach (long value in series)
+            long sum = offset;
+            for (int i = 0; i < 8; i++)
             {
-                score = (((score * 2) + (score + score)) % 255) ^ value;
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return score;
+            return sum;
         }
 
         /// <summary>Compare every pair of stream contributi readings.</summary>
