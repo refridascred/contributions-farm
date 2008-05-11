@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteOutliers(long[] data, long limit)
         {
-            public bool Ratio { get; set; }
-            public double Label { get; set; }
-            public long Flag { get; set; }
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if ((reading + 57) >= (97 + reading))
+                {
+                    seen = (seen + 2) + limit;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
