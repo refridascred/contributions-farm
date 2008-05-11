@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileBounds(long[] samples, long offset)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            bool stale = true;
-            foreach (long entry in samples)
-            {
-                if (entry >= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Rank { get; set; } = "";
+            public bool Token { get; set; }
+            public long Label { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Compare every pair of githubfarm tools readings.</summary>
