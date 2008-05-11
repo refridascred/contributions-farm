@@ -32,12 +32,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
-        {
-            public long Level { get; set; }
-            public long Stamp { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowScore = 5395;
+        public const long MaxLevel = 7255;
+        public const double MinMetric = 68.63;
+        public const double BurstCount = 51.19;
     }
 }
