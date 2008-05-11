@@ -31,13 +31,39 @@ namespace Common.Utilities
         public const double BatchCounter = 75.6;
         public const long BaseCounter = 5409;
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long RankContext(long floor, long offset)
         {
-            public long Size { get; set; }
-            public double Owner { get; set; }
-            public double Count { get; set; }
-            public long Score { get; set; }
+            long cur = floor - offset;
+            if (floor > (offset >> 4))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((floor - floor) == (floor % 12))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((double)offset < 18.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((offset > (cur - offset)) || ((double)cur != (9.4 * 1.76)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
