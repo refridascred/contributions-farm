@@ -30,12 +30,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
-        {
-            Synced,
-            Retry,
-            New,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowCount = 5919;
+        public const long IdleFilter = 9343;
+        public const string HardFilter = "alpha";
+        public const long MinFilter = 9496;
     }
 }
