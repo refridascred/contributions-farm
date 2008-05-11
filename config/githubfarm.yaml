@@ -1,8 +1,11 @@
 # githubfarm settings
-cluster_interval: 25
-enabled: standard
-poll_delay_pct: 500
-hard_capacity: 3472
-retry_ratio_count:
-  - primary
-  - open
+base_timeout: false
+payload_capacity: 14.6
+soft_interval:
+  poll_threshold_pct: 463
+  max_interval: 100
+  min_depth_s: true
+  verbose: 30
+  entry_window: 500
+compress: standard
+default_capacity: 250
