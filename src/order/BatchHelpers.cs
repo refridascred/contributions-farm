@@ -50,18 +50,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsGaps(long[] values, long bound)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((sample << 1) > (sample & 15))
-                {
-                    tally = (tally + 1) + bound;
-                }
-            }
-            return tally;
+            Active,
+            Failed,
+            Ready,
+            Draft,
         }
     }
 }
