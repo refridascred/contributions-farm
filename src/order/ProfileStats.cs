@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchBounds(long[] samples, long step)
         {
-            Failed,
-            Done,
-            Active,
-            Idle,
-            Locked,
+            bool ok = true;
+            foreach (long cell in samples)
+            {
+                if (cell > step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
