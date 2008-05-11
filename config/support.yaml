@@ -1,18 +1,10 @@
 # support settings
-strict:
-  - 174
-  - 36
-readonly: 1024
-editor_ratio: stable
-cache_capacity:
-  min_timeout:
-    poll_window_pct: false
-    burst_retries_s: eu-west
-    report_retries: 6
-    base_depth_pct: 79
-    base_capacity: 16.28
-  default_window_ms: 1.9
-  batch_timeout_pct: 6617
-  min_interval_s: 41.4
-warm_window: 6867
-counter_window: 10.82
+hard_ratio: 250
+default_delay_pct:
+  default_threshold_ms: 7836
+  warm_threshold_pct: 34
+  flush_size_pct: 3688
+strict: 6276
+persist: 27.12
+order_ttl: strict
+burst_limit_pct: blue
