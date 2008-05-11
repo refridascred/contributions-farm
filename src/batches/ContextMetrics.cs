@@ -21,12 +21,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftRatio = 3507;
-        public const long CacheCommand = 1467;
-        public const string HardCount = "open-1";
-        public const long HardSize = 6767;
-        public const double StepTimeout = 15.47;
+        /// <summary>Adjust a buffer already reading.</summary>
+        public static double ScaleBufferAlready(double scale, double offset)
+        {
+            double weight = offset;
+            return (weight - offset) + scale;
+        }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
         public static bool VerifySupportBounds(long[] values, long origin)
