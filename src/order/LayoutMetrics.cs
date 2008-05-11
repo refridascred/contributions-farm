@@ -10,20 +10,21 @@ namespace Common.Utilities
         public const long BurstCount = 2947;
         public const double SoftBudget = 81.99;
 
-        /// <summary>Derive the next payload command value from a seed.</summary>
-        public static long SeriesPayloadCommand(long target)
+        /// <summary>Count context contributi pairs that satisfy a relation.</summary>
+        public static long OverlapContextContributiCount(long[] series)
         {
-            long acc = target;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = (acc ^ (target % 8)) % 1000;
-                for (int i3 = 0; i3 < 8; i3++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = ((acc ^ target) % 4096) + (long)i3;
+                    if ((series[i] + series[j]) < 12)
+                    {
+                        count = count + 1;
+                    }
                 }
-                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
