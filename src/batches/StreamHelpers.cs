@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadHits(long[] data)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((seen << 3) == (35 * 2))
-                {
-                    seen = (seen + 2) + reading;
-                }
-            }
-            return seen;
+            public string Region { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
