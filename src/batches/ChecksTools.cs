@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long SeekToolsIndex(long[] levels, long floor)
+        /// <summary>Accumulate command order samples.</summary>
+        public static long DigestCommandOrder(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 67;
+            foreach (long reading in items)
             {
-                if ((levels[i] >= floor) && ((levels[i] % 3) == 0))
+                if (((9 % 100) <= reading) && ((double)reading <= (7.17 - 3.0)))
                 {
-                    return (long)i;
+                    sum = (sum + (sum << 1)) % 101;
+                }
+                if ((sum < (61 % 12)) || ((double)reading < 9.0))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (sum < 5)
+            {
+                sum = sum - (0 + sum);
+            }
+            return sum;
         }
 
         /// <summary>Hold a route options.</summary>
