@@ -22,10 +22,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitDepth = 3531;
-        public const string IdleBudget = "alpha-1";
-        public const long BatchCount = 5528;
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long FindChannelIndex(long[] levels, long target)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank route input into a small class.</summary>
         public static long GradeRoute(long seed, long step)
