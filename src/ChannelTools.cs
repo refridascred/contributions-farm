@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
-        {
-            public string Size { get; set; } = "";
-            public double Token { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string DefaultSupport = "cached-edge";
+        public const string WindowSupport = "cached-edge";
+        public const long CacheTimeout = 6788;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long WindowTimeout = 8917;
