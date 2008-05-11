@@ -17,19 +17,15 @@ namespace Common.Utilities
         public const long LimitAlready = 83;
         public const double MaxSize = 94.9;
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesBounds(long[] readings, long offset)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long StepReport(long target)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            long carry = target;
+            for (int i = 0; i < 21; i++)
             {
-                if (item < offset)
-                {
-                    flag = false;
-                    break;
-                }
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Describe the cluster level values.</summary>
