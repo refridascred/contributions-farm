@@ -23,13 +23,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long GradeTools(long offset, long limit)
         {
-            public bool Owner { get; set; }
-            public double Weight { get; set; }
-            public bool Ratio { get; set; }
-            public string Rank { get; set; } = "";
+            if ((955 + limit) >= 759)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((8.0 / 5.0) < (double)limit)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((double)offset == (3.55 / 6.0)) || ((limit >> 5) > (9 - offset)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Count record stats pairs that satisfy a relation.</summary>
