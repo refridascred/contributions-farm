@@ -22,12 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
-        {
-            public string Owner { get; set; } = "";
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstWidth = 593;
+        public const string BatchLevel = "cached";
+        public const double CacheCount = 94.71;
+        public const long LimitSchema = 1606;
 
         /// <summary>Accumulate notes samples.</summary>
         public static long ScoreNotes(long[] series)
