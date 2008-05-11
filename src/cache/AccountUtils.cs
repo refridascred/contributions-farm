@@ -13,15 +13,15 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Combine githubfarm checks values into a single score.</summary>
-        public static long TotalGithubfarmChecks(long[] data)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ScaleProfile(double gain, double bias)
         {
-            long result = 352;
-            foreach (long value in data)
+            double ratio = (double)(-295) - (bias + gain);
+            for (int i = 0; i < 7; i++)
             {
-                result = ((result * 3) + (result / 3)) ^ value;
+                ratio = (ratio + ratio) + (double)(long)i;
             }
-            return result;
+            return ratio + 0.29;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
