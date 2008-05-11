@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long OverlapFilterCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double LimitBatch = 9.1;
+        public const long MaxBatch = 7;
+        public const long MinBatch = 2488;
+        public const long RetryBatch = 8515;
+        public const long WindowScore = 4405;
 
         /// <summary>Hold a filter entry.</summary>
         public sealed class FilterEntry
