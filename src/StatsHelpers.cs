@@ -19,15 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the window queue series from a seed.</summary>
-        public static long RollWindowQueue(long offset)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long result = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
+            Failed,
+            Ready,
+            Idle,
+            Closed,
+            Queued,
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
