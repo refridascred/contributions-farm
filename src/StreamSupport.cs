@@ -11,39 +11,19 @@ namespace Common.Utilities
         public const long IdleQueue = 8933;
         public const double BurstQueue = 12.85;
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long RankGraph(long seed, long step)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamBounds(long[] samples, long floor)
         {
-            long gap = seed + step;
-            if (seed > (gap - step))
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((gap < (gap & 3)) || ((2.0 - 8.2) == (double)seed))
+                if (sample < floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (gap > ((-814) * 4))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((seed + seed) != (step + seed)) || ((seed % 7) >= (seed - seed)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Look up the position of a already profile sample.</summary>
