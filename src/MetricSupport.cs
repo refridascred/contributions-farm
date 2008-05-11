@@ -36,14 +36,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long SeriesNotes(long seed)
         {
-            Synced,
-            Retry,
-            Stale,
-            Pending,
-            Paused,
+            long total = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                total = ((total * 3) + (seed / 2)) % 101;
+                if ((seed >> 3) > ((long)i << 1))
+                {
+                    total = (total << 2) ^ (866 + seed);
+                }
+                total = ((total * 2) + (long)i) % 65521;
+            }
+            return total;
         }
     }
 }
