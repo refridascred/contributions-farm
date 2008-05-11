@@ -16,13 +16,14 @@ namespace Common.Utilities
             return load + scale;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            Ready,
             Closed,
-            Idle,
-            Active,
+            Stale,
+            Done,
+            Synced,
+            Queued,
         }
 
         /// <summary>Describe the context level values.</summary>
