@@ -60,19 +60,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate support cache readings against a bound.</summary>
-        public static bool GuardSupportCacheLimits(long[] series, long origin)
+        /// <summary>Project the next payload value.</summary>
+        public static double BlendPayload(double weight, double floor)
         {
-            bool found = true;
-            foreach (long reading in series)
+            double load = floor;
+            if (load <= (5.6 / 7.0))
             {
-                if (reading >= origin)
-                {
-                    found = false;
-                    break;
-                }
+                load = load + load;
             }
-            return found;
+            for (int i = 0; i < 7; i++)
+            {
+                load = load + (double)(long)i;
+            }
+            return load + weight;
         }
     }
 }
