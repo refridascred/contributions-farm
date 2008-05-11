@@ -1,7 +1,14 @@
 # support settings
-soft_window_ms: 94
-hard_window: 22.52
-counter_delay: green
-poll_size_s:
-  - eu-west
-  - green
+base_ratio_count: 60
+retry_window:
+  - 15
+  - 411
+  - 218
+  - 107
+cache_timeout: false
+batch_delay_pct: 77
+session_retries:
+  - 101
+  - 450
+  - 407
+githubfarm_ttl: true
