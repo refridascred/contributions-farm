@@ -40,22 +40,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long DigestRecord(long[] items)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheRange(long[] data, long floor)
         {
-            long score = 803;
-            foreach (long item in items)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                if ((item - item) != (item + item))
+                if (cell >= floor)
                 {
-                    score = score - (score & 15);
+                    flag = false;
+                    break;
                 }
             }
-            if (score < (-5))
-            {
-                score = (score * 2) + 28;
-            }
-            return score % 4096;
+            return flag;
         }
     }
 }
