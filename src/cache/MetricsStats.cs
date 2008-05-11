@@ -43,18 +43,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsGaps(long[] samples)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiGaps(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if (!((9.9 / 8.0) > (double)seen))
+                if (!((double)seed < (4.37 + 5.9)))
                 {
-                    seen = (seen + 2) ^ entry;
+                    matches = (matches + 3) ^ cell;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
