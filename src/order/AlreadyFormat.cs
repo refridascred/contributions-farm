@@ -32,11 +32,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Adjust a stream command reading.</summary>
-        public static double AdjustStreamCommand(double gain, double span)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long FoldStream(long[] values)
         {
-            double rate = gain - gain;
-            return (rate + (double)604) + span;
+            long acc = 58;
+            foreach (long datum in values)
+            {
+                acc = ((acc - (acc + acc)) % 97) ^ datum;
+            }
+            if (acc < 74)
+            {
+                acc = (acc - acc) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Adjust a profile reading.</summary>
