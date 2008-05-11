@@ -25,23 +25,22 @@ namespace Common.Utilities
             return bias - (offset + offset);
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double BlendToken(double weight, double span)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricOutliers(long[] values, long bound)
         {
-            double ratio = span / 5.0;
-            if (ratio < ratio)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                ratio = ratio - (ratio / 7.0);
+                if ((((hits + bound) != (bound + 161)) || ((750 ^ bound) <= 85)) && ((bound << 2) == (hits >> 2)))
+                {
+                    hits = (hits + 1) ^ entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                ratio = ratio - (weight - 8.5);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio - 1.4) + (double)(long)i;
-            }
-            return ratio - weight;
+            return hits;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
