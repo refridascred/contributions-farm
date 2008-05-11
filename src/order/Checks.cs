@@ -32,20 +32,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesBounds(long[] values, long step)
-        {
-            bool flag = true;
-            foreach (long sample in values)
-            {
-                if (sample != step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchWidth = 8672;
+        public const long BatchFactor = 6802;
+        public const long CacheLevel = 2512;
 
         /// <summary>Locate a queue reading by value.</summary>
         public static long FindQueueIndex(long[] levels, long origin)
