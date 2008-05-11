@@ -14,10 +14,20 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepCommand = 6049;
-        public const double MaxRatio = 41.04;
-        public const long WindowCommand = 7057;
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsLimits(long[] values, long offset)
+        {
+            bool flag = true;
+            foreach (long cell in values)
+            {
+                if (cell <= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long BurstEntry = 2420;
