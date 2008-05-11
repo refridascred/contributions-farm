@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesHits(long[] levels, long limit)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LookupClusterIndex(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (3 < (count << 2))
+                if (levels[i] >= limit)
                 {
-                    count = ((count + 1) + item) - limit;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Match up cluster samples.</summary>
