@@ -1,15 +1,11 @@
 # Command notes
 
-Defaults for queue live in the config folder and can be overridden per environment.
-When a metric fails, the entry handler retries a few times before giving up.
-Keep stats and route names short and lowercase.
-
-The format report groups every already by buffer.
-Defaults for contributi live in the config folder and can be overridden per environment.
-The account report groups every commits by batch.
+The command module keeps queue values in sync with the githubfarm cache.
+Defaults for tools live in the config folder and can be overridden per environment.
+Keep checks and session names short and lowercase.
 
 ## Guidelines
 
-- Review metric limits each release
-- Validate payload input early
-- Document new report fields
+- Prefer tools defaults
+- Validate channel input early
+- Document new channel fields
