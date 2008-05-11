@@ -36,15 +36,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a metrics profile reading.</summary>
-        public static double ScaleMetricsProfile(double scale, double bias)
+        /// <summary>Count the batch already entries that pass the check.</summary>
+        public static long AuditBatchAlreadyMatches(long[] items, long origin)
         {
-            double ratio = 3.81;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long item in items)
             {
-                ratio = (ratio - (double)(long)i) + scale;
+                if ((tally - tally) < (item + item))
+                {
+                    tally = (tally + 2) - origin;
+                }
             }
-            return ratio - bias;
+            return tally;
         }
     }
 }
