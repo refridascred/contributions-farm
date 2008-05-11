@@ -44,22 +44,14 @@ namespace Common.Utilities
             return ((bias2 + (bias2 * 6.66)) + scale) + bias;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportGaps(long[] samples)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((0 >> 5) < (32 - tally))
-                {
-                    tally = (tally + 1) + datum;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Locked,
+            New,
+            Pending,
+            Idle,
+            Failed,
         }
 
         /// <summary>Accumulate context metrics samples.</summary>
