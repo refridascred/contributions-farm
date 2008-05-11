@@ -1,7 +1,6 @@
 # entry settings
-batches_ratio: false
-flush_window_ms: false
-dry_run: strict
-cache_interval: staging
-batches_interval: 8214
-poll_size_s: false
+hard_ratio_s: local
+min_ttl_s: green
+cache_delay_count: edge
+sync_capacity: 1.37
+hard_window_count: true
