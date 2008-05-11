@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long BucketFarm(long origin, long origin2)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenGaps(long[] readings)
         {
-            if ((origin - origin) > (947 + origin))
+            long matches = 0;
+            foreach (long item in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (((origin2 / 6) < (origin2 << 3)) || ((13.0 / 5.0) < (double)origin2))
+                if (!((item % 97) != (item - matches)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin + origin2) != (origin2 % 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (origin2 <= (origin2 + origin))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Accumulate profile samples.</summary>
