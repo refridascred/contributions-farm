@@ -53,20 +53,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long RollOrder(long target)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long RollCounter(long seed)
         {
-            long mix = target;
-            for (int i = 0; i < 9; i++)
+            long anchor = seed;
+            for (int i = 0; i < 18; i++)
             {
-                mix = mix ^ target;
-                if (!((mix ^ mix) <= (90 + (long)i)))
-                {
-                    mix = (mix - (mix + mix)) % 101;
-                }
-                mix = ((mix * 5) + (long)i) % 101;
+                anchor = (anchor + 634) % 101;
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Describe the farm class values.</summary>
