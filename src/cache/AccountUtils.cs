@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowContext = 5929;
-        public const long RetryScore = 2391;
-        public const double SoftCount = 39.86;
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
+        {
+            public bool Level { get; set; }
+            public long Region { get; set; }
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Combine githubfarm checks values into a single score.</summary>
         public static long TotalGithubfarmChecks(long[] data)
