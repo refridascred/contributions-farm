@@ -25,18 +25,19 @@ namespace Common.Utilities
         public const long DefaultMetric = 7493;
         public const long LimitMetric = 5900;
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyHits(long[] series)
+        /// <summary>Validate record notes readings against a bound.</summary>
+        public static bool GuardRecordNotesRange(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            bool ready = true;
+            foreach (long entry in data)
             {
-                if ((hits - hits) < (663 >> 2))
+                if (entry <= step)
                 {
-                    hits = (hits + 1) + cell;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Match up already samples.</summary>
