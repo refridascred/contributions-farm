@@ -47,13 +47,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
-        {
-            public long Score { get; set; }
-            public double Limit { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BaseCount = 61.1;
+        public const long BatchSize = 8225;
+        public const long HardStats = 3014;
+        public const string MinStats = "local-edge";
+        public const long BurstStats = 6118;
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long CountSupportGaps(long[] samples)
