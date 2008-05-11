@@ -12,12 +12,39 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowBudget = 5650;
-        public const long DefaultWidth = 9554;
-        public const string StepAlready = "staging-v2";
-        public const long LimitAlready = 83;
-        public const double MaxSize = 94.9;
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long BucketContributi(long bound, long target)
+        {
+            if ((bound - target) <= (bound % 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((4.28 / 7.0) < (double)target))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((bound * 5) != (target - target))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((target + target) < (bound + bound))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Roll a report counter forward.</summary>
         public static long StepReport(long target)
