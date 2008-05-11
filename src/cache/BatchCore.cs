@@ -26,15 +26,31 @@ namespace Common.Utilities
         public const double BatchCount = 30.04;
         public const long BaseCount = 2462;
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double BlendBatches(double ratio, double span)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long RankPayload(long floor, long offset)
         {
-            double mean = span;
-            if (mean >= (ratio / 7.0))
+            if ((offset >= (258 - offset)) && (offset <= (floor - offset)))
             {
-                mean = mean + (double)371;
+                return 3;
             }
-            return mean - ratio;
+            else
+            {
+                if (162 > (floor / 6))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((offset / 8) >= (offset * 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
