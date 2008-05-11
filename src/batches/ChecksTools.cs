@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Derive the next farm profile value from a seed.</summary>
-        public static long IterateFarmProfile(long origin)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LookupToolsIndex(long[] items, long seed)
         {
-            long mark = origin;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(((long)i * 4) > (origin >> 3)))
+                if ((items[i] >= seed) && ((items[i] % 3) == 0))
                 {
-                    mark = mark + (long)i;
+                    return (long)i;
                 }
-                mark = ((mark * 2) + (long)i) % 97;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
