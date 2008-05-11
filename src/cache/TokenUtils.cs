@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long IterateStats(long target)
+        /// <summary>Validate payload cluster readings against a bound.</summary>
+        public static bool VerifyPayloadClusterBounds(long[] levels, long offset)
         {
-            long anchor = target;
-            for (int i = 0; i < 24; i++)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                anchor = ((anchor * 5) + (long)i) % 101;
+                if (sample < offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return anchor;
+            return found;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
