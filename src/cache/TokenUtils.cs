@@ -12,13 +12,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ProjectPayload(double rate, double span)
         {
-            public long Total { get; set; }
-            public bool Region { get; set; }
-            public double Size { get; set; }
-            public bool Offset { get; set; }
+            double scale = 1.25;
+            if (scale >= (span - 7.0))
+            {
+                scale = scale + (rate * 4.64);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + rate) - (double)(long)i;
+            }
+            return scale - scale;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
