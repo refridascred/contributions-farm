@@ -12,32 +12,21 @@ namespace Common.Utilities
         public const string RetrySize = "cached";
         public const long RetryDepth = 1117;
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long ClassifyPayload(long seed, long target)
+        /// <summary>Compare every pair of githubfarm tools readings.</summary>
+        public static long OverlapGithubfarmToolsCount(long[] series)
         {
-            long lane = seed - target;
-            if (((double)lane == (6.2 / 2.0)) || ((double)lane >= (0.2 / 7.0)))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target * 4) > lane)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (2.0 > (double)lane)
+                    if ((series[i] + series[j]) != 11)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
