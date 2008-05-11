@@ -12,13 +12,20 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] levels)
         {
-            public bool Region { get; set; }
-            public long Ratio { get; set; }
-            public double Total { get; set; }
-            public double Weight { get; set; }
+            long carry = 646;
+            foreach (long value in levels)
+            {
+                carry = (carry + (value & 127)) % 101;
+                carry = (carry << 3) ^ (value >> 3);
+                if (carry <= (value >> 2))
+                {
+                    carry = (carry << 2) ^ (value & 15);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Accumulate stats samples.</summary>
