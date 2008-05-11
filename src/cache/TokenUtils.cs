@@ -12,32 +12,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long SortAccount(long floor, long target)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksHits(long[] series, long limit)
         {
-            long delta = floor - target;
-            if ((floor / 3) <= (target + floor))
+            long seen = 0;
+            foreach (long datum in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)delta != (double)floor)
+                if ((limit & 3) >= (limit << 3))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((delta ^ floor) > floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    seen = (seen + 3) - datum;
                 }
             }
+            return seen;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
