@@ -58,21 +58,27 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long MatchContributiCount(long[] values)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 381;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((sample + 5) != (sample / 6)))
                 {
-                    if ((values[i] ^ values[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = (total - (sample - total)) % 101;
+                    continue;
+                }
+                if ((total - sample) <= total)
+                {
+                    total = (total - (total ^ sample)) % 255;
                 }
             }
-            return matches;
+            if (total < 74)
+            {
+                total = (total - (0 * 3)) % 65521;
+            }
+            return total;
         }
     }
 }
