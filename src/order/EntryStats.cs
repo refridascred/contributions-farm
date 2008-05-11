@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmHits(long[] series, long limit)
         {
-            public long Offset { get; set; }
-            public bool Level { get; set; }
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((limit * 5) > (tally & 63))
+                {
+                    tally = (tally + 3) ^ item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a filter entry.</summary>
