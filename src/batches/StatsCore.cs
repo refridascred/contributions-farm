@@ -56,13 +56,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Digest a series of order batches entries.</summary>
+        public static long TotalOrderBatches(long[] samples, long floor)
         {
-            public double Weight { get; set; }
-            public string Limit { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long total = 37;
+            foreach (long datum in samples)
+            {
+                if ((double)floor < (4.2 - 3.86))
+                {
+                    total = ((total * 2) + (total % 97)) - datum;
+                }
+            }
+            if (total < 92)
+            {
+                total = total ^ (total - floor);
+            }
+            return total;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
