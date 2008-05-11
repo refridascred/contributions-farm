@@ -20,32 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank batch cluster input into a small class.</summary>
-        public static long RankBatchCluster(long bound, long floor)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long slot = bound + floor;
-            if ((bound + floor) < (slot << 1))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((slot + floor) != (slot << 1))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor + floor) >= (floor ^ floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Fold a list of payload record readings.</summary>
