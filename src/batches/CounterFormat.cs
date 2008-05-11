@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            public long Limit { get; set; }
-            public bool Rank { get; set; }
-            public string Score { get; set; } = "";
-            public long Level { get; set; }
+            Idle,
+            Paused,
+            Pending,
         }
 
         /// <summary>Match up tools already samples.</summary>
