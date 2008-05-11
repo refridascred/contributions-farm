@@ -68,17 +68,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LocateBufferIndex(long[] levels, long floor)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Offset { get; set; }
+            public long Count { get; set; }
+            public bool Label { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
