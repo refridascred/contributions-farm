@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsLimits(long[] items, long seed)
+        /// <summary>Match up layout samples.</summary>
+        public static long MatchLayoutCount(long[] series)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell <= seed)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((series[i] + series[j]) > 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Locate a already reading by value.</summary>
