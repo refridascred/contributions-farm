@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long CombineStream(long[] readings)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long mark = -1;
-            foreach (long value in readings)
-            {
-                mark = mark - value;
-            }
-            return mark;
+            public bool Mode { get; set; }
+            public long Owner { get; set; }
+            public string Total { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
