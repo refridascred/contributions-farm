@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long IterateCommits(long origin)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long score = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                long seen = (long)i >> 2;
-                if (origin >= (seen + seen))
-                {
-                    score = (score ^ score) % 255;
-                }
-                score = ((score * 3) + (long)i) % 101;
-            }
-            return score;
+            public long Total { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Accumulate window samples.</summary>
