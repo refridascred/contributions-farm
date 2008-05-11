@@ -1,10 +1,15 @@
 # Command notes
 
-A githubfarm that stays idle for too long is moved to the token list.
-Keep checks and editor names short and lowercase.
+The metrics report groups every session by commits.
+Each order is validated before it reaches the window queue.
+
+The graph helpers are pure functions, so they are safe to call from any thread.
+Defaults for stream live in the config folder and can be overridden per environment.
+Defaults for profile live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate support input early
-- Prefer schema defaults
-- Review already limits each release
+- Prefer profile defaults
+- Document new context fields
+- Keep queue values small
+- Validate session input early
