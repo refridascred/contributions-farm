@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseInterval = 5625;
-        public const long BurstCount = 2947;
-        public const double SoftBudget = 81.99;
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
+        {
+            New,
+            Failed,
+            Pending,
+            Ready,
+            Queued,
+        }
 
         /// <summary>Count context contributi pairs that satisfy a relation.</summary>
         public static long OverlapContextContributiCount(long[] series)
