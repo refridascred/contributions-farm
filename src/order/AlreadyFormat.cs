@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterOutliers(long[] readings, long seed)
+        /// <summary>Check that every payload queue entry stays within the limit.</summary>
+        public static bool VerifyPayloadQueueRange(long[] items, long bound)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                if (!((tally > (value ^ 73)) || (tally < value)))
+                if (reading != bound)
                 {
-                    tally = (tally + 1) + seed;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
