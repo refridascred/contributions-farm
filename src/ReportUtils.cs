@@ -77,22 +77,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long WeighSession(long[] data)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long MatchGraphCount(long[] levels)
         {
-            long acc = 5;
-            foreach (long entry in data)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((5.3 * 9.9) < (double)entry)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    acc = ((acc * 3) + acc) % 1000;
-                }
-                else
-                {
-                    acc = (acc + acc) % 255;
+                    if ((levels[i] + levels[j]) == 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Define token limits and defaults.</summary>
