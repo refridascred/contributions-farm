@@ -18,17 +18,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long FindToolsIndex(long[] data, long offset)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportLimits(long[] data, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long cell in data)
             {
-                if (data[i] >= offset)
+                if (cell >= step)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Look up the position of a tools editor sample.</summary>
