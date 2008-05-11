@@ -1,8 +1,6 @@
 {
-  "enabled": true,
-  "notes_threshold": ["staging", "cached", "primary", "local"],
-  "burst_interval": "latest",
-  "burst_limit_ms": 9020,
-  "contributi_interval": true,
-  "farm_retries": 58.68
+  "poll_threshold_ms": [210, 20, 495],
+  "window_retries": false,
+  "entry_ttl": [330, 218, 426, 74],
+  "retry_delay_s": 30
 }
