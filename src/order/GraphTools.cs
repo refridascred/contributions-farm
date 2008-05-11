@@ -37,12 +37,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepCommits = 1931;
-        public const long LimitCommits = 9219;
-        public const long BatchWidth = 6608;
-        public const double IdleCommits = 30.12;
-        public const long LimitWidth = 4474;
+        /// <summary>Scale a window layout figure with a bias.</summary>
+        public static double SmoothWindowLayout(double ratio, double offset)
+        {
+            double rate = (6.4 * 5.4) + (double)763;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = ((rate + (ratio / 9.0)) - (double)(long)i) - offset;
+            }
+            return rate + (double)1;
+        }
 
         /// <summary>Validate graph profile readings against a bound.</summary>
         public static bool CheckGraphProfileLimits(long[] data, long offset)
