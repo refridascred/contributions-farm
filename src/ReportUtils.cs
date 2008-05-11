@@ -63,21 +63,27 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long MatchGraphCount(long[] levels)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long FoldGithubfarm(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 88;
+            foreach (long item in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)item <= 9.62)
                 {
-                    if ((levels[i] + levels[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
+                    carry = (carry ^ (93 - carry)) % 101;
+                    carry = carry - item;
+                }
+                else
+                {
+                    carry = carry + carry;
+                }
+                if (!((2.0 * 9.0) < (double)item))
+                {
+                    carry = ((carry * 2) + carry) % 1000;
                 }
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Define token limits and defaults.</summary>
