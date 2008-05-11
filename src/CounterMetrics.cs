@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Find the first metric counter entry that matches the target.</summary>
+        public static long LookupMetricCounterIndex(long[] values, long floor)
         {
-            public string Rank { get; set; } = "";
-            public double Flag { get; set; }
-            public bool Ratio { get; set; }
-            public long Token { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > floor) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
