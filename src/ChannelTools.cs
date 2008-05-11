@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Project the next command batch value.</summary>
-        public static double ProjectCommandBatch(double rate, double floor)
-        {
-            double drift = (double)(68 % 64);
-            return (drift + rate) + floor;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftTimeout = 7118;
+        public const string BurstCount = "stable-edge";
+        public const long DefaultSpan = 4189;
+        public const double LimitAccount = 13.83;
+        public const long CacheAccount = 6226;
 
         /// <summary>Audit githubfarm tools readings against a rule.</summary>
         public static long TallyGithubfarmToolsGaps(long[] items, long offset)
