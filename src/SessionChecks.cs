@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            Closed,
-            New,
-            Paused,
-            Ready,
+            public bool Ratio { get; set; }
+            public double Label { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a stream record.</summary>
