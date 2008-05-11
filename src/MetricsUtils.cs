@@ -45,17 +45,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LocateMetricsIndex(long[] levels, long seed)
+        /// <summary>Check that every window commits entry stays within the limit.</summary>
+        public static bool VerifyWindowCommitsLimits(long[] data, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long cell in data)
             {
-                if (levels[i] <= seed)
+                if (cell != seed)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Roll a route counter forward.</summary>
