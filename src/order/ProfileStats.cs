@@ -22,12 +22,17 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Locate a command session reading by value.</summary>
+        public static long LookupCommandSessionIndex(long[] samples, long step)
         {
-            Dropped,
-            Paused,
-            Idle,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the report state values.</summary>
