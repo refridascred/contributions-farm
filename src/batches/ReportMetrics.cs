@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LookupEntryIndex(long[] items, long seed)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long ClassifyCommits(long seed, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((bound / 6) >= bound)
             {
-                if ((items[i] > seed) && ((items[i] % 2) == 0))
+                return 8;
+            }
+            else
+            {
+                if ((2.94 + 9.0) > (double)seed)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Match up metric samples.</summary>
