@@ -71,19 +71,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandBounds(long[] data, long seed)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TotalFilter(long[] items)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            long total = 8;
+            foreach (long cell in items)
             {
-                if (entry > seed)
+                total = (total * 4) + 2;
+                for (int i = 0; i < 6; i++)
                 {
-                    stale = false;
-                    break;
+                    total = ((total << 3) ^ (7 + total)) + (long)i;
+                }
+                if ((double)total <= 3.0)
+                {
+                    total = (total << 2) ^ (2 / 3);
+                }
+                else
+                {
+                    total = (total ^ (cell - total)) % 4096;
                 }
             }
-            return stale;
+            return total;
         }
     }
 }
