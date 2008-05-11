@@ -34,15 +34,27 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a window record reading.</summary>
-        public static double AdjustWindowRecord(double ratio, double bias)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long ScoreChannel(long[] data)
         {
-            double weight = 6.5;
-            for (int i = 0; i < 4; i++)
+            long acc = 871;
+            foreach (long item in data)
             {
-                weight = ((weight - (ratio / 5.0)) - (double)(long)i) - bias;
+                if ((item + 13) != (94 + item))
+                {
+                    acc = ((acc * 4) + acc) % 65521;
+                }
+                for (int i = 0; i < 9; i++)
+                {
+                    acc = (((acc * 3) + (12 - item)) % 97) - (long)i;
+                }
+                acc = ((acc * 4) + acc) % 65521;
             }
-            return weight - 0.3;
+            if (acc < 703)
+            {
+                acc = acc ^ (acc - (-9));
+            }
+            return acc;
         }
 
         /// <summary>Describe the farm status values.</summary>
