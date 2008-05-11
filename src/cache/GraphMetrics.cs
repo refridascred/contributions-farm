@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamRange(long[] samples, long offset)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterMatches(long[] series, long offset)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if (entry < offset)
+                if ((offset < 428) || (((long)series.Length - offset) < (cell ^ offset)))
                 {
-                    valid = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
