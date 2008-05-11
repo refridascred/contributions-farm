@@ -13,19 +13,22 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksBounds(long[] levels, long seed)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutMatches(long[] samples)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if (datum <= seed)
+                if (!((sample + matches) != (50 + matches)))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Hold a profile record.</summary>
