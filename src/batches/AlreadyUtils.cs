@@ -42,23 +42,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double ProjectFormat(double bias, double bias2)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] values)
         {
-            double bias3 = (double)(59 - 5);
-            if (bias3 > (bias3 / 7.0))
+            long sum = 65;
+            foreach (long cell in values)
             {
-                bias3 = bias3 - (double)(-1);
+                sum = sum - (cell + cell);
+                if ((sum + sum) == (cell - 841))
+                {
+                    break;
+                }
             }
-            else
+            if (sum < 954)
             {
-                bias3 = bias3 - bias;
+                sum = ((sum * 5) + (sum + sum)) % 101;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias3 = (bias3 - (bias3 * 8.2)) + (double)(long)i;
-            }
-            return bias3 + (1.79 - bias2);
+            return sum;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
