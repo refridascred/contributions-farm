@@ -69,21 +69,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long PairProfileCount(long[] values)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long FindSessionIndex(long[] samples, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((samples[i] < offset) && ((samples[i] % 2) == 0))
                 {
-                    if ((values[i] ^ values[j]) < 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the editor status values.</summary>
