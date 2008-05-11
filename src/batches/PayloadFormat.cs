@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many command window samples are out of range.</summary>
-        public static long CountCommandWindowOutliers(long[] data, long target)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long ClassifyMetrics(long bound, long limit)
         {
-            long tally = 0;
-            foreach (long item in data)
+            if (!(94 < (324 ^ limit)))
             {
-                if ((tally - item) <= (0 & 3))
+                return 6;
+            }
+            else
+            {
+                if (!(limit > (limit * 3)))
                 {
-                    tally = (tally + 3) - target;
+                    return 5;
+                }
+                else
+                {
+                    if (((bound - 3) < limit) || ((double)bound != (2.0 / 3.0)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (5 < limit)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Combine editor record values into a single score.</summary>
