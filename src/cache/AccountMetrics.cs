@@ -46,20 +46,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long CombineOrder(long[] data)
+        /// <summary>Locate a metrics support reading by value.</summary>
+        public static long SeekMetricsSupportIndex(long[] series, long target)
         {
-            long anchor = 699;
-            foreach (long sample in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = (anchor * 2) + anchor;
-                anchor = (anchor ^ sample) % 97;
-                if ((69 - sample) <= (27 + anchor))
+                if (series[i] >= target)
                 {
-                    anchor = anchor ^ (49 ^ sample);
+                    return (long)i;
                 }
             }
-            return anchor % 65521;
+            return -1;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
