@@ -1,16 +1,8 @@
 {
-  "command_timeout": [99, 393],
-  "base_retries_s": true,
-  "metric_timeout": {
-    "verbose": {
-      "flush_retries_count": "cached",
-      "cluster_depth": false,
-      "min_threshold_ms": "local",
-      "record_window": false,
-      "batch_capacity_s": "primary",
-      "persist": "edge"
-    },
-    "cluster_threshold": 60,
-    "batch_limit": "standard"
-  }
+  "base_ttl_s": 96.4,
+  "account_size": 91.91,
+  "enabled": 82.37,
+  "max_delay_s": "open",
+  "order_timeout": 7066,
+  "retry_limit_ms": [14, 279]
 }
