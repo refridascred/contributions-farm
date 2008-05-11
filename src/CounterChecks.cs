@@ -70,22 +70,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long WeighWindow(long[] levels, long limit)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long carry = 704;
-            foreach (long item in levels)
-            {
-                if ((item >> 3) <= carry)
-                {
-                    carry = (carry - (item - 6)) % 4096;
-                }
-            }
-            if (carry < 48)
-            {
-                carry = ((carry << 2) ^ (limit / 7)) % 97;
-            }
-            return carry;
+            public double Weight { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
