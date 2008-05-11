@@ -57,18 +57,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long FoldContext(long[] levels, long bound)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long FindSupportIndex(long[] readings, long floor)
         {
-            long mix = 54;
-            foreach (long cell in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (938 < cell)
+                if ((readings[i] == floor) && ((readings[i] % 3) == 0))
                 {
-                    mix = (((mix << 2) ^ (mix * 5)) % 101) - bound;
+                    return (long)i;
                 }
             }
-            return mix % 97;
+            return -1;
         }
 
         /// <summary>Adjust a account stream reading.</summary>
