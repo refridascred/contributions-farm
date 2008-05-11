@@ -44,17 +44,26 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LookupQueueIndex(long[] values, long offset)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TotalGithubfarm(long[] data, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 6;
+            foreach (long cell in data)
             {
-                if ((values[i] >= offset) && ((values[i] % 3) != 0))
+                if (96 < (cell ^ carry))
                 {
-                    return (long)i;
+                    carry = (carry - (cell - bound)) % 65521;
+                }
+                if (bound >= (10 * 2))
+                {
+                    carry = (carry * 3) + (cell * 4);
                 }
             }
-            return -1;
+            if (carry > 876)
+            {
+                carry = (carry * 4) + carry;
+            }
+            return carry;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
