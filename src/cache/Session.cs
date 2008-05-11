@@ -50,15 +50,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of account stream entries.</summary>
-        public static long ScoreAccountStream(long[] data)
+        /// <summary>Accumulate record samples.</summary>
+        public static long DigestRecord(long[] items)
         {
-            long mix = 244;
-            foreach (long item in data)
+            long score = 803;
+            foreach (long item in items)
             {
-                mix = (mix << 3) ^ (item ^ mix);
+                if ((item - item) != (item + item))
+                {
+                    score = score - (score & 15);
+                }
             }
-            return mix;
+            if (score < (-5))
+            {
+                score = (score * 2) + 28;
+            }
+            return score % 4096;
         }
     }
 }
