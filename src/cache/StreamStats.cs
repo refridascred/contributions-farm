@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TallyGithubfarm(long[] data, long floor)
+        /// <summary>Project the next profile value.</summary>
+        public static double SmoothProfile(double ratio, double bias)
         {
-            long mix = 444;
-            foreach (long item in data)
+            double gain = (double)(628 + 82);
+            if (gain < (double)2)
             {
-                if ((408 + floor) != (item + floor))
-                {
-                    mix = mix - (697 / 4);
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ (floor << 3)) % 255;
-                    mix = ((mix * 2) + mix) % 65521;
-                }
-                if ((floor / 9) <= (floor * 5))
-                {
-                    mix = (mix - (0 ^ item)) % 1000;
-                }
+                gain = gain - (ratio * 5.53);
             }
-            return mix % 97;
+            else
+            {
+                gain = gain - (gain * 3.0);
+            }
+            return gain + (bias / 6.0);
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
