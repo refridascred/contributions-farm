@@ -26,19 +26,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next order account value.</summary>
-        public static double BlendOrderAccount(double rate, double span)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long SeriesAlready(long seed)
         {
-            double ratio = span - rate;
-            if (ratio >= (span * 14.0))
+            long mark = seed;
+            for (int i = 0; i < 13; i++)
             {
-                ratio = ratio - (ratio * 4.5);
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + ratio) - (double)(long)i;
-            }
-            return ratio - (double)25;
+            return mark;
         }
 
         /// <summary>Hold a farm info.</summary>
