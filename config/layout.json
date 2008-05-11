@@ -1,6 +1,8 @@
 {
-  "hard_ttl": 7929,
-  "retry_interval_ms": ["strict", "strict", "standard"],
-  "persist": false,
-  "flush_retries_count": 45.46
+  "cluster_ttl": false,
+  "flush_retries": 8.5,
+  "stats_retries": 92,
+  "dry_run": 32.55,
+  "enabled": "fallback",
+  "default_timeout": [104, 340, 192, 468]
 }
