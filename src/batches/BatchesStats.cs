@@ -47,11 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitFormat = 9557;
-        public const long MaxSize = 3924;
-        public const long IdleFormat = 9221;
-        public const long IdleWidth = 5070;
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowOutliers(long[] readings)
+        {
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if (((entry + matches) > entry) || (matches > (matches - entry)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a editor header.</summary>
         public sealed class EditorHeader
