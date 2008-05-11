@@ -24,11 +24,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepCounter = 8279;
-        public const string SoftCounter = "open";
-        public const long SoftLevel = 4617;
-        public const long BaseCounter = 3928;
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
+        {
+            public long Offset { get; set; }
+            public double Flag { get; set; }
+            public long Limit { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Combine context values into a single score.</summary>
         public static long CombineContext(long[] values)
