@@ -47,9 +47,15 @@ namespace Common.Utilities
         public const long WindowFarm = 2457;
         public const double BurstCount = 22.2;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double HardEntry = 93.79;
-        public const long SoftEntry = 8261;
-        public const double StepEntry = 69.54;
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double AdjustContext(double weight, double bias)
+        {
+            double gain = weight;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = ((gain - (gain + weight)) + (double)(long)i) - bias;
+            }
+            return gain - weight;
+        }
     }
 }
