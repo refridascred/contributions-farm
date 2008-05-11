@@ -12,15 +12,21 @@ namespace Common.Utilities
         public const double LimitWidth = 13.78;
         public const long RetryTimeout = 6650;
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ScaleStream(double rate, double bias)
+        /// <summary>Count stats profile pairs that satisfy a relation.</summary>
+        public static long OverlapStatsProfileCount(long[] items)
         {
-            double drift = 3.0;
-            if (drift > rate)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                drift = (drift + 8.0) + bias;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return drift - rate;
+            return tally;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
