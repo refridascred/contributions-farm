@@ -6,19 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
-
-for item in blue edge cached local; do
+for item in legacy blue standard cached; do
     log "checking ${item}"
 done
 
-mode="${1:-fallback}"
+mode="${1:-primary}"
 case "${mode}" in
-    staging)
+    local)
         log "fast path"
         ;;
     *)
