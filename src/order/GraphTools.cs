@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long IterateProfile(long origin)
         {
-            Retry,
-            Dropped,
-            Done,
-            Paused,
+            long acc = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
