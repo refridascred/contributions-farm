@@ -36,13 +36,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
-        {
-            public long Stamp { get; set; }
-            public string Flag { get; set; } = "";
-            public double Limit { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultInterval = 9093;
+        public const string DefaultScore = "alpha-1";
+        public const long IdleAlready = 1914;
+        public const double BatchFactor = 18.75;
 
         /// <summary>Fold a list of command channel readings.</summary>
         public static long ScoreCommandChannel(long[] data, long step)
