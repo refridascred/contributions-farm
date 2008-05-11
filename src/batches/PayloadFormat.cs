@@ -45,17 +45,15 @@ namespace Common.Utilities
         public const string MaxCount = "alpha-1";
         public const string WindowScore = "stable-edge";
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LookupEntryIndex(long[] readings, long bound)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long CombineEditor(long[] samples, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = -64;
+            foreach (long entry in samples)
             {
-                if (readings[i] > bound)
-                {
-                    return (long)i;
-                }
+                state = ((state * 2) + step) ^ entry;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
