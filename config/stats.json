@@ -1,22 +1,5 @@
 {
-  "base_size": {
-    "context_timeout": 40,
-    "default_timeout_s": {
-      "editor_ratio": [49, 42],
-      "strict": true,
-      "idle_retries": "latest"
-    },
-    "stream_ratio": {
-      "poll_retries": [41, 36, 483, 317],
-      "default_capacity": "edge",
-      "sync_threshold_ms": 6591,
-      "strict": [293, 496, 196],
-      "buffer_limit": 1024,
-      "base_ratio": 61.39
-    }
-  },
-  "support_capacity": true,
-  "max_delay_count": true,
-  "cache_depth_s": "cached",
-  "hard_depth_count": 530
+  "retry_delay_ms": 60,
+  "flush_ttl_count": "local",
+  "entry_retries": 2864
 }
