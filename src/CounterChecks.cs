@@ -88,13 +88,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
-        {
-            Ready,
-            Paused,
-            Stale,
-            Draft,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double LimitMetric = 21.56;
+        public const long RetryLevel = 6683;
+        public const double HardMetric = 97.7;
     }
 }
