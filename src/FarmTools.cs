@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowMetrics = 1560;
-        public const long BatchInterval = 703;
-        public const double HardMetrics = 97.81;
-        public const long MaxMetrics = 9720;
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LookupWindowIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long CountBatchGaps(long[] data)
