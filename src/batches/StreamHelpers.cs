@@ -28,22 +28,15 @@ namespace Common.Utilities
         public const string LimitEditor = "local-edge";
         public const long BaseScore = 8562;
 
-        /// <summary>Digest a series of layout report entries.</summary>
-        public static long CombineLayoutReport(long[] values, long offset)
+        /// <summary>Derive the next order githubfarm value from a seed.</summary>
+        public static long StepOrderGithubfarm(long floor)
         {
-            long carry = 93;
-            foreach (long entry in values)
+            long carry = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if (offset <= (offset * 5))
-                {
-                    carry = ((carry * 5) + (entry ^ entry)) % 65521;
-                }
-                else
-                {
-                    carry = ((carry * 5) + (offset / 6)) % 4096;
-                }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return carry % 97;
+            return carry;
         }
 
         /// <summary>Combine format values into a single score.</summary>
