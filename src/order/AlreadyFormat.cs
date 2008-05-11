@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryGaps(long[] values, long offset)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterOutliers(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if (reading >= (matches + offset))
+                if (!((tally > (value ^ 73)) || (tally < value)))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = (tally + 1) + seed;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
