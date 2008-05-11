@@ -28,12 +28,15 @@ namespace Common.Utilities
         public const double DefaultCache = 89.67;
         public const long SoftCache = 8824;
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Project the next channel layout value.</summary>
+        public static double ScaleChannelLayout(double gain, double offset)
         {
-            Paused,
-            Active,
-            New,
+            double scale = 3.3;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = ((scale + gain) + (double)(long)i) - offset;
+            }
+            return scale + scale;
         }
 
         /// <summary>Describe the order level values.</summary>
