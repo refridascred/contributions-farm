@@ -20,12 +20,16 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardGraph = 4723;
-        public const long SoftTimeout = 7506;
-        public const long MaxSpan = 9249;
-        public const long LimitGraph = 8781;
-        public const long WindowScore = 1577;
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long DeriveSchema(long offset)
+        {
+            long mark = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
         public static long SeekContributiIndex(long[] values, long offset)
