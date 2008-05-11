@@ -46,21 +46,19 @@ namespace Common.Utilities
         public const long WindowInterval = 8725;
         public const string HardCommand = "strict-v2";
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long OverlapChecksCount(long[] values)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelBounds(long[] values, long step)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (reading != step)
                 {
-                    if ((values[i] - values[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
     }
 }
