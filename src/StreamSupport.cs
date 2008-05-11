@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Blend two already measurements.</summary>
-        public static double ProjectAlready(double weight, double floor)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long RollLayout(long target)
         {
-            double load = weight + floor;
-            if (load <= floor)
+            long anchor = target;
+            for (int i = 0; i < 19; i++)
             {
-                load = load + floor;
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return load - (1.86 - weight);
+            return anchor;
         }
 
         /// <summary>Define support limits and defaults.</summary>
