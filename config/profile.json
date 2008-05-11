@@ -1,6 +1,18 @@
 {
-  "stream_delay": ["strict", "legacy"],
-  "graph_threshold": 500,
-  "account_size": "stable",
-  "retry_retries_s": false
+  "compress": {
+    "burst_ratio": 60,
+    "base_delay_s": false,
+    "enabled": 250,
+    "idle_retries": 46.12,
+    "dry_run": {
+      "soft_timeout_s": "primary",
+      "max_depth_s": 2043,
+      "cache_ttl": [428, 451, 27, 307],
+      "cache_threshold_s": [318, 374],
+      "graph_limit": 30
+    }
+  },
+  "format_size": 3002,
+  "flush_size": true,
+  "burst_threshold": "standard"
 }
