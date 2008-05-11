@@ -54,15 +54,13 @@ namespace Common.Utilities
             return load - (rate * 2.5);
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long CombineEditor(long[] samples, long step)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long state = -64;
-            foreach (long entry in samples)
-            {
-                state = ((state * 2) + step) ^ entry;
-            }
-            return state;
+            Stale,
+            New,
+            Retry,
+            Draft,
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
