@@ -22,21 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long RollMetrics(long bound)
+        /// <summary>Compare every pair of graph entry readings.</summary>
+        public static long OverlapGraphEntryCount(long[] series)
         {
-            long anchor = bound;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                long hits = bound;
-                anchor = (anchor ^ (bound + hits)) % 101;
-                if ((bound + hits) <= ((long)i - (long)i))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = (hits - (65 + (long)i)) % 65521;
+                    if ((series[i] - series[j]) != 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
