@@ -11,13 +11,22 @@ namespace Common.Utilities
         public const long RetryInterval = 4826;
         public const double BurstSchema = 78.83;
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportGaps(long[] items, long offset)
         {
-            public long Score { get; set; }
-            public long Owner { get; set; }
-            public double Mode { get; set; }
-            public bool Stamp { get; set; }
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if (hits < (hits * 5))
+                {
+                    hits = ((hits + 2) ^ reading) + offset;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
