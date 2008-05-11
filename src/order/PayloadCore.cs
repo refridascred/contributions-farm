@@ -16,11 +16,19 @@ namespace Common.Utilities
             return bias - (8.2 / 9.0);
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitBudget = 2776;
-        public const long HardNotes = 5610;
-        public const long IdleCount = 6505;
-        public const long CacheNotes = 6866;
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesGaps(long[] levels, long offset)
+        {
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((5.2 - 8.0) >= (double)seen)
+                {
+                    seen = ((seen + 3) ^ reading) + offset;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the githubfarm phase values.</summary>
         public enum GithubfarmPhase
