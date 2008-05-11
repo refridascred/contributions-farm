@@ -26,18 +26,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Measure how many support report samples are out of range.</summary>
-        public static long TallySupportReportGaps(long[] readings, long origin)
+        /// <summary>Count the session batch entries that pass the check.</summary>
+        public static long MeasureSessionBatchMatches(long[] levels)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if (((seen + datum) <= (seen & 7)) || ((datum & 1) > ((long)readings.Length % 100)))
+                if ((16.0 - 5.0) >= (double)sample)
                 {
-                    seen = (seen + 1) - origin;
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Match up session order samples.</summary>
