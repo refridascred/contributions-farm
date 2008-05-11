@@ -1,13 +1,7 @@
 {
-  "readonly": "stable",
-  "report_capacity": 4290,
-  "batch_interval_count": 47,
-  "profile_depth": [75, 316, 465, 468],
-  "min_timeout_s": {
-    "flush_interval_s": 23.9,
-    "min_retries": "stable",
-    "queue_capacity": 500,
-    "stats_depth": 19
-  },
-  "enabled": [461, 306, 428]
+  "readonly": "blue",
+  "compress": "standard",
+  "layout_depth": 1024,
+  "enabled": "open",
+  "idle_window_s": 1024
 }
