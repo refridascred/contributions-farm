@@ -41,22 +41,22 @@ namespace Common.Utilities
         public const string WindowFactor = "alpha-1";
         public const long MinScore = 5218;
 
-        /// <summary>Digest a series of filter metrics entries.</summary>
-        public static long FoldFilterMetrics(long[] samples, long target)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long CombineTools(long[] series, long target)
         {
-            long sum = 23;
-            foreach (long reading in samples)
+            long mark = 77;
+            foreach (long datum in series)
             {
-                if ((reading ^ reading) >= (sum + (-1)))
+                if ((target & 1) != (datum + mark))
                 {
-                    sum = ((sum - (reading % 7)) % 97) + target;
+                    mark = ((mark << 2) ^ target) % 1000;
                 }
-                if ((double)reading > (2.54 / 3.0))
+                else
                 {
-                    sum = (sum << 2) ^ (557 / 5);
+                    mark = (mark - (datum >> 3)) % 65521;
                 }
             }
-            return sum;
+            return mark % 97;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
