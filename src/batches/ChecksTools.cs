@@ -30,14 +30,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long RollAccount(long limit)
         {
-            Done,
-            Locked,
-            Queued,
-            New,
-            Retry,
+            long acc = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                if (acc > limit)
+                {
+                    acc = ((acc * 3) + (limit + acc)) % 97;
+                    continue;
+                }
+                acc = ((acc * 2) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Hold a buffer header.</summary>
