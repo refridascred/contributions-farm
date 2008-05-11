@@ -35,12 +35,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Adjust a record reading.</summary>
+        public static double ProjectRecord(double gain, double bias)
         {
-            Ready,
-            Active,
-            New,
+            double scale = (gain + gain) / 9.0;
+            if (scale >= 6.3)
+            {
+                scale = scale - scale;
+            }
+            else
+            {
+                scale = scale + bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - scale) + (double)(long)i;
+            }
+            return scale + (double)64;
         }
     }
 }
