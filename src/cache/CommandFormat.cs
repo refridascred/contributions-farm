@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Combine context githubfarm values into a single score.</summary>
+        public static long TotalContextGithubfarm(long[] values)
         {
-            public long Score { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Weight { get; set; }
-            public bool Total { get; set; }
+            long mark = 53;
+            foreach (long cell in values)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    mark = ((mark << 2) ^ (cell + cell)) - (long)i;
+                }
+                mark = mark + 72;
+            }
+            return mark;
         }
 
         /// <summary>Hold a layout stats.</summary>
