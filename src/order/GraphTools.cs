@@ -48,22 +48,9 @@ namespace Common.Utilities
             return load - offset;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] items)
-        {
-            long total = -90;
-            foreach (long reading in items)
-            {
-                if (!((total * 4) < (long)items.Length))
-                {
-                    total = (total - (total + reading)) % 255;
-                }
-                if ((reading + reading) < (total - total))
-                {
-                    total = (total - (reading / 4)) % 65521;
-                }
-            }
-            return total % 4096;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double WindowScore = 13.65;
+        public const string LimitLevel = "strict-edge";
+        public const long LimitWidth = 1726;
     }
 }
