@@ -42,31 +42,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long SortEntry(long limit, long bound)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            if (bound > limit)
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((bound / 6) < bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((6.0 + 6.0) != (double)bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Idle,
+            Stale,
+            Active,
+            Draft,
         }
     }
 }
