@@ -15,31 +15,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] data, long offset)
+        /// <summary>Match up session samples.</summary>
+        public static long PairSessionCount(long[] readings)
         {
-            long mark = 949;
-            foreach (long reading in data)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((72 + mark) != (reading << 1))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mark = (mark + (offset << 3)) % 65521;
-                    break;
-                }
-                else
-                {
-                    mark = ((mark * 4) + (mark / 2)) % 1000;
-                }
-                if ((reading / 9) > (62 % 100))
-                {
-                    mark = mark ^ reading;
-                }
-                else
-                {
-                    mark = mark ^ (reading - mark);
+                    if ((readings[i] - readings[j]) > 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Check that every token support entry stays within the limit.</summary>
