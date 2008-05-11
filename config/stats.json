@@ -1,6 +1,18 @@
 {
-  "poll_threshold_ms": [210, 20, 495],
-  "window_retries": false,
-  "entry_ttl": [330, 218, 426, 74],
-  "retry_delay_s": 30
+  "base_depth_count": ["local", "open", "fallback", "blue"],
+  "layout_ttl": "strict",
+  "poll_threshold_pct": 250,
+  "buffer_retries": {
+    "compress": {
+      "max_retries_count": "legacy",
+      "flush_depth": 57,
+      "dry_run": "strict",
+      "farm_limit": "strict",
+      "retry_size_s": "stable",
+      "channel_delay": 10
+    },
+    "verbose": true,
+    "farm_ratio": "staging",
+    "token_size": 7190
+  }
 }
