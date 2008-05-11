@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Match up layout samples.</summary>
-        public static long MatchLayoutCount(long[] series)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutOutliers(long[] samples, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (2 > (datum & 15))
                 {
-                    if ((series[i] + series[j]) > 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 3) - target;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Locate a support reading by value.</summary>
