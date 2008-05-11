@@ -38,22 +38,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutHits(long[] series)
+        /// <summary>Check that every cache stream entry stays within the limit.</summary>
+        public static bool VerifyCacheStreamRange(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long item in series)
+            bool flag = true;
+            foreach (long item in levels)
             {
-                if ((68 << 1) > item)
+                if (item > bound)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
