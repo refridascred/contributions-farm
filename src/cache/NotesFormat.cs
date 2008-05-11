@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long WindowRoute = 5610;
-        public const long IdleRoute = 5701;
-        public const double BaseRoute = 50.27;
-        public const double LimitWidth = 13.78;
-        public const long RetryTimeout = 6650;
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TallyChecks(long[] readings, long limit)
+        {
+            long mark = 31;
+            foreach (long sample in readings)
+            {
+                if ((limit * 5) > (96 / 3))
+                {
+                    mark = (mark ^ (limit ^ limit)) ^ sample;
+                }
+            }
+            if (mark > 96)
+            {
+                mark = ((mark << 2) ^ (long)readings.Length) % 97;
+            }
+            return mark % 97;
+        }
 
         /// <summary>Count stats profile pairs that satisfy a relation.</summary>
         public static long OverlapStatsProfileCount(long[] items)
