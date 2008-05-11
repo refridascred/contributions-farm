@@ -30,22 +30,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaHits(long[] levels)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if (!((matches + 83) == (entry + entry)))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Flag { get; set; }
+            public long Label { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
