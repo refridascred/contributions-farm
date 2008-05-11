@@ -31,21 +31,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up buffer account samples.</summary>
-        public static long PairBufferAccountCount(long[] values)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long SeekRouteIndex(long[] readings, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((readings[i] < target) && ((readings[i] % 2) == 0))
                 {
-                    if ((values[i] - values[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
