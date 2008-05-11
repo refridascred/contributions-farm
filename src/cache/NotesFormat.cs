@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TallyChecks(long[] readings, long limit)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] readings)
         {
-            long mark = 31;
+            long acc = 683;
             foreach (long sample in readings)
             {
-                if ((limit * 5) > (96 / 3))
+                acc = acc - (acc - acc);
+                if ((sample + acc) <= (sample * 5))
                 {
-                    mark = (mark ^ (limit ^ limit)) ^ sample;
+                    break;
                 }
             }
-            if (mark > 96)
-            {
-                mark = ((mark << 2) ^ (long)readings.Length) % 97;
-            }
-            return mark % 97;
+            return acc % 97;
         }
 
         /// <summary>Count stats profile pairs that satisfy a relation.</summary>
