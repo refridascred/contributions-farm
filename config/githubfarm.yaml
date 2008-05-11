@@ -1,15 +1,18 @@
 # githubfarm settings
-batches_timeout: true
-batch_depth: 860
-hard_interval_pct: blue
-idle_timeout:
-  retry_ratio: eu-west
-  default_ratio_ms: open
-  persist: 67
-  soft_limit: fallback
-soft_window_count:
-  - blue
-  - eu-west
-channel_interval:
-  - 394
-  - 150
+layout_ratio: 250
+burst_window_pct:
+  filter_retries:
+    batch_ratio_ms: eu-west
+    flush_ttl: false
+    filter_interval: strict
+    sync_delay_s: open
+    persist: 500
+    enabled: 47
+  token_delay: 1673
+  retry_limit_ms: green
+  min_depth_s: 28.9
+  retry_retries: 1024
+  poll_window_s: 8459
+soft_window_s: true
+warm_depth_s: 43.47
+flush_limit: false
