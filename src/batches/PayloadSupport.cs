@@ -12,12 +12,11 @@ namespace Common.Utilities
         public const double LimitCount = 9.25;
         public const long BurstWidth = 4035;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double CacheWindow = 89.67;
-        public const double MinWindow = 74.45;
-        public const long RetryWindow = 5989;
-        public const long SoftWindow = 5432;
-        public const long DefaultWindow = 2204;
+        /// <summary>Define account limits and defaults.</summary>
+        public const string MinRatio = "fallback";
+        public const long DefaultAccount = 4329;
+        public const double WindowAccount = 35.74;
+        public const long BaseInterval = 874;
 
         /// <summary>Hold a stream record.</summary>
         public sealed class StreamRecord
