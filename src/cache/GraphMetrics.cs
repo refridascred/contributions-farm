@@ -70,15 +70,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a account stream reading.</summary>
-        public static double ProjectAccountStream(double rate, double bias)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutGaps(long[] samples, long floor)
         {
-            double scale = (double)(97 & 127);
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                scale = (scale + (double)(long)i) - rate;
+                if ((((0 - count) <= (floor - 714)) && ((500 + count) > (count + value))) && ((count / 8) <= (floor + (-193))))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return scale - bias;
+            return count;
         }
     }
 }
