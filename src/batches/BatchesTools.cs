@@ -12,21 +12,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long PairBatchesCount(long[] items)
+        /// <summary>Validate stream contributi readings against a bound.</summary>
+        public static bool CheckStreamContributiLimits(long[] values, long step)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (datum < step)
                 {
-                    if ((items[i] + items[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
