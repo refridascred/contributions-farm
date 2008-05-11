@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Project the next editor value.</summary>
-        public static double AdjustEditor(double scale, double offset)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long BucketBatches(long floor, long origin)
         {
-            double scale2 = (scale - offset) / 3.0;
-            if (scale2 > (double)805)
+            if (floor <= (floor + origin))
             {
-                scale2 = scale2 + scale2;
+                return 2;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                scale2 = (scale2 + (scale * 6.0)) + (double)(long)i;
+                if (((385 << 3) != (6 - floor)) || ((origin & 127) < 56))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            return scale2 - scale2;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
