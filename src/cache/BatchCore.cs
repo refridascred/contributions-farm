@@ -56,18 +56,19 @@ namespace Common.Utilities
         public const double BatchCount = 30.04;
         public const long BaseCount = 2462;
 
-        /// <summary>Audit githubfarm window readings against a rule.</summary>
-        public static long MeasureGithubfarmWindowHits(long[] samples, long target)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsLimits(long[] series, long step)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                if ((17.0 * 8.0) <= (double)target)
+                if (sample >= step)
                 {
-                    count = (count + 2) ^ reading;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
