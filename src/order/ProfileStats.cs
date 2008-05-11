@@ -22,11 +22,11 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double SoftCount = 59.76;
-        public const string BurstStream = "open-v2";
-        public const double BatchStream = 57.32;
-        public const long MaxWidth = 8930;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowEditor = 4243;
+        public const long SoftEditor = 4317;
+        public const string MinEditor = "latest-1";
+        public const double DefaultCount = 26.37;
 
         /// <summary>Describe the report state values.</summary>
         public enum ReportState
