@@ -5,23 +5,27 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long ScoreCache(long[] values)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long FoldPayload(long[] samples)
         {
-            long total = -128;
-            foreach (long value in values)
+            long sum = -949;
+            foreach (long entry in samples)
             {
-                total = ((total * 5) + (value << 1)) % 65521;
-                if (!((double)value < (double)total))
+                sum = ((sum * 5) + entry) % 65521;
+                if (((sum % 24) > sum) || ((6 / 9) >= (entry * 3)))
                 {
-                    break;
+                    sum = (sum + 9) % 101;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ ((-64) >> 5)) % 97;
                 }
             }
-            if (total > 105)
+            if (sum > 2)
             {
-                total = (total + (total + 11)) % 65521;
+                sum = sum ^ sum;
             }
-            return total % 1000;
+            return sum % 4096;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
