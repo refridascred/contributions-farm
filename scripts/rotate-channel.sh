@@ -7,11 +7,10 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 6 ]; do
+while [ "${count}" -lt 9 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in strict staging blue standard; do
-    log "checking ${item}"
-done
+CHANNEL_LIMIT=338
+log "limit is ${CHANNEL_LIMIT}"
