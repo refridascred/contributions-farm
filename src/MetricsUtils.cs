@@ -62,23 +62,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long DigestBuffer(long[] readings)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long score = -5;
-            foreach (long sample in readings)
-            {
-                score = (score - (sample + score)) % 4096;
-                if ((score & 63) <= (sample + score))
-                {
-                    break;
-                }
-            }
-            if (score < 1)
-            {
-                score = ((score * 3) + score) % 255;
-            }
-            return score % 4096;
+            Paused,
+            Queued,
+            Idle,
+            Synced,
+            Dropped,
         }
     }
 }
