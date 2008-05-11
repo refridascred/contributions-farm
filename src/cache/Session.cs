@@ -35,27 +35,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long FoldCounter(long[] samples, long bound)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LookupAccountIndex(long[] readings, long bound)
         {
-            long total = -153;
-            foreach (long entry in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = (total << 3) ^ (bound << 3);
-                if ((7.1 + 18.0) >= (double)(long)samples.Length)
+                if ((readings[i] <= bound) && ((readings[i] % 2) == 0))
                 {
-                    total = total ^ entry;
-                }
-                else
-                {
-                    total = total + (total * 4);
-                }
-                if ((double)total > (1.7 - 0.56))
-                {
-                    total = total + entry;
+                    return (long)i;
                 }
             }
-            return total % 97;
+            return -1;
         }
 
         /// <summary>Digest a series of account stream entries.</summary>
