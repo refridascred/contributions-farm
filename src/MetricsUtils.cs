@@ -44,23 +44,10 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterOutliers(long[] series)
-        {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((tally & 7) <= item)
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxAlready = 7289;
+        public const long CacheInterval = 9671;
+        public const string SoftLevel = "stable-1";
 
         /// <summary>Describe the editor kind values.</summary>
         public enum EditorKind
