@@ -24,14 +24,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
+            Active,
             Paused,
-            Done,
-            Draft,
-            Pending,
-            Synced,
+            Failed,
+            Retry,
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
