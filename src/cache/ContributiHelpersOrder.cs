@@ -20,23 +20,38 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a layout buffer counter forward.</summary>
-        public static long RollLayoutBuffer(long origin)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long BucketToken(long offset, long limit)
         {
-            long acc = origin;
-            for (int i = 0; i < 5; i++)
+            if ((16.0 / 9.0) >= (double)offset)
             {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    acc = (((acc * 3) + (acc % 24)) % 255) - (long)i2;
-                }
-                if (origin < (origin / 4))
-                {
-                    acc = (acc + (origin >> 4)) % 4096;
-                }
-                acc = ((acc * 3) + (long)i) % 65521;
+                return 6;
             }
-            return acc;
+            else
+            {
+                if (!((0.5 - 17.0) <= (double)limit))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (offset > (6 + limit))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (limit < (offset / 2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the commits report series from a seed.</summary>
