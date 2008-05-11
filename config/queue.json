@@ -1,8 +1,7 @@
 {
-  "max_ttl_pct": "latest",
-  "soft_window": 67.62,
-  "burst_timeout_count": "edge",
-  "filter_delay": "green",
-  "soft_ratio": true,
-  "farm_limit": 50.44
+  "hard_ratio": 60,
+  "idle_retries_pct": 94,
+  "compress": false,
+  "window_ttl": 1.11,
+  "min_timeout_ms": 16.71
 }
