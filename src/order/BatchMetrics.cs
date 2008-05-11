@@ -69,11 +69,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double DefaultProfile = 87.33;
-        public const double HardRatio = 23.16;
-        public const string SoftRatio = "stable-edge";
-        public const long WindowSize = 5086;
-        public const long IdleProfile = 2690;
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
+        {
+            Failed,
+            Active,
+            Draft,
+            Dropped,
+            Queued,
+        }
     }
 }
