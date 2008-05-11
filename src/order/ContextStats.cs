@@ -20,13 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
-        {
-            Ready,
-            Queued,
-            Failed,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepContributi = 2784;
+        public const double StepTimeout = 42.28;
+        public const long WindowContributi = 7668;
+        public const long SoftTimeout = 4357;
+        public const long MinContributi = 5408;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const double SoftBuffer = 30.85;
