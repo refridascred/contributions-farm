@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteGaps(long[] values, long bound)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long DeriveRoute(long origin)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long result = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if ((2 / 5) >= datum)
-                {
-                    hits = (hits + 3) + bound;
-                }
+                long span = origin;
+                result = (result * 5) + (span % 24);
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
