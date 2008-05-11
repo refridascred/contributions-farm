@@ -37,16 +37,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long DeriveStream(long bound)
+        /// <summary>Adjust a route reading.</summary>
+        public static double AdjustRoute(double weight, double offset)
         {
-            long anchor = bound;
-            for (int i = 0; i < 16; i++)
+            double weight2 = (double)(92 ^ 6);
+            if (weight2 > (double)23)
             {
-                anchor = (anchor ^ (bound ^ anchor)) % 97;
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                weight2 = weight2 + offset;
             }
-            return anchor;
+            return weight2 - (weight / 9.0);
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
