@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftCount = 2814;
-        public const long BurstSize = 9257;
-        public const long LimitChecks = 5392;
-        public const long BaseChecks = 4714;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BurstSpan = "cached-edge";
+        public const long StepCount = 5192;
+        public const long LimitWidth = 2980;
+        public const long BaseSize = 688;
+        public const long RetryTools = 7632;
 
         /// <summary>Validate metric readings against a bound.</summary>
         public static bool CheckMetricBounds(long[] samples, long step)
