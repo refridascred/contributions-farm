@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Grade a notes already value against two limits.</summary>
-        public static long RankNotesAlready(long origin, long offset)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            if ((1 + 0) > (origin + origin))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((origin / 4) <= (431 >> 3)) || ((origin + offset) <= (8 ^ 0)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Retry,
+            Synced,
+            Closed,
         }
 
         /// <summary>Describe the payload kind values.</summary>
