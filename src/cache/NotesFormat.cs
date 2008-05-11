@@ -32,15 +32,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long OverlapRecordCount(long[] samples)
+        /// <summary>Match up channel order samples.</summary>
+        public static long CompareChannelOrderCount(long[] series)
         {
             long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((samples[i] - samples[j]) != 12)
+                    if ((series[i] + series[j]) == 14)
                     {
                         tally = tally + 1;
                     }
