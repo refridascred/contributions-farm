@@ -29,19 +29,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long WeighFarm(long[] series, long limit)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long RankChannel(long step, long floor)
         {
-            long anchor = 319;
-            foreach (long reading in series)
+            long bound = step - floor;
+            if (19.0 >= (double)bound)
             {
-                anchor = (anchor - (limit + anchor)) + reading;
+                return 4;
             }
-            if (anchor < 47)
+            else
             {
-                anchor = (anchor + anchor) % 4096;
+                if (79 <= floor)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return anchor;
         }
     }
 }
