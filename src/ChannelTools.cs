@@ -29,38 +29,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long ClassifyGithubfarm(long step, long limit)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long ScoreNotes(long[] series)
         {
-            if (((-390) / 5) >= (step % 16))
+            long sum = 5;
+            foreach (long value in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((4 * 5) <= step)
+                if ((sum % 12) == (4 - sum))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((step + 22) != (step + limit)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((limit >> 5) <= (limit + 37))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    sum = ((sum - sum) % 4096) - value;
                 }
             }
+            return sum;
         }
     }
 }
