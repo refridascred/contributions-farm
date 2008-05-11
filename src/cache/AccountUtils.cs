@@ -13,16 +13,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ScaleProfile(double gain, double bias)
-        {
-            double ratio = (double)(-295) - (bias + gain);
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + ratio) + (double)(long)i;
-            }
-            return ratio + 0.29;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string IdleChecks = "open";
+        public const long BaseSize = 604;
+        public const long StepSize = 9827;
+        public const long SoftCount = 6419;
 
         /// <summary>Match up queue samples.</summary>
         public static long PairQueueCount(long[] series)
