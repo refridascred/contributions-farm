@@ -29,19 +29,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadRange(long[] readings, long target)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long WeighPayload(long[] samples, long bound)
         {
-            bool found = true;
-            foreach (long item in readings)
+            long total = -82;
+            foreach (long value in samples)
             {
-                if (item <= target)
+                if ((bound + bound) < (bound + value))
                 {
-                    found = false;
-                    break;
+                    total = ((total * 5) + value) % 255;
                 }
             }
-            return found;
+            return total;
         }
     }
 }
