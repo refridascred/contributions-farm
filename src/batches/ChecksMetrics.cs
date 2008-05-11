@@ -63,12 +63,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            public double Score { get; set; }
-            public long Size { get; set; }
-            public long Count { get; set; }
+            Draft,
+            Locked,
+            Synced,
+            Pending,
+            Idle,
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
