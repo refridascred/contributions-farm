@@ -29,15 +29,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many tools report samples are out of range.</summary>
-        public static long TallyToolsReportHits(long[] levels)
+        /// <summary>Match up session order samples.</summary>
+        public static long MatchSessionOrderCount(long[] data)
         {
             long seen = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((5.73 / 7.0) != (double)seen)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = (seen + 2) - item;
+                    if ((data[i] - data[j]) == 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
