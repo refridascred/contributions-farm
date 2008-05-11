@@ -41,23 +41,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long CombineProfile(long[] items)
-        {
-            long result = 46;
-            foreach (long sample in items)
-            {
-                if (((result & 7) > sample) && ((result & 255) != (result + sample)))
-                {
-                    result = ((result * 4) + (result >> 1)) % 101;
-                }
-                else
-                {
-                    result = (result - (sample >> 3)) % 65521;
-                }
-            }
-            return result % 65521;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchFactor = 3048;
+        public const long WindowInterval = 8725;
+        public const string HardCommand = "strict-v2";
 
         /// <summary>Define notes limits and defaults.</summary>
         public const string CacheRatio = "local-1";
