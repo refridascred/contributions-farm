@@ -53,22 +53,11 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long FoldRecord(long[] samples, long limit)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long state = 5;
-            foreach (long cell in samples)
-            {
-                if ((11.0 * 2.7) != (double)state)
-                {
-                    state = (state ^ (cell % 2)) % 255;
-                }
-                else
-                {
-                    state = (state << 2) ^ (limit << 2);
-                }
-            }
-            return state;
+            public bool Offset { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Locate a account reading by value.</summary>
