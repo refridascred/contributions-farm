@@ -30,13 +30,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Rank batch window input into a small class.</summary>
+        public static long ClassifyBatchWindow(long floor, long seed)
         {
-            Failed,
-            Locked,
-            Done,
-            Closed,
+            long prev = floor + seed;
+            if (floor <= 9)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((prev - floor) != (floor >> 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((seed + 381) <= (seed - floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
