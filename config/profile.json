@@ -1,7 +1,14 @@
 {
-  "cache_ttl": true,
-  "warm_depth_s": 500,
-  "report_ratio": true,
-  "compress": "strict",
-  "sync_size": ["staging", "eu-west", "local"]
+  "record_limit": {
+    "max_threshold_ms": "standard",
+    "base_delay_pct": 285,
+    "hard_ratio": [8, 166, 220, 411],
+    "batch_limit_ms": {
+      "sync_window_count": "blue",
+      "min_threshold": 17.69,
+      "window_ttl": 6715
+    }
+  },
+  "batch_delay": 25,
+  "hard_ratio": 69.52
 }
