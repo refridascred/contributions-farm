@@ -12,24 +12,22 @@ namespace Common.Utilities
         public const long RetryBudget = 1961;
         public const long BaseWidth = 419;
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long IterateMetrics(long origin)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long CombineContext(long[] readings, long origin)
         {
-            long total = origin;
-            for (int i = 0; i < 16; i++)
+            long sum = 11;
+            foreach (long sample in readings)
             {
-                total = total ^ origin;
-                if ((double)total > 4.0)
+                if ((sum > (sum & 63)) && ((double)sum < (10.0 * 16.0)))
                 {
-                    continue;
+                    sum = ((sum ^ (sample << 3)) % 4096) - origin;
                 }
-                else
+                if (((double)sum > 5.6) && ((sum - sum) <= sum))
                 {
-                    total = (total - (long)i) % 1000;
+                    break;
                 }
-                total = ((total * 5) + (long)i) % 65521;
             }
-            return total;
+            return sum;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
