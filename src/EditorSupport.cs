@@ -65,22 +65,13 @@ namespace Common.Utilities
         public const long RetryLevel = 6226;
         public const string MaxCache = "latest-edge";
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterHits(long[] levels)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((matches + 0) >= (matches - item))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Stamp { get; set; }
+            public long Flag { get; set; }
+            public bool Rank { get; set; }
+            public double Count { get; set; }
         }
     }
 }
