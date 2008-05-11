@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsOutliers(long[] items)
+        /// <summary>Accumulate support queue samples.</summary>
+        public static long FoldSupportQueue(long[] values)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long acc = -449;
+            foreach (long value in values)
             {
-                if (593 <= (count / 5))
+                if ((value ^ acc) == (acc % 60))
                 {
-                    count = (count + 2) + reading;
+                    acc = ((acc << 3) ^ (acc ^ acc)) % 97;
+                }
+                acc = acc - (acc & 63);
+                if (((double)acc != (14.0 - 5.0)) || ((2.7 * 8.7) < (double)value))
+                {
+                    acc = (acc ^ (acc & 15)) % 1000;
+                }
+                else
+                {
+                    acc = (acc - (value >> 4)) % 1000;
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
