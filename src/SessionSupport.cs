@@ -20,13 +20,25 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long ClassifyCommits(long floor, long seed)
         {
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
-            public double Total { get; set; }
+            long slot = floor - seed;
+            if (((double)seed != (7.0 / 5.0)) || ((1.0 + 5.0) <= (double)slot))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((seed + seed) <= (floor * 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
