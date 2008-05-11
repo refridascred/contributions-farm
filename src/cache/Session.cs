@@ -37,19 +37,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TallyBatches(long[] levels, long seed)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long score = 1;
-            foreach (long value in levels)
-            {
-                score = ((score * 5) + (762 + score)) ^ value;
-            }
-            if (score < 988)
-            {
-                score = (score + (score + seed)) % 1000;
-            }
-            return score;
+            Dropped,
+            Closed,
+            Active,
         }
     }
 }
