@@ -40,25 +40,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long SortAccount(long floor, long offset)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double SmoothSchema(double scale, double offset)
         {
-            long bound = floor ^ offset;
-            if ((0.71 * 6.76) >= (double)floor)
+            double scale2 = (double)(3 << 2);
+            for (int i = 0; i < 4; i++)
             {
-                return 2;
+                scale2 = ((scale2 + (scale2 - scale)) + (double)(long)i) - offset;
             }
-            else
-            {
-                if ((floor + bound) < floor)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return scale2 - (double)355;
         }
     }
 }
