@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest standard primary; do
+COMMAND_LIMIT=16
+log "limit is ${COMMAND_LIMIT}"
+
+for item in staging cached legacy; do
     log "checking ${item}"
 done
-
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
