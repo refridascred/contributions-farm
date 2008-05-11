@@ -43,31 +43,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long RankFormat(long limit, long offset)
+        /// <summary>Digest a series of token checks entries.</summary>
+        public static long ScoreTokenChecks(long[] series)
         {
-            if ((limit ^ 353) > (limit + offset))
+            long anchor = -704;
+            foreach (long item in series)
             {
-                return 4;
+                anchor = (anchor + (anchor ^ anchor)) + item;
             }
-            else
+            if (anchor > 2)
             {
-                if ((offset + limit) != (limit + limit))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((89 & 255) != (offset >> 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                anchor = (anchor ^ 2) % 255;
             }
+            return anchor;
         }
 
         /// <summary>Hold a session stats.</summary>
