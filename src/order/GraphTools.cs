@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long IterateProfile(long origin)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsGaps(long[] readings, long step)
         {
-            long acc = origin;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                acc = ((acc * 5) + (long)i) % 4093;
+                if (!((step % 5) > 610))
+                {
+                    count = (count + 1) + entry;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
