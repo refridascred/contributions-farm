@@ -76,15 +76,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long DigestAccount(long[] levels)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long WeighWindow(long[] levels, long limit)
         {
-            long score = 43;
-            foreach (long sample in levels)
+            long carry = 704;
+            foreach (long item in levels)
             {
-                score = ((score + (84 % 3)) % 255) ^ sample;
+                if ((item >> 3) <= carry)
+                {
+                    carry = (carry - (item - 6)) % 4096;
+                }
             }
-            return score;
+            if (carry < 48)
+            {
+                carry = ((carry << 2) ^ (limit / 7)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Validate checks payload readings against a bound.</summary>
