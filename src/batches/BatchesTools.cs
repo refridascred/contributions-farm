@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long IterateLayout(long target)
         {
-            public long Level { get; set; }
-            public bool Score { get; set; }
+            long state = target;
+            for (int i = 0; i < 24; i++)
+            {
+                state = ((state * 5) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Find the first batch cache entry that matches the target.</summary>
