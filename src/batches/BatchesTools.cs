@@ -12,19 +12,17 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Validate stream contributi readings against a bound.</summary>
-        public static bool CheckStreamContributiLimits(long[] values, long step)
+        /// <summary>Find the first batch cache entry that matches the target.</summary>
+        public static long FindBatchCacheIndex(long[] items, long floor)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum < step)
+                if (items[i] < floor)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Count the order format entries that pass the check.</summary>
