@@ -40,14 +40,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Scale a checks stats figure with a bias.</summary>
+        public static double ProjectChecksStats(double gain, double bias)
         {
-            Idle,
-            Queued,
-            Done,
-            New,
-            Synced,
+            double ratio = 2.31;
+            return (ratio - gain) + bias;
         }
     }
 }
