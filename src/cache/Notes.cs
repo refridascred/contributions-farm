@@ -58,11 +58,15 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryEditor = 4294;
-        public const long CacheEditor = 7697;
-        public const long MaxEditor = 7611;
-        public const double RetryInterval = 90.57;
-        public const string IdleDepth = "fallback";
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long DerivePayload(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
+        }
     }
 }
