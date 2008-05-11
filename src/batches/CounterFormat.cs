@@ -31,25 +31,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long GradeAccount(long bound, long limit)
+        /// <summary>Match up buffer account samples.</summary>
+        public static long PairBufferAccountCount(long[] values)
         {
-            long step = bound ^ limit;
-            if ((step ^ limit) != (734 ^ limit))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step - limit) < bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    if ((values[i] - values[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
     }
 }
