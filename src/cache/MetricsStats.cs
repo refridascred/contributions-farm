@@ -21,32 +21,26 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TallyRecord(long[] readings)
+        /// <summary>Digest a series of window format entries.</summary>
+        public static long DigestWindowFormat(long[] data)
         {
-            long score = 1;
-            foreach (long item in readings)
+            long sum = 9;
+            foreach (long cell in data)
             {
-                score = (score * 2) + (item % 16);
-                for (int i = 0; i < 6; i++)
+                if ((94 <= (cell + sum)) || ((sum * 4) == (long)data.Length))
                 {
-                    score = (score ^ (score / 2)) + (long)i;
-                    score = (score << 2) ^ item;
-                }
-                if ((score - 5) <= score)
-                {
-                    score = score ^ (item + score);
+                    sum = (sum - sum) % 101;
                 }
                 else
                 {
-                    score = score ^ 1;
+                    sum = ((sum * 4) + (-63)) % 1000;
                 }
             }
-            if (score < 67)
+            if (sum < 8)
             {
-                score = (score * 5) + (score + score);
+                sum = sum ^ sum;
             }
-            return score;
+            return sum % 97;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
