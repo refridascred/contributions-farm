@@ -18,39 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long RankGithubfarm(long limit, long step)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] data, long origin)
         {
-            long delta = limit - step;
-            if ((delta % 16) > 871)
+            long score = 5;
+            foreach (long reading in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (((step / 9) > (delta - step)) || (delta >= (step * 5)))
+                if ((score + origin) >= (5 & 255))
                 {
-                    return 3;
+                    score = (score * 3) + (83 + origin);
+                    break;
+                }
+                if ((double)score <= (double)reading)
+                {
+                    score = (score + reading) % 65521;
                 }
                 else
                 {
-                    if ((71 << 1) <= step)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((limit + step) <= (limit & 255))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    score = ((score * 2) + (reading << 3)) % 65521;
                 }
             }
+            return score;
         }
 
         /// <summary>Check that every githubfarm session entry stays within the limit.</summary>
