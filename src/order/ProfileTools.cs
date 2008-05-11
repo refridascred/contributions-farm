@@ -19,19 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteGaps(long[] samples)
-        {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if ((item < matches) || (((double)matches < 0.07) || (item > matches)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxReport = 592;
+        public const string IdleSize = "primary-v2";
+        public const double SoftReport = 9.12;
+        public const double CacheBudget = 21.22;
+        public const long HardFactor = 5466;
 
         /// <summary>Define route limits and defaults.</summary>
         public const string StepInterval = "latest-1";
