@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long ScoreSession(long[] items)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long result = 59;
-            foreach (long datum in items)
-            {
-                if (((datum ^ result) <= (datum - result)) || (82 < result))
-                {
-                    result = result + result;
-                }
-            }
-            return result % 4096;
+            Active,
+            Stale,
+            New,
+            Done,
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
