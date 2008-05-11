@@ -1,13 +1,15 @@
 {
-  "persist": true,
-  "batch_threshold": "local",
-  "burst_size_s": 1516,
-  "command_capacity": [485, 156],
-  "tools_interval": {
-    "verbose": 695,
-    "retry_retries_count": 4.11,
-    "cache_ttl": [298, 208, 392],
-    "retry_size": false,
-    "buffer_ratio": "legacy"
-  }
+  "retry_interval": "standard",
+  "dry_run": {
+    "tools_interval": {
+      "burst_ratio_pct": 60,
+      "stream_depth": ["fallback", "stable", "open", "standard"],
+      "farm_retries": false
+    },
+    "filter_limit": "edge",
+    "cache_delay_s": false,
+    "filter_depth": false
+  },
+  "report_timeout": false,
+  "audit": true
 }
