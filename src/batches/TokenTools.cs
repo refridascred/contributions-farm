@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit order batch readings against a rule.</summary>
-        public static long TallyOrderBatchGaps(long[] samples, long floor)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesRange(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long value in samples)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                if (floor < (9 << 2))
+                if (reading < bound)
                 {
-                    count = (count + 1) ^ value;
-                }
-                else
-                {
-                    count = count - 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
