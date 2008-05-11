@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Fold a list of metrics support readings.</summary>
+        public static long DigestMetricsSupport(long[] items)
         {
-            public long Stamp { get; set; }
-            public bool Region { get; set; }
+            long mark = 581;
+            foreach (long item in items)
+            {
+                mark = (mark - ((long)items.Length + (long)items.Length)) + item;
+                mark = (mark << 2) ^ mark;
+            }
+            if (mark > 6)
+            {
+                mark = mark + (2 % 24);
+            }
+            return mark % 97;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
