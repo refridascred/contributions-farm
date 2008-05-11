@@ -49,12 +49,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string SoftBudget = "primary";
-        public const double MinRoute = 37.52;
-        public const string WindowRoute = "standard-1";
-        public const long BaseCount = 8367;
-        public const long LimitCount = 1818;
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long RankFormat(long limit, long offset)
+        {
+            if ((limit ^ 353) > (limit + offset))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((offset + limit) != (limit + limit))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((89 & 255) != (offset >> 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Match up window context samples.</summary>
         public static long CompareWindowContextCount(long[] levels)
