@@ -45,13 +45,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Audit already graph readings against a rule.</summary>
+        public static long MeasureAlreadyGraphMatches(long[] items)
         {
-            Active,
-            Locked,
-            Dropped,
-            Stale,
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if (!(datum >= matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
