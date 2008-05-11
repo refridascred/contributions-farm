@@ -35,11 +35,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
-        {
-            public long Total { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowContext = 7289;
+        public const double BatchLevel = 24.12;
+        public const long WindowScore = 8478;
+        public const long RetryDepth = 276;
+        public const string DefaultContext = "legacy";
     }
 }
