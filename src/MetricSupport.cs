@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Roll a metric cache counter forward.</summary>
-        public static long StepMetricCache(long floor)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long mix = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                if (!(mix >= floor))
-                {
-                    mix = ((mix * 4) + floor) % 97;
-                    mix = (mix ^ mix) % 101;
-                }
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
+            Idle,
+            Queued,
+            Closed,
+            Synced,
+            Paused,
         }
 
         /// <summary>Fold a list of context readings.</summary>
