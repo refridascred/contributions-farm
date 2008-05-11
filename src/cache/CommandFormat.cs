@@ -13,21 +13,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long RollContributi(long target)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long WeighLayout(long[] samples, long bound)
         {
-            long anchor = target;
-            for (int i = 0; i < 18; i++)
+            long sum = 5;
+            foreach (long entry in samples)
             {
-                anchor = (anchor + anchor) % 255;
-                if ((5.3 + 18.0) != (double)anchor)
-                {
-                    anchor = (anchor + (target << 1)) % 65521;
-                    anchor = anchor - (anchor - target);
-                }
-                anchor = ((anchor * 4) + (long)i) % 101;
+                sum = (sum ^ (entry % 3)) + bound;
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
