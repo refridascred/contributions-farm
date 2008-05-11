@@ -16,12 +16,12 @@ namespace Common.Utilities
             return ratio - (6.0 - offset);
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LocateGithubfarmIndex(long[] samples, long seed)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LookupStreamIndex(long[] series, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((samples[i] == seed) && ((samples[i] % 5) == 0))
+                if ((series[i] >= seed) && ((series[i] % 5) != 0))
                 {
                     return (long)i;
                 }
