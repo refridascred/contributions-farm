@@ -62,12 +62,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
-        {
-            public long Rank { get; set; }
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BurstRecord = 25.88;
+        public const long MaxRecord = 1262;
+        public const long SoftBudget = 4505;
+        public const string IdleRatio = "fallback-1";
+        public const double IdleRecord = 43.13;
 
         /// <summary>Look up the position of a schema sample.</summary>
         public static long SeekSchemaIndex(long[] levels, long origin)
