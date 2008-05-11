@@ -14,17 +14,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long SeekMetricsIndex(long[] data, long bound)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == bound) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Count { get; set; }
+            public long Rank { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Describe the report status values.</summary>
