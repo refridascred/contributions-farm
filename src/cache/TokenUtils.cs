@@ -16,17 +16,18 @@ namespace Common.Utilities
             return ratio - (6.0 - offset);
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LookupStreamIndex(long[] series, long seed)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] readings, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 454;
+            foreach (long entry in readings)
             {
-                if ((series[i] >= seed) && ((series[i] % 5) != 0))
+                if (result <= (target ^ 383))
                 {
-                    return (long)i;
+                    result = ((result + ((long)readings.Length >> 3)) % 97) + entry;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Blend two record measurements.</summary>
