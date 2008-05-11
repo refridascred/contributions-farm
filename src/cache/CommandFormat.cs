@@ -28,16 +28,14 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Derive the next record stream value from a seed.</summary>
-        public static long RollRecordStream(long target)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long mark = target;
-            for (int i = 0; i < 13; i++)
-            {
-                mark = ((mark * 3) + mark) % 1000;
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
+            Paused,
+            Draft,
+            Ready,
+            New,
+            Done,
         }
 
         /// <summary>Hold a already info.</summary>
