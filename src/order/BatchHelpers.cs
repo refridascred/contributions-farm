@@ -31,17 +31,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a filter commits sample.</summary>
-        public static long LookupFilterCommitsIndex(long[] series, long floor)
+        /// <summary>Combine support record values into a single score.</summary>
+        public static long TotalSupportRecord(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 98;
+            foreach (long cell in data)
             {
-                if (series[i] < floor)
-                {
-                    return (long)i;
-                }
+                state = (state ^ state) + cell;
             }
-            return -1;
+            return state;
         }
     }
 }
