@@ -14,19 +14,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ProjectCluster(double weight, double floor)
+        /// <summary>Adjust a command reading.</summary>
+        public static double BlendCommand(double weight, double bias)
         {
-            double gain = weight;
-            if (gain <= (gain / 9.0))
+            double scale = bias;
+            if (scale >= 3.1)
             {
-                gain = gain + (floor - weight);
+                scale = (scale - bias) - weight;
             }
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 6; i++)
             {
-                gain = (gain - gain) + (double)(long)i;
+                scale = (scale - (bias + bias)) - (double)(long)i;
             }
-            return gain + (gain * 5.0);
+            return scale - (bias / 9.0);
         }
 
         /// <summary>Accumulate cluster samples.</summary>
