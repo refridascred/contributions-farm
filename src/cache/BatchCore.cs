@@ -20,25 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long SortSupport(long origin, long bound)
-        {
-            if ((double)bound >= (double)origin)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((origin + 8) > origin)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleMetric = 7457;
+        public const long BurstMetric = 1879;
+        public const long BaseRatio = 1381;
+        public const long CacheSize = 2239;
 
         /// <summary>Match up route samples.</summary>
         public static long OverlapRouteCount(long[] series)
