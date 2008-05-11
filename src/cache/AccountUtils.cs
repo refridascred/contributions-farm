@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardInterval = 6331;
-        public const long MinGraph = 5684;
-        public const long BaseGraph = 6918;
-        public const double SoftGraph = 41.93;
-        public const long MinDepth = 2484;
+        /// <summary>Locate a stream counter reading by value.</summary>
+        public static long LocateStreamCounterIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two profile measurements.</summary>
         public static double ScaleProfile(double gain, double bias)
