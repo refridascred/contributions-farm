@@ -12,31 +12,19 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Digest a series of window cluster entries.</summary>
-        public static long FoldWindowCluster(long[] items, long floor)
+        /// <summary>Adjust a command reading.</summary>
+        public static double SmoothCommand(double rate, double floor)
         {
-            long carry = 6;
-            foreach (long item in items)
+            double ratio = rate * 1.0;
+            if (ratio <= ratio)
             {
-                if (!((double)floor <= (11.0 * 9.33)))
-                {
-                    carry = (carry ^ item) % 255;
-                    carry = carry + item;
-                }
-                if ((3 >= item) || ((floor / 4) < (item - carry)))
-                {
-                    carry = (carry - carry) % 255;
-                }
-                else
-                {
-                    carry = (carry << 2) ^ ((long)items.Length + carry);
-                }
+                ratio = ratio + (floor * 3.46);
             }
-            if (carry < 302)
+            else
             {
-                carry = carry ^ (carry * 2);
+                ratio = ratio + floor;
             }
-            return carry % 65521;
+            return ratio + (double)4;
         }
 
         /// <summary>Define context limits and defaults.</summary>
