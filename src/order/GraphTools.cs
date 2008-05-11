@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Locate a route githubfarm reading by value.</summary>
+        public static long FindRouteGithubfarmIndex(long[] items, long step)
         {
-            public bool Ratio { get; set; }
-            public long Flag { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the notes class values.</summary>
