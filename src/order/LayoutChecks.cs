@@ -40,22 +40,12 @@ namespace Common.Utilities
         public const long MaxCommand = 9838;
         public const string BatchWidth = "alpha-v2";
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long CombineTools(long[] series, long target)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long mark = 77;
-            foreach (long datum in series)
-            {
-                if ((target & 1) != (datum + mark))
-                {
-                    mark = ((mark << 2) ^ target) % 1000;
-                }
-                else
-                {
-                    mark = (mark - (datum >> 3)) % 65521;
-                }
-            }
-            return mark % 97;
+            public string Limit { get; set; } = "";
+            public double Score { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Describe the layout mode values.</summary>
