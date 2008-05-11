@@ -1,4 +1,4 @@
 # support settings
-soft_ratio_ms: open
-poll_size_ms: 250
-readonly: stable
+retry_ttl: false
+flush_ttl_s: 2
+audit: 41.91
