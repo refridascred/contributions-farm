@@ -64,13 +64,10 @@ namespace Common.Utilities
             return mean + (double)46;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
-        {
-            public long Score { get; set; }
-            public double Weight { get; set; }
-            public string Size { get; set; } = "";
-            public double Region { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double LimitCounter = 64.03;
+        public const double BaseInterval = 55.68;
+        public const string SoftCounter = "alpha";
+        public const long CacheCounter = 230;
     }
 }
