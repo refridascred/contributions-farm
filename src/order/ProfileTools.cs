@@ -58,22 +58,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long ScoreEditor(long[] data)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long sum = 64;
-            foreach (long value in data)
-            {
-                if (sum > (87 ^ value))
-                {
-                    sum = (sum ^ (sum & 127)) % 97;
-                }
-                if ((7.07 - 2.1) <= (double)sum)
-                {
-                    break;
-                }
-            }
-            return sum;
+            public double Score { get; set; }
+            public double Region { get; set; }
+            public long Size { get; set; }
+            public double Level { get; set; }
         }
     }
 }
