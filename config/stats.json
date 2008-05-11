@@ -1,13 +1,5 @@
 {
-  "githubfarm_retries": ["primary", "strict"],
-  "enabled": 500,
-  "flush_ratio_count": 45.56,
-  "base_depth_s": {
-    "session_window": 250,
-    "sync_retries": ["open", "stable", "blue", "green"],
-    "route_delay": "open",
-    "hard_retries": 60
-  },
-  "idle_capacity": "edge",
-  "max_limit_count": true
+  "batch_capacity": ["primary", "standard"],
+  "sync_limit_ms": [157, 396, 61],
+  "idle_interval_ms": "green"
 }
