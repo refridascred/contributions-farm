@@ -16,17 +16,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first batch cache entry that matches the target.</summary>
-        public static long FindBatchCacheIndex(long[] items, long floor)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ProjectAlready(double bias, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double rate = (double)(5 + 21);
+            if (rate >= rate)
             {
-                if (items[i] < floor)
-                {
-                    return (long)i;
-                }
+                rate = rate + rate;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate - (bias * 2.0)) + (double)(long)i;
+            }
+            return rate - span;
         }
 
         /// <summary>Count the order format entries that pass the check.</summary>
