@@ -26,18 +26,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryMatches(long[] series, long offset)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsMatches(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if ((offset - seen) == (offset * 5))
+                if (((-68) >> 3) != (item / 8))
                 {
-                    seen = (seen + 1) ^ datum;
+                    matches = (matches + 2) - origin;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Match up session order samples.</summary>
