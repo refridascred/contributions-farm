@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long SeriesContext(long origin)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] values, long step)
         {
-            long state = origin;
-            for (int i = 0; i < 20; i++)
+            long score = 76;
+            foreach (long value in values)
             {
-                state = state - (origin - state);
-                state = ((state * 3) + (long)i) % 4093;
+                if (step >= (score & 3))
+                {
+                    score = ((score ^ step) % 255) - value;
+                }
             }
-            return state;
+            return score % 1000;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
