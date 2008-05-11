@@ -45,12 +45,23 @@ namespace Common.Utilities
         public const string MaxMetrics = "stable-1";
         public const double BatchMetrics = 79.56;
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long DeriveProfile(long target)
         {
-            Dropped,
-            Closed,
-            New,
+            long mix = target;
+            for (int i = 0; i < 5; i++)
+            {
+                if (((double)target >= (3.0 + 6.0)) || (mix >= target))
+                {
+                    mix = ((mix << 2) ^ (mix + 5)) % 4096;
+                }
+                else
+                {
+                    mix = (mix ^ (target >> 1)) % 4096;
+                }
+                mix = ((mix * 2) + (long)i) % 4093;
+            }
+            return mix;
         }
     }
 }
