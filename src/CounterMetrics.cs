@@ -21,11 +21,23 @@ namespace Common.Utilities
         public const long BurstSize = 473;
         public const long BatchToken = 9724;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long HardSpan = 8277;
-        public const long RetryWidth = 3637;
-        public const long LimitCounter = 6806;
-        public const string SoftCounter = "stable-v2";
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricGaps(long[] samples)
+        {
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if (!((double)entry > 8.0))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a cluster record.</summary>
         public sealed class ClusterRecord
