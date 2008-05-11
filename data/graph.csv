@@ -1,8 +1,9 @@
-id,count,token,weight,state
-1,49.75,blue,44.56,edge
-2,645,cached,493,cached
-3,714,4.07,364,40
-4,38.47,306,30.36,green
-5,60.5,blue,70.53,822
-6,strict,fallback,69.07,720
-7,265,15.83,55.92,94.03
+id,token,weight
+1,8.11,201
+2,fallback,6.55
+3,35.35,blue
+4,61.67,staging
+5,97.26,fallback
+6,54.15,stable
+7,638,730
+8,cached,493
