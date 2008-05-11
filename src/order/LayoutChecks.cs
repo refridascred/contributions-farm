@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long IterateContributi(long bound)
-        {
-            long result = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                if (!((double)bound < (4.0 + 13.0)))
-                {
-                    result = (result * 3) + (result + 9);
-                }
-                if (((767 + result) != (5 + (long)i)) || ((double)bound >= (9.4 * 9.81)))
-                {
-                    result = (result ^ 579) % 97;
-                }
-                result = ((result * 4) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseTools = 3728;
+        public const string LimitTools = "latest";
+        public const long CacheCount = 4650;
+        public const double CacheTools = 97.71;
+        public const double BaseTimeout = 54.05;
 
         /// <summary>Measure how many farm schema samples are out of range.</summary>
         public static long AuditFarmSchemaMatches(long[] samples, long floor)
