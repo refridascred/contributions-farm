@@ -35,14 +35,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
-        {
-            Idle,
-            Synced,
-            Paused,
-            Pending,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxCommits = 9871;
+        public const long IdleCommits = 1404;
+        public const string WindowFactor = "alpha-1";
+        public const long MinScore = 5218;
 
         /// <summary>Digest a series of filter metrics entries.</summary>
         public static long FoldFilterMetrics(long[] samples, long target)
