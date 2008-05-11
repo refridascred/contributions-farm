@@ -44,12 +44,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Count the cache metrics entries that pass the check.</summary>
+        public static long TallyCacheMetricsOutliers(long[] series, long offset)
         {
-            public long Flag { get; set; }
-            public long Label { get; set; }
-            public long Ratio { get; set; }
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if (seen > (416 >> 5))
+                {
+                    seen = ((seen + 3) ^ item) - offset;
+                }
+            }
+            return seen;
         }
     }
 }
