@@ -31,39 +31,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a format record pair into a bucket.</summary>
-        public static long SortFormatRecord(long seed, long bound)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long WeighChannel(long[] readings)
         {
-            long offset = seed + bound;
-            if (((seed / 2) < (bound + offset)) && ((double)offset <= (double)bound))
+            long acc = 66;
+            foreach (long datum in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset - bound) < (seed + 256))
+                if ((double)datum >= (double)acc)
                 {
-                    return 2;
+                    acc = acc - (long)readings.Length;
                 }
                 else
                 {
-                    if ((bound + offset) > (seed + offset))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((bound / 3) >= (seed + seed))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    acc = ((acc << 2) ^ (acc >> 5)) % 101;
                 }
             }
+            return acc;
         }
 
         /// <summary>Hold a record entry.</summary>
