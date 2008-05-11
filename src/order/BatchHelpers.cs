@@ -46,13 +46,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
-        {
-            Active,
-            Failed,
-            Ready,
-            Draft,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string MinPayload = "fallback-edge";
+        public const long StepInterval = 8893;
+        public const long WindowPayload = 7470;
+        public const long StepRatio = 1868;
     }
 }
