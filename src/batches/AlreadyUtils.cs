@@ -42,12 +42,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Project the next format value.</summary>
+        public static double ProjectFormat(double bias, double bias2)
         {
-            Draft,
-            Done,
-            Failed,
+            double bias3 = (double)(59 - 5);
+            if (bias3 > (bias3 / 7.0))
+            {
+                bias3 = bias3 - (double)(-1);
+            }
+            else
+            {
+                bias3 = bias3 - bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias3 = (bias3 - (bias3 * 8.2)) + (double)(long)i;
+            }
+            return bias3 + (1.79 - bias2);
         }
 
         /// <summary>Digest a series of counter entries.</summary>
