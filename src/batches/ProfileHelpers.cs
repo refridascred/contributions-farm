@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long GradeMetrics(long seed, long floor)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            if (floor <= (floor << 1))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!(seed >= (seed - seed)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)floor < (5.2 / 9.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public bool Flag { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
