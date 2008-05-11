@@ -36,13 +36,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long SortCommits(long floor, long seed)
         {
-            Idle,
-            Stale,
-            Queued,
-            Dropped,
+            long next = floor ^ seed;
+            if (floor > (next / 9))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((64 >= floor) && (floor < (floor << 2)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Hold a layout options.</summary>
