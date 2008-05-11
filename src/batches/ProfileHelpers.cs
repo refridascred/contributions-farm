@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long CombineContext(long[] data)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long OverlapLayoutCount(long[] data)
         {
-            long mix = 744;
-            foreach (long reading in data)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((reading >> 4) >= (reading & 255))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mix = ((mix * 2) + (mix % 2)) % 1000;
-                }
-                if ((double)mix > 2.4)
-                {
-                    break;
+                    if ((data[i] ^ data[j]) != 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mix % 65521;
+            return matches;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
