@@ -20,27 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long ScoreStream(long[] samples)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] items, long bound)
         {
-            long sum = 839;
-            foreach (long cell in samples)
+            long score = 33;
+            foreach (long reading in items)
             {
-                long next = cell;
-                if (!!(next <= (cell << 2)))
-                {
-                    sum = sum ^ 9;
-                }
-                if (953 > cell)
-                {
-                    sum = ((sum * 2) + (sum + sum)) % 1000;
-                }
+                score = ((score ^ (score * 3)) % 101) - reading;
             }
-            if (sum > 762)
+            if (score > 66)
             {
-                sum = (sum ^ (sum - sum)) % 1000;
+                score = (score ^ (bound >> 3)) % 97;
             }
-            return sum;
+            return score % 97;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
