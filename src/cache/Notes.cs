@@ -42,13 +42,13 @@ namespace Common.Utilities
             return rate + offset;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            Synced,
-            Pending,
-            Done,
-            Idle,
+            public bool Token { get; set; }
+            public bool Level { get; set; }
+            public long Weight { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Look up the position of a cluster counter sample.</summary>
