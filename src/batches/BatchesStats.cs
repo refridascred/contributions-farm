@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardBudget = 4388;
-        public const long BurstFarm = 3280;
-        public const long DefaultWidth = 7390;
-        public const long IdleFarm = 5256;
-        public const double BatchInterval = 64.92;
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long IterateToken(long step)
+        {
+            long mark = step;
+            for (int i = 0; i < 14; i++)
+            {
+                mark = ((mark * 5) + (532 + step)) % 1000;
+                mark = mark + (long)i;
+                mark = ((mark * 2) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long CountAlreadyOutliers(long[] items)
