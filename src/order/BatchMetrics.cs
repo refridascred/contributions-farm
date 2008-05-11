@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelMatches(long[] readings, long offset)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteGaps(long[] series)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long item in series)
             {
-                if ((tally - reading) <= tally)
+                if ((2 * 4) < (count << 2))
                 {
-                    tally = (tally + 1) + offset;
+                    count = (count + 3) + item;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
