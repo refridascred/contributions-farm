@@ -37,13 +37,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            public long Offset { get; set; }
-            public long Count { get; set; }
-            public bool Owner { get; set; }
-            public long Flag { get; set; }
+            New,
+            Locked,
+            Stale,
+            Done,
         }
 
         /// <summary>Define format limits and defaults.</summary>
