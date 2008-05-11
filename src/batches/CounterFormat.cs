@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            Stale,
-            Idle,
-            Paused,
+            public bool Size { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
