@@ -64,22 +64,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate filter support samples.</summary>
-        public static long TallyFilterSupport(long[] series)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TallyAccount(long[] readings)
         {
-            long result = 428;
-            foreach (long datum in series)
+            long total = 738;
+            foreach (long entry in readings)
             {
-                if ((result + 218) >= result)
-                {
-                    result = ((result << 3) ^ (result - result)) % 97;
-                }
-                if ((datum >> 5) < (0 & 127))
-                {
-                    break;
-                }
+                total = total ^ entry;
+                total = ((total * 4) + entry) % 4096;
             }
-            return result;
+            if (total > 355)
+            {
+                total = (total - (total / 2)) % 97;
+            }
+            return total % 4096;
         }
     }
 }
