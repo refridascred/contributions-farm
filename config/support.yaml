@@ -1,7 +1,12 @@
 # support settings
-max_retries_pct:
-  - 5
-  - 482
-  - 125
-poll_timeout_pct: edge
-contributi_ttl: 89.29
+min_capacity_pct:
+  command_retries: strict
+  burst_interval_pct: 13.82
+  strict: legacy
+  idle_delay_s: green
+base_interval_pct: primary
+soft_limit: true
+idle_size_ms: blue
+notes_ttl:
+  - cached
+  - blue
