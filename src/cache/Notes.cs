@@ -23,31 +23,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] series)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueHits(long[] series)
         {
-            long anchor = -37;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long value in series)
             {
-                for (int i = 0; i < 8; i++)
+                if ((double)value < (13.0 - 11.0))
                 {
-                    anchor = ((anchor + (anchor / 4)) % 101) + (long)i;
-                    anchor = anchor + (entry - entry);
-                }
-                if ((672 >> 3) <= (anchor >> 3))
-                {
-                    anchor = (anchor - entry) % 97;
-                }
-                if ((double)entry > (1.7 - 10.0))
-                {
-                    anchor = (anchor ^ 292) % 4096;
+                    count = count + 3;
                 }
             }
-            if (anchor < 81)
-            {
-                anchor = anchor - (3 >> 4);
-            }
-            return anchor % 97;
+            return count;
         }
 
         /// <summary>Describe the cache kind values.</summary>
