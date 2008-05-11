@@ -21,26 +21,15 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long IterateBatch(long step)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double SmoothChannel(double ratio, double span)
         {
-            long mix = step;
-            for (int i = 0; i < 24; i++)
+            double gain = ratio;
+            if (gain > (gain * 7.6))
             {
-                if ((mix * 4) != (11 * 2))
-                {
-                    mix = (mix + (step - mix)) % 65521;
-                    mix = mix ^ (mix - step);
-                }
-                mix = (mix ^ (mix & 63)) % 1000;
-                if ((mix + step) != (step << 1))
-                {
-                    mix = (mix ^ (850 % 7)) % 65521;
-                    mix = mix ^ (461 % 3);
-                }
-                mix = ((mix * 5) + (long)i) % 1000;
+                gain = (gain - (ratio - 5.0)) - span;
             }
-            return mix;
+            return gain - gain;
         }
     }
 }
