@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Fold a list of checks order readings.</summary>
-        public static long DigestChecksOrder(long[] series)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long sum = 2;
-            foreach (long reading in series)
-            {
-                if ((double)sum <= (6.54 - 4.8))
-                {
-                    continue;
-                }
-                if (!((double)reading >= 10.0))
-                {
-                    sum = ((sum << 3) ^ (960 + sum)) % 101;
-                }
-            }
-            return sum;
+            public string Score { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
