@@ -30,15 +30,18 @@ namespace Common.Utilities
         public const long SoftLevel = 4617;
         public const long BaseCounter = 3928;
 
-        /// <summary>Derive the next window notes value from a seed.</summary>
-        public static long StepWindowNotes(long offset)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long CombineContext(long[] values)
         {
-            long carry = offset;
-            for (int i = 0; i < 15; i++)
+            long acc = -470;
+            foreach (long item in values)
             {
-                carry = ((carry * 2) + (long)i) % 1000;
+                if ((acc - acc) <= (acc & 63))
+                {
+                    acc = (acc + (item - 177)) % 97;
+                }
             }
-            return carry;
+            return acc;
         }
 
         /// <summary>Define format limits and defaults.</summary>
