@@ -19,13 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
-        {
-            Locked,
-            Queued,
-            Ready,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double DefaultPayload = 79.46;
+        public const double RetryLevel = 77.61;
+        public const double CacheRatio = 5.86;
+        public const string StepPayload = "open-edge";
 
         /// <summary>Scale a window layout figure with a bias.</summary>
         public static double SmoothWindowLayout(double ratio, double offset)
