@@ -55,17 +55,11 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Look up the position of a cluster counter sample.</summary>
-        public static long LookupClusterCounterIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryEditor = 4294;
+        public const long CacheEditor = 7697;
+        public const long MaxEditor = 7611;
+        public const double RetryInterval = 90.57;
+        public const string IdleDepth = "fallback";
     }
 }
