@@ -65,17 +65,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long RollCounter(long seed)
-        {
-            long anchor = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                anchor = (anchor + 634) % 101;
-                anchor = ((anchor * 4) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardStats = 8837;
+        public const long BatchStats = 4452;
+        public const double IdleStats = 65.72;
+        public const double RetryDepth = 44.16;
+        public const long MinTimeout = 2938;
 
         /// <summary>Classify a metric pair into a bucket.</summary>
         public static long BucketMetric(long limit, long target)
