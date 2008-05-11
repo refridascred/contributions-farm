@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordRange(long[] readings, long origin)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long CombineStream(long[] readings)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            long mark = -1;
+            foreach (long value in readings)
             {
-                if (sample >= origin)
-                {
-                    stale = false;
-                    break;
-                }
+                mark = mark - value;
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
