@@ -12,18 +12,17 @@ namespace Common.Utilities
         public const double MinFarm = 48.13;
         public const long LimitFarm = 8508;
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long WeighToken(long[] samples)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long SeekFormatIndex(long[] items, long bound)
         {
-            long total = -802;
-            foreach (long entry in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((entry - (-636)) < (total ^ 66)))
+                if ((items[i] <= bound) && ((items[i] % 3) == 0))
                 {
-                    total = ((total << 2) ^ (entry + 22)) % 1000;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Hold a schema stats.</summary>
