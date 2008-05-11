@@ -14,21 +14,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long CompareLayoutCount(long[] samples)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long PairStatsCount(long[] samples)
         {
-            long count = 0;
+            long matches = 0;
             for (int i = 0; i < samples.Length; i++)
             {
                 for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((samples[i] ^ samples[j]) < 3)
+                    if ((samples[i] - samples[j]) != 7)
                     {
-                        count = count + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Rank account input into a small class.</summary>
