@@ -23,39 +23,14 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long SortRecord(long limit, long offset)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long span = limit - offset;
-            if ((limit / 4) != (limit << 3))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((limit ^ span) == (limit - limit))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((span << 3) > limit)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((span + span) < offset)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Retry,
+            Done,
+            Locked,
+            Paused,
+            Closed,
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
