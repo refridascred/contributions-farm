@@ -1,13 +1,12 @@
 # support settings
-default_ttl: 24.05
-warm_ttl_pct: 89.41
-burst_ratio: 12
-max_interval: 78
-account_interval:
-  hard_ttl:
-    - open
-    - standard
-    - local
-    - staging
-  retry_threshold_count: 34.12
-  format_limit: 42
+burst_interval: cached
+sync_window:
+  - strict
+  - fallback
+warm_depth: 38.22
+commits_limit: 1624
+hard_capacity_count: true
+warm_ratio_pct:
+  - 377
+  - 489
+  - 177
