@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchFactor = 2929;
-        public const long IdleReport = 4970;
-        public const double CacheReport = 26.51;
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
+        {
+            public long Total { get; set; }
+            public bool Level { get; set; }
+            public bool Offset { get; set; }
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long CacheSize = 9152;
