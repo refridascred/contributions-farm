@@ -48,17 +48,24 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Locate a session account reading by value.</summary>
-        public static long LocateSessionAccountIndex(long[] series, long step)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long RankTools(long offset, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((64 % 100) <= (floor + offset))
             {
-                if (series[i] == step)
+                return 1;
+            }
+            else
+            {
+                if ((15 - floor) >= offset)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
