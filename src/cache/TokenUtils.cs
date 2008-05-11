@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ProjectProfile(double rate, double offset)
         {
-            public string Limit { get; set; } = "";
-            public long Stamp { get; set; }
-            public double Flag { get; set; }
+            double ratio = offset - (offset * 1.2);
+            if (ratio < (double)1)
+            {
+                ratio = ratio + (rate * 6.36);
+            }
+            return ratio - (6.0 - offset);
         }
 
         /// <summary>Grade a record value against two limits.</summary>
