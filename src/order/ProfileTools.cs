@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of metric editor readings.</summary>
-        public static long TallyMetricEditor(long[] series)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportHits(long[] items)
         {
-            long score = 463;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if ((double)score >= (19.0 / 9.0))
+                if (value <= (hits / 9))
                 {
-                    score = score + (4 << 1);
-                }
-                else
-                {
-                    score = ((score << 3) ^ (sample + 0)) % 65521;
+                    hits = hits + 1;
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
