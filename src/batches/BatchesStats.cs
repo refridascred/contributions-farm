@@ -41,25 +41,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long RankOrder(long origin, long origin2)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorOutliers(long[] readings, long seed)
         {
-            long span = origin - origin2;
-            if ((origin2 < (origin2 & 7)) || ((2.9 + 19.0) < (double)origin2))
+            long count = 0;
+            foreach (long reading in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (((span - origin2) >= span) || ((origin - origin2) <= origin2))
+                if ((double)seed <= 0.46)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    count = (count + 1) ^ reading;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a editor header.</summary>
