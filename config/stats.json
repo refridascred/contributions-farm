@@ -1,7 +1,6 @@
 {
-  "persist": ["standard", "eu-west"],
-  "burst_capacity_pct": [94, 95],
-  "soft_interval_s": 30,
-  "strict": 8802,
-  "token_capacity": 500
+  "burst_delay_count": 12.44,
+  "audit": ["open", "edge"],
+  "min_depth_s": "open",
+  "min_delay_ms": ["fallback", "open"]
 }
