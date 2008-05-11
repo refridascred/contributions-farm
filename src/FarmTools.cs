@@ -42,10 +42,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long WindowChannel = 7175;
-        public const string MinChannel = "alpha";
-        public const long HardRatio = 8385;
-        public const double BaseChannel = 81.14;
+        /// <summary>Match up report samples.</summary>
+        public static long PairReportCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 20)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
