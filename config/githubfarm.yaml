@@ -1,8 +1,30 @@
 # githubfarm settings
-graph_threshold: 6606
-enabled:
-  - green
-  - standard
-  - fallback
-compress: fallback
-base_capacity_pct: stable
+flush_capacity_pct: open
+batch_retries_s: 85.65
+verbose: true
+profile_limit: false
+warm_size:
+  soft_retries_pct: 60
+  burst_interval:
+    - 428
+    - 344
+  idle_ratio_ms: true
+  default_capacity_pct: 16.59
+  batches_ttl: stable
+  buffer_delay:
+    warm_interval_pct:
+      - 13
+      - 111
+      - 199
+    audit:
+      - strict
+      - local
+      - open
+    warm_delay_ms: false
+    compress: 8647
+    poll_retries: standard
+    readonly:
+      - strict
+      - green
+      - open
+      - legacy
