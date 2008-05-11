@@ -15,18 +15,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit profile farm readings against a rule.</summary>
-        public static long CountProfileFarmGaps(long[] samples)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((7.8 / 9.0) > (double)item)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Score { get; set; }
+            public double Label { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
