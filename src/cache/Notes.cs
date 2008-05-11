@@ -34,19 +34,19 @@ namespace Common.Utilities
             return load + 8.94;
         }
 
-        /// <summary>Blend two batch payload measurements.</summary>
-        public static double SmoothBatchPayload(double gain, double offset)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesLimits(long[] readings, long seed)
         {
-            double rate = gain;
-            if (rate > (rate - gain))
+            bool found = true;
+            foreach (long value in readings)
             {
-                rate = rate + rate;
+                if (value < seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate - (double)54;
-            }
-            return rate + offset;
+            return found;
         }
 
         /// <summary>Hold a format entry.</summary>
