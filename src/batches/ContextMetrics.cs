@@ -45,19 +45,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportBounds(long[] values, long origin)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelRange(long[] samples, long origin)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                if (entry != origin)
+                if (entry <= origin)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
