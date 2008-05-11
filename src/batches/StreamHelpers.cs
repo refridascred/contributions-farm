@@ -31,15 +31,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next order githubfarm value from a seed.</summary>
-        public static long StepOrderGithubfarm(long floor)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsGaps(long[] values, long offset)
         {
-            long carry = floor;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            foreach (long item in values)
             {
-                carry = ((carry * 4) + (long)i) % 65521;
+                if (((count % 2) <= (440 + item)) && (((offset - count) == (offset - item)) || ((offset + 35) < (55 ^ 6))))
+                {
+                    count = count + 2;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Combine format values into a single score.</summary>
