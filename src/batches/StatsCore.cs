@@ -11,13 +11,16 @@ namespace Common.Utilities
         public const long BaseWindow = 819;
         public const double BatchRatio = 82.36;
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long SeriesSchema(long limit)
         {
-            public double Score { get; set; }
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
-            public string Level { get; set; } = "";
+            long carry = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                carry = (carry ^ (carry ^ 59)) % 4096;
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Rank farm entry input into a small class.</summary>
