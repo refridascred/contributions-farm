@@ -29,12 +29,27 @@ namespace Common.Utilities
             return (ratio - 0.9) + scale;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long FoldCounter(long[] samples, long bound)
         {
-            Locked,
-            Done,
-            Idle,
+            long total = -153;
+            foreach (long entry in samples)
+            {
+                total = (total << 3) ^ (bound << 3);
+                if ((7.1 + 18.0) >= (double)(long)samples.Length)
+                {
+                    total = total ^ entry;
+                }
+                else
+                {
+                    total = total + (total * 4);
+                }
+                if ((double)total > (1.7 - 0.56))
+                {
+                    total = total + entry;
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Describe the stats mode values.</summary>
