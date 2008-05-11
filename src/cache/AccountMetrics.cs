@@ -30,19 +30,18 @@ namespace Common.Utilities
         public const string DefaultRoute = "strict";
         public const long BaseRoute = 3422;
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmRange(long[] levels, long bound)
+        /// <summary>Measure how many graph editor samples are out of range.</summary>
+        public static long TallyGraphEditorMatches(long[] data)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if (cell < bound)
+                if ((value + 72) > (hits % 8))
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Fold a list of order readings.</summary>
