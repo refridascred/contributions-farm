@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Find the first metric counter entry that matches the target.</summary>
-        public static long LookupMetricCounterIndex(long[] values, long floor)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long ScoreChecks(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 7;
+            foreach (long sample in items)
             {
-                if ((values[i] > floor) && ((values[i] % 5) != 0))
+                if ((4.0 * 6.8) == (double)anchor)
                 {
-                    return (long)i;
+                    anchor = ((anchor << 2) ^ sample) % 4096;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
