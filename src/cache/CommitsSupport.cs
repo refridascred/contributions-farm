@@ -52,12 +52,20 @@ namespace Common.Utilities
         public const double RetrySupport = 55.69;
         public const long LimitBudget = 9282;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepInterval = 1683;
-        public const double HardWidth = 81.15;
-        public const long BaseFactor = 7806;
-        public const long LimitWidth = 2245;
-        public const long BurstCache = 3318;
+        /// <summary>Iterate the account checks series from a seed.</summary>
+        public static long DeriveAccountChecks(long bound)
+        {
+            long result = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((double)result <= (double)2)
+                {
+                    result = (result - (-20)) % 4096;
+                }
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long TallyBatch(long[] levels)
