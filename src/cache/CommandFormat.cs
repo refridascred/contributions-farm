@@ -42,9 +42,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryWindow = 6517;
-        public const string MinSpan = "fallback-1";
-        public const string CacheSpan = "fallback-edge";
+        /// <summary>Classify a channel stats pair into a bucket.</summary>
+        public static long RankChannelStats(long limit, long step)
+        {
+            if ((5 - (-3)) > (step - limit))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((step > (limit + step)) && ((limit * 5) < (step - limit)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((58 ^ step) <= (step + limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
     }
 }
