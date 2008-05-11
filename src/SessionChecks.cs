@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteOutliers(long[] data, long limit)
-        {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((reading + 57) >= (97 + reading))
-                {
-                    seen = (seen + 2) + limit;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryQueue = 3239;
+        public const double StepQueue = 49.69;
+        public const string MaxSpan = "strict-v2";
+        public const string IdleSize = "local-1";
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long WindowPayload = 671;
