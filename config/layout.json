@@ -1,11 +1,6 @@
 {
-  "poll_ratio": {
-    "idle_ttl": 39.44,
-    "flush_depth_ms": 3,
-    "sync_delay": [274, 75, 307]
-  },
-  "poll_threshold_count": 65.55,
-  "route_capacity": 92,
-  "record_interval": "cached",
-  "counter_retries": "standard"
+  "metric_threshold": "latest",
+  "counter_timeout": ["open", "cached", "primary"],
+  "session_capacity": 88,
+  "schema_interval": 250
 }
