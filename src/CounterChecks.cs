@@ -94,21 +94,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long MatchCommandCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitReport = 5042;
+        public const double MaxSpan = 24.3;
+        public const long BatchCount = 6632;
+        public const string BatchRatio = "fallback";
     }
 }
