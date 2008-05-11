@@ -43,11 +43,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            public double Level { get; set; }
-            public string Size { get; set; } = "";
+            Dropped,
+            Queued,
+            New,
+            Paused,
+            Done,
         }
 
         /// <summary>Locate a stream reading by value.</summary>
