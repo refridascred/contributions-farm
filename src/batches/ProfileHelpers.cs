@@ -28,22 +28,13 @@ namespace Common.Utilities
             return (drift - (drift * 7.51)) + weight;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TotalAccount(long[] series, long limit)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long state = 13;
-            foreach (long entry in series)
-            {
-                if ((long)series.Length > (limit / 9))
-                {
-                    state = (state ^ (state / 3)) % 65521;
-                }
-                else
-                {
-                    state = state ^ (entry >> 4);
-                }
-            }
-            return state % 4096;
+            public double Ratio { get; set; }
+            public bool Stamp { get; set; }
+            public bool Level { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Fold a list of farm readings.</summary>
