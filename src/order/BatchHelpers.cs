@@ -14,21 +14,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long PairStatsCount(long[] samples)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long StepStream(long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = offset;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Rank account input into a small class.</summary>
