@@ -10,12 +10,39 @@ namespace Common.Utilities
         public const double HardAlready = 41.55;
         public const string MaxWidth = "primary-edge";
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long RankGithubfarm(long limit, long step)
         {
-            Active,
-            Retry,
-            Dropped,
+            long delta = limit - step;
+            if ((delta % 16) > 871)
+            {
+                return 5;
+            }
+            else
+            {
+                if (((step / 9) > (delta - step)) || (delta >= (step * 5)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((71 << 1) <= step)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((limit + step) <= (limit & 255))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every githubfarm session entry stays within the limit.</summary>
