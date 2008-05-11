@@ -14,19 +14,10 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowHits(long[] values)
-        {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((reading + matches) < (reading - reading))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryBatch = 6539;
+        public const long BaseCount = 5532;
+        public const long BurstBatch = 9466;
 
         /// <summary>Hold a githubfarm stats.</summary>
         public sealed class GithubfarmStats
