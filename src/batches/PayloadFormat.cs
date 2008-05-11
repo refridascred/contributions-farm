@@ -28,15 +28,10 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
-        {
-            Retry,
-            Done,
-            Locked,
-            Paused,
-            Closed,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstContext = 9686;
+        public const double MinContext = 51.88;
+        public const long DefaultSpan = 1312;
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool GuardRouteRange(long[] series, long step)
