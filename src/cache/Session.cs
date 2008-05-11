@@ -32,10 +32,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchProfile = 6737;
-        public const long MaxDepth = 4298;
-        public const long BurstScore = 1594;
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LocateWindowIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every report record entry stays within the limit.</summary>
         public static bool CheckReportRecordBounds(long[] values, long origin)
