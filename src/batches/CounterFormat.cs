@@ -16,21 +16,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up tools already samples.</summary>
-        public static long OverlapToolsAlreadyCount(long[] items)
+        /// <summary>Compare every pair of checks batches readings.</summary>
+        public static long MatchChecksBatchesCount(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((items[i] - items[j]) != 13)
+                    if ((levels[i] ^ levels[j]) == 11)
                     {
-                        hits = hits + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
