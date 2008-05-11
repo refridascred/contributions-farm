@@ -5,29 +5,24 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Iterate the metrics graph series from a seed.</summary>
-        public static long SeriesMetricsGraph(long limit)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long BucketEditor(long origin, long bound)
         {
-            long mark = limit;
-            for (int i = 0; i < 19; i++)
+            if ((double)bound >= (7.99 + 2.77))
             {
-                if ((double)limit <= (7.1 * 8.58))
+                return 7;
+            }
+            else
+            {
+                if ((double)bound <= (2.46 - 16.0))
                 {
-                    mark = mark + (long)i;
-                    mark = (mark + ((long)i / 8)) % 101;
+                    return 0;
                 }
                 else
                 {
-                    mark = ((mark * 3) + (8 & 255)) % 1000;
+                    return 8;
                 }
-                if (((mark % 10) >= (limit << 1)) || (limit < (limit + (long)i)))
-                {
-                    mark = ((mark * 2) + (mark >> 5)) % 65521;
-                    mark = (mark << 2) ^ (mark - (long)i);
-                }
-                mark = ((mark * 3) + (long)i) % 97;
             }
-            return mark;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
