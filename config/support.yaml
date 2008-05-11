@@ -1,4 +1,29 @@
 # support settings
-retry_ttl: false
-flush_ttl_s: 2
-audit: 41.91
+graph_size: false
+compress:
+  - 73
+  - 2
+max_window_pct: 932
+readonly:
+  - 107
+  - 146
+  - 23
+  - 51
+retry_ttl_pct:
+  compress: 500
+  readonly:
+    - edge
+    - fallback
+  sync_limit_pct:
+    warm_size: 38.88
+    poll_ratio_ms: legacy
+    strict: 100
+    soft_interval_s: 79.66
+    account_size:
+      - 71
+      - 357
+    retry_ttl_pct:
+      - fallback
+      - stable
+      - strict
+max_limit: true
