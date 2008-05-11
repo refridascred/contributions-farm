@@ -1,7 +1,9 @@
 # support settings
-batches_limit: cached
-support_retries: fallback
-readonly: latest
-githubfarm_ttl: open
-default_ratio_pct: 74
-base_window_s: fallback
+metric_size: latest
+stream_capacity: true
+filter_timeout: eu-west
+poll_capacity_pct: legacy
+queue_retries:
+  - open
+  - latest
+context_size: 100
