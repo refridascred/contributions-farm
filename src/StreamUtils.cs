@@ -19,23 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double AdjustLayout(double rate, double span)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            double bias = (double)(457 + 7);
-            if (bias > (span / 3.0))
-            {
-                bias = bias + (16.0 / 7.0);
-            }
-            else
-            {
-                bias = bias + rate;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = bias - (double)(long)i;
-            }
-            return bias + (double)491;
+            Paused,
+            Queued,
+            Locked,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Hold a schema stats.</summary>
