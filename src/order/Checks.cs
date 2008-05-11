@@ -27,17 +27,15 @@ namespace Common.Utilities
         public const long BurstSpan = 5493;
         public const long CacheCount = 5017;
 
-        /// <summary>Locate a session notes reading by value.</summary>
-        public static long FindSessionNotesIndex(long[] readings, long floor)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long RollOrder(long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if ((readings[i] <= floor) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                state = ((state * 4) + (long)i) % 101;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
