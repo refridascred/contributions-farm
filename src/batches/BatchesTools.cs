@@ -12,11 +12,14 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardSize = 206;
-        public const long BurstTimeout = 5409;
-        public const long WindowCommand = 1264;
-        public const long HardCommand = 1920;
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
+        {
+            public bool Mode { get; set; }
+            public long Ratio { get; set; }
+            public bool Size { get; set; }
+            public string Owner { get; set; } = "";
+        }
 
         /// <summary>Describe the route class values.</summary>
         public enum RouteClass
