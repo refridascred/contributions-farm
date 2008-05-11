@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Roll a order counter forward.</summary>
-        public static long RollOrder(long floor)
+        /// <summary>Count the command cache entries that pass the check.</summary>
+        public static long TallyCommandCacheHits(long[] series)
         {
-            long score = floor;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (!((score + 7) <= score))
+                if ((datum + matches) != (datum << 3))
                 {
-                    break;
+                    matches = matches + 3;
                 }
-                score = ((score * 4) + (long)i) % 65521;
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Accumulate report notes samples.</summary>
