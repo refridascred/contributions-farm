@@ -29,21 +29,13 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long PairReportCount(long[] samples)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
+            public bool Owner { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
