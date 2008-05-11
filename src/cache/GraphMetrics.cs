@@ -62,14 +62,11 @@ namespace Common.Utilities
             return mean + (double)46;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
-        {
-            Dropped,
-            Done,
-            Ready,
-            Retry,
-            New,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryWidth = 8010;
+        public const long DefaultLevel = 6888;
+        public const long BaseOrder = 2953;
+        public const long BaseWidth = 2434;
+        public const double BatchOrder = 9.15;
     }
 }
