@@ -12,12 +12,14 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftTimeout = 6499;
-        public const long StepStream = 4641;
-        public const string MinStream = "local-1";
-        public const double DefaultSize = 22.48;
-        public const long BurstStream = 4689;
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
+        {
+            Closed,
+            Failed,
+            Active,
+            New,
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long DefaultLevel = 8884;
