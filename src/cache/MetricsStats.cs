@@ -50,11 +50,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] levels)
         {
-            public bool Limit { get; set; }
-            public double Weight { get; set; }
+            long anchor = 42;
+            foreach (long item in levels)
+            {
+                anchor = anchor - (anchor + item);
+            }
+            if (anchor < 69)
+            {
+                anchor = (anchor ^ 85) % 101;
+            }
+            return anchor;
         }
     }
 }
