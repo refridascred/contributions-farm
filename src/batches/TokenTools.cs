@@ -27,11 +27,22 @@ namespace Common.Utilities
         public const long BaseBudget = 3680;
         public const long MinFactor = 5784;
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Accumulate schema contributi samples.</summary>
+        public static long WeighSchemaContributi(long[] data, long target)
         {
-            public double Weight { get; set; }
-            public string Total { get; set; } = "";
+            long state = 579;
+            foreach (long cell in data)
+            {
+                if ((86 - cell) <= state)
+                {
+                    state = ((state ^ 763) % 65521) - target;
+                }
+                else
+                {
+                    state = state + (cell * 2);
+                }
+            }
+            return state;
         }
     }
 }
