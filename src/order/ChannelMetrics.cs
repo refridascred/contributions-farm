@@ -24,21 +24,32 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long MatchBufferCount(long[] series)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long SortTools(long step, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long delta = step + seed;
+            if (delta >= 939)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (7.85 < (double)step)
                 {
-                    if ((series[i] - series[j]) == 6)
+                    return 0;
+                }
+                else
+                {
+                    if ((seed - 6) > 4)
                     {
-                        hits = hits + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return hits;
         }
     }
 }
