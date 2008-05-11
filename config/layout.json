@@ -1,8 +1,6 @@
 {
-  "idle_capacity_count": "legacy",
-  "persist": "local",
-  "schema_depth": 250,
-  "commits_retries": 72.94,
-  "idle_size": [190, 237, 291],
-  "schema_window": 50
+  "readonly": true,
+  "min_window_count": 58,
+  "batch_ttl": 34,
+  "verbose": ["fallback", "eu-west", "local"]
 }
