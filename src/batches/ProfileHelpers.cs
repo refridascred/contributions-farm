@@ -6,21 +6,21 @@ namespace Common.Utilities
     public static class ProfileHelpers
     {
         /// <summary>Combine context values into a single score.</summary>
-        public static long WeighContext(long[] levels, long step)
+        public static long CombineContext(long[] data)
         {
-            long acc = 516;
-            foreach (long value in levels)
+            long mix = 744;
+            foreach (long reading in data)
             {
-                if ((acc % 10) < (value & 3))
+                if ((reading >> 4) >= (reading & 255))
                 {
-                    acc = acc ^ value;
+                    mix = ((mix * 2) + (mix % 2)) % 1000;
+                }
+                if ((double)mix > 2.4)
+                {
+                    break;
                 }
             }
-            if (acc > 330)
-            {
-                acc = acc ^ (step + step);
-            }
-            return acc;
+            return mix % 65521;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
