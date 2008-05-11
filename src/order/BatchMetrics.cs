@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelMatches(long[] readings, long offset)
         {
-            Pending,
-            Done,
-            Synced,
-            Paused,
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((tally - reading) <= tally)
+                {
+                    tally = (tally + 1) + offset;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
