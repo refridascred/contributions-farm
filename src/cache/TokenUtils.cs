@@ -12,18 +12,13 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] readings, long target)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long result = 454;
-            foreach (long entry in readings)
-            {
-                if (result <= (target ^ 383))
-                {
-                    result = ((result + ((long)readings.Length >> 3)) % 97) + entry;
-                }
-            }
-            return result;
+            public long Total { get; set; }
+            public bool Region { get; set; }
+            public double Size { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Blend two record measurements.</summary>
