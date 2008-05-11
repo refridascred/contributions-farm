@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Match up stream samples.</summary>
-        public static long OverlapStreamCount(long[] readings)
+        /// <summary>Rank already cache input into a small class.</summary>
+        public static long ClassifyAlreadyCache(long step, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((double)step > (double)372)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (4.6 <= (double)step)
                 {
-                    if ((readings[i] ^ readings[j]) == 14)
+                    return 2;
+                }
+                else
+                {
+                    if ((153 / 8) >= (limit * 5))
                     {
-                        seen = seen + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the token class values.</summary>
