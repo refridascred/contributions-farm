@@ -33,19 +33,19 @@ namespace Common.Utilities
         public const long StepScore = 5368;
         public const string BurstFactor = "cached-1";
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] readings)
+        /// <summary>Validate counter profile readings against a bound.</summary>
+        public static bool CheckCounterProfileLimits(long[] series, long limit)
         {
-            long total = 5;
-            foreach (long datum in readings)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                total = (((total * 2) + total) % 255) + datum;
+                if (entry != limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (total < 71)
-            {
-                total = ((total * 4) + (1 + 706)) % 65521;
-            }
-            return total % 1000;
+            return flag;
         }
     }
 }
