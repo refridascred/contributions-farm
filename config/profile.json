@@ -1,12 +1,6 @@
 {
-  "idle_ttl": "cached",
-  "burst_size_count": {
-    "base_ratio_s": 8599,
-    "audit": "fallback",
-    "enabled": 25,
-    "commits_ttl": ["green", "blue", "green"],
-    "profile_size": [131, 336]
-  },
-  "editor_timeout": "local",
-  "min_depth_ms": "eu-west"
+  "strict": "strict",
+  "cache_ttl": 74.91,
+  "enabled": 5731,
+  "channel_delay": true
 }
