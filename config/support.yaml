@@ -1,11 +1,9 @@
 # support settings
-persist:
-  - 307
-  - 120
-  - 307
-  - 455
-cache_capacity:
-  - 194
-  - 347
-token_depth: true
-burst_ratio: 8442
+max_delay_pct: open
+cache_ttl: latest
+stats_interval: 86.42
+channel_limit: standard
+context_capacity:
+  - latest
+  - open
+  - cached
