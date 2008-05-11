@@ -34,17 +34,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first notes session entry that matches the target.</summary>
-        public static long LookupNotesSessionIndex(long[] data, long offset)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileHits(long[] values, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if (data[i] <= offset)
+                if ((double)seed > (20.0 + 9.0))
                 {
-                    return (long)i;
+                    seen = (seen + 2) + item;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
