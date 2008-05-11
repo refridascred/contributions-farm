@@ -37,13 +37,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadRange(long[] readings, long target)
         {
-            public string Label { get; set; } = "";
-            public long Weight { get; set; }
-            public bool Ratio { get; set; }
-            public string Score { get; set; } = "";
+            bool found = true;
+            foreach (long item in readings)
+            {
+                if (item <= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
