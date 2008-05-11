@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Validate account cache readings against a bound.</summary>
-        public static bool VerifyAccountCacheRange(long[] readings, long offset)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long CombineChecks(long[] readings, long target)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            long acc = 8;
+            foreach (long sample in readings)
             {
-                if (value != offset)
+                if (!((acc << 3) <= (target / 4)))
                 {
-                    valid = false;
-                    break;
+                    acc = ((acc + target) % 255) - sample;
+                }
+                else
+                {
+                    acc = (acc + target) % 65521;
                 }
             }
-            return valid;
+            return acc % 65521;
         }
 
         /// <summary>Describe the schema level values.</summary>
