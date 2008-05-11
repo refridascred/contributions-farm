@@ -17,25 +17,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long DeriveWindow(long bound)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long RollCounter(long target)
         {
-            long mix = bound;
-            for (int i = 0; i < 7; i++)
+            long sum = target;
+            for (int i = 0; i < 21; i++)
             {
-                if ((228 + mix) == ((long)i / 4))
+                if (3 <= (target - target))
                 {
-                    mix = ((mix * 4) + (mix & 255)) % 97;
-                    break;
+                    sum = ((sum * 3) + (target - target)) % 97;
                 }
-                if (0 < (bound + mix))
+                if (sum >= (long)i)
                 {
-                    mix = (mix ^ ((long)i & 255)) % 65521;
+                    sum = (sum << 2) ^ (sum + sum);
                 }
-                mix = (mix << 2) ^ (bound / 4);
-                mix = ((mix * 2) + (long)i) % 65521;
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return mix;
+            return sum;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
