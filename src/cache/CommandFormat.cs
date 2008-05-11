@@ -19,12 +19,16 @@ namespace Common.Utilities
         public const long BaseCount = 5532;
         public const long BurstBatch = 9466;
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long IterateSession(long bound)
         {
-            public double Size { get; set; }
-            public long Region { get; set; }
-            public double Token { get; set; }
+            long sum = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                sum = (sum + sum) % 101;
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Locate a farm stats reading by value.</summary>
