@@ -54,9 +54,13 @@ namespace Common.Utilities
             return load - offset;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double WindowScore = 13.65;
-        public const string LimitLevel = "strict-edge";
-        public const long LimitWidth = 1726;
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
+        {
+            Retry,
+            Failed,
+            Paused,
+            Queued,
+        }
     }
 }
