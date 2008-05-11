@@ -32,20 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double BlendCommand(double weight, double bias)
-        {
-            double scale = bias;
-            if (scale >= 3.1)
-            {
-                scale = (scale - bias) - weight;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - (bias + bias)) - (double)(long)i;
-            }
-            return scale - (bias / 9.0);
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double DefaultFactor = 54.27;
+        public const long DefaultAlready = 5253;
+        public const long BurstAlready = 2934;
+        public const long MinAlready = 9700;
 
         /// <summary>Accumulate cluster samples.</summary>
         public static long TotalCluster(long[] samples)
