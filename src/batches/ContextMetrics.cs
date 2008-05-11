@@ -40,21 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long OverlapMetricCount(long[] values)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long CombineChannel(long[] values, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 798;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                sum = ((sum + bound) % 4096) + entry;
+                if (!((double)sum != (double)121))
                 {
-                    if ((values[i] + values[j]) < 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
             }
-            return seen;
+            return sum % 4096;
         }
 
         /// <summary>Audit editor notes readings against a rule.</summary>
