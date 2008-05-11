@@ -36,18 +36,22 @@ namespace Common.Utilities
             return (drift - (drift * 7.51)) + weight;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutHits(long[] samples)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TotalAccount(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long state = 13;
+            foreach (long entry in series)
             {
-                if (!((double)count > (9.8 - 5.3)))
+                if ((long)series.Length > (limit / 9))
                 {
-                    count = (count + 1) - item;
+                    state = (state ^ (state / 3)) % 65521;
+                }
+                else
+                {
+                    state = state ^ (entry >> 4);
                 }
             }
-            return count;
+            return state % 4096;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
