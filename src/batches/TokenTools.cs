@@ -39,18 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LookupNotesIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double RetryQueue = 48.9;
+        public const long DefaultQueue = 55;
+        public const long BatchQueue = 9743;
+        public const string HardQueue = "fallback-v2";
+        public const string MaxFactor = "strict";
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long MinRatio = 4849;
