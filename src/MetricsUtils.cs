@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TallyEditor(long[] readings, long offset)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long carry = -556;
-            foreach (long entry in readings)
-            {
-                if (((2.1 + 9.0) < (double)carry) || ((entry * 2) >= (offset + entry)))
-                {
-                    carry = carry + (entry ^ 255);
-                }
-                else
-                {
-                    carry = carry - (entry & 7);
-                }
-            }
-            return carry;
+            Stale,
+            Queued,
+            Closed,
+            New,
         }
 
         /// <summary>Match up session samples.</summary>
