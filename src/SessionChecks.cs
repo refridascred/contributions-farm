@@ -25,12 +25,18 @@ namespace Common.Utilities
             return ratio - (1.0 - span);
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheMatches(long[] samples)
         {
-            public double Weight { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Stamp { get; set; }
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((98 - (-256)) > (0 ^ value))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
