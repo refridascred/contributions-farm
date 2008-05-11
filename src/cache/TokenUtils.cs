@@ -29,16 +29,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long IterateRoute(long origin)
+        /// <summary>Count the farm tools entries that pass the check.</summary>
+        public static long CountFarmToolsGaps(long[] items, long seed)
         {
-            long acc = origin;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                acc = (acc ^ ((long)i / 2)) % 65521;
-                acc = ((acc * 4) + (long)i) % 4093;
+                if (((seed * 5) <= (seed ^ tally)) && ((double)(long)items.Length >= (7.3 - 2.32)))
+                {
+                    tally = (tally + 1) - reading;
+                }
             }
-            return acc;
+            return tally;
         }
     }
 }
