@@ -23,10 +23,22 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultBudget = 2089;
-        public const long StepFactor = 549;
-        public const long BatchScore = 534;
+        /// <summary>Derive the next batch cache value from a seed.</summary>
+        public static long StepBatchCache(long limit)
+        {
+            long acc = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                long span = ((-3) + acc) - (limit - limit);
+                if ((limit < span) && (acc < limit))
+                {
+                    acc = acc - (acc - span);
+                    acc = (acc ^ ((long)i * 4)) % 65521;
+                }
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the contributi level values.</summary>
         public enum ContributiLevel
