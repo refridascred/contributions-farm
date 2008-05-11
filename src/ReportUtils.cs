@@ -46,23 +46,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long CombineNotes(long[] readings, long floor)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long CombineTools(long[] values)
         {
-            long acc = 1;
-            foreach (long reading in readings)
+            long score = 0;
+            foreach (long entry in values)
             {
-                acc = (((acc * 5) + (acc / 8)) % 97) - floor;
-                if ((acc ^ reading) == (reading >> 3))
-                {
-                    acc = acc ^ reading;
-                }
-                else
-                {
-                    acc = (acc * 4) + (reading >> 3);
-                }
+                score = (((score << 2) ^ (score << 2)) % 255) + entry;
             }
-            return acc;
+            if (score > 480)
+            {
+                score = ((score << 3) ^ score) % 97;
+            }
+            return score % 65521;
         }
 
         /// <summary>Project the next stats value.</summary>
