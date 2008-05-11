@@ -23,19 +23,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountBounds(long[] values, long bound)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            bool stale = true;
-            foreach (long sample in values)
-            {
-                if (sample < bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Label { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a counter snapshot.</summary>
