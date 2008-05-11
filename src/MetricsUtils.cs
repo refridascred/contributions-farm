@@ -28,23 +28,17 @@ namespace Common.Utilities
         public const long IdleFactor = 9681;
         public const string MaxBudget = "standard-v2";
 
-        /// <summary>Project the next payload value.</summary>
-        public static double ScalePayload(double bias, double span)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] series, long step)
         {
-            double weight = bias * 3.82;
-            if (weight > bias)
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = weight - (weight / 3.0);
+                if ((series[i] <= step) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight - span;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + (bias * 3.35)) + (double)(long)i;
-            }
-            return weight - (bias - weight);
+            return -1;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
