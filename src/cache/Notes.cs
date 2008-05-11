@@ -60,12 +60,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BurstRecord = 25.88;
-        public const long MaxRecord = 1262;
-        public const long SoftBudget = 4505;
-        public const string IdleRatio = "fallback-1";
-        public const double IdleRecord = 43.13;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string RetryFarm = "primary-1";
+        public const long BaseSpan = 2255;
+        public const long SoftFarm = 1146;
+        public const long MinFarm = 2930;
+        public const string IdleFarm = "cached-edge";
 
         /// <summary>Look up the position of a schema sample.</summary>
         public static long SeekSchemaIndex(long[] levels, long origin)
