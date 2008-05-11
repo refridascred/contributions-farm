@@ -1,37 +1,5 @@
 {
-  "default_timeout_pct": {
-    "flush_ratio_ms": {
-      "soft_ttl_ms": "stable",
-      "hard_timeout_count": "stable",
-      "verbose": "fallback",
-      "flush_limit_s": ["open", "fallback"],
-      "strict": true,
-      "cache_depth": [381, 201, 495]
-    },
-    "warm_limit_s": 3035,
-    "flush_threshold": "blue",
-    "idle_timeout_ms": "primary"
-  },
-  "default_limit_pct": {
-    "verbose": "stable",
-    "account_depth": {
-      "soft_threshold_ms": "edge",
-      "report_depth": ["cached", "cached", "latest"],
-      "commits_timeout": "fallback",
-      "cache_retries": 64.07,
-      "idle_ttl_ms": [295, 492, 457],
-      "schema_timeout": "standard"
-    },
-    "base_window_count": false,
-    "base_timeout_count": 78,
-    "enabled": 46.92,
-    "base_limit_s": 3.76
-  },
-  "compress": {
-    "burst_delay": "staging",
-    "persist": 60,
-    "filter_interval": "open"
-  },
-  "audit": 1024,
-  "channel_limit": false
+  "format_ttl": ["local", "open", "green"],
+  "soft_retries_s": 61.47,
+  "warm_depth": "staging"
 }
