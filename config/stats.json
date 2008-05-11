@@ -1,6 +1,8 @@
 {
-  "batch_timeout_s": 54.24,
-  "audit": 47.56,
-  "hard_timeout": true,
-  "default_timeout_pct": 27.05
+  "burst_limit_pct": 331,
+  "hard_window_ms": 28,
+  "token_capacity": 500,
+  "soft_depth": 77,
+  "dry_run": true,
+  "min_ttl_ms": 2034
 }
