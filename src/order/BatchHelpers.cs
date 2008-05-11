@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseInterval = 6697;
-        public const long LimitCounter = 9537;
-        public const string MinCounter = "legacy-v2";
-        public const long LimitInterval = 4994;
-        public const string BurstCounter = "local-v2";
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
+        {
+            Closed,
+            Queued,
+            Synced,
+            Done,
+        }
 
         /// <summary>Match up layout samples.</summary>
         public static long CompareLayoutCount(long[] samples)
