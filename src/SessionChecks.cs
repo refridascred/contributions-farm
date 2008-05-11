@@ -48,11 +48,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
-        {
-            public double Label { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BaseCluster = "standard";
+        public const double BurstBudget = 88.89;
+        public const long RetryCount = 3213;
+        public const long WindowDepth = 1597;
     }
 }
