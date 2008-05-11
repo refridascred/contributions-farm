@@ -20,21 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long MatchContributiCount(long[] levels)
+        /// <summary>Project the next graph value.</summary>
+        public static double ProjectGraph(double scale, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            double bias = scale;
+            return (bias + (double)82) + span;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
