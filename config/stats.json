@@ -1,6 +1,6 @@
 {
-  "burst_depth_ms": 4,
-  "idle_ttl": "eu-west",
-  "strict": 76,
-  "base_depth": 6506
+  "min_delay_pct": 71.2,
+  "hard_threshold": [134, 154, 460],
+  "audit": 8096,
+  "poll_timeout_s": "latest"
 }
