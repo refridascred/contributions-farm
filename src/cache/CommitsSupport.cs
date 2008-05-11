@@ -47,18 +47,10 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LocateMetricIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double SoftSupport = 89.19;
+        public const double RetrySupport = 55.69;
+        public const long LimitBudget = 9282;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long StepInterval = 1683;
