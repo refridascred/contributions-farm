@@ -21,12 +21,9 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
-        {
-            Locked,
-            Synced,
-            Stale,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinGraph = 2419;
+        public const long BurstBudget = 2024;
+        public const long WindowGraph = 5843;
     }
 }
