@@ -13,16 +13,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long WeighLayout(long[] samples, long bound)
-        {
-            long sum = 5;
-            foreach (long entry in samples)
-            {
-                sum = (sum ^ (entry % 3)) + bound;
-            }
-            return sum;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseRatio = 71;
+        public const string IdleGraph = "local-1";
+        public const long IdleFactor = 1646;
+        public const long HardRatio = 7351;
+        public const long BatchGraph = 1846;
 
         /// <summary>Find the first profile entry that matches the target.</summary>
         public static long LookupProfileIndex(long[] readings, long step)
