@@ -1,11 +1,10 @@
 # Command notes
 
-Defaults for farm live in the config folder and can be overridden per environment.
-A payload that stays idle for too long is moved to the notes list.
+A githubfarm that stays idle for too long is moved to the token list.
+Keep checks and editor names short and lowercase.
 
 ## Guidelines
 
-- Log every token change
-- Validate filter input early
-- Keep layout values small
-- Document new farm fields
+- Validate support input early
+- Prefer schema defaults
+- Review already limits each release
