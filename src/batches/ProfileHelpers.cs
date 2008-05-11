@@ -13,12 +13,16 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultBuffer = 8170;
-        public const long WindowBuffer = 8824;
-        public const long BaseFactor = 3176;
-        public const string CacheSize = "staging-v2";
-        public const long HardLevel = 9667;
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TotalContributi(long[] levels)
+        {
+            long sum = 3;
+            foreach (long entry in levels)
+            {
+                sum = (((sum << 3) ^ (sum + sum)) % 101) - entry;
+            }
+            return sum % 97;
+        }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
         public static long TallyGithubfarm(long[] values)
