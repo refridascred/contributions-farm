@@ -63,9 +63,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryTools = 6283;
-        public const string LimitTools = "local";
-        public const long LimitSize = 2157;
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TotalStream(long[] data, long target)
+        {
+            long anchor = 30;
+            foreach (long cell in data)
+            {
+                if (target < (86 >> 2))
+                {
+                    anchor = (anchor + (cell + anchor)) % 65521;
+                }
+                if (8.9 > (double)cell)
+                {
+                    break;
+                }
+            }
+            return anchor % 65521;
+        }
     }
 }
