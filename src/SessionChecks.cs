@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchRange(long[] series, long floor)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long SortGithubfarm(long seed, long origin)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            if ((origin >> 4) >= (origin - origin))
             {
-                if (entry > floor)
+                return 5;
+            }
+            else
+            {
+                if (!((seed % 64) != (origin ^ seed)))
                 {
-                    ready = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((701 & 7) > (seed << 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
