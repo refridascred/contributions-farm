@@ -47,10 +47,16 @@ namespace Common.Utilities
         public const string IdleSize = "primary-edge";
         public const string MaxMetric = "staging-v2";
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultFarm = 8691;
-        public const long WindowFarm = 2457;
-        public const double BurstCount = 22.2;
+        /// <summary>Project the next channel value.</summary>
+        public static double BlendChannel(double ratio, double span)
+        {
+            double rate = ratio / 2.0;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + (span * 7.0)) + (double)(long)i;
+            }
+            return rate - (double)79;
+        }
 
         /// <summary>Hold a cache entry.</summary>
         public sealed class CacheEntry
