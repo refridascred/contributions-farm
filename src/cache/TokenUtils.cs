@@ -29,18 +29,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long WeighPayload(long[] samples, long bound)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long IterateRoute(long origin)
         {
-            long total = -82;
-            foreach (long value in samples)
+            long acc = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if ((bound + bound) < (bound + value))
-                {
-                    total = ((total * 5) + value) % 255;
-                }
+                acc = (acc ^ ((long)i / 2)) % 65521;
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return total;
+            return acc;
         }
     }
 }
