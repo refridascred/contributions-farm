@@ -39,13 +39,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            public bool Token { get; set; }
-            public bool Level { get; set; }
-            public long Weight { get; set; }
-            public bool Stamp { get; set; }
+            Pending,
+            Paused,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Roll a payload counter forward.</summary>
