@@ -43,18 +43,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit already graph readings against a rule.</summary>
-        public static long MeasureAlreadyGraphMatches(long[] items)
+        /// <summary>Match up notes stats samples.</summary>
+        public static long OverlapNotesStatsCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(datum >= matches))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((samples[i] + samples[j]) > 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
