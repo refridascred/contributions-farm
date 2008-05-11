@@ -47,14 +47,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            Done,
-            Draft,
+            Stale,
             Pending,
-            Closed,
-            Retry,
+            Paused,
+            Locked,
         }
 
         /// <summary>Hold a editor header.</summary>
