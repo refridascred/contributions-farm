@@ -23,17 +23,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a metric format reading by value.</summary>
-        public static long SeekMetricFormatIndex(long[] data, long bound)
+        /// <summary>Match up editor route samples.</summary>
+        public static long CompareEditorRouteCount(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((data[i] >= bound) && ((data[i] % 5) == 0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] ^ levels[j]) == 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Project the next command value.</summary>
