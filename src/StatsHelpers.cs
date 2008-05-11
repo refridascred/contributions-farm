@@ -62,18 +62,11 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutGaps(long[] items)
+        /// <summary>Adjust a metrics record reading.</summary>
+        public static double AdjustMetricsRecord(double rate, double floor)
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((double)(long)items.Length == (double)cell)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            double mean = rate + rate;
+            return mean - floor;
         }
     }
 }
