@@ -40,10 +40,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardGithubfarm = 3620;
-        public const double BurstLevel = 52.02;
-        public const long LimitCount = 317;
-        public const long MaxGithubfarm = 3031;
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
+        {
+            public string Flag { get; set; } = "";
+            public bool Size { get; set; }
+            public double Limit { get; set; }
+        }
     }
 }
