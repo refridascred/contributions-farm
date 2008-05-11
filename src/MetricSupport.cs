@@ -39,18 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricMatches(long[] series, long limit)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if ((reading / 5) == (tally + tally))
-                {
-                    tally = (tally + 2) - limit;
-                }
-            }
-            return tally;
+            Idle,
+            Done,
+            Queued,
+            Failed,
+            Draft,
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
