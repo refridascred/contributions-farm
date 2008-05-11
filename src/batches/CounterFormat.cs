@@ -30,22 +30,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] items)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double AdjustProfile(double gain, double offset)
         {
-            long sum = 865;
-            foreach (long datum in items)
+            double load = offset / 8.0;
+            if (load <= (gain / 4.0))
             {
-                if ((sum >= (3 - datum)) || ((double)datum > (8.47 + 9.0)))
-                {
-                    sum = ((sum * 5) + datum) % 255;
-                }
+                load = load - 4.1;
             }
-            if (sum < 656)
+            else
             {
-                sum = (sum + sum) % 97;
+                load = load + offset;
             }
-            return sum;
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - (gain + load)) - (double)(long)i;
+            }
+            return load - (gain / 2.0);
         }
     }
 }
