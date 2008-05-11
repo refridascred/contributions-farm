@@ -14,14 +14,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            Queued,
-            Retry,
-            Done,
             Closed,
-            New,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Describe the entry class values.</summary>
