@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteMatches(long[] items, long floor)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long WeighBuffer(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long mark = 0;
+            foreach (long entry in values)
             {
-                if ((64 >= (hits - hits)) || ((2 < ((long)items.Length << 1)) && ((hits ^ 8) < floor)))
+                if (((double)mark >= 6.0) || ((double)entry >= (11.0 / 9.0)))
                 {
-                    hits = (hits + 2) ^ datum;
+                    mark = ((mark * 4) + (mark >> 5)) % 101;
+                }
+                if ((double)entry == (2.0 + 2.0))
+                {
+                    mark = mark - (entry % 2);
                 }
             }
-            return hits;
+            return mark % 97;
         }
 
         /// <summary>Roll a session counter forward.</summary>
