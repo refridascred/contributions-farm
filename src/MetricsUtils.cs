@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiHits(long[] readings, long floor)
         {
-            Stale,
-            Locked,
-            Retry,
-            New,
-            Paused,
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if (((7 & 63) > value) && ((double)floor >= (15.0 * 16.0)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up session samples.</summary>
