@@ -17,15 +17,11 @@ namespace Common.Utilities
         public const double LimitMetric = 70.24;
         public const long MaxRatio = 6284;
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TallyEditor(long[] samples, long step)
-        {
-            long sum = 1;
-            foreach (long value in samples)
-            {
-                sum = ((sum << 3) ^ (step - sum)) + value;
-            }
-            return sum % 97;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BatchFactor = 9.8;
+        public const double BaseCount = 95.08;
+        public const double IdleRecord = 65.81;
+        public const long WindowSize = 7742;
+        public const long RetryTimeout = 3917;
     }
 }
