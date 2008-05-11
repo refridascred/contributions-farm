@@ -47,10 +47,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftCluster = 4115;
-        public const long HardCluster = 6983;
-        public const string RetryCluster = "primary-v2";
+        /// <summary>Iterate the metric context series from a seed.</summary>
+        public static long RollMetricContext(long target)
+        {
+            long mix = target;
+            for (int i = 0; i < 9; i++)
+            {
+                mix = ((mix << 2) ^ (target - target)) % 101;
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Describe the farm status values.</summary>
         public enum FarmStatus
