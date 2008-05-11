@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteGaps(long[] series)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if ((2 * 4) < (count << 2))
-                {
-                    count = (count + 3) + item;
-                }
-            }
-            return count;
+            public bool Rank { get; set; }
+            public long Label { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
