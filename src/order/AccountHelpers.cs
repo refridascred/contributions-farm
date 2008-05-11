@@ -43,18 +43,12 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long RollQueue(long step)
-        {
-            long state = step;
-            for (int i = 0; i < 4; i++)
-            {
-                state = state ^ (step + state);
-                state = state ^ (state & 7);
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetryRatio = 7302;
+        public const double HardDepth = 92.15;
+        public const double DefaultScore = 22.38;
+        public const long IdleFormat = 3740;
+        public const long CacheDepth = 9887;
 
         /// <summary>Locate a account reading by value.</summary>
         public static long LocateAccountIndex(long[] data, long seed)
