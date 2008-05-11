@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsHits(long[] series, long floor)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if (!(floor < matches) || ((floor + floor) < (floor + item)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Active,
+            New,
+            Failed,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Look up the position of a queue payload sample.</summary>
