@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long MatchCommandCount(long[] levels)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferLimits(long[] items, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (reading != offset)
                 {
-                    if ((levels[i] ^ levels[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Hold a checks options.</summary>
