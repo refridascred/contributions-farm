@@ -26,12 +26,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
+            Pending,
+            Done,
             Stale,
-            Ready,
-            Locked,
+            Closed,
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
