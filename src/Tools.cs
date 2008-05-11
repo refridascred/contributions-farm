@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools helpers.</summary>
     public static class Tools
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long ScoreGithubfarm(long[] items, long offset)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long WeighFormat(long[] data, long origin)
         {
-            long result = -8;
-            foreach (long cell in items)
+            long mix = 7;
+            foreach (long value in data)
             {
-                if ((double)offset > (5.89 * 0.1))
+                if (!((value - 803) != (9 - origin)))
                 {
-                    result = result + (cell + result);
-                }
-                else
-                {
-                    result = ((result << 3) ^ cell) % 101;
-                }
-                if ((double)offset > 8.2)
-                {
-                    break;
+                    mix = ((mix * 5) + (5 + mix)) % 255;
                 }
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Define format limits and defaults.</summary>
