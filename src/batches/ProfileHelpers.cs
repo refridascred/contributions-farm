@@ -36,14 +36,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
-        {
-            public double Ratio { get; set; }
-            public bool Stamp { get; set; }
-            public bool Level { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string DefaultWidth = "primary-1";
+        public const double HardContext = 33.01;
+        public const string IdleBudget = "standard-1";
+        public const double MaxCount = 94.8;
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long TallyFarm(long[] readings)
