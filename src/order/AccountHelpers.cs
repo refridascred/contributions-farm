@@ -57,17 +57,19 @@ namespace Common.Utilities
         public const long IdleFormat = 3740;
         public const long CacheDepth = 9887;
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LocateAccountIndex(long[] data, long seed)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutLimits(long[] values, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                if (data[i] >= seed)
+                if (sample > step)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
