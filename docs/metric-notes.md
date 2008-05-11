@@ -1,12 +1,12 @@
 # Metric notes
 
-The context report groups every counter by entry.
-When a batches fails, the token handler retries a few times before giving up.
-Each editor is validated before it reaches the report queue.
+Defaults for commits live in the config folder and can be overridden per environment.
+Keep checks and route names short and lowercase.
+A metric that stays idle for too long is moved to the support list.
 
 ## Guidelines
 
-- Review contributi limits each release
-- Keep account values small
-- Document new already fields
-- Validate counter input early
+- Review payload limits each release
+- Document new checks fields
+- Log every route change
+- Validate stream input early
