@@ -64,12 +64,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
-        {
-            Active,
-            Retry,
-            Idle,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitSpan = 8624;
+        public const double LimitFormat = 62.32;
+        public const long DefaultRatio = 2585;
     }
 }
