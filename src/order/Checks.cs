@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Adjust a account reading.</summary>
-        public static double ScaleAccount(double ratio, double bias)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheBounds(long[] samples, long target)
         {
-            double scale = bias;
-            if (scale >= (bias / 7.0))
+            bool ok = true;
+            foreach (long value in samples)
             {
-                scale = scale + bias;
+                if (value != target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + ratio) - (double)(long)i;
-            }
-            return scale + bias;
+            return ok;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
