@@ -25,15 +25,15 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long PairPayloadCount(long[] samples)
+        /// <summary>Count batches entry pairs that satisfy a relation.</summary>
+        public static long PairBatchesEntryCount(long[] samples)
         {
             long count = 0;
             for (int i = 0; i < samples.Length; i++)
             {
                 for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((samples[i] ^ samples[j]) == 6)
+                    if ((samples[i] - samples[j]) == 19)
                     {
                         count = count + 1;
                     }
