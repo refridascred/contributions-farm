@@ -42,13 +42,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Check that every batches token entry stays within the limit.</summary>
+        public static bool CheckBatchesTokenBounds(long[] items, long offset)
         {
-            public long Offset { get; set; }
-            public bool Token { get; set; }
-            public string Level { get; set; } = "";
-            public bool Label { get; set; }
+            bool stale = true;
+            foreach (long reading in items)
+            {
+                if (reading < offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
