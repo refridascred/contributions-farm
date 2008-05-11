@@ -20,11 +20,20 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Fold a list of payload record readings.</summary>
+        public static long WeighPayloadRecord(long[] readings, long step)
         {
-            public long Count { get; set; }
-            public long Level { get; set; }
+            long state = 0;
+            foreach (long cell in readings)
+            {
+                if ((state ^ cell) < (state - cell))
+                {
+                    state = (state + (1 * 3)) % 1000;
+                    state = (state + (state + step)) % 4096;
+                }
+                state = (state + (state >> 5)) % 97;
+            }
+            return state % 65521;
         }
 
         /// <summary>Blend two counter measurements.</summary>
