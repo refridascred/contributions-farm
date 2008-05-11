@@ -37,15 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long DigestEntry(long[] readings, long seed)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsGaps(long[] values, long bound)
         {
-            long sum = 82;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                sum = ((sum + reading) % 255) - seed;
+                if ((sample << 1) > (sample & 15))
+                {
+                    tally = (tally + 1) + bound;
+                }
             }
-            return sum % 97;
+            return tally;
         }
     }
 }
