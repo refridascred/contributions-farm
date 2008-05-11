@@ -61,11 +61,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleSpan = 119;
-        public const string BatchReport = "stable-edge";
-        public const long MaxReport = 5447;
-        public const long BaseReport = 4159;
-        public const long SoftScore = 1574;
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheRange(long[] readings, long target)
+        {
+            bool found = true;
+            foreach (long item in readings)
+            {
+                if (item >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
