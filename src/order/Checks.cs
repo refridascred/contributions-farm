@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepInterval = 3755;
-        public const long CacheAccount = 1972;
-        public const string BatchFactor = "legacy";
+        /// <summary>Define window limits and defaults.</summary>
+        public const string LimitDepth = "primary";
+        public const long StepWindow = 925;
+        public const double BatchScore = 79.17;
+        public const long RetryBudget = 1961;
+        public const long BaseWidth = 419;
 
         /// <summary>Roll a metrics counter forward.</summary>
         public static long IterateMetrics(long origin)
