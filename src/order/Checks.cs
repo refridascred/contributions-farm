@@ -53,22 +53,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandHits(long[] levels, long seed)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsMatches(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if ((seed >> 2) <= (seen & 7))
+                if (!((26 ^ matches) >= (offset / 9)))
                 {
-                    seen = (seen + 3) + cell;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = (matches + 3) + entry;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
