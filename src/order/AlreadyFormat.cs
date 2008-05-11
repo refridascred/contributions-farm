@@ -47,18 +47,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamHits(long[] values)
+        /// <summary>Accumulate entry metrics samples.</summary>
+        public static long TallyEntryMetrics(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long total = 3;
+            foreach (long cell in samples)
             {
-                if ((hits >> 3) == (hits + entry))
-                {
-                    hits = hits + 1;
-                }
+                total = (((total - total) % 65521) - cell) + bound;
             }
-            return hits;
+            return total;
         }
     }
 }
