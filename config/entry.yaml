@@ -1,6 +1,11 @@
 # entry settings
-hard_ratio_s: local
-min_ttl_s: green
-cache_delay_count: edge
-sync_capacity: 1.37
-hard_window_count: true
+warm_capacity_ms: green
+flush_window_pct: 63.47
+soft_ratio_s: standard
+flush_retries_s: 46.3
+burst_capacity_pct:
+  - stable
+  - local
+  - green
+  - open
+persist: stable
