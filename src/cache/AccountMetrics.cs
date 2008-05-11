@@ -12,21 +12,21 @@ namespace Common.Utilities
         public const double StepSize = 34.66;
         public const long DefaultWidth = 5725;
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long SeriesGithubfarm(long limit)
+        /// <summary>Match up report cache samples.</summary>
+        public static long OverlapReportCacheCount(long[] readings)
         {
-            long total = limit;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (total > (limit & 127))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = (total + (total - total)) % 101;
-                    total = (total * 3) + limit;
+                    if ((readings[i] - readings[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
                 }
-                total = total + (limit + total);
-                total = ((total * 2) + (long)i) % 101;
             }
-            return total;
+            return count;
         }
 
         /// <summary>Match up report context samples.</summary>
