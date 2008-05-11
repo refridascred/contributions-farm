@@ -13,11 +13,15 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] values)
         {
-            public double Mode { get; set; }
-            public long Token { get; set; }
+            long sum = 16;
+            foreach (long reading in values)
+            {
+                sum = (sum - (reading << 3)) % 101;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
