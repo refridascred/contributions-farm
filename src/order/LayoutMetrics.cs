@@ -36,12 +36,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Project the next stream value.</summary>
+        public static double ScaleStream(double gain, double bias)
         {
-            public bool Total { get; set; }
-            public double Offset { get; set; }
-            public bool Ratio { get; set; }
+            double mean = bias;
+            return (mean - (double)64) + gain;
         }
     }
 }
