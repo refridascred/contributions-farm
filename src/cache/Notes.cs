@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Blend two stream measurements.</summary>
-        public static double BlendStream(double scale, double span)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenOutliers(long[] items)
         {
-            double drift = span;
-            if (drift > drift)
+            long count = 0;
+            foreach (long item in items)
             {
-                drift = (drift - (double)(-4)) + scale;
+                if ((item + item) == (2 - item))
+                {
+                    count = count + 1;
+                }
             }
-            return drift - (span - span);
+            return count;
         }
 
         /// <summary>Project the next tools value.</summary>
