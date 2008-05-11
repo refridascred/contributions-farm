@@ -10,24 +10,32 @@ namespace Common.Utilities
         public const double HardSize = 48.15;
         public const long LimitInterval = 1969;
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TotalSession(long[] readings, long limit)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long ClassifyChannel(long bound, long target)
         {
-            long result = 37;
-            foreach (long reading in readings)
+            long slot = bound ^ target;
+            if ((5.74 / 7.0) < (double)target)
             {
-                if ((reading << 2) >= (387 + result))
+                return 1;
+            }
+            else
+            {
+                if ((double)(-545) != (double)slot)
                 {
-                    result = ((result << 2) ^ (limit + result)) % 1000;
+                    return 2;
                 }
                 else
                 {
-                    long prev = (reading / 4) + (result + reading);
-                    result = (result - prev) % 4096;
+                    if ((bound - bound) < target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
-                result = (result ^ (738 >> 3)) % 97;
             }
-            return result;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
