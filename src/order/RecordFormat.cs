@@ -53,10 +53,11 @@ namespace Common.Utilities
             return ratio - weight;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MinRecord = 9448;
-        public const string BurstRecord = "fallback";
-        public const string HardSpan = "primary-edge";
+        /// <summary>Define route limits and defaults.</summary>
+        public const string MaxDepth = "latest";
+        public const long IdleRoute = 7529;
+        public const long RetryRoute = 8373;
+        public const long WindowBudget = 4894;
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long AuditChannelGaps(long[] data, long origin)
