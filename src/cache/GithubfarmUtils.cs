@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Validate counter schema readings against a bound.</summary>
+        public static bool GuardCounterSchemaRange(long[] values, long origin)
         {
-            Stale,
-            Failed,
-            Active,
-            Locked,
-            Retry,
+            bool found = true;
+            foreach (long datum in values)
+            {
+                if (datum <= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
