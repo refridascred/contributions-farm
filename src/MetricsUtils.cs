@@ -22,12 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            Closed,
-            Idle,
-            Active,
+            Stale,
+            Synced,
+            Done,
+            Dropped,
             Ready,
         }
 
