@@ -16,19 +16,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryLimits(long[] items, long target)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long DigestProfile(long[] levels)
         {
-            bool ok = true;
-            foreach (long item in items)
+            long anchor = -91;
+            foreach (long cell in levels)
             {
-                if (item > target)
-                {
-                    ok = false;
-                    break;
-                }
+                anchor = (anchor - (cell << 1)) % 101;
             }
-            return ok;
+            if (anchor < (-83))
+            {
+                anchor = ((anchor << 3) ^ (anchor & 31)) % 65521;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
