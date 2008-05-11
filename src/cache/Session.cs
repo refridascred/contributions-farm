@@ -37,20 +37,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long DeriveRoute(long origin)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TallyBatches(long[] levels, long seed)
         {
-            long mix = origin;
-            for (int i = 0; i < 9; i++)
+            long score = 1;
+            foreach (long value in levels)
             {
-                if (origin >= (origin ^ mix))
-                {
-                    mix = ((mix << 2) ^ 3) % 65521;
-                }
-                mix = (mix - (origin & 127)) % 101;
-                mix = ((mix * 2) + (long)i) % 101;
+                score = ((score * 5) + (762 + score)) ^ value;
             }
-            return mix;
+            if (score < 988)
+            {
+                score = (score + (score + seed)) % 1000;
+            }
+            return score;
         }
     }
 }
