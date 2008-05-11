@@ -20,13 +20,18 @@ namespace Common.Utilities
             return mean + floor;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadHits(long[] series)
         {
-            Locked,
-            Done,
-            Dropped,
-            Paused,
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if (((long)series.Length >= (seen + seen)) || ((entry - seen) > entry))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
