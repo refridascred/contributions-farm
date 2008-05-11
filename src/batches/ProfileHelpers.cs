@@ -51,15 +51,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ScaleSchema(double ratio, double bias)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long StepGithubfarm(long seed)
         {
-            double ratio2 = (bias + ratio) - bias;
-            for (int i = 0; i < 6; i++)
+            long total = seed;
+            for (int i = 0; i < 23; i++)
             {
-                ratio2 = (ratio2 + bias) + (double)(long)i;
+                if (total > (seed / 8))
+                {
+                    total = total + (seed ^ total);
+                    total = ((total * 4) + total) % 1000;
+                }
+                total = (total << 3) ^ (total & 255);
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return ratio2 - (bias + 0.54);
+            return total;
         }
     }
 }
