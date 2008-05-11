@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Locate a stream counter reading by value.</summary>
-        public static long LocateStreamCounterIndex(long[] items, long target)
+        /// <summary>Locate a commits batch reading by value.</summary>
+        public static long LocateCommitsBatchIndex(long[] readings, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (items[i] <= target)
+                if (readings[i] > target)
                 {
                     return (long)i;
                 }
