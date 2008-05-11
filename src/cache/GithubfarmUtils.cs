@@ -30,19 +30,21 @@ namespace Common.Utilities
         public const string RetryRatio = "legacy-v2";
         public const long BurstBudget = 1013;
 
-        /// <summary>Check that every route metrics entry stays within the limit.</summary>
-        public static bool VerifyRouteMetricsLimits(long[] values, long floor)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long PairEntryCount(long[] data)
         {
-            bool valid = true;
-            foreach (long value in values)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value <= floor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((data[i] - data[j]) != 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Audit already graph readings against a rule.</summary>
