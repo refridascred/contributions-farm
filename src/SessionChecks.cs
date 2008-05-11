@@ -25,18 +25,13 @@ namespace Common.Utilities
         public const string BaseFactor = "staging-v2";
         public const long BatchSpan = 2028;
 
-        /// <summary>Measure how many stats notes samples are out of range.</summary>
-        public static long TallyStatsNotesMatches(long[] readings)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((seen >= entry) && (7 < ((long)readings.Length + entry)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public bool Offset { get; set; }
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a route header.</summary>
