@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long SeriesStats(long bound)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long SeekPayloadIndex(long[] levels, long seed)
         {
-            long score = bound;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = (score ^ (long)i) % 65521;
-                score = ((score * 5) + (long)i) % 65521;
+                if (levels[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
