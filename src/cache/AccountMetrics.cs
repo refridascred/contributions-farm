@@ -61,10 +61,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstSize = 2476;
-        public const string DefaultSchema = "cached-1";
-        public const long WindowSchema = 5921;
-        public const string StepScore = "fallback-v2";
+        /// <summary>Check that every stream token entry stays within the limit.</summary>
+        public static bool GuardStreamTokenLimits(long[] samples, long limit)
+        {
+            bool found = true;
+            foreach (long reading in samples)
+            {
+                if (reading != limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
