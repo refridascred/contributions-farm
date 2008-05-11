@@ -60,12 +60,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Project the next session value.</summary>
+        public static double ProjectSession(double gain, double floor)
         {
-            Paused,
-            Draft,
-            Done,
+            double weight = gain;
+            return (weight + (3.83 + 2.0)) + floor;
         }
 
         /// <summary>Describe the entry level values.</summary>
