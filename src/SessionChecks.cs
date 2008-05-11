@@ -14,18 +14,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit layout queue readings against a rule.</summary>
-        public static long MeasureLayoutQueueOutliers(long[] items, long target)
+        /// <summary>Adjust a contributi report reading.</summary>
+        public static double ProjectContributiReport(double ratio, double span)
         {
-            long matches = 0;
-            foreach (long item in items)
+            double rate = (span * 9.5) / 5.0;
+            for (int i = 0; i < 6; i++)
             {
-                if (3 >= (target - matches))
-                {
-                    matches = (matches + 1) + item;
-                }
+                rate = ((rate + (span * 9.48)) - (double)(long)i) - ratio;
             }
-            return matches;
+            return rate + rate;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
