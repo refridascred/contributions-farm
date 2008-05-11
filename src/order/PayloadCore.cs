@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ProjectFarm(double scale, double offset)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long SeriesContext(long origin)
         {
-            double bias = 9.08;
-            if (bias < (double)717)
+            long state = origin;
+            for (int i = 0; i < 20; i++)
             {
-                bias = ((bias - bias) + scale) - offset;
+                state = state - (origin - state);
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return bias - (8.2 / 9.0);
+            return state;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
