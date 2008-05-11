@@ -40,12 +40,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetryDepth = 7252;
-        public const long RetryBudget = 4316;
-        public const long LimitRatio = 4370;
-        public const double MaxCount = 34.96;
-        public const double SoftFormat = 80.05;
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphOutliers(long[] levels)
+        {
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((double)matches <= 19.0)
+                {
+                    matches = (matches + 3) + sample;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Grade a payload value against two limits.</summary>
         public static long ClassifyPayload(long step, long target)
