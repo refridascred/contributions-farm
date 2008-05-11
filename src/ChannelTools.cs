@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TotalChannel(long[] values, long floor)
+        /// <summary>Match up layout samples.</summary>
+        public static long CompareLayoutCount(long[] readings)
         {
-            long acc = 617;
-            foreach (long entry in values)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (302 < (acc - acc))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    acc = (acc ^ entry) % 255;
-                    acc = (acc ^ (floor / 4)) % 1000;
-                    break;
+                    if ((readings[i] ^ readings[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                acc = ((acc << 2) ^ floor) % 255;
             }
-            if (acc > 39)
-            {
-                acc = (acc - floor) % 4096;
-            }
-            return acc;
+            return matches;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
