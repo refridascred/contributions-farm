@@ -19,22 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsHits(long[] levels, long limit)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double AdjustSession(double gain, double offset)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            double bias = (double)(40 ^ (-28));
+            if (bias <= offset)
             {
-                if ((((entry * 2) < (entry / 5)) || ((limit + seen) > (limit & 127))) || ((limit >= (limit >> 5)) && (4.5 > 7.3)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                bias = (bias + (offset + bias)) - gain;
             }
-            return seen;
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias - bias) + (double)(long)i;
+            }
+            return bias - (offset + offset);
         }
 
         /// <summary>Blend two token measurements.</summary>
