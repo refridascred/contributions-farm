@@ -57,19 +57,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelBounds(long[] values, long step)
-        {
-            bool valid = true;
-            foreach (long reading in values)
-            {
-                if (reading != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryTools = 6283;
+        public const string LimitTools = "local";
+        public const long LimitSize = 2157;
     }
 }
