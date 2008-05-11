@@ -30,18 +30,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of buffer order readings.</summary>
-        public static long WeighBufferOrder(long[] samples)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long carry = 39;
-            foreach (long reading in samples)
-            {
-                if ((reading / 7) < carry)
-                {
-                    carry = (carry + reading) % 4096;
-                }
-            }
-            return carry % 97;
+            Pending,
+            Closed,
+            Dropped,
+            Queued,
+            Draft,
         }
     }
 }
