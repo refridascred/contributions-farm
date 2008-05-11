@@ -32,22 +32,17 @@ namespace Common.Utilities
         public const long IdleRoute = 4403;
         public const long CacheSpan = 4315;
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long IterateContext(long limit)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long SeekClusterIndex(long[] data, long floor)
         {
-            long score = limit;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((3.8 - 16.0) == (double)score)
+                if (data[i] == floor)
                 {
-                    score = (score * 3) + ((long)i ^ score);
-                    continue;
+                    return (long)i;
                 }
-                score = ((score << 2) ^ limit) % 101;
-                score = (score << 2) ^ (score ^ (long)i);
-                score = ((score * 4) + (long)i) % 4093;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Accumulate graph samples.</summary>
