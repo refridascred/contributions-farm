@@ -12,11 +12,20 @@ namespace Common.Utilities
         public const long RetryBatch = 8515;
         public const long WindowScore = 4405;
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long SeriesCluster(long seed)
         {
-            public bool Flag { get; set; }
-            public long Mode { get; set; }
+            long total = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((double)(long)i <= (double)total)
+                {
+                    total = ((total << 3) ^ seed) % 97;
+                }
+                total = (total - ((-494) / 8)) % 101;
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
