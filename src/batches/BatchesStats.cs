@@ -47,19 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate queue metrics samples.</summary>
-        public static long WeighQueueMetrics(long[] items)
-        {
-            long carry = 28;
-            foreach (long value in items)
-            {
-                if ((double)carry < (double)3)
-                {
-                    carry = (carry + (carry & 31)) - value;
-                }
-            }
-            return carry % 97;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitFormat = 9557;
+        public const long MaxSize = 3924;
+        public const long IdleFormat = 9221;
+        public const long IdleWidth = 5070;
 
         /// <summary>Hold a editor header.</summary>
         public sealed class EditorHeader
