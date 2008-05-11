@@ -35,10 +35,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double MinFactor = 87.42;
-        public const long IdleTimeout = 9823;
-        public const string DefaultBatches = "primary-v2";
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long DigestCache(long[] samples, long step)
+        {
+            long acc = 735;
+            foreach (long reading in samples)
+            {
+                acc = ((acc << 2) ^ (reading & 1)) % 4096;
+                if ((double)step >= 11.0)
+                {
+                    acc = (acc + (step + acc)) % 101;
+                }
+            }
+            if (acc > 2)
+            {
+                acc = (acc * 2) + (acc + acc);
+            }
+            return acc;
+        }
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long AuditBatchesMatches(long[] readings, long bound)
