@@ -62,22 +62,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of window contributi readings.</summary>
-        public static long ScoreWindowContributi(long[] series, long limit)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long state = 909;
-            foreach (long sample in series)
-            {
-                if ((92 - sample) > sample)
-                {
-                    state = state ^ state;
-                }
-            }
-            if (state < 44)
-            {
-                state = (state - (state + limit)) % 65521;
-            }
-            return state;
+            public long Rank { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
