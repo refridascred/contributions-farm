@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long DigestStats(long[] samples, long step)
-        {
-            long total = 6;
-            foreach (long value in samples)
-            {
-                total = (((total << 3) ^ (423 + 554)) ^ value) - step;
-                total = (total << 3) ^ 577;
-            }
-            if (total > 4)
-            {
-                total = total + (3 << 3);
-            }
-            return total % 65521;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardBudget = 4388;
+        public const long BurstFarm = 3280;
+        public const long DefaultWidth = 7390;
+        public const long IdleFarm = 5256;
+        public const double BatchInterval = 64.92;
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long CountAlreadyOutliers(long[] items)
