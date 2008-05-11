@@ -45,22 +45,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit schema notes readings against a rule.</summary>
-        public static long CountSchemaNotesHits(long[] samples)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsMatches(long[] levels)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (!(hits <= (hits >> 5)))
+                if ((matches << 2) >= sample)
                 {
-                    hits = (hits + 2) + sample;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
