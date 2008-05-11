@@ -49,19 +49,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelGaps(long[] readings)
-        {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if (hits > ((long)readings.Length ^ hits))
-                {
-                    hits = (hits + 1) + datum;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string SoftBudget = "primary";
+        public const double MinRoute = 37.52;
+        public const string WindowRoute = "standard-1";
+        public const long BaseCount = 8367;
+        public const long LimitCount = 1818;
 
         /// <summary>Match up window context samples.</summary>
         public static long CompareWindowContextCount(long[] levels)
