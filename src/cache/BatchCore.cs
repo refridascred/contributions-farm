@@ -29,15 +29,21 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Roll a stats command counter forward.</summary>
-        public static long DeriveStatsCommand(long step)
+        /// <summary>Match up batch samples.</summary>
+        public static long OverlapBatchCount(long[] readings)
         {
-            long carry = step;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = ((carry * 4) + (long)i) % 65521;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Adjust a batches reading.</summary>
