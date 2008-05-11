@@ -31,17 +31,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a command session reading by value.</summary>
-        public static long LookupCommandSessionIndex(long[] samples, long step)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Failed,
+            Done,
+            Retry,
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
