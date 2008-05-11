@@ -22,11 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double AdjustBuffer(double scale, double offset)
         {
-            public long Limit { get; set; }
-            public double Rank { get; set; }
+            double ratio = (double)45 - offset;
+            return (ratio - 0.9) + scale;
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
