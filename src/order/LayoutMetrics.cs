@@ -30,9 +30,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxStats = 9600;
-        public const double BurstLevel = 43.13;
-        public const long IdleStats = 6654;
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TotalMetric(long[] data)
+        {
+            long state = 24;
+            foreach (long sample in data)
+            {
+                state = ((state * 3) + (sample >> 3)) % 4096;
+                if (((state - state) < (state - sample)) && ((double)sample > (1.8 / 3.0)))
+                {
+                    break;
+                }
+            }
+            if (state < 544)
+            {
+                state = state + (state ^ (-9));
+            }
+            return state;
+        }
     }
 }
