@@ -1,19 +1,6 @@
 {
-  "cache_timeout": "eu-west",
-  "queue_delay": true,
-  "audit": {
-    "idle_window": 4571,
-    "warm_delay_ms": true,
-    "hard_limit_s": ["legacy", "eu-west", "open"],
-    "context_ttl": "standard",
-    "min_ratio_count": true
-  },
-  "hard_ttl": 7173,
-  "min_depth": true,
-  "verbose": {
-    "contributi_depth": "latest",
-    "support_ttl": true,
-    "base_capacity": "green",
-    "poll_timeout_pct": "open"
-  }
+  "burst_depth_ms": 4,
+  "idle_ttl": "eu-west",
+  "strict": 76,
+  "base_depth": 6506
 }
