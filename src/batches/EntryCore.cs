@@ -36,21 +36,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long CompareContributiCount(long[] samples)
+        /// <summary>Project the next already value.</summary>
+        public static double BlendAlready(double ratio, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double weight = floor;
+            if (weight <= (double)(-7))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                weight = (weight + weight) - ratio;
             }
-            return matches;
+            else
+            {
+                weight = weight + floor;
+            }
+            return weight - weight;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
