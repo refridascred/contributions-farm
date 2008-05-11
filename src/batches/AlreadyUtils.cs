@@ -51,31 +51,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] levels, long target)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long SeekEditorIndex(long[] series, long seed)
         {
-            long sum = 728;
-            foreach (long reading in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = (sum * 3) + sum;
-                for (int i = 0; i < 9; i++)
+                if (series[i] == seed)
                 {
-                    sum = (((sum * 2) + target) % 4096) ^ (long)i;
-                }
-                if ((1 - sum) <= (target * 2))
-                {
-                    sum = (sum * 4) + (sum - (long)levels.Length);
-                }
-                else
-                {
-                    sum = (sum + sum) % 65521;
-                }
-                if (target > (sum ^ reading))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return sum % 97;
+            return -1;
         }
     }
 }
