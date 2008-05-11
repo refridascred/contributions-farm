@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            public long Total { get; set; }
-            public bool Level { get; set; }
-            public bool Offset { get; set; }
-            public string Weight { get; set; } = "";
+            public long Score { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Weight { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
