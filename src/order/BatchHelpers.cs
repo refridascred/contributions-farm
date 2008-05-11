@@ -29,13 +29,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Digest a series of cluster already entries.</summary>
+        public static long FoldClusterAlready(long[] items, long floor)
         {
-            Dropped,
-            Stale,
-            Pending,
-            Failed,
+            long mix = 454;
+            foreach (long cell in items)
+            {
+                mix = mix ^ (706 + cell);
+                if (((floor % 64) > (889 + mix)) && ((723 << 1) < cell))
+                {
+                    mix = (mix ^ (cell % 8)) % 255;
+                }
+            }
+            return mix % 1000;
         }
     }
 }
