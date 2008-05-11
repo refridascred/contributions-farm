@@ -23,19 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] data)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextGaps(long[] values, long bound)
         {
-            long anchor = 91;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long item in values)
             {
-                anchor = anchor - (sample + sample);
+                if (!((item + seen) > (seen - bound)) || !(bound < (bound * 2)))
+                {
+                    seen = seen + 2;
+                }
             }
-            if (anchor < 954)
-            {
-                anchor = ((anchor << 2) ^ (anchor + anchor)) % 65521;
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
