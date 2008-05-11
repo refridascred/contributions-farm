@@ -40,39 +40,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a account commits value against two limits.</summary>
-        public static long ClassifyAccountCommits(long seed, long target)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long DigestRoute(long[] data, long step)
         {
-            long lane = seed ^ target;
-            if ((target - seed) < lane)
+            long anchor = 49;
+            foreach (long reading in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed + 890) >= seed)
+                if (((step >> 5) <= (anchor + step)) || ((step / 8) > anchor))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((lane / 7) <= (lane & 15))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)target != (0.66 / 8.0))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    anchor = ((anchor - (anchor - step)) % 1000) ^ reading;
                 }
             }
+            if (anchor < (-977))
+            {
+                anchor = (anchor - anchor) % 101;
+            }
+            return anchor;
         }
     }
 }
