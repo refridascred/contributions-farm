@@ -37,38 +37,12 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long GradeContributi(long target, long seed)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            if ((seed / 3) > (target ^ target))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target >> 4) == (target % 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((4.7 + 12.0) == (double)target) && (target <= 6))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)seed <= (3.15 + 13.0))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public bool Size { get; set; }
+            public bool Limit { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
