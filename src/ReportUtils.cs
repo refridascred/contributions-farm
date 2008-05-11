@@ -32,32 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long RankSession(long offset, long limit)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmOutliers(long[] items)
         {
-            long delta = offset ^ limit;
-            if ((limit + delta) < (-207))
+            long seen = 0;
+            foreach (long datum in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((delta % 3) >= (limit * 3))
+                if (datum > (seen * 5))
                 {
-                    return 4;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    if ((delta >> 1) <= (delta / 7))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Compare every pair of channel metric readings.</summary>
