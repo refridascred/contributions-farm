@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit route metric readings against a rule.</summary>
-        public static long AuditRouteMetricGaps(long[] levels)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)matches != (1.69 - 10.0))
-                {
-                    matches = (matches + 3) + entry;
-                }
-            }
-            return matches;
+            public bool Level { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Roll a stats counter forward.</summary>
