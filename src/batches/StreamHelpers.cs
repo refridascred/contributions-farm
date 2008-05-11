@@ -71,13 +71,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            Active,
-            New,
-            Paused,
-            Dropped,
+            public long Rank { get; set; }
+            public double Token { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
