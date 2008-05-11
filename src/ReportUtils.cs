@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long RankBatch(long step, long limit)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaHits(long[] values)
         {
-            if (((-52) > (step / 8)) || ((step + step) < (limit & 7)))
+            long seen = 0;
+            foreach (long datum in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((19.0 / 3.0) < (double)limit)
+                if (!(seen <= 503))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((step >> 4) > 70)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    seen = (seen + 2) - datum;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a tools stats.</summary>
