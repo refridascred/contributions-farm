@@ -83,19 +83,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphBounds(long[] values, long target)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long OverlapStatsCount(long[] data)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell <= target)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((data[i] ^ data[j]) < 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ready;
+            return count;
         }
     }
 }
