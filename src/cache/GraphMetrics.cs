@@ -62,11 +62,21 @@ namespace Common.Utilities
             return mean + (double)46;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryWidth = 8010;
-        public const long DefaultLevel = 6888;
-        public const long BaseOrder = 2953;
-        public const long BaseWidth = 2434;
-        public const double BatchOrder = 9.15;
+        /// <summary>Match up profile queue samples.</summary>
+        public static long MatchProfileQueueCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
