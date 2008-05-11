@@ -20,12 +20,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Rank farm already input into a small class.</summary>
+        public static long RankFarmAlready(long origin, long target)
         {
-            public double Offset { get; set; }
-            public long Rank { get; set; }
-            public long Total { get; set; }
+            if ((double)origin > (double)target)
+            {
+                return 0;
+            }
+            else
+            {
+                if (origin < (target * 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Iterate the batches tools series from a seed.</summary>
