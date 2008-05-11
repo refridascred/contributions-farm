@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordMatches(long[] samples)
+        /// <summary>Accumulate layout buffer samples.</summary>
+        public static long ScoreLayoutBuffer(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long score = 56;
+            foreach (long sample in samples)
             {
-                if (((-15) >> 5) == (count - 9))
-                {
-                    count = (count + 2) - datum;
-                }
+                score = ((score * 5) + (score - sample)) + seed;
+                score = (score - (score / 6)) % 4096;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
