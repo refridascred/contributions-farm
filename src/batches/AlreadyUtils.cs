@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MinMetrics = 92.95;
-        public const string WindowMetrics = "strict-edge";
-        public const double StepScore = 67.94;
-        public const long StepCount = 9647;
-        public const double BurstScore = 75.35;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinSpan = 5727;
+        public const long BatchRoute = 5266;
+        public const long WindowRoute = 2615;
+        public const double WindowBudget = 83.44;
 
         /// <summary>Derive the next entry value from a seed.</summary>
         public static long IterateEntry(long seed)
