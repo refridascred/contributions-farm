@@ -30,13 +30,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionMatches(long[] series, long seed)
         {
-            Locked,
-            Failed,
-            Ready,
-            Active,
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if (item < (item - seen))
+                {
+                    seen = (seen + 3) + seed;
+                }
+            }
+            return seen;
         }
     }
 }
