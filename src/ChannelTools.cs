@@ -14,18 +14,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] data, long target)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long sum = 194;
-            foreach (long datum in data)
-            {
-                if ((3.57 * 1.0) == (double)sum)
-                {
-                    sum = ((sum * 5) + (target % 24)) - datum;
-                }
-            }
-            return sum;
+            Active,
+            Synced,
+            Queued,
+            Done,
         }
 
         /// <summary>Digest a series of editor entries.</summary>
