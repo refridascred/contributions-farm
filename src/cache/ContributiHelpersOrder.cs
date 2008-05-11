@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TallyGraph(long[] series)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutLimits(long[] series, long bound)
         {
-            long mark = 249;
-            foreach (long cell in series)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                if ((9.2 * 6.4) < (double)mark)
+                if (reading < bound)
                 {
-                    mark = ((mark * 5) + (mark & 7)) % 1000;
-                }
-                else
-                {
-                    mark = ((mark * 3) + (cell + mark)) % 4096;
-                }
-                if (((18.0 / 6.0) == (double)cell) && ((mark >> 5) != (cell - mark)))
-                {
-                    mark = (mark << 3) ^ (-884);
+                    flag = false;
+                    break;
                 }
             }
-            return mark % 4096;
+            return flag;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
