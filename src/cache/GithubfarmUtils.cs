@@ -19,19 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every commits notes entry stays within the limit.</summary>
-        public static bool CheckCommitsNotesRange(long[] samples, long offset)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutOutliers(long[] levels)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (sample > offset)
+                if ((sample <= ((-282) - sample)) && ((0.1 - 9.7) < (double)matches))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
