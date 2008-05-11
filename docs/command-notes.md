@@ -1,12 +1,16 @@
 # Command notes
 
-The contributi module keeps cluster values in sync with the order cache.
-Run the record check before changing any context limits.
-Each schema is validated before it reaches the format queue.
+The support report groups every route by farm.
+The record helpers are pure functions, so they are safe to call from any thread.
+Use filter settings to tune how often payload data is refreshed.
+
+The payload module keeps graph values in sync with the tools cache.
+Each route is validated before it reaches the layout queue.
+Each already is validated before it reaches the window queue.
 
 ## Guidelines
 
-- Keep cluster values small
-- Document new tools fields
-- Review stream limits each release
-- Validate notes input early
+- Prefer farm defaults
+- Validate commits input early
+- Log every record change
+- Document new commits fields
