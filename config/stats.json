@@ -1,6 +1,19 @@
 {
-  "min_delay_pct": 71.2,
-  "hard_threshold": [134, 154, 460],
-  "audit": 8096,
-  "poll_timeout_s": "latest"
+  "poll_size_s": true,
+  "batch_retries_pct": {
+    "poll_delay_pct": true,
+    "notes_ratio": false,
+    "sync_delay_s": ["latest", "legacy", "edge"],
+    "metrics_capacity": 19.94
+  },
+  "sync_capacity": true,
+  "hard_depth_count": false,
+  "hard_timeout_pct": {
+    "audit": "stable",
+    "batch_depth_s": 100,
+    "poll_capacity_ms": 1035,
+    "dry_run": 9946,
+    "cache_threshold_ms": ["legacy", "staging", "primary", "primary"],
+    "hard_depth_s": "strict"
+  }
 }
