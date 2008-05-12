@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long SeriesReport(long origin)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderRange(long[] samples, long origin)
         {
-            long result = origin;
-            for (int i = 0; i < 8; i++)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                result = (result + origin) % 255;
-                result = (result + (result + origin)) % 255;
-                result = ((result * 3) + (long)i) % 1000;
+                if (entry <= origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return result;
+            return stale;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
