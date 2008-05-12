@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextBounds(long[] samples, long origin)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            bool ready = true;
-            foreach (long entry in samples)
-            {
-                if (entry > origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Stamp { get; set; }
+            public double Limit { get; set; }
+            public string Count { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
