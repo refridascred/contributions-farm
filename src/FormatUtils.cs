@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long RankAlready(long target, long bound)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long prev = target ^ bound;
-            if (target >= (target - target))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((3.0 + 9.4) > (double)prev)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((bound * 3) < (prev & 7)) && ((double)prev < (8.0 - 5.02)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((1.23 * 6.83) < (double)bound)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public long Count { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
