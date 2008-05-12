@@ -18,19 +18,10 @@ namespace Common.Utilities
         public const string RetryRatio = "primary-edge";
         public const long BurstFactor = 5176;
 
-        /// <summary>Check that every checks window entry stays within the limit.</summary>
-        public static bool CheckChecksWindowLimits(long[] values, long seed)
-        {
-            bool ok = true;
-            foreach (long datum in values)
-            {
-                if (datum < seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double CacheContext = 19.6;
+        public const long BurstBudget = 8732;
+        public const long CacheCount = 9302;
+        public const long BaseSize = 6528;
     }
 }
