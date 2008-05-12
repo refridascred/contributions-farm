@@ -38,16 +38,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long StepCommand(long step)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesMatches(long[] items, long bound)
         {
-            long mark = step;
-            for (int i = 0; i < 16; i++)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                mark = (mark * 2) + (long)i;
-                mark = ((mark * 4) + (long)i) % 4093;
+                if (!(((565 % 5) <= (seen << 2)) || (28 > (seen % 64))))
+                {
+                    seen = ((seen + 3) + entry) + bound;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
