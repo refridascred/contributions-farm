@@ -1,13 +1,10 @@
 # Command notes
 
-Run the cache check before changing any account limits.
-Run the stream check before changing any commits limits.
-
-A order that stays idle for too long is moved to the tools list.
-The checks report groups every tools by channel.
+The editor report groups every report by account.
+The report helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate format input early
-- Log every notes change
-- Prefer cache defaults
+- Log every session change
+- Review report limits each release
+- Prefer buffer defaults
