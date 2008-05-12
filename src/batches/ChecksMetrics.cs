@@ -20,38 +20,17 @@ namespace Common.Utilities
         public const long MinLevel = 5176;
         public const long BatchOrder = 8479;
 
-        /// <summary>Rank entry command input into a small class.</summary>
-        public static long ClassifyEntryCommand(long origin, long limit)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LocateChecksIndex(long[] series, long offset)
         {
-            if (!((limit + origin) <= (45 + limit)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((881 + 7) >= (origin % 24))
+                if (series[i] >= offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (origin < (origin * 4))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((origin + origin) == (limit >> 4)) && ((double)origin <= (double)23))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate token account samples.</summary>
