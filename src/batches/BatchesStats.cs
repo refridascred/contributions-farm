@@ -22,17 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a stream record sample.</summary>
-        public static long SeekStreamRecordIndex(long[] samples, long step)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Weight { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
