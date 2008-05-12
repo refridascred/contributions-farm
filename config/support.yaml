@@ -1,4 +1,15 @@
 # support settings
-stream_retries: true
-farm_capacity: latest
-soft_window: staging
+base_retries:
+  - 463
+  - 92
+verbose:
+  schema_depth: 39.79
+  max_interval_pct:
+    - 383
+    - 423
+  account_timeout:
+    - 378
+    - 90
+    - 227
+  githubfarm_depth: latest
+strict: false
