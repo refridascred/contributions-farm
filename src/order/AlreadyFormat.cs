@@ -31,18 +31,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheOutliers(long[] values, long limit)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long BucketNotes(long bound, long bound2)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long delta = bound ^ bound2;
+            if ((double)bound2 <= 3.6)
             {
-                if (hits < (155 - limit))
+                return 0;
+            }
+            else
+            {
+                if ((5.52 - 0.7) <= (double)bound)
                 {
-                    hits = (hits + 1) ^ datum;
+                    return 1;
+                }
+                else
+                {
+                    if (((delta & 7) != (bound2 + bound)) && ((bound2 * 3) > (bound2 / 5)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
