@@ -45,12 +45,31 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Combine window values into a single score.</summary>
+        public static long CombineWindow(long[] series, long bound)
         {
-            Dropped,
-            Queued,
-            Failed,
+            long mix = 5;
+            foreach (long reading in series)
+            {
+                if ((65 & 255) == (bound / 6))
+                {
+                    mix = mix - (mix - mix);
+                    break;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ (mix % 7)) % 255;
+                }
+                if (((bound + reading) <= (858 + mix)) || (reading > bound))
+                {
+                    mix = (mix ^ (44 - mix)) % 97;
+                }
+                if ((bound * 3) >= bound)
+                {
+                    break;
+                }
+            }
+            return mix % 97;
         }
 
         /// <summary>Adjust a stats reading.</summary>
