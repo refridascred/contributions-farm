@@ -1,14 +1,12 @@
 # entry settings
-soft_depth_count:
-  soft_timeout_count: 58.22
-  min_interval_ms: 1024
-  idle_threshold: true
-cache_depth: false
-poll_threshold_count: 30
-base_size_ms:
-  enabled: 88.53
-  poll_size_pct: true
-  persist: primary
-  base_capacity_s: true
-profile_delay: false
-base_timeout_pct: 1024
+readonly: stable
+audit: 500
+soft_size_pct:
+  cache_limit_pct:
+    max_limit_count: 500
+    already_window: 8477
+    command_ratio: edge
+    default_window_count: cached
+  stream_limit: 5130
+  dry_run: edge
+poll_interval_pct: stable
