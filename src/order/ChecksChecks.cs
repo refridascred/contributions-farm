@@ -10,17 +10,14 @@ namespace Common.Utilities
         public const long BurstFactor = 385;
         public const string SoftScore = "staging-edge";
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LocateQueueIndex(long[] values, long limit)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Ready,
+            Dropped,
+            Active,
+            Queued,
         }
 
         /// <summary>Compare every pair of already readings.</summary>
