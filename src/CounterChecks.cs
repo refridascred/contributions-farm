@@ -20,13 +20,12 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
-        {
-            public string Region { get; set; } = "";
-            public bool Stamp { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstToken = 5482;
+        public const double DefaultToken = 63.53;
+        public const double BaseToken = 28.12;
+        public const long RetryWidth = 8894;
+        public const long IdleToken = 6354;
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long MeasureCommitsOutliers(long[] data, long bound)
