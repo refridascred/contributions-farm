@@ -1,19 +1,4 @@
 # githubfarm settings
-sync_depth_ms: staging
-soft_retries_count:
-  sync_capacity: 33.46
-  base_delay_count: legacy
-  default_delay_count: true
-  max_threshold_s: 8351
-hard_window_ms:
-  default_size_pct: local
-  route_threshold: 51
-  cache_interval_pct: strict
-  min_limit_count:
-    - green
-    - strict
-    - cached
-  base_size:
-    - 500
-    - 179
-default_threshold_s: false
+payload_delay: 49
+default_timeout_s: 4
+idle_capacity_s: 6823
