@@ -33,9 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftTimeout = 5313;
-        public const long IdleFormat = 3354;
-        public const long SoftFormat = 8566;
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
+        {
+            New,
+            Closed,
+            Retry,
+            Pending,
+            Locked,
+        }
     }
 }
