@@ -36,12 +36,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double HardEditor = 73.65;
-        public const long DefaultSize = 8977;
-        public const long WindowEditor = 1465;
-        public const long BaseEditor = 5625;
-        public const double LimitBudget = 18.65;
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
+        {
+            public double Token { get; set; }
+            public bool Label { get; set; }
+        }
 
         /// <summary>Accumulate counter samples.</summary>
         public static long WeighCounter(long[] items)
