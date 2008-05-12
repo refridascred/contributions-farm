@@ -35,15 +35,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] series, long floor)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long PairSupportCount(long[] samples)
         {
-            long acc = 53;
-            foreach (long value in series)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = ((acc * 2) + (acc + value)) + floor;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return acc;
+            return hits;
         }
     }
 }
