@@ -13,31 +13,22 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long ClassifyEntry(long limit, long floor)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiOutliers(long[] values)
         {
-            if ((double)floor != (17.0 / 5.0))
+            long seen = 0;
+            foreach (long reading in values)
             {
-                return 4;
-            }
-            else
-            {
-                if (((99 >> 5) < (floor << 1)) && (limit <= (floor ^ floor)))
+                if (((0.32 - 5.0) >= (double)seen) && ((reading * 5) >= (7 % 60)))
                 {
-                    return 6;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    if ((4 + limit) <= limit)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Blend two metrics contributi measurements.</summary>
