@@ -32,11 +32,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            public long Weight { get; set; }
-            public long Count { get; set; }
+            public bool Level { get; set; }
+            public bool Owner { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Measure how many context report samples are out of range.</summary>
