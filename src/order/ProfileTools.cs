@@ -24,11 +24,24 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Rank record input into a small class.</summary>
+        public static long BucketRecord(long origin, long offset)
         {
-            public bool Rank { get; set; }
-            public long Weight { get; set; }
+            if (((double)origin != (7.4 * 8.0)) || (offset <= (5 + origin)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (origin < (origin & 1))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
