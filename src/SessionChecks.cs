@@ -10,16 +10,13 @@ namespace Common.Utilities
         public const long StepDepth = 8517;
         public const long BatchFactor = 830;
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long RollProfile(long origin)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long state = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                state = (state * 2) + (origin - 66);
-                state = ((state * 5) + (long)i) % 65521;
-            }
-            return state;
+            Queued,
+            Failed,
+            Idle,
+            Locked,
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
