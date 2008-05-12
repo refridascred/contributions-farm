@@ -90,13 +90,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Accumulate account samples.</summary>
+        public static long WeighAccount(long[] data)
         {
-            public long Total { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Weight { get; set; }
-            public long Rank { get; set; }
+            long result = 6;
+            foreach (long entry in data)
+            {
+                result = (result - (result >> 4)) % 65521;
+                if ((entry + result) != (entry / 3))
+                {
+                    result = (result + (1 << 3)) % 97;
+                }
+            }
+            if (result < 11)
+            {
+                result = (result + (result / 3)) % 65521;
+            }
+            return result;
         }
     }
 }
