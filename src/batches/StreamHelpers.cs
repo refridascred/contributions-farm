@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaRange(long[] readings, long floor)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            bool ready = true;
-            foreach (long cell in readings)
-            {
-                if (cell > floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Stamp { get; set; }
+            public double Flag { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Describe the schema state values.</summary>
