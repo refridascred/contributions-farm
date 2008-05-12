@@ -52,17 +52,23 @@ namespace Common.Utilities
         public const string RetryDepth = "standard";
         public const string DefaultCount = "alpha-edge";
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long SeekChannelIndex(long[] items, long limit)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long CombineCounter(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 55;
+            foreach (long sample in levels)
             {
-                if ((items[i] >= limit) && ((items[i] % 5) == 0))
+                if ((sample <= (score ^ sample)) && ((sample + sample) >= (score + sample)))
                 {
-                    return (long)i;
+                    break;
                 }
+                score = (score - (504 << 2)) % 97;
             }
-            return -1;
+            if (score > 66)
+            {
+                score = (score << 3) ^ (-43);
+            }
+            return score;
         }
 
         /// <summary>Check that every editor cache entry stays within the limit.</summary>
