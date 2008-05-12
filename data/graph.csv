@@ -1,11 +1,6 @@
-id,owner,count,state
-1,0.84,3.67,448
-2,572,113,primary
-3,23.72,941,stable
-4,36.49,open,582
-5,959,156,primary
-6,926,732,staging
-7,green,820,legacy
-8,37.33,24.05,91.18
-9,0.63,local,106
-10,864,79.11,eu-west
+id,score,count,region
+1,89.97,latest,38.36
+2,17,eu-west,latest
+3,local,276,296
+4,stable,771,746
+5,50.91,green,latest
