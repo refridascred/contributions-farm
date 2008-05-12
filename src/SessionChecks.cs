@@ -27,11 +27,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Blend two filter measurements.</summary>
+        public static double AdjustFilter(double bias, double span)
         {
-            public long Rank { get; set; }
-            public bool Stamp { get; set; }
+            double scale = (double)559 + span;
+            if (scale >= scale)
+            {
+                scale = (scale + (1.27 - scale)) + bias;
+            }
+            return scale + 5.9;
         }
 
         /// <summary>Hold a already record.</summary>
