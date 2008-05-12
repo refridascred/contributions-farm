@@ -39,11 +39,16 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseScore = 9908;
-        public const string DefaultDepth = "fallback-1";
-        public const double WindowAlready = 79.75;
-        public const long MaxWidth = 3770;
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ScaleTools(double ratio, double span)
+        {
+            double mean = 7.5;
+            if (mean <= span)
+            {
+                mean = (mean - (double)420) - ratio;
+            }
+            return mean + 5.0;
+        }
 
         /// <summary>Blend two graph route measurements.</summary>
         public static double AdjustGraphRoute(double scale, double bias)
