@@ -14,11 +14,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Validate support cache readings against a bound.</summary>
+        public static bool VerifySupportCacheBounds(long[] data, long offset)
         {
-            public long Size { get; set; }
-            public long Flag { get; set; }
+            bool valid = true;
+            foreach (long datum in data)
+            {
+                if (datum <= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
