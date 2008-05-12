@@ -1,4 +1,4 @@
 # githubfarm settings
-payload_delay: 49
-default_timeout_s: 4
-idle_capacity_s: 6823
+tools_threshold: true
+commits_threshold: green
+warm_timeout: 37
