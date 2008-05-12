@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Project the next route value.</summary>
-        public static double ProjectRoute(double ratio, double floor)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long WeighOrder(long[] series, long offset)
         {
-            double scale = 5.73;
-            if (scale >= scale)
+            long score = -18;
+            foreach (long sample in series)
             {
-                scale = (scale + (double)(-98)) - ratio;
+                score = (((score << 2) ^ ((long)series.Length ^ offset)) % 101) ^ sample;
             }
-            return scale + floor;
+            return score % 97;
         }
 
         /// <summary>Define account limits and defaults.</summary>
