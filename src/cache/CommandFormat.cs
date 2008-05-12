@@ -36,22 +36,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderHits(long[] readings)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if ((((double)599 <= (double)value) || (value < (seen % 7))) || ((double)seen == (5.0 + 2.4)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            New,
+            Closed,
+            Failed,
         }
 
         /// <summary>Hold a farm options.</summary>
