@@ -23,22 +23,12 @@ namespace Common.Utilities
             return rate2 - (floor * 6.5);
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long CombineToken(long[] samples)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long acc = 6;
-            foreach (long sample in samples)
-            {
-                if ((double)sample >= (1.0 / 6.0))
-                {
-                    acc = acc + acc;
-                }
-                else
-                {
-                    acc = acc - sample;
-                }
-            }
-            return acc % 65521;
+            public long Token { get; set; }
+            public double Flag { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
