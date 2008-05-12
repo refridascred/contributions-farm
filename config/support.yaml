@@ -1,12 +1,27 @@
 # support settings
-strict: 30
-retry_window: 6914
-dry_run:
-  sync_delay_s: 32
-  support_window: latest
-  poll_window_count: latest
-  strict: 70
-  compress: 94.08
-stream_window: 94.77
-default_timeout_ms: 57
-enabled: true
+context_threshold: true
+poll_capacity_s:
+  soft_timeout_ms:
+    - fallback
+    - legacy
+    - legacy
+  max_capacity:
+    min_window: blue
+    burst_threshold: strict
+    soft_limit: edge
+    cache_ratio_count: 22.13
+  flush_depth:
+    - 188
+    - 33
+    - 11
+  poll_ttl_s: false
+  burst_capacity_s:
+    soft_ratio_pct: 500
+    compress: eu-west
+    verbose: local
+  channel_timeout: fallback
+min_interval_s: fallback
+enabled:
+  poll_interval: green
+  max_interval_s: cached
+  base_window_count: true
