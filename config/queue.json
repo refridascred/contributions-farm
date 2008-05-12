@@ -1,5 +1,24 @@
 {
-  "base_threshold_ms": [79, 164],
-  "stats_ttl": 76.24,
-  "flush_retries_s": true
+  "entry_ratio": "standard",
+  "poll_ratio_count": {
+    "min_capacity_ms": "blue",
+    "sync_timeout_pct": "stable",
+    "strict": 60.12,
+    "min_capacity_s": "legacy",
+    "hard_ratio_s": {
+      "cache_capacity": "fallback",
+      "compress": 1.97,
+      "base_ratio_ms": "local",
+      "hard_window": "latest",
+      "audit": 8741
+    }
+  },
+  "sync_size_pct": {
+    "persist": "green",
+    "poll_delay": 30,
+    "entry_limit": ["latest", "stable"],
+    "githubfarm_ratio": 100,
+    "cache_ttl": 17.98,
+    "stream_threshold": 4771
+  }
 }
