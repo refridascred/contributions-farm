@@ -33,19 +33,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiRange(long[] readings, long offset)
+        /// <summary>Compare every pair of queue record readings.</summary>
+        public static long MatchQueueRecordCount(long[] values)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value < offset)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((values[i] - values[j]) != 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Locate a support reading by value.</summary>
