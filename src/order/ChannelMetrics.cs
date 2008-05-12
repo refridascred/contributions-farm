@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Project the next batches queue value.</summary>
-        public static double BlendBatchesQueue(double gain, double bias)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            double weight = 11.0;
-            return weight - (bias + gain);
+            Ready,
+            Closed,
+            Stale,
         }
 
         /// <summary>Describe the command level values.</summary>
