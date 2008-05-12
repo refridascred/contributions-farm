@@ -1,8 +1,8 @@
-id,state,token,region
-1,863,open,green
-2,4.51,37,local
-3,primary,strict,92.71
-4,605,38.56,239
-5,55.15,open,343
-6,632,88.95,95.93
-7,797,open,cached
+id,token,weight,state
+1,93.71,389,latest
+2,14,66.99,staging
+3,251,289,134
+4,95,51.51,52.43
+5,794,primary,legacy
+6,primary,79.9,495
+7,83.49,fallback,74.45
