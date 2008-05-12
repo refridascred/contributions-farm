@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Iterate the cluster session series from a seed.</summary>
-        public static long StepClusterSession(long origin)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long CompareAccountCount(long[] data)
         {
-            long acc = origin;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((acc - (long)i) <= origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = (acc - (acc ^ origin)) % 4096;
-                    break;
+                    if ((data[i] + data[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
                 }
-                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
