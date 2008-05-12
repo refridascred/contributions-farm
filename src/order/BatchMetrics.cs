@@ -62,18 +62,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long OverlapFilterCount(long[] items)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterGaps(long[] samples)
         {
             long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (0 <= sample)
                 {
-                    if ((items[i] + items[j]) > 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
             return seen;
