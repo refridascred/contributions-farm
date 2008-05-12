@@ -20,12 +20,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterMatches(long[] levels)
         {
-            public string Flag { get; set; } = "";
-            public bool Level { get; set; }
-            public double Mode { get; set; }
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if ((tally >= (tally ^ tally)) && ((tally << 3) < (reading - reading)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of record graph readings.</summary>
