@@ -27,23 +27,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long CombineMetric(long[] levels)
+        /// <summary>Audit format buffer readings against a rule.</summary>
+        public static long CountFormatBufferOutliers(long[] levels)
         {
-            long state = 936;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if ((state + value) <= (state % 12))
+                if (((double)sample <= (4.82 - 3.7)) && ((14.0 + 2.6) > (double)sample))
                 {
-                    break;
+                    matches = matches + 1;
                 }
-                state = ((state * 4) + (value - value)) % 97;
             }
-            if (state < 48)
-            {
-                state = (state + (state * 5)) % 255;
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
