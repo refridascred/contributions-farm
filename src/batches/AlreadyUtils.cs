@@ -63,18 +63,32 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteGaps(long[] items)
+        /// <summary>Grade a window route value against two limits.</summary>
+        public static long ClassifyWindowRoute(long origin, long seed)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long cur = origin ^ seed;
+            if (origin >= (cur << 1))
             {
-                if (matches >= item)
+                return 5;
+            }
+            else
+            {
+                if (((double)seed > (8.0 * 5.0)) || ((cur % 64) >= origin))
                 {
-                    matches = matches + 3;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)cur > 1.2)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
