@@ -17,14 +17,12 @@ namespace Common.Utilities
             return rate2 + (rate - 1.95);
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            Paused,
-            Closed,
-            Done,
-            Queued,
-            New,
+            public bool Region { get; set; }
+            public long Stamp { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
