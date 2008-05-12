@@ -33,23 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine window route values into a single score.</summary>
-        public static long DigestWindowRoute(long[] readings, long target)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long score = 59;
-            foreach (long entry in readings)
-            {
-                score = (score - (score - entry)) % 1000;
-                if ((8.0 - 8.82) > (double)score)
-                {
-                    score = (score * 3) + target;
-                }
-            }
-            if (score < 70)
-            {
-                score = (score + target) % 101;
-            }
-            return score % 65521;
+            public long Score { get; set; }
+            public bool Weight { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
