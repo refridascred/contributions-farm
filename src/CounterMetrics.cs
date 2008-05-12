@@ -54,19 +54,13 @@ namespace Common.Utilities
             return ratio2 + (double)8;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferRange(long[] readings, long offset)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            bool ok = true;
-            foreach (long cell in readings)
-            {
-                if (cell <= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Closed,
+            Ready,
+            Retry,
+            Draft,
         }
     }
 }
