@@ -63,17 +63,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LookupStatsIndex(long[] samples, long seed)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long WeighWindow(long[] levels, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 767;
+            foreach (long datum in levels)
             {
-                if ((samples[i] > seed) && ((samples[i] % 3) != 0))
+                if ((datum - datum) > (datum ^ 519))
                 {
-                    return (long)i;
+                    total = (total + (origin + origin)) % 97;
                 }
             }
-            return -1;
+            if (total > 1)
+            {
+                total = (total ^ total) % 101;
+            }
+            return total % 65521;
         }
     }
 }
