@@ -1,7 +1,16 @@
 # support settings
-persist: eu-west
-hard_threshold_pct:
-  - 353
-  - 468
-  - 179
-default_retries: false
+poll_capacity: 7904
+batch_size_ms:
+  sync_ttl_s:
+    - 436
+    - 314
+    - 159
+  layout_limit: blue
+  warm_threshold:
+    - green
+    - eu-west
+    - legacy
+base_ttl: 1778
+compress:
+  - 151
+  - 1
