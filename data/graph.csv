@@ -1,6 +1,9 @@
-id,rank,token,ratio
-1,edge,13.56,primary
-2,stable,510,180
-3,10.42,50.89,blue
-4,721,edge,654
-5,616,blue,925
+id,score,state
+1,eu-west,24.56
+2,primary,cached
+3,local,85.01
+4,stable,342
+5,4.91,staging
+6,standard,565
+7,60.33,34.66
+8,524,40.8
