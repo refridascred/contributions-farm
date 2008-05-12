@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of editor metrics entries.</summary>
-        public static long WeighEditorMetrics(long[] samples)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowMatches(long[] samples)
         {
-            long sum = 27;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long item in samples)
             {
-                double drift = (double)(value % 8);
-                if ((drift - 2.48) < (double)88)
+                if ((double)count <= (6.0 - 11.0))
                 {
-                    drift = drift - (double)sum;
+                    count = (count + 1) ^ item;
                 }
                 else
                 {
-                    sum = (sum - (sum + 12)) % 65521;
-                }
-                sum = (sum ^ (value % 7)) % 97;
-                if ((value - value) == ((-5) >> 3))
-                {
-                    break;
+                    count = count - 1;
                 }
             }
-            if (sum > 33)
-            {
-                sum = ((sum * 4) + sum) % 65521;
-            }
-            return sum;
+            return count;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
