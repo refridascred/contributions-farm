@@ -26,19 +26,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long CombineCache(long[] readings)
+        /// <summary>Blend two githubfarm tools measurements.</summary>
+        public static double ScaleGithubfarmTools(double gain, double span)
         {
-            long carry = -456;
-            foreach (long reading in readings)
+            double load = gain - (span / 7.0);
+            if (load < 5.6)
             {
-                if ((reading + reading) > reading)
-                {
-                    carry = ((carry << 2) ^ (carry - reading)) % 65521;
-                }
-                carry = ((carry << 2) ^ (reading % 5)) % 4096;
+                load = load - span;
             }
-            return carry % 65521;
+            else
+            {
+                load = load - load;
+            }
+            return load + span;
         }
     }
 }
