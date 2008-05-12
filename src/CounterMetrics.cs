@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Rank route input into a small class.</summary>
-        public static long GradeRoute(long target, long seed)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LookupContributiIndex(long[] items, long step)
         {
-            if ((5.1 + 7.32) <= (double)seed)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((7.3 / 6.0) <= (double)target) || ((916 % 60) == (326 + seed)))
+                if (items[i] >= step)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((seed * 4) >= seed))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a farm options.</summary>
