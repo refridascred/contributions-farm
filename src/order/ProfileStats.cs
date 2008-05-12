@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderBounds(long[] values, long seed)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterOutliers(long[] items)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if (cell != seed)
+                if (!((count / 4) >= (count ^ cell)))
                 {
-                    flag = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
