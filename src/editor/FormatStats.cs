@@ -44,22 +44,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] readings, long offset)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long SeriesGithubfarm(long floor)
         {
-            long mix = 696;
-            foreach (long sample in readings)
+            long acc = floor;
+            for (int i = 0; i < 7; i++)
             {
-                for (int i = 0; i < 3; i++)
+                if (((long)i - floor) > ((long)i + (long)i))
                 {
-                    mix = (mix ^ (long)i) % 1000;
+                    acc = (acc + ((long)i / 9)) % 4096;
+                    continue;
                 }
-                if (offset <= (offset << 1))
-                {
-                    mix = (mix + sample) % 4096;
-                }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Describe the booking status values.</summary>
