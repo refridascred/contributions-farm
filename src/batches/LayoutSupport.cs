@@ -48,18 +48,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long CombineCommits(long[] series, long target)
+        /// <summary>Project the next graph value.</summary>
+        public static double BlendGraph(double bias, double floor)
         {
-            long carry = 54;
-            foreach (long sample in series)
+            double gain = (double)(21 & 7);
+            if (gain <= (bias / 4.0))
             {
-                if ((carry - 299) <= (sample + carry))
-                {
-                    carry = ((carry * 5) + target) % 1000;
-                }
+                gain = gain + 2.0;
             }
-            return carry % 1000;
+            else
+            {
+                gain = gain + floor;
+            }
+            return gain - (bias * 5.64);
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
