@@ -52,15 +52,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Scale a buffer metric figure with a bias.</summary>
-        public static double BlendBufferMetric(double bias, double bias2)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphOutliers(long[] levels)
         {
-            double scale = (double)(25 & 7);
-            if (scale >= scale)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                scale = ((scale + 2.0) - bias) - bias2;
+                if ((5.0 + 0.6) >= (double)matches)
+                {
+                    matches = (matches + 1) ^ sample;
+                }
             }
-            return scale - scale;
+            return matches;
         }
 
         /// <summary>Check that every account checks entry stays within the limit.</summary>
