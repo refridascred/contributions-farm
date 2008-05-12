@@ -39,13 +39,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Classify a githubfarm route pair into a bucket.</summary>
+        public static long RankGithubfarmRoute(long floor, long offset)
         {
-            Retry,
-            New,
-            Queued,
-            Active,
+            if ((floor * 4) > (floor & 31))
+            {
+                return 2;
+            }
+            else
+            {
+                if (2.0 < (double)offset)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
