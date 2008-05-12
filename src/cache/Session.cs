@@ -12,12 +12,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsLimits(long[] values, long seed)
         {
-            public string Rank { get; set; } = "";
-            public double Owner { get; set; }
-            public string Level { get; set; } = "";
+            bool flag = true;
+            foreach (long cell in values)
+            {
+                if (cell > seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Project the next format value.</summary>
