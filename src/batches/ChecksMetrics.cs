@@ -12,12 +12,27 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Digest a series of token entries.</summary>
+        public static long DigestToken(long[] items)
         {
-            public string Limit { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public double Owner { get; set; }
+            long acc = 306;
+            foreach (long value in items)
+            {
+                if ((2.25 + 9.0) < (double)(long)items.Length)
+                {
+                    acc = (acc << 3) ^ (999 + value);
+                    acc = (acc * 3) + (acc + (-221));
+                }
+                if ((acc % 64) == (acc / 3))
+                {
+                    acc = ((acc << 3) ^ (value << 3)) % 101;
+                }
+                else
+                {
+                    acc = (acc - (acc & 127)) % 101;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
