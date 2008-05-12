@@ -52,23 +52,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long CombineCounter(long[] levels)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long score = 55;
-            foreach (long sample in levels)
-            {
-                if ((sample <= (score ^ sample)) && ((sample + sample) >= (score + sample)))
-                {
-                    break;
-                }
-                score = (score - (504 << 2)) % 97;
-            }
-            if (score > 66)
-            {
-                score = (score << 3) ^ (-43);
-            }
-            return score;
+            public bool Total { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Accumulate queue samples.</summary>
