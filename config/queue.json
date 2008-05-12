@@ -1,20 +1,8 @@
 {
-  "sync_retries": 6113,
-  "cache_limit_s": 60,
-  "checks_depth": {
-    "editor_limit": 54.38,
-    "record_capacity": "primary",
-    "audit": 393,
-    "hard_ttl_count": 4938
-  },
-  "base_depth": true,
-  "soft_depth": {
-    "batches_capacity": "open",
-    "cache_ratio_count": "latest",
-    "dry_run": ["legacy", "latest", "strict", "eu-west"],
-    "strict": ["local", "open", "primary", "green"],
-    "burst_interval_pct": 37.29,
-    "burst_timeout": "green"
-  },
-  "already_ratio": 500
+  "flush_limit_count": 36.63,
+  "hard_threshold": false,
+  "persist": 60,
+  "strict": "green",
+  "soft_retries_ms": [147, 318, 500],
+  "verbose": true
 }
