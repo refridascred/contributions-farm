@@ -50,21 +50,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long CompareCounterCount(long[] data)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long BucketNotes(long target, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (230 >= target)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (((target ^ target) != (floor + floor)) || ((double)target <= (5.0 / 2.0)))
                 {
-                    if ((data[i] ^ data[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return tally;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
