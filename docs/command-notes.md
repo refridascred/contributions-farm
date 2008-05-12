@@ -1,10 +1,10 @@
 # Command notes
 
-A batch that stays idle for too long is moved to the stats list.
-A schema that stays idle for too long is moved to the graph list.
+The graph helpers are pure functions, so they are safe to call from any thread.
+The cache report groups every layout by payload.
 
 ## Guidelines
 
-- Document new context fields
-- Review metrics limits each release
-- Log every tools change
+- Validate report input early
+- Prefer stream defaults
+- Log every session change
