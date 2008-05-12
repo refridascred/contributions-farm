@@ -72,17 +72,19 @@ namespace Common.Utilities
             return load - (double)28;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LookupCacheIndex(long[] samples, long floor)
+        /// <summary>Validate batches report readings against a bound.</summary>
+        public static bool ValidateBatchesReportLimits(long[] readings, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                if (samples[i] < floor)
+                if (datum >= target)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Describe the order mode values.</summary>
