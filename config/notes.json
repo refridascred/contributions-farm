@@ -1,15 +1,7 @@
 {
-  "poll_threshold_pct": false,
-  "warm_retries": {
-    "soft_window_s": "fallback",
-    "hard_timeout": 20.07,
-    "base_threshold_count": 22,
-    "batch_ttl": 44.17,
-    "readonly": 38.77,
-    "default_size_s": "staging"
-  },
-  "batch_interval_ms": 91.65,
-  "flush_depth_ms": 31.7,
-  "compress": "eu-west",
-  "metric_ttl": true
+  "checks_timeout": 27.53,
+  "min_depth_count": 41.32,
+  "persist": false,
+  "verbose": "blue",
+  "enabled": true
 }
