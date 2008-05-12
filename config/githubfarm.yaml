@@ -1,21 +1,5 @@
 # githubfarm settings
-support_size: 9.12
-entry_timeout: staging
-flush_depth: 37.44
-retry_timeout_pct: 1537
-soft_delay:
-  sync_window: 38
-  dry_run:
-    - 32
-    - 166
-    - 173
-  commits_threshold: true
-  strict:
-    order_threshold:
-      - fallback
-      - eu-west
-      - cached
-      - local
-    batch_retries_s: 5.82
-    token_window: 97.37
-  default_timeout_pct: 75.6
+burst_delay_count: 100
+editor_retries: primary
+sync_delay_count: 6160
+sync_ratio_ms: true
