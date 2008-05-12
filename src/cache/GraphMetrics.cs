@@ -20,12 +20,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            public string Total { get; set; } = "";
-            public long Score { get; set; }
-            public long Label { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Level { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Compare every pair of record graph readings.</summary>
