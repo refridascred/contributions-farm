@@ -24,23 +24,13 @@ namespace Common.Utilities
             return bias - (7.0 * 3.5);
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long CombineQueue(long[] data, long floor)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long result = 2;
-            foreach (long reading in data)
-            {
-                if (((long)data.Length + floor) > result)
-                {
-                    result = (result - (627 + floor)) % 101;
-                    result = (result ^ (reading ^ result)) % 255;
-                }
-                if ((double)floor == (9.0 - 4.65))
-                {
-                    result = (result * 4) + ((-4) * 4);
-                }
-            }
-            return result % 1000;
+            public long Token { get; set; }
+            public long Limit { get; set; }
+            public long Total { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the batches mode values.</summary>
