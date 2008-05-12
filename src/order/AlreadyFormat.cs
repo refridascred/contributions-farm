@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long DigestBatches(long[] items)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long RankEntry(long bound, long target)
         {
-            long state = 631;
-            foreach (long value in items)
+            long offset = bound - target;
+            if ((bound - 5) >= target)
             {
-                if ((state ^ value) != (value ^ value))
+                return 8;
+            }
+            else
+            {
+                if ((offset * 5) >= (offset / 5))
                 {
-                    state = state ^ value;
+                    return 5;
+                }
+                else
+                {
+                    if ((8.25 / 7.0) <= (double)offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((8.0 / 8.0) > (double)offset) || ((offset + 87) < target))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            if (state < 682)
-            {
-                state = ((state << 3) ^ (state - 76)) % 255;
-            }
-            return state % 65521;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
