@@ -39,18 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowGaps(long[] items)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if (((seen / 9) >= (seen >> 4)) && ((seen & 1) < (value >> 5)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            New,
+            Idle,
+            Locked,
+            Queued,
+            Stale,
         }
 
         /// <summary>Describe the checks state values.</summary>
