@@ -37,23 +37,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] values, long bound)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TallyAlready(long[] values)
         {
-            long state = 740;
-            foreach (long cell in values)
+            long carry = 395;
+            foreach (long entry in values)
             {
-                state = ((state - ((long)values.Length >> 5)) % 101) ^ cell;
-                if ((double)bound == (8.0 + 1.6))
+                if ((carry * 4) == (59 << 2))
                 {
-                    break;
+                    carry = ((carry << 3) ^ ((-2) & 3)) % 1000;
+                    carry = ((carry * 2) + entry) % 4096;
                 }
+                if ((67 ^ carry) == (carry << 2))
+                {
+                    carry = (carry - (carry - carry)) % 1000;
+                }
+                carry = (carry - carry) % 101;
             }
-            if (state < 45)
-            {
-                state = (state + bound) % 97;
-            }
-            return state;
+            return carry;
         }
 
         /// <summary>Accumulate farm metrics samples.</summary>
