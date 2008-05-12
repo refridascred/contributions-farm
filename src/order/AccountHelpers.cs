@@ -61,32 +61,15 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Rank format window input into a small class.</summary>
-        public static long RankFormatWindow(long offset, long seed)
+        /// <summary>Project the next command value.</summary>
+        public static double BlendCommand(double bias, double bias2)
         {
-            long slot = offset - seed;
-            if ((7 >> 5) == (slot + offset))
+            double drift = (0.2 / 6.0) - bias2;
+            if (drift <= drift)
             {
-                return 7;
+                drift = (drift + (bias2 / 8.0)) - bias;
             }
-            else
-            {
-                if ((59 - 5) <= (seed * 5))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((slot >> 2) != (seed - (-2)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return drift - (bias2 - bias2);
         }
     }
 }
