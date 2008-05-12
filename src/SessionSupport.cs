@@ -16,21 +16,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long CompareStatsCount(long[] series)
+        /// <summary>Locate a format stream reading by value.</summary>
+        public static long SeekFormatStreamIndex(long[] values, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (values[i] == seed)
                 {
-                    if ((series[i] - series[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
