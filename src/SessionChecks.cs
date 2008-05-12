@@ -20,14 +20,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long RollProfile(long origin)
         {
-            Queued,
-            Failed,
-            Locked,
-            Paused,
-            Retry,
+            long state = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                state = (state * 2) + (origin - 66);
+                state = ((state * 5) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
