@@ -53,13 +53,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
-        {
-            public string Flag { get; set; } = "";
-            public double Token { get; set; }
-            public string Region { get; set; } = "";
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string SoftInterval = "fallback-1";
+        public const long BaseSize = 8139;
+        public const double IdleToken = 49.19;
+        public const long StepCount = 1641;
     }
 }
