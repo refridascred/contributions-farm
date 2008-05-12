@@ -36,12 +36,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Match up support already samples.</summary>
+        public static long MatchSupportAlreadyCount(long[] data)
         {
-            Draft,
-            Locked,
-            Retry,
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
