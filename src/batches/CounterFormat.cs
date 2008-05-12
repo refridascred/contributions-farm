@@ -35,13 +35,9 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
-        {
-            public bool Weight { get; set; }
-            public string Level { get; set; } = "";
-            public string Total { get; set; } = "";
-            public bool Label { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheChecks = 6285;
+        public const long LimitChecks = 3439;
+        public const string DefaultChecks = "alpha-edge";
     }
 }
