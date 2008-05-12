@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
-        {
-            public string Score { get; set; } = "";
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseCount = 2114;
+        public const long HardMetrics = 7314;
+        public const long BaseMetrics = 9361;
+        public const long StepScore = 6121;
 
         /// <summary>Grade a format value against two limits.</summary>
         public static long SortFormat(long target, long seed)
