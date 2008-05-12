@@ -66,16 +66,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next buffer channel value from a seed.</summary>
-        public static long RollBufferChannel(long limit)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] readings, long limit)
         {
-            long total = limit;
-            for (int i = 0; i < 7; i++)
+            long acc = 2;
+            foreach (long value in readings)
             {
-                total = (total * 4) + (limit >> 4);
-                total = ((total * 3) + (long)i) % 1000;
+                if (10.0 < (double)acc)
+                {
+                    acc = ((acc - (limit * 3)) % 97) + value;
+                }
             }
-            return total;
+            return acc % 65521;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
