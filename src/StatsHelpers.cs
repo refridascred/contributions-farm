@@ -28,31 +28,14 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long BucketRecord(long origin, long seed)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            if (((origin & 7) <= (12 / 5)) && ((double)seed != (1.95 * 1.91)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)seed > (9.2 + 9.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)origin != (2.09 * 11.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Ready,
+            Failed,
+            Idle,
+            Closed,
+            Paused,
         }
 
         /// <summary>Fold a list of schema readings.</summary>
