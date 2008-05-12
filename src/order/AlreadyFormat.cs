@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long RankEntry(long bound, long target)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long SeekCommitsIndex(long[] series, long bound)
         {
-            long offset = bound - target;
-            if ((bound - 5) >= target)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset * 5) >= (offset / 5))
+                if (series[i] < bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((8.25 / 7.0) <= (double)offset)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((8.0 / 8.0) > (double)offset) || ((offset + 87) < target))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
