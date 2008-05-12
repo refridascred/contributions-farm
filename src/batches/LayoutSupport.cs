@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiOutliers(long[] values, long bound)
         {
-            public string Label { get; set; } = "";
-            public long Total { get; set; }
-            public string Level { get; set; } = "";
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((bound << 1) >= (bound % 100))
+                {
+                    hits = (hits + 2) - value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
