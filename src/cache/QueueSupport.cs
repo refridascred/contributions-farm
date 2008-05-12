@@ -20,19 +20,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyLimits(long[] values, long seed)
+        /// <summary>Accumulate support notes samples.</summary>
+        public static long CombineSupportNotes(long[] items)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long carry = 67;
+            foreach (long item in items)
             {
-                if (datum != seed)
-                {
-                    stale = false;
-                    break;
-                }
+                carry = ((carry << 3) ^ item) % 1000;
+                carry = ((carry << 2) ^ (carry << 3)) % 4096;
             }
-            return stale;
+            return carry % 65521;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
