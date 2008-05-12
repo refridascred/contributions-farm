@@ -40,15 +40,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TallyContext(long[] values, long limit)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TallyAlready(long[] items, long limit)
         {
-            long acc = 2;
-            foreach (long datum in values)
+            long sum = 53;
+            foreach (long item in items)
             {
-                acc = ((acc - (acc & 1)) ^ datum) + limit;
+                sum = ((sum ^ limit) % 4096) + item;
             }
-            return acc % 4096;
+            return sum;
         }
     }
 }
