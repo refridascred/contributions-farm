@@ -29,14 +29,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsOutliers(long[] data, long target)
         {
-            Done,
-            Stale,
-            Draft,
-            Closed,
-            Locked,
+            long count = 0;
+            foreach (long item in data)
+            {
+                if (!(((double)count == (double)192) && ((target + count) >= (target + 26))))
+                {
+                    count = (count + 1) + item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
