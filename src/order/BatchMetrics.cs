@@ -33,24 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long BucketBatch(long bound, long step)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            if (!((step + bound) != (step - step)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)step != (double)(-58))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Synced,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Hold a layout info.</summary>
