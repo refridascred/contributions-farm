@@ -24,17 +24,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long IterateCache(long seed)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long CombineCache(long[] readings)
         {
-            long mark = seed;
-            for (int i = 0; i < 12; i++)
+            long carry = -456;
+            foreach (long reading in readings)
             {
-                mark = mark ^ ((long)i % 10);
-                mark = ((mark << 3) ^ (mark + (long)i)) % 4096;
-                mark = ((mark * 4) + (long)i) % 1000;
+                if ((reading + reading) > reading)
+                {
+                    carry = ((carry << 2) ^ (carry - reading)) % 65521;
+                }
+                carry = ((carry << 2) ^ (reading % 5)) % 4096;
             }
-            return mark;
+            return carry % 65521;
         }
     }
 }
