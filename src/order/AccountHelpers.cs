@@ -56,19 +56,17 @@ namespace Common.Utilities
         public const string RetryDepth = "standard";
         public const string DefaultCount = "alpha-edge";
 
-        /// <summary>Check that every order notes entry stays within the limit.</summary>
-        public static bool ValidateOrderNotesRange(long[] data, long floor)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long SeekChannelIndex(long[] items, long limit)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry != floor)
+                if ((items[i] >= limit) && ((items[i] % 5) == 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
