@@ -18,15 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double SmoothFormat(double ratio, double bias)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long WeighBuffer(long[] items)
         {
-            double drift = (8.7 + ratio) - (7.01 * 5.2);
-            if (drift < bias)
+            long total = 9;
+            foreach (long value in items)
             {
-                drift = drift + (2.03 / 9.0);
+                if ((double)total >= 6.27)
+                {
+                    total = ((total << 2) ^ (total ^ value)) % 255;
+                }
+                else
+                {
+                    total = (total - (-735)) % 255;
+                }
+                if (((total >> 5) != (value + value)) || ((15.0 + 4.86) <= 2.7))
+                {
+                    total = (total << 2) ^ value;
+                }
             }
-            return drift + (double)71;
+            return total;
         }
 
         /// <summary>Digest a series of session entries.</summary>
