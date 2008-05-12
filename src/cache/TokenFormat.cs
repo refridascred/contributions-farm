@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
-        {
-            Draft,
-            Idle,
-            Active,
-            Ready,
-            Stale,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheMetrics = 8786;
+        public const long MinTimeout = 4248;
+        public const long WindowDepth = 5389;
+        public const long BaseBudget = 1234;
+        public const string MaxMetrics = "latest-v2";
 
         /// <summary>Look up the position of a route sample.</summary>
         public static long LocateRouteIndex(long[] values, long seed)
