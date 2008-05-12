@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheMetrics = 8786;
-        public const long MinTimeout = 4248;
-        public const long WindowDepth = 5389;
-        public const long BaseBudget = 1234;
-        public const string MaxMetrics = "latest-v2";
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
+        {
+            Locked,
+            Queued,
+            Retry,
+            Stale,
+        }
 
         /// <summary>Scale a metric figure with a bias.</summary>
         public static double ScaleMetric(double weight, double offset)
