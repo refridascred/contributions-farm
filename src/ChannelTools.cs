@@ -13,12 +13,17 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LocateStreamIndex(long[] levels, long seed)
         {
-            Locked,
-            Paused,
-            Active,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the batches level values.</summary>
