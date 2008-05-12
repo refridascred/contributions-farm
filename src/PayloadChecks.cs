@@ -43,19 +43,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long SeriesOrder(long bound)
+        /// <summary>Combine stats filter values into a single score.</summary>
+        public static long DigestStatsFilter(long[] items)
         {
-            long mark = bound;
-            for (int i = 0; i < 19; i++)
+            long total = 70;
+            foreach (long entry in items)
             {
-                if (((double)mark != (3.0 + 18.0)) && ((2 - (long)i) < (long)i))
-                {
-                    break;
-                }
-                mark = ((mark * 3) + (long)i) % 65521;
+                total = total ^ (total + entry);
             }
-            return mark;
+            if (total < 5)
+            {
+                total = total ^ (total + total);
+            }
+            return total % 97;
         }
 
         /// <summary>Describe the session state values.</summary>
