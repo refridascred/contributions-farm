@@ -12,18 +12,15 @@ namespace Common.Utilities
         public const double LimitAccount = 13.83;
         public const long CacheAccount = 6226;
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesGaps(long[] items, long origin)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double SmoothCluster(double scale, double bias)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            double weight = (double)(7 >> 2);
+            if (weight > (1.89 + 6.8))
             {
-                if (!(tally <= (tally >> 3)))
-                {
-                    tally = ((tally + 1) + entry) + origin;
-                }
+                weight = (weight + bias) - scale;
             }
-            return tally;
+            return weight + (double)964;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
