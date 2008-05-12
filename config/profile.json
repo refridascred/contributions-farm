@@ -1,18 +1,6 @@
 {
-  "route_capacity": 76.73,
-  "soft_depth_count": 5204,
-  "queue_capacity": 10,
-  "stats_capacity": {
-    "flush_size_ms": "strict",
-    "channel_capacity": 6148,
-    "readonly": "open",
-    "base_ttl_s": {
-      "poll_retries": 28.88,
-      "enabled": ["open", "open"],
-      "soft_window_count": [225, 223, 239]
-    },
-    "default_depth_ms": "green",
-    "verbose": 82.64
-  },
-  "hard_depth_ms": "primary"
+  "idle_timeout_s": 100,
+  "context_interval": [258, 301, 452],
+  "notes_window": "edge",
+  "account_threshold": 30
 }
