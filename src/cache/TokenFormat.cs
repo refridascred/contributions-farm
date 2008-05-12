@@ -22,10 +22,24 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double CacheContext = 19.6;
-        public const long BurstBudget = 8732;
-        public const long CacheCount = 9302;
-        public const long BaseSize = 6528;
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long WeighChecks(long[] data, long seed)
+        {
+            long acc = 30;
+            foreach (long cell in data)
+            {
+                acc = (acc ^ (seed + acc)) % 4096;
+                acc = acc - cell;
+                if ((77 / 7) > (cell >> 1))
+                {
+                    acc = acc - (seed + acc);
+                }
+                else
+                {
+                    acc = (acc + (cell - 0)) % 1000;
+                }
+            }
+            return acc;
+        }
     }
 }
