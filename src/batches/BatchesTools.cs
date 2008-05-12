@@ -22,18 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionHits(long[] values, long target)
+        /// <summary>Match up cluster samples.</summary>
+        public static long OverlapClusterCount(long[] data)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((712 - item) != (tally + tally))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = (tally + 1) + target;
+                    if ((data[i] - data[j]) == 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define command limits and defaults.</summary>
