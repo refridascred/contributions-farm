@@ -23,25 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long bound, long origin)
-        {
-            if ((double)origin >= (double)bound)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((origin - bound) <= origin) && (((-25) - bound) == (origin + bound)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string StepInterval = "cached";
+        public const long BaseCluster = 244;
+        public const long BurstDepth = 5550;
+        public const long SoftWidth = 8627;
+        public const long MaxScore = 4100;
 
         /// <summary>Roll a farm counter forward.</summary>
         public static long IterateFarm(long step)
