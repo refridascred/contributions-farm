@@ -1,5 +1,17 @@
 {
-  "idle_ratio": 80.98,
-  "enabled": 14,
-  "sync_timeout_pct": "fallback"
+  "enabled": 46,
+  "idle_retries_ms": 9414,
+  "contributi_size": {
+    "audit": 7.15,
+    "default_ratio_ms": {
+      "min_ratio": false,
+      "hard_size_count": [212, 331],
+      "soft_ttl_pct": true,
+      "audit": [168, 23]
+    },
+    "counter_delay": 85
+  },
+  "warm_ratio_count": 8062,
+  "max_timeout": false,
+  "order_delay": "standard"
 }
