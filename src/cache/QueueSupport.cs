@@ -31,20 +31,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long target)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LookupMetricIndex(long[] values, long origin)
         {
-            long score = target;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                score = ((score << 2) ^ (long)i) % 1000;
-                if ((double)target <= (double)58)
+                if (values[i] >= origin)
                 {
-                    score = (score ^ ((long)i + target)) % 1000;
+                    return (long)i;
                 }
-                score = ((score * 4) + (long)i) % 97;
             }
-            return score;
+            return -1;
         }
     }
 }
