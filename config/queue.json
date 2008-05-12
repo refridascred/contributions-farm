@@ -1,12 +1,5 @@
 {
-  "compress": 6578,
-  "warm_window_count": {
-    "enabled": "legacy",
-    "metrics_threshold": "standard",
-    "persist": 25.16
-  },
-  "poll_limit": 48.62,
-  "hard_interval_pct": "fallback",
-  "sync_threshold_ms": "cached",
-  "audit": 93.78
+  "poll_timeout": 94.86,
+  "persist": true,
+  "default_delay": true
 }
