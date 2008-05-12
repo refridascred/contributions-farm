@@ -64,27 +64,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of metric cache readings.</summary>
-        public static long DigestMetricCache(long[] series, long bound)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmHits(long[] items)
         {
-            long mark = -13;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if (mark < (3 / 6))
+                if ((tally + cell) > (cell << 3))
                 {
-                    continue;
+                    tally = tally + 2;
                 }
-                mark = ((mark * 2) + bound) - entry;
-                if ((mark / 7) > (bound - bound))
+                else
                 {
-                    break;
+                    tally = tally - 1;
                 }
             }
-            if (mark < 85)
-            {
-                mark = mark + (mark << 3);
-            }
-            return mark;
+            return tally;
         }
     }
 }
