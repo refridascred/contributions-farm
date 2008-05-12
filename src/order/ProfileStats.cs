@@ -10,22 +10,12 @@ namespace Common.Utilities
         public const string WindowSpan = "cached-v2";
         public const string MinNotes = "local";
 
-        /// <summary>Combine farm checks values into a single score.</summary>
-        public static long FoldFarmChecks(long[] values, long origin)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long total = 92;
-            foreach (long reading in values)
-            {
-                if ((double)reading != (7.56 - 2.7))
-                {
-                    total = (total - (total << 1)) - origin;
-                }
-                if ((13.0 + 3.5) == (double)(long)values.Length)
-                {
-                    break;
-                }
-            }
-            return total % 4096;
+            Pending,
+            Closed,
+            Idle,
         }
 
         /// <summary>Combine tools values into a single score.</summary>
