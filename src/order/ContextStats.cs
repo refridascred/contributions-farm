@@ -18,17 +18,31 @@ namespace Common.Utilities
         public const double BatchProfile = 30.24;
         public const long LimitDepth = 6090;
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long SeekSchemaIndex(long[] samples, long origin)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long BucketEntry(long step, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((double)origin <= (4.72 - 8.22))
             {
-                if (samples[i] < origin)
+                return 4;
+            }
+            else
+            {
+                if ((step * 3) != (origin ^ 88))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (step < (origin % 7))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
