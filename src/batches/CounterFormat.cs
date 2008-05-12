@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long SeekFilterIndex(long[] levels, long bound)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long GradeTools(long target, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long prev = target - bound;
+            if (prev > bound)
             {
-                if (levels[i] <= bound)
+                return 2;
+            }
+            else
+            {
+                if (((3 - target) <= prev) || (target > 42))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
