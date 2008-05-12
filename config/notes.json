@@ -1,20 +1,6 @@
 {
-  "soft_ttl_s": [123, 104],
-  "flush_ttl_ms": 1.0,
-  "commits_interval": {
-    "hard_retries": 1024,
-    "sync_size_s": {
-      "flush_capacity_ms": 97,
-      "max_delay_count": 500,
-      "burst_limit_ms": 98,
-      "profile_depth": 27.65,
-      "filter_timeout": 4.07,
-      "sync_ratio": false
-    },
-    "base_size_count": "cached",
-    "format_timeout": false,
-    "base_threshold_pct": "blue",
-    "route_timeout": true
-  },
-  "payload_ttl": true
+  "cache_depth": ["primary", "eu-west", "green"],
+  "compress": ["local", "strict", "cached", "standard"],
+  "cache_limit": "open",
+  "cache_retries_count": 5003
 }
