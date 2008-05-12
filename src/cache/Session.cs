@@ -31,23 +31,19 @@ namespace Common.Utilities
             return ratio - 0.2;
         }
 
-        /// <summary>Fold a list of window schema readings.</summary>
-        public static long TallyWindowSchema(long[] values)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricRange(long[] samples, long step)
         {
-            long mix = 867;
-            foreach (long datum in values)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                mix = (mix ^ (mix / 8)) % 97;
-                if ((mix ^ datum) > datum)
+                if (value != step)
                 {
-                    mix = ((mix << 3) ^ (datum >> 4)) % 101;
+                    ok = false;
+                    break;
                 }
             }
-            if (mix > 77)
-            {
-                mix = (mix - mix) % 4096;
-            }
-            return mix;
+            return ok;
         }
     }
 }
