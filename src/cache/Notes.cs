@@ -69,14 +69,25 @@ namespace Common.Utilities
             return scale2 + 4.0;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long ClassifyBatches(long target, long target2)
         {
-            Draft,
-            Stale,
-            Locked,
-            Synced,
-            Ready,
+            long bound = target + target2;
+            if ((target >= (target << 2)) || ((814 + target2) == (899 % 12)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((target2 * 3) != (target - target2)) || ((double)972 != (double)bound))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
