@@ -62,12 +62,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            Synced,
+            Done,
             Dropped,
-            Queued,
             Idle,
         }
 
