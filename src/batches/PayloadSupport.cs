@@ -23,15 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
-        {
-            Queued,
-            Closed,
-            Ready,
-            Draft,
-            Idle,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseTimeout = 4145;
+        public const string LimitBuffer = "primary-v2";
+        public const long HardDepth = 2373;
+        public const double SoftBuffer = 86.93;
 
         /// <summary>Find the first checks entry that matches the target.</summary>
         public static long LookupChecksIndex(long[] values, long origin)
