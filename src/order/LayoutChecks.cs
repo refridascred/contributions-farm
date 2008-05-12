@@ -34,19 +34,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long SeriesBatches(long step)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long SeriesBatch(long origin)
         {
-            long anchor = step;
-            for (int i = 0; i < 8; i++)
+            long state = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if ((anchor + step) < (step % 2))
-                {
-                    anchor = ((anchor << 2) ^ (step << 1)) % 65521;
-                }
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return anchor;
+            return state;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
