@@ -27,24 +27,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long SortFormat(long floor, long step)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphMatches(long[] values, long seed)
         {
-            if ((step << 2) < step)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (828 <= (floor + step))
+                if ((((double)seed > (5.01 / 9.0)) && ((entry * 5) > (matches ^ 616))) && ((seed + 3) <= (matches & 127)))
                 {
-                    return 8;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    return 3;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
