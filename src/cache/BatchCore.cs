@@ -31,18 +31,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long ScoreCommits(long[] values, long offset)
+        /// <summary>Match up cache cluster samples.</summary>
+        public static long PairCacheClusterCount(long[] items)
         {
-            long mark = -748;
-            foreach (long cell in values)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((mark + 931) > (offset / 8))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = (mark - cell) % 4096;
+                    if ((items[i] - items[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mark % 65521;
+            return hits;
         }
 
         /// <summary>Define account limits and defaults.</summary>
