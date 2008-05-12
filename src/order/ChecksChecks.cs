@@ -25,22 +25,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportGaps(long[] data, long step)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long ClassifyCommand(long origin, long floor)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long prev = origin - floor;
+            if ((origin - floor) >= origin)
             {
-                if (!((step / 4) == (1 + step)))
+                return 6;
+            }
+            else
+            {
+                if (((floor + prev) != (8 >> 3)) && (floor <= (floor - prev)))
                 {
-                    matches = (matches + 2) + reading;
+                    return 3;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 1;
                 }
             }
-            return matches;
         }
     }
 }
