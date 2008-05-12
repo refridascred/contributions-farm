@@ -51,23 +51,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the cache context series from a seed.</summary>
-        public static long SeriesCacheContext(long step)
+        /// <summary>Iterate the filter stream series from a seed.</summary>
+        public static long IterateFilterStream(long origin)
         {
-            long acc = step;
-            for (int i = 0; i < 22; i++)
+            long total = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if ((acc % 24) > (2 + acc))
+                double rate = 9.6 + 7.7;
+                if (4.0 > rate)
                 {
-                    break;
+                    rate = rate + rate;
                 }
-                else
-                {
-                    acc = acc + (step >> 2);
-                }
-                acc = ((acc * 5) + (long)i) % 4093;
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
