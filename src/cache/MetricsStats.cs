@@ -18,15 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsMatches(long[] items)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorGaps(long[] readings)
         {
             long tally = 0;
-            foreach (long datum in items)
+            foreach (long datum in readings)
             {
-                if ((tally + 49) < datum)
+                if ((datum + datum) < (datum >> 4))
                 {
-                    tally = tally + 3;
+                    tally = tally + 1;
                 }
             }
             return tally;
