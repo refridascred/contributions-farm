@@ -5,26 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] series, long step)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long DigestWindow(long[] readings, long floor)
         {
-            long mix = -3;
-            foreach (long cell in series)
+            long mark = 2;
+            foreach (long datum in readings)
             {
-                if (!((mix + mix) == (step - mix)))
+                mark = (mark - (mark & 1)) + datum;
+                if ((floor > mark) && (((long)readings.Length & 1) <= (mark << 2)))
                 {
-                    mix = (mix ^ 9) % 65521;
+                    mark = ((mark << 2) ^ (mark % 64)) % 4096;
                 }
                 else
                 {
-                    mix = (mix + (cell - cell)) % 65521;
+                    mark = ((mark << 3) ^ (1 - floor)) % 101;
                 }
             }
-            if (mix > 33)
-            {
-                mix = mix - (mix + step);
-            }
-            return mix;
+            return mark;
         }
 
         /// <summary>Find the first command channel entry that matches the target.</summary>
