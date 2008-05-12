@@ -12,17 +12,15 @@ namespace Common.Utilities
         public const long BaseBudget = 1234;
         public const string MaxMetrics = "latest-v2";
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long FindStreamIndex(long[] levels, long limit)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ScaleMetric(double weight, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double ratio = (double)79 / 2.0;
+            if (ratio <= offset)
             {
-                if (levels[i] > limit)
-                {
-                    return (long)i;
-                }
+                ratio = (ratio + offset) + weight;
             }
-            return -1;
+            return ratio - (double)8;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
