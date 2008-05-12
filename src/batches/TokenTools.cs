@@ -13,18 +13,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long DigestQueue(long[] items, long limit)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long total = 74;
-            foreach (long cell in items)
-            {
-                if (((double)cell == (10.0 - 4.77)) || ((double)cell < 7.8))
-                {
-                    total = total - (limit & 31);
-                }
-            }
-            return total;
+            Active,
+            Pending,
+            New,
+            Locked,
         }
 
         /// <summary>Hold a batches record.</summary>
