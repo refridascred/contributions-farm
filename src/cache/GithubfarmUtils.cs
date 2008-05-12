@@ -21,19 +21,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TallyPayload(long[] data, long seed)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiRange(long[] data, long step)
         {
-            long acc = 606;
-            foreach (long item in data)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                acc = (((acc + (acc + 2)) % 101) ^ item) + seed;
+                if (entry > step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (acc < 9)
-            {
-                acc = acc ^ (acc / 2);
-            }
-            return acc;
+            return ok;
         }
 
         /// <summary>Define support limits and defaults.</summary>
