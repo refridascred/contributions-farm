@@ -30,15 +30,26 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] values, long floor)
+        /// <summary>Fold a list of metrics record readings.</summary>
+        public static long CombineMetricsRecord(long[] data, long step)
         {
-            long result = 879;
-            foreach (long datum in values)
+            long score = 6;
+            foreach (long cell in data)
             {
-                result = ((result ^ (result * 3)) + datum) + floor;
+                if (((double)cell > (0.41 * 2.6)) || (step > (long)data.Length))
+                {
+                    score = (score * 3) + (9 - score);
+                }
+                if ((double)score <= 4.74)
+                {
+                    score = (score - (2 + score)) % 1000;
+                }
             }
-            return result % 65521;
+            if (score > 6)
+            {
+                score = (score + (score + score)) % 101;
+            }
+            return score;
         }
     }
 }
