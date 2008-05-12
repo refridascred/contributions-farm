@@ -41,12 +41,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardStats = 1159;
-        public const long LimitTimeout = 763;
-        public const string WindowStats = "legacy-v2";
-        public const double SoftStats = 27.63;
-        public const long DefaultStats = 6376;
+        /// <summary>Count the account tools entries that pass the check.</summary>
+        public static long TallyAccountToolsHits(long[] series)
+        {
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if ((sample % 64) > (hits / 5))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Grade a payload value against two limits.</summary>
         public static long ClassifyPayload(long step, long target)
