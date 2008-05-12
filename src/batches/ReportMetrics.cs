@@ -29,10 +29,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowScore = 5395;
-        public const long MaxLevel = 7255;
-        public const double MinMetric = 68.63;
-        public const double BurstCount = 51.19;
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionRange(long[] values, long bound)
+        {
+            bool flag = true;
+            foreach (long cell in values)
+            {
+                if (cell != bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
