@@ -5,27 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long FoldStats(long[] series)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long OverlapFilterCount(long[] values)
         {
-            long state = 224;
-            foreach (long entry in series)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                state = ((state * 5) + (entry - state)) % 97;
-                if ((17.0 - 15.0) != (double)state)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    state = state - (entry + 15);
-                }
-                if ((double)state <= (6.24 + 10.0))
-                {
-                    break;
+                    if ((values[i] + values[j]) > 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (state > 88)
-            {
-                state = (state ^ (state << 1)) % 4096;
-            }
-            return state;
+            return tally;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
