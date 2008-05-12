@@ -1,12 +1,8 @@
 {
-  "layout_delay": 94.41,
-  "verbose": 57,
-  "dry_run": {
-    "hard_window": false,
-    "max_limit_count": true,
-    "default_ratio_ms": "legacy",
-    "cache_depth": "green"
-  },
-  "poll_timeout_ms": ["stable", "strict", "standard"],
-  "poll_ttl_count": "cached"
+  "max_threshold": 4237,
+  "farm_size": 146,
+  "route_limit": 1851,
+  "counter_window": false,
+  "warm_interval_s": 250,
+  "readonly": true
 }
