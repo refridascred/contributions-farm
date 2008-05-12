@@ -43,19 +43,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmLimits(long[] values, long target)
+        /// <summary>Match up filter stream samples.</summary>
+        public static long PairFilterStreamCount(long[] levels)
         {
-            bool found = true;
-            foreach (long cell in values)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell > target)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((levels[i] + levels[j]) == 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
