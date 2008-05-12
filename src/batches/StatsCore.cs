@@ -46,14 +46,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double AdjustStats(double gain, double bias)
         {
-            Draft,
-            Stale,
-            Done,
-            Locked,
-            Synced,
+            double load = bias;
+            if (load >= gain)
+            {
+                load = load - bias;
+            }
+            else
+            {
+                load = load + (gain * 5.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + (double)9) + (double)(long)i;
+            }
+            return load + (gain * 2.4);
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
