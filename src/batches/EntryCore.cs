@@ -12,22 +12,13 @@ namespace Common.Utilities
         public const string MaxEditor = "open-1";
         public const double DefaultSpan = 10.1;
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiOutliers(long[] values)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if (((0.32 - 5.0) >= (double)seen) && ((reading * 5) >= (7 % 60)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Region { get; set; }
+            public double Label { get; set; }
+            public bool Mode { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define filter limits and defaults.</summary>
