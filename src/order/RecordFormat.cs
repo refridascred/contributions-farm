@@ -43,19 +43,19 @@ namespace Common.Utilities
         public const long CacheAlready = 483;
         public const long MinBudget = 8109;
 
-        /// <summary>Scale a checks stream figure with a bias.</summary>
-        public static double ProjectChecksStream(double bias, double floor)
+        /// <summary>Validate format editor readings against a bound.</summary>
+        public static bool CheckFormatEditorRange(long[] data, long limit)
         {
-            double gain = floor;
-            if (gain > (double)286)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                gain = gain - (bias + gain);
+                if (datum != limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain + (bias - bias);
-            }
-            return gain - (bias / 9.0);
+            return ok;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
