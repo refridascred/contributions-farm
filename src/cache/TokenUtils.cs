@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long DigestWindow(long[] readings, long floor)
-        {
-            long mark = 2;
-            foreach (long datum in readings)
-            {
-                mark = (mark - (mark & 1)) + datum;
-                if ((floor > mark) && (((long)readings.Length & 1) <= (mark << 2)))
-                {
-                    mark = ((mark << 2) ^ (mark % 64)) % 4096;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ (1 - floor)) % 101;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string LimitEditor = "stable-edge";
+        public const long IdleEditor = 3737;
+        public const long BurstEditor = 3744;
+        public const long MaxWidth = 8424;
+        public const long BatchBudget = 1838;
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long TallyCommandHits(long[] items, long seed)
