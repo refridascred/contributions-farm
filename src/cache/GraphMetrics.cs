@@ -52,17 +52,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long SeekEditorIndex(long[] values, long seed)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandBounds(long[] samples, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                if ((values[i] >= seed) && ((values[i] % 5) == 0))
+                if (sample <= origin)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
