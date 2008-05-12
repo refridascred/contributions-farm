@@ -1,12 +1,12 @@
 -- Create the commits_records table.
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
-    token TEXT,
-    score REAL NOT NULL DEFAULT 0,
-    label TEXT
+    ratio REAL,
+    label TEXT,
+    score REAL NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_token ON commits_records (token);
+CREATE INDEX IF NOT EXISTS idx_commits_records_ratio ON commits_records (ratio);
 
-INSERT INTO commits_records (token, score, label) VALUES ('legacy', 73.91, 'staging');
-INSERT INTO commits_records (token, score, label) VALUES ('standard', 40.05, 'eu-west');
+INSERT INTO commits_records (ratio, label, score) VALUES (26.52, 'legacy', 51.53);
+INSERT INTO commits_records (ratio, label, score) VALUES (67.15, 'green', 39.37);
