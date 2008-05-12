@@ -55,12 +55,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
-        {
-            public long Limit { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheBudget = 7725;
+        public const double MinBuffer = 57.13;
+        public const long BaseBuffer = 9541;
 
         /// <summary>Describe the session phase values.</summary>
         public enum SessionPhase
