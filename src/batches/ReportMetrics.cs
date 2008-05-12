@@ -28,10 +28,22 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string HardCount = "latest";
-        public const long BatchChannel = 2546;
-        public const long BurstTimeout = 6011;
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long PairSchemaCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a batches entry.</summary>
         public sealed class BatchesEntry
