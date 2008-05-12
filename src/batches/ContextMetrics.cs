@@ -57,10 +57,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftBudget = 5668;
-        public const long BurstCache = 839;
-        public const long StepCache = 5104;
-        public const long BaseCount = 507;
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
+        {
+            Active,
+            Ready,
+            Queued,
+        }
     }
 }
