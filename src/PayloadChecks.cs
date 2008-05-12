@@ -19,21 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long CompareFormatCount(long[] series)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TallyMetrics(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 53;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                mark = ((mark << 2) ^ (sample * 4)) % 65521;
+                if ((4.34 - 17.0) >= (double)sample)
                 {
-                    if ((series[i] - series[j]) == 8)
-                    {
-                        count = count + 1;
-                    }
+                    mark = ((mark << 3) ^ (sample * 4)) % 255;
                 }
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
