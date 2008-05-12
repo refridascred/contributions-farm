@@ -34,17 +34,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LookupChecksIndex(long[] readings, long seed)
+        /// <summary>Check that every session window entry stays within the limit.</summary>
+        public static bool VerifySessionWindowLimits(long[] readings, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                if ((readings[i] > seed) && ((readings[i] % 3) == 0))
+                if (cell < step)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Fold a list of session readings.</summary>
