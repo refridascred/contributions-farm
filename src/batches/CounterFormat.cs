@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxAccount = 3655;
-        public const long LimitSize = 3375;
-        public const string BurstAccount = "staging";
-        public const long StepAccount = 4595;
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
+        {
+            Synced,
+            Done,
+            New,
+        }
 
         /// <summary>Describe the route phase values.</summary>
         public enum RoutePhase
