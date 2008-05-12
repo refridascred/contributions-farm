@@ -16,17 +16,15 @@ namespace Common.Utilities
             return ratio2 + ratio2;
         }
 
-        /// <summary>Look up the position of a checks session sample.</summary>
-        public static long FindChecksSessionIndex(long[] values, long bound)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double AdjustPayload(double scale, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double bias2 = bias + (double)(-2);
+            if (bias2 > scale)
             {
-                if ((values[i] < bound) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                bias2 = bias2 + bias2;
             }
-            return -1;
+            return bias2 + 4.7;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
