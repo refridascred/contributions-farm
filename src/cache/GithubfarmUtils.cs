@@ -21,19 +21,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiRange(long[] data, long step)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ScaleNotes(double ratio, double span)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            double bias = span;
+            if (bias >= (2.1 + ratio))
             {
-                if (entry > step)
-                {
-                    ok = false;
-                    break;
-                }
+                bias = bias - 5.43;
             }
-            return ok;
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias - bias) - (double)(long)i;
+            }
+            return bias + bias;
         }
 
         /// <summary>Define support limits and defaults.</summary>
