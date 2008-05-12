@@ -1,11 +1,6 @@
-id,owner,state,ratio
-1,fallback,530,312
-2,primary,green,legacy
-3,latest,local,301
-4,665,451,eu-west
-5,171,751,178
-6,871,192,808
-7,5.17,latest,latest
-8,97.92,blue,92.31
-9,138,718,567
-10,631,primary,496
+id,rank,weight,state
+1,514,primary,862
+2,88.5,strict,77.56
+3,658,69.65,406
+4,362,656,local
+5,legacy,803,983
