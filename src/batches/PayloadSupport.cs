@@ -33,15 +33,13 @@ namespace Common.Utilities
         public const string CacheScore = "local-edge";
         public const long BaseBatches = 3605;
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long CombinePayload(long[] samples, long limit)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long result = 7;
-            foreach (long cell in samples)
-            {
-                result = ((result - (result + cell)) % 97) + limit;
-            }
-            return result % 1000;
+            Synced,
+            Active,
+            Failed,
+            Done,
         }
     }
 }
