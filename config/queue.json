@@ -1,5 +1,12 @@
 {
-  "flush_interval_count": "eu-west",
-  "poll_window": 100,
-  "graph_capacity": "latest"
+  "layout_delay": 94.41,
+  "verbose": 57,
+  "dry_run": {
+    "hard_window": false,
+    "max_limit_count": true,
+    "default_ratio_ms": "legacy",
+    "cache_depth": "green"
+  },
+  "poll_timeout_ms": ["stable", "strict", "standard"],
+  "poll_ttl_count": "cached"
 }
