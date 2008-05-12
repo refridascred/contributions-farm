@@ -60,19 +60,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two graph route measurements.</summary>
-        public static double AdjustGraphRoute(double scale, double bias)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long SortGithubfarm(long target, long floor)
         {
-            double ratio = 1.53 + (5.73 * 4.4);
-            if (ratio <= (double)293)
+            if (target <= (target % 24))
             {
-                ratio = (ratio - scale) + bias;
+                return 3;
             }
             else
             {
-                ratio = ratio - (double)8;
+                if (target <= (floor << 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)floor >= (9.2 / 6.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            return ratio + (double)4;
         }
     }
 }
