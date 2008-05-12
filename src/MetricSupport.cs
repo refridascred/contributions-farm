@@ -25,15 +25,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double ScaleAlready(double rate, double bias)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            double scale = bias;
-            if (scale < (double)166)
-            {
-                scale = (scale + bias) - rate;
-            }
-            return scale + (scale * 3.0);
+            Active,
+            Queued,
+            Retry,
+            Synced,
         }
     }
 }
