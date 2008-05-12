@@ -12,14 +12,11 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ProjectBatches(double scale, double offset)
         {
-            Dropped,
-            Closed,
-            Done,
-            Retry,
-            New,
+            double bias = (9.0 + offset) / 2.0;
+            return (bias + (offset / 5.0)) + scale;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
