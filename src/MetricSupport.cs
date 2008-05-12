@@ -15,15 +15,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double AdjustGithubfarm(double gain, double bias)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            double load = gain;
-            if (load < (gain / 4.0))
-            {
-                load = (load + load) + bias;
-            }
-            return load - load;
+            Paused,
+            Active,
+            Done,
+            Queued,
+            Synced,
         }
 
         /// <summary>Project the next already value.</summary>
