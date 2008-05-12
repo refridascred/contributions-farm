@@ -40,14 +40,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
-        {
-            Draft,
-            New,
-            Failed,
-            Synced,
-            Ready,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BatchTimeout = "latest-1";
+        public const long SoftScore = 37;
+        public const long BurstBudget = 9546;
+        public const long DefaultToken = 3440;
+        public const string SoftCount = "standard-1";
     }
 }
