@@ -1,19 +1,8 @@
 {
-  "max_depth_s": false,
-  "flush_depth_ms": {
-    "batch_depth": 250,
-    "enabled": 9823,
-    "warm_ratio_pct": 4414,
-    "min_ttl_pct": 7.55,
-    "flush_ratio": ["staging", "latest"]
-  },
-  "idle_timeout_pct": [226, 428, 146],
-  "burst_size_ms": "eu-west",
-  "persist": {
-    "dry_run": "standard",
-    "flush_timeout_pct": "staging",
-    "compress": "stable",
-    "cache_ratio_ms": "cached"
-  },
-  "queue_delay": true
+  "burst_threshold_s": 1207,
+  "hard_threshold": "eu-west",
+  "readonly": 8466,
+  "flush_window": 19.23,
+  "already_ttl": "edge",
+  "editor_depth": 4
 }
