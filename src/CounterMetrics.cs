@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Iterate the stats metric series from a seed.</summary>
-        public static long SeriesStatsMetric(long seed)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamHits(long[] series, long limit)
         {
-            long mix = seed;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if (0.8 <= (double)seed)
+                if (!((seen << 3) < (item / 9)))
                 {
-                    mix = ((mix << 2) ^ 26) % 1000;
+                    seen = (seen + 3) - limit;
                 }
-                mix = ((mix * 4) + (long)i) % 97;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
