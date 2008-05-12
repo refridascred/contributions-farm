@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
-        {
-            Ready,
-            Idle,
-            Closed,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxRoute = 1502;
+        public const long CacheSize = 8476;
+        public const string LimitSize = "fallback-edge";
+        public const long StepScore = 838;
+        public const string DefaultRoute = "stable";
 
         /// <summary>Describe the route mode values.</summary>
         public enum RouteMode
