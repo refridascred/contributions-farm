@@ -55,24 +55,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a githubfarm route pair into a bucket.</summary>
-        public static long RankGithubfarmRoute(long floor, long offset)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long CombineSupport(long[] data, long target)
         {
-            if ((floor * 4) > (floor & 31))
+            long mark = -37;
+            foreach (long value in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (2.0 < (double)offset)
+                if ((double)value <= (double)48)
                 {
-                    return 3;
+                    mark = (mark << 2) ^ target;
                 }
                 else
                 {
-                    return 7;
+                    mark = (mark ^ mark) % 65521;
                 }
             }
+            if (mark > 57)
+            {
+                mark = mark + (mark % 5);
+            }
+            return mark % 4096;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
