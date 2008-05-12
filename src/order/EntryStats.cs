@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterGaps(long[] values, long floor)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterRange(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long item in values)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                if ((10.0 / 7.0) != (double)tally)
+                if (cell <= limit)
                 {
-                    tally = ((tally + 3) + item) + floor;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
