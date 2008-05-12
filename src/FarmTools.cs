@@ -25,21 +25,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long MatchCommitsCount(long[] values)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long ClassifyContext(long step, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((origin * 3) > step)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((double)185 == (double)step)
                 {
-                    if ((values[i] - values[j]) < 2)
+                    return 1;
+                }
+                else
+                {
+                    if (origin < 17)
                     {
-                        tally = tally + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return tally;
         }
     }
 }
