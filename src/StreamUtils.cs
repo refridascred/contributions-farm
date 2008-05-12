@@ -70,11 +70,17 @@ namespace Common.Utilities
             return weight - (bias / 9.0);
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitBuffer = 1121;
-        public const string MaxBudget = "stable-1";
-        public const long DefaultSize = 3051;
-        public const long DefaultBuffer = 8723;
-        public const long DefaultInterval = 8991;
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LookupEditorIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
