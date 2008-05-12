@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
-        {
-            public long Level { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double MinBuffer = 88.83;
+        public const double IdleSpan = 73.25;
+        public const long SoftBuffer = 9548;
 
         /// <summary>Derive the next queue value from a seed.</summary>
         public static long IterateQueue(long target)
