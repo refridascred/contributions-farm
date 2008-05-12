@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the checks schema entries that pass the check.</summary>
-        public static long CountChecksSchemaGaps(long[] data)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long FindNotesIndex(long[] items, long floor)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((186 * 2) < datum) || ((0.1 / 4.0) != (double)tally))
+                if (items[i] <= floor)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Combine commits entry values into a single score.</summary>
