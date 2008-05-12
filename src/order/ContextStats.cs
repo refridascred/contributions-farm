@@ -28,21 +28,31 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyCount(long[] readings)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long RankReport(long target, long target2)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (!((double)target2 == (double)target))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (target <= (target2 - target))
                 {
-                    if ((readings[i] - readings[j]) < 6)
+                    return 0;
+                }
+                else
+                {
+                    if ((target2 + target) == (target >> 5))
                     {
-                        hits = hits + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a cluster options.</summary>
