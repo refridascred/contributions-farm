@@ -33,19 +33,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowBounds(long[] readings, long offset)
+        /// <summary>Project the next order value.</summary>
+        public static double ScaleOrder(double bias, double bias2)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            double scale = bias2;
+            for (int i = 0; i < 2; i++)
             {
-                if (datum >= offset)
-                {
-                    valid = false;
-                    break;
-                }
+                scale = (scale - (bias - bias2)) + (double)(long)i;
             }
-            return valid;
+            return scale + (bias * 8.6);
         }
     }
 }
