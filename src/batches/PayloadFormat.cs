@@ -49,22 +49,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadOutliers(long[] levels)
+        /// <summary>Project the next command value.</summary>
+        public static double BlendCommand(double rate, double span)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            double mean = 2.5 - rate;
+            if (mean < (6.8 * 6.0))
             {
-                if (!((value + value) >= value))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mean = mean + span;
             }
-            return matches;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - (2.0 + 4.98)) + (double)(long)i;
+            }
+            return mean + mean;
         }
     }
 }
