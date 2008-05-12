@@ -15,18 +15,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesHits(long[] values, long step)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long ScoreCommand(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long sum = -47;
+            foreach (long reading in values)
             {
-                if ((matches / 9) < (cell * 3))
-                {
-                    matches = (matches + 1) + step;
-                }
+                sum = ((sum + (sum + 0)) % 65521) - bound;
+                sum = ((sum * 2) + (reading * 3)) % 1000;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Validate context session readings against a bound.</summary>
