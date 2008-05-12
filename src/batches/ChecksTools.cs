@@ -49,32 +49,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long SortChecks(long step, long limit)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long cur = step + limit;
-            if (((limit / 2) > (cur + step)) && ((16.0 / 9.0) <= (double)limit))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((step & 7) < 128)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)limit < (8.67 + 5.49))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Idle,
+            Pending,
+            Done,
+            Closed,
+            New,
         }
     }
 }
