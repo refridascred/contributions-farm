@@ -60,12 +60,16 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long DeriveAccount(long limit)
         {
-            Dropped,
-            Queued,
-            Idle,
+            long sum = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                sum = (sum + (804 >> 3)) % 101;
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
         }
     }
 }
