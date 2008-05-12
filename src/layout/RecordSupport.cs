@@ -54,14 +54,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long SeekBatchesIndex(long[] items, long bound)
         {
-            Idle,
-            Active,
-            Paused,
-            Done,
-            New,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= bound) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
