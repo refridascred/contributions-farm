@@ -80,9 +80,39 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchAlready = 8192;
-        public const long BaseAlready = 1254;
-        public const long HardCount = 260;
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long BucketCommits(long offset, long seed)
+        {
+            long cur = offset + seed;
+            if ((cur + 872) >= (seed + seed))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)cur <= (1.96 / 5.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((cur * 4) != (offset + seed)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((-815) * 5) < (seed & 63))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
