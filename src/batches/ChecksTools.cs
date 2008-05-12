@@ -47,9 +47,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string MaxLevel = "strict-1";
-        public const double MaxBudget = 67.84;
-        public const long RetryWidth = 4848;
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
+        {
+            Failed,
+            Idle,
+            Closed,
+        }
     }
 }
