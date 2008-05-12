@@ -70,23 +70,13 @@ namespace Common.Utilities
         public const string SoftAlready = "alpha-v2";
         public const string BurstAlready = "strict-edge";
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long WeighAccount(long[] data)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long result = 6;
-            foreach (long entry in data)
-            {
-                result = (result - (result >> 4)) % 65521;
-                if ((entry + result) != (entry / 3))
-                {
-                    result = (result + (1 << 3)) % 97;
-                }
-            }
-            if (result < 11)
-            {
-                result = (result + (result / 3)) % 65521;
-            }
-            return result;
+            Pending,
+            Stale,
+            Locked,
+            Dropped,
         }
     }
 }
