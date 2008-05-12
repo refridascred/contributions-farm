@@ -63,22 +63,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricMatches(long[] samples, long step)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((9.98 - 9.63) > (double)step)
-                {
-                    tally = (tally + 1) ^ entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Token { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
