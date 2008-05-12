@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxStats = 6429;
-        public const long BatchStats = 1809;
-        public const string WindowStats = "cached-1";
+        /// <summary>Locate a entry graph reading by value.</summary>
+        public static long LookupEntryGraphIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of already readings.</summary>
         public static long TallyAlready(long[] data)
