@@ -1,7 +1,24 @@
 {
-  "buffer_ttl": 18,
-  "base_window": 1560,
-  "commits_ratio": "eu-west",
-  "max_ratio_pct": [407, 155, 181, 296],
-  "min_interval_pct": "blue"
+  "base_ratio": 1231,
+  "poll_limit_count": [74, 395, 222, 149],
+  "window_retries": "green",
+  "stats_capacity": {
+    "flush_timeout_s": {
+      "min_size_count": "staging",
+      "dry_run": 30,
+      "filter_capacity": ["fallback", "staging", "eu-west"],
+      "soft_delay_pct": "fallback",
+      "flush_depth_count": 39.46
+    },
+    "githubfarm_ratio": 4597,
+    "dry_run": {
+      "hard_ttl": "standard",
+      "default_size_pct": 33,
+      "strict": false,
+      "flush_capacity_count": 1024,
+      "sync_size_count": 19.59
+    },
+    "readonly": ["legacy", "standard"]
+  },
+  "hard_limit_s": 68.9
 }
