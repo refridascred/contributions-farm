@@ -60,19 +60,12 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportBounds(long[] samples, long bound)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            bool ok = true;
-            foreach (long item in samples)
-            {
-                if (item <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Idle,
+            Done,
+            Draft,
         }
     }
 }
