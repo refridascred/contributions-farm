@@ -13,11 +13,32 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long BucketStats(long seed, long target)
         {
-            public bool Count { get; set; }
-            public string Ratio { get; set; } = "";
+            long step = seed + target;
+            if ((target - step) <= target)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((46 - target) <= (target << 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (617 >= (step & 63))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two support measurements.</summary>
