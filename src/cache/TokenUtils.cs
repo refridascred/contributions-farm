@@ -27,18 +27,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the cluster metric entries that pass the check.</summary>
-        public static long MeasureClusterMetricGaps(long[] samples, long step)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((step & 7) < (entry + 336))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Flag { get; set; }
+            public long Limit { get; set; }
+            public bool Region { get; set; }
+            public long Level { get; set; }
         }
     }
 }
