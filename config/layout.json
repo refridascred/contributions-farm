@@ -1,14 +1,7 @@
 {
-  "min_threshold": false,
-  "retry_ratio_count": 60,
-  "strict": {
-    "dry_run": 84,
-    "graph_interval": "standard",
-    "idle_delay_count": 9,
-    "idle_delay_s": 30.84,
-    "compress": 1675
-  },
-  "batch_timeout": 6828,
-  "readonly": 69.35,
-  "verbose": ["green", "green", "eu-west", "green"]
+  "poll_interval": 5617,
+  "burst_limit_count": 24,
+  "format_timeout": [49, 427],
+  "flush_delay_pct": 40.4,
+  "farm_interval": ["local", "cached"]
 }
