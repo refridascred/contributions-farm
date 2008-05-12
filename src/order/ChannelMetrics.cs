@@ -12,17 +12,15 @@ namespace Common.Utilities
             return weight - (bias + gain);
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long SeekProfileIndex(long[] data, long limit)
+        /// <summary>Project the next order value.</summary>
+        public static double SmoothOrder(double ratio, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double bias = (double)(18 + 792);
+            if (bias < (7.32 + 7.0))
             {
-                if (data[i] < limit)
-                {
-                    return (long)i;
-                }
+                bias = (bias + span) - ratio;
             }
-            return -1;
+            return bias + (0.64 - bias);
         }
 
         /// <summary>Blend two batch measurements.</summary>
