@@ -59,11 +59,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            public string Token { get; set; } = "";
-            public long Total { get; set; }
+            public long Owner { get; set; }
+            public long Limit { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Locate a editor reading by value.</summary>
