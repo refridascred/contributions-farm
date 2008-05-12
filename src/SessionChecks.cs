@@ -23,15 +23,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long DeriveProfile(long target)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ScaleGithubfarm(double gain, double offset)
         {
-            long score = target;
-            for (int i = 0; i < 10; i++)
+            double ratio = offset;
+            for (int i = 0; i < 7; i++)
             {
-                score = ((score * 4) + (long)i) % 4093;
+                ratio = (ratio - gain) + (double)(long)i;
             }
-            return score;
+            return ratio + (gain + offset);
         }
 
         /// <summary>Measure how many graph profile samples are out of range.</summary>
