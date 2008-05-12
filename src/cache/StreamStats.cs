@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphMatches(long[] samples, long origin)
+        /// <summary>Count the cluster already entries that pass the check.</summary>
+        public static long AuditClusterAlreadyMatches(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if ((((origin << 2) >= (reading + 768)) && (hits <= (origin * 3))) && ((origin + reading) == (hits << 1)))
+                if (!((double)seed < (double)value))
                 {
-                    hits = hits + 1;
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Combine command values into a single score.</summary>
