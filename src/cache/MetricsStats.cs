@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long SeekMetricIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryCount = 1888;
+        public const long BaseFilter = 1366;
+        public const long BurstFilter = 6439;
 
         /// <summary>Accumulate already samples.</summary>
         public static long TotalAlready(long[] data)
