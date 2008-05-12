@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaOutliers(long[] items)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long DeriveLayout(long step)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long mix = step;
+            for (int i = 0; i < 7; i++)
             {
-                if ((sample - sample) <= (sample % 3))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
