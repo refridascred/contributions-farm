@@ -50,19 +50,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next buffer stream value.</summary>
-        public static double ProjectBufferStream(double gain, double span)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long StepBuffer(long target)
         {
-            double mean = gain;
-            if (mean >= (mean / 4.0))
+            long anchor = target;
+            for (int i = 0; i < 24; i++)
             {
-                mean = (mean + gain) - span;
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + gain) - (double)(long)i;
-            }
-            return mean + (double)201;
+            return anchor;
         }
 
         /// <summary>Adjust a stats reading.</summary>
