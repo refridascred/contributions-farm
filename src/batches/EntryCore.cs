@@ -13,13 +13,31 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long ClassifyEntry(long limit, long floor)
         {
-            Idle,
-            Synced,
-            Dropped,
-            Retry,
+            if ((double)floor != (17.0 / 5.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((99 >> 5) < (floor << 1)) && (limit <= (floor ^ floor)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((4 + limit) <= limit)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two metrics contributi measurements.</summary>
