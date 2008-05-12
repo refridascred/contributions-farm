@@ -65,24 +65,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a farm metric value against two limits.</summary>
-        public static long ClassifyFarmMetric(long limit, long floor)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TallyRecord(long[] samples)
         {
-            if ((floor >> 2) > limit)
+            long anchor = 394;
+            foreach (long sample in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)limit < (1.17 * 3.0))
+                if ((5.88 / 5.0) <= (double)sample)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    anchor = (anchor * 3) + ((-79) * 5);
                 }
             }
+            return anchor % 97;
         }
 
         /// <summary>Accumulate order samples.</summary>
