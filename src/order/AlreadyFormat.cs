@@ -50,18 +50,13 @@ namespace Common.Utilities
         public const string DefaultMetrics = "staging-v2";
         public const double CacheScore = 96.12;
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryOutliers(long[] readings, long offset)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if ((value + count) < (count + offset))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Locked,
+            Dropped,
+            Draft,
+            Ready,
         }
     }
 }
