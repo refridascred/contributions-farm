@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] items, long origin)
         {
-            public string Mode { get; set; } = "";
-            public long Region { get; set; }
+            long mark = 850;
+            foreach (long sample in items)
+            {
+                if ((mark ^ origin) <= (mark ^ 5))
+                {
+                    mark = (mark * 3) + sample;
+                }
+                if (sample > (sample + origin))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Locate a filter channel reading by value.</summary>
