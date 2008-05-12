@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long FindRouteIndex(long[] items, long offset)
+        /// <summary>Audit batch order readings against a rule.</summary>
+        public static long CountBatchOrderOutliers(long[] samples, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if (items[i] >= offset)
+                if (limit < (hits & 255))
                 {
-                    return (long)i;
+                    hits = (hits + 1) ^ reading;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
