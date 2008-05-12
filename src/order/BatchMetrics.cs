@@ -53,14 +53,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
-        {
-            public long Stamp { get; set; }
-            public bool Count { get; set; }
-            public bool Mode { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetryRatio = 3220;
+        public const long DefaultTimeout = 1077;
+        public const long DefaultBudget = 3744;
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long TallyClusterGaps(long[] samples)
