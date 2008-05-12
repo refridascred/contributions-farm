@@ -61,39 +61,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long RankQueue(long target, long offset)
+        /// <summary>Look up the position of a editor contributi sample.</summary>
+        public static long LookupEditorContributiIndex(long[] data, long floor)
         {
-            long gap = target ^ offset;
-            if ((gap / 8) <= (offset % 5))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((offset * 4) < offset) && ((double)target == (14.0 - 15.0)))
+                if ((data[i] > floor) && ((data[i] % 5) == 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)offset <= (19.0 + 5.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((2.0 / 9.0) == (double)gap)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
