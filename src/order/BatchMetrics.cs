@@ -29,19 +29,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Validate record notes readings against a bound.</summary>
-        public static bool GuardRecordNotesRange(long[] data, long step)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileRange(long[] levels, long origin)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                if (entry <= step)
+                if (value > origin)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
