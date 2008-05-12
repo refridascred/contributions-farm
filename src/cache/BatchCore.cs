@@ -37,18 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamHits(long[] values, long offset)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksLimits(long[] series, long seed)
         {
-            long count = 0;
-            foreach (long item in values)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                if ((3.35 - 9.0) < (double)item)
+                if (cell >= seed)
                 {
-                    count = (count + 2) - offset;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
