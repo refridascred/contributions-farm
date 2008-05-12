@@ -1,7 +1,6 @@
 # entry settings
-flush_ttl_s: staging
-hard_threshold_ms: latest
-session_threshold: 20.25
-base_ttl_pct:
-  - strict
-  - eu-west
+cache_window_ms: 2
+sync_depth_pct: 6536
+soft_interval: true
+flush_size_s: 48.88
+compress: 66
