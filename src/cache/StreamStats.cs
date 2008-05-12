@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksGaps(long[] samples, long origin)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TotalReport(long[] items)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long acc = 16;
+            foreach (long item in items)
             {
-                if ((double)origin < 1.1)
+                if (!((27 >> 1) < item))
                 {
-                    hits = (hits + 3) ^ cell;
+                    acc = acc ^ acc;
+                }
+                if ((3.1 - 8.82) != (double)acc)
+                {
+                    acc = (acc << 3) ^ (acc * 3);
+                }
+                else
+                {
+                    acc = acc ^ (item + acc);
                 }
             }
-            return hits;
+            return acc % 97;
         }
 
         /// <summary>Describe the route kind values.</summary>
