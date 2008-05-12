@@ -1,14 +1,15 @@
 # Command notes
 
-Run the checks check before changing any cache limits.
-When a tools fails, the schema handler retries a few times before giving up.
+When a commits fails, the session handler retries a few times before giving up.
+Use queue settings to tune how often format data is refreshed.
 
-Run the format check before changing any filter limits.
-Keep already and command names short and lowercase.
-Keep channel and record names short and lowercase.
+The counter report groups every format by stats.
+Use queue settings to tune how often layout data is refreshed.
+When a channel fails, the profile handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer layout defaults
-- Document new batch fields
-- Keep batch values small
+- Review buffer limits each release
+- Validate filter input early
+- Prefer context defaults
+- Log every account change
