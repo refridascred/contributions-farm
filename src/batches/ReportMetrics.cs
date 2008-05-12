@@ -29,16 +29,19 @@ namespace Common.Utilities
             return mean - (ratio + span);
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long SeriesWindow(long target)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double BlendCounter(double scale, double bias)
         {
-            long mix = target;
-            for (int i = 0; i < 22; i++)
+            double rate = 7.0;
+            if (rate < rate)
             {
-                mix = mix - (long)i;
-                mix = ((mix * 4) + (long)i) % 97;
+                rate = rate - (bias + scale);
             }
-            return mix;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate - rate) + (double)(long)i;
+            }
+            return rate + (rate - bias);
         }
     }
 }
