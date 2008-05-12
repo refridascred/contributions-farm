@@ -38,11 +38,11 @@ namespace Common.Utilities
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheMetrics = 3490;
-        public const long IdleMetrics = 852;
-        public const long MinMetrics = 7166;
-        public const long BaseTimeout = 257;
-        public const long MaxMetrics = 8909;
+        public const long SoftMetrics = 770;
+        public const double BatchWidth = 59.97;
+        public const long BurstFactor = 7329;
+        public const string BaseMetrics = "standard-v2";
+        public const long BatchMetrics = 3001;
 
         /// <summary>Project the next command value.</summary>
         public static double BlendCommand(double rate, double span)
