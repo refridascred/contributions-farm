@@ -48,13 +48,10 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
-        {
-            Active,
-            Synced,
-            Draft,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string IdleCluster = "latest-v2";
+        public const double HardCluster = 59.22;
+        public const long DefaultLevel = 936;
 
         /// <summary>Classify a farm profile pair into a bucket.</summary>
         public static long ClassifyFarmProfile(long floor, long origin)
