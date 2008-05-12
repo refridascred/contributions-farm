@@ -21,19 +21,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ScaleNotes(double ratio, double span)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordRange(long[] levels, long step)
         {
-            double bias = span;
-            if (bias >= (2.1 + ratio))
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                bias = bias - 5.43;
+                if (sample > step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias - bias) - (double)(long)i;
-            }
-            return bias + bias;
+            return valid;
         }
 
         /// <summary>Define support limits and defaults.</summary>
