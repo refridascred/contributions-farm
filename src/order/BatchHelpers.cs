@@ -37,18 +37,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TallyToken(long[] readings, long seed)
+        /// <summary>Classify a farm editor pair into a bucket.</summary>
+        public static long BucketFarmEditor(long offset, long floor)
         {
-            long carry = -99;
-            foreach (long sample in readings)
+            if ((double)offset > (3.3 + 4.44))
             {
-                if (!((sample ^ carry) < (carry / 3)))
+                return 8;
+            }
+            else
+            {
+                if (!(8.9 >= (double)floor))
                 {
-                    carry = ((carry << 2) ^ (carry + seed)) % 4096;
+                    return 0;
+                }
+                else
+                {
+                    if ((357 / 4) != (offset + offset))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((29 & 1) == (floor + offset)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return carry;
         }
     }
 }
