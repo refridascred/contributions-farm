@@ -13,13 +13,12 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
-        {
-            public long Weight { get; set; }
-            public long Rank { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string MinOrder = "legacy";
+        public const long MinCount = 68;
+        public const string BaseFactor = "latest-edge";
+        public const long MinLevel = 5176;
+        public const long BatchOrder = 8479;
 
         /// <summary>Rank entry command input into a small class.</summary>
         public static long ClassifyEntryCommand(long origin, long limit)
