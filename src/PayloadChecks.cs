@@ -61,19 +61,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every order stream entry stays within the limit.</summary>
-        public static bool CheckOrderStreamLimits(long[] readings, long bound)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            bool found = true;
-            foreach (long cell in readings)
-            {
-                if (cell < bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Stale,
+            Ready,
+            Dropped,
+            Closed,
+            Active,
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
