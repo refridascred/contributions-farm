@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Fold a list of filter route readings.</summary>
+        public static long WeighFilterRoute(long[] levels)
         {
-            Active,
-            Paused,
-            Pending,
+            long mark = 96;
+            foreach (long cell in levels)
+            {
+                mark = ((mark << 3) ^ (mark >> 2)) - cell;
+            }
+            return mark;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
