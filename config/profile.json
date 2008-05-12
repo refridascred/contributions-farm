@@ -1,11 +1,5 @@
 {
-  "audit": "legacy",
-  "enabled": 36,
-  "readonly": {
-    "githubfarm_window": "green",
-    "retry_ttl_count": "local",
-    "already_delay": [168, 453, 88, 283],
-    "verbose": "edge",
-    "max_size_s": "strict"
-  }
+  "sync_interval_count": "local",
+  "retry_timeout_ms": 1038,
+  "sync_limit": true
 }
