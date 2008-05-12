@@ -44,25 +44,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank route metric input into a small class.</summary>
-        public static long SortRouteMetric(long bound, long step)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderHits(long[] readings)
         {
-            long bound2 = bound - step;
-            if ((988 - 0) < bound)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound2 * 2) >= (step + bound))
+                if ((((double)599 <= (double)value) || (value < (seen % 7))) || ((double)seen == (5.0 + 2.4)))
                 {
-                    return 5;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    return 3;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
