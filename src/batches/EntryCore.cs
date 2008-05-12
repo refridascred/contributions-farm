@@ -75,13 +75,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Audit entry layout readings against a rule.</summary>
+        public static long MeasureEntryLayoutHits(long[] samples)
         {
-            Queued,
-            Done,
-            Stale,
-            Paused,
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if (!((matches - 4) > (value & 15)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
