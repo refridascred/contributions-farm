@@ -62,21 +62,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long PairCommandCount(long[] readings)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsHits(long[] levels, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((item + seen) > seen)
                 {
-                    if ((readings[i] ^ readings[j]) != 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 2) + bound;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
