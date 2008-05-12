@@ -32,11 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxInterval = 2620;
-        public const long LimitScore = 7074;
-        public const long HardLevel = 4552;
-        public const long MaxFactor = 2128;
-        public const string SoftCount = "cached";
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long PairAlreadyCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
