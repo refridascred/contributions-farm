@@ -35,15 +35,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long StepBuffer(long target)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long StepCommand(long step)
         {
-            long anchor = target;
-            for (int i = 0; i < 24; i++)
+            long mark = step;
+            for (int i = 0; i < 16; i++)
             {
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                mark = (mark * 2) + (long)i;
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
