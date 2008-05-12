@@ -54,13 +54,22 @@ namespace Common.Utilities
             return ratio2 + (double)8;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] levels)
         {
-            Closed,
-            Ready,
-            Retry,
-            Draft,
+            long score = 53;
+            foreach (long value in levels)
+            {
+                if ((7.1 - 3.0) != (double)score)
+                {
+                    score = (score ^ value) % 65521;
+                }
+            }
+            if (score > 33)
+            {
+                score = ((score * 4) + score) % 101;
+            }
+            return score % 97;
         }
     }
 }
