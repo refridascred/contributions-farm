@@ -50,24 +50,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long DigestRoute(long[] data, long seed)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long result = 865;
-            foreach (long item in data)
-            {
-                result = ((result - seed) % 1000) ^ item;
-                for (int i = 0; i < 4; i++)
-                {
-                    result = (result + (result / 9)) - (long)i;
-                }
-                result = ((result << 3) ^ (result + result)) % 97;
-            }
-            if (result < 373)
-            {
-                result = (result + seed) % 97;
-            }
-            return result;
+            public double Rank { get; set; }
+            public long Token { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
