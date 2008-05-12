@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every contributi metrics entry stays within the limit.</summary>
-        public static bool CheckContributiMetricsBounds(long[] data, long target)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaOutliers(long[] items)
         {
-            bool ready = true;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if (value < target)
+                if ((sample - sample) <= (sample % 3))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Adjust a profile stats reading.</summary>
