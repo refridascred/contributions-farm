@@ -1,17 +1,13 @@
 # githubfarm settings
-cluster_limit: 1024
-cache_depth_count:
-  - local
-  - standard
+flush_capacity_pct: true
+base_limit:
+  - 431
+  - 50
+  - 202
+cache_window:
   - primary
-  - local
-idle_size_count: 62.55
-channel_interval:
-  burst_limit_ms: 69
-  filter_capacity: strict
-  soft_window_count: 4409
-  session_capacity:
-    command_limit: true
-    soft_ttl_count: green
-    notes_interval: 91.28
-  strict: strict
+  - edge
+  - primary
+  - open
+enabled: 31.77
+min_threshold_pct: false
