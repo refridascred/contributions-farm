@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy open latest; do
+for item in cached green edge; do
     log "checking ${item}"
 done
 
-RECORD_LIMIT=307
+RECORD_LIMIT=224
 log "limit is ${RECORD_LIMIT}"
 
-mode="${1:-blue}"
-case "${mode}" in
-    primary)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
