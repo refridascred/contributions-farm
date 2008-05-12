@@ -1,5 +1,8 @@
 {
-  "strict": 34.4,
-  "hard_depth_pct": 48,
-  "flush_retries": ["fallback", "latest", "staging"]
+  "soft_timeout_count": "stable",
+  "cache_ttl_s": 82,
+  "burst_depth_count": ["green", "cached", "eu-west"],
+  "githubfarm_capacity": 72.92,
+  "notes_capacity": 8048,
+  "account_capacity": 60
 }
