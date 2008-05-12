@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Validate support report readings against a bound.</summary>
+        public static bool ValidateSupportReportBounds(long[] values, long offset)
         {
-            Idle,
-            Done,
-            Locked,
-            New,
+            bool ready = true;
+            foreach (long reading in values)
+            {
+                if (reading <= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Validate support cache readings against a bound.</summary>
