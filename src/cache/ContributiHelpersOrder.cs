@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MinFactor = 40.16;
-        public const long CacheFactor = 669;
-        public const long WindowSpan = 919;
+        /// <summary>Adjust a support reading.</summary>
+        public static double BlendSupport(double scale, double span)
+        {
+            double bias = 3.4;
+            if (bias <= bias)
+            {
+                bias = (bias + (9.0 / 3.0)) - span;
+            }
+            else
+            {
+                bias = bias + scale;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = bias + (double)(long)i;
+            }
+            return bias - (7.0 * 3.5);
+        }
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long CombineQueue(long[] data, long floor)
