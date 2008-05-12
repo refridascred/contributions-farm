@@ -1,10 +1,6 @@
-id,ratio,active,owner,score
-1,770,85.34,edge,170
-2,90.96,cached,16.28,159
-3,blue,565,657,staging
-4,primary,6.1,20.57,916
-5,20.24,8.43,417,478
-6,973,45.95,943,3.44
-7,771,blue,green,943
-8,26,29,86.72,240
-9,195,373,554,stable
+id,state,weight,level
+1,11.86,44.99,green
+2,eu-west,805,507
+3,121,stable,stable
+4,31.41,936,open
+5,edge,81,61.61
