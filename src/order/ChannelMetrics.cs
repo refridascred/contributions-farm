@@ -12,21 +12,32 @@ namespace Common.Utilities
             return weight - (bias + gain);
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long OverlapCommandCount(long[] samples)
+        /// <summary>Classify a context window pair into a bucket.</summary>
+        public static long ClassifyContextWindow(long target, long target2)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long prev = target ^ target2;
+            if (!((9.6 * 2.8) <= (double)6))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((target + target2) == ((-1) & 31))
                 {
-                    if ((samples[i] + samples[j]) != 15)
+                    return 6;
+                }
+                else
+                {
+                    if ((prev / 8) != (target2 - target2))
                     {
-                        hits = hits + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
