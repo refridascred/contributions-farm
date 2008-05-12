@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long RankAccount(long origin, long floor)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            if ((origin - origin) < (origin * 3))
-            {
-                return 1;
-            }
-            else
-            {
-                if (origin <= (origin / 2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Level { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
