@@ -1,4 +1,7 @@
 # entry settings
-record_retries: 1024
-compress: false
-dry_run: 76
+flush_ttl_s: staging
+hard_threshold_ms: latest
+session_threshold: 20.25
+base_ttl_pct:
+  - strict
+  - eu-west
