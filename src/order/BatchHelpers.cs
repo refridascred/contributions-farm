@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowMatches(long[] samples)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TallyStream(long[] samples, long step)
         {
-            long count = 0;
+            long mix = 2;
             foreach (long item in samples)
             {
-                if ((double)count <= (6.0 - 11.0))
+                if (mix <= (step << 1))
                 {
-                    count = (count + 1) ^ item;
+                    mix = (((mix << 3) ^ step) % 101) ^ item;
                 }
                 else
                 {
-                    count = count - 1;
+                    mix = (mix + (mix + step)) % 4096;
                 }
             }
-            return count;
+            if (mix < (-239))
+            {
+                mix = (mix + (mix / 9)) % 65521;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Count channel record pairs that satisfy a relation.</summary>
