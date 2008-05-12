@@ -34,19 +34,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two stream editor measurements.</summary>
-        public static double SmoothStreamEditor(double bias, double offset)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            double load = bias;
-            if (load < (load * 3.8))
-            {
-                load = load + offset;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - load) - (double)(long)i;
-            }
-            return load + (bias - 0.38);
+            Failed,
+            Done,
+            Queued,
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
