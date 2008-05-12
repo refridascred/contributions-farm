@@ -31,11 +31,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string HardBudget = "open-1";
-        public const long MaxRatio = 688;
-        public const long BurstWindow = 8577;
-        public const string HardSpan = "latest";
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LocatePayloadIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > floor) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
         public static double ProjectMetrics(double bias, double offset)
