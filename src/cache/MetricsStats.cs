@@ -32,16 +32,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the farm filter series from a seed.</summary>
-        public static long DeriveFarmFilter(long origin)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LocateMetricsIndex(long[] readings, long floor)
         {
-            long anchor = origin;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = (anchor + (anchor % 64)) % 255;
-                anchor = ((anchor * 3) + (long)i) % 97;
+                if ((readings[i] == floor) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
