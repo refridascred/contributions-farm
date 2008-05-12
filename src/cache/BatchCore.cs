@@ -31,17 +31,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LocatePayloadIndex(long[] readings, long floor)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long ScoreCommits(long[] values, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = -748;
+            foreach (long cell in values)
             {
-                if ((readings[i] > floor) && ((readings[i] % 3) != 0))
+                if ((mark + 931) > (offset / 8))
                 {
-                    return (long)i;
+                    mark = (mark - cell) % 4096;
                 }
             }
-            return -1;
+            return mark % 65521;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
