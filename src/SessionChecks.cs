@@ -27,25 +27,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long SortStats(long offset, long limit)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long edge = offset - limit;
-            if ((double)edge != (double)limit)
-            {
-                return 8;
-            }
-            else
-            {
-                if (limit <= (edge & 1))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Done,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Hold a already record.</summary>
