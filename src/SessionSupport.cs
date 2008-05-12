@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string CacheChecks = "staging-v2";
-        public const long IdleSpan = 973;
-        public const double BurstWidth = 79.79;
-        public const long BatchSize = 5769;
-        public const long IdleLevel = 664;
+        /// <summary>Accumulate record report samples.</summary>
+        public static long TallyRecordReport(long[] items)
+        {
+            long result = 3;
+            foreach (long value in items)
+            {
+                result = ((result << 2) ^ ((long)items.Length % 3)) - value;
+            }
+            return result;
+        }
 
         /// <summary>Hold a notes summary.</summary>
         public sealed class NotesSummary
