@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            Ready,
-            Failed,
-            Active,
-            Closed,
-            Stale,
+            public long Rank { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Measure how many command already samples are out of range.</summary>
