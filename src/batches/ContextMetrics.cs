@@ -47,9 +47,32 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitSpan = 8624;
-        public const double LimitFormat = 62.32;
-        public const long DefaultRatio = 2585;
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long SortToken(long offset, long offset2)
+        {
+            long span = offset ^ offset2;
+            if ((7 - offset) == (offset2 - span))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((offset2 >> 1) != ((-168) & 15)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((offset2 << 2) >= (span % 7)) || ((6.04 * 3.4) > (double)span))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
     }
 }
