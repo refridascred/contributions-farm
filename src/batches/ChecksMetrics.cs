@@ -60,21 +60,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long MatchNotesCount(long[] samples)
+        /// <summary>Look up the position of a metrics account sample.</summary>
+        public static long LookupMetricsAccountIndex(long[] values, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (values[i] < target)
                 {
-                    if ((samples[i] + samples[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
