@@ -63,32 +63,19 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Grade a window route value against two limits.</summary>
-        public static long ClassifyWindowRoute(long origin, long seed)
+        /// <summary>Check that every account checks entry stays within the limit.</summary>
+        public static bool CheckAccountChecksRange(long[] data, long bound)
         {
-            long cur = origin ^ seed;
-            if (origin >= (cur << 1))
+            bool ok = true;
+            foreach (long value in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)seed > (8.0 * 5.0)) || ((cur % 64) >= origin))
+                if (value != bound)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)cur > 1.2)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
