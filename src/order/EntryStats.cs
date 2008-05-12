@@ -50,12 +50,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            Pending,
-            Retry,
-            Paused,
+            Locked,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
