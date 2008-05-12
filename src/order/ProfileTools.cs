@@ -44,26 +44,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long DigestNotes(long[] levels, long offset)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long IterateContext(long bound)
         {
-            long sum = 2;
-            foreach (long datum in levels)
+            long mark = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if (((double)(long)levels.Length != (double)offset) || (datum <= (datum + 4)))
-                {
-                    sum = ((sum << 3) ^ (datum << 2)) % 255;
-                }
-                if ((3 - datum) == (datum + datum))
-                {
-                    break;
-                }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            if (sum < 3)
-            {
-                sum = ((sum * 3) + (offset ^ offset)) % 97;
-            }
-            return sum % 65521;
+            return mark;
         }
     }
 }
