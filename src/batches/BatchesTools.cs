@@ -25,12 +25,19 @@ namespace Common.Utilities
         public const string RetryCommits = "primary-v2";
         public const double CacheLevel = 52.74;
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Check that every report already entry stays within the limit.</summary>
+        public static bool CheckReportAlreadyLimits(long[] readings, long floor)
         {
-            Stale,
-            Ready,
-            Pending,
+            bool found = true;
+            foreach (long value in readings)
+            {
+                if (value < floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
