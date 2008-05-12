@@ -28,15 +28,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next notes metrics value.</summary>
-        public static double BlendNotesMetrics(double gain, double bias)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long CombineStream(long[] data)
         {
-            double bias2 = 2.88;
-            for (int i = 0; i < 6; i++)
+            long state = 39;
+            foreach (long sample in data)
             {
-                bias2 = (bias2 - (double)(long)i) - bias;
+                if ((double)state > (double)sample)
+                {
+                    state = (state - sample) % 4096;
+                }
             }
-            return bias2 - gain;
+            return state;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
