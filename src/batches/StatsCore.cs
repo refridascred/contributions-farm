@@ -42,21 +42,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long OverlapReportCount(long[] readings)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowGaps(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!(((entry ^ (long)readings.Length) != (38 + entry)) && ((count >> 4) < entry)))
                 {
-                    if ((readings[i] ^ readings[j]) != 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define command limits and defaults.</summary>
