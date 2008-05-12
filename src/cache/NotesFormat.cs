@@ -11,17 +11,14 @@ namespace Common.Utilities
         public const double DefaultFactor = 32.41;
         public const long CacheWidth = 5883;
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LookupGithubfarmIndex(long[] items, long floor)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > floor) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Ready,
+            Dropped,
+            Failed,
+            Active,
         }
 
         /// <summary>Match up checks samples.</summary>
