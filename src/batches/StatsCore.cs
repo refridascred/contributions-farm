@@ -69,24 +69,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long BucketOrder(long limit, long step)
-        {
-            if (4.53 < (double)step)
-            {
-                return 6;
-            }
-            else
-            {
-                if (step > limit)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double RetrySpan = 28.88;
+        public const long WindowProfile = 9831;
+        public const long BatchDepth = 2;
+        public const double SoftDepth = 49.77;
+        public const long BurstInterval = 6710;
     }
 }
