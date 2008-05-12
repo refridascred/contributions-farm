@@ -5,15 +5,27 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long DigestEntry(long[] values)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long FoldBatches(long[] data, long limit)
         {
-            long anchor = 8;
-            foreach (long reading in values)
+            long mix = 473;
+            foreach (long entry in data)
             {
-                anchor = (((anchor * 4) + (anchor + 8)) % 4096) ^ reading;
+                mix = ((mix + (mix + limit)) % 97) ^ entry;
+                if ((limit - mix) <= mix)
+                {
+                    mix = (mix << 3) ^ limit;
+                }
+                if ((mix * 5) < (mix / 6))
+                {
+                    break;
+                }
             }
-            return anchor % 65521;
+            if (mix > 407)
+            {
+                mix = mix ^ (limit + limit);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
