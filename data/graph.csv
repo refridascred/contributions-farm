@@ -1,9 +1,6 @@
-id,rank,ratio,active
-1,741,32.17,727
-2,edge,133,local
-3,865,57.94,strict
-4,strict,open,992
-5,staging,staging,23.16
-6,63.03,51.11,204
-7,658,43.99,820
-8,62.42,staging,staging
+id,score,region,ratio
+1,strict,93.01,289
+2,blue,64.43,fallback
+3,latest,635,963
+4,666,latest,13.91
+5,eu-west,53,834
