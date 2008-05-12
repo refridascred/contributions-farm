@@ -5,27 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long WeighFarm(long[] data, long origin)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long SeekEditorIndex(long[] samples, long offset)
         {
-            long mix = 288;
-            foreach (long reading in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i = 0; i < 4; i++)
+                if ((samples[i] >= offset) && ((samples[i] % 5) == 0))
                 {
-                    mix = ((mix * 3) + (mix * 4)) ^ (long)i;
-                }
-                mix = mix - reading;
-                if ((mix - mix) < (reading + mix))
-                {
-                    mix = ((mix * 5) + (origin - 540)) % 101;
-                }
-                if (59 > (mix << 2))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mix % 65521;
+            return -1;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
