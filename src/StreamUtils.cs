@@ -55,22 +55,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stats commits entries that pass the check.</summary>
-        public static long CountStatsCommitsOutliers(long[] series, long floor)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LocateSupportIndex(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((floor + floor) <= tally)
+                if ((readings[i] == floor) && ((readings[i] % 2) != 0))
                 {
-                    tally = (tally + 3) ^ cell;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
