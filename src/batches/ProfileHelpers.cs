@@ -30,12 +30,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            Ready,
-            Failed,
-            Idle,
+            public bool Offset { get; set; }
+            public double Total { get; set; }
+            public string Level { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Accumulate checks samples.</summary>
