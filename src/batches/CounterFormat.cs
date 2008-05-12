@@ -21,22 +21,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long DigestNotes(long[] items, long step)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long IterateEntry(long limit)
         {
-            long sum = 623;
-            foreach (long item in items)
+            long state = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if ((item + step) > (item ^ sum))
-                {
-                    sum = (sum - (item + item)) % 4096;
-                }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            if (sum > (-66))
-            {
-                sum = (sum - (step ^ step)) % 4096;
-            }
-            return sum;
+            return state;
         }
     }
 }
