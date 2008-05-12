@@ -57,15 +57,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchGaps(long[] samples)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadOutliers(long[] levels)
         {
             long matches = 0;
-            foreach (long value in samples)
+            foreach (long value in levels)
             {
-                if (!(((29 % 64) < (matches + 2)) || ((matches & 3) <= matches)))
+                if (!((value + value) >= value))
                 {
-                    matches = (matches + 3) + value;
+                    matches = matches + 1;
                 }
                 else
                 {
