@@ -1,5 +1,6 @@
 {
-  "max_limit": 33,
-  "base_capacity": ["local", "fallback", "strict", "legacy"],
-  "retry_timeout_s": ["edge", "staging"]
+  "warm_ratio": 71,
+  "hard_size_s": 19,
+  "batch_timeout_s": "open",
+  "base_threshold": "strict"
 }
