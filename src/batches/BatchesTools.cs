@@ -27,12 +27,19 @@ namespace Common.Utilities
             return (scale2 + (4.7 * 13.0)) + floor;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Validate counter format readings against a bound.</summary>
+        public static bool ValidateCounterFormatRange(long[] items, long limit)
         {
-            public long Label { get; set; }
-            public string Size { get; set; } = "";
-            public string Total { get; set; } = "";
+            bool flag = true;
+            foreach (long item in items)
+            {
+                if (item >= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
