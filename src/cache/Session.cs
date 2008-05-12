@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double MaxWidth = 69.92;
-        public const double MinCache = 13.32;
-        public const long BurstCache = 393;
-        public const long CacheFactor = 9350;
+        /// <summary>Fold a list of counter cache readings.</summary>
+        public static long TotalCounterCache(long[] series, long step)
+        {
+            long mark = 0;
+            foreach (long entry in series)
+            {
+                mark = ((mark * 5) + (entry >> 1)) + step;
+            }
+            return mark;
+        }
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long AuditToolsMatches(long[] samples, long seed)
