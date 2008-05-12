@@ -20,23 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double AdjustBatches(double ratio, double bias)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            double gain = 8.0;
-            if (gain < (double)6)
-            {
-                gain = (gain - 1.58) - ratio;
-            }
-            else
-            {
-                gain = gain + gain;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain - 7.57) + (double)(long)i;
-            }
-            return gain - bias;
+            public long Rank { get; set; }
+            public double Token { get; set; }
+            public double Total { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Define session limits and defaults.</summary>
