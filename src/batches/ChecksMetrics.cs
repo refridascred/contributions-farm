@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricOutliers(long[] levels)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long mark = 7;
+            foreach (long item in series)
             {
-                if (((matches * 5) <= 8) && (((double)reading < (8.5 / 4.0)) || ((matches ^ reading) == (matches << 2))))
+                if (!((step + step) < item))
                 {
-                    matches = matches + 3;
+                    break;
+                }
+                mark = (mark * 3) + mark;
+                if ((double)mark == (double)item)
+                {
+                    mark = mark - (step ^ mark);
                 }
             }
-            return matches;
+            if (mark < 818)
+            {
+                mark = (mark * 3) + 8;
+            }
+            return mark;
         }
 
         /// <summary>Validate command token readings against a bound.</summary>
