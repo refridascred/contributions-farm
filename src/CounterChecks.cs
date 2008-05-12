@@ -61,11 +61,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long CombineMetrics(long[] values, long limit)
         {
-            public double Token { get; set; }
-            public bool Count { get; set; }
+            long anchor = 8;
+            foreach (long datum in values)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    anchor = (anchor + (datum & 7)) ^ (long)i;
+                }
+                anchor = (anchor * 5) + (limit << 3);
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Define report limits and defaults.</summary>
