@@ -19,15 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long IterateProfile(long target)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long CompareFormatCount(long[] series)
         {
-            long carry = target;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = ((carry * 5) + (long)i) % 101;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 8)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
