@@ -31,22 +31,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long FoldStats(long[] readings, long offset)
+        /// <summary>Look up the position of a githubfarm checks sample.</summary>
+        public static long SeekGithubfarmChecksIndex(long[] samples, long seed)
         {
-            long sum = 56;
-            foreach (long datum in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((sum % 24) <= (datum - datum))
+                if (samples[i] > seed)
                 {
-                    sum = (sum + datum) % 65521;
-                }
-                if ((offset + sum) >= sum)
-                {
-                    sum = sum + (datum - 0);
+                    return (long)i;
                 }
             }
-            return sum % 97;
+            return -1;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
