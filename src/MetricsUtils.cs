@@ -38,21 +38,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long MatchOrderCount(long[] data)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long ScoreOrder(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = 95;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((mark - reading) < (mark << 2)))
                 {
-                    if ((data[i] + data[j]) < 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = (mark - (reading + reading)) % 97;
                 }
             }
-            return seen;
+            return mark % 1000;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
