@@ -32,25 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long SeriesBatches(long floor)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TallyCache(long[] levels, long target)
         {
-            long mark = floor;
-            for (int i = 0; i < 13; i++)
+            long state = 149;
+            foreach (long item in levels)
             {
-                mark = mark ^ (mark - mark);
-                for (int i2 = 0; i2 < 11; i2++)
+                if (((item & 127) <= (item >> 3)) || ((974 % 10) != (state ^ 98)))
                 {
-                    long delta = (floor >> 2) >> 5;
-                    mark = ((mark << 2) ^ (mark + delta)) ^ (long)i2;
+                    state = ((state ^ 946) % 97) + target;
                 }
-                for (int i3 = 0; i3 < 8; i3++)
+                else
                 {
-                    mark = (((mark << 3) ^ (floor * 3)) % 1000) + (long)i3;
+                    state = ((state * 3) + (item / 2)) % 4096;
                 }
-                mark = ((mark * 3) + (long)i) % 101;
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Project the next buffer stream value.</summary>
