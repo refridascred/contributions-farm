@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultMetric = 2822;
-        public const long StepCount = 8779;
-        public const string SoftScore = "standard-edge";
-        public const double DefaultWidth = 75.42;
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelHits(long[] levels)
+        {
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if (item < (item + item))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate schema samples.</summary>
         public static long TallySchema(long[] samples)
