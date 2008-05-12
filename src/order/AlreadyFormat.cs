@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterGaps(long[] series, long target)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long DigestBatches(long[] items)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long state = 631;
+            foreach (long value in items)
             {
-                if ((target % 60) > (tally & 255))
+                if ((state ^ value) != (value ^ value))
                 {
-                    tally = (tally + 2) + cell;
+                    state = state ^ value;
                 }
             }
-            return tally;
+            if (state < 682)
+            {
+                state = ((state << 3) ^ (state - 76)) % 255;
+            }
+            return state % 65521;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
