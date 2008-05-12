@@ -49,22 +49,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long DigestRecord(long[] data, long origin)
+        /// <summary>Match up token record samples.</summary>
+        public static long MatchTokenRecordCount(long[] readings)
         {
-            long mark = 496;
-            foreach (long reading in data)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (mark >= (reading ^ 3))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mark = (mark ^ reading) % 97;
+                    if ((readings[i] - readings[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (mark < 972)
-            {
-                mark = mark - origin;
-            }
-            return mark;
+            return count;
         }
     }
 }
