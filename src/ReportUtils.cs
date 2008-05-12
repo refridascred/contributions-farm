@@ -32,20 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] levels)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowMatches(long[] items, long offset)
         {
-            long carry = 646;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long reading in items)
             {
-                carry = (carry + (value & 127)) % 101;
-                carry = (carry << 3) ^ (value >> 3);
-                if (carry <= (value >> 2))
+                if ((offset >> 1) < count)
                 {
-                    carry = (carry << 2) ^ (value & 15);
+                    count = (count + 3) ^ reading;
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Accumulate stats samples.</summary>
