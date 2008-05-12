@@ -23,20 +23,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorBounds(long[] values, long target)
-        {
-            bool found = true;
-            foreach (long entry in values)
-            {
-                if (entry != target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstFactor = 7686;
+        public const long CacheStats = 2774;
+        public const long SoftStats = 3983;
 
         /// <summary>Project the next checks order value.</summary>
         public static double BlendChecksOrder(double bias, double floor)
