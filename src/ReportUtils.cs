@@ -46,22 +46,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit filter window readings against a rule.</summary>
-        public static long CountFilterWindowGaps(long[] levels, long offset)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if (((-561) + offset) > offset)
-                {
-                    matches = (matches + 2) ^ reading;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Mode { get; set; }
+            public double Count { get; set; }
+            public string Token { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a order info.</summary>
