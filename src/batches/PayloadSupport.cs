@@ -25,11 +25,10 @@ namespace Common.Utilities
         public const string CacheScore = "local-edge";
         public const long BaseBatches = 3605;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BatchTimeout = "latest-1";
-        public const long SoftScore = 37;
-        public const long BurstBudget = 9546;
-        public const long DefaultToken = 3440;
-        public const string SoftCount = "standard-1";
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchTimeout = 3878;
+        public const long LimitSession = 6084;
+        public const long BurstSession = 8700;
+        public const string StepTimeout = "staging-edge";
     }
 }
