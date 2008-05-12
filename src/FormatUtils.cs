@@ -53,19 +53,31 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordBounds(long[] readings, long floor)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long GradeCommits(long bound, long step)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            if ((step / 5) != (bound << 1))
             {
-                if (datum >= floor)
+                return 2;
+            }
+            else
+            {
+                if ((double)bound == (11.0 + 19.0))
                 {
-                    ok = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (!(step > (bound * 4)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
