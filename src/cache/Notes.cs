@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long FoldCache(long[] samples)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksMatches(long[] data)
         {
-            long carry = 825;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                carry = ((carry * 4) + entry) % 97;
-                carry = ((carry * 3) + carry) % 255;
-                carry = ((carry * 4) + entry) % 4096;
+                if ((cell > (520 << 3)) || (cell >= ((-626) + cell)))
+                {
+                    seen = seen + 3;
+                }
             }
-            if (carry > 0)
-            {
-                carry = (carry << 3) ^ (carry ^ carry);
-            }
-            return carry % 4096;
+            return seen;
         }
 
         /// <summary>Digest a series of window entries.</summary>
