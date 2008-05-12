@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double MaxRoute = 80.37;
-        public const long DefaultRoute = 2343;
-        public const long CacheRatio = 5748;
-        public const string CacheRoute = "fallback-v2";
+        /// <summary>Match up entry cache samples.</summary>
+        public static long PairEntryCacheCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long TallyMetricMatches(long[] items)
