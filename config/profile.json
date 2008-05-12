@@ -1,7 +1,5 @@
 {
-  "enabled": 52.82,
-  "dry_run": 7107,
-  "persist": "staging",
-  "verbose": 30,
-  "idle_threshold": "local"
+  "readonly": "standard",
+  "commits_threshold": "eu-west",
+  "burst_size": ["fallback", "local"]
 }
