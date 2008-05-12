@@ -49,25 +49,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long RankStats(long offset, long seed)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long edge = offset + seed;
-            if ((85 >= (seed ^ seed)) || ((edge % 64) > (90 % 2)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((double)offset <= (double)edge) || (seed >= (edge << 3)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Queued,
+            Done,
+            Stale,
+            Paused,
         }
     }
 }
