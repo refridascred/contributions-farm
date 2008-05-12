@@ -1,7 +1,19 @@
 {
-  "poll_interval": 5617,
-  "burst_limit_count": 24,
-  "format_timeout": [49, 427],
-  "flush_delay_pct": 40.4,
-  "farm_interval": ["local", "cached"]
+  "dry_run": "open",
+  "default_capacity": "legacy",
+  "entry_ttl": 5125,
+  "poll_depth_pct": {
+    "strict": true,
+    "cache_delay_s": true,
+    "enabled": 30,
+    "persist": {
+      "metrics_ttl": 1024,
+      "compress": 72.96,
+      "base_ratio_count": ["standard", "edge", "green"],
+      "strict": 60
+    },
+    "already_capacity": "cached"
+  },
+  "poll_threshold_ms": 383,
+  "base_ttl_s": "local"
 }
