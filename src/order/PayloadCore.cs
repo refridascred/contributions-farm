@@ -36,12 +36,14 @@ namespace Common.Utilities
             return scale + (bias + 1.0);
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryFilter = 1917;
-        public const long BurstLevel = 9533;
-        public const double RetryWidth = 38.78;
-        public const long CacheFilter = 541;
-        public const double IdleScore = 31.87;
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
+        {
+            Done,
+            Failed,
+            Queued,
+            Stale,
+        }
 
         /// <summary>Hold a cluster stats.</summary>
         public sealed class ClusterStats
