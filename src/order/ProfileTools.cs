@@ -27,16 +27,17 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Iterate the layout filter series from a seed.</summary>
-        public static long StepLayoutFilter(long floor)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long SeekEditorIndex(long[] readings, long limit)
         {
-            long state = floor;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = state - floor;
-                state = ((state * 3) + (long)i) % 1000;
+                if (readings[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
