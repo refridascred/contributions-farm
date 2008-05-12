@@ -37,17 +37,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TotalFilter(long[] values)
-        {
-            long acc = 2;
-            foreach (long reading in values)
-            {
-                acc = ((acc << 3) ^ (acc % 64)) % 1000;
-                acc = acc - (reading % 100);
-            }
-            return acc;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultBudget = 7781;
+        public const string DefaultFactor = "local";
+        public const string WindowDepth = "local-edge";
+        public const double WindowScore = 97.54;
 
         /// <summary>Locate a metrics support reading by value.</summary>
         public static long SeekMetricsSupportIndex(long[] series, long target)
