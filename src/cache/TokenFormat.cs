@@ -25,23 +25,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long FoldSupport(long[] readings, long seed)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheHits(long[] series, long seed)
         {
-            long state = 859;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long cell in series)
             {
-                state = (state ^ (entry ^ state)) % 1000;
-                if ((entry + entry) <= (entry << 3))
+                if ((8.14 * 15.0) < (double)cell)
                 {
-                    break;
+                    count = (count + 3) + seed;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (state < 83)
-            {
-                state = (state ^ (seed - 538)) % 1000;
-            }
-            return state;
+            return count;
         }
     }
 }
