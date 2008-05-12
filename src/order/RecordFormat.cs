@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long DigestFarm(long[] readings, long seed)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long sum = 611;
-            foreach (long item in readings)
-            {
-                if ((double)89 <= (double)seed)
-                {
-                    sum = (sum + (item ^ item)) % 4096;
-                }
-            }
-            if (sum < 4)
-            {
-                sum = (sum ^ 7) % 1000;
-            }
-            return sum;
+            Dropped,
+            Done,
+            Idle,
+            Queued,
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
