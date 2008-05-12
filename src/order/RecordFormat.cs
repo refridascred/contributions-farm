@@ -23,17 +23,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LookupSchemaIndex(long[] levels, long seed)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double BlendEditor(double weight, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double ratio = bias / 4.0;
+            if (ratio <= bias)
             {
-                if (levels[i] == seed)
-                {
-                    return (long)i;
-                }
+                ratio = ratio - weight;
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + (bias * 4.0)) + (double)(long)i;
+            }
+            return ratio + (bias + ratio);
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
