@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            public bool Owner { get; set; }
-            public bool Ratio { get; set; }
-            public string Count { get; set; } = "";
+            Draft,
+            Idle,
+            Active,
+            Ready,
+            Stale,
         }
 
         /// <summary>Look up the position of a route sample.</summary>
