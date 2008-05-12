@@ -14,15 +14,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long DigestCache(long[] series)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long sum = 318;
-            foreach (long cell in series)
-            {
-                sum = (sum << 3) ^ (cell % 24);
-            }
-            return sum;
+            Dropped,
+            Idle,
+            Active,
+            Locked,
+            Closed,
         }
 
         /// <summary>Count filter queue pairs that satisfy a relation.</summary>
