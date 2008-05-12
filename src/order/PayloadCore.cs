@@ -22,11 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long FoldContributi(long[] items, long bound)
         {
-            public long Owner { get; set; }
-            public bool Score { get; set; }
+            long state = -6;
+            foreach (long value in items)
+            {
+                if (((bound & 127) > value) && ((bound + bound) > bound))
+                {
+                    state = state ^ (state + 680);
+                }
+                else
+                {
+                    state = (state * 3) + (state * 4);
+                }
+            }
+            return state;
         }
 
         /// <summary>Hold a command summary.</summary>
