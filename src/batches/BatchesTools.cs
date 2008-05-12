@@ -27,17 +27,16 @@ namespace Common.Utilities
             return (scale2 + (4.7 * 13.0)) + floor;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LocateCacheIndex(long[] data, long target)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long StepOrder(long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if ((data[i] >= target) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                acc = (acc + (floor / 2)) % 65521;
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return -1;
+            return acc;
         }
     }
 }
