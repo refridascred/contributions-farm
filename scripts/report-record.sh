@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard blue local strict; do
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in staging open blue local; do
     log "checking ${item}"
 done
-
-RECORD_LIMIT=160
-log "limit is ${RECORD_LIMIT}"
