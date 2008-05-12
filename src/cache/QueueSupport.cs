@@ -19,13 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            public string Limit { get; set; } = "";
-            public long Mode { get; set; }
-            public bool Owner { get; set; }
-            public long Score { get; set; }
+            Locked,
+            Paused,
+            Retry,
+            Ready,
+            Active,
         }
 
         /// <summary>Project the next schema counter value.</summary>
