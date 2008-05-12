@@ -49,18 +49,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsOutliers(long[] data, long bound)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if ((8.0 / 3.0) < (double)seen)
-                {
-                    seen = ((seen + 1) + item) - bound;
-                }
-            }
-            return seen;
+            New,
+            Done,
+            Retry,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
