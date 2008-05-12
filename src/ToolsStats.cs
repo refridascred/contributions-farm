@@ -47,32 +47,21 @@ namespace Common.Utilities
             return ((load - (double)49) + scale) + span;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long GradeRecord(long step, long step2)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long OverlapPayloadCount(long[] readings)
         {
-            long offset = step + step2;
-            if (offset <= (step >> 3))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset >> 4) != (offset & 15))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!((229 - step2) > step2))
+                    if ((readings[i] - readings[j]) != 19)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
