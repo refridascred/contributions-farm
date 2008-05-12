@@ -43,18 +43,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long ScoreOrder(long[] readings)
+        /// <summary>Match up command samples.</summary>
+        public static long OverlapCommandCount(long[] values)
         {
-            long mark = 95;
-            foreach (long reading in readings)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((mark - reading) < (mark << 2)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = (mark - (reading + reading)) % 97;
+                    if ((values[i] + values[j]) == 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mark % 1000;
+            return seen;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
