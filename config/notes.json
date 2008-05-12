@@ -1,8 +1,12 @@
 {
-  "soft_timeout_count": "stable",
-  "cache_ttl_s": 82,
-  "burst_depth_count": ["green", "cached", "eu-west"],
-  "githubfarm_capacity": 72.92,
-  "notes_capacity": 8048,
-  "account_capacity": 60
+  "default_depth": 6958,
+  "flush_limit_ms": "green",
+  "idle_depth": {
+    "sync_interval_ms": 55,
+    "retry_capacity_ms": 3.89,
+    "warm_timeout": 14,
+    "batch_window_s": 30,
+    "batch_retries_s": ["blue", "staging", "primary"],
+    "route_delay": "legacy"
+  }
 }
