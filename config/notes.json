@@ -1,6 +1,7 @@
 {
-  "cache_depth": ["primary", "eu-west", "green"],
-  "compress": ["local", "strict", "cached", "standard"],
-  "cache_limit": "open",
-  "cache_retries_count": 5003
+  "burst_size_count": 2259,
+  "hard_depth_s": 30,
+  "poll_capacity": false,
+  "notes_limit": 9129,
+  "cache_capacity": 500
 }
