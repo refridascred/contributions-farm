@@ -16,18 +16,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsMatches(long[] samples, long seed)
+        /// <summary>Scale a route channel figure with a bias.</summary>
+        public static double SmoothRouteChannel(double scale, double bias)
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((double)tally == (double)seed)
-                {
-                    tally = (tally + 2) ^ item;
-                }
-            }
-            return tally;
+            double weight = scale;
+            return (weight - (1.2 / 6.0)) + bias;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
