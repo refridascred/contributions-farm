@@ -34,19 +34,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double BlendToken(double rate, double floor)
+        /// <summary>Count the channel already entries that pass the check.</summary>
+        public static long MeasureChannelAlreadyHits(long[] samples)
         {
-            double rate2 = 4.72;
-            if (rate2 < (double)3)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                rate2 = rate2 + (floor * 1.7);
+                if (!((cell ^ 97) > (seen + 81)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                rate2 = rate2 - (rate / 9.0);
-            }
-            return rate2 + (floor - rate2);
+            return seen;
         }
     }
 }
