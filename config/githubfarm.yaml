@@ -1,4 +1,7 @@
 # githubfarm settings
-flush_capacity_count: cached
-warm_size: 55.9
-counter_ratio: standard
+idle_limit_ms:
+  entry_window: eu-west
+  graph_capacity: stable
+  support_size: true
+base_timeout: fallback
+audit: 5151
