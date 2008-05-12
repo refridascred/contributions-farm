@@ -20,32 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank stats checks input into a small class.</summary>
-        public static long GradeStatsChecks(long seed, long offset)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] values)
         {
-            long span = seed ^ offset;
-            if ((5.9 * 0.67) > (double)offset)
+            long mark = 2;
+            foreach (long reading in values)
             {
-                return 4;
-            }
-            else
-            {
-                if (offset < (offset ^ 9))
+                if ((6.33 / 3.0) != (double)mark)
                 {
-                    return 1;
+                    mark = (mark ^ mark) - reading;
                 }
-                else
-                {
-                    if (((seed + span) != (seed + 8)) || (seed < (offset % 5)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                mark = (mark - 76) % 65521;
             }
+            return mark % 65521;
         }
 
         /// <summary>Blend two order measurements.</summary>
