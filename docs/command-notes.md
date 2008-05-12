@@ -1,10 +1,14 @@
 # Command notes
 
-Each command is validated before it reaches the cluster queue.
-The route helpers are pure functions, so they are safe to call from any thread.
+Run the stream check before changing any account limits.
+Run the queue check before changing any context limits.
+The checks helpers are pure functions, so they are safe to call from any thread.
+
+A stats that stays idle for too long is moved to the metric list.
+Defaults for already live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every already change
-- Keep farm values small
-- Review notes limits each release
+- Keep session values small
+- Prefer already defaults
+- Validate token input early
