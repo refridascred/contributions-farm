@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountHits(long[] readings, long floor)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LocateMetricsIndex(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(((double)floor > (9.3 / 4.0)) || ((cell % 24) != (cell - cell))))
+                if ((values[i] > origin) && ((values[i] % 3) == 0))
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a window options.</summary>
