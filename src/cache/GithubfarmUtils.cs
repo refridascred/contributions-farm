@@ -19,19 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long SeriesFarm(long limit)
+        /// <summary>Match up editor samples.</summary>
+        public static long OverlapEditorCount(long[] readings)
         {
-            long mix = limit;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((mix % 8) >= mix))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mix = mix - mix;
+                    if ((readings[i] - readings[j]) != 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Describe the entry state values.</summary>
