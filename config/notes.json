@@ -1,6 +1,5 @@
 {
-  "hard_limit": 40.17,
-  "verbose": 59.15,
-  "readonly": [245, 155, 364],
-  "context_retries": 96
+  "cache_retries_s": "fallback",
+  "hard_capacity": 2052,
+  "warm_interval_s": 38
 }
