@@ -36,11 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            public long Score { get; set; }
-            public string Mode { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public long Ratio { get; set; }
         }
     }
 }
