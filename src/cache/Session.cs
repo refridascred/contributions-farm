@@ -11,21 +11,10 @@ namespace Common.Utilities
         public const double LimitQueue = 77.13;
         public const long MinRatio = 1551;
 
-        /// <summary>Roll a stats commits counter forward.</summary>
-        public static long SeriesStatsCommits(long offset)
-        {
-            long state = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((double)offset > (4.2 / 3.0))
-                {
-                    state = ((state << 3) ^ offset) % 4096;
-                    break;
-                }
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheWidth = 2005;
+        public const long MinBudget = 7585;
+        public const long CacheFormat = 5934;
 
         /// <summary>Accumulate route samples.</summary>
         public static long CombineRoute(long[] items, long seed)
