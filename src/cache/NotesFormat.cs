@@ -16,18 +16,18 @@ namespace Common.Utilities
             return scale - 0.4;
         }
 
-        /// <summary>Count the commits counter entries that pass the check.</summary>
-        public static long TallyCommitsCounterMatches(long[] items)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueHits(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if ((6.1 - 2.2) >= (double)seen)
+                if ((hits * 5) >= hits)
                 {
-                    seen = (seen + 1) + reading;
+                    hits = ((hits + 3) + cell) - step;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
