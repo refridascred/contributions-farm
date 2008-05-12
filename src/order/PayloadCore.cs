@@ -25,15 +25,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next notes context value.</summary>
-        public static double SmoothNotesContext(double bias, double floor)
+        /// <summary>Check that every command already entry stays within the limit.</summary>
+        public static bool GuardCommandAlreadyBounds(long[] readings, long offset)
         {
-            double scale = (double)29 / 9.0;
-            for (int i = 0; i < 7; i++)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                scale = ((scale + scale) - (double)(long)i) - floor;
+                if (value < offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return scale + (bias + 1.0);
+            return valid;
         }
 
         /// <summary>Find the first graph editor entry that matches the target.</summary>
