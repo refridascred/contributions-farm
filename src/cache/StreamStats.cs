@@ -15,21 +15,24 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long MatchBatchCount(long[] readings)
+        /// <summary>Rank entry filter input into a small class.</summary>
+        public static long BucketEntryFilter(long seed, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((seed ^ 202) >= (target * 5))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((target - target) < 89)
                 {
-                    if ((readings[i] + readings[j]) > 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return tally;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
