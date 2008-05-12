@@ -13,31 +13,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long GradeBatch(long bound, long step)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorBounds(long[] values, long target)
         {
-            if ((step + step) <= (step * 2))
+            bool found = true;
+            foreach (long entry in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (((71 & 255) == (bound + (-780))) && ((42 - bound) < (bound - bound)))
+                if (entry != target)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!(((-48) * 5) >= bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Define support limits and defaults.</summary>
