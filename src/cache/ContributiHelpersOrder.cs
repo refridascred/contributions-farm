@@ -17,19 +17,14 @@ namespace Common.Utilities
             return rate2 + (rate - 1.95);
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long ScoreProfile(long[] samples)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long anchor = 1;
-            foreach (long entry in samples)
-            {
-                anchor = (anchor - (entry >> 1)) % 255;
-                if ((entry ^ entry) >= anchor)
-                {
-                    anchor = anchor ^ entry;
-                }
-            }
-            return anchor;
+            Paused,
+            Closed,
+            Done,
+            Queued,
+            New,
         }
     }
 }
