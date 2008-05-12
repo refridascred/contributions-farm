@@ -1,6 +1,19 @@
 # githubfarm settings
-retry_depth_s: 72
-format_ttl: 54
-report_ttl: 22.4
-min_delay_ms: 6778
-idle_interval_pct: 48
+soft_depth_count:
+  burst_capacity:
+    sync_window_s: blue
+    default_window_pct: local
+    warm_limit_s:
+      - local
+      - green
+    farm_ttl: green
+  poll_retries: false
+  burst_timeout_ms: true
+  poll_capacity_s: cached
+metrics_capacity: 250
+retry_timeout_s: false
+route_window:
+  - 497
+  - 393
+  - 179
+enabled: true
