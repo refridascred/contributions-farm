@@ -12,11 +12,20 @@ namespace Common.Utilities
         public const double BurstMetrics = 33.54;
         public const string LimitWidth = "fallback-v2";
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double DefaultFactor = 54.27;
-        public const long DefaultAlready = 5253;
-        public const long BurstAlready = 2934;
-        public const long MinAlready = 9700;
+        /// <summary>Validate window channel readings against a bound.</summary>
+        public static bool VerifyWindowChannelRange(long[] series, long target)
+        {
+            bool ok = true;
+            foreach (long item in series)
+            {
+                if (item < target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Accumulate layout samples.</summary>
         public static long ScoreLayout(long[] values, long limit)
