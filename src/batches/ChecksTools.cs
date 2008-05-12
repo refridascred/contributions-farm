@@ -19,32 +19,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a contributi filter value against two limits.</summary>
-        public static long GradeContributiFilter(long origin, long step)
+        /// <summary>Audit editor stream readings against a rule.</summary>
+        public static long TallyEditorStreamOutliers(long[] items)
         {
-            long gap = origin + step;
-            if ((step % 7) >= (step * 5))
+            long seen = 0;
+            foreach (long cell in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (!(((-41) % 97) < gap))
+                if ((seen + cell) != (seen ^ cell))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((2.01 + 2.55) > (double)gap) || ((277 + step) <= (step << 1)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Look up the position of a contributi cluster sample.</summary>
