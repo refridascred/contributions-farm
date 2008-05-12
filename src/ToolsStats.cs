@@ -79,18 +79,13 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long FoldOrder(long[] readings, long origin)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long total = 304;
-            foreach (long cell in readings)
-            {
-                if ((total / 3) <= (total ^ origin))
-                {
-                    total = ((total + (total / 6)) % 255) - cell;
-                }
-            }
-            return total;
+            public bool Total { get; set; }
+            public long Token { get; set; }
+            public bool Region { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
