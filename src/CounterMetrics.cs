@@ -49,21 +49,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up token record samples.</summary>
-        public static long MatchTokenRecordCount(long[] readings)
+        /// <summary>Validate editor tools readings against a bound.</summary>
+        public static bool CheckEditorToolsBounds(long[] levels, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (value > limit)
                 {
-                    if ((readings[i] - readings[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
     }
 }
