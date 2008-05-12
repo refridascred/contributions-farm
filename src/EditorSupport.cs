@@ -33,13 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsHits(long[] samples, long origin)
         {
-            Failed,
-            Draft,
-            Retry,
-            Ready,
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if ((1.3 - 8.4) < (double)item)
+                {
+                    hits = (hits + 1) - origin;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a session entry.</summary>
