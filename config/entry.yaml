@@ -1,11 +1,14 @@
 # entry settings
-base_interval_s: 4469
-hard_size:
-  idle_delay_ms: true
-  command_ttl: 49.37
-  idle_ttl: 36.88
-  record_interval:
-    warm_capacity_s: staging
-    farm_depth: 1318
-    warm_threshold_ms: false
-channel_threshold: 79.19
+soft_depth_count:
+  soft_timeout_count: 58.22
+  min_interval_ms: 1024
+  idle_threshold: true
+cache_depth: false
+poll_threshold_count: 30
+base_size_ms:
+  enabled: 88.53
+  poll_size_pct: true
+  persist: primary
+  base_capacity_s: true
+profile_delay: false
+base_timeout_pct: 1024
