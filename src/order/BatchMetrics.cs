@@ -48,25 +48,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long StepEntry(long step)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long total = step;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((3.68 / 3.0) > (double)step)
-                {
-                    long prev = step - (799 ^ total);
-                    total = ((total * 4) + (153 ^ prev)) % 65521;
-                }
-                else
-                {
-                    total = (total - 681) % 4096;
-                    total = (total ^ (total - (long)i)) % 255;
-                }
-                total = ((total * 4) + (long)i) % 1000;
-            }
-            return total;
+            public long Stamp { get; set; }
+            public bool Count { get; set; }
+            public bool Mode { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
