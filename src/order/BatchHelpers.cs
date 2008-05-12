@@ -40,15 +40,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TallyAlready(long[] items, long limit)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TallyToken(long[] readings, long seed)
         {
-            long sum = 53;
-            foreach (long item in items)
+            long carry = -99;
+            foreach (long sample in readings)
             {
-                sum = ((sum ^ limit) % 4096) + item;
+                if (!((sample ^ carry) < (carry / 3)))
+                {
+                    carry = ((carry << 2) ^ (carry + seed)) % 4096;
+                }
             }
-            return sum;
+            return carry;
         }
     }
 }
