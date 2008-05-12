@@ -1,8 +1,7 @@
 {
-  "sync_limit": 1024,
-  "flush_limit_s": 33.54,
-  "flush_ratio_pct": 2.96,
-  "payload_depth": false,
-  "poll_interval": true,
-  "metrics_depth": ["eu-west", "latest"]
+  "strict": "latest",
+  "format_ratio": "local",
+  "sync_timeout": false,
+  "cache_threshold_count": 60,
+  "layout_threshold": "staging"
 }
