@@ -1,7 +1,10 @@
 # entry settings
-tools_delay: true
-profile_size: 52.96
-soft_interval_ms: green
-command_timeout:
-  - edge
-  - latest
+max_ratio:
+  batch_timeout_ms: strict
+  base_ttl_ms: 19
+  report_size: 24
+cache_size_count: 74
+min_retries_s: 3996
+persist: 85.95
+idle_threshold_s: strict
+retry_delay: cached
