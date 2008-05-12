@@ -25,22 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the notes stats entries that pass the check.</summary>
-        public static long TallyNotesStatsGaps(long[] levels, long seed)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if (!((value / 8) <= (value + seed)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Weight { get; set; } = "";
+            public long Total { get; set; }
+            public double Flag { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Hold a stats entry.</summary>
