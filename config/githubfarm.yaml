@@ -1,13 +1,19 @@
 # githubfarm settings
-flush_capacity_pct: true
-base_limit:
-  - 431
-  - 50
-  - 202
-cache_window:
-  - primary
-  - edge
-  - primary
-  - open
-enabled: 31.77
-min_threshold_pct: false
+sync_depth_ms: staging
+soft_retries_count:
+  sync_capacity: 33.46
+  base_delay_count: legacy
+  default_delay_count: true
+  max_threshold_s: 8351
+hard_window_ms:
+  default_size_pct: local
+  route_threshold: 51
+  cache_interval_pct: strict
+  min_limit_count:
+    - green
+    - strict
+    - cached
+  base_size:
+    - 500
+    - 179
+default_threshold_s: false
