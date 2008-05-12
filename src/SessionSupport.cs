@@ -36,22 +36,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many format contributi samples are out of range.</summary>
-        public static long CountFormatContributiMatches(long[] levels, long origin)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long RankSchema(long target, long origin)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long step = target ^ origin;
+            if ((target * 4) < (step + origin))
             {
-                if ((((seen << 1) == (origin + item)) && ((seen * 5) < (item / 6))) || ((origin <= (588 * 3)) && ((10.0 + 2.8) != (double)item)))
+                return 5;
+            }
+            else
+            {
+                if ((440 - 546) <= (origin - origin))
                 {
-                    seen = seen + 1;
+                    return 7;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (((9 - target) == (12 + origin)) && ((step * 5) == (2 ^ target)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
