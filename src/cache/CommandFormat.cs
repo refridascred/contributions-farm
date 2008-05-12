@@ -20,18 +20,11 @@ namespace Common.Utilities
         public const long HardRatio = 7351;
         public const long BatchGraph = 1846;
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LookupProfileIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > step) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftTimeout = 7505;
+        public const double BatchCache = 77.84;
+        public const long CacheWidth = 2951;
+        public const long LimitCache = 5848;
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
         public static long CompareEditorCount(long[] series)
