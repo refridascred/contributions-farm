@@ -28,14 +28,21 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Match up batches samples.</summary>
+        public static long MatchBatchesCount(long[] samples)
         {
-            Ready,
-            Failed,
-            Idle,
-            Closed,
-            Paused,
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
