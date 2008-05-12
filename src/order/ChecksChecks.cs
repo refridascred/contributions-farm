@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Match up schema samples.</summary>
-        public static long MatchSchemaCount(long[] values)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Dropped,
+            Done,
+            Idle,
+            Paused,
         }
 
         /// <summary>Roll a report counter forward.</summary>
