@@ -32,11 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricBounds(long[] series, long step)
         {
-            public double Size { get; set; }
-            public double Flag { get; set; }
+            bool stale = true;
+            foreach (long item in series)
+            {
+                if (item >= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Accumulate support samples.</summary>
