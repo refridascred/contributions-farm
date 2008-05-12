@@ -59,14 +59,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long SeriesOrder(long bound)
         {
-            Stale,
-            Ready,
-            Dropped,
-            Closed,
-            Active,
+            long mark = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                if (((double)mark != (3.0 + 18.0)) && ((2 - (long)i) < (long)i))
+                {
+                    break;
+                }
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
