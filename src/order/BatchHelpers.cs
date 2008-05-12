@@ -37,38 +37,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a farm editor pair into a bucket.</summary>
-        public static long BucketFarmEditor(long offset, long floor)
-        {
-            if ((double)offset > (3.3 + 4.44))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!(8.9 >= (double)floor))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((357 / 4) != (offset + offset))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((29 & 1) == (floor + offset)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double RetryCluster = 7.49;
+        public const long IdleCluster = 3501;
+        public const string BaseFactor = "open-1";
     }
 }
