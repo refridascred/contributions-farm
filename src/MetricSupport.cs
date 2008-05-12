@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Find the first profile payload entry that matches the target.</summary>
-        public static long LookupProfilePayloadIndex(long[] samples, long seed)
+        /// <summary>Validate metrics window readings against a bound.</summary>
+        public static bool CheckMetricsWindowBounds(long[] items, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long item in items)
             {
-                if (samples[i] > seed)
+                if (item >= step)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Describe the farm phase values.</summary>
