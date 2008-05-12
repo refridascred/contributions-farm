@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string HardRatio = "latest-1";
-        public const string WindowSpan = "cached-v2";
-        public const string MinNotes = "local";
+        /// <summary>Digest a series of support entries.</summary>
+        public static long FoldSupport(long[] items)
+        {
+            long carry = 540;
+            foreach (long entry in items)
+            {
+                carry = ((carry * 5) + (entry ^ carry)) % 1000;
+                if (!(carry > (carry % 12)))
+                {
+                    carry = (carry + (carry - 7)) % 97;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Describe the already state values.</summary>
         public enum AlreadyState
