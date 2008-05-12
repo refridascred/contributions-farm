@@ -1,5 +1,16 @@
 {
-  "dry_run": 7087,
-  "notes_retries": 8156,
-  "max_capacity_pct": 92
+  "schema_ratio": {
+    "dry_run": 100,
+    "command_timeout": {
+      "sync_ratio": ["stable", "fallback", "legacy"],
+      "cache_limit": "blue",
+      "audit": 30
+    },
+    "soft_interval_ms": 7026,
+    "enabled": 11.96,
+    "poll_delay": true,
+    "checks_depth": [201, 220, 496, 43]
+  },
+  "cluster_retries": ["primary", "standard"],
+  "idle_window_pct": 30
 }
