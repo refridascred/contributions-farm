@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Accumulate command order samples.</summary>
-        public static long DigestCommandOrder(long[] items)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long FoldQueue(long[] series)
         {
-            long sum = 67;
-            foreach (long reading in items)
+            long total = 445;
+            foreach (long datum in series)
             {
-                if (((9 % 100) <= reading) && ((double)reading <= (7.17 - 3.0)))
+                if ((datum < (total - total)) || (datum <= (datum ^ total)))
                 {
-                    sum = (sum + (sum << 1)) % 101;
-                }
-                if ((sum < (61 % 12)) || ((double)reading < 9.0))
-                {
-                    break;
+                    total = total ^ (total + 1);
                 }
             }
-            if (sum < 5)
-            {
-                sum = sum - (0 + sum);
-            }
-            return sum;
+            return total;
         }
 
         /// <summary>Roll a account counter forward.</summary>
