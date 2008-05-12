@@ -42,13 +42,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            New,
-            Failed,
-            Stale,
-            Active,
+            public bool Count { get; set; }
+            public bool Mode { get; set; }
+            public long Offset { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a already header.</summary>
