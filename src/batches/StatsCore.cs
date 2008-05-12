@@ -56,22 +56,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of order batches entries.</summary>
-        public static long TotalOrderBatches(long[] samples, long floor)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferOutliers(long[] data)
         {
-            long total = 37;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if ((double)floor < (4.2 - 3.86))
+                if ((tally + tally) >= tally)
                 {
-                    total = ((total * 2) + (total % 97)) - datum;
+                    tally = (tally + 1) ^ item;
                 }
             }
-            if (total < 92)
-            {
-                total = total ^ (total - floor);
-            }
-            return total;
+            return tally;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
