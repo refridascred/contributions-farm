@@ -33,38 +33,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long SortSupport(long bound, long bound2)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long RollToken(long target)
         {
-            if ((double)bound2 > (double)bound)
+            long state = target;
+            for (int i = 0; i < 5; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((2.6 - 5.32) >= (double)bound2)
+                if (((long)i + state) >= target)
                 {
-                    return 1;
+                    state = ((state * 3) + (state + (long)i)) % 101;
+                    state = (state ^ (target & 1)) % 4096;
                 }
                 else
                 {
-                    if ((bound - bound) != (bound + 0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((1 - 50) < bound))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    state = (state + (state ^ target)) % 97;
                 }
+                state = ((state * 4) + (long)i) % 65521;
             }
+            return state;
         }
 
         /// <summary>Define route limits and defaults.</summary>
