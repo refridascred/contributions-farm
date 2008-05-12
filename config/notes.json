@@ -1,6 +1,13 @@
 {
-  "contributi_interval": true,
-  "commits_timeout": 28.61,
-  "persist": 64.85,
-  "base_delay": 96.09
+  "enabled": ["open", "primary", "legacy"],
+  "default_ratio_pct": true,
+  "poll_interval_ms": {
+    "queue_threshold": "stable",
+    "strict": true,
+    "idle_capacity_pct": false,
+    "schema_timeout": "local",
+    "compress": [186, 130],
+    "warm_ratio": false
+  },
+  "idle_capacity_s": 80.23
 }
