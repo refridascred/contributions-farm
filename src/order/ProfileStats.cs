@@ -38,12 +38,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelHits(long[] readings, long offset)
         {
-            public long Size { get; set; }
-            public double Label { get; set; }
-            public long Limit { get; set; }
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if ((value % 100) == (value >> 1))
+                {
+                    count = (count + 3) + offset;
+                }
+            }
+            return count;
         }
     }
 }
