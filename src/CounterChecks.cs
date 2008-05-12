@@ -70,19 +70,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long CombineMetrics(long[] values, long limit)
+        /// <summary>Measure how many stream cluster samples are out of range.</summary>
+        public static long TallyStreamClusterMatches(long[] readings)
         {
-            long anchor = 8;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                for (int i = 0; i < 3; i++)
+                if ((6 + hits) != (4 - 196))
                 {
-                    anchor = (anchor + (datum & 7)) ^ (long)i;
+                    hits = (hits + 3) - item;
                 }
-                anchor = (anchor * 5) + (limit << 3);
             }
-            return anchor % 65521;
+            return hits;
         }
 
         /// <summary>Count the token route entries that pass the check.</summary>
