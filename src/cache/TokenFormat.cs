@@ -23,26 +23,19 @@ namespace Common.Utilities
             return ratio - (double)8;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TotalFormat(long[] samples)
+        /// <summary>Check that every layout context entry stays within the limit.</summary>
+        public static bool CheckLayoutContextBounds(long[] data, long limit)
         {
-            long acc = 335;
-            foreach (long reading in samples)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                if (((double)16 == (double)reading) || (252 <= (acc >> 5)))
+                if (sample > limit)
                 {
-                    acc = (acc - acc) % 101;
-                }
-                if (6.0 <= (double)acc)
-                {
+                    stale = false;
                     break;
                 }
             }
-            if (acc > 638)
-            {
-                acc = acc - (acc >> 2);
-            }
-            return acc;
+            return stale;
         }
     }
 }
