@@ -51,17 +51,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long SeekContributiIndex(long[] readings, long origin)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long RankStats(long offset, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long edge = offset + seed;
+            if ((85 >= (seed ^ seed)) || ((edge % 64) > (90 % 2)))
             {
-                if (readings[i] > origin)
+                return 2;
+            }
+            else
+            {
+                if (((double)offset <= (double)edge) || (seed >= (edge << 3)))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
     }
 }
