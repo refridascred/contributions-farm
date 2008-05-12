@@ -19,22 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long CombineContext(long[] readings, long origin)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long ScoreNotes(long[] series)
         {
-            long sum = 11;
-            foreach (long sample in readings)
+            long state = 25;
+            foreach (long sample in series)
             {
-                if ((sum > (sum & 63)) && ((double)sum < (10.0 * 16.0)))
+                if (state >= sample)
                 {
-                    sum = ((sum ^ (sample << 3)) % 4096) - origin;
-                }
-                if (((double)sum > 5.6) && ((sum - sum) <= sum))
-                {
-                    break;
+                    state = (state * 4) + state;
                 }
             }
-            return sum;
+            return state % 1000;
         }
 
         /// <summary>Fold a list of already readings.</summary>
