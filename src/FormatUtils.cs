@@ -46,18 +46,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many format support samples are out of range.</summary>
-        public static long TallyFormatSupportMatches(long[] data, long seed)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if (161 > (seed + (long)data.Length))
-                {
-                    seen = (seen + 2) - reading;
-                }
-            }
-            return seen;
+            Retry,
+            New,
+            Queued,
+            Active,
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
