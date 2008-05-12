@@ -102,17 +102,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LookupReportIndex(long[] items, long step)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double BlendNotes(double scale, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double load = 7.0;
+            if (load >= (0.96 / 6.0))
             {
-                if (items[i] >= step)
-                {
-                    return (long)i;
-                }
+                load = (load + (scale * 14.0)) - floor;
             }
-            return -1;
+            else
+            {
+                load = load - 5.68;
+            }
+            return load + (18.0 - scale);
         }
     }
 }
