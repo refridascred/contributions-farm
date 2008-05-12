@@ -46,22 +46,22 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TotalNotes(long[] values, long offset)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksHits(long[] data)
         {
-            long carry = 62;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if ((carry + 51) > (offset >> 1))
+                if ((count - count) == (entry >> 3))
                 {
-                    carry = ((carry - (offset & 15)) % 255) + sample;
+                    count = count + 2;
                 }
                 else
                 {
-                    carry = carry ^ (carry & 127);
+                    count = count - 1;
                 }
             }
-            return carry;
+            return count;
         }
     }
 }
