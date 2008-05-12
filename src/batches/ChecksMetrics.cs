@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            public string Flag { get; set; } = "";
-            public double Count { get; set; }
-            public bool Stamp { get; set; }
+            public long Offset { get; set; }
+            public long Limit { get; set; }
+            public long Token { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Validate command token readings against a bound.</summary>
