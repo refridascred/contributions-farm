@@ -47,19 +47,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long CombineFarm(long[] samples)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueOutliers(long[] readings)
         {
-            long result = -153;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                result = ((result << 2) ^ 8) % 4096;
-                if ((4.0 - 9.0) < (double)entry)
+                if ((matches >> 5) == (matches + matches))
                 {
-                    result = result ^ (entry - entry);
+                    matches = (matches + 3) + item;
                 }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Audit filter support readings against a rule.</summary>
