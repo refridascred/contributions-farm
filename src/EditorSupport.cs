@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Audit batch order readings against a rule.</summary>
-        public static long CountBatchOrderOutliers(long[] samples, long limit)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelHits(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if (limit < (hits & 255))
+                if (!((bound + entry) > count) && !((13.0 * 7.0) == (double)entry))
                 {
-                    hits = (hits + 1) ^ reading;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
