@@ -48,17 +48,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LookupGraphIndex(long[] levels, long seed)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatHits(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if (levels[i] > seed)
+                if (209 > (item - item))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
