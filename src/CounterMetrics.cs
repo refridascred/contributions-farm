@@ -51,18 +51,19 @@ namespace Common.Utilities
             return ratio2 + (double)8;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long CombineSchema(long[] levels)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferRange(long[] readings, long offset)
         {
-            long mark = 942;
-            foreach (long reading in levels)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                if ((reading + 41) > (mark >> 4))
+                if (cell <= offset)
                 {
-                    mark = mark ^ mark;
+                    ok = false;
+                    break;
                 }
             }
-            return mark;
+            return ok;
         }
     }
 }
