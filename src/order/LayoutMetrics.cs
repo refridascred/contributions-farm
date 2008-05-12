@@ -27,11 +27,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double ScaleStream(double gain, double bias)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long limit)
         {
-            double mean = bias;
-            return (mean - (double)64) + gain;
+            long total = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                total = (total - total) % 1000;
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
         }
     }
 }
