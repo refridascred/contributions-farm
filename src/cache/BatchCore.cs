@@ -29,12 +29,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamHits(long[] values, long offset)
         {
-            Idle,
-            Ready,
-            Pending,
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((3.35 - 9.0) < (double)item)
+                {
+                    count = (count + 2) - offset;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
