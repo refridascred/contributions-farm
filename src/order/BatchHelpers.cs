@@ -40,9 +40,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string SoftDepth = "alpha-1";
-        public const long HardAlready = 5392;
-        public const string RetryAlready = "local";
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TallyContext(long[] values, long limit)
+        {
+            long acc = 2;
+            foreach (long datum in values)
+            {
+                acc = ((acc - (acc & 1)) ^ datum) + limit;
+            }
+            return acc % 4096;
+        }
     }
 }
