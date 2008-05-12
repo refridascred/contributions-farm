@@ -32,19 +32,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate record tools readings against a bound.</summary>
-        public static bool ValidateRecordToolsLimits(long[] levels, long bound)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            bool found = true;
-            foreach (long reading in levels)
-            {
-                if (reading < bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            New,
+            Done,
+            Locked,
+            Pending,
+            Idle,
         }
     }
 }
