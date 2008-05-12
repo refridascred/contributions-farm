@@ -1,13 +1,11 @@
 # support settings
-poll_delay_s: green
-compress:
-  warm_retries_s: false
-  poll_limit: strict
-  contributi_capacity: 250
-report_ratio: 3.42
-idle_window_s: 92
-batch_interval_count:
-  - 135
-  - 244
-  - 91
-  - 123
+command_retries:
+  - eu-west
+  - green
+  - blue
+  - primary
+window_ttl: true
+min_depth_count: strict
+dry_run: true
+flush_delay_s: 13.86
+flush_timeout: blue
