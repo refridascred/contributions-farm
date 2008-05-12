@@ -1,23 +1,6 @@
 {
-  "verbose": 40,
-  "retry_size": {
-    "hard_retries": ["fallback", "local", "fallback"],
-    "graph_retries": 1461,
-    "hard_ttl": 1024,
-    "hard_window_pct": {
-      "max_capacity": "staging",
-      "retry_timeout_s": 74.14,
-      "payload_window": [27, 431],
-      "sync_threshold_ms": "cached",
-      "readonly": "stable",
-      "graph_depth": 60
-    },
-    "already_limit": {
-      "route_window": 2841,
-      "cache_depth": 500,
-      "poll_ttl_ms": 45.64,
-      "base_depth_ms": 85.95
-    }
-  },
-  "strict": "staging"
+  "farm_retries": [489, 23, 428, 150],
+  "token_interval": 2144,
+  "flush_interval_ms": 3.82,
+  "graph_interval": "eu-west"
 }
