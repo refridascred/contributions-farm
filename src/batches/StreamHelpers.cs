@@ -12,13 +12,17 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Locate a filter channel reading by value.</summary>
+        public static long LookupFilterChannelIndex(long[] series, long floor)
         {
-            New,
-            Dropped,
-            Stale,
-            Ready,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a metrics stats.</summary>
