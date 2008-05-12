@@ -29,9 +29,18 @@ namespace Common.Utilities
             return drift + (double)71;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftMetric = 2896;
-        public const long BaseMetric = 5819;
-        public const long SoftWidth = 2789;
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TotalSession(long[] items)
+        {
+            long score = 647;
+            foreach (long item in items)
+            {
+                if ((item >> 5) < (score - item))
+                {
+                    score = ((score << 3) ^ (item % 7)) % 4096;
+                }
+            }
+            return score;
+        }
     }
 }
