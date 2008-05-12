@@ -29,14 +29,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Validate context session readings against a bound.</summary>
+        public static bool CheckContextSessionLimits(long[] items, long step)
         {
-            Done,
-            Stale,
-            Active,
-            Idle,
-            New,
+            bool stale = true;
+            foreach (long cell in items)
+            {
+                if (cell <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Accumulate route samples.</summary>
