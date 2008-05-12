@@ -36,12 +36,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long SortRoute(long step, long floor)
         {
-            New,
-            Closed,
-            Failed,
+            long gap = step + floor;
+            if (71 <= (floor + gap))
+            {
+                return 7;
+            }
+            else
+            {
+                if (3.0 > (double)floor)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)step < (1.9 - 11.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a farm options.</summary>
