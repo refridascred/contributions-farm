@@ -32,12 +32,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long SeriesBatches(long floor)
         {
-            Locked,
-            Failed,
-            Active,
+            long mark = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                mark = mark ^ (mark - mark);
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    long delta = (floor >> 2) >> 5;
+                    mark = ((mark << 2) ^ (mark + delta)) ^ (long)i2;
+                }
+                for (int i3 = 0; i3 < 8; i3++)
+                {
+                    mark = (((mark << 3) ^ (floor * 3)) % 1000) + (long)i3;
+                }
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Project the next buffer stream value.</summary>
