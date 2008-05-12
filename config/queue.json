@@ -1,6 +1,7 @@
 {
-  "stream_ratio": false,
-  "idle_threshold_count": [247, 168, 193],
-  "context_limit": 19.84,
-  "compress": "staging"
+  "verbose": [280, 348, 106, 356],
+  "compress": 38.29,
+  "githubfarm_delay": "legacy",
+  "farm_ratio": ["green", "cached", "green"],
+  "base_depth": false
 }
