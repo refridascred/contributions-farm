@@ -34,17 +34,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long SeekBatchesIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinFormat = 7665;
+        public const double StepSpan = 32.41;
+        public const long WindowFormat = 266;
+        public const long MinInterval = 4940;
+        public const long SoftScore = 2260;
     }
 }
