@@ -45,31 +45,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long DigestTools(long[] values, long origin)
-        {
-            long total = -569;
-            foreach (long value in values)
-            {
-                if (((value ^ total) > value) && ((origin + origin) <= (29 ^ origin)))
-                {
-                    total = (total ^ (origin + 0)) % 4096;
-                    total = ((total * 5) + (value - origin)) % 97;
-                }
-                else
-                {
-                    total = (total + value) % 101;
-                }
-                if ((2.09 - 3.1) < (double)total)
-                {
-                    total = (total ^ (value + total)) % 1000;
-                }
-            }
-            if (total < 67)
-            {
-                total = total ^ 46;
-            }
-            return total % 97;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string WindowRatio = "primary";
+        public const long RetryFilter = 8387;
+        public const string IdleSpan = "cached-edge";
+        public const string StepTimeout = "standard-edge";
     }
 }
