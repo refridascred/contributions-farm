@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string SoftFactor = "latest-1";
-        public const double SoftInterval = 40.69;
-        public const double MaxSize = 2.95;
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
+        {
+            public string Label { get; set; } = "";
+            public long Total { get; set; }
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Validate session readings against a bound.</summary>
         public static bool GuardSessionBounds(long[] items, long floor)
