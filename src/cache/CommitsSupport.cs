@@ -26,15 +26,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ScaleSchema(double scale, double floor)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            double gain = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - 6.0) + (double)(long)i;
-            }
-            return gain + (floor + scale);
+            public double Owner { get; set; }
+            public long Label { get; set; }
+            public bool Offset { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
