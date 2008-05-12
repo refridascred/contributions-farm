@@ -62,14 +62,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Accumulate session samples.</summary>
+        public static long DigestSession(long[] levels, long limit)
         {
-            Locked,
-            New,
-            Pending,
-            Idle,
-            Failed,
+            long mark = 80;
+            foreach (long sample in levels)
+            {
+                if (((sample + sample) >= (mark + sample)) || ((limit ^ sample) <= mark))
+                {
+                    mark = (mark + (limit * 4)) % 4096;
+                }
+            }
+            if (mark > 1)
+            {
+                mark = (mark << 3) ^ 6;
+            }
+            return mark % 97;
         }
 
         /// <summary>Hold a filter header.</summary>
