@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-local}"
+mode="${1:-primary}"
 case "${mode}" in
-    staging)
+    standard)
         log "fast path"
         ;;
     *)
@@ -16,9 +16,11 @@ case "${mode}" in
         ;;
 esac
 
-for item in edge local; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-CHANNEL_LIMIT=235
+CHANNEL_LIMIT=480
 log "limit is ${CHANNEL_LIMIT}"
