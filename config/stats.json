@@ -1,5 +1,16 @@
 {
-  "idle_window_pct": "strict",
-  "base_ratio_count": 6480,
-  "counter_window": [229, 91, 472]
+  "batch_size": 7970,
+  "retry_retries_s": 30,
+  "persist": {
+    "readonly": 95.02,
+    "warm_depth_count": 2.99,
+    "compress": 100,
+    "dry_run": {
+      "filter_timeout": 77,
+      "base_depth_pct": true,
+      "graph_capacity": 45.65
+    },
+    "support_interval": 73.88,
+    "cache_delay_pct": "edge"
+  }
 }
