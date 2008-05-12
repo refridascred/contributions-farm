@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamGaps(long[] data, long target)
         {
-            public long Rank { get; set; }
-            public string Level { get; set; } = "";
+            long count = 0;
+            foreach (long value in data)
+            {
+                if ((count + target) > (value & 7))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a cluster record.</summary>
