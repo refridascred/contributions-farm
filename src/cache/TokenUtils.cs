@@ -15,23 +15,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long IterateCommand(long bound)
+        /// <summary>Find the first command channel entry that matches the target.</summary>
+        public static long LocateCommandChannelIndex(long[] samples, long bound)
         {
-            long carry = bound;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (bound <= (bound / 2))
+                if (samples[i] <= bound)
                 {
-                    carry = carry ^ (carry + bound);
+                    return (long)i;
                 }
-                else
-                {
-                    carry = (carry ^ 551) % 101;
-                }
-                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
