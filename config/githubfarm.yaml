@@ -1,8 +1,6 @@
 # githubfarm settings
-dry_run: false
-hard_timeout_pct: 1970
-counter_limit: 7842
-sync_capacity_s:
-  - 10
-  - 318
-  - 178
+audit: true
+idle_ratio: false
+compress: true
+cache_retries_pct: 93
+default_threshold: 250
