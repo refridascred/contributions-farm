@@ -28,12 +28,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderLimits(long[] readings, long bound)
         {
-            public string Total { get; set; } = "";
-            public long Label { get; set; }
-            public long Offset { get; set; }
+            bool flag = true;
+            foreach (long reading in readings)
+            {
+                if (reading != bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
