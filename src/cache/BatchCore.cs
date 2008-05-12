@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksLimits(long[] series, long floor)
         {
-            Queued,
-            Ready,
-            Paused,
+            bool found = true;
+            foreach (long entry in series)
+            {
+                if (entry < floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Rank stats checks input into a small class.</summary>
