@@ -30,11 +30,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            public bool Mode { get; set; }
-            public string Score { get; set; } = "";
+            Active,
+            Failed,
+            New,
+            Synced,
         }
 
         /// <summary>Define already limits and defaults.</summary>
