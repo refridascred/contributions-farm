@@ -63,27 +63,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long FoldGithubfarm(long[] series)
+        /// <summary>Match up queue samples.</summary>
+        public static long CompareQueueCount(long[] series)
         {
-            long carry = 88;
-            foreach (long item in series)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)item <= 9.62)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    carry = (carry ^ (93 - carry)) % 101;
-                    carry = carry - item;
-                }
-                else
-                {
-                    carry = carry + carry;
-                }
-                if (!((2.0 * 9.0) < (double)item))
-                {
-                    carry = ((carry * 2) + carry) % 1000;
+                    if ((series[i] - series[j]) == 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Compare every pair of commits session readings.</summary>
