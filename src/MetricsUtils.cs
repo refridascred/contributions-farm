@@ -20,14 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            Stale,
-            Synced,
-            Done,
-            Dropped,
-            Ready,
+            public string Token { get; set; } = "";
+            public long Flag { get; set; }
+            public string Total { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Look up the position of a session sample.</summary>
