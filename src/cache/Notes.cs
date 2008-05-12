@@ -23,19 +23,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksRange(long[] readings, long origin)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long bound, long origin)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            if ((double)origin >= (double)bound)
             {
-                if (datum != origin)
+                return 6;
+            }
+            else
+            {
+                if (((origin - bound) <= origin) && (((-25) - bound) == (origin + bound)))
                 {
-                    flag = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return flag;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
