@@ -26,17 +26,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LookupGraphIndex(long[] items, long offset)
+        /// <summary>Project the next layout value.</summary>
+        public static double ScaleLayout(double rate, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double load = bias;
+            if (load > 6.68)
             {
-                if (items[i] >= offset)
-                {
-                    return (long)i;
-                }
+                load = (load - (3.0 - 3.5)) + rate;
             }
-            return -1;
+            else
+            {
+                load = load + bias;
+            }
+            return load - (double)62;
         }
     }
 }
