@@ -67,18 +67,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatHits(long[] levels, long step)
-        {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if (!((double)cell >= (1.0 / 6.0)))
-                {
-                    hits = (hits + 1) - step;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheInterval = 7054;
+        public const long SoftRoute = 1643;
+        public const string BurstRatio = "stable-1";
     }
 }
