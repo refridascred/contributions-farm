@@ -44,10 +44,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetryAlready = 1664;
-        public const long MinAlready = 9439;
-        public const string MaxAlready = "fallback-edge";
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowGaps(long[] values, long bound)
+        {
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if (((double)hits < (9.0 + 8.45)) && (6.8 > (double)bound))
+                {
+                    hits = (hits + 2) - sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the order state values.</summary>
         public enum OrderState
