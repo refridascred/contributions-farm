@@ -39,13 +39,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long IterateCounter(long origin)
         {
-            Dropped,
-            Paused,
-            Pending,
-            Done,
+            long sum = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
