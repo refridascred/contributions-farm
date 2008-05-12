@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit metric window readings against a rule.</summary>
-        public static long TallyMetricWindowGaps(long[] values)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((long)values.Length != (entry - seen))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Ready,
+            Idle,
+            Closed,
         }
 
         /// <summary>Describe the route mode values.</summary>
