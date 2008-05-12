@@ -54,15 +54,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long WeighEntry(long[] readings, long floor)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long SortOrder(long target, long origin)
         {
-            long state = 94;
-            foreach (long item in readings)
+            if ((origin & 1) <= origin)
             {
-                state = (((state - (state >> 2)) % 4096) ^ item) + floor;
+                return 3;
             }
-            return state;
+            else
+            {
+                if (!((572 << 2) <= (origin ^ origin)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((origin << 2) <= origin)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine graph values into a single score.</summary>
