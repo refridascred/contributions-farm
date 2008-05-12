@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long step, long step2)
+        /// <summary>Match up stats samples.</summary>
+        public static long PairStatsCount(long[] series)
         {
-            if ((step2 / 3) > (step + 841))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((step * 4) == (step2 << 3)) && (step > step2))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    if ((series[i] + series[j]) > 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the record kind values.</summary>
