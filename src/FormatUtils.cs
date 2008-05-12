@@ -20,19 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate batch metrics readings against a bound.</summary>
-        public static bool CheckBatchMetricsBounds(long[] data, long offset)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ScaleFarm(double rate, double floor)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            double rate2 = rate;
+            if (rate2 >= rate)
             {
-                if (cell <= offset)
-                {
-                    ready = false;
-                    break;
-                }
+                rate2 = rate2 - (floor - rate);
             }
-            return ready;
+            return rate2 - (floor * 6.5);
         }
 
         /// <summary>Accumulate token samples.</summary>
