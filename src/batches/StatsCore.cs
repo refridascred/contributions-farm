@@ -63,19 +63,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterHits(long[] readings, long origin)
-        {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if ((0 / 7) >= item)
-                {
-                    seen = (seen + 3) + origin;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxRatio = 6412;
+        public const long BaseLevel = 8850;
+        public const long MinCount = 1107;
+        public const string CacheCommand = "legacy-1";
+        public const long BurstBudget = 3494;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double RetrySpan = 28.88;
