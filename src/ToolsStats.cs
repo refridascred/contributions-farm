@@ -74,18 +74,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TotalMetric(long[] items, long bound)
+        /// <summary>Accumulate order samples.</summary>
+        public static long FoldOrder(long[] readings, long origin)
         {
-            long acc = 7;
-            foreach (long item in items)
+            long total = 304;
+            foreach (long cell in readings)
             {
-                if ((5.0 + 7.47) == (double)bound)
+                if ((total / 3) <= (total ^ origin))
                 {
-                    acc = acc - item;
+                    total = ((total + (total / 6)) % 255) - cell;
                 }
             }
-            return acc;
+            return total;
         }
     }
 }
