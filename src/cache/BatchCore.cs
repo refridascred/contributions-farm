@@ -20,19 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TotalStream(long[] values)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LocateBatchesIndex(long[] levels, long seed)
         {
-            long mark = 2;
-            foreach (long reading in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((6.33 / 3.0) != (double)mark)
+                if ((levels[i] >= seed) && ((levels[i] % 3) == 0))
                 {
-                    mark = (mark ^ mark) - reading;
+                    return (long)i;
                 }
-                mark = (mark - 76) % 65521;
             }
-            return mark % 65521;
+            return -1;
         }
 
         /// <summary>Blend two order measurements.</summary>
