@@ -55,22 +55,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many account metric samples are out of range.</summary>
-        public static long AuditAccountMetricMatches(long[] values, long bound)
-        {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((count > (441 ^ (-455))) && ((bound - count) > count))
-                {
-                    count = (count + 3) - value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryCount = 4943;
+        public const double BatchSpan = 39.52;
+        public const string WindowFilter = "latest-edge";
+        public const double HardSize = 61.96;
     }
 }
