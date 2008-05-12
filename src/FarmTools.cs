@@ -20,17 +20,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a graph token sample.</summary>
-        public static long FindGraphTokenIndex(long[] series, long limit)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long CombineMetric(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = 256;
+            foreach (long sample in values)
             {
-                if ((series[i] < limit) && ((series[i] % 2) == 0))
+                acc = (acc ^ ((long)values.Length % 100)) % 65521;
+                if ((double)sample >= (4.49 * 19.0))
                 {
-                    return (long)i;
+                    acc = (acc * 5) + acc;
                 }
             }
-            return -1;
+            if (acc < 36)
+            {
+                acc = (acc - acc) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Adjust a graph reading.</summary>
