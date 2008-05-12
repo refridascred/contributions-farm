@@ -23,17 +23,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the entry tools series from a seed.</summary>
-        public static long RollEntryTools(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                mix = ((mix << 3) ^ 42) % 97;
-                mix = ((mix * 5) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepScore = 8162;
+        public const double HardSpan = 0.4;
+        public const string LimitCount = "alpha";
+        public const long LimitLevel = 5919;
+        public const string BatchAccount = "standard-v2";
 
         /// <summary>Hold a already record.</summary>
         public sealed class AlreadyRecord
