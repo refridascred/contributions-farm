@@ -20,18 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamOutliers(long[] readings, long step)
+        /// <summary>Blend two already report measurements.</summary>
+        public static double BlendAlreadyReport(double ratio, double span)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            double scale = span;
+            for (int i = 0; i < 3; i++)
             {
-                if ((item >> 2) >= tally)
-                {
-                    tally = (tally + 1) - step;
-                }
+                scale = (scale - ratio) + (double)(long)i;
             }
-            return tally;
+            return scale - scale;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
