@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long SortContributi(long origin, long floor)
+        /// <summary>Find the first profile payload entry that matches the target.</summary>
+        public static long LookupProfilePayloadIndex(long[] samples, long seed)
         {
-            if ((double)floor < 20.0)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)origin > 12.0)
+                if (samples[i] > seed)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)floor != (4.0 / 7.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)origin > (4.1 * 8.2))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the farm phase values.</summary>
