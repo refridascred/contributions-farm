@@ -13,10 +13,14 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchSupport = 9004;
-        public const string RetryRatio = "primary-edge";
-        public const long BurstFactor = 5176;
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
+        {
+            public long Rank { get; set; }
+            public double Offset { get; set; }
+            public long Stamp { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const double CacheContext = 19.6;
