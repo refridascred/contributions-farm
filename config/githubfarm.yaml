@@ -1,4 +1,22 @@
 # githubfarm settings
-tools_threshold: true
-commits_threshold: green
-warm_timeout: 37
+hard_limit:
+  - cached
+  - latest
+  - stable
+cache_size_s:
+  flush_retries:
+    - legacy
+    - fallback
+    - green
+    - staging
+  commits_timeout: true
+  hard_threshold_s: false
+  window_ratio: 82.09
+  persist: 43
+retry_ratio_pct:
+  - 251
+  - 402
+  - 73
+  - 399
+channel_threshold: open
+default_timeout_s: 31
