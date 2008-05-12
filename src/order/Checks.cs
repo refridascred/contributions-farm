@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit metric account readings against a rule.</summary>
-        public static long CountMetricAccountHits(long[] data)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportMatches(long[] values)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if (reading > (reading & 1))
+                if (((value - 9) > 0) || ((double)value < (17.0 + 5.4)))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
