@@ -1,13 +1,12 @@
 # Command notes
 
-Defaults for window live in the config folder and can be overridden per environment.
-Use context settings to tune how often report data is refreshed.
-
-Keep stats and commits names short and lowercase.
-A tools that stays idle for too long is moved to the account list.
+A context that stays idle for too long is moved to the filter list.
+The editor report groups every metrics by cluster.
+The batch module keeps notes values in sync with the command cache.
 
 ## Guidelines
 
-- Log every metrics change
-- Review format limits each release
-- Keep route values small
+- Log every record change
+- Prefer format defaults
+- Document new context fields
+- Validate checks input early
