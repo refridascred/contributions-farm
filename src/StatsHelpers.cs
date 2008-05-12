@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Project the next commits value.</summary>
-        public static double ProjectCommits(double ratio, double offset)
+        /// <summary>Iterate the filter entry series from a seed.</summary>
+        public static long DeriveFilterEntry(long step)
         {
-            double scale = (5.0 - ratio) - (double)95;
-            if (scale >= (scale - offset))
+            long result = step;
+            for (int i = 0; i < 10; i++)
             {
-                scale = scale - offset;
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    long prev = ((long)i2 - step) ^ (step + (long)i);
+                    result = result - (prev & 7);
+                }
+                result = ((result * 4) + (long)i) % 101;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + scale) + (double)(long)i;
-            }
-            return scale - (ratio / 4.0);
+            return result;
         }
 
         /// <summary>Rank stats entry input into a small class.</summary>
