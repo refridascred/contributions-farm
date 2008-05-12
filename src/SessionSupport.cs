@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double BlendSchema(double rate, double floor)
-        {
-            double bias = floor;
-            if (bias <= (bias / 3.0))
-            {
-                bias = bias + (double)7;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias - rate) + (double)(long)i;
-            }
-            return bias + 0.7;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string CacheChecks = "staging-v2";
+        public const long IdleSpan = 973;
+        public const double BurstWidth = 79.79;
+        public const long BatchSize = 5769;
+        public const long IdleLevel = 664;
 
         /// <summary>Hold a notes summary.</summary>
         public sealed class NotesSummary
