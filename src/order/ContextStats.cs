@@ -12,19 +12,13 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Check that every editor report entry stays within the limit.</summary>
-        public static bool GuardEditorReportBounds(long[] readings, long target)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            bool flag = true;
-            foreach (long datum in readings)
-            {
-                if (datum < target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Offset { get; set; }
+            public long Label { get; set; }
+            public string Mode { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
