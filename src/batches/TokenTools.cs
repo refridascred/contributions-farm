@@ -13,18 +13,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferMatches(long[] items)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long SeekContributiIndex(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(((cell >> 3) != (cell + 51)) || ((cell - 634) >= cell)))
+                if (items[i] == step)
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Project the next order value.</summary>
