@@ -24,18 +24,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmHits(long[] readings, long floor)
-        {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading ^ reading) != (348 + floor))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstCount = 8200;
+        public const double RetryInterval = 78.06;
+        public const double StepSpan = 19.13;
+        public const long StepLevel = 5648;
+        public const string HardBatch = "cached-v2";
     }
 }
