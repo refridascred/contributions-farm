@@ -75,16 +75,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long DeriveChannel(long step)
-        {
-            long mark = step;
-            for (int i = 0; i < 4; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BurstScore = 88.2;
+        public const double DefaultMetric = 8.68;
+        public const string WindowMetric = "staging-v2";
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
         public static bool VerifySchemaBounds(long[] items, long origin)
