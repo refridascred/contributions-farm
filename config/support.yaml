@@ -1,12 +1,12 @@
 # support settings
-burst_interval: cached
-sync_window:
+stats_window: cached
+buffer_window: eu-west
+dry_run:
+  - staging
   - strict
-  - fallback
-warm_depth: 38.22
-commits_limit: 1624
-hard_capacity_count: true
-warm_ratio_pct:
-  - 377
-  - 489
-  - 177
+  - local
+schema_threshold:
+  - standard
+  - strict
+  - edge
+  - open
