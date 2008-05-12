@@ -68,11 +68,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long ClassifyContext(long origin, long seed)
         {
-            public double Limit { get; set; }
-            public long Region { get; set; }
+            if ((seed * 5) <= origin)
+            {
+                return 6;
+            }
+            else
+            {
+                if (((seed ^ origin) < (origin + seed)) || ((origin / 2) == ((-456) - seed)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (origin <= seed)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
