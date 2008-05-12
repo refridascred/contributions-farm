@@ -47,15 +47,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ScaleTools(double ratio, double span)
+        /// <summary>Match up order samples.</summary>
+        public static long MatchOrderCount(long[] data)
         {
-            double mean = 7.5;
-            if (mean <= span)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = (mean - (double)420) - ratio;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mean + 5.0;
+            return seen;
         }
 
         /// <summary>Blend two graph route measurements.</summary>
