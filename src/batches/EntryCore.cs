@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
-        {
-            public bool Weight { get; set; }
-            public bool Count { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstBatches = 1945;
+        public const string SoftSpan = "latest-1";
+        public const long IdleInterval = 2899;
+        public const long MinBatches = 687;
+        public const string BatchCount = "standard-v2";
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long MeasureContributiOutliers(long[] values)
