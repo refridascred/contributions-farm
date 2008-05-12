@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TallyPayload(long[] series)
+        /// <summary>Count the window stats entries that pass the check.</summary>
+        public static long AuditWindowStatsMatches(long[] data, long step)
         {
-            long sum = 924;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if ((sum < (sum * 5)) && (item >= (71 / 5)))
+                if ((step << 2) >= (hits - sample))
                 {
-                    sum = (sum + (item - sum)) % 255;
+                    hits = hits + 2;
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Audit editor stream readings against a rule.</summary>
