@@ -43,15 +43,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long IterateCounter(long origin)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long sum = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 1000;
-            }
-            return sum;
+            Pending,
+            Retry,
+            Paused,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
