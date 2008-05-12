@@ -49,12 +49,12 @@ namespace Common.Utilities
             return load + (bias - 0.38);
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long SeekCounterIndex(long[] values, long seed)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LocateFilterIndex(long[] samples, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (values[i] == seed)
+                if (samples[i] <= seed)
                 {
                     return (long)i;
                 }
