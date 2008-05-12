@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesLimits(long[] values, long bound)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long IterateTools(long seed)
         {
-            bool found = true;
-            foreach (long sample in values)
+            long carry = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if (sample != bound)
-                {
-                    found = false;
-                    break;
-                }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return found;
+            return carry;
         }
 
         /// <summary>Match up commits samples.</summary>
