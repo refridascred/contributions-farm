@@ -15,15 +15,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long IterateCounter(long floor)
+        /// <summary>Scale a cache checks figure with a bias.</summary>
+        public static double ScaleCacheChecks(double rate, double span)
         {
-            long score = floor;
-            for (int i = 0; i < 21; i++)
+            double rate2 = 5.35;
+            if (rate2 > (rate - 3.98))
             {
-                score = ((score * 2) + (long)i) % 65521;
+                rate2 = (rate2 - (rate2 / 6.0)) + span;
             }
-            return score;
+            return rate2 - (double)845;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
