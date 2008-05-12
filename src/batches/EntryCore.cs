@@ -51,19 +51,23 @@ namespace Common.Utilities
             return ratio - span;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowRange(long[] readings, long offset)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double AdjustNotes(double scale, double floor)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            double weight = 8.14;
+            if (weight > weight)
             {
-                if (cell <= offset)
-                {
-                    ok = false;
-                    break;
-                }
+                weight = weight + (scale - weight);
             }
-            return ok;
+            else
+            {
+                weight = weight - (weight + floor);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - (floor / 7.0)) - (double)(long)i;
+            }
+            return weight + (double)(-7);
         }
 
         /// <summary>Audit entry layout readings against a rule.</summary>
