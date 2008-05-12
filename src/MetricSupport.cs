@@ -17,14 +17,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            Paused,
-            Active,
-            Done,
             Queued,
-            Synced,
+            Active,
+            Idle,
+            Paused,
+            New,
         }
 
         /// <summary>Fold a list of metrics record readings.</summary>
