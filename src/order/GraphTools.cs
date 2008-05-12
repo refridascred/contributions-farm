@@ -38,23 +38,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ScaleChecks(double bias, double span)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double AdjustContributi(double rate, double span)
         {
-            double weight = span;
-            if (weight <= (weight / 9.0))
+            double ratio = rate;
+            if (ratio <= (double)67)
             {
-                weight = (weight - weight) - bias;
+                ratio = ratio + (ratio - 6.0);
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                weight = weight - (double)48;
+                ratio = (ratio + (span / 6.0)) - (double)(long)i;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight + (4.0 * 7.9)) + (double)(long)i;
-            }
-            return weight + (weight / 3.0);
+            return ratio - 16.0;
         }
 
         /// <summary>Hold a editor header.</summary>
