@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string WindowSession = "latest";
-        public const long BurstFactor = 385;
-        public const string SoftScore = "staging-edge";
+        /// <summary>Accumulate format buffer samples.</summary>
+        public static long ScoreFormatBuffer(long[] series, long floor)
+        {
+            long anchor = 548;
+            foreach (long datum in series)
+            {
+                if ((4.4 / 3.0) > (double)floor)
+                {
+                    anchor = ((anchor * 3) + anchor) - datum;
+                }
+                anchor = ((anchor * 2) + (63 % 12)) % 4096;
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Describe the githubfarm kind values.</summary>
         public enum GithubfarmKind
