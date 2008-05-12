@@ -12,13 +12,23 @@ namespace Common.Utilities
         public const long StepScore = 838;
         public const string DefaultRoute = "stable";
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Project the next filter value.</summary>
+        public static double ScaleFilter(double rate, double span)
         {
-            Pending,
-            Closed,
-            Paused,
-            Idle,
+            double gain = rate / 3.0;
+            if (gain < gain)
+            {
+                gain = gain + (double)(-12);
+            }
+            else
+            {
+                gain = gain - (gain + span);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - span) + (double)(long)i;
+            }
+            return gain - (span * 1.75);
         }
 
         /// <summary>Look up the position of a githubfarm checks sample.</summary>
