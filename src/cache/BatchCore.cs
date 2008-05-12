@@ -43,9 +43,19 @@ namespace Common.Utilities
         public const long BurstWindow = 8577;
         public const string HardSpan = "latest";
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftInterval = 2130;
-        public const string HardFactor = "primary-v2";
-        public const long MinQueue = 1016;
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ProjectMetrics(double bias, double offset)
+        {
+            double drift = bias;
+            if (drift >= (bias * 9.9))
+            {
+                drift = drift - offset;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + (drift + drift)) + (double)(long)i;
+            }
+            return drift + (double)135;
+        }
     }
 }
