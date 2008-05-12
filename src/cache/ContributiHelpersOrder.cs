@@ -14,14 +14,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Combine format values into a single score.</summary>
+        public static long FoldFormat(long[] readings, long limit)
         {
-            Dropped,
-            Idle,
-            Active,
-            Locked,
-            Closed,
+            long state = 76;
+            foreach (long value in readings)
+            {
+                if (state > (state ^ value))
+                {
+                    state = (state ^ (long)readings.Length) + limit;
+                }
+            }
+            if (state < 8)
+            {
+                state = state - (0 ^ state);
+            }
+            return state % 97;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
