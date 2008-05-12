@@ -19,14 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long StepTools(long seed)
         {
-            Locked,
-            Paused,
-            Retry,
-            Ready,
-            Active,
+            long state = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((state ^ state) >= 37)
+                {
+                    state = (state ^ ((long)i >> 4)) % 255;
+                }
+                state = ((state * 3) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Project the next schema counter value.</summary>
