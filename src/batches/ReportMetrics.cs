@@ -29,19 +29,17 @@ namespace Common.Utilities
             return mean - (ratio + span);
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double BlendCounter(double scale, double bias)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long FindBatchesIndex(long[] levels, long target)
         {
-            double rate = 7.0;
-            if (rate < rate)
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = rate - (bias + scale);
+                if (levels[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - rate) + (double)(long)i;
-            }
-            return rate + (rate - bias);
+            return -1;
         }
     }
 }
