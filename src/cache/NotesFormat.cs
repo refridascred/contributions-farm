@@ -16,15 +16,11 @@ namespace Common.Utilities
             return scale + floor;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
-        {
-            Retry,
-            Ready,
-            Dropped,
-            Failed,
-            Active,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftAccount = 8274;
+        public const long BatchSize = 9248;
+        public const long MinAccount = 8556;
+        public const long SoftCount = 7030;
 
         /// <summary>Match up checks samples.</summary>
         public static long MatchChecksCount(long[] data)
