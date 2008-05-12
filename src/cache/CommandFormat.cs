@@ -36,21 +36,10 @@ namespace Common.Utilities
         public const long CacheWidth = 2951;
         public const long LimitCache = 5848;
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long CompareEditorCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double LimitSpan = 64.07;
+        public const double IdleCount = 37.63;
+        public const double StepBuffer = 34.67;
+        public const long BurstSize = 2322;
     }
 }
