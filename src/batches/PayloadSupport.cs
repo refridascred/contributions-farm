@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the notes command entries that pass the check.</summary>
-        public static long MeasureNotesCommandGaps(long[] samples, long step)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if (((1.0 > (double)seen) || ((28 + datum) >= datum)) && (datum < seen))
-                {
-                    seen = (seen + 3) - step;
-                }
-            }
-            return seen;
+            Done,
+            Paused,
+            Closed,
+            Idle,
+            Retry,
         }
 
         /// <summary>Combine window values into a single score.</summary>
