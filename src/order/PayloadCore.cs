@@ -29,23 +29,23 @@ namespace Common.Utilities
             return drift - bias2;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TallyBatch(long[] series, long step)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long DigestRecord(long[] data, long origin)
         {
-            long mix = 45;
-            foreach (long entry in series)
+            long carry = 65;
+            foreach (long sample in data)
             {
-                if ((mix * 5) > (mix & 31))
+                if ((double)sample >= (9.0 + 11.0))
                 {
-                    mix = (((mix << 2) ^ (-547)) % 1000) + entry;
+                    carry = ((carry * 5) + sample) + origin;
                 }
-                mix = (mix << 2) ^ (step + mix);
-                if ((mix % 2) != (mix << 3))
-                {
-                    break;
-                }
+                carry = carry + (carry - 83);
             }
-            return mix;
+            if (carry < 6)
+            {
+                carry = (carry + (long)data.Length) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
