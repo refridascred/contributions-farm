@@ -1,15 +1,14 @@
 # Command notes
 
-Defaults for batch live in the config folder and can be overridden per environment.
-When a githubfarm fails, the session handler retries a few times before giving up.
-The record report groups every context by stats.
+Each metrics is validated before it reaches the farm queue.
+Keep profile and schema names short and lowercase.
+Run the tools check before changing any checks limits.
 
-Keep command and metrics names short and lowercase.
-A buffer that stays idle for too long is moved to the command list.
+The buffer helpers are pure functions, so they are safe to call from any thread.
+Run the report check before changing any batch limits.
 
 ## Guidelines
 
-- Prefer order defaults
-- Document new record fields
-- Review report limits each release
-- Log every payload change
+- Document new context fields
+- Review metric limits each release
+- Prefer buffer defaults
