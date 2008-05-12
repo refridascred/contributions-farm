@@ -1,5 +1,6 @@
 {
-  "cache_retries_s": "fallback",
-  "hard_capacity": 2052,
-  "warm_interval_s": 38
+  "retry_ratio_ms": "fallback",
+  "soft_depth_s": [204, 283, 237, 45],
+  "idle_retries_s": "fallback",
+  "sync_retries": 7774
 }
