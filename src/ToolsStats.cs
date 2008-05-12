@@ -40,28 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long DigestCounter(long[] readings, long limit)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long OverlapStreamCount(long[] levels)
         {
-            long acc = 66;
-            foreach (long entry in readings)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((acc + entry) < (limit * 5))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    long gap = (limit + acc) ^ entry;
-                    acc = ((acc * 3) + gap) % 4096;
+                    if ((levels[i] + levels[j]) > 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                if (((entry ^ entry) <= (entry - limit)) || ((limit % 8) < 29))
-                {
-                    acc = acc - acc;
-                }
-                acc = acc ^ entry;
             }
-            if (acc < (-742))
-            {
-                acc = ((acc * 2) + (56 - limit)) % 4096;
-            }
-            return acc % 65521;
+            return hits;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
