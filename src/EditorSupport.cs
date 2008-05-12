@@ -58,11 +58,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long WeighEntry(long[] readings, long floor)
         {
-            public long Mode { get; set; }
-            public bool Count { get; set; }
+            long state = 94;
+            foreach (long item in readings)
+            {
+                state = (((state - (state >> 2)) % 4096) ^ item) + floor;
+            }
+            return state;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
