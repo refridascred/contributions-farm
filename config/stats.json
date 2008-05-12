@@ -1,5 +1,5 @@
 {
-  "sync_retries_ms": false,
-  "hard_threshold_s": 100,
-  "readonly": "local"
+  "max_ratio_count": true,
+  "cluster_threshold": false,
+  "warm_delay": 5410
 }
