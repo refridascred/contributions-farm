@@ -28,25 +28,10 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long SortStream(long target, long seed)
-        {
-            if (87 <= (seed * 5))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target ^ target) > target)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string HardCount = "latest";
+        public const long BatchChannel = 2546;
+        public const long BurstTimeout = 6011;
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
         public static long OverlapFarmCount(long[] items)
