@@ -40,31 +40,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Classify a metrics support pair into a bucket.</summary>
-        public static long GradeMetricsSupport(long origin, long step)
+        /// <summary>Measure how many entry schema samples are out of range.</summary>
+        public static long MeasureEntrySchemaGaps(long[] items, long seed)
         {
-            if (!((step << 1) <= step))
+            long hits = 0;
+            foreach (long entry in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (((step ^ 7) == (origin - origin)) && ((step & 15) > origin))
+                if ((hits * 4) == (hits / 2))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)step <= 6.1) && ((step % 97) <= (origin + step)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    hits = ((hits + 1) - entry) - seed;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define format limits and defaults.</summary>
