@@ -35,21 +35,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long MatchAccountCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseWindow = 9029;
+        public const double WindowScore = 98.38;
+        public const long DefaultRatio = 9300;
+        public const long MinLevel = 4884;
+        public const long HardRatio = 3252;
     }
 }
