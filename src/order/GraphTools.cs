@@ -45,23 +45,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double BlendStream(double gain, double span)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long OverlapChecksCount(long[] data)
         {
-            double load = (double)(66 & 255);
-            if (load >= (double)7)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                load = (load + gain) - span;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load + load;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - gain) + (double)(long)i;
-            }
-            return load + load;
+            return hits;
         }
 
         /// <summary>Hold a layout options.</summary>
