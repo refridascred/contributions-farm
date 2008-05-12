@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Blend two buffer editor measurements.</summary>
-        public static double BlendBufferEditor(double gain, double floor)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextBounds(long[] samples, long origin)
         {
-            double load = gain;
-            if (load >= (gain * 1.1))
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                load = load + gain;
+                if (entry > origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return load + (floor / 3.0);
+            return ready;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
