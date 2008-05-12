@@ -37,19 +37,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next checks order value.</summary>
-        public static double BlendChecksOrder(double bias, double floor)
+        /// <summary>Validate record tools readings against a bound.</summary>
+        public static bool ValidateRecordToolsLimits(long[] levels, long bound)
         {
-            double mean = 1.1;
-            if (mean <= bias)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                mean = (mean + mean) - floor;
+                if (reading < bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean - mean;
-            }
-            return mean - (double)16;
+            return found;
         }
     }
 }
