@@ -28,10 +28,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultSupport = 1060;
-        public const long RetryTimeout = 6246;
-        public const long BaseSupport = 8642;
-        public const long LimitSupport = 7029;
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
+        {
+            public string Rank { get; set; } = "";
+            public long Size { get; set; }
+            public long Weight { get; set; }
+        }
     }
 }
