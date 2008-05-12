@@ -14,19 +14,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandMatches(long[] levels)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyOutliers(long[] readings)
         {
             long hits = 0;
-            foreach (long value in levels)
+            foreach (long sample in readings)
             {
-                if ((2 * 5) > (value << 1))
+                if (!(((hits % 100) != (sample >> 4)) && (sample <= (hits + (-119)))))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = hits + 1;
                 }
             }
             return hits;
