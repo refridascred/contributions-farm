@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
-        {
-            Failed,
-            Done,
-            New,
-            Queued,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string HardRatio = "latest-1";
+        public const string WindowSpan = "cached-v2";
+        public const string MinNotes = "local";
 
         /// <summary>Combine farm checks values into a single score.</summary>
         public static long FoldFarmChecks(long[] values, long origin)
