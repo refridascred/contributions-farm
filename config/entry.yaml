@@ -1,8 +1,6 @@
 # entry settings
-warm_ttl_pct:
-  - 164
-  - 344
-  - 172
-retry_delay_pct: 78.88
-report_capacity: 51.91
-audit: blue
+burst_limit: 43.36
+poll_timeout_ms: 20
+contributi_threshold: cached
+base_retries_pct: 1.91
+flush_interval: false
