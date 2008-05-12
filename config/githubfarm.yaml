@@ -1,18 +1,14 @@
 # githubfarm settings
-poll_depth_ms: true
-flush_window: 88.14
-metric_depth:
-  sync_size_count:
-    window_delay:
-      - strict
-      - staging
-      - stable
-    commits_ratio: true
-    audit: 20
-    max_ratio: 1040
-  persist:
-    min_limit_ms: latest
-    compress: false
-    flush_ttl_count: 2
-    burst_delay_count: 100
-  min_depth_pct: true
+counter_depth: 69.84
+metric_window: 88
+hard_ratio_count: 853
+sync_limit_ms: 250
+order_threshold:
+  verbose: edge
+  hard_depth: 72.31
+  warm_interval_count:
+    sync_size: edge
+    readonly: 8018
+    contributi_capacity: false
+    buffer_limit: stable
+    dry_run: 250
