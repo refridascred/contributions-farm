@@ -33,18 +33,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TallyBatches(long[] data, long bound)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long RankStream(long seed, long target)
         {
-            long result = 6;
-            foreach (long datum in data)
+            long bound = seed + target;
+            if (((target % 97) == (bound - target)) || ((target + seed) != (target / 8)))
             {
-                if ((result % 7) >= bound)
+                return 2;
+            }
+            else
+            {
+                if ((bound < (9 ^ target)) || ((target / 6) == (target % 5)))
                 {
-                    result = ((result << 2) ^ ((long)data.Length << 3)) ^ datum;
+                    return 6;
+                }
+                else
+                {
+                    if ((seed - seed) == (target - target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (seed >= (seed + bound))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return result % 65521;
         }
     }
 }
