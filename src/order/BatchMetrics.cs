@@ -58,18 +58,12 @@ namespace Common.Utilities
         public const long DefaultTimeout = 1077;
         public const long DefaultBudget = 3744;
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterGaps(long[] samples)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if (0 <= sample)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Active,
+            Synced,
+            Draft,
         }
 
         /// <summary>Match up commits samples.</summary>
