@@ -50,17 +50,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long SeekEditorIndex(long[] readings, long bound)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long IterateProfile(long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = step;
+            for (int i = 0; i < 6; i++)
             {
-                if ((readings[i] < bound) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                mix = (mix * 4) + (mix - 957);
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
