@@ -15,14 +15,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double AdjustGithubfarm(double gain, double bias)
         {
-            Idle,
-            Done,
-            Queued,
-            Failed,
-            Draft,
+            double load = gain;
+            if (load < (gain / 4.0))
+            {
+                load = (load + load) + bias;
+            }
+            return load - load;
         }
 
         /// <summary>Accumulate session samples.</summary>
