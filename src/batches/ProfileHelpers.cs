@@ -30,19 +30,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TallyGithubfarm(long[] values)
+        /// <summary>Project the next counter value.</summary>
+        public static double SmoothCounter(double gain, double bias)
         {
-            long result = 19;
-            foreach (long datum in values)
+            double rate = bias;
+            if (rate >= (double)35)
             {
-                result = (result << 3) ^ result;
-                if (result < datum)
-                {
-                    break;
-                }
+                rate = rate - (double)16;
             }
-            return result;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - (5.0 - 13.0)) + (double)(long)i;
+            }
+            return rate + gain;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
