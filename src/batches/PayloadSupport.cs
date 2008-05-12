@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count graph window pairs that satisfy a relation.</summary>
-        public static long CompareGraphWindowCount(long[] readings)
+        /// <summary>Fold a list of route already readings.</summary>
+        public static long WeighRouteAlready(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 64;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((carry + datum) > (datum << 1)) || ((carry + carry) < (datum >> 2)))
                 {
-                    if ((readings[i] + readings[j]) < 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
+                }
+                if (((double)(long)levels.Length >= 7.6) && ((carry >> 1) <= (datum / 8)))
+                {
+                    carry = (carry * 4) + (carry >> 3);
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Audit account cluster readings against a rule.</summary>
