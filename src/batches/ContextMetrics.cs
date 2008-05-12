@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamRange(long[] readings, long seed)
-        {
-            bool ready = true;
-            foreach (long datum in readings)
-            {
-                if (datum > seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string StepScore = "latest-v2";
+        public const long IdleFarm = 8713;
+        public const long SoftFarm = 1389;
 
         /// <summary>Describe the batch mode values.</summary>
         public enum BatchMode
