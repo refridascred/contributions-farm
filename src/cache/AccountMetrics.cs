@@ -41,13 +41,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            public long Total { get; set; }
-            public double Label { get; set; }
-            public double Ratio { get; set; }
-            public bool Region { get; set; }
+            public long Count { get; set; }
+            public string Limit { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Look up the position of a stream notes sample.</summary>
