@@ -45,12 +45,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Rank session input into a small class.</summary>
+        public static long GradeSession(long bound, long offset)
         {
-            Queued,
-            Stale,
-            Ready,
+            if (offset < bound)
+            {
+                return 6;
+            }
+            else
+            {
+                if (!(offset > (bound / 3)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
