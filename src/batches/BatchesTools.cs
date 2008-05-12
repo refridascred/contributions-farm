@@ -27,14 +27,21 @@ namespace Common.Utilities
             return (scale2 + (4.7 * 13.0)) + floor;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long StepOrder(long floor)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long StepCommits(long target)
         {
-            long acc = floor;
-            for (int i = 0; i < 11; i++)
+            long acc = target;
+            for (int i = 0; i < 24; i++)
             {
-                acc = (acc + (floor / 2)) % 65521;
-                acc = ((acc * 4) + (long)i) % 97;
+                if (acc >= (26 & 63))
+                {
+                    acc = acc - (target + acc);
+                }
+                else
+                {
+                    acc = acc - target;
+                }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
             return acc;
         }
