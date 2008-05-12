@@ -20,21 +20,27 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count order stats pairs that satisfy a relation.</summary>
-        public static long CompareOrderStatsCount(long[] series)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long CombineCommits(long[] levels, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = 182;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (17.0 <= (double)cell)
                 {
-                    if ((series[i] ^ series[j]) == 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    continue;
+                }
+                score = (score + (origin + 75)) % 4096;
+                if ((15.0 * 2.57) > (double)score)
+                {
+                    break;
                 }
             }
-            return seen;
+            if (score > 52)
+            {
+                score = (score ^ (origin / 6)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Compare every pair of record graph readings.</summary>
