@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            public long Count { get; set; }
+            public string Count { get; set; } = "";
             public bool Total { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
