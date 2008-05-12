@@ -1,20 +1,5 @@
 # support settings
-command_ratio: 56
-batch_timeout_ms: 48.97
-base_interval:
-  cache_threshold: 60
-  persist: legacy
-  max_ttl_s:
-    burst_limit:
-      - 476
-      - 149
-      - 279
-      - 349
-    idle_delay: local
-    soft_limit_count: cached
-    audit: 5750
-    batch_depth: 32
-    entry_size: 468
-  poll_window: 7376
-  contributi_delay: legacy
-  already_capacity: 71
+burst_capacity_ms: 60
+report_delay: 2954
+poll_capacity: 3189
+soft_size_s: false
