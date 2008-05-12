@@ -34,19 +34,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionRange(long[] items, long step)
+        /// <summary>Match up command payload samples.</summary>
+        public static long MatchCommandPayloadCount(long[] series)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample > step)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((series[i] ^ series[j]) == 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
