@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the layout route entries that pass the check.</summary>
-        public static long CountLayoutRouteHits(long[] series, long step)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if (!(((9.19 - 1.02) != (double)step) || (count <= (step + 46))))
-                {
-                    count = (count + 1) - sample;
-                }
-            }
-            return count;
+            public string Flag { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
