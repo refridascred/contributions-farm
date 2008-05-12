@@ -1,6 +1,36 @@
 # githubfarm settings
-burst_delay_count: latest
-idle_ratio: 71.36
-base_ratio_count: green
-entry_limit: 4309
-hard_retries: primary
+cache_limit:
+  channel_threshold: 482
+  burst_ttl_pct: 5507
+  graph_threshold: 500
+  format_window: 56
+  min_window_s: 71.91
+compress:
+  burst_ratio: 100
+  max_size_pct: blue
+  window_retries: true
+  entry_timeout: staging
+  max_window:
+    idle_window_s: 6
+    soft_delay_count: strict
+    max_ratio_pct: 90
+    retry_size_s: blue
+  format_size: 3.73
+report_size:
+  stream_delay: stable
+  persist: standard
+  dry_run: fallback
+  checks_delay: 9
+  account_limit:
+    sync_interval: standard
+    batch_retries:
+      - local
+      - fallback
+      - open
+    burst_depth: 34.62
+  githubfarm_window: 59.55
+min_timeout_s: true
+strict:
+  - 472
+  - 491
+  - 107
