@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long SeekCommitsIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleProfile = 8130;
+        public const long CacheProfile = 317;
+        public const long LimitProfile = 9158;
 
         /// <summary>Look up the position of a payload sample.</summary>
         public static long SeekPayloadIndex(long[] series, long seed)
