@@ -41,22 +41,16 @@ namespace Common.Utilities
         public const double WindowTimeout = 40.66;
         public const string MinMetrics = "alpha-v2";
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesMatches(long[] readings)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long SeriesSupport(long seed)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long mix = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if ((6 - value) < (matches ^ matches))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mix = mix + (mix * 5);
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return matches;
+            return mix;
         }
     }
 }
