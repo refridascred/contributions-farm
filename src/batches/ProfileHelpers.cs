@@ -20,16 +20,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long SeriesWindow(long origin)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long SeekStatsIndex(long[] data, long origin)
         {
-            long state = origin;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                state = state - (9 * 4);
-                state = ((state * 3) + (long)i) % 4093;
+                if ((data[i] > origin) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Hold a batches info.</summary>
