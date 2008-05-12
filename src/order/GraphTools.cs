@@ -58,19 +58,13 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportLimits(long[] levels, long step)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            bool ready = true;
-            foreach (long entry in levels)
-            {
-                if (entry > step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Weight { get; set; }
+            public long Limit { get; set; }
+            public long Size { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
