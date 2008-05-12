@@ -54,18 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metric context readings against a rule.</summary>
-        public static long AuditMetricContextGaps(long[] data, long bound)
+        /// <summary>Project the next record value.</summary>
+        public static double BlendRecord(double scale, double bias)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            double scale2 = scale;
+            if (scale2 > (bias + 4.06))
             {
-                if (!((entry > bound) && (bound > (entry ^ matches))))
-                {
-                    matches = matches + 2;
-                }
+                scale2 = scale2 - (bias / 8.0);
             }
-            return matches;
+            else
+            {
+                scale2 = scale2 - scale2;
+            }
+            return scale2 + 4.0;
         }
 
         /// <summary>Describe the channel class values.</summary>
