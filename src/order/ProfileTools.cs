@@ -31,24 +31,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long BucketRecord(long origin, long offset)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long StepWindow(long origin)
         {
-            if (((double)origin != (7.4 * 8.0)) || (offset <= (5 + origin)))
+            long state = origin;
+            for (int i = 0; i < 4; i++)
             {
-                return 4;
+                state = state ^ (state / 4);
+                state = (state ^ (8 & 1)) % 101;
+                state = ((state * 3) + (long)i) % 97;
             }
-            else
-            {
-                if (origin < (origin & 1))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return state;
         }
 
         /// <summary>Rank account input into a small class.</summary>
