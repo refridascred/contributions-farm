@@ -40,18 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TotalAlready(long[] data)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long RollFilter(long seed)
         {
-            long state = 8;
-            foreach (long datum in data)
+            long sum = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if (((state << 1) <= datum) && ((datum << 1) != (datum / 4)))
-                {
-                    state = (state << 3) ^ (8 / 7);
-                }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return state % 65521;
+            return sum;
         }
 
         /// <summary>Fold a list of route readings.</summary>
