@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] samples)
         {
-            Failed,
-            Retry,
-            Synced,
-            Idle,
+            long acc = 5;
+            foreach (long reading in samples)
+            {
+                if (10.0 < (double)acc)
+                {
+                    acc = ((acc << 3) ^ (reading - reading)) % 1000;
+                }
+                else
+                {
+                    acc = (acc - reading) % 65521;
+                }
+            }
+            if (acc > 1)
+            {
+                acc = acc + 94;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
