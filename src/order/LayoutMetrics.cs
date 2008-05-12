@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long StepQueue(long bound)
+        /// <summary>Find the first token format entry that matches the target.</summary>
+        public static long LookupTokenFormatIndex(long[] levels, long step)
         {
-            long carry = bound;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = ((carry * 5) + (long)i) % 1000;
+                if (levels[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Combine notes command values into a single score.</summary>
