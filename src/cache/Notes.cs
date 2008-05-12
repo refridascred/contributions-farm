@@ -22,24 +22,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long RankToken(long bound, long limit)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            if (((bound ^ bound) < (bound + limit)) || (limit >= (bound >> 3)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((2.22 * 9.0) < (double)bound)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Queued,
+            Paused,
+            Locked,
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
