@@ -1,7 +1,8 @@
 {
-  "checks_timeout": 27.53,
-  "min_depth_count": 41.32,
-  "persist": false,
-  "verbose": "blue",
-  "enabled": true
+  "retry_size": false,
+  "hard_threshold_pct": "latest",
+  "base_limit": 39.1,
+  "support_size": ["local", "latest", "latest"],
+  "verbose": false,
+  "idle_ratio": 14.95
 }
