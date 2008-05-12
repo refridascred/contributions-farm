@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            public bool Size { get; set; }
-            public double Label { get; set; }
-            public long Score { get; set; }
+            Active,
+            Paused,
+            Pending,
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
