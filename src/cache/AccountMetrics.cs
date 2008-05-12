@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandHits(long[] samples, long seed)
         {
-            public bool Rank { get; set; }
-            public long Owner { get; set; }
-            public long Token { get; set; }
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if (!!((cell / 2) <= (hits - 404)))
+                {
+                    hits = (hits + 1) + seed;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
