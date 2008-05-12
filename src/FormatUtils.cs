@@ -21,12 +21,17 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long FindLayoutIndex(long[] series, long floor)
         {
-            public long Token { get; set; }
-            public double Flag { get; set; }
-            public double Region { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == floor) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
