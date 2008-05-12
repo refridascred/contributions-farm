@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Roll a route counter forward.</summary>
-        public static long DeriveRoute(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 7; i++)
-            {
-                if (!(step <= (carry - 3)))
-                {
-                    carry = carry + ((long)i & 127);
-                }
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxChecks = 8259;
+        public const string HardChecks = "cached-1";
+        public const double MinChecks = 90.77;
+        public const double BatchCount = 22.85;
 
         /// <summary>Hold a window stats.</summary>
         public sealed class WindowStats
