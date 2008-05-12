@@ -47,23 +47,37 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long BucketFarm(long target, long seed)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long SortToken(long limit, long target)
         {
-            long cur = target + seed;
-            if ((double)seed != (9.85 - 8.43))
+            long cur = limit - target;
+            if (target < (cur + limit))
             {
-                return 1;
+                return 6;
             }
             else
             {
-                if (((10 + cur) >= 34) && ((cur - cur) < (7 & 255)))
+                if (target >= (0 * 4))
                 {
-                    return 7;
+                    return 4;
                 }
                 else
                 {
-                    return 0;
+                    if ((target >> 4) == (limit + target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((cur % 100) == (93 % 7)) || ((target - cur) > (cur + target)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
         }
