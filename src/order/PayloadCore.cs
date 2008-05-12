@@ -36,13 +36,17 @@ namespace Common.Utilities
             return scale + (bias + 1.0);
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Find the first graph editor entry that matches the target.</summary>
+        public static long LookupGraphEditorIndex(long[] readings, long limit)
         {
-            Done,
-            Failed,
-            Queued,
-            Stale,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == limit) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a cluster stats.</summary>
