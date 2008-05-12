@@ -18,27 +18,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] samples)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            long carry = 639;
-            foreach (long reading in samples)
-            {
-                if ((double)carry <= (double)reading)
-                {
-                    carry = (carry - (reading - reading)) % 97;
-                    continue;
-                }
-                if (reading > (carry * 5))
-                {
-                    carry = (carry - (reading - carry)) % 101;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (carry ^ reading)) % 101;
-                }
-            }
-            return carry;
+            public string Count { get; set; } = "";
+            public long Level { get; set; }
+            public long Score { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
