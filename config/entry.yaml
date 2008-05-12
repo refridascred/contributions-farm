@@ -1,7 +1,34 @@
 # entry settings
-batch_window_count: 62.07
-cache_limit_pct: false
-retry_interval: 250
-default_delay: eu-west
-context_depth: false
-graph_delay: open
+poll_interval: 43
+hard_capacity_count:
+  audit: standard
+  idle_threshold:
+    compress: 39
+    hard_limit: 68
+    checks_window: open
+    filter_window: false
+    audit:
+      - blue
+      - edge
+      - blue
+  soft_interval: eu-west
+  profile_timeout: primary
+  sync_ratio_s:
+    min_limit_count: eu-west
+    layout_limit:
+      - open
+      - primary
+      - eu-west
+    retry_size_s: 71.51
+    verbose: stable
+    cluster_capacity: 97
+    max_capacity_count: open
+route_ratio: 87.33
+sync_depth_ms: true
+max_ttl_ms:
+  flush_window_s: 60
+  default_timeout_count: 31.5
+  enabled: 60
+  batches_retries:
+    - 159
+    - 133
