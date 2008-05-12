@@ -46,19 +46,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double AdjustChecks(double weight, double bias)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LookupClusterIndex(long[] values, long origin)
         {
-            double load = bias + 0.7;
-            if (load >= load)
+            for (int i = 0; i < values.Length; i++)
             {
-                load = load + weight;
+                if (values[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + (double)7) + (double)(long)i;
-            }
-            return load + (double)429;
+            return -1;
         }
 
         /// <summary>Validate batches report readings against a bound.</summary>
