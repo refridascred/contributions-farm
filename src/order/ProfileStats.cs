@@ -20,13 +20,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Grade a window support value against two limits.</summary>
+        public static long SortWindowSupport(long step, long step2)
         {
-            public string Size { get; set; } = "";
-            public long Offset { get; set; }
-            public double Owner { get; set; }
-            public bool Token { get; set; }
+            if (!((step2 << 3) <= 23))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((9.9 > (double)step) || ((step + step2) <= step2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((step + step) == (step + step2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a record options.</summary>
