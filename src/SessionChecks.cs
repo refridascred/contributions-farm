@@ -45,10 +45,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BaseCluster = "standard";
-        public const double BurstBudget = 88.89;
-        public const long RetryCount = 3213;
-        public const long WindowDepth = 1597;
+        /// <summary>Digest a series of checks stream entries.</summary>
+        public static long TotalChecksStream(long[] levels)
+        {
+            long mark = -48;
+            foreach (long reading in levels)
+            {
+                mark = (mark * 2) + (mark + reading);
+                if (reading > mark)
+                {
+                    mark = (mark ^ mark) % 255;
+                }
+                else
+                {
+                    mark = (mark - (3 % 60)) % 97;
+                }
+            }
+            return mark % 4096;
+        }
     }
 }
