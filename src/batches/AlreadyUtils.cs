@@ -32,16 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next tools already value from a seed.</summary>
-        public static long RollToolsAlready(long limit)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long MatchChecksCount(long[] data)
         {
-            long anchor = limit;
-            for (int i = 0; i < 11; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = (anchor + (limit & 127)) % 65521;
-                anchor = ((anchor * 2) + (long)i) % 101;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Describe the format phase values.</summary>
