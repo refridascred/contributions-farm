@@ -22,19 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordRange(long[] levels, long step)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportRange(long[] levels, long step)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                if (sample > step)
+                if (entry != step)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
