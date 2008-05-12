@@ -21,15 +21,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long IterateEntry(long limit)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long PairContextCount(long[] items)
         {
-            long state = limit;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                state = ((state * 5) + (long)i) % 1000;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 3)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return state;
+            return count;
         }
     }
 }
