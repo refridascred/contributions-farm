@@ -27,13 +27,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesGaps(long[] data, long target)
         {
-            Active,
-            Closed,
-            Draft,
-            Synced,
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((7.09 * 7.0) < (double)target)
+                {
+                    seen = (seen + 2) ^ value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
