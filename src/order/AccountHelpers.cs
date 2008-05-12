@@ -42,14 +42,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            Active,
-            Paused,
-            Draft,
-            Pending,
             New,
+            Failed,
+            Stale,
+            Active,
         }
 
         /// <summary>Hold a already header.</summary>
