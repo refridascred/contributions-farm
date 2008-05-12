@@ -45,14 +45,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Measure how many filter farm samples are out of range.</summary>
+        public static long MeasureFilterFarmGaps(long[] items)
         {
-            New,
-            Done,
-            Retry,
-            Dropped,
-            Draft,
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((0.01 + 5.41) > (double)value)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
