@@ -20,31 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long target, long bound)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiMatches(long[] items, long seed)
         {
-            if ((double)bound > (0.8 + 17.0))
+            long hits = 0;
+            foreach (long sample in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (43 >= (bound + bound))
+                if ((9.0 * 8.4) != (double)sample)
                 {
-                    return 2;
+                    hits = (hits + 2) - seed;
                 }
                 else
                 {
-                    if (!((double)target < (2.68 + 4.3)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a layout entry.</summary>
