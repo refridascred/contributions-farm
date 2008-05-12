@@ -22,24 +22,16 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long WeighChecks(long[] data, long seed)
+        /// <summary>Roll a buffer command counter forward.</summary>
+        public static long SeriesBufferCommand(long floor)
         {
-            long acc = 30;
-            foreach (long cell in data)
+            long mix = floor;
+            for (int i = 0; i < 4; i++)
             {
-                acc = (acc ^ (seed + acc)) % 4096;
-                acc = acc - cell;
-                if ((77 / 7) > (cell >> 1))
-                {
-                    acc = acc - (seed + acc);
-                }
-                else
-                {
-                    acc = (acc + (cell - 0)) % 1000;
-                }
+                mix = mix + ((long)i + floor);
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return acc;
+            return mix;
         }
     }
 }
