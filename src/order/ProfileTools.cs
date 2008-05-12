@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxRoute = 1502;
-        public const long CacheSize = 8476;
-        public const string LimitSize = "fallback-edge";
-        public const long StepScore = 838;
-        public const string DefaultRoute = "stable";
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long MatchCommandCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Project the next filter value.</summary>
         public static double ScaleFilter(double rate, double span)
