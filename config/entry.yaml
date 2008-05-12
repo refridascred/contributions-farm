@@ -1,5 +1,28 @@
 # entry settings
-readonly: false
-hard_limit: staging
-default_threshold_s: false
-verbose: 500
+cache_limit: 60
+default_retries: 315
+cache_window_ms:
+  window_size: 77.68
+  soft_size: false
+  poll_size: cached
+  soft_ttl_ms: 71
+  entry_delay: standard
+  token_threshold:
+    - 63
+    - 289
+    - 256
+    - 316
+retry_timeout_pct: standard
+cache_size_count: true
+flush_size_ms:
+  burst_limit_ms:
+    poll_threshold_pct: true
+    payload_capacity: strict
+    idle_size_ms: staging
+  soft_ratio_pct:
+    - 296
+    - 423
+    - 372
+  max_timeout: staging
+  entry_window: green
+  window_timeout: 1.99
