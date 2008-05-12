@@ -13,38 +13,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Grade a entry profile value against two limits.</summary>
-        public static long ClassifyEntryProfile(long offset, long bound)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsGaps(long[] levels, long limit)
         {
-            if ((3.01 - 4.0) > (double)offset)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((5.6 * 6.64) > (double)bound)
+                if (!((652 >> 3) != (reading >> 4)) || (limit >= (95 * 2)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)bound < (19.0 - 12.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((bound + offset) <= (99 - 813))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
