@@ -12,18 +12,24 @@ namespace Common.Utilities
         public const long MaxWidth = 8424;
         public const long BatchBudget = 1838;
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandHits(long[] items, long seed)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long ClassifySession(long step, long limit)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            if ((limit + step) < limit)
             {
-                if (((double)hits >= (double)cell) && (hits < (306 + 3)))
+                return 0;
+            }
+            else
+            {
+                if ((limit + step) != (limit >> 3))
                 {
-                    hits = (hits + 3) + seed;
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return hits;
         }
 
         /// <summary>Project the next layout value.</summary>
