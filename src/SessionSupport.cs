@@ -36,11 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            public string Offset { get; set; } = "";
-            public long Ratio { get; set; }
+            Draft,
+            Locked,
+            Retry,
         }
     }
 }
