@@ -27,10 +27,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardLayout = 4951;
-        public const long BaseLayout = 9830;
-        public const double MaxLayout = 51.34;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepSchema = 8916;
+        public const double RetrySpan = 90.21;
+        public const long SoftRatio = 929;
+        public const long BurstSchema = 5174;
+        public const long SoftSize = 8637;
 
         /// <summary>Find the first graph entry that matches the target.</summary>
         public static long FindGraphIndex(long[] series, long seed)
