@@ -1,7 +1,4 @@
 # githubfarm settings
-idle_limit_ms:
-  entry_window: eu-west
-  graph_capacity: stable
-  support_size: true
-base_timeout: fallback
-audit: 5151
+verbose: false
+already_ttl: 90.86
+hard_window: true
