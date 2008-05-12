@@ -27,18 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowGaps(long[] values)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandOutliers(long[] levels)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if (((long)values.Length + seen) >= (seen / 9))
+                if (((340 % 16) == (cell + 34)) && ((hits << 1) == (hits - hits)))
                 {
-                    seen = (seen + 1) ^ value;
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
