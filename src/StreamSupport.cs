@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiRange(long[] samples, long floor)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long SortBatches(long origin, long floor)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            long edge = origin + floor;
+            if (((floor ^ 329) >= (391 / 5)) && ((double)origin < 14.0))
             {
-                if (value != floor)
+                return 4;
+            }
+            else
+            {
+                if (((18.0 - 4.0) > (double)floor) && ((2 & 255) != (origin + floor)))
                 {
-                    stale = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (((edge + edge) <= (45 / 3)) && ((edge << 1) == (edge - origin)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
