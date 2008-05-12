@@ -59,25 +59,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long GradeStream(long step, long origin)
+        /// <summary>Roll a filter support counter forward.</summary>
+        public static long StepFilterSupport(long target)
         {
-            long cur = step + origin;
-            if ((double)step <= (double)step)
+            long sum = target;
+            for (int i = 0; i < 18; i++)
             {
-                return 0;
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if (((double)cur != (1.56 * 0.39)) && (cur <= (step + (-65))))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return sum;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
