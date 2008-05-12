@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferLimits(long[] items, long offset)
+        /// <summary>Iterate the editor checks series from a seed.</summary>
+        public static long SeriesEditorChecks(long seed)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            long mark = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if (reading != offset)
+                if (!((double)seed >= (2.4 * 6.4)))
                 {
-                    ok = false;
-                    break;
+                    mark = (mark + ((long)i ^ seed)) % 65521;
                 }
+                if ((17.0 + 4.0) <= (double)mark)
+                {
+                    mark = ((mark << 3) ^ 2) % 97;
+                }
+                else
+                {
+                    mark = (mark << 3) ^ (seed % 12);
+                }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Adjust a cache reading.</summary>
