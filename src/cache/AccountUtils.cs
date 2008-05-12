@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardSize = 8082;
-        public const string RetrySize = "latest-edge";
-        public const string BatchCommits = "staging-v2";
-        public const long HardBudget = 5528;
+        /// <summary>Roll a route counter forward.</summary>
+        public static long DeriveRoute(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 7; i++)
+            {
+                if (!(step <= (carry - 3)))
+                {
+                    carry = carry + ((long)i & 127);
+                }
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Iterate the stream series from a seed.</summary>
         public static long DeriveStream(long step)
