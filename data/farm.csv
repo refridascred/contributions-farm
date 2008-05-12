@@ -1,10 +1,6 @@
-id,level,state
-1,131,927
-2,399,47.44
-3,stable,0.95
-4,666,eu-west
-5,48.43,edge
-6,eu-west,stable
-7,latest,708
-8,715,256
-9,open,cached
+id,state,level
+1,775,primary
+2,858,49.76
+3,782,896
+4,53.33,stable
+5,open,standard
