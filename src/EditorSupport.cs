@@ -40,15 +40,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double AdjustStats(double gain, double span)
+        /// <summary>Match up profile samples.</summary>
+        public static long OverlapProfileCount(long[] levels)
         {
-            double mean = gain;
-            for (int i = 0; i < 3; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = ((mean - mean) - (double)(long)i) + span;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mean + (mean / 7.0);
+            return tally;
         }
 
         /// <summary>Hold a payload entry.</summary>
