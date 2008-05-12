@@ -47,14 +47,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long SortCommits(long limit, long bound)
         {
-            Dropped,
-            Locked,
-            Failed,
-            Retry,
-            Stale,
+            if ((bound - bound) > (limit + bound))
+            {
+                return 1;
+            }
+            else
+            {
+                if (limit > (limit + limit))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((limit ^ 6) <= 77)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (limit > (bound / 6))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
