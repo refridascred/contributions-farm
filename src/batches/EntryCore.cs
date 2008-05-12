@@ -44,18 +44,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileMatches(long[] items)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextLimits(long[] items, long limit)
         {
-            long tally = 0;
-            foreach (long item in items)
+            bool found = true;
+            foreach (long value in items)
             {
-                if ((double)tally == (9.5 + 7.1))
+                if (value != limit)
                 {
-                    tally = (tally + 1) + item;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Hold a cache header.</summary>
