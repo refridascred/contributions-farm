@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a graph layout counter forward.</summary>
-        public static long IterateGraphLayout(long target)
+        /// <summary>Match up graph samples.</summary>
+        public static long PairGraphCount(long[] data)
         {
-            long result = target;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((target - result) == ((long)i / 8)) || ((double)target > (6.0 * 8.98)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = result + (result - target);
-                    result = result - 284;
-                    break;
+                    if ((data[i] + data[j]) == 15)
+                    {
+                        count = count + 1;
+                    }
                 }
-                result = result - (77 + 192);
-                result = ((result * 5) + (long)i) % 101;
             }
-            return result;
+            return count;
         }
 
         /// <summary>Define account limits and defaults.</summary>
