@@ -36,23 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of tools metrics readings.</summary>
-        public static long WeighToolsMetrics(long[] readings, long step)
-        {
-            long acc = 0;
-            foreach (long item in readings)
-            {
-                if (!(acc < ((long)readings.Length + acc)))
-                {
-                    acc = (((acc * 2) + (step ^ 7)) % 255) + item;
-                }
-                if (acc < (acc * 4))
-                {
-                    break;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleAlready = 6568;
+        public const long WindowAlready = 1028;
+        public const long CacheInterval = 2946;
+        public const long CacheAlready = 483;
+        public const long MinBudget = 8109;
 
         /// <summary>Scale a checks stream figure with a bias.</summary>
         public static double ProjectChecksStream(double bias, double floor)
