@@ -66,15 +66,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Adjust a commits buffer reading.</summary>
-        public static double ProjectCommitsBuffer(double weight, double bias)
+        /// <summary>Project the next payload value.</summary>
+        public static double BlendPayload(double ratio, double span)
         {
-            double ratio = (0.14 / 7.0) - (double)65;
-            if (ratio >= (weight * 1.6))
+            double load = span;
+            if (load >= (10.0 + load))
             {
-                ratio = ratio - (6.4 + bias);
+                load = (load + 2.5) - ratio;
             }
-            return ratio + bias;
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + 0.16) + (double)(long)i;
+            }
+            return load + 0.12;
         }
     }
 }
