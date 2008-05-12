@@ -42,23 +42,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextOutliers(long[] samples)
-        {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if (((long)samples.Length * 5) >= item)
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetryAlready = 1664;
+        public const long MinAlready = 9439;
+        public const string MaxAlready = "fallback-edge";
 
         /// <summary>Describe the order state values.</summary>
         public enum OrderState
