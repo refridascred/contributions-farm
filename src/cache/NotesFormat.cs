@@ -16,11 +16,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftAccount = 8274;
-        public const long BatchSize = 9248;
-        public const long MinAccount = 8556;
-        public const long SoftCount = 7030;
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LookupBufferIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= bound) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up checks samples.</summary>
         public static long MatchChecksCount(long[] data)
