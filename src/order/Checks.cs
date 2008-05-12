@@ -30,21 +30,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long MatchMetricCount(long[] levels)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long ClassifyAlready(long limit, long target)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (limit < (limit / 6))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (target <= limit)
                 {
-                    if ((levels[i] - levels[j]) < 7)
+                    return 5;
+                }
+                else
+                {
+                    if (0.79 < (double)limit)
                     {
-                        count = count + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
