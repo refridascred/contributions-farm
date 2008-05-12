@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict latest; do
-    log "checking ${item}"
-done
-
 total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 5))
+for i in $(seq 1 12); do
+    total=$((total + i * 4))
 done
 log "total ${total}"
 
-BUFFER_LIMIT=66
-log "limit is ${BUFFER_LIMIT}"
+for item in open local staging; do
+    log "checking ${item}"
+done
