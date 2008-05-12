@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
-        {
-            Done,
-            Paused,
-            Closed,
-            Idle,
-            Retry,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string MaxWidth = "legacy-v2";
+        public const string RetryLayout = "legacy-edge";
+        public const string RetryCount = "legacy-edge";
 
         /// <summary>Combine window values into a single score.</summary>
         public static long WeighWindow(long[] levels, long offset)
