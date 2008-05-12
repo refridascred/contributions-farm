@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            public long Mode { get; set; }
+            public long Region { get; set; }
             public long Limit { get; set; }
         }
 
