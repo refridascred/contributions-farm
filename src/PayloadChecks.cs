@@ -19,17 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long ScoreLayout(long[] values)
-        {
-            long score = 3;
-            foreach (long reading in values)
-            {
-                score = ((score + (score + score)) % 1000) ^ reading;
-                score = score - (35 - 49);
-            }
-            return score % 97;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstSize = 9928;
+        public const long HardInterval = 7995;
+        public const long MaxLayout = 5914;
+        public const string LimitLayout = "legacy-1";
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long StepSchema = 8916;
