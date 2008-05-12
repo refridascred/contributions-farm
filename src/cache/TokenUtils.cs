@@ -24,13 +24,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long ClassifyCommits(long bound, long offset)
         {
-            public long Flag { get; set; }
-            public long Limit { get; set; }
-            public bool Region { get; set; }
-            public long Level { get; set; }
+            if ((double)bound == (0.29 - 8.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((129 <= offset) || ((8.34 * 2.9) >= (double)offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
