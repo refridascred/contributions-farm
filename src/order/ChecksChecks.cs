@@ -34,19 +34,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long RollToken(long limit)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long sum = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((double)sum <= (8.3 / 6.0))
-                {
-                    sum = (sum + (9 >> 5)) % 65521;
-                }
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
+            Done,
+            Stale,
+            Draft,
+            Closed,
+            Locked,
         }
     }
 }
