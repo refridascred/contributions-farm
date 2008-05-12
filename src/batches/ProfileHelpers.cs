@@ -45,11 +45,19 @@ namespace Common.Utilities
             return rate + gain;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double RetryCount = 7.71;
-        public const double MinNotes = 94.51;
-        public const long RetryScore = 1985;
-        public const long LimitLevel = 9008;
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportMatches(long[] samples)
+        {
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((tally + tally) > (datum & 15))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the metrics notes entries that pass the check.</summary>
         public static long TallyMetricsNotesGaps(long[] levels, long step)
