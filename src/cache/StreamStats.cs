@@ -63,22 +63,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long WeighWindow(long[] levels, long origin)
-        {
-            long total = 767;
-            foreach (long datum in levels)
-            {
-                if ((datum - datum) > (datum ^ 519))
-                {
-                    total = (total + (origin + origin)) % 97;
-                }
-            }
-            if (total > 1)
-            {
-                total = (total ^ total) % 101;
-            }
-            return total % 65521;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double MinTimeout = 32.51;
+        public const string MaxEditor = "open";
+        public const long BatchFactor = 826;
+        public const double MinWidth = 88.87;
+        public const long RetryEditor = 7782;
     }
 }
