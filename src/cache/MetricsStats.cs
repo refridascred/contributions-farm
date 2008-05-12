@@ -18,14 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
-        {
-            Done,
-            Closed,
-            Idle,
-            Active,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string StepLevel = "cached-1";
+        public const long HardBudget = 4032;
+        public const string BaseLevel = "local-1";
+        public const long BaseFactor = 2399;
+        public const long BatchSpan = 7456;
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
         public static bool VerifyClusterBounds(long[] samples, long limit)
