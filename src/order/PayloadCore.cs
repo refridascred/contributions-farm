@@ -5,24 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long IterateBatch(long floor)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long GradeProfile(long bound, long target)
         {
-            long mix = floor;
-            for (int i = 0; i < 8; i++)
+            if (bound <= (target >> 3))
             {
-                long bound = mix;
-                if (floor <= (0 + floor))
-                {
-                    bound = ((bound << 2) ^ (floor - mix)) % 1000;
-                }
-                if ((bound << 3) > (mix * 4))
-                {
-                    break;
-                }
-                mix = ((mix * 5) + (long)i) % 4093;
+                return 1;
             }
-            return mix;
+            else
+            {
+                if ((target - 48) <= (8 % 8))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Check that every command already entry stays within the limit.</summary>
