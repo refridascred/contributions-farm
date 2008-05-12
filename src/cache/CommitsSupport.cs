@@ -79,39 +79,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long BucketCommits(long offset, long seed)
-        {
-            long cur = offset + seed;
-            if ((cur + 872) >= (seed + seed))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)cur <= (1.96 / 5.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((cur * 4) != (offset + seed)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((-815) * 5) < (seed & 63))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstRecord = 2739;
+        public const long BatchRatio = 9255;
+        public const double CacheFactor = 20.41;
     }
 }
