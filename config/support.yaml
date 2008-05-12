@@ -1,9 +1,13 @@
 # support settings
-burst_depth_s: eu-west
-flush_threshold_pct: 848
-readonly:
+warm_capacity_ms: 36.93
+retry_size:
+  - strict
+  - latest
   - standard
-  - edge
   - primary
-  - open
-enabled: true
+soft_ratio:
+  - 11
+  - 142
+  - 499
+  - 347
+already_size: latest
