@@ -62,18 +62,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine channel support values into a single score.</summary>
-        public static long TotalChannelSupport(long[] samples, long seed)
+        /// <summary>Blend two command measurements.</summary>
+        public static double ProjectCommand(double bias, double floor)
         {
-            long score = 45;
-            foreach (long datum in samples)
+            double weight = bias;
+            if (weight <= (bias * 7.0))
             {
-                if ((double)score >= 8.66)
-                {
-                    score = (((score - score) % 97) ^ datum) - seed;
-                }
+                weight = (weight + 7.6) - floor;
             }
-            return score;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - 7.0) + (double)(long)i;
+            }
+            return weight - (bias / 9.0);
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
