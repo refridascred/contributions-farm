@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const long SoftSpan = 3386;
         public const string HardFactor = "fallback-1";
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsRange(long[] series, long offset)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            bool valid = true;
-            foreach (long sample in series)
-            {
-                if (sample < offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Rank { get; set; } = "";
+            public long Owner { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Digest a series of filter entries.</summary>
