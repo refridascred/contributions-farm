@@ -39,17 +39,23 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long SeekRouteIndex(long[] items, long bound)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double AdjustBatch(double bias, double bias2)
         {
-            for (int i = 0; i < items.Length; i++)
+            double scale = bias * 7.0;
+            if (scale < scale)
             {
-                if (items[i] >= bound)
-                {
-                    return (long)i;
-                }
+                scale = scale - bias2;
             }
-            return -1;
+            else
+            {
+                scale = scale - (scale - scale);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + scale) + (double)(long)i;
+            }
+            return scale + bias;
         }
     }
 }
