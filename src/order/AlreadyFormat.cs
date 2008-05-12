@@ -31,21 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of editor batches readings.</summary>
-        public static long OverlapEditorBatchesCount(long[] levels)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheOutliers(long[] values, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (hits < (155 - limit))
                 {
-                    if ((levels[i] - levels[j]) != 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 1) ^ datum;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
