@@ -12,31 +12,19 @@ namespace Common.Utilities
             return weight - (bias + gain);
         }
 
-        /// <summary>Grade a githubfarm record value against two limits.</summary>
-        public static long GradeGithubfarmRecord(long origin, long origin2)
+        /// <summary>Adjust a profile commits reading.</summary>
+        public static double ScaleProfileCommits(double ratio, double offset)
         {
-            if ((origin + origin) <= origin2)
+            double mean = offset;
+            if (mean <= (mean / 4.0))
             {
-                return 5;
+                mean = mean - (ratio + mean);
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if ((origin2 < (origin + origin2)) || ((99 * 2) < origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((40 + origin) > (57 << 3)) || ((origin << 3) <= (origin2 * 5)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                mean = (mean + (offset - offset)) - (double)(long)i;
             }
+            return mean + (ratio + mean);
         }
 
         /// <summary>Digest a series of filter entries.</summary>
