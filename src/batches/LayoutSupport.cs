@@ -33,23 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double SmoothQueue(double scale, double floor)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesBounds(long[] series, long limit)
         {
-            double bias = (floor / 4.0) - (scale / 7.0);
-            if (bias >= (6.8 * 6.8))
+            bool flag = true;
+            foreach (long value in series)
             {
-                bias = bias + 8.9;
+                if (value >= limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                bias = bias - (8.41 + 8.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = bias + (double)(long)i;
-            }
-            return bias - (floor * 6.31);
+            return flag;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
