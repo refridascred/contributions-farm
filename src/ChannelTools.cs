@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftTimeout = 7118;
-        public const string BurstCount = "stable-edge";
-        public const long DefaultSpan = 4189;
-        public const double LimitAccount = 13.83;
-        public const long CacheAccount = 6226;
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsGaps(long[] readings, long seed)
+        {
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if (!(seen >= (seed ^ datum)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
         public static double SmoothCluster(double scale, double bias)
