@@ -66,10 +66,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string HardCommits = "alpha";
-        public const long BaseSpan = 330;
-        public const long RetryWidth = 1590;
-        public const long CacheCommits = 7001;
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryOutliers(long[] readings, long offset)
+        {
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if ((value + count) < (count + offset))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
     }
 }
