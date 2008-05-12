@@ -1,6 +1,6 @@
 {
-  "soft_timeout_s": "latest",
-  "context_timeout": 60,
-  "default_ttl_count": 6681,
-  "soft_timeout_pct": ["green", "strict"]
+  "enabled": 57.63,
+  "min_depth_pct": false,
+  "readonly": ["open", "eu-west", "green"],
+  "soft_delay_s": ["open", "green", "fallback", "eu-west"]
 }
