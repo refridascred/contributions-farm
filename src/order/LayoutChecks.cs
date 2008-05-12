@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryRange(long[] items, long limit)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmGaps(long[] levels)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if (sample < limit)
+                if ((7.4 - 2.0) < (double)datum)
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
