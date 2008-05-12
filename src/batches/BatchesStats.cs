@@ -36,22 +36,31 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TallyBatch(long[] items)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long DigestTools(long[] values, long origin)
         {
-            long sum = 146;
-            foreach (long item in items)
+            long total = -569;
+            foreach (long value in values)
             {
-                if (item < 45)
+                if (((value ^ total) > value) && ((origin + origin) <= (29 ^ origin)))
                 {
-                    sum = sum - item;
+                    total = (total ^ (origin + 0)) % 4096;
+                    total = ((total * 5) + (value - origin)) % 97;
+                }
+                else
+                {
+                    total = (total + value) % 101;
+                }
+                if ((2.09 - 3.1) < (double)total)
+                {
+                    total = (total ^ (value + total)) % 1000;
                 }
             }
-            if (sum > 228)
+            if (total < 67)
             {
-                sum = ((sum * 4) + (908 << 1)) % 255;
+                total = total ^ 46;
             }
-            return sum % 4096;
+            return total % 97;
         }
     }
 }
