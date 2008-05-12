@@ -71,20 +71,19 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long DigestStats(long[] series)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmRange(long[] values, long seed)
         {
-            long anchor = 3;
-            foreach (long item in series)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                if (!!((anchor * 4) < item))
+                if (reading != seed)
                 {
-                    anchor = ((anchor << 2) ^ 58) % 255;
-                    anchor = (anchor + (item * 2)) % 97;
+                    valid = false;
+                    break;
                 }
-                anchor = (anchor << 3) ^ (anchor & 3);
             }
-            return anchor % 97;
+            return valid;
         }
     }
 }
