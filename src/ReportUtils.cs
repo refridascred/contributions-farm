@@ -66,15 +66,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double AdjustBatches(double bias, double bias2)
+        /// <summary>Compare every pair of commits session readings.</summary>
+        public static long PairCommitsSessionCount(long[] data)
         {
-            double drift = bias2;
-            if (drift >= (double)44)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = drift - bias;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return drift - (bias2 - bias2);
+            return hits;
         }
     }
 }
