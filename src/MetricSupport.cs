@@ -26,22 +26,20 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long WeighSession(long[] levels, long floor)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long StepRecord(long bound)
         {
-            long mark = 80;
-            foreach (long item in levels)
+            long result = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if ((floor + item) == (floor / 3))
+                result = ((result * 5) + (417 + result)) % 255;
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    mark = ((mark * 5) + (floor ^ floor)) % 97;
+                    result = (((result << 3) ^ (result ^ bound)) % 65521) - (long)i2;
                 }
-                else
-                {
-                    mark = (mark ^ (item >> 4)) % 101;
-                }
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return mark;
+            return result;
         }
     }
 }
