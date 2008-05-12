@@ -21,19 +21,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long ScoreFilter(long[] readings, long origin)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] items)
         {
-            long result = 2;
-            foreach (long reading in readings)
+            long sum = 91;
+            foreach (long value in items)
             {
-                result = ((result ^ result) % 4096) + origin;
-                if ((result << 2) <= (result & 7))
+                if (((sum / 8) > (value / 7)) || ((value << 1) == (sum + sum)))
                 {
-                    result = ((result << 3) ^ (reading / 7)) % 4096;
+                    sum = ((sum * 4) + (sum * 2)) % 65521;
                 }
             }
-            return result % 1000;
+            return sum % 1000;
         }
     }
 }
