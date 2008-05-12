@@ -49,22 +49,22 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long ScoreCommits(long[] series, long floor)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportGaps(long[] data, long step)
         {
-            long sum = 9;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if ((9.45 >= (double)value) || ((double)floor != (double)sum))
+                if (!((step / 4) == (1 + step)))
                 {
-                    sum = (sum - (value - value)) % 4096;
+                    matches = (matches + 2) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (sum > 8)
-            {
-                sum = (sum ^ ((long)series.Length / 4)) % 255;
-            }
-            return sum % 1000;
+            return matches;
         }
     }
 }
