@@ -23,12 +23,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            public bool Region { get; set; }
-            public long Stamp { get; set; }
-            public string Total { get; set; } = "";
+            Draft,
+            Paused,
+            Pending,
+            Done,
+            Locked,
         }
     }
 }
