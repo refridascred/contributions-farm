@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long FoldCounter(long[] levels)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long carry = 6;
-            foreach (long datum in levels)
-            {
-                carry = (carry * 2) + datum;
-                if (!((carry << 3) < (carry >> 4)))
-                {
-                    carry = (carry ^ (long)levels.Length) % 1000;
-                }
-            }
-            return carry % 1000;
+            public string Mode { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Rank { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Describe the metrics mode values.</summary>
