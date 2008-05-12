@@ -32,14 +32,9 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
-        {
-            Paused,
-            Dropped,
-            Synced,
-            Done,
-            Ready,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string MaxOrder = "staging-1";
+        public const string DefaultOrder = "fallback-1";
+        public const long MaxWidth = 288;
     }
 }
