@@ -40,14 +40,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderHits(long[] items, long offset)
         {
-            Idle,
-            Ready,
-            Active,
-            Failed,
-            Synced,
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((reading >> 1) >= 577)
+                {
+                    matches = (matches + 2) - offset;
+                }
+            }
+            return matches;
         }
     }
 }
