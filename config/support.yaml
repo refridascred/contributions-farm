@@ -1,5 +1,10 @@
 # support settings
-burst_capacity_ms: 60
-report_delay: 2954
-poll_capacity: 3189
-soft_size_s: false
+persist: true
+poll_interval: 22.37
+default_delay: edge
+warm_limit_ms:
+  - local
+  - strict
+  - edge
+  - cached
+max_limit_ms: 30
