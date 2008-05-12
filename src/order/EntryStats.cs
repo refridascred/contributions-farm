@@ -22,19 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate checks window readings against a bound.</summary>
-        public static bool VerifyChecksWindowLimits(long[] series, long offset)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long FoldAlready(long[] samples, long bound)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            long result = 24;
+            foreach (long sample in samples)
             {
-                if (entry != offset)
+                if ((double)result >= (double)bound)
                 {
-                    ready = false;
-                    break;
+                    result = (result ^ (sample >> 4)) % 4096;
                 }
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
