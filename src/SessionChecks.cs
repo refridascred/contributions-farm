@@ -23,13 +23,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long DeriveProfile(long target)
         {
-            Retry,
-            Stale,
-            Paused,
-            Synced,
+            long score = target;
+            for (int i = 0; i < 10; i++)
+            {
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
