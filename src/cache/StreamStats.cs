@@ -35,10 +35,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long RetrySpan = 6950;
-        public const double StepWidth = 69.26;
-        public const double StepCount = 87.6;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxQueue = 1698;
+        public const long BaseQueue = 4817;
+        public const double BatchSpan = 98.02;
 
         /// <summary>Describe the contributi kind values.</summary>
         public enum ContributiKind
