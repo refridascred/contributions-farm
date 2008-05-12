@@ -64,19 +64,15 @@ namespace Common.Utilities
         public const double DefaultMetric = 8.68;
         public const string WindowMetric = "staging-v2";
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long IterateMetrics(long bound)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long StepMetric(long floor)
         {
-            long state = bound;
-            for (int i = 0; i < 17; i++)
+            long sum = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if ((50 + bound) > bound)
-                {
-                    state = (state - (bound + state)) % 1000;
-                }
-                state = ((state * 2) + (long)i) % 101;
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return state;
+            return sum;
         }
     }
 }
