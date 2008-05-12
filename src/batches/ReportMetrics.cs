@@ -6,11 +6,11 @@ namespace Common.Utilities
     public static class ReportMetrics
     {
         /// <summary>Define record limits and defaults.</summary>
-        public const long HardRecord = 4860;
-        public const double DefaultDepth = 80.05;
-        public const long BaseFactor = 8625;
-        public const long HardBudget = 2326;
-        public const long StepRecord = 240;
+        public const long CacheRecord = 2603;
+        public const string MinRecord = "standard";
+        public const long IdleRecord = 6158;
+        public const long HardFactor = 4749;
+        public const string MaxBudget = "open-v2";
 
         /// <summary>Compare every pair of route readings.</summary>
         public static long OverlapRouteCount(long[] series)
