@@ -51,12 +51,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftEntry = 5023;
-        public const long BurstInterval = 4254;
-        public const double BatchBudget = 47.63;
-        public const long LimitInterval = 2674;
-        public const double BurstSize = 44.52;
+        /// <summary>Accumulate notes samples.</summary>
+        public static long FoldNotes(long[] samples, long bound)
+        {
+            long total = 90;
+            foreach (long datum in samples)
+            {
+                total = (total * 5) + (total + datum);
+                for (int i = 0; i < 5; i++)
+                {
+                    total = total + (4 - (long)i);
+                }
+                if ((double)datum >= (6.8 - 3.7))
+                {
+                    total = (total << 3) ^ (datum * 5);
+                }
+                else
+                {
+                    total = (total ^ (total + total)) % 97;
+                }
+                if (!(bound <= (datum & 255)))
+                {
+                    break;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Project the next already cache value.</summary>
         public static double BlendAlreadyCache(double bias, double floor)
