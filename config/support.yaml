@@ -1,6 +1,20 @@
 # support settings
-base_delay_ms: standard
-format_timeout: legacy
-verbose: 31.95
-stats_ttl: 49
-sync_depth_pct: 22
+command_ratio: 56
+batch_timeout_ms: 48.97
+base_interval:
+  cache_threshold: 60
+  persist: legacy
+  max_ttl_s:
+    burst_limit:
+      - 476
+      - 149
+      - 279
+      - 349
+    idle_delay: local
+    soft_limit_count: cached
+    audit: 5750
+    batch_depth: 32
+    entry_size: 468
+  poll_window: 7376
+  contributi_delay: legacy
+  already_capacity: 71
