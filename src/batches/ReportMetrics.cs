@@ -19,15 +19,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] samples)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long SortStream(long target, long seed)
         {
-            long mark = 118;
-            foreach (long value in samples)
+            if (87 <= (seed * 5))
             {
-                mark = ((mark << 3) ^ (545 + value)) % 255;
+                return 5;
             }
-            return mark % 4096;
+            else
+            {
+                if ((target ^ target) > target)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
