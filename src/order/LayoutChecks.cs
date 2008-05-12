@@ -40,11 +40,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double HardLevel = 5.09;
-        public const long LimitFactor = 9766;
-        public const string IdlePayload = "fallback-edge";
-        public const double BurstPayload = 35.76;
+        /// <summary>Project the next buffer stream value.</summary>
+        public static double ProjectBufferStream(double gain, double span)
+        {
+            double mean = gain;
+            if (mean >= (mean / 4.0))
+            {
+                mean = (mean + gain) - span;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + gain) - (double)(long)i;
+            }
+            return mean + (double)201;
+        }
 
         /// <summary>Adjust a stats reading.</summary>
         public static double AdjustStats(double rate, double offset)
