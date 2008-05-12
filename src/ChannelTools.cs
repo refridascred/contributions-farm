@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseCount = 2114;
-        public const long HardMetrics = 7314;
-        public const long BaseMetrics = 9361;
-        public const long StepScore = 6121;
+        /// <summary>Match up commits samples.</summary>
+        public static long MatchCommitsCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long MaxCount = 3617;
