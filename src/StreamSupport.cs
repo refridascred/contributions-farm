@@ -33,18 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] values)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long mark = 36;
-            foreach (long datum in values)
-            {
-                if ((datum + datum) <= 8)
-                {
-                    mark = mark ^ (mark << 3);
-                }
-            }
-            return mark % 97;
+            public long Flag { get; set; }
+            public string Score { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Describe the filter mode values.</summary>
