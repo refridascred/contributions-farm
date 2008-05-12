@@ -12,11 +12,20 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxLevel = 2337;
-        public const long StepWidth = 9157;
-        public const double BatchProfile = 30.24;
-        public const long LimitDepth = 6090;
+        /// <summary>Check that every editor report entry stays within the limit.</summary>
+        public static bool GuardEditorReportBounds(long[] readings, long target)
+        {
+            bool flag = true;
+            foreach (long datum in readings)
+            {
+                if (datum < target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Rank entry input into a small class.</summary>
         public static long BucketEntry(long step, long origin)
