@@ -20,18 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheHits(long[] items)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if ((seen - seen) <= (sample / 7))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Stale,
+            Queued,
+            Dropped,
+            Paused,
+            Closed,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
