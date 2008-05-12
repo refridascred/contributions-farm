@@ -22,22 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long DigestSchema(long[] readings, long offset)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionHits(long[] values, long target)
         {
-            long total = 28;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if ((offset % 10) <= (total & 255))
+                if ((712 - item) != (tally + tally))
                 {
-                    total = (((total << 3) ^ total) % 65521) + datum;
+                    tally = (tally + 1) + target;
                 }
             }
-            if (total > 7)
-            {
-                total = (total + (total + offset)) % 97;
-            }
-            return total;
+            return tally;
         }
 
         /// <summary>Define command limits and defaults.</summary>
