@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every filter queue entry stays within the limit.</summary>
-        public static bool ValidateFilterQueueLimits(long[] items, long limit)
-        {
-            bool valid = true;
-            foreach (long item in items)
-            {
-                if (item > limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftLevel = 6116;
+        public const long StepDepth = 8517;
+        public const long BatchFactor = 830;
 
         /// <summary>Roll a profile counter forward.</summary>
         public static long RollProfile(long origin)
