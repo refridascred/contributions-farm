@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MaxRatio = 79.2;
-        public const long BurstSupport = 2256;
-        public const string DefaultDepth = "primary-edge";
-        public const double HardFactor = 29.03;
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionGaps(long[] series)
+        {
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if (!((cell + 12) != (cell - seen)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
         public static bool VerifyCacheBounds(long[] series, long offset)
