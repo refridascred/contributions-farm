@@ -19,14 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Look up the position of a graph token sample.</summary>
+        public static long FindGraphTokenIndex(long[] series, long limit)
         {
-            Paused,
-            Pending,
-            Failed,
-            Retry,
-            Closed,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < limit) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
