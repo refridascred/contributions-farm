@@ -14,18 +14,25 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyOutliers(long[] readings)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long seed, long offset)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long lane = seed + offset;
+            if ((lane >> 3) >= (lane & 1))
             {
-                if (!(((hits % 100) != (sample >> 4)) && (sample <= (hits + (-119)))))
+                return 8;
+            }
+            else
+            {
+                if (0 >= lane)
                 {
-                    hits = hits + 1;
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return hits;
         }
 
         /// <summary>Count batches profile pairs that satisfy a relation.</summary>
