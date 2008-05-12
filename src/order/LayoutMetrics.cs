@@ -20,19 +20,15 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmLimits(long[] levels, long limit)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long StepSession(long offset)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            long mark = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if (sample < limit)
-                {
-                    stale = false;
-                    break;
-                }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Define session limits and defaults.</summary>
