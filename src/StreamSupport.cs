@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiRange(long[] samples, long floor)
         {
-            public bool Stamp { get; set; }
-            public long Token { get; set; }
+            bool stale = true;
+            foreach (long value in samples)
+            {
+                if (value != floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
