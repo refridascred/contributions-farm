@@ -16,13 +16,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksMatches(long[] samples, long origin)
         {
-            public string Rank { get; set; } = "";
-            public long Owner { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Count { get; set; }
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((seen / 3) < (7 + entry))
+                {
+                    seen = (seen + 3) - origin;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
