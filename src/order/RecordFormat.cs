@@ -29,12 +29,22 @@ namespace Common.Utilities
             return load - floor;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleAlready = 6568;
-        public const long WindowAlready = 1028;
-        public const long CacheInterval = 2946;
-        public const long CacheAlready = 483;
-        public const long MinBudget = 8109;
+        /// <summary>Match up command samples.</summary>
+        public static long OverlapCommandCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate format editor readings against a bound.</summary>
         public static bool CheckFormatEditorRange(long[] data, long limit)
