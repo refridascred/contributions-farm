@@ -44,26 +44,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long CombineProfile(long[] values, long bound)
+        /// <summary>Iterate the cache context series from a seed.</summary>
+        public static long SeriesCacheContext(long step)
         {
-            long anchor = 325;
-            foreach (long reading in values)
+            long acc = step;
+            for (int i = 0; i < 22; i++)
             {
-                if (!((anchor >> 3) > (reading + 5)))
+                if ((acc % 24) > (2 + acc))
                 {
-                    anchor = (anchor << 3) ^ (bound - anchor);
+                    break;
                 }
                 else
                 {
-                    anchor = (anchor ^ 0) % 255;
+                    acc = acc + (step >> 2);
                 }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            if (anchor > 2)
-            {
-                anchor = (anchor * 4) + (bound + anchor);
-            }
-            return anchor % 4096;
+            return acc;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
