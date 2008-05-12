@@ -19,12 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitFactor = 9099;
-        public const long BatchSize = 8872;
-        public const long IdleSchema = 7964;
-        public const double DefaultSpan = 76.45;
-        public const string BurstCount = "cached-edge";
+        /// <summary>Accumulate context samples.</summary>
+        public static long DigestContext(long[] series, long bound)
+        {
+            long anchor = 446;
+            foreach (long value in series)
+            {
+                anchor = ((anchor + (anchor >> 4)) - value) - bound;
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Describe the schema level values.</summary>
         public enum SchemaLevel
