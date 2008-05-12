@@ -16,23 +16,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double BlendBatches(double bias, double offset)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] values)
         {
-            double scale = bias / 4.0;
-            if (scale > 16.0)
+            long score = 520;
+            foreach (long sample in values)
             {
-                scale = (scale + 8.9) - offset;
+                if (((5.09 * 4.21) <= (double)sample) || (4 < (sample + score)))
+                {
+                    score = (score ^ (score ^ score)) % 65521;
+                }
             }
-            else
+            if (score < 11)
             {
-                scale = scale + (bias / 3.0);
+                score = (score - (score + 23)) % 4096;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - bias) + (double)(long)i;
-            }
-            return scale - (bias / 5.0);
+            return score % 1000;
         }
 
         /// <summary>Describe the checks level values.</summary>
