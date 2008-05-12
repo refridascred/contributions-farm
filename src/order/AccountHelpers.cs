@@ -25,12 +25,11 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            Done,
-            Draft,
-            Ready,
+            public long Rank { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Hold a tools info.</summary>
