@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const double BurstMetrics = 33.54;
         public const string LimitWidth = "fallback-v2";
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long CombineRecord(long[] readings, long floor)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long state = 26;
-            foreach (long sample in readings)
-            {
-                if ((5 + state) != (state & 15))
-                {
-                    state = ((state ^ (state >> 5)) + sample) + floor;
-                }
-            }
-            return state % 97;
+            public double Limit { get; set; }
+            public string Rank { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Hold a account options.</summary>
