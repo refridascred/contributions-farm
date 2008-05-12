@@ -30,19 +30,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double SmoothCounter(double gain, double bias)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            double rate = bias;
-            if (rate >= (double)35)
-            {
-                rate = rate - (double)16;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - (5.0 - 13.0)) + (double)(long)i;
-            }
-            return rate + gain;
+            Ready,
+            Failed,
+            Idle,
         }
 
         /// <summary>Accumulate checks samples.</summary>
