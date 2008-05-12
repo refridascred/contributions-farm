@@ -10,17 +10,13 @@ namespace Common.Utilities
         public const long SoftSpan = 3386;
         public const string HardFactor = "fallback-1";
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long SeekBatchesIndex(long[] samples, long bound)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Limit { get; set; }
+            public string Offset { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the context state values.</summary>
