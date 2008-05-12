@@ -32,18 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatGaps(long[] values)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ProjectGraph(double rate, double floor)
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((tally - (long)values.Length) == (reading & 63))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            double drift = (rate + rate) + floor;
+            return drift - (rate + floor);
         }
 
         /// <summary>Fold a list of cache readings.</summary>
