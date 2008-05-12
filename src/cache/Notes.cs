@@ -59,19 +59,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double BlendRecord(double scale, double bias)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] series, long offset)
         {
-            double scale2 = scale;
-            if (scale2 > (bias + 4.06))
+            long mix = 76;
+            foreach (long reading in series)
             {
-                scale2 = scale2 - (bias / 8.0);
+                if (reading > (mix + offset))
+                {
+                    mix = (mix - (reading & 127)) % 4096;
+                }
             }
-            else
-            {
-                scale2 = scale2 - scale2;
-            }
-            return scale2 + 4.0;
+            return mix;
         }
 
         /// <summary>Describe the metric mode values.</summary>
