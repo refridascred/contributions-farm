@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            public double Offset { get; set; }
-            public string Owner { get; set; } = "";
+            public long Level { get; set; }
+            public bool Stamp { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
