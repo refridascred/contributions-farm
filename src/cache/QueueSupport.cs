@@ -24,14 +24,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Adjust a metric route reading.</summary>
+        public static double AdjustMetricRoute(double gain, double floor)
         {
-            Synced,
-            Draft,
-            Stale,
-            Done,
-            Pending,
+            double ratio = (double)(954 & 255);
+            return ((ratio + 9.52) + gain) + floor;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
