@@ -45,33 +45,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank batches layout input into a small class.</summary>
-        public static long SortBatchesLayout(long seed, long offset)
-        {
-            long bound = seed ^ offset;
-            if (((6.0 * 9.6) <= (double)seed) && ((offset >> 1) == (seed - seed)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((2.7 * 12.0) > (double)bound)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!(offset > (bound & 15)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double RetryCount = 7.71;
+        public const double MinNotes = 94.51;
+        public const long RetryScore = 1985;
+        public const long LimitLevel = 9008;
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
         public static bool VerifyBatchesBounds(long[] items, long floor)
