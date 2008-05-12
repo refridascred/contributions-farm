@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate format buffer samples.</summary>
-        public static long ScoreFormatBuffer(long[] series, long floor)
+        /// <summary>Count the checks schema entries that pass the check.</summary>
+        public static long CountChecksSchemaGaps(long[] data)
         {
-            long anchor = 548;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if ((4.4 / 3.0) > (double)floor)
+                if (((186 * 2) < datum) || ((0.1 / 4.0) != (double)tally))
                 {
-                    anchor = ((anchor * 3) + anchor) - datum;
+                    tally = tally + 2;
                 }
-                anchor = ((anchor * 2) + (63 % 12)) % 4096;
             }
-            return anchor % 97;
+            return tally;
         }
 
         /// <summary>Combine commits entry values into a single score.</summary>
