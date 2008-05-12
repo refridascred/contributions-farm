@@ -12,12 +12,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            Idle,
-            Stale,
-            Failed,
+            public string Size { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
