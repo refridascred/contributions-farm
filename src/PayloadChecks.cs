@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionOutliers(long[] values, long seed)
-        {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((double)seed > 9.7)
-                {
-                    tally = (tally + 2) + item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchScore = 604;
+        public const double LimitContext = 82.04;
+        public const long LimitDepth = 1501;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long BurstSize = 9928;
