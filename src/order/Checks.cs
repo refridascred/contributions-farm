@@ -19,32 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long ClassifyRecord(long target, long offset)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long IterateQueue(long target)
         {
-            long edge = target + offset;
-            if ((offset + edge) > (target & 31))
+            long acc = target;
+            for (int i = 0; i < 8; i++)
             {
-                return 6;
+                acc = acc ^ (target * 4);
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if ((double)target > (8.1 * 4.97))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((offset + offset) >= (target / 6)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
