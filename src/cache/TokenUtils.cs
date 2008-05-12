@@ -34,24 +34,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long BucketAccount(long origin, long step)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamMatches(long[] samples)
         {
-            if ((step - 6) <= (origin ^ origin))
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)origin >= 0.4)
+                if ((datum % 2) > (62 & 31))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
     }
 }
