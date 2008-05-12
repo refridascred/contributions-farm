@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long offset)
         {
-            public string Score { get; set; } = "";
-            public long Rank { get; set; }
-            public bool Region { get; set; }
+            long acc = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((29 > (acc & 7)) || ((offset + offset) > offset))
+                {
+                    acc = (acc * 5) + (0 ^ offset);
+                }
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
