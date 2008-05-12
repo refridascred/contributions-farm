@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long offset)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long mix = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((offset / 9) > (-443))
-                {
-                    mix = (mix ^ (offset & 7)) % 97;
-                    mix = ((mix << 3) ^ mix) % 65521;
-                }
-                mix = mix - ((long)i + offset);
-                mix = ((mix * 2) + (long)i) % 101;
-            }
-            return mix;
+            Stale,
+            Active,
+            Locked,
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
