@@ -30,32 +30,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long ClassifyAlready(long limit, long target)
-        {
-            if (limit < (limit / 6))
-            {
-                return 8;
-            }
-            else
-            {
-                if (target <= limit)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (0.79 < (double)limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchInterval = 9546;
+        public const long DefaultProfile = 5332;
+        public const string DefaultDepth = "primary-1";
 
         /// <summary>Locate a queue reading by value.</summary>
         public static long FindQueueIndex(long[] levels, long origin)
