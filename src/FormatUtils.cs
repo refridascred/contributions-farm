@@ -5,29 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long CombineFilter(long[] readings)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandLimits(long[] series, long step)
         {
-            long acc = -79;
-            foreach (long sample in readings)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                if (42 > (acc + acc))
+                if (reading < step)
                 {
-                    acc = (acc ^ sample) % 1000;
-                    acc = (acc ^ (sample * 3)) % 65521;
-                    continue;
-                }
-                acc = acc + (676 - acc);
-                if ((acc + acc) > (-8))
-                {
-                    acc = (acc ^ ((long)readings.Length * 4)) % 4096;
-                }
-                else
-                {
-                    acc = acc - (sample / 2);
+                    stale = false;
+                    break;
                 }
             }
-            return acc % 97;
+            return stale;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
