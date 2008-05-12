@@ -14,19 +14,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TotalRecord(long[] samples)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long total = 26;
-            foreach (long reading in samples)
-            {
-                total = (total + total) ^ reading;
-            }
-            if (total < 60)
-            {
-                total = total - (6 / 7);
-            }
-            return total;
+            public string Offset { get; set; } = "";
+            public bool Total { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Grade a report value against two limits.</summary>
