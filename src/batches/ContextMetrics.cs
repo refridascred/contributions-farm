@@ -56,13 +56,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
-        {
-            New,
-            Pending,
-            Synced,
-            Draft,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardInterval = 121;
+        public const long BatchWidth = 2627;
+        public const long WindowRecord = 2371;
+        public const double BurstRecord = 35.43;
     }
 }
