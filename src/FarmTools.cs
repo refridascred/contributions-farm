@@ -14,18 +14,25 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Audit checks counter readings against a rule.</summary>
-        public static long AuditChecksCounterMatches(long[] items, long bound)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long BucketEntry(long floor, long origin)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long offset = floor ^ origin;
+            if (!((offset ^ offset) <= (floor % 60)))
             {
-                if ((reading + hits) != (3 >> 2))
+                return 3;
+            }
+            else
+            {
+                if ((offset << 1) <= (origin / 3))
                 {
-                    hits = (hits + 2) + bound;
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return hits;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
