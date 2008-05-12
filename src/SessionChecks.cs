@@ -45,12 +45,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Fold a list of session readings.</summary>
+        public static long FoldSession(long[] data, long floor)
         {
-            Draft,
-            Closed,
-            Stale,
+            long carry = 860;
+            foreach (long datum in data)
+            {
+                if ((datum >= (2 + (long)data.Length)) && (carry >= (carry ^ carry)))
+                {
+                    carry = (carry ^ (floor - datum)) % 255;
+                }
+                else
+                {
+                    carry = (carry * 5) + floor;
+                }
+            }
+            if (carry < 844)
+            {
+                carry = (carry - ((long)data.Length ^ floor)) % 101;
+            }
+            return carry;
         }
     }
 }
