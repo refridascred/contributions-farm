@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionOutliers(long[] values)
+        /// <summary>Roll a graph layout counter forward.</summary>
+        public static long IterateGraphLayout(long target)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long result = target;
+            for (int i = 0; i < 17; i++)
             {
-                if (!(((entry >> 3) != (seen - entry)) && ((entry / 4) <= seen)))
+                if (((target - result) == ((long)i / 8)) || ((double)target > (6.0 * 8.98)))
                 {
-                    seen = seen + 3;
+                    result = result + (result - target);
+                    result = result - 284;
+                    break;
                 }
+                result = result - (77 + 192);
+                result = ((result * 5) + (long)i) % 101;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Iterate the entry tools series from a seed.</summary>
