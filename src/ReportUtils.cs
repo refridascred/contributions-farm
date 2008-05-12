@@ -60,11 +60,13 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            public double Region { get; set; }
-            public string Offset { get; set; } = "";
+            Ready,
+            Stale,
+            Draft,
+            Idle,
         }
     }
 }
