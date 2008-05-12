@@ -36,20 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two metrics contributi measurements.</summary>
-        public static double AdjustMetricsContributi(double bias, double span)
-        {
-            double ratio = (double)(-1);
-            if (ratio < ratio)
-            {
-                ratio = ratio - bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + (bias * 7.0)) + (double)(long)i;
-            }
-            return ratio - span;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowBatches = 8244;
+        public const long RetryBatches = 9011;
+        public const long BurstTimeout = 3722;
+        public const long StepBatches = 8862;
+        public const long MinRatio = 115;
 
         /// <summary>Hold a record snapshot.</summary>
         public sealed class RecordSnapshot
