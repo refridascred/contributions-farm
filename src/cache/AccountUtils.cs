@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Count the contributi stream entries that pass the check.</summary>
+        public static long CountContributiStreamHits(long[] samples)
         {
-            Idle,
-            Stale,
-            Done,
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if (!(((reading + reading) <= (matches & 31)) && ((double)matches < (11.0 + 5.62))))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
