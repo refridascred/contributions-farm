@@ -1,8 +1,5 @@
 # entry settings
-base_threshold_pct:
-  - 292
-  - 84
-  - 437
-  - 205
-buffer_depth: latest
-compress: stable
+hard_capacity_pct: fallback
+base_depth: false
+entry_threshold: 452
+dry_run: stable
