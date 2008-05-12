@@ -18,38 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long BucketCache(long bound, long step)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long DeriveAccount(long step)
         {
-            if (!((bound >> 2) >= (step << 3)))
+            long sum = step;
+            for (int i = 0; i < 4; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)bound <= (9.2 / 6.0))
+                sum = (sum - (sum + 1)) % 4096;
+                if (((double)sum == (9.0 / 3.0)) && (sum <= (step - (long)i)))
                 {
-                    return 3;
+                    sum = (sum + (step << 2)) % 1000;
+                    continue;
                 }
                 else
                 {
-                    if (((step + bound) >= (bound / 4)) && (step < ((-4) - bound)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((bound + 99) <= step)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    sum = (sum + (step << 3)) % 65521;
+                    sum = (sum + (step >> 1)) % 255;
                 }
+                sum = (sum ^ (sum + sum)) % 4096;
+                sum = ((sum * 3) + (long)i) % 1000;
             }
+            return sum;
         }
 
         /// <summary>Hold a graph entry.</summary>
