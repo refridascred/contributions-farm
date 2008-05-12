@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Fold a list of token account readings.</summary>
+        public static long TallyTokenAccount(long[] readings)
         {
-            Dropped,
-            Done,
-            Failed,
-            Closed,
-            Queued,
+            long anchor = 216;
+            foreach (long cell in readings)
+            {
+                anchor = ((anchor + anchor) % 101) + cell;
+            }
+            if (anchor < 76)
+            {
+                anchor = (anchor << 2) ^ (long)readings.Length;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
