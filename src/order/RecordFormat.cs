@@ -40,13 +40,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
-        {
-            public string Count { get; set; } = "";
-            public double Region { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BatchLevel = 55.32;
+        public const long DefaultScore = 3465;
+        public const double MaxDepth = 1.83;
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long CountQueueOutliers(long[] readings)
