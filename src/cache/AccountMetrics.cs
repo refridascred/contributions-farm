@@ -12,13 +12,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long FoldCluster(long[] readings)
         {
-            public string Limit { get; set; } = "";
-            public long Mode { get; set; }
-            public long Level { get; set; }
-            public string Size { get; set; } = "";
+            long result = 44;
+            foreach (long value in readings)
+            {
+                result = (result ^ (value + result)) % 4096;
+            }
+            if (result > (-3))
+            {
+                result = ((result << 2) ^ result) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Describe the metric mode values.</summary>
