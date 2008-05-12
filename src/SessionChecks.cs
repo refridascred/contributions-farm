@@ -27,15 +27,25 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double AdjustFilter(double bias, double span)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long SortStats(long offset, long limit)
         {
-            double scale = (double)559 + span;
-            if (scale >= scale)
+            long edge = offset - limit;
+            if ((double)edge != (double)limit)
             {
-                scale = (scale + (1.27 - scale)) + bias;
+                return 8;
             }
-            return scale + 5.9;
+            else
+            {
+                if (limit <= (edge & 1))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Hold a already record.</summary>
