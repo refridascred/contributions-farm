@@ -12,12 +12,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Blend two token measurements.</summary>
+        public static double ScaleToken(double scale, double offset)
         {
-            public long Flag { get; set; }
-            public string Size { get; set; } = "";
-            public bool Rank { get; set; }
+            double ratio = scale;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = ((ratio - scale) + (double)(long)i) + offset;
+            }
+            return ratio - scale;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
