@@ -1,8 +1,6 @@
 {
-  "retry_depth_s": true,
-  "min_limit_s": "strict",
-  "cache_window_ms": false,
-  "metrics_ratio": "edge",
-  "enabled": 69,
-  "max_ratio_count": [491, 484, 462]
+  "hard_limit": 40.17,
+  "verbose": 59.15,
+  "readonly": [245, 155, 364],
+  "context_retries": 96
 }
