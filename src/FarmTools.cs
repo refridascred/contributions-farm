@@ -35,21 +35,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long PairSupportCount(long[] samples)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountLimits(long[] levels, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (entry >= limit)
                 {
-                    if ((samples[i] ^ samples[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
     }
 }
