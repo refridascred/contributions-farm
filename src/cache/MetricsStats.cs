@@ -59,17 +59,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a editor contributi sample.</summary>
-        public static long LookupEditorContributiIndex(long[] data, long floor)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > floor) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Size { get; set; }
+            public double Weight { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
