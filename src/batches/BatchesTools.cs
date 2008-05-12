@@ -27,10 +27,12 @@ namespace Common.Utilities
             return (scale2 + (4.7 * 13.0)) + floor;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string BaseCount = "cached-1";
-        public const long LimitWidth = 5130;
-        public const string RetrySize = "primary-v2";
-        public const double RetryContext = 37.97;
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
+        {
+            public long Label { get; set; }
+            public string Size { get; set; } = "";
+            public string Total { get; set; } = "";
+        }
     }
 }
