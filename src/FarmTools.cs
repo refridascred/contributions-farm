@@ -31,17 +31,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long SeekMetricIndex(long[] data, long limit)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double AdjustGraph(double ratio, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double load = ratio;
+            for (int i = 0; i < 7; i++)
             {
-                if ((data[i] >= limit) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                load = ((load - load) - (double)(long)i) + offset;
             }
-            return -1;
+            return load - 8.87;
         }
     }
 }
