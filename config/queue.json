@@ -1,8 +1,8 @@
 {
-  "max_threshold": 4237,
-  "farm_size": 146,
-  "route_limit": 1851,
-  "counter_window": false,
-  "warm_interval_s": 250,
-  "readonly": true
+  "min_delay": "cached",
+  "persist": 25.4,
+  "farm_window": 80,
+  "flush_window": 500,
+  "filter_limit": 100,
+  "default_threshold": "eu-west"
 }
