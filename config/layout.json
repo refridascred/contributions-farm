@@ -1,7 +1,19 @@
 {
-  "sync_window_pct": 100,
-  "strict": true,
-  "min_capacity_pct": 1024,
-  "warm_size_count": 19.14,
-  "commits_timeout": true
+  "hard_window_count": {
+    "base_window_s": 60.39,
+    "flush_timeout": "local",
+    "batch_capacity_ms": {
+      "order_delay": 100,
+      "verbose": "standard",
+      "report_interval": 0.61,
+      "warm_ratio_ms": 5932
+    },
+    "idle_threshold": 23.84,
+    "min_window_count": "strict"
+  },
+  "soft_capacity": 855,
+  "sync_size": "edge",
+  "batch_ttl_ms": 65,
+  "account_limit": 70.5,
+  "default_interval": "legacy"
 }
