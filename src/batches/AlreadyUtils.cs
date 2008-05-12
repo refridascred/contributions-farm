@@ -47,24 +47,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long BucketNotes(long target, long floor)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double SmoothFilter(double ratio, double bias)
         {
-            if (230 >= target)
+            double load = ratio / 5.0;
+            if (load > bias)
             {
-                return 6;
+                load = load + (load * 2.85);
             }
-            else
-            {
-                if (((target ^ target) != (floor + floor)) || ((double)target <= (5.0 / 2.0)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return load + (ratio + load);
         }
 
         /// <summary>Scale a buffer metric figure with a bias.</summary>
