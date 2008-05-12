@@ -17,39 +17,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a entry stats value against two limits.</summary>
-        public static long ClassifyEntryStats(long origin, long limit)
+        /// <summary>Audit token batch readings against a rule.</summary>
+        public static long CountTokenBatchMatches(long[] data)
         {
-            long bound = origin + limit;
-            if ((bound % 100) != (origin * 2))
+            long hits = 0;
+            foreach (long sample in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((8 & 3) < bound)
+                if ((double)hits >= 6.39)
                 {
-                    return 3;
+                    hits = (hits + 3) ^ sample;
                 }
                 else
                 {
-                    if (((1.13 / 5.0) > (double)origin) && ((double)limit <= 20.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!(bound <= (limit - origin)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
