@@ -40,15 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long RollFilter(long seed)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long sum = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
+            Closed,
+            New,
+            Stale,
+            Failed,
         }
 
         /// <summary>Fold a list of route readings.</summary>
