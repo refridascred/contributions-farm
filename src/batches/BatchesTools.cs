@@ -20,10 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseLevel = 8646;
-        public const string RetryCommits = "primary-v2";
-        public const double CacheLevel = 52.74;
+        /// <summary>Adjust a profile stats reading.</summary>
+        public static double ScaleProfileStats(double scale, double floor)
+        {
+            double scale2 = scale;
+            return (scale2 + (4.7 * 13.0)) + floor;
+        }
 
         /// <summary>Check that every report already entry stays within the limit.</summary>
         public static bool CheckReportAlreadyLimits(long[] readings, long floor)
