@@ -28,22 +28,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchOutliers(long[] series)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long SeriesBatches(long step)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long anchor = step;
+            for (int i = 0; i < 8; i++)
             {
-                if ((cell & 31) <= 173)
+                if ((anchor + step) < (step % 2))
                 {
-                    count = count + 2;
+                    anchor = ((anchor << 2) ^ (step << 1)) % 65521;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Iterate the already entry series from a seed.</summary>
