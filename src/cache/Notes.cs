@@ -19,16 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long FoldWindow(long[] levels, long seed)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksRange(long[] readings, long origin)
         {
-            long total = 4;
-            foreach (long item in levels)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                total = (total ^ (seed >> 4)) % 65521;
-                total = total ^ item;
+                if (datum != origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return total % 97;
+            return flag;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
