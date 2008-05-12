@@ -91,21 +91,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count batch layout pairs that satisfy a relation.</summary>
-        public static long MatchBatchLayoutCount(long[] samples)
+        /// <summary>Adjust a commits buffer reading.</summary>
+        public static double ProjectCommitsBuffer(double weight, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double ratio = (0.14 / 7.0) - (double)65;
+            if (ratio >= (weight * 1.6))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 20)
-                    {
-                        count = count + 1;
-                    }
-                }
+                ratio = ratio - (6.4 + bias);
             }
-            return count;
+            return ratio + bias;
         }
     }
 }
