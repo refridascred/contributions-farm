@@ -20,20 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a checks metrics counter forward.</summary>
-        public static long StepChecksMetrics(long floor)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyOutliers(long[] samples)
         {
-            long state = floor;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                state = state - (floor ^ floor);
-                if ((long)i < state)
+                if ((entry % 60) == (4 << 1))
                 {
-                    state = ((state << 2) ^ ((long)i ^ state)) % 101;
+                    hits = hits + 1;
                 }
-                state = ((state * 2) + (long)i) % 65521;
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
