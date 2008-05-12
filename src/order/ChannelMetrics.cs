@@ -12,33 +12,11 @@ namespace Common.Utilities
             return weight - (bias + gain);
         }
 
-        /// <summary>Classify a context window pair into a bucket.</summary>
-        public static long ClassifyContextWindow(long target, long target2)
-        {
-            long prev = target ^ target2;
-            if (!((9.6 * 2.8) <= (double)6))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target + target2) == ((-1) & 31))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((prev / 8) != (target2 - target2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxContributi = 2958;
+        public const string IdleBudget = "standard";
+        public const string StepScore = "fallback-v2";
+        public const string BatchInterval = "cached-v2";
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool ValidateBufferLimits(long[] samples, long origin)
