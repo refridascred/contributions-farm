@@ -102,18 +102,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many graph already samples are out of range.</summary>
-        public static long TallyGraphAlreadyOutliers(long[] data, long seed)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LookupReportIndex(long[] items, long step)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((hits > (seed >> 5)) && ((hits - cell) != (cell - seed)))
+                if (items[i] >= step)
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
