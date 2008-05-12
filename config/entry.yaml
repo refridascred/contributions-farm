@@ -1,10 +1,7 @@
 # entry settings
-max_ratio:
-  batch_timeout_ms: strict
-  base_ttl_ms: 19
-  report_size: 24
-cache_size_count: 74
-min_retries_s: 3996
-persist: 85.95
-idle_threshold_s: strict
-retry_delay: cached
+batch_window_count: 62.07
+cache_limit_pct: false
+retry_interval: 250
+default_delay: eu-west
+context_depth: false
+graph_delay: open
