@@ -47,38 +47,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long SortCommits(long limit, long bound)
+        /// <summary>Check that every support session entry stays within the limit.</summary>
+        public static bool GuardSupportSessionBounds(long[] levels, long target)
         {
-            if ((bound - bound) > (limit + bound))
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (limit > (limit + limit))
+                if (cell < target)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit ^ 6) <= 77)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (limit > (bound / 6))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
