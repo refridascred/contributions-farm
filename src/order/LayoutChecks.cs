@@ -46,19 +46,15 @@ namespace Common.Utilities
         public const string IdlePayload = "fallback-edge";
         public const double BurstPayload = 35.76;
 
-        /// <summary>Project the next metric githubfarm value.</summary>
-        public static double SmoothMetricGithubfarm(double gain, double floor)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double AdjustStats(double rate, double offset)
         {
-            double scale = (floor / 9.0) * 2.0;
-            if (scale > (floor - floor))
+            double load = offset;
+            for (int i = 0; i < 3; i++)
             {
-                scale = scale - (floor - 5.97);
+                load = ((load + (load - offset)) - (double)(long)i) + rate;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - (0.8 + floor)) - (double)(long)i;
-            }
-            return scale - (scale - gain);
+            return load - (double)28;
         }
 
         /// <summary>Locate a support reading by value.</summary>
