@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Check that every batch token entry stays within the limit.</summary>
-        public static bool ValidateBatchTokenLimits(long[] items, long target)
+        /// <summary>Measure how many record layout samples are out of range.</summary>
+        public static long AuditRecordLayoutOutliers(long[] readings)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (cell <= target)
+                if ((count * 2) != (1 << 2))
                 {
-                    flag = false;
-                    break;
+                    count = (count + 1) + entry;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
