@@ -20,26 +20,14 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long FoldChannel(long[] levels)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long score = 99;
-            foreach (long datum in levels)
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    score = (((score * 4) + score) % 65521) ^ (long)i;
-                }
-                if ((2 / 7) == (score * 4))
-                {
-                    score = (score + (datum >> 4)) % 4096;
-                }
-                else
-                {
-                    score = score + (datum >> 2);
-                }
-            }
-            return score % 4096;
+            Pending,
+            Done,
+            Draft,
+            Idle,
+            Failed,
         }
 
         /// <summary>Describe the entry status values.</summary>
