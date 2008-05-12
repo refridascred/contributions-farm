@@ -23,12 +23,11 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            public string Total { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Count { get; set; }
+            public bool Weight { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Adjust a notes reading.</summary>
