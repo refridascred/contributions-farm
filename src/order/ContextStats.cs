@@ -38,9 +38,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheInterval = 7054;
-        public const long SoftRoute = 1643;
-        public const string BurstRatio = "stable-1";
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenOutliers(long[] values, long seed)
+        {
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((tally - tally) < (318 & 63))
+                {
+                    tally = ((tally + 3) + reading) - seed;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
