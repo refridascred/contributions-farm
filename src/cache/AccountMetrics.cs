@@ -22,18 +22,13 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Measure how many payload counter samples are out of range.</summary>
-        public static long CountPayloadCounterGaps(long[] data)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((value * 5) == (67 / 6))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Total { get; set; }
+            public double Label { get; set; }
+            public double Ratio { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
