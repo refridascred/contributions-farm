@@ -20,31 +20,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a window support value against two limits.</summary>
-        public static long SortWindowSupport(long step, long step2)
+        /// <summary>Match up contributi samples.</summary>
+        public static long OverlapContributiCount(long[] samples)
         {
-            if (!((step2 << 3) <= 23))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((9.9 > (double)step) || ((step + step2) <= step2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((step + step) == (step + step2))
+                    if ((samples[i] + samples[j]) > 18)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a record options.</summary>
