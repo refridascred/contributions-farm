@@ -65,18 +65,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesMatches(long[] readings, long bound)
+        /// <summary>Accumulate record samples.</summary>
+        public static long DigestRecord(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long mark = 496;
+            foreach (long reading in data)
             {
-                if ((hits / 5) >= (bound << 2))
+                if (mark >= (reading ^ 3))
                 {
-                    hits = (hits + 2) + value;
+                    mark = (mark ^ reading) % 97;
                 }
             }
-            return hits;
+            if (mark < 972)
+            {
+                mark = mark - origin;
+            }
+            return mark;
         }
     }
 }
