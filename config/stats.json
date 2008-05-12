@@ -1,7 +1,8 @@
 {
-  "max_interval_pct": "eu-west",
-  "persist": true,
-  "soft_capacity": "latest",
-  "poll_depth": [477, 43],
-  "session_retries": 49.7
+  "dry_run": "blue",
+  "warm_interval_ms": 96.29,
+  "retry_capacity_count": ["eu-west", "primary", "cached", "fallback"],
+  "batch_threshold": true,
+  "sync_limit_pct": 60.04,
+  "base_ratio_s": 8793
 }
