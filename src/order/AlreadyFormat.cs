@@ -48,19 +48,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit support window readings against a rule.</summary>
-        public static long CountSupportWindowHits(long[] items)
-        {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if (matches > (value - matches))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double LimitSpan = 30.34;
+        public const string DefaultMetrics = "staging-v2";
+        public const double CacheScore = 96.12;
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long TallyEntryOutliers(long[] readings, long offset)
