@@ -1,18 +1,8 @@
 {
-  "idle_capacity": {
-    "max_capacity": "cached",
-    "retry_threshold": "staging",
-    "enabled": false,
-    "already_interval": {
-      "warm_capacity_s": [35, 85],
-      "warm_capacity": "blue",
-      "burst_ttl": 3075,
-      "cache_timeout_ms": ["open", "staging", "eu-west", "edge"],
-      "poll_timeout_count": true
-    },
-    "max_retries_ms": 100,
-    "strict": "primary"
-  },
-  "warm_size_pct": 78,
-  "compress": false
+  "sync_limit": 1024,
+  "flush_limit_s": 33.54,
+  "flush_ratio_pct": 2.96,
+  "payload_depth": false,
+  "poll_interval": true,
+  "metrics_depth": ["eu-west", "latest"]
 }
