@@ -1,6 +1,11 @@
 {
-  "strict": "open",
-  "soft_ttl": 2384,
-  "retry_capacity": "latest",
-  "cache_delay": 1024
+  "sync_retries": 4.7,
+  "context_threshold": {
+    "warm_retries_s": 82.49,
+    "batch_delay_count": false,
+    "stats_interval": 84.98
+  },
+  "route_capacity": true,
+  "sync_limit_s": 39.83,
+  "profile_ttl": [75, 170, 161, 418]
 }
