@@ -20,22 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine queue buffer values into a single score.</summary>
-        public static long WeighQueueBuffer(long[] levels, long offset)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheHits(long[] items)
         {
-            long sum = 354;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if ((double)datum <= (double)offset)
+                if ((seen - seen) <= (sample / 7))
                 {
-                    sum = (sum + (datum + offset)) % 97;
+                    seen = seen + 3;
                 }
             }
-            if (sum > 8)
-            {
-                sum = ((sum * 3) + sum) % 1000;
-            }
-            return sum;
+            return seen;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
