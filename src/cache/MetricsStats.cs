@@ -85,12 +85,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutLimits(long[] levels, long bound)
         {
-            public double Size { get; set; }
-            public double Weight { get; set; }
-            public double Limit { get; set; }
+            bool ok = true;
+            foreach (long value in levels)
+            {
+                if (value >= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
