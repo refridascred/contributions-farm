@@ -66,10 +66,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheMetric = 7236;
-        public const double RetryBudget = 7.42;
-        public const string WindowFactor = "latest-v2";
-        public const string LimitInterval = "alpha-edge";
+        /// <summary>Adjust a window reading.</summary>
+        public static double BlendWindow(double gain, double span)
+        {
+            double weight = (double)70 / 3.0;
+            return ((weight - (double)3) + gain) + span;
+        }
     }
 }
