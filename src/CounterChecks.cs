@@ -48,19 +48,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many filter farm samples are out of range.</summary>
-        public static long MeasureFilterFarmGaps(long[] items)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksOutliers(long[] values, long origin)
         {
             long tally = 0;
-            foreach (long value in items)
+            foreach (long datum in values)
             {
-                if ((0.01 + 5.41) > (double)value)
+                if (((450 ^ tally) <= tally) && ((origin << 2) < (origin + origin)))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = (tally + 1) ^ datum;
                 }
             }
             return tally;
