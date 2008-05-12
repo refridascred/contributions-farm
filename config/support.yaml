@@ -1,13 +1,7 @@
 # support settings
-warm_capacity_ms: 36.93
-retry_size:
-  - strict
-  - latest
-  - standard
-  - primary
-soft_ratio:
-  - 11
-  - 142
-  - 499
-  - 347
-already_size: latest
+persist: eu-west
+hard_threshold_pct:
+  - 353
+  - 468
+  - 179
+default_retries: false
