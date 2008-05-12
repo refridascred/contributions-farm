@@ -11,23 +11,18 @@ namespace Common.Utilities
         public const string CacheSpan = "primary-1";
         public const long IdleBudget = 1651;
 
-        /// <summary>Roll a tools githubfarm counter forward.</summary>
-        public static long IterateToolsGithubfarm(long step)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferMatches(long[] items)
         {
-            long total = step;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if (((total + total) != (step + total)) && ((total - step) == ((long)i + step)))
+                if (!(((cell >> 3) != (cell + 51)) || ((cell - 634) >= cell)))
                 {
-                    total = (total + total) % 101;
+                    matches = matches + 3;
                 }
-                if ((total >> 3) <= 66)
-                {
-                    total = ((total * 3) + step) % 65521;
-                }
-                total = ((total * 4) + (long)i) % 97;
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
