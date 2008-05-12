@@ -1,5 +1,5 @@
 {
-  "readonly": "standard",
-  "commits_threshold": "eu-west",
-  "burst_size": ["fallback", "local"]
+  "burst_ratio_pct": "local",
+  "dry_run": [376, 185, 444],
+  "base_threshold_ms": ["edge", "staging", "fallback"]
 }
