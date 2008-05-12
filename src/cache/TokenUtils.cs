@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string LimitEditor = "stable-edge";
-        public const long IdleEditor = 3737;
-        public const long BurstEditor = 3744;
-        public const long MaxWidth = 8424;
-        public const long BatchBudget = 1838;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchDepth = 7260;
+        public const long DefaultLevel = 3146;
+        public const long MinNotes = 7672;
+        public const string WindowNotes = "staging-1";
+        public const long SoftNotes = 3908;
 
         /// <summary>Accumulate payload samples.</summary>
         public static long CombinePayload(long[] samples, long target)
