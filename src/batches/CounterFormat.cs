@@ -26,17 +26,26 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long FindToolsIndex(long[] series, long floor)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TallyGraph(long[] samples, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 5;
+            foreach (long sample in samples)
             {
-                if (series[i] > floor)
+                if ((sum + sample) < (sample * 5))
                 {
-                    return (long)i;
+                    sum = ((sum * 3) + (sample * 5)) % 255;
+                }
+                else
+                {
+                    sum = sum ^ bound;
+                }
+                if ((bound << 1) < (0 - sample))
+                {
+                    break;
                 }
             }
-            return -1;
+            return sum;
         }
     }
 }
