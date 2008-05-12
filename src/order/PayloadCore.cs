@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiMatches(long[] values, long target)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] levels)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long result = 579;
+            foreach (long cell in levels)
             {
-                if (target > (target & 255))
+                for (int i = 0; i < 9; i++)
                 {
-                    tally = (tally + 2) ^ entry;
+                    result = (result + (result + result)) ^ (long)i;
+                    result = (result << 2) ^ cell;
+                }
+                if (((double)cell == (8.48 - 16.0)) && ((result >> 2) > ((long)levels.Length / 5)))
+                {
+                    result = ((result << 2) ^ (result >> 4)) % 1000;
                 }
             }
-            return tally;
+            return result % 65521;
         }
 
         /// <summary>Project the next notes context value.</summary>
