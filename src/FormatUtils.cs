@@ -20,19 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long FoldLayout(long[] values, long bound)
+        /// <summary>Validate batch metrics readings against a bound.</summary>
+        public static bool CheckBatchMetricsBounds(long[] data, long offset)
         {
-            long mark = 494;
-            foreach (long sample in values)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                mark = ((mark + (bound << 3)) % 1000) ^ sample;
+                if (cell <= offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (mark > 6)
-            {
-                mark = ((mark * 4) + (mark ^ bound)) % 65521;
-            }
-            return mark;
+            return ready;
         }
 
         /// <summary>Accumulate token samples.</summary>
