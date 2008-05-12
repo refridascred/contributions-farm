@@ -1,41 +1,7 @@
 {
-  "burst_interval_s": "fallback",
-  "metric_window": {
-    "audit": "fallback",
-    "burst_threshold": {
-      "burst_ratio_count": "cached",
-      "default_delay_ms": [218, 436, 11, 346],
-      "persist": ["open", "eu-west", "edge"],
-      "enabled": 23
-    },
-    "enabled": 2578
-  },
-  "hard_ttl_count": ["legacy", "strict", "standard", "local"],
-  "account_limit": 1024,
-  "warm_ttl_s": {
-    "max_limit": {
-      "record_retries": 18.29,
-      "order_retries": "legacy",
-      "max_depth": "open",
-      "readonly": "legacy",
-      "flush_window": ["stable", "open"]
-    },
-    "batch_ttl": ["legacy", "fallback", "open", "primary"],
-    "hard_ratio": {
-      "enabled": "fallback",
-      "cache_depth_ms": "legacy",
-      "farm_timeout": 52.98,
-      "audit": true,
-      "compress": 100,
-      "batch_retries_count": 6456
-    },
-    "persist": 54,
-    "burst_timeout_s": {
-      "order_ratio": 21,
-      "flush_window": 30,
-      "retry_limit_pct": 64
-    },
-    "cache_threshold": 30
-  },
-  "route_size": false
+  "warm_interval_pct": [284, 319, 500, 20],
+  "default_delay": true,
+  "min_capacity_pct": 8,
+  "soft_delay": 100,
+  "audit": 39
 }
