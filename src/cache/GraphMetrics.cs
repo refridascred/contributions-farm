@@ -68,31 +68,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long ClassifyContext(long origin, long seed)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportBounds(long[] samples, long bound)
         {
-            if ((seed * 5) <= origin)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (((seed ^ origin) < (origin + seed)) || ((origin / 2) == ((-456) - seed)))
+                if (item <= bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (origin <= seed)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
