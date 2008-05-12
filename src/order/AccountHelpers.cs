@@ -19,11 +19,22 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string MaxFactor = "open-edge";
-        public const long BurstWidth = 8604;
-        public const long RetryContext = 9236;
-        public const long RetryBudget = 7972;
+        /// <summary>Match up payload samples.</summary>
+        public static long OverlapPayloadCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Fold a list of editor readings.</summary>
         public static long TotalEditor(long[] samples)
