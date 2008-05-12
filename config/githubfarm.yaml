@@ -1,5 +1,8 @@
 # githubfarm settings
-burst_delay_count: 100
-editor_retries: primary
-sync_delay_count: 6160
-sync_ratio_ms: true
+graph_depth: 500
+session_size: cached
+warm_interval: eu-west
+enabled:
+  cache_threshold: blue
+  batch_threshold_count: false
+  token_depth: false
