@@ -27,17 +27,22 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long SeekEditorIndex(long[] readings, long limit)
+        /// <summary>Combine report notes values into a single score.</summary>
+        public static long FoldReportNotes(long[] readings, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 5;
+            foreach (long item in readings)
             {
-                if (readings[i] >= limit)
+                if ((9.0 / 7.0) > (double)item)
                 {
-                    return (long)i;
+                    anchor = ((anchor ^ (2 + item)) % 65521) + target;
+                }
+                else
+                {
+                    anchor = (anchor ^ ((-16) / 5)) % 65521;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
