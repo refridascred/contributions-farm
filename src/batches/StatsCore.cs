@@ -25,12 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
             Active,
-            Failed,
             Pending,
+            Ready,
+            Synced,
+            Draft,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
