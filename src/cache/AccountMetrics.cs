@@ -41,12 +41,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteHits(long[] samples)
         {
-            public long Count { get; set; }
-            public string Limit { get; set; } = "";
-            public long Label { get; set; }
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((7.69 - 0.43) < (double)value)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Look up the position of a stream notes sample.</summary>
