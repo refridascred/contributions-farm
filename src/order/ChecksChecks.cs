@@ -19,14 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenGaps(long[] data)
         {
-            New,
-            Idle,
-            Locked,
-            Queued,
-            Stale,
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if (!((tally + datum) >= tally))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
