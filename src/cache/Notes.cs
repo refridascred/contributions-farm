@@ -18,13 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            public string Size { get; set; } = "";
-            public bool Count { get; set; }
-            public bool Mode { get; set; }
-            public string Ratio { get; set; } = "";
+            public long Weight { get; set; }
+            public long Owner { get; set; }
+            public long Limit { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Grade a route schema value against two limits.</summary>
