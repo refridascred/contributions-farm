@@ -42,11 +42,19 @@ namespace Common.Utilities
         public const double WindowAlready = 79.75;
         public const long MaxWidth = 3770;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepCommits = 8264;
-        public const string BatchFactor = "staging-1";
-        public const long LimitCommits = 8034;
-        public const long MaxCommits = 4579;
-        public const long StepScore = 9692;
+        /// <summary>Blend two graph route measurements.</summary>
+        public static double AdjustGraphRoute(double scale, double bias)
+        {
+            double ratio = 1.53 + (5.73 * 4.4);
+            if (ratio <= (double)293)
+            {
+                ratio = (ratio - scale) + bias;
+            }
+            else
+            {
+                ratio = ratio - (double)8;
+            }
+            return ratio + (double)4;
+        }
     }
 }
