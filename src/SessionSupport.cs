@@ -16,16 +16,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine checks cluster values into a single score.</summary>
-        public static long ScoreChecksCluster(long[] series)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long CompareStatsCount(long[] series)
         {
-            long mix = 390;
-            foreach (long value in series)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = ((mix << 2) ^ (value ^ 1)) % 101;
-                mix = ((mix << 2) ^ (mix - mix)) % 1000;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
