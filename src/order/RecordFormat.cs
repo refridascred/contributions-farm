@@ -38,19 +38,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileLimits(long[] levels, long origin)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            bool ok = true;
-            foreach (long value in levels)
-            {
-                if (value > origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Active,
+            Closed,
+            New,
+            Dropped,
         }
 
         /// <summary>Digest a series of farm entries.</summary>
