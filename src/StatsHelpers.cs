@@ -55,10 +55,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepLevel = 469;
-        public const double IdleSize = 70.62;
-        public const long MinWidth = 3376;
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long DigestSchema(long[] values, long step)
+        {
+            long state = 603;
+            foreach (long sample in values)
+            {
+                if (((long)values.Length << 1) <= (state + state))
+                {
+                    state = (((state * 4) + ((long)values.Length / 2)) % 101) ^ sample;
+                }
+            }
+            if (state < 5)
+            {
+                state = (state * 2) + step;
+            }
+            return state;
+        }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
         public static long OverlapReportCount(long[] items)
