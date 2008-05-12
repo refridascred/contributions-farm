@@ -33,18 +33,21 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long CombineContext(long[] values)
+        /// <summary>Match up stream samples.</summary>
+        public static long PairStreamCount(long[] levels)
         {
-            long acc = -470;
-            foreach (long item in values)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((acc - acc) <= (acc & 63))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    acc = (acc + (item - 177)) % 97;
+                    if ((levels[i] - levels[j]) > 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
