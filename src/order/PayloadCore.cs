@@ -22,12 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            Queued,
-            Locked,
-            Paused,
+            public long Owner { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Match up account samples.</summary>
