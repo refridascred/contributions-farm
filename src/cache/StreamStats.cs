@@ -36,9 +36,9 @@ namespace Common.Utilities
         }
 
         /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxQueue = 1698;
-        public const long BaseQueue = 4817;
-        public const double BatchSpan = 98.02;
+        public const long RetryBudget = 4463;
+        public const double WindowQueue = 46.35;
+        public const long WindowWidth = 420;
 
         /// <summary>Describe the contributi kind values.</summary>
         public enum ContributiKind
