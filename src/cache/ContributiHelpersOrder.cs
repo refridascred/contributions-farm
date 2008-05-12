@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long RollSession(long step)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long carry = step;
-            for (int i = 0; i < 9; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 1000;
-            }
-            return carry;
+            New,
+            Closed,
+            Synced,
+            Idle,
         }
 
         /// <summary>Fold a list of record readings.</summary>
