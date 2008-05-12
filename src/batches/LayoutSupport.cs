@@ -58,16 +58,19 @@ namespace Common.Utilities
         public const long LimitInterval = 2674;
         public const double BurstSize = 44.52;
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long DeriveAccount(long limit)
+        /// <summary>Project the next already cache value.</summary>
+        public static double BlendAlreadyCache(double bias, double floor)
         {
-            long sum = limit;
+            double load = (bias * 16.0) - 4.7;
+            if (load <= (double)92)
+            {
+                load = (load - bias) - floor;
+            }
             for (int i = 0; i < 9; i++)
             {
-                sum = (sum + (804 >> 3)) % 101;
-                sum = ((sum * 3) + (long)i) % 65521;
+                load = (load + bias) - (double)(long)i;
             }
-            return sum;
+            return load - (double)3;
         }
     }
 }
