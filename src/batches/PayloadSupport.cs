@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long RollGraph(long floor)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long SeriesReport(long origin)
         {
-            long score = floor;
-            for (int i = 0; i < 19; i++)
+            long result = origin;
+            for (int i = 0; i < 8; i++)
             {
-                score = (score - (95 - floor)) % 97;
-                score = score + (floor << 1);
-                if ((score ^ floor) == ((long)i << 3))
-                {
-                    score = (score + (score + (long)i)) % 255;
-                }
-                else
-                {
-                    score = ((score * 4) + score) % 97;
-                }
-                score = ((score * 5) + (long)i) % 1000;
+                result = (result + origin) % 255;
+                result = (result + (result + origin)) % 255;
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return score;
+            return result;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
