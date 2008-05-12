@@ -19,36 +19,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long SortContributi(long floor, long seed)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long ClassifyReport(long floor, long step)
         {
-            if (!((floor * 5) > floor))
+            long lane = floor + step;
+            if (((floor << 2) > (lane * 3)) && ((step + step) != (floor & 255)))
             {
-                return 1;
+                return 2;
             }
             else
             {
-                if ((18.0 >= (double)seed) || ((double)seed <= (13.0 * 5.7)))
+                if ((264 + step) >= (lane ^ step))
                 {
-                    return 8;
+                    return 6;
                 }
                 else
                 {
-                    if (seed > (seed ^ 394))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (floor <= (floor >> 2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return 8;
                 }
             }
         }
