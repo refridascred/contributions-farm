@@ -1,5 +1,6 @@
 {
-  "sync_interval_count": "local",
-  "retry_timeout_ms": 1038,
-  "sync_limit": true
+  "idle_window_s": 42.92,
+  "verbose": 82.97,
+  "sync_delay": "stable",
+  "persist": 90.51
 }
