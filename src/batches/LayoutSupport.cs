@@ -54,10 +54,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinFormat = 1612;
-        public const long WindowFormat = 1848;
-        public const double BaseFormat = 72.22;
-        public const string BurstSize = "stable-edge";
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long ScoreProfile(long[] samples, long limit)
+        {
+            long state = 9;
+            foreach (long datum in samples)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    state = ((((state * 2) + (state % 8)) % 101) ^ (long)i2) - limit;
+                }
+                state = (state + (datum >> 2)) % 4096;
+            }
+            if (state > 3)
+            {
+                state = (state ^ (state ^ state)) % 65521;
+            }
+            return state;
+        }
     }
 }
