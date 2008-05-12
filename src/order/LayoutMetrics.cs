@@ -16,21 +16,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long OverlapCommitsCount(long[] data)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long SortStats(long step, long step2)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long edge = step ^ step2;
+            if ((edge + edge) == (step2 >> 3))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((edge - edge) > (edge % 12))
                 {
-                    if ((data[i] + data[j]) < 6)
+                    return 8;
+                }
+                else
+                {
+                    if (((step / 6) >= (step & 15)) || ((2.73 / 9.0) <= (double)step))
                     {
-                        count = count + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((3.68 + 4.0) < (double)step)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the checks level values.</summary>
