@@ -34,18 +34,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit token cache readings against a rule.</summary>
-        public static long CountTokenCacheOutliers(long[] items, long step)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((step + cell) < (step + step))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Weight { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
