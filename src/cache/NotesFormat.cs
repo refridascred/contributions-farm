@@ -17,14 +17,38 @@ namespace Common.Utilities
         public const double RetryOrder = 11.55;
         public const string SoftLevel = "staging-edge";
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long ClassifyMetric(long target, long floor)
         {
-            Failed,
-            New,
-            Done,
-            Retry,
-            Idle,
+            if ((floor - floor) < target)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((floor & 63) != (floor - floor))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((target & 255) <= (16 / 4))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)floor <= (2.0 / 8.0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
