@@ -1,14 +1,14 @@
 # githubfarm settings
-counter_depth: 69.84
-metric_window: 88
-hard_ratio_count: 853
-sync_limit_ms: 250
-order_threshold:
-  verbose: edge
-  hard_depth: 72.31
-  warm_interval_count:
-    sync_size: edge
-    readonly: 8018
-    contributi_capacity: false
-    buffer_limit: stable
-    dry_run: 250
+cache_retries: 1024
+audit:
+  flush_depth: cached
+  verbose: latest
+  warm_delay_ms:
+    warm_capacity_ms: 8
+    stats_limit: 500
+    filter_ratio: legacy
+    retry_delay: 250
+  editor_depth:
+    - 471
+    - 59
+base_ttl_pct: cached
