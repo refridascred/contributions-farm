@@ -1,5 +1,24 @@
 {
-  "max_retries": 1024,
-  "profile_timeout": 92,
-  "cache_limit_s": "green"
+  "cache_ratio": "staging",
+  "hard_timeout_ms": 4840,
+  "burst_retries_s": true,
+  "retry_size_pct": {
+    "poll_timeout_count": 100,
+    "default_threshold_pct": 64.46,
+    "dry_run": true,
+    "hard_capacity": true,
+    "audit": {
+      "cache_threshold": "blue",
+      "strict": false,
+      "persist": true,
+      "cache_depth_pct": "edge",
+      "enabled": 806
+    }
+  },
+  "max_depth_count": {
+    "retry_interval_count": "latest",
+    "min_depth": true,
+    "min_size": 812,
+    "poll_capacity_count": [37, 88]
+  }
 }
