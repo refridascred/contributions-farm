@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            public long Rank { get; set; }
-            public bool Size { get; set; }
-            public long Mode { get; set; }
-            public double Score { get; set; }
+            Ready,
+            Idle,
+            Closed,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Roll a counter counter forward.</summary>
