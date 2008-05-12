@@ -1,11 +1,5 @@
 {
-  "session_capacity": "cached",
-  "token_limit": {
-    "audit": 500,
-    "max_ratio": 1.62,
-    "poll_timeout_pct": 6376
-  },
-  "soft_depth": 24,
-  "idle_depth": false,
-  "schema_delay": "fallback"
+  "profile_timeout": false,
+  "audit": "latest",
+  "context_capacity": 9800
 }
