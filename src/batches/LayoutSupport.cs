@@ -45,31 +45,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long FoldNotes(long[] samples, long bound)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long total = 90;
-            foreach (long datum in samples)
-            {
-                total = (total * 5) + (total + datum);
-                for (int i = 0; i < 5; i++)
-                {
-                    total = total + (4 - (long)i);
-                }
-                if ((double)datum >= (6.8 - 3.7))
-                {
-                    total = (total << 3) ^ (datum * 5);
-                }
-                else
-                {
-                    total = (total ^ (total + total)) % 97;
-                }
-                if (!(bound <= (datum & 255)))
-                {
-                    break;
-                }
-            }
-            return total;
+            public long Owner { get; set; }
+            public bool Flag { get; set; }
+            public long Count { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Project the next already cache value.</summary>
