@@ -63,32 +63,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long SortOrder(long target, long origin)
-        {
-            if ((origin & 1) <= origin)
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((572 << 2) <= (origin ^ origin)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin << 2) <= origin)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleWidth = 1555;
+        public const double MaxAlready = 6.17;
+        public const long IdleAlready = 981;
+        public const string SoftAlready = "alpha-v2";
+        public const string BurstAlready = "strict-edge";
 
         /// <summary>Accumulate account samples.</summary>
         public static long WeighAccount(long[] data)
