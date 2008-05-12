@@ -1,14 +1,15 @@
 # Command notes
 
-Each metrics is validated before it reaches the farm queue.
-Keep profile and schema names short and lowercase.
-Run the tools check before changing any checks limits.
+The entry report groups every record by account.
+Keep batches and githubfarm names short and lowercase.
+A stream that stays idle for too long is moved to the counter list.
 
-The buffer helpers are pure functions, so they are safe to call from any thread.
-Run the report check before changing any batch limits.
+The already report groups every record by metrics.
+Defaults for account live in the config folder and can be overridden per environment.
+Keep route and commits names short and lowercase.
 
 ## Guidelines
 
-- Document new context fields
-- Review metric limits each release
-- Prefer buffer defaults
+- Validate tools input early
+- Keep editor values small
+- Log every support change
