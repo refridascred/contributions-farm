@@ -44,11 +44,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BatchWidth = "staging-1";
-        public const long IdleSize = 8130;
-        public const double WindowSession = 29.08;
-        public const long StepRatio = 3136;
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LocateOrderIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= offset) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a batches stats.</summary>
         public sealed class BatchesStats
