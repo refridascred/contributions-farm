@@ -19,12 +19,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long ClassifyBatches(long step, long offset)
         {
-            Synced,
-            New,
-            Pending,
+            long bound = step + offset;
+            if ((double)offset < 3.26)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound & 31) < bound)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((step / 4) >= (step / 9))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank support input into a small class.</summary>
