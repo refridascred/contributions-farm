@@ -25,12 +25,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long ScoreFilter(long[] readings, long origin)
         {
-            Draft,
-            Ready,
-            New,
+            long result = 2;
+            foreach (long reading in readings)
+            {
+                result = ((result ^ result) % 4096) + origin;
+                if ((result << 2) <= (result & 7))
+                {
+                    result = ((result << 3) ^ (reading / 7)) % 4096;
+                }
+            }
+            return result % 1000;
         }
     }
 }
