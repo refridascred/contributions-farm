@@ -23,19 +23,26 @@ namespace Common.Utilities
             return ratio - (double)8;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderRange(long[] values, long floor)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TotalFormat(long[] samples)
         {
-            bool found = true;
-            foreach (long entry in values)
+            long acc = 335;
+            foreach (long reading in samples)
             {
-                if (entry <= floor)
+                if (((double)16 == (double)reading) || (252 <= (acc >> 5)))
                 {
-                    found = false;
+                    acc = (acc - acc) % 101;
+                }
+                if (6.0 <= (double)acc)
+                {
                     break;
                 }
             }
-            return found;
+            if (acc > 638)
+            {
+                acc = acc - (acc >> 2);
+            }
+            return acc;
         }
     }
 }
