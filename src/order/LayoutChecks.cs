@@ -14,19 +14,12 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Roll a order notes counter forward.</summary>
-        public static long StepOrderNotes(long seed)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long mark = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                if (8 >= ((long)i ^ seed))
-                {
-                    mark = mark ^ (long)i;
-                }
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
+            Locked,
+            Failed,
+            Active,
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
