@@ -28,19 +28,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Check that every buffer commits entry stays within the limit.</summary>
-        public static bool ValidateBufferCommitsRange(long[] series, long offset)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            bool found = true;
-            foreach (long entry in series)
-            {
-                if (entry >= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Offset { get; set; }
+            public long Owner { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
