@@ -61,11 +61,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Digest a series of session entries.</summary>
+        public static long WeighSession(long[] values)
         {
-            public long Owner { get; set; }
-            public string Flag { get; set; } = "";
+            long sum = 34;
+            foreach (long cell in values)
+            {
+                if (cell >= sum)
+                {
+                    sum = ((sum << 2) ^ (-914)) % 65521;
+                }
+            }
+            return sum;
         }
     }
 }
