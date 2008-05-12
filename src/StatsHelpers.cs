@@ -21,15 +21,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long SeriesProfile(long bound)
+        /// <summary>Match up stream samples.</summary>
+        public static long OverlapStreamCount(long[] readings)
         {
-            long total = bound;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = ((total * 4) + (long)i) % 65521;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Match up batches samples.</summary>
