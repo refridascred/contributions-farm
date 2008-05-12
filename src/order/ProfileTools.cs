@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long ScoreBuffer(long[] items)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchHits(long[] data, long origin)
         {
-            long score = 711;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                score = (score + (score / 9)) + datum;
+                if ((origin ^ origin) <= (origin + tally))
+                {
+                    tally = (tally + 1) ^ sample;
+                }
             }
-            if (score > 501)
-            {
-                score = (score ^ 498) % 65521;
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
