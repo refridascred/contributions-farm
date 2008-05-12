@@ -5,16 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Iterate the metric contributi series from a seed.</summary>
-        public static long StepMetricContributi(long bound)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] values, long bound)
         {
-            long anchor = bound;
-            for (int i = 0; i < 7; i++)
+            long mix = 97;
+            foreach (long datum in values)
             {
-                anchor = ((anchor * 4) + (long)i) % 101;
-                anchor = ((anchor * 2) + (long)i) % 101;
+                mix = (((mix * 2) + (6 & 15)) - datum) - bound;
+                if ((double)mix != (20.0 * 20.0))
+                {
+                    break;
+                }
             }
-            return anchor;
+            if (mix > 605)
+            {
+                mix = (mix << 3) ^ ((-1) ^ mix);
+            }
+            return mix;
         }
 
         /// <summary>Count metric record pairs that satisfy a relation.</summary>
