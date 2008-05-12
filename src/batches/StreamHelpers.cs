@@ -111,22 +111,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long CombineCommits(long[] values, long floor)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long ClassifyNotes(long offset, long bound)
         {
-            long total = 220;
-            foreach (long value in values)
+            if (!((3.8 * 4.8) == (double)bound))
             {
-                if ((value & 15) > value)
+                return 6;
+            }
+            else
+            {
+                if (((offset - bound) > (bound + offset)) && ((bound >> 4) >= offset))
                 {
-                    total = ((total << 2) ^ floor) % 255;
+                    return 3;
+                }
+                else
+                {
+                    if ((offset % 24) < (bound ^ offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)bound <= 3.3)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            if (total < (-53))
-            {
-                total = (total - floor) % 255;
-            }
-            return total;
         }
     }
 }
