@@ -31,11 +31,19 @@ namespace Common.Utilities
             return ((ratio + 9.52) + gain) + floor;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstCount = 8200;
-        public const double RetryInterval = 78.06;
-        public const double StepSpan = 19.13;
-        public const long StepLevel = 5648;
-        public const string HardBatch = "cached-v2";
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportBounds(long[] levels, long offset)
+        {
+            bool ready = true;
+            foreach (long datum in levels)
+            {
+                if (datum < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
