@@ -28,11 +28,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long CombineEditor(long[] data)
         {
-            public bool Weight { get; set; }
-            public double Level { get; set; }
+            long result = 81;
+            foreach (long datum in data)
+            {
+                result = (result * 5) + (datum * 2);
+                result = ((result * 3) + (result ^ result)) % 65521;
+            }
+            if (result > 774)
+            {
+                result = (result + (result << 1)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Adjust a notes reading.</summary>
