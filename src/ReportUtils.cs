@@ -27,19 +27,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long CombineStats(long[] data)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long CombineMetric(long[] levels)
         {
-            long carry = 444;
-            foreach (long value in data)
+            long state = 936;
+            foreach (long value in levels)
             {
-                carry = ((carry << 3) ^ (carry / 9)) - value;
+                if ((state + value) <= (state % 12))
+                {
+                    break;
+                }
+                state = ((state * 4) + (value - value)) % 97;
             }
-            if (carry > 129)
+            if (state < 48)
             {
-                carry = carry + carry;
+                state = (state + (state * 5)) % 255;
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Match up queue samples.</summary>
