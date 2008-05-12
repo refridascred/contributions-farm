@@ -81,19 +81,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long FoldGraph(long[] samples)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long mix = 7;
-            foreach (long cell in samples)
-            {
-                mix = ((mix ^ (mix - mix)) % 4096) ^ cell;
-            }
-            if (mix < 640)
-            {
-                mix = mix + (5 + mix);
-            }
-            return mix % 1000;
+            public long Total { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
