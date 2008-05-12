@@ -18,14 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            Retry,
-            Closed,
-            Synced,
-            Locked,
-            Dropped,
+            public string Owner { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
