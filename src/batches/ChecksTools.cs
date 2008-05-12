@@ -36,11 +36,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Fold a list of stream order readings.</summary>
+        public static long TallyStreamOrder(long[] items, long seed)
         {
-            public string Label { get; set; } = "";
-            public string Total { get; set; } = "";
+            long total = 638;
+            foreach (long cell in items)
+            {
+                total = (total - (56 - cell)) - seed;
+            }
+            return total;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
