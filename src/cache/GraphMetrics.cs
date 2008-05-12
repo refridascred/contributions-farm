@@ -20,18 +20,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsGaps(long[] levels, long limit)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutMatches(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (!((652 >> 3) != (reading >> 4)) || (limit >= (95 * 2)))
+                if ((item + item) > (tally & 63))
                 {
-                    count = count + 2;
+                    tally = (tally + 3) - origin;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
