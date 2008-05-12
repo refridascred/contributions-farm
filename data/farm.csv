@@ -1,8 +1,8 @@
-id,label,count
-1,15.62,31.16
-2,187,992
-3,stable,939
-4,legacy,local
-5,36,778
-6,open,844
-7,900,6.26
+id,label,active,level,rank
+1,primary,544,253,91.8
+2,93.27,eu-west,94,279
+3,384,local,133,33.11
+4,eu-west,26,24,27.5
+5,449,47,31.14,48.58
+6,730,standard,93.12,89
+7,656,local,open,973
