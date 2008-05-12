@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const long BaseBudget = 1234;
         public const string MaxMetrics = "latest-v2";
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] values, long seed)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long FindStreamIndex(long[] levels, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((values[i] <= seed) && ((values[i] % 3) != 0))
+                if (levels[i] > limit)
                 {
                     return (long)i;
                 }
