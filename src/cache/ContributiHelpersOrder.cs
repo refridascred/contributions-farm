@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmRange(long[] items, long limit)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LookupStreamIndex(long[] items, long seed)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry >= limit)
+                if ((items[i] <= seed) && ((items[i] % 5) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
