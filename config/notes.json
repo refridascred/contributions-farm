@@ -1,13 +1,5 @@
 {
-  "poll_size_pct": 31,
-  "token_window": 45.21,
-  "idle_window_pct": 70,
-  "stream_timeout": 30,
-  "report_window": {
-    "queue_size": 79,
-    "profile_timeout": ["eu-west", "cached"],
-    "compress": 47,
-    "window_window": "edge"
-  },
-  "min_ratio_ms": "standard"
+  "batch_depth_pct": 56,
+  "warm_capacity_pct": "latest",
+  "compress": 81.61
 }
