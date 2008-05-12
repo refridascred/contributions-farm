@@ -42,17 +42,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LookupSupportIndex(long[] values, long step)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= step) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Flag { get; set; } = "";
+            public string Region { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
