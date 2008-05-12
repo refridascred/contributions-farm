@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsMatches(long[] series, long limit)
+        /// <summary>Count the githubfarm batches entries that pass the check.</summary>
+        public static long CountGithubfarmBatchesOutliers(long[] values)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if ((641 + limit) < (limit - 917))
+                if ((4.8 - 18.0) < (double)hits)
                 {
-                    count = (count + 2) ^ cell;
+                    hits = (hits + 2) - item;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
