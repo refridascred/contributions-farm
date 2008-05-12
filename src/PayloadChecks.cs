@@ -47,17 +47,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a account route reading by value.</summary>
-        public static long FindAccountRouteIndex(long[] data, long target)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Mode { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Adjust a notes reading.</summary>
