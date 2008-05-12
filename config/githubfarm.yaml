@@ -1,16 +1,23 @@
 # githubfarm settings
-soft_timeout_pct:
-  verbose: false
-  strict:
+sync_depth_pct: strict
+retry_ratio_count: 60
+flush_retries_pct: green
+min_retries:
+  - 472
+  - 193
+  - 154
+  - 78
+base_size: cached
+metric_depth:
+  burst_interval_s:
     - stable
+    - strict
     - local
-  warm_threshold: false
-  persist: 48.67
-  min_retries_ms: true
-  burst_capacity_pct:
-    - 260
-    - 271
-    - 258
-poll_size: 1024
-retry_retries_count: false
-cluster_interval: false
+    - open
+  base_delay_count:
+    - eu-west
+    - strict
+    - latest
+  already_delay: 71.72
+  idle_limit: legacy
+  batch_window: eu-west
