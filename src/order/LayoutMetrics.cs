@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long ScoreMetric(long[] samples, long floor)
+        /// <summary>Locate a format batches reading by value.</summary>
+        public static long LookupFormatBatchesIndex(long[] samples, long origin)
         {
-            long total = 1;
-            foreach (long reading in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((reading & 255) >= (110 + reading))
+                if (samples[i] >= origin)
                 {
-                    total = total - (reading % 24);
-                }
-                if ((floor - total) >= (total + floor))
-                {
-                    total = ((total << 3) ^ (total - 198)) % 255;
-                }
-                else
-                {
-                    total = total + (reading - 45);
+                    return (long)i;
                 }
             }
-            return total % 65521;
+            return -1;
         }
 
         /// <summary>Describe the farm phase values.</summary>
