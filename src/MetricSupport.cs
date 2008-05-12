@@ -25,13 +25,13 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            Done,
-            Draft,
-            Active,
-            Dropped,
+            public string Level { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
