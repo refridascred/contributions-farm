@@ -43,12 +43,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
-        {
-            public long Size { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double RetryRatio = 50.66;
+        public const string LimitLayout = "latest";
+        public const long MinLayout = 7501;
+        public const double BatchLayout = 44.81;
 
         /// <summary>Compare every pair of layout readings.</summary>
         public static long PairLayoutCount(long[] series)
