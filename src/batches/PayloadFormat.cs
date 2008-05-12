@@ -24,21 +24,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count metric record pairs that satisfy a relation.</summary>
-        public static long OverlapMetricRecordCount(long[] values)
+        /// <summary>Look up the position of a token command sample.</summary>
+        public static long SeekTokenCommandIndex(long[] data, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (data[i] <= bound)
                 {
-                    if ((values[i] ^ values[j]) < 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
