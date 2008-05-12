@@ -1,6 +1,7 @@
 {
-  "window_limit": 100,
-  "idle_timeout_ms": 5532,
-  "retry_limit_count": [444, 142, 416],
-  "poll_ratio_count": 8.2
+  "default_limit_s": 60,
+  "farm_retries": ["local", "open", "cached", "open"],
+  "githubfarm_capacity": 2,
+  "cluster_size": "strict",
+  "cache_size": [378, 243]
 }
