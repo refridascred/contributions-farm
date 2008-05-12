@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferMatches(long[] items, long origin)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long SeekProfileIndex(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((origin & 3) == (matches % 2))
+                if (samples[i] > origin)
                 {
-                    matches = (matches + 2) ^ entry;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Look up the position of a graph token sample.</summary>
