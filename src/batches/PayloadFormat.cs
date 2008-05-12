@@ -37,19 +37,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaLimits(long[] items, long floor)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long SortMetrics(long floor, long limit)
         {
-            bool ready = true;
-            foreach (long value in items)
+            if (!((floor + 31) <= (floor & 255)))
             {
-                if (value <= floor)
+                return 1;
+            }
+            else
+            {
+                if (47 < (limit >> 5))
                 {
-                    ready = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (limit <= (limit * 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((limit - floor) <= floor) || (1 < (limit + floor)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Project the next command value.</summary>
