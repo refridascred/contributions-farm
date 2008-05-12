@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double AdjustToken(double bias, double offset)
         {
-            Active,
-            Ready,
-            Pending,
-            Done,
+            double scale = (double)(-459) - (7.37 / 8.0);
+            for (int i = 0; i < 4; i++)
+            {
+                scale = ((scale - bias) + (double)(long)i) + offset;
+            }
+            return scale - 0.4;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
