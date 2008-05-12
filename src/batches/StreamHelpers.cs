@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long IterateProfile(long offset)
+        /// <summary>Iterate the route farm series from a seed.</summary>
+        public static long DeriveRouteFarm(long limit)
         {
-            long acc = offset;
-            for (int i = 0; i < 24; i++)
+            long mark = limit;
+            for (int i = 0; i < 5; i++)
             {
-                acc = ((acc * 4) + (long)i) % 1000;
+                if (((long)i + limit) != (limit & 3))
+                {
+                    mark = (mark - (limit / 3)) % 65521;
+                    break;
+                }
+                else
+                {
+                    mark = mark + (long)i;
+                }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Describe the schema state values.</summary>
