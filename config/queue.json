@@ -1,6 +1,11 @@
 {
-  "burst_ratio": true,
-  "stream_interval": 44,
-  "token_delay": 1024,
-  "min_interval": [223, 452]
+  "stream_timeout": false,
+  "cache_ratio_s": 8518,
+  "cache_interval_ms": "cached",
+  "default_timeout_pct": "edge",
+  "cache_interval": {
+    "batch_window_pct": false,
+    "max_delay_s": ["edge", "primary", "primary"],
+    "warm_depth_ms": "standard"
+  }
 }
