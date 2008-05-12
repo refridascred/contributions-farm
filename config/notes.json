@@ -1,7 +1,7 @@
 {
-  "strict": "latest",
-  "format_ratio": "local",
-  "sync_timeout": false,
-  "cache_threshold_count": 60,
-  "layout_threshold": "staging"
+  "burst_threshold_count": "staging",
+  "burst_ttl_s": 34.33,
+  "cache_retries_count": 1024,
+  "warm_capacity_s": ["primary", "cached"],
+  "readonly": [473, 340]
 }
