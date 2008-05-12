@@ -1,12 +1,16 @@
 # Command notes
 
-Defaults for metrics live in the config folder and can be overridden per environment.
-The checks module keeps tools values in sync with the format cache.
-Run the notes check before changing any notes limits.
+Each githubfarm is validated before it reaches the payload queue.
+A context that stays idle for too long is moved to the graph list.
+Each batches is validated before it reaches the counter queue.
+
+The channel report groups every buffer by route.
+When a cluster fails, the batch handler retries a few times before giving up.
+The checks report groups every tools by window.
 
 ## Guidelines
 
-- Log every cluster change
-- Prefer graph defaults
-- Keep token values small
-- Review metrics limits each release
+- Document new payload fields
+- Log every farm change
+- Prefer already defaults
+- Validate contributi input early
