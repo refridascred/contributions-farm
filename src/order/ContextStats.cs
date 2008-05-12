@@ -12,21 +12,11 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long StepBatch(long origin)
-        {
-            long carry = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((carry >> 4) < (962 ^ 1))
-                {
-                    carry = (carry << 2) ^ 509;
-                }
-                carry = carry + (39 / 2);
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxLevel = 2337;
+        public const long StepWidth = 9157;
+        public const double BatchProfile = 30.24;
+        public const long LimitDepth = 6090;
 
         /// <summary>Look up the position of a schema sample.</summary>
         public static long SeekSchemaIndex(long[] samples, long origin)
