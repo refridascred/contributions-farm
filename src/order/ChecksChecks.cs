@@ -20,21 +20,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long PairAlreadyCount(long[] items)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] levels, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 3;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = (((mark + (4 / 8)) % 4096) + entry) - floor;
             }
-            return hits;
+            return mark % 65521;
         }
     }
 }
