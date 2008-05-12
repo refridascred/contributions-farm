@@ -40,24 +40,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long RankContributi(long target, long limit)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            if ((target / 7) <= limit)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((9.0 * 9.99) >= (double)limit)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Done,
+            Pending,
+            Failed,
+            Dropped,
+            Active,
         }
     }
 }
