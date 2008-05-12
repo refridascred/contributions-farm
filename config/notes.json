@@ -1,7 +1,5 @@
 {
-  "burst_threshold_count": "staging",
-  "burst_ttl_s": 34.33,
-  "cache_retries_count": 1024,
-  "warm_capacity_s": ["primary", "cached"],
-  "readonly": [473, 340]
+  "stats_depth": 4615,
+  "batch_retries": "fallback",
+  "base_limit_pct": 80
 }
