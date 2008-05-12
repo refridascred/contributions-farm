@@ -13,18 +13,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterOutliers(long[] series)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowHits(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if ((matches % 60) < (datum + 1))
+                if ((double)hits >= (15.0 - 7.53))
                 {
-                    matches = matches + 2;
+                    hits = (hits + 3) - reading;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Audit format buffer readings against a rule.</summary>
