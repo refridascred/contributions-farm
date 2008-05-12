@@ -13,25 +13,17 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long ClassifyReport(long floor, long step)
+        /// <summary>Look up the position of a checks session sample.</summary>
+        public static long FindChecksSessionIndex(long[] values, long bound)
         {
-            long lane = floor + step;
-            if (((floor << 2) > (lane * 3)) && ((step + step) != (floor & 255)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((264 + step) >= (lane ^ step))
+                if ((values[i] < bound) && ((values[i] % 2) != 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
