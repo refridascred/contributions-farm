@@ -1,12 +1,19 @@
 # entry settings
-readonly: stable
-audit: 500
-soft_size_pct:
-  cache_limit_pct:
-    max_limit_count: 500
-    already_window: 8477
-    command_ratio: edge
-    default_window_count: cached
-  stream_limit: 5130
-  dry_run: edge
-poll_interval_pct: stable
+soft_interval_s: local
+batch_interval_s: edge
+batch_timeout_ms: eu-west
+max_timeout_ms:
+  min_ttl_ms: open
+  layout_depth:
+    - 336
+    - 83
+    - 265
+  audit: 100
+  cache_capacity:
+    flush_retries_s: legacy
+    persist: 59.94
+    audit: eu-west
+    entry_depth: staging
+    retry_depth: latest
+flush_window: strict
+metrics_timeout: 30
