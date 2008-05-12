@@ -33,11 +33,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftTimeout = 7505;
-        public const double BatchCache = 77.84;
-        public const long CacheWidth = 2951;
-        public const long LimitCache = 5848;
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const double LimitSpan = 64.07;
