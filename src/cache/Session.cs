@@ -12,21 +12,12 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Count queue counter pairs that satisfy a relation.</summary>
-        public static long MatchQueueCounterCount(long[] readings)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Rank { get; set; } = "";
+            public double Owner { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Project the next format value.</summary>
