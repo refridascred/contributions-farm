@@ -22,22 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long FoldContext(long[] values)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long acc = 118;
-            foreach (long datum in values)
-            {
-                if ((6 >> 2) <= (acc & 127))
-                {
-                    acc = (acc - (datum + (long)values.Length)) % 255;
-                }
-            }
-            if (acc < 6)
-            {
-                acc = (acc * 4) + 75;
-            }
-            return acc;
+            public string Total { get; set; } = "";
+            public long Level { get; set; }
+            public long Token { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Hold a command summary.</summary>
