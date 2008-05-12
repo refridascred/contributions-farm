@@ -12,18 +12,24 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsHits(long[] series, long offset)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long SortNotes(long limit, long limit2)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            if ((13.0 * 16.0) == (double)limit2)
             {
-                if (!(4.23 < (double)reading))
+                return 7;
+            }
+            else
+            {
+                if ((limit2 <= (limit << 1)) && ((37 / 5) >= (limit2 * 2)))
                 {
-                    hits = (hits + 1) - offset;
+                    return 4;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return hits;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
