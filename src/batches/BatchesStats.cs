@@ -25,21 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long OverlapBufferCount(long[] items)
+        /// <summary>Roll a report cluster counter forward.</summary>
+        public static long IterateReportCluster(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = target;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((894 >> 5) <= (target + (long)i)) || (9 > (4 - state)))
                 {
-                    if ((items[i] ^ items[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = (state ^ (state >> 3)) % 4096;
                 }
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
