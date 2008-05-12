@@ -60,21 +60,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up payload graph samples.</summary>
-        public static long OverlapPayloadGraphCount(long[] data)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Paused,
+            New,
+            Dropped,
+            Draft,
+            Closed,
         }
 
         /// <summary>Hold a report record.</summary>
