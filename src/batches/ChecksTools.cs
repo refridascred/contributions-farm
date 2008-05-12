@@ -33,15 +33,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of stream order readings.</summary>
-        public static long TallyStreamOrder(long[] items, long seed)
+        /// <summary>Look up the position of a contributi cluster sample.</summary>
+        public static long LookupContributiClusterIndex(long[] series, long limit)
         {
-            long total = 638;
-            foreach (long cell in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                total = (total - (56 - cell)) - seed;
+                if (series[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Describe the metric level values.</summary>
