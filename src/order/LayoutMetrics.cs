@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of token account readings.</summary>
-        public static long TallyTokenAccount(long[] readings)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long StepQueue(long bound)
         {
-            long anchor = 216;
-            foreach (long cell in readings)
+            long carry = bound;
+            for (int i = 0; i < 9; i++)
             {
-                anchor = ((anchor + anchor) % 101) + cell;
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            if (anchor < 76)
-            {
-                anchor = (anchor << 2) ^ (long)readings.Length;
-            }
-            return anchor % 97;
+            return carry;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
