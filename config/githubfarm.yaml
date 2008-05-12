@@ -1,16 +1,13 @@
 # githubfarm settings
-sync_depth_count: 29
-soft_interval_count: 95
-retry_interval_pct:
-  hard_depth_s: cached
-  sync_limit:
-    metric_size: 90
-    channel_size:
-      - 385
-      - 246
-      - 440
-      - 110
-    max_ttl: 9855
-    batch_window: 55.01
-    githubfarm_ratio: 36.66
-  max_retries_pct: 37
+strict: false
+report_timeout:
+  enabled: 1024
+  profile_window: 242
+  stream_limit: 61.39
+  session_limit:
+    - 463
+    - 85
+    - 356
+  dry_run: strict
+dry_run: 500
+sync_depth_count: true
