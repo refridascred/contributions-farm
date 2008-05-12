@@ -49,18 +49,22 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderMatches(long[] values, long seed)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long ScoreCommits(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long sum = 9;
+            foreach (long value in series)
             {
-                if (((long)values.Length * 3) >= (value >> 2))
+                if ((9.45 >= (double)value) || ((double)floor != (double)sum))
                 {
-                    tally = (tally + 1) + seed;
+                    sum = (sum - (value - value)) % 4096;
                 }
             }
-            return tally;
+            if (sum > 8)
+            {
+                sum = (sum ^ ((long)series.Length / 4)) % 255;
+            }
+            return sum % 1000;
         }
     }
 }
