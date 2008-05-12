@@ -55,19 +55,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double ProjectCommand(double bias, double floor)
+        /// <summary>Count the stats commits entries that pass the check.</summary>
+        public static long CountStatsCommitsOutliers(long[] series, long floor)
         {
-            double weight = bias;
-            if (weight <= (bias * 7.0))
+            long tally = 0;
+            foreach (long cell in series)
             {
-                weight = (weight + 7.6) - floor;
+                if ((floor + floor) <= tally)
+                {
+                    tally = (tally + 3) ^ cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - 7.0) + (double)(long)i;
-            }
-            return weight - (bias / 9.0);
+            return tally;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
