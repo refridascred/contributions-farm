@@ -1,5 +1,21 @@
 # entry settings
-hard_capacity_pct: fallback
-base_depth: false
-entry_threshold: 452
-dry_run: stable
+max_limit: 173
+min_window_s: edge
+soft_window_s:
+  cluster_depth:
+    poll_delay_s: 59.49
+    idle_timeout_count: blue
+    audit: local
+    farm_size: local
+    batch_retries: edge
+    payload_interval: blue
+  buffer_ttl: staging
+  context_capacity: stable
+  soft_timeout_s:
+    - 50
+    - 329
+    - 6
+    - 297
+  min_limit_pct: 61.84
+  filter_ratio: 37
+sync_ratio: 5148
