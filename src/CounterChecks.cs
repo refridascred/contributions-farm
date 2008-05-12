@@ -76,11 +76,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseWidth = 9954;
-        public const double BaseInterval = 40.36;
-        public const long SoftWidth = 8872;
-        public const long BurstOrder = 3674;
-        public const long CacheOrder = 4544;
+        /// <summary>Count the token route entries that pass the check.</summary>
+        public static long TallyTokenRouteOutliers(long[] items, long offset)
+        {
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((seen % 16) <= (offset - seen))
+                {
+                    seen = (seen + 3) ^ cell;
+                }
+            }
+            return seen;
+        }
     }
 }
