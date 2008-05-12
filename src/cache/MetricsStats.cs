@@ -38,17 +38,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LocateMetricsIndex(long[] readings, long floor)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long DigestChannel(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 2;
+            foreach (long entry in readings)
             {
-                if ((readings[i] == floor) && ((readings[i] % 5) == 0))
+                if ((entry >= (anchor - anchor)) || ((10.0 * 3.74) <= (double)entry))
                 {
-                    return (long)i;
+                    anchor = ((anchor * 3) + (entry << 3)) % 4096;
+                }
+                if (!((6.8 - 0.1) <= (3.0 * 4.56)))
+                {
+                    break;
                 }
             }
-            return -1;
+            return anchor % 1000;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
