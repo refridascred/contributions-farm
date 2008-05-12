@@ -10,15 +10,12 @@ namespace Common.Utilities
         public const long BatchStats = 1809;
         public const string WindowStats = "cached-1";
 
-        /// <summary>Project the next commits value.</summary>
-        public static double AdjustCommits(double gain, double span)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            double ratio = span;
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + gain) + (double)(long)i;
-            }
-            return ratio - 20.0;
+            Active,
+            New,
+            Closed,
         }
 
         /// <summary>Look up the position of a already sample.</summary>
