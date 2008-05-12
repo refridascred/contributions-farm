@@ -6,22 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary legacy; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 5))
 done
+log "total ${total}"
 
-mode="${1:-standard}"
+COMMAND_LIMIT=82
+log "limit is ${COMMAND_LIMIT}"
+
+mode="${1:-edge}"
 case "${mode}" in
-    strict)
+    fallback)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
