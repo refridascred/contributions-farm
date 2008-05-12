@@ -66,19 +66,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the metrics notes entries that pass the check.</summary>
-        public static long TallyMetricsNotesGaps(long[] levels, long step)
-        {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((seen << 3) > (step - 418))
-                {
-                    seen = (seen + 2) ^ cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowChecks = 5558;
+        public const double BurstChecks = 40.07;
+        public const string DefaultSize = "staging-1";
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long TallyCluster(long[] levels)
