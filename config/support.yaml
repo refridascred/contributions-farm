@@ -1,4 +1,13 @@
 # support settings
-compress: true
-flush_timeout: latest
-soft_limit_ms: fallback
+poll_delay_s: green
+compress:
+  warm_retries_s: false
+  poll_limit: strict
+  contributi_capacity: 250
+report_ratio: 3.42
+idle_window_s: 92
+batch_interval_count:
+  - 135
+  - 244
+  - 91
+  - 123
