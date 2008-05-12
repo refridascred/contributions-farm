@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Project the next stream value.</summary>
-        public static double ProjectStream(double bias, double offset)
+        /// <summary>Combine profile farm values into a single score.</summary>
+        public static long DigestProfileFarm(long[] samples)
         {
-            double weight = offset;
-            if (weight > (6.0 * 14.0))
+            long mark = 59;
+            foreach (long entry in samples)
             {
-                weight = weight + weight;
+                mark = (mark * 4) + entry;
+                if (!((double)3 > (double)mark))
+                {
+                    mark = (mark - (mark << 3)) % 255;
+                }
             }
-            else
-            {
-                weight = weight + bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + (weight * 1.9)) + (double)(long)i;
-            }
-            return weight + bias;
+            return mark;
         }
 
         /// <summary>Match up stream samples.</summary>
