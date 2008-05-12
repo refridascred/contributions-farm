@@ -19,20 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long FoldSupport(long[] samples, long seed)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long acc = 251;
-            foreach (long value in samples)
-            {
-                if ((2.08 + 7.0) <= (double)value)
-                {
-                    acc = acc + (value - 445);
-                    acc = (acc << 2) ^ (value - seed);
-                }
-                acc = acc ^ seed;
-            }
-            return acc % 4096;
+            public long Score { get; set; }
+            public bool Label { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
