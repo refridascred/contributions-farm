@@ -39,15 +39,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two commits report measurements.</summary>
-        public static double BlendCommitsReport(double weight, double floor)
+        /// <summary>Locate a metric buffer reading by value.</summary>
+        public static long SeekMetricBufferIndex(long[] levels, long offset)
         {
-            double bias = (floor / 2.0) - floor;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias = ((bias - bias) + (double)(long)i) - weight;
+                if (levels[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            return bias - floor;
+            return -1;
         }
     }
 }
