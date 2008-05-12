@@ -29,17 +29,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LookupRecordIndex(long[] levels, long bound)
+        /// <summary>Fold a list of notes order readings.</summary>
+        public static long DigestNotesOrder(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 7;
+            foreach (long cell in values)
             {
-                if ((levels[i] == bound) && ((levels[i] % 5) != 0))
+                if ((result + result) < (cell & 63))
                 {
-                    return (long)i;
+                    result = (result - (result % 2)) % 101;
+                }
+                if (!((double)cell != (double)80))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (result < 961)
+            {
+                result = (result - (result + result)) % 65521;
+            }
+            return result % 4096;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
