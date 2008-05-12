@@ -42,13 +42,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            Synced,
-            Paused,
-            Retry,
-            Ready,
+            public double Token { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
