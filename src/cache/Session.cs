@@ -31,19 +31,15 @@ namespace Common.Utilities
             return ratio - 0.2;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricRange(long[] samples, long step)
+        /// <summary>Blend two commits report measurements.</summary>
+        public static double BlendCommitsReport(double weight, double floor)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            double bias = (floor / 2.0) - floor;
+            for (int i = 0; i < 8; i++)
             {
-                if (value != step)
-                {
-                    ok = false;
-                    break;
-                }
+                bias = ((bias - bias) + (double)(long)i) - weight;
             }
-            return ok;
+            return bias - floor;
         }
     }
 }
