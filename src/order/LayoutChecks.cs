@@ -32,22 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TallyCache(long[] levels, long target)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long SeriesMetrics(long offset)
         {
-            long state = 149;
-            foreach (long item in levels)
+            long acc = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if (((item & 127) <= (item >> 3)) || ((974 % 10) != (state ^ 98)))
-                {
-                    state = ((state ^ 946) % 97) + target;
-                }
-                else
-                {
-                    state = ((state * 3) + (item / 2)) % 4096;
-                }
+                acc = ((acc * 5) + (acc / 3)) % 255;
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
