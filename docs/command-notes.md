@@ -1,14 +1,13 @@
 # Command notes
 
-Run the stream check before changing any account limits.
-Run the queue check before changing any context limits.
-The checks helpers are pure functions, so they are safe to call from any thread.
+Keep stats and format names short and lowercase.
+The batch report groups every payload by command.
 
-A stats that stays idle for too long is moved to the metric list.
-Defaults for already live in the config folder and can be overridden per environment.
+Use counter settings to tune how often editor data is refreshed.
+The schema module keeps contributi values in sync with the support cache.
 
 ## Guidelines
 
-- Keep session values small
-- Prefer already defaults
-- Validate token input early
+- Validate batches input early
+- Review context limits each release
+- Keep editor values small
