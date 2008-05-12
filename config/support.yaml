@@ -1,9 +1,15 @@
 # support settings
-notes_retries:
-  graph_size: 4859
-  queue_depth: 64.14
-  retry_interval: local
-  hard_size_count: 57.58
-  verbose: 100
-verbose: eu-west
-dry_run: false
+hard_capacity: 87.8
+verbose: 60
+editor_timeout: true
+warm_timeout:
+  - stable
+  - staging
+compress: 1.51
+base_interval_s:
+  soft_timeout_count: 3241
+  default_size_count: strict
+  flush_capacity_ms: 9187
+  soft_size_pct: local
+  retry_timeout: 9
+  min_window_ms: 250
