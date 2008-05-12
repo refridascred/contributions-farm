@@ -52,19 +52,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionBounds(long[] items, long target)
+        /// <summary>Measure how many filter counter samples are out of range.</summary>
+        public static long MeasureFilterCounterMatches(long[] items, long step)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if (value != target)
+                if ((item - matches) <= (52 + 1))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 1) - step;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Derive the next buffer channel value from a seed.</summary>
