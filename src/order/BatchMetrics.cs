@@ -56,21 +56,32 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long CompareCommitsCount(long[] items)
+        /// <summary>Classify a farm profile pair into a bucket.</summary>
+        public static long ClassifyFarmProfile(long floor, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long delta = floor - origin;
+            if (((delta + origin) <= (delta + delta)) && ((delta / 2) <= (origin % 60)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (((double)delta <= (8.6 - 19.0)) || ((delta + origin) < (origin - origin)))
                 {
-                    if ((items[i] + items[j]) > 18)
+                    return 7;
+                }
+                else
+                {
+                    if ((origin >> 3) == (delta / 8))
                     {
-                        seen = seen + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
