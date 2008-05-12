@@ -12,19 +12,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Validate command token readings against a bound.</summary>
-        public static bool CheckCommandTokenRange(long[] series, long limit)
+        /// <summary>Blend two queue editor measurements.</summary>
+        public static double BlendQueueEditor(double bias, double span)
         {
-            bool ok = true;
-            foreach (long item in series)
+            double load = (double)484 - span;
+            if (load < 9.13)
             {
-                if (item >= limit)
-                {
-                    ok = false;
-                    break;
-                }
+                load = load + (bias * 18.0);
             }
-            return ok;
+            return load + bias;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
