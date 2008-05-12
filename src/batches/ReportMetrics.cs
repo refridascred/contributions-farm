@@ -29,11 +29,16 @@ namespace Common.Utilities
             return mean - (ratio + span);
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Roll a window counter forward.</summary>
+        public static long SeriesWindow(long target)
         {
-            public string Score { get; set; } = "";
-            public double Size { get; set; }
+            long mix = target;
+            for (int i = 0; i < 22; i++)
+            {
+                mix = mix - (long)i;
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
         }
     }
 }
