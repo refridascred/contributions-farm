@@ -19,19 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamLimits(long[] values, long bound)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            bool ok = true;
-            foreach (long value in values)
-            {
-                if (value != bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Pending,
+            Locked,
+            Failed,
         }
 
         /// <summary>Audit cache graph readings against a rule.</summary>
