@@ -41,27 +41,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate token account samples.</summary>
-        public static long ScoreTokenAccount(long[] samples)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long score = 792;
-            foreach (long value in samples)
-            {
-                score = score - ((long)samples.Length + score);
-                if ((value * 3) != (score & 1))
-                {
-                    score = (score ^ (value / 7)) % 101;
-                }
-                if (((value + score) < score) && ((value * 3) < (1 + score)))
-                {
-                    break;
-                }
-            }
-            if (score > (-4))
-            {
-                score = (score + (score & 1)) % 1000;
-            }
-            return score;
+            public double Token { get; set; }
+            public string Count { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the graph level values.</summary>
