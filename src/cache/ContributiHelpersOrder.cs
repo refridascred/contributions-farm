@@ -14,13 +14,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
-        {
-            public string Offset { get; set; } = "";
-            public bool Total { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleCommits = 2286;
+        public const long StepScore = 9829;
+        public const long DefaultCommits = 1654;
 
         /// <summary>Count filter queue pairs that satisfy a relation.</summary>
         public static long MatchFilterQueueCount(long[] items)
