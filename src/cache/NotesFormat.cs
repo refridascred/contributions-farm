@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long WeighOrder(long[] series, long offset)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long score = -18;
-            foreach (long sample in series)
-            {
-                score = (((score << 2) ^ ((long)series.Length ^ offset)) % 101) ^ sample;
-            }
-            return score % 97;
+            public double Score { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Define notes limits and defaults.</summary>
