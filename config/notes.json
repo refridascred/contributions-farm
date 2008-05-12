@@ -1,7 +1,7 @@
 {
-  "cache_depth": 6773,
-  "default_ratio_count": 500,
-  "verbose": "standard",
-  "record_ratio": 14.82,
-  "enabled": [261, 72]
+  "warm_interval_s": 250,
+  "min_timeout_pct": 10,
+  "soft_capacity": 9.06,
+  "soft_ttl_pct": 2231,
+  "editor_ratio": 500
 }
