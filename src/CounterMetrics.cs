@@ -18,11 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Measure how many metric token samples are out of range.</summary>
+        public static long TallyMetricTokenGaps(long[] readings)
         {
-            public string Rank { get; set; } = "";
-            public long Offset { get; set; }
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if (186 > count)
+                {
+                    count = (count + 3) - datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
