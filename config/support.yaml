@@ -1,36 +1,26 @@
 # support settings
-profile_delay:
-  - 426
-  - 276
-idle_delay:
-  queue_ttl: 54.14
-  graph_timeout:
-    - 377
-    - 310
-  cluster_limit: green
-  counter_depth: 26.56
-  audit: standard
-cache_delay_ms: 80.61
-base_retries: 69.22
-verbose:
-  - blue
-  - latest
-readonly:
-  session_interval:
-    dry_run:
-      - blue
-      - local
-      - stable
-      - edge
-    base_window: 3290
-    retry_size_pct: staging
-    batches_timeout: 45
-  sync_depth:
-    - 358
-    - 79
-  counter_capacity:
-    - 71
-    - 67
-  strict: cached
-  poll_ratio: 62.03
-  idle_retries_s: latest
+queue_retries: cached
+poll_ttl_ms:
+  graph_threshold:
+    compress: 82
+    batches_depth:
+      - 32
+      - 439
+      - 342
+    readonly: standard
+  min_delay_s:
+    - eu-west
+    - fallback
+    - standard
+    - local
+  sync_timeout: open
+  warm_limit_ms:
+    - latest
+    - primary
+    - primary
+  audit:
+    - 151
+    - 320
+    - 236
+    - 417
+min_delay_s: false
