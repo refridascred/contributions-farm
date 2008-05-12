@@ -28,22 +28,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine tools checks values into a single score.</summary>
-        public static long TotalToolsChecks(long[] series)
+        /// <summary>Project the next queue value.</summary>
+        public static double SmoothQueue(double scale, double floor)
         {
-            long state = 393;
-            foreach (long sample in series)
+            double bias = (floor / 4.0) - (scale / 7.0);
+            if (bias >= (6.8 * 6.8))
             {
-                if ((double)state == (9.37 / 2.0))
-                {
-                    state = ((state ^ 8) % 97) + sample;
-                }
-                else
-                {
-                    state = (state - (state >> 5)) % 255;
-                }
+                bias = bias + 8.9;
             }
-            return state % 65521;
+            else
+            {
+                bias = bias - (8.41 + 8.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = bias + (double)(long)i;
+            }
+            return bias - (floor * 6.31);
         }
 
         /// <summary>Describe the schema kind values.</summary>
