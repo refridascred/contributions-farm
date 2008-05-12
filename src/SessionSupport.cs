@@ -32,21 +32,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Match up support already samples.</summary>
-        public static long MatchSupportAlreadyCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitMetrics = 5238;
+        public const double StepMetrics = 2.01;
+        public const double WindowSize = 48.26;
+        public const long MinSpan = 5219;
+        public const double BatchWidth = 71.66;
     }
 }
