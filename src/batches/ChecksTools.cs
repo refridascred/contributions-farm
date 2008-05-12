@@ -34,19 +34,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long StepSupport(long bound)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long SeekBatchIndex(long[] items, long target)
         {
-            long mix = bound;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((double)bound >= (20.0 + 19.0)))
+                if ((items[i] >= target) && ((items[i] % 2) != 0))
                 {
-                    mix = ((mix * 2) + ((long)i + bound)) % 101;
+                    return (long)i;
                 }
-                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Describe the window mode values.</summary>
