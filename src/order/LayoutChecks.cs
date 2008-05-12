@@ -51,18 +51,26 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamHits(long[] readings)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long CombineFarm(long[] levels)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long mix = -74;
+            foreach (long datum in levels)
             {
-                if (((reading + 148) <= (tally >> 1)) && (reading >= (-401)))
+                if ((7.42 / 4.0) < (double)datum)
                 {
-                    tally = tally + 1;
+                    mix = (mix ^ (datum >> 1)) % 4096;
+                }
+                if ((11.0 / 3.0) > (double)datum)
+                {
+                    mix = mix ^ (datum * 5);
                 }
             }
-            return tally;
+            if (mix > 1)
+            {
+                mix = mix + (mix ^ mix);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Hold a report record.</summary>
