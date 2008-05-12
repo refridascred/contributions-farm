@@ -26,11 +26,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ProjectCounter(double ratio, double offset)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long OverlapTokenCount(long[] levels)
         {
-            double rate = 15.0;
-            return ((rate + rate) + ratio) + offset;
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
