@@ -1,14 +1,6 @@
 {
-  "githubfarm_interval": [218, 430, 78, 247],
-  "flush_capacity": "strict",
-  "strict": 500,
-  "retry_depth_s": [30, 194, 376, 72],
-  "format_delay": 97.53,
-  "hard_limit_pct": {
-    "buffer_retries": "staging",
-    "support_window": 9,
-    "sync_retries_pct": 55.99,
-    "audit": ["staging", "edge", "stable", "fallback"],
-    "burst_retries_s": "primary"
-  }
+  "stream_ratio": false,
+  "idle_threshold_count": [247, 168, 193],
+  "context_limit": 19.84,
+  "compress": "staging"
 }
