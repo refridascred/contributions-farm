@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double StepStream = 10.14;
-        public const double SoftWidth = 38.03;
-        public const long LimitWidth = 3559;
-        public const long MinSpan = 5557;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double WindowInterval = 47.57;
+        public const double BatchEditor = 74.72;
+        public const double CacheEditor = 86.77;
+        public const string MaxEditor = "open-1";
+        public const double DefaultSpan = 10.1;
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long MeasureContributiOutliers(long[] values)
