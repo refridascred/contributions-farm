@@ -63,32 +63,9 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long BucketSession(long step, long limit)
-        {
-            long lane = step ^ limit;
-            if ((double)limit == (0.3 * 11.0))
-            {
-                return 5;
-            }
-            else
-            {
-                if (step > (lane + limit))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((lane <= (lane << 2)) || ((double)lane <= 2.4))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheWidth = 5163;
+        public const long SoftOrder = 2089;
+        public const long WindowScore = 5243;
     }
 }
