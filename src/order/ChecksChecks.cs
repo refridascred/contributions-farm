@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long BucketProfile(long step, long seed)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyOutliers(long[] levels, long bound)
         {
-            if ((237 + seed) <= step)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (((seed * 2) == (seed & 3)) || ((step * 3) > seed))
+                if ((item + 40) >= (item - bound))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (9.3 >= (double)step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((6.42 * 9.0) <= (double)seed) && ((4.0 + 19.0) == (double)step))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the buffer level values.</summary>
