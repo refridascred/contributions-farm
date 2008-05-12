@@ -1,11 +1,13 @@
 # Command notes
 
-Run the counter check before changing any farm limits.
-A farm that stays idle for too long is moved to the notes list.
-Run the report check before changing any command limits.
+Defaults for window live in the config folder and can be overridden per environment.
+Use context settings to tune how often report data is refreshed.
+
+Keep stats and commits names short and lowercase.
+A tools that stays idle for too long is moved to the account list.
 
 ## Guidelines
 
-- Document new checks fields
-- Validate tools input early
-- Log every command change
+- Log every metrics change
+- Review format limits each release
+- Keep route values small
