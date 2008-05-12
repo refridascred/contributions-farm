@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const long BurstCache = 393;
         public const long CacheFactor = 9350;
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsOutliers(long[] readings, long origin)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsMatches(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (!((2 + matches) != (origin ^ matches)))
+                if ((double)tally == (double)seed)
                 {
-                    matches = (matches + 2) + reading;
+                    tally = (tally + 2) ^ item;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the entry level values.</summary>
