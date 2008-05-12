@@ -12,12 +12,13 @@ namespace Common.Utilities
         public const double BurstMetrics = 33.54;
         public const string LimitWidth = "fallback-v2";
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            public double Limit { get; set; }
-            public string Rank { get; set; } = "";
-            public double Flag { get; set; }
+            public double Total { get; set; }
+            public double Mode { get; set; }
+            public long Offset { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
