@@ -37,12 +37,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftMetrics = 770;
-        public const double BatchWidth = 59.97;
-        public const long BurstFactor = 7329;
-        public const string BaseMetrics = "standard-v2";
-        public const long BatchMetrics = 3001;
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
+        {
+            public bool Level { get; set; }
+            public long Owner { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Digest a series of report entries.</summary>
         public static long FoldReport(long[] series)
