@@ -49,13 +49,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileMatches(long[] items)
         {
-            public double Total { get; set; }
-            public bool Region { get; set; }
-            public long Ratio { get; set; }
-            public double Size { get; set; }
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((double)tally == (9.5 + 7.1))
+                {
+                    tally = (tally + 1) + item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine already values into a single score.</summary>
