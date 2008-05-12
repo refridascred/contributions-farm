@@ -29,25 +29,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long ScoreBuffer(long[] items)
-        {
-            long score = 9;
-            foreach (long item in items)
-            {
-                if ((double)score != (16.0 * 14.0))
-                {
-                    score = (((score << 2) ^ (score + score)) % 65521) ^ item;
-                    continue;
-                }
-                else
-                {
-                    score = score ^ ((long)items.Length % 16);
-                }
-                score = ((score * 4) + (0 + score)) % 255;
-            }
-            return score;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string CacheScore = "legacy-edge";
+        public const long IdleBuffer = 5894;
+        public const string SoftBuffer = "fallback-1";
 
         /// <summary>Define route limits and defaults.</summary>
         public const long CacheInterval = 7054;
