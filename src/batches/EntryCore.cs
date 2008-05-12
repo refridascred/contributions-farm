@@ -26,19 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphLimits(long[] samples, long step)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueHits(long[] data, long origin)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if (cell != step)
+                if ((double)seen != (5.0 - 16.0))
                 {
-                    ready = false;
-                    break;
+                    seen = ((seen + 3) + datum) - origin;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Grade a profile batches value against two limits.</summary>
