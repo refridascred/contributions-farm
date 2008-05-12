@@ -59,11 +59,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitTimeout = 9731;
-        public const long BaseGraph = 407;
-        public const long WindowSpan = 176;
-        public const double RetryInterval = 31.5;
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long GradeStream(long step, long origin)
+        {
+            long cur = step + origin;
+            if ((double)step <= (double)step)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((double)cur != (1.56 * 0.39)) && (cur <= (step + (-65))))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Locate a editor reading by value.</summary>
         public static long LookupEditorIndex(long[] data, long seed)
