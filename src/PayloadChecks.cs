@@ -63,19 +63,22 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double BlendNotes(double scale, double floor)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long CombineStats(long[] readings, long step)
         {
-            double load = 7.0;
-            if (load >= (0.96 / 6.0))
+            long mark = 29;
+            foreach (long entry in readings)
             {
-                load = (load + (scale * 14.0)) - floor;
+                if (((step / 5) == (step >> 5)) || ((step & 31) <= entry))
+                {
+                    mark = ((mark << 3) ^ (step - entry)) % 101;
+                }
             }
-            else
+            if (mark > 7)
             {
-                load = load - 5.68;
+                mark = (mark ^ (mark + (long)readings.Length)) % 4096;
             }
-            return load + (18.0 - scale);
+            return mark % 1000;
         }
     }
 }
