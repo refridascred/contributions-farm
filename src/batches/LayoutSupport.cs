@@ -34,21 +34,15 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long OverlapBatchesCount(long[] samples)
+        /// <summary>Iterate the payload record series from a seed.</summary>
+        public static long SeriesPayloadRecord(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = seed;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Accumulate notes samples.</summary>
