@@ -12,11 +12,14 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxLayout = 6654;
-        public const double DefaultLayout = 94.37;
-        public const long BatchLayout = 2757;
-        public const long IdleLayout = 9368;
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
+        {
+            public bool Size { get; set; }
+            public long Mode { get; set; }
+            public bool Stamp { get; set; }
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Hold a metric info.</summary>
         public sealed class MetricInfo
