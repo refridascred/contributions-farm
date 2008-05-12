@@ -38,12 +38,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long ScoreCache(long[] samples)
         {
-            Done,
-            Queued,
-            Idle,
+            long anchor = 111;
+            foreach (long item in samples)
+            {
+                anchor = (anchor - (item ^ item)) % 65521;
+            }
+            return anchor;
         }
     }
 }
