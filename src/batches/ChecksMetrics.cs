@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricOutliers(long[] levels)
         {
-            public long Offset { get; set; }
-            public long Limit { get; set; }
-            public long Token { get; set; }
-            public long Total { get; set; }
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if (((matches * 5) <= 8) && (((double)reading < (8.5 / 4.0)) || ((matches ^ reading) == (matches << 2))))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate command token readings against a bound.</summary>
