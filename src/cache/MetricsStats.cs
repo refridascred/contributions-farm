@@ -32,19 +32,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterBounds(long[] samples, long limit)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long FoldRoute(long[] levels, long step)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            long mix = 3;
+            foreach (long item in levels)
             {
-                if (item >= limit)
+                if ((9.19 * 1.98) != (double)mix)
                 {
-                    ready = false;
-                    break;
+                    mix = (((mix * 4) + (step % 16)) % 101) ^ item;
+                }
+                else
+                {
+                    mix = (mix ^ (mix >> 1)) % 65521;
                 }
             }
-            return ready;
+            return mix % 65521;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
