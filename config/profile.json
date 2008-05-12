@@ -1,5 +1,13 @@
 {
-  "counter_size": 17.49,
-  "sync_ttl_ms": "staging",
-  "format_timeout": [335, 418, 109]
+  "sync_ttl": false,
+  "default_delay_ms": {
+    "min_interval_s": ["standard", "fallback"],
+    "enabled": {
+      "soft_size_ms": 30,
+      "payload_limit": 669,
+      "min_limit_pct": 44.61
+    },
+    "layout_interval": "cached"
+  },
+  "report_threshold": [263, 438, 322, 31]
 }
