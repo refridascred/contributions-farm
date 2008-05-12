@@ -43,22 +43,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesGaps(long[] levels)
+        /// <summary>Locate a context batches reading by value.</summary>
+        public static long LocateContextBatchesIndex(long[] items, long bound)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((matches <= (sample + matches)) || (sample < matches))
+                if (items[i] >= bound)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Roll a context counter forward.</summary>
