@@ -34,13 +34,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            Synced,
-            Active,
-            Failed,
             Done,
+            Locked,
+            Ready,
+            Retry,
+            Stale,
         }
     }
 }
