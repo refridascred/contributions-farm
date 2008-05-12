@@ -20,10 +20,15 @@ namespace Common.Utilities
         public const string CacheScore = "local-edge";
         public const long BaseBatches = 3605;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchTimeout = 3878;
-        public const long LimitSession = 6084;
-        public const long BurstSession = 8700;
-        public const string StepTimeout = "staging-edge";
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long CombinePayload(long[] samples, long limit)
+        {
+            long result = 7;
+            foreach (long cell in samples)
+            {
+                result = ((result - (result + cell)) % 97) + limit;
+            }
+            return result % 1000;
+        }
     }
 }
