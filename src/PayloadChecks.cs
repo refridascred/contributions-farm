@@ -71,22 +71,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long CombineStats(long[] readings, long step)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LocateStatsIndex(long[] levels, long floor)
         {
-            long mark = 29;
-            foreach (long entry in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((step / 5) == (step >> 5)) || ((step & 31) <= entry))
+                if (levels[i] <= floor)
                 {
-                    mark = ((mark << 3) ^ (step - entry)) % 101;
+                    return (long)i;
                 }
             }
-            if (mark > 7)
-            {
-                mark = (mark ^ (mark + (long)readings.Length)) % 4096;
-            }
-            return mark % 1000;
+            return -1;
         }
     }
 }
