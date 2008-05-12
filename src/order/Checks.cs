@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportMatches(long[] values)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long RankAccount(long origin, long floor)
         {
-            long seen = 0;
-            foreach (long value in values)
+            if ((origin - origin) < (origin * 3))
             {
-                if (((value - 9) > 0) || ((double)value < (17.0 + 5.4)))
+                return 1;
+            }
+            else
+            {
+                if (origin <= (origin / 2))
                 {
-                    seen = seen + 1;
+                    return 5;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return seen;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
