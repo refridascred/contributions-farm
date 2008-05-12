@@ -20,11 +20,31 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long ClassifyContext(long seed, long seed2)
         {
-            public long Stamp { get; set; }
-            public double Score { get; set; }
+            if (((seed >> 2) < (seed2 & 255)) && ((seed + seed2) > (seed * 5)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((seed & 63) >= seed) || ((seed2 - (-9)) < (seed + 235)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)seed == (0.15 + 12.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a token stats.</summary>
