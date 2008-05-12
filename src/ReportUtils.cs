@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long RankReport(long target, long bound)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            if ((target % 3) != (bound << 3))
-            {
-                return 8;
-            }
-            else
-            {
-                if (bound <= (bound - bound))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((6 / 3) > (target & 7)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Failed,
+            Closed,
+            Draft,
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
