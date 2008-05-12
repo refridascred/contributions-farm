@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string StepScore = "latest-v2";
-        public const long IdleFarm = 8713;
-        public const long SoftFarm = 1389;
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
+        {
+            public long Token { get; set; }
+            public long Flag { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Level { get; set; }
+        }
 
         /// <summary>Describe the batch mode values.</summary>
         public enum BatchMode
