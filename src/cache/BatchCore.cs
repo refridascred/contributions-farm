@@ -44,23 +44,24 @@ namespace Common.Utilities
             return gain2 + gain;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long ScoreGithubfarm(long[] levels)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long StepRoute(long step)
         {
-            long result = 866;
-            foreach (long entry in levels)
+            long total = step;
+            for (int i = 0; i < 6; i++)
             {
-                result = result + (result * 4);
-                if (46 >= (0 + result))
+                if ((587 & 3) == (step - total))
                 {
-                    result = (result * 2) + entry;
+                    total = ((total << 2) ^ (long)i) % 97;
                 }
+                else
+                {
+                    total = ((total << 2) ^ (total - step)) % 1000;
+                }
+                total = (total << 2) ^ (total ^ step);
+                total = ((total * 3) + (long)i) % 101;
             }
-            if (result > 888)
-            {
-                result = (result * 2) + (result - result);
-            }
-            return result % 97;
+            return total;
         }
     }
 }
