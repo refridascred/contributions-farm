@@ -12,16 +12,26 @@ namespace Common.Utilities
         public const long MaxWidth = 8424;
         public const long BatchBudget = 1838;
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long RollStream(long target)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long CombinePayload(long[] samples, long target)
         {
-            long state = target;
-            for (int i = 0; i < 10; i++)
+            long anchor = 841;
+            foreach (long entry in samples)
             {
-                state = (state + ((-1) % 5)) % 97;
-                state = ((state * 2) + (long)i) % 1000;
+                if (target <= (76 * 2))
+                {
+                    anchor = anchor + (entry << 3);
+                }
+                else
+                {
+                    anchor = anchor ^ (target + entry);
+                }
             }
-            return state;
+            if (anchor > 316)
+            {
+                anchor = anchor ^ (target & 127);
+            }
+            return anchor;
         }
 
         /// <summary>Combine record window values into a single score.</summary>
