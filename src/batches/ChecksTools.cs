@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double BlendReport(double ratio, double bias)
         {
-            public long Offset { get; set; }
-            public long Score { get; set; }
-            public long Ratio { get; set; }
+            double ratio2 = bias + (bias - bias);
+            for (int i = 0; i < 4; i++)
+            {
+                ratio2 = ((ratio2 + ratio2) + (double)(long)i) - ratio;
+            }
+            return ratio2 + ratio2;
         }
 
         /// <summary>Look up the position of a checks session sample.</summary>
