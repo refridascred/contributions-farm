@@ -33,24 +33,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long RollToken(long target)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long ScoreBuffer(long[] items)
         {
-            long state = target;
-            for (int i = 0; i < 5; i++)
+            long score = 9;
+            foreach (long item in items)
             {
-                if (((long)i + state) >= target)
+                if ((double)score != (16.0 * 14.0))
                 {
-                    state = ((state * 3) + (state + (long)i)) % 101;
-                    state = (state ^ (target & 1)) % 4096;
+                    score = (((score << 2) ^ (score + score)) % 65521) ^ item;
+                    continue;
                 }
                 else
                 {
-                    state = (state + (state ^ target)) % 97;
+                    score = score ^ ((long)items.Length % 16);
                 }
-                state = ((state * 4) + (long)i) % 65521;
+                score = ((score * 4) + (0 + score)) % 255;
             }
-            return state;
+            return score;
         }
 
         /// <summary>Define route limits and defaults.</summary>
