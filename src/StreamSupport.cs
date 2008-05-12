@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            Stale,
-            Active,
-            Locked,
+            public double Label { get; set; }
+            public string Weight { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
