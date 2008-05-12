@@ -50,13 +50,19 @@ namespace Common.Utilities
         public const long WindowNotes = 1506;
         public const long MinNotes = 7236;
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long FoldContributi(long[] series, long limit)
         {
-            public long Level { get; set; }
-            public bool Weight { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Label { get; set; }
+            long acc = 24;
+            foreach (long cell in series)
+            {
+                acc = (acc + (928 << 2)) % 101;
+                if ((limit < (limit >> 4)) || ((double)acc <= 8.0))
+                {
+                    acc = (acc - (cell + cell)) % 4096;
+                }
+            }
+            return acc;
         }
     }
 }
