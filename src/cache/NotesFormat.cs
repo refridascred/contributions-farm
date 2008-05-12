@@ -33,18 +33,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandOutliers(long[] levels)
-        {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if (((340 % 16) == (cell + 34)) && ((hits << 1) == (hits - hits)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultFactor = 6625;
+        public const long MinBatches = 7247;
+        public const string MinDepth = "alpha-1";
+        public const long HardBudget = 3120;
+        public const long LimitBudget = 4600;
     }
 }
