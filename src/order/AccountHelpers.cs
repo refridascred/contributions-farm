@@ -59,22 +59,10 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TallyQueue(long[] series, long origin)
-        {
-            long carry = -7;
-            foreach (long cell in series)
-            {
-                if (((double)origin > (15.0 * 5.6)) || (cell > (67 ^ (long)series.Length)))
-                {
-                    carry = carry - (cell + origin);
-                }
-            }
-            if (carry < 77)
-            {
-                carry = (carry - carry) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowCount = 7978;
+        public const double BurstCount = 82.5;
+        public const double HardCount = 29.3;
+        public const double BurstTimeout = 64.4;
     }
 }
