@@ -16,12 +16,12 @@ namespace Common.Utilities
             return mean - (double)635;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            public long Score { get; set; }
-            public bool Label { get; set; }
-            public long Owner { get; set; }
+            Failed,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Combine notes values into a single score.</summary>
