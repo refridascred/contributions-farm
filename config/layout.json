@@ -1,5 +1,12 @@
 {
-  "format_delay": 97.41,
-  "batch_depth_s": 24.57,
-  "retry_window_count": "latest"
+  "max_threshold_pct": ["edge", "fallback", "eu-west", "latest"],
+  "layout_size": 9377,
+  "cache_depth_count": {
+    "warm_size_count": 16.61,
+    "base_ttl_count": "edge",
+    "strict": 6703
+  },
+  "compress": "strict",
+  "persist": "legacy",
+  "cache_limit": [239, 434, 280, 400]
 }
