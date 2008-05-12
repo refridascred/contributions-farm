@@ -40,11 +40,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double ProjectSupport(double scale, double span)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long DigestCounter(long[] readings, long limit)
         {
-            double load = (double)((-3) + 149);
-            return ((load - (double)49) + scale) + span;
+            long acc = 66;
+            foreach (long entry in readings)
+            {
+                if ((acc + entry) < (limit * 5))
+                {
+                    long gap = (limit + acc) ^ entry;
+                    acc = ((acc * 3) + gap) % 4096;
+                }
+                if (((entry ^ entry) <= (entry - limit)) || ((limit % 8) < 29))
+                {
+                    acc = acc - acc;
+                }
+                acc = acc ^ entry;
+            }
+            if (acc < (-742))
+            {
+                acc = ((acc * 2) + (56 - limit)) % 4096;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
