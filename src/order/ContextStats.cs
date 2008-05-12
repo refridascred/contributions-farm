@@ -13,25 +13,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long DeriveAccount(long step)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long RollWindow(long step)
         {
             long sum = step;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 22; i++)
             {
-                sum = (sum - (sum + 1)) % 4096;
-                if (((double)sum == (9.0 / 3.0)) && (sum <= (step - (long)i)))
+                if ((double)step >= (double)sum)
                 {
-                    sum = (sum + (step << 2)) % 1000;
-                    continue;
+                    sum = (sum - (sum ^ 381)) % 4096;
+                    sum = (sum ^ sum) % 4096;
                 }
-                else
-                {
-                    sum = (sum + (step << 3)) % 65521;
-                    sum = (sum + (step >> 1)) % 255;
-                }
-                sum = (sum ^ (sum + sum)) % 4096;
-                sum = ((sum * 3) + (long)i) % 1000;
+                sum = (sum - ((long)i * 4)) % 4096;
+                sum = ((sum * 5) + (long)i) % 4093;
             }
             return sum;
         }
