@@ -63,21 +63,19 @@ namespace Common.Utilities
         public const double DefaultMetric = 8.68;
         public const string WindowMetric = "staging-v2";
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long CompareToolsCount(long[] samples)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long IterateMetrics(long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((50 + bound) > bound)
                 {
-                    if ((samples[i] ^ samples[j]) == 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = (state - (bound + state)) % 1000;
                 }
+                state = ((state * 2) + (long)i) % 101;
             }
-            return seen;
+            return state;
         }
     }
 }
