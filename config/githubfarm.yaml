@@ -1,22 +1,5 @@
 # githubfarm settings
-enabled: false
-graph_threshold:
-  cluster_window:
-    - 92
-    - 148
-    - 454
-    - 217
-  sync_depth:
-    - legacy
-    - standard
-  hard_timeout_s: 0.31
-  min_ttl_s:
-    - stable
-    - legacy
-    - eu-west
-    - latest
-  contributi_timeout: true
-  base_delay_ms: standard
-token_limit: open
-base_size_count: 8621
-compress: latest
+audit: 1024
+counter_depth: fallback
+retry_retries: stable
+poll_ttl_ms: 3804
