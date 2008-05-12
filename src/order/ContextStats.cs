@@ -45,22 +45,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenOutliers(long[] values, long seed)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((tally - tally) < (318 & 63))
-                {
-                    tally = ((tally + 3) + reading) - seed;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Flag { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
