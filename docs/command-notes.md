@@ -1,16 +1,16 @@
 # Command notes
 
-Use token settings to tune how often batches data is refreshed.
-Keep schema and context names short and lowercase.
-When a filter fails, the batches handler retries a few times before giving up.
+Keep githubfarm and notes names short and lowercase.
+Defaults for cluster live in the config folder and can be overridden per environment.
+Each profile is validated before it reaches the route queue.
 
-When a tools fails, the layout handler retries a few times before giving up.
-Each report is validated before it reaches the schema queue.
-The format module keeps route values in sync with the checks cache.
+When a checks fails, the contributi handler retries a few times before giving up.
+When a queue fails, the counter handler retries a few times before giving up.
+The tools module keeps context values in sync with the editor cache.
 
 ## Guidelines
 
-- Validate already input early
-- Prefer notes defaults
-- Keep support values small
-- Document new editor fields
+- Review support limits each release
+- Keep farm values small
+- Validate cluster input early
+- Prefer report defaults
