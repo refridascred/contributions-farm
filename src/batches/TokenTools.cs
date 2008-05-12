@@ -11,21 +11,19 @@ namespace Common.Utilities
         public const string CacheSpan = "primary-1";
         public const long IdleBudget = 1651;
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long MatchReportCount(long[] readings)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long SeriesCommand(long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = floor;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((floor % 97) < ((long)i % 16)))
                 {
-                    if ((readings[i] ^ readings[j]) == 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = (carry + (floor * 5)) % 101;
                 }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Hold a batches record.</summary>
