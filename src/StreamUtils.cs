@@ -61,13 +61,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
-        {
-            New,
-            Stale,
-            Retry,
-            Done,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitBuffer = 1121;
+        public const string MaxBudget = "stable-1";
+        public const long DefaultSize = 3051;
+        public const long DefaultBuffer = 8723;
+        public const long DefaultInterval = 8991;
     }
 }
