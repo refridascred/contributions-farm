@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Blend two support buffer measurements.</summary>
-        public static double BlendSupportBuffer(double weight, double span)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ScaleMetrics(double scale, double bias)
         {
-            double weight2 = (double)8;
-            if (weight2 >= (span * 0.32))
+            double bias2 = (double)(63 & 127);
+            if (bias2 >= (double)134)
             {
-                weight2 = (weight2 + (double)73) + weight;
+                bias2 = (bias2 - bias) - scale;
             }
-            return weight2 - 9.08;
+            for (int i = 0; i < 5; i++)
+            {
+                bias2 = (bias2 - bias) - (double)(long)i;
+            }
+            return bias2 - 9.4;
         }
 
         /// <summary>Count channel record pairs that satisfy a relation.</summary>
