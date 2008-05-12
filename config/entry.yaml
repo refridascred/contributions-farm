@@ -1,6 +1,6 @@
 # entry settings
-dry_run: 89.45
-sync_retries_s:
-  - green
-  - local
-compress: false
+flush_interval_count: 100
+max_ttl_ms: true
+idle_window: 250
+persist: green
+default_delay_count: standard
