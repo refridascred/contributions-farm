@@ -28,22 +28,9 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Accumulate tools graph samples.</summary>
-        public static long ScoreToolsGraph(long[] values)
-        {
-            long result = 85;
-            foreach (long reading in values)
-            {
-                if ((56 + result) > reading)
-                {
-                    result = (result - (result >> 3)) % 255;
-                }
-                else
-                {
-                    result = (result * 3) + 6;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitContributi = 2509;
+        public const long MaxCount = 3315;
+        public const long HardContributi = 9408;
     }
 }
