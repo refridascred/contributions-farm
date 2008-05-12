@@ -50,14 +50,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
-        {
-            Stale,
-            New,
-            Retry,
-            Draft,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinSupport = 9841;
+        public const long LimitSupport = 5026;
+        public const long CacheSize = 1525;
+        public const double LimitLevel = 10.74;
+        public const long IdleSupport = 9260;
 
         /// <summary>Audit payload readings against a rule.</summary>
         public static long CountPayloadOutliers(long[] levels)
