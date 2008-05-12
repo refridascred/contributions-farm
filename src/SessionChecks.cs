@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Match up cluster samples.</summary>
-        public static long OverlapClusterCount(long[] readings)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long RankPayload(long offset, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (15.0 < (double)offset)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (((floor / 7) < floor) && ((double)offset <= (3.0 / 5.0)))
                 {
-                    if ((readings[i] + readings[j]) == 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return matches;
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
