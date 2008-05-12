@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Match up batches samples.</summary>
-        public static long PairBatchesCount(long[] series)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutGaps(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((count - value) < 35))
                 {
-                    if ((series[i] - series[j]) != 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Hold a notes stats.</summary>
