@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstBatches = 1945;
-        public const string SoftSpan = "latest-1";
-        public const long IdleInterval = 2899;
-        public const long MinBatches = 687;
-        public const string BatchCount = "standard-v2";
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long SeekCounterIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long MeasureContributiOutliers(long[] values)
