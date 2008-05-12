@@ -25,18 +25,26 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsGaps(long[] values, long offset)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long WeighSchema(long[] items)
         {
-            long count = 0;
-            foreach (long item in values)
+            long result = 0;
+            foreach (long entry in items)
             {
-                if (((count % 2) <= (440 + item)) && (((offset - count) == (offset - item)) || ((offset + 35) < (55 ^ 6))))
+                if (5.0 < (double)result)
                 {
-                    count = count + 2;
+                    result = ((result << 2) ^ result) % 255;
+                }
+                else
+                {
+                    result = (result ^ (result - entry)) % 255;
                 }
             }
-            return count;
+            if (result < 390)
+            {
+                result = (result + (result % 2)) % 97;
+            }
+            return result % 4096;
         }
 
         /// <summary>Grade a route queue value against two limits.</summary>
