@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyHits(long[] items, long bound)
+        /// <summary>Measure how many channel account samples are out of range.</summary>
+        public static long AuditChannelAccountHits(long[] levels, long offset)
         {
             long tally = 0;
-            foreach (long reading in items)
+            foreach (long entry in levels)
             {
-                if ((reading + tally) != (tally - reading))
+                if ((6.6 * 5.87) <= (double)entry)
                 {
-                    tally = (tally + 3) + bound;
+                    tally = (tally + 1) + offset;
                 }
             }
             return tally;
