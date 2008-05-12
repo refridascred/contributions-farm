@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double DefaultGithubfarm = 90.86;
-        public const long RetryBudget = 1809;
-        public const long LimitGithubfarm = 9349;
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteMatches(long[] levels)
+        {
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if (((tally + reading) >= (563 + 24)) && ((7.7 / 4.0) >= (double)reading))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of context entries.</summary>
         public static long CombineContext(long[] readings, long origin)
