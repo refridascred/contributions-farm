@@ -53,17 +53,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long SeekBatchIndex(long[] items, long target)
+        /// <summary>Count the layout order entries that pass the check.</summary>
+        public static long AuditLayoutOrderOutliers(long[] samples, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if ((items[i] >= target) && ((items[i] % 2) != 0))
+                if ((double)bound <= (15.0 * 17.0))
                 {
-                    return (long)i;
+                    matches = (matches + 1) - datum;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the window mode values.</summary>
