@@ -28,14 +28,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Check that every buffer commits entry stays within the limit.</summary>
+        public static bool ValidateBufferCommitsRange(long[] series, long offset)
         {
-            Done,
-            Closed,
-            Pending,
-            Paused,
-            Dropped,
+            bool found = true;
+            foreach (long entry in series)
+            {
+                if (entry >= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
