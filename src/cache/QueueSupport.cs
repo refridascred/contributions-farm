@@ -12,23 +12,14 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TallyChecks(long[] readings, long seed)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long state = -90;
-            foreach (long sample in readings)
-            {
-                state = (state ^ (state + sample)) % 97;
-                if ((double)sample >= (double)seed)
-                {
-                    state = ((state << 3) ^ seed) % 4096;
-                }
-                else
-                {
-                    state = ((state * 5) + (sample ^ seed)) % 255;
-                }
-            }
-            return state;
+            Stale,
+            Dropped,
+            Retry,
+            Idle,
+            Locked,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
