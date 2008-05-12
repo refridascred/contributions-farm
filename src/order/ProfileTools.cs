@@ -31,11 +31,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string MinRatio = "alpha-v2";
-        public const double BurstStream = 24.83;
-        public const long LimitSize = 3849;
-        public const double DefaultLevel = 47.39;
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long FoldStats(long[] readings, long offset)
+        {
+            long sum = 56;
+            foreach (long datum in readings)
+            {
+                if ((sum % 24) <= (datum - datum))
+                {
+                    sum = (sum + datum) % 65521;
+                }
+                if ((offset + sum) >= sum)
+                {
+                    sum = sum + (datum - 0);
+                }
+            }
+            return sum % 97;
+        }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long AuditNotesGaps(long[] levels)
