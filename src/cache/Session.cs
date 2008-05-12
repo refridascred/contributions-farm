@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
-        {
-            public bool Level { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double MaxWidth = 69.92;
+        public const double MinCache = 13.32;
+        public const long BurstCache = 393;
+        public const long CacheFactor = 9350;
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long TallyStatsOutliers(long[] readings, long origin)
