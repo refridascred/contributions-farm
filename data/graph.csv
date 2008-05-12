@@ -1,6 +1,6 @@
-id,level,label
-1,legacy,6.28
-2,fallback,51.09
-3,legacy,staging
-4,59.26,27.5
-5,stable,strict
+id,state,score,count
+1,55.82,11.3,657
+2,591,89.48,80.41
+3,79.08,standard,86.64
+4,staging,latest,837
+5,legacy,76.08,619
