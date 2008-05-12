@@ -23,10 +23,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstFactor = 7686;
-        public const long CacheStats = 2774;
-        public const long SoftStats = 3983;
+        /// <summary>Check that every graph payload entry stays within the limit.</summary>
+        public static bool ValidateGraphPayloadRange(long[] values, long step)
+        {
+            bool ok = true;
+            foreach (long entry in values)
+            {
+                if (entry < step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Project the next checks order value.</summary>
         public static double BlendChecksOrder(double bias, double floor)
