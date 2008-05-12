@@ -1,4 +1,16 @@
 # githubfarm settings
-verbose: false
-already_ttl: 90.86
-hard_window: true
+soft_timeout_pct:
+  verbose: false
+  strict:
+    - stable
+    - local
+  warm_threshold: false
+  persist: 48.67
+  min_retries_ms: true
+  burst_capacity_pct:
+    - 260
+    - 271
+    - 258
+poll_size: 1024
+retry_retries_count: false
+cluster_interval: false
