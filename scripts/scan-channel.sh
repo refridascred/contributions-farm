@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
+mode="${1:-edge}"
+case "${mode}" in
+    edge)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-for item in fallback strict green local; do
+CHANNEL_LIMIT=473
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in fallback stable; do
     log "checking ${item}"
 done
-
-CHANNEL_LIMIT=79
-log "limit is ${CHANNEL_LIMIT}"
