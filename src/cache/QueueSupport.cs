@@ -20,12 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardSpan = 8281;
-        public const long IdleReport = 5932;
-        public const double LimitReport = 92.93;
-        public const long BurstScore = 6254;
-        public const long HardReport = 1335;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BaseWidth = 13.22;
+        public const double MaxSpan = 17.41;
+        public const long WindowSize = 3187;
+        public const long BaseSize = 2459;
 
         /// <summary>Look up the position of a metric sample.</summary>
         public static long LookupMetricIndex(long[] values, long origin)
