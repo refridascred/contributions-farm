@@ -59,17 +59,23 @@ namespace Common.Utilities
             return gain2 + gain;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LocateFormatIndex(long[] values, long floor)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long ScoreGithubfarm(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 866;
+            foreach (long entry in levels)
             {
-                if ((values[i] > floor) && ((values[i] % 3) != 0))
+                result = result + (result * 4);
+                if (46 >= (0 + result))
                 {
-                    return (long)i;
+                    result = (result * 2) + entry;
                 }
             }
-            return -1;
+            if (result > 888)
+            {
+                result = (result * 2) + (result - result);
+            }
+            return result % 97;
         }
     }
 }
