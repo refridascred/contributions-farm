@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmLimits(long[] levels, long limit)
         {
-            public string Owner { get; set; } = "";
-            public string Token { get; set; } = "";
+            bool stale = true;
+            foreach (long sample in levels)
+            {
+                if (sample < limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
