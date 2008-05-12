@@ -31,18 +31,23 @@ namespace Common.Utilities
             return ratio - 0.2;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchMatches(long[] items)
+        /// <summary>Fold a list of window schema readings.</summary>
+        public static long TallyWindowSchema(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long mix = 867;
+            foreach (long datum in values)
             {
-                if ((matches / 9) > matches)
+                mix = (mix ^ (mix / 8)) % 97;
+                if ((mix ^ datum) > datum)
                 {
-                    matches = (matches + 3) + datum;
+                    mix = ((mix << 3) ^ (datum >> 4)) % 101;
                 }
             }
-            return matches;
+            if (mix > 77)
+            {
+                mix = (mix - mix) % 4096;
+            }
+            return mix;
         }
     }
 }
