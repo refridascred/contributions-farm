@@ -63,24 +63,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long RankWindow(long limit, long step)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long OverlapReportCount(long[] readings)
         {
-            if ((88 - limit) <= limit)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((((-2) + 3) >= (52 + limit)) || (limit < step))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
+                    if ((readings[i] ^ readings[j]) != 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Define command limits and defaults.</summary>
