@@ -1,10 +1,12 @@
 # Command notes
 
-Keep stats and token names short and lowercase.
-The notes module keeps order values in sync with the stats cache.
+Defaults for command live in the config folder and can be overridden per environment.
+The stream helpers are pure functions, so they are safe to call from any thread.
+Keep entry and stream names short and lowercase.
 
 ## Guidelines
 
-- Log every stats change
-- Keep queue values small
-- Review counter limits each release
+- Document new checks fields
+- Prefer cache defaults
+- Keep metric values small
+- Validate record input early
