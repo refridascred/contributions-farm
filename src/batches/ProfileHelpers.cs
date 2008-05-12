@@ -13,15 +13,21 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TotalContributi(long[] levels)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long MatchQueueCount(long[] samples)
         {
-            long sum = 3;
-            foreach (long entry in levels)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = (((sum << 3) ^ (sum + sum)) % 101) - entry;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return sum % 97;
+            return count;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
