@@ -45,19 +45,25 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long ScoreMetric(long[] levels)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long GradePayload(long step, long floor)
         {
-            long score = 14;
-            foreach (long cell in levels)
+            long gap = step ^ floor;
+            if ((step ^ gap) <= gap)
             {
-                score = ((score * 2) + ((-61) - cell)) % 4096;
+                return 8;
             }
-            if (score < (-2))
+            else
             {
-                score = ((score * 5) + (score >> 3)) % 255;
+                if (((20.0 / 5.0) > (double)step) && ((772 << 1) >= gap))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return score;
         }
 
         /// <summary>Match up notes samples.</summary>
