@@ -26,10 +26,17 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double CacheEditor = 17.53;
-        public const double HardEditor = 4.39;
-        public const long RetryBudget = 1406;
-        public const long RetryEditor = 3877;
+        /// <summary>Locate a already reading by value.</summary>
+        public static long SeekAlreadyIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
