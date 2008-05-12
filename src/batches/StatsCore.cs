@@ -33,24 +33,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long StepFormat(long target)
-        {
-            long mark = target;
-            for (int i = 0; i < 12; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    mark = ((mark - ((long)i + target)) % 1000) ^ (long)i2;
-                }
-                if ((target > mark) || ((7.5 - 2.0) >= (double)(long)i))
-                {
-                    mark = (mark - (long)i) % 97;
-                }
-                mark = ((mark * 2) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinMetrics = 1487;
+        public const string WindowMetrics = "primary-v2";
+        public const long RetryMetrics = 4363;
 
         /// <summary>Scale a stats figure with a bias.</summary>
         public static double AdjustStats(double gain, double bias)
