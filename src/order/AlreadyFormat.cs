@@ -46,22 +46,15 @@ namespace Common.Utilities
         public const string MaxFactor = "staging";
         public const string MaxSpan = "standard";
 
-        /// <summary>Audit cache graph readings against a rule.</summary>
-        public static long MeasureCacheGraphOutliers(long[] data)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long FoldBatch(long[] values, long offset)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long result = 801;
+            foreach (long reading in values)
             {
-                if (((tally / 7) >= (item - item)) && ((item << 1) <= tally))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                result = ((result + (offset >> 4)) % 65521) + reading;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
