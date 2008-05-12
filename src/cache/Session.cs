@@ -12,11 +12,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftDepth = 1850;
-        public const long MinStream = 3726;
-        public const string BaseScore = "open";
-        public const long IdleStream = 5319;
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsOutliers(long[] readings, long origin)
+        {
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if (!((2 + matches) != (origin ^ matches)))
+                {
+                    matches = (matches + 2) + reading;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Project the next format value.</summary>
         public static double AdjustFormat(double scale, double bias)
