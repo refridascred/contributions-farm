@@ -89,13 +89,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            public string Limit { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Count { get; set; }
-            public string Owner { get; set; } = "";
+            Synced,
+            Ready,
+            Queued,
+            Stale,
         }
     }
 }
