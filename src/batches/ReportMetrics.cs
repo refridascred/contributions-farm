@@ -22,10 +22,21 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheCount = 4082;
-        public const long CacheProfile = 4095;
-        public const long LimitProfile = 7095;
-        public const string DefaultBudget = "staging-edge";
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long OverlapFarmCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
