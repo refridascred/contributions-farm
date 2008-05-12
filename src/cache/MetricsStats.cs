@@ -18,18 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorGaps(long[] readings)
+        /// <summary>Combine metric githubfarm values into a single score.</summary>
+        public static long ScoreMetricGithubfarm(long[] series)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long sum = 328;
+            foreach (long reading in series)
             {
-                if ((datum + datum) < (datum >> 4))
+                sum = (sum - sum) % 255;
+                sum = sum + (sum / 5);
+                if ((reading & 1) >= (reading + 5))
                 {
-                    tally = tally + 1;
+                    break;
                 }
             }
-            return tally;
+            if (sum < 403)
+            {
+                sum = (sum << 2) ^ sum;
+            }
+            return sum;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
