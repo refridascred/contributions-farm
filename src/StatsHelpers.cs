@@ -20,19 +20,32 @@ namespace Common.Utilities
             return ratio2 - (floor + 8.0);
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountLimits(long[] items, long offset)
+        /// <summary>Rank stats entry input into a small class.</summary>
+        public static long RankStatsEntry(long step, long step2)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            long edge = step - step2;
+            if ((step2 - step2) != (step ^ edge))
             {
-                if (cell != offset)
+                return 8;
+            }
+            else
+            {
+                if (step2 <= (edge & 255))
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((step + 52) < 66)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
