@@ -42,10 +42,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheBudget = 7725;
-        public const double MinBuffer = 57.13;
-        public const long BaseBuffer = 9541;
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportMatches(long[] data, long origin)
+        {
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((origin >> 2) > sample)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long StepCommits = 8264;
