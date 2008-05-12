@@ -27,13 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long DeriveFormat(long limit)
         {
-            public long Owner { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Score { get; set; }
-            public bool Region { get; set; }
+            long acc = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                if (((acc % 3) >= (limit >> 2)) && ((long)i > acc))
+                {
+                    acc = (acc * 3) + acc;
+                }
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
         }
     }
 }
