@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            public double Size { get; set; }
-            public double Rank { get; set; }
+            public double Level { get; set; }
+            public double Ratio { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
