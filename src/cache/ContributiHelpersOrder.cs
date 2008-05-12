@@ -17,31 +17,21 @@ namespace Common.Utilities
             return rate2 + (rate - 1.95);
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long RankFarm(long bound, long target)
+        /// <summary>Match up token samples.</summary>
+        public static long PairTokenCount(long[] data)
         {
-            if (!((92 + 595) > (target >> 1)))
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target + target) > bound)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound - target) >= bound)
+                    if ((data[i] ^ data[j]) < 17)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
