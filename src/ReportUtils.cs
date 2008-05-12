@@ -40,17 +40,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LookupFarmIndex(long[] items, long step)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TotalSupport(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = -89;
+            foreach (long value in values)
             {
-                if (items[i] >= step)
+                if ((double)value < (1.0 + 3.57))
                 {
-                    return (long)i;
+                    mix = (mix + (value - 111)) % 97;
                 }
             }
-            return -1;
+            return mix % 1000;
         }
 
         /// <summary>Hold a order info.</summary>
