@@ -80,11 +80,9 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
-        {
-            public double Token { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchAlready = 8192;
+        public const long BaseAlready = 1254;
+        public const long HardCount = 260;
     }
 }
