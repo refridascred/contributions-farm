@@ -1,6 +1,16 @@
 {
-  "flush_ttl_pct": "fallback",
-  "sync_timeout": "strict",
-  "cluster_depth": false,
-  "cache_limit_ms": "latest"
+  "retry_capacity": false,
+  "verbose": 34,
+  "base_threshold_s": false,
+  "cache_threshold_s": {
+    "soft_depth": {
+      "warm_timeout_s": 500,
+      "soft_delay_s": false,
+      "audit": 18,
+      "retry_interval_count": 60,
+      "stats_retries": false
+    },
+    "default_delay_pct": "standard",
+    "poll_ratio_pct": [295, 339, 29, 195]
+  }
 }
