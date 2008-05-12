@@ -19,15 +19,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long SeriesAccount(long offset)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long SortContributi(long floor, long seed)
         {
-            long total = offset;
-            for (int i = 0; i < 24; i++)
+            if (!((floor * 5) > floor))
             {
-                total = ((total * 4) + (long)i) % 97;
+                return 1;
             }
-            return total;
+            else
+            {
+                if ((18.0 >= (double)seed) || ((double)seed <= (13.0 * 5.7)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (seed > (seed ^ 394))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (floor <= (floor >> 2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
