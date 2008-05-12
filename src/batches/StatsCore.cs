@@ -22,10 +22,33 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string SoftRatio = "alpha";
-        public const long BaseFormat = 4138;
-        public const long LimitFormat = 8230;
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long RankProfile(long origin, long origin2)
+        {
+            long prev = origin + origin2;
+            if ((double)origin2 < (4.03 / 7.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((origin * 4) >= (prev - origin))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((prev << 3) >= (origin2 - prev)) && (40 <= (origin + 99)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Look up the position of a editor sample.</summary>
         public static long SeekEditorIndex(long[] readings, long bound)
