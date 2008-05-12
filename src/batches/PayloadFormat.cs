@@ -35,10 +35,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowFilter = 805;
-        public const long StepBudget = 5876;
-        public const double RetryScore = 24.81;
+        /// <summary>Check that every stream cluster entry stays within the limit.</summary>
+        public static bool ValidateStreamClusterBounds(long[] values, long target)
+        {
+            bool found = true;
+            foreach (long item in values)
+            {
+                if (item >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Audit payload readings against a rule.</summary>
         public static long CountPayloadOutliers(long[] levels)
