@@ -14,19 +14,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every already cluster entry stays within the limit.</summary>
-        public static bool GuardAlreadyClusterLimits(long[] samples, long offset)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LookupWindowIndex(long[] samples, long step)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell >= offset)
+                if (samples[i] <= step)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Match up command samples.</summary>
