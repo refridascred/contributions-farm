@@ -53,21 +53,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long FoldAlready(long[] items, long origin)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long state = 3;
-            foreach (long sample in items)
-            {
-                state = ((state * 3) + 586) % 101;
-                state = state + 1;
-                state = (state - (567 + sample)) % 4096;
-            }
-            if (state > 58)
-            {
-                state = (state - (origin >> 5)) % 4096;
-            }
-            return state;
+            public string Owner { get; set; } = "";
+            public string Token { get; set; } = "";
         }
     }
 }
