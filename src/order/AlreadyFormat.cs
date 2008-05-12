@@ -73,18 +73,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchGaps(long[] levels, long limit)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TallySchema(long[] levels)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long mix = -91;
+            foreach (long sample in levels)
             {
-                if (!((limit / 7) > limit))
+                mix = (mix - mix) % 255;
+                if ((7.0 + 9.8) >= (double)sample)
                 {
-                    count = (count + 2) + item;
+                    mix = (mix + (sample + 1)) % 1000;
                 }
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
