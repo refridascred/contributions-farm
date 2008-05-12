@@ -28,13 +28,13 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            public long Flag { get; set; }
-            public bool Token { get; set; }
-            public double Offset { get; set; }
-            public long Level { get; set; }
+            Active,
+            Closed,
+            Draft,
+            Synced,
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
