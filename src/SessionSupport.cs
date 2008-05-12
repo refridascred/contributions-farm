@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
-        {
-            Ready,
-            Synced,
-            Idle,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseCount = 823;
+        public const long SoftSpan = 3386;
+        public const string HardFactor = "fallback-1";
 
         /// <summary>Look up the position of a batches sample.</summary>
         public static long SeekBatchesIndex(long[] samples, long bound)
