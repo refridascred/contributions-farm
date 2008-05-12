@@ -31,19 +31,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every layout context entry stays within the limit.</summary>
-        public static bool CheckLayoutContextBounds(long[] data, long limit)
+        /// <summary>Classify a report graph pair into a bucket.</summary>
+        public static long ClassifyReportGraph(long step, long limit)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            if (((double)step > (7.6 + 3.4)) || (9 > limit))
             {
-                if (sample > limit)
+                return 4;
+            }
+            else
+            {
+                if (!((limit & 15) >= (limit >> 2)))
                 {
-                    stale = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)step < (5.5 * 6.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return stale;
         }
     }
 }
