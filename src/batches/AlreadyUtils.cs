@@ -32,24 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long GradeFormat(long origin, long seed)
+        /// <summary>Derive the next tools already value from a seed.</summary>
+        public static long RollToolsAlready(long limit)
         {
-            if (origin <= (83 & 127))
+            long anchor = limit;
+            for (int i = 0; i < 11; i++)
             {
-                return 6;
+                anchor = (anchor + (limit & 127)) % 65521;
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            else
-            {
-                if (origin > seed)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Describe the format phase values.</summary>
