@@ -34,14 +34,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long SeriesContributi(long floor)
         {
-            Done,
-            Locked,
-            Ready,
-            Retry,
-            Stale,
+            long result = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((97 % 97) >= (result / 7))
+                {
+                    result = (result ^ (floor << 1)) % 65521;
+                }
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
         }
     }
 }
