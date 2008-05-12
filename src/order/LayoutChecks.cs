@@ -40,16 +40,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long SeriesBatch(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                state = ((state * 3) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double HardLevel = 5.09;
+        public const long LimitFactor = 9766;
+        public const string IdlePayload = "fallback-edge";
+        public const double BurstPayload = 35.76;
 
         /// <summary>Project the next metric githubfarm value.</summary>
         public static double SmoothMetricGithubfarm(double gain, double floor)
