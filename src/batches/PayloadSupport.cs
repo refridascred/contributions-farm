@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long FoldNotes(long[] samples)
+        /// <summary>Count the notes command entries that pass the check.</summary>
+        public static long MeasureNotesCommandGaps(long[] samples, long step)
         {
-            long acc = 5;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (10.0 < (double)acc)
+                if (((1.0 > (double)seen) || ((28 + datum) >= datum)) && (datum < seen))
                 {
-                    acc = ((acc << 3) ^ (reading - reading)) % 1000;
-                }
-                else
-                {
-                    acc = (acc - reading) % 65521;
+                    seen = (seen + 3) - step;
                 }
             }
-            if (acc > 1)
-            {
-                acc = acc + 94;
-            }
-            return acc % 65521;
+            return seen;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
