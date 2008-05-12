@@ -30,10 +30,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string LimitDepth = "staging-1";
-        public const double MaxNotes = 82.92;
-        public const string MinNotes = "latest";
-        public const string RetryNotes = "open";
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
+        {
+            public bool Mode { get; set; }
+            public bool Offset { get; set; }
+            public bool Flag { get; set; }
+            public long Ratio { get; set; }
+        }
     }
 }
