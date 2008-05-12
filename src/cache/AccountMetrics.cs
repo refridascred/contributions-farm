@@ -30,16 +30,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long DeriveProfile(long bound)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long carry = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                carry = carry ^ (carry + bound);
-                carry = ((carry * 4) + (long)i) % 97;
-            }
-            return carry;
+            Draft,
+            Retry,
+            Done,
+            Idle,
         }
 
         /// <summary>Look up the position of a stream notes sample.</summary>
