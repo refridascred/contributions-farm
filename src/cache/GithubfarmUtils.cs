@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferGaps(long[] samples)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricGaps(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if (sample >= (matches + 340))
+                if ((seed <= (seed >> 3)) || ((0.6 - 20.0) == (double)(long)readings.Length))
                 {
-                    matches = matches + 2;
+                    tally = (tally + 3) ^ value;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
