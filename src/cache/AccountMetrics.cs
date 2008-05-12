@@ -13,13 +13,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportMatches(long[] values)
         {
-            public bool Stamp { get; set; }
-            public long Rank { get; set; }
-            public long Flag { get; set; }
-            public string Size { get; set; } = "";
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if ((double)item <= (3.41 + 8.5))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a order info.</summary>
