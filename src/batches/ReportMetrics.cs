@@ -28,21 +28,15 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long PairSchemaCount(long[] samples)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double SmoothCommits(double ratio, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double mean = 2.08;
+            if (mean <= mean)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mean = mean - span;
             }
-            return matches;
+            return mean - (ratio + span);
         }
 
         /// <summary>Hold a batches entry.</summary>
