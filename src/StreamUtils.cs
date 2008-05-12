@@ -14,24 +14,31 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long DeriveCounter(long limit)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long SortRoute(long floor, long offset)
         {
-            long result = limit;
-            for (int i = 0; i < 6; i++)
+            if ((double)offset == (6.35 + 9.0))
             {
-                if (9.9 < (double)limit)
+                return 8;
+            }
+            else
+            {
+                if ((offset + (-6)) > (offset / 7))
                 {
-                    result = (result + (limit + result)) % 4096;
+                    return 1;
                 }
                 else
                 {
-                    result = ((result << 2) ^ (limit & 7)) % 255;
-                    result = (result - (result >> 1)) % 65521;
+                    if ((offset / 6) <= offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
-                result = ((result * 3) + (long)i) % 65521;
             }
-            return result;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
