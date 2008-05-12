@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const double LimitAccount = 13.83;
         public const long CacheAccount = 6226;
 
-        /// <summary>Audit githubfarm tools readings against a rule.</summary>
-        public static long TallyGithubfarmToolsGaps(long[] items, long offset)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesGaps(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if ((item >> 5) > offset)
+                if (!(tally <= (tally >> 3)))
                 {
-                    matches = matches + 3;
+                    tally = ((tally + 1) + entry) + origin;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
