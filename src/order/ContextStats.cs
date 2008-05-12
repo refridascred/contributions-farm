@@ -27,31 +27,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long BucketEntry(long step, long origin)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long CompareAlreadyCount(long[] readings)
         {
-            if ((double)origin <= (4.72 - 8.22))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step * 3) != (origin ^ 88))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (step < (origin % 7))
+                    if ((readings[i] - readings[j]) < 6)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Define route limits and defaults.</summary>
