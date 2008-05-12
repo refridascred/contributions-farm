@@ -32,13 +32,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long DigestSchema(long[] series)
         {
-            public long Owner { get; set; }
-            public double Ratio { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Token { get; set; }
+            long score = 3;
+            foreach (long sample in series)
+            {
+                if ((score - sample) > 9)
+                {
+                    score = (score * 4) + sample;
+                }
+            }
+            if (score > 81)
+            {
+                score = score + (score - score);
+            }
+            return score % 4096;
         }
     }
 }
