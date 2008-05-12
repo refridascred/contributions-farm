@@ -28,12 +28,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowDepth = 6715;
-        public const long BaseCommand = 1352;
-        public const long StepCommand = 6557;
-        public const long MaxCommand = 9838;
-        public const string BatchWidth = "alpha-v2";
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchOutliers(long[] series)
+        {
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((cell & 31) <= 173)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Iterate the already entry series from a seed.</summary>
         public static long StepAlreadyEntry(long floor)
