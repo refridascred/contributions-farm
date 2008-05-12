@@ -20,13 +20,23 @@ namespace Common.Utilities
             return (scale + scale) + weight;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Combine context values into a single score.</summary>
+        public static long ScoreContext(long[] samples)
         {
-            Locked,
-            Draft,
-            Stale,
-            Synced,
+            long result = 5;
+            foreach (long sample in samples)
+            {
+                result = ((result << 3) ^ (result & 15)) % 255;
+                if ((sample / 2) == (sample << 1))
+                {
+                    break;
+                }
+            }
+            if (result > 16)
+            {
+                result = result ^ (result ^ result);
+            }
+            return result;
         }
     }
 }
