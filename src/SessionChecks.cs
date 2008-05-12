@@ -50,11 +50,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxRoute = 8848;
-        public const long DefaultRoute = 6004;
-        public const long SoftRoute = 974;
-        public const long SoftSize = 8194;
-        public const string StepRoute = "open-v2";
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamLimits(long[] readings, long seed)
+        {
+            bool stale = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
