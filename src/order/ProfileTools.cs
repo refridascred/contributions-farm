@@ -44,38 +44,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long RankAccount(long origin, long limit)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesGaps(long[] levels)
         {
-            if ((limit / 8) != (origin << 2))
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (((limit << 2) != (origin & 63)) || ((origin * 5) >= (limit >> 3)))
+                if ((matches <= (sample + matches)) || (sample < matches))
                 {
-                    return 0;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    if ((origin - 507) > (limit << 1))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((9 + limit) > origin) && ((1.5 + 9.8) != (double)limit))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Roll a context counter forward.</summary>
