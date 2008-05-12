@@ -1,13 +1,6 @@
 # entry settings
-hard_delay_s: eu-west
-sync_interval_ms:
-  - open
-  - eu-west
-  - cached
-max_window: 57.03
-metrics_retries:
-  sync_window: legacy
-  hard_window_s: local
-  githubfarm_limit: stable
-min_threshold_count: eu-west
-flush_size: green
+max_threshold: standard
+default_retries: 100
+strict: staging
+max_size_s: latest
+schema_size: 91.92
