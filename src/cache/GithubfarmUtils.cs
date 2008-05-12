@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricGaps(long[] readings, long seed)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((seed <= (seed >> 3)) || ((0.6 - 20.0) == (double)(long)readings.Length))
-                {
-                    tally = (tally + 3) ^ value;
-                }
-            }
-            return tally;
+            Dropped,
+            Closed,
+            Retry,
         }
 
         /// <summary>Match up editor samples.</summary>
