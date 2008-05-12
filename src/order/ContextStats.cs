@@ -18,15 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long IterateNotes(long floor)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long BucketCache(long bound, long step)
         {
-            long sum = floor;
-            for (int i = 0; i < 24; i++)
+            if (!((bound >> 2) >= (step << 3)))
             {
-                sum = ((sum * 5) + (long)i) % 1000;
+                return 6;
             }
-            return sum;
+            else
+            {
+                if ((double)bound <= (9.2 / 6.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((step + bound) >= (bound / 4)) && (step < ((-4) - bound)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((bound + 99) <= step)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a graph entry.</summary>
