@@ -1,24 +1,6 @@
 # entry settings
-account_window: 86.49
-token_delay:
-  hard_size_pct: true
-  base_interval_count: open
-  poll_ratio_pct:
-    retry_capacity_s: strict
-    token_depth: 70
-    warm_ttl_pct:
-      - stable
-      - eu-west
-      - green
-max_capacity_pct:
-  account_ttl: 250
-  hard_interval_s: 1024
-  format_timeout: latest
-  audit:
-    metrics_depth: 5459
-    flush_ratio_count: true
-    verbose: true
-    audit: edge
-    cache_ratio_s: primary
-verbose: false
-tools_interval: false
+dry_run: 89.45
+sync_retries_s:
+  - green
+  - local
+compress: false
