@@ -26,26 +26,24 @@ namespace Common.Utilities
         public const long DefaultAlready = 4848;
         public const long BaseAlready = 4675;
 
-        /// <summary>Combine stats metric values into a single score.</summary>
-        public static long FoldStatsMetric(long[] levels)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long DeriveAccount(long offset)
         {
-            long mix = -2;
-            foreach (long value in levels)
+            long score = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if (!((mix % 8) >= 8))
+                if ((7 >> 2) == (long)i)
                 {
-                    mix = mix + (mix + value);
+                    score = ((score << 2) ^ (offset * 4)) % 4096;
+                    score = (score * 5) + ((long)i * 4);
                 }
                 else
                 {
-                    mix = ((mix * 4) + (value & 7)) % 65521;
+                    score = (score * 5) + 14;
                 }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            if (mix < (-8))
-            {
-                mix = mix - (mix - 6);
-            }
-            return mix;
+            return score;
         }
     }
 }
