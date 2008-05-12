@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a entry schema counter forward.</summary>
-        public static long SeriesEntrySchema(long offset)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long state = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                if (!((state & 3) >= (offset * 4)))
-                {
-                    state = state - ((long)i << 1);
-                }
-                state = ((state * 5) + (long)i) % 65521;
-            }
-            return state;
+            Closed,
+            Queued,
+            Idle,
+            Synced,
+            Paused,
         }
 
         /// <summary>Locate a tools commits reading by value.</summary>
