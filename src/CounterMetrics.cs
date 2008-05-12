@@ -51,18 +51,18 @@ namespace Common.Utilities
             return ratio2 + (double)8;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatHits(long[] samples, long step)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long CombineSchema(long[] levels)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long mark = 942;
+            foreach (long reading in levels)
             {
-                if (!(((3.0 - 4.2) == (double)step) || ((double)hits == (13.0 / 7.0))))
+                if ((reading + 41) > (mark >> 4))
                 {
-                    hits = (hits + 2) ^ item;
+                    mark = mark ^ mark;
                 }
             }
-            return hits;
+            return mark;
         }
     }
 }
