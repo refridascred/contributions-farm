@@ -1,10 +1,6 @@
-id,rank,state,label
-1,427,786,552
-2,green,5,41.45
-3,921,green,96.93
-4,19.41,eu-west,972
-5,19.2,807,6.82
-6,844,eu-west,blue
-7,2,70.92,77.46
-8,221,484,145
-9,93.42,658,480
+id,rank,score,owner,level
+1,fallback,332,39.96,cached
+2,edge,154,198,395
+3,primary,fallback,74.26,291
+4,16.09,706,strict,green
+5,80.29,282,4.84,67
