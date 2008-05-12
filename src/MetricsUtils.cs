@@ -47,13 +47,11 @@ namespace Common.Utilities
         public const double MinBuffer = 57.13;
         public const long BaseBuffer = 9541;
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
-        {
-            Dropped,
-            Synced,
-            Done,
-            Closed,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepCommits = 8264;
+        public const string BatchFactor = "staging-1";
+        public const long LimitCommits = 8034;
+        public const long MaxCommits = 4579;
+        public const long StepScore = 9692;
     }
 }
