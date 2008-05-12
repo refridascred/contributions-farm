@@ -68,27 +68,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TotalGithubfarm(long[] data, long bound)
-        {
-            long carry = 6;
-            foreach (long cell in data)
-            {
-                if (96 < (cell ^ carry))
-                {
-                    carry = (carry - (cell - bound)) % 65521;
-                }
-                if (bound >= (10 * 2))
-                {
-                    carry = (carry * 3) + (cell * 4);
-                }
-            }
-            if (carry > 876)
-            {
-                carry = (carry * 4) + carry;
-            }
-            return carry;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheBudget = 1827;
+        public const long RetryContributi = 2175;
+        public const long HardInterval = 3573;
+        public const long BurstLevel = 2879;
+        public const long LimitContributi = 6553;
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long CountMetricOutliers(long[] levels, long origin)
