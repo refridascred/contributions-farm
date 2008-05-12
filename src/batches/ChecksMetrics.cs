@@ -60,18 +60,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterHits(long[] values, long step)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long MatchNotesCount(long[] samples)
         {
-            long count = 0;
-            foreach (long value in values)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (step >= (count * 4))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = (count + 2) + value;
+                    if ((samples[i] + samples[j]) > 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
