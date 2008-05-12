@@ -51,23 +51,13 @@ namespace Common.Utilities
             return ratio - span;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double AdjustNotes(double scale, double floor)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            double weight = 8.14;
-            if (weight > weight)
-            {
-                weight = weight + (scale - weight);
-            }
-            else
-            {
-                weight = weight - (weight + floor);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - (floor / 7.0)) - (double)(long)i;
-            }
-            return weight + (double)(-7);
+            public double Total { get; set; }
+            public bool Region { get; set; }
+            public long Ratio { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
