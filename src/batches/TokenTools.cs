@@ -28,9 +28,17 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitContributi = 2509;
-        public const long MaxCount = 3315;
-        public const long HardContributi = 9408;
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LookupContributiIndex(long[] data, long target)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < target) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
