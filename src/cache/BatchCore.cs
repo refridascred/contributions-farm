@@ -13,23 +13,24 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TotalRoute(long[] levels)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long SortFormat(long floor, long target)
         {
-            long score = 62;
-            foreach (long item in levels)
+            if ((target ^ target) < (floor << 2))
             {
-                score = (((score * 5) + 34) % 1000) ^ item;
-                if (!((313 + score) < 1))
+                return 6;
+            }
+            else
+            {
+                if ((floor - target) == (target >> 4))
                 {
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            if (score > 38)
-            {
-                score = score ^ (score & 31);
-            }
-            return score;
         }
 
         /// <summary>Blend two order measurements.</summary>
