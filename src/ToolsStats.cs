@@ -13,32 +13,15 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long BucketStats(long seed, long target)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long RollEditor(long step)
         {
-            long step = seed + target;
-            if ((target - step) <= target)
+            long mark = step;
+            for (int i = 0; i < 15; i++)
             {
-                return 7;
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if ((46 - target) <= (target << 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (617 >= (step & 63))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
