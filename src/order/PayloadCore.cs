@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long GradeProfile(long bound, long target)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterGaps(long[] levels)
         {
-            if (bound <= (target >> 3))
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target - 48) <= (8 % 8))
+                if ((reading - reading) != (660 + reading))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Check that every command already entry stays within the limit.</summary>
