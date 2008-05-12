@@ -36,11 +36,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            public string Offset { get; set; } = "";
-            public long Token { get; set; }
+            public long Flag { get; set; }
+            public double Mode { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
