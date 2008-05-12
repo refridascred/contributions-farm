@@ -21,11 +21,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long SeriesProfile(long bound)
         {
-            public long Region { get; set; }
-            public double Score { get; set; }
+            long total = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Match up batches samples.</summary>
