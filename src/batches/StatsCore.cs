@@ -50,16 +50,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long IterateProfile(long step)
+        /// <summary>Accumulate route samples.</summary>
+        public static long DigestRoute(long[] data, long seed)
         {
-            long mix = step;
-            for (int i = 0; i < 6; i++)
+            long result = 865;
+            foreach (long item in data)
             {
-                mix = (mix * 4) + (mix - 957);
-                mix = ((mix * 5) + (long)i) % 65521;
+                result = ((result - seed) % 1000) ^ item;
+                for (int i = 0; i < 4; i++)
+                {
+                    result = (result + (result / 9)) - (long)i;
+                }
+                result = ((result << 3) ^ (result + result)) % 97;
             }
-            return mix;
+            if (result < 373)
+            {
+                result = (result + seed) % 97;
+            }
+            return result;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
