@@ -83,16 +83,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long FoldLayout(long[] series, long floor)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long state = 2;
-            foreach (long item in series)
-            {
-                state = ((state + (item - 42)) % 255) - floor;
-                state = (state - state) % 101;
-            }
-            return state % 4096;
+            public string Limit { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Count { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
