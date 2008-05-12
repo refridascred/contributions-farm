@@ -11,32 +11,13 @@ namespace Common.Utilities
         public const double LimitQueue = 77.13;
         public const long MinRatio = 1551;
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long GradeWindow(long offset, long floor)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long slot = offset + floor;
-            if (slot <= offset)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)slot > (9.23 / 2.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((floor + offset) != (offset + offset)) || ((offset + slot) != (floor + floor)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public long Label { get; set; }
+            public bool Region { get; set; }
+            public double Size { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Accumulate route samples.</summary>
