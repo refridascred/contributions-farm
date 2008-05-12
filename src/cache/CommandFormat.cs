@@ -57,12 +57,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            Stale,
-            Failed,
-            Synced,
+            public string Mode { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
