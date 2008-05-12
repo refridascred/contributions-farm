@@ -19,14 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterOutliers(long[] items)
         {
-            Failed,
-            New,
-            Locked,
-            Draft,
-            Dropped,
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if (0 >= seen)
+                {
+                    seen = (seen + 2) ^ entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
