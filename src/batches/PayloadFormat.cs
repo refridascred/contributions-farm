@@ -5,23 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long FoldBatch(long[] data, long step)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long StepLayout(long target)
         {
-            long total = 8;
-            foreach (long sample in data)
+            long mix = target;
+            for (int i = 0; i < 20; i++)
             {
-                total = (total - (step + sample)) % 255;
-                if ((step & 1) != (step * 4))
+                if (!((9.0 - 0.88) != (double)mix))
                 {
-                    total = (total - (step << 1)) % 255;
+                    mix = mix ^ (mix << 1);
+                    mix = mix - ((long)i % 100);
                 }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            if (total < 454)
-            {
-                total = (total - (step ^ step)) % 101;
-            }
-            return total;
+            return mix;
         }
 
         /// <summary>Grade a entry stats value against two limits.</summary>
