@@ -1,10 +1,14 @@
 # Command notes
 
-The editor report groups every report by account.
-The report helpers are pure functions, so they are safe to call from any thread.
+The githubfarm report groups every order by command.
+A window that stays idle for too long is moved to the schema list.
+Each record is validated before it reaches the profile queue.
+
+Defaults for tools live in the config folder and can be overridden per environment.
+Each session is validated before it reaches the batches queue.
 
 ## Guidelines
 
-- Log every session change
-- Review report limits each release
-- Prefer buffer defaults
+- Review batches limits each release
+- Validate githubfarm input early
+- Log every account change
