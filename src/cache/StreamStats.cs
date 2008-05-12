@@ -29,33 +29,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long ClassifyChannel(long offset, long floor)
-        {
-            long next = offset + floor;
-            if ((1.1 - 6.46) > (double)offset)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)next > (double)floor)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((1 + floor) < next)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardStats = 1159;
+        public const long LimitTimeout = 763;
+        public const string WindowStats = "legacy-v2";
+        public const double SoftStats = 27.63;
+        public const long DefaultStats = 6376;
 
         /// <summary>Grade a payload value against two limits.</summary>
         public static long ClassifyPayload(long step, long target)
