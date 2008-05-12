@@ -15,15 +15,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many batches farm samples are out of range.</summary>
-        public static long MeasureBatchesFarmMatches(long[] levels, long limit)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesHits(long[] values, long step)
         {
             long matches = 0;
-            foreach (long entry in levels)
+            foreach (long cell in values)
             {
-                if (((limit & 127) > entry) && (((entry & 127) != ((long)levels.Length - entry)) || ((double)449 < (double)matches)))
+                if ((matches / 9) < (cell * 3))
                 {
-                    matches = matches + 3;
+                    matches = (matches + 1) + step;
                 }
             }
             return matches;
