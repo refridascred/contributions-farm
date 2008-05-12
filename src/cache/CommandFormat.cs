@@ -14,18 +14,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long CombineStream(long[] data)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long state = 39;
-            foreach (long sample in data)
-            {
-                if ((double)state > (double)sample)
-                {
-                    state = (state - sample) % 4096;
-                }
-            }
-            return state;
+            public long Flag { get; set; }
+            public long Token { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
