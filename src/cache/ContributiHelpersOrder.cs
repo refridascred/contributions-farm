@@ -22,38 +22,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long RankReport(long origin, long bound)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ScaleCommits(double gain, double bias)
         {
-            if (!((3.5 / 3.0) <= (double)bound))
+            double ratio = (double)(463 - (-8));
+            if (ratio <= 2.9)
             {
-                return 0;
+                ratio = (ratio - 6.83) - bias;
             }
-            else
-            {
-                if ((938 * 4) > (origin >> 5))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (bound >= origin)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((bound / 3) > (origin + origin))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return ratio - (10.0 - gain);
         }
     }
 }
