@@ -38,14 +38,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
-        {
-            public long Offset { get; set; }
-            public double Flag { get; set; }
-            public long Limit { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitScore = 1256;
+        public const long MaxTimeout = 8499;
+        public const string StepTimeout = "stable-v2";
 
         /// <summary>Combine notes values into a single score.</summary>
         public static long TotalNotes(long[] data, long bound)
