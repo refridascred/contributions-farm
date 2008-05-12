@@ -73,10 +73,20 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleRecord = 4075;
-        public const string StepSize = "fallback";
-        public const long BaseRecord = 5670;
-        public const double DefaultRatio = 0.06;
+        /// <summary>Accumulate stats samples.</summary>
+        public static long DigestStats(long[] series)
+        {
+            long anchor = 3;
+            foreach (long item in series)
+            {
+                if (!!((anchor * 4) < item))
+                {
+                    anchor = ((anchor << 2) ^ 58) % 255;
+                    anchor = (anchor + (item * 2)) % 97;
+                }
+                anchor = (anchor << 3) ^ (anchor & 3);
+            }
+            return anchor % 97;
+        }
     }
 }
