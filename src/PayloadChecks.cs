@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Blend two cache measurements.</summary>
-        public static double SmoothCache(double weight, double floor)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long FindCounterIndex(long[] samples, long floor)
         {
-            double drift = (double)(8 ^ (-43));
-            if (drift < (6.2 * 1.03))
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = (drift + (floor / 9.0)) - weight;
+                if (samples[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            return drift - (double)(-588);
+            return -1;
         }
 
         /// <summary>Hold a support stats.</summary>
