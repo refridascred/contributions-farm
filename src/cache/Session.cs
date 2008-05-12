@@ -25,14 +25,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadHits(long[] data)
         {
-            Active,
-            Dropped,
-            Done,
-            Stale,
-            Locked,
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((tally - reading) <= (reading % 8))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define window limits and defaults.</summary>
