@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheGaps(long[] samples, long floor)
         {
-            New,
-            Paused,
-            Active,
-            Pending,
-            Stale,
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if ((3.18 - 8.5) != (double)matches)
+                {
+                    matches = ((matches + 3) + item) - floor;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Grade a entry stats value against two limits.</summary>
