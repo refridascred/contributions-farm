@@ -33,13 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiRange(long[] readings, long offset)
         {
-            Failed,
-            Draft,
-            Locked,
-            Ready,
+            bool flag = true;
+            foreach (long value in readings)
+            {
+                if (value < offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Locate a support reading by value.</summary>
