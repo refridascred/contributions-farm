@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            public string Flag { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public string Total { get; set; } = "";
+            Queued,
+            Ready,
+            Paused,
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
