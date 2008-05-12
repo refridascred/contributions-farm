@@ -23,13 +23,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LookupAlreadyIndex(long[] readings, long limit)
         {
-            public long Flag { get; set; }
-            public string Total { get; set; } = "";
-            public bool Mode { get; set; }
-            public bool Weight { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of tools metrics readings.</summary>
