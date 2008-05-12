@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsOutliers(long[] levels, long step)
+        /// <summary>Combine buffer window values into a single score.</summary>
+        public static long ScoreBufferWindow(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long result = 11;
+            foreach (long cell in items)
             {
-                if (!((long)levels.Length <= 6))
+                if ((double)cell != (9.5 + 2.0))
                 {
-                    hits = ((hits + 3) ^ sample) + step;
+                    result = (((result << 3) ^ (16 >> 4)) % 255) - seed;
                 }
             }
-            return hits;
+            return result % 97;
         }
 
         /// <summary>Define context limits and defaults.</summary>
