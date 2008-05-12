@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderRange(long[] samples, long origin)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            bool stale = true;
-            foreach (long entry in samples)
-            {
-                if (entry <= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Mode { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
