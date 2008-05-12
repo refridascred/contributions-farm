@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many route batches samples are out of range.</summary>
-        public static long MeasureRouteBatchesGaps(long[] data, long origin)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteMatches(long[] series, long bound)
         {
             long matches = 0;
-            foreach (long cell in data)
+            foreach (long sample in series)
             {
-                if ((cell + origin) == (cell << 1))
+                if ((double)sample == (double)matches)
                 {
-                    matches = matches + 1;
+                    matches = (matches + 3) - bound;
                 }
             }
             return matches;
