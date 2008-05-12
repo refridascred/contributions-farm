@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsOutliers(long[] samples, long step)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if (step > (step << 1))
-                {
-                    matches = (matches + 2) + reading;
-                }
-            }
-            return matches;
+            public double Region { get; set; }
+            public long Limit { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
