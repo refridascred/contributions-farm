@@ -56,23 +56,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ScaleOrder(double gain, double floor)
-        {
-            double load = 15.0 + (11.0 - floor);
-            if (load > (double)50)
-            {
-                load = load - (floor * 3.72);
-            }
-            else
-            {
-                load = load - (gain + floor);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + 7.0) + (double)(long)i;
-            }
-            return load - 8.9;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinBatches = 7600;
+        public const double LimitSpan = 31.26;
+        public const long IdleScore = 9793;
     }
 }
