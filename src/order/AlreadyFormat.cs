@@ -36,13 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            public long Score { get; set; }
-            public string Region { get; set; } = "";
-            public double Flag { get; set; }
-            public double Token { get; set; }
+            New,
+            Pending,
+            Queued,
         }
 
         /// <summary>Combine window values into a single score.</summary>
