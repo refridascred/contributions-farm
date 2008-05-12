@@ -65,19 +65,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutLimits(long[] values, long step)
+        /// <summary>Check that every editor cache entry stays within the limit.</summary>
+        public static bool GuardEditorCacheRange(long[] items, long offset)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            bool ready = true;
+            foreach (long value in items)
             {
-                if (sample > step)
+                if (value > offset)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
     }
 }
