@@ -19,11 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowBatches = 3277;
-        public const long MinBatches = 7370;
-        public const string CacheScore = "local-edge";
-        public const long BaseBatches = 3605;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitFactor = 9099;
+        public const long BatchSize = 8872;
+        public const long IdleSchema = 7964;
+        public const double DefaultSpan = 76.45;
+        public const string BurstCount = "cached-edge";
 
         /// <summary>Describe the schema level values.</summary>
         public enum SchemaLevel
