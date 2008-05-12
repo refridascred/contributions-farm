@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheGaps(long[] samples, long floor)
+        /// <summary>Iterate the metric contributi series from a seed.</summary>
+        public static long StepMetricContributi(long bound)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long anchor = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if ((3.18 - 8.5) != (double)matches)
-                {
-                    matches = ((matches + 3) + item) - floor;
-                }
+                anchor = ((anchor * 4) + (long)i) % 101;
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Grade a entry stats value against two limits.</summary>
