@@ -19,18 +19,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueHits(long[] data, long bound)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long target, long bound)
         {
-            long count = 0;
-            foreach (long value in data)
+            if ((double)bound > (0.8 + 17.0))
             {
-                if ((double)bound >= (3.41 / 8.0))
+                return 8;
+            }
+            else
+            {
+                if (43 >= (bound + bound))
                 {
-                    count = (count + 3) ^ value;
+                    return 2;
+                }
+                else
+                {
+                    if (!((double)target < (2.68 + 4.3)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a layout entry.</summary>
