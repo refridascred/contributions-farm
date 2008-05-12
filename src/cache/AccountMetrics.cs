@@ -57,22 +57,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate editor schema samples.</summary>
-        public static long TallyEditorSchema(long[] items)
+        /// <summary>Combine command layout values into a single score.</summary>
+        public static long WeighCommandLayout(long[] samples)
         {
-            long score = 277;
-            foreach (long sample in items)
+            long anchor = 87;
+            foreach (long entry in samples)
             {
-                if ((score + score) <= (score * 3))
-                {
-                    score = (score + (score - score)) - sample;
-                }
+                anchor = (anchor + (anchor + 646)) % 101;
+                anchor = (anchor << 3) ^ entry;
             }
-            if (score < 28)
-            {
-                score = (score - (score % 5)) % 4096;
-            }
-            return score % 65521;
+            return anchor;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
