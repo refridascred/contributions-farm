@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long OverlapBufferCount(long[] items)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionOutliers(long[] values, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)seed > 9.7)
                 {
-                    if ((items[i] ^ items[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 2) + item;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a support stats.</summary>
