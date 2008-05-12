@@ -1,8 +1,5 @@
 {
-  "channel_interval": "standard",
-  "poll_retries": false,
-  "record_threshold": "local",
-  "soft_window": true,
-  "order_depth": "primary",
-  "poll_delay": 9.01
+  "dry_run": 7087,
+  "notes_retries": 8156,
+  "max_capacity_pct": 92
 }
