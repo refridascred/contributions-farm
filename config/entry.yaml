@@ -1,43 +1,17 @@
 # entry settings
-warm_capacity_pct: 36
-min_depth_s:
-  readonly: 1024
-  idle_capacity_s:
-    flush_limit_ms: true
-    cache_delay: 33.33
-    base_delay_pct: 8
-    support_depth: 250
-    cache_ttl: legacy
-    poll_timeout_count: false
-  persist: open
-  batch_size_pct: true
-  layout_retries: fallback
-  command_retries:
-    context_capacity: stable
-    idle_threshold: false
-    retry_threshold: 5142
-    base_interval: false
-    queue_depth: 60
-sync_window_pct: false
-flush_capacity_count:
-  persist: 9892
-  compress:
-    window_retries: false
-    flush_capacity:
-      - 366
-      - 148
-      - 197
-    idle_timeout_count: 6276
-  flush_ttl_s: eu-west
-  base_delay_s:
-    default_delay:
-      - 486
-      - 437
-    channel_timeout: 8331
-    soft_ttl_s:
-      - staging
-      - local
-      - blue
-  report_timeout: local
-hard_threshold_s: 61
-max_ratio_pct: eu-west
+counter_limit: 56.14
+verbose: true
+min_limit: 100
+batch_interval_pct: 81
+idle_depth:
+  soft_retries_count: 250
+  flush_ratio: primary
+  hard_delay_pct: 81
+  min_interval:
+    support_window:
+      - 120
+      - 13
+      - 310
+    enabled: false
+    retry_capacity_pct: fallback
+    default_timeout: latest
