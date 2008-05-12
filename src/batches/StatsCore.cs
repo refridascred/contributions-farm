@@ -32,10 +32,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinMetrics = 1487;
-        public const string WindowMetrics = "primary-v2";
-        public const long RetryMetrics = 4363;
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long SeekEditorIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < bound) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of metrics githubfarm entries.</summary>
         public static long FoldMetricsGithubfarm(long[] values)
