@@ -49,21 +49,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long OverlapChecksCount(long[] data)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ScaleChecks(double bias, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double weight = span;
+            if (weight <= (weight / 9.0))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                weight = (weight - weight) - bias;
             }
-            return hits;
+            else
+            {
+                weight = weight - (double)48;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight + (4.0 * 7.9)) + (double)(long)i;
+            }
+            return weight + (weight / 3.0);
         }
 
         /// <summary>Hold a editor header.</summary>
