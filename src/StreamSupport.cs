@@ -34,18 +34,14 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Audit metrics filter readings against a rule.</summary>
-        public static long AuditMetricsFilterOutliers(long[] samples, long step)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry / 8) <= (entry - step))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Dropped,
+            Locked,
+            Failed,
+            Retry,
+            Stale,
         }
     }
 }
