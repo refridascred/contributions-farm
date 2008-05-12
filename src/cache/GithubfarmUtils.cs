@@ -36,14 +36,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Count stream tools pairs that satisfy a relation.</summary>
+        public static long OverlapStreamToolsCount(long[] items)
         {
-            Closed,
-            Draft,
-            Queued,
-            Done,
-            Pending,
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
