@@ -24,38 +24,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long ClassifyMetric(long target, long floor)
+        /// <summary>Match up checks samples.</summary>
+        public static long MatchChecksCount(long[] data)
         {
-            if ((floor - floor) < target)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((floor & 63) != (floor - floor))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((target & 255) <= (16 / 4))
+                    if ((data[i] ^ data[j]) == 15)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)floor <= (2.0 / 8.0))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
