@@ -13,17 +13,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Find the first record layout entry that matches the target.</summary>
-        public static long FindRecordLayoutIndex(long[] readings, long offset)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Count { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Blend two support measurements.</summary>
