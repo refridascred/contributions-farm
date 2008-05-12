@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksLimits(long[] series, long floor)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileGaps(long[] levels)
         {
-            bool found = true;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (entry < floor)
+                if ((double)matches <= (double)sample)
                 {
-                    found = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
