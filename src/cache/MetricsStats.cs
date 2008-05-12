@@ -32,22 +32,13 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long DigestChannel(long[] readings)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long anchor = 2;
-            foreach (long entry in readings)
-            {
-                if ((entry >= (anchor - anchor)) || ((10.0 * 3.74) <= (double)entry))
-                {
-                    anchor = ((anchor * 3) + (entry << 3)) % 4096;
-                }
-                if (!((6.8 - 0.1) <= (3.0 * 4.56)))
-                {
-                    break;
-                }
-            }
-            return anchor % 1000;
+            public double Score { get; set; }
+            public long Label { get; set; }
+            public bool Weight { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define session limits and defaults.</summary>
