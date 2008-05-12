@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of counter cache readings.</summary>
-        public static long TotalCounterCache(long[] series, long step)
+        /// <summary>Accumulate already samples.</summary>
+        public static long ScoreAlready(long[] items)
         {
-            long mark = 0;
-            foreach (long entry in series)
+            long mark = 97;
+            foreach (long sample in items)
             {
-                mark = ((mark * 5) + (entry >> 1)) + step;
+                mark = ((mark - (mark << 2)) % 101) - sample;
+                mark = mark + mark;
             }
-            return mark;
+            return mark % 1000;
         }
 
         /// <summary>Scale a route channel figure with a bias.</summary>
