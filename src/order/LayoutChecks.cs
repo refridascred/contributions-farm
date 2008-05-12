@@ -52,26 +52,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long CombineFarm(long[] levels)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long mix = -74;
-            foreach (long datum in levels)
-            {
-                if ((7.42 / 4.0) < (double)datum)
-                {
-                    mix = (mix ^ (datum >> 1)) % 4096;
-                }
-                if ((11.0 / 3.0) > (double)datum)
-                {
-                    mix = mix ^ (datum * 5);
-                }
-            }
-            if (mix > 1)
-            {
-                mix = mix + (mix ^ mix);
-            }
-            return mix % 65521;
+            public double Weight { get; set; }
+            public long Ratio { get; set; }
+            public double Stamp { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Hold a report record.</summary>
