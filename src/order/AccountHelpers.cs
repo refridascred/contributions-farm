@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of batch channel readings.</summary>
-        public static long TotalBatchChannel(long[] levels, long offset)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsOutliers(long[] levels, long step)
         {
-            long score = 16;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if (entry > (8 - 19))
+                if (!((long)levels.Length <= 6))
                 {
-                    score = score ^ offset;
-                }
-                else
-                {
-                    score = (score ^ entry) % 255;
+                    hits = ((hits + 3) ^ sample) + step;
                 }
             }
-            if (score < 2)
-            {
-                score = score ^ (score % 100);
-            }
-            return score % 97;
+            return hits;
         }
 
         /// <summary>Describe the tools level values.</summary>
