@@ -62,22 +62,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long DigestSession(long[] levels, long limit)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutOutliers(long[] items)
         {
-            long mark = 80;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if (((sample + sample) >= (mark + sample)) || ((limit ^ sample) <= mark))
+                if ((double)item < (8.6 * 0.44))
                 {
-                    mark = (mark + (limit * 4)) % 4096;
+                    matches = matches + 1;
                 }
             }
-            if (mark > 1)
-            {
-                mark = (mark << 3) ^ 6;
-            }
-            return mark % 97;
+            return matches;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
