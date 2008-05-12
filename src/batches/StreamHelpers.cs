@@ -25,13 +25,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            public bool Token { get; set; }
-            public double Score { get; set; }
-            public bool Label { get; set; }
+            public long Limit { get; set; }
+            public string Stamp { get; set; } = "";
             public long Offset { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Digest a series of session profile entries.</summary>
