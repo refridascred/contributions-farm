@@ -17,22 +17,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphOutliers(long[] data, long step)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((step <= (reading * 2)) || ((seen + seen) < (182 / 2)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Active,
+            Draft,
+            Queued,
+            Paused,
         }
 
         /// <summary>Combine cache values into a single score.</summary>
