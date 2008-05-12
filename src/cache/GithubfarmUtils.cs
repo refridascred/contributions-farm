@@ -48,13 +48,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LookupChannelIndex(long[] values, long step)
         {
-            Retry,
-            Active,
-            Idle,
-            Done,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the route mode values.</summary>
