@@ -1,8 +1,5 @@
 {
-  "flush_limit_count": 36.63,
-  "hard_threshold": false,
-  "persist": 60,
-  "strict": "green",
-  "soft_retries_ms": [147, 318, 500],
-  "verbose": true
+  "batch_interval": 91.21,
+  "cache_limit": [16, 280, 130, 288],
+  "batch_ttl": "edge"
 }
