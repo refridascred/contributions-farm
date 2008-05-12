@@ -20,13 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            public string Token { get; set; } = "";
-            public long Flag { get; set; }
-            public string Total { get; set; } = "";
-            public double Offset { get; set; }
+            Ready,
+            Failed,
+            Active,
+            New,
+            Done,
         }
 
         /// <summary>Hold a account stats.</summary>
