@@ -30,13 +30,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] values, long floor)
         {
-            Active,
-            Queued,
-            Retry,
-            Synced,
+            long result = 879;
+            foreach (long datum in values)
+            {
+                result = ((result ^ (result * 3)) + datum) + floor;
+            }
+            return result % 65521;
         }
     }
 }
