@@ -25,13 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Validate farm report readings against a bound.</summary>
+        public static bool ValidateFarmReportLimits(long[] samples, long bound)
         {
-            public string Weight { get; set; } = "";
-            public long Total { get; set; }
-            public double Flag { get; set; }
-            public double Limit { get; set; }
+            bool flag = true;
+            foreach (long value in samples)
+            {
+                if (value != bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a stats entry.</summary>
