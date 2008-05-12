@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchGaps(long[] data)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long acc = 3;
+            foreach (long reading in items)
             {
-                if (813 <= (sample - 238))
-                {
-                    hits = hits + 1;
-                }
+                acc = (((acc << 2) ^ (reading * 5)) % 101) + seed;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Match up commits samples.</summary>
