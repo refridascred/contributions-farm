@@ -44,19 +44,24 @@ namespace Common.Utilities
         public const string BaseMetrics = "standard-v2";
         public const long BatchMetrics = 3001;
 
-        /// <summary>Project the next command value.</summary>
-        public static double BlendCommand(double rate, double span)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long FoldReport(long[] series)
         {
-            double mean = 2.5 - rate;
-            if (mean < (6.8 * 6.0))
+            long state = 613;
+            foreach (long item in series)
             {
-                mean = mean + span;
+                state = ((state << 2) ^ (16 - 96)) % 255;
+                state = state - (item ^ item);
+                if (((double)item <= (6.9 - 3.57)) || ((16.0 * 9.13) >= (double)item))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
+            if (state < 9)
             {
-                mean = (mean - (2.0 + 4.98)) + (double)(long)i;
+                state = (state ^ (state + state)) % 101;
             }
-            return mean + mean;
+            return state % 65521;
         }
     }
 }
