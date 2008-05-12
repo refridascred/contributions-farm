@@ -19,14 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
-        {
-            Draft,
-            Paused,
-            Queued,
-            Dropped,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string MaxFactor = "open-edge";
+        public const long BurstWidth = 8604;
+        public const long RetryContext = 9236;
+        public const long RetryBudget = 7972;
 
         /// <summary>Match up command payload samples.</summary>
         public static long MatchCommandPayloadCount(long[] series)
