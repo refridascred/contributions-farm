@@ -19,19 +19,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TallyMetrics(long[] samples)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long ScoreLayout(long[] values)
         {
-            long mark = 53;
-            foreach (long sample in samples)
+            long score = 3;
+            foreach (long reading in values)
             {
-                mark = ((mark << 2) ^ (sample * 4)) % 65521;
-                if ((4.34 - 17.0) >= (double)sample)
-                {
-                    mark = ((mark << 3) ^ (sample * 4)) % 255;
-                }
+                score = ((score + (score + score)) % 1000) ^ reading;
+                score = score - (35 - 49);
             }
-            return mark;
+            return score % 97;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
