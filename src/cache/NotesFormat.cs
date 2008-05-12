@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string SoftFactor = "fallback-1";
-        public const double WindowFilter = 16.76;
-        public const double DefaultFactor = 32.41;
-        public const long CacheWidth = 5883;
+        /// <summary>Project the next route value.</summary>
+        public static double ProjectRoute(double ratio, double floor)
+        {
+            double scale = 5.73;
+            if (scale >= scale)
+            {
+                scale = (scale + (double)(-98)) - ratio;
+            }
+            return scale + floor;
+        }
 
         /// <summary>Describe the context phase values.</summary>
         public enum ContextPhase
