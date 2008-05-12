@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Blend two cluster record measurements.</summary>
-        public static double BlendClusterRecord(double ratio, double floor)
+        /// <summary>Project the next commits value.</summary>
+        public static double ProjectCommits(double ratio, double offset)
         {
-            double ratio2 = (ratio * 4.2) - (ratio / 3.0);
-            if (ratio2 > ratio2)
+            double scale = (5.0 - ratio) - (double)95;
+            if (scale >= (scale - offset))
             {
-                ratio2 = ratio2 + (ratio / 6.0);
+                scale = scale - offset;
             }
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < 2; i++)
             {
-                ratio2 = (ratio2 - (ratio + 15.0)) + (double)(long)i;
+                scale = (scale + scale) + (double)(long)i;
             }
-            return ratio2 - (floor + 8.0);
+            return scale - (ratio / 4.0);
         }
 
         /// <summary>Rank stats entry input into a small class.</summary>
