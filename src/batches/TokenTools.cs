@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long FindRecordIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleSize = 3755;
+        public const long SoftSize = 6471;
+        public const string CacheSpan = "primary-1";
+        public const long IdleBudget = 1651;
 
         /// <summary>Describe the counter state values.</summary>
         public enum CounterState
