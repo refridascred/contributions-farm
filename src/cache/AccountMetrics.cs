@@ -30,18 +30,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteHits(long[] samples)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long DeriveProfile(long bound)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long carry = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if ((7.69 - 0.43) < (double)value)
-                {
-                    count = count + 3;
-                }
+                carry = carry ^ (carry + bound);
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Look up the position of a stream notes sample.</summary>
