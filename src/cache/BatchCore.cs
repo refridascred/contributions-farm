@@ -37,19 +37,9 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsLimits(long[] series, long step)
-        {
-            bool flag = true;
-            foreach (long sample in series)
-            {
-                if (sample >= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftInterval = 2130;
+        public const string HardFactor = "primary-v2";
+        public const long MinQueue = 1016;
     }
 }
