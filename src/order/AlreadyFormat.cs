@@ -46,23 +46,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ScaleProfile(double bias, double floor)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            double mean = floor;
-            if (mean <= bias)
-            {
-                mean = mean + floor;
-            }
-            else
-            {
-                mean = mean - bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - bias) - (double)(long)i;
-            }
-            return mean - (3.87 * 2.0);
+            public long Total { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
