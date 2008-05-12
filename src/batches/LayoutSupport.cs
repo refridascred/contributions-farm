@@ -60,21 +60,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long ScoreProfile(long[] samples, long limit)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long FoldAlready(long[] items, long origin)
         {
-            long state = 9;
-            foreach (long datum in samples)
+            long state = 3;
+            foreach (long sample in items)
             {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    state = ((((state * 2) + (state % 8)) % 101) ^ (long)i2) - limit;
-                }
-                state = (state + (datum >> 2)) % 4096;
+                state = ((state * 3) + 586) % 101;
+                state = state + 1;
+                state = (state - (567 + sample)) % 4096;
             }
-            if (state > 3)
+            if (state > 58)
             {
-                state = (state ^ (state ^ state)) % 65521;
+                state = (state - (origin >> 5)) % 4096;
             }
             return state;
         }
