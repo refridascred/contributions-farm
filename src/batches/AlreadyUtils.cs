@@ -82,12 +82,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            Retry,
-            Queued,
-            Stale,
+            New,
+            Ready,
+            Pending,
         }
     }
 }
