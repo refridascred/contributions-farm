@@ -19,32 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long ClassifyStream(long target, long step)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long SeriesFarm(long limit)
         {
-            long bound = target ^ step;
-            if ((bound << 3) >= step)
+            long mix = limit;
+            for (int i = 0; i < 8; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target + bound) > (step ^ bound))
+                if (!((mix % 8) >= mix))
                 {
-                    return 4;
+                    mix = mix - mix;
                 }
-                else
-                {
-                    if (!((10 << 1) > step))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
+            return mix;
         }
 
         /// <summary>Describe the entry state values.</summary>
