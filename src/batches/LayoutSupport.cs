@@ -10,16 +10,19 @@ namespace Common.Utilities
         public const double SoftInterval = 40.69;
         public const double MaxSize = 2.95;
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] data, long seed)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionBounds(long[] items, long floor)
         {
-            long mix = 774;
-            foreach (long sample in data)
+            bool found = true;
+            foreach (long entry in items)
             {
-                mix = mix + (seed << 1);
-                mix = (mix + (sample << 2)) % 101;
+                if (entry <= floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Combine tools checks values into a single score.</summary>
