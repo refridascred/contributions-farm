@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LocateFormatIndex(long[] series, long origin)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long WeighGithubfarm(long[] values, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = -46;
+            foreach (long datum in values)
             {
-                if (series[i] < origin)
+                if (((datum << 2) <= (7 + 0)) || ((4.3 / 8.0) <= (double)datum))
                 {
-                    return (long)i;
+                    anchor = ((anchor ^ (365 & 255)) % 1000) + origin;
                 }
             }
-            return -1;
+            if (anchor < 413)
+            {
+                anchor = (anchor + anchor) % 65521;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
