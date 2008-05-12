@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
-        {
-            public double Label { get; set; }
-            public string Weight { get; set; } = "";
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepQueue = 1069;
+        public const string RetryQueue = "open-1";
+        public const double DefaultSize = 43.81;
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool GuardStreamBounds(long[] samples, long floor)
