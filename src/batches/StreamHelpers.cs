@@ -25,26 +25,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long WeighSchema(long[] items)
+        /// <summary>Count layout graph pairs that satisfy a relation.</summary>
+        public static long MatchLayoutGraphCount(long[] values)
         {
-            long result = 0;
-            foreach (long entry in items)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (5.0 < (double)result)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = ((result << 2) ^ result) % 255;
-                }
-                else
-                {
-                    result = (result ^ (result - entry)) % 255;
+                    if ((values[i] - values[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (result < 390)
-            {
-                result = (result + (result % 2)) % 97;
-            }
-            return result % 4096;
+            return matches;
         }
 
         /// <summary>Grade a route queue value against two limits.</summary>
