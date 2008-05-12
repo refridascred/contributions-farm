@@ -1,4 +1,4 @@
 # support settings
-contributi_size: 500
-min_ttl_count: 15
-strict: 100
+stream_retries: true
+farm_capacity: latest
+soft_window: staging
