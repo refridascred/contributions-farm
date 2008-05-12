@@ -67,19 +67,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandBounds(long[] samples, long origin)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long MatchMetricCount(long[] series)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample <= origin)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((series[i] ^ series[j]) < 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ready;
+            return matches;
         }
     }
 }
