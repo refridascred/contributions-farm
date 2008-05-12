@@ -45,19 +45,11 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ProjectMetrics(double bias, double offset)
-        {
-            double drift = bias;
-            if (drift >= (bias * 9.9))
-            {
-                drift = drift - offset;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + (drift + drift)) + (double)(long)i;
-            }
-            return drift + (double)135;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleSpan = 7232;
+        public const long WindowAccount = 1330;
+        public const long DefaultSize = 7675;
+        public const long MaxFactor = 7112;
+        public const long BaseFactor = 6513;
     }
 }
