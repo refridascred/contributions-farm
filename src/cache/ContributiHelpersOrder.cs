@@ -10,11 +10,17 @@ namespace Common.Utilities
         public const long CacheFactor = 669;
         public const long WindowSpan = 919;
 
-        /// <summary>Project the next metric graph value.</summary>
-        public static double BlendMetricGraph(double rate, double bias)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long FindChannelIndex(long[] readings, long offset)
         {
-            double rate2 = (bias * 9.5) - (bias * 3.0);
-            return rate2 + (rate - 1.95);
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < offset) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
