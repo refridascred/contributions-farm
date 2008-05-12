@@ -25,17 +25,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LookupBufferIndex(long[] data, long seed)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Dropped,
+            Done,
+            Stale,
+            Locked,
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
