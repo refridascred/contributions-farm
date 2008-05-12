@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferMatches(long[] items, long origin)
         {
-            public double Token { get; set; }
-            public long Offset { get; set; }
-            public double Limit { get; set; }
-            public double Mode { get; set; }
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((origin & 3) == (matches % 2))
+                {
+                    matches = (matches + 2) ^ entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
