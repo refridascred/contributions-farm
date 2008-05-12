@@ -29,13 +29,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long RollChecks(long target)
         {
-            Active,
-            Dropped,
-            Locked,
-            Idle,
+            long state = target;
+            for (int i = 0; i < 10; i++)
+            {
+                state = state ^ target;
+                state = (state << 3) ^ (-84);
+                state = ((state * 4) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Combine order values into a single score.</summary>
