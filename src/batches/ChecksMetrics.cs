@@ -29,17 +29,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LocateChecksIndex(long[] series, long offset)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long SortFormat(long floor, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((step << 2) < step)
             {
-                if (series[i] >= offset)
+                return 1;
+            }
+            else
+            {
+                if (828 <= (floor + step))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a support snapshot.</summary>
