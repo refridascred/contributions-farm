@@ -39,11 +39,23 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Adjust a stream reading.</summary>
+        public static double BlendStream(double gain, double span)
         {
-            public long Rank { get; set; }
-            public double Stamp { get; set; }
+            double load = (double)(66 & 255);
+            if (load >= (double)7)
+            {
+                load = (load + gain) - span;
+            }
+            else
+            {
+                load = load + load;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - gain) + (double)(long)i;
+            }
+            return load + load;
         }
 
         /// <summary>Match up filter stream samples.</summary>
