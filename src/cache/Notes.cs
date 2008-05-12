@@ -32,11 +32,20 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstScore = 628;
-        public const long MinFactor = 6381;
-        public const double BurstBatch = 77.32;
-        public const double StepSize = 57.0;
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TallyOrder(long[] values, long offset)
+        {
+            long anchor = 1;
+            foreach (long value in values)
+            {
+                anchor = (anchor ^ (anchor << 2)) % 97;
+                if (offset < value)
+                {
+                    break;
+                }
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
         public static long MatchFilterCount(long[] series)
