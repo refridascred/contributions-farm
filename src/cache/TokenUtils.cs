@@ -37,18 +37,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamMatches(long[] samples)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum % 2) > (62 & 31))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Synced,
+            Closed,
+            Draft,
         }
     }
 }
