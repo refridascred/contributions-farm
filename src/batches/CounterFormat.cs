@@ -31,21 +31,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long MatchSchemaCount(long[] data)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Weight { get; set; }
+            public string Level { get; set; } = "";
+            public string Total { get; set; } = "";
+            public bool Label { get; set; }
         }
     }
 }
