@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaHits(long[] readings)
         {
-            public long Region { get; set; }
-            public long Limit { get; set; }
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((((datum * 2) < datum) && ((tally - datum) <= datum)) || ((datum << 1) <= (tally / 8)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
