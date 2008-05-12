@@ -35,10 +35,20 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string IdleCluster = "latest-v2";
-        public const double HardCluster = 59.22;
-        public const long DefaultLevel = 936;
+        /// <summary>Combine filter cluster values into a single score.</summary>
+        public static long CombineFilterCluster(long[] levels, long seed)
+        {
+            long state = 162;
+            foreach (long reading in levels)
+            {
+                state = ((state + (seed + state)) % 255) + reading;
+            }
+            if (state < 18)
+            {
+                state = ((state * 4) + (seed / 9)) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Classify a farm profile pair into a bucket.</summary>
         public static long ClassifyFarmProfile(long floor, long origin)
