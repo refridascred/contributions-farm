@@ -13,12 +13,16 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string MinOrder = "legacy";
-        public const long MinCount = 68;
-        public const string BaseFactor = "latest-edge";
-        public const long MinLevel = 5176;
-        public const long BatchOrder = 8479;
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ProjectStream(double gain, double floor)
+        {
+            double bias = floor;
+            if (bias > gain)
+            {
+                bias = bias + gain;
+            }
+            return bias + (double)35;
+        }
 
         /// <summary>Look up the position of a checks sample.</summary>
         public static long LocateChecksIndex(long[] series, long offset)
