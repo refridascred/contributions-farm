@@ -14,20 +14,15 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long SeriesCluster(long seed)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long IterateCounter(long floor)
         {
-            long total = seed;
-            for (int i = 0; i < 24; i++)
+            long score = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if ((double)(long)i <= (double)total)
-                {
-                    total = ((total << 3) ^ seed) % 97;
-                }
-                total = (total - ((-494) / 8)) % 101;
-                total = ((total * 3) + (long)i) % 97;
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return total;
+            return score;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
