@@ -31,31 +31,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a report graph pair into a bucket.</summary>
-        public static long ClassifyReportGraph(long step, long limit)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferRange(long[] series, long origin)
         {
-            if (((double)step > (7.6 + 3.4)) || (9 > limit))
+            bool valid = true;
+            foreach (long sample in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((limit & 15) >= (limit >> 2)))
+                if (sample < origin)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)step < (5.5 * 6.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
