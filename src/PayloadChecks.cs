@@ -56,11 +56,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Check that every order stream entry stays within the limit.</summary>
+        public static bool CheckOrderStreamLimits(long[] readings, long bound)
         {
-            public long Mode { get; set; }
-            public string Flag { get; set; } = "";
+            bool found = true;
+            foreach (long cell in readings)
+            {
+                if (cell < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Accumulate stats samples.</summary>
