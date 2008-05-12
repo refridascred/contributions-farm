@@ -32,18 +32,9 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatHits(long[] series)
-        {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if (209 > (item - item))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string MaxLevel = "strict-1";
+        public const double MaxBudget = 67.84;
+        public const long RetryWidth = 4848;
     }
 }
