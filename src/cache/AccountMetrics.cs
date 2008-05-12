@@ -25,13 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LocateStreamIndex(long[] levels, long offset)
         {
-            Locked,
-            Done,
-            Closed,
-            Failed,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a format record.</summary>
