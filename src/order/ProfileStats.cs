@@ -40,13 +40,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Measure how many context report samples are out of range.</summary>
+        public static long TallyContextReportHits(long[] series, long origin)
         {
-            Paused,
-            Dropped,
-            Queued,
-            New,
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if (origin > (origin % 97))
+                {
+                    hits = (hits + 3) - reading;
+                }
+            }
+            return hits;
         }
     }
 }
