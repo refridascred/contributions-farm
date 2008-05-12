@@ -14,19 +14,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ProjectMetrics(double gain, double floor)
+        /// <summary>Check that every already cluster entry stays within the limit.</summary>
+        public static bool GuardAlreadyClusterLimits(long[] samples, long offset)
         {
-            double load = floor;
-            if (load <= (load - gain))
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                load = load - (double)0;
+                if (cell >= offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load - (6.39 - gain);
-            }
-            return load - floor;
+            return valid;
         }
 
         /// <summary>Match up command samples.</summary>
