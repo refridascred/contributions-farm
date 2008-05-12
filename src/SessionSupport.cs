@@ -13,22 +13,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamGaps(long[] series, long origin)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long SeekBatchesIndex(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long item in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((8.0 * 5.33) != (double)origin)
+                if (samples[i] >= bound)
                 {
-                    seen = (seen + 2) ^ item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the context state values.</summary>
