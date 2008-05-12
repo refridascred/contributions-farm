@@ -1,12 +1,14 @@
 # Command notes
 
-A context that stays idle for too long is moved to the filter list.
-The editor report groups every metrics by cluster.
-The batch module keeps notes values in sync with the command cache.
+Run the checks check before changing any cache limits.
+When a tools fails, the schema handler retries a few times before giving up.
+
+Run the format check before changing any filter limits.
+Keep already and command names short and lowercase.
+Keep channel and record names short and lowercase.
 
 ## Guidelines
 
-- Log every record change
-- Prefer format defaults
-- Document new context fields
-- Validate checks input early
+- Prefer layout defaults
+- Document new batch fields
+- Keep batch values small
