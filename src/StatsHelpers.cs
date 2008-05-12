@@ -21,32 +21,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank stats entry input into a small class.</summary>
-        public static long RankStatsEntry(long step, long step2)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long edge = step - step2;
-            if ((step2 - step2) != (step ^ edge))
-            {
-                return 8;
-            }
-            else
-            {
-                if (step2 <= (edge & 255))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((step + 52) < 66)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Grade a record value against two limits.</summary>
