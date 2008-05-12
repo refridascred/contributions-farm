@@ -70,18 +70,11 @@ namespace Common.Utilities
             return weight + (double)(-7);
         }
 
-        /// <summary>Audit entry layout readings against a rule.</summary>
-        public static long MeasureEntryLayoutHits(long[] samples)
-        {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if (!((matches - 4) > (value & 15)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinAlready = 3863;
+        public const long BaseAlready = 6516;
+        public const double CacheScore = 12.14;
+        public const double BatchFactor = 18.61;
+        public const string WindowAlready = "alpha";
     }
 }
