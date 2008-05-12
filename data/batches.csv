@@ -1,6 +1,9 @@
-id,weight
-1,206
-2,staging
-3,blue
-4,469
-5,edge
+id,owner,active,ratio,level
+1,standard,local,open,851
+2,primary,primary,787,staging
+3,74.19,227,714,80.86
+4,43.49,737,534,55.66
+5,464,75.97,38.9,open
+6,11.38,67.51,green,30.76
+7,open,934,primary,547
+8,193,665,96,533
