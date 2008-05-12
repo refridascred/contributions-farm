@@ -62,12 +62,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheBudget = 1827;
-        public const long RetryContributi = 2175;
-        public const long HardInterval = 3573;
-        public const long BurstLevel = 2879;
-        public const long LimitContributi = 6553;
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long OverlapFilterCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long MeasureProfileOutliers(long[] series)
