@@ -59,18 +59,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long DigestRoute(long[] series, long offset)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long MatchFilterCount(long[] series)
         {
-            long mix = 76;
-            foreach (long reading in series)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading > (mix + offset))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = (mix - (reading & 127)) % 4096;
+                    if ((series[i] ^ series[j]) < 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Describe the metric mode values.</summary>
