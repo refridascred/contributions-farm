@@ -25,31 +25,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long ClassifyContext(long step, long origin)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] series, long floor)
         {
-            if ((origin * 3) > step)
+            long acc = 53;
+            foreach (long value in series)
             {
-                return 8;
+                acc = ((acc * 2) + (acc + value)) + floor;
             }
-            else
-            {
-                if ((double)185 == (double)step)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (origin < 17)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return acc;
         }
     }
 }
