@@ -37,20 +37,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksLimits(long[] series, long seed)
-        {
-            bool valid = true;
-            foreach (long cell in series)
-            {
-                if (cell >= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string HardBudget = "open-1";
+        public const long MaxRatio = 688;
+        public const long BurstWindow = 8577;
+        public const string HardSpan = "latest";
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long SoftInterval = 2130;
