@@ -34,26 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] data)
+        /// <summary>Audit token cache readings against a rule.</summary>
+        public static long CountTokenCacheOutliers(long[] items, long step)
         {
-            long mix = 60;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if ((double)mix <= 8.05)
+                if ((step + cell) < (step + step))
                 {
-                    mix = mix + reading;
-                }
-                else
-                {
-                    mix = (mix * 3) + (7 ^ 67);
+                    hits = hits + 3;
                 }
             }
-            if (mix > 704)
-            {
-                mix = (mix - mix) % 255;
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
