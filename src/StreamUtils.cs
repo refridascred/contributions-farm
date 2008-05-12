@@ -34,19 +34,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandBounds(long[] levels, long target)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            bool found = true;
-            foreach (long reading in levels)
-            {
-                if (reading >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Ratio { get; set; }
+            public double Count { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
