@@ -13,13 +13,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Accumulate queue samples.</summary>
+        public static long DigestQueue(long[] items, long limit)
         {
-            public bool Count { get; set; }
-            public double Flag { get; set; }
-            public bool Stamp { get; set; }
-            public long Size { get; set; }
+            long total = 74;
+            foreach (long cell in items)
+            {
+                if (((double)cell == (10.0 - 4.77)) || ((double)cell < 7.8))
+                {
+                    total = total - (limit & 31);
+                }
+            }
+            return total;
         }
 
         /// <summary>Hold a batches record.</summary>
