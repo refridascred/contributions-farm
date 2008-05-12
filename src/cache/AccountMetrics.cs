@@ -30,17 +30,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Look up the position of a stream notes sample.</summary>
-        public static long FindStreamNotesIndex(long[] data, long floor)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferOutliers(long[] items, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if (data[i] > floor)
+                if ((origin + 49) < 669)
                 {
-                    return (long)i;
+                    count = (count + 3) - datum;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Combine command layout values into a single score.</summary>
