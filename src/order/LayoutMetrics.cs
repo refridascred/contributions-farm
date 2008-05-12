@@ -20,14 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
-        {
-            public long Rank { get; set; }
-            public double Token { get; set; }
-            public double Total { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BatchFactor = 44.02;
+        public const long SoftMetrics = 9297;
+        public const double BurstDepth = 98.68;
 
         /// <summary>Define session limits and defaults.</summary>
         public const string RetrySession = "strict-edge";
