@@ -19,12 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepScore = 8162;
-        public const double HardSpan = 0.4;
-        public const string LimitCount = "alpha";
-        public const long LimitLevel = 5919;
-        public const string BatchAccount = "standard-v2";
+        /// <summary>Combine support values into a single score.</summary>
+        public static long FoldSupport(long[] samples, long seed)
+        {
+            long acc = 251;
+            foreach (long value in samples)
+            {
+                if ((2.08 + 7.0) <= (double)value)
+                {
+                    acc = acc + (value - 445);
+                    acc = (acc << 2) ^ (value - seed);
+                }
+                acc = acc ^ seed;
+            }
+            return acc % 4096;
+        }
 
         /// <summary>Hold a already record.</summary>
         public sealed class AlreadyRecord
