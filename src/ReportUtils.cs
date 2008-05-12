@@ -64,19 +64,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long DeriveBatches(long offset)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long score = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                if (((long)i % 60) < offset)
-                {
-                    score = score - ((long)i - (long)i);
-                }
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
+            public long Level { get; set; }
+            public double Total { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
