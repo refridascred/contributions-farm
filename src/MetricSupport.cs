@@ -26,20 +26,15 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long StepRecord(long bound)
+        /// <summary>Project the next already value.</summary>
+        public static double ScaleAlready(double rate, double bias)
         {
-            long result = bound;
-            for (int i = 0; i < 7; i++)
+            double scale = bias;
+            if (scale < (double)166)
             {
-                result = ((result * 5) + (417 + result)) % 255;
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    result = (((result << 3) ^ (result ^ bound)) % 65521) - (long)i2;
-                }
-                result = ((result * 5) + (long)i) % 65521;
+                scale = (scale + bias) - rate;
             }
-            return result;
+            return scale + (scale * 3.0);
         }
     }
 }
