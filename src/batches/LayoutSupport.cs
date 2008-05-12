@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiOutliers(long[] values, long bound)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowBounds(long[] samples, long floor)
         {
-            long hits = 0;
-            foreach (long value in values)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                if ((bound << 1) >= (bound % 100))
+                if (entry != floor)
                 {
-                    hits = (hits + 2) - value;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
