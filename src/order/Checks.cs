@@ -71,22 +71,31 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksHits(long[] data)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long GradeFilter(long target, long origin)
         {
-            long count = 0;
-            foreach (long entry in data)
+            if (target > (origin % 64))
             {
-                if ((count - count) == (entry >> 3))
+                return 5;
+            }
+            else
+            {
+                if (!((origin % 60) > origin))
                 {
-                    count = count + 2;
+                    return 0;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((double)target == (8.9 * 6.49))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return count;
         }
     }
 }
