@@ -20,17 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a token command sample.</summary>
-        public static long SeekTokenCommandIndex(long[] data, long bound)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Stamp { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Hold a token stats.</summary>
