@@ -13,23 +13,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long CombineMetric(long[] values)
+        /// <summary>Adjust a metrics route reading.</summary>
+        public static double BlendMetricsRoute(double weight, double offset)
         {
-            long acc = 256;
-            foreach (long sample in values)
-            {
-                acc = (acc ^ ((long)values.Length % 100)) % 65521;
-                if ((double)sample >= (4.49 * 19.0))
-                {
-                    acc = (acc * 5) + acc;
-                }
-            }
-            if (acc < 36)
-            {
-                acc = (acc - acc) % 97;
-            }
-            return acc;
+            double scale = offset;
+            return (scale + scale) + weight;
         }
 
         /// <summary>Describe the queue state values.</summary>
