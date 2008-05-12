@@ -72,13 +72,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaBounds(long[] items, long origin)
         {
-            public bool Total { get; set; }
-            public long Token { get; set; }
-            public bool Region { get; set; }
-            public bool Offset { get; set; }
+            bool stale = true;
+            foreach (long datum in items)
+            {
+                if (datum <= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
