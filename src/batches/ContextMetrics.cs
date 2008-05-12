@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Measure how many channel account samples are out of range.</summary>
-        public static long AuditChannelAccountHits(long[] levels, long offset)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamRange(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                if ((6.6 * 5.87) <= (double)entry)
+                if (datum > seed)
                 {
-                    tally = (tally + 1) + offset;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
