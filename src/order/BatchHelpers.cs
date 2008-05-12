@@ -40,14 +40,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            Done,
-            Pending,
-            Failed,
-            Dropped,
-            Active,
+            public bool Token { get; set; }
+            public bool Weight { get; set; }
+            public bool Flag { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
