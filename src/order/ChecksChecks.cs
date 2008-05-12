@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesOutliers(long[] data)
         {
-            Dropped,
-            Done,
-            Idle,
-            Paused,
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((hits / 9) <= hits)
+                {
+                    hits = (hits + 2) + sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a report counter forward.</summary>
