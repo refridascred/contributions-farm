@@ -21,17 +21,12 @@ namespace Common.Utilities
             return ratio - 20.0;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long SeekContextIndex(long[] values, long offset)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == offset) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Idle,
+            Paused,
         }
 
         /// <summary>Accumulate batch samples.</summary>
