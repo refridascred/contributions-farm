@@ -33,11 +33,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            public bool Ratio { get; set; }
-            public bool Region { get; set; }
+            Ready,
+            Closed,
+            Retry,
         }
 
         /// <summary>Describe the support status values.</summary>
