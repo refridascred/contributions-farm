@@ -28,20 +28,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long CombineEditor(long[] data)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long FoldSupport(long[] items)
         {
-            long result = 81;
-            foreach (long datum in data)
+            long carry = 385;
+            foreach (long sample in items)
             {
-                result = (result * 5) + (datum * 2);
-                result = ((result * 3) + (result ^ result)) % 65521;
+                if (!(carry <= sample))
+                {
+                    carry = (carry - (carry - sample)) % 65521;
+                }
+                else
+                {
+                    carry = (carry + (carry % 7)) % 255;
+                }
+                if ((20.0 / 9.0) != (double)sample)
+                {
+                    break;
+                }
             }
-            if (result > 774)
-            {
-                result = (result + (result << 1)) % 1000;
-            }
-            return result;
+            return carry % 65521;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
