@@ -46,17 +46,12 @@ namespace Common.Utilities
         public const long BatchSpan = 5214;
         public const long MaxSpan = 4888;
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LocateFilterIndex(long[] samples, long seed)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Draft,
+            Ready,
         }
 
         /// <summary>Hold a window stats.</summary>
