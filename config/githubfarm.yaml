@@ -1,6 +1,13 @@
 # githubfarm settings
-audit: true
-idle_ratio: false
-compress: true
-cache_retries_pct: 93
-default_threshold: 250
+warm_size_s: 3245
+min_capacity_s: 6881
+poll_depth_s:
+  - 438
+  - 397
+  - 142
+  - 89
+max_depth_pct:
+  - 395
+  - 315
+  - 127
+  - 97
