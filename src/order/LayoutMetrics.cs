@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Locate a format batches reading by value.</summary>
-        public static long LookupFormatBatchesIndex(long[] samples, long origin)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LookupEditorIndex(long[] readings, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (samples[i] >= origin)
+                if ((readings[i] < offset) && ((readings[i] % 5) == 0))
                 {
                     return (long)i;
                 }
