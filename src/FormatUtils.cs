@@ -20,15 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long StepAccount(long offset)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long FoldLayout(long[] values, long bound)
         {
-            long state = offset;
-            for (int i = 0; i < 21; i++)
+            long mark = 494;
+            foreach (long sample in values)
             {
-                state = ((state * 3) + (long)i) % 4093;
+                mark = ((mark + (bound << 3)) % 1000) ^ sample;
             }
-            return state;
+            if (mark > 6)
+            {
+                mark = ((mark * 4) + (mark ^ bound)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Accumulate token samples.</summary>
