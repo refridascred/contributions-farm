@@ -20,17 +20,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LocateRouteIndex(long[] items, long limit)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long SeriesWindow(long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (items[i] < limit)
-                {
-                    return (long)i;
-                }
+                state = state - (9 * 4);
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Hold a batches info.</summary>
