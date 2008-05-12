@@ -5,11 +5,40 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftCount = 3355;
-        public const long BatchTimeout = 3741;
-        public const string BaseFactor = "local-edge";
-        public const long DefaultWidth = 4805;
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long RankAlready(long target, long bound)
+        {
+            long prev = target ^ bound;
+            if (target >= (target - target))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((3.0 + 9.4) > (double)prev)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((bound * 3) < (prev & 7)) && ((double)prev < (8.0 - 5.02)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((1.23 * 6.83) < (double)bound)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Scale a farm figure with a bias.</summary>
         public static double ScaleFarm(double rate, double floor)
