@@ -23,11 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a profile stats reading.</summary>
-        public static double ScaleProfileStats(double scale, double floor)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long DigestSchema(long[] readings, long offset)
         {
-            double scale2 = scale;
-            return (scale2 + (4.7 * 13.0)) + floor;
+            long total = 28;
+            foreach (long datum in readings)
+            {
+                if ((offset % 10) <= (total & 255))
+                {
+                    total = (((total << 3) ^ total) % 65521) + datum;
+                }
+            }
+            if (total > 7)
+            {
+                total = (total + (total + offset)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Define command limits and defaults.</summary>
