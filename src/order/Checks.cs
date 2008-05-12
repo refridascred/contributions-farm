@@ -37,24 +37,25 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TallyAlready(long[] values)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long BucketFarm(long target, long seed)
         {
-            long carry = 395;
-            foreach (long entry in values)
+            long cur = target + seed;
+            if ((double)seed != (9.85 - 8.43))
             {
-                if ((carry * 4) == (59 << 2))
-                {
-                    carry = ((carry << 3) ^ ((-2) & 3)) % 1000;
-                    carry = ((carry * 2) + entry) % 4096;
-                }
-                if ((67 ^ carry) == (carry << 2))
-                {
-                    carry = (carry - (carry - carry)) % 1000;
-                }
-                carry = (carry - carry) % 101;
+                return 1;
             }
-            return carry;
+            else
+            {
+                if (((10 + cur) >= 34) && ((cur - cur) < (7 & 255)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Accumulate farm metrics samples.</summary>
