@@ -18,19 +18,17 @@ namespace Common.Utilities
         public const string StepScore = "fallback-v2";
         public const string BatchInterval = "cached-v2";
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferLimits(long[] samples, long origin)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long SeekRouteIndex(long[] items, long bound)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value >= origin)
+                if (items[i] >= bound)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
