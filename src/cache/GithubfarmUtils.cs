@@ -45,10 +45,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string DefaultRatio = "legacy-1";
-        public const double MaxFarm = 4.31;
-        public const double SoftSize = 4.07;
-        public const long BaseFarm = 8595;
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
+        {
+            Queued,
+            Stale,
+            Ready,
+        }
     }
 }
