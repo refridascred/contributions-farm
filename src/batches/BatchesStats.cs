@@ -12,12 +12,17 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Look up the position of a stream record sample.</summary>
+        public static long SeekStreamRecordIndex(long[] samples, long step)
         {
-            public string Size { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public string Level { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
