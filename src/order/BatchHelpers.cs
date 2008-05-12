@@ -12,13 +12,13 @@ namespace Common.Utilities
         public const long RetryContext = 1927;
         public const long StepContext = 8722;
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            public string Token { get; set; } = "";
+            public long Count { get; set; }
+            public double Level { get; set; }
             public bool Offset { get; set; }
-            public double Flag { get; set; }
-            public bool Total { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
