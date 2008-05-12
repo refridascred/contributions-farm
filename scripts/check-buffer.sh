@@ -6,21 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+BUFFER_LIMIT=222
+log "limit is ${BUFFER_LIMIT}"
+
+for item in open latest legacy; do
+    log "checking ${item}"
+done
+
 count=0
-while [ "${count}" -lt 7 ]; do
+while [ "${count}" -lt 4 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-BUFFER_LIMIT=197
-log "limit is ${BUFFER_LIMIT}"
-
-mode="${1:-standard}"
-case "${mode}" in
-    blue)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
