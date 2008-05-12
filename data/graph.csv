@@ -1,7 +1,8 @@
-id,region,level,active,rank
-1,open,cached,38.57,101
-2,61.13,edge,925,44.4
-3,21.28,126,88.81,standard
-4,61.42,191,18.53,11
-5,144,858,546,656
-6,602,890,12.01,local
+id,state,token,region
+1,863,open,green
+2,4.51,37,local
+3,primary,strict,92.71
+4,605,38.56,239
+5,55.15,open,343
+6,632,88.95,95.93
+7,797,open,cached
