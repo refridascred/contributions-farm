@@ -47,12 +47,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardFactor = 3411;
-        public const long BatchMetrics = 2785;
-        public const long SoftMetrics = 558;
-        public const double WindowTimeout = 40.66;
-        public const string MinMetrics = "alpha-v2";
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
+        {
+            Closed,
+            Draft,
+            Queued,
+            Done,
+            Pending,
+        }
 
         /// <summary>Derive the next support value from a seed.</summary>
         public static long SeriesSupport(long seed)
