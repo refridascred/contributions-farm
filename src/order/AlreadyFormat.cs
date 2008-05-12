@@ -70,19 +70,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TallySchema(long[] levels)
+        /// <summary>Locate a cluster layout reading by value.</summary>
+        public static long LookupClusterLayoutIndex(long[] items, long offset)
         {
-            long mix = -91;
-            foreach (long sample in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = (mix - mix) % 255;
-                if ((7.0 + 9.8) >= (double)sample)
+                if (items[i] <= offset)
                 {
-                    mix = (mix + (sample + 1)) % 1000;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
