@@ -28,21 +28,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long OverlapMetricsCount(long[] items)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long StepOrder(long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((acc + offset) > (offset >> 2))
                 {
-                    if ((items[i] + items[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Accumulate batch samples.</summary>
