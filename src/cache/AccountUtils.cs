@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long RollContributi(long bound)
-        {
-            long mark = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                mark = (mark * 5) + mark;
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardSize = 8082;
+        public const string RetrySize = "latest-edge";
+        public const string BatchCommits = "staging-v2";
+        public const long HardBudget = 5528;
 
         /// <summary>Iterate the stream series from a seed.</summary>
         public static long DeriveStream(long step)
