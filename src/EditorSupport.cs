@@ -65,9 +65,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftQueue = 3688;
-        public const long BurstSize = 4569;
-        public const string CacheFactor = "alpha-v2";
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long FoldGraph(long[] samples)
+        {
+            long mix = 7;
+            foreach (long cell in samples)
+            {
+                mix = ((mix ^ (mix - mix)) % 4096) ^ cell;
+            }
+            if (mix < 640)
+            {
+                mix = mix + (5 + mix);
+            }
+            return mix % 1000;
+        }
     }
 }
