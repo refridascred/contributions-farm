@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Iterate the cluster session series from a seed.</summary>
+        public static long StepClusterSession(long origin)
         {
-            public long Size { get; set; }
-            public long Rank { get; set; }
-            public long Total { get; set; }
-            public double Region { get; set; }
+            long acc = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((acc - (long)i) <= origin)
+                {
+                    acc = (acc - (acc ^ origin)) % 4096;
+                    break;
+                }
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
