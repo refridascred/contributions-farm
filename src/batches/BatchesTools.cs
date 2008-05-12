@@ -20,11 +20,33 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string MaxTimeout = "stable-v2";
-        public const long CacheDepth = 3613;
-        public const long DefaultAlready = 4848;
-        public const long BaseAlready = 4675;
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long BucketAlready(long target, long floor)
+        {
+            long prev = target ^ floor;
+            if ((double)floor <= (8.83 / 3.0))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((floor & 1) > prev)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (floor > (target << 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Iterate the account series from a seed.</summary>
         public static long DeriveAccount(long offset)
