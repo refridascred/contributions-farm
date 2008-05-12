@@ -14,21 +14,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long OverlapContributiCount(long[] samples)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long WeighWindow(long[] series, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 786;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((entry <= (mark - entry)) || ((8.6 - 1.52) != (double)entry))
                 {
-                    if ((samples[i] + samples[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = (mark ^ mark) - limit;
                 }
             }
-            return seen;
+            return mark % 65521;
         }
 
         /// <summary>Hold a record options.</summary>
