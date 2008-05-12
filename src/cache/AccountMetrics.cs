@@ -22,19 +22,18 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsRange(long[] levels, long offset)
+        /// <summary>Measure how many payload counter samples are out of range.</summary>
+        public static long CountPayloadCounterGaps(long[] data)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if (entry >= offset)
+                if ((value * 5) == (67 / 6))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
