@@ -5,23 +5,29 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long GradeNotes(long origin, long seed)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long BucketFarm(long offset, long floor)
         {
-            long gap = origin ^ seed;
-            if ((double)gap <= (12.0 + 0.5))
+            if ((double)offset < 4.81)
             {
-                return 0;
+                return 3;
             }
             else
             {
-                if ((origin >> 2) > (937 + origin))
+                if (((floor & 127) >= 19) && ((double)floor >= (12.0 + 1.0)))
                 {
                     return 8;
                 }
                 else
                 {
-                    return 7;
+                    if ((floor << 3) >= (floor + 46))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
         }
