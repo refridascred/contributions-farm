@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long ClassifySchema(long step, long seed)
+        /// <summary>Adjust a metrics filter reading.</summary>
+        public static double BlendMetricsFilter(double bias, double floor)
         {
-            long gap = step + seed;
-            if ((step / 2) <= (step & 15))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((gap * 2) < gap)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((gap / 4) == (step + step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((step >> 2) >= (seed >> 4))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            double rate = 1.6 / 3.0;
+            return ((rate - 7.21) + bias) + floor;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
