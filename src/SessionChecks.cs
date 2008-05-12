@@ -34,19 +34,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every session window entry stays within the limit.</summary>
-        public static bool VerifySessionWindowLimits(long[] readings, long step)
+        /// <summary>Measure how many graph profile samples are out of range.</summary>
+        public static long TallyGraphProfileHits(long[] items, long offset)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if (cell < step)
+                if (!(offset > (entry / 2)))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Fold a list of session readings.</summary>
