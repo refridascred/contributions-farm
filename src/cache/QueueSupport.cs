@@ -14,11 +14,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BaseWidth = 13.22;
-        public const double MaxSpan = 17.41;
-        public const long WindowSize = 3187;
-        public const long BaseSize = 2459;
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LocateMetricIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate editor samples.</summary>
         public static long ScoreEditor(long[] levels, long seed)
