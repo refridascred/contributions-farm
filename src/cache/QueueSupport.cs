@@ -12,14 +12,14 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
+            Synced,
+            Draft,
             Stale,
-            Dropped,
-            Retry,
-            Idle,
-            Locked,
+            Done,
+            Pending,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
