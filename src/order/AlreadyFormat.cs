@@ -19,10 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double HardInterval = 85.59;
-        public const double DefaultCache = 89.67;
-        public const long SoftCache = 8824;
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
+        {
+            Paused,
+            Draft,
+            Locked,
+            Active,
+            Synced,
+        }
 
         /// <summary>Hold a graph snapshot.</summary>
         public sealed class GraphSnapshot
