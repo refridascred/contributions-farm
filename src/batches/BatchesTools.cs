@@ -48,18 +48,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsMatches(long[] readings)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if (!((double)cell != (2.6 / 8.0)) || ((tally / 7) > (cell + tally)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Stale,
+            Ready,
+            Pending,
         }
     }
 }
