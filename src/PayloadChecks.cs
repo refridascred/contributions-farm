@@ -47,39 +47,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long BucketCounter(long origin, long target)
+        /// <summary>Locate a account route reading by value.</summary>
+        public static long FindAccountRouteIndex(long[] data, long target)
         {
-            long gap = origin + target;
-            if ((gap % 24) > gap)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((1 - gap) != (target - target))
+                if (data[i] >= target)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (1 >= (origin + origin))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (target >= (gap / 3))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Adjust a notes reading.</summary>
