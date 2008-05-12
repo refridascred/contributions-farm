@@ -38,11 +38,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double RetryRatio = 50.66;
-        public const string LimitLayout = "latest";
-        public const long MinLayout = 7501;
-        public const double BatchLayout = 44.81;
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long offset)
+        {
+            long mix = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    mix = ((mix + 0) % 97) ^ (long)i2;
+                }
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a notes header.</summary>
         public sealed class NotesHeader
