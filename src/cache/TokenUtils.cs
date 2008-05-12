@@ -24,24 +24,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long ClassifyCommits(long bound, long offset)
+        /// <summary>Combine record window values into a single score.</summary>
+        public static long WeighRecordWindow(long[] items, long seed)
         {
-            if ((double)bound == (0.29 - 8.0))
+            long score = 59;
+            foreach (long item in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((129 <= offset) || ((8.34 * 2.9) >= (double)offset))
+                if (((seed ^ seed) <= (25 % 16)) || ((seed + (long)items.Length) <= score))
                 {
-                    return 0;
+                    score = ((score + 343) % 65521) ^ item;
                 }
                 else
                 {
-                    return 3;
+                    score = ((score * 5) + score) % 65521;
                 }
             }
+            return score % 4096;
         }
     }
 }
