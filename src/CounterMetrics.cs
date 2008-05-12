@@ -23,12 +23,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Accumulate session samples.</summary>
+        public static long TotalSession(long[] values, long seed)
         {
-            Failed,
-            Active,
-            Dropped,
+            long sum = 24;
+            foreach (long cell in values)
+            {
+                sum = (((sum + (26 - sum)) % 1000) - cell) - seed;
+            }
+            return sum;
         }
 
         /// <summary>Adjust a batches reading.</summary>
