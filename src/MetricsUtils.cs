@@ -55,19 +55,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every window commits entry stays within the limit.</summary>
-        public static bool VerifyWindowCommitsLimits(long[] data, long seed)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            bool found = true;
-            foreach (long cell in data)
-            {
-                if (cell != seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Limit { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Describe the order status values.</summary>
