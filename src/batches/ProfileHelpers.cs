@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long offset)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long DigestRecord(long[] samples)
         {
-            long acc = offset;
-            for (int i = 0; i < 20; i++)
+            long total = 69;
+            foreach (long cell in samples)
             {
-                if ((29 > (acc & 7)) || ((offset + offset) > offset))
-                {
-                    acc = (acc * 5) + (0 ^ offset);
-                }
-                acc = ((acc * 3) + (long)i) % 1000;
+                total = ((total - (-306)) % 4096) - cell;
             }
-            return acc;
+            if (total > 4)
+            {
+                total = ((total << 2) ^ (total + total)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
