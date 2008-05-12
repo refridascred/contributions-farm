@@ -23,16 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long SeriesMetrics(long offset)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long FoldChannel(long[] values, long bound)
         {
-            long acc = offset;
-            for (int i = 0; i < 23; i++)
+            long score = 2;
+            foreach (long datum in values)
             {
-                acc = ((acc * 5) + (acc / 3)) % 255;
-                acc = ((acc * 2) + (long)i) % 65521;
+                score = (score + score) - datum;
             }
-            return acc;
+            if (score > (-4))
+            {
+                score = score - bound;
+            }
+            return score;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
