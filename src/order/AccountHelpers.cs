@@ -25,21 +25,27 @@ namespace Common.Utilities
         public const long RetryContext = 9236;
         public const long RetryBudget = 7972;
 
-        /// <summary>Match up command payload samples.</summary>
-        public static long MatchCommandPayloadCount(long[] series)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TotalEditor(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 849;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                carry = (carry + (sample >> 1)) % 255;
+                if ((sample / 4) <= (sample & 7))
                 {
-                    if ((series[i] ^ series[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = (carry - ((-6) + carry)) % 255;
+                }
+                else
+                {
+                    carry = (carry - 52) % 1000;
+                }
+                if (((double)sample <= (0.46 / 3.0)) && ((carry + carry) > (sample << 1)))
+                {
+                    break;
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Hold a tools info.</summary>
