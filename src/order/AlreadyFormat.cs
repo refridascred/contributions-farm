@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Check that every payload queue entry stays within the limit.</summary>
-        public static bool VerifyPayloadQueueRange(long[] items, long bound)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long PairStatsCount(long[] values)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading != bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((values[i] + values[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
