@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamGaps(long[] data, long target)
+        /// <summary>Look up the position of a cache record sample.</summary>
+        public static long FindCacheRecordIndex(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long value in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((count + target) > (value & 7))
+                if ((samples[i] < bound) && ((samples[i] % 3) == 0))
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
