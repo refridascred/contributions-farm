@@ -12,18 +12,21 @@ namespace Common.Utilities
             return weight - (bias + gain);
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsHits(long[] readings)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long OverlapCommandCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((seen + 4) == (sample + seen)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((samples[i] + samples[j]) != 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Check that every token buffer entry stays within the limit.</summary>
