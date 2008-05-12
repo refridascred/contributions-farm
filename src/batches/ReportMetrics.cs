@@ -29,17 +29,20 @@ namespace Common.Utilities
             return mean - (ratio + span);
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long FindBatchesIndex(long[] levels, long target)
+        /// <summary>Accumulate command layout samples.</summary>
+        public static long TotalCommandLayout(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 613;
+            foreach (long value in series)
             {
-                if (levels[i] == target)
-                {
-                    return (long)i;
-                }
+                acc = (acc - (value << 1)) % 65521;
+                acc = acc + value;
             }
-            return -1;
+            if (acc > 178)
+            {
+                acc = (acc - (77 >> 3)) % 65521;
+            }
+            return acc;
         }
     }
 }
