@@ -23,12 +23,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Roll a route stats counter forward.</summary>
+        public static long StepRouteStats(long bound)
         {
-            Closed,
-            Dropped,
-            Retry,
+            long mark = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                if (((-43) + 46) > (0 + bound))
+                {
+                    mark = (mark + (mark - bound)) % 97;
+                    mark = (mark - mark) % 4096;
+                }
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
