@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LookupContributiIndex(long[] items, long step)
+        /// <summary>Iterate the stats metric series from a seed.</summary>
+        public static long SeriesStatsMetric(long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if (items[i] >= step)
+                if (0.8 <= (double)seed)
                 {
-                    return (long)i;
+                    mix = ((mix << 2) ^ 26) % 1000;
                 }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
