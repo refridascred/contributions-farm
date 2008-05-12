@@ -47,22 +47,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowGaps(long[] values, long bound)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if (((double)hits < (9.0 + 8.45)) && (6.8 > (double)bound))
-                {
-                    hits = (hits + 2) - sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Label { get; set; }
+            public string Weight { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Match up notes samples.</summary>
