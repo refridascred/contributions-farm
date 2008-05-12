@@ -12,22 +12,15 @@ namespace Common.Utilities
         public const long HardFactor = 4749;
         public const string MaxBudget = "open-v2";
 
-        /// <summary>Count the layout filter entries that pass the check.</summary>
-        public static long MeasureLayoutFilterGaps(long[] series)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] samples)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long mark = 118;
+            foreach (long value in samples)
             {
-                if ((5 * 3) < tally)
-                {
-                    tally = (tally + 2) ^ entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mark = ((mark << 3) ^ (545 + value)) % 255;
             }
-            return tally;
+            return mark % 4096;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
