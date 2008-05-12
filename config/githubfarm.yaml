@@ -1,13 +1,7 @@
 # githubfarm settings
-strict: false
-report_timeout:
-  enabled: 1024
-  profile_window: 242
-  stream_limit: 61.39
-  session_limit:
-    - 463
-    - 85
-    - 356
-  dry_run: strict
-dry_run: 500
-sync_depth_count: true
+contributi_ttl: 29.28
+idle_size_count: false
+farm_threshold: 82.91
+dry_run: open
+min_ratio_ms: 2
+cache_depth: false
