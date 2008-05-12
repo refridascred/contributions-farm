@@ -71,19 +71,18 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmRange(long[] values, long seed)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteGaps(long[] items)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if (reading != seed)
+                if (matches >= item)
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return valid;
+            return matches;
         }
     }
 }
