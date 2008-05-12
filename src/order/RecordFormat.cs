@@ -68,13 +68,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyGaps(long[] items)
         {
-            public string Mode { get; set; } = "";
-            public double Rank { get; set; }
-            public double Count { get; set; }
-            public long Level { get; set; }
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((hits % 12) == (hits + 494))
+                {
+                    hits = (hits + 1) + value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
