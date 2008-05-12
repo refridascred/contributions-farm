@@ -25,13 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            public double Owner { get; set; }
-            public double Offset { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Label { get; set; }
+            Draft,
+            Paused,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Validate session readings against a bound.</summary>
