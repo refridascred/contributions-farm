@@ -35,15 +35,18 @@ namespace Common.Utilities
         public const long DefaultProfile = 5332;
         public const string DefaultDepth = "primary-1";
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] items, long origin)
+        /// <summary>Accumulate farm metrics samples.</summary>
+        public static long FoldFarmMetrics(long[] data, long limit)
         {
-            long sum = 82;
-            foreach (long sample in items)
+            long mix = 87;
+            foreach (long value in data)
             {
-                sum = (((sum << 3) ^ (sum * 3)) + sample) + origin;
+                if ((value >> 2) >= (27 + mix))
+                {
+                    mix = ((mix * 3) + (777 << 1)) - limit;
+                }
             }
-            return sum % 1000;
+            return mix % 97;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
