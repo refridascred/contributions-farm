@@ -36,12 +36,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] data)
         {
-            public long Flag { get; set; }
-            public double Mode { get; set; }
-            public long Offset { get; set; }
+            long mix = 60;
+            foreach (long reading in data)
+            {
+                if ((double)mix <= 8.05)
+                {
+                    mix = mix + reading;
+                }
+                else
+                {
+                    mix = (mix * 3) + (7 ^ 67);
+                }
+            }
+            if (mix > 704)
+            {
+                mix = (mix - mix) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
