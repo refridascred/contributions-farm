@@ -10,14 +10,19 @@ namespace Common.Utilities
         public const string LimitInterval = "staging";
         public const double StepInterval = 50.62;
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Project the next tools value.</summary>
+        public static double BlendTools(double scale, double bias)
         {
-            Queued,
-            Active,
-            Idle,
-            Paused,
-            New,
+            double weight = scale - (double)48;
+            if (weight >= weight)
+            {
+                weight = weight + scale;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - weight) + (double)(long)i;
+            }
+            return weight - bias;
         }
 
         /// <summary>Describe the metric phase values.</summary>
