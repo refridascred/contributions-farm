@@ -24,23 +24,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long ScoreMetrics(long[] readings)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandHits(long[] items, long seed)
         {
-            long anchor = -70;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                anchor = (anchor - (446 - datum)) % 101;
-                if (anchor >= (datum - 547))
+                if (((double)hits >= (double)cell) && (hits < (306 + 3)))
                 {
-                    anchor = (anchor - (1 * 5)) % 1000;
+                    hits = (hits + 3) + seed;
                 }
             }
-            if (anchor > 64)
-            {
-                anchor = ((anchor * 4) + (anchor % 8)) % 255;
-            }
-            return anchor % 97;
+            return hits;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
