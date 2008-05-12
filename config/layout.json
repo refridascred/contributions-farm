@@ -1,11 +1,8 @@
 {
-  "burst_retries_pct": {
-    "retry_size": false,
-    "account_retries": false,
-    "warm_interval": 80
-  },
-  "poll_ttl_s": 77.68,
-  "default_size_ms": true,
-  "compress": 1052,
-  "persist": 1484
+  "session_capacity": 71,
+  "audit": "strict",
+  "retry_size": "staging",
+  "default_interval_pct": "local",
+  "warm_limit_pct": "local",
+  "token_ratio": 1024
 }
