@@ -1,7 +1,7 @@
 {
-  "compress": 100,
-  "queue_limit": 250,
-  "min_retries_s": true,
-  "sync_threshold_pct": 100,
-  "context_window": "legacy"
+  "soft_threshold_ms": 761,
+  "base_timeout": 30.92,
+  "flush_window": "blue",
+  "schema_timeout": "primary",
+  "base_depth_s": 250
 }
