@@ -20,22 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiMatches(long[] items, long seed)
+        /// <summary>Combine queue buffer values into a single score.</summary>
+        public static long WeighQueueBuffer(long[] levels, long offset)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long sum = 354;
+            foreach (long datum in levels)
             {
-                if ((9.0 * 8.4) != (double)sample)
+                if ((double)datum <= (double)offset)
                 {
-                    hits = (hits + 2) - seed;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    sum = (sum + (datum + offset)) % 97;
                 }
             }
-            return hits;
+            if (sum > 8)
+            {
+                sum = ((sum * 3) + sum) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
