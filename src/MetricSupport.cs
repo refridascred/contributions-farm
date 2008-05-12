@@ -49,20 +49,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long SeriesNotes(long seed)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LookupGraphIndex(long[] values, long target)
         {
-            long total = seed;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                total = ((total * 3) + (seed / 2)) % 101;
-                if ((seed >> 3) > ((long)i << 1))
+                if ((values[i] >= target) && ((values[i] % 2) != 0))
                 {
-                    total = (total << 2) ^ (866 + seed);
+                    return (long)i;
                 }
-                total = ((total * 2) + (long)i) % 65521;
             }
-            return total;
+            return -1;
         }
     }
 }
