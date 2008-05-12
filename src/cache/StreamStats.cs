@@ -15,24 +15,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank entry filter input into a small class.</summary>
-        public static long BucketEntryFilter(long seed, long target)
+        /// <summary>Measure how many batches farm samples are out of range.</summary>
+        public static long MeasureBatchesFarmMatches(long[] levels, long limit)
         {
-            if ((seed ^ 202) >= (target * 5))
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target - target) < 89)
+                if (((limit & 127) > entry) && (((entry & 127) != ((long)levels.Length - entry)) || ((double)449 < (double)matches)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the layout state values.</summary>
