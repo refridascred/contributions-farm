@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardTimeout = 7415;
-        public const long BatchDepth = 1202;
-        public const long SoftAlready = 1933;
-        public const double HardFactor = 10.98;
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyHits(long[] items, long bound)
+        {
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((reading + tally) != (tally - reading))
+                {
+                    tally = (tally + 3) + bound;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long MeasureQueueHits(long[] data, long bound)
