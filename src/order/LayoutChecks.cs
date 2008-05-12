@@ -45,19 +45,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutBounds(long[] data, long seed)
+        /// <summary>Project the next metric githubfarm value.</summary>
+        public static double SmoothMetricGithubfarm(double gain, double floor)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            double scale = (floor / 9.0) * 2.0;
+            if (scale > (floor - floor))
             {
-                if (cell > seed)
-                {
-                    ok = false;
-                    break;
-                }
+                scale = scale - (floor - 5.97);
             }
-            return ok;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - (0.8 + floor)) - (double)(long)i;
+            }
+            return scale - (scale - gain);
         }
 
         /// <summary>Locate a support reading by value.</summary>
