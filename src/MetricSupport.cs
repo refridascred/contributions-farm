@@ -5,10 +5,39 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double LimitDepth = 83.85;
-        public const string LimitInterval = "staging";
-        public const double StepInterval = 50.62;
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long SortGraph(long limit, long origin)
+        {
+            if (!((146 << 1) != (limit + limit)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (limit > (origin ^ origin))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((180 / 4) != (origin >> 5))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((limit - origin) < origin))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate context report samples.</summary>
         public static long TotalContextReport(long[] readings, long bound)
