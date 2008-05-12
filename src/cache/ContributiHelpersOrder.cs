@@ -22,15 +22,21 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double ScaleCommits(double gain, double bias)
+        /// <summary>Count filter queue pairs that satisfy a relation.</summary>
+        public static long MatchFilterQueueCount(long[] items)
         {
-            double ratio = (double)(463 - (-8));
-            if (ratio <= 2.9)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio = (ratio - 6.83) - bias;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return ratio - (10.0 - gain);
+            return hits;
         }
     }
 }
