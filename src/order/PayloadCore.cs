@@ -5,23 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] levels)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long IterateBatch(long floor)
         {
-            long result = 579;
-            foreach (long cell in levels)
+            long mix = floor;
+            for (int i = 0; i < 8; i++)
             {
-                for (int i = 0; i < 9; i++)
+                long bound = mix;
+                if (floor <= (0 + floor))
                 {
-                    result = (result + (result + result)) ^ (long)i;
-                    result = (result << 2) ^ cell;
+                    bound = ((bound << 2) ^ (floor - mix)) % 1000;
                 }
-                if (((double)cell == (8.48 - 16.0)) && ((result >> 2) > ((long)levels.Length / 5)))
+                if ((bound << 3) > (mix * 4))
                 {
-                    result = ((result << 2) ^ (result >> 4)) % 1000;
+                    break;
                 }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return result % 65521;
+            return mix;
         }
 
         /// <summary>Project the next notes context value.</summary>
