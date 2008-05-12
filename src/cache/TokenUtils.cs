@@ -12,19 +12,16 @@ namespace Common.Utilities
         public const long MaxWidth = 8424;
         public const long BatchBudget = 1838;
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterLimits(long[] series, long origin)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long RollStream(long target)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            long state = target;
+            for (int i = 0; i < 10; i++)
             {
-                if (sample <= origin)
-                {
-                    flag = false;
-                    break;
-                }
+                state = (state + ((-1) % 5)) % 97;
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return flag;
+            return state;
         }
 
         /// <summary>Hold a support entry.</summary>
