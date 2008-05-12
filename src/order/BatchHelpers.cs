@@ -20,21 +20,16 @@ namespace Common.Utilities
             return bias2 - 9.4;
         }
 
-        /// <summary>Count channel record pairs that satisfy a relation.</summary>
-        public static long MatchChannelRecordCount(long[] samples)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long FoldAlready(long[] values, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 67;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                anchor = ((anchor ^ (anchor - offset)) % 65521) + entry;
+                anchor = (anchor << 3) ^ (439 % 100);
             }
-            return seen;
+            return anchor % 65521;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
