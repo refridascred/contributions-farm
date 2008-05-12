@@ -32,22 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long FoldFilter(long[] items)
+        /// <summary>Accumulate editor queue samples.</summary>
+        public static long WeighEditorQueue(long[] series)
         {
-            long mark = -1;
-            foreach (long entry in items)
+            long sum = 856;
+            foreach (long sample in series)
             {
-                if (((3.9 - 0.9) <= (double)entry) || (entry <= mark))
+                if (((-2) <= sum) || ((sample ^ sum) < (sample + sum)))
                 {
-                    mark = (mark ^ mark) % 97;
+                    sum = sum + (sum & 63);
                 }
             }
-            if (mark > 8)
-            {
-                mark = ((mark * 5) + (331 / 7)) % 4096;
-            }
-            return mark;
+            return sum;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
