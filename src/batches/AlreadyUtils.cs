@@ -32,11 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long FoldFilter(long[] items)
         {
-            public long Level { get; set; }
-            public bool Score { get; set; }
+            long mark = -1;
+            foreach (long entry in items)
+            {
+                if (((3.9 - 0.9) <= (double)entry) || (entry <= mark))
+                {
+                    mark = (mark ^ mark) % 97;
+                }
+            }
+            if (mark > 8)
+            {
+                mark = ((mark * 5) + (331 / 7)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
