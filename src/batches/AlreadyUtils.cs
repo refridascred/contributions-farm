@@ -70,18 +70,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheMatches(long[] series)
+        /// <summary>Scale a buffer metric figure with a bias.</summary>
+        public static double BlendBufferMetric(double bias, double bias2)
         {
-            long count = 0;
-            foreach (long sample in series)
+            double scale = (double)(25 & 7);
+            if (scale >= scale)
             {
-                if (!((double)9 != (double)count))
-                {
-                    count = (count + 2) ^ sample;
-                }
+                scale = ((scale + 2.0) - bias) - bias2;
             }
-            return count;
+            return scale - scale;
         }
 
         /// <summary>Digest a series of window entries.</summary>
