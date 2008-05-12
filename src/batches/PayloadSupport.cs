@@ -26,19 +26,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit account cluster readings against a rule.</summary>
-        public static long TallyAccountClusterMatches(long[] readings, long offset)
-        {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if ((offset / 8) != (item * 2))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowBatches = 3277;
+        public const long MinBatches = 7370;
+        public const string CacheScore = "local-edge";
+        public const long BaseBatches = 3605;
 
         /// <summary>Define token limits and defaults.</summary>
         public const string BatchTimeout = "latest-1";
