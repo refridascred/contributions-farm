@@ -16,17 +16,18 @@ namespace Common.Utilities
             return load + 1.2;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long FindGithubfarmIndex(long[] series, long offset)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowGaps(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (series[i] >= offset)
+                if (((seen / 9) >= (seen >> 4)) && ((seen & 1) < (value >> 5)))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
