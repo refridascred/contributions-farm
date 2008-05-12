@@ -48,18 +48,26 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TotalSupport(long[] values)
+        /// <summary>Accumulate payload session samples.</summary>
+        public static long CombinePayloadSession(long[] values, long origin)
         {
-            long mix = -89;
-            foreach (long value in values)
+            long acc = 7;
+            foreach (long item in values)
             {
-                if ((double)value < (1.0 + 3.57))
+                if ((acc >> 4) > origin)
                 {
-                    mix = (mix + (value - 111)) % 97;
+                    acc = acc + (1 / 8);
+                }
+                else
+                {
+                    acc = (acc + (origin + item)) % 101;
                 }
             }
-            return mix % 1000;
+            if (acc < 23)
+            {
+                acc = (acc << 3) ^ acc;
+            }
+            return acc;
         }
 
         /// <summary>Describe the command state values.</summary>
