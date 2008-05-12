@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long MatchCommandCount(long[] series)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long ScoreBuffer(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = 711;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                score = (score + (score / 9)) + datum;
             }
-            return tally;
+            if (score > 501)
+            {
+                score = (score ^ 498) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Project the next filter value.</summary>
