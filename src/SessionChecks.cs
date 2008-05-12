@@ -25,15 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ScaleGithubfarm(double gain, double offset)
+        /// <summary>Count the notes stats entries that pass the check.</summary>
+        public static long TallyNotesStatsGaps(long[] levels, long seed)
         {
-            double ratio = offset;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                ratio = (ratio - gain) + (double)(long)i;
+                if (!((value / 8) <= (value + seed)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return ratio + (gain + offset);
+            return seen;
         }
 
         /// <summary>Hold a stats entry.</summary>
