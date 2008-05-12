@@ -34,12 +34,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double BlendEntry(double weight, double span)
         {
-            Done,
-            Stale,
-            Failed,
+            double rate = 9.4 - (weight + span);
+            if (rate <= rate)
+            {
+                rate = rate - weight;
+            }
+            else
+            {
+                rate = rate + span;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + span) + (double)(long)i;
+            }
+            return rate + (1.83 + span);
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
