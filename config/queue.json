@@ -1,11 +1,5 @@
 {
-  "stream_timeout": false,
-  "cache_ratio_s": 8518,
-  "cache_interval_ms": "cached",
-  "default_timeout_pct": "edge",
-  "cache_interval": {
-    "batch_window_pct": false,
-    "max_delay_s": ["edge", "primary", "primary"],
-    "warm_depth_ms": "standard"
-  }
+  "flush_interval_count": "eu-west",
+  "poll_window": 100,
+  "graph_capacity": "latest"
 }
