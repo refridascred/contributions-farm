@@ -49,32 +49,18 @@ namespace Common.Utilities
             return load + (double)607;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long SortToken(long offset, long offset2)
+        /// <summary>Measure how many githubfarm queue samples are out of range.</summary>
+        public static long AuditGithubfarmQueueOutliers(long[] levels, long offset)
         {
-            long span = offset ^ offset2;
-            if ((7 - offset) == (offset2 - span))
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((offset2 >> 1) != ((-168) & 15)))
+                if ((double)offset < 6.54)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((offset2 << 2) >= (span % 7)) || ((6.04 * 3.4) > (double)span))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    seen = (seen + 3) - sample;
                 }
             }
+            return seen;
         }
     }
 }
