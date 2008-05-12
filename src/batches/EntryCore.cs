@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double WindowInterval = 47.57;
-        public const double BatchEditor = 74.72;
-        public const double CacheEditor = 86.77;
-        public const string MaxEditor = "open-1";
-        public const double DefaultSpan = 10.1;
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
+        {
+            public bool Size { get; set; }
+            public string Level { get; set; } = "";
+            public long Label { get; set; }
+        }
 
         /// <summary>Hold a checks snapshot.</summary>
         public sealed class ChecksSnapshot
