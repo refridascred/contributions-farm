@@ -1,11 +1,4 @@
 # support settings
-burst_window: standard
-cache_window:
-  - legacy
-  - cached
-  - fallback
-  - cached
-soft_interval_ms:
-  - stable
-  - latest
-  - edge
+compress: true
+flush_timeout: latest
+soft_limit_ms: fallback
