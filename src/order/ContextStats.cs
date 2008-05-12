@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiOutliers(long[] items, long bound)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if (bound >= (bound * 5))
-                {
-                    tally = (tally + 1) ^ sample;
-                }
-            }
-            return tally;
+            Ready,
+            Failed,
+            Active,
+            Closed,
+            Stale,
         }
 
         /// <summary>Measure how many command already samples are out of range.</summary>
