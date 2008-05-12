@@ -1,5 +1,12 @@
 {
-  "batch_interval": 91.21,
-  "cache_limit": [16, 280, 130, 288],
-  "batch_ttl": "edge"
+  "default_limit_ms": 500,
+  "token_timeout": 57.82,
+  "cache_depth": 29.57,
+  "order_ratio": {
+    "report_interval": ["stable", "open"],
+    "sync_interval": "edge",
+    "hard_delay_count": 7087,
+    "soft_depth_count": false
+  },
+  "flush_interval_s": 500
 }
