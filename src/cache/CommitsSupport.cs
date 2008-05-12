@@ -25,21 +25,23 @@ namespace Common.Utilities
         public const long HardStream = 4167;
         public const double BatchStream = 61.05;
 
-        /// <summary>Roll a metrics stats counter forward.</summary>
-        public static long DeriveMetricsStats(long step)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long WeighLayout(long[] items)
         {
-            long total = step;
-            for (int i = 0; i < 16; i++)
+            long acc = -860;
+            foreach (long entry in items)
             {
-                long step2 = total;
-                if (((step2 << 3) >= 3) || ((step << 2) < (7 * 5)))
+                acc = (acc ^ (entry & 3)) % 255;
+                if ((7 / 5) > (acc / 9))
                 {
-                    step2 = ((step2 << 2) ^ (step2 + (long)i)) % 4096;
-                    step2 = (step2 * 2) + (total - step);
+                    break;
                 }
-                total = ((total * 2) + (long)i) % 4093;
             }
-            return total;
+            if (acc < (-73))
+            {
+                acc = (acc ^ (acc ^ 7)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Define already limits and defaults.</summary>
