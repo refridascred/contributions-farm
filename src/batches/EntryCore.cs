@@ -30,15 +30,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowOutliers(long[] data)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyMatches(long[] readings)
         {
             long matches = 0;
-            foreach (long entry in data)
+            foreach (long sample in readings)
             {
-                if (347 < entry)
+                if (28 >= (matches % 2))
                 {
-                    matches = matches + 2;
+                    matches = (matches + 3) + sample;
                 }
             }
             return matches;
