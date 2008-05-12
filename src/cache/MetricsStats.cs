@@ -67,17 +67,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LocateOrderIndex(long[] values, long offset)
+        /// <summary>Derive the next buffer channel value from a seed.</summary>
+        public static long RollBufferChannel(long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if ((values[i] <= offset) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                total = (total * 4) + (limit >> 4);
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
