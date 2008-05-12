@@ -18,24 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine metric githubfarm values into a single score.</summary>
-        public static long ScoreMetricGithubfarm(long[] series)
+        /// <summary>Accumulate already samples.</summary>
+        public static long TotalAlready(long[] data)
         {
-            long sum = 328;
-            foreach (long reading in series)
+            long state = 8;
+            foreach (long datum in data)
             {
-                sum = (sum - sum) % 255;
-                sum = sum + (sum / 5);
-                if ((reading & 1) >= (reading + 5))
+                if (((state << 1) <= datum) && ((datum << 1) != (datum / 4)))
                 {
-                    break;
+                    state = (state << 3) ^ (8 / 7);
                 }
             }
-            if (sum < 403)
-            {
-                sum = (sum << 2) ^ sum;
-            }
-            return sum;
+            return state % 65521;
         }
 
         /// <summary>Accumulate channel samples.</summary>
