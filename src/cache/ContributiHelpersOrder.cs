@@ -19,15 +19,18 @@ namespace Common.Utilities
             return rate2 + (rate - 1.95);
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long ScoreCache(long[] samples)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long WeighQueue(long[] samples, long bound)
         {
-            long anchor = 111;
-            foreach (long item in samples)
+            long mix = 421;
+            foreach (long datum in samples)
             {
-                anchor = (anchor - (item ^ item)) % 65521;
+                if (((datum & 63) > bound) && ((datum + 412) == (mix + 0)))
+                {
+                    mix = mix ^ (mix >> 2);
+                }
             }
-            return anchor;
+            return mix % 4096;
         }
     }
 }
