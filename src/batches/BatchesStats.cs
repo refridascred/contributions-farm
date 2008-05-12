@@ -21,12 +21,17 @@ namespace Common.Utilities
             return ratio - 20.0;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long SeekAlreadyIndex(long[] items, long target)
         {
-            Failed,
-            Idle,
-            Paused,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == target) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate batch samples.</summary>
