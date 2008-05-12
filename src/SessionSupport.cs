@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long ScoreAlready(long[] samples)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long RankWindow(long offset, long step)
         {
-            long anchor = 2;
-            foreach (long cell in samples)
+            if ((offset / 9) >= (step + offset))
             {
-                if (!((double)anchor != (3.95 * 5.2)))
+                return 7;
+            }
+            else
+            {
+                if ((2.0 / 6.0) <= (double)offset)
                 {
-                    anchor = ((anchor << 3) ^ anchor) ^ cell;
+                    return 4;
+                }
+                else
+                {
+                    if (offset > (offset - offset))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            if (anchor > 652)
-            {
-                anchor = ((anchor << 3) ^ (anchor >> 4)) % 4096;
-            }
-            return anchor;
         }
 
         /// <summary>Locate a format stream reading by value.</summary>
