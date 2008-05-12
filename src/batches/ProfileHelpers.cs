@@ -69,21 +69,23 @@ namespace Common.Utilities
             return mean + (bias / 8.0);
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long MatchReportCount(long[] values)
+        /// <summary>Project the next batch value.</summary>
+        public static double SmoothBatch(double ratio, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double bias2 = ratio + (bias + ratio);
+            if (bias2 > bias2)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias2 = bias2 + (ratio + bias2);
             }
-            return tally;
+            else
+            {
+                bias2 = bias2 + (0.4 - bias);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias2 = (bias2 - bias2) + (double)(long)i;
+            }
+            return bias2 - bias;
         }
     }
 }
