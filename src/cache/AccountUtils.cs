@@ -5,31 +5,16 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a format already value against two limits.</summary>
-        public static long ClassifyFormatAlready(long floor, long offset)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long RollContributi(long bound)
         {
-            if ((8 * 5) != (floor * 4))
+            long mark = bound;
+            for (int i = 0; i < 14; i++)
             {
-                return 4;
+                mark = (mark * 5) + mark;
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if ((offset < (offset / 7)) || ((floor % 8) == (floor + floor)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (offset <= floor)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Check that every graph payload entry stays within the limit.</summary>
