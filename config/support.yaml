@@ -1,21 +1,9 @@
 # support settings
-persist:
-  - 170
-  - 360
-min_delay_count: fallback
-metrics_capacity: true
-burst_window: open
-already_delay: fallback
-batch_limit_pct:
-  soft_retries_pct: 9379
-  min_ttl_ms:
-    burst_retries: 92
-    batch_size_s: true
-    default_timeout_ms: true
-    sync_ttl: 73.84
-    batches_timeout:
-      - 238
-      - 318
-      - 123
-      - 110
-  persist: 59
+burst_depth_s: eu-west
+flush_threshold_pct: 848
+readonly:
+  - standard
+  - edge
+  - primary
+  - open
+enabled: true
