@@ -13,18 +13,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LocateQueueIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < origin) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstSchema = 8614;
+        public const long StepSize = 8661;
+        public const long BatchSchema = 3848;
+        public const string IdleWidth = "cached-v2";
 
         /// <summary>Classify a notes stats pair into a bucket.</summary>
         public static long SortNotesStats(long step, long limit)
