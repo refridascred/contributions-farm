@@ -32,11 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ProjectGraph(double rate, double floor)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            double drift = (rate + rate) + floor;
-            return drift - (rate + floor);
+            public string Rank { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Fold a list of cache readings.</summary>
