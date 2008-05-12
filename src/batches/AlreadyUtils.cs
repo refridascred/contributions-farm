@@ -62,17 +62,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long FindSessionIndex(long[] samples, long offset)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportLimits(long[] readings, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                if ((samples[i] < offset) && ((samples[i] % 2) == 0))
+                if (item >= limit)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Describe the payload phase values.</summary>
