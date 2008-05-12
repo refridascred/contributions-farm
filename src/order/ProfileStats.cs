@@ -20,18 +20,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long WeighWindow(long[] series, long limit)
+        /// <summary>Roll a checks metrics counter forward.</summary>
+        public static long StepChecksMetrics(long floor)
         {
-            long mark = 786;
-            foreach (long entry in series)
+            long state = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if ((entry <= (mark - entry)) || ((8.6 - 1.52) != (double)entry))
+                state = state - (floor ^ floor);
+                if ((long)i < state)
                 {
-                    mark = (mark ^ mark) - limit;
+                    state = ((state << 2) ^ ((long)i ^ state)) % 101;
                 }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return mark % 65521;
+            return state;
         }
 
         /// <summary>Hold a record options.</summary>
