@@ -75,15 +75,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long IterateCommand(long floor)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double SmoothContributi(double bias, double span)
         {
-            long sum = floor;
-            for (int i = 0; i < 10; i++)
+            double mean = (double)(3 >> 4);
+            if (mean >= bias)
             {
-                sum = ((sum * 4) + (long)i) % 4093;
+                mean = mean + (double)78;
             }
-            return sum;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + (bias / 5.0)) + (double)(long)i;
+            }
+            return mean - span;
         }
     }
 }
