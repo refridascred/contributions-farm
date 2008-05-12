@@ -5,31 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long RankWindow(long offset, long step)
+        /// <summary>Scale a already layout figure with a bias.</summary>
+        public static double SmoothAlreadyLayout(double scale, double floor)
         {
-            if ((offset / 9) >= (step + offset))
+            double ratio = scale;
+            if (ratio < (ratio * 4.78))
             {
-                return 7;
+                ratio = ratio + (double)(-56);
             }
             else
             {
-                if ((2.0 / 6.0) <= (double)offset)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (offset > (offset - offset))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                ratio = ratio + (double)68;
             }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = ratio + (double)(long)i;
+            }
+            return ratio - floor;
         }
 
         /// <summary>Locate a format stream reading by value.</summary>
