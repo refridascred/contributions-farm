@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueLimits(long[] levels, long step)
         {
-            Closed,
-            Draft,
-            New,
-            Stale,
-            Pending,
+            bool flag = true;
+            foreach (long entry in levels)
+            {
+                if (entry != step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the commits level values.</summary>
