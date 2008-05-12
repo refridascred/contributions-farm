@@ -22,16 +22,24 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long DigestTools(long[] levels, long offset)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long RankToken(long bound, long limit)
         {
-            long mark = 4;
-            foreach (long item in levels)
+            if (((bound ^ bound) < (bound + limit)) || (limit >= (bound >> 3)))
             {
-                mark = (((mark ^ (mark % 5)) % 1000) - item) - offset;
-                mark = (mark - (68 << 1)) % 255;
+                return 6;
             }
-            return mark % 65521;
+            else
+            {
+                if ((2.22 * 9.0) < (double)bound)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
