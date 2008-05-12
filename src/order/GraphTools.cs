@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsGaps(long[] readings, long step)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutRange(long[] data, long bound)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                if (!((step % 5) > 610))
+                if (entry >= bound)
                 {
-                    count = (count + 1) + entry;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
