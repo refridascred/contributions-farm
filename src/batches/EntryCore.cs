@@ -13,13 +13,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphLimits(long[] samples, long step)
         {
-            public long Region { get; set; }
-            public double Label { get; set; }
-            public bool Mode { get; set; }
-            public string Count { get; set; } = "";
+            bool ready = true;
+            foreach (long cell in samples)
+            {
+                if (cell != step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
