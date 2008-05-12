@@ -39,17 +39,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a metric buffer reading by value.</summary>
-        public static long SeekMetricBufferIndex(long[] levels, long offset)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsLimits(long[] samples, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                if (levels[i] == offset)
+                if (datum >= floor)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
