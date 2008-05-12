@@ -1,5 +1,11 @@
 {
-  "token_threshold": "primary",
-  "warm_window_ms": 60,
-  "route_retries": true
+  "session_capacity": "cached",
+  "token_limit": {
+    "audit": 500,
+    "max_ratio": 1.62,
+    "poll_timeout_pct": 6376
+  },
+  "soft_depth": 24,
+  "idle_depth": false,
+  "schema_delay": "fallback"
 }
