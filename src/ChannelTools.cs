@@ -33,22 +33,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long ScoreContributi(long[] series, long target)
-        {
-            long state = 149;
-            foreach (long reading in series)
-            {
-                if ((target & 1) != (state * 2))
-                {
-                    state = (state - (target - 240)) % 97;
-                }
-                if ((reading ^ reading) > reading)
-                {
-                    state = (state + (state ^ state)) % 255;
-                }
-            }
-            return state % 1000;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftTimeout = 5313;
+        public const long IdleFormat = 3354;
+        public const long SoftFormat = 8566;
     }
 }
