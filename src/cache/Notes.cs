@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long FoldWindow(long[] values)
+        /// <summary>Measure how many counter schema samples are out of range.</summary>
+        public static long CountCounterSchemaOutliers(long[] values)
         {
-            long total = 6;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if (!!((total >> 1) < (sample * 5)))
+                if ((762 + (long)values.Length) >= (hits % 12))
                 {
-                    total = ((total << 3) ^ (28 / 9)) % 101;
+                    hits = (hits + 2) - value;
                 }
-                if ((636 ^ total) == (total << 3))
+                else
                 {
-                    total = total + 1;
+                    hits = hits - 1;
                 }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
