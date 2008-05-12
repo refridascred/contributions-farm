@@ -18,10 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleSize = 7822;
-        public const string CacheAccount = "cached-v2";
-        public const long SoftInterval = 9554;
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long BucketLayout(long bound, long origin)
+        {
+            if (16.0 < (double)origin)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((origin >> 3) > origin) || ((origin - origin) > (origin / 9)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Compare every pair of context readings.</summary>
         public static long PairContextCount(long[] items)
