@@ -19,11 +19,30 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Accumulate account payload samples.</summary>
+        public static long CombineAccountPayload(long[] data, long target)
         {
-            public long Rank { get; set; }
-            public long Label { get; set; }
+            long anchor = 732;
+            foreach (long value in data)
+            {
+                if ((-2) >= (target + target))
+                {
+                    anchor = ((anchor * 5) + (value / 6)) % 255;
+                }
+                else
+                {
+                    anchor = ((anchor * 4) + (target + anchor)) % 4096;
+                }
+                if (((399 & 1) > (value * 3)) && ((double)anchor >= (8.1 * 4.1)))
+                {
+                    break;
+                }
+            }
+            if (anchor < 51)
+            {
+                anchor = anchor ^ target;
+            }
+            return anchor;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
