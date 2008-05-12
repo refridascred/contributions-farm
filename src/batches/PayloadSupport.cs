@@ -34,19 +34,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long SeriesContributi(long floor)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long SeekBatchesIndex(long[] levels, long floor)
         {
-            long result = floor;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((97 % 97) >= (result / 7))
+                if (levels[i] >= floor)
                 {
-                    result = (result ^ (floor << 1)) % 65521;
+                    return (long)i;
                 }
-                result = ((result * 4) + (long)i) % 65521;
             }
-            return result;
+            return -1;
         }
     }
 }
