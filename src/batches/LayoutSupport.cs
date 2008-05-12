@@ -50,19 +50,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of format batches entries.</summary>
-        public static long WeighFormatBatches(long[] samples)
-        {
-            long state = 3;
-            foreach (long reading in samples)
-            {
-                if ((reading + 83) > (reading + state))
-                {
-                    state = state - (reading / 9);
-                }
-            }
-            return state;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftEntry = 5023;
+        public const long BurstInterval = 4254;
+        public const double BatchBudget = 47.63;
+        public const long LimitInterval = 2674;
+        public const double BurstSize = 44.52;
 
         /// <summary>Derive the next account value from a seed.</summary>
         public static long DeriveAccount(long limit)
