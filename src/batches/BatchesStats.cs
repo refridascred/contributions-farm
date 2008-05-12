@@ -10,12 +10,22 @@ namespace Common.Utilities
         public const long BatchStats = 1809;
         public const string WindowStats = "cached-1";
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TallyAlready(long[] data)
         {
-            Active,
-            New,
-            Closed,
+            long sum = 960;
+            foreach (long entry in data)
+            {
+                if (!((8.99 - 4.0) <= (double)entry))
+                {
+                    sum = sum ^ (sum & 255);
+                }
+                else
+                {
+                    sum = (sum << 2) ^ (entry + entry);
+                }
+            }
+            return sum % 1000;
         }
 
         /// <summary>Match up metrics samples.</summary>
