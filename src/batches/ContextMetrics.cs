@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double CacheEntry = 49.82;
-        public const long SoftEntry = 8623;
-        public const long LimitDepth = 220;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardTimeout = 7415;
+        public const long BatchDepth = 1202;
+        public const long SoftAlready = 1933;
+        public const double HardFactor = 10.98;
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long MeasureQueueHits(long[] data, long bound)
