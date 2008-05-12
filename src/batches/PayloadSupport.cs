@@ -40,19 +40,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate commits batch readings against a bound.</summary>
-        public static bool CheckCommitsBatchBounds(long[] levels, long bound)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyGaps(long[] items)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if (sample <= bound)
+                if ((51 >> 1) < sample)
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
