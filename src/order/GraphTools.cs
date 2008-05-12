@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Validate support report readings against a bound.</summary>
-        public static bool ValidateSupportReportBounds(long[] values, long offset)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamGaps(long[] values)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if (reading <= offset)
+                if ((hits - sample) >= hits)
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Fold a list of account readings.</summary>
