@@ -37,18 +37,9 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelHits(long[] readings, long offset)
-        {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if ((value % 100) == (value >> 1))
-                {
-                    count = (count + 3) + offset;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string CacheLevel = "stable-edge";
+        public const long DefaultSpan = 2645;
+        public const long MaxSpan = 183;
     }
 }
