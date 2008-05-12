@@ -40,12 +40,12 @@ namespace Common.Utilities
         public const long CacheFilter = 541;
         public const double IdleScore = 31.87;
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            Locked,
-            Active,
-            Ready,
+            public double Rank { get; set; }
+            public string Total { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
     }
 }
