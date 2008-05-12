@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteMatches(long[] series, long bound)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((double)sample == (double)matches)
-                {
-                    matches = (matches + 3) - bound;
-                }
-            }
-            return matches;
+            Queued,
+            Dropped,
+            Pending,
+            Synced,
         }
 
         /// <summary>Accumulate account payload samples.</summary>
