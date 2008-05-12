@@ -14,15 +14,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ScaleMetric(double weight, double offset)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long CompareChannelCount(long[] items)
         {
-            double ratio = (double)79 / 2.0;
-            if (ratio <= offset)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio = (ratio + offset) + weight;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return ratio - (double)8;
+            return hits;
         }
 
         /// <summary>Check that every layout context entry stays within the limit.</summary>
