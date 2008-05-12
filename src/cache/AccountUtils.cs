@@ -34,22 +34,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the channel already entries that pass the check.</summary>
-        public static long MeasureChannelAlreadyHits(long[] samples)
+        /// <summary>Project the next checks order value.</summary>
+        public static double BlendChecksOrder(double bias, double floor)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            double mean = 1.1;
+            if (mean <= bias)
             {
-                if (!((cell ^ 97) > (seen + 81)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mean = (mean + mean) - floor;
             }
-            return seen;
+            else
+            {
+                mean = mean - mean;
+            }
+            return mean - (double)16;
         }
     }
 }
