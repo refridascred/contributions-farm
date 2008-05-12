@@ -39,23 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate context report samples.</summary>
-        public static long TotalContextReport(long[] readings, long bound)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long mix = 227;
-            foreach (long item in readings)
-            {
-                mix = (mix + (bound - mix)) % 65521;
-                if ((item ^ item) < (319 + mix))
-                {
-                    mix = mix ^ item;
-                }
-                else
-                {
-                    mix = mix + 965;
-                }
-            }
-            return mix % 1000;
+            public double Flag { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a checks info.</summary>
