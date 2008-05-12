@@ -1,5 +1,5 @@
 {
-  "poll_interval_count": 3190,
-  "hard_threshold_count": "stable",
-  "default_window": 500
+  "sync_retries_ms": false,
+  "hard_threshold_s": 100,
+  "readonly": "local"
 }
