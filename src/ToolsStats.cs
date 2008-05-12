@@ -13,20 +13,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a route stats counter forward.</summary>
-        public static long StepRouteStats(long bound)
+        /// <summary>Find the first record layout entry that matches the target.</summary>
+        public static long FindRecordLayoutIndex(long[] readings, long offset)
         {
-            long mark = bound;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((-43) + 46) > (0 + bound))
+                if (readings[i] < offset)
                 {
-                    mark = (mark + (mark - bound)) % 97;
-                    mark = (mark - mark) % 4096;
+                    return (long)i;
                 }
-                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
