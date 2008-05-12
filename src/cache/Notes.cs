@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string StepInterval = "cached";
-        public const long BaseCluster = 244;
-        public const long BurstDepth = 5550;
-        public const long SoftWidth = 8627;
-        public const long MaxScore = 4100;
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long OverlapFormatCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Grade a route schema value against two limits.</summary>
         public static long ClassifyRouteSchema(long target, long bound)
