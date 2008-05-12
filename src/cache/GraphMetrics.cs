@@ -45,19 +45,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsRange(long[] samples, long step)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            bool found = true;
-            foreach (long item in samples)
-            {
-                if (item != step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Count { get; set; }
+            public bool Label { get; set; }
+            public string Score { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
