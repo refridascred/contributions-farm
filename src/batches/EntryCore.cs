@@ -51,24 +51,19 @@ namespace Common.Utilities
             return ratio - span;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long RankTools(long offset, long floor)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowRange(long[] readings, long offset)
         {
-            if ((64 % 100) <= (floor + offset))
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((15 - floor) >= offset)
+                if (cell <= offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Audit entry layout readings against a rule.</summary>
