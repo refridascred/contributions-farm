@@ -44,17 +44,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LookupEditorIndex(long[] levels, long bound)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long WeighAlready(long[] values, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 0;
+            foreach (long entry in values)
             {
-                if (levels[i] >= bound)
+                mark = ((mark ^ (mark << 3)) % 4096) - seed;
+                if ((mark + entry) == (mark / 7))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return mark;
         }
     }
 }
