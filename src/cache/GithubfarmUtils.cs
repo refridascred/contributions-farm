@@ -59,17 +59,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long FindFarmIndex(long[] levels, long origin)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= origin) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Paused,
+            Queued,
+            Ready,
+            Pending,
         }
     }
 }
