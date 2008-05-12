@@ -32,19 +32,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Check that every stream cluster entry stays within the limit.</summary>
-        public static bool ValidateStreamClusterBounds(long[] values, long target)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaLimits(long[] items, long floor)
         {
-            bool found = true;
-            foreach (long item in values)
+            bool ready = true;
+            foreach (long value in items)
             {
-                if (item >= target)
+                if (value <= floor)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
