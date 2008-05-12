@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Iterate the route queue series from a seed.</summary>
+        public static long DeriveRouteQueue(long floor)
         {
-            public double Stamp { get; set; }
-            public bool Flag { get; set; }
+            long result = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                result = (result - floor) % 97;
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
