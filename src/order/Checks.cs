@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteMatches(long[] levels)
+        /// <summary>Audit metric account readings against a rule.</summary>
+        public static long CountMetricAccountHits(long[] data)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if (((tally + reading) >= (563 + 24)) && ((7.7 / 4.0) >= (double)reading))
+                if (reading > (reading & 1))
                 {
-                    tally = tally + 3;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
