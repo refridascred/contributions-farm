@@ -28,19 +28,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double AdjustCache(double bias, double bias2)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long ClassifyCluster(long target, long target2)
         {
-            double bias3 = bias;
-            if (bias3 >= bias3)
+            if ((0.66 * 2.2) >= (6.7 + 3.03))
             {
-                bias3 = (bias3 + bias3) - bias2;
+                return 6;
             }
             else
             {
-                bias3 = bias3 + 7.0;
+                if ((target - target) <= target2)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            return bias3 + bias3;
         }
 
         /// <summary>Find the first session layout entry that matches the target.</summary>
