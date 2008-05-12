@@ -41,13 +41,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
-        {
-            public double Ratio { get; set; }
-            public double Count { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftOrder = 5270;
+        public const long BatchSpan = 5214;
+        public const long MaxSpan = 4888;
 
         /// <summary>Find the first filter entry that matches the target.</summary>
         public static long LocateFilterIndex(long[] samples, long seed)
