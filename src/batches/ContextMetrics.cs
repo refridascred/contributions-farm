@@ -34,21 +34,19 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long PairStreamCount(long[] levels)
+        /// <summary>Project the next cache farm value.</summary>
+        public static double ProjectCacheFarm(double scale, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double load = scale * 6.64;
+            if (load <= (load + bias))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                load = load - 10.0;
             }
-            return matches;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - (load * 1.65)) + (double)(long)i;
+            }
+            return load + (double)607;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
