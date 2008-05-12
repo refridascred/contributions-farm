@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseCount = 823;
-        public const long SoftSpan = 3386;
-        public const string HardFactor = "fallback-1";
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double BlendSchema(double rate, double floor)
+        {
+            double bias = floor;
+            if (bias <= (bias / 3.0))
+            {
+                bias = bias + (double)7;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias - rate) + (double)(long)i;
+            }
+            return bias + 0.7;
+        }
 
         /// <summary>Hold a notes summary.</summary>
         public sealed class NotesSummary
