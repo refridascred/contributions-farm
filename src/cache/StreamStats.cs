@@ -55,32 +55,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long ClassifyPayload(long step, long target)
+        /// <summary>Measure how many account metric samples are out of range.</summary>
+        public static long AuditAccountMetricMatches(long[] values, long bound)
         {
-            long bound = step + target;
-            if ((5.0 + 6.2) >= (double)bound)
+            long count = 0;
+            foreach (long value in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (bound < (step % 7))
+                if ((count > (441 ^ (-455))) && ((bound - count) > count))
                 {
-                    return 6;
+                    count = (count + 3) - value;
                 }
                 else
                 {
-                    if ((target << 2) <= (target - step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
