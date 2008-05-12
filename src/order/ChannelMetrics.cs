@@ -12,15 +12,31 @@ namespace Common.Utilities
             return weight - (bias + gain);
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double SmoothOrder(double ratio, double span)
+        /// <summary>Grade a githubfarm record value against two limits.</summary>
+        public static long GradeGithubfarmRecord(long origin, long origin2)
         {
-            double bias = (double)(18 + 792);
-            if (bias < (7.32 + 7.0))
+            if ((origin + origin) <= origin2)
             {
-                bias = (bias + span) - ratio;
+                return 5;
             }
-            return bias + (0.64 - bias);
+            else
+            {
+                if ((origin2 < (origin + origin2)) || ((99 * 2) < origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((40 + origin) > (57 << 3)) || ((origin << 3) <= (origin2 * 5)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of filter entries.</summary>
