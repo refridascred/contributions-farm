@@ -20,19 +20,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutRange(long[] values, long origin)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long WeighFilter(long[] samples, long target)
         {
-            bool stale = true;
-            foreach (long value in values)
+            long result = 813;
+            foreach (long cell in samples)
             {
-                if (value > origin)
+                result = ((result - (long)samples.Length) % 4096) - target;
+                result = (result * 3) + (cell - cell);
+                if (!((2.0 / 6.0) < (double)result))
                 {
-                    stale = false;
                     break;
                 }
             }
-            return stale;
+            return result % 1000;
         }
 
         /// <summary>Adjust a batches reading.</summary>
