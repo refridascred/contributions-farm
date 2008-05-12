@@ -24,21 +24,32 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count filter queue pairs that satisfy a relation.</summary>
-        public static long MatchFilterQueueCount(long[] items)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long SortNotes(long limit, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long span = limit ^ floor;
+            if (((floor & 63) <= (7 << 2)) && ((span ^ 357) == (5 / 4)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((floor > (span / 5)) || ((floor >> 3) >= limit))
                 {
-                    if ((items[i] ^ items[j]) != 18)
+                    return 2;
+                }
+                else
+                {
+                    if (floor >= (floor + span))
                     {
-                        hits = hits + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return hits;
         }
     }
 }
