@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepTimeout = 1914;
-        public const long BaseLayout = 5720;
-        public const long CacheLayout = 9264;
-        public const string MinLayout = "latest-edge";
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileHits(long[] series)
+        {
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if ((((double)hits < (8.2 * 6.1)) && ((value / 6) > value)) && ((162 + value) < (value + value)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long TallyLayoutGaps(long[] levels, long floor)
