@@ -35,14 +35,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
-        {
-            public long Region { get; set; }
-            public string Level { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double HardEditor = 73.65;
+        public const long DefaultSize = 8977;
+        public const long WindowEditor = 1465;
+        public const long BaseEditor = 5625;
+        public const double LimitBudget = 18.65;
 
         /// <summary>Accumulate counter samples.</summary>
         public static long WeighCounter(long[] items)
