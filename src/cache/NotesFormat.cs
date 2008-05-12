@@ -14,16 +14,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long SeriesSchema(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinSchema = 3022;
+        public const string StepSchema = "alpha-1";
+        public const double MaxSchema = 55.73;
 
         /// <summary>Hold a command summary.</summary>
         public sealed class CommandSummary
