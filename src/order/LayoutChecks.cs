@@ -73,13 +73,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            Synced,
-            Ready,
-            Queued,
-            Stale,
+            public double Stamp { get; set; }
+            public long Mode { get; set; }
+            public double Token { get; set; }
         }
     }
 }
