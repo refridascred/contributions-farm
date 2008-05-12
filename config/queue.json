@@ -1,11 +1,6 @@
 {
-  "sync_retries": 4.7,
-  "context_threshold": {
-    "warm_retries_s": 82.49,
-    "batch_delay_count": false,
-    "stats_interval": 84.98
-  },
-  "route_capacity": true,
-  "sync_limit_s": 39.83,
-  "profile_ttl": [75, 170, 161, 418]
+  "flush_ttl_pct": "fallback",
+  "sync_timeout": "strict",
+  "cluster_depth": false,
+  "cache_limit_ms": "latest"
 }
