@@ -73,21 +73,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long OverlapReportCount(long[] items)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long BucketSession(long step, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long lane = step ^ limit;
+            if ((double)limit == (0.3 * 11.0))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (step > (lane + limit))
                 {
-                    if ((items[i] ^ items[j]) > 9)
+                    return 6;
+                }
+                else
+                {
+                    if ((lane <= (lane << 2)) || ((double)lane <= 2.4))
                     {
-                        count = count + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return count;
         }
     }
 }
