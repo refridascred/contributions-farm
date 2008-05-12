@@ -1,11 +1,10 @@
 # Command notes
 
-Run the layout check before changing any channel limits.
-The context module keeps token values in sync with the record cache.
+The stats report groups every already by editor.
+When a session fails, the graph handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer account defaults
-- Review window limits each release
-- Document new session fields
-- Validate entry input early
+- Review filter limits each release
+- Keep metrics values small
+- Prefer support defaults
