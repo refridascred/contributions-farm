@@ -43,17 +43,22 @@ namespace Common.Utilities
         public const long BurstSchema = 5174;
         public const long SoftSize = 8637;
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long FindGraphIndex(long[] series, long seed)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchOutliers(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if ((series[i] < seed) && ((series[i] % 3) == 0))
+                if (matches <= (963 >> 5))
                 {
-                    return (long)i;
+                    matches = (matches + 1) ^ entry;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Check that every order stream entry stays within the limit.</summary>
