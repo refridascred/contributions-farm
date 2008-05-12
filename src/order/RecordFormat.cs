@@ -23,19 +23,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long DeriveMetric(long limit)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long FindBatchesIndex(long[] series, long origin)
         {
-            long total = limit;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((limit + total) <= ((long)i + (long)i))
+                if (series[i] > origin)
                 {
-                    total = (total << 3) ^ ((long)i - 96);
+                    return (long)i;
                 }
-                total = ((total * 3) + (long)i) % 101;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Describe the command class values.</summary>
