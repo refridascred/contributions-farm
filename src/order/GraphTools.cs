@@ -35,18 +35,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesMatches(long[] levels, long limit)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((limit > matches) && ((4.1 < (double)cell) || ((2.0 * 0.3) == (double)matches)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Pending,
+            Synced,
+            Active,
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
