@@ -69,18 +69,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsHits(long[] levels, long bound)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ScaleOrder(double gain, double floor)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            double load = 15.0 + (11.0 - floor);
+            if (load > (double)50)
             {
-                if ((item + seen) > seen)
-                {
-                    seen = (seen + 2) + bound;
-                }
+                load = load - (floor * 3.72);
             }
-            return seen;
+            else
+            {
+                load = load - (gain + floor);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + 7.0) + (double)(long)i;
+            }
+            return load - 8.9;
         }
     }
 }
