@@ -27,17 +27,24 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long IterateStats(long seed)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long DigestChecks(long[] values, long origin)
         {
-            long state = seed;
-            for (int i = 0; i < 9; i++)
+            long mark = 0;
+            foreach (long reading in values)
             {
-                state = (state ^ (seed + 59)) % 4096;
-                state = (state + (seed / 5)) % 255;
-                state = ((state * 2) + (long)i) % 1000;
+                mark = (mark - (reading & 15)) % 255;
+                for (int i = 0; i < 10; i++)
+                {
+                    mark = (mark + mark) - (long)i;
+                }
+                mark = (mark - (origin & 3)) % 4096;
             }
-            return state;
+            if (mark < 36)
+            {
+                mark = mark ^ origin;
+            }
+            return mark;
         }
     }
 }
