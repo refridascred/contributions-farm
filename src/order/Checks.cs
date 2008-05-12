@@ -67,28 +67,28 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long GradeFilter(long target, long origin)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long GradeBatches(long origin, long target)
         {
-            if (target > (origin % 64))
+            if ((double)target <= (6.0 - 2.7))
             {
-                return 5;
+                return 6;
             }
             else
             {
-                if (!((origin % 60) > origin))
+                if ((target & 7) > (target + origin))
                 {
-                    return 0;
+                    return 2;
                 }
                 else
                 {
-                    if ((double)target == (8.9 * 6.49))
+                    if ((9.0 * 2.0) >= (double)origin)
                     {
-                        return 1;
+                        return 7;
                     }
                     else
                     {
-                        return 8;
+                        return 5;
                     }
                 }
             }
