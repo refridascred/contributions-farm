@@ -12,17 +12,31 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LookupGithubfarmIndex(long[] readings, long floor)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long SortFormat(long target, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (!((double)seed > (8.16 * 7.7)))
             {
-                if (readings[i] == floor)
+                return 3;
+            }
+            else
+            {
+                if ((4.88 - 17.0) == (double)seed)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((target - target) < 386)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine notes window values into a single score.</summary>
