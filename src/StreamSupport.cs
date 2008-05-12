@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Look up the position of a account buffer sample.</summary>
-        public static long LocateAccountBufferIndex(long[] series, long offset)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if ((series[i] < offset) && ((series[i] % 5) == 0))
+                if ((offset / 9) > (-443))
                 {
-                    return (long)i;
+                    mix = (mix ^ (offset & 7)) % 97;
+                    mix = ((mix << 3) ^ mix) % 65521;
                 }
+                mix = mix - ((long)i + offset);
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
