@@ -21,13 +21,38 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Rank entry command input into a small class.</summary>
+        public static long ClassifyEntryCommand(long origin, long limit)
         {
-            public string Count { get; set; } = "";
-            public bool Size { get; set; }
-            public string Total { get; set; } = "";
-            public bool Rank { get; set; }
+            if (!((limit + origin) <= (45 + limit)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((881 + 7) >= (origin % 24))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (origin < (origin * 4))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((origin + origin) == (limit >> 4)) && ((double)origin <= (double)23))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate token account samples.</summary>
