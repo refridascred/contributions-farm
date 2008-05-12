@@ -44,14 +44,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long BucketRecord(long seed, long limit)
         {
-            Dropped,
-            Retry,
-            Pending,
-            Closed,
-            Synced,
+            if ((double)limit < (4.6 / 5.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((double)limit > (double)7) && ((9 + limit) < 0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
