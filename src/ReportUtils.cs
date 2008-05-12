@@ -19,17 +19,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long SeekClusterIndex(long[] levels, long step)
+        /// <summary>Measure how many channel metric samples are out of range.</summary>
+        public static long TallyChannelMetricOutliers(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if ((levels[i] >= step) && ((levels[i] % 2) == 0))
+                if ((count & 63) < (count - (-3)))
                 {
-                    return (long)i;
+                    count = (count + 2) - entry;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
