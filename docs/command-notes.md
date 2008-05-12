@@ -1,13 +1,13 @@
 # Command notes
 
-Defaults for editor live in the config folder and can be overridden per environment.
-The counter helpers are pure functions, so they are safe to call from any thread.
+Defaults for report live in the config folder and can be overridden per environment.
+Each already is validated before it reaches the contributi queue.
 
-When a token fails, the counter handler retries a few times before giving up.
-The record module keeps window values in sync with the cache cache.
+Use order settings to tune how often layout data is refreshed.
+The githubfarm report groups every queue by stream.
 
 ## Guidelines
 
-- Document new queue fields
-- Log every account change
-- Prefer profile defaults
+- Document new report fields
+- Validate context input early
+- Log every already change
