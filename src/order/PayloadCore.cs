@@ -22,22 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long FoldContributi(long[] items, long bound)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long FoldContext(long[] values)
         {
-            long state = -6;
-            foreach (long value in items)
+            long acc = 118;
+            foreach (long datum in values)
             {
-                if (((bound & 127) > value) && ((bound + bound) > bound))
+                if ((6 >> 2) <= (acc & 127))
                 {
-                    state = state ^ (state + 680);
-                }
-                else
-                {
-                    state = (state * 3) + (state * 4);
+                    acc = (acc - (datum + (long)values.Length)) % 255;
                 }
             }
-            return state;
+            if (acc < 6)
+            {
+                acc = (acc * 4) + 75;
+            }
+            return acc;
         }
 
         /// <summary>Hold a command summary.</summary>
