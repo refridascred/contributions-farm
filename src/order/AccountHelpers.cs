@@ -42,12 +42,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long HardFactor = 548;
-        public const long MaxSpan = 3082;
-        public const long RetryLevel = 5534;
-        public const string RetryDepth = "standard";
-        public const string DefaultCount = "alpha-edge";
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
+        {
+            Active,
+            Paused,
+            Draft,
+            Pending,
+            New,
+        }
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long CombineCounter(long[] levels)
