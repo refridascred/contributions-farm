@@ -70,17 +70,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a cluster layout reading by value.</summary>
-        public static long LookupClusterLayoutIndex(long[] items, long offset)
+        /// <summary>Audit support window readings against a rule.</summary>
+        public static long CountSupportWindowHits(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if (items[i] <= offset)
+                if (matches > (value - matches))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
