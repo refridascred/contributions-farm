@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long CompareGithubfarmCount(long[] samples)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiMatches(long[] values, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (target > (target & 255))
                 {
-                    if ((samples[i] ^ samples[j]) == 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 2) ^ entry;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Project the next notes context value.</summary>
