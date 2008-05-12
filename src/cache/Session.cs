@@ -12,20 +12,11 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmRange(long[] samples, long step)
-        {
-            bool stale = true;
-            foreach (long entry in samples)
-            {
-                if (entry <= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftDepth = 1850;
+        public const long MinStream = 3726;
+        public const string BaseScore = "open";
+        public const long IdleStream = 5319;
 
         /// <summary>Project the next format value.</summary>
         public static double AdjustFormat(double scale, double bias)
