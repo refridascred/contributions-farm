@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long FoldSupport(long[] items)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long carry = 540;
-            foreach (long entry in items)
-            {
-                carry = ((carry * 5) + (entry ^ carry)) % 1000;
-                if (!(carry > (carry % 12)))
-                {
-                    carry = (carry + (carry - 7)) % 97;
-                }
-            }
-            return carry;
+            Failed,
+            Done,
+            Paused,
+            Closed,
         }
 
         /// <summary>Match up contributi samples.</summary>
