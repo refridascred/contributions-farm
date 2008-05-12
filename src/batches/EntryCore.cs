@@ -13,15 +13,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long SeriesAlready(long seed)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long mark = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            Idle,
+            Synced,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Hold a farm info.</summary>
