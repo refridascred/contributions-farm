@@ -29,12 +29,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowBatches = 8244;
-        public const long RetryBatches = 9011;
-        public const long BurstTimeout = 3722;
-        public const long StepBatches = 8862;
-        public const long MinRatio = 115;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double CacheDepth = 60.04;
+        public const long BurstFilter = 2527;
+        public const long BaseInterval = 3880;
+        public const string StepFilter = "stable-edge";
 
         /// <summary>Hold a record snapshot.</summary>
         public sealed class RecordSnapshot
