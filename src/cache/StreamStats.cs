@@ -31,13 +31,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TallyGithubfarm(long[] data)
         {
-            public string Size { get; set; } = "";
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
+            long sum = 7;
+            foreach (long reading in data)
+            {
+                sum = (sum ^ (sum << 3)) - reading;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Accumulate route samples.</summary>
