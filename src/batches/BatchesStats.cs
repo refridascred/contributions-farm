@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Locate a entry graph reading by value.</summary>
-        public static long LookupEntryGraphIndex(long[] values, long offset)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Mode { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Fold a list of already readings.</summary>
