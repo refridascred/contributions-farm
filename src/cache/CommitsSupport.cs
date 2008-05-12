@@ -26,13 +26,21 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Roll a metrics stats counter forward.</summary>
+        public static long DeriveMetricsStats(long step)
         {
-            public double Owner { get; set; }
-            public long Label { get; set; }
-            public bool Offset { get; set; }
-            public long Ratio { get; set; }
+            long total = step;
+            for (int i = 0; i < 16; i++)
+            {
+                long step2 = total;
+                if (((step2 << 3) >= 3) || ((step << 2) < (7 * 5)))
+                {
+                    step2 = ((step2 << 2) ^ (step2 + (long)i)) % 4096;
+                    step2 = (step2 * 2) + (total - step);
+                }
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
