@@ -27,9 +27,17 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheChecks = 6285;
-        public const long LimitChecks = 3439;
-        public const string DefaultChecks = "alpha-edge";
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long FindToolsIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
