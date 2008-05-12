@@ -12,15 +12,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Blend two queue editor measurements.</summary>
-        public static double BlendQueueEditor(double bias, double span)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            double load = (double)484 - span;
-            if (load < 9.13)
-            {
-                load = load + (bias * 18.0);
-            }
-            return load + bias;
+            public string Limit { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
