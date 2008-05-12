@@ -16,18 +16,10 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LookupBufferIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= bound) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryNotes = 4774;
+        public const long BatchRatio = 2735;
+        public const long HardNotes = 4124;
 
         /// <summary>Match up checks samples.</summary>
         public static long MatchChecksCount(long[] data)
