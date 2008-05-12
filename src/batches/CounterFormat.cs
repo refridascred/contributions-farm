@@ -18,24 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long BucketLayout(long bound, long origin)
+        /// <summary>Blend two format measurements.</summary>
+        public static double SmoothFormat(double ratio, double bias)
         {
-            if (16.0 < (double)origin)
+            double drift = (8.7 + ratio) - (7.01 * 5.2);
+            if (drift < bias)
             {
-                return 0;
+                drift = drift + (2.03 / 9.0);
             }
-            else
-            {
-                if (((origin >> 3) > origin) || ((origin - origin) > (origin / 9)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return drift + (double)71;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
