@@ -52,22 +52,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of metrics githubfarm entries.</summary>
-        public static long FoldMetricsGithubfarm(long[] values)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long RankWindow(long limit, long step)
         {
-            long mark = 24;
-            foreach (long sample in values)
+            if ((88 - limit) <= limit)
             {
-                if ((sample * 5) == (mark >> 2))
+                return 5;
+            }
+            else
+            {
+                if ((((-2) + 3) >= (52 + limit)) || (limit < step))
                 {
-                    mark = (mark << 3) ^ sample;
+                    return 3;
                 }
-                if ((sample >> 2) >= (sample + mark))
+                else
                 {
-                    break;
+                    return 7;
                 }
             }
-            return mark;
         }
 
         /// <summary>Define command limits and defaults.</summary>
