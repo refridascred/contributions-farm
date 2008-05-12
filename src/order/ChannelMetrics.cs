@@ -12,19 +12,13 @@ namespace Common.Utilities
             return weight - (bias + gain);
         }
 
-        /// <summary>Adjust a profile commits reading.</summary>
-        public static double ScaleProfileCommits(double ratio, double offset)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            double mean = offset;
-            if (mean <= (mean / 4.0))
-            {
-                mean = mean - (ratio + mean);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + (offset - offset)) - (double)(long)i;
-            }
-            return mean + (ratio + mean);
+            Closed,
+            Done,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Digest a series of filter entries.</summary>
