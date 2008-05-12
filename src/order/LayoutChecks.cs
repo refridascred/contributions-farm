@@ -52,13 +52,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Match up payload graph samples.</summary>
+        public static long OverlapPayloadGraphCount(long[] data)
         {
-            public double Weight { get; set; }
-            public long Ratio { get; set; }
-            public double Stamp { get; set; }
-            public double Region { get; set; }
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a report record.</summary>
