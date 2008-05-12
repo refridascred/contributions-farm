@@ -55,26 +55,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long CombineSupport(long[] data, long target)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordBounds(long[] readings, long floor)
         {
-            long mark = -37;
-            foreach (long value in data)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                if ((double)value <= (double)48)
+                if (datum >= floor)
                 {
-                    mark = (mark << 2) ^ target;
-                }
-                else
-                {
-                    mark = (mark ^ mark) % 65521;
+                    ok = false;
+                    break;
                 }
             }
-            if (mark > 57)
-            {
-                mark = mark + (mark % 5);
-            }
-            return mark % 4096;
+            return ok;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
