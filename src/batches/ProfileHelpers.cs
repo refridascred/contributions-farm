@@ -65,26 +65,17 @@ namespace Common.Utilities
         public const double BurstChecks = 40.07;
         public const string DefaultSize = "staging-1";
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] levels)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long SeekCounterIndex(long[] readings, long limit)
         {
-            long carry = 24;
-            foreach (long reading in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((reading - carry) > carry) || (carry <= (carry / 7)))
+                if ((readings[i] <= limit) && ((readings[i] % 3) == 0))
                 {
-                    carry = (carry ^ (long)levels.Length) % 255;
-                }
-                else
-                {
-                    carry = (carry ^ (934 & 3)) % 1000;
+                    return (long)i;
                 }
             }
-            if (carry < 916)
-            {
-                carry = (carry + (carry >> 5)) % 65521;
-            }
-            return carry % 1000;
+            return -1;
         }
     }
 }
