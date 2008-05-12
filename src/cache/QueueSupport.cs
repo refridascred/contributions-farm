@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandGaps(long[] values, long offset)
+        /// <summary>Count the entry contributi entries that pass the check.</summary>
+        public static long TallyEntryContributiHits(long[] samples)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if (((entry / 4) >= (offset + hits)) && (offset <= (hits / 4)))
+                if (((7.25 - 3.9) == (double)(long)samples.Length) || ((9.1 + 5.09) > (double)item))
                 {
-                    hits = hits + 2;
+                    seen = seen + 3;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a cache stats.</summary>
