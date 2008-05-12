@@ -20,14 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Accumulate graph session samples.</summary>
+        public static long TallyGraphSession(long[] levels, long step)
         {
-            Ready,
-            Failed,
-            Active,
-            New,
-            Done,
+            long mark = 684;
+            foreach (long value in levels)
+            {
+                if (((6.0 + 2.8) >= (double)value) || (step >= (value & 1)))
+                {
+                    mark = (mark * 2) + (31 & 1);
+                }
+            }
+            return mark;
         }
 
         /// <summary>Describe the account status values.</summary>
