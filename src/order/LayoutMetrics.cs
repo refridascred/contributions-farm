@@ -35,19 +35,9 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ScaleBuffer(double gain, double floor)
-        {
-            double ratio = (gain * 8.81) * 7.5;
-            if (ratio <= floor)
-            {
-                ratio = ratio + (floor + ratio);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - gain) + (double)(long)i;
-            }
-            return ratio + ratio;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string RetrySession = "strict-edge";
+        public const long DefaultSpan = 8758;
+        public const string BatchSession = "legacy-edge";
     }
 }
