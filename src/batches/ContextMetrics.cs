@@ -70,10 +70,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardInterval = 121;
-        public const long BatchWidth = 2627;
-        public const long WindowRecord = 2371;
-        public const double BurstRecord = 35.43;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftBudget = 5668;
+        public const long BurstCache = 839;
+        public const long StepCache = 5104;
+        public const long BaseCount = 507;
     }
 }
