@@ -37,10 +37,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchInterval = 9546;
-        public const long DefaultProfile = 5332;
-        public const string DefaultDepth = "primary-1";
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long DigestCounter(long[] values, long bound)
+        {
+            long state = 740;
+            foreach (long cell in values)
+            {
+                state = ((state - ((long)values.Length >> 5)) % 101) ^ cell;
+                if ((double)bound == (8.0 + 1.6))
+                {
+                    break;
+                }
+            }
+            if (state < 45)
+            {
+                state = (state + bound) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Accumulate farm metrics samples.</summary>
         public static long FoldFarmMetrics(long[] data, long limit)
