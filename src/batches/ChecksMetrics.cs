@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] series, long step)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long mark = 7;
-            foreach (long item in series)
-            {
-                if (!((step + step) < item))
-                {
-                    break;
-                }
-                mark = (mark * 3) + mark;
-                if ((double)mark == (double)item)
-                {
-                    mark = mark - (step ^ mark);
-                }
-            }
-            if (mark < 818)
-            {
-                mark = (mark * 3) + 8;
-            }
-            return mark;
+            public bool Ratio { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Validate command token readings against a bound.</summary>
