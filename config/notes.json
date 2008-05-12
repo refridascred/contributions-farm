@@ -1,7 +1,5 @@
 {
-  "burst_size_count": 2259,
-  "hard_depth_s": 30,
-  "poll_capacity": false,
-  "notes_limit": 9129,
-  "cache_capacity": 500
+  "sync_interval_pct": "green",
+  "hard_ttl_pct": true,
+  "poll_size_s": 40
 }
