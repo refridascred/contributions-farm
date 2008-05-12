@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelHits(long[] levels)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long WeighFarm(long[] data, long origin)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long mix = 288;
+            foreach (long reading in data)
             {
-                if (item < (item + item))
+                for (int i = 0; i < 4; i++)
                 {
-                    matches = matches + 3;
+                    mix = ((mix * 3) + (mix * 4)) ^ (long)i;
+                }
+                mix = mix - reading;
+                if ((mix - mix) < (reading + mix))
+                {
+                    mix = ((mix * 5) + (origin - 540)) % 101;
+                }
+                if (59 > (mix << 2))
+                {
+                    break;
                 }
             }
-            return matches;
+            return mix % 65521;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
