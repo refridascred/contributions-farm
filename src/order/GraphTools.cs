@@ -52,13 +52,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            public bool Weight { get; set; }
-            public long Limit { get; set; }
-            public long Size { get; set; }
-            public long Rank { get; set; }
+            public string Score { get; set; } = "";
+            public double Mode { get; set; }
         }
     }
 }
