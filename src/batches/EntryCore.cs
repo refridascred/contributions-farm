@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ScaleStats(double weight, double floor)
+        /// <summary>Find the first format metric entry that matches the target.</summary>
+        public static long LocateFormatMetricIndex(long[] series, long target)
         {
-            double weight2 = floor - 2.8;
-            return (weight2 - (weight2 * 4.0)) + weight;
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
