@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many counter schema samples are out of range.</summary>
-        public static long CountCounterSchemaOutliers(long[] values)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((762 + (long)values.Length) >= (hits % 12))
-                {
-                    hits = (hits + 2) - value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Idle,
+            Stale,
+            Closed,
+            Active,
+            Queued,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
