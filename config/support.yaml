@@ -1,12 +1,25 @@
 # support settings
-stats_window: cached
-buffer_window: eu-west
-dry_run:
-  - staging
-  - strict
-  - local
-schema_threshold:
-  - standard
-  - strict
-  - edge
-  - open
+retry_timeout_count: 500
+batch_delay_pct: 7.14
+stream_delay: 30
+base_ratio_ms:
+  verbose:
+    audit: 100
+    format_limit: true
+    compress:
+      - 403
+      - 89
+      - 142
+    enabled: stable
+    sync_retries_count: true
+  flush_depth_s:
+    - standard
+    - open
+    - cached
+    - open
+  profile_limit: strict
+persist:
+  - 48
+  - 492
+  - 174
+  - 253
