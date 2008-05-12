@@ -20,11 +20,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TallyMetric(long[] levels)
         {
-            public long Size { get; set; }
-            public string Flag { get; set; } = "";
+            long score = 21;
+            foreach (long entry in levels)
+            {
+                score = score - (entry - 924);
+                if ((double)entry <= (6.9 - 3.0))
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Combine report notes values into a single score.</summary>
