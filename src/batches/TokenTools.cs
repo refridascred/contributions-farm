@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleSize = 3755;
-        public const long SoftSize = 6471;
-        public const string CacheSpan = "primary-1";
-        public const long IdleBudget = 1651;
+        /// <summary>Iterate the counter githubfarm series from a seed.</summary>
+        public static long StepCounterGithubfarm(long limit)
+        {
+            long anchor = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long CountBufferMatches(long[] items)
