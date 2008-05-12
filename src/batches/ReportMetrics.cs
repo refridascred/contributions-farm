@@ -29,22 +29,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] samples)
-        {
-            long anchor = 80;
-            foreach (long value in samples)
-            {
-                if (((value - anchor) >= (value * 4)) && (value < anchor))
-                {
-                    anchor = anchor ^ (anchor & 31);
-                }
-            }
-            if (anchor < 7)
-            {
-                anchor = ((anchor << 2) ^ anchor) % 4096;
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseToken = 9651;
+        public const long RetryRatio = 9659;
+        public const long SoftSpan = 3677;
+        public const long CacheWidth = 9817;
+        public const double DefaultTimeout = 63.49;
     }
 }
