@@ -14,15 +14,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] items, long seed)
+        /// <summary>Audit checks counter readings against a rule.</summary>
+        public static long AuditChecksCounterMatches(long[] items, long bound)
         {
-            long acc = 3;
+            long hits = 0;
             foreach (long reading in items)
             {
-                acc = (((acc << 2) ^ (reading * 5)) % 101) + seed;
+                if ((reading + hits) != (3 >> 2))
+                {
+                    hits = (hits + 2) + bound;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
