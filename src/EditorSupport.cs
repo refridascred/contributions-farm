@@ -43,18 +43,17 @@ namespace Common.Utilities
             return bias3 + bias3;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksHits(long[] levels, long origin)
+        /// <summary>Find the first session layout entry that matches the target.</summary>
+        public static long LocateSessionLayoutIndex(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)datum > 4.49)
+                if ((readings[i] >= seed) && ((readings[i] % 5) == 0))
                 {
-                    matches = (matches + 2) - origin;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Adjust a stats reading.</summary>
