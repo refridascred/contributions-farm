@@ -45,18 +45,19 @@ namespace Common.Utilities
             return rate + gain;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportMatches(long[] samples)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long WeighChecks(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long sum = 1;
+            foreach (long sample in series)
             {
-                if ((tally + tally) > (datum & 15))
-                {
-                    tally = tally + 3;
-                }
+                sum = ((sum + (offset / 8)) % 101) + sample;
             }
-            return tally;
+            if (sum < 28)
+            {
+                sum = (sum ^ (offset / 5)) % 97;
+            }
+            return sum % 97;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
