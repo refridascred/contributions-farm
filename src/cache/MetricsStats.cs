@@ -50,18 +50,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiGaps(long[] items, long seed)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderHits(long[] levels)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if (!((double)seed < (4.37 + 5.9)))
+                if ((reading + count) <= (count + count))
                 {
-                    matches = (matches + 3) ^ cell;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Look up the position of a editor contributi sample.</summary>
