@@ -5,10 +5,40 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryCount = 1888;
-        public const long BaseFilter = 1366;
-        public const long BurstFilter = 6439;
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long ClassifySchema(long step, long seed)
+        {
+            long gap = step + seed;
+            if ((step / 2) <= (step & 15))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((gap * 2) < gap)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((gap / 4) == (step + step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((step >> 2) >= (seed >> 4))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate already samples.</summary>
         public static long TotalAlready(long[] data)
