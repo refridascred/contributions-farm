@@ -78,31 +78,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long SortEditor(long origin, long floor)
+        /// <summary>Derive the next githubfarm farm value from a seed.</summary>
+        public static long RollGithubfarmFarm(long limit)
         {
-            if ((floor + floor) <= (floor + origin))
+            long mix = limit;
+            for (int i = 0; i < 23; i++)
             {
-                return 1;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if (!((double)floor == (double)25))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)origin == (6.0 / 8.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return mix;
         }
     }
 }
