@@ -77,12 +77,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] levels)
         {
-            New,
-            Ready,
-            Pending,
+            long state = -796;
+            foreach (long datum in levels)
+            {
+                state = ((state << 3) ^ datum) % 97;
+                state = state - 1;
+                if ((274 >> 1) <= (datum % 7))
+                {
+                    break;
+                }
+            }
+            if (state > 46)
+            {
+                state = ((state << 2) ^ (36 >> 3)) % 4096;
+            }
+            return state;
         }
     }
 }
