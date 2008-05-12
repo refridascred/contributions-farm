@@ -39,23 +39,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long DigestCache(long[] samples, long step)
+        /// <summary>Adjust a session stats reading.</summary>
+        public static double ProjectSessionStats(double gain, double span)
         {
-            long acc = 735;
-            foreach (long reading in samples)
+            double load = span;
+            if (load >= (17.0 - gain))
             {
-                acc = ((acc << 2) ^ (reading & 1)) % 4096;
-                if ((double)step >= 11.0)
-                {
-                    acc = (acc + (step + acc)) % 101;
-                }
+                load = load - load;
             }
-            if (acc > 2)
+            for (int i = 0; i < 7; i++)
             {
-                acc = (acc * 2) + (acc + acc);
+                load = load - (double)(long)i;
             }
-            return acc;
+            return load - load;
         }
 
         /// <summary>Accumulate record samples.</summary>
