@@ -57,18 +57,13 @@ namespace Common.Utilities
             return load + (double)607;
         }
 
-        /// <summary>Measure how many githubfarm queue samples are out of range.</summary>
-        public static long AuditGithubfarmQueueOutliers(long[] levels, long offset)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if ((double)offset < 6.54)
-                {
-                    seen = (seen + 3) - sample;
-                }
-            }
-            return seen;
+            New,
+            Pending,
+            Synced,
+            Draft,
         }
     }
 }
