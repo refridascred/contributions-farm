@@ -32,12 +32,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseWidth = 770;
-        public const double IdleEntry = 71.54;
-        public const long BatchInterval = 7907;
-        public const long LimitEntry = 1090;
-        public const long SoftRatio = 7271;
+        /// <summary>Match up batches command samples.</summary>
+        public static long CompareBatchesCommandCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a queue snapshot.</summary>
         public sealed class QueueSnapshot
