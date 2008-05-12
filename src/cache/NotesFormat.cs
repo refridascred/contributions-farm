@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
-        {
-            Queued,
-            Dropped,
-            Pending,
-            Synced,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string SoftFactor = "fallback-1";
+        public const double WindowFilter = 16.76;
+        public const double DefaultFactor = 32.41;
+        public const long CacheWidth = 5883;
 
         /// <summary>Accumulate account payload samples.</summary>
         public static long CombineAccountPayload(long[] data, long target)
