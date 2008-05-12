@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
             public long Level { get; set; }
-            public bool Stamp { get; set; }
-            public bool Region { get; set; }
+            public bool Total { get; set; }
+            public string Token { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
