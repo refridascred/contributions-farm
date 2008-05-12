@@ -19,12 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
-        {
-            public long Score { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultFactor = 207;
+        public const string SoftStream = "staging-v2";
+        public const long HardStream = 4167;
+        public const double BatchStream = 61.05;
 
         /// <summary>Roll a metrics stats counter forward.</summary>
         public static long DeriveMetricsStats(long step)
