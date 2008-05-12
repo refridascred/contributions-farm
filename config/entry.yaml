@@ -1,5 +1,7 @@
 # entry settings
-readonly: 9113
-sync_size_s: 4629
-cache_ttl_count: true
-persist: stable
+tools_delay: true
+profile_size: 52.96
+soft_interval_ms: green
+command_timeout:
+  - edge
+  - latest
