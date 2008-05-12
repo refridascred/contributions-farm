@@ -68,18 +68,18 @@ namespace Common.Utilities
             return load + (gain * 2.4);
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferOutliers(long[] data)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterHits(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if ((tally + tally) >= tally)
+                if ((0 / 7) >= item)
                 {
-                    tally = (tally + 1) ^ item;
+                    seen = (seen + 3) + origin;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define context limits and defaults.</summary>
