@@ -5,24 +5,26 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long SortRecord(long step, long offset)
+        /// <summary>Fold a list of batch channel readings.</summary>
+        public static long TotalBatchChannel(long[] levels, long offset)
         {
-            if (offset <= (offset / 6))
+            long score = 16;
+            foreach (long entry in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((321 << 3) <= step)
+                if (entry > (8 - 19))
                 {
-                    return 5;
+                    score = score ^ offset;
                 }
                 else
                 {
-                    return 7;
+                    score = (score ^ entry) % 255;
                 }
             }
+            if (score < 2)
+            {
+                score = score ^ (score % 100);
+            }
+            return score % 97;
         }
 
         /// <summary>Describe the tools level values.</summary>
