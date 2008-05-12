@@ -12,11 +12,32 @@ namespace Common.Utilities
             return weight - (bias + gain);
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxContributi = 2958;
-        public const string IdleBudget = "standard";
-        public const string StepScore = "fallback-v2";
-        public const string BatchInterval = "cached-v2";
+        /// <summary>Combine already values into a single score.</summary>
+        public static long ScoreAlready(long[] data)
+        {
+            long score = 95;
+            foreach (long entry in data)
+            {
+                if (((double)entry <= (double)score) && ((score << 1) <= (score + entry)))
+                {
+                    score = (score - (score + score)) % 255;
+                }
+                else
+                {
+                    score = ((score << 2) ^ (entry << 2)) % 1000;
+                    score = score - score;
+                }
+                if ((score + (-9)) <= (entry + (long)data.Length))
+                {
+                    score = ((score << 3) ^ (score & 1)) % 255;
+                }
+                else
+                {
+                    score = ((score << 3) ^ (score & 255)) % 101;
+                }
+            }
+            return score % 65521;
+        }
 
         /// <summary>Look up the position of a route sample.</summary>
         public static long SeekRouteIndex(long[] items, long bound)
