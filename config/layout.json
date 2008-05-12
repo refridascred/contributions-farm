@@ -1,6 +1,12 @@
 {
-  "base_timeout_pct": 75.28,
-  "dry_run": "stable",
-  "verbose": "latest",
-  "sync_ttl": ["edge", "local", "open", "local"]
+  "poll_delay_count": true,
+  "format_interval": 91,
+  "queue_capacity": "staging",
+  "persist": false,
+  "soft_limit": {
+    "readonly": "primary",
+    "min_interval_count": true,
+    "schema_ttl": ["edge", "primary"],
+    "cache_capacity": 8909
+  }
 }
