@@ -22,18 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyOutliers(long[] samples)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry % 60) == (4 << 1))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Synced,
+            Paused,
+            Ready,
+            Draft,
+            Pending,
         }
 
         /// <summary>Hold a schema options.</summary>
