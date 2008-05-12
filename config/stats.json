@@ -1,17 +1,6 @@
 {
-  "flush_delay_s": 9740,
-  "soft_depth_s": [184, 198, 160, 290],
-  "batch_window_ms": {
-    "burst_window_count": "legacy",
-    "idle_capacity": "latest",
-    "retry_interval_count": 75.23
-  },
-  "retry_retries": {
-    "audit": "latest",
-    "cache_limit": "green",
-    "compress": "cached",
-    "sync_limit": 30,
-    "poll_capacity": 21.72,
-    "retry_timeout_pct": 250
-  }
+  "retry_ttl": "legacy",
+  "queue_delay": [307, 378, 66, 117],
+  "batch_delay": true,
+  "enabled": "fallback"
 }
