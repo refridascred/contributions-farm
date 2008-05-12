@@ -10,19 +10,39 @@ namespace Common.Utilities
         public const string RetryQueue = "open-1";
         public const double DefaultSize = 43.81;
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamBounds(long[] samples, long floor)
+        /// <summary>Grade a cluster already value against two limits.</summary>
+        public static long BucketClusterAlready(long offset, long seed)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            long slot = offset + seed;
+            if ((63 - seed) > (slot >> 2))
             {
-                if (sample < floor)
+                return 1;
+            }
+            else
+            {
+                if (!((seed + 84) > seed))
                 {
-                    ready = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (!((908 ^ offset) <= (offset + offset)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((3 + 49) > slot) || ((2.53 + 3.0) != (double)seed))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Hold a order stats.</summary>
