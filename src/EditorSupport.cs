@@ -18,24 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long ClassifyCluster(long target, long target2)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsMatches(long[] levels, long floor)
         {
-            if ((0.66 * 2.2) >= (6.7 + 3.03))
+            long count = 0;
+            foreach (long cell in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target - target) <= target2)
+                if ((cell + 68) > (cell - cell))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
+                    count = (count + 1) + floor;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the counter status values.</summary>
