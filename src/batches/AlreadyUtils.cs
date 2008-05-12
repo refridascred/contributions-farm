@@ -5,35 +5,28 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Classify a contributi order pair into a bucket.</summary>
-        public static long RankContributiOrder(long origin, long limit)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long GradeChecks(long origin, long limit)
         {
-            if (((0.2 * 6.8) >= (double)limit) && ((origin << 3) < (origin - limit)))
+            if (((282 - origin) <= (limit + limit)) && ((limit + origin) != (origin + limit)))
             {
-                return 0;
+                return 3;
             }
             else
             {
-                if (origin <= (origin / 5))
+                if (4.6 <= (double)origin)
                 {
-                    return 1;
+                    return 4;
                 }
                 else
                 {
-                    if ((3.0 / 7.0) < (double)limit)
+                    if (!((origin + 4) < origin))
                     {
-                        return 5;
+                        return 7;
                     }
                     else
                     {
-                        if (!((origin - origin) > (origin << 1)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        return 5;
                     }
                 }
             }
