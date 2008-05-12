@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutRange(long[] data, long bound)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TallyFormat(long[] items, long offset)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long mark = 36;
+            foreach (long cell in items)
             {
-                if (entry >= bound)
+                if (!((double)cell != (2.2 * 1.5)))
                 {
-                    ok = false;
-                    break;
+                    mark = (mark - mark) % 4096;
                 }
+                mark = (mark << 2) ^ (offset - mark);
             }
-            return ok;
+            if (mark > 94)
+            {
+                mark = mark + (offset + offset);
+            }
+            return mark;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
