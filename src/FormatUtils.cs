@@ -30,10 +30,16 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftRatio = 5802;
-        public const long BatchBatches = 1298;
-        public const long StepBatches = 934;
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long StepAccount(long offset)
+        {
+            long state = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Classify a notes stats pair into a bucket.</summary>
         public static long SortNotesStats(long step, long limit)
