@@ -1,36 +1,17 @@
 # githubfarm settings
-cache_limit:
-  channel_threshold: 482
-  burst_ttl_pct: 5507
-  graph_threshold: 500
-  format_window: 56
-  min_window_s: 71.91
-compress:
-  burst_ratio: 100
-  max_size_pct: blue
-  window_retries: true
-  entry_timeout: staging
-  max_window:
-    idle_window_s: 6
-    soft_delay_count: strict
-    max_ratio_pct: 90
-    retry_size_s: blue
-  format_size: 3.73
-report_size:
-  stream_delay: stable
-  persist: standard
-  dry_run: fallback
-  checks_delay: 9
-  account_limit:
-    sync_interval: standard
-    batch_retries:
-      - local
-      - fallback
-      - open
-    burst_depth: 34.62
-  githubfarm_window: 59.55
-min_timeout_s: true
-strict:
-  - 472
-  - 491
-  - 107
+cluster_limit: 1024
+cache_depth_count:
+  - local
+  - standard
+  - primary
+  - local
+idle_size_count: 62.55
+channel_interval:
+  burst_limit_ms: 69
+  filter_capacity: strict
+  soft_window_count: 4409
+  session_capacity:
+    command_limit: true
+    soft_ttl_count: green
+    notes_interval: 91.28
+  strict: strict
