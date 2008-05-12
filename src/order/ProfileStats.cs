@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Classify a report profile pair into a bucket.</summary>
-        public static long GradeReportProfile(long limit, long floor)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LocateFarmIndex(long[] data, long origin)
         {
-            long lane = limit - floor;
-            if (((floor + limit) == (lane - floor)) || ((5.8 * 7.07) == (double)lane))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((18.0 * 6.04) == (double)limit)
+                if (data[i] < origin)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((21 % 97) != (18 + lane))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
