@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepQueue = 1069;
-        public const string RetryQueue = "open-1";
-        public const double DefaultSize = 43.81;
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long SeekFarmIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a cluster already value against two limits.</summary>
         public static long BucketClusterAlready(long offset, long seed)
