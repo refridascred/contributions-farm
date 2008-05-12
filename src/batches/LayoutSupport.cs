@@ -52,12 +52,19 @@ namespace Common.Utilities
             return bias - (floor * 6.31);
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftCommits = 6430;
-        public const double HardInterval = 73.85;
-        public const long HardFactor = 4500;
-        public const long CacheCommits = 6699;
-        public const string DefaultCommits = "standard";
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long CombineCommits(long[] series, long target)
+        {
+            long carry = 54;
+            foreach (long sample in series)
+            {
+                if ((carry - 299) <= (sample + carry))
+                {
+                    carry = ((carry * 5) + target) % 1000;
+                }
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Describe the window state values.</summary>
         public enum WindowState
