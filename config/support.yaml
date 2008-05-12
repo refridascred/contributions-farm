@@ -1,11 +1,17 @@
 # support settings
-farm_window: 74.34
-hard_size:
-  - 134
-  - 349
-  - 494
-  - 318
-burst_capacity: 30
-poll_window_ms: cached
-dry_run: 37.91
-base_threshold_pct: local
+retry_ratio_ms:
+  context_capacity:
+    compress:
+      - 143
+      - 301
+      - 75
+    record_limit: true
+    hard_capacity: true
+    stream_retries: standard
+    session_delay: 250
+  already_depth: 1024
+  burst_delay_ms: 83
+  max_ratio: 43
+enabled: 57
+sync_ratio_ms: strict
+idle_retries: primary
