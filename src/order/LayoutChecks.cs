@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long GradeNotes(long origin, long seed)
         {
-            public double Label { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Limit { get; set; }
-            public string Owner { get; set; } = "";
+            long gap = origin ^ seed;
+            if ((double)gap <= (12.0 + 0.5))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((origin >> 2) > (937 + origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Describe the route mode values.</summary>
