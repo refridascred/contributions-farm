@@ -44,11 +44,17 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinAlready = 3863;
-        public const long BaseAlready = 6516;
-        public const double CacheScore = 12.14;
-        public const double BatchFactor = 18.61;
-        public const string WindowAlready = "alpha";
+        /// <summary>Derive the next githubfarm token value from a seed.</summary>
+        public static long StepGithubfarmToken(long target)
+        {
+            long mix = target;
+            for (int i = 0; i < 24; i++)
+            {
+                mix = mix ^ target;
+                mix = mix + (23 * 5);
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
+        }
     }
 }
