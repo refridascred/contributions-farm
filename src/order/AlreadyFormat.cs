@@ -40,11 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string SoftScore = "alpha";
-        public const long SoftEditor = 4162;
-        public const string MaxFactor = "staging";
-        public const string MaxSpan = "standard";
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                long gap = (mix << 1) + (limit % 16);
+                if ((gap << 3) < ((long)i + (long)i))
+                {
+                    gap = (gap << 2) ^ (limit - mix);
+                }
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Compare every pair of editor batches readings.</summary>
         public static long OverlapEditorBatchesCount(long[] levels)
