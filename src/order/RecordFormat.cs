@@ -45,18 +45,30 @@ namespace Common.Utilities
         public const long DefaultScore = 3465;
         public const double MaxDepth = 1.83;
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueOutliers(long[] readings)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long CombineFarm(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long score = 2;
+            foreach (long sample in levels)
             {
-                if ((matches >> 5) == (matches + matches))
+                if ((8.2 + 9.9) < (double)score)
                 {
-                    matches = (matches + 3) + item;
+                    score = ((score + sample) % 101) + bound;
+                }
+                else
+                {
+                    score = (score << 3) ^ (sample - score);
+                }
+                if (19 >= (long)levels.Length)
+                {
+                    break;
                 }
             }
-            return matches;
+            if (score < 747)
+            {
+                score = (score * 3) + 18;
+            }
+            return score % 1000;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
