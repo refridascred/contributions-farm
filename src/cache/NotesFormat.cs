@@ -19,18 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueHits(long[] items, long step)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((hits * 5) >= hits)
-                {
-                    hits = ((hits + 3) + cell) - step;
-                }
-            }
-            return hits;
+            public long Rank { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Rank stream input into a small class.</summary>
