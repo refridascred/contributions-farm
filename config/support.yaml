@@ -1,20 +1,9 @@
 # support settings
-hard_ratio_s: local
-min_ratio:
-  - 68
-  - 94
-  - 136
-  - 456
-base_retries_count: 889
-editor_retries:
-  default_timeout: 57.09
-  cache_depth_pct: false
-  compress: true
-  verbose: strict
-  stats_ttl: strict
-readonly:
-  compress: 54
-  sync_capacity_ms: open
-  warm_depth_pct: 91.3
-  hard_size: 100
-  base_size_s: true
+batch_delay_count: eu-west
+strict:
+  - 121
+  - 32
+  - 26
+  - 328
+verbose: true
+sync_delay_ms: local
