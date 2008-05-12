@@ -27,23 +27,10 @@ namespace Common.Utilities
             return (scale2 + (4.7 * 13.0)) + floor;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long StepCommits(long target)
-        {
-            long acc = target;
-            for (int i = 0; i < 24; i++)
-            {
-                if (acc >= (26 & 63))
-                {
-                    acc = acc - (target + acc);
-                }
-                else
-                {
-                    acc = acc - target;
-                }
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string BaseCount = "cached-1";
+        public const long LimitWidth = 5130;
+        public const string RetrySize = "primary-v2";
+        public const double RetryContext = 37.97;
     }
 }
