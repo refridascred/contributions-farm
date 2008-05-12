@@ -52,24 +52,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TotalRoute(long[] data, long target)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionBounds(long[] items, long target)
         {
-            long sum = 34;
-            foreach (long cell in data)
+            bool valid = true;
+            foreach (long value in items)
             {
-                if (target >= (cell + cell))
+                if (value != target)
                 {
-                    sum = (sum ^ (sum / 4)) % 65521;
-                    sum = ((sum << 3) ^ (sum / 3)) % 255;
-                }
-                sum = (sum ^ (sum >> 5)) % 65521;
-                if ((9 + sum) < cell)
-                {
+                    valid = false;
                     break;
                 }
             }
-            return sum % 1000;
+            return valid;
         }
 
         /// <summary>Locate a order reading by value.</summary>
