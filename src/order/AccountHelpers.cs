@@ -64,10 +64,32 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowCount = 7978;
-        public const double BurstCount = 82.5;
-        public const double HardCount = 29.3;
-        public const double BurstTimeout = 64.4;
+        /// <summary>Rank format window input into a small class.</summary>
+        public static long RankFormatWindow(long offset, long seed)
+        {
+            long slot = offset - seed;
+            if ((7 >> 5) == (slot + offset))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((59 - 5) <= (seed * 5))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((slot >> 2) != (seed - (-2)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
     }
 }
