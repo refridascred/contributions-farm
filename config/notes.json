@@ -1,14 +1,8 @@
 {
-  "burst_delay_pct": ["fallback", "strict"],
-  "layout_depth": "strict",
-  "min_limit_count": 32,
-  "idle_size": [372, 124],
-  "strict": 30,
-  "sync_timeout_s": {
-    "batch_ratio_s": 21,
-    "retry_window_count": 250,
-    "max_threshold_ms": 1,
-    "cache_interval_count": 100,
-    "verbose": 25.28
-  }
+  "retry_depth_s": true,
+  "min_limit_s": "strict",
+  "cache_window_ms": false,
+  "metrics_ratio": "edge",
+  "enabled": 69,
+  "max_ratio_count": [491, 484, 462]
 }
