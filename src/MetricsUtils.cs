@@ -29,14 +29,11 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            Queued,
-            Paused,
-            Idle,
-            New,
-            Synced,
+            public bool Mode { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Hold a batches entry.</summary>
