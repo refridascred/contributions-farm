@@ -46,18 +46,12 @@ namespace Common.Utilities
         public const long StepScore = 427;
         public const long RetryFactor = 2262;
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsGaps(long[] values, long seed)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if (((double)seed >= 4.0) && !(entry < ((long)values.Length + entry)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public bool Weight { get; set; }
+            public long Token { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
