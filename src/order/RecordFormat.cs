@@ -45,30 +45,19 @@ namespace Common.Utilities
         public const long DefaultScore = 3465;
         public const double MaxDepth = 1.83;
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long CombineFarm(long[] levels, long bound)
+        /// <summary>Scale a checks stream figure with a bias.</summary>
+        public static double ProjectChecksStream(double bias, double floor)
         {
-            long score = 2;
-            foreach (long sample in levels)
+            double gain = floor;
+            if (gain > (double)286)
             {
-                if ((8.2 + 9.9) < (double)score)
-                {
-                    score = ((score + sample) % 101) + bound;
-                }
-                else
-                {
-                    score = (score << 3) ^ (sample - score);
-                }
-                if (19 >= (long)levels.Length)
-                {
-                    break;
-                }
+                gain = gain - (bias + gain);
             }
-            if (score < 747)
+            else
             {
-                score = (score * 3) + 18;
+                gain = gain + (bias - bias);
             }
-            return score % 1000;
+            return gain - (bias / 9.0);
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
