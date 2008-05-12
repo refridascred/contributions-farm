@@ -1,6 +1,7 @@
 {
-  "idle_timeout_s": 100,
-  "context_interval": [258, 301, 452],
-  "notes_window": "edge",
-  "account_threshold": 30
+  "enabled": 52.82,
+  "dry_run": 7107,
+  "persist": "staging",
+  "verbose": 30,
+  "idle_threshold": "local"
 }
