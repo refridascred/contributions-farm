@@ -20,21 +20,26 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Count editor cache pairs that satisfy a relation.</summary>
-        public static long PairEditorCacheCount(long[] readings)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 99;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i = 0; i < 7; i++)
                 {
-                    if ((readings[i] - readings[j]) < 8)
-                    {
-                        count = count + 1;
-                    }
+                    score = (((score * 4) + score) % 65521) ^ (long)i;
+                }
+                if ((2 / 7) == (score * 4))
+                {
+                    score = (score + (datum >> 4)) % 4096;
+                }
+                else
+                {
+                    score = score + (datum >> 2);
                 }
             }
-            return count;
+            return score % 4096;
         }
 
         /// <summary>Describe the entry status values.</summary>
