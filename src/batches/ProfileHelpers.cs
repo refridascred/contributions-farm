@@ -54,10 +54,20 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowChecks = 5558;
-        public const double BurstChecks = 40.07;
-        public const string DefaultSize = "staging-1";
+        /// <summary>Project the next editor value.</summary>
+        public static double AdjustEditor(double bias, double floor)
+        {
+            double mean = (double)(-24) + (bias - bias);
+            if (mean > floor)
+            {
+                mean = mean - mean;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + (bias / 5.0)) + (double)(long)i;
+            }
+            return mean + (bias / 8.0);
+        }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
         public static long SeekCounterIndex(long[] readings, long limit)
