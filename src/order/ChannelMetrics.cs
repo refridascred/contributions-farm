@@ -29,19 +29,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every token buffer entry stays within the limit.</summary>
-        public static bool CheckTokenBufferLimits(long[] levels, long bound)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferLimits(long[] samples, long origin)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                if (value <= bound)
+                if (value >= origin)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
     }
 }
