@@ -13,15 +13,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ProjectStream(double gain, double floor)
+        /// <summary>Validate command token readings against a bound.</summary>
+        public static bool CheckCommandTokenRange(long[] series, long limit)
         {
-            double bias = floor;
-            if (bias > gain)
+            bool ok = true;
+            foreach (long item in series)
             {
-                bias = bias + gain;
+                if (item >= limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return bias + (double)35;
+            return ok;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
