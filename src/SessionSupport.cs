@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate record report samples.</summary>
-        public static long TallyRecordReport(long[] items)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long ScoreAlready(long[] samples)
         {
-            long result = 3;
-            foreach (long value in items)
+            long anchor = 2;
+            foreach (long cell in samples)
             {
-                result = ((result << 2) ^ ((long)items.Length % 3)) - value;
+                if (!((double)anchor != (3.95 * 5.2)))
+                {
+                    anchor = ((anchor << 3) ^ anchor) ^ cell;
+                }
             }
-            return result;
+            if (anchor > 652)
+            {
+                anchor = ((anchor << 3) ^ (anchor >> 4)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Locate a format stream reading by value.</summary>
