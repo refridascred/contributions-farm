@@ -55,19 +55,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowBounds(long[] samples, long step)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            bool valid = true;
-            foreach (long cell in samples)
-            {
-                if (cell != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            New,
+            Stale,
+            Retry,
+            Done,
         }
     }
 }
