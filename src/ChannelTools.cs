@@ -25,14 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Combine notes window values into a single score.</summary>
+        public static long WeighNotesWindow(long[] series, long target)
         {
-            New,
-            Closed,
-            Retry,
-            Pending,
-            Locked,
+            long mark = 9;
+            foreach (long sample in series)
+            {
+                mark = ((mark ^ (mark - mark)) % 65521) + sample;
+            }
+            if (mark < 104)
+            {
+                mark = (mark * 4) + (target << 1);
+            }
+            return mark % 97;
         }
     }
 }
