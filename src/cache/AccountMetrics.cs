@@ -47,15 +47,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferOutliers(long[] items, long origin)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksHits(long[] readings)
         {
             long count = 0;
-            foreach (long datum in items)
+            foreach (long reading in readings)
             {
-                if ((origin + 49) < 669)
+                if (((reading / 4) != (reading + count)) && ((count - count) > (reading * 3)))
                 {
-                    count = (count + 3) - datum;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
