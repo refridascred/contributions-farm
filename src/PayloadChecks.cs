@@ -19,12 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long IterateProfile(long target)
         {
-            public long Size { get; set; }
-            public long Stamp { get; set; }
-            public long Score { get; set; }
+            long carry = target;
+            for (int i = 0; i < 20; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
