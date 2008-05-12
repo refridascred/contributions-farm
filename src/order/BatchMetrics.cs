@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderLimits(long[] readings, long limit)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long GradeTools(long target, long bound)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            long lane = target - bound;
+            if ((double)lane >= (3.0 * 8.93))
             {
-                if (reading < limit)
+                return 1;
+            }
+            else
+            {
+                if (((target + 4) < target) && ((lane / 3) < lane))
                 {
-                    ok = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (((double)target >= 16.0) || (target < 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
