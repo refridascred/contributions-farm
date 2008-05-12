@@ -53,10 +53,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetryRatio = 3220;
-        public const long DefaultTimeout = 1077;
-        public const long DefaultBudget = 3744;
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
+        {
+            public double Score { get; set; }
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Describe the tools class values.</summary>
         public enum ToolsClass
