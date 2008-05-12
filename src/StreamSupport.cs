@@ -28,17 +28,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a already profile sample.</summary>
-        public static long FindAlreadyProfileIndex(long[] values, long limit)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Flag { get; set; } = "";
+            public double Token { get; set; }
+            public string Region { get; set; } = "";
+            public long Stamp { get; set; }
         }
     }
 }
