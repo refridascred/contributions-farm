@@ -46,15 +46,17 @@ namespace Common.Utilities
         public const string MaxFactor = "staging";
         public const string MaxSpan = "standard";
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long FoldBatch(long[] values, long offset)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long SeekMetricsIndex(long[] items, long bound)
         {
-            long result = 801;
-            foreach (long reading in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                result = ((result + (offset >> 4)) % 65521) + reading;
+                if ((items[i] < bound) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
