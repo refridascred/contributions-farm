@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaHits(long[] readings)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((((datum * 2) < datum) && ((tally - datum) <= datum)) || ((datum << 1) <= (tally / 8)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Failed,
+            Retry,
+            Synced,
+            Idle,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
