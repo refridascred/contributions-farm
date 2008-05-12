@@ -82,18 +82,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate farm metrics samples.</summary>
-        public static long FoldFarmMetrics(long[] data, long limit)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long WeighCluster(long[] samples)
         {
-            long mix = 87;
-            foreach (long value in data)
+            long score = 59;
+            foreach (long reading in samples)
             {
-                if ((value >> 2) >= (27 + mix))
-                {
-                    mix = ((mix * 3) + (777 << 1)) - limit;
-                }
+                score = (score + (2 << 3)) ^ reading;
             }
-            return mix % 97;
+            return score % 65521;
         }
 
         /// <summary>Digest a series of already entries.</summary>
