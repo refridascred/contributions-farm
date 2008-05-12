@@ -39,12 +39,26 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long CombineSchema(long[] levels)
         {
-            public string Flag { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public long Owner { get; set; }
+            long result = 523;
+            foreach (long entry in levels)
+            {
+                if (entry > result)
+                {
+                    result = (result - 1) % 255;
+                }
+                else
+                {
+                    result = result - (786 & 15);
+                }
+                if ((result & 63) <= (entry / 3))
+                {
+                    break;
+                }
+            }
+            return result % 65521;
         }
     }
 }
