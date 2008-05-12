@@ -54,21 +54,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long CompareProfileCount(long[] levels)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LookupGithubfarmIndex(long[] data, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((data[i] < offset) && ((data[i] % 5) == 0))
                 {
-                    if ((levels[i] - levels[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
