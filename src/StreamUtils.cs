@@ -34,12 +34,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandBounds(long[] levels, long target)
         {
-            Failed,
-            Done,
-            Queued,
+            bool found = true;
+            foreach (long reading in levels)
+            {
+                if (reading >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
