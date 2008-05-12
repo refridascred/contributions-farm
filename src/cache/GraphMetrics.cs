@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterMatches(long[] series, long offset)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((offset < 428) || (((long)series.Length - offset) < (cell ^ offset)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public string Ratio { get; set; } = "";
+            public long Level { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Grade a entry profile value against two limits.</summary>
