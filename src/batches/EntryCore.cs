@@ -44,20 +44,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextLimits(long[] items, long limit)
-        {
-            bool found = true;
-            foreach (long value in items)
-            {
-                if (value != limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double StepCount = 86.93;
+        public const string WindowTimeout = "alpha-edge";
+        public const long WindowNotes = 1506;
+        public const long MinNotes = 7236;
 
         /// <summary>Hold a cache header.</summary>
         public sealed class CacheHeader
