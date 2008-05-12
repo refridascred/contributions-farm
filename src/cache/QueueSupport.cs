@@ -24,11 +24,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a metric route reading.</summary>
-        public static double AdjustMetricRoute(double gain, double floor)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long ScoreContributi(long[] values)
         {
-            double ratio = (double)(954 & 255);
-            return ((ratio + 9.52) + gain) + floor;
+            long total = -33;
+            foreach (long reading in values)
+            {
+                if (reading >= ((-3) >> 5))
+                {
+                    total = total + (total >> 1);
+                }
+            }
+            return total;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
