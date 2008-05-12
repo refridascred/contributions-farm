@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksMatches(long[] data)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long FoldWindow(long[] values)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long total = 6;
+            foreach (long sample in values)
             {
-                if ((cell > (520 << 3)) || (cell >= ((-626) + cell)))
+                if (!!((total >> 1) < (sample * 5)))
                 {
-                    seen = seen + 3;
+                    total = ((total << 3) ^ (28 / 9)) % 101;
+                }
+                if ((636 ^ total) == (total << 3))
+                {
+                    total = total + 1;
                 }
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
