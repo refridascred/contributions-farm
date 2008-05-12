@@ -30,21 +30,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count stream tools pairs that satisfy a relation.</summary>
-        public static long OverlapStreamToolsCount(long[] items)
+        /// <summary>Validate schema profile readings against a bound.</summary>
+        public static bool CheckSchemaProfileBounds(long[] values, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long value in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (value >= seed)
                 {
-                    if ((items[i] - items[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
