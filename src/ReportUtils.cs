@@ -13,18 +13,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowMatches(long[] items, long offset)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long ScoreRecord(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long carry = 139;
+            foreach (long datum in values)
             {
-                if ((offset >> 1) < count)
+                if (!(((datum + carry) > (9 + offset)) && (datum >= (offset >> 1))))
                 {
-                    count = (count + 3) ^ reading;
+                    carry = (carry * 2) + carry;
+                }
+                carry = (carry + (datum - datum)) % 65521;
+                if (datum >= (51 * 5))
+                {
+                    break;
                 }
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
