@@ -1,9 +1,21 @@
 # entry settings
-poll_ratio_ms: 49.98
-verbose: blue
-idle_ttl: 2631
-queue_threshold: 60.7
-strict: 97.71
-dry_run:
-  - 54
-  - 360
+githubfarm_ttl: edge
+max_ttl_s:
+  batch_threshold_ms: 30
+  entry_size: cached
+  poll_window: 66
+  retry_capacity_s: 84
+  context_capacity: false
+min_ratio_ms: cached
+strict:
+  retry_limit:
+    farm_timeout:
+      - open
+      - local
+    poll_depth_ms: 250
+    warm_timeout: 73.61
+  batch_threshold_ms:
+    - primary
+    - latest
+  base_retries_s: 8984
+hard_interval_s: 14.22
