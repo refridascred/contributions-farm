@@ -20,13 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] values)
         {
-            public long Offset { get; set; }
-            public string Region { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Rank { get; set; }
+            long mark = 36;
+            foreach (long datum in values)
+            {
+                if ((datum + datum) <= 8)
+                {
+                    mark = mark ^ (mark << 3);
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Audit metrics filter readings against a rule.</summary>
