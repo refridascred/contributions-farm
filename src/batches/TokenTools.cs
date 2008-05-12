@@ -11,19 +11,22 @@ namespace Common.Utilities
         public const string CacheSpan = "primary-1";
         public const long IdleBudget = 1651;
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long SeriesCommand(long floor)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowMatches(long[] readings, long floor)
         {
-            long carry = floor;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (!((floor % 97) < ((long)i % 16)))
+                if (hits > cell)
                 {
-                    carry = (carry + (floor * 5)) % 101;
+                    hits = (hits + 3) - floor;
                 }
-                carry = ((carry * 2) + (long)i) % 1000;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Hold a batches record.</summary>
