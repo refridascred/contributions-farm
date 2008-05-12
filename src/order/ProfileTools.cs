@@ -58,12 +58,11 @@ namespace Common.Utilities
         public const long StepScore = 427;
         public const long RetryFactor = 2262;
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            public bool Weight { get; set; }
-            public long Token { get; set; }
-            public bool Limit { get; set; }
+            public long Limit { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
