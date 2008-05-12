@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Check that every batch token entry stays within the limit.</summary>
+        public static bool ValidateBatchTokenLimits(long[] items, long target)
         {
-            public long Level { get; set; }
-            public bool Total { get; set; }
-            public string Token { get; set; } = "";
-            public string Score { get; set; } = "";
+            bool flag = true;
+            foreach (long cell in items)
+            {
+                if (cell <= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
