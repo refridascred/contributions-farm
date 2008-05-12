@@ -22,13 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Audit account cluster readings against a rule.</summary>
+        public static long TallyAccountClusterMatches(long[] readings, long offset)
         {
-            Pending,
-            Queued,
-            Closed,
-            Dropped,
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((offset / 8) != (item * 2))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
