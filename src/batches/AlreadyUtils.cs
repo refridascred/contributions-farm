@@ -32,18 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate editor queue samples.</summary>
-        public static long WeighEditorQueue(long[] series)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportRange(long[] readings, long step)
         {
-            long sum = 856;
-            foreach (long sample in series)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                if (((-2) <= sum) || ((sample ^ sum) < (sample + sum)))
+                if (sample >= step)
                 {
-                    sum = sum + (sum & 63);
+                    valid = false;
+                    break;
                 }
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
