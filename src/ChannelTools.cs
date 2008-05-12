@@ -17,15 +17,14 @@ namespace Common.Utilities
         public const string RetryInterval = "latest-1";
         public const double RetryCount = 45.78;
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ScaleCounter(double gain, double bias)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            double load = bias;
-            if (load <= (load / 2.0))
-            {
-                load = load + gain;
-            }
-            return load - gain;
+            Paused,
+            Dropped,
+            Synced,
+            Done,
+            Ready,
         }
     }
 }
