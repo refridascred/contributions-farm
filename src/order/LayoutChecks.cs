@@ -51,32 +51,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long ClassifySupport(long step, long limit)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamHits(long[] readings)
         {
-            long cur = step - limit;
-            if (((double)step < (double)36) || ((step & 31) >= limit))
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((cur ^ limit) != (limit & 31))
+                if (((reading + 148) <= (tally >> 1)) && (reading >= (-401)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (limit <= cur)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a report record.</summary>
