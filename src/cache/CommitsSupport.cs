@@ -47,12 +47,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long ScoreMetric(long[] levels)
         {
-            public long Label { get; set; }
-            public string Weight { get; set; } = "";
-            public string Total { get; set; } = "";
+            long score = 14;
+            foreach (long cell in levels)
+            {
+                score = ((score * 2) + ((-61) - cell)) % 4096;
+            }
+            if (score < (-2))
+            {
+                score = ((score * 5) + (score >> 3)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Match up notes samples.</summary>
