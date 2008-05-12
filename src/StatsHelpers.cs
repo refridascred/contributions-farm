@@ -5,20 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Iterate the filter entry series from a seed.</summary>
-        public static long DeriveFilterEntry(long step)
+        /// <summary>Project the next stream value.</summary>
+        public static double ProjectStream(double bias, double offset)
         {
-            long result = step;
-            for (int i = 0; i < 10; i++)
+            double weight = offset;
+            if (weight > (6.0 * 14.0))
             {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    long prev = ((long)i2 - step) ^ (step + (long)i);
-                    result = result - (prev & 7);
-                }
-                result = ((result * 4) + (long)i) % 101;
+                weight = weight + weight;
             }
-            return result;
+            else
+            {
+                weight = weight + bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + (weight * 1.9)) + (double)(long)i;
+            }
+            return weight + bias;
         }
 
         /// <summary>Match up stream samples.</summary>
