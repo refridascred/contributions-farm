@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Match up graph samples.</summary>
-        public static long MatchGraphCount(long[] values)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long CombineQueue(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 650;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((long)items.Length - sample) == (sample + sum))
                 {
-                    if ((values[i] - values[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = (sum << 2) ^ sum;
+                }
+                else
+                {
+                    sum = (sum + ((long)items.Length << 2)) % 1000;
                 }
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Blend two already report measurements.</summary>
