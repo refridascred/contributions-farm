@@ -32,11 +32,17 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitMetrics = 5238;
-        public const double StepMetrics = 2.01;
-        public const double WindowSize = 48.26;
-        public const long MinSpan = 5219;
-        public const double BatchWidth = 71.66;
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LookupContextIndex(long[] samples, long floor)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
