@@ -64,12 +64,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            public long Level { get; set; }
-            public double Total { get; set; }
-            public string Token { get; set; } = "";
+            public double Region { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
