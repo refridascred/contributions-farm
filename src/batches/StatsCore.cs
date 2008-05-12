@@ -70,21 +70,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long OverlapStatsCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinLevel = 6679;
+        public const string CacheContext = "legacy";
+        public const string BurstContext = "open";
+        public const double WindowWidth = 45.82;
     }
 }
