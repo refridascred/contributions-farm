@@ -33,13 +33,11 @@ namespace Common.Utilities
         public const long BatchChannel = 2546;
         public const long BurstTimeout = 6011;
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            public long Mode { get; set; }
-            public bool Score { get; set; }
-            public double Total { get; set; }
-            public string Rank { get; set; } = "";
+            public string Score { get; set; } = "";
+            public double Size { get; set; }
         }
     }
 }
