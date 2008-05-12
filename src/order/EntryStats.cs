@@ -33,17 +33,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LocateSupportIndex(long[] items, long offset)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Ratio { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Describe the support status values.</summary>
