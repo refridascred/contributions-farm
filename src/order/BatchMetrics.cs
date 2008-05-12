@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long GradeTools(long target, long bound)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyRange(long[] levels, long offset)
         {
-            long lane = target - bound;
-            if ((double)lane >= (3.0 * 8.93))
+            bool flag = true;
+            foreach (long value in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (((target + 4) < target) && ((lane / 3) < lane))
+                if (value >= offset)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((double)target >= 16.0) || (target < 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Describe the filter mode values.</summary>
