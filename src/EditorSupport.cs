@@ -61,12 +61,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Audit notes buffer readings against a rule.</summary>
+        public static long CountNotesBufferHits(long[] items)
         {
-            Done,
-            Dropped,
-            Idle,
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((reading & 15) == (504 / 6))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
