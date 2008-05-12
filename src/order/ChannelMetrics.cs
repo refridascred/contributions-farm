@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Blend two tools measurements.</summary>
+        public static double BlendTools(double ratio, double span)
         {
-            Ready,
-            Closed,
-            Stale,
+            double load = (span * 1.84) + (double)562;
+            if (load >= load)
+            {
+                load = load - ratio;
+            }
+            return load + (9.87 * 6.3);
         }
 
         /// <summary>Describe the command level values.</summary>
