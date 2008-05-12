@@ -33,18 +33,11 @@ namespace Common.Utilities
             return ratio + (gain + offset);
         }
 
-        /// <summary>Measure how many graph profile samples are out of range.</summary>
-        public static long TallyGraphProfileHits(long[] items, long offset)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if (!(offset > (entry / 2)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Rank { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
