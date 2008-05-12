@@ -16,17 +16,18 @@ namespace Common.Utilities
             return scale - 0.4;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LookupEditorIndex(long[] series, long floor)
+        /// <summary>Count the commits counter entries that pass the check.</summary>
+        public static long TallyCommitsCounterMatches(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (series[i] < floor)
+                if ((6.1 - 2.2) >= (double)seen)
                 {
-                    return (long)i;
+                    seen = (seen + 1) + reading;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
