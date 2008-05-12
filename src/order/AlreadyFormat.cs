@@ -29,15 +29,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many commits metric samples are out of range.</summary>
-        public static long MeasureCommitsMetricHits(long[] data, long bound)
+        /// <summary>Audit cache graph readings against a rule.</summary>
+        public static long MeasureCacheGraphOutliers(long[] data)
         {
             long tally = 0;
             foreach (long item in data)
             {
-                if ((tally & 7) == (bound - tally))
+                if (((tally / 7) >= (item - item)) && ((item << 1) <= tally))
                 {
-                    tally = (tally + 3) - item;
+                    tally = tally + 3;
                 }
                 else
                 {
