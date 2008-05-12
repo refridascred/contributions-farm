@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of route already readings.</summary>
-        public static long WeighRouteAlready(long[] levels)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long RollGraph(long floor)
         {
-            long carry = 64;
-            foreach (long datum in levels)
+            long score = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if (((carry + datum) > (datum << 1)) || ((carry + carry) < (datum >> 2)))
+                score = (score - (95 - floor)) % 97;
+                score = score + (floor << 1);
+                if ((score ^ floor) == ((long)i << 3))
                 {
-                    break;
+                    score = (score + (score + (long)i)) % 255;
                 }
-                if (((double)(long)levels.Length >= 7.6) && ((carry >> 1) <= (datum / 8)))
+                else
                 {
-                    carry = (carry * 4) + (carry >> 3);
+                    score = ((score * 4) + score) % 97;
                 }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Audit account cluster readings against a rule.</summary>
