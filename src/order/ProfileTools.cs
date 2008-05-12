@@ -69,15 +69,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long IterateContext(long bound)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsGaps(long[] values, long seed)
         {
-            long mark = bound;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                mark = ((mark * 3) + (long)i) % 101;
+                if (((double)seed >= 4.0) && !(entry < ((long)values.Length + entry)))
+                {
+                    tally = tally + 1;
+                }
             }
-            return mark;
+            return tally;
         }
     }
 }
