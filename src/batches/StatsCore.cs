@@ -40,23 +40,22 @@ namespace Common.Utilities
         public const string WindowMetrics = "primary-v2";
         public const long RetryMetrics = 4363;
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double AdjustStats(double gain, double bias)
+        /// <summary>Digest a series of metrics githubfarm entries.</summary>
+        public static long FoldMetricsGithubfarm(long[] values)
         {
-            double load = bias;
-            if (load >= gain)
+            long mark = 24;
+            foreach (long sample in values)
             {
-                load = load - bias;
+                if ((sample * 5) == (mark >> 2))
+                {
+                    mark = (mark << 3) ^ sample;
+                }
+                if ((sample >> 2) >= (sample + mark))
+                {
+                    break;
+                }
             }
-            else
-            {
-                load = load + (gain * 5.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + (double)9) + (double)(long)i;
-            }
-            return load + (gain * 2.4);
+            return mark;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
