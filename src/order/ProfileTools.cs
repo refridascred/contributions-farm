@@ -51,17 +51,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long SeekClusterIndex(long[] data, long floor)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long origin, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((limit / 8) != (origin << 2))
             {
-                if (data[i] == floor)
+                return 7;
+            }
+            else
+            {
+                if (((limit << 2) != (origin & 63)) || ((origin * 5) >= (limit >> 3)))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((origin - 507) > (limit << 1))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((9 + limit) > origin) && ((1.5 + 9.8) != (double)limit))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Roll a context counter forward.</summary>
