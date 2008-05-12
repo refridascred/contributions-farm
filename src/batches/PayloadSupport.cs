@@ -40,21 +40,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long PairMetricCount(long[] levels)
+        /// <summary>Validate commits batch readings against a bound.</summary>
+        public static bool CheckCommitsBatchBounds(long[] levels, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (sample <= bound)
                 {
-                    if ((levels[i] + levels[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
