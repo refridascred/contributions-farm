@@ -18,13 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            Dropped,
-            Queued,
-            Draft,
+            Retry,
+            Closed,
+            Synced,
             Locked,
+            Dropped,
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
