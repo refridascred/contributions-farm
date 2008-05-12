@@ -44,22 +44,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long BucketRecord(long seed, long limit)
+        /// <summary>Rank route metric input into a small class.</summary>
+        public static long SortRouteMetric(long bound, long step)
         {
-            if ((double)limit < (4.6 / 5.0))
+            long bound2 = bound - step;
+            if ((988 - 0) < bound)
             {
-                return 4;
+                return 0;
             }
             else
             {
-                if (((double)limit > (double)7) && ((9 + limit) < 0))
+                if ((bound2 * 2) >= (step + bound))
                 {
-                    return 7;
+                    return 5;
                 }
                 else
                 {
-                    return 2;
+                    return 3;
                 }
             }
         }
