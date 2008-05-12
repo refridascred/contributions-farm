@@ -16,39 +16,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long SortStats(long step, long step2)
+        /// <summary>Project the next batches value.</summary>
+        public static double BlendBatches(double bias, double offset)
         {
-            long edge = step ^ step2;
-            if ((edge + edge) == (step2 >> 3))
+            double scale = bias / 4.0;
+            if (scale > 16.0)
             {
-                return 6;
+                scale = (scale + 8.9) - offset;
             }
             else
             {
-                if ((edge - edge) > (edge % 12))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((step / 6) >= (step & 15)) || ((2.73 / 9.0) <= (double)step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((3.68 + 4.0) < (double)step)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                scale = scale + (bias / 3.0);
             }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - bias) + (double)(long)i;
+            }
+            return scale - (bias / 5.0);
         }
 
         /// <summary>Describe the checks level values.</summary>
