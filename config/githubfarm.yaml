@@ -1,5 +1,4 @@
 # githubfarm settings
-audit: 1024
-counter_depth: fallback
-retry_retries: stable
-poll_ttl_ms: 3804
+flush_capacity_count: cached
+warm_size: 55.9
+counter_ratio: standard
