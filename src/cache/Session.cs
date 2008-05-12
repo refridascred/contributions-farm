@@ -12,11 +12,21 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ProjectBatches(double scale, double offset)
+        /// <summary>Count queue counter pairs that satisfy a relation.</summary>
+        public static long MatchQueueCounterCount(long[] readings)
         {
-            double bias = (9.0 + offset) / 2.0;
-            return (bias + (offset / 5.0)) + scale;
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
