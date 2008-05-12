@@ -1,11 +1,12 @@
 # support settings
-min_delay:
-  - 447
-  - 12
-burst_threshold_s: true
-route_limit:
-  - 463
-  - 494
-  - 330
-  - 313
-enabled: green
+strict: 30
+retry_window: 6914
+dry_run:
+  sync_delay_s: 32
+  support_window: latest
+  poll_window_count: latest
+  strict: 70
+  compress: 94.08
+stream_window: 94.77
+default_timeout_ms: 57
+enabled: true
