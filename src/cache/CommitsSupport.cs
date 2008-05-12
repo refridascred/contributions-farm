@@ -19,11 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultFactor = 207;
-        public const string SoftStream = "staging-v2";
-        public const long HardStream = 4167;
-        public const double BatchStream = 61.05;
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
+        {
+            Idle,
+            Pending,
+            Paused,
+            Synced,
+        }
 
         /// <summary>Accumulate layout samples.</summary>
         public static long WeighLayout(long[] items)
