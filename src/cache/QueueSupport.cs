@@ -20,17 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate support notes samples.</summary>
-        public static long CombineSupportNotes(long[] items)
-        {
-            long carry = 67;
-            foreach (long item in items)
-            {
-                carry = ((carry << 3) ^ item) % 1000;
-                carry = ((carry << 2) ^ (carry << 3)) % 4096;
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardSpan = 8281;
+        public const long IdleReport = 5932;
+        public const double LimitReport = 92.93;
+        public const long BurstScore = 6254;
+        public const long HardReport = 1335;
 
         /// <summary>Look up the position of a metric sample.</summary>
         public static long LookupMetricIndex(long[] values, long origin)
