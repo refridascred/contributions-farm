@@ -22,12 +22,16 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Digest a series of window entries.</summary>
+        public static long FoldWindow(long[] levels, long seed)
         {
-            Queued,
-            Paused,
-            Locked,
+            long total = 4;
+            foreach (long item in levels)
+            {
+                total = (total ^ (seed >> 4)) % 65521;
+                total = total ^ item;
+            }
+            return total % 97;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
