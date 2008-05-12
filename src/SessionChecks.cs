@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long RankPayload(long offset, long floor)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ScaleGraph(double gain, double bias)
         {
-            if (15.0 < (double)offset)
-            {
-                return 8;
-            }
-            else
-            {
-                if (((floor / 7) < floor) && ((double)offset <= (3.0 / 5.0)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            double bias2 = (double)498 - bias;
+            return bias2 - (gain - 18.0);
         }
 
         /// <summary>Validate farm report readings against a bound.</summary>
