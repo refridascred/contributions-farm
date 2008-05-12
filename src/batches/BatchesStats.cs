@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long IterateToken(long step)
-        {
-            long mark = step;
-            for (int i = 0; i < 14; i++)
-            {
-                mark = ((mark * 5) + (532 + step)) % 1000;
-                mark = mark + (long)i;
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxStats = 6429;
+        public const long BatchStats = 1809;
+        public const string WindowStats = "cached-1";
 
         /// <summary>Project the next commits value.</summary>
         public static double AdjustCommits(double gain, double span)
