@@ -1,12 +1,8 @@
 {
-  "flush_ratio_ms": {
-    "cluster_window": [237, 350, 285, 390],
-    "sync_size_ms": 96.79,
-    "strict": "stable"
-  },
-  "payload_timeout": [11, 92],
-  "default_threshold_pct": 17.71,
-  "context_limit": "local",
-  "context_delay": false,
-  "retry_window_pct": "strict"
+  "poll_depth_pct": ["strict", "edge"],
+  "checks_threshold": 2911,
+  "flush_interval": "eu-west",
+  "batch_ttl": "stable",
+  "enabled": "primary",
+  "batch_ratio_s": 47.82
 }
