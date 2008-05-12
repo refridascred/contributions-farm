@@ -23,14 +23,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long ClassifyRecord(long target, long offset)
         {
-            Paused,
-            Active,
-            Draft,
-            Locked,
-            Done,
+            long edge = target + offset;
+            if ((offset + edge) > (target & 31))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)target > (8.1 * 4.97))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((offset + offset) >= (target / 6)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank farm input into a small class.</summary>
