@@ -47,14 +47,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
-        {
-            Pending,
-            Paused,
-            Stale,
-            Dropped,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double DefaultScore = 64.34;
+        public const double IdleAccount = 54.97;
+        public const long BurstInterval = 3690;
 
         /// <summary>Adjust a window reading.</summary>
         public static double BlendWindow(double gain, double span)
