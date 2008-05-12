@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long OverlapRecordCount(long[] data)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long step, long step2)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((step2 / 3) > (step + 841))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (((step * 4) == (step2 << 3)) && (step > step2))
                 {
-                    if ((data[i] + data[j]) != 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the stream state values.</summary>
