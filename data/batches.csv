@@ -1,8 +1,8 @@
-id,active
-1,72.86
-2,85.76
-3,82.9
-4,454
-5,422
-6,35.46
-7,open
+id,region,count,weight,label
+1,88,local,478,fallback
+2,789,strict,strict,78
+3,staging,615,91.73,11.03
+4,fallback,fallback,open,963
+5,stable,76.53,770,98
+6,800,staging,355,66.02
+7,82.12,90.36,strict,683
