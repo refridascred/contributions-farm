@@ -30,13 +30,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandRange(long[] readings, long floor)
         {
-            Dropped,
-            Pending,
-            Done,
-            Locked,
+            bool ready = true;
+            foreach (long cell in readings)
+            {
+                if (cell >= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a notes summary.</summary>
