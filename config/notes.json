@@ -1,7 +1,17 @@
 {
-  "warm_interval_pct": [284, 319, 500, 20],
-  "default_delay": true,
-  "min_capacity_pct": 8,
-  "soft_delay": 100,
-  "audit": 39
+  "notes_threshold": 30,
+  "flush_ratio_ms": {
+    "readonly": 8237,
+    "soft_limit_ms": 30,
+    "strict": ["open", "stable", "latest"],
+    "retry_timeout_ms": [272, 301],
+    "hard_depth_count": 79.98
+  },
+  "idle_threshold": {
+    "readonly": ["cached", "strict", "local"],
+    "strict": 60,
+    "idle_delay_s": "latest",
+    "max_delay_count": false,
+    "idle_depth_s": 100
+  }
 }
