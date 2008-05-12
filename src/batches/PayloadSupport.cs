@@ -23,19 +23,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long WeighWindow(long[] levels, long offset)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long total = 18;
-            foreach (long sample in levels)
-            {
-                total = (total + (7 + total)) + offset;
-                if ((20.0 - 11.0) > (double)sample)
-                {
-                    total = ((total << 2) ^ total) % 255;
-                }
-            }
-            return total;
+            Queued,
+            Closed,
+            Ready,
+            Draft,
+            Idle,
         }
 
         /// <summary>Combine channel cluster values into a single score.</summary>
