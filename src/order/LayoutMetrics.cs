@@ -33,32 +33,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long SortCache(long bound, long step)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long slot = bound - step;
-            if ((step + step) < (bound + slot))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((2 % 10) == (slot + slot)) && (slot >= (step - bound)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((slot % 16) > (985 + slot)) && ((9 + bound) <= (1 / 9)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Failed,
+            Dropped,
+            Ready,
+            Paused,
+            Closed,
         }
     }
 }
