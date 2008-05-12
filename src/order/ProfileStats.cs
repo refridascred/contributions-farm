@@ -18,13 +18,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            public string Count { get; set; } = "";
-            public long Level { get; set; }
-            public long Score { get; set; }
-            public long Flag { get; set; }
+            public string Offset { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
