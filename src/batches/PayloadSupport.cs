@@ -19,15 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long DigestContext(long[] series, long bound)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long WeighWindow(long[] levels, long offset)
         {
-            long anchor = 446;
-            foreach (long value in series)
+            long total = 18;
+            foreach (long sample in levels)
             {
-                anchor = ((anchor + (anchor >> 4)) - value) - bound;
+                total = (total + (7 + total)) + offset;
+                if ((20.0 - 11.0) > (double)sample)
+                {
+                    total = ((total << 2) ^ total) % 255;
+                }
             }
-            return anchor % 65521;
+            return total;
         }
 
         /// <summary>Describe the schema level values.</summary>
