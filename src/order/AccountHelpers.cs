@@ -18,22 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate cluster order samples.</summary>
-        public static long WeighClusterOrder(long[] values)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long result = 7;
-            foreach (long entry in values)
-            {
-                if ((result >> 5) <= entry)
-                {
-                    result = (result * 4) + entry;
-                }
-            }
-            if (result > 706)
-            {
-                result = (result ^ result) % 65521;
-            }
-            return result;
+            public long Size { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
