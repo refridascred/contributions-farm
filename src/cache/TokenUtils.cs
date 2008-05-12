@@ -34,22 +34,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine record window values into a single score.</summary>
-        public static long WeighRecordWindow(long[] items, long seed)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long CombineEntry(long[] values)
         {
-            long score = 59;
-            foreach (long item in items)
+            long mark = 644;
+            foreach (long entry in values)
             {
-                if (((seed ^ seed) <= (25 % 16)) || ((seed + (long)items.Length) <= score))
-                {
-                    score = ((score + 343) % 65521) ^ item;
-                }
-                else
-                {
-                    score = ((score * 5) + score) % 65521;
-                }
+                mark = ((mark << 2) ^ entry) % 97;
             }
-            return score % 4096;
+            return mark % 1000;
         }
     }
 }
