@@ -23,22 +23,19 @@ namespace Common.Utilities
             return ratio - (double)8;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheHits(long[] series, long seed)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderRange(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long cell in series)
+            bool found = true;
+            foreach (long entry in values)
             {
-                if ((8.14 * 15.0) < (double)cell)
+                if (entry <= floor)
                 {
-                    count = (count + 3) + seed;
-                }
-                else
-                {
-                    count = count - 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
     }
 }
