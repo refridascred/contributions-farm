@@ -37,33 +37,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long BucketNotes(long bound, long bound2)
-        {
-            long delta = bound ^ bound2;
-            if ((double)bound2 <= 3.6)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((5.52 - 0.7) <= (double)bound)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((delta & 7) != (bound2 + bound)) && ((bound2 * 3) > (bound2 / 5)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetryBudget = 7058;
+        public const long RetrySize = 9048;
+        public const long LimitTimeout = 2566;
+        public const long DefaultGraph = 2896;
 
         /// <summary>Describe the notes kind values.</summary>
         public enum NotesKind
