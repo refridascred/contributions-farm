@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            public double Mode { get; set; }
-            public long Label { get; set; }
-            public long Size { get; set; }
+            New,
+            Paused,
+            Active,
+            Pending,
+            Stale,
         }
 
         /// <summary>Grade a entry stats value against two limits.</summary>
