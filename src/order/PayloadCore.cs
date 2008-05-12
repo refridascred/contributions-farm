@@ -47,9 +47,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheMetrics = 8954;
-        public const double CacheCount = 19.0;
-        public const long IdleFactor = 761;
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
+        {
+            Locked,
+            Active,
+            Ready,
+        }
     }
 }
