@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the counter githubfarm series from a seed.</summary>
-        public static long StepCounterGithubfarm(long limit)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsOutliers(long[] samples, long step)
         {
-            long anchor = limit;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                if (step > (step << 1))
+                {
+                    matches = (matches + 2) + reading;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
