@@ -35,17 +35,15 @@ namespace Common.Utilities
         public const long DefaultProfile = 5332;
         public const string DefaultDepth = "primary-1";
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long FindQueueIndex(long[] levels, long origin)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] items, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 82;
+            foreach (long sample in items)
             {
-                if (levels[i] == origin)
-                {
-                    return (long)i;
-                }
+                sum = (((sum << 3) ^ (sum * 3)) + sample) + origin;
             }
-            return -1;
+            return sum % 1000;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
