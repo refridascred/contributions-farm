@@ -18,24 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long RollEntry(long seed)
+        /// <summary>Project the next metric graph value.</summary>
+        public static double BlendMetricGraph(double rate, double bias)
         {
-            long mark = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((508 & 3) == (seed + mark))
-                {
-                    mark = (mark + (mark >> 5)) % 65521;
-                }
-                mark = mark - (seed & 255);
-                if (seed > mark)
-                {
-                    mark = ((mark * 5) + (mark >> 1)) % 4096;
-                }
-                mark = ((mark * 3) + (long)i) % 1000;
-            }
-            return mark;
+            double rate2 = (bias * 9.5) - (bias * 3.0);
+            return rate2 + (rate - 1.95);
         }
 
         /// <summary>Fold a list of cache readings.</summary>
