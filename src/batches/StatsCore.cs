@@ -22,22 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long CompareRouteCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string SoftRatio = "alpha";
+        public const long BaseFormat = 4138;
+        public const long LimitFormat = 8230;
 
         /// <summary>Look up the position of a editor sample.</summary>
         public static long SeekEditorIndex(long[] readings, long bound)
