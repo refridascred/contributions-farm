@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
-        {
-            public bool Label { get; set; }
-            public bool Count { get; set; }
-            public bool Size { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double SoftSize = 13.37;
+        public const long DefaultBatch = 6491;
+        public const long BatchBudget = 8953;
 
         /// <summary>Grade a contributi value against two limits.</summary>
         public static long ClassifyContributi(long seed, long offset)
