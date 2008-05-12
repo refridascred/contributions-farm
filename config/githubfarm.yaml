@@ -1,12 +1,10 @@
 # githubfarm settings
-readonly: edge
-commits_capacity: 30
-command_retries:
-  - cached
-  - local
-  - blue
-  - legacy
-payload_depth:
-  - 222
-  - 470
-  - 107
+poll_window_s:
+  enabled: local
+  burst_timeout_s: 315
+  max_ttl: false
+  sync_depth_pct: 8.87
+  githubfarm_threshold: 14.74
+burst_window: 43
+payload_interval: open
+persist: true
