@@ -37,11 +37,27 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheSupport = 8576;
-        public const double RetrySupport = 29.62;
-        public const double IdleSupport = 54.38;
-        public const long BatchWidth = 9228;
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long FoldEntry(long[] levels)
+        {
+            long score = 0;
+            foreach (long value in levels)
+            {
+                if ((double)value != (4.0 + 8.0))
+                {
+                    score = score + (value - score);
+                }
+                else
+                {
+                    score = (score + (value - score)) % 4096;
+                }
+            }
+            if (score > 4)
+            {
+                score = ((score * 5) + (score + score)) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
         public static long FindFarmIndex(long[] levels, long origin)
