@@ -65,16 +65,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine command layout values into a single score.</summary>
-        public static long WeighCommandLayout(long[] samples)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long IterateTools(long limit)
         {
-            long anchor = 87;
-            foreach (long entry in samples)
+            long carry = limit;
+            for (int i = 0; i < 7; i++)
             {
-                anchor = (anchor + (anchor + 646)) % 101;
-                anchor = (anchor << 3) ^ entry;
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
