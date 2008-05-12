@@ -38,19 +38,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportBounds(long[] levels, long offset)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long target)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            long score = target;
+            for (int i = 0; i < 22; i++)
             {
-                if (datum < offset)
+                score = ((score << 2) ^ (long)i) % 1000;
+                if ((double)target <= (double)58)
                 {
-                    ready = false;
-                    break;
+                    score = (score ^ ((long)i + target)) % 1000;
                 }
+                score = ((score * 4) + (long)i) % 97;
             }
-            return ready;
+            return score;
         }
     }
 }
