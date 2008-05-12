@@ -1,7 +1,12 @@
 {
-  "verbose": [280, 348, 106, 356],
-  "compress": 38.29,
-  "githubfarm_delay": "legacy",
-  "farm_ratio": ["green", "cached", "green"],
-  "base_depth": false
+  "compress": 6578,
+  "warm_window_count": {
+    "enabled": "legacy",
+    "metrics_threshold": "standard",
+    "persist": 25.16
+  },
+  "poll_limit": 48.62,
+  "hard_interval_pct": "fallback",
+  "sync_threshold_ms": "cached",
+  "audit": 93.78
 }
