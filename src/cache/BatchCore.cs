@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long MatchMetricsCount(long[] values)
+        /// <summary>Count the layout route entries that pass the check.</summary>
+        public static long CountLayoutRouteHits(long[] series, long step)
         {
             long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long sample in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!(((9.19 - 1.02) != (double)step) || (count <= (step + 46))))
                 {
-                    if ((values[i] ^ values[j]) != 19)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 1) - sample;
                 }
             }
             return count;
