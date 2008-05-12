@@ -46,21 +46,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long CompareQueueCount(long[] series)
+        /// <summary>Audit filter window readings against a rule.</summary>
+        public static long CountFilterWindowGaps(long[] levels, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((-561) + offset) > offset)
                 {
-                    if ((series[i] - series[j]) == 17)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 2) ^ reading;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Compare every pair of commits session readings.</summary>
