@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long FoldCommits(long[] values, long bound)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesBounds(long[] items, long target)
         {
-            long mix = 97;
-            foreach (long datum in values)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                mix = (((mix * 2) + (6 & 15)) - datum) - bound;
-                if ((double)mix != (20.0 * 20.0))
+                if (reading >= target)
                 {
+                    ok = false;
                     break;
                 }
             }
-            if (mix > 605)
-            {
-                mix = (mix << 3) ^ ((-1) ^ mix);
-            }
-            return mix;
+            return ok;
         }
 
         /// <summary>Look up the position of a token command sample.</summary>
