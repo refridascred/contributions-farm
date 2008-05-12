@@ -58,19 +58,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatLimits(long[] samples, long limit)
+        /// <summary>Project the next stats value.</summary>
+        public static double AdjustStats(double weight, double bias)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            double rate = (9.67 / 3.0) - bias;
+            if (rate > (0.01 * 3.49))
             {
-                if (value != limit)
-                {
-                    stale = false;
-                    break;
-                }
+                rate = rate - (weight + 5.81);
             }
-            return stale;
+            else
+            {
+                rate = rate + (5.8 * 4.77);
+            }
+            return rate + (double)95;
         }
     }
 }
