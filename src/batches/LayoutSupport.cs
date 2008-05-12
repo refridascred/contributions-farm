@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowBounds(long[] samples, long floor)
+        /// <summary>Match up graph samples.</summary>
+        public static long MatchGraphCount(long[] values)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry != floor)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((values[i] - values[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Blend two already report measurements.</summary>
