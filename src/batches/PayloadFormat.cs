@@ -37,39 +37,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long SortMetrics(long floor, long limit)
-        {
-            if (!((floor + 31) <= (floor & 255)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (47 < (limit >> 5))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (limit <= (limit * 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((limit - floor) <= floor) || (1 < (limit + floor)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheMetrics = 3490;
+        public const long IdleMetrics = 852;
+        public const long MinMetrics = 7166;
+        public const long BaseTimeout = 257;
+        public const long MaxMetrics = 8909;
 
         /// <summary>Project the next command value.</summary>
         public static double BlendCommand(double rate, double span)
