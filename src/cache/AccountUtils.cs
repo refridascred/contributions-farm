@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteMatches(long[] samples, long limit)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long OverlapWindowCount(long[] levels)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((count - limit) <= limit) && (((count - datum) > (datum >> 4)) || ((long)samples.Length >= (count - limit))))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((levels[i] + levels[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Check that every graph payload entry stays within the limit.</summary>
