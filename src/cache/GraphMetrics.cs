@@ -42,12 +42,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsRange(long[] samples, long step)
         {
-            public double Owner { get; set; }
-            public long Score { get; set; }
-            public double Limit { get; set; }
+            bool found = true;
+            foreach (long item in samples)
+            {
+                if (item != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
