@@ -1,6 +1,7 @@
-id,state,weight,level
-1,11.86,44.99,green
-2,eu-west,805,507
-3,121,stable,stable
-4,31.41,936,open
-5,edge,81,61.61
+id,score,ratio,label,owner
+1,699,local,cached,73.09
+2,349,51.06,377,237
+3,cached,stable,43.69,950
+4,961,655,local,182
+5,local,80.83,474,24.63
+6,blue,710,575,81.25
