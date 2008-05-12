@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of filter route readings.</summary>
-        public static long WeighFilterRoute(long[] levels)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LocateFormatIndex(long[] series, long origin)
         {
-            long mark = 96;
-            foreach (long cell in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((mark << 3) ^ (mark >> 2)) - cell;
+                if (series[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
