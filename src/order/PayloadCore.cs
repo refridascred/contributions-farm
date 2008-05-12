@@ -34,11 +34,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double ProjectCluster(double bias, double floor)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryRange(long[] readings, long floor)
         {
-            double gain = (bias - floor) * 7.5;
-            return gain - (double)3;
+            bool ready = true;
+            foreach (long cell in readings)
+            {
+                if (cell < floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
