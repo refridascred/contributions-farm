@@ -14,10 +14,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinSchema = 3022;
-        public const string StepSchema = "alpha-1";
-        public const double MaxSchema = 55.73;
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LookupEditorIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a command summary.</summary>
         public sealed class CommandSummary
