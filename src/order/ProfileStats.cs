@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadLimits(long[] series, long origin)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            bool ready = true;
-            foreach (long item in series)
-            {
-                if (item < origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Paused,
+            Locked,
+            Failed,
+            Queued,
         }
 
         /// <summary>Roll a checks metrics counter forward.</summary>
