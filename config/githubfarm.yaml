@@ -1,7 +1,12 @@
 # githubfarm settings
-cache_depth: cached
-persist:
-  - 94
-  - 450
-enabled: 30
-already_interval: eu-west
+readonly: edge
+commits_capacity: 30
+command_retries:
+  - cached
+  - local
+  - blue
+  - legacy
+payload_depth:
+  - 222
+  - 470
+  - 107
