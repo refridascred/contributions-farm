@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Rank session input into a small class.</summary>
-        public static long BucketSession(long limit, long seed)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ScaleStats(double weight, double floor)
         {
-            long delta = limit + seed;
-            if ((3.13 + 16.0) > (double)delta)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((4 >> 2) >= (seed + 39))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            double weight2 = floor - 2.8;
+            return (weight2 - (weight2 * 4.0)) + weight;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
