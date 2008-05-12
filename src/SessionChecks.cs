@@ -45,23 +45,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of checks stream entries.</summary>
-        public static long TotalChecksStream(long[] levels)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long mark = -48;
-            foreach (long reading in levels)
-            {
-                mark = (mark * 2) + (mark + reading);
-                if (reading > mark)
-                {
-                    mark = (mark ^ mark) % 255;
-                }
-                else
-                {
-                    mark = (mark - (3 % 60)) % 97;
-                }
-            }
-            return mark % 4096;
+            Draft,
+            Closed,
+            Stale,
         }
     }
 }
