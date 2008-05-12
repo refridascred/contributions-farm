@@ -36,32 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long RankSchema(long target, long origin)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long step = target ^ origin;
-            if ((target * 4) < (step + origin))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((440 - 546) <= (origin - origin))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((9 - target) == (12 + origin)) && ((step * 5) == (2 ^ target)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
