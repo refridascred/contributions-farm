@@ -72,9 +72,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinBatches = 7600;
-        public const double LimitSpan = 31.26;
-        public const long IdleScore = 9793;
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long IterateToken(long limit)
+        {
+            long result = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
+        }
     }
 }
