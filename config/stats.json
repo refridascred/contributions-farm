@@ -1,7 +1,5 @@
 {
-  "verbose": "fallback",
-  "sync_timeout_ms": 73,
-  "batch_timeout_ms": 57.31,
-  "route_threshold": 5262,
-  "batch_interval": "blue"
+  "dry_run": "edge",
+  "metrics_timeout": [232, 287],
+  "soft_size": 30.82
 }
