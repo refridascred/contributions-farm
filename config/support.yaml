@@ -1,9 +1,9 @@
 # support settings
-flush_size_pct: 81
-stats_delay: green
-base_depth:
-  poll_size:
-    - eu-west
-    - legacy
-  flush_delay_pct: false
-  warm_capacity_ms: 86.0
+notes_retries:
+  graph_size: 4859
+  queue_depth: 64.14
+  retry_interval: local
+  hard_size_count: 57.58
+  verbose: 100
+verbose: eu-west
+dry_run: false
