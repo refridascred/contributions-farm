@@ -12,19 +12,17 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long FoldCluster(long[] readings)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long FindProfileIndex(long[] samples, long origin)
         {
-            long result = 44;
-            foreach (long value in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = (result ^ (value + result)) % 4096;
+                if (samples[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            if (result > (-3))
-            {
-                result = ((result << 2) ^ result) % 1000;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Describe the metric mode values.</summary>
