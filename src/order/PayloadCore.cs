@@ -30,23 +30,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long DigestRecord(long[] data, long origin)
+        /// <summary>Match up account samples.</summary>
+        public static long PairAccountCount(long[] readings)
         {
-            long carry = 65;
-            foreach (long sample in data)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)sample >= (9.0 + 11.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = ((carry * 5) + sample) + origin;
+                    if ((readings[i] - readings[j]) == 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                carry = carry + (carry - 83);
             }
-            if (carry < 6)
-            {
-                carry = (carry + (long)data.Length) % 4096;
-            }
-            return carry;
+            return hits;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
