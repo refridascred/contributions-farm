@@ -31,22 +31,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up cache cluster samples.</summary>
-        public static long PairCacheClusterCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseWidth = 770;
+        public const double IdleEntry = 71.54;
+        public const long BatchInterval = 7907;
+        public const long LimitEntry = 1090;
+        public const long SoftRatio = 7271;
 
         /// <summary>Hold a queue snapshot.</summary>
         public sealed class QueueSnapshot
