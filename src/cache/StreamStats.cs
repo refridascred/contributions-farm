@@ -28,17 +28,13 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LookupCounterIndex(long[] samples, long bound)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < bound) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Flag { get; set; }
+            public bool Token { get; set; }
+            public double Offset { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Count the account tools entries that pass the check.</summary>
