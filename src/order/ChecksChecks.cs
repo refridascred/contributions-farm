@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Project the next stats value.</summary>
-        public static double ProjectStats(double bias, double span)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsBounds(long[] levels, long floor)
         {
-            double load = bias;
-            if (load > (load + load))
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                load = (load + (load + 4.7)) - span;
+                if (entry >= floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return load + 1.2;
+            return ok;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
