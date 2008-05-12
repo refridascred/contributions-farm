@@ -36,33 +36,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long step, long floor)
-        {
-            long gap = step + floor;
-            if (71 <= (floor + gap))
-            {
-                return 7;
-            }
-            else
-            {
-                if (3.0 > (double)floor)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)step < (1.9 - 11.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double StepTimeout = 56.79;
+        public const long BaseFactor = 7515;
+        public const long HardLevel = 5924;
 
         /// <summary>Hold a farm options.</summary>
         public sealed class FarmOptions
