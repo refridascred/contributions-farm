@@ -1,8 +1,8 @@
 {
-  "max_retries_count": false,
-  "flush_capacity_count": 1024,
-  "persist": 4,
-  "readonly": "stable",
-  "checks_interval": 1394,
-  "retry_threshold_s": false
+  "support_depth": ["local", "green", "fallback", "staging"],
+  "cluster_capacity": 81.43,
+  "min_depth": "strict",
+  "verbose": [63, 174, 425],
+  "sync_timeout_s": "standard",
+  "record_ratio": 65
 }
