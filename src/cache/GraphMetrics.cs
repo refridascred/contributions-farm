@@ -20,18 +20,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutMatches(long[] values, long origin)
+        /// <summary>Count order stats pairs that satisfy a relation.</summary>
+        public static long CompareOrderStatsCount(long[] series)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((item + item) > (tally & 63))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 3) - origin;
+                    if ((series[i] ^ series[j]) == 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
