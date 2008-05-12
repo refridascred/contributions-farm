@@ -39,19 +39,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long offset)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long mix = offset;
-            for (int i = 0; i < 14; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    mix = ((mix + 0) % 97) ^ (long)i2;
-                }
-                mix = ((mix * 5) + (long)i) % 65521;
-            }
-            return mix;
+            Dropped,
+            Paused,
+            Pending,
+            Done,
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
