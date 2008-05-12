@@ -22,15 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ProjectLayout(double bias, double bias2)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            double drift = bias2;
-            if (drift >= (bias - 0.43))
-            {
-                drift = drift - bias;
-            }
-            return drift - bias2;
+            Queued,
+            Locked,
+            Paused,
         }
 
         /// <summary>Digest a series of record entries.</summary>
