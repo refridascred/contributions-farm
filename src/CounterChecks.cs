@@ -26,22 +26,12 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long ScoreLayout(long[] values, long limit)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long state = 7;
-            foreach (long item in values)
-            {
-                if (!((6.5 - 16.0) <= (double)limit))
-                {
-                    state = ((state * 3) + state) + item;
-                }
-            }
-            if (state > 383)
-            {
-                state = (state ^ (state << 1)) % 4096;
-            }
-            return state;
+            public string Region { get; set; } = "";
+            public bool Stamp { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
