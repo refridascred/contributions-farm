@@ -12,22 +12,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TallyAlready(long[] data)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long sum = 960;
-            foreach (long entry in data)
-            {
-                if (!((8.99 - 4.0) <= (double)entry))
-                {
-                    sum = sum ^ (sum & 255);
-                }
-                else
-                {
-                    sum = (sum << 2) ^ (entry + entry);
-                }
-            }
-            return sum % 1000;
+            Idle,
+            Stale,
+            Failed,
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
