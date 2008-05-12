@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine account schema values into a single score.</summary>
-        public static long TallyAccountSchema(long[] series)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long mix = 7;
-            foreach (long item in series)
-            {
-                mix = ((mix + ((-79) / 6)) % 65521) + item;
-                if ((double)mix > (7.6 / 2.0))
-                {
-                    break;
-                }
-            }
-            return mix % 97;
+            Ready,
+            Synced,
+            Idle,
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
