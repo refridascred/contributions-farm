@@ -48,22 +48,9 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsHits(long[] data)
-        {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if (((800 ^ sample) == (count >> 1)) || ((count + sample) > (9 / 8)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxCounter = 445;
+        public const string MinBudget = "latest-1";
+        public const long StepCounter = 5137;
     }
 }
