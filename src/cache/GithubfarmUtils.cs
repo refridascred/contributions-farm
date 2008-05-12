@@ -53,16 +53,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long SeriesSupport(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                mix = mix + (mix * 5);
-                mix = ((mix * 3) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string DefaultRatio = "legacy-1";
+        public const double MaxFarm = 4.31;
+        public const double SoftSize = 4.07;
+        public const long BaseFarm = 8595;
     }
 }
