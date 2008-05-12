@@ -62,18 +62,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many stream cluster samples are out of range.</summary>
-        public static long TallyStreamClusterMatches(long[] readings)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long score = -7;
+            foreach (long cell in samples)
             {
-                if ((6 + hits) != (4 - 196))
+                if ((652 - cell) != (long)samples.Length)
                 {
-                    hits = (hits + 3) - item;
+                    score = (score ^ (cell & 3)) % 97;
                 }
             }
-            return hits;
+            if (score < 197)
+            {
+                score = (score - (limit - 95)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
