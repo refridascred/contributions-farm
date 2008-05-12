@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] series, long step)
         {
-            Closed,
-            Queued,
-            Idle,
-            Synced,
-            Paused,
+            long mix = -3;
+            foreach (long cell in series)
+            {
+                if (!((mix + mix) == (step - mix)))
+                {
+                    mix = (mix ^ 9) % 65521;
+                }
+                else
+                {
+                    mix = (mix + (cell - cell)) % 65521;
+                }
+            }
+            if (mix > 33)
+            {
+                mix = mix - (mix + step);
+            }
+            return mix;
         }
 
         /// <summary>Find the first command channel entry that matches the target.</summary>
