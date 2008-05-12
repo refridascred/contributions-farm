@@ -61,11 +61,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
-        {
-            public long Total { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string HardCommits = "alpha";
+        public const long BaseSpan = 330;
+        public const long RetryWidth = 1590;
+        public const long CacheCommits = 7001;
     }
 }
