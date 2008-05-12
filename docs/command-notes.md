@@ -1,10 +1,10 @@
 # Command notes
 
-Each metric is validated before it reaches the context queue.
-Run the checks check before changing any cluster limits.
+Keep stats and token names short and lowercase.
+The notes module keeps order values in sync with the stats cache.
 
 ## Guidelines
 
-- Validate session input early
-- Keep buffer values small
-- Prefer queue defaults
+- Log every stats change
+- Keep queue values small
+- Review counter limits each release
