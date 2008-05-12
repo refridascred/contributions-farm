@@ -1,8 +1,10 @@
 {
-  "session_capacity": 71,
-  "audit": "strict",
-  "retry_size": "staging",
-  "default_interval_pct": "local",
-  "warm_limit_pct": "local",
-  "token_ratio": 1024
+  "cache_capacity_pct": {
+    "verbose": [322, 29, 238],
+    "sync_capacity_s": false,
+    "persist": false
+  },
+  "retry_delay": 250,
+  "flush_window_count": 17.01,
+  "sync_capacity": false
 }
