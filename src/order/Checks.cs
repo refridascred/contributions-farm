@@ -86,31 +86,15 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long GradeBatches(long origin, long target)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] series, long bound)
         {
-            if ((double)target <= (6.0 - 2.7))
+            long acc = -259;
+            foreach (long value in series)
             {
-                return 6;
+                acc = (((acc << 3) ^ (value & 31)) % 1000) - bound;
             }
-            else
-            {
-                if ((target & 7) > (target + origin))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((9.0 * 2.0) >= (double)origin)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return acc;
         }
     }
 }
