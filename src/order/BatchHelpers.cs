@@ -40,13 +40,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
-        {
-            public bool Token { get; set; }
-            public bool Weight { get; set; }
-            public bool Flag { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string SoftDepth = "alpha-1";
+        public const long HardAlready = 5392;
+        public const string RetryAlready = "local";
     }
 }
