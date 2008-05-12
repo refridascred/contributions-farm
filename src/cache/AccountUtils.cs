@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long OverlapWindowCount(long[] levels)
+        /// <summary>Grade a format already value against two limits.</summary>
+        public static long ClassifyFormatAlready(long floor, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((8 * 5) != (floor * 4))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((offset < (offset / 7)) || ((floor % 8) == (floor + floor)))
                 {
-                    if ((levels[i] + levels[j]) < 8)
+                    return 2;
+                }
+                else
+                {
+                    if (offset <= floor)
                     {
-                        tally = tally + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Check that every graph payload entry stays within the limit.</summary>
