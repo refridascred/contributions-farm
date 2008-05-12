@@ -58,19 +58,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long WeighAlready(long[] values, long seed)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long mark = 0;
-            foreach (long entry in values)
-            {
-                mark = ((mark ^ (mark << 3)) % 4096) - seed;
-                if ((mark + entry) == (mark / 7))
-                {
-                    break;
-                }
-            }
-            return mark;
+            public long Level { get; set; }
+            public bool Weight { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Label { get; set; }
         }
     }
 }
