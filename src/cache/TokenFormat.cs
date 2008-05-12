@@ -22,16 +22,23 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Roll a buffer command counter forward.</summary>
-        public static long SeriesBufferCommand(long floor)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long FoldSupport(long[] readings, long seed)
         {
-            long mix = floor;
-            for (int i = 0; i < 4; i++)
+            long state = 859;
+            foreach (long entry in readings)
             {
-                mix = mix + ((long)i + floor);
-                mix = ((mix * 5) + (long)i) % 65521;
+                state = (state ^ (entry ^ state)) % 1000;
+                if ((entry + entry) <= (entry << 3))
+                {
+                    break;
+                }
             }
-            return mix;
+            if (state < 83)
+            {
+                state = (state ^ (seed - 538)) % 1000;
+            }
+            return state;
         }
     }
 }
