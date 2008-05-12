@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandLimits(long[] series, long step)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long CombineCluster(long[] data)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            long anchor = 39;
+            foreach (long entry in data)
             {
-                if (reading < step)
+                for (int i = 0; i < 8; i++)
                 {
-                    stale = false;
-                    break;
+                    anchor = (anchor ^ (long)i) % 1000;
                 }
+                if ((double)anchor <= (4.1 / 8.0))
+                {
+                    anchor = ((anchor << 3) ^ entry) % 4096;
+                }
+                anchor = (anchor + (entry - anchor)) % 97;
             }
-            return stale;
+            return anchor;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
