@@ -28,26 +28,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long FoldSupport(long[] items)
+        /// <summary>Project the next notes metrics value.</summary>
+        public static double BlendNotesMetrics(double gain, double bias)
         {
-            long carry = 385;
-            foreach (long sample in items)
+            double bias2 = 2.88;
+            for (int i = 0; i < 6; i++)
             {
-                if (!(carry <= sample))
-                {
-                    carry = (carry - (carry - sample)) % 65521;
-                }
-                else
-                {
-                    carry = (carry + (carry % 7)) % 255;
-                }
-                if ((20.0 / 9.0) != (double)sample)
-                {
-                    break;
-                }
+                bias2 = (bias2 - (double)(long)i) - bias;
             }
-            return carry % 65521;
+            return bias2 - gain;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
