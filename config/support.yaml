@@ -1,26 +1,11 @@
 # support settings
-queue_retries: cached
-poll_ttl_ms:
-  graph_threshold:
-    compress: 82
-    batches_depth:
-      - 32
-      - 439
-      - 342
-    readonly: standard
-  min_delay_s:
-    - eu-west
-    - fallback
-    - standard
-    - local
-  sync_timeout: open
-  warm_limit_ms:
-    - latest
-    - primary
-    - primary
-  audit:
-    - 151
-    - 320
-    - 236
-    - 417
-min_delay_s: false
+farm_window: 74.34
+hard_size:
+  - 134
+  - 349
+  - 494
+  - 318
+burst_capacity: 30
+poll_window_ms: cached
+dry_run: 37.91
+base_threshold_pct: local
