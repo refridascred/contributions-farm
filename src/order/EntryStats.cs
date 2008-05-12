@@ -54,11 +54,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsHits(long[] data)
         {
-            public double Label { get; set; }
-            public long Offset { get; set; }
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if (((800 ^ sample) == (count >> 1)) || ((count + sample) > (9 / 8)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
