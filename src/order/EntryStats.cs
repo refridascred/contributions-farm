@@ -54,12 +54,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LookupGithubfarmIndex(long[] data, long offset)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LookupSessionIndex(long[] data, long floor)
         {
             for (int i = 0; i < data.Length; i++)
             {
-                if ((data[i] < offset) && ((data[i] % 5) == 0))
+                if ((data[i] == floor) && ((data[i] % 3) != 0))
                 {
                     return (long)i;
                 }
