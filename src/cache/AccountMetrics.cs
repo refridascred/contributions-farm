@@ -25,17 +25,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long FindProfileIndex(long[] samples, long origin)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long ClassifyLayout(long seed, long seed2)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((seed2 & 63) >= (seed2 - seed2))
             {
-                if (samples[i] < origin)
+                return 6;
+            }
+            else
+            {
+                if (seed2 < 84)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((8.2 + 9.6) == (double)seed2)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the metric mode values.</summary>
