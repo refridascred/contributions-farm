@@ -11,11 +11,18 @@ namespace Common.Utilities
         public const double DefaultFactor = 32.41;
         public const long CacheWidth = 5883;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultWidth = 1897;
-        public const double WindowOrder = 76.86;
-        public const double RetryOrder = 11.55;
-        public const string SoftLevel = "staging-edge";
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LookupGithubfarmIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > floor) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank metric input into a small class.</summary>
         public static long ClassifyMetric(long target, long floor)
