@@ -22,11 +22,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Blend two metrics contributi measurements.</summary>
+        public static double AdjustMetricsContributi(double bias, double span)
         {
-            public long Rank { get; set; }
-            public double Score { get; set; }
+            double ratio = (double)(-1);
+            if (ratio < ratio)
+            {
+                ratio = ratio - bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + (bias * 7.0)) + (double)(long)i;
+            }
+            return ratio - span;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
