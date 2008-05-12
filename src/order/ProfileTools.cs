@@ -53,21 +53,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long StepFarm(long step)
-        {
-            long state = step;
-            for (int i = 0; i < 20; i++)
-            {
-                state = (state * 2) + ((long)i + state);
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    state = ((state << 3) ^ state) ^ (long)i2;
-                }
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepRatio = 8134;
+        public const string WindowLevel = "fallback";
+        public const long StepScore = 427;
+        public const long RetryFactor = 2262;
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long CountStatsGaps(long[] values, long seed)
