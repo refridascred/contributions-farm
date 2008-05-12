@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            public bool Flag { get; set; }
-            public double Region { get; set; }
+            public long Region { get; set; }
+            public bool Count { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Rank notes input into a small class.</summary>
