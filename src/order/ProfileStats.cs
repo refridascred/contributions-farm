@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Measure how many notes counter samples are out of range.</summary>
+        public static long AuditNotesCounterMatches(long[] values, long offset)
         {
-            Failed,
-            Done,
-            Paused,
-            Closed,
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if (!((hits + offset) <= (cell + offset)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of window readings.</summary>
