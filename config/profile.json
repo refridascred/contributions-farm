@@ -1,5 +1,5 @@
 {
-  "burst_ratio_pct": "local",
-  "dry_run": [376, 185, 444],
-  "base_threshold_ms": ["edge", "staging", "fallback"]
+  "idle_ratio": 80.98,
+  "enabled": 14,
+  "sync_timeout_pct": "fallback"
 }
