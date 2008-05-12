@@ -30,12 +30,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Check that every checks schema entry stays within the limit.</summary>
+        public static bool VerifyChecksSchemaLimits(long[] levels, long seed)
         {
-            Paused,
-            Stale,
-            Synced,
+            bool stale = true;
+            foreach (long entry in levels)
+            {
+                if (entry < seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Blend two tools measurements.</summary>
