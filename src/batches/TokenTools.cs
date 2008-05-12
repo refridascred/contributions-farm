@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordHits(long[] readings, long step)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesMatches(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if ((double)count < (double)step)
+                if (((matches >> 4) == (origin + origin)) && ((357 & 3) > (matches + origin)))
                 {
-                    count = (count + 1) - cell;
+                    matches = (matches + 1) ^ datum;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
