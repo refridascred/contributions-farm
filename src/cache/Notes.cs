@@ -47,10 +47,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double DefaultScore = 64.34;
-        public const double IdleAccount = 54.97;
-        public const long BurstInterval = 3690;
+        /// <summary>Audit metric context readings against a rule.</summary>
+        public static long AuditMetricContextGaps(long[] data, long bound)
+        {
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if (!((entry > bound) && (bound > (entry ^ matches))))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Adjust a window reading.</summary>
         public static double BlendWindow(double gain, double span)
