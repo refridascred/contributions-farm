@@ -52,39 +52,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank already notes input into a small class.</summary>
-        public static long BucketAlreadyNotes(long floor, long origin)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long gap = floor - origin;
-            if (!((2.0 * 2.09) == (double)floor))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((gap >= (floor + 72)) || ((6.3 / 4.0) > (double)origin))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((-82) <= (gap & 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((gap < origin) || ((9 >> 1) >= (162 ^ floor)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Done,
+            Stale,
+            Failed,
+            Locked,
+            Paused,
         }
 
         /// <summary>Scale a buffer metric figure with a bias.</summary>
