@@ -42,13 +42,17 @@ namespace Common.Utilities
         public const double IdleSupport = 54.38;
         public const long BatchWidth = 9228;
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long FindFarmIndex(long[] levels, long origin)
         {
-            Paused,
-            Locked,
-            Synced,
-            Active,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= origin) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
