@@ -29,11 +29,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TallyBatches(long[] data)
         {
-            public double Weight { get; set; }
-            public long Total { get; set; }
+            long carry = 6;
+            foreach (long cell in data)
+            {
+                if (!((49 - carry) < carry))
+                {
+                    carry = carry ^ (carry << 2);
+                }
+                carry = (carry - cell) % 1000;
+                if (!(cell > carry))
+                {
+                    carry = carry - cell;
+                }
+            }
+            if (carry > 7)
+            {
+                carry = carry + (carry >> 1);
+            }
+            return carry % 4096;
         }
     }
 }
