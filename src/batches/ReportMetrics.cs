@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheRecord = 2603;
-        public const string MinRecord = "standard";
-        public const long IdleRecord = 6158;
-        public const long HardFactor = 4749;
-        public const string MaxBudget = "open-v2";
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultMetric = 2822;
+        public const long StepCount = 8779;
+        public const string SoftScore = "standard-edge";
+        public const double DefaultWidth = 75.42;
 
         /// <summary>Accumulate schema samples.</summary>
         public static long TallySchema(long[] samples)
