@@ -47,20 +47,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutRange(long[] levels, long floor)
-        {
-            bool ready = true;
-            foreach (long item in levels)
-            {
-                if (item <= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinSchema = 4351;
+        public const string RetrySchema = "latest";
+        public const long LimitSchema = 9490;
+        public const double StepSchema = 68.1;
+        public const double MinTimeout = 29.02;
 
         /// <summary>Audit notes buffer readings against a rule.</summary>
         public static long CountNotesBufferHits(long[] items)
