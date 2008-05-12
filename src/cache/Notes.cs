@@ -66,10 +66,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseSupport = 141;
-        public const long DefaultSupport = 2776;
-        public const double BurstRatio = 5.44;
-        public const long WindowSupport = 1430;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheMetric = 7236;
+        public const double RetryBudget = 7.42;
+        public const string WindowFactor = "latest-v2";
+        public const string LimitInterval = "alpha-edge";
     }
 }
