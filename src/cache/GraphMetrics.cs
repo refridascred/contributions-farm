@@ -19,22 +19,36 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long GradeRecord(long limit, long offset)
+        /// <summary>Grade a entry profile value against two limits.</summary>
+        public static long ClassifyEntryProfile(long offset, long bound)
         {
-            if ((offset + offset) > (549 % 3))
+            if ((3.01 - 4.0) > (double)offset)
             {
-                return 7;
+                return 5;
             }
             else
             {
-                if ((offset >> 5) > 145)
+                if ((5.6 * 6.64) > (double)bound)
                 {
-                    return 6;
+                    return 3;
                 }
                 else
                 {
-                    return 5;
+                    if ((double)bound < (19.0 - 12.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((bound + offset) <= (99 - 813))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
         }
