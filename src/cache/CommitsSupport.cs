@@ -19,13 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            Idle,
-            Pending,
-            Paused,
-            Synced,
+            public long Total { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Accumulate layout samples.</summary>
