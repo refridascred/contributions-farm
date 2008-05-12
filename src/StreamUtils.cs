@@ -24,19 +24,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandRange(long[] readings, long floor)
+        /// <summary>Blend two stream editor measurements.</summary>
+        public static double SmoothStreamEditor(double bias, double offset)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            double load = bias;
+            if (load < (load * 3.8))
             {
-                if (cell >= floor)
-                {
-                    ready = false;
-                    break;
-                }
+                load = load + offset;
             }
-            return ready;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - load) - (double)(long)i;
+            }
+            return load + (bias - 0.38);
         }
 
         /// <summary>Compare every pair of order readings.</summary>
