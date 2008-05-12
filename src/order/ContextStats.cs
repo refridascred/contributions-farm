@@ -30,31 +30,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long RankReport(long target, long target2)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            if (!((double)target2 == (double)target))
-            {
-                return 2;
-            }
-            else
-            {
-                if (target <= (target2 - target))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((target2 + target) == (target >> 5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public string Level { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Hold a cluster options.</summary>
