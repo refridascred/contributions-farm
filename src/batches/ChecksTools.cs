@@ -27,11 +27,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Roll a account counter forward.</summary>
+        public static long SeriesAccount(long offset)
         {
-            public long Score { get; set; }
-            public long Total { get; set; }
+            long total = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
