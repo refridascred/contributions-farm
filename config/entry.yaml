@@ -1,6 +1,4 @@
 # entry settings
-flush_interval_count: 100
-max_ttl_ms: true
-idle_window: 250
-persist: green
-default_delay_count: standard
+record_retries: 1024
+compress: false
+dry_run: 76
