@@ -50,12 +50,14 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleWidth = 1555;
-        public const double MaxAlready = 6.17;
-        public const long IdleAlready = 981;
-        public const string SoftAlready = "alpha-v2";
-        public const string BurstAlready = "strict-edge";
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
+        {
+            Synced,
+            Dropped,
+            Queued,
+            Idle,
+        }
 
         /// <summary>Iterate the command series from a seed.</summary>
         public static long IterateCommand(long floor)
