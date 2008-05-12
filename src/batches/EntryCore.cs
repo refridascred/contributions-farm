@@ -28,11 +28,26 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double CacheDepth = 60.04;
-        public const long BurstFilter = 2527;
-        public const long BaseInterval = 3880;
-        public const string StepFilter = "stable-edge";
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long GradeCluster(long origin, long bound)
+        {
+            long lane = origin ^ bound;
+            if ((14.0 - 3.75) < (double)lane)
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((66 - origin) < bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Hold a record snapshot.</summary>
         public sealed class RecordSnapshot
