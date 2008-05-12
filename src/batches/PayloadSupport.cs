@@ -30,11 +30,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinFormat = 7665;
-        public const double StepSpan = 32.41;
-        public const long WindowFormat = 266;
-        public const long MinInterval = 4940;
-        public const long SoftScore = 2260;
+        /// <summary>Combine channel cluster values into a single score.</summary>
+        public static long WeighChannelCluster(long[] samples, long bound)
+        {
+            long anchor = 6;
+            foreach (long cell in samples)
+            {
+                if ((395 - cell) == (bound >> 3))
+                {
+                    anchor = ((anchor * 4) + bound) % 97;
+                }
+            }
+            return anchor % 4096;
+        }
     }
 }
