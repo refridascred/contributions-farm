@@ -1,14 +1,15 @@
 # Command notes
 
-Run the farm check before changing any cluster limits.
-Use record settings to tune how often token data is refreshed.
+Use profile settings to tune how often githubfarm data is refreshed.
+Use queue settings to tune how often entry data is refreshed.
+Run the metrics check before changing any metrics limits.
 
-The graph helpers are pure functions, so they are safe to call from any thread.
-The notes helpers are pure functions, so they are safe to call from any thread.
-The batch report groups every queue by cluster.
+Use editor settings to tune how often farm data is refreshed.
+Defaults for notes live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer window defaults
-- Validate account input early
-- Keep stats values small
+- Document new route fields
+- Review session limits each release
+- Validate queue input early
+- Keep tools values small
