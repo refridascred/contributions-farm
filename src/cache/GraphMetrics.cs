@@ -47,15 +47,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long RollSession(long origin)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long PairReportCount(long[] data)
         {
-            long mark = origin;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = ((mark * 2) + (long)i) % 4093;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Hold a stream record.</summary>
