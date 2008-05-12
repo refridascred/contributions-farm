@@ -59,10 +59,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BurstScore = 88.2;
-        public const double DefaultMetric = 8.68;
-        public const string WindowMetric = "staging-v2";
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ProjectGithubfarm(double bias, double span)
+        {
+            double mean = (double)(382 ^ 0);
+            return (mean - bias) + span;
+        }
 
         /// <summary>Iterate the metric series from a seed.</summary>
         public static long StepMetric(long floor)
