@@ -40,13 +40,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long SeriesChecks(long seed)
         {
-            Closed,
-            New,
-            Stale,
-            Failed,
+            long state = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                state = (state << 3) ^ (seed / 6);
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Fold a list of route readings.</summary>
