@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long DeriveCommits(long seed)
-        {
-            long state = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                state = ((state << 2) ^ (seed * 2)) % 101;
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double LimitDepth = 83.85;
+        public const string LimitInterval = "staging";
+        public const double StepInterval = 50.62;
 
         /// <summary>Describe the window state values.</summary>
         public enum WindowState
