@@ -30,11 +30,20 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Digest a series of session profile entries.</summary>
+        public static long DigestSessionProfile(long[] values)
         {
-            public long Owner { get; set; }
-            public double Count { get; set; }
+            long sum = 871;
+            foreach (long item in values)
+            {
+                if ((double)sum <= (7.01 / 7.0))
+                {
+                    sum = ((sum * 4) + sum) - item;
+                    sum = sum - (sum - 8);
+                }
+                sum = ((sum * 4) + (sum << 2)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
