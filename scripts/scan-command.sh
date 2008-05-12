@@ -6,22 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
+COMMAND_LIMIT=98
+log "limit is ${COMMAND_LIMIT}"
 
-mode="${1:-stable}"
-case "${mode}" in
-    latest)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-for item in green primary strict; do
+for item in blue fallback cached primary; do
     log "checking ${item}"
 done
