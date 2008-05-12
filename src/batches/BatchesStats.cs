@@ -34,13 +34,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TallyBatch(long[] items)
         {
-            Idle,
-            Draft,
-            Closed,
-            Pending,
+            long sum = 146;
+            foreach (long item in items)
+            {
+                if (item < 45)
+                {
+                    sum = sum - item;
+                }
+            }
+            if (sum > 228)
+            {
+                sum = ((sum * 4) + (908 << 1)) % 255;
+            }
+            return sum % 4096;
         }
     }
 }
