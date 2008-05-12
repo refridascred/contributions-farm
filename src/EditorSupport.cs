@@ -47,12 +47,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutRange(long[] levels, long floor)
         {
-            public string Flag { get; set; } = "";
-            public string Region { get; set; } = "";
-            public double Offset { get; set; }
+            bool ready = true;
+            foreach (long item in levels)
+            {
+                if (item <= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the order class values.</summary>
