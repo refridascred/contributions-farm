@@ -1,7 +1,4 @@
 # entry settings
-persist: 31.58
-dry_run: local
-idle_limit: 98
-poll_interval_count: 8784
-hard_interval: false
-sync_size_pct: 52
+command_retries: 1024
+soft_retries_count: true
+warm_depth_s: green
