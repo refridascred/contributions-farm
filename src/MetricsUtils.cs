@@ -30,12 +30,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            Active,
-            Failed,
-            New,
+            Paused,
+            Stale,
             Synced,
         }
 
