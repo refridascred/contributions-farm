@@ -13,19 +13,17 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionBounds(long[] items, long floor)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LocateLayoutIndex(long[] levels, long seed)
         {
-            bool found = true;
-            foreach (long entry in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry <= floor)
+                if ((levels[i] > seed) && ((levels[i] % 2) == 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Project the next queue value.</summary>
