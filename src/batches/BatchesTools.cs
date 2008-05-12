@@ -48,24 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long DeriveAccount(long offset)
+        /// <summary>Validate route session readings against a bound.</summary>
+        public static bool CheckRouteSessionRange(long[] items, long bound)
         {
-            long score = offset;
-            for (int i = 0; i < 18; i++)
+            bool found = true;
+            foreach (long datum in items)
             {
-                if ((7 >> 2) == (long)i)
+                if (datum > bound)
                 {
-                    score = ((score << 2) ^ (offset * 4)) % 4096;
-                    score = (score * 5) + ((long)i * 4);
+                    found = false;
+                    break;
                 }
-                else
-                {
-                    score = (score * 5) + 14;
-                }
-                score = ((score * 5) + (long)i) % 1000;
             }
-            return score;
+            return found;
         }
     }
 }
