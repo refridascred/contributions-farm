@@ -37,23 +37,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double BlendEntry(double weight, double span)
+        /// <summary>Compare every pair of record graph readings.</summary>
+        public static long OverlapRecordGraphCount(long[] levels)
         {
-            double rate = 9.4 - (weight + span);
-            if (rate <= rate)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = rate - weight;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate + span;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + span) + (double)(long)i;
-            }
-            return rate + (1.83 + span);
+            return seen;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
