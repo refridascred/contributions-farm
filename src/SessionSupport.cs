@@ -13,15 +13,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long DeriveSchema(long offset)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamGaps(long[] series, long origin)
         {
-            long mark = offset;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                mark = ((mark * 4) + (long)i) % 4093;
+                if ((8.0 * 5.33) != (double)origin)
+                {
+                    seen = (seen + 2) ^ item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
