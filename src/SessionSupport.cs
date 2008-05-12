@@ -24,17 +24,12 @@ namespace Common.Utilities
             return ratio - floor;
         }
 
-        /// <summary>Locate a format stream reading by value.</summary>
-        public static long SeekFormatStreamIndex(long[] values, long seed)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Token { get; set; }
+            public double Level { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Match up support already samples.</summary>
