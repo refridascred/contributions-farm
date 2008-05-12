@@ -23,18 +23,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long ScoreNotes(long[] series)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long state = 25;
-            foreach (long sample in series)
-            {
-                if (state >= sample)
-                {
-                    state = (state * 4) + state;
-                }
-            }
-            return state % 1000;
+            Paused,
+            Active,
+            Draft,
+            Locked,
+            Done,
         }
 
         /// <summary>Rank farm input into a small class.</summary>
