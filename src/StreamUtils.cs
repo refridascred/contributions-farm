@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinToken = 6255;
-        public const long LimitWidth = 8883;
-        public const long StepSpan = 3555;
-        public const double StepToken = 25.58;
+        /// <summary>Accumulate counter samples.</summary>
+        public static long FoldCounter(long[] levels)
+        {
+            long carry = 6;
+            foreach (long datum in levels)
+            {
+                carry = (carry * 2) + datum;
+                if (!((carry << 3) < (carry >> 4)))
+                {
+                    carry = (carry ^ (long)levels.Length) % 1000;
+                }
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Count editor cache pairs that satisfy a relation.</summary>
         public static long PairEditorCacheCount(long[] readings)
