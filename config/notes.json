@@ -1,21 +1,8 @@
 {
-  "compress": 500,
-  "enabled": 56.2,
-  "record_capacity": 83,
-  "window_depth": {
-    "commits_threshold": {
-      "retry_capacity_pct": 250,
-      "min_depth_s": 60,
-      "verbose": 23.44,
-      "account_size": 70.18,
-      "channel_timeout": 12,
-      "cache_window": 57
-    },
-    "default_threshold_ms": 56,
-    "cluster_size": ["standard", "latest"],
-    "compress": "eu-west",
-    "readonly": "primary",
-    "min_ratio_ms": 28.07
-  },
-  "counter_delay": false
+  "enabled": "eu-west",
+  "flush_window": "latest",
+  "default_depth_count": [267, 295, 280, 225],
+  "queue_window": 60,
+  "idle_delay_count": [218, 28, 251, 339],
+  "graph_limit": [37, 269, 287]
 }
