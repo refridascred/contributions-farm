@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long ClassifyContributi(long seed, long origin)
+        /// <summary>Find the first contributi farm entry that matches the target.</summary>
+        public static long FindContributiFarmIndex(long[] series, long floor)
         {
-            long cur = seed + origin;
-            if ((double)cur <= (5.2 * 2.91))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed << 3) >= (cur ^ origin))
+                if (series[i] < floor)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed / 3) <= cur)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Grade a entry stats value against two limits.</summary>
