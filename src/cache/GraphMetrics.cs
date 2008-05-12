@@ -20,27 +20,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] levels, long origin)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long score = 182;
-            foreach (long cell in levels)
-            {
-                if (17.0 <= (double)cell)
-                {
-                    continue;
-                }
-                score = (score + (origin + 75)) % 4096;
-                if ((15.0 * 2.57) > (double)score)
-                {
-                    break;
-                }
-            }
-            if (score > 52)
-            {
-                score = (score ^ (origin / 6)) % 65521;
-            }
-            return score;
+            public string Total { get; set; } = "";
+            public long Score { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Compare every pair of record graph readings.</summary>
