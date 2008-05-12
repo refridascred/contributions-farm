@@ -61,19 +61,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaLimits(long[] readings, long origin)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            bool stale = true;
-            foreach (long item in readings)
-            {
-                if (item <= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Owner { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
