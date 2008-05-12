@@ -1,11 +1,12 @@
 # support settings
-command_retries:
-  - eu-west
-  - green
-  - blue
-  - primary
-window_ttl: true
-min_depth_count: strict
-dry_run: true
-flush_delay_s: 13.86
-flush_timeout: blue
+warm_window: 54.42
+sync_ratio_s:
+  verbose: fallback
+  hard_timeout: 93
+  record_limit: 77
+flush_threshold: 100
+filter_timeout: false
+default_depth_s: 41.27
+command_interval:
+  - strict
+  - latest
