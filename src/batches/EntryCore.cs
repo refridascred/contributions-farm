@@ -56,19 +56,11 @@ namespace Common.Utilities
         public const long WindowNotes = 1506;
         public const long MinNotes = 7236;
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long FoldContributi(long[] series, long limit)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long acc = 24;
-            foreach (long cell in series)
-            {
-                acc = (acc + (928 << 2)) % 101;
-                if ((limit < (limit >> 4)) || ((double)acc <= 8.0))
-                {
-                    acc = (acc - (cell + cell)) % 4096;
-                }
-            }
-            return acc;
+            public long Mode { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
