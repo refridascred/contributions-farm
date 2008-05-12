@@ -1,16 +1,11 @@
 # support settings
-poll_capacity: 7904
-batch_size_ms:
-  sync_ttl_s:
-    - 436
-    - 314
-    - 159
-  layout_limit: blue
-  warm_threshold:
-    - green
-    - eu-west
-    - legacy
-base_ttl: 1778
-compress:
-  - 151
-  - 1
+burst_window: standard
+cache_window:
+  - legacy
+  - cached
+  - fallback
+  - cached
+soft_interval_ms:
+  - stable
+  - latest
+  - edge
