@@ -1,21 +1,43 @@
 # entry settings
-githubfarm_ttl: edge
-max_ttl_s:
-  batch_threshold_ms: 30
-  entry_size: cached
-  poll_window: 66
-  retry_capacity_s: 84
-  context_capacity: false
-min_ratio_ms: cached
-strict:
-  retry_limit:
-    farm_timeout:
-      - open
+warm_capacity_pct: 36
+min_depth_s:
+  readonly: 1024
+  idle_capacity_s:
+    flush_limit_ms: true
+    cache_delay: 33.33
+    base_delay_pct: 8
+    support_depth: 250
+    cache_ttl: legacy
+    poll_timeout_count: false
+  persist: open
+  batch_size_pct: true
+  layout_retries: fallback
+  command_retries:
+    context_capacity: stable
+    idle_threshold: false
+    retry_threshold: 5142
+    base_interval: false
+    queue_depth: 60
+sync_window_pct: false
+flush_capacity_count:
+  persist: 9892
+  compress:
+    window_retries: false
+    flush_capacity:
+      - 366
+      - 148
+      - 197
+    idle_timeout_count: 6276
+  flush_ttl_s: eu-west
+  base_delay_s:
+    default_delay:
+      - 486
+      - 437
+    channel_timeout: 8331
+    soft_ttl_s:
+      - staging
       - local
-    poll_depth_ms: 250
-    warm_timeout: 73.61
-  batch_threshold_ms:
-    - primary
-    - latest
-  base_retries_s: 8984
-hard_interval_s: 14.22
+      - blue
+  report_timeout: local
+hard_threshold_s: 61
+max_ratio_pct: eu-west
