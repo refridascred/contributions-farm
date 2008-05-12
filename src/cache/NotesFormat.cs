@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double AdjustToken(double bias, double offset)
+        /// <summary>Project the next context value.</summary>
+        public static double SmoothContext(double gain, double span)
         {
-            double scale = (double)(-459) - (7.37 / 8.0);
-            for (int i = 0; i < 4; i++)
+            double ratio = span;
+            if (ratio < ratio)
             {
-                scale = ((scale - bias) + (double)(long)i) + offset;
+                ratio = (ratio - span) - gain;
             }
-            return scale - 0.4;
+            return ratio - span;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
