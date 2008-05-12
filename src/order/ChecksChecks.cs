@@ -20,15 +20,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] levels, long floor)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderMatches(long[] values, long seed)
         {
-            long mark = 3;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long value in values)
             {
-                mark = (((mark + (4 / 8)) % 4096) + entry) - floor;
+                if (((long)values.Length * 3) >= (value >> 2))
+                {
+                    tally = (tally + 1) + seed;
+                }
             }
-            return mark % 65521;
+            return tally;
         }
     }
 }
