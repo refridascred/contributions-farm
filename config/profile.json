@@ -1,17 +1,6 @@
 {
-  "enabled": 46,
-  "idle_retries_ms": 9414,
-  "contributi_size": {
-    "audit": 7.15,
-    "default_ratio_ms": {
-      "min_ratio": false,
-      "hard_size_count": [212, 331],
-      "soft_ttl_pct": true,
-      "audit": [168, 23]
-    },
-    "counter_delay": 85
-  },
-  "warm_ratio_count": 8062,
-  "max_timeout": false,
-  "order_delay": "standard"
+  "hard_threshold": false,
+  "graph_ratio": "strict",
+  "default_delay_s": "open",
+  "dry_run": 65.25
 }
