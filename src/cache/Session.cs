@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long ScoreAlready(long[] items)
-        {
-            long mark = 97;
-            foreach (long sample in items)
-            {
-                mark = ((mark - (mark << 2)) % 101) - sample;
-                mark = mark + mark;
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepQueue = 6275;
+        public const double HardQueue = 32.43;
+        public const double LimitQueue = 77.13;
+        public const long MinRatio = 1551;
 
         /// <summary>Grade a window value against two limits.</summary>
         public static long GradeWindow(long offset, long floor)
