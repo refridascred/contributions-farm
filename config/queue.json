@@ -1,6 +1,6 @@
 {
-  "warm_ratio": 71,
-  "hard_size_s": 19,
-  "batch_timeout_s": "open",
-  "base_threshold": "strict"
+  "strict": "open",
+  "soft_ttl": 2384,
+  "retry_capacity": "latest",
+  "cache_delay": 1024
 }
