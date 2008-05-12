@@ -12,13 +12,22 @@ namespace Common.Utilities
         public const double BurstMetrics = 33.54;
         public const string LimitWidth = "fallback-v2";
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandMatches(long[] levels)
         {
-            public double Total { get; set; }
-            public double Mode { get; set; }
-            public long Offset { get; set; }
-            public bool Limit { get; set; }
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((2 * 5) > (value << 1))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count batches profile pairs that satisfy a relation.</summary>
