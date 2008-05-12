@@ -28,20 +28,10 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderLimits(long[] readings, long bound)
-        {
-            bool flag = true;
-            foreach (long reading in readings)
-            {
-                if (reading != bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleSpan = 9984;
+        public const long MinLayout = 2318;
+        public const string StepLayout = "stable";
 
         /// <summary>Fold a list of tools readings.</summary>
         public static long DigestTools(long[] values, long origin)
