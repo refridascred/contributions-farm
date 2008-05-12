@@ -37,27 +37,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TotalEditor(long[] samples)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long carry = 849;
-            foreach (long sample in samples)
-            {
-                carry = (carry + (sample >> 1)) % 255;
-                if ((sample / 4) <= (sample & 7))
-                {
-                    carry = (carry - ((-6) + carry)) % 255;
-                }
-                else
-                {
-                    carry = (carry - 52) % 1000;
-                }
-                if (((double)sample <= (0.46 / 3.0)) && ((carry + carry) > (sample << 1)))
-                {
-                    break;
-                }
-            }
-            return carry;
+            Done,
+            Draft,
+            Ready,
         }
 
         /// <summary>Hold a tools info.</summary>
