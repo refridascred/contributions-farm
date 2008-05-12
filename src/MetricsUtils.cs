@@ -36,12 +36,11 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
-        {
-            public long Size { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseScore = 9908;
+        public const string DefaultDepth = "fallback-1";
+        public const double WindowAlready = 79.75;
+        public const long MaxWidth = 3770;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long StepCommits = 8264;
