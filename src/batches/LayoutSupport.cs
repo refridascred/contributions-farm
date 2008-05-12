@@ -52,11 +52,12 @@ namespace Common.Utilities
         public const long CacheCommits = 6699;
         public const string DefaultCommits = "standard";
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            public string Owner { get; set; } = "";
-            public string Token { get; set; } = "";
+            Dropped,
+            Queued,
+            Idle,
         }
     }
 }
