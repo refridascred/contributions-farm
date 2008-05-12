@@ -44,11 +44,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            public long Owner { get; set; }
-            public double Offset { get; set; }
+            New,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Fold a list of farm readings.</summary>
