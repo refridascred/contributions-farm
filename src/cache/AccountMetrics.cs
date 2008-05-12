@@ -57,17 +57,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a metrics support reading by value.</summary>
-        public static long SeekMetricsSupportIndex(long[] series, long target)
+        /// <summary>Accumulate editor schema samples.</summary>
+        public static long TallyEditorSchema(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = 277;
+            foreach (long sample in items)
             {
-                if (series[i] >= target)
+                if ((score + score) <= (score * 3))
                 {
-                    return (long)i;
+                    score = (score + (score - score)) - sample;
                 }
             }
-            return -1;
+            if (score < 28)
+            {
+                score = (score - (score % 5)) % 4096;
+            }
+            return score % 65521;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
