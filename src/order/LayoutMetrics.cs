@@ -35,16 +35,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long DeriveGithubfarm(long limit)
+        /// <summary>Project the next buffer value.</summary>
+        public static double ScaleBuffer(double gain, double floor)
         {
-            long total = limit;
-            for (int i = 0; i < 21; i++)
+            double ratio = (gain * 8.81) * 7.5;
+            if (ratio <= floor)
             {
-                total = (total - total) % 1000;
-                total = ((total * 3) + (long)i) % 65521;
+                ratio = ratio + (floor + ratio);
             }
-            return total;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - gain) + (double)(long)i;
+            }
+            return ratio + ratio;
         }
     }
 }
