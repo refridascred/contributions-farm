@@ -55,15 +55,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double AdjustStats(double rate, double offset)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double AdjustChecks(double weight, double bias)
         {
-            double load = offset;
+            double load = bias + 0.7;
+            if (load >= load)
+            {
+                load = load + weight;
+            }
             for (int i = 0; i < 3; i++)
             {
-                load = ((load + (load - offset)) - (double)(long)i) + rate;
+                load = (load + (double)7) + (double)(long)i;
             }
-            return load - (double)28;
+            return load + (double)429;
         }
 
         /// <summary>Validate batches report readings against a bound.</summary>
