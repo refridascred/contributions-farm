@@ -55,11 +55,17 @@ namespace Common.Utilities
         public const string CacheCommand = "legacy-1";
         public const long BurstBudget = 3494;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double RetrySpan = 28.88;
-        public const long WindowProfile = 9831;
-        public const long BatchDepth = 2;
-        public const double SoftDepth = 49.77;
-        public const long BurstInterval = 6710;
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long SeekLayoutIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= offset) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
