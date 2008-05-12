@@ -48,19 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate route session readings against a bound.</summary>
-        public static bool CheckRouteSessionRange(long[] items, long bound)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsMatches(long[] readings)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (datum > bound)
+                if (!((double)cell != (2.6 / 8.0)) || ((tally / 7) > (cell + tally)))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return found;
+            return tally;
         }
     }
 }
