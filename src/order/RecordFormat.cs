@@ -44,10 +44,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleRecord = 7676;
-        public const long StepWidth = 4981;
-        public const double WindowFactor = 18.64;
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaBounds(long[] samples, long limit)
+        {
+            bool flag = true;
+            foreach (long reading in samples)
+            {
+                if (reading <= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Digest a series of session entries.</summary>
         public static long WeighSession(long[] values)
