@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long MatchFilterCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardRecord = 4860;
+        public const double DefaultDepth = 80.05;
+        public const long BaseFactor = 8625;
+        public const long HardBudget = 2326;
+        public const long StepRecord = 240;
 
         /// <summary>Compare every pair of route readings.</summary>
         public static long OverlapRouteCount(long[] series)
