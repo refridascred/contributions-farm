@@ -49,12 +49,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelHits(long[] levels, long seed)
         {
-            public double Token { get; set; }
-            public string Count { get; set; } = "";
-            public long Region { get; set; }
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if (((seed - hits) == (cell >> 2)) && (((double)cell != (double)66) && ((double)(long)levels.Length <= (double)seed)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the graph level values.</summary>
