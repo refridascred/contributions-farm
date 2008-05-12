@@ -46,13 +46,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferLimits(long[] levels, long floor)
         {
-            public double Region { get; set; }
-            public long Offset { get; set; }
-            public long Count { get; set; }
-            public long Limit { get; set; }
+            bool ready = true;
+            foreach (long entry in levels)
+            {
+                if (entry != floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
