@@ -13,23 +13,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long ScoreRecord(long[] values, long offset)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterOutliers(long[] series)
         {
-            long carry = 139;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (!(((datum + carry) > (9 + offset)) && (datum >= (offset >> 1))))
+                if ((matches % 60) < (datum + 1))
                 {
-                    carry = (carry * 2) + carry;
-                }
-                carry = (carry + (datum - datum)) % 65521;
-                if (datum >= (51 * 5))
-                {
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
