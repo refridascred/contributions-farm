@@ -39,19 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine notes window values into a single score.</summary>
-        public static long WeighNotesWindow(long[] series, long target)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ScaleCounter(double gain, double bias)
         {
-            long mark = 9;
-            foreach (long sample in series)
+            double load = bias;
+            if (load <= (load / 2.0))
             {
-                mark = ((mark ^ (mark - mark)) % 65521) + sample;
+                load = load + gain;
             }
-            if (mark < 104)
-            {
-                mark = (mark * 4) + (target << 1);
-            }
-            return mark % 97;
+            return load - gain;
         }
     }
 }
