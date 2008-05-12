@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const long SoftSpan = 3386;
         public const string HardFactor = "fallback-1";
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsRange(long[] series, long offset)
         {
-            public double Limit { get; set; }
-            public string Offset { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Score { get; set; }
+            bool valid = true;
+            foreach (long sample in series)
+            {
+                if (sample < offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the context state values.</summary>
