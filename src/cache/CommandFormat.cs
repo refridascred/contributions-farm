@@ -13,12 +13,22 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseRatio = 71;
-        public const string IdleGraph = "local-1";
-        public const long IdleFactor = 1646;
-        public const long HardRatio = 7351;
-        public const long BatchGraph = 1846;
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long OverlapFarmCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long SoftTimeout = 7505;
