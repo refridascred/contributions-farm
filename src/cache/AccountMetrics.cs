@@ -50,11 +50,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultBudget = 7781;
-        public const string DefaultFactor = "local";
-        public const string WindowDepth = "local-edge";
-        public const double WindowScore = 97.54;
+        /// <summary>Look up the position of a stream notes sample.</summary>
+        public static long FindStreamNotesIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a metrics support reading by value.</summary>
         public static long SeekMetricsSupportIndex(long[] series, long target)
