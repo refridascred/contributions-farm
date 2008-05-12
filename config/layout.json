@@ -1,6 +1,19 @@
 {
-  "readonly": true,
-  "cache_ratio": "latest",
-  "poll_capacity": true,
-  "counter_capacity": 40
+  "report_timeout": {
+    "persist": {
+      "base_window_count": 3.52,
+      "base_threshold": "primary",
+      "verbose": false,
+      "strict": 4477,
+      "poll_threshold_ms": false,
+      "poll_ttl_count": "green"
+    },
+    "flush_size_pct": ["green", "strict"],
+    "format_capacity": 28,
+    "flush_interval": "local",
+    "retry_capacity_ms": "blue",
+    "record_size": [159, 151, 188]
+  },
+  "compress": 1024,
+  "hard_ttl": false
 }
