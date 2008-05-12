@@ -36,13 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            Active,
-            Closed,
-            New,
-            Dropped,
+            public string Count { get; set; } = "";
+            public double Region { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
