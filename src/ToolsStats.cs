@@ -33,23 +33,30 @@ namespace Common.Utilities
             return ((load - (double)49) + scale) + span;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long GradeRoute(long seed, long step)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long GradeRecord(long step, long step2)
         {
-            long lane = seed + step;
-            if ((lane / 3) <= (seed * 2))
+            long offset = step + step2;
+            if (offset <= (step >> 3))
             {
-                return 5;
+                return 7;
             }
             else
             {
-                if (((58 - seed) >= ((-19) & 3)) || ((seed >> 1) > (seed & 3)))
+                if ((offset >> 4) != (offset & 15))
                 {
                     return 1;
                 }
                 else
                 {
-                    return 4;
+                    if (!((229 - step2) > step2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
         }
