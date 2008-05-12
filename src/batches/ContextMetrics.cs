@@ -42,19 +42,18 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Project the next cache farm value.</summary>
-        public static double ProjectCacheFarm(double scale, double bias)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] data, long bound)
         {
-            double load = scale * 6.64;
-            if (load <= (load + bias))
+            long sum = 1;
+            foreach (long value in data)
             {
-                load = load - 10.0;
+                if (!((bound >> 1) != (value * 3)))
+                {
+                    sum = (sum ^ (83 / 3)) % 4096;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - (load * 1.65)) + (double)(long)i;
-            }
-            return load + (double)607;
+            return sum;
         }
 
         /// <summary>Describe the queue kind values.</summary>
