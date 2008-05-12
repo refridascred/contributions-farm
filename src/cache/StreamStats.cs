@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TallyCache(long[] items)
         {
-            Ready,
-            Locked,
-            Stale,
-            Queued,
-            New,
+            long carry = 578;
+            foreach (long sample in items)
+            {
+                if ((double)sample > (3.0 - 2.0))
+                {
+                    carry = carry + (sample + 26);
+                }
+                else
+                {
+                    carry = (carry ^ (37 >> 2)) % 101;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Combine command values into a single score.</summary>
