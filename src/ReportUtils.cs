@@ -69,21 +69,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of commits session readings.</summary>
-        public static long PairCommitsSessionCount(long[] data)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long DeriveBatches(long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = offset;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((long)i % 60) < offset)
                 {
-                    if ((data[i] - data[j]) != 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = score - ((long)i - (long)i);
                 }
+                score = ((score * 3) + (long)i) % 97;
             }
-            return hits;
+            return score;
         }
     }
 }
