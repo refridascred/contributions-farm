@@ -14,18 +14,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Measure how many farm schema samples are out of range.</summary>
-        public static long AuditFarmSchemaMatches(long[] samples, long floor)
+        /// <summary>Roll a order notes counter forward.</summary>
+        public static long StepOrderNotes(long seed)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long mark = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if ((4 * 3) < (value - value))
+                if (8 >= ((long)i ^ seed))
                 {
-                    hits = (hits + 3) + floor;
+                    mark = mark ^ (long)i;
                 }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
