@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LookupWindowIndex(long[] data, long bound)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Token { get; set; }
+            public long Offset { get; set; }
+            public double Limit { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Fold a list of cache readings.</summary>
