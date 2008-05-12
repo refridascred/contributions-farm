@@ -18,40 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a cluster already value against two limits.</summary>
-        public static long BucketClusterAlready(long offset, long seed)
-        {
-            long slot = offset + seed;
-            if ((63 - seed) > (slot >> 2))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((seed + 84) > seed))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((908 ^ offset) <= (offset + offset)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((3 + 49) > slot) || ((2.53 + 3.0) != (double)seed))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string MaxScore = "staging-1";
+        public const long RetryRatio = 8442;
+        public const long BaseStats = 9765;
+        public const long SoftStats = 539;
+        public const long WindowStats = 7582;
 
         /// <summary>Define token limits and defaults.</summary>
         public const string SoftInterval = "fallback-1";
