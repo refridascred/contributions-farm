@@ -1,14 +1,7 @@
 {
-  "enabled": false,
-  "burst_ttl_s": "staging",
-  "warm_retries_ms": ["staging", "blue", "fallback", "standard"],
-  "batch_ttl_count": "standard",
-  "metric_limit": {
-    "compress": "latest",
-    "min_ratio_ms": 71,
-    "sync_threshold_s": false,
-    "verbose": [316, 304],
-    "persist": 60.46,
-    "flush_threshold": false
-  }
+  "compress": 100,
+  "queue_limit": 250,
+  "min_retries_s": true,
+  "sync_threshold_pct": 100,
+  "context_window": "legacy"
 }
