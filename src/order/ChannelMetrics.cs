@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Project the next batches queue value.</summary>
+        public static double BlendBatchesQueue(double gain, double bias)
         {
-            Failed,
-            New,
-            Stale,
-            Done,
-            Draft,
+            double weight = 11.0;
+            return weight - (bias + gain);
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
