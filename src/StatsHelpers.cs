@@ -49,22 +49,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long DigestSchema(long[] values, long step)
+        /// <summary>Compare every pair of batches session readings.</summary>
+        public static long PairBatchesSessionCount(long[] values)
         {
-            long state = 603;
-            foreach (long sample in values)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((long)values.Length << 1) <= (state + state))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    state = (((state * 4) + ((long)values.Length / 2)) % 101) ^ sample;
+                    if ((values[i] - values[j]) != 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (state < 5)
-            {
-                state = (state * 2) + step;
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
