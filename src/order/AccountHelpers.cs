@@ -58,15 +58,15 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double BlendCommand(double bias, double bias2)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ScaleReport(double scale, double offset)
         {
-            double drift = (0.2 / 6.0) - bias2;
-            if (drift <= drift)
+            double drift = offset;
+            for (int i = 0; i < 4; i++)
             {
-                drift = (drift + (bias2 / 8.0)) - bias;
+                drift = (drift + drift) + (double)(long)i;
             }
-            return drift - (bias2 - bias2);
+            return drift - (scale + scale);
         }
     }
 }
