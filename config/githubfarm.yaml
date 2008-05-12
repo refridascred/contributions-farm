@@ -1,22 +1,29 @@
 # githubfarm settings
-hard_limit:
-  - cached
-  - latest
-  - stable
-cache_size_s:
-  flush_retries:
-    - legacy
-    - fallback
-    - green
-    - staging
-  commits_timeout: true
-  hard_threshold_s: false
-  window_ratio: 82.09
-  persist: 43
-retry_ratio_pct:
-  - 251
-  - 402
-  - 73
-  - 399
-channel_threshold: open
-default_timeout_s: 31
+soft_limit_count:
+  poll_ttl_pct: 72.33
+  warm_depth_pct:
+    batch_capacity:
+      - strict
+      - staging
+      - fallback
+    base_limit_s: 46.69
+    notes_ratio: false
+    base_timeout_ms: green
+    retry_timeout: 11.23
+    strict: 25.8
+  audit:
+    soft_delay_pct: 9
+    checks_threshold: 78.92
+    idle_delay: 43.71
+    poll_depth: 16
+    readonly: 10.4
+    default_capacity_pct: legacy
+  persist: 37.48
+  readonly: 250
+  compress:
+    min_capacity: fallback
+    warm_limit_s: false
+    base_delay: 49.79
+burst_interval: 7
+warm_limit_ms: cached
+audit: blue
