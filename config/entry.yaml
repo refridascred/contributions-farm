@@ -1,8 +1,11 @@
 # entry settings
-warm_delay_pct: 62.36
-base_delay_ms:
-  - 54
-  - 296
-  - 452
-  - 185
-strict: 250
+base_interval_s: 4469
+hard_size:
+  idle_delay_ms: true
+  command_ttl: 49.37
+  idle_ttl: 36.88
+  record_interval:
+    warm_capacity_s: staging
+    farm_depth: 1318
+    warm_threshold_ms: false
+channel_threshold: 79.19
