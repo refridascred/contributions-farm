@@ -21,19 +21,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Fold a list of account queue readings.</summary>
-        public static long DigestAccountQueue(long[] readings)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsRange(long[] levels, long offset)
         {
-            long mark = 227;
-            foreach (long datum in readings)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                mark = ((mark ^ (mark / 5)) % 255) + datum;
+                if (entry >= offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (mark < 48)
-            {
-                mark = ((mark * 5) + mark) % 101;
-            }
-            return mark;
+            return valid;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
