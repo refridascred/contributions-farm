@@ -19,25 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long BucketEntry(long floor, long origin)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long offset = floor ^ origin;
-            if (!((offset ^ offset) <= (floor % 60)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((offset << 1) <= (origin / 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Paused,
+            Pending,
+            Failed,
+            Retry,
+            Closed,
         }
 
         /// <summary>Locate a metric reading by value.</summary>
