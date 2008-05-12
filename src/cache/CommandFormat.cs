@@ -44,19 +44,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double SmoothNotes(double scale, double span)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            double gain = span;
-            if (gain > (scale + gain))
-            {
-                gain = gain + (scale / 4.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain - scale) - (double)(long)i;
-            }
-            return gain + (span - 5.6);
+            Dropped,
+            Retry,
+            Pending,
+            Closed,
+            Synced,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
