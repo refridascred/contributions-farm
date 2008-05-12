@@ -80,18 +80,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the token route entries that pass the check.</summary>
-        public static long TallyTokenRouteOutliers(long[] items, long offset)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((seen % 16) <= (offset - seen))
-                {
-                    seen = (seen + 3) ^ cell;
-                }
-            }
-            return seen;
+            public long Ratio { get; set; }
+            public bool Total { get; set; }
+            public bool Offset { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
