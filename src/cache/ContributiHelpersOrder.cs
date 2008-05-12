@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long RollSession(long step)
         {
-            public string Offset { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public string Mode { get; set; } = "";
+            long carry = step;
+            for (int i = 0; i < 9; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Hold a order record.</summary>
