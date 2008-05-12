@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Measure how many session queue samples are out of range.</summary>
-        public static long MeasureSessionQueueGaps(long[] readings, long offset)
+        /// <summary>Match up command samples.</summary>
+        public static long OverlapCommandCount(long[] series)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((offset & 255) >= (offset << 1)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = (matches + 1) + reading;
+                    if ((series[i] - series[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Locate a support reading by value.</summary>
