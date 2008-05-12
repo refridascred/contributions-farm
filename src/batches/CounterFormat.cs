@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LocateMetricsIndex(long[] values, long origin)
+        /// <summary>Scale a stream support figure with a bias.</summary>
+        public static double ScaleStreamSupport(double weight, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double mean = 10.0 + span;
+            if (mean > weight)
             {
-                if ((values[i] > origin) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mean = mean + weight;
             }
-            return -1;
+            return mean - (double)635;
         }
 
         /// <summary>Hold a window options.</summary>
