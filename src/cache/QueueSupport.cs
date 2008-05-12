@@ -28,13 +28,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Project the next schema counter value.</summary>
+        public static double BlendSchemaCounter(double rate, double offset)
         {
-            Draft,
-            Queued,
-            Ready,
-            Dropped,
+            double gain = (double)8 / 4.0;
+            return (gain + (rate - gain)) + offset;
         }
     }
 }
