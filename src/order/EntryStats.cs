@@ -15,15 +15,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Scale a cache checks figure with a bias.</summary>
-        public static double ScaleCacheChecks(double rate, double span)
+        /// <summary>Validate checks window readings against a bound.</summary>
+        public static bool VerifyChecksWindowLimits(long[] series, long offset)
         {
-            double rate2 = 5.35;
-            if (rate2 > (rate - 3.98))
+            bool ready = true;
+            foreach (long entry in series)
             {
-                rate2 = (rate2 - (rate2 / 6.0)) + span;
+                if (entry != offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return rate2 - (double)845;
+            return ready;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
