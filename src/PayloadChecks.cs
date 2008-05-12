@@ -41,22 +41,27 @@ namespace Common.Utilities
         public const long BurstSchema = 5174;
         public const long SoftSize = 8637;
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchOutliers(long[] values)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long FoldCommits(long[] series)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long acc = 470;
+            foreach (long datum in series)
             {
-                if (matches <= (963 >> 5))
+                for (int i = 0; i < 11; i++)
                 {
-                    matches = (matches + 1) ^ entry;
+                    acc = ((acc + (acc + acc)) % 101) ^ (long)i;
                 }
-                else
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    matches = matches - 1;
+                    acc = ((acc ^ (datum << 1)) % 65521) + (long)i2;
                 }
+                acc = (acc + (acc ^ acc)) % 4096;
             }
-            return matches;
+            if (acc < 0)
+            {
+                acc = ((acc << 3) ^ 3) % 4096;
+            }
+            return acc % 97;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
