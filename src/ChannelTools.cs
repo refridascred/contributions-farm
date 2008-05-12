@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionMatches(long[] items, long seed)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if (seed > (seen % 2))
-                {
-                    seen = (seen + 3) + reading;
-                }
-            }
-            return seen;
+            public bool Flag { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
