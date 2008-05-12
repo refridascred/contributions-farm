@@ -49,12 +49,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsMatches(long[] data)
         {
-            public double Rank { get; set; }
-            public string Total { get; set; } = "";
-            public string Mode { get; set; } = "";
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((tally / 8) >= (tally % 7))
+                {
+                    tally = (tally + 1) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
