@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long FoldQueue(long[] series)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            long total = 445;
-            foreach (long datum in series)
-            {
-                if ((datum < (total - total)) || (datum <= (datum ^ total)))
-                {
-                    total = total ^ (total + 1);
-                }
-            }
-            return total;
+            public long Offset { get; set; }
+            public long Score { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
