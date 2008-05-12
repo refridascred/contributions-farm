@@ -20,33 +20,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long BucketAlready(long target, long floor)
-        {
-            long prev = target ^ floor;
-            if ((double)floor <= (8.83 / 3.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((floor & 1) > prev)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (floor > (target << 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseLevel = 8646;
+        public const string RetryCommits = "primary-v2";
+        public const double CacheLevel = 52.74;
 
         /// <summary>Describe the checks status values.</summary>
         public enum ChecksStatus
