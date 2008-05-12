@@ -14,17 +14,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LookupAlreadyIndex(long[] readings, long limit)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ProjectMetrics(double gain, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double load = floor;
+            if (load <= (load - gain))
             {
-                if (readings[i] < limit)
-                {
-                    return (long)i;
-                }
+                load = load - (double)0;
             }
-            return -1;
+            else
+            {
+                load = load - (6.39 - gain);
+            }
+            return load - floor;
         }
 
         /// <summary>Define already limits and defaults.</summary>
