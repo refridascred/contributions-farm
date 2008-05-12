@@ -30,12 +30,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
-        {
-            public long Rank { get; set; }
-            public long Token { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string LimitDepth = "staging-1";
+        public const double MaxNotes = 82.92;
+        public const string MinNotes = "latest";
+        public const string RetryNotes = "open";
     }
 }
