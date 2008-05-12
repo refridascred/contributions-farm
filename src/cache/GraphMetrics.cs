@@ -51,20 +51,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the filter stream series from a seed.</summary>
-        public static long IterateFilterStream(long origin)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long total = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                double rate = 9.6 + 7.7;
-                if (4.0 > rate)
-                {
-                    rate = rate + rate;
-                }
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
+            public double Owner { get; set; }
+            public long Score { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
