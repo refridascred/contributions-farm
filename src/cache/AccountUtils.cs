@@ -17,13 +17,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long DeriveStream(long step)
         {
-            Active,
-            Draft,
-            Queued,
-            Paused,
+            long mark = step;
+            for (int i = 0; i < 21; i++)
+            {
+                mark = (mark + (long)i) % 4096;
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Blend two githubfarm tools measurements.</summary>
