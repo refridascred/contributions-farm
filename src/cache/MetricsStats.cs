@@ -56,19 +56,11 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderHits(long[] levels)
-        {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading + count) <= (count + count))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BatchWidth = "staging-1";
+        public const long IdleSize = 8130;
+        public const double WindowSession = 29.08;
+        public const long StepRatio = 3136;
 
         /// <summary>Hold a batches stats.</summary>
         public sealed class BatchesStats
