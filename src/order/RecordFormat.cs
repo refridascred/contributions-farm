@@ -58,22 +58,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit filter support readings against a rule.</summary>
-        public static long AuditFilterSupportGaps(long[] samples, long seed)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaLimits(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                if ((double)hits >= (9.0 * 1.0))
+                if (item <= origin)
                 {
-                    hits = ((hits + 3) - datum) - seed;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
     }
 }
