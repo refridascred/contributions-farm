@@ -1,6 +1,6 @@
 {
-  "retry_ratio_ms": "fallback",
-  "soft_depth_s": [204, 283, 237, 45],
-  "idle_retries_s": "fallback",
-  "sync_retries": 7774
+  "contributi_interval": true,
+  "commits_timeout": 28.61,
+  "persist": 64.85,
+  "base_delay": 96.09
 }
