@@ -46,12 +46,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long RollPayload(long offset)
         {
-            Failed,
-            Idle,
-            Closed,
+            long sum = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                if (((53 * 2) < offset) && ((sum + (long)i) < (long)i))
+                {
+                    sum = sum + (6 + 5);
+                }
+                sum = ((sum * 2) + (long)i) % 1000;
+            }
+            return sum;
         }
     }
 }
