@@ -34,21 +34,21 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long PairFormatCount(long[] samples)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long IterateFarm(long step)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    if ((samples[i] - samples[j]) != 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = ((carry - (884 + 6)) % 255) + (long)i2;
                 }
+                long seen = ((long)i ^ (long)i) / 3;
+                carry = ((carry << 3) ^ (seen - seen)) % 97;
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Audit metric context readings against a rule.</summary>
