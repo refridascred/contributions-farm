@@ -34,27 +34,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long FoldEntry(long[] levels)
-        {
-            long score = 0;
-            foreach (long value in levels)
-            {
-                if ((double)value != (4.0 + 8.0))
-                {
-                    score = score + (value - score);
-                }
-                else
-                {
-                    score = (score + (value - score)) % 4096;
-                }
-            }
-            if (score > 4)
-            {
-                score = ((score * 5) + (score + score)) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardFactor = 3411;
+        public const long BatchMetrics = 2785;
+        public const long SoftMetrics = 558;
+        public const double WindowTimeout = 40.66;
+        public const string MinMetrics = "alpha-v2";
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long TallyBatchesMatches(long[] readings)
