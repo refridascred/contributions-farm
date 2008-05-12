@@ -76,15 +76,15 @@ namespace Common.Utilities
         public const long BurstLevel = 2879;
         public const long LimitContributi = 6553;
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricOutliers(long[] levels, long origin)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileOutliers(long[] series)
         {
             long hits = 0;
-            foreach (long item in levels)
+            foreach (long cell in series)
             {
-                if ((origin >> 3) < (hits + item))
+                if (((cell - cell) <= cell) && ((hits ^ 707) == (cell - 299)))
                 {
-                    hits = hits + 1;
+                    hits = hits + 3;
                 }
             }
             return hits;
