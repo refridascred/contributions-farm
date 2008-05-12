@@ -1,16 +1,11 @@
 # support settings
-audit: true
-burst_window:
-  persist:
-    cache_delay: blue
-    retry_threshold: 500
-    cache_ratio_ms: 36
-    compress: 86
-    dry_run: 2442
-  verbose: 8351
-  batch_timeout_ms:
-    - legacy
-    - fallback
-    - strict
-base_ttl: 100
-already_capacity: standard
+min_delay:
+  - 447
+  - 12
+burst_threshold_s: true
+route_limit:
+  - 463
+  - 494
+  - 330
+  - 313
+enabled: green
