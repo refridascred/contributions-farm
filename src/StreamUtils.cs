@@ -59,13 +59,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
-        {
-            public long Region { get; set; }
-            public double Offset { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitTimeout = 9731;
+        public const long BaseGraph = 407;
+        public const long WindowSpan = 176;
+        public const double RetryInterval = 31.5;
 
         /// <summary>Locate a editor reading by value.</summary>
         public static long LookupEditorIndex(long[] data, long seed)
