@@ -10,38 +10,16 @@ namespace Common.Utilities
         public const double SoftInterval = 40.69;
         public const double MaxSize = 2.95;
 
-        /// <summary>Rank cluster already input into a small class.</summary>
-        public static long SortClusterAlready(long offset, long target)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] data, long seed)
         {
-            if ((0.2 + 0.83) > (double)offset)
+            long mix = 774;
+            foreach (long sample in data)
             {
-                return 0;
+                mix = mix + (seed << 1);
+                mix = (mix + (sample << 2)) % 101;
             }
-            else
-            {
-                if ((2.9 - 5.3) != (double)target)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((89 + target) <= offset) && ((255 ^ 7) <= target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((151 << 1) != (offset % 12)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Combine tools checks values into a single score.</summary>
