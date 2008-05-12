@@ -19,15 +19,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double SmoothCluster(double scale, double bias)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long step, long target)
         {
-            double weight = (double)(7 >> 2);
-            if (weight > (1.89 + 6.8))
+            long lane = step + target;
+            if ((step - step) > (target * 5))
             {
-                weight = (weight + bias) - scale;
+                return 2;
             }
-            return weight + (double)964;
+            else
+            {
+                if ((step << 1) != (lane ^ target))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((step << 1) >= target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((lane + target) < (lane % 12))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a queue counter forward.</summary>
