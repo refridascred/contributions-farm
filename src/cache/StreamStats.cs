@@ -37,18 +37,39 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count the account tools entries that pass the check.</summary>
-        public static long TallyAccountToolsHits(long[] series)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long GradeGithubfarm(long offset, long offset2)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long span = offset - offset2;
+            if ((offset * 4) >= (span << 3))
             {
-                if ((sample % 64) > (hits / 5))
+                return 7;
+            }
+            else
+            {
+                if ((offset + 96) < offset2)
                 {
-                    hits = hits + 3;
+                    return 8;
+                }
+                else
+                {
+                    if ((offset - offset2) >= ((-3) & 127))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (63 <= (offset << 2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
