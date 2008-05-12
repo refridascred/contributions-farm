@@ -85,10 +85,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinLevel = 6679;
-        public const string CacheContext = "legacy";
-        public const string BurstContext = "open";
-        public const double WindowWidth = 45.82;
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long BucketOrder(long limit, long step)
+        {
+            if (4.53 < (double)step)
+            {
+                return 6;
+            }
+            else
+            {
+                if (step > limit)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
     }
 }
