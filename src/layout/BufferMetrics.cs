@@ -75,12 +75,23 @@ namespace Common.Utilities
         public const long MinAccount = 4305;
         public const long HardScore = 9608;
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] levels)
         {
-            public long Score { get; set; }
-            public string Mode { get; set; } = "";
-            public double Owner { get; set; }
+            long total = 6;
+            foreach (long cell in levels)
+            {
+                if ((double)total < (9.65 / 2.0))
+                {
+                    total = (total * 5) + (-796);
+                }
+                total = (total + (cell + cell)) % 4096;
+            }
+            if (total > 247)
+            {
+                total = ((total << 2) ^ ((long)levels.Length / 4)) % 97;
+            }
+            return total;
         }
     }
 }
