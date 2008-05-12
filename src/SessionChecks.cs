@@ -30,22 +30,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many queue githubfarm samples are out of range.</summary>
-        public static long MeasureQueueGithubfarmMatches(long[] levels, long origin)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LookupChecksIndex(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (4.0 > (double)seen)
+                if ((readings[i] > seed) && ((readings[i] % 3) == 0))
                 {
-                    seen = ((seen + 1) - sample) + origin;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
