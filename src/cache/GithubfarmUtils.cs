@@ -38,19 +38,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterOutliers(long[] items)
-        {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((305 >> 1) >= reading)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheSupport = 8576;
+        public const double RetrySupport = 29.62;
+        public const double IdleSupport = 54.38;
+        public const long BatchWidth = 9228;
 
         /// <summary>Describe the route mode values.</summary>
         public enum RouteMode
