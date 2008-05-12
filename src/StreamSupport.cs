@@ -20,12 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string MaxScore = "staging-1";
-        public const long RetryRatio = 8442;
-        public const long BaseStats = 9765;
-        public const long SoftStats = 539;
-        public const long WindowStats = 7582;
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
+        {
+            public long Offset { get; set; }
+            public string Region { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Rank { get; set; }
+        }
 
         /// <summary>Audit metrics filter readings against a rule.</summary>
         public static long AuditMetricsFilterOutliers(long[] samples, long step)
