@@ -32,15 +32,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double AdjustGraph(double ratio, double offset)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            double load = ratio;
-            for (int i = 0; i < 7; i++)
-            {
-                load = ((load - load) - (double)(long)i) + offset;
-            }
-            return load - 8.87;
+            New,
+            Done,
+            Draft,
+            Synced,
+            Failed,
         }
     }
 }
