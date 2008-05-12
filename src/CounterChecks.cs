@@ -80,12 +80,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double BlendCommits(double rate, double offset)
         {
-            public long Score { get; set; }
-            public long Count { get; set; }
-            public double Level { get; set; }
+            double drift = offset * 2.2;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift - rate;
         }
     }
 }
