@@ -17,21 +17,19 @@ namespace Common.Utilities
             return rate2 + (rate - 1.95);
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long PairTokenCount(long[] data)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long ScoreProfile(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 1;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                anchor = (anchor - (entry >> 1)) % 255;
+                if ((entry ^ entry) >= anchor)
                 {
-                    if ((data[i] ^ data[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = anchor ^ entry;
                 }
             }
-            return count;
+            return anchor;
         }
     }
 }
