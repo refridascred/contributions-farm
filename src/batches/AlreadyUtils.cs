@@ -57,18 +57,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphOutliers(long[] levels)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long StepTools(long seed)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long mark = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if ((5.0 + 0.6) >= (double)matches)
-                {
-                    matches = (matches + 1) ^ sample;
-                }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Check that every account checks entry stays within the limit.</summary>
