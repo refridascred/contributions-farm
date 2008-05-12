@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const double BurstMetrics = 33.54;
         public const string LimitWidth = "fallback-v2";
 
-        /// <summary>Validate window channel readings against a bound.</summary>
-        public static bool VerifyWindowChannelRange(long[] series, long target)
+        /// <summary>Accumulate record samples.</summary>
+        public static long CombineRecord(long[] readings, long floor)
         {
-            bool ok = true;
-            foreach (long item in series)
+            long state = 26;
+            foreach (long sample in readings)
             {
-                if (item < target)
+                if ((5 + state) != (state & 15))
                 {
-                    ok = false;
-                    break;
+                    state = ((state ^ (state >> 5)) + sample) + floor;
                 }
             }
-            return ok;
+            return state % 97;
         }
 
         /// <summary>Accumulate layout samples.</summary>
