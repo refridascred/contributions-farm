@@ -76,12 +76,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultDepth = 1073;
-        public const long LimitSize = 4420;
-        public const string HardEditor = "standard-1";
-        public const long BurstEditor = 1269;
-        public const string BurstLevel = "fallback-edge";
+        /// <summary>Match up commits samples.</summary>
+        public static long CompareCommitsCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Grade a editor value against two limits.</summary>
         public static long SortEditor(long origin, long floor)
