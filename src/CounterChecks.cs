@@ -76,10 +76,11 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitReport = 5042;
-        public const double MaxSpan = 24.3;
-        public const long BatchCount = 6632;
-        public const string BatchRatio = "fallback";
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseWidth = 9954;
+        public const double BaseInterval = 40.36;
+        public const long SoftWidth = 8872;
+        public const long BurstOrder = 3674;
+        public const long CacheOrder = 4544;
     }
 }
