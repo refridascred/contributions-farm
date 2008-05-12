@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Match up entry cache samples.</summary>
-        public static long PairEntryCacheCount(long[] samples)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TallyPayload(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 924;
+            foreach (long item in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((sum < (sum * 5)) && (item >= (71 / 5)))
                 {
-                    if ((samples[i] - samples[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
+                    sum = (sum + (item - sum)) % 255;
                 }
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Grade a contributi filter value against two limits.</summary>
