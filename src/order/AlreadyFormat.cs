@@ -29,11 +29,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Measure how many commits metric samples are out of range.</summary>
+        public static long MeasureCommitsMetricHits(long[] data, long bound)
         {
-            public string Rank { get; set; } = "";
-            public bool Total { get; set; }
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((tally & 7) == (bound - tally))
+                {
+                    tally = (tally + 3) - item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the contributi record entries that pass the check.</summary>
