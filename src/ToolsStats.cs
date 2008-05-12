@@ -65,18 +65,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TallyRecord(long[] samples)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long anchor = 394;
-            foreach (long sample in samples)
-            {
-                if ((5.88 / 5.0) <= (double)sample)
-                {
-                    anchor = (anchor * 3) + ((-79) * 5);
-                }
-            }
-            return anchor % 97;
+            public string Rank { get; set; } = "";
+            public long Token { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a cluster entry.</summary>
