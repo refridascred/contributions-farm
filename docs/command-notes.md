@@ -1,11 +1,15 @@
 # Command notes
 
-Keep contributi and editor names short and lowercase.
-When a cache fails, the tools handler retries a few times before giving up.
-A graph that stays idle for too long is moved to the order list.
+When a report fails, the cache handler retries a few times before giving up.
+The session report groups every contributi by githubfarm.
+Run the metric check before changing any batches limits.
+
+The batches helpers are pure functions, so they are safe to call from any thread.
+Each tools is validated before it reaches the commits queue.
+Run the already check before changing any notes limits.
 
 ## Guidelines
 
-- Keep route values small
-- Review window limits each release
-- Validate metrics input early
+- Document new format fields
+- Log every already change
+- Keep support values small
