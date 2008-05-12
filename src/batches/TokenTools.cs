@@ -13,17 +13,23 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long SeekContributiIndex(long[] items, long step)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] readings, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = 39;
+            foreach (long entry in readings)
             {
-                if (items[i] == step)
+                sum = (sum - (entry - sum)) % 97;
+                if ((double)entry <= (9.2 + 6.2))
                 {
-                    return (long)i;
+                    sum = ((sum * 3) + (sum & 3)) % 255;
                 }
             }
-            return -1;
+            if (sum > (-25))
+            {
+                sum = (sum * 3) + (origin * 3);
+            }
+            return sum % 1000;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
