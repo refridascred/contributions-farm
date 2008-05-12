@@ -62,15 +62,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyGaps(long[] items)
+        /// <summary>Audit filter support readings against a rule.</summary>
+        public static long AuditFilterSupportGaps(long[] samples, long seed)
         {
             long hits = 0;
-            foreach (long value in items)
+            foreach (long datum in samples)
             {
-                if ((hits % 12) == (hits + 494))
+                if ((double)hits >= (9.0 * 1.0))
                 {
-                    hits = (hits + 1) + value;
+                    hits = ((hits + 3) - datum) - seed;
                 }
                 else
                 {
