@@ -1,6 +1,6 @@
-id,score,count,region
-1,89.97,latest,38.36
-2,17,eu-west,latest
-3,local,276,296
-4,stable,771,746
-5,50.91,green,latest
+id,rank,token,ratio
+1,edge,13.56,primary
+2,stable,510,180
+3,10.42,50.89,blue
+4,721,edge,654
+5,616,blue,925
