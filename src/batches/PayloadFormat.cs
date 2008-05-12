@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long StepLayout(long target)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long mix = target;
-            for (int i = 0; i < 20; i++)
-            {
-                if (!((9.0 - 0.88) != (double)mix))
-                {
-                    mix = mix ^ (mix << 1);
-                    mix = mix - ((long)i % 100);
-                }
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
+            public double Mode { get; set; }
+            public long Label { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Grade a entry stats value against two limits.</summary>
