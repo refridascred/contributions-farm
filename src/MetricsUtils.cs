@@ -30,19 +30,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every checks schema entry stays within the limit.</summary>
-        public static bool VerifyChecksSchemaLimits(long[] levels, long seed)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long MatchFarmCount(long[] values)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry < seed)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((values[i] ^ values[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Blend two tools measurements.</summary>
