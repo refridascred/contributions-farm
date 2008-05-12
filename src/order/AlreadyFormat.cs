@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleProfile = 8130;
-        public const long CacheProfile = 317;
-        public const long LimitProfile = 9158;
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] levels, long origin)
+        {
+            long mark = 103;
+            foreach (long datum in levels)
+            {
+                bool stale = ((long)levels.Length / 7) >= mark;
+                if (!stale)
+                {
+                    stale = !((datum - datum) == (213 - origin));
+                }
+                if ((double)origin <= (double)mark)
+                {
+                    mark = (mark ^ (origin + mark)) % 255;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Look up the position of a payload sample.</summary>
         public static long SeekPayloadIndex(long[] series, long seed)
