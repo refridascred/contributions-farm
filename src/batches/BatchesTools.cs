@@ -39,11 +39,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double HardCommand = 62.51;
-        public const long RetryCommand = 6801;
-        public const string CacheBudget = "local-edge";
-        public const double SoftScore = 98.65;
-        public const double RetryCount = 17.46;
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LocateLayoutIndex(long[] readings, long seed)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
