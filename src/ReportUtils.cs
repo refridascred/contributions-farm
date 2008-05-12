@@ -19,12 +19,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string CacheLevel = "latest-edge";
-        public const string BurstOrder = "local";
-        public const long MinOrder = 1791;
-        public const long IdleFactor = 7885;
-        public const string MaxLevel = "alpha";
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long SeekClusterIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= step) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit format buffer readings against a rule.</summary>
         public static long CountFormatBufferOutliers(long[] levels)
