@@ -13,22 +13,23 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutGaps(long[] levels, long floor)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TotalRoute(long[] levels)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long score = 62;
+            foreach (long item in levels)
             {
-                if ((486 - cell) > (floor & 7))
+                score = (((score * 5) + 34) % 1000) ^ item;
+                if (!((313 + score) < 1))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    break;
                 }
             }
-            return matches;
+            if (score > 38)
+            {
+                score = score ^ (score & 31);
+            }
+            return score;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
