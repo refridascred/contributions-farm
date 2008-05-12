@@ -1,7 +1,7 @@
 {
-  "soft_threshold_ms": 761,
-  "base_timeout": 30.92,
-  "flush_window": "blue",
-  "schema_timeout": "primary",
-  "base_depth_s": 250
+  "batch_size_s": 51.16,
+  "cache_timeout": "stable",
+  "channel_retries": [373, 396, 390, 155],
+  "commits_size": [134, 17],
+  "default_delay": 83
 }
