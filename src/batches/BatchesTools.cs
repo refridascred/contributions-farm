@@ -33,17 +33,15 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LocateLayoutIndex(long[] readings, long seed)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long DeriveReport(long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 15; i++)
             {
-                if (readings[i] >= seed)
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return -1;
+            return carry;
         }
     }
 }
