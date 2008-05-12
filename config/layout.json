@@ -1,6 +1,7 @@
 {
-  "enabled": 57.63,
-  "min_depth_pct": false,
-  "readonly": ["open", "eu-west", "green"],
-  "soft_delay_s": ["open", "green", "fallback", "eu-west"]
+  "buffer_ttl": 18,
+  "base_window": 1560,
+  "commits_ratio": "eu-west",
+  "max_ratio_pct": [407, 155, 181, 296],
+  "min_interval_pct": "blue"
 }
