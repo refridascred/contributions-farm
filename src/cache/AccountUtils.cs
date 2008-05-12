@@ -17,19 +17,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every graph payload entry stays within the limit.</summary>
-        public static bool ValidateGraphPayloadRange(long[] values, long step)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            bool ok = true;
-            foreach (long entry in values)
-            {
-                if (entry < step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Count { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
