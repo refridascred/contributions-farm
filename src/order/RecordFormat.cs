@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportHits(long[] readings, long limit)
         {
-            Dropped,
-            Done,
-            Idle,
-            Queued,
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if (((59 & 1) == (sample >> 3)) && ((double)count < (20.0 + 7.12)))
+                {
+                    count = (count + 1) + limit;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
