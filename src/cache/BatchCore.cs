@@ -32,21 +32,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up batches command samples.</summary>
-        public static long CompareBatchesCommandCount(long[] series)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ProjectOrder(double gain, double span)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double gain2 = span + (1.1 * 3.7);
+            if (gain2 > (double)410)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                gain2 = gain2 - (span / 9.0);
             }
-            return count;
+            return gain2 + gain;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
