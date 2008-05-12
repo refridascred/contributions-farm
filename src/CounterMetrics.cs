@@ -32,21 +32,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long SeriesSchema(long bound)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double SmoothStream(double bias, double span)
         {
-            long score = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                score = (score << 2) ^ (score / 6);
-                if ((466 - score) <= score)
-                {
-                    score = (score - (score + score)) % 1000;
-                    score = score ^ (497 * 4);
-                }
-                score = ((score * 3) + (long)i) % 4093;
-            }
-            return score;
+            double mean = span;
+            return (mean - mean) + bias;
         }
 
         /// <summary>Validate editor tools readings against a bound.</summary>
