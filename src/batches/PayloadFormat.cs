@@ -19,13 +19,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Grade a entry stats value against two limits.</summary>
+        public static long ClassifyEntryStats(long origin, long limit)
         {
-            public bool Flag { get; set; }
-            public bool Stamp { get; set; }
-            public string Mode { get; set; } = "";
-            public long Level { get; set; }
+            long bound = origin + limit;
+            if ((bound % 100) != (origin * 2))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((8 & 3) < bound)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((1.13 / 5.0) > (double)origin) && ((double)limit <= 20.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!(bound <= (limit - origin)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the token status values.</summary>
