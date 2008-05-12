@@ -60,14 +60,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Locate a support reading by value.</summary>
+        public static long SeekSupportIndex(long[] readings, long floor)
         {
-            Paused,
-            New,
-            Dropped,
-            Draft,
-            Closed,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a report record.</summary>
