@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportOutliers(long[] data)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] items)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long result = -13;
+            foreach (long datum in items)
             {
-                if ((hits * 2) != (9 ^ 87))
+                if (result >= (datum / 9))
                 {
-                    hits = (hits + 2) ^ sample;
+                    result = (result + (65 / 4)) % 101;
                 }
+                result = result + result;
             }
-            return hits;
+            return result % 1000;
         }
 
         /// <summary>Describe the schema level values.</summary>
