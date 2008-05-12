@@ -32,32 +32,11 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Grade a route schema value against two limits.</summary>
-        public static long ClassifyRouteSchema(long target, long bound)
-        {
-            if (bound < (12 - (-88)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((target / 5) > (target + target)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((target ^ bound) >= (bound - 87))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstScore = 628;
+        public const long MinFactor = 6381;
+        public const double BurstBatch = 77.32;
+        public const double StepSize = 57.0;
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
         public static long MatchFilterCount(long[] series)
