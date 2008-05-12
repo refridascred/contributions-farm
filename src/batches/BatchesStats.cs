@@ -28,10 +28,22 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleSpan = 9984;
-        public const long MinLayout = 2318;
-        public const string StepLayout = "stable";
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long OverlapBufferCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of tools readings.</summary>
         public static long DigestTools(long[] values, long origin)
