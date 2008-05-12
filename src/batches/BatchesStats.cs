@@ -29,23 +29,17 @@ namespace Common.Utilities
             return ratio - 20.0;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long FoldOrder(long[] readings)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long SeekContextIndex(long[] values, long offset)
         {
-            long sum = 4;
-            foreach (long cell in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell <= (sum / 5))
+                if ((values[i] == offset) && ((values[i] % 5) == 0))
                 {
-                    sum = (sum << 3) ^ (sum & 127);
+                    return (long)i;
                 }
-                if ((0.23 * 8.04) != (double)sum)
-                {
-                    sum = ((sum * 3) + (105 + (long)readings.Length)) % 1000;
-                }
-                sum = sum ^ (cell >> 1);
             }
-            return sum % 1000;
+            return -1;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
