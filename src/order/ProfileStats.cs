@@ -40,9 +40,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string CacheLevel = "stable-edge";
-        public const long DefaultSpan = 2645;
-        public const long MaxSpan = 183;
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
+        {
+            Paused,
+            Dropped,
+            Queued,
+            New,
+        }
     }
 }
