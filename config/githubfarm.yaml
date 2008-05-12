@@ -1,10 +1,36 @@
 # githubfarm settings
-warm_ratio_count: 5102
-retry_limit_count:
-  - eu-west
-  - staging
-  - green
-base_ratio_ms: cached
-payload_interval: 30
-persist: 35.31
-batch_ttl_count: stable
+burst_timeout_ms: false
+warm_size_ms:
+  - 255
+  - 311
+  - 132
+  - 225
+retry_size_count: open
+batch_ratio_s:
+  default_capacity_ms: 25.8
+  audit:
+    - strict
+    - staging
+    - local
+    - green
+  dry_run: 36
+  flush_window_pct: edge
+  warm_timeout: stable
+  max_retries:
+    verbose:
+      - open
+      - cached
+      - stable
+    dry_run:
+      - open
+      - eu-west
+      - fallback
+    min_window_ms: eu-west
+    readonly: standard
+    retry_interval_s: latest
+    base_size_ms: 81.85
+batch_interval_s: 27
+strict:
+  contributi_retries: legacy
+  contributi_ratio: 37.88
+  sync_timeout_pct: 90.06
