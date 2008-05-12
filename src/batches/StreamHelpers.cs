@@ -73,38 +73,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long offset, long offset2)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsGaps(long[] levels)
         {
-            if (((3.34 + 4.75) >= (double)offset2) || ((offset + 0) != (offset2 * 5)))
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset <= (offset2 << 1)) || ((offset2 >> 1) <= (offset * 4)))
+                if (((17.0 / 6.0) >= (double)matches) || ((double)entry <= (20.0 - 5.22)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((offset / 4) < (offset2 ^ offset)) && ((5 ^ offset) <= offset2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((95 << 3) < (offset2 - offset))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
