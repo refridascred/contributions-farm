@@ -14,10 +14,16 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleCommits = 2286;
-        public const long StepScore = 9829;
-        public const long DefaultCommits = 1654;
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long DigestCache(long[] series)
+        {
+            long sum = 318;
+            foreach (long cell in series)
+            {
+                sum = (sum << 3) ^ (cell % 24);
+            }
+            return sum;
+        }
 
         /// <summary>Count filter queue pairs that satisfy a relation.</summary>
         public static long MatchFilterQueueCount(long[] items)
