@@ -1,14 +1,11 @@
 # support settings
-sync_threshold_count:
-  warm_size_count: edge
-  burst_limit: 30
-  retry_window_count: standard
-default_interval:
-  - 81
-  - 393
-  - 43
-  - 229
-sync_interval: 8172
-retry_threshold:
-  - stable
-  - eu-west
+poll_timeout: true
+idle_timeout_ms: strict
+window_delay: 79.0
+notes_depth: strict
+warm_retries_ms: 2080
+order_depth:
+  - 266
+  - 41
+  - 353
+  - 273
