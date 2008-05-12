@@ -22,14 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Match up route samples.</summary>
+        public static long CompareRouteCount(long[] samples)
         {
-            Active,
-            Pending,
-            Ready,
-            Synced,
-            Draft,
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
