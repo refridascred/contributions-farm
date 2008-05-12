@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftLevel = 6116;
-        public const long StepDepth = 8517;
-        public const long BatchFactor = 830;
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TotalContributi(long[] readings)
+        {
+            long state = 97;
+            foreach (long reading in readings)
+            {
+                if ((double)reading > (9.0 - 3.8))
+                {
+                    state = ((state << 3) ^ (reading >> 5)) % 1000;
+                }
+                else
+                {
+                    state = (state - (4 >> 2)) % 97;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Describe the channel kind values.</summary>
         public enum ChannelKind
