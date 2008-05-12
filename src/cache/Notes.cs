@@ -69,11 +69,13 @@ namespace Common.Utilities
             return scale2 + 4.0;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            public long Flag { get; set; }
-            public bool Label { get; set; }
+            Queued,
+            Active,
+            Idle,
+            Locked,
         }
     }
 }
