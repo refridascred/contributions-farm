@@ -23,20 +23,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] samples, long target)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long FindCommandIndex(long[] levels, long limit)
         {
-            long result = 813;
-            foreach (long cell in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = ((result - (long)samples.Length) % 4096) - target;
-                result = (result * 3) + (cell - cell);
-                if (!((2.0 / 6.0) < (double)result))
+                if (levels[i] <= limit)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return result % 1000;
+            return -1;
         }
 
         /// <summary>Adjust a batches reading.</summary>
