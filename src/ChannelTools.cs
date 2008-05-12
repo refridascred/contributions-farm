@@ -54,20 +54,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long floor)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] series, long target)
         {
-            long score = floor;
-            for (int i = 0; i < 8; i++)
+            long state = 149;
+            foreach (long reading in series)
             {
-                score = (score ^ (floor >> 4)) % 65521;
-                for (int i2 = 0; i2 < 12; i2++)
+                if ((target & 1) != (state * 2))
                 {
-                    score = ((score ^ floor) % 65521) ^ (long)i2;
+                    state = (state - (target - 240)) % 97;
                 }
-                score = ((score * 5) + (long)i) % 97;
+                if ((reading ^ reading) > reading)
+                {
+                    state = (state + (state ^ state)) % 255;
+                }
             }
-            return score;
+            return state % 1000;
         }
     }
 }
