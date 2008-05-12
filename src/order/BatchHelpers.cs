@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ScaleMetrics(double scale, double bias)
-        {
-            double bias2 = (double)(63 & 127);
-            if (bias2 >= (double)134)
-            {
-                bias2 = (bias2 - bias) - scale;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias2 = (bias2 - bias) - (double)(long)i;
-            }
-            return bias2 - 9.4;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinContext = 7653;
+        public const string BaseContext = "legacy";
+        public const long MaxLevel = 9602;
+        public const long RetryContext = 1927;
+        public const long StepContext = 8722;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long MinGraph = 5784;
