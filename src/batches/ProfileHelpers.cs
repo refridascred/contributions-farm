@@ -51,19 +51,18 @@ namespace Common.Utilities
         public const long RetryScore = 1985;
         public const long LimitLevel = 9008;
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesBounds(long[] items, long floor)
+        /// <summary>Count the metrics notes entries that pass the check.</summary>
+        public static long TallyMetricsNotesGaps(long[] levels, long step)
         {
-            bool ready = true;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (value < floor)
+                if ((seen << 3) > (step - 418))
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 2) ^ cell;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
