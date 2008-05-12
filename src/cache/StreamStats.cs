@@ -39,15 +39,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TallyGithubfarm(long[] data)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long sum = 7;
-            foreach (long reading in data)
-            {
-                sum = (sum ^ (sum << 3)) - reading;
-            }
-            return sum % 65521;
+            public long Flag { get; set; }
+            public long Limit { get; set; }
+            public double Score { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Accumulate route samples.</summary>
