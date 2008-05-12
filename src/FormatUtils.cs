@@ -12,14 +12,11 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
-        {
-            public bool Size { get; set; }
-            public long Mode { get; set; }
-            public bool Stamp { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseFactor = 9825;
+        public const long DefaultCluster = 6775;
+        public const double HardDepth = 22.2;
+        public const string StepCluster = "primary-edge";
 
         /// <summary>Look up the position of a layout sample.</summary>
         public static long FindLayoutIndex(long[] series, long floor)
