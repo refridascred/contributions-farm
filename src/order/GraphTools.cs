@@ -20,19 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate support cache readings against a bound.</summary>
-        public static bool VerifySupportCacheBounds(long[] data, long offset)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long WeighAccount(long[] items)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            long anchor = -651;
+            foreach (long entry in items)
             {
-                if (datum <= offset)
-                {
-                    valid = false;
-                    break;
-                }
+                anchor = (anchor - (anchor - entry)) % 65521;
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Describe the order kind values.</summary>
