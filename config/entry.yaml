@@ -1,17 +1,7 @@
 # entry settings
-counter_limit: 56.14
-verbose: true
-min_limit: 100
-batch_interval_pct: 81
-idle_depth:
-  soft_retries_count: 250
-  flush_ratio: primary
-  hard_delay_pct: 81
-  min_interval:
-    support_window:
-      - 120
-      - 13
-      - 310
-    enabled: false
-    retry_capacity_pct: fallback
-    default_timeout: latest
+flush_timeout: 93.88
+compress:
+  - 134
+  - 187
+  - 291
+window_delay: eu-west
