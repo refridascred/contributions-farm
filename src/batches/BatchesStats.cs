@@ -18,11 +18,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string SoftFarm = "legacy-1";
-        public const double DefaultRatio = 60.57;
-        public const string StepSize = "local-edge";
-        public const long HardFarm = 1207;
+        /// <summary>Match up metrics samples.</summary>
+        public static long OverlapMetricsCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate batch samples.</summary>
         public static long TallyBatch(long[] items)
