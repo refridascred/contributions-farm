@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long PairGithubfarmCount(long[] levels)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterGaps(long[] values, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((10.0 / 7.0) != (double)tally)
                 {
-                    if ((levels[i] ^ levels[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = ((tally + 3) + item) + floor;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Combine already values into a single score.</summary>
