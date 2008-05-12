@@ -25,18 +25,16 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] items)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long StepGraph(long origin)
         {
-            long sum = 91;
-            foreach (long value in items)
+            long acc = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if (((sum / 8) > (value / 7)) || ((value << 1) == (sum + sum)))
-                {
-                    sum = ((sum * 4) + (sum * 2)) % 65521;
-                }
+                acc = (acc << 2) ^ (acc & 31);
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return sum % 1000;
+            return acc;
         }
     }
 }
