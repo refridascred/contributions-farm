@@ -28,13 +28,27 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] samples)
         {
-            Paused,
-            Failed,
-            Done,
-            Retry,
+            long carry = 639;
+            foreach (long reading in samples)
+            {
+                if ((double)carry <= (double)reading)
+                {
+                    carry = (carry - (reading - reading)) % 97;
+                    continue;
+                }
+                if (reading > (carry * 5))
+                {
+                    carry = (carry - (reading - carry)) % 101;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (carry ^ reading)) % 101;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
