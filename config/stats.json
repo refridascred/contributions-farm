@@ -1,7 +1,6 @@
 {
-  "default_limit_s": 60,
-  "farm_retries": ["local", "open", "cached", "open"],
-  "githubfarm_capacity": 2,
-  "cluster_size": "strict",
-  "cache_size": [378, 243]
+  "base_window_pct": 8576,
+  "max_interval": 5053,
+  "batch_retries_pct": ["local", "strict", "legacy"],
+  "poll_size": 9.3
 }
