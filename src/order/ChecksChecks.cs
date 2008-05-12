@@ -22,31 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine commits entry values into a single score.</summary>
-        public static long TallyCommitsEntry(long[] samples)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long IterateReport(long origin)
         {
-            long carry = 14;
-            foreach (long reading in samples)
+            long anchor = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if (((2 * 4) > reading) && ((reading + reading) < (70 >> 2)))
-                {
-                    carry = (carry << 2) ^ (long)samples.Length;
-                }
-                else
-                {
-                    carry = ((carry * 4) + (carry / 8)) % 101;
-                }
-                carry = carry + 688;
-                if ((double)carry <= 14.0)
-                {
-                    carry = (carry << 3) ^ reading;
-                }
-                else
-                {
-                    carry = carry ^ (reading % 64);
-                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return carry % 65521;
+            return anchor;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
