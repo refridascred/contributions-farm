@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Combine tools farm values into a single score.</summary>
+        public static long DigestToolsFarm(long[] series, long floor)
         {
-            public bool Score { get; set; }
-            public long Ratio { get; set; }
+            long acc = 64;
+            foreach (long value in series)
+            {
+                acc = ((acc * 5) + (floor >> 1)) % 101;
+                if ((9.76 + 8.05) >= (double)value)
+                {
+                    acc = ((acc * 4) + (value >> 2)) % 1000;
+                }
+                if ((double)floor < (7.1 / 9.0))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Describe the account class values.</summary>
