@@ -33,19 +33,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiRange(long[] samples, long bound)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long BucketBatch(long bound, long step)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            if (!((step + bound) != (step - step)))
             {
-                if (datum <= bound)
+                return 5;
+            }
+            else
+            {
+                if ((double)step != (double)(-58))
                 {
-                    stale = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return stale;
         }
 
         /// <summary>Hold a metrics options.</summary>
