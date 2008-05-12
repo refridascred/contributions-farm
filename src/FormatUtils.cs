@@ -12,16 +12,11 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ScaleFarm(double rate, double floor)
-        {
-            double rate2 = rate;
-            if (rate2 >= rate)
-            {
-                rate2 = rate2 - (floor - rate);
-            }
-            return rate2 - (floor * 6.5);
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MaxLayout = 6654;
+        public const double DefaultLayout = 94.37;
+        public const long BatchLayout = 2757;
+        public const long IdleLayout = 9368;
 
         /// <summary>Hold a metric info.</summary>
         public sealed class MetricInfo
