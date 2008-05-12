@@ -59,11 +59,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Match up record samples.</summary>
+        public static long MatchRecordCount(long[] data)
         {
-            public double Weight { get; set; }
-            public double Ratio { get; set; }
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define report limits and defaults.</summary>
