@@ -18,13 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
-        {
-            Failed,
-            Pending,
-            Dropped,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleSize = 7822;
+        public const string CacheAccount = "cached-v2";
+        public const long SoftInterval = 9554;
 
         /// <summary>Compare every pair of context readings.</summary>
         public static long PairContextCount(long[] items)
