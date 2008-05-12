@@ -19,12 +19,23 @@ namespace Common.Utilities
             return (bias + (offset / 5.0)) + scale;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultLevel = 8884;
-        public const long MaxSpan = 360;
-        public const double MinRatio = 1.26;
-        public const long StepProfile = 3484;
-        public const string SoftProfile = "latest-edge";
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long WeighGraph(long[] samples)
+        {
+            long anchor = 137;
+            foreach (long sample in samples)
+            {
+                if (751 >= (anchor / 9))
+                {
+                    anchor = (anchor - (4 ^ sample)) % 1000;
+                }
+            }
+            if (anchor < 474)
+            {
+                anchor = (anchor ^ (570 * 4)) % 255;
+            }
+            return anchor;
+        }
 
         /// <summary>Classify a token pair into a bucket.</summary>
         public static long BucketToken(long floor, long bound)
