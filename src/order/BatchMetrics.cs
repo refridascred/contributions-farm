@@ -79,19 +79,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileOutliers(long[] series)
-        {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if (((cell - cell) <= cell) && ((hits ^ 707) == (cell - 299)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultDepth = 1073;
+        public const long LimitSize = 4420;
+        public const string HardEditor = "standard-1";
+        public const long BurstEditor = 1269;
+        public const string BurstLevel = "fallback-edge";
 
         /// <summary>Accumulate buffer samples.</summary>
         public static long ScoreBuffer(long[] levels, long origin)
