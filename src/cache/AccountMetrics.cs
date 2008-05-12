@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstProfile = 296;
-        public const double BatchProfile = 60.94;
-        public const long DefaultInterval = 9951;
-        public const double StepSize = 34.66;
-        public const long DefaultWidth = 5725;
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
+        {
+            public bool Rank { get; set; }
+            public long Owner { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Hold a command snapshot.</summary>
         public sealed class CommandSnapshot
