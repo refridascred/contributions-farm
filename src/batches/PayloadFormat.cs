@@ -17,22 +17,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit token batch readings against a rule.</summary>
-        public static long CountTokenBatchMatches(long[] data)
+        /// <summary>Accumulate already samples.</summary>
+        public static long TallyAlready(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long state = 57;
+            foreach (long cell in data)
             {
-                if ((double)hits >= 6.39)
-                {
-                    hits = (hits + 3) ^ sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                state = ((state * 5) + (target - cell)) % 65521;
             }
-            return hits;
+            if (state > 7)
+            {
+                state = ((state << 2) ^ (state + target)) % 255;
+            }
+            return state % 4096;
         }
 
         /// <summary>Check that every stream cluster entry stays within the limit.</summary>
