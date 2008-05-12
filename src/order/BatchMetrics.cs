@@ -28,11 +28,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            public double Score { get; set; }
-            public string Limit { get; set; } = "";
+            Retry,
+            Paused,
+            Idle,
         }
 
         /// <summary>Combine filter cluster values into a single score.</summary>
