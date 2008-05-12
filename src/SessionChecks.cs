@@ -40,19 +40,11 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsLimits(long[] series, long bound)
-        {
-            bool valid = true;
-            foreach (long item in series)
-            {
-                if (item > bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxRoute = 8848;
+        public const long DefaultRoute = 6004;
+        public const long SoftRoute = 974;
+        public const long SoftSize = 8194;
+        public const string StepRoute = "open-v2";
     }
 }
