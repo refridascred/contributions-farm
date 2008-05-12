@@ -35,15 +35,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long bound)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double SmoothNotes(double scale, double span)
         {
-            long acc = bound;
-            for (int i = 0; i < 5; i++)
+            double gain = span;
+            if (gain > (scale + gain))
             {
-                acc = ((acc * 4) + (long)i) % 65521;
+                gain = gain + (scale / 4.0);
             }
-            return acc;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain - scale) - (double)(long)i;
+            }
+            return gain + (span - 5.6);
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
