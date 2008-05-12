@@ -71,19 +71,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every editor cache entry stays within the limit.</summary>
-        public static bool GuardEditorCacheRange(long[] items, long offset)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] series, long origin)
         {
-            bool ready = true;
-            foreach (long value in items)
+            long carry = -7;
+            foreach (long cell in series)
             {
-                if (value > offset)
+                if (((double)origin > (15.0 * 5.6)) || (cell > (67 ^ (long)series.Length)))
                 {
-                    ready = false;
-                    break;
+                    carry = carry - (cell + origin);
                 }
             }
-            return ready;
+            if (carry < 77)
+            {
+                carry = (carry - carry) % 1000;
+            }
+            return carry;
         }
     }
 }
