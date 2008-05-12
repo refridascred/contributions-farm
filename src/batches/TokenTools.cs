@@ -30,12 +30,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            public long Offset { get; set; }
-            public long Owner { get; set; }
-            public bool Size { get; set; }
+            public long Rank { get; set; }
+            public long Token { get; set; }
+            public long Label { get; set; }
         }
     }
 }
