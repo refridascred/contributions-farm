@@ -31,12 +31,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
-        {
-            public long Flag { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryFilter = 1917;
+        public const long BurstLevel = 9533;
+        public const double RetryWidth = 38.78;
+        public const long CacheFilter = 541;
+        public const double IdleScore = 31.87;
 
         /// <summary>Describe the channel class values.</summary>
         public enum ChannelClass
