@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            public long Mode { get; set; }
-            public bool Flag { get; set; }
-            public string Stamp { get; set; } = "";
+            New,
+            Queued,
+            Retry,
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
