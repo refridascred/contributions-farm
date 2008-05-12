@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double CacheBuffer = 24.19;
-        public const double BatchBuffer = 79.5;
-        public const string WindowFactor = "standard";
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
+        {
+            public bool Score { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Accumulate checks samples.</summary>
         public static long TallyChecks(long[] readings, long seed)
