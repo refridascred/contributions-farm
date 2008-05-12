@@ -1,10 +1,11 @@
 # Command notes
 
-A already that stays idle for too long is moved to the metric list.
-The entry report groups every batches by session.
+Use channel settings to tune how often counter data is refreshed.
+The farm helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new filter fields
-- Keep metric values small
-- Validate record input early
+- Document new support fields
+- Validate entry input early
+- Keep githubfarm values small
+- Review cluster limits each release
