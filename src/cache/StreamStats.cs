@@ -45,13 +45,26 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Accumulate route samples.</summary>
+        public static long CombineRoute(long[] levels, long offset)
         {
-            Stale,
-            Done,
-            Ready,
-            Queued,
+            long result = 914;
+            foreach (long datum in levels)
+            {
+                if (!((double)datum != (double)result))
+                {
+                    result = ((result * 4) + result) % 4096;
+                }
+                if (!(64 > (datum * 4)))
+                {
+                    result = result ^ offset;
+                }
+                if ((5.3 * 4.44) >= (double)result)
+                {
+                    result = (result << 2) ^ result;
+                }
+            }
+            return result;
         }
     }
 }
