@@ -6,15 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
+mode="${1:-eu-west}"
+case "${mode}" in
+    open)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
 total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 4))
+for i in $(seq 1 8); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
-
-CHANNEL_LIMIT=377
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in blue open; do
-    log "checking ${item}"
-done
