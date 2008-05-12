@@ -14,14 +14,24 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long DeriveCounter(long limit)
         {
-            Pending,
-            Done,
-            Draft,
-            Idle,
-            Failed,
+            long result = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                if (9.9 < (double)limit)
+                {
+                    result = (result + (limit + result)) % 4096;
+                }
+                else
+                {
+                    result = ((result << 2) ^ (limit & 7)) % 255;
+                    result = (result - (result >> 1)) % 65521;
+                }
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Blend two stream editor measurements.</summary>
