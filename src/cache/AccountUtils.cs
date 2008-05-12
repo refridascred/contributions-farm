@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the contributi stream entries that pass the check.</summary>
-        public static long CountContributiStreamHits(long[] samples)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteMatches(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (!(((reading + reading) <= (matches & 31)) && ((double)matches < (11.0 + 5.62))))
+                if (((count - limit) <= limit) && (((count - datum) > (datum >> 4)) || ((long)samples.Length >= (count - limit))))
                 {
-                    matches = matches + 2;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
