@@ -64,13 +64,15 @@ namespace Common.Utilities
         public const string DefaultMetrics = "staging-v2";
         public const double CacheScore = 96.12;
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Adjust a stats reading.</summary>
+        public static double BlendStats(double rate, double bias)
         {
-            Locked,
-            Dropped,
-            Draft,
-            Ready,
+            double scale = 1.9;
+            if (scale < (bias - bias))
+            {
+                scale = scale - (rate / 4.0);
+            }
+            return scale - scale;
         }
     }
 }
