@@ -21,19 +21,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenLimits(long[] series, long limit)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TallyPayload(long[] data, long seed)
         {
-            bool found = true;
-            foreach (long cell in series)
+            long acc = 606;
+            foreach (long item in data)
             {
-                if (cell >= limit)
-                {
-                    found = false;
-                    break;
-                }
+                acc = (((acc + (acc + 2)) % 101) ^ item) + seed;
             }
-            return found;
+            if (acc < 9)
+            {
+                acc = acc ^ (acc / 2);
+            }
+            return acc;
         }
 
         /// <summary>Define support limits and defaults.</summary>
