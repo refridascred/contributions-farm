@@ -57,13 +57,15 @@ namespace Common.Utilities
         public const string SoftAlready = "alpha-v2";
         public const string BurstAlready = "strict-edge";
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long IterateCommand(long floor)
         {
-            Pending,
-            Stale,
-            Locked,
-            Dropped,
+            long sum = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 4093;
+            }
+            return sum;
         }
     }
 }
