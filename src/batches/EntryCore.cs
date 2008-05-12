@@ -56,11 +56,21 @@ namespace Common.Utilities
         public const long WindowNotes = 1506;
         public const long MinNotes = 7236;
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Match up route graph samples.</summary>
+        public static long CompareRouteGraphCount(long[] readings)
         {
-            public long Mode { get; set; }
-            public long Owner { get; set; }
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
