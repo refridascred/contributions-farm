@@ -29,27 +29,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TallyBatches(long[] data)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long DigestCounter(long[] samples)
         {
-            long carry = 6;
-            foreach (long cell in data)
+            long anchor = 80;
+            foreach (long value in samples)
             {
-                if (!((49 - carry) < carry))
+                if (((value - anchor) >= (value * 4)) && (value < anchor))
                 {
-                    carry = carry ^ (carry << 2);
-                }
-                carry = (carry - cell) % 1000;
-                if (!(cell > carry))
-                {
-                    carry = carry - cell;
+                    anchor = anchor ^ (anchor & 31);
                 }
             }
-            if (carry > 7)
+            if (anchor < 7)
             {
-                carry = carry + (carry >> 1);
+                anchor = ((anchor << 2) ^ anchor) % 4096;
             }
-            return carry % 4096;
+            return anchor % 4096;
         }
     }
 }
