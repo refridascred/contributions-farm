@@ -12,24 +12,19 @@ namespace Common.Utilities
         public const long MaxWidth = 8424;
         public const long BatchBudget = 1838;
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long ClassifySession(long step, long limit)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterLimits(long[] series, long origin)
         {
-            if ((limit + step) < limit)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit + step) != (limit >> 3))
+                if (sample <= origin)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Count the cluster metric entries that pass the check.</summary>
