@@ -32,21 +32,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long CompareRecordCount(long[] samples)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long SeriesSchema(long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                score = (score << 2) ^ (score / 6);
+                if ((466 - score) <= score)
                 {
-                    if ((samples[i] - samples[j]) < 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = (score - (score + score)) % 1000;
+                    score = score ^ (497 * 4);
                 }
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Validate editor tools readings against a bound.</summary>
