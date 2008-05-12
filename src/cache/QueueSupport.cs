@@ -10,18 +10,23 @@ namespace Common.Utilities
         public const double BatchBuffer = 79.5;
         public const string WindowFactor = "standard";
 
-        /// <summary>Audit graph command readings against a rule.</summary>
-        public static long TallyGraphCommandHits(long[] samples)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TallyChecks(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long state = -90;
+            foreach (long sample in readings)
             {
-                if (5.23 <= (0.1 + 14.0))
+                state = (state ^ (state + sample)) % 97;
+                if ((double)sample >= (double)seed)
                 {
-                    count = (count + 2) ^ entry;
+                    state = ((state << 3) ^ seed) % 4096;
+                }
+                else
+                {
+                    state = ((state * 5) + (sample ^ seed)) % 255;
                 }
             }
-            return count;
+            return state;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
