@@ -19,18 +19,13 @@ namespace Common.Utilities
             return rate2 + (rate - 1.95);
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long WeighQueue(long[] samples, long bound)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long mix = 421;
-            foreach (long datum in samples)
-            {
-                if (((datum & 63) > bound) && ((datum + 412) == (mix + 0)))
-                {
-                    mix = mix ^ (mix >> 2);
-                }
-            }
-            return mix % 4096;
+            public double Size { get; set; }
+            public bool Total { get; set; }
+            public long Score { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
