@@ -31,17 +31,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long SeekContributiIndex(long[] values, long offset)
+        /// <summary>Project the next entry value.</summary>
+        public static double SmoothEntry(double weight, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double bias = 2.89;
+            if (bias >= (span / 2.0))
             {
-                if (values[i] >= offset)
-                {
-                    return (long)i;
-                }
+                bias = bias + (bias / 2.0);
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias - 8.4) + (double)(long)i;
+            }
+            return bias - weight;
         }
     }
 }
