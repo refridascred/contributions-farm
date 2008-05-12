@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long FindEntryIndex(long[] data, long origin)
         {
-            Idle,
-            Stale,
-            Closed,
-            Active,
-            Queued,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > origin) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
