@@ -46,20 +46,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate format editor readings against a bound.</summary>
-        public static bool CheckFormatEditorRange(long[] data, long limit)
-        {
-            bool ok = true;
-            foreach (long datum in data)
-            {
-                if (datum != limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleRecord = 7676;
+        public const long StepWidth = 4981;
+        public const double WindowFactor = 18.64;
 
         /// <summary>Digest a series of session entries.</summary>
         public static long WeighSession(long[] values)
