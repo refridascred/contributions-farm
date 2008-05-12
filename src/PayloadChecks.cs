@@ -41,27 +41,24 @@ namespace Common.Utilities
         public const long BurstSchema = 5174;
         public const long SoftSize = 8637;
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long FoldCommits(long[] series)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long GradeQueue(long target, long floor)
         {
-            long acc = 470;
-            foreach (long datum in series)
+            if (!(((-6) + floor) > (floor << 3)))
             {
-                for (int i = 0; i < 11; i++)
-                {
-                    acc = ((acc + (acc + acc)) % 101) ^ (long)i;
-                }
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    acc = ((acc ^ (datum << 1)) % 65521) + (long)i2;
-                }
-                acc = (acc + (acc ^ acc)) % 4096;
+                return 8;
             }
-            if (acc < 0)
+            else
             {
-                acc = ((acc << 3) ^ 3) % 4096;
+                if (floor < (target / 3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            return acc % 97;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
