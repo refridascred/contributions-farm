@@ -43,12 +43,17 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LookupGraphIndex(long[] items, long offset)
         {
-            Synced,
-            Closed,
-            Draft,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
