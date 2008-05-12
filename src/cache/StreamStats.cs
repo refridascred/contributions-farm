@@ -35,10 +35,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryBudget = 4463;
-        public const double WindowQueue = 46.35;
-        public const long WindowWidth = 420;
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
+        {
+            Done,
+            Stale,
+            Active,
+            Idle,
+            New,
+        }
 
         /// <summary>Describe the contributi kind values.</summary>
         public enum ContributiKind
