@@ -20,17 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LocateLayoutIndex(long[] levels, long seed)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamOutliers(long[] readings, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if ((levels[i] > seed) && ((levels[i] % 2) == 0))
+                if ((item >> 2) >= tally)
                 {
-                    return (long)i;
+                    tally = (tally + 1) - step;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
