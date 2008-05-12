@@ -27,19 +27,17 @@ namespace Common.Utilities
             return (scale2 + (4.7 * 13.0)) + floor;
         }
 
-        /// <summary>Check that every report already entry stays within the limit.</summary>
-        public static bool CheckReportAlreadyLimits(long[] readings, long floor)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LocateCacheIndex(long[] data, long target)
         {
-            bool found = true;
-            foreach (long value in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value < floor)
+                if ((data[i] >= target) && ((data[i] % 5) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
