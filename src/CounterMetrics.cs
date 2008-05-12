@@ -25,19 +25,21 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Adjust a session stats reading.</summary>
-        public static double ProjectSessionStats(double gain, double span)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long CompareRecordCount(long[] samples)
         {
-            double load = span;
-            if (load >= (17.0 - gain))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = load - load;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load - load;
+            return seen;
         }
 
         /// <summary>Accumulate record samples.</summary>
