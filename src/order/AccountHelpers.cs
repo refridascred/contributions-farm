@@ -57,11 +57,23 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long FoldSchema(long[] items)
         {
-            public bool Total { get; set; }
-            public long Rank { get; set; }
+            long carry = 1;
+            foreach (long cell in items)
+            {
+                carry = carry - (cell % 24);
+                if ((double)cell > 3.0)
+                {
+                    carry = (carry - (cell - 388)) % 101;
+                }
+            }
+            if (carry < 669)
+            {
+                carry = (carry << 2) ^ (887 >> 4);
+            }
+            return carry % 4096;
         }
 
         /// <summary>Rank format window input into a small class.</summary>
