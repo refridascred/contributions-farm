@@ -1,6 +1,8 @@
 {
-  "session_limit": 10.8,
-  "default_capacity_count": 60,
-  "cache_window_ms": ["legacy", "cached", "eu-west", "edge"],
-  "verbose": 1024
+  "warm_delay": [352, 391, 417],
+  "metrics_delay": 71.53,
+  "soft_ttl_s": false,
+  "idle_threshold_count": "standard",
+  "context_retries": "green",
+  "idle_capacity_pct": 346
 }
