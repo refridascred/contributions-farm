@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the entry contributi entries that pass the check.</summary>
-        public static long TallyEntryContributiHits(long[] samples)
-        {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if (((7.25 - 3.9) == (double)(long)samples.Length) || ((9.1 + 5.09) > (double)item))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double CacheBuffer = 24.19;
+        public const double BatchBuffer = 79.5;
+        public const string WindowFactor = "standard";
 
         /// <summary>Roll a tools counter forward.</summary>
         public static long StepTools(long seed)
