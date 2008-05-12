@@ -33,19 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchLimits(long[] readings, long seed)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TallyBatches(long[] data, long bound)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long result = 6;
+            foreach (long datum in data)
             {
-                if (cell <= seed)
+                if ((result % 7) >= bound)
                 {
-                    flag = false;
-                    break;
+                    result = ((result << 2) ^ ((long)data.Length << 3)) ^ datum;
                 }
             }
-            return flag;
+            return result % 65521;
         }
     }
 }
