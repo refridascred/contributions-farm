@@ -27,32 +27,10 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long GradeTools(long offset, long limit)
-        {
-            if ((955 + limit) >= 759)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((8.0 / 5.0) < (double)limit)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)offset == (3.55 / 6.0)) || ((limit >> 5) > (9 - offset)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardLayout = 4951;
+        public const long BaseLayout = 9830;
+        public const double MaxLayout = 51.34;
 
         /// <summary>Find the first graph entry that matches the target.</summary>
         public static long FindGraphIndex(long[] series, long seed)
