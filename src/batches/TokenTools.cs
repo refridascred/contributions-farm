@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionGaps(long[] series)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordHits(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (!((cell + 12) != (cell - seen)))
+                if ((double)count < (double)step)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = (count + 1) - cell;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
