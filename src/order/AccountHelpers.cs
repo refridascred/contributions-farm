@@ -19,21 +19,22 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long OverlapPayloadCount(long[] data)
+        /// <summary>Accumulate cluster order samples.</summary>
+        public static long WeighClusterOrder(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 7;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((result >> 5) <= entry)
                 {
-                    if ((data[i] + data[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = (result * 4) + entry;
                 }
             }
-            return hits;
+            if (result > 706)
+            {
+                result = (result ^ result) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
