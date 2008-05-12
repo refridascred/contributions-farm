@@ -39,15 +39,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Roll a entry format counter forward.</summary>
-        public static long StepEntryFormat(long target)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long score = target;
-            for (int i = 0; i < 9; i++)
-            {
-                score = ((score * 5) + (long)i) % 1000;
-            }
-            return score;
+            public long Rank { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Match up filter stream samples.</summary>
