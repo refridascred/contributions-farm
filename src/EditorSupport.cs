@@ -38,17 +38,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first session layout entry that matches the target.</summary>
-        public static long LocateSessionLayoutIndex(long[] readings, long seed)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= seed) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Closed,
+            Paused,
         }
 
         /// <summary>Adjust a stats reading.</summary>
