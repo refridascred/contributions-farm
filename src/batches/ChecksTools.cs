@@ -16,11 +16,19 @@ namespace Common.Utilities
             return ratio2 + ratio2;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleDepth = 9846;
-        public const double SoftDepth = 73.08;
-        public const long DefaultDepth = 5458;
-        public const long HardFilter = 6364;
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricMatches(long[] items)
+        {
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if (991 > (item + 48))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long TallyCounterGaps(long[] values)
