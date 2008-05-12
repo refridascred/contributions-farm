@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Adjust a support reading.</summary>
-        public static double BlendSupport(double scale, double span)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            double bias = 3.4;
-            if (bias <= bias)
-            {
-                bias = (bias + (9.0 / 3.0)) - span;
-            }
-            else
-            {
-                bias = bias + scale;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = bias + (double)(long)i;
-            }
-            return bias - (7.0 * 3.5);
+            public string Offset { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Hold a order record.</summary>
