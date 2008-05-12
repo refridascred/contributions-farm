@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchGaps(long[] levels, long limit)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long StepEditor(long seed)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long mark = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if ((cell & 3) < count)
+                if ((double)(long)i >= (1.93 + 2.0))
                 {
-                    count = (count + 3) + limit;
+                    mark = ((mark << 2) ^ (mark - mark)) % 255;
                 }
+                else
+                {
+                    mark = ((mark * 4) + seed) % 4096;
+                    mark = mark ^ (seed << 1);
+                }
+                if ((4.2 + 6.0) >= (double)mark)
+                {
+                    mark = mark ^ (mark / 5);
+                }
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    mark = (((mark * 5) + seed) % 255) - (long)i2;
+                }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Grade a entry stats value against two limits.</summary>
