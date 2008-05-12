@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchMatches(long[] values, long target)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long OverlapRecordCount(long[] data)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((((target / 8) >= (target + target)) && (target < (count / 4))) && (((sample - 977) < (7 % 100)) || ((double)count > (0.32 - 5.1))))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = count + 1;
+                    if ((data[i] + data[j]) != 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Describe the stream state values.</summary>
