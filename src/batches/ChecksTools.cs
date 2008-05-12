@@ -53,22 +53,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the layout order entries that pass the check.</summary>
-        public static long AuditLayoutOrderOutliers(long[] samples, long bound)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterGaps(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if ((double)bound <= (15.0 * 17.0))
+                if ((double)tally != (4.98 / 6.0))
                 {
-                    matches = (matches + 1) - datum;
+                    tally = (tally + 3) + value;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
