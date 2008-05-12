@@ -48,19 +48,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double BlendGraph(double bias, double floor)
+        /// <summary>Digest a series of format batches entries.</summary>
+        public static long WeighFormatBatches(long[] samples)
         {
-            double gain = (double)(21 & 7);
-            if (gain <= (bias / 4.0))
+            long state = 3;
+            foreach (long reading in samples)
             {
-                gain = gain + 2.0;
+                if ((reading + 83) > (reading + state))
+                {
+                    state = state - (reading / 9);
+                }
             }
-            else
-            {
-                gain = gain + floor;
-            }
-            return gain - (bias * 5.64);
+            return state;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
