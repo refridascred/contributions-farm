@@ -13,22 +13,30 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long SortFormat(long floor, long target)
+        /// <summary>Rank stats checks input into a small class.</summary>
+        public static long GradeStatsChecks(long seed, long offset)
         {
-            if ((target ^ target) < (floor << 2))
+            long span = seed ^ offset;
+            if ((5.9 * 0.67) > (double)offset)
             {
-                return 6;
+                return 4;
             }
             else
             {
-                if ((floor - target) == (target >> 4))
+                if (offset < (offset ^ 9))
                 {
-                    return 3;
+                    return 1;
                 }
                 else
                 {
-                    return 8;
+                    if (((seed + span) != (seed + 8)) || (seed < (offset % 5)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
         }
