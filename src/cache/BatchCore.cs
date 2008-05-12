@@ -19,17 +19,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LocateBatchesIndex(long[] levels, long seed)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long GradeRecord(long origin, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long diff = origin ^ limit;
+            if (!((double)diff < (3.0 * 4.64)))
             {
-                if ((levels[i] >= seed) && ((levels[i] % 3) == 0))
+                return 6;
+            }
+            else
+            {
+                if ((diff + diff) <= (origin + origin))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (((limit & 3) < (limit & 1)) && ((diff & 63) <= (origin * 5)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((origin * 5) < (limit / 8))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Blend two order measurements.</summary>
