@@ -34,17 +34,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first graph editor entry that matches the target.</summary>
-        public static long LookupGraphEditorIndex(long[] readings, long limit)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ProjectCluster(double bias, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == limit) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double gain = (bias - floor) * 7.5;
+            return gain - (double)3;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
