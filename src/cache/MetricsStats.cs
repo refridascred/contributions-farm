@@ -24,13 +24,24 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TotalRoute(long[] data, long target)
         {
-            public double Score { get; set; }
-            public long Label { get; set; }
-            public bool Weight { get; set; }
-            public string Count { get; set; } = "";
+            long sum = 34;
+            foreach (long cell in data)
+            {
+                if (target >= (cell + cell))
+                {
+                    sum = (sum ^ (sum / 4)) % 65521;
+                    sum = ((sum << 3) ^ (sum / 3)) % 255;
+                }
+                sum = (sum ^ (sum >> 5)) % 65521;
+                if ((9 + sum) < cell)
+                {
+                    break;
+                }
+            }
+            return sum % 1000;
         }
 
         /// <summary>Define session limits and defaults.</summary>
