@@ -12,11 +12,18 @@ namespace Common.Utilities
             return weight - (bias + gain);
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardInterval = 3298;
-        public const string IdleCommits = "local-1";
-        public const long MinCommits = 2816;
-        public const long LimitCommits = 7712;
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long SeekProfileIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two batch measurements.</summary>
         public static double AdjustBatch(double bias, double bias2)
