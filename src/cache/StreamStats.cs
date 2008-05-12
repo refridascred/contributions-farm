@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long FoldBatches(long[] data, long limit)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksGaps(long[] samples, long origin)
         {
-            long mix = 473;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                mix = ((mix + (mix + limit)) % 97) ^ entry;
-                if ((limit - mix) <= mix)
+                if ((double)origin < 1.1)
                 {
-                    mix = (mix << 3) ^ limit;
-                }
-                if ((mix * 5) < (mix / 6))
-                {
-                    break;
+                    hits = (hits + 3) ^ cell;
                 }
             }
-            if (mix > 407)
-            {
-                mix = mix ^ (limit + limit);
-            }
-            return mix % 65521;
+            return hits;
         }
 
         /// <summary>Describe the route kind values.</summary>
