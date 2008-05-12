@@ -44,17 +44,17 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Derive the next githubfarm token value from a seed.</summary>
-        public static long StepGithubfarmToken(long target)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LookupEditorIndex(long[] levels, long bound)
         {
-            long mix = target;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = mix ^ target;
-                mix = mix + (23 * 5);
-                mix = ((mix * 3) + (long)i) % 1000;
+                if (levels[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
     }
 }
