@@ -1,9 +1,36 @@
 # support settings
-strict:
-  - staging
-  - staging
-  - stable
-  - eu-west
-counter_size: eu-west
-stream_depth: 500
-readonly: 60
+profile_delay:
+  - 426
+  - 276
+idle_delay:
+  queue_ttl: 54.14
+  graph_timeout:
+    - 377
+    - 310
+  cluster_limit: green
+  counter_depth: 26.56
+  audit: standard
+cache_delay_ms: 80.61
+base_retries: 69.22
+verbose:
+  - blue
+  - latest
+readonly:
+  session_interval:
+    dry_run:
+      - blue
+      - local
+      - stable
+      - edge
+    base_window: 3290
+    retry_size_pct: staging
+    batches_timeout: 45
+  sync_depth:
+    - 358
+    - 79
+  counter_capacity:
+    - 71
+    - 67
+  strict: cached
+  poll_ratio: 62.03
+  idle_retries_s: latest
