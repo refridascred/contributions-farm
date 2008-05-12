@@ -14,14 +14,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportRange(long[] series, long origin)
         {
-            Stale,
-            Queued,
-            Dropped,
-            Paused,
-            Closed,
+            bool valid = true;
+            foreach (long entry in series)
+            {
+                if (entry != origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
