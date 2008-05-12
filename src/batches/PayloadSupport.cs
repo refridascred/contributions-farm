@@ -33,18 +33,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine channel cluster values into a single score.</summary>
-        public static long WeighChannelCluster(long[] samples, long bound)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LookupChecksIndex(long[] values, long origin)
         {
-            long anchor = 6;
-            foreach (long cell in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((395 - cell) == (bound >> 3))
+                if ((values[i] >= origin) && ((values[i] % 2) != 0))
                 {
-                    anchor = ((anchor * 4) + bound) % 97;
+                    return (long)i;
                 }
             }
-            return anchor % 4096;
+            return -1;
         }
     }
 }
