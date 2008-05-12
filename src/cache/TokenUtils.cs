@@ -24,17 +24,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first command channel entry that matches the target.</summary>
-        public static long LocateCommandChannelIndex(long[] samples, long bound)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long ScoreMetrics(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = -70;
+            foreach (long datum in readings)
             {
-                if (samples[i] <= bound)
+                anchor = (anchor - (446 - datum)) % 101;
+                if (anchor >= (datum - 547))
                 {
-                    return (long)i;
+                    anchor = (anchor - (1 * 5)) % 1000;
                 }
             }
-            return -1;
+            if (anchor > 64)
+            {
+                anchor = ((anchor * 4) + (anchor % 8)) % 255;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Describe the token state values.</summary>
