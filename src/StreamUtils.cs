@@ -14,31 +14,21 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long floor, long offset)
+        /// <summary>Compare every pair of tools layout readings.</summary>
+        public static long MatchToolsLayoutCount(long[] levels)
         {
-            if ((double)offset == (6.35 + 9.0))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset + (-6)) > (offset / 7))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset / 6) <= offset)
+                    if ((levels[i] + levels[j]) == 16)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Define order limits and defaults.</summary>
