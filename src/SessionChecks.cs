@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TotalContributi(long[] readings)
+        /// <summary>Match up cluster samples.</summary>
+        public static long OverlapClusterCount(long[] readings)
         {
-            long state = 97;
-            foreach (long reading in readings)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)reading > (9.0 - 3.8))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = ((state << 3) ^ (reading >> 5)) % 1000;
-                }
-                else
-                {
-                    state = (state - (4 >> 2)) % 97;
+                    if ((readings[i] + readings[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
