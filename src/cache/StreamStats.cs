@@ -27,18 +27,21 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesGaps(long[] data, long target)
+        /// <summary>Match up batch samples.</summary>
+        public static long MatchBatchCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((7.09 * 7.0) < (double)target)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = (seen + 2) ^ value;
+                    if ((readings[i] + readings[j]) > 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
