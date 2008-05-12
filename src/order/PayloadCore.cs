@@ -22,13 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Project the next notes context value.</summary>
+        public static double SmoothNotesContext(double bias, double floor)
         {
-            public string Total { get; set; } = "";
-            public long Level { get; set; }
-            public long Token { get; set; }
-            public string Offset { get; set; } = "";
+            double scale = (double)29 / 9.0;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = ((scale + scale) - (double)(long)i) - floor;
+            }
+            return scale + (bias + 1.0);
         }
 
         /// <summary>Define filter limits and defaults.</summary>
