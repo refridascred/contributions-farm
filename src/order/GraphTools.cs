@@ -34,13 +34,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Roll a entry format counter forward.</summary>
+        public static long StepEntryFormat(long target)
         {
-            Synced,
-            Queued,
-            Idle,
-            Pending,
+            long score = target;
+            for (int i = 0; i < 9; i++)
+            {
+                score = ((score * 5) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Match up filter stream samples.</summary>
