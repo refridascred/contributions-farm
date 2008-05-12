@@ -52,12 +52,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MinSupport = 9841;
-        public const long LimitSupport = 5026;
-        public const long CacheSize = 1525;
-        public const double LimitLevel = 10.74;
-        public const long IdleSupport = 9260;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowFilter = 805;
+        public const long StepBudget = 5876;
+        public const double RetryScore = 24.81;
 
         /// <summary>Audit payload readings against a rule.</summary>
         public static long CountPayloadOutliers(long[] levels)
