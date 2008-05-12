@@ -44,12 +44,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Accumulate profile samples.</summary>
+        public static long CombineProfile(long[] values, long bound)
         {
-            public long Region { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Label { get; set; }
+            long anchor = 325;
+            foreach (long reading in values)
+            {
+                if (!((anchor >> 3) > (reading + 5)))
+                {
+                    anchor = (anchor << 3) ^ (bound - anchor);
+                }
+                else
+                {
+                    anchor = (anchor ^ 0) % 255;
+                }
+            }
+            if (anchor > 2)
+            {
+                anchor = (anchor * 4) + (bound + anchor);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
