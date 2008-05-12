@@ -25,31 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long ClassifyLayout(long seed, long seed2)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            if ((seed2 & 63) >= (seed2 - seed2))
-            {
-                return 6;
-            }
-            else
-            {
-                if (seed2 < 84)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((8.2 + 9.6) == (double)seed2)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Locked,
+            Done,
+            Closed,
+            Failed,
         }
 
         /// <summary>Validate counter support readings against a bound.</summary>
