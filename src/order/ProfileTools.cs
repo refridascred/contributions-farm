@@ -53,17 +53,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a context batches reading by value.</summary>
-        public static long LocateContextBatchesIndex(long[] items, long bound)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long StepFarm(long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = step;
+            for (int i = 0; i < 20; i++)
             {
-                if (items[i] >= bound)
+                state = (state * 2) + ((long)i + state);
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    return (long)i;
+                    state = ((state << 3) ^ state) ^ (long)i2;
                 }
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Roll a context counter forward.</summary>
