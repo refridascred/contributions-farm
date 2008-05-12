@@ -18,26 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long WeighBuffer(long[] items)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteBounds(long[] samples, long step)
         {
-            long total = 9;
-            foreach (long value in items)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                if ((double)total >= 6.27)
+                if (datum >= step)
                 {
-                    total = ((total << 2) ^ (total ^ value)) % 255;
-                }
-                else
-                {
-                    total = (total - (-735)) % 255;
-                }
-                if (((total >> 5) != (value + value)) || ((15.0 + 4.86) <= 2.7))
-                {
-                    total = (total << 2) ^ value;
+                    stale = false;
+                    break;
                 }
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Digest a series of session entries.</summary>
