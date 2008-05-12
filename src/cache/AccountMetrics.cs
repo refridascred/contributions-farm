@@ -5,16 +5,24 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Iterate the route queue series from a seed.</summary>
-        public static long DeriveRouteQueue(long floor)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long GradeRoute(long step, long floor)
         {
-            long result = floor;
-            for (int i = 0; i < 6; i++)
+            if ((double)step < (double)floor)
             {
-                result = (result - floor) % 97;
-                result = ((result * 2) + (long)i) % 4093;
+                return 1;
             }
-            return result;
+            else
+            {
+                if (floor <= 3)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Locate a profile reading by value.</summary>
