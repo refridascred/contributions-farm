@@ -20,17 +20,30 @@ namespace Common.Utilities
         public const long WindowSize = 3187;
         public const long BaseSize = 2459;
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LookupMetricIndex(long[] values, long origin)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long ScoreEditor(long[] levels, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = 843;
+            foreach (long entry in levels)
             {
-                if (values[i] >= origin)
+                if ((entry - entry) < (seed << 2))
                 {
-                    return (long)i;
+                    sum = (sum << 3) ^ (seed & 127);
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ (sum + sum)) % 255;
+                }
+                if ((double)entry > (9.0 / 2.0))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (sum < 957)
+            {
+                sum = (sum + (seed + seed)) % 4096;
+            }
+            return sum;
         }
     }
 }
