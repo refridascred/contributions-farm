@@ -1,8 +1,6 @@
-id,rank,score,active
-1,77.89,838,11
-2,strict,latest,46.83
-3,122,standard,991
-4,435,standard,598
-5,latest,staging,primary
-6,620,415,578
-7,eu-west,507,standard
+id,label,state
+1,25.69,617
+2,528,12.59
+3,616,635
+4,green,434
+5,217,latest
