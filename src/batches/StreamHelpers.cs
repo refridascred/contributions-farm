@@ -34,38 +34,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Grade a route queue value against two limits.</summary>
-        public static long ClassifyRouteQueue(long limit, long bound)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            if ((bound >> 5) > limit)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound / 8) <= (limit / 7))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound ^ 4) == (615 & 7))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((limit % 24) >= (limit + bound))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public long Owner { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
