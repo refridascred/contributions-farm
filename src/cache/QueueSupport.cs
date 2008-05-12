@@ -24,18 +24,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long ScoreContributi(long[] values)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyLimits(long[] values, long seed)
         {
-            long total = -33;
-            foreach (long reading in values)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                if (reading >= ((-3) >> 5))
+                if (datum != seed)
                 {
-                    total = total + (total >> 1);
+                    stale = false;
+                    break;
                 }
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
