@@ -46,17 +46,21 @@ namespace Common.Utilities
         public const string MaxFactor = "staging";
         public const string MaxSpan = "standard";
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long SeekMetricsIndex(long[] items, long bound)
+        /// <summary>Compare every pair of editor batches readings.</summary>
+        public static long OverlapEditorBatchesCount(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((items[i] < bound) && ((items[i] % 3) != 0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] - levels[j]) != 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
