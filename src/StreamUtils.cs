@@ -62,19 +62,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferLimits(long[] levels, long floor)
+        /// <summary>Combine channel support values into a single score.</summary>
+        public static long TotalChannelSupport(long[] samples, long seed)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            long score = 45;
+            foreach (long datum in samples)
             {
-                if (entry != floor)
+                if ((double)score >= 8.66)
                 {
-                    ready = false;
-                    break;
+                    score = (((score - score) % 97) ^ datum) - seed;
                 }
             }
-            return ready;
+            return score;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
