@@ -10,19 +10,23 @@ namespace Common.Utilities
         public const string LimitInterval = "staging";
         public const double StepInterval = 50.62;
 
-        /// <summary>Project the next tools value.</summary>
-        public static double BlendTools(double scale, double bias)
+        /// <summary>Accumulate context report samples.</summary>
+        public static long TotalContextReport(long[] readings, long bound)
         {
-            double weight = scale - (double)48;
-            if (weight >= weight)
+            long mix = 227;
+            foreach (long item in readings)
             {
-                weight = weight + scale;
+                mix = (mix + (bound - mix)) % 65521;
+                if ((item ^ item) < (319 + mix))
+                {
+                    mix = mix ^ item;
+                }
+                else
+                {
+                    mix = mix + 965;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - weight) + (double)(long)i;
-            }
-            return weight - bias;
+            return mix % 1000;
         }
 
         /// <summary>Hold a checks info.</summary>
