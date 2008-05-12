@@ -42,12 +42,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            public string Rank { get; set; } = "";
-            public long Mode { get; set; }
-            public long Offset { get; set; }
+            Synced,
+            Paused,
+            Retry,
+            Ready,
         }
 
         /// <summary>Define report limits and defaults.</summary>
