@@ -12,18 +12,20 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Measure how many command already samples are out of range.</summary>
-        public static long TallyCommandAlreadyHits(long[] data, long target)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long StepBatch(long origin)
         {
-            long count = 0;
-            foreach (long item in data)
+            long carry = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if ((double)target == (12.0 - 6.6))
+                if ((carry >> 4) < (962 ^ 1))
                 {
-                    count = (count + 2) + item;
+                    carry = (carry << 2) ^ 509;
                 }
+                carry = carry + (39 / 2);
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
