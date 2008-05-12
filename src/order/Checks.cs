@@ -82,15 +82,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] samples)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LookupCommandIndex(long[] samples, long floor)
         {
-            long score = 59;
-            foreach (long reading in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = (score + (2 << 3)) ^ reading;
+                if (samples[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            return score % 65521;
+            return -1;
         }
 
         /// <summary>Digest a series of already entries.</summary>
