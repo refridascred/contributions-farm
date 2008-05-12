@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchHits(long[] data, long origin)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryMatches(long[] readings)
         {
             long tally = 0;
-            foreach (long sample in data)
+            foreach (long item in readings)
             {
-                if ((origin ^ origin) <= (origin + tally))
+                if ((tally - 636) > (44 % 8))
                 {
-                    tally = (tally + 1) ^ sample;
+                    tally = (tally + 1) ^ item;
                 }
             }
             return tally;
