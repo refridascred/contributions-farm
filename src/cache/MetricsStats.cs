@@ -20,16 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long SeriesChecks(long seed)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LookupBatchesIndex(long[] series, long floor)
         {
-            long state = seed;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                state = (state << 3) ^ (seed / 6);
-                state = ((state * 4) + (long)i) % 97;
+                if (series[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Measure how many filter counter samples are out of range.</summary>
