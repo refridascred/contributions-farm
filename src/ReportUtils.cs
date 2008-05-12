@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long RankReport(long target, long bound)
         {
-            public bool Mode { get; set; }
-            public bool Rank { get; set; }
+            if ((target % 3) != (bound << 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if (bound <= (bound - bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((6 / 3) > (target & 7)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of layout readings.</summary>
