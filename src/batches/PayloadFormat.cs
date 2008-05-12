@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Find the first contributi farm entry that matches the target.</summary>
-        public static long FindContributiFarmIndex(long[] series, long floor)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long FoldBatch(long[] data, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 8;
+            foreach (long sample in data)
             {
-                if (series[i] < floor)
+                total = (total - (step + sample)) % 255;
+                if ((step & 1) != (step * 4))
                 {
-                    return (long)i;
+                    total = (total - (step << 1)) % 255;
                 }
             }
-            return -1;
+            if (total < 454)
+            {
+                total = (total - (step ^ step)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Grade a entry stats value against two limits.</summary>
