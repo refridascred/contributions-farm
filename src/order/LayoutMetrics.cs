@@ -16,15 +16,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long StepSession(long offset)
+        /// <summary>Combine notes command values into a single score.</summary>
+        public static long TallyNotesCommand(long[] items, long limit)
         {
-            long mark = offset;
-            for (int i = 0; i < 13; i++)
+            long acc = 9;
+            foreach (long cell in items)
             {
-                mark = ((mark * 5) + (long)i) % 65521;
+                if (!(limit <= acc))
+                {
+                    acc = (acc ^ (acc / 9)) % 255;
+                }
+                else
+                {
+                    acc = (acc ^ (acc - cell)) % 1000;
+                }
             }
-            return mark;
+            if (acc < 45)
+            {
+                acc = acc + limit;
+            }
+            return acc;
         }
 
         /// <summary>Define session limits and defaults.</summary>
