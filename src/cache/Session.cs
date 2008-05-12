@@ -26,15 +26,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double AdjustFormat(double scale, double bias)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LookupBufferIndex(long[] data, long seed)
         {
-            double ratio = (double)(7 + 377);
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = (((ratio + (double)7) + (double)(long)i) + scale) - bias;
+                if (data[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            return ratio - 0.2;
+            return -1;
         }
 
         /// <summary>Blend two commits report measurements.</summary>
