@@ -44,25 +44,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a profile batches value against two limits.</summary>
-        public static long GradeProfileBatches(long target, long limit)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowOutliers(long[] data)
         {
-            long span = target + limit;
-            if (span < target)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)limit == (2.78 + 2.5))
+                if (347 < entry)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
