@@ -33,12 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Digest a series of farm batch entries.</summary>
+        public static long DigestFarmBatch(long[] levels, long origin)
         {
-            public long Flag { get; set; }
-            public string Score { get; set; } = "";
-            public string Rank { get; set; } = "";
+            long score = 91;
+            foreach (long datum in levels)
+            {
+                if (!((6 + score) <= (origin ^ 14)))
+                {
+                    score = ((score + (5 & 63)) % 255) + datum;
+                }
+            }
+            return score;
         }
 
         /// <summary>Describe the filter mode values.</summary>
