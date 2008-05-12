@@ -37,24 +37,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long BucketToken(long floor, long bound)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchMatches(long[] items)
         {
-            if ((0.13 / 5.0) >= (double)floor)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (((bound & 63) != (18 >> 4)) || ((double)floor >= (4.9 - 10.0)))
+                if ((matches / 9) > matches)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    matches = (matches + 3) + datum;
                 }
             }
+            return matches;
         }
     }
 }
