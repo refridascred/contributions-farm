@@ -52,14 +52,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            Done,
-            Stale,
-            Failed,
-            Locked,
-            Paused,
+            Synced,
+            Draft,
+            Active,
         }
 
         /// <summary>Scale a buffer metric figure with a bias.</summary>
