@@ -29,31 +29,15 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long GradeCommits(long bound, long step)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] samples, long origin)
         {
-            if ((step / 5) != (bound << 1))
+            long result = 895;
+            foreach (long sample in samples)
             {
-                return 2;
+                result = (result ^ origin) + sample;
             }
-            else
-            {
-                if ((double)bound == (11.0 + 19.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!(step > (bound * 4)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
