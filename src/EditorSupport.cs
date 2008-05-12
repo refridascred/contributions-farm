@@ -33,21 +33,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of queue record readings.</summary>
-        public static long MatchQueueRecordCount(long[] values)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Failed,
+            Draft,
+            Retry,
+            Ready,
         }
 
         /// <summary>Locate a support reading by value.</summary>
