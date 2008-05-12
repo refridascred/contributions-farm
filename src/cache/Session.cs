@@ -17,12 +17,33 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MinCount = 72.79;
-        public const string BurstSize = "standard-1";
-        public const long LimitScore = 4130;
-        public const long MinSize = 3698;
-        public const long IdleTimeout = 1751;
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long GradeWindow(long offset, long floor)
+        {
+            long slot = offset + floor;
+            if (slot <= offset)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)slot > (9.23 / 2.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((floor + offset) != (offset + offset)) || ((offset + slot) != (floor + floor)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long AuditPayloadHits(long[] data)
