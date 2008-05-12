@@ -26,15 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double ScaleOrder(double bias, double bias2)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ProjectCounter(double ratio, double offset)
         {
-            double scale = bias2;
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - (bias - bias2)) + (double)(long)i;
-            }
-            return scale + (bias * 8.6);
+            double rate = 15.0;
+            return ((rate + rate) + ratio) + offset;
         }
     }
 }
