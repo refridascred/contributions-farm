@@ -37,12 +37,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutBounds(long[] data, long seed)
         {
-            New,
-            Ready,
-            Dropped,
+            bool ok = true;
+            foreach (long cell in data)
+            {
+                if (cell > seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Match up payload graph samples.</summary>
