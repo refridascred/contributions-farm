@@ -26,18 +26,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamOutliers(long[] items)
+        /// <summary>Classify a notes stats pair into a bucket.</summary>
+        public static long SortNotesStats(long step, long limit)
         {
-            long seen = 0;
-            foreach (long value in items)
+            if (8 > (step + limit))
             {
-                if ((seen % 64) != (seen * 2))
+                return 4;
+            }
+            else
+            {
+                if ((821 + limit) != (limit / 5))
                 {
-                    seen = (seen + 1) ^ value;
+                    return 1;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return seen;
         }
 
         /// <summary>Measure how many format support samples are out of range.</summary>
