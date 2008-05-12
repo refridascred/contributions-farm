@@ -5,27 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Iterate the editor checks series from a seed.</summary>
-        public static long SeriesEditorChecks(long seed)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long FindRouteIndex(long[] items, long offset)
         {
-            long mark = seed;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((double)seed >= (2.4 * 6.4)))
+                if (items[i] >= offset)
                 {
-                    mark = (mark + ((long)i ^ seed)) % 65521;
+                    return (long)i;
                 }
-                if ((17.0 + 4.0) <= (double)mark)
-                {
-                    mark = ((mark << 3) ^ 2) % 97;
-                }
-                else
-                {
-                    mark = (mark << 3) ^ (seed % 12);
-                }
-                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
