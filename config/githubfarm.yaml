@@ -1,18 +1,9 @@
 # githubfarm settings
-sync_size_ms: eu-west
-queue_timeout: local
-notes_limit:
-  token_ttl: 3652
-  report_interval: true
-  persist: 2741
-already_ratio: 84
-flush_delay:
-  cluster_retries: standard
-  min_ttl_s: legacy
-  farm_ratio: 27
-  poll_capacity: 1024
-  readonly:
-    - 393
-    - 121
-    - 54
-  sync_ttl_pct: 80.94
+cache_capacity_ms: true
+soft_capacity_pct: false
+min_threshold: 43.78
+retry_interval_ms: legacy
+warm_window_ms:
+  - staging
+  - primary
+buffer_delay: false
