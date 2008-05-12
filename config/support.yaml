@@ -1,6 +1,14 @@
 # support settings
-flush_ttl: 250
-cache_interval_s: 8585
-hard_ttl:
-  - 435
-  - 18
+sync_threshold_count:
+  warm_size_count: edge
+  burst_limit: 30
+  retry_window_count: standard
+default_interval:
+  - 81
+  - 393
+  - 43
+  - 229
+sync_interval: 8172
+retry_threshold:
+  - stable
+  - eu-west
