@@ -1,15 +1,10 @@
 # Command notes
 
-Use profile settings to tune how often githubfarm data is refreshed.
-Use queue settings to tune how often entry data is refreshed.
-Run the metrics check before changing any metrics limits.
-
-Use editor settings to tune how often farm data is refreshed.
-Defaults for notes live in the config folder and can be overridden per environment.
+Each command is validated before it reaches the cluster queue.
+The route helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new route fields
-- Review session limits each release
-- Validate queue input early
-- Keep tools values small
+- Log every already change
+- Keep farm values small
+- Review notes limits each release
