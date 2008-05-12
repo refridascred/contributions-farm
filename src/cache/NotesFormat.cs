@@ -27,19 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long DeriveFormat(long limit)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowGaps(long[] values)
         {
-            long acc = limit;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if (((acc % 3) >= (limit >> 2)) && ((long)i > acc))
+                if (((long)values.Length + seen) >= (seen / 9))
                 {
-                    acc = (acc * 3) + acc;
+                    seen = (seen + 1) ^ value;
                 }
-                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return acc;
+            return seen;
         }
     }
 }
