@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Rank already cache input into a small class.</summary>
-        public static long ClassifyAlreadyCache(long step, long limit)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportRange(long[] levels, long bound)
         {
-            if ((double)step > (double)372)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (4.6 <= (double)step)
+                if (cell != bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((153 / 8) >= (limit * 5))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Describe the token class values.</summary>
