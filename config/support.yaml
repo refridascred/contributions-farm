@@ -1,27 +1,9 @@
 # support settings
-context_threshold: true
-poll_capacity_s:
-  soft_timeout_ms:
-    - fallback
-    - legacy
-    - legacy
-  max_capacity:
-    min_window: blue
-    burst_threshold: strict
-    soft_limit: edge
-    cache_ratio_count: 22.13
-  flush_depth:
-    - 188
-    - 33
-    - 11
-  poll_ttl_s: false
-  burst_capacity_s:
-    soft_ratio_pct: 500
-    compress: eu-west
-    verbose: local
-  channel_timeout: fallback
-min_interval_s: fallback
-enabled:
-  poll_interval: green
-  max_interval_s: cached
-  base_window_count: true
+strict:
+  - staging
+  - staging
+  - stable
+  - eu-west
+counter_size: eu-west
+stream_depth: 500
+readonly: 60
