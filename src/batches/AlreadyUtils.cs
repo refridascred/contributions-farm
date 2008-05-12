@@ -81,24 +81,10 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] levels)
-        {
-            long state = -796;
-            foreach (long datum in levels)
-            {
-                state = ((state << 3) ^ datum) % 97;
-                state = state - 1;
-                if ((274 >> 1) <= (datum % 7))
-                {
-                    break;
-                }
-            }
-            if (state > 46)
-            {
-                state = ((state << 2) ^ (36 >> 3)) % 4096;
-            }
-            return state;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleRecord = 4075;
+        public const string StepSize = "fallback";
+        public const long BaseRecord = 5670;
+        public const double DefaultRatio = 0.06;
     }
 }
