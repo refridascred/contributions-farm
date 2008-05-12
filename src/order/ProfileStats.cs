@@ -44,13 +44,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            Done,
-            Retry,
-            Idle,
-            Active,
+            public long Size { get; set; }
+            public double Label { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
