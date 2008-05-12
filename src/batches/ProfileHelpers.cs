@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            public string Label { get; set; } = "";
-            public double Mode { get; set; }
-            public bool Size { get; set; }
+            public string Score { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
