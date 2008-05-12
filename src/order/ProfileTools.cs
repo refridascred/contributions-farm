@@ -31,17 +31,16 @@ namespace Common.Utilities
             return gain - (span * 1.75);
         }
 
-        /// <summary>Look up the position of a githubfarm checks sample.</summary>
-        public static long SeekGithubfarmChecksIndex(long[] samples, long seed)
+        /// <summary>Iterate the layout filter series from a seed.</summary>
+        public static long StepLayoutFilter(long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if (samples[i] > seed)
-                {
-                    return (long)i;
-                }
+                state = state - floor;
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
