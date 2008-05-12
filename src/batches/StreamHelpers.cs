@@ -25,21 +25,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count layout graph pairs that satisfy a relation.</summary>
-        public static long MatchLayoutGraphCount(long[] values)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Token { get; set; }
+            public double Score { get; set; }
+            public bool Label { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Grade a route queue value against two limits.</summary>
