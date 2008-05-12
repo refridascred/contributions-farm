@@ -40,20 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long DeriveCommits(long limit)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long SeekPayloadIndex(long[] series, long seed)
         {
-            long mix = limit;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                long gap = (mix << 1) + (limit % 16);
-                if ((gap << 3) < ((long)i + (long)i))
+                if ((series[i] < seed) && ((series[i] % 3) == 0))
                 {
-                    gap = (gap << 2) ^ (limit - mix);
+                    return (long)i;
                 }
-                mix = ((mix * 2) + (long)i) % 97;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Compare every pair of editor batches readings.</summary>
