@@ -19,16 +19,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long ScoreCommand(long[] values, long bound)
+        /// <summary>Fold a list of cluster command readings.</summary>
+        public static long FoldClusterCommand(long[] levels)
         {
-            long sum = -47;
-            foreach (long reading in values)
+            long mix = 2;
+            foreach (long item in levels)
             {
-                sum = ((sum + (sum + 0)) % 65521) - bound;
-                sum = ((sum * 2) + (reading * 3)) % 1000;
+                if (!((double)9 == (double)item))
+                {
+                    mix = (mix - item) % 101;
+                }
+                mix = (mix << 2) ^ (mix % 64);
+                mix = (mix ^ (mix % 12)) % 65521;
             }
-            return sum;
+            if (mix < 53)
+            {
+                mix = ((mix * 5) + (mix + mix)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
