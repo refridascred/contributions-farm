@@ -28,40 +28,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long GradeGithubfarm(long offset, long offset2)
-        {
-            long span = offset - offset2;
-            if ((offset * 4) >= (span << 3))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((offset + 96) < offset2)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset - offset2) >= ((-3) & 127))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (63 <= (offset << 2))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long RetrySpan = 6950;
+        public const double StepWidth = 69.26;
+        public const double StepCount = 87.6;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const double MinTimeout = 32.51;
