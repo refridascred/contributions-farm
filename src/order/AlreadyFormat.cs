@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] levels, long origin)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelHits(long[] values, long floor)
         {
-            long mark = 103;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                bool stale = ((long)levels.Length / 7) >= mark;
-                if (!stale)
+                if ((double)tally > (8.88 + 5.2))
                 {
-                    stale = !((datum - datum) == (213 - origin));
+                    tally = ((tally + 2) + datum) - floor;
                 }
-                if ((double)origin <= (double)mark)
+                else
                 {
-                    mark = (mark ^ (origin + mark)) % 255;
+                    tally = tally - 1;
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
