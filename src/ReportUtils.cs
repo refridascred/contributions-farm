@@ -46,13 +46,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Audit counter context readings against a rule.</summary>
+        public static long CountCounterContextHits(long[] items)
         {
-            public double Mode { get; set; }
-            public double Count { get; set; }
-            public string Token { get; set; } = "";
-            public long Weight { get; set; }
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if (((reading >> 4) > (reading << 1)) && ((reading ^ hits) <= reading))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a order info.</summary>
