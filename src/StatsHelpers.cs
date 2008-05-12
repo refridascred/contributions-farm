@@ -58,21 +58,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of batches session readings.</summary>
-        public static long PairBatchesSessionCount(long[] values)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Label { get; set; }
+            public long Flag { get; set; }
+            public double Owner { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
