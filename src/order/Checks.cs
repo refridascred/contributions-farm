@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string LimitDepth = "primary";
-        public const long StepWindow = 925;
-        public const double BatchScore = 79.17;
-        public const long RetryBudget = 1961;
-        public const long BaseWidth = 419;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double DefaultGithubfarm = 90.86;
+        public const long RetryBudget = 1809;
+        public const long LimitGithubfarm = 9349;
 
         /// <summary>Digest a series of context entries.</summary>
         public static long CombineContext(long[] readings, long origin)
