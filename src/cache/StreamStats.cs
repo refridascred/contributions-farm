@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TallyCache(long[] items)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphMatches(long[] samples, long origin)
         {
-            long carry = 578;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if ((double)sample > (3.0 - 2.0))
+                if ((((origin << 2) >= (reading + 768)) && (hits <= (origin * 3))) && ((origin + reading) == (hits << 1)))
                 {
-                    carry = carry + (sample + 26);
-                }
-                else
-                {
-                    carry = (carry ^ (37 >> 2)) % 101;
+                    hits = hits + 1;
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Combine command values into a single score.</summary>
