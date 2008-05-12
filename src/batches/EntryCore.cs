@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Rank session input into a small class.</summary>
+        public static long BucketSession(long limit, long seed)
         {
-            public bool Size { get; set; }
-            public string Level { get; set; } = "";
-            public long Label { get; set; }
+            long delta = limit + seed;
+            if ((3.13 + 16.0) > (double)delta)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((4 >> 2) >= (seed + 39))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
