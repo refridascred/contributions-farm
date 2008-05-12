@@ -51,19 +51,11 @@ namespace Common.Utilities
             return mean + (mean / 7.0);
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphBounds(long[] data, long limit)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            bool valid = true;
-            foreach (long entry in data)
-            {
-                if (entry < limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Mode { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
