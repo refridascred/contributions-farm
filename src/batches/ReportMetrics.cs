@@ -12,21 +12,22 @@ namespace Common.Utilities
         public const long HardFactor = 4749;
         public const string MaxBudget = "open-v2";
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long OverlapRouteCount(long[] series)
+        /// <summary>Count the layout filter entries that pass the check.</summary>
+        public static long MeasureLayoutFilterGaps(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((5 * 3) < tally)
                 {
-                    if ((series[i] + series[j]) != 17)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 2) ^ entry;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
