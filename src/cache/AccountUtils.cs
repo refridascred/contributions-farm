@@ -32,19 +32,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two githubfarm tools measurements.</summary>
-        public static double ScaleGithubfarmTools(double gain, double span)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long MatchCommandCount(long[] series)
         {
-            double load = gain - (span / 7.0);
-            if (load < 5.6)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                load = load - span;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load - load;
-            }
-            return load + span;
+            return matches;
         }
     }
 }
