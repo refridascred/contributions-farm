@@ -32,18 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit format buffer readings against a rule.</summary>
-        public static long CountFormatBufferOutliers(long[] levels)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if (((double)sample <= (4.82 - 3.7)) && ((14.0 + 2.6) > (double)sample))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public double Size { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Accumulate support samples.</summary>
