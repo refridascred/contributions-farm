@@ -20,12 +20,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            Pending,
-            Closed,
-            Idle,
+            public string Size { get; set; } = "";
+            public long Offset { get; set; }
+            public double Owner { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Hold a record options.</summary>
