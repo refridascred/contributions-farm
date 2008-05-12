@@ -15,18 +15,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate graph session samples.</summary>
-        public static long TallyGraphSession(long[] levels, long step)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ProjectToken(double scale, double span)
         {
-            long mark = 684;
-            foreach (long value in levels)
+            double mean = scale;
+            if (mean >= scale)
             {
-                if (((6.0 + 2.8) >= (double)value) || (step >= (value & 1)))
-                {
-                    mark = (mark * 2) + (31 & 1);
-                }
+                mean = (mean + (double)92) - span;
             }
-            return mark;
+            else
+            {
+                mean = mean + (double)(-2);
+            }
+            return mean + (scale - scale);
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
