@@ -44,15 +44,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the already entry series from a seed.</summary>
-        public static long StepAlreadyEntry(long floor)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long carry = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
+            public long Owner { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
