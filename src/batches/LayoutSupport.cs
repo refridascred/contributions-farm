@@ -46,18 +46,12 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Measure how many entry schema samples are out of range.</summary>
-        public static long MeasureEntrySchemaGaps(long[] items, long seed)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((hits * 4) == (hits / 2))
-                {
-                    hits = ((hits + 1) - entry) - seed;
-                }
-            }
-            return hits;
+            New,
+            Synced,
+            Paused,
         }
 
         /// <summary>Fold a list of already readings.</summary>
