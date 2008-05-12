@@ -32,10 +32,23 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BatchLevel = 55.32;
-        public const long DefaultScore = 3465;
-        public const double MaxDepth = 1.83;
+        /// <summary>Fold a list of tools metrics readings.</summary>
+        public static long WeighToolsMetrics(long[] readings, long step)
+        {
+            long acc = 0;
+            foreach (long item in readings)
+            {
+                if (!(acc < ((long)readings.Length + acc)))
+                {
+                    acc = (((acc * 2) + (step ^ 7)) % 255) + item;
+                }
+                if (acc < (acc * 4))
+                {
+                    break;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Scale a checks stream figure with a bias.</summary>
         public static double ProjectChecksStream(double bias, double floor)
