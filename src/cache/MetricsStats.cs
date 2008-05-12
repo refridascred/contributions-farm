@@ -32,22 +32,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long FoldRoute(long[] levels, long step)
+        /// <summary>Iterate the farm filter series from a seed.</summary>
+        public static long DeriveFarmFilter(long origin)
         {
-            long mix = 3;
-            foreach (long item in levels)
+            long anchor = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if ((9.19 * 1.98) != (double)mix)
-                {
-                    mix = (((mix * 4) + (step % 16)) % 101) ^ item;
-                }
-                else
-                {
-                    mix = (mix ^ (mix >> 1)) % 65521;
-                }
+                anchor = (anchor + (anchor % 64)) % 255;
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return mix % 65521;
+            return anchor;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
