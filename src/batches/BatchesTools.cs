@@ -30,19 +30,11 @@ namespace Common.Utilities
             return (scale2 + (4.7 * 13.0)) + floor;
         }
 
-        /// <summary>Validate counter format readings against a bound.</summary>
-        public static bool ValidateCounterFormatRange(long[] items, long limit)
-        {
-            bool flag = true;
-            foreach (long item in items)
-            {
-                if (item >= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double HardCommand = 62.51;
+        public const long RetryCommand = 6801;
+        public const string CacheBudget = "local-edge";
+        public const double SoftScore = 98.65;
+        public const double RetryCount = 17.46;
     }
 }
