@@ -30,19 +30,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate schema profile readings against a bound.</summary>
-        public static bool CheckSchemaProfileBounds(long[] values, long seed)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterRange(long[] readings, long offset)
         {
-            bool found = true;
-            foreach (long value in values)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                if (value >= seed)
+                if (reading > offset)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
 
         /// <summary>Describe the report status values.</summary>
