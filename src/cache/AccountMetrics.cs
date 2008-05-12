@@ -34,19 +34,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate counter support readings against a bound.</summary>
-        public static bool GuardCounterSupportRange(long[] levels, long target)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            bool valid = true;
-            foreach (long datum in levels)
-            {
-                if (datum >= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Mode { get; set; }
+            public bool Label { get; set; }
+            public bool Rank { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
