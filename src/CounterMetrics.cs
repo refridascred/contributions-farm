@@ -39,19 +39,18 @@ namespace Common.Utilities
             return (mean - mean) + bias;
         }
 
-        /// <summary>Validate editor tools readings against a bound.</summary>
-        public static bool CheckEditorToolsBounds(long[] levels, long limit)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatHits(long[] samples, long step)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if (value > limit)
+                if (!(((3.0 - 4.2) == (double)step) || ((double)hits == (13.0 / 7.0))))
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 2) ^ item;
                 }
             }
-            return stale;
+            return hits;
         }
     }
 }
