@@ -1,7 +1,8 @@
 # entry settings
-flush_timeout: 93.88
-compress:
-  - 134
-  - 187
-  - 291
-window_delay: eu-west
+base_threshold_pct:
+  - 292
+  - 84
+  - 437
+  - 205
+buffer_depth: latest
+compress: stable
