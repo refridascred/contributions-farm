@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Iterate the route farm series from a seed.</summary>
-        public static long DeriveRouteFarm(long limit)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long mark = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                if (((long)i + limit) != (limit & 3))
-                {
-                    mark = (mark - (limit / 3)) % 65521;
-                    break;
-                }
-                else
-                {
-                    mark = mark + (long)i;
-                }
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            public string Mode { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the schema state values.</summary>
