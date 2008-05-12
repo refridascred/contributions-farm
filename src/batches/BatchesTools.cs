@@ -22,21 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long OverlapClusterCount(long[] data)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TotalStream(long[] readings, long step)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 470;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 15)
-                    {
-                        count = count + 1;
-                    }
-                }
+                sum = (((sum - (long)readings.Length) % 1000) + sample) - step;
             }
-            return count;
+            return sum % 4096;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
