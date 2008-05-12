@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many metric counter samples are out of range.</summary>
-        public static long AuditMetricCounterMatches(long[] readings)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((837 - matches) <= (entry / 3))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Ready,
+            New,
+            Pending,
         }
 
         /// <summary>Roll a route stats counter forward.</summary>
