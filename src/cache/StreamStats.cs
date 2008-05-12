@@ -31,19 +31,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate context session readings against a bound.</summary>
-        public static bool CheckContextSessionLimits(long[] items, long step)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            bool stale = true;
-            foreach (long cell in items)
-            {
-                if (cell <= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Size { get; set; } = "";
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Accumulate route samples.</summary>
