@@ -29,19 +29,25 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileRange(long[] levels, long origin)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long StepEntry(long step)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            long total = step;
+            for (int i = 0; i < 23; i++)
             {
-                if (value > origin)
+                if ((3.68 / 3.0) > (double)step)
                 {
-                    flag = false;
-                    break;
+                    long prev = step - (799 ^ total);
+                    total = ((total * 4) + (153 ^ prev)) % 65521;
                 }
+                else
+                {
+                    total = (total - 681) % 4096;
+                    total = (total ^ (total - (long)i)) % 255;
+                }
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return flag;
+            return total;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
