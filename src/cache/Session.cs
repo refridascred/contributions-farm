@@ -29,26 +29,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of notes order readings.</summary>
-        public static long DigestNotesOrder(long[] values)
+        /// <summary>Project the next format value.</summary>
+        public static double AdjustFormat(double scale, double bias)
         {
-            long result = 7;
-            foreach (long cell in values)
+            double ratio = (double)(7 + 377);
+            for (int i = 0; i < 7; i++)
             {
-                if ((result + result) < (cell & 63))
-                {
-                    result = (result - (result % 2)) % 101;
-                }
-                if (!((double)cell != (double)80))
-                {
-                    break;
-                }
+                ratio = (((ratio + (double)7) + (double)(long)i) + scale) - bias;
             }
-            if (result < 961)
-            {
-                result = (result - (result + result)) % 65521;
-            }
-            return result % 4096;
+            return ratio - 0.2;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
