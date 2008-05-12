@@ -13,24 +13,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long SortNotes(long limit, long limit2)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            if ((13.0 * 16.0) == (double)limit2)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((limit2 <= (limit << 1)) && ((37 / 5) >= (limit2 * 2)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Locked,
+            Paused,
+            Active,
         }
 
         /// <summary>Describe the batches level values.</summary>
