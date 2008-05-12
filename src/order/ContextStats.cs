@@ -38,26 +38,22 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long CombineSchema(long[] levels)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long WeighCounter(long[] items)
         {
-            long result = 523;
-            foreach (long entry in levels)
+            long carry = 87;
+            foreach (long cell in items)
             {
-                if (entry > result)
+                if ((double)carry == (5.4 + 7.6))
                 {
-                    result = (result - 1) % 255;
-                }
-                else
-                {
-                    result = result - (786 & 15);
-                }
-                if ((result & 63) <= (entry / 3))
-                {
-                    break;
+                    carry = ((carry + (carry >> 2)) % 1000) - cell;
                 }
             }
-            return result % 65521;
+            if (carry > 856)
+            {
+                carry = (carry ^ carry) % 4096;
+            }
+            return carry;
         }
     }
 }
