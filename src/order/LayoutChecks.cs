@@ -35,18 +35,15 @@ namespace Common.Utilities
         public const long MaxCommand = 9838;
         public const string BatchWidth = "alpha-v2";
 
-        /// <summary>Combine entry contributi values into a single score.</summary>
-        public static long FoldEntryContributi(long[] items, long limit)
+        /// <summary>Iterate the already entry series from a seed.</summary>
+        public static long StepAlreadyEntry(long floor)
         {
-            long sum = 627;
-            foreach (long sample in items)
+            long carry = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if (917 < (sample ^ limit))
-                {
-                    sum = (sum + sum) % 255;
-                }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return sum;
+            return carry;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
