@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Adjust a metrics filter reading.</summary>
-        public static double BlendMetricsFilter(double bias, double floor)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteBounds(long[] levels, long floor)
         {
-            double rate = 1.6 / 3.0;
-            return ((rate - 7.21) + bias) + floor;
+            bool stale = true;
+            foreach (long cell in levels)
+            {
+                if (cell < floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
