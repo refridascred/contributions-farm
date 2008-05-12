@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterOutliers(long[] items)
+        /// <summary>Classify a report profile pair into a bucket.</summary>
+        public static long GradeReportProfile(long limit, long floor)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long lane = limit - floor;
+            if (((floor + limit) == (lane - floor)) || ((5.8 * 7.07) == (double)lane))
             {
-                if (!((count / 4) >= (count ^ cell)))
+                return 0;
+            }
+            else
+            {
+                if ((18.0 * 6.04) == (double)limit)
                 {
-                    count = count + 3;
+                    return 3;
+                }
+                else
+                {
+                    if ((21 % 97) != (18 + lane))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
