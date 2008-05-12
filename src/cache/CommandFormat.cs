@@ -22,10 +22,16 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double StepTimeout = 56.79;
-        public const long BaseFactor = 7515;
-        public const long HardLevel = 5924;
+        /// <summary>Combine window values into a single score.</summary>
+        public static long FoldWindow(long[] values, long floor)
+        {
+            long mark = 908;
+            foreach (long reading in values)
+            {
+                mark = (((mark * 4) + (mark & 15)) - reading) - floor;
+            }
+            return mark;
+        }
 
         /// <summary>Hold a farm options.</summary>
         public sealed class FarmOptions
