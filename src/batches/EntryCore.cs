@@ -41,23 +41,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long GradeCluster(long origin, long bound)
+        /// <summary>Grade a profile batches value against two limits.</summary>
+        public static long GradeProfileBatches(long target, long limit)
         {
-            long lane = origin ^ bound;
-            if ((14.0 - 3.75) < (double)lane)
+            long span = target + limit;
+            if (span < target)
             {
-                return 0;
+                return 4;
             }
             else
             {
-                if (!((66 - origin) < bound))
+                if ((double)limit == (2.78 + 2.5))
                 {
-                    return 1;
+                    return 3;
                 }
                 else
                 {
-                    return 8;
+                    return 2;
                 }
             }
         }
