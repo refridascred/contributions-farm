@@ -58,14 +58,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatLimits(long[] samples, long limit)
         {
-            Idle,
-            Locked,
-            Paused,
-            Closed,
-            New,
+            bool stale = true;
+            foreach (long value in samples)
+            {
+                if (value != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
