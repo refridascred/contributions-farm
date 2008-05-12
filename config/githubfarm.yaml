@@ -1,10 +1,10 @@
 # githubfarm settings
-poll_window_s:
-  enabled: local
-  burst_timeout_s: 315
-  max_ttl: false
-  sync_depth_pct: 8.87
-  githubfarm_threshold: 14.74
-burst_window: 43
-payload_interval: open
-persist: true
+retry_delay_pct: green
+retry_retries_count: false
+channel_interval: eu-west
+already_ratio:
+  cache_ttl_count:
+    - 96
+    - 141
+  hard_delay: 55.0
+  flush_ttl_s: 60.74
