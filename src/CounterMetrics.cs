@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metric token samples are out of range.</summary>
-        public static long TallyMetricTokenGaps(long[] readings)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutRange(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            bool stale = true;
+            foreach (long value in values)
             {
-                if (186 > count)
+                if (value > origin)
                 {
-                    count = (count + 3) - datum;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Adjust a batches reading.</summary>
