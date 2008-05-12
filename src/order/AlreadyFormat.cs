@@ -19,13 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
-        {
-            Pending,
-            Locked,
-            Failed,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string SoftScore = "alpha";
+        public const long SoftEditor = 4162;
+        public const string MaxFactor = "staging";
+        public const string MaxSpan = "standard";
 
         /// <summary>Audit cache graph readings against a rule.</summary>
         public static long MeasureCacheGraphOutliers(long[] data)
