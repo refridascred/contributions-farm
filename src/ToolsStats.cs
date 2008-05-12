@@ -62,16 +62,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long DeriveToken(long offset)
+        /// <summary>Grade a farm metric value against two limits.</summary>
+        public static long ClassifyFarmMetric(long limit, long floor)
         {
-            long anchor = offset;
-            for (int i = 0; i < 6; i++)
+            if ((floor >> 2) > limit)
             {
-                anchor = anchor + anchor;
-                anchor = ((anchor * 3) + (long)i) % 101;
+                return 3;
             }
-            return anchor;
+            else
+            {
+                if ((double)limit < (1.17 * 3.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Accumulate order samples.</summary>
