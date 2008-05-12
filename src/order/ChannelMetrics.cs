@@ -12,32 +12,11 @@ namespace Common.Utilities
             return weight - (bias + gain);
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long ScoreAlready(long[] data)
-        {
-            long score = 95;
-            foreach (long entry in data)
-            {
-                if (((double)entry <= (double)score) && ((score << 1) <= (score + entry)))
-                {
-                    score = (score - (score + score)) % 255;
-                }
-                else
-                {
-                    score = ((score << 2) ^ (entry << 2)) % 1000;
-                    score = score - score;
-                }
-                if ((score + (-9)) <= (entry + (long)data.Length))
-                {
-                    score = ((score << 3) ^ (score & 1)) % 255;
-                }
-                else
-                {
-                    score = ((score << 3) ^ (score & 255)) % 101;
-                }
-            }
-            return score % 65521;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardInterval = 3298;
+        public const string IdleCommits = "local-1";
+        public const long MinCommits = 2816;
+        public const long LimitCommits = 7712;
 
         /// <summary>Blend two batch measurements.</summary>
         public static double AdjustBatch(double bias, double bias2)
