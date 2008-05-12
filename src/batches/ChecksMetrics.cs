@@ -13,19 +13,12 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long RollPayload(long limit)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long sum = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                if (sum <= ((long)i & 255))
-                {
-                    sum = (sum - (limit + limit)) % 101;
-                }
-                sum = ((sum * 3) + (long)i) % 4093;
-            }
-            return sum;
+            public long Weight { get; set; }
+            public long Rank { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Hold a profile record.</summary>
