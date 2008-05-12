@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyOutliers(long[] levels, long bound)
-        {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((item + 40) >= (item - bound))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string WindowSession = "latest";
+        public const long BurstFactor = 385;
+        public const string SoftScore = "staging-edge";
 
         /// <summary>Locate a queue reading by value.</summary>
         public static long LocateQueueIndex(long[] values, long limit)
