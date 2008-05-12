@@ -27,10 +27,18 @@ namespace Common.Utilities
         public const long SoftStats = 539;
         public const long WindowStats = 7582;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string SoftInterval = "fallback-1";
-        public const long BaseSize = 8139;
-        public const double IdleToken = 49.19;
-        public const long StepCount = 1641;
+        /// <summary>Audit metrics filter readings against a rule.</summary>
+        public static long AuditMetricsFilterOutliers(long[] samples, long step)
+        {
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry / 8) <= (entry - step))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
