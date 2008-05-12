@@ -11,13 +11,20 @@ namespace Common.Utilities
         public const double LimitQueue = 77.13;
         public const long MinRatio = 1551;
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Roll a stats commits counter forward.</summary>
+        public static long SeriesStatsCommits(long offset)
         {
-            public long Label { get; set; }
-            public bool Region { get; set; }
-            public double Size { get; set; }
-            public long Count { get; set; }
+            long state = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((double)offset > (4.2 / 3.0))
+                {
+                    state = ((state << 3) ^ offset) % 4096;
+                    break;
+                }
+                state = ((state * 5) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Accumulate route samples.</summary>
