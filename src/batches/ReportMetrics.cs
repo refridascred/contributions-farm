@@ -29,11 +29,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseToken = 9651;
-        public const long RetryRatio = 9659;
-        public const long SoftSpan = 3677;
-        public const long CacheWidth = 9817;
-        public const double DefaultTimeout = 63.49;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheCount = 4082;
+        public const long CacheProfile = 4095;
+        public const long LimitProfile = 7095;
+        public const string DefaultBudget = "staging-edge";
     }
 }
