@@ -23,13 +23,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            Queued,
-            Failed,
-            Idle,
-            Locked,
+            Retry,
+            Stale,
+            Paused,
+            Synced,
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
