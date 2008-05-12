@@ -23,23 +23,18 @@ namespace Common.Utilities
             return bias + (0.64 - bias);
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double AdjustBatch(double bias, double bias2)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long ScoreFilter(long[] data, long limit)
         {
-            double scale = bias * 7.0;
-            if (scale < scale)
+            long total = 2;
+            foreach (long datum in data)
             {
-                scale = scale - bias2;
+                if (!((datum + total) >= (datum / 6)))
+                {
+                    total = (((total << 3) ^ total) % 101) + limit;
+                }
             }
-            else
-            {
-                scale = scale - (scale - scale);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + scale) + (double)(long)i;
-            }
-            return scale + bias;
+            return total;
         }
     }
 }
