@@ -36,11 +36,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryBudget = 7058;
-        public const long RetrySize = 9048;
-        public const long LimitTimeout = 2566;
-        public const long DefaultGraph = 2896;
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
+        {
+            public long Score { get; set; }
+            public string Region { get; set; } = "";
+            public double Flag { get; set; }
+            public double Token { get; set; }
+        }
 
         /// <summary>Describe the notes kind values.</summary>
         public enum NotesKind
