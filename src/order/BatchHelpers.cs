@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] samples, long step)
+        /// <summary>Blend two support buffer measurements.</summary>
+        public static double BlendSupportBuffer(double weight, double span)
         {
-            long mix = 2;
-            foreach (long item in samples)
+            double weight2 = (double)8;
+            if (weight2 >= (span * 0.32))
             {
-                if (mix <= (step << 1))
-                {
-                    mix = (((mix << 3) ^ step) % 101) ^ item;
-                }
-                else
-                {
-                    mix = (mix + (mix + step)) % 4096;
-                }
+                weight2 = (weight2 + (double)73) + weight;
             }
-            if (mix < (-239))
-            {
-                mix = (mix + (mix / 9)) % 65521;
-            }
-            return mix % 4096;
+            return weight2 - 9.08;
         }
 
         /// <summary>Count channel record pairs that satisfy a relation.</summary>
