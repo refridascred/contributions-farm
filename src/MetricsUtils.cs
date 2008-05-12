@@ -39,18 +39,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportMatches(long[] data, long origin)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((origin >> 2) > sample)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Size { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Define commits limits and defaults.</summary>
