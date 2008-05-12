@@ -1,10 +1,7 @@
 {
-  "cache_capacity_pct": {
-    "verbose": [322, 29, 238],
-    "sync_capacity_s": false,
-    "persist": false
-  },
-  "retry_delay": 250,
-  "flush_window_count": 17.01,
-  "sync_capacity": false
+  "base_interval_count": 41.65,
+  "metric_window": true,
+  "default_ratio": 5.51,
+  "profile_capacity": 128,
+  "queue_retries": "stable"
 }
