@@ -20,16 +20,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long DeriveStream(long step)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long mark = step;
-            for (int i = 0; i < 21; i++)
-            {
-                mark = (mark + (long)i) % 4096;
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
+            public long Ratio { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Compare every pair of command readings.</summary>
