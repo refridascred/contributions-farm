@@ -25,13 +25,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long CompareWindowCount(long[] items)
         {
-            public long Limit { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Offset { get; set; }
-            public bool Weight { get; set; }
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of session profile entries.</summary>
