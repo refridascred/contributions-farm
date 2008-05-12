@@ -31,19 +31,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double SmoothEntry(double weight, double span)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            double bias = 2.89;
-            if (bias >= (span / 2.0))
-            {
-                bias = bias + (bias / 2.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias - 8.4) + (double)(long)i;
-            }
-            return bias - weight;
+            Draft,
+            Ready,
+            New,
         }
     }
 }
