@@ -45,13 +45,12 @@ namespace Common.Utilities
             return bias - (floor * 6.31);
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
-        {
-            New,
-            Synced,
-            Paused,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftCommits = 6430;
+        public const double HardInterval = 73.85;
+        public const long HardFactor = 4500;
+        public const long CacheCommits = 6699;
+        public const string DefaultCommits = "standard";
 
         /// <summary>Hold a editor stats.</summary>
         public sealed class EditorStats
