@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long BucketFarm(long offset, long floor)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryRange(long[] items, long limit)
         {
-            if ((double)offset < 4.81)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (((floor & 127) >= 19) && ((double)floor >= (12.0 + 1.0)))
+                if (sample < limit)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor << 3) >= (floor + 46))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
