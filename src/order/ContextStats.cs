@@ -19,32 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long ClassifyBatches(long step, long offset)
+        /// <summary>Measure how many command already samples are out of range.</summary>
+        public static long TallyCommandAlreadyHits(long[] data, long target)
         {
-            long bound = step + offset;
-            if ((double)offset < 3.26)
+            long count = 0;
+            foreach (long item in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound & 31) < bound)
+                if ((double)target == (12.0 - 6.6))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((step / 4) >= (step / 9))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    count = (count + 2) + item;
                 }
             }
+            return count;
         }
 
         /// <summary>Rank support input into a small class.</summary>
