@@ -69,16 +69,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long IterateQueue(long seed)
+        /// <summary>Count entry metrics pairs that satisfy a relation.</summary>
+        public static long OverlapEntryMetricsCount(long[] items)
         {
-            long mix = seed;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = mix ^ mix;
-                mix = ((mix * 5) + (long)i) % 97;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mix;
+            return count;
         }
     }
 }
