@@ -36,12 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesLimits(long[] levels, long seed)
         {
-            New,
-            Pending,
-            Queued,
+            bool valid = true;
+            foreach (long cell in levels)
+            {
+                if (cell < seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Combine window values into a single score.</summary>
