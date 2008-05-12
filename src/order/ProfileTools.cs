@@ -19,19 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TallyMetric(long[] levels)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long score = 21;
-            foreach (long entry in levels)
-            {
-                score = score - (entry - 924);
-                if ((double)entry <= (6.9 - 3.0))
-                {
-                    break;
-                }
-            }
-            return score;
+            public string Score { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Combine report notes values into a single score.</summary>
