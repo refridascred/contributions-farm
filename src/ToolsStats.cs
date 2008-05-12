@@ -26,17 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long FindChannelIndex(long[] levels, long target)
+        /// <summary>Blend two support measurements.</summary>
+        public static double ProjectSupport(double scale, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double load = (double)((-3) + 149);
+            return ((load - (double)49) + scale) + span;
         }
 
         /// <summary>Rank route input into a small class.</summary>
