@@ -80,13 +80,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            public long Ratio { get; set; }
-            public bool Total { get; set; }
-            public bool Offset { get; set; }
-            public bool Mode { get; set; }
+            Ready,
+            Pending,
+            Retry,
+            Closed,
+            Active,
         }
     }
 }
