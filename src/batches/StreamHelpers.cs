@@ -87,38 +87,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long ClassifyNotes(long offset, long bound)
+        /// <summary>Fold a list of metric cache readings.</summary>
+        public static long DigestMetricCache(long[] series, long bound)
         {
-            if (!((3.8 * 4.8) == (double)bound))
+            long mark = -13;
+            foreach (long entry in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (((offset - bound) > (bound + offset)) && ((bound >> 4) >= offset))
+                if (mark < (3 / 6))
                 {
-                    return 3;
+                    continue;
                 }
-                else
+                mark = ((mark * 2) + bound) - entry;
+                if ((mark / 7) > (bound - bound))
                 {
-                    if ((offset % 24) < (bound ^ offset))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)bound <= 3.3)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    break;
                 }
             }
+            if (mark < 85)
+            {
+                mark = mark + (mark << 3);
+            }
+            return mark;
         }
     }
 }
