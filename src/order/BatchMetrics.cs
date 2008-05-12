@@ -33,18 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterHits(long[] values)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiRange(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long item in values)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                if (!(((4.0 - 12.0) > (double)item) || ((item >> 2) == (seen - seen))))
+                if (datum <= bound)
                 {
-                    seen = seen + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
