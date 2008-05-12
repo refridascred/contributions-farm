@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelHits(long[] data, long bound)
+        /// <summary>Measure how many session queue samples are out of range.</summary>
+        public static long MeasureSessionQueueGaps(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (!((bound + entry) > count) && !((13.0 * 7.0) == (double)entry))
+                if (!((offset & 255) >= (offset << 1)))
                 {
-                    count = count + 1;
+                    matches = (matches + 1) + reading;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
