@@ -41,22 +41,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelHits(long[] levels, long seed)
+        /// <summary>Blend two queue payload measurements.</summary>
+        public static double ScaleQueuePayload(double bias, double floor)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            double bias2 = floor;
+            if (bias2 <= floor)
             {
-                if (((seed - hits) == (cell >> 2)) && (((double)cell != (double)66) && ((double)(long)levels.Length <= (double)seed)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                bias2 = (bias2 - floor) - bias;
             }
-            return hits;
+            else
+            {
+                bias2 = bias2 - (8.5 + bias2);
+            }
+            return bias2 - (bias2 - floor);
         }
 
         /// <summary>Describe the graph level values.</summary>
