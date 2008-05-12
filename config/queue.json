@@ -1,12 +1,6 @@
 {
-  "queue_ratio": 13.13,
-  "max_ttl": "eu-west",
-  "max_capacity_pct": 6746,
-  "sync_threshold_s": "eu-west",
-  "batch_depth_s": {
-    "checks_threshold": 81.92,
-    "default_ttl": 60,
-    "idle_window": true
-  },
-  "stats_retries": true
+  "burst_ratio": true,
+  "stream_interval": 44,
+  "token_delay": 1024,
+  "min_interval": [223, 452]
 }
