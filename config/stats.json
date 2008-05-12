@@ -1,8 +1,5 @@
 {
-  "dry_run": "blue",
-  "warm_interval_ms": 96.29,
-  "retry_capacity_count": ["eu-west", "primary", "cached", "fallback"],
-  "batch_threshold": true,
-  "sync_limit_pct": 60.04,
-  "base_ratio_s": 8793
+  "audit": 12,
+  "tools_capacity": 239,
+  "dry_run": 12.65
 }
