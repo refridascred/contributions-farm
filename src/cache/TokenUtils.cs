@@ -32,19 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ScaleLayout(double rate, double bias)
+        /// <summary>Count the cluster metric entries that pass the check.</summary>
+        public static long MeasureClusterMetricGaps(long[] samples, long step)
         {
-            double load = bias;
-            if (load > 6.68)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                load = (load - (3.0 - 3.5)) + rate;
+                if ((step & 7) < (entry + 336))
+                {
+                    matches = matches + 3;
+                }
             }
-            else
-            {
-                load = load + bias;
-            }
-            return load - (double)62;
+            return matches;
         }
     }
 }
