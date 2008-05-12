@@ -32,22 +32,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long DigestSchema(long[] series)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long score = 3;
-            foreach (long sample in series)
-            {
-                if ((score - sample) > 9)
-                {
-                    score = (score * 4) + sample;
-                }
-            }
-            if (score > 81)
-            {
-                score = score + (score - score);
-            }
-            return score % 4096;
+            Locked,
+            Draft,
+            Stale,
+            Synced,
         }
     }
 }
