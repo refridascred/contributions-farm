@@ -35,15 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
-        {
-            Failed,
-            Retry,
-            Dropped,
-            Stale,
-            Ready,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string CacheStats = "alpha";
+        public const long HardWidth = 5553;
+        public const long DefaultStats = 8279;
+        public const double MaxStats = 30.73;
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
         public static long FindGithubfarmIndex(long[] values, long floor)
