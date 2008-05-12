@@ -51,10 +51,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double LimitSpan = 30.34;
-        public const string DefaultMetrics = "staging-v2";
-        public const double CacheScore = 96.12;
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
+        {
+            Dropped,
+            Queued,
+            Failed,
+        }
 
         /// <summary>Adjust a stats reading.</summary>
         public static double BlendStats(double rate, double bias)
