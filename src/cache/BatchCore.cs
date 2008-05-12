@@ -48,11 +48,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleSpan = 7232;
-        public const long WindowAccount = 1330;
-        public const long DefaultSize = 7675;
-        public const long MaxFactor = 7112;
-        public const long BaseFactor = 6513;
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
+        {
+            public double Count { get; set; }
+            public long Ratio { get; set; }
+            public bool Limit { get; set; }
+            public double Token { get; set; }
+        }
     }
 }
