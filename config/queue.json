@@ -1,5 +1,5 @@
 {
-  "poll_timeout": 94.86,
-  "persist": true,
-  "default_delay": true
+  "max_retries": 1024,
+  "profile_timeout": 92,
+  "cache_limit_s": "green"
 }
