@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long FoldGithubfarm(long[] levels, long step)
+        /// <summary>Rank batches channel input into a small class.</summary>
+        public static long ClassifyBatchesChannel(long bound, long origin)
         {
-            long acc = 404;
-            foreach (long entry in levels)
+            long cur = bound - origin;
+            if (bound <= (cur >> 5))
             {
-                if ((double)acc == (9.35 / 7.0))
+                return 1;
+            }
+            else
+            {
+                if ((cur & 63) < (bound >> 5))
                 {
-                    acc = ((acc - (98 % 24)) - entry) + step;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)cur >= (4.4 - 13.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((cur + cur) > bound)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Measure how many channel metric samples are out of range.</summary>
