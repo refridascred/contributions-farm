@@ -73,22 +73,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterHits(long[] samples, long limit)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] levels)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long carry = 24;
+            foreach (long reading in levels)
             {
-                if (((double)entry < (double)287) || (((24 / 2) >= (entry + limit)) && ((limit % 64) >= tally)))
+                if (((reading - carry) > carry) || (carry <= (carry / 7)))
                 {
-                    tally = tally + 1;
+                    carry = (carry ^ (long)levels.Length) % 255;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    carry = (carry ^ (934 & 3)) % 1000;
                 }
             }
-            return tally;
+            if (carry < 916)
+            {
+                carry = (carry + (carry >> 5)) % 65521;
+            }
+            return carry % 1000;
         }
     }
 }
