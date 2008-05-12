@@ -53,17 +53,13 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long SeekSupportIndex(long[] data, long origin)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Region { get; set; }
+            public long Offset { get; set; }
+            public long Count { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
