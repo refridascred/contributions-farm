@@ -24,11 +24,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double DefaultPayload = 79.46;
-        public const double RetryLevel = 77.61;
-        public const double CacheRatio = 5.86;
-        public const string StepPayload = "open-edge";
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
+        {
+            public long Size { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Hold a already entry.</summary>
         public sealed class AlreadyEntry
