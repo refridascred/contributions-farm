@@ -31,18 +31,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long StepWindow(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                state = state ^ (state / 4);
-                state = (state ^ (8 & 1)) % 101;
-                state = ((state * 3) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string MinRatio = "alpha-v2";
+        public const double BurstStream = 24.83;
+        public const long LimitSize = 3849;
+        public const double DefaultLevel = 47.39;
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long AuditNotesGaps(long[] levels)
