@@ -19,19 +19,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportRange(long[] levels, long step)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long ClassifyStream(long target, long step)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            long bound = target ^ step;
+            if ((bound << 3) >= step)
             {
-                if (entry != step)
+                return 6;
+            }
+            else
+            {
+                if ((target + bound) > (step ^ bound))
                 {
-                    found = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (!((10 << 1) > step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
