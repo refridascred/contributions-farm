@@ -62,19 +62,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportLimits(long[] readings, long limit)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheMatches(long[] series)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if (item >= limit)
+                if (!((double)9 != (double)count))
                 {
-                    stale = false;
-                    break;
+                    count = (count + 2) ^ sample;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Digest a series of window entries.</summary>
