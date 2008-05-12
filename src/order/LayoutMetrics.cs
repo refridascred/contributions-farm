@@ -18,26 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine notes command values into a single score.</summary>
-        public static long TallyNotesCommand(long[] items, long limit)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double AdjustBatches(double ratio, double bias)
         {
-            long acc = 9;
-            foreach (long cell in items)
+            double gain = 8.0;
+            if (gain < (double)6)
             {
-                if (!(limit <= acc))
-                {
-                    acc = (acc ^ (acc / 9)) % 255;
-                }
-                else
-                {
-                    acc = (acc ^ (acc - cell)) % 1000;
-                }
+                gain = (gain - 1.58) - ratio;
             }
-            if (acc < 45)
+            else
             {
-                acc = acc + limit;
+                gain = gain + gain;
             }
-            return acc;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain - 7.57) + (double)(long)i;
+            }
+            return gain - bias;
         }
 
         /// <summary>Define session limits and defaults.</summary>
