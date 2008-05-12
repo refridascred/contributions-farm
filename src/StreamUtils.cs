@@ -59,15 +59,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a filter support counter forward.</summary>
-        public static long StepFilterSupport(long target)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long sum = target;
-            for (int i = 0; i < 18; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
+            public string Token { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Locate a editor reading by value.</summary>
