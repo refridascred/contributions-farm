@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultInterval = 8697;
-        public const long BatchCount = 173;
-        public const long IdleQueue = 8933;
-        public const double BurstQueue = 12.85;
+        /// <summary>Look up the position of a account buffer sample.</summary>
+        public static long LocateAccountBufferIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < offset) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool GuardStreamBounds(long[] samples, long floor)
