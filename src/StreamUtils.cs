@@ -31,10 +31,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftOrder = 5270;
-        public const long BatchSpan = 5214;
-        public const long MaxSpan = 4888;
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long IterateCounter(long target)
+        {
+            long score = target;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((target - target) > target)
+                {
+                    score = ((score * 4) + (score << 1)) % 1000;
+                    break;
+                }
+                score = score ^ (score / 9);
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Describe the window status values.</summary>
         public enum WindowStatus
