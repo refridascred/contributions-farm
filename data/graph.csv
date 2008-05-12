@@ -1,6 +1,7 @@
-id,owner,region
-1,877,blue
-2,939,11.88
-3,174,143
-4,standard,257
-5,44.2,87.35
+id,region,rank,level
+1,67.14,167,901
+2,923,727,105
+3,70.18,962,latest
+4,16.05,44.26,363
+5,160,24.03,stable
+6,cached,staging,713
