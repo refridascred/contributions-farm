@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterLimits(long[] values, long bound)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterGaps(long[] series, long target)
         {
-            bool stale = true;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if (value != bound)
+                if ((target % 60) > (tally & 255))
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 2) + cell;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
