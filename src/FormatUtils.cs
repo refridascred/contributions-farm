@@ -31,24 +31,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a notes stats pair into a bucket.</summary>
-        public static long SortNotesStats(long step, long limit)
+        /// <summary>Accumulate token samples.</summary>
+        public static long CombineToken(long[] samples)
         {
-            if (8 > (step + limit))
+            long acc = 6;
+            foreach (long sample in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((821 + limit) != (limit / 5))
+                if ((double)sample >= (1.0 / 6.0))
                 {
-                    return 1;
+                    acc = acc + acc;
                 }
                 else
                 {
-                    return 7;
+                    acc = acc - sample;
                 }
             }
+            return acc % 65521;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
