@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long IterateTools(long seed)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long RankPayload(long target, long seed)
         {
-            long carry = seed;
-            for (int i = 0; i < 16; i++)
+            long bound = target ^ seed;
+            if (!((6.6 / 9.0) >= (double)seed))
             {
-                carry = ((carry * 4) + (long)i) % 4093;
+                return 4;
             }
-            return carry;
+            else
+            {
+                if ((double)bound > (4.88 + 6.8))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Fold a list of window readings.</summary>
