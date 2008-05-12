@@ -1,14 +1,11 @@
 {
-  "base_capacity_s": "edge",
-  "max_limit_ms": "legacy",
-  "flush_depth": 67,
-  "default_interval": {
-    "poll_limit_s": false,
-    "batch_ttl": 100,
-    "cache_timeout": false,
-    "contributi_timeout": "standard",
-    "strict": 7872
+  "cache_retries_ms": {
+    "strict": [419, 181, 60],
+    "readonly": false,
+    "persist": false,
+    "enabled": [131, 305, 401]
   },
-  "verbose": false,
-  "soft_retries": 93.29
+  "default_threshold_s": 35,
+  "readonly": "legacy",
+  "base_depth_count": 88
 }
