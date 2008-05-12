@@ -19,13 +19,31 @@ namespace Common.Utilities
             return rate2 + (rate - 1.95);
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long RankFarm(long bound, long target)
         {
-            public double Size { get; set; }
-            public bool Total { get; set; }
-            public long Score { get; set; }
-            public long Stamp { get; set; }
+            if (!((92 + 595) > (target >> 1)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((target + target) > bound)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((bound - target) >= bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
