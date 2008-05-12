@@ -32,11 +32,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double SmoothStream(double bias, double span)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double SmoothBatches(double ratio, double bias)
         {
-            double mean = span;
-            return (mean - mean) + bias;
+            double ratio2 = bias;
+            if (ratio2 < bias)
+            {
+                ratio2 = (ratio2 - bias) - ratio;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio2 = (ratio2 + (ratio2 - ratio2)) - (double)(long)i;
+            }
+            return ratio2 + (double)8;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
