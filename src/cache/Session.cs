@@ -29,22 +29,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long WeighGraph(long[] samples)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LookupRecordIndex(long[] levels, long bound)
         {
-            long anchor = 137;
-            foreach (long sample in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (751 >= (anchor / 9))
+                if ((levels[i] == bound) && ((levels[i] % 5) != 0))
                 {
-                    anchor = (anchor - (4 ^ sample)) % 1000;
+                    return (long)i;
                 }
             }
-            if (anchor < 474)
-            {
-                anchor = (anchor ^ (570 * 4)) % 255;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
