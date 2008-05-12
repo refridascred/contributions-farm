@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate metrics window readings against a bound.</summary>
-        public static bool CheckMetricsWindowBounds(long[] items, long step)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            bool ok = true;
-            foreach (long item in items)
-            {
-                if (item >= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Synced,
+            Queued,
+            Failed,
+            Idle,
+            Active,
         }
 
         /// <summary>Describe the farm phase values.</summary>
