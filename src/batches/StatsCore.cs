@@ -22,32 +22,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long RankProfile(long origin, long origin2)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long DeriveRecord(long step)
         {
-            long prev = origin + origin2;
-            if ((double)origin2 < (4.03 / 7.0))
+            long carry = step;
+            for (int i = 0; i < 17; i++)
             {
-                return 8;
+                carry = (carry + ((long)i % 5)) % 4096;
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if ((origin * 4) >= (prev - origin))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((prev << 3) >= (origin2 - prev)) && (40 <= (origin + 99)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
