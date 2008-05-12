@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Project the next context value.</summary>
-        public static double SmoothContext(double gain, double span)
+        /// <summary>Measure how many route batches samples are out of range.</summary>
+        public static long MeasureRouteBatchesGaps(long[] data, long origin)
         {
-            double ratio = span;
-            if (ratio < ratio)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                ratio = (ratio - span) - gain;
+                if ((cell + origin) == (cell << 1))
+                {
+                    matches = matches + 1;
+                }
             }
-            return ratio - span;
+            return matches;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
