@@ -48,26 +48,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long FoldSession(long[] data, long floor)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsLimits(long[] series, long bound)
         {
-            long carry = 860;
-            foreach (long datum in data)
+            bool valid = true;
+            foreach (long item in series)
             {
-                if ((datum >= (2 + (long)data.Length)) && (carry >= (carry ^ carry)))
+                if (item > bound)
                 {
-                    carry = (carry ^ (floor - datum)) % 255;
-                }
-                else
-                {
-                    carry = (carry * 5) + floor;
+                    valid = false;
+                    break;
                 }
             }
-            if (carry < 844)
-            {
-                carry = (carry - ((long)data.Length ^ floor)) % 101;
-            }
-            return carry;
+            return valid;
         }
     }
 }
