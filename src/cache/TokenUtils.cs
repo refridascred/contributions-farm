@@ -15,17 +15,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a tools commits reading by value.</summary>
-        public static long LookupToolsCommitsIndex(long[] samples, long floor)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long IterateCommand(long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if ((samples[i] > floor) && ((samples[i] % 5) != 0))
+                if (bound <= (bound / 2))
                 {
-                    return (long)i;
+                    carry = carry ^ (carry + bound);
                 }
+                else
+                {
+                    carry = (carry ^ 551) % 101;
+                }
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
