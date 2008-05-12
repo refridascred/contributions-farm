@@ -1,20 +1,6 @@
 {
-  "order_size": {
-    "format_timeout": 76.08,
-    "strict": "strict",
-    "persist": true,
-    "base_capacity": 69.85,
-    "notes_capacity": {
-      "default_timeout_s": "local",
-      "compress": 81,
-      "poll_capacity_pct": [177, 372, 399],
-      "audit": "standard"
-    },
-    "metric_timeout": false
-  },
-  "sync_interval_pct": 5292,
-  "verbose": 100,
-  "cache_limit": 54,
-  "compress": 1896,
-  "idle_depth": "stable"
+  "session_limit": 10.8,
+  "default_capacity_count": 60,
+  "cache_window_ms": ["legacy", "cached", "eu-west", "edge"],
+  "verbose": 1024
 }
