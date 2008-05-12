@@ -62,10 +62,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double LimitSpan = 64.07;
-        public const double IdleCount = 37.63;
-        public const double StepBuffer = 34.67;
-        public const long BurstSize = 2322;
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
+        {
+            Stale,
+            Failed,
+            Synced,
+        }
     }
 }
