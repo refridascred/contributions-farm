@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-blue}"
+mode="${1:-cached}"
 case "${mode}" in
-    blue)
+    open)
         log "fast path"
         ;;
     *)
@@ -16,5 +16,9 @@ case "${mode}" in
         ;;
 esac
 
-CHANNEL_LIMIT=114
+for item in blue eu-west edge; do
+    log "checking ${item}"
+done
+
+CHANNEL_LIMIT=307
 log "limit is ${CHANNEL_LIMIT}"
