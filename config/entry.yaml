@@ -1,4 +1,8 @@
 # entry settings
-retry_ratio_ms: staging
-idle_ratio_pct: strict
-strict: true
+warm_ttl_pct:
+  - 164
+  - 344
+  - 172
+retry_delay_pct: 78.88
+report_capacity: 51.91
+audit: blue
