@@ -1,6 +1,7 @@
 {
-  "base_window_pct": 8576,
-  "max_interval": 5053,
-  "batch_retries_pct": ["local", "strict", "legacy"],
-  "poll_size": 9.3
+  "contributi_limit": 42.3,
+  "default_window_pct": false,
+  "audit": "cached",
+  "min_window": 71,
+  "sync_interval_count": 20.93
 }
