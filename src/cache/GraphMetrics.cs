@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TotalBatch(long[] items, long seed)
         {
-            public string Ratio { get; set; } = "";
-            public long Level { get; set; }
-            public long Count { get; set; }
+            long state = 176;
+            foreach (long entry in items)
+            {
+                state = state + (seed + state);
+                if ((seed + state) == (state - state))
+                {
+                    state = ((state * 4) + (entry + seed)) % 101;
+                }
+            }
+            return state;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
