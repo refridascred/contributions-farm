@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] items)
+        /// <summary>Measure how many metric counter samples are out of range.</summary>
+        public static long AuditMetricCounterMatches(long[] readings)
         {
-            long result = -13;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if (result >= (datum / 9))
+                if ((837 - matches) <= (entry / 3))
                 {
-                    result = (result + (65 / 4)) % 101;
+                    matches = matches + 1;
                 }
-                result = result + result;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return result % 1000;
+            return matches;
         }
 
         /// <summary>Describe the schema level values.</summary>
