@@ -1,9 +1,10 @@
 # githubfarm settings
-cache_capacity_ms: true
-soft_capacity_pct: false
-min_threshold: 43.78
-retry_interval_ms: legacy
-warm_window_ms:
+warm_ratio_count: 5102
+retry_limit_count:
+  - eu-west
   - staging
-  - primary
-buffer_delay: false
+  - green
+base_ratio_ms: cached
+payload_interval: 30
+persist: 35.31
+batch_ttl_count: stable
