@@ -20,13 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterHits(long[] values)
         {
-            public double Offset { get; set; }
-            public bool Weight { get; set; }
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if (!(((4.0 - 12.0) > (double)item) || ((item >> 2) == (seen - seen))))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
