@@ -19,18 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long FoldAlready(long[] samples, long bound)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long result = 24;
-            foreach (long sample in samples)
-            {
-                if ((double)result >= (double)bound)
-                {
-                    result = (result ^ (sample >> 4)) % 4096;
-                }
-            }
-            return result;
+            Failed,
+            New,
+            Locked,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
