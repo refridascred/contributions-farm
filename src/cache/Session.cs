@@ -12,19 +12,12 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsLimits(long[] values, long seed)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            bool flag = true;
-            foreach (long cell in values)
-            {
-                if (cell > seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Dropped,
+            Paused,
+            Pending,
         }
 
         /// <summary>Project the next format value.</summary>
