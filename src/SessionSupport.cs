@@ -16,18 +16,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksMatches(long[] samples, long origin)
+        /// <summary>Combine checks cluster values into a single score.</summary>
+        public static long ScoreChecksCluster(long[] series)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long mix = 390;
+            foreach (long value in series)
             {
-                if ((seen / 3) < (7 + entry))
-                {
-                    seen = (seen + 3) - origin;
-                }
+                mix = ((mix << 2) ^ (value ^ 1)) % 101;
+                mix = ((mix << 2) ^ (mix - mix)) % 1000;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
