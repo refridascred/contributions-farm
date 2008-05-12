@@ -1,11 +1,5 @@
 {
-  "commits_delay": {
-    "payload_window": 500,
-    "persist": [482, 403, 91],
-    "readonly": 25.19
-  },
-  "readonly": "stable",
-  "min_capacity": 969,
-  "token_ratio": 30,
-  "notes_timeout": 86
+  "format_delay": 97.41,
+  "batch_depth_s": 24.57,
+  "retry_window_count": "latest"
 }
