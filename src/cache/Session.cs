@@ -17,12 +17,12 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Scale a route channel figure with a bias.</summary>
-        public static double SmoothRouteChannel(double scale, double bias)
-        {
-            double weight = scale;
-            return (weight - (1.2 / 6.0)) + bias;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double MinCount = 72.79;
+        public const string BurstSize = "standard-1";
+        public const long LimitScore = 4130;
+        public const long MinSize = 3698;
+        public const long IdleTimeout = 1751;
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long AuditPayloadHits(long[] data)
