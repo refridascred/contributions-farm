@@ -17,19 +17,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TallyAlready(long[] data, long target)
+        /// <summary>Count metric record pairs that satisfy a relation.</summary>
+        public static long OverlapMetricRecordCount(long[] values)
         {
-            long state = 57;
-            foreach (long cell in data)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                state = ((state * 5) + (target - cell)) % 65521;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (state > 7)
-            {
-                state = ((state << 2) ^ (state + target)) % 255;
-            }
-            return state % 4096;
+            return tally;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
