@@ -1,6 +1,18 @@
 {
-  "retry_ttl": "legacy",
-  "queue_delay": [307, 378, 66, 117],
-  "batch_delay": true,
-  "enabled": "fallback"
+  "burst_retries": {
+    "persist": 25.94,
+    "batch_interval": {
+      "idle_size": ["eu-west", "latest"],
+      "account_capacity": false,
+      "commits_depth": "eu-west",
+      "burst_size": 72.01
+    },
+    "retry_size": [102, 7, 290],
+    "warm_timeout_count": false
+  },
+  "batch_capacity": [166, 372],
+  "window_interval": "eu-west",
+  "batch_delay_ms": "local",
+  "window_capacity": ["strict", "cached", "eu-west"],
+  "order_ratio": 83.19
 }
