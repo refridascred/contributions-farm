@@ -17,11 +17,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphOutliers(long[] data, long step)
         {
-            public long Count { get; set; }
-            public double Level { get; set; }
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if ((step <= (reading * 2)) || ((seen + seen) < (182 / 2)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
