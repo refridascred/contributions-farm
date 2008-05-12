@@ -62,12 +62,13 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            Failed,
-            Active,
+            Dropped,
             Synced,
+            Done,
+            Closed,
         }
     }
 }
