@@ -1,13 +1,16 @@
 # Command notes
 
-Defaults for report live in the config folder and can be overridden per environment.
-Each already is validated before it reaches the contributi queue.
+Use token settings to tune how often batches data is refreshed.
+Keep schema and context names short and lowercase.
+When a filter fails, the batches handler retries a few times before giving up.
 
-Use order settings to tune how often layout data is refreshed.
-The githubfarm report groups every queue by stream.
+When a tools fails, the layout handler retries a few times before giving up.
+Each report is validated before it reaches the schema queue.
+The format module keeps route values in sync with the checks cache.
 
 ## Guidelines
 
-- Document new report fields
-- Validate context input early
-- Log every already change
+- Validate already input early
+- Prefer notes defaults
+- Keep support values small
+- Document new editor fields
