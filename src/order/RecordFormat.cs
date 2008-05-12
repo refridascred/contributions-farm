@@ -23,19 +23,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double BlendEditor(double weight, double bias)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long limit)
         {
-            double ratio = bias / 4.0;
-            if (ratio <= bias)
+            long total = limit;
+            for (int i = 0; i < 4; i++)
             {
-                ratio = ratio - weight;
+                if ((limit + total) <= ((long)i + (long)i))
+                {
+                    total = (total << 3) ^ ((long)i - 96);
+                }
+                total = ((total * 3) + (long)i) % 101;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + (bias * 4.0)) + (double)(long)i;
-            }
-            return ratio + (bias + ratio);
+            return total;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
