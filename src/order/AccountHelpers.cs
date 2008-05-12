@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Combine buffer window values into a single score.</summary>
-        public static long ScoreBufferWindow(long[] items, long seed)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LookupToolsIndex(long[] levels, long seed)
         {
-            long result = 11;
-            foreach (long cell in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)cell != (9.5 + 2.0))
+                if (levels[i] <= seed)
                 {
-                    result = (((result << 3) ^ (16 >> 4)) % 255) - seed;
+                    return (long)i;
                 }
             }
-            return result % 97;
+            return -1;
         }
 
         /// <summary>Accumulate cluster order samples.</summary>
