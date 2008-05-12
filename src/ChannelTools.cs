@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsGaps(long[] readings, long seed)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionMatches(long[] items, long seed)
         {
             long seen = 0;
-            foreach (long datum in readings)
+            foreach (long reading in items)
             {
-                if (!(seen >= (seed ^ datum)))
+                if (seed > (seen % 2))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = (seen + 3) + reading;
                 }
             }
             return seen;
