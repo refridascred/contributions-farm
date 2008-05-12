@@ -1,13 +1,17 @@
 {
-  "warm_ratio": 100,
-  "audit": 2.47,
-  "soft_ttl_ms": {
-    "checks_ttl": 91,
-    "max_depth": 3497,
-    "idle_timeout": 1.26,
-    "warm_window_ms": 20.76
+  "entry_ratio": {
+    "cache_depth_ms": "blue",
+    "batch_threshold": ["blue", "strict"],
+    "sync_limit_pct": 9442
   },
-  "queue_depth": 6.36,
-  "burst_ratio_count": 1.25,
-  "sync_capacity": false
+  "buffer_size": true,
+  "support_capacity": {
+    "token_interval": 8.82,
+    "stream_delay": ["legacy", "open"],
+    "batches_window": "open",
+    "compress": "stable",
+    "default_limit": 18
+  },
+  "sync_ttl_s": 60,
+  "default_interval": 0.91
 }
