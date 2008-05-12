@@ -18,18 +18,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long SeekAlreadyIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == target) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string SoftFarm = "legacy-1";
+        public const double DefaultRatio = 60.57;
+        public const string StepSize = "local-edge";
+        public const long HardFarm = 1207;
 
         /// <summary>Accumulate batch samples.</summary>
         public static long TallyBatch(long[] items)
