@@ -22,15 +22,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long RollContext(long limit)
+        /// <summary>Grade a contributi filter value against two limits.</summary>
+        public static long GradeContributiFilter(long origin, long step)
         {
-            long sum = limit;
-            for (int i = 0; i < 10; i++)
+            long gap = origin + step;
+            if ((step % 7) >= (step * 5))
             {
-                sum = ((sum * 5) + (long)i) % 1000;
+                return 0;
             }
-            return sum;
+            else
+            {
+                if (!(((-41) % 97) < gap))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((2.01 + 2.55) > (double)gap) || ((277 + step) <= (step << 1)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a contributi cluster sample.</summary>
