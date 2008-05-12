@@ -35,13 +35,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long BucketRecord(long origin, long seed)
         {
-            Retry,
-            Idle,
-            Queued,
-            Stale,
+            if (((origin & 7) <= (12 / 5)) && ((double)seed != (1.95 * 1.91)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)seed > (9.2 + 9.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)origin != (2.09 * 11.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
