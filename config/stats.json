@@ -1,7 +1,23 @@
 {
-  "contributi_limit": 42.3,
-  "default_window_pct": false,
-  "audit": "cached",
-  "min_window": 71,
-  "sync_interval_count": 20.93
+  "flush_ratio_ms": ["stable", "edge", "eu-west"],
+  "dry_run": [17, 473, 381],
+  "context_ttl": {
+    "burst_depth_s": {
+      "flush_retries": "latest",
+      "default_ttl_count": 27,
+      "warm_ttl_count": 250,
+      "metric_timeout": true
+    },
+    "payload_threshold": "edge",
+    "cache_depth_ms": {
+      "min_window_ms": 100,
+      "graph_depth": 88.4,
+      "burst_ttl_ms": "local",
+      "min_delay_pct": "primary",
+      "poll_threshold_s": "eu-west",
+      "persist": 30
+    },
+    "payload_ttl": false
+  },
+  "strict": "fallback"
 }
