@@ -1,27 +1,4 @@
 # support settings
-hard_limit: 7461
-cache_timeout_ms: fallback
-persist: fallback
-report_capacity:
-  verbose:
-    burst_capacity_s: 4441
-    githubfarm_window: latest
-    hard_ttl_s: false
-    payload_capacity: 470
-    persist: eu-west
-    default_depth: 15
-  persist:
-    batch_window_pct: stable
-    tools_depth: 4665
-    editor_size:
-      - fallback
-      - eu-west
-      - latest
-      - fallback
-    warm_ratio: open
-  batch_delay_ms:
-    - green
-    - open
-    - staging
-  default_window_s: 98.46
-audit: legacy
+contributi_size: 500
+min_ttl_count: 15
+strict: 100
