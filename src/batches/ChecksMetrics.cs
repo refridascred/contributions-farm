@@ -81,19 +81,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double BlendPayload(double ratio, double span)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LookupAccountIndex(long[] series, long target)
         {
-            double load = span;
-            if (load >= (10.0 + load))
+            for (int i = 0; i < series.Length; i++)
             {
-                load = (load + 2.5) - ratio;
+                if (series[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + 0.16) + (double)(long)i;
-            }
-            return load + 0.12;
+            return -1;
         }
     }
 }
