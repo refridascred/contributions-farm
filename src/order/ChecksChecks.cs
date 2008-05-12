@@ -32,22 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsOutliers(long[] data, long target)
-        {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if (!(((double)count == (double)192) && ((target + count) >= (target + 26))))
-                {
-                    count = (count + 1) + item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxInterval = 2620;
+        public const long LimitScore = 7074;
+        public const long HardLevel = 4552;
+        public const long MaxFactor = 2128;
+        public const string SoftCount = "cached";
     }
 }
