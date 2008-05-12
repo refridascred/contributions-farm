@@ -37,11 +37,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string IdleToken = "fallback-v2";
-        public const double BatchDepth = 89.64;
-        public const long RetryToken = 314;
-        public const long BatchToken = 3819;
-        public const string CacheLevel = "stable";
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchGaps(long[] samples)
+        {
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if (!(((29 % 64) < (matches + 2)) || ((matches & 3) <= matches)))
+                {
+                    matches = (matches + 3) + value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
