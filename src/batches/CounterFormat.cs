@@ -24,17 +24,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long SeekAlreadyIndex(long[] values, long floor)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long DigestNotes(long[] items, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = 623;
+            foreach (long item in items)
             {
-                if (values[i] >= floor)
+                if ((item + step) > (item ^ sum))
                 {
-                    return (long)i;
+                    sum = (sum - (item + item)) % 4096;
                 }
             }
-            return -1;
+            if (sum > (-66))
+            {
+                sum = (sum - (step ^ step)) % 4096;
+            }
+            return sum;
         }
     }
 }
