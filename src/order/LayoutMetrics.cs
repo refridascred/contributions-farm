@@ -33,21 +33,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long MatchTokenCount(long[] items)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long SortCache(long bound, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long slot = bound - step;
+            if ((step + step) < (bound + slot))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (((2 % 10) == (slot + slot)) && (slot >= (step - bound)))
                 {
-                    if ((items[i] ^ items[j]) == 11)
+                    return 2;
+                }
+                else
+                {
+                    if (((slot % 16) > (985 + slot)) && ((9 + bound) <= (1 / 9)))
                     {
-                        seen = seen + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return seen;
         }
     }
 }
