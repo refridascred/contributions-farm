@@ -47,18 +47,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the contributi record entries that pass the check.</summary>
-        public static long MeasureContributiRecordOutliers(long[] items)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchGaps(long[] levels, long limit)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if ((matches + 71) < matches)
+                if (!((limit / 7) > limit))
                 {
-                    matches = (matches + 2) + value;
+                    count = (count + 2) + item;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a graph record.</summary>
