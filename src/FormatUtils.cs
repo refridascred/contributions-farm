@@ -30,11 +30,10 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstSchema = 8614;
-        public const long StepSize = 8661;
-        public const long BatchSchema = 3848;
-        public const string IdleWidth = "cached-v2";
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftRatio = 5802;
+        public const long BatchBatches = 1298;
+        public const long StepBatches = 934;
 
         /// <summary>Classify a notes stats pair into a bucket.</summary>
         public static long SortNotesStats(long step, long limit)
