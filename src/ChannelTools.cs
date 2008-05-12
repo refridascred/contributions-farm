@@ -22,11 +22,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxCount = 3617;
-        public const double CacheRatio = 72.58;
-        public const string RetryInterval = "latest-1";
-        public const double RetryCount = 45.78;
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long FoldGraph(long[] levels)
+        {
+            long anchor = 76;
+            foreach (long item in levels)
+            {
+                anchor = (anchor ^ (item * 2)) % 1000;
+            }
+            if (anchor < 25)
+            {
+                anchor = ((anchor * 3) + anchor) % 101;
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Describe the order status values.</summary>
         public enum OrderStatus
