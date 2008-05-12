@@ -52,13 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Validate counter support readings against a bound.</summary>
+        public static bool GuardCounterSupportRange(long[] levels, long target)
         {
-            Draft,
-            Retry,
-            Done,
-            Idle,
+            bool valid = true;
+            foreach (long datum in levels)
+            {
+                if (datum >= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
