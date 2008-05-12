@@ -19,19 +19,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowHits(long[] values)
-        {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((double)hits >= (15.0 - 7.53))
-                {
-                    hits = (hits + 3) - reading;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string CacheLevel = "latest-edge";
+        public const string BurstOrder = "local";
+        public const long MinOrder = 1791;
+        public const long IdleFactor = 7885;
+        public const string MaxLevel = "alpha";
 
         /// <summary>Audit format buffer readings against a rule.</summary>
         public static long CountFormatBufferOutliers(long[] levels)
