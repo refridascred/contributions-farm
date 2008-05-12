@@ -33,17 +33,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LocateToolsIndex(long[] data, long step)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long BucketAccount(long origin, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((step - 6) <= (origin ^ origin))
             {
-                if ((data[i] >= step) && ((data[i] % 2) == 0))
+                return 3;
+            }
+            else
+            {
+                if ((double)origin >= 0.4)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
     }
 }
