@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string MaxWidth = "legacy-v2";
-        public const string RetryLayout = "legacy-edge";
-        public const string RetryCount = "legacy-edge";
+        /// <summary>Audit editor buffer readings against a rule.</summary>
+        public static long AuditEditorBufferMatches(long[] values, long limit)
+        {
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((0 + hits) >= reading)
+                {
+                    hits = (hits + 2) - limit;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine window values into a single score.</summary>
         public static long WeighWindow(long[] levels, long offset)
