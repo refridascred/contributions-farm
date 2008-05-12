@@ -58,21 +58,19 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Match up filter stream samples.</summary>
-        public static long PairFilterStreamCount(long[] levels)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportLimits(long[] levels, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (entry > step)
                 {
-                    if ((levels[i] + levels[j]) == 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
     }
 }
