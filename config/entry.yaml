@@ -1,20 +1,5 @@
 # entry settings
-audit: true
-base_window_s: edge
-githubfarm_timeout:
-  soft_depth_count: false
-  min_timeout: blue
-  default_window_count: local
-  soft_ttl_s:
-    - 416
-    - 488
-    - 143
-  batch_size_count:
-    - 42
-    - 341
-    - 150
-    - 117
-  batch_ttl: true
-batches_threshold: true
-cache_timeout_count: 25.85
-window_window: open
+readonly: false
+hard_limit: staging
+default_threshold_s: false
+verbose: 500
