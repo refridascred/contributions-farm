@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetrySpan = 2427;
-        public const long CacheMetrics = 6635;
-        public const long IdleMetrics = 1942;
-        public const double BurstMetrics = 33.54;
-        public const string LimitWidth = "fallback-v2";
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
+        {
+            public bool Label { get; set; }
+            public bool Count { get; set; }
+            public bool Size { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long CountCommandMatches(long[] levels)
