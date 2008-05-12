@@ -12,39 +12,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long step, long target)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsHits(long[] series, long offset)
         {
-            long lane = step + target;
-            if ((step - step) > (target * 5))
+            long hits = 0;
+            foreach (long reading in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step << 1) != (lane ^ target))
+                if (!(4.23 < (double)reading))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((step << 1) >= target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((lane + target) < (lane % 12))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    hits = (hits + 1) - offset;
                 }
             }
+            return hits;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
