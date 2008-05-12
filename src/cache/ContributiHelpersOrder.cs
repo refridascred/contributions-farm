@@ -16,13 +16,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TotalRecord(long[] samples)
         {
-            public long Token { get; set; }
-            public long Limit { get; set; }
-            public long Total { get; set; }
-            public long Level { get; set; }
+            long total = 26;
+            foreach (long reading in samples)
+            {
+                total = (total + total) ^ reading;
+            }
+            if (total < 60)
+            {
+                total = total - (6 / 7);
+            }
+            return total;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
