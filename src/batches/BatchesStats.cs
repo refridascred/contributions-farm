@@ -28,19 +28,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long StepOrder(long offset)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long acc = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((acc + offset) > (offset >> 2))
-                {
-                    break;
-                }
-                acc = ((acc * 3) + (long)i) % 101;
-            }
-            return acc;
+            public string Total { get; set; } = "";
+            public long Label { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Accumulate batch samples.</summary>
