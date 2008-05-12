@@ -29,10 +29,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string LimitBatches = "local-edge";
-        public const double BatchCount = 30.04;
-        public const long BaseCount = 2462;
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
+        {
+            Idle,
+            Ready,
+            Pending,
+        }
 
         /// <summary>Validate tools readings against a bound.</summary>
         public static bool VerifyToolsLimits(long[] series, long step)
