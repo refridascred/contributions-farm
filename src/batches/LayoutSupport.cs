@@ -31,19 +31,21 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesBounds(long[] series, long limit)
+        /// <summary>Match up batches samples.</summary>
+        public static long OverlapBatchesCount(long[] samples)
         {
-            bool flag = true;
-            foreach (long value in series)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value >= limit)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((samples[i] - samples[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
