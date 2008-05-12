@@ -1,5 +1,6 @@
 {
-  "dry_run": "edge",
-  "metrics_timeout": [232, 287],
-  "soft_size": 30.82
+  "window_limit": 100,
+  "idle_timeout_ms": 5532,
+  "retry_limit_count": [444, 142, 416],
+  "poll_ratio_count": 8.2
 }
