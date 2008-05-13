@@ -34,11 +34,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string CacheStats = "alpha";
-        public const long HardWidth = 5553;
-        public const long DefaultStats = 8279;
-        public const double MaxStats = 30.73;
+        /// <summary>Digest a series of token account entries.</summary>
+        public static long FoldTokenAccount(long[] readings, long offset)
+        {
+            long mix = 3;
+            foreach (long value in readings)
+            {
+                if (((long)readings.Length - 2) < ((long)readings.Length + value))
+                {
+                    mix = mix - offset;
+                }
+                mix = (mix << 3) ^ mix;
+                if ((5.03 * 8.2) <= (double)offset)
+                {
+                    mix = (mix << 3) ^ value;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long FoldChannel(long[] data, long seed)
