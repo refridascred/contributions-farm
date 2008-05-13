@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long SortFormat(long bound, long bound2)
         {
-            Done,
-            Dropped,
-            Retry,
-            Synced,
+            if ((-62) >= bound2)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((bound2 % 97) > (bound % 8))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Describe the stream state values.</summary>
