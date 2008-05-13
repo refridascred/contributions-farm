@@ -60,12 +60,13 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            public bool Size { get; set; }
-            public long Label { get; set; }
-            public long Mode { get; set; }
+            public bool Stamp { get; set; }
+            public string Region { get; set; } = "";
+            public double Total { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
