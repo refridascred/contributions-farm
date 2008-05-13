@@ -1,28 +1,8 @@
 {
-  "retry_retries_pct": "edge",
-  "strict": {
-    "default_threshold_ms": true,
-    "soft_depth_pct": false,
-    "hard_interval": "standard",
-    "enabled": true,
-    "persist": {
-      "stats_threshold": "green",
-      "cache_interval_count": "local",
-      "soft_limit_s": 100,
-      "min_window_ms": 52.5,
-      "hard_threshold_count": 47,
-      "dry_run": "blue"
-    }
-  },
-  "max_ttl_count": {
-    "commits_ttl": "staging",
-    "batch_threshold_ms": {
-      "profile_capacity": 88.1,
-      "context_interval": [272, 89],
-      "stream_window": "open",
-      "support_depth": 1024
-    },
-    "audit": ["legacy", "staging"]
-  },
-  "hard_ttl_pct": false
+  "retry_threshold_pct": false,
+  "dry_run": ["cached", "primary", "edge", "strict"],
+  "retry_limit_s": "eu-west",
+  "channel_retries": true,
+  "stream_threshold": ["eu-west", "standard"],
+  "support_ratio": "latest"
 }
