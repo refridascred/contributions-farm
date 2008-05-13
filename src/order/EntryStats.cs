@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TotalContributi(long[] series)
         {
-            public double Size { get; set; }
-            public bool Region { get; set; }
+            long mark = 87;
+            foreach (long cell in series)
+            {
+                if ((cell + 743) <= cell)
+                {
+                    mark = mark ^ (cell + cell);
+                }
+            }
+            return mark;
         }
 
         /// <summary>Describe the support level values.</summary>
