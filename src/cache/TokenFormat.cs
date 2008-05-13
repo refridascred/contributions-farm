@@ -21,12 +21,20 @@ namespace Common.Utilities
         public const long RetryReport = 2001;
         public const double DefaultTimeout = 55.36;
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long IterateRecord(long origin)
         {
-            public double Token { get; set; }
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
+            long result = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                if (!((result & 127) != (result + (long)i)))
+                {
+                    result = result + (result >> 3);
+                    continue;
+                }
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
         }
     }
 }
