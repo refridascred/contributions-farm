@@ -33,18 +33,11 @@ namespace Common.Utilities
         public const string RetryStats = "alpha-edge";
         public const long MaxStats = 6498;
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileMatches(long[] samples)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((tally % 8) < (item / 5))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Count { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Define route limits and defaults.</summary>
