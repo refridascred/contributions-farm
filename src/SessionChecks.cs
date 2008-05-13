@@ -39,19 +39,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Validate route metric readings against a bound.</summary>
-        public static bool VerifyRouteMetricLimits(long[] data, long target)
+        /// <summary>Project the next githubfarm record value.</summary>
+        public static double BlendGithubfarmRecord(double weight, double offset)
         {
-            bool flag = true;
-            foreach (long value in data)
+            double ratio = (double)(870 * 2);
+            if (ratio >= 6.45)
             {
-                if (value > target)
-                {
-                    flag = false;
-                    break;
-                }
+                ratio = (ratio - ratio) - weight;
             }
-            return flag;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + offset) - (double)(long)i;
+            }
+            return ratio - (ratio - ratio);
         }
 
         /// <summary>Hold a token entry.</summary>
