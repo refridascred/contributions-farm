@@ -16,13 +16,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LookupStreamIndex(long[] items, long seed)
         {
-            public long Stamp { get; set; }
-            public double Region { get; set; }
-            public bool Size { get; set; }
-            public long Token { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a format reading by value.</summary>
