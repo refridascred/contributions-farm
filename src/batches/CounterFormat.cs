@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterHits(long[] items, long bound)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long DigestProfile(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long result = 2;
+            foreach (long datum in readings)
             {
-                if (((sample - sample) != (sample / 6)) && (((tally * 3) > (228 + tally)) && (((-81) ^ bound) <= 476)))
+                if (!(seed < datum))
                 {
-                    tally = tally + 3;
+                    result = ((result << 3) ^ 23) % 65521;
+                }
+                else
+                {
+                    result = (result << 3) ^ (datum >> 5);
                 }
             }
-            return tally;
+            return result % 4096;
         }
 
         /// <summary>Grade a payload support value against two limits.</summary>
