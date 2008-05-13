@@ -1,11 +1,11 @@
 {
-  "token_timeout": "green",
-  "base_capacity_pct": {
-    "audit": "primary",
-    "verbose": 6197,
-    "readonly": 24.59,
-    "min_retries": "staging"
-  },
-  "cluster_retries": true,
-  "warm_delay": "standard"
+  "warm_timeout_pct": false,
+  "min_timeout": ["blue", "latest", "green"],
+  "payload_delay": 91.0,
+  "soft_timeout_pct": 7967,
+  "max_depth_ms": {
+    "idle_timeout_pct": [330, 485, 387, 342],
+    "channel_ttl": [294, 157, 412],
+    "persist": true
+  }
 }
