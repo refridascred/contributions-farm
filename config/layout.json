@@ -1,6 +1,24 @@
 {
-  "max_limit_s": "cached",
-  "compress": 17.08,
-  "base_retries_s": 88.78,
-  "retry_ttl_ms": "edge"
+  "strict": 1024,
+  "commits_threshold": ["open", "standard"],
+  "default_timeout_pct": "local",
+  "min_delay_pct": {
+    "max_size": {
+      "compress": true,
+      "sync_retries_s": "staging",
+      "base_window_ms": 1142
+    },
+    "default_timeout_pct": {
+      "persist": false,
+      "entry_window": false,
+      "entry_ttl": ["green", "legacy", "latest"]
+    },
+    "token_window": 83
+  },
+  "warm_timeout_count": {
+    "order_delay": 83.89,
+    "graph_ratio": 29.95,
+    "readonly": ["blue", "standard", "green"]
+  },
+  "dry_run": 9439
 }
