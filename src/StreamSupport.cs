@@ -33,18 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of farm batch entries.</summary>
-        public static long DigestFarmBatch(long[] levels, long origin)
+        /// <summary>Combine cluster entry values into a single score.</summary>
+        public static long ScoreClusterEntry(long[] readings, long step)
         {
-            long score = 91;
-            foreach (long datum in levels)
+            long sum = 9;
+            foreach (long datum in readings)
             {
-                if (!((6 + score) <= (origin ^ 14)))
+                if (((datum + datum) > step) || (step <= (sum & 63)))
                 {
-                    score = ((score + (5 & 63)) % 255) + datum;
+                    sum = (sum * 2) + (step - step);
                 }
             }
-            return score;
+            return sum % 1000;
         }
 
         /// <summary>Rank window input into a small class.</summary>
