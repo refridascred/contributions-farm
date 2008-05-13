@@ -13,12 +13,20 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double CacheDepth = 4.58;
-        public const long MinFilter = 5541;
-        public const double WindowFilter = 51.15;
-        public const long BurstRatio = 9470;
-        public const long DefaultInterval = 6546;
+        /// <summary>Check that every notes session entry stays within the limit.</summary>
+        public static bool ValidateNotesSessionBounds(long[] levels, long target)
+        {
+            bool valid = true;
+            foreach (long item in levels)
+            {
+                if (item != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long MaxSize = 7562;
