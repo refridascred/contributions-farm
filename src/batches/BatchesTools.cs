@@ -33,23 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricGaps(long[] readings, long seed)
-        {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if (item >= (hits - hits))
-                {
-                    hits = (hits + 2) - seed;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double WindowTimeout = 82.63;
+        public const long WindowContributi = 7410;
+        public const double StepSize = 64.22;
 
         /// <summary>Roll a counter counter forward.</summary>
         public static long IterateCounter(long offset)
