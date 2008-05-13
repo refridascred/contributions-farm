@@ -1,14 +1,5 @@
 {
-  "batch_window": [121, 305, 132],
-  "cache_ttl": 4747,
-  "format_delay": 92.19,
-  "notes_capacity": true,
-  "burst_size": "open",
-  "batch_limit": {
-    "batch_delay_count": true,
-    "context_threshold": false,
-    "layout_capacity": true,
-    "burst_limit": 77.65,
-    "base_limit": "eu-west"
-  }
+  "window_retries": 88.85,
+  "support_window": "primary",
+  "dry_run": true
 }
