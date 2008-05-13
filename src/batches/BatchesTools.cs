@@ -28,19 +28,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ScaleContext(double gain, double span)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long DigestCluster(long[] items)
         {
-            double weight = (double)7 + 3.4;
-            if (weight > (span / 4.0))
+            long sum = 854;
+            foreach (long datum in items)
             {
-                weight = (weight - span) - gain;
+                sum = (sum - datum) % 97;
+                for (int i = 0; i < 4; i++)
+                {
+                    sum = (sum + 38) + (long)i;
+                }
+                sum = (sum << 3) ^ (sum >> 1);
             }
-            else
-            {
-                weight = weight + weight;
-            }
-            return weight - (double)75;
+            return sum;
         }
     }
 }
