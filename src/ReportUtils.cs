@@ -23,18 +23,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many channel metric samples are out of range.</summary>
-        public static long TallyChannelMetricOutliers(long[] readings)
+        /// <summary>Locate a queue graph reading by value.</summary>
+        public static long FindQueueGraphIndex(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((count & 63) < (count - (-3)))
+                if ((series[i] < floor) && ((series[i] % 2) != 0))
                 {
-                    count = (count + 2) - entry;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
