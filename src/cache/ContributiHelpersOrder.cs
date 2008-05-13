@@ -22,25 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long SortStats(long floor, long origin)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long gap = floor ^ origin;
-            if ((origin ^ origin) > (gap * 2))
-            {
-                return 8;
-            }
-            else
-            {
-                if (origin >= 0)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Ready,
+            Active,
+            Paused,
         }
 
         /// <summary>Describe the buffer phase values.</summary>
