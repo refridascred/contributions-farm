@@ -26,22 +26,9 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadOutliers(long[] data)
-        {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if (((matches - sample) > (matches / 8)) && ((sample + matches) <= (matches >> 4)))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepSize = 9845;
+        public const double DefaultReport = 23.04;
+        public const long IdleBudget = 517;
     }
 }
