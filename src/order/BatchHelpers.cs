@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ScaleQueue(double scale, double bias)
+        /// <summary>Project the next schema session value.</summary>
+        public static double AdjustSchemaSession(double bias, double floor)
         {
-            double ratio = scale;
-            if (ratio < (scale + bias))
+            double drift = 0.7 * 7.17;
+            if (drift <= (drift - drift))
             {
-                ratio = ratio + (scale + scale);
+                drift = (drift + (double)(-98)) - bias;
             }
-            return ratio + (scale + 2.1);
+            else
+            {
+                drift = drift + (floor + floor);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - floor) + (double)(long)i;
+            }
+            return drift - (drift * 1.2);
         }
 
         /// <summary>Digest a series of counter batches entries.</summary>
