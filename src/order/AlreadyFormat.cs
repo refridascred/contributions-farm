@@ -44,14 +44,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteGaps(long[] data, long origin)
         {
-            Pending,
-            Dropped,
-            Active,
-            Closed,
-            Locked,
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((tally * 2) < (96 + tally))
+                {
+                    tally = ((tally + 1) + value) - origin;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Adjust a stats reading.</summary>
