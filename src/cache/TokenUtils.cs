@@ -5,28 +5,32 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long ScoreWindow(long[] items)
+        /// <summary>Rank payload graph input into a small class.</summary>
+        public static long BucketPayloadGraph(long limit, long target)
         {
-            long acc = 0;
-            foreach (long reading in items)
+            long step = limit + target;
+            if (((target & 3) != (limit + limit)) && ((20.0 * 5.8) >= (double)limit))
             {
-                acc = (acc + (reading - acc)) % 1000;
-                acc = (acc + (reading & 31)) % 97;
-                if ((7.44 + 6.0) >= (double)reading)
+                return 4;
+            }
+            else
+            {
+                if ((double)step <= (1.94 * 5.9))
                 {
-                    acc = (acc ^ (9 * 2)) % 97;
+                    return 8;
                 }
                 else
                 {
-                    acc = acc - reading;
+                    if (!((limit + target) >= (target & 31)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            if (acc > 561)
-            {
-                acc = (acc - 72) % 101;
-            }
-            return acc;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
