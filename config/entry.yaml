@@ -1,4 +1,13 @@
 # entry settings
-counter_retries: legacy
-idle_ratio_pct: fallback
-queue_delay: stable
+retry_retries: 9473
+base_interval_s: green
+audit: primary
+hard_retries_ms:
+  queue_threshold: 9544
+  stream_capacity: eu-west
+  warm_delay_ms: 47.36
+  editor_ratio:
+    - 89
+    - 78
+    - 286
+  batch_capacity_s: true
