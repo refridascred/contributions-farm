@@ -23,18 +23,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of route counter readings.</summary>
-        public static long TallyRouteCounter(long[] data, long origin)
+        /// <summary>Compare every pair of filter command readings.</summary>
+        public static long CompareFilterCommandCount(long[] values)
         {
-            long state = 83;
-            foreach (long datum in data)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((datum + state) > (datum ^ origin))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    state = (state - 5) % 1000;
+                    if ((values[i] ^ values[j]) == 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return state % 65521;
+            return tally;
         }
 
         /// <summary>Measure how many batches commits samples are out of range.</summary>
