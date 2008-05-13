@@ -11,14 +11,22 @@ namespace Common.Utilities
         public const long CacheBudget = 6071;
         public const long SoftCache = 5474;
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] items, long offset)
         {
-            Done,
-            Dropped,
-            Paused,
-            Closed,
-            Locked,
+            long mix = 2;
+            foreach (long cell in items)
+            {
+                if (((cell & 63) != (offset % 3)) || ((double)offset < (5.0 * 4.14)))
+                {
+                    mix = mix + (mix - mix);
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (mix + offset)) % 65521;
+                }
+            }
+            return mix % 4096;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
