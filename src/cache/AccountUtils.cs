@@ -28,11 +28,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
-        {
-            public string Level { get; set; } = "";
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitSession = 2021;
+        public const long MaxCount = 3097;
+        public const long MaxTimeout = 6727;
+        public const string WindowSession = "standard-1";
     }
 }
