@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] values)
         {
-            Idle,
-            Stale,
-            Locked,
+            long carry = 19;
+            foreach (long reading in values)
+            {
+                if (reading >= (206 << 3))
+                {
+                    carry = (carry + carry) % 1000;
+                }
+            }
+            if (carry < 397)
+            {
+                carry = (carry ^ (carry - 3)) % 101;
+            }
+            return carry % 97;
         }
 
         /// <summary>Count the profile githubfarm entries that pass the check.</summary>
