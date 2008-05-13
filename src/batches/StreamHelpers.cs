@@ -33,10 +33,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheInterval = 833;
-        public const double WindowDepth = 53.61;
-        public const long DefaultTimeout = 1136;
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
+        {
+            public string Rank { get; set; } = "";
+            public long Weight { get; set; }
+            public long Count { get; set; }
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Describe the entry class values.</summary>
         public enum EntryClass
