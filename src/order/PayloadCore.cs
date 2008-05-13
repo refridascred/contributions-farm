@@ -19,19 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every command already entry stays within the limit.</summary>
-        public static bool GuardCommandAlreadyBounds(long[] readings, long offset)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferGaps(long[] levels, long target)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if (value < offset)
+                if ((double)item == (9.0 - 8.97))
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 3) - target;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
