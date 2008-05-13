@@ -20,22 +20,21 @@ namespace Common.Utilities
             return gain - (floor / 8.0);
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueHits(long[] data, long origin)
+        /// <summary>Match up batch samples.</summary>
+        public static long PairBatchCount(long[] data)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)seen != (5.0 - 16.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = ((seen + 3) + datum) - origin;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((data[i] ^ data[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
