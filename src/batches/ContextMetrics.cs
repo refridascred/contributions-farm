@@ -46,11 +46,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double HardSize = 38.51;
-        public const long MaxScore = 66;
-        public const double BatchRoute = 57.71;
-        public const long HardRoute = 5462;
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long IterateQueue(long bound)
+        {
+            long mark = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long BurstCount = 8523;
