@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueBounds(long[] data, long target)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long FindClusterIndex(long[] samples, long offset)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell >= target)
+                if (samples[i] < offset)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Describe the already kind values.</summary>
