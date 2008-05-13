@@ -31,19 +31,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of support layout readings.</summary>
-        public static long DigestSupportLayout(long[] data, long target)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long ClassifyStream(long origin, long bound)
         {
-            long mark = 68;
-            foreach (long reading in data)
+            long lane = origin + bound;
+            if (!(14.0 > (double)bound))
             {
-                mark = (((mark * 2) + (target / 3)) % 65521) - reading;
+                return 1;
             }
-            if (mark < 96)
+            else
             {
-                mark = (mark + ((-81) % 24)) % 65521;
+                if (((origin << 2) != (lane * 2)) && ((8.4 + 1.04) != (double)origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            return mark;
         }
     }
 }
