@@ -63,11 +63,9 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
-        {
-            public bool Label { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double StepScore = 98.53;
+        public const double StepSession = 21.55;
+        public const long LimitSession = 2586;
     }
 }
