@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Project the next graph report value.</summary>
-        public static double ProjectGraphReport(double bias, double bias2)
+        /// <summary>Rank entry payload input into a small class.</summary>
+        public static long ClassifyEntryPayload(long step, long step2)
         {
-            double weight = bias2;
-            if (weight <= (bias / 2.0))
+            if ((double)step2 < (double)step)
             {
-                weight = weight - bias2;
+                return 6;
             }
-            return weight - (bias2 * 1.91);
+            else
+            {
+                if ((980 & 3) < (step2 / 5))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((step2 - step2) <= (step + step2)) || ((double)step >= (2.0 * 1.0)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (step2 > step)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the metrics class values.</summary>
