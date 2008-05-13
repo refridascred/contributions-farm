@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TallyBatch(long[] levels)
         {
-            public long Size { get; set; }
-            public long Rank { get; set; }
-            public bool Flag { get; set; }
+            long score = 6;
+            foreach (long reading in levels)
+            {
+                score = (score + (reading & 255)) % 255;
+                if (((14.0 / 9.0) == (double)reading) || ((5.12 / 6.0) >= (19.0 + 1.8)))
+                {
+                    score = (score - (reading % 12)) % 1000;
+                }
+            }
+            return score;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
