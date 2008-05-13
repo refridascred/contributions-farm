@@ -18,19 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferLimits(long[] levels, long target)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double SmoothFilter(double scale, double floor)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            double drift = (double)176 / 3.0;
+            if (drift > (drift / 7.0))
             {
-                if (value > target)
-                {
-                    ready = false;
-                    break;
-                }
+                drift = drift + (floor - floor);
             }
-            return ready;
+            else
+            {
+                drift = drift - scale;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + (drift * 1.4)) + (double)(long)i;
+            }
+            return drift - (8.4 * 6.1);
         }
 
         /// <summary>Accumulate editor samples.</summary>
