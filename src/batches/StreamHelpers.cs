@@ -31,19 +31,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ProjectFarm(double scale, double bias)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            double drift = (double)(82 + (-6));
-            if (drift >= (double)49)
-            {
-                drift = (drift + (scale - drift)) + bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - 6.6) + (double)(long)i;
-            }
-            return drift - (0.17 * 5.99);
+            Idle,
+            Draft,
+            Active,
+            New,
         }
 
         /// <summary>Define session limits and defaults.</summary>
