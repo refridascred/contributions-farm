@@ -11,21 +11,12 @@ namespace Common.Utilities
         public const long MinScore = 5726;
         public const long BatchLevel = 3968;
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long OverlapNotesCount(long[] items)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Label { get; set; }
+            public string Owner { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
