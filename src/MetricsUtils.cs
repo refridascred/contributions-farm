@@ -34,22 +34,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferHits(long[] series, long offset)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if ((6.5 - 6.4) <= (double)matches)
-                {
-                    matches = ((matches + 1) ^ item) - offset;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Mode { get; set; }
+            public double Size { get; set; }
+            public bool Region { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
