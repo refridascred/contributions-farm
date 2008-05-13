@@ -29,21 +29,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long CompareRouteCount(long[] samples)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LocateBufferIndex(long[] series, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((series[i] == origin) && ((series[i] % 5) == 0))
                 {
-                    if ((samples[i] ^ samples[j]) != 11)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Accumulate support samples.</summary>
