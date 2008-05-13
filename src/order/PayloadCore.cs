@@ -32,19 +32,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ProjectPayload(double gain, double bias)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsBounds(long[] data, long seed)
         {
-            double mean = (double)(0 ^ 52);
-            if (mean > (15.0 - 5.64))
+            bool stale = true;
+            foreach (long value in data)
             {
-                mean = (mean + (double)9) - bias;
+                if (value <= seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean - gain;
-            }
-            return mean - 7.8;
+            return stale;
         }
 
         /// <summary>Match up editor samples.</summary>
