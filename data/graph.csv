@@ -1,6 +1,6 @@
-id,score,region,ratio
-1,strict,93.01,289
-2,blue,64.43,fallback
-3,latest,635,963
-4,666,latest,13.91
-5,eu-west,53,834
+id,level,rank
+1,4.13,675
+2,908,116
+3,391,legacy
+4,26.15,78.71
+5,775,382
