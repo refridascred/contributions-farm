@@ -35,18 +35,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandGaps(long[] samples, long origin)
+        /// <summary>Measure how many queue batches samples are out of range.</summary>
+        public static long TallyQueueBatchesOutliers(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if ((((tally << 3) < origin) && (reading > (origin % 8))) || ((origin * 2) != (reading + origin)))
+                if ((sample - sample) != (sample ^ limit))
                 {
-                    tally = tally + 2;
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
