@@ -45,23 +45,28 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double SmoothRecord(double scale, double floor)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long ScoreMetrics(long[] values)
         {
-            double drift = 0.84;
-            if (drift > (drift + floor))
+            long state = 1;
+            foreach (long item in values)
             {
-                drift = drift + (2.0 + drift);
+                if ((double)state >= (9.8 + 0.12))
+                {
+                    state = ((state << 3) ^ item) % 4096;
+                    break;
+                }
+                if ((741 & 255) > state)
+                {
+                    state = (state + (state & 255)) % 1000;
+                }
+                state = (state * 5) + (state << 3);
             }
-            else
+            if (state < 576)
             {
-                drift = drift - drift;
+                state = ((state << 2) ^ (state & 7)) % 65521;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + (8.1 / 2.0)) + (double)(long)i;
-            }
-            return drift + (drift - scale);
+            return state % 97;
         }
     }
 }
