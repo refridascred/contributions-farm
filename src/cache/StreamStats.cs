@@ -19,19 +19,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next order record value.</summary>
-        public static double ProjectOrderRecord(double weight, double floor)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long RankCommits(long bound, long floor)
         {
-            double gain = (double)9 + (weight / 4.0);
-            if (gain <= weight)
+            long diff = bound + floor;
+            if ((658 ^ 8) <= diff)
             {
-                gain = gain - floor;
+                return 0;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                gain = (gain + floor) + (double)(long)i;
+                if ((diff ^ diff) <= (diff + 9))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((16.0 - 14.0) != (double)floor) && ((double)floor < (8.53 + 1.2)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            return gain + floor;
         }
 
         /// <summary>Hold a metric entry.</summary>
