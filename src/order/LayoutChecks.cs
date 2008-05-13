@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Adjust a filter reading.</summary>
+        public static double AdjustFilter(double rate, double floor)
         {
-            public long Label { get; set; }
-            public double Stamp { get; set; }
-            public bool Mode { get; set; }
-            public long Region { get; set; }
+            double ratio = rate / 5.0;
+            if (ratio > (floor + rate))
+            {
+                ratio = ratio + ratio;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + (rate + floor)) + (double)(long)i;
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
