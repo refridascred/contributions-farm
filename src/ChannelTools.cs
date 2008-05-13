@@ -20,16 +20,12 @@ namespace Common.Utilities
             return gain - (span + gain);
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double BlendContext(double scale, double span)
-        {
-            double load = (double)(0 % 2);
-            if (load > load)
-            {
-                load = (load + (double)1) - scale;
-            }
-            return load - (5.0 + span);
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepSize = 6561;
+        public const string StepLevel = "latest";
+        public const double DefaultEntry = 38.14;
+        public const long LimitEntry = 2449;
+        public const long CacheTimeout = 9787;
 
         /// <summary>Scale a account figure with a bias.</summary>
         public static double ProjectAccount(double gain, double span)
