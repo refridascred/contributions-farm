@@ -13,22 +13,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the account batches entries that pass the check.</summary>
-        public static long CountAccountBatchesMatches(long[] readings)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportBounds(long[] values, long bound)
         {
-            long count = 0;
-            foreach (long value in readings)
+            bool found = true;
+            foreach (long datum in values)
             {
-                if ((value < (count - count)) || !(value >= (50 + count)))
+                if (datum != bound)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
