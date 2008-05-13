@@ -26,22 +26,12 @@ namespace Common.Utilities
         public const double WindowAccount = 75.17;
         public const long HardScore = 300;
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueMatches(long[] items)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if (!((9.0 / 5.0) <= (double)cell))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Level { get; set; }
+            public double Ratio { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
