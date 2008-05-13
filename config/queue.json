@@ -1,6 +1,7 @@
 {
-  "queue_delay": "blue",
-  "profile_size": 13,
-  "hard_size_count": [435, 170],
-  "min_capacity": 60
+  "filter_window": "primary",
+  "payload_ttl": [452, 371, 464],
+  "burst_interval": 8164,
+  "poll_ttl": 5289,
+  "tools_ttl": 10.22
 }
