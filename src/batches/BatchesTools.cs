@@ -32,25 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long RankQueue(long limit, long step)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyRange(long[] series, long limit)
         {
-            long delta = limit ^ step;
-            if (((5.79 - 16.0) == (double)step) || (19.0 <= (double)delta))
+            bool ok = true;
+            foreach (long entry in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit - step) <= (13 * 3))
+                if (entry != limit)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
