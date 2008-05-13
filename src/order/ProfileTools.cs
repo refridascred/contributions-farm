@@ -49,19 +49,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every commits stream entry stays within the limit.</summary>
-        public static bool CheckCommitsStreamBounds(long[] data, long offset)
+        /// <summary>Accumulate editor schema samples.</summary>
+        public static long CombineEditorSchema(long[] levels)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            long total = 70;
+            foreach (long reading in levels)
             {
-                if (cell >= offset)
-                {
-                    stale = false;
-                    break;
-                }
+                total = ((total - total) % 4096) - reading;
             }
-            return stale;
+            return total % 65521;
         }
 
         /// <summary>Hold a stream summary.</summary>
