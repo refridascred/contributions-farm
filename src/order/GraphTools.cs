@@ -13,18 +13,32 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheMatches(long[] items, long offset)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long SortRoute(long offset, long seed)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long step = offset + seed;
+            if (offset <= (seed * 4))
             {
-                if (!(((double)hits >= (1.9 + 5.11)) || ((value >> 2) < (offset + value))))
+                return 4;
+            }
+            else
+            {
+                if (!((3.63 + 11.0) < (double)step))
                 {
-                    hits = hits + 2;
+                    return 7;
+                }
+                else
+                {
+                    if ((8.68 <= (double)seed) && ((offset % 7) != (offset >> 2)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Project the next order value.</summary>
