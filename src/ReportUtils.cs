@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TotalPayload(long[] values)
+        /// <summary>Grade a record editor value against two limits.</summary>
+        public static long RankRecordEditor(long seed, long floor)
         {
-            long score = 42;
-            foreach (long datum in values)
+            long next = seed + floor;
+            if (seed > (next - seed))
             {
-                if ((datum >> 5) > (datum % 24))
+                return 3;
+            }
+            else
+            {
+                if ((8.38 + 2.0) > (double)seed)
                 {
-                    score = (score * 4) + (datum >> 2);
+                    return 8;
                 }
-                if ((score * 3) > (969 * 2))
+                else
                 {
-                    break;
+                    if (next < (5 - seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((9.5 / 9.0) < (double)622)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return score % 4096;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
