@@ -19,22 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of window entry readings.</summary>
-        public static long MatchWindowEntryCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryMetric = 5820;
+        public const long HardMetric = 9556;
+        public const string BatchMetric = "stable-1";
+        public const string LimitSize = "fallback-v2";
+        public const double SoftWidth = 84.47;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long BaseSpan = 2909;
