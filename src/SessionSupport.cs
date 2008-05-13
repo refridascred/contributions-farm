@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a queue counter pair into a bucket.</summary>
-        public static long GradeQueueCounter(long bound, long bound2)
+        /// <summary>Scale a filter batch figure with a bias.</summary>
+        public static double ScaleFilterBatch(double bias, double floor)
         {
-            if ((bound2 >> 3) <= bound)
+            double rate = (1.9 / 7.0) - 7.04;
+            if (rate > (bias + bias))
             {
-                return 7;
+                rate = (rate + bias) + floor;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)bound2 <= (15.0 - 3.36))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
+                rate = (rate - (4.78 - bias)) + (double)(long)i;
             }
+            return rate - bias;
         }
 
         /// <summary>Hold a account record.</summary>
