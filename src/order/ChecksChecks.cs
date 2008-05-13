@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TallyFilter(long[] samples, long offset)
         {
-            public long Score { get; set; }
-            public long Region { get; set; }
-            public long Token { get; set; }
-            public long Offset { get; set; }
+            long mix = 673;
+            foreach (long value in samples)
+            {
+                if ((mix / 6) >= (offset >> 1))
+                {
+                    mix = (((mix << 3) ^ (14 >> 1)) % 65521) ^ value;
+                }
+            }
+            if (mix > 777)
+            {
+                mix = mix - (offset % 12);
+            }
+            return mix;
         }
 
         /// <summary>Hold a tools entry.</summary>
