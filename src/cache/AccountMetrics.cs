@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            public bool Owner { get; set; }
-            public bool Label { get; set; }
-            public double Rank { get; set; }
+            public long Score { get; set; }
+            public long Token { get; set; }
+            public bool Rank { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Fold a list of notes entry readings.</summary>
