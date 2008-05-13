@@ -21,24 +21,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long RankEntry(long seed, long limit)
+        /// <summary>Count the entry checks entries that pass the check.</summary>
+        public static long TallyEntryChecksMatches(long[] series)
         {
-            if ((double)limit != (8.0 * 1.5))
+            long hits = 0;
+            foreach (long sample in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed * 5) == (seed / 2))
+                if ((hits >> 2) < sample)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
