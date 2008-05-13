@@ -66,19 +66,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate stream report readings against a bound.</summary>
-        public static bool ValidateStreamReportRange(long[] samples, long floor)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenHits(long[] readings, long target)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (cell > floor)
+                if (((sample / 4) > target) || (target >= (target % 60)))
                 {
-                    stale = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
