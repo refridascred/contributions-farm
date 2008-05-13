@@ -34,26 +34,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a route order pair into a bucket.</summary>
-        public static long GradeRouteOrder(long seed, long offset)
-        {
-            long span = seed ^ offset;
-            if ((double)offset == (18.0 / 8.0))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((double)span >= (double)seed) && (seed < (offset << 2)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BaseCluster = 8.52;
+        public const string BatchCluster = "legacy-1";
+        public const long BurstCluster = 5517;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const string StepWidth = "cached-v2";
