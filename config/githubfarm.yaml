@@ -1,5 +1,4 @@
 # githubfarm settings
-window_threshold: eu-west
-poll_window_pct: true
-poll_ratio_pct: 47.05
-strict: 1024
+max_interval_s: 29.18
+stats_retries: cached
+flush_window_count: 500
