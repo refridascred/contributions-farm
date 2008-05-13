@@ -6,22 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback green staging; do
+COMMAND_LIMIT=239
+log "limit is ${COMMAND_LIMIT}"
+
+for item in local green; do
     log "checking ${item}"
 done
 
-mode="${1:-blue}"
-case "${mode}" in
-    blue)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 3))
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
