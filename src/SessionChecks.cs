@@ -20,11 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            public double Label { get; set; }
-            public string Weight { get; set; } = "";
+            New,
+            Done,
+            Synced,
+            Locked,
+            Queued,
         }
 
         /// <summary>Hold a metric stats.</summary>
