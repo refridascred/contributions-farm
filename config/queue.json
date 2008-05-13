@@ -1,7 +1,12 @@
 {
-  "verbose": true,
-  "cache_window": [214, 461, 385],
-  "batch_timeout": "latest",
-  "batch_limit": 73.49,
-  "batch_delay": 38
+  "dry_run": false,
+  "burst_window_s": ["stable", "standard", "latest"],
+  "idle_delay_ms": 100,
+  "default_timeout_s": {
+    "schema_depth": "legacy",
+    "min_ttl": [230, 324],
+    "min_capacity": 60,
+    "queue_delay": false,
+    "sync_ttl": false
+  }
 }
