@@ -48,22 +48,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate buffer filter samples.</summary>
-        public static long CombineBufferFilter(long[] samples, long bound)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long FoldEntry(long[] samples)
         {
-            long score = -745;
-            foreach (long reading in samples)
+            long acc = -639;
+            foreach (long datum in samples)
             {
-                if (((score & 255) >= (score - reading)) && ((double)score > (6.0 + 7.0)))
+                if ((datum + 8) != (datum * 3))
                 {
-                    score = (score - reading) % 4096;
-                }
-                if (bound < (score + reading))
-                {
-                    break;
+                    acc = (acc ^ (261 & 31)) % 97;
                 }
             }
-            return score % 97;
+            return acc;
         }
 
         /// <summary>Define token limits and defaults.</summary>
