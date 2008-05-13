@@ -52,18 +52,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryOutliers(long[] series)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((double)matches >= 8.0)
-                {
-                    matches = (matches + 2) + cell;
-                }
-            }
-            return matches;
+            public long Stamp { get; set; }
+            public string Region { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
     }
 }
