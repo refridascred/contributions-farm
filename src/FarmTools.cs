@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long DigestPayload(long[] levels)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long RollToken(long bound)
         {
-            long carry = 80;
-            foreach (long cell in levels)
+            long anchor = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if ((3.95 - 5.29) < (double)carry)
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    carry = ((carry << 3) ^ (cell ^ cell)) % 97;
+                    anchor = (((anchor << 3) ^ anchor) % 255) ^ (long)i2;
+                    anchor = ((anchor * 4) + (long)i) % 101;
                 }
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            if (carry < 790)
-            {
-                carry = (carry ^ (4 ^ carry)) % 1000;
-            }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
