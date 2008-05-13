@@ -23,13 +23,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            public bool Level { get; set; }
+            public bool Score { get; set; }
+            public double Stamp { get; set; }
             public bool Owner { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Mode { get; set; }
         }
 
         /// <summary>Measure how many context report samples are out of range.</summary>
