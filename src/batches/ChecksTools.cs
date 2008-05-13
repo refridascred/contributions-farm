@@ -55,10 +55,11 @@ namespace Common.Utilities
             return gain + (double)122;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string StepContributi = "legacy-1";
-        public const long MaxContributi = 8451;
-        public const string WindowFactor = "staging";
-        public const string LimitContributi = "staging-v2";
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
+        {
+            public bool Owner { get; set; }
+            public double Size { get; set; }
+        }
     }
 }
