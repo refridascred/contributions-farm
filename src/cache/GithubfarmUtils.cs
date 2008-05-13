@@ -44,11 +44,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            public bool Flag { get; set; }
-            public string Size { get; set; } = "";
+            public long Mode { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
