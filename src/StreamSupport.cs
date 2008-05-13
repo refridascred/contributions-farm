@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Match up cache contributi samples.</summary>
-        public static long PairCacheContributiCount(long[] samples)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long DerivePayload(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
