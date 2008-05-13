@@ -33,19 +33,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmBounds(long[] samples, long bound)
+        /// <summary>Match up checks samples.</summary>
+        public static long PairChecksCount(long[] data)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item <= bound)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((data[i] + data[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
