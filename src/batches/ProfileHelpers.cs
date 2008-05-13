@@ -20,16 +20,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TallyChecks(long[] levels)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long FoldFilter(long[] values)
         {
-            long anchor = 100;
-            foreach (long sample in levels)
+            long mark = 4;
+            foreach (long value in values)
             {
-                anchor = (anchor ^ (anchor + (long)levels.Length)) % 65521;
-                anchor = anchor + (sample + anchor);
+                if ((mark & 127) >= value)
+                {
+                    mark = mark + 41;
+                }
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Classify a route order pair into a bucket.</summary>
