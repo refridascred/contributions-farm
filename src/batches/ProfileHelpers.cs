@@ -19,11 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Project the next stats value.</summary>
+        public static double ScaleStats(double weight, double floor)
         {
-            public string Region { get; set; } = "";
-            public bool Owner { get; set; }
+            double load = weight;
+            if (load > (19.0 - floor))
+            {
+                load = load - load;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + (floor - load)) + (double)(long)i;
+            }
+            return load + (weight * 7.8);
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
