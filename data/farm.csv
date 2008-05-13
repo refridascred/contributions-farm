@@ -1,7 +1,6 @@
-id,score,region
-1,290,49.28
-2,cached,330
-3,374,fallback
-4,eu-west,824
-5,green,921
-6,fallback,strict
+id,ratio,token
+1,eu-west,38.74
+2,32.97,standard
+3,green,blue
+4,603,48.72
+5,green,15.5
