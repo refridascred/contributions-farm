@@ -27,18 +27,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksOutliers(long[] levels)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteOutliers(long[] data, long limit)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if ((cell >= (seen / 3)) && ((672 >> 2) <= (cell & 63)))
+                if ((limit - 5) >= reading)
                 {
-                    seen = seen + 3;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Match up cache entry samples.</summary>
