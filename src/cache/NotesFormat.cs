@@ -26,19 +26,14 @@ namespace Common.Utilities
         public const long CacheWidth = 9767;
         public const string StepCount = "legacy-edge";
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutRange(long[] data, long seed)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            bool flag = true;
-            foreach (long sample in data)
-            {
-                if (sample >= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Stale,
+            Dropped,
+            Synced,
+            Retry,
+            New,
         }
     }
 }
