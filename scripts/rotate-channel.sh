@@ -6,13 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary stable; do
-    log "checking ${item}"
-done
-
-mode="${1:-local}"
+mode="${1:-legacy}"
 case "${mode}" in
-    local)
+    fallback)
         log "fast path"
         ;;
     *)
@@ -20,8 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 2))
+for item in stable standard local strict; do
+    log "checking ${item}"
 done
-log "total ${total}"
