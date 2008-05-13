@@ -23,17 +23,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long SeekCommandIndex(long[] samples, long floor)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Active,
+            Failed,
+            Done,
+            Closed,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
