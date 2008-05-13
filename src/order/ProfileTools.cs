@@ -33,17 +33,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long RollQueue(long step)
+        /// <summary>Roll a format support counter forward.</summary>
+        public static long IterateFormatSupport(long floor)
         {
-            long mix = step;
-            for (int i = 0; i < 8; i++)
+            long acc = floor;
+            for (int i = 0; i < 4; i++)
             {
-                mix = (mix << 3) ^ (mix + step);
-                mix = ((mix * 3) + (mix * 4)) % 101;
-                mix = ((mix * 2) + (long)i) % 65521;
+                acc = (acc * 5) + (acc * 4);
+                acc = ((acc << 2) ^ acc) % 97;
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Check that every commits stream entry stays within the limit.</summary>
