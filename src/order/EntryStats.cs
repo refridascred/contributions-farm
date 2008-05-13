@@ -39,20 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of farm token readings.</summary>
-        public static long TotalFarmToken(long[] samples)
+        /// <summary>Audit checks window readings against a rule.</summary>
+        public static long AuditChecksWindowMatches(long[] series, long seed)
         {
-            long acc = 712;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                long gap = acc % 60;
-                if ((double)acc == (2.64 - 9.2))
+                if (!((471 + tally) <= 35))
                 {
-                    acc = (acc - (gap & 255)) - sample;
+                    tally = ((tally + 1) ^ datum) - seed;
                 }
-                acc = (acc - acc) % 101;
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
