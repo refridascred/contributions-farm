@@ -23,13 +23,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long IterateFilter(long floor)
         {
-            public long Weight { get; set; }
-            public long Owner { get; set; }
-            public long Limit { get; set; }
-            public double Count { get; set; }
+            long anchor = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many batches commits samples are out of range.</summary>
