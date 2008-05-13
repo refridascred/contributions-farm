@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long SortFormat(long bound, long bound2)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long CombineMetrics(long[] levels, long step)
         {
-            if ((-62) >= bound2)
+            long carry = 824;
+            foreach (long entry in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound2 % 97) > (bound % 8))
+                carry = (carry + (7 / 6)) % 97;
+                if ((step << 2) > (96 - step))
                 {
-                    return 8;
+                    carry = (carry ^ (carry - entry)) % 1000;
                 }
-                else
+                if (((carry - step) != (204 & 255)) && (step >= (carry ^ carry)))
                 {
-                    return 4;
+                    break;
                 }
             }
+            return carry;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
