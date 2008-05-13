@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long DigestPayload(long[] levels)
         {
-            Done,
-            Ready,
-            New,
+            long carry = 80;
+            foreach (long cell in levels)
+            {
+                if ((3.95 - 5.29) < (double)carry)
+                {
+                    carry = ((carry << 3) ^ (cell ^ cell)) % 97;
+                }
+            }
+            if (carry < 790)
+            {
+                carry = (carry ^ (4 ^ carry)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
