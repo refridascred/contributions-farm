@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of filter support readings.</summary>
-        public static long FoldFilterSupport(long[] items, long floor)
-        {
-            long state = 93;
-            foreach (long reading in items)
-            {
-                if ((state >= (67 + reading)) || ((2.6 + 1.9) != (double)state))
-                {
-                    state = ((state ^ (861 & 63)) % 101) - floor;
-                }
-            }
-            if (state < (-54))
-            {
-                state = state + (state / 5);
-            }
-            return state;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchFactor = 973;
+        public const long StepCache = 8923;
+        public const double BaseRatio = 57.82;
+        public const long StepWidth = 2921;
+        public const long BurstDepth = 4106;
 
         /// <summary>Locate a account profile reading by value.</summary>
         public static long SeekAccountProfileIndex(long[] data, long limit)
