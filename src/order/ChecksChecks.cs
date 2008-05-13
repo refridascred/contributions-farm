@@ -19,15 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long IterateReport(long origin)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long anchor = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
+            public double Owner { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
