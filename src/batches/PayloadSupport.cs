@@ -23,15 +23,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a profile support figure with a bias.</summary>
-        public static double SmoothProfileSupport(double bias, double span)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long RollQueue(long floor)
         {
-            double mean = bias;
-            if (mean > (double)41)
+            long acc = floor;
+            for (int i = 0; i < 5; i++)
             {
-                mean = (mean + (double)1) - span;
+                acc = acc ^ floor;
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    acc = ((acc ^ (277 - acc)) % 101) ^ (long)i2;
+                }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return mean - mean;
+            return acc;
         }
 
         /// <summary>Hold a counter entry.</summary>
