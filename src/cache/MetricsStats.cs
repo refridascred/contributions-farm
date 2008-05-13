@@ -53,15 +53,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of context graph readings.</summary>
-        public static long OverlapContextGraphCount(long[] data)
+        /// <summary>Match up session samples.</summary>
+        public static long CompareSessionCount(long[] items)
         {
             long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((data[i] - data[j]) == 17)
+                    if ((items[i] ^ items[j]) < 6)
                     {
                         tally = tally + 1;
                     }
