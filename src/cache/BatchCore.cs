@@ -34,24 +34,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Classify a order channel pair into a bucket.</summary>
-        public static long GradeOrderChannel(long bound, long floor)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutHits(long[] series, long step)
         {
-            if (109 >= (bound - floor))
+            long count = 0;
+            foreach (long sample in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)floor >= (12.0 * 0.7)) && (bound <= (bound % 10)))
+                if (9 < step)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    count = (count + 3) ^ sample;
                 }
             }
+            return count;
         }
     }
 }
