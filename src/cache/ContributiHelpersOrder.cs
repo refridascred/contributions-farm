@@ -31,19 +31,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long StepLayout(long seed)
+        /// <summary>Fold a list of support layout readings.</summary>
+        public static long DigestSupportLayout(long[] data, long target)
         {
-            long anchor = seed;
-            for (int i = 0; i < 10; i++)
+            long mark = 68;
+            foreach (long reading in data)
             {
-                if (((double)anchor == (2.0 - 2.59)) && ((anchor << 3) <= (anchor + anchor)))
-                {
-                    anchor = ((anchor * 3) + ((long)i ^ (long)i)) % 65521;
-                }
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                mark = (((mark * 2) + (target / 3)) % 65521) - reading;
             }
-            return anchor;
+            if (mark < 96)
+            {
+                mark = (mark + ((-81) % 24)) % 65521;
+            }
+            return mark;
         }
     }
 }
