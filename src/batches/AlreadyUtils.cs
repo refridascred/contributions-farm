@@ -31,19 +31,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Count the already filter entries that pass the check.</summary>
-        public static long AuditAlreadyFilterOutliers(long[] data)
-        {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if (!((matches + matches) <= (entry + entry)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepPayload = 7422;
+        public const long BurstRatio = 3348;
+        public const long BaseInterval = 1288;
+        public const long MaxFactor = 7411;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long HardBudget = 146;
