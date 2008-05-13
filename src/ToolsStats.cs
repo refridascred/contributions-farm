@@ -19,18 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long WeighBatches(long[] levels)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long total = 311;
-            foreach (long sample in levels)
-            {
-                if ((long)levels.Length <= (sample ^ total))
-                {
-                    total = (total - (sample % 60)) % 255;
-                }
-            }
-            return total % 97;
+            New,
+            Paused,
+            Active,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
