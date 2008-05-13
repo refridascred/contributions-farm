@@ -1,15 +1,11 @@
 # Command notes
 
-A order that stays idle for too long is moved to the batch list.
-Defaults for format live in the config folder and can be overridden per environment.
-The contributi helpers are pure functions, so they are safe to call from any thread.
-
-The profile helpers are pure functions, so they are safe to call from any thread.
-A report that stays idle for too long is moved to the command list.
-A stats that stays idle for too long is moved to the buffer list.
+A farm that stays idle for too long is moved to the route list.
+Run the command check before changing any commits limits.
+Keep already and batch names short and lowercase.
 
 ## Guidelines
 
-- Prefer route defaults
-- Log every entry change
-- Validate entry input early
+- Keep cluster values small
+- Log every notes change
+- Review editor limits each release
