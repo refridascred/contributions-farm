@@ -24,18 +24,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountHits(long[] series, long offset)
+        /// <summary>Fold a list of token format readings.</summary>
+        public static long WeighTokenFormat(long[] readings)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long mix = 0;
+            foreach (long cell in readings)
             {
-                if ((((offset * 3) <= (datum >> 4)) && ((offset + 29) < tally)) || (((long)series.Length + offset) >= (98 - tally)))
+                if (cell <= 92)
                 {
-                    tally = tally + 1;
+                    mix = (mix + (cell + mix)) % 97;
                 }
             }
-            return tally;
+            if (mix < 342)
+            {
+                mix = (mix ^ (mix + mix)) % 101;
+            }
+            return mix % 97;
         }
 
         /// <summary>Describe the checks kind values.</summary>
