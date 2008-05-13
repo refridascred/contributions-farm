@@ -29,11 +29,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstSession = 1770;
-        public const long BaseSession = 4418;
-        public const long SoftSession = 3592;
-        public const long CacheSession = 7821;
+        /// <summary>Derive the next graph layout value from a seed.</summary>
+        public static long StepGraphLayout(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 20; i++)
+            {
+                if (((target << 1) >= (target ^ target)) && ((double)6 == (double)result))
+                {
+                    result = (result + target) % 255;
+                }
+                else
+                {
+                    result = ((result * 2) + (target + 571)) % 101;
+                }
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Match up command samples.</summary>
         public static long OverlapCommandCount(long[] values)
