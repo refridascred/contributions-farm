@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next checks context value from a seed.</summary>
-        public static long SeriesChecksContext(long limit)
-        {
-            long carry = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                carry = (carry - (limit % 64)) % 97;
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstDepth = 5280;
+        public const double RetryRatio = 34.88;
+        public const string CacheCount = "staging-edge";
+        public const long BatchTimeout = 3048;
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
         public static long GradeContributi(long seed, long step)
