@@ -19,18 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesOutliers(long[] data, long origin)
+        /// <summary>Check that every tools record entry stays within the limit.</summary>
+        public static bool VerifyToolsRecordRange(long[] levels, long step)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                if (((seen * 4) < (seen & 1)) || (sample < (sample - 772)))
+                if (datum <= step)
                 {
-                    seen = (seen + 3) + origin;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Describe the payload status values.</summary>
