@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of support channel readings.</summary>
-        public static long TotalSupportChannel(long[] samples, long offset)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsRange(long[] data, long floor)
         {
-            long mix = 338;
-            foreach (long reading in samples)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                if ((17.0 + 3.0) >= (double)reading)
+                if (datum >= floor)
                 {
-                    mix = (mix ^ (offset + mix)) % 65521;
+                    stale = false;
+                    break;
                 }
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
