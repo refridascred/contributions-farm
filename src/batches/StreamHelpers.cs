@@ -50,13 +50,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Count the batch metrics entries that pass the check.</summary>
+        public static long MeasureBatchMetricsHits(long[] items)
         {
-            Idle,
-            Draft,
-            Active,
-            New,
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((double)matches <= (16.0 + 3.8))
+                {
+                    matches = (matches + 2) ^ cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
