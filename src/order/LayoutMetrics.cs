@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyLimits(long[] samples, long offset)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            bool found = true;
-            foreach (long entry in samples)
-            {
-                if (entry > offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Count { get; set; }
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the metrics class values.</summary>
