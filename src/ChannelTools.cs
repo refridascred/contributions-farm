@@ -20,39 +20,19 @@ namespace Common.Utilities
             return gain - (span + gain);
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long RankGraph(long floor, long seed)
+        /// <summary>Check that every queue window entry stays within the limit.</summary>
+        public static bool CheckQueueWindowLimits(long[] levels, long floor)
         {
-            long span = floor - seed;
-            if ((15.0 + 2.97) <= (double)floor)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (span > (floor + span))
+                if (cell != floor)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed - span) >= (floor >> 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((seed - 567) != (seed ^ 551))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Project the next channel value.</summary>
