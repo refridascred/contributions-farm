@@ -24,12 +24,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long SeekChannelIndex(long[] levels, long target)
+        /// <summary>Look up the position of a githubfarm profile sample.</summary>
+        public static long FindGithubfarmProfileIndex(long[] readings, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((levels[i] > target) && ((levels[i] % 2) != 0))
+                if ((readings[i] >= step) && ((readings[i] % 2) != 0))
                 {
                     return (long)i;
                 }
