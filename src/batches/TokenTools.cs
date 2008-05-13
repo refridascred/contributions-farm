@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long SeriesSession(long floor)
         {
-            public double Region { get; set; }
-            public long Limit { get; set; }
-            public long Token { get; set; }
+            long carry = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    carry = (carry - floor) ^ (long)i2;
+                }
+                carry = ((carry * 5) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
