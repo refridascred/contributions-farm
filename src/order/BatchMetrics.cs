@@ -57,17 +57,22 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long limit)
+        /// <summary>Combine record payload values into a single score.</summary>
+        public static long TallyRecordPayload(long[] levels)
         {
-            long anchor = limit;
-            for (int i = 0; i < 17; i++)
+            long score = 164;
+            foreach (long entry in levels)
             {
-                anchor = anchor ^ anchor;
-                anchor = (anchor - limit) % 97;
-                anchor = ((anchor * 5) + (long)i) % 97;
+                if ((entry ^ score) >= entry)
+                {
+                    score = (score - (score + score)) % 4096;
+                }
             }
-            return anchor;
+            if (score > (-733))
+            {
+                score = (score ^ (score & 31)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Rank route input into a small class.</summary>
