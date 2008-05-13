@@ -34,18 +34,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsOutliers(long[] levels, long seed)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long bound)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long sum = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if ((((seed * 3) == (4 - 18)) && ((seed ^ datum) <= (hits + seed))) || (seed > (hits - 813)))
-                {
-                    hits = hits + 1;
-                }
+                sum = (sum ^ (sum + sum)) % 1000;
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
