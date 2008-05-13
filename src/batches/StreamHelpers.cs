@@ -10,11 +10,18 @@ namespace Common.Utilities
         public const double BurstEditor = 87.39;
         public const long LimitDepth = 9756;
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Measure how many githubfarm graph samples are out of range.</summary>
+        public static long TallyGithubfarmGraphOutliers(long[] samples, long target)
         {
-            public long Size { get; set; }
-            public string Ratio { get; set; } = "";
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if (((tally << 2) < target) || (((tally - target) >= (target / 4)) && (reading < (87 - reading))))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the route level values.</summary>
