@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftScore = 3335;
-        public const long BatchGithubfarm = 216;
-        public const long MinScore = 5726;
-        public const long BatchLevel = 3968;
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double BlendSupport(double rate, double bias)
+        {
+            double ratio = (double)4 + 2.5;
+            if (ratio < (rate + bias))
+            {
+                ratio = ratio + (bias * 8.3);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - (rate / 3.0)) + (double)(long)i;
+            }
+            return ratio - rate;
+        }
 
         /// <summary>Adjust a commits reading.</summary>
         public static double AdjustCommits(double rate, double bias)
