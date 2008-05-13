@@ -26,18 +26,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutHits(long[] series, long step)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if (9 < step)
-                {
-                    count = (count + 3) ^ sample;
-                }
-            }
-            return count;
+            public double Score { get; set; }
+            public long Ratio { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
