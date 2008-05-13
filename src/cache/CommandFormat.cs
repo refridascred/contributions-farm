@@ -33,12 +33,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            public string Mode { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public long Level { get; set; }
+            Draft,
+            Paused,
+            Retry,
+            Ready,
+            Closed,
         }
     }
 }
