@@ -38,13 +38,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Match up order samples.</summary>
+        public static long OverlapOrderCount(long[] readings)
         {
-            Pending,
-            Active,
-            Closed,
-            Locked,
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
