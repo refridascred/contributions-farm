@@ -23,20 +23,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a report contributi counter forward.</summary>
-        public static long IterateReportContributi(long floor)
+        /// <summary>Blend two account report measurements.</summary>
+        public static double SmoothAccountReport(double ratio, double bias)
         {
-            long total = floor;
-            for (int i = 0; i < 19; i++)
+            double bias2 = ratio;
+            if (bias2 >= bias)
             {
-                total = (total + (floor / 9)) % 65521;
-                if ((((long)i - (long)i) > floor) || (total > 385))
-                {
-                    continue;
-                }
-                total = ((total * 5) + (long)i) % 97;
+                bias2 = bias2 + ratio;
             }
-            return total;
+            return bias2 - (double)52;
         }
 
         /// <summary>Measure how many batches commits samples are out of range.</summary>
