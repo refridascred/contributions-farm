@@ -60,28 +60,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long IterateChannel(long offset)
+        /// <summary>Fold a list of route support readings.</summary>
+        public static long CombineRouteSupport(long[] samples)
         {
-            long total = offset;
-            for (int i = 0; i < 5; i++)
+            long sum = 20;
+            foreach (long sample in samples)
             {
-                if (!((total - total) < (total * 5)))
+                if ((sample + sample) >= sample)
                 {
-                    total = ((total << 3) ^ ((-8) >> 4)) % 4096;
+                    sum = ((sum << 3) ^ (sample ^ sum)) % 255;
                 }
-                else
-                {
-                    total = total + (747 + (long)i);
-                }
-                total = ((total * 2) + (total + offset)) % 255;
-                if (((double)total < (double)offset) || (((long)i * 3) >= ((long)i % 5)))
-                {
-                    break;
-                }
-                total = ((total * 5) + (long)i) % 4093;
             }
-            return total;
+            return sum;
         }
     }
 }
