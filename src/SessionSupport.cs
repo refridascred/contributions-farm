@@ -17,20 +17,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long WeighNotes(long[] levels, long seed)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsMatches(long[] levels)
         {
-            long score = 4;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long value in levels)
             {
-                score = score + (score >> 2);
-                score = (score - (score + item)) % 101;
+                if ((double)value == (12.0 - 3.8))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (score < 30)
-            {
-                score = (score << 2) ^ (seed + seed);
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
