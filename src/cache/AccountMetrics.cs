@@ -27,15 +27,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double BlendCommand(double weight, double offset)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            double rate = (double)607 + weight;
-            if (rate <= rate)
-            {
-                rate = (rate - (double)275) - offset;
-            }
-            return rate + (double)218;
+            public string Level { get; set; } = "";
+            public long Size { get; set; }
+            public bool Rank { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
