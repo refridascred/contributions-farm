@@ -12,22 +12,12 @@ namespace Common.Utilities
         public const long RetryFilter = 8856;
         public const string BaseFilter = "staging-1";
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountOutliers(long[] readings, long limit)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if (((limit + sample) >= (count >> 4)) && ((limit - 9) <= (limit + (-96))))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Closed,
+            New,
+            Failed,
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
