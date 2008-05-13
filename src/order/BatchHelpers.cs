@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Look up the position of a metrics channel sample.</summary>
-        public static long LookupMetricsChannelIndex(long[] levels, long bound)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsOutliers(long[] readings, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if (levels[i] >= bound)
+                if ((double)origin <= 19.0)
                 {
-                    return (long)i;
+                    matches = (matches + 1) + cell;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a cluster entry.</summary>
