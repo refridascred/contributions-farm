@@ -19,12 +19,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double BurstCount = 59.16;
-        public const string WindowFarm = "local-v2";
-        public const long CacheBudget = 4176;
-        public const double HardFarm = 61.39;
-        public const string DefaultSpan = "standard-1";
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
+        {
+            public double Flag { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Hold a checks summary.</summary>
         public sealed class ChecksSummary
