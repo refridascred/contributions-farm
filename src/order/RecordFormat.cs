@@ -54,11 +54,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            public long Label { get; set; }
-            public string Mode { get; set; } = "";
+            public long Total { get; set; }
+            public double Label { get; set; }
+            public long Count { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
