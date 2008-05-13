@@ -45,24 +45,23 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long ClassifyChannel(long target, long limit)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double SmoothRecord(double scale, double floor)
         {
-            if (!((9.94 + 8.0) == (double)limit))
+            double drift = 0.84;
+            if (drift > (drift + floor))
             {
-                return 4;
+                drift = drift + (2.0 + drift);
             }
             else
             {
-                if ((6.03 + 2.6) > (double)limit)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
+                drift = drift - drift;
             }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + (8.1 / 2.0)) + (double)(long)i;
+            }
+            return drift + (drift - scale);
         }
     }
 }
