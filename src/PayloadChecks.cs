@@ -13,15 +13,10 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
-        {
-            Closed,
-            Retry,
-            Failed,
-            New,
-            Done,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultCounter = 8354;
+        public const long IdleTimeout = 7399;
+        public const long LimitSpan = 9038;
 
         /// <summary>Rank token input into a small class.</summary>
         public static long BucketToken(long offset, long limit)
