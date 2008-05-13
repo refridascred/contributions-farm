@@ -19,22 +19,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] series, long step)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long WeighCommits(long[] levels, long target)
         {
-            long mark = 870;
-            foreach (long cell in series)
+            long acc = 354;
+            foreach (long value in levels)
             {
-                if (((step & 127) == (mark / 2)) || ((cell ^ 332) > 65))
+                if (!((acc << 1) >= (target / 2)))
                 {
-                    mark = mark - (mark / 4);
-                }
-                else
-                {
-                    mark = mark + cell;
+                    acc = ((acc * 3) + 752) - value;
                 }
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
