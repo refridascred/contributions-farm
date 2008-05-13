@@ -44,23 +44,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate contributi cluster samples.</summary>
-        public static long TallyContributiCluster(long[] values)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long IterateChannel(long bound)
         {
-            long mark = 73;
-            foreach (long value in values)
+            long score = bound;
+            for (int i = 0; i < 12; i++)
             {
-                mark = (mark + (value + value)) % 255;
-                if (mark >= (249 - 53))
-                {
-                    mark = ((mark << 3) ^ mark) % 97;
-                }
-                else
-                {
-                    mark = (mark ^ (mark - value)) % 1000;
-                }
+                score = (score * 3) + score;
+                score = ((score * 3) + (long)i) % 101;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
