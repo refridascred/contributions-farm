@@ -19,15 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long RollEditor(long step)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long mark = step;
-            for (int i = 0; i < 15; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
+            Dropped,
+            Stale,
+            Paused,
+            Ready,
+            Pending,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
