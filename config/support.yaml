@@ -1,4 +1,11 @@
 # support settings
-warm_ttl: 5.47
-cache_limit_s: green
-cluster_ratio: cached
+sync_capacity:
+  - 321
+  - 499
+  - 353
+  - 286
+batch_delay: green
+hard_interval_count: true
+hard_limit_pct: 4117
+route_capacity: 5.14
+farm_capacity: 57.2
