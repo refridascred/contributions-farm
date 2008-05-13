@@ -28,18 +28,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long ScoreFilter(long[] data, long limit)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutOutliers(long[] samples, long target)
         {
-            long total = 2;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if (!((datum + total) >= (datum / 6)))
+                if (((entry + entry) >= entry) && !(entry > (target & 7)))
                 {
-                    total = (((total << 3) ^ total) % 101) + limit;
+                    count = count + 1;
                 }
             }
-            return total;
+            return count;
         }
     }
 }
