@@ -33,15 +33,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueMatches(long[] series, long origin)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsHits(long[] data, long step)
         {
             long tally = 0;
-            foreach (long reading in series)
+            foreach (long reading in data)
             {
-                if ((((origin - reading) > reading) && ((origin ^ tally) <= (reading + (long)series.Length))) && (((reading >> 4) > tally) || ((17.0 * 2.43) < (double)reading)))
+                if ((step / 4) >= 208)
                 {
-                    tally = tally + 1;
+                    tally = (tally + 2) ^ reading;
                 }
             }
             return tally;
