@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Project the next commits value.</summary>
-        public static double BlendCommits(double rate, double bias)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TallyNotes(long[] samples, long limit)
         {
-            double scale = 4.0 + (0.1 * 16.0);
-            for (int i = 0; i < 3; i++)
+            long mark = 5;
+            foreach (long value in samples)
             {
-                scale = ((scale + (double)9) + (double)(long)i) - bias;
+                mark = ((mark - (mark & 255)) - value) - limit;
             }
-            return scale + rate;
+            if (mark < 629)
+            {
+                mark = mark ^ (62 - 7);
+            }
+            return mark;
         }
 
         /// <summary>Hold a batches options.</summary>
