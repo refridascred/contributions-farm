@@ -5,16 +5,24 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long DeriveStream(long bound)
+        /// <summary>Classify a queue counter pair into a bucket.</summary>
+        public static long GradeQueueCounter(long bound, long bound2)
         {
-            long mark = bound;
-            for (int i = 0; i < 10; i++)
+            if ((bound2 >> 3) <= bound)
             {
-                mark = (mark * 3) + (mark << 3);
-                mark = ((mark * 3) + (long)i) % 4093;
+                return 7;
             }
-            return mark;
+            else
+            {
+                if ((double)bound2 <= (15.0 - 3.36))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Rank order command input into a small class.</summary>
