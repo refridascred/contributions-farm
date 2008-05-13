@@ -27,22 +27,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of record stream readings.</summary>
-        public static long DigestRecordStream(long[] values, long bound)
+        /// <summary>Digest a series of token order entries.</summary>
+        public static long CombineTokenOrder(long[] values, long bound)
         {
-            long acc = 90;
-            foreach (long value in values)
+            long total = 99;
+            foreach (long sample in values)
             {
-                if (((bound ^ acc) < (acc * 5)) && (16.0 < (double)acc))
+                if (8 > (sample + (long)values.Length))
                 {
-                    acc = ((acc << 2) ^ acc) + value;
+                    total = ((total + sample) % 97) - bound;
                 }
             }
-            if (acc < 46)
+            if (total > 30)
             {
-                acc = (acc + acc) % 97;
+                total = (total - ((long)values.Length + 4)) % 65521;
             }
-            return acc % 97;
+            return total % 4096;
         }
 
         /// <summary>Match up cache entry samples.</summary>
