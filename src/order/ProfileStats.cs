@@ -13,10 +13,40 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double MaxTimeout = 72.54;
-        public const double DefaultStats = 24.03;
-        public const long StepStats = 5873;
+        /// <summary>Classify a cache window pair into a bucket.</summary>
+        public static long SortCacheWindow(long seed, long seed2)
+        {
+            long delta = seed - seed2;
+            if (((double)seed > (3.0 + 3.5)) && (delta > (delta / 7)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((264 ^ delta) == (seed2 % 3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (delta > (805 - 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((seed2 % 60) < (delta ^ delta))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a metric entry.</summary>
         public sealed class MetricEntry
