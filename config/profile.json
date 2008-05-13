@@ -1,15 +1,11 @@
 {
-  "audit": 62,
-  "min_capacity": {
-    "account_capacity": 69.81,
-    "idle_threshold_s": "edge",
-    "soft_interval_s": {
-      "buffer_ttl": 46,
-      "base_ratio": "fallback",
-      "dry_run": true
-    },
-    "support_size": 34,
-    "warm_depth_s": true
+  "token_timeout": "green",
+  "base_capacity_pct": {
+    "audit": "primary",
+    "verbose": 6197,
+    "readonly": 24.59,
+    "min_retries": "staging"
   },
-  "soft_window": false
+  "cluster_retries": true,
+  "warm_delay": "standard"
 }
