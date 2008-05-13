@@ -45,31 +45,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long GradeChecks(long target, long offset)
+        /// <summary>Locate a metric batch reading by value.</summary>
+        public static long LookupMetricBatchIndex(long[] items, long origin)
         {
-            if (((offset << 2) >= target) || (8.64 < (double)target))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((0 % 7) >= (offset / 3))
+                if (items[i] < origin)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((2 & 255) != (offset - 26))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
