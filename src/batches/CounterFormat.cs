@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorRange(long[] items, long offset)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphOutliers(long[] samples, long floor)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if (cell < offset)
+                if (((long)samples.Length >> 4) > seen)
                 {
-                    ok = false;
-                    break;
+                    seen = ((seen + 3) ^ reading) + floor;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Fold a list of token cache readings.</summary>
