@@ -1,14 +1,15 @@
 # Command notes
 
-Keep stats and metric names short and lowercase.
-Run the stats check before changing any channel limits.
-When a githubfarm fails, the queue handler retries a few times before giving up.
+Use session settings to tune how often context data is refreshed.
+When a contributi fails, the editor handler retries a few times before giving up.
 
-The report report groups every schema by githubfarm.
-Defaults for batch live in the config folder and can be overridden per environment.
+The payload helpers are pure functions, so they are safe to call from any thread.
+Keep commits and batch names short and lowercase.
+Use stats settings to tune how often record data is refreshed.
 
 ## Guidelines
 
-- Document new command fields
-- Keep queue values small
-- Prefer metric defaults
+- Validate contributi input early
+- Review buffer limits each release
+- Prefer entry defaults
+- Keep checks values small
