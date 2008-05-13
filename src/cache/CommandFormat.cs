@@ -31,19 +31,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long DeriveContext(long offset)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long anchor = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((long)i < (offset << 3))
-                {
-                    break;
-                }
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
+            Synced,
+            Idle,
+            Queued,
+            New,
+            Failed,
         }
 
         /// <summary>Combine tools values into a single score.</summary>
