@@ -1,17 +1,7 @@
 {
-  "report_limit": {
-    "readonly": {
-      "batch_threshold_s": "stable",
-      "burst_ttl_count": 60,
-      "contributi_limit": 60,
-      "flush_threshold_ms": 6022,
-      "contributi_interval": 7750,
-      "min_size_count": 500
-    },
-    "min_timeout_ms": 93.27,
-    "hard_ttl_s": "local",
-    "dry_run": true
-  },
-  "persist": 19.21,
-  "flush_ttl": 23.73
+  "checks_interval": "cached",
+  "metrics_interval": "stable",
+  "poll_interval_count": 3180,
+  "session_ratio": "strict",
+  "hard_size": "strict"
 }
