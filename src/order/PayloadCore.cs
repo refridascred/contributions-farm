@@ -13,12 +13,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextMatches(long[] series)
         {
-            Done,
-            Dropped,
-            Synced,
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if (((reading + 0) < (reading + reading)) && ((count + reading) != (count / 8)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of order entries.</summary>
