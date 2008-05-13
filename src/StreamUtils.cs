@@ -18,25 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a context schema value against two limits.</summary>
-        public static long SortContextSchema(long target, long origin)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long lane = target + origin;
-            if (798 > origin)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((lane - target) > origin)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public string Score { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Fold a list of checks readings.</summary>
