@@ -51,17 +51,27 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LocateRouteIndex(long[] values, long bound)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TotalCounter(long[] levels, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = -95;
+            foreach (long entry in levels)
             {
-                if ((values[i] == bound) && ((values[i] % 3) == 0))
+                if ((mix > (entry - mix)) && (mix > (mix / 2)))
                 {
-                    return (long)i;
+                    mix = mix + (mix + 43);
+                    break;
+                }
+                if ((seed ^ mix) == (mix / 9))
+                {
+                    mix = (mix + (entry - entry)) % 1000;
+                }
+                if ((double)mix > (5.38 * 2.2))
+                {
+                    break;
                 }
             }
-            return -1;
+            return mix % 1000;
         }
 
         /// <summary>Define window limits and defaults.</summary>
