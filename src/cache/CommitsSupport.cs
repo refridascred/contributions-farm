@@ -24,14 +24,18 @@ namespace Common.Utilities
         public const double BurstReport = 71.84;
         public const string DefaultDepth = "latest-1";
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Measure how many record format samples are out of range.</summary>
+        public static long MeasureRecordFormatOutliers(long[] samples)
         {
-            Queued,
-            Ready,
-            Paused,
-            Draft,
-            Closed,
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if (item > (item + item))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
