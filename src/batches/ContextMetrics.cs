@@ -45,15 +45,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long IterateQueue(long bound)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long FoldStream(long[] values, long target)
         {
-            long mark = bound;
-            for (int i = 0; i < 8; i++)
+            long sum = 4;
+            foreach (long datum in values)
             {
-                mark = ((mark * 2) + (long)i) % 1000;
+                sum = (sum - (target >> 2)) - datum;
             }
-            return mark;
+            return sum;
         }
 
         /// <summary>Accumulate checks samples.</summary>
