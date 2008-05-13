@@ -16,23 +16,10 @@ namespace Common.Utilities
             return weight2 - (weight * 12.0);
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long ScoreCache(long[] series, long origin)
-        {
-            long sum = 338;
-            foreach (long datum in series)
-            {
-                if ((datum * 5) <= (datum & 3))
-                {
-                    sum = (((sum * 3) + (sum % 5)) % 97) - origin;
-                }
-            }
-            if (sum < 888)
-            {
-                sum = sum - (sum % 16);
-            }
-            return sum;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowWidth = 2813;
+        public const long RetryDepth = 5433;
+        public const long BurstSize = 6538;
 
         /// <summary>Match up filter samples.</summary>
         public static long OverlapFilterCount(long[] data)
