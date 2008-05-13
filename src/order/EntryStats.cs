@@ -58,12 +58,9 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
-        {
-            Idle,
-            Done,
-            Retry,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultWidth = 1698;
+        public const long SoftQueue = 5143;
+        public const long BurstQueue = 9069;
     }
 }
