@@ -24,17 +24,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a githubfarm profile sample.</summary>
-        public static long FindGithubfarmProfileIndex(long[] readings, long step)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= step) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Active,
+            New,
+            Failed,
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
