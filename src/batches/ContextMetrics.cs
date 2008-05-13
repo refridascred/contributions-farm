@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long StepFarm(long target)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long FindCommandIndex(long[] series, long target)
         {
-            long carry = target;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = ((carry * 3) + ((long)i - (long)i)) % 255;
-                carry = ((carry * 3) + (long)i) % 4093;
+                if ((series[i] <= target) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
