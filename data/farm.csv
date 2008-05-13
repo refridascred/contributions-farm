@@ -1,6 +1,7 @@
-id,token,region,state
-1,67.03,blue,blue
-2,green,13.83,342
-3,97.81,591,eu-west
-4,272,73.28,581
-5,edge,502,3
+id,state,label,owner
+1,207,297,latest
+2,55.56,18.64,61
+3,904,edge,62.87
+4,51.02,76.26,33.27
+5,702,strict,cached
+6,626,103,82.55
