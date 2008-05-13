@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long WeighFarm(long[] series)
         {
-            public long Mode { get; set; }
-            public string Size { get; set; } = "";
-            public long Score { get; set; }
+            long state = 0;
+            foreach (long value in series)
+            {
+                if (value > (7 - value))
+                {
+                    state = state + (state % 60);
+                }
+                else
+                {
+                    state = (state ^ (value << 3)) % 4096;
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Audit metrics contributi readings against a rule.</summary>
