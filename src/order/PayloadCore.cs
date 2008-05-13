@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenOutliers(long[] values)
         {
-            public long Limit { get; set; }
-            public double Score { get; set; }
-            public double Ratio { get; set; }
-            public string Token { get; set; } = "";
+            long count = 0;
+            foreach (long value in values)
+            {
+                if (((value / 4) >= count) || (((value & 1) >= (count - count)) && (count < (value & 3))))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
