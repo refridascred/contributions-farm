@@ -36,26 +36,17 @@ namespace Common.Utilities
         public const double StepSpan = 31.65;
         public const double BaseLayout = 22.87;
 
-        /// <summary>Accumulate context metric samples.</summary>
-        public static long CombineContextMetric(long[] data, long floor)
+        /// <summary>Find the first graph report entry that matches the target.</summary>
+        public static long SeekGraphReportIndex(long[] samples, long seed)
         {
-            long result = 21;
-            foreach (long item in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (result < ((long)data.Length << 3))
+                if (samples[i] > seed)
                 {
-                    result = (((result * 5) + (345 >> 4)) % 97) - floor;
-                }
-                if ((item << 3) > (result & 3))
-                {
-                    result = ((result * 2) + (599 >> 5)) % 4096;
-                }
-                else
-                {
-                    result = result - result;
+                    return (long)i;
                 }
             }
-            return result % 4096;
+            return -1;
         }
 
         /// <summary>Match up command samples.</summary>
