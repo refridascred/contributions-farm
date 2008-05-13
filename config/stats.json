@@ -1,7 +1,8 @@
 {
-  "soft_depth_ms": 92.95,
-  "burst_interval_count": 56,
-  "batches_ratio": 71.78,
-  "batches_interval": 43.44,
-  "hard_depth_ms": true
+  "hard_ttl_count": [379, 172],
+  "burst_ttl_ms": 2387,
+  "max_timeout_ms": true,
+  "base_ttl": true,
+  "strict": "strict",
+  "queue_retries": 72.07
 }
