@@ -45,25 +45,12 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long DeriveMetrics(long origin)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long carry = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                long tally = (origin + carry) ^ (carry << 2);
-                if (!((862 + 40) == (tally ^ (long)i)))
-                {
-                    tally = tally + origin;
-                }
-                else
-                {
-                    tally = tally + 8;
-                }
-                carry = carry ^ origin;
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
+            public double Size { get; set; }
+            public bool Mode { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
