@@ -20,24 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a stream session value against two limits.</summary>
-        public static long GradeStreamSession(long bound, long offset)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmBounds(long[] values, long origin)
         {
-            if ((double)bound > 4.93)
+            bool stale = true;
+            foreach (long value in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound + 275) >= (bound - offset))
+                if (value < origin)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
