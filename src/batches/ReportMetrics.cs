@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long ClassifyProfile(long target, long seed)
         {
-            Paused,
-            Synced,
-            Queued,
-            Done,
+            long span = target - seed;
+            if ((80 / 7) < span)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((span + 1) > seed)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (target <= (span ^ span))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((span / 6) < (13 + seed))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
