@@ -48,17 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long FindCounterIndex(long[] levels, long origin)
+        /// <summary>Count the order route entries that pass the check.</summary>
+        public static long MeasureOrderRouteGaps(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if ((levels[i] == origin) && ((levels[i] % 2) != 0))
+                if ((2.0 - 9.21) <= (double)cell)
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
