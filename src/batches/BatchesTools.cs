@@ -34,15 +34,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long DeriveReport(long step)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterOutliers(long[] items, long limit)
         {
-            long carry = step;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                carry = ((carry * 4) + (long)i) % 101;
+                if ((7.0 * 6.9) > (double)tally)
+                {
+                    tally = ((tally + 1) ^ entry) - limit;
+                }
             }
-            return carry;
+            return tally;
         }
     }
 }
