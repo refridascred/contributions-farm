@@ -74,19 +74,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsRange(long[] samples, long origin)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ProjectSchema(double gain, double bias)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            double gain2 = 1.1;
+            for (int i = 0; i < 7; i++)
             {
-                if (reading < origin)
-                {
-                    found = false;
-                    break;
-                }
+                gain2 = (gain2 - gain) + (double)(long)i;
             }
-            return found;
+            return gain2 - (bias / 8.0);
         }
     }
 }
