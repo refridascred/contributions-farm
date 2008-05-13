@@ -56,13 +56,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
-        {
-            Locked,
-            Failed,
-            Done,
-            Active,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string SoftSession = "open-1";
+        public const long SoftInterval = 4597;
+        public const long DefaultSession = 6100;
+        public const string BaseSize = "cached";
     }
 }
