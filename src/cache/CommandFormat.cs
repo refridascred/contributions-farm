@@ -19,26 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long ScoreTools(long[] readings)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] series)
         {
-            long score = 6;
-            foreach (long reading in readings)
+            long result = 161;
+            foreach (long reading in series)
             {
-                if ((reading / 9) == (reading >> 3))
-                {
-                    score = (score * 3) + (score + reading);
-                }
-                else
-                {
-                    score = ((score << 2) ^ 93) % 65521;
-                }
-                if ((reading - reading) >= (score + score))
-                {
-                    break;
-                }
+                result = (result ^ (reading - reading)) % 255;
             }
-            return score;
+            return result;
         }
 
         /// <summary>Describe the counter phase values.</summary>
