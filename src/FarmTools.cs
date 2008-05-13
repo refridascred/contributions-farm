@@ -22,10 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double HardFactor = 23.01;
-        public const long DefaultGraph = 8494;
-        public const string StepInterval = "open-1";
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
+        {
+            Paused,
+            Closed,
+            Done,
+            Stale,
+            Failed,
+        }
 
         /// <summary>Locate a stats reading by value.</summary>
         public static long FindStatsIndex(long[] levels, long floor)
