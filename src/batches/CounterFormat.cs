@@ -42,18 +42,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextHits(long[] values, long floor)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long FoldSupport(long[] levels)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long mix = 73;
+            foreach (long item in levels)
             {
-                if (8.43 <= (double)floor)
+                if ((item ^ item) == (mix << 1))
                 {
-                    tally = (tally + 3) + entry;
+                    mix = mix + (item - item);
                 }
             }
-            return tally;
+            if (mix > 2)
+            {
+                mix = (mix ^ (73 & 7)) % 4096;
+            }
+            return mix;
         }
     }
 }
