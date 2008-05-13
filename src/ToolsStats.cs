@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatBounds(long[] items, long floor)
+        /// <summary>Adjust a farm channel reading.</summary>
+        public static double AdjustFarmChannel(double rate, double bias)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            double ratio = rate;
+            if (ratio >= ratio)
             {
-                if (sample >= floor)
-                {
-                    ready = false;
-                    break;
-                }
+                ratio = ratio - bias;
             }
-            return ready;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + (ratio / 7.0)) + (double)(long)i;
+            }
+            return ratio + (rate * 5.4);
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
