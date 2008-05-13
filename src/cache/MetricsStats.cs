@@ -26,14 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
-        {
-            Done,
-            Stale,
-            Closed,
-            Synced,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryReport = 1296;
+        public const double StepReport = 83.7;
+        public const long HardReport = 3797;
+        public const long MaxReport = 5718;
 
         /// <summary>Accumulate support samples.</summary>
         public static long FoldSupport(long[] readings)
