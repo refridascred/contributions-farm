@@ -1,7 +1,6 @@
 {
-  "notes_threshold": 52.4,
-  "base_retries_pct": false,
-  "soft_threshold_pct": true,
-  "filter_ratio": "legacy",
-  "default_ratio_pct": 10.37
+  "stream_ttl": "standard",
+  "idle_size_s": "green",
+  "editor_threshold": true,
+  "readonly": true
 }
