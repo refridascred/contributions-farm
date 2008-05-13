@@ -33,20 +33,11 @@ namespace Common.Utilities
             return ratio - scale;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterBounds(long[] data, long origin)
-        {
-            bool flag = true;
-            foreach (long datum in data)
-            {
-                if (datum >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheCount = 5680;
+        public const long BaseTimeout = 6741;
+        public const long SoftBuffer = 6234;
+        public const double BaseWidth = 52.43;
 
         /// <summary>Describe the schema level values.</summary>
         public enum SchemaLevel
