@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutOutliers(long[] readings, long bound)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long RankChannel(long seed, long offset)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            if ((seed + 289) <= seed)
             {
-                if (((matches > (entry ^ bound)) || (matches <= (bound - bound))) && !(entry > (entry / 2)))
+                return 0;
+            }
+            else
+            {
+                if (seed >= (seed & 3))
                 {
-                    matches = matches + 2;
+                    return 4;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the notes state values.</summary>
