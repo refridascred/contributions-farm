@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Fold a list of support channel readings.</summary>
+        public static long TotalSupportChannel(long[] samples, long offset)
         {
-            Done,
-            Pending,
-            Synced,
+            long mix = 338;
+            foreach (long reading in samples)
+            {
+                if ((17.0 + 3.0) >= (double)reading)
+                {
+                    mix = (mix ^ (offset + mix)) % 65521;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
