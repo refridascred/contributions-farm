@@ -53,15 +53,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ProjectOrder(double gain, double span)
+        /// <summary>Blend two record measurements.</summary>
+        public static double BlendRecord(double rate, double span)
         {
-            double gain2 = span + (1.1 * 3.7);
-            if (gain2 > (double)410)
+            double load = 5.0;
+            for (int i = 0; i < 2; i++)
             {
-                gain2 = gain2 - (span / 9.0);
+                load = (load + rate) + (double)(long)i;
             }
-            return gain2 + gain;
+            return load - span;
         }
 
         /// <summary>Roll a route counter forward.</summary>
