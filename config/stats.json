@@ -1,5 +1,7 @@
 {
-  "audit": 20.4,
-  "cache_ttl_s": 3876,
-  "queue_threshold": "primary"
+  "verbose": 79.04,
+  "poll_size_ms": "cached",
+  "idle_interval_count": 51,
+  "cluster_threshold": [401, 169, 243, 277],
+  "default_limit_ms": "open"
 }
