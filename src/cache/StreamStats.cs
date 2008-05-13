@@ -56,28 +56,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long ScoreMetrics(long[] values)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long state = 1;
-            foreach (long item in values)
-            {
-                if ((double)state >= (9.8 + 0.12))
-                {
-                    state = ((state << 3) ^ item) % 4096;
-                    break;
-                }
-                if ((741 & 255) > state)
-                {
-                    state = (state + (state & 255)) % 1000;
-                }
-                state = (state * 5) + (state << 3);
-            }
-            if (state < 576)
-            {
-                state = ((state << 2) ^ (state & 7)) % 65521;
-            }
-            return state % 97;
+            public string Count { get; set; } = "";
+            public long Size { get; set; }
+            public bool Score { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
