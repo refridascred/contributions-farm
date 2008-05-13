@@ -19,11 +19,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferGaps(long[] samples, long target)
         {
-            public string Score { get; set; } = "";
-            public bool Offset { get; set; }
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if (5 < (value + (-800)))
+                {
+                    tally = (tally + 1) - target;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine report notes values into a single score.</summary>
