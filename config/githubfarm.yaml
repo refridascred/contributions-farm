@@ -1,21 +1,5 @@
 # githubfarm settings
-base_interval_s:
-  burst_threshold_count: 3470
-  flush_threshold_s: staging
-  readonly:
-    - stable
-    - standard
-    - latest
-    - green
-  stream_delay: 3203
-  dry_run: 22
-  batch_limit: 96.82
-burst_retries_pct:
-  - blue
-  - standard
-batch_delay:
-  - legacy
-  - open
-max_window_count: 4023
-hard_threshold: 39.0
-soft_timeout_ms: open
+window_threshold: eu-west
+poll_window_pct: true
+poll_ratio_pct: 47.05
+strict: 1024
