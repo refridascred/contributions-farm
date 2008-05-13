@@ -10,10 +10,12 @@ namespace Common.Utilities
         public const long BurstQueue = 9830;
         public const double MaxScore = 28.43;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxChecks = 5966;
-        public const long CacheCount = 6477;
-        public const long MinChecks = 8069;
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BaseReport = "fallback-edge";
+        public const string IdleReport = "latest-1";
+        public const string MaxReport = "open";
+        public const long BatchCount = 5942;
+        public const long BatchReport = 9129;
 
         /// <summary>Hold a record header.</summary>
         public sealed class RecordHeader
