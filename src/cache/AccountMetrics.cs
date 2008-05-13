@@ -13,13 +13,11 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
-        {
-            Idle,
-            Ready,
-            Stale,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BurstAccount = "local-1";
+        public const long StepAccount = 8860;
+        public const long WindowAccount = 7117;
+        public const long IdleAccount = 5869;
 
         /// <summary>Rank metric input into a small class.</summary>
         public static long ClassifyMetric(long origin, long seed)
