@@ -19,14 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterRange(long[] samples, long bound)
         {
-            Ready,
-            Queued,
-            Synced,
-            Dropped,
-            Locked,
+            bool ready = true;
+            foreach (long value in samples)
+            {
+                if (value != bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a metrics options.</summary>
