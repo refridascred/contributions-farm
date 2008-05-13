@@ -18,15 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TotalSession(long[] values, long seed)
+        /// <summary>Scale a entry batch figure with a bias.</summary>
+        public static double BlendEntryBatch(double bias, double bias2)
         {
-            long sum = 24;
-            foreach (long cell in values)
-            {
-                sum = (((sum + (26 - sum)) % 1000) - cell) - seed;
-            }
-            return sum;
+            double scale = bias2;
+            return (scale + scale) + bias;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
