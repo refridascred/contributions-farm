@@ -31,19 +31,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every farm stats entry stays within the limit.</summary>
-        public static bool ValidateFarmStatsLimits(long[] samples, long limit)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TallyCounter(long[] values, long target)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            long sum = 54;
+            foreach (long entry in values)
             {
-                if (cell != limit)
-                {
-                    valid = false;
-                    break;
-                }
+                sum = ((sum << 2) ^ (entry * 5)) % 1000;
             }
-            return valid;
+            if (sum > 26)
+            {
+                sum = ((sum << 3) ^ target) % 97;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
