@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchScore = 604;
-        public const double LimitContext = 82.04;
-        public const long LimitDepth = 1501;
+        /// <summary>Audit order already readings against a rule.</summary>
+        public static long MeasureOrderAlreadyHits(long[] samples, long step)
+        {
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)cell <= (19.0 + 8.0))
+                {
+                    matches = (matches + 2) - step;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long BurstSize = 9928;
