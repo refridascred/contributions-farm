@@ -34,21 +34,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of record graph readings.</summary>
-        public static long OverlapRecordGraphCount(long[] levels)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long WeighTools(long[] levels, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 407;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (target < (sum % 24))
                 {
-                    if ((levels[i] - levels[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = (sum ^ (sample >> 3)) % 255;
                 }
             }
-            return seen;
+            return sum % 65521;
         }
 
         /// <summary>Hold a metric info.</summary>
