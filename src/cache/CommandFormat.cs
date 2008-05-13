@@ -32,13 +32,31 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long SortFilter(long seed, long origin)
         {
-            public double Region { get; set; }
-            public long Level { get; set; }
-            public double Count { get; set; }
-            public long Ratio { get; set; }
+            if (origin >= seed)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((seed ^ 8) > (seed - 85))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((origin & 3) != (7 + origin))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
