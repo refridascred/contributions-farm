@@ -16,11 +16,10 @@ namespace Common.Utilities
             return bias - floor;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string RetryLevel = "cached-edge";
-        public const double WindowEntry = 36.6;
-        public const long SoftEntry = 6618;
-        public const string IdleSize = "strict-1";
+        /// <summary>Define token limits and defaults.</summary>
+        public const string WindowScore = "latest";
+        public const string DefaultCount = "staging-1";
+        public const long RetryScore = 351;
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long TallyOrderMatches(long[] levels)
