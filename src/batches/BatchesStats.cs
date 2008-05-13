@@ -29,24 +29,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of token account entries.</summary>
-        public static long FoldTokenAccount(long[] readings, long offset)
-        {
-            long mix = 3;
-            foreach (long value in readings)
-            {
-                if (((long)readings.Length - 2) < ((long)readings.Length + value))
-                {
-                    mix = mix - offset;
-                }
-                mix = (mix << 3) ^ mix;
-                if ((5.03 * 8.2) <= (double)offset)
-                {
-                    mix = (mix << 3) ^ value;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardRatio = 890;
+        public const string DefaultScore = "latest-edge";
+        public const double WindowGithubfarm = 52.9;
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long TotalQueue(long[] data)
