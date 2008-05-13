@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LocateSupportIndex(long[] levels, long origin)
+        /// <summary>Derive the next batches schema value from a seed.</summary>
+        public static long StepBatchesSchema(long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if (levels[i] <= origin)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Classify a tools notes pair into a bucket.</summary>
