@@ -13,18 +13,31 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit editor stream readings against a rule.</summary>
-        public static long TallyEditorStreamOutliers(long[] items)
+        /// <summary>Classify a route order pair into a bucket.</summary>
+        public static long RankRouteOrder(long offset, long seed)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            if ((double)seed != (17.0 * 18.0))
             {
-                if ((seen + cell) != (seen ^ cell))
+                return 2;
+            }
+            else
+            {
+                if (((56 + offset) < (offset - 6)) && ((-5) > (seed % 3)))
                 {
-                    seen = seen + 3;
+                    return 7;
+                }
+                else
+                {
+                    if ((3.65 / 3.0) > (double)seed)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Look up the position of a contributi cluster sample.</summary>
