@@ -1,7 +1,10 @@
-id,owner,ratio,score
-1,27.8,631,206
-2,local,860,local
-3,226,48.94,20.47
-4,fallback,448,35.1
-5,771,636,928
-6,418,11.3,staging
+id,active
+1,13.66
+2,380
+3,71.27
+4,eu-west
+5,965
+6,local
+7,850
+8,946
+9,latest
