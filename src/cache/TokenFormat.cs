@@ -14,13 +14,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            Active,
-            Draft,
-            Queued,
             Retry,
+            Dropped,
+            Failed,
+            Closed,
         }
 
         /// <summary>Describe the account kind values.</summary>
