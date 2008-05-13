@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next batches schema value from a seed.</summary>
-        public static long StepBatchesSchema(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string IdleStats = "staging-edge";
+        public const double MaxSpan = 75.48;
+        public const long SoftStats = 6698;
+        public const long BurstStats = 8019;
 
         /// <summary>Classify a tools notes pair into a bucket.</summary>
         public static long SortToolsNotes(long seed, long origin)
