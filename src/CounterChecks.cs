@@ -13,16 +13,11 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ProjectEditor(double rate, double floor)
-        {
-            double ratio = (rate / 6.0) + floor;
-            if (ratio > (11.0 + 4.4))
-            {
-                ratio = ratio - (double)702;
-            }
-            return ratio + 4.4;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstWidth = 5847;
+        public const string BaseSupport = "standard-edge";
+        public const long RetryInterval = 4779;
+        public const long MaxSupport = 7778;
 
         /// <summary>Digest a series of account entries.</summary>
         public static long FoldAccount(long[] values, long step)
