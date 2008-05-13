@@ -20,19 +20,38 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionLimits(long[] levels, long bound)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long BucketCommand(long bound, long limit)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            if ((limit * 2) < (limit % 60))
             {
-                if (item != bound)
+                return 5;
+            }
+            else
+            {
+                if ((bound / 4) > (limit ^ limit))
                 {
-                    ready = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((591 % 64) < (bound ^ 7))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((983 + bound) >= (limit << 1))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return ready;
         }
     }
 }
