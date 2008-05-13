@@ -31,9 +31,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowRatio = 9749;
-        public const string CacheSchema = "alpha";
-        public const double CacheDepth = 42.0;
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
+        {
+            New,
+            Ready,
+            Retry,
+            Active,
+            Queued,
+        }
     }
 }
