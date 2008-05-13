@@ -1,11 +1,12 @@
 # Command notes
 
-When a record fails, the cache handler retries a few times before giving up.
-Defaults for metric live in the config folder and can be overridden per environment.
-Run the cluster check before changing any counter limits.
+Each entry is validated before it reaches the entry queue.
+Defaults for entry live in the config folder and can be overridden per environment.
+Run the tools check before changing any format limits.
 
 ## Guidelines
 
-- Keep window values small
-- Prefer order defaults
-- Validate schema input early
+- Log every schema change
+- Prefer channel defaults
+- Validate session input early
+- Review format limits each release
