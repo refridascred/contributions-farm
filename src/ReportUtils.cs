@@ -51,26 +51,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate payload session samples.</summary>
-        public static long CombinePayloadSession(long[] values, long origin)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LookupSupportIndex(long[] samples, long seed)
         {
-            long acc = 7;
-            foreach (long item in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((acc >> 4) > origin)
+                if ((samples[i] >= seed) && ((samples[i] % 3) == 0))
                 {
-                    acc = acc + (1 / 8);
-                }
-                else
-                {
-                    acc = (acc + (origin + item)) % 101;
+                    return (long)i;
                 }
             }
-            if (acc < 23)
-            {
-                acc = (acc << 3) ^ acc;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Describe the command state values.</summary>
