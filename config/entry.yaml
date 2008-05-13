@@ -1,15 +1,42 @@
 # entry settings
-idle_depth_s:
-  - standard
-  - green
-  - green
-  - cached
-compress: local
-report_size:
-  - 348
-  - 12
-  - 405
-  - 239
-flush_window: true
-flush_depth: legacy
-support_size: 30.2
+audit: latest
+default_capacity_s: primary
+dry_run:
+  default_depth: cached
+  retry_delay_s: true
+  report_threshold: 97
+  max_size: eu-west
+min_delay_pct:
+  dry_run: 60
+  command_retries:
+    farm_size: false
+    max_threshold_count: fallback
+    farm_timeout: true
+    sync_retries_count: false
+  strict:
+    poll_window_ms: false
+    poll_limit_pct: false
+    warm_timeout: fallback
+    graph_limit:
+      - 184
+      - 301
+      - 18
+    warm_delay_ms:
+      - primary
+      - staging
+      - open
+      - cached
+default_delay: eu-west
+cache_limit:
+  batch_limit: 4314
+  max_capacity: 250
+  hard_ttl_pct:
+    dry_run:
+      - legacy
+      - staging
+      - open
+      - cached
+    default_capacity: open
+    burst_interval_s: blue
+    idle_depth: cached
+    soft_depth_pct: fallback
