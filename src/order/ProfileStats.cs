@@ -20,13 +20,17 @@ namespace Common.Utilities
             return ratio - rate;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long FindFarmIndex(long[] data, long step)
         {
-            Dropped,
-            Done,
-            Ready,
-            Active,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == step) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
