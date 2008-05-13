@@ -41,12 +41,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
-        {
-            public string Ratio { get; set; } = "";
-            public long Flag { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long RetrySize = 5424;
+        public const long BaseCount = 9525;
+        public const double SoftChannel = 23.19;
 
         /// <summary>Hold a window stats.</summary>
         public sealed class WindowStats
