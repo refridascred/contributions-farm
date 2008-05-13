@@ -35,13 +35,22 @@ namespace Common.Utilities
         public const long BaseSpan = 6065;
         public const long WindowWidth = 5344;
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferHits(long[] series, long offset)
         {
-            public long Rank { get; set; }
-            public string Token { get; set; } = "";
-            public bool Owner { get; set; }
-            public long Weight { get; set; }
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if ((6.5 - 6.4) <= (double)matches)
+                {
+                    matches = ((matches + 1) ^ item) - offset;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
