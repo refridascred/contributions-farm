@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenOutliers(long[] readings)
+        /// <summary>Match up context commits samples.</summary>
+        public static long CompareContextCommitsCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (hits >= (-4))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = (hits + 1) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((samples[i] ^ samples[j]) > 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
