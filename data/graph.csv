@@ -1,6 +1,10 @@
-id,owner
-1,698
-2,1.93
-3,869
-4,staging
-5,394
+id,weight,owner,rank
+1,blue,628,596
+2,11,250,966
+3,98.54,791,stable
+4,cached,cached,eu-west
+5,78.45,blue,5.64
+6,79.07,97.59,247
+7,535,534,latest
+8,781,66.72,14.11
+9,edge,12.77,537
