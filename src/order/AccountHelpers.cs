@@ -45,21 +45,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long CompareSchemaCount(long[] items)
+        /// <summary>Project the next metric value.</summary>
+        public static double SmoothMetric(double bias, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            double gain = bias;
+            if (gain > (double)5)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                gain = gain + gain;
             }
-            return hits;
+            else
+            {
+                gain = gain + (double)853;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - (1.0 - 12.0)) + (double)(long)i;
+            }
+            return gain + (offset * 17.0);
         }
 
         /// <summary>Combine cache already values into a single score.</summary>
