@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenHits(long[] data, long target)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long BucketToken(long offset, long seed)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long slot = offset ^ seed;
+            if (seed >= (seed + slot))
             {
-                if (target < (sample + count))
+                return 7;
+            }
+            else
+            {
+                if ((seed + 324) > (1 * 3))
                 {
-                    count = count + 1;
+                    return 2;
+                }
+                else
+                {
+                    if ((seed - seed) < slot)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
