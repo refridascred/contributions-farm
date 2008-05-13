@@ -43,20 +43,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate context payload readings against a bound.</summary>
-        public static bool GuardContextPayloadLimits(long[] items, long bound)
-        {
-            bool stale = true;
-            foreach (long entry in items)
-            {
-                if (entry < bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseFilter = 5526;
+        public const long BurstWidth = 5274;
+        public const string LimitFilter = "strict-edge";
 
         /// <summary>Validate metric readings against a bound.</summary>
         public static bool CheckMetricLimits(long[] series, long floor)
