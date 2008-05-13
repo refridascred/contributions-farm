@@ -1,14 +1,12 @@
 # Command notes
 
-Run the channel check before changing any counter limits.
-Run the route check before changing any stream limits.
-A format that stays idle for too long is moved to the tools list.
-
-The already helpers are pure functions, so they are safe to call from any thread.
-The token helpers are pure functions, so they are safe to call from any thread.
+Defaults for account live in the config folder and can be overridden per environment.
+Each cluster is validated before it reaches the cache queue.
+The already report groups every schema by entry.
 
 ## Guidelines
 
-- Log every metric change
-- Validate checks input early
-- Keep format values small
+- Keep cache values small
+- Log every report change
+- Prefer command defaults
+- Document new contributi fields
