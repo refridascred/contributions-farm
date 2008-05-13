@@ -62,10 +62,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string RetryFactor = "primary-1";
-        public const string BurstRatio = "alpha-edge";
-        public const long MaxFarm = 9812;
-        public const long WindowTimeout = 7538;
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long FindEditorIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
