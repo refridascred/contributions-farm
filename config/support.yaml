@@ -1,12 +1,9 @@
 # support settings
-verbose: 67.64
-soft_interval_pct: true
-base_timeout:
-  poll_timeout_count: false
-  queue_depth:
-    - 379
-    - 169
-    - 127
-  batch_size: true
-  idle_depth: 100
-  flush_threshold_count: 32.65
+dry_run:
+  - fallback
+  - latest
+  - fallback
+  - edge
+soft_limit: open
+sync_interval: 13
+githubfarm_ttl: 1443
