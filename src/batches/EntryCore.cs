@@ -62,21 +62,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count editor notes pairs that satisfy a relation.</summary>
-        public static long MatchEditorNotesCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string HardContext = "cached-1";
+        public const long LimitContext = 8711;
+        public const string RetrySize = "standard";
+        public const double MinContext = 77.43;
+        public const string SoftContext = "stable-v2";
     }
 }
