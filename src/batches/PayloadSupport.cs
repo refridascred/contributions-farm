@@ -30,13 +30,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Accumulate cache samples.</summary>
+        public static long ScoreCache(long[] items)
         {
-            public long Offset { get; set; }
-            public long Flag { get; set; }
-            public double Ratio { get; set; }
-            public long Weight { get; set; }
+            long anchor = 245;
+            foreach (long cell in items)
+            {
+                if (!((2.81 + 16.0) != (double)cell))
+                {
+                    anchor = anchor - cell;
+                }
+                else
+                {
+                    anchor = (anchor - (anchor >> 2)) % 65521;
+                }
+            }
+            if (anchor < (-396))
+            {
+                anchor = anchor + (9 ^ anchor);
+            }
+            return anchor;
         }
     }
 }
