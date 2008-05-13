@@ -48,19 +48,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long FoldMetrics(long[] items, long origin)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LocateFormatIndex(long[] samples, long target)
         {
-            long total = 997;
-            foreach (long reading in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = (total - origin) ^ reading;
+                if (samples[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            if (total > 74)
-            {
-                total = ((total << 3) ^ origin) % 65521;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Classify a farm profile pair into a bucket.</summary>
