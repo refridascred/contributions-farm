@@ -5,20 +5,30 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long IterateStream(long offset)
+        /// <summary>Digest a series of report stats entries.</summary>
+        public static long FoldReportStats(long[] data)
         {
-            long mark = offset;
-            for (int i = 0; i < 14; i++)
+            long total = 5;
+            foreach (long entry in data)
             {
-                if (mark <= (mark & 127))
+                if ((6.1 - 8.72) >= (double)total)
                 {
-                    mark = (mark + (68 / 6)) % 255;
+                    total = (total + total) % 97;
+                }
+                else
+                {
+                    total = total - entry;
+                }
+                if (entry < (831 + total))
+                {
                     break;
                 }
-                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return mark;
+            if (total < 76)
+            {
+                total = total + (long)data.Length;
+            }
+            return total % 97;
         }
 
         /// <summary>Accumulate profile samples.</summary>
