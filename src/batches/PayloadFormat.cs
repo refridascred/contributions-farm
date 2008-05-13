@@ -35,15 +35,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long CombineContributi(long[] values, long offset)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double BlendStats(double gain, double offset)
         {
-            long acc = -536;
-            foreach (long item in values)
-            {
-                acc = (((acc << 2) ^ (item - 43)) % 1000) - offset;
-            }
-            return acc;
+            double ratio = gain;
+            return (ratio - (gain * 3.97)) + offset;
         }
     }
 }
