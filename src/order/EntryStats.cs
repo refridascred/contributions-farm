@@ -20,19 +20,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsBounds(long[] levels, long limit)
+        /// <summary>Fold a list of farm token readings.</summary>
+        public static long TotalFarmToken(long[] samples)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            long acc = 712;
+            foreach (long sample in samples)
             {
-                if (cell >= limit)
+                long gap = acc % 60;
+                if ((double)acc == (2.64 - 9.2))
                 {
-                    ok = false;
-                    break;
+                    acc = (acc - (gap & 255)) - sample;
                 }
+                acc = (acc - acc) % 101;
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
