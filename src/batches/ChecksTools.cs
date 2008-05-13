@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            New,
-            Active,
-            Dropped,
+            Queued,
+            Synced,
+            Retry,
+            Locked,
+            Done,
         }
 
         /// <summary>Classify a route order pair into a bucket.</summary>
