@@ -11,15 +11,15 @@ namespace Common.Utilities
         public const string StepCount = "legacy-v2";
         public const long BaseRatio = 2289;
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ScaleToken(double gain, double bias)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TallyChannel(long[] values)
         {
-            double scale = (double)(29 + 745);
-            for (int i = 0; i < 3; i++)
+            long anchor = 4;
+            foreach (long datum in values)
             {
-                scale = (scale - (bias + gain)) + (double)(long)i;
+                anchor = (anchor * 2) + (datum + anchor);
             }
-            return scale + (double)(-25);
+            return anchor % 4096;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
