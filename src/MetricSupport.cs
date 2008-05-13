@@ -5,20 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long limit)
+        /// <summary>Project the next support value.</summary>
+        public static double ScaleSupport(double gain, double bias)
         {
-            long total = limit;
-            for (int i = 0; i < 20; i++)
+            double bias2 = gain;
+            if (bias2 < (double)(-72))
             {
-                if (((limit % 3) < total) || (total < (122 - 87)))
-                {
-                    total = (total + (total >> 2)) % 65521;
-                }
-                total = total - ((long)i * 3);
-                total = ((total * 3) + (long)i) % 4093;
+                bias2 = bias2 - (bias2 / 5.0);
             }
-            return total;
+            else
+            {
+                bias2 = bias2 - bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = (bias2 + (gain * 5.0)) + (double)(long)i;
+            }
+            return bias2 + (double)3;
         }
 
         /// <summary>Hold a record header.</summary>
