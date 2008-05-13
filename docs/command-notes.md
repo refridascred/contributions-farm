@@ -1,14 +1,15 @@
 # Command notes
 
-When a layout fails, the session handler retries a few times before giving up.
-Keep report and entry names short and lowercase.
+A order that stays idle for too long is moved to the batch list.
+Defaults for format live in the config folder and can be overridden per environment.
+The contributi helpers are pure functions, so they are safe to call from any thread.
 
-Each support is validated before it reaches the payload queue.
-The channel report groups every payload by batch.
-Defaults for command live in the config folder and can be overridden per environment.
+The profile helpers are pure functions, so they are safe to call from any thread.
+A report that stays idle for too long is moved to the command list.
+A stats that stays idle for too long is moved to the buffer list.
 
 ## Guidelines
 
 - Prefer route defaults
-- Log every context change
-- Review commits limits each release
+- Log every entry change
+- Validate entry input early
