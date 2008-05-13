@@ -24,14 +24,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            Pending,
             Draft,
-            Queued,
-            New,
-            Synced,
+            Pending,
+            Closed,
+            Idle,
+            Locked,
         }
 
         /// <summary>Hold a window header.</summary>
