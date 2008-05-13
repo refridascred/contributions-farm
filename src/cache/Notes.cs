@@ -61,21 +61,19 @@ namespace Common.Utilities
         public const long CacheChannel = 2913;
         public const string MaxWidth = "local-1";
 
-        /// <summary>Count support graph pairs that satisfy a relation.</summary>
-        public static long OverlapSupportGraphCount(long[] readings)
+        /// <summary>Validate queue githubfarm readings against a bound.</summary>
+        public static bool CheckQueueGithubfarmLimits(long[] series, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long value in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (value >= origin)
                 {
-                    if ((readings[i] + readings[j]) == 4)
-                    {
-                        count = count + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
