@@ -10,15 +10,15 @@ namespace Common.Utilities
         public const long HardLevel = 2026;
         public const string HardAlready = "legacy-v2";
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long OverlapQueueCount(long[] levels)
+        /// <summary>Match up payload samples.</summary>
+        public static long OverlapPayloadCount(long[] samples)
         {
             long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((levels[i] - levels[j]) == 10)
+                    if ((samples[i] ^ samples[j]) > 14)
                     {
                         seen = seen + 1;
                     }
