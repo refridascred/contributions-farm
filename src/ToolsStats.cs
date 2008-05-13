@@ -20,14 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Match up batches samples.</summary>
+        public static long OverlapBatchesCount(long[] items)
         {
-            New,
-            Paused,
-            Active,
-            Closed,
-            Dropped,
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
