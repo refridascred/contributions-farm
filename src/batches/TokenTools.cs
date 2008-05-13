@@ -39,31 +39,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Rank schema report input into a small class.</summary>
-        public static long BucketSchemaReport(long limit, long bound)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ScaleCounter(double weight, double span)
         {
-            if ((limit * 5) >= (bound + limit))
+            double ratio = weight;
+            if (ratio > (span + weight))
             {
-                return 2;
+                ratio = ratio - ratio;
             }
             else
             {
-                if ((1.98 + 5.6) <= (double)bound)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (limit >= (limit / 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                ratio = ratio + (double)384;
             }
+            return ratio + span;
         }
     }
 }
