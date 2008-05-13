@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long FindEntryIndex(long[] data, long target)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long IterateNotes(long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if ((data[i] >= target) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Fold a list of window readings.</summary>
