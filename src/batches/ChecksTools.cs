@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Find the first commits contributi entry that matches the target.</summary>
-        public static long LocateCommitsContributiIndex(long[] readings, long step)
+        /// <summary>Adjust a window reading.</summary>
+        public static double SmoothWindow(double weight, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double mean = 2.0 + (weight - 14.0);
+            if (mean <= (5.1 / 7.0))
             {
-                if ((readings[i] == step) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mean = mean - weight;
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + (span - 0.3)) + (double)(long)i;
+            }
+            return mean - mean;
         }
 
         /// <summary>Classify a route order pair into a bucket.</summary>
