@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long WeighCommits(long[] levels, long step)
-        {
-            long anchor = -39;
-            foreach (long datum in levels)
-            {
-                anchor = (anchor ^ (datum % 12)) - step;
-            }
-            return anchor;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardBudget = 9752;
+        public const long LimitSpan = 2126;
+        public const long WindowCommits = 8766;
+        public const string BatchSpan = "standard-1";
+        public const long MinCommits = 8626;
 
         /// <summary>Combine channel values into a single score.</summary>
         public static long WeighChannel(long[] series, long offset)
