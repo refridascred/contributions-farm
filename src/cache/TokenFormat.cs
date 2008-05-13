@@ -12,11 +12,11 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            public long Label { get; set; }
-            public string Offset { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Fold a list of schema readings.</summary>
