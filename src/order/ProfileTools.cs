@@ -60,13 +60,28 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long IterateChannel(long offset)
         {
-            public bool Stamp { get; set; }
-            public string Region { get; set; } = "";
-            public double Total { get; set; }
-            public double Flag { get; set; }
+            long total = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                if (!((total - total) < (total * 5)))
+                {
+                    total = ((total << 3) ^ ((-8) >> 4)) % 4096;
+                }
+                else
+                {
+                    total = total + (747 + (long)i);
+                }
+                total = ((total * 2) + (total + offset)) % 255;
+                if (((double)total < (double)offset) || (((long)i * 3) >= ((long)i % 5)))
+                {
+                    break;
+                }
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
         }
     }
 }
