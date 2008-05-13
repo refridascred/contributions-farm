@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] items)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesLimits(long[] data, long target)
         {
-            long sum = 650;
-            foreach (long sample in items)
+            bool ok = true;
+            foreach (long value in data)
             {
-                if (((long)items.Length - sample) == (sample + sum))
+                if (value < target)
                 {
-                    sum = (sum << 2) ^ sum;
-                }
-                else
-                {
-                    sum = (sum + ((long)items.Length << 2)) % 1000;
+                    ok = false;
+                    break;
                 }
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Blend two already report measurements.</summary>
