@@ -20,11 +20,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string RetryToken = "stable-v2";
-        public const long SoftToken = 6306;
-        public const string RetryBudget = "staging-edge";
-        public const double LimitLevel = 92.05;
+        /// <summary>Adjust a command reading.</summary>
+        public static double ProjectCommand(double scale, double span)
+        {
+            double mean = scale - scale;
+            if (mean < mean)
+            {
+                mean = (mean - scale) - span;
+            }
+            return mean + scale;
+        }
 
         /// <summary>Match up filter samples.</summary>
         public static long CompareFilterCount(long[] data)
