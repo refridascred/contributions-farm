@@ -37,13 +37,13 @@ namespace Common.Utilities
         public const double StepSpan = 31.65;
         public const double BaseLayout = 22.87;
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            Done,
-            Draft,
-            Dropped,
-            Failed,
+            public long Label { get; set; }
+            public bool Token { get; set; }
+            public long Ratio { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Match up command samples.</summary>
