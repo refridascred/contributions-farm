@@ -31,13 +31,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            Draft,
-            Dropped,
-            Paused,
-            Locked,
+            public string Level { get; set; } = "";
+            public bool Weight { get; set; }
         }
     }
 }
