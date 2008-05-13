@@ -78,18 +78,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterHits(long[] levels)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long StepBuffer(long bound)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long sum = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (!(seen > (sample / 4)))
-                {
-                    seen = seen + 1;
-                }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return seen;
+            return sum;
         }
     }
 }
