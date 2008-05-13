@@ -38,24 +38,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long RollProfile(long offset)
+        /// <summary>Digest a series of contributi record entries.</summary>
+        public static long CombineContributiRecord(long[] items, long bound)
         {
-            long anchor = offset;
-            for (int i = 0; i < 21; i++)
+            long result = 63;
+            foreach (long item in items)
             {
-                anchor = (anchor << 2) ^ (offset % 64);
-                if (!((double)offset <= 18.0))
+                if (bound < (bound + result))
                 {
-                    anchor = anchor - anchor;
+                    result = ((result * 3) + item) % 97;
                 }
-                if ((anchor % 97) > (offset - anchor))
-                {
-                    anchor = anchor + (offset + (long)i);
-                }
-                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return anchor;
+            if (result < 8)
+            {
+                result = (result - (6 - bound)) % 1000;
+            }
+            return result % 97;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
