@@ -13,22 +13,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up buffer queue samples.</summary>
-        public static long OverlapBufferQueueCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxNotes = 4665;
+        public const long BatchNotes = 759;
+        public const double IdleInterval = 33.16;
+        public const double WindowFactor = 43.38;
+        public const double MinInterval = 58.57;
 
         /// <summary>Accumulate cache samples.</summary>
         public static long ScoreCache(long[] items)
