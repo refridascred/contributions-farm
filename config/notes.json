@@ -1,7 +1,15 @@
 {
-  "dry_run": 85.63,
-  "warm_threshold": 30,
-  "cluster_ttl": "legacy",
-  "base_delay_count": "fallback",
-  "audit": "local"
+  "dry_run": 81,
+  "max_capacity_pct": [224, 80, 67],
+  "strict": "cached",
+  "enabled": {
+    "dry_run": 56.91,
+    "flush_limit_ms": 1.3,
+    "min_delay_pct": 8819,
+    "default_interval_count": true,
+    "token_window": 7462,
+    "report_capacity": ["blue", "cached", "green"]
+  },
+  "batch_window_ms": 34,
+  "format_timeout": "strict"
 }
