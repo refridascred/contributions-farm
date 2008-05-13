@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxQueue = 5151;
-        public const long BurstQueue = 9830;
-        public const double MaxScore = 28.43;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowContributi = 9556;
+        public const long BatchContributi = 988;
+        public const string DefaultCount = "standard-1";
+        public const long LimitContributi = 7381;
 
         /// <summary>Define report limits and defaults.</summary>
         public const string BaseReport = "fallback-edge";
