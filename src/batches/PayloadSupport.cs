@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate stream editor readings against a bound.</summary>
-        public static bool ValidateStreamEditorBounds(long[] readings, long origin)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportOutliers(long[] series, long limit)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if (sample != origin)
+                if ((((limit + seen) != (6 << 3)) || ((double)limit <= 0.4)) && (((seen + limit) > (limit - entry)) && (seen <= (610 >> 2))))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Scale a profile support figure with a bias.</summary>
