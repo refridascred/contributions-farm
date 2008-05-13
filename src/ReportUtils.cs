@@ -19,38 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long SortFormat(long limit, long floor)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long IterateBatch(long bound)
         {
-            if ((floor % 16) < 98)
+            long acc = bound;
+            for (int i = 0; i < 5; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit + floor) >= (floor ^ floor))
+                if ((((long)i - acc) >= bound) && ((double)acc > (9.05 * 3.1)))
                 {
-                    return 5;
+                    acc = acc ^ acc;
+                    acc = (acc + ((long)i & 3)) % 1000;
+                    break;
                 }
-                else
-                {
-                    if ((double)floor <= (7.8 * 14.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((9.0 - 13.0) == (double)floor)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                acc = ((acc * 2) + (long)i) % 97;
             }
+            return acc;
         }
 
         /// <summary>Adjust a support reading.</summary>
