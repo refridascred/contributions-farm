@@ -43,13 +43,11 @@ namespace Common.Utilities
         public const long DefaultWidth = 2454;
         public const string WindowSupport = "latest-v2";
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
-        {
-            New,
-            Idle,
-            Dropped,
-            Draft,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long RetryLevel = 5225;
+        public const long DefaultDepth = 2014;
+        public const long MaxLevel = 300;
+        public const long SoftInterval = 7067;
+        public const long StepTimeout = 2090;
     }
 }
