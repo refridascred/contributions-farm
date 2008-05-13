@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsRange(long[] data, long floor)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double SmoothChannel(double rate, double bias)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            double bias2 = (double)(76 >> 1);
+            if (bias2 >= bias)
             {
-                if (datum >= floor)
-                {
-                    stale = false;
-                    break;
-                }
+                bias2 = (bias2 + (bias * 15.0)) - rate;
             }
-            return stale;
+            return bias2 + (double)583;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
