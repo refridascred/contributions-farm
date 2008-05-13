@@ -39,23 +39,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long FoldSchema(long[] items)
+        /// <summary>Check that every order filter entry stays within the limit.</summary>
+        public static bool ValidateOrderFilterRange(long[] samples, long bound)
         {
-            long carry = 1;
-            foreach (long cell in items)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                carry = carry - (cell % 24);
-                if ((double)cell > 3.0)
+                if (entry <= bound)
                 {
-                    carry = (carry - (cell - 388)) % 101;
+                    ok = false;
+                    break;
                 }
             }
-            if (carry < 669)
-            {
-                carry = (carry << 2) ^ (887 >> 4);
-            }
-            return carry % 4096;
+            return ok;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
