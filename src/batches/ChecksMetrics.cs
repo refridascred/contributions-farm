@@ -34,14 +34,11 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            New,
-            Locked,
-            Ready,
-            Done,
-            Failed,
+            public long Mode { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Measure how many entry profile samples are out of range.</summary>
