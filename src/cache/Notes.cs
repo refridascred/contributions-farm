@@ -14,13 +14,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterLimits(long[] data, long offset)
         {
-            Closed,
-            Paused,
-            New,
-            Pending,
+            bool found = true;
+            foreach (long datum in data)
+            {
+                if (datum != offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
