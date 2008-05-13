@@ -10,11 +10,19 @@ namespace Common.Utilities
         public const double BurstEditor = 87.39;
         public const long LimitDepth = 9756;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string SoftWidth = "latest-v2";
-        public const long IdleSpan = 2460;
-        public const long CacheFilter = 828;
-        public const long IdleFactor = 4477;
+        /// <summary>Audit commits metric readings against a rule.</summary>
+        public static long AuditCommitsMetricMatches(long[] samples)
+        {
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((2.3 + 6.6) >= (double)cell)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the route level values.</summary>
         public enum RouteLevel
