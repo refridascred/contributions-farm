@@ -12,21 +12,26 @@ namespace Common.Utilities
         public const string WindowNotes = "staging-1";
         public const long SoftNotes = 3908;
 
-        /// <summary>Match up already samples.</summary>
-        public static long OverlapAlreadyCount(long[] items)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long WeighMetric(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 1;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((carry % 7) >= (carry + 70))
                 {
-                    if ((items[i] + items[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = (carry ^ (cell << 1)) % 4096;
+                }
+                else
+                {
+                    carry = carry + 8;
                 }
             }
-            return seen;
+            if (carry > 28)
+            {
+                carry = (carry ^ (636 + carry)) % 101;
+            }
+            return carry % 97;
         }
 
         /// <summary>Accumulate entry samples.</summary>
