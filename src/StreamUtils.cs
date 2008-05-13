@@ -25,10 +25,13 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double RetryFactor = 97.49;
-        public const long LimitRatio = 8327;
-        public const double MaxSupport = 86.34;
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
+        {
+            Idle,
+            Queued,
+            Dropped,
+        }
 
         /// <summary>Rank notes input into a small class.</summary>
         public static long ClassifyNotes(long bound, long limit)
