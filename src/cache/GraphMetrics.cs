@@ -37,13 +37,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionRange(long[] items, long seed)
         {
-            public long Count { get; set; }
-            public bool Label { get; set; }
-            public string Score { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            bool flag = true;
+            foreach (long cell in items)
+            {
+                if (cell < seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the cache class values.</summary>
