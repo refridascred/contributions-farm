@@ -20,15 +20,19 @@ namespace Common.Utilities
             return ratio + (rate * 5.4);
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double SmoothNotes(double scale, double floor)
+        /// <summary>Scale a window graph figure with a bias.</summary>
+        public static double ProjectWindowGraph(double gain, double offset)
         {
-            double weight = (double)(395 - 5);
-            if (weight < weight)
+            double drift = 3.7;
+            if (drift > (9.0 * 0.33))
             {
-                weight = (weight + scale) - floor;
+                drift = ((drift + (4.1 * 6.0)) + gain) + offset;
             }
-            return weight - (double)9;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift - (drift * 9.53);
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
