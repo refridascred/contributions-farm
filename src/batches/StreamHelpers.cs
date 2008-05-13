@@ -43,20 +43,10 @@ namespace Common.Utilities
             return bias - (bias / 8.0);
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileBounds(long[] values, long step)
-        {
-            bool ok = true;
-            foreach (long sample in values)
-            {
-                if (sample >= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double BatchSpan = 53.48;
+        public const string WindowSession = "standard-v2";
+        public const double RetryFactor = 75.09;
 
         /// <summary>Scale a farm figure with a bias.</summary>
         public static double ScaleFarm(double bias, double bias2)
