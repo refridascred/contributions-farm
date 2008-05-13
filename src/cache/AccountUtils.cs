@@ -10,21 +10,12 @@ namespace Common.Utilities
         public const double BatchCounter = 18.94;
         public const long StepWidth = 4832;
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long OverlapRecordCount(long[] levels)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Token { get; set; }
+            public bool Limit { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a layout info.</summary>
