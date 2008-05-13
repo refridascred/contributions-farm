@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowOutliers(long[] values)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long DeriveRoute(long offset)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long total = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if ((17.0 * 0.25) < (double)sample)
-                {
-                    seen = seen + 3;
-                }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Hold a channel record.</summary>
