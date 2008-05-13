@@ -1,4 +1,13 @@
 # support settings
-base_retries_ms: false
-enabled: latest
-checks_ttl: stable
+poll_delay_ms: false
+persist: 70.05
+notes_threshold: 56.47
+default_retries_count: green
+idle_size:
+  buffer_depth:
+    - local
+    - stable
+    - strict
+  burst_limit_pct: true
+  soft_window_pct: false
+record_interval: 500
