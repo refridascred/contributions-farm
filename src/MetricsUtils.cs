@@ -48,21 +48,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long OverlapCommandCount(long[] values)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long WeighSupport(long[] items, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 22;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((bound & 15) >= (entry >> 4))
                 {
-                    if ((values[i] + values[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = mix ^ mix;
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (0 - mix)) % 65521;
                 }
             }
-            return seen;
+            if (mix < (-4))
+            {
+                mix = (mix - (bound & 7)) % 255;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
