@@ -49,22 +49,13 @@ namespace Common.Utilities
             return ratio2 + (double)8;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] levels)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            long score = 53;
-            foreach (long value in levels)
-            {
-                if ((7.1 - 3.0) != (double)score)
-                {
-                    score = (score ^ value) % 65521;
-                }
-            }
-            if (score > 33)
-            {
-                score = ((score * 4) + score) % 101;
-            }
-            return score % 97;
+            public double Limit { get; set; }
+            public bool Token { get; set; }
+            public double Label { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
