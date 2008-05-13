@@ -19,40 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long GradeCommand(long origin, long step)
-        {
-            long next = origin ^ step;
-            if ((origin - 708) == (19 - origin))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step >> 4) <= step)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)step == (8.11 - 8.0)) || (origin < (next % 24)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((72 >> 3) != (origin / 5))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxChecks = 5966;
+        public const long CacheCount = 6477;
+        public const long MinChecks = 8069;
 
         /// <summary>Describe the commits level values.</summary>
         public enum CommitsLevel
