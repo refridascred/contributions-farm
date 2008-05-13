@@ -24,14 +24,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Adjust a graph reading.</summary>
+        public static double BlendGraph(double scale, double span)
         {
-            Pending,
-            New,
-            Failed,
-            Paused,
-            Done,
+            double bias = scale;
+            if (bias <= (double)62)
+            {
+                bias = (bias + scale) - span;
+            }
+            return bias - (bias / 8.0);
         }
 
         /// <summary>Scale a route batches figure with a bias.</summary>
