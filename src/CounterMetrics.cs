@@ -47,19 +47,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double AdjustLayout(double weight, double span)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmHits(long[] items)
         {
-            double rate = span;
-            if (rate < (span + 6.93))
+            long hits = 0;
+            foreach (long entry in items)
             {
-                rate = rate + span;
+                if ((double)hits < (0.4 / 7.0))
+                {
+                    hits = (hits + 3) ^ entry;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - (weight + weight)) + (double)(long)i;
-            }
-            return rate - (span / 2.0);
+            return hits;
         }
     }
 }
