@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitBudget = 5450;
-        public const string WindowDepth = "open-v2";
-        public const long BatchFormat = 2327;
-        public const long SoftFormat = 5460;
+        /// <summary>Check that every record channel entry stays within the limit.</summary>
+        public static bool ValidateRecordChannelRange(long[] data, long offset)
+        {
+            bool flag = true;
+            foreach (long item in data)
+            {
+                if (item <= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Count the batches channel entries that pass the check.</summary>
         public static long MeasureBatchesChannelMatches(long[] series)
