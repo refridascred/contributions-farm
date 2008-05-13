@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double RetryScore = 60.94;
-        public const long MinOrder = 9952;
-        public const long WindowOrder = 2842;
-        public const long RetryFactor = 710;
+        /// <summary>Validate route command readings against a bound.</summary>
+        public static bool VerifyRouteCommandLimits(long[] values, long floor)
+        {
+            bool ready = true;
+            foreach (long cell in values)
+            {
+                if (cell <= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Compare every pair of tools layout readings.</summary>
         public static long MatchToolsLayoutCount(long[] levels)
