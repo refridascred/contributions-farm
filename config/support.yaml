@@ -1,7 +1,16 @@
 # support settings
-min_depth_count: fallback
-poll_interval_pct: true
-retry_ratio: 6712
-burst_retries_s: local
-editor_threshold: eu-west
-batch_limit: 75.71
+soft_timeout:
+  strict: 25.06
+  verbose: staging
+  idle_retries: cached
+  hard_capacity:
+    - strict
+    - edge
+    - edge
+  batch_threshold_s: fallback
+  soft_limit: false
+sync_depth:
+  - 94
+  - 443
+  - 276
+readonly: local
