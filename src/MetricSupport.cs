@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string SoftAccount = "alpha-edge";
-        public const double RetryScore = 98.55;
-        public const long MaxWidth = 7984;
-        public const long StepInterval = 8039;
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long MatchGithubfarmCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate record readings against a bound.</summary>
         public static bool ValidateRecordLimits(long[] levels, long limit)
