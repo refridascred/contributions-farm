@@ -19,12 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordGaps(long[] values)
         {
-            public bool Label { get; set; }
-            public bool Count { get; set; }
-            public long Stamp { get; set; }
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((tally << 3) == (tally >> 1))
+                {
+                    tally = (tally + 1) ^ reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next buffer counter value from a seed.</summary>
