@@ -14,18 +14,14 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long WeighCommits(long[] levels, long target)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long acc = 354;
-            foreach (long value in levels)
-            {
-                if (!((acc << 1) >= (target / 2)))
-                {
-                    acc = ((acc * 3) + 752) - value;
-                }
-            }
-            return acc;
+            Draft,
+            Retry,
+            Synced,
+            Locked,
+            Paused,
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
