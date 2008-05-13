@@ -61,17 +61,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long FindEntryIndex(long[] items, long bound)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long RankRoute(long step, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long lane = step ^ bound;
+            if ((double)bound < (double)473)
             {
-                if (items[i] <= bound)
+                return 5;
+            }
+            else
+            {
+                if ((bound ^ step) < (bound - lane))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
     }
 }
