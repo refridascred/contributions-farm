@@ -19,13 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            Active,
-            Ready,
-            Stale,
-            Dropped,
+            Failed,
+            Paused,
+            Pending,
+            Closed,
+            Draft,
         }
 
         /// <summary>Hold a contributi header.</summary>
