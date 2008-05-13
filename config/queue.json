@@ -1,7 +1,19 @@
 {
-  "idle_window": 9816,
-  "poll_interval_pct": 51.86,
-  "warm_ttl": "staging",
-  "warm_timeout_pct": 35.18,
-  "readonly": "latest"
+  "retry_delay_ms": true,
+  "batch_timeout_count": 30,
+  "base_interval_pct": "primary",
+  "flush_limit_pct": {
+    "base_window_s": 10.04,
+    "verbose": "local",
+    "poll_ratio_s": "legacy",
+    "support_window": 5968,
+    "min_threshold": ["latest", "fallback", "primary", "local"]
+  },
+  "audit": [222, 408, 106, 264],
+  "max_limit": {
+    "readonly": 128,
+    "support_size": [262, 272, 483],
+    "editor_interval": "eu-west",
+    "batch_size_s": [12, 12, 43, 134]
+  }
 }
