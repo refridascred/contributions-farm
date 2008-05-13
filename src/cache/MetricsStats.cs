@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
-        {
-            public double Stamp { get; set; }
-            public long Limit { get; set; }
-            public long Label { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetryTimeout = 1358;
+        public const long LimitWidth = 3469;
+        public const long SoftAccount = 7490;
+        public const string DefaultBudget = "local-edge";
 
         /// <summary>Iterate the profile series from a seed.</summary>
         public static long SeriesProfile(long floor)
