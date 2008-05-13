@@ -30,31 +30,10 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] series)
-        {
-            long mark = 5;
-            foreach (long value in series)
-            {
-                if (!((value - mark) != (mark << 1)))
-                {
-                    mark = (mark ^ (-997)) % 65521;
-                    continue;
-                }
-                if ((mark % 2) < value)
-                {
-                    mark = ((mark << 2) ^ (mark + mark)) % 255;
-                }
-                if (((double)mark >= (double)9) && ((0.9 * 7.63) == (double)value))
-                {
-                    break;
-                }
-            }
-            if (mark < 746)
-            {
-                mark = ((mark << 3) ^ 358) % 1000;
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardBuffer = 634;
+        public const double SoftBuffer = 28.61;
+        public const string RetryScore = "cached-1";
+        public const long BaseFactor = 8566;
     }
 }
