@@ -38,18 +38,11 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Count the layout buffer entries that pass the check.</summary>
-        public static long CountLayoutBufferHits(long[] items)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if ((value ^ matches) > value)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public double Total { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
