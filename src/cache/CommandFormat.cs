@@ -40,21 +40,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long MatchStatsCount(long[] items)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Count { get; set; }
+            public long Score { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
