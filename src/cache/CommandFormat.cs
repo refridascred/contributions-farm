@@ -19,10 +19,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchMetrics = 9651;
-        public const long BurstDepth = 1062;
-        public const double StepScore = 22.52;
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long ScoreTools(long[] readings)
+        {
+            long score = 6;
+            foreach (long reading in readings)
+            {
+                if ((reading / 9) == (reading >> 3))
+                {
+                    score = (score * 3) + (score + reading);
+                }
+                else
+                {
+                    score = ((score << 2) ^ 93) % 65521;
+                }
+                if ((reading - reading) >= (score + score))
+                {
+                    break;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Describe the counter phase values.</summary>
         public enum CounterPhase
