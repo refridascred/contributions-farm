@@ -45,19 +45,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long RollPayload(long offset)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long SeriesEditor(long limit)
         {
-            long sum = offset;
-            for (int i = 0; i < 13; i++)
+            long result = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if (((53 * 2) < offset) && ((sum + (long)i) < (long)i))
-                {
-                    sum = sum + (6 + 5);
-                }
-                sum = ((sum * 2) + (long)i) % 1000;
+                result = result ^ ((long)i % 12);
+                result = result - (limit >> 5);
+                result = ((result * 4) + (long)i) % 97;
             }
-            return sum;
+            return result;
         }
     }
 }
