@@ -41,22 +41,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long CompareContributiCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftPayload = 14;
+        public const long DefaultRatio = 6585;
+        public const string BatchPayload = "fallback-1";
+        public const long RetryPayload = 708;
+        public const long LimitFactor = 887;
 
         /// <summary>Describe the graph level values.</summary>
         public enum GraphLevel
