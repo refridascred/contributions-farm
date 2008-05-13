@@ -1,9 +1,20 @@
 {
-  "batch_timeout": {
-    "sync_size_count": "primary",
-    "cache_threshold_s": [440, 402, 301, 443],
-    "retry_threshold_ms": 7102
+  "persist": ["eu-west", "eu-west"],
+  "session_timeout": "local",
+  "min_capacity_pct": {
+    "cache_interval": "local",
+    "max_retries_ms": "legacy",
+    "commits_interval": "open",
+    "dry_run": 1689,
+    "poll_depth_pct": {
+      "flush_ratio": "latest",
+      "counter_size": "cached",
+      "idle_size_s": false,
+      "verbose": "primary",
+      "command_interval": 250
+    },
+    "payload_threshold": "eu-west"
   },
-  "cluster_capacity": 60,
-  "poll_capacity_count": "cached"
+  "batch_window": "cached",
+  "default_capacity_ms": 98.46
 }
