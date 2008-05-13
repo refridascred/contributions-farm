@@ -28,13 +28,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
-        {
-            public bool Level { get; set; }
-            public long Owner { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string WindowLevel = "stable-v2";
+        public const long HardCommits = 8137;
+        public const long IdleCommits = 2014;
+        public const long CacheBudget = 3758;
 
         /// <summary>Adjust a stats reading.</summary>
         public static double BlendStats(double gain, double offset)
