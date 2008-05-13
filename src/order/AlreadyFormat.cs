@@ -27,22 +27,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Digest a series of already checks entries.</summary>
-        public static long TallyAlreadyChecks(long[] data)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long anchor = 73;
-            foreach (long reading in data)
-            {
-                if (anchor > (414 % 10))
-                {
-                    anchor = (anchor - (reading - anchor)) % 97;
-                }
-                else
-                {
-                    anchor = anchor + (reading ^ 23);
-                }
-            }
-            return anchor;
+            Idle,
+            Retry,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
