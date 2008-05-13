@@ -84,15 +84,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long StepRoute(long limit)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long mark = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 1000;
-            }
-            return mark;
+            public bool Label { get; set; }
+            public long Score { get; set; }
         }
     }
 }
