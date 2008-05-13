@@ -51,13 +51,22 @@ namespace Common.Utilities
         public const long WindowSize = 7763;
         public const long BatchDepth = 5385;
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterGaps(long[] series)
         {
-            Stale,
-            Locked,
-            Paused,
-            Closed,
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if (reading > (count + reading))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
