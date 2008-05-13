@@ -34,18 +34,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphHits(long[] samples, long limit)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if ((8.0 + 8.7) == (double)tally)
-                {
-                    tally = ((tally + 1) ^ cell) + limit;
-                }
-            }
-            return tally;
+            Queued,
+            Paused,
+            New,
         }
     }
 }
