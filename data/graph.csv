@@ -1,6 +1,7 @@
-id,label,rank
-1,22.78,60.38
-2,blue,18.21
-3,16.1,stable
-4,195,787
-5,73.03,green
+id,state,label,ratio
+1,eu-west,130,599
+2,15,954,208
+3,60.45,fallback,102
+4,211,95.58,531
+5,25.51,local,open
+6,98.17,24,203
