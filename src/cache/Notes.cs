@@ -40,12 +40,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BaseWidth = 5895;
-        public const string WindowBudget = "staging";
-        public const long MinCount = 3882;
-        public const long LimitPayload = 1221;
-        public const double SoftPayload = 9.01;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long StepWidth = 3841;
+        public const double DefaultDepth = 41.0;
+        public const double SoftInterval = 68.91;
+        public const long CacheChannel = 2913;
+        public const string MaxWidth = "local-1";
 
         /// <summary>Count support graph pairs that satisfy a relation.</summary>
         public static long OverlapSupportGraphCount(long[] readings)
