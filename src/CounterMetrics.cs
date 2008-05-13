@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double BlendCluster(double scale, double floor)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long CompareNotesCount(long[] data)
         {
-            double weight = floor * 8.1;
-            if (weight < weight)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                weight = (weight - floor) - scale;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - 11.0) + (double)(long)i;
-            }
-            return weight - (double)5;
+            return seen;
         }
 
         /// <summary>Accumulate session samples.</summary>
