@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterHits(long[] items)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LocateRouteIndex(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long value in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((16.0 / 4.0) == (double)matches)
+                if (data[i] < step)
                 {
-                    matches = (matches + 2) ^ value;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Grade a payload support value against two limits.</summary>
