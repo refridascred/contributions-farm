@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Project the next support value.</summary>
-        public static double ScaleSupport(double gain, double bias)
+        /// <summary>Look up the position of a queue filter sample.</summary>
+        public static long LookupQueueFilterIndex(long[] series, long bound)
         {
-            double bias2 = gain;
-            if (bias2 < (double)(-72))
+            for (int i = 0; i < series.Length; i++)
             {
-                bias2 = bias2 - (bias2 / 5.0);
+                if (series[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias2 = bias2 - bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = (bias2 + (gain * 5.0)) + (double)(long)i;
-            }
-            return bias2 + (double)3;
+            return -1;
         }
 
         /// <summary>Hold a cache header.</summary>
