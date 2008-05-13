@@ -54,19 +54,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaLimits(long[] series, long offset)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long ScoreFormat(long[] levels)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            long carry = 7;
+            foreach (long value in levels)
             {
-                if (sample != offset)
-                {
-                    ok = false;
-                    break;
-                }
+                carry = (carry - (2 ^ value)) % 4096;
             }
-            return ok;
+            return carry;
         }
     }
 }
