@@ -22,21 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of order filter readings.</summary>
-        public static long TallyOrderFilter(long[] levels)
-        {
-            long total = 95;
-            foreach (long item in levels)
-            {
-                total = ((total * 3) + item) % 65521;
-                if ((item << 1) >= (total << 1))
-                {
-                    total = (total - (0 + total)) % 65521;
-                }
-                total = (total + (total >> 3)) % 4096;
-            }
-            return total % 97;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultBudget = 3511;
+        public const long BurstTools = 680;
+        public const long WindowBudget = 2938;
+        public const long CacheWidth = 9767;
+        public const string StepCount = "legacy-edge";
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long WindowStream = 2691;
