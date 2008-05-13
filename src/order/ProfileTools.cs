@@ -47,18 +47,26 @@ namespace Common.Utilities
             return gain - (gain * 14.0);
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderMatches(long[] levels)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long CombineGithubfarm(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long carry = 7;
+            foreach (long entry in samples)
             {
-                if ((73 >> 5) < (reading + 461))
+                for (int i = 0; i < 12; i++)
                 {
-                    matches = matches + 2;
+                    carry = ((carry - (carry / 7)) % 97) - (long)i;
+                }
+                if (((carry - (-91)) < (entry + carry)) || ((0.51 + 7.0) < (double)entry))
+                {
+                    carry = (carry + (carry + limit)) % 1000;
                 }
             }
-            return matches;
+            if (carry < 7)
+            {
+                carry = carry + (3 & 3);
+            }
+            return carry % 97;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
