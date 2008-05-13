@@ -40,17 +40,18 @@ namespace Common.Utilities
         public const long DefaultStats = 8279;
         public const double MaxStats = 30.73;
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long FindGithubfarmIndex(long[] values, long floor)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueOutliers(long[] samples, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if (values[i] <= floor)
+                if (((double)reading == (double)limit) && ((reading + (long)samples.Length) == (573 & 3)))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
