@@ -39,17 +39,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Look up the position of a batch profile sample.</summary>
-        public static long SeekBatchProfileIndex(long[] values, long offset)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > offset) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Failed,
+            Done,
+            Active,
         }
     }
 }
