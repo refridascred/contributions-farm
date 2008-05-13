@@ -14,11 +14,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferLimits(long[] levels, long target)
         {
-            public long Total { get; set; }
-            public bool Offset { get; set; }
+            bool ready = true;
+            foreach (long value in levels)
+            {
+                if (value > target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Accumulate editor samples.</summary>
