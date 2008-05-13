@@ -31,18 +31,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileHits(long[] values)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterLimits(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                if ((seen / 9) < seen)
+                if (entry <= origin)
                 {
-                    seen = (seen + 2) + sample;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Count editor batch pairs that satisfy a relation.</summary>
