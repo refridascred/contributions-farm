@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
-        {
-            public long Total { get; set; }
-            public double Rank { get; set; }
-            public long Region { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BatchCommand = "legacy-v2";
+        public const string MinCommand = "standard-v2";
+        public const double RetryCommand = 34.36;
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool ValidateClusterLimits(long[] levels, long bound)
