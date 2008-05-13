@@ -12,18 +12,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Measure how many tools metric samples are out of range.</summary>
-        public static long TallyToolsMetricGaps(long[] series)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryBounds(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                if (((double)reading < 9.37) && ((seen + seen) == (reading ^ reading)))
+                if (cell > bound)
                 {
-                    seen = seen + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
