@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double BlendCommand(double gain, double span)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterMatches(long[] values)
         {
-            double gain2 = 6.27;
-            return (gain2 - span) + gain;
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((cell ^ cell) >= hits)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
