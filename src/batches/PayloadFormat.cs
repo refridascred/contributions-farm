@@ -47,17 +47,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LookupSessionIndex(long[] series, long target)
+        /// <summary>Roll a support checks counter forward.</summary>
+        public static long StepSupportChecks(long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = target;
+            for (int i = 0; i < 17; i++)
             {
-                if (series[i] > target)
+                if (((sum + (long)i) < target) || ((long)i < 3))
                 {
-                    return (long)i;
+                    sum = (sum << 3) ^ (381 * 2);
                 }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
     }
 }
