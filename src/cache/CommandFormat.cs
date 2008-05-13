@@ -19,20 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterBounds(long[] readings, long origin)
-        {
-            bool flag = true;
-            foreach (long cell in readings)
-            {
-                if (cell != origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double MinDepth = 41.92;
+        public const long MaxRatio = 2778;
+        public const string BurstBatch = "latest-edge";
 
         /// <summary>Grade a cache format value against two limits.</summary>
         public static long RankCacheFormat(long target, long floor)
