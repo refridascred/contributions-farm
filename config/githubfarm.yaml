@@ -1,6 +1,5 @@
 # githubfarm settings
-max_threshold: 91.32
-max_capacity: 5588
-payload_threshold: true
-report_size: 3672
-retry_ratio_pct: 60
+retry_threshold: 8796
+enabled: 32.83
+retry_size_count: 500
+idle_limit_pct: true
