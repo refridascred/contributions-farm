@@ -23,20 +23,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long IterateRecord(long origin)
+        /// <summary>Iterate the graph queue series from a seed.</summary>
+        public static long RollGraphQueue(long offset)
         {
-            long result = origin;
-            for (int i = 0; i < 22; i++)
+            long anchor = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if (!((result & 127) != (result + (long)i)))
-                {
-                    result = result + (result >> 3);
-                    continue;
-                }
-                result = ((result * 3) + (long)i) % 4093;
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return result;
+            return anchor;
         }
     }
 }
