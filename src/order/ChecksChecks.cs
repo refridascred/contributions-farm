@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TallyFilter(long[] samples, long offset)
+        /// <summary>Grade a format context value against two limits.</summary>
+        public static long GradeFormatContext(long step, long offset)
         {
-            long mix = 673;
-            foreach (long value in samples)
+            long span = step - offset;
+            if ((offset + offset) >= offset)
             {
-                if ((mix / 6) >= (offset >> 1))
+                return 7;
+            }
+            else
+            {
+                if (((step * 5) <= (span % 60)) || ((span * 3) > offset))
                 {
-                    mix = (((mix << 3) ^ (14 >> 1)) % 65521) ^ value;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)step <= (double)offset)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (mix > 777)
-            {
-                mix = mix - (offset % 12);
-            }
-            return mix;
         }
 
         /// <summary>Describe the record kind values.</summary>
