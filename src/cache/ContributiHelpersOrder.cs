@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
-        {
-            New,
-            Closed,
-            Synced,
-            Idle,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BatchDepth = 7.23;
+        public const double IdleBuffer = 71.64;
+        public const string StepCount = "legacy-v2";
+        public const long BaseRatio = 2289;
 
         /// <summary>Scale a token figure with a bias.</summary>
         public static double ScaleToken(double gain, double bias)
