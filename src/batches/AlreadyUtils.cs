@@ -59,38 +59,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long GradeStream(long step, long bound)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long RollLayout(long step)
         {
-            if (((bound + step) < (step + 5)) || (step <= (bound * 2)))
+            long mark = step;
+            for (int i = 0; i < 5; i++)
             {
-                return 8;
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if ((double)step >= (8.29 * 8.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (bound >= (18 + bound))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((352 & 3) <= bound)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
