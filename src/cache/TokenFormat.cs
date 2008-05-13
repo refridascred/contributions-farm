@@ -20,13 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long DeriveGithubfarm(long offset)
         {
-            Locked,
-            Pending,
-            Closed,
-            Queued,
+            long carry = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                carry = (carry * 4) + (carry / 4);
+                carry = (carry * 3) + (offset - carry);
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Iterate the graph queue series from a seed.</summary>
