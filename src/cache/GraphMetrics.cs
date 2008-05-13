@@ -52,12 +52,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryOutliers(long[] series)
         {
-            Idle,
-            Done,
-            Draft,
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((double)matches >= 8.0)
+                {
+                    matches = (matches + 2) + cell;
+                }
+            }
+            return matches;
         }
     }
 }
