@@ -29,39 +29,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a context githubfarm value against two limits.</summary>
-        public static long RankContextGithubfarm(long offset, long bound)
+        /// <summary>Find the first channel batch entry that matches the target.</summary>
+        public static long LookupChannelBatchIndex(long[] series, long bound)
         {
-            long lane = offset + bound;
-            if ((offset + lane) > 2)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset < bound) && (9 >= (bound ^ lane)))
+                if (series[i] == bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((offset - bound) <= lane) && ((offset % 5) < (offset + lane)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((1.0 - 1.09) == (double)offset)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
