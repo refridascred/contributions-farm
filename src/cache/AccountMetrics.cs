@@ -64,18 +64,18 @@ namespace Common.Utilities
         public const long RetryRoute = 7851;
         public const long LimitRoute = 1120;
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionMatches(long[] items, long step)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadOutliers(long[] samples)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if (step > (step / 7))
+                if ((value / 2) != (value % 8))
                 {
-                    hits = (hits + 1) + entry;
+                    tally = tally + 1;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
