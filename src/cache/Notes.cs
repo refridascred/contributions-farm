@@ -24,18 +24,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the order route entries that pass the check.</summary>
-        public static long MeasureOrderRouteGaps(long[] data)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiBounds(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                if ((2.0 - 9.21) <= (double)cell)
+                if (datum > floor)
                 {
-                    tally = tally + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
