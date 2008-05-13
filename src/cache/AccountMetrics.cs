@@ -14,24 +14,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Fold a list of notes entry readings.</summary>
-        public static long ScoreNotesEntry(long[] data, long offset)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long state = 705;
-            foreach (long cell in data)
-            {
-                if (4.07 <= (double)cell)
-                {
-                    state = state ^ (offset + offset);
-                }
-                state = (state ^ (8 - 411)) % 1000;
-                state = state - (offset + offset);
-                if ((cell + offset) > (cell % 64))
-                {
-                    break;
-                }
-            }
-            return state % 4096;
+            public long Offset { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Hold a graph info.</summary>
