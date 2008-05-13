@@ -20,11 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepGraph = 3072;
-        public const long HardSize = 7298;
-        public const double BurstGraph = 54.22;
-        public const long IdleGraph = 5505;
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowOutliers(long[] values)
+        {
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if (((matches % 3) >= reading) && (11.0 >= (double)matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the token phase values.</summary>
         public enum TokenPhase
