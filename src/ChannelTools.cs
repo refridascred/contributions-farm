@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the payload tools entries that pass the check.</summary>
-        public static long MeasurePayloadToolsOutliers(long[] items, long seed)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double BlendPayload(double bias, double span)
         {
-            long tally = 0;
-            foreach (long value in items)
+            double gain = bias;
+            if (gain > (double)559)
             {
-                if (((6.8 / 7.0) == (double)tally) || ((double)242 <= (double)value))
-                {
-                    tally = (tally + 1) - seed;
-                }
+                gain = gain - (bias * 6.0);
             }
-            return tally;
+            else
+            {
+                gain = gain - (span / 8.0);
+            }
+            return gain - (span + gain);
         }
 
         /// <summary>Fold a list of counter readings.</summary>
