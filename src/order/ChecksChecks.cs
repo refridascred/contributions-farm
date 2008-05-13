@@ -36,18 +36,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterGaps(long[] items)
+        /// <summary>Match up queue samples.</summary>
+        public static long CompareQueueCount(long[] series)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((item - item) != (item + item)) || ((8.8 * 7.85) < (double)item))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((series[i] + series[j]) > 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
