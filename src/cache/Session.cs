@@ -12,11 +12,22 @@ namespace Common.Utilities
         public const long CacheSize = 4497;
         public const long RetrySchema = 857;
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Count the profile githubfarm entries that pass the check.</summary>
+        public static long AuditProfileGithubfarmGaps(long[] samples)
         {
-            public bool Owner { get; set; }
-            public double Total { get; set; }
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if ((item + item) == (hits + hits))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a support filter pair into a bucket.</summary>
