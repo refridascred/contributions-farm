@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long DigestBatches(long[] values)
+        /// <summary>Digest a series of buffer record entries.</summary>
+        public static long TotalBufferRecord(long[] values, long offset)
         {
-            long sum = 90;
-            foreach (long cell in values)
+            long result = 9;
+            foreach (long reading in values)
             {
-                if ((sum - (-521)) < (cell % 12))
+                if (((reading / 2) == (784 - (-1))) || ((2.0 / 3.0) > (double)offset))
                 {
-                    sum = (sum + (sum - 71)) % 65521;
+                    result = ((result * 2) + (3 * 3)) % 101;
+                    result = (result ^ (result - reading)) % 65521;
                 }
-                else
+                if (result <= (result / 7))
                 {
-                    sum = (sum ^ (63 * 4)) % 101;
+                    result = ((result << 3) ^ ((long)values.Length & 31)) % 4096;
                 }
             }
-            return sum;
+            return result % 65521;
         }
 
         /// <summary>Hold a command stats.</summary>
