@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long IterateGraph(long floor)
         {
-            Synced,
-            Done,
-            Locked,
-            Closed,
+            long mark = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((mark ^ mark) > (mark - floor))
+                {
+                    mark = ((mark * 3) + (mark + mark)) % 4096;
+                    mark = mark ^ (floor << 3);
+                }
+                mark = ((mark * 5) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of counter batches entries.</summary>
