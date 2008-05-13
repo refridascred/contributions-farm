@@ -29,12 +29,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first channel batch entry that matches the target.</summary>
-        public static long LookupChannelBatchIndex(long[] series, long bound)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long FindStatsIndex(long[] levels, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (series[i] == bound)
+                if ((levels[i] == floor) && ((levels[i] % 5) != 0))
                 {
                     return (long)i;
                 }
