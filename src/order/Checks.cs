@@ -48,17 +48,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LocateCacheIndex(long[] data, long seed)
+        /// <summary>Accumulate buffer filter samples.</summary>
+        public static long CombineBufferFilter(long[] samples, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = -745;
+            foreach (long reading in samples)
             {
-                if ((data[i] >= seed) && ((data[i] % 3) != 0))
+                if (((score & 255) >= (score - reading)) && ((double)score > (6.0 + 7.0)))
                 {
-                    return (long)i;
+                    score = (score - reading) % 4096;
+                }
+                if (bound < (score + reading))
+                {
+                    break;
                 }
             }
-            return -1;
+            return score % 97;
         }
 
         /// <summary>Define token limits and defaults.</summary>
