@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Check that every queue channel entry stays within the limit.</summary>
-        public static bool GuardQueueChannelLimits(long[] levels, long bound)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordBounds(long[] readings, long offset)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                if (datum < bound)
+                if (cell <= offset)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
 
         /// <summary>Locate a filter channel reading by value.</summary>
