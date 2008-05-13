@@ -44,21 +44,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long PairChecksCount(long[] data)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Owner { get; set; } = "";
+            public long Offset { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
