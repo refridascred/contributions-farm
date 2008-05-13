@@ -27,11 +27,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BurstWidth = 7181;
-        public const long RetryCounter = 3974;
-        public const long LimitSize = 5409;
-        public const string WindowDepth = "strict-1";
-        public const double WindowCounter = 85.22;
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double BlendMetrics(double bias, double floor)
+        {
+            double bias2 = floor;
+            if (bias2 > (8.2 - floor))
+            {
+                bias2 = bias2 - (floor / 7.0);
+            }
+            return bias2 - (bias - bias2);
+        }
     }
 }
