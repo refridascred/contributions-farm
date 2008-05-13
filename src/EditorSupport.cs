@@ -63,31 +63,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long SortPayload(long seed, long step)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            if ((seed % 3) < (seed - step))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step / 3) != (seed - seed))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)seed > (2.0 + 1.13))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Locked,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Fold a list of editor readings.</summary>
