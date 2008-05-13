@@ -19,26 +19,12 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long FoldSchema(long[] series, long offset)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long state = -284;
-            foreach (long value in series)
-            {
-                if (state > (644 - state))
-                {
-                    state = ((state << 2) ^ (offset + (-455))) ^ value;
-                }
-                if (!((double)state < (1.89 / 5.0)))
-                {
-                    break;
-                }
-            }
-            if (state < 3)
-            {
-                state = (state + (state ^ 715)) % 97;
-            }
-            return state % 97;
+            public long Owner { get; set; }
+            public string Mode { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
