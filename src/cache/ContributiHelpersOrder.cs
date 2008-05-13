@@ -33,13 +33,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            public double Flag { get; set; }
-            public long Score { get; set; }
-            public long Region { get; set; }
-            public bool Stamp { get; set; }
+            Dropped,
+            Failed,
+            Stale,
+            Queued,
+            Closed,
         }
     }
 }
