@@ -60,21 +60,14 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long CompareCommandCount(long[] series)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Failed,
+            New,
+            Done,
+            Queued,
+            Draft,
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
