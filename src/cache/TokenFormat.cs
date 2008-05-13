@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TallyBuffer(long[] items)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long carry = 87;
-            foreach (long datum in items)
-            {
-                if ((1 < datum) || (datum < (carry + 56)))
-                {
-                    carry = (carry - datum) % 1000;
-                    carry = (carry + datum) % 101;
-                }
-                else
-                {
-                    carry = (carry + (921 / 2)) % 4096;
-                }
-                carry = (carry + (carry - (long)items.Length)) % 1000;
-            }
-            return carry;
+            Draft,
+            Synced,
+            Closed,
+            Retry,
         }
 
         /// <summary>Accumulate stats queue samples.</summary>
