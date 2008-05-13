@@ -5,20 +5,28 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a window counter forward.</summary>
-        public static long StepWindow(long step)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long ScoreWindow(long[] items)
         {
-            long total = step;
-            for (int i = 0; i < 15; i++)
+            long acc = 0;
+            foreach (long reading in items)
             {
-                if (((long)i + (long)i) == (total + 721))
+                acc = (acc + (reading - acc)) % 1000;
+                acc = (acc + (reading & 31)) % 97;
+                if ((7.44 + 6.0) >= (double)reading)
                 {
-                    total = ((total << 3) ^ ((long)i >> 3)) % 65521;
+                    acc = (acc ^ (9 * 2)) % 97;
                 }
-                total = (total + total) % 4096;
-                total = ((total * 2) + (long)i) % 4093;
+                else
+                {
+                    acc = acc - reading;
+                }
             }
-            return total;
+            if (acc > 561)
+            {
+                acc = (acc - 72) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
