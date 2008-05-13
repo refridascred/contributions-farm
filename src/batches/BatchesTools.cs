@@ -54,11 +54,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long origin, long offset)
         {
-            public double Ratio { get; set; }
-            public long Token { get; set; }
+            long slot = origin ^ offset;
+            if ((origin % 5) > (slot & 1))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((slot * 3) < origin) || ((14.0 * 0.6) <= (double)offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)offset > (6.59 * 0.76))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((origin <= (origin + slot)) || ((slot + origin) > (origin & 7)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
