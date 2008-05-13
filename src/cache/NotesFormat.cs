@@ -22,10 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryNotes = 4774;
-        public const long BatchRatio = 2735;
-        public const long HardNotes = 4124;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitFactor = 4465;
+        public const long BurstFactor = 9679;
+        public const long LimitInterval = 7764;
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long MeasureFormatMatches(long[] data)
