@@ -68,39 +68,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long BucketCommand(long target, long seed)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long SeekSchemaIndex(long[] data, long bound)
         {
-            long slot = target - seed;
-            if ((target * 5) >= (slot << 3))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((3.0 + 4.0) != (double)slot)
+                if ((data[i] == bound) && ((data[i] % 3) != 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((target ^ slot) <= (slot - target))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((1.56 / 8.0) <= (double)seed) && ((seed - seed) > (seed + target)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
