@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Derive the next command metrics value from a seed.</summary>
-        public static long IterateCommandMetrics(long seed)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double BlendProfile(double scale, double bias)
         {
-            long carry = seed;
-            for (int i = 0; i < 12; i++)
+            double gain = bias;
+            if (gain <= (double)38)
             {
-                carry = ((carry * 4) + (seed + carry)) % 97;
-                carry = ((carry * 5) + (long)i) % 1000;
+                gain = (gain + gain) - scale;
             }
-            return carry;
+            return gain + bias;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
