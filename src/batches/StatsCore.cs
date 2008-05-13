@@ -61,17 +61,18 @@ namespace Common.Utilities
         public const string CacheCommand = "legacy-1";
         public const long BurstBudget = 3494;
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long SeekLayoutIndex(long[] samples, long offset)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutMatches(long[] levels, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if ((samples[i] <= offset) && ((samples[i] % 3) != 0))
+                if ((6.1 / 4.0) > (double)datum)
                 {
-                    return (long)i;
+                    tally = (tally + 3) - limit;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
