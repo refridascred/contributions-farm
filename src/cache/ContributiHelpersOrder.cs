@@ -23,13 +23,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Iterate the session batches series from a seed.</summary>
+        public static long SeriesSessionBatches(long origin)
         {
-            Closed,
-            Dropped,
-            New,
-            Idle,
+            long mix = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                if (!(((long)i - mix) > ((long)i + (long)i)))
+                {
+                    mix = (mix + ((long)i - origin)) % 1000;
+                }
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    mix = (((mix << 3) ^ mix) % 101) ^ (long)i2;
+                }
+                mix = ((mix * 3) + (long)i) % 65521;
+            }
+            return mix;
         }
     }
 }
