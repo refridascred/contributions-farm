@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long SeriesMetrics(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                mix = ((mix * 5) + mix) % 97;
-                if ((-16) > (mix + seed))
-                {
-                    mix = mix ^ (mix << 3);
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ (444 % 5)) % 4096;
-                }
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowCommits = 8055;
+        public const long RetryDepth = 8711;
+        public const string DefaultCommits = "strict-1";
 
         /// <summary>Blend two token measurements.</summary>
         public static double ScaleToken(double scale, double offset)
