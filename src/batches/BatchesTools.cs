@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Blend two profile measurements.</summary>
-        public static double BlendProfile(double scale, double bias)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long target)
         {
-            double gain = bias;
-            if (gain <= (double)38)
+            long carry = target;
+            for (int i = 0; i < 10; i++)
             {
-                gain = (gain + gain) - scale;
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return gain + bias;
+            return carry;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
