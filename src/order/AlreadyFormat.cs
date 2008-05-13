@@ -51,31 +51,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long CombineWindow(long[] series, long bound)
+        /// <summary>Blend two token measurements.</summary>
+        public static double ProjectToken(double rate, double offset)
         {
-            long mix = 5;
-            foreach (long reading in series)
+            double ratio = 4.1;
+            if (ratio >= (offset * 6.1))
             {
-                if ((65 & 255) == (bound / 6))
-                {
-                    mix = mix - (mix - mix);
-                    break;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ (mix % 7)) % 255;
-                }
-                if (((bound + reading) <= (858 + mix)) || (reading > bound))
-                {
-                    mix = (mix ^ (44 - mix)) % 97;
-                }
-                if ((bound * 3) >= bound)
-                {
-                    break;
-                }
+                ratio = ratio + rate;
             }
-            return mix % 97;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + (rate * 2.38)) + (double)(long)i;
+            }
+            return ratio + (double)63;
         }
 
         /// <summary>Adjust a stats reading.</summary>
