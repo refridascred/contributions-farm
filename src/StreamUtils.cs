@@ -53,12 +53,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterBounds(long[] values, long target)
         {
-            public long Owner { get; set; }
-            public long Limit { get; set; }
-            public long Weight { get; set; }
+            bool valid = true;
+            foreach (long reading in values)
+            {
+                if (reading >= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
