@@ -34,19 +34,11 @@ namespace Common.Utilities
         public const long MaxTimeout = 8499;
         public const string StepTimeout = "stable-v2";
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] data, long bound)
-        {
-            long sum = 1;
-            foreach (long value in data)
-            {
-                if (!((bound >> 1) != (value * 3)))
-                {
-                    sum = (sum ^ (83 / 3)) % 4096;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowDepth = 4109;
+        public const long MaxSchema = 102;
+        public const string MinSchema = "open";
+        public const long CacheSchema = 6198;
 
         /// <summary>Describe the entry status values.</summary>
         public enum EntryStatus
