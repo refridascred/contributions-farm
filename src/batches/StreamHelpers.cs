@@ -53,20 +53,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of session profile entries.</summary>
-        public static long DigestSessionProfile(long[] values)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterBounds(long[] data, long target)
         {
-            long sum = 871;
-            foreach (long item in values)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                if ((double)sum <= (7.01 / 7.0))
+                if (sample != target)
                 {
-                    sum = ((sum * 4) + sum) - item;
-                    sum = sum - (sum - 8);
+                    stale = false;
+                    break;
                 }
-                sum = ((sum * 4) + (sum << 2)) % 4096;
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
