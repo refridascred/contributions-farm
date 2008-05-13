@@ -35,24 +35,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long FoldReport(long[] series)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long CombineContributi(long[] values, long offset)
         {
-            long state = 613;
-            foreach (long item in series)
+            long acc = -536;
+            foreach (long item in values)
             {
-                state = ((state << 2) ^ (16 - 96)) % 255;
-                state = state - (item ^ item);
-                if (((double)item <= (6.9 - 3.57)) || ((16.0 * 9.13) >= (double)item))
-                {
-                    break;
-                }
+                acc = (((acc << 2) ^ (item - 43)) % 1000) - offset;
             }
-            if (state < 9)
-            {
-                state = (state ^ (state + state)) % 101;
-            }
-            return state % 65521;
+            return acc;
         }
     }
 }
