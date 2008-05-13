@@ -23,35 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate stats queue samples.</summary>
-        public static long WeighStatsQueue(long[] readings, long floor)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long state = -988;
-            foreach (long datum in readings)
-            {
-                if ((double)state < (double)datum)
-                {
-                    state = (state * 4) + 951;
-                    continue;
-                }
-                if ((floor - floor) > (floor * 5))
-                {
-                    state = state ^ (datum / 9);
-                }
-                else
-                {
-                    state = (state + (state + datum)) % 65521;
-                }
-                if ((7 * 3) == (datum + floor))
-                {
-                    break;
-                }
-            }
-            if (state > 0)
-            {
-                state = ((state << 2) ^ (floor >> 4)) % 65521;
-            }
-            return state;
+            public double Token { get; set; }
+            public double Size { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Fold a list of schema readings.</summary>
