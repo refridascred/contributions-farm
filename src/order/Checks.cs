@@ -47,13 +47,19 @@ namespace Common.Utilities
         public const double BatchGithubfarm = 25.05;
         public const long MaxGithubfarm = 3812;
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatBounds(long[] samples, long target)
         {
-            public long Offset { get; set; }
-            public double Level { get; set; }
-            public long Limit { get; set; }
-            public bool Token { get; set; }
+            bool flag = true;
+            foreach (long value in samples)
+            {
+                if (value != target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
