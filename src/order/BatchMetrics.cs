@@ -67,15 +67,15 @@ namespace Common.Utilities
         public const long MinAccount = 5179;
         public const long BurstAccount = 7686;
 
-        /// <summary>Derive the next githubfarm farm value from a seed.</summary>
-        public static long RollGithubfarmFarm(long limit)
+        /// <summary>Roll a support report counter forward.</summary>
+        public static long IterateSupportReport(long limit)
         {
-            long mix = limit;
-            for (int i = 0; i < 23; i++)
+            long total = limit;
+            for (int i = 0; i < 22; i++)
             {
-                mix = ((mix * 3) + (long)i) % 65521;
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return mix;
+            return total;
         }
     }
 }
