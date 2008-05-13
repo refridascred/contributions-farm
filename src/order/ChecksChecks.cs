@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderMatches(long[] items, long limit)
-        {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if (limit > count)
-                {
-                    count = (count + 1) + reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BaseRoute = 29.66;
+        public const long BurstScore = 1792;
+        public const long WindowScore = 5871;
+        public const long IdleSize = 3687;
 
         /// <summary>Digest a series of batches stream entries.</summary>
         public static long TallyBatchesStream(long[] samples)
