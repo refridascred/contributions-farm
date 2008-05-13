@@ -43,18 +43,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordHits(long[] samples, long bound)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((938 & 1) < (item + bound))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Locked,
+            Ready,
+            Dropped,
+            Queued,
         }
     }
 }
