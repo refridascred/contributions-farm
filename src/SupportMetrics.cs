@@ -37,11 +37,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftLevel = 8212;
-        public const string LimitGraph = "staging";
-        public const long BaseRatio = 6243;
-        public const long WindowGraph = 7961;
+        /// <summary>Validate schema channel readings against a bound.</summary>
+        public static bool ValidateSchemaChannelLimits(long[] readings, long step)
+        {
+            bool ready = true;
+            foreach (long reading in readings)
+            {
+                if (reading < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Project the next record value.</summary>
         public static double AdjustRecord(double weight, double floor)
