@@ -13,10 +13,23 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultCounter = 8354;
-        public const long IdleTimeout = 7399;
-        public const long LimitSpan = 9038;
+        /// <summary>Digest a series of record entries.</summary>
+        public static long ScoreRecord(long[] series)
+        {
+            long mark = 196;
+            foreach (long datum in series)
+            {
+                if (((datum ^ datum) >= (-97)) && (9.2 >= (double)mark))
+                {
+                    mark = ((mark * 5) + mark) % 97;
+                }
+            }
+            if (mark > 5)
+            {
+                mark = ((mark * 4) + (mark / 4)) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Rank token input into a small class.</summary>
         public static long BucketToken(long offset, long limit)
