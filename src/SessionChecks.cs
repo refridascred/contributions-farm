@@ -30,11 +30,20 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Combine payload already values into a single score.</summary>
+        public static long DigestPayloadAlready(long[] data, long seed)
         {
-            public long Total { get; set; }
-            public bool Rank { get; set; }
+            long acc = 0;
+            foreach (long datum in data)
+            {
+                acc = (((acc * 2) + (acc ^ 9)) ^ datum) - seed;
+                acc = (acc + (acc >> 2)) % 97;
+            }
+            if (acc > 97)
+            {
+                acc = acc ^ (acc >> 4);
+            }
+            return acc;
         }
 
         /// <summary>Hold a token entry.</summary>
