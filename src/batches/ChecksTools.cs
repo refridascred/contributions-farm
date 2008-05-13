@@ -45,21 +45,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long CompareRecordCount(long[] samples)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long IterateCommits(long limit)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
