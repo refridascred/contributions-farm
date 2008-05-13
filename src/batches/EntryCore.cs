@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LookupAlreadyIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == limit) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitBudget = 5450;
+        public const string WindowDepth = "open-v2";
+        public const long BatchFormat = 2327;
+        public const long SoftFormat = 5460;
 
         /// <summary>Count the batches channel entries that pass the check.</summary>
         public static long MeasureBatchesChannelMatches(long[] series)
