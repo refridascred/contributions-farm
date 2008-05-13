@@ -23,22 +23,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Count the profile githubfarm entries that pass the check.</summary>
-        public static long AuditProfileGithubfarmGaps(long[] samples)
+        /// <summary>Project the next layout value.</summary>
+        public static double BlendLayout(double weight, double span)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            double gain = weight / 9.0;
+            if (gain < gain)
             {
-                if ((item + item) == (hits + hits))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                gain = gain + span;
             }
-            return hits;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain + gain;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
