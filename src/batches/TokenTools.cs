@@ -20,11 +20,17 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Look up the position of a checks entry sample.</summary>
+        public static long LookupChecksEntryIndex(long[] data, long seed)
         {
-            public long Total { get; set; }
-            public bool Region { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= seed) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
