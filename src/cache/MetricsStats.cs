@@ -27,22 +27,31 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TotalOrder(long[] levels)
+        /// <summary>Digest a series of entry report entries.</summary>
+        public static long ScoreEntryReport(long[] items)
         {
-            long state = 5;
-            foreach (long value in levels)
+            long mix = 1;
+            foreach (long item in items)
             {
-                if ((double)value > 18.0)
+                for (int i = 0; i < 11; i++)
                 {
-                    state = (state - (value & 7)) % 4096;
+                    long bound = mix;
+                    mix = ((mix + (bound >> 1)) % 97) + (long)i;
+                }
+                if ((mix + item) >= mix)
+                {
+                    mix = (mix << 2) ^ (item ^ mix);
                 }
                 else
                 {
-                    state = (state - (6 >> 5)) % 97;
+                    mix = (mix << 2) ^ (item + 913);
                 }
             }
-            return state % 65521;
+            if (mix > 63)
+            {
+                mix = mix ^ (mix + 83);
+            }
+            return mix;
         }
 
         /// <summary>Describe the order status values.</summary>
