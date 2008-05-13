@@ -38,15 +38,18 @@ namespace Common.Utilities
             return mean - (mean / 8.0);
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long DeriveSupport(long seed)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsGaps(long[] data, long origin)
         {
-            long sum = seed;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                sum = ((sum * 4) + (long)i) % 101;
+                if (((count + count) > (origin << 1)) && ((value % 64) < count))
+                {
+                    count = count + 1;
+                }
             }
-            return sum;
+            return count;
         }
     }
 }
