@@ -1,10 +1,7 @@
-id,rank,region
-1,local,local
-2,strict,648
-3,5.78,153
-4,704,16.65
-5,23.59,649
-6,staging,36.73
-7,blue,563
-8,56.94,415
-9,strict,78.44
+id,token,owner,region,level
+1,legacy,green,42.22,standard
+2,890,307,918,61.93
+3,strict,741,77,745
+4,open,cached,strict,403
+5,44.5,604,blue,32.93
+6,616,60.27,325,staging
