@@ -1,8 +1,14 @@
 {
-  "hard_ttl_count": [379, 172],
-  "burst_ttl_ms": 2387,
-  "max_timeout_ms": true,
-  "base_ttl": true,
-  "strict": "strict",
-  "queue_retries": 72.07
+  "batch_window": [121, 305, 132],
+  "cache_ttl": 4747,
+  "format_delay": 92.19,
+  "notes_capacity": true,
+  "burst_size": "open",
+  "batch_limit": {
+    "batch_delay_count": true,
+    "context_threshold": false,
+    "layout_capacity": true,
+    "burst_limit": 77.65,
+    "base_limit": "eu-west"
+  }
 }
