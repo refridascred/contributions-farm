@@ -1,8 +1,9 @@
 # entry settings
-verbose: 30
-flush_ratio_ms: 64.26
-session_interval: staging
-idle_timeout: 74.52
-soft_ttl:
-  - edge
-  - staging
+batch_limit_s: false
+hard_retries_s:
+  - green
+  - legacy
+  - eu-west
+  - green
+contributi_window: 5781
+max_ratio_ms: latest
