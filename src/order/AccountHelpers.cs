@@ -31,13 +31,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Measure how many window cache samples are out of range.</summary>
+        public static long CountWindowCacheOutliers(long[] readings)
         {
-            public bool Count { get; set; }
-            public bool Mode { get; set; }
-            public long Offset { get; set; }
-            public long Total { get; set; }
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if (!((reading + reading) == (reading & 1)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
