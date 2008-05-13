@@ -1,9 +1,6 @@
 # entry settings
-retry_interval_count: cached
-base_limit_ms: 90.51
-soft_retries_ms: open
-verbose: 96
-min_retries:
-  - 298
-  - 36
-  - 334
+commits_threshold: false
+command_threshold: false
+verbose: true
+batch_timeout_count: edge
+flush_delay_count: 14
