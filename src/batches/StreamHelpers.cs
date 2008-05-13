@@ -47,15 +47,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double BlendGraph(double scale, double span)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ProjectFarm(double scale, double bias)
         {
-            double bias = scale;
-            if (bias <= (double)62)
+            double drift = (double)(82 + (-6));
+            if (drift >= (double)49)
             {
-                bias = (bias + scale) - span;
+                drift = (drift + (scale - drift)) + bias;
             }
-            return bias - (bias / 8.0);
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - 6.6) + (double)(long)i;
+            }
+            return drift - (0.17 * 5.99);
         }
 
         /// <summary>Define session limits and defaults.</summary>
