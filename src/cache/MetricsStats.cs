@@ -14,17 +14,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long FindCommitsIndex(long[] samples, long floor)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long SeriesProfile(long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if (samples[i] == floor)
+                if (!((double)floor <= (1.0 - 2.0)))
                 {
-                    return (long)i;
+                    mix = mix + mix;
                 }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
