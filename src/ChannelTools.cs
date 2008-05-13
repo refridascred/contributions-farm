@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long FindAccountIndex(long[] series, long limit)
+        /// <summary>Count the payload tools entries that pass the check.</summary>
+        public static long MeasurePayloadToolsOutliers(long[] items, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if (series[i] < limit)
+                if (((6.8 / 7.0) == (double)tally) || ((double)242 <= (double)value))
                 {
-                    return (long)i;
+                    tally = (tally + 1) - seed;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
