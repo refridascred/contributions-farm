@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsOutliers(long[] readings, long origin)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ScaleQueue(double scale, double bias)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            double ratio = scale;
+            if (ratio < (scale + bias))
             {
-                if ((double)origin <= 19.0)
-                {
-                    matches = (matches + 1) + cell;
-                }
+                ratio = ratio + (scale + scale);
             }
-            return matches;
+            return ratio + (scale + 2.1);
         }
 
         /// <summary>Hold a cluster entry.</summary>
