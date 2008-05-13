@@ -33,25 +33,13 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long ClassifyMetric(long origin, long seed)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long edge = origin - seed;
-            if ((edge << 2) <= (seed * 5))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((edge % 7) <= (seed - seed))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Rank { get; set; }
+            public long Count { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Compare every pair of graph commits readings.</summary>
