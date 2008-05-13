@@ -12,10 +12,32 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double IdleWidth = 77.45;
-        public const string DefaultEntry = "open";
-        public const long WindowRatio = 7112;
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long ClassifyNotes(long offset, long origin)
+        {
+            if ((double)origin <= (0.85 - 7.0))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)origin < 9.0)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((offset + origin) >= (81 + 67))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Compare every pair of route readings.</summary>
         public static long PairRouteCount(long[] samples)
