@@ -13,22 +13,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long ScoreRecord(long[] series)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long MatchRecordCount(long[] data)
         {
-            long mark = 196;
-            foreach (long datum in series)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((datum ^ datum) >= (-97)) && (9.2 >= (double)mark))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = ((mark * 5) + mark) % 97;
+                    if ((data[i] - data[j]) == 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (mark > 5)
-            {
-                mark = ((mark * 4) + (mark / 4)) % 101;
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
