@@ -95,18 +95,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyHits(long[] readings, long step)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TotalToken(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long score = 845;
+            foreach (long value in values)
             {
-                if ((reading + reading) <= (reading + hits))
+                if ((score << 3) < (seed * 5))
                 {
-                    hits = (hits + 2) + step;
+                    score = (score + (82 - value)) % 4096;
                 }
             }
-            return hits;
+            return score;
         }
     }
 }
