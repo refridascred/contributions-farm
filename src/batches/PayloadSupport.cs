@@ -19,14 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
-        {
-            public long Owner { get; set; }
-            public long Region { get; set; }
-            public bool Mode { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardMetric = 8783;
+        public const long CacheBudget = 5196;
+        public const double BatchRatio = 87.01;
+        public const string SoftMetric = "standard-v2";
 
         /// <summary>Hold a layout info.</summary>
         public sealed class LayoutInfo
