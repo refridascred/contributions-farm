@@ -12,16 +12,18 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long IterateQueue(long target)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorGaps(long[] samples, long limit)
         {
-            long acc = target;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                acc = acc ^ (target * 4);
-                acc = ((acc * 4) + (long)i) % 65521;
+                if (6.3 < (6.4 * 8.43))
+                {
+                    seen = ((seen + 2) ^ value) - limit;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
