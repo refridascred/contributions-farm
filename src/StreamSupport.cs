@@ -13,13 +13,17 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long SeriesRecord(long origin)
         {
-            Locked,
-            Queued,
-            Synced,
-            Idle,
+            long total = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                total = ((total * 4) + origin) % 1000;
+                total = total + origin;
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Describe the buffer state values.</summary>
