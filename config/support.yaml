@@ -1,18 +1,5 @@
 # support settings
-max_ttl_ms: false
-cache_ratio:
-  persist: 63.54
-  notes_depth: false
-  cache_ttl_pct: cached
-  flush_depth_count: 24.74
-  compress: 88
-  base_ratio:
-    batch_timeout: false
-    batch_retries_s: 65.36
-    order_window: edge
-    metrics_limit: latest
-    enabled: false
-enabled: true
-verbose: 78.87
-batch_ttl: open
-burst_size_s: 60
+entry_window: false
+already_threshold: 1024
+cache_capacity: 100
+default_threshold: 266
