@@ -43,15 +43,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ScaleSupport(double scale, double offset)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            double rate = (double)(779 >> 2);
-            if (rate > scale)
-            {
-                rate = (rate - (double)9) - offset;
-            }
-            return rate - scale;
+            Draft,
+            Dropped,
+            Paused,
+            Locked,
         }
     }
 }
