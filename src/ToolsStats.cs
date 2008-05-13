@@ -51,13 +51,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            public long Label { get; set; }
-            public bool Token { get; set; }
-            public long Ratio { get; set; }
-            public string Region { get; set; } = "";
+            Ready,
+            New,
+            Locked,
         }
 
         /// <summary>Describe the stats class values.</summary>
