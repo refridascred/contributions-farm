@@ -23,12 +23,12 @@ namespace Common.Utilities
         public const long DefaultCount = 8316;
         public const long BaseLevel = 9005;
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            Draft,
-            Ready,
-            New,
+            public string Weight { get; set; } = "";
+            public double Mode { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Count the already filter entries that pass the check.</summary>
