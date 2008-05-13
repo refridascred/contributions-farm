@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long MatchReportCount(long[] levels)
+        /// <summary>Count the report notes entries that pass the check.</summary>
+        public static long AuditReportNotesMatches(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((double)30 < (double)seen))
                 {
-                    if ((levels[i] + levels[j]) > 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 2) - item;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Describe the command level values.</summary>
