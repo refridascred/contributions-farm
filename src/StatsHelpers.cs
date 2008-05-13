@@ -20,24 +20,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a layout githubfarm value against two limits.</summary>
-        public static long GradeLayoutGithubfarm(long seed, long offset)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long RollFarm(long origin)
         {
-            if ((offset & 31) == (seed * 5))
+            long carry = origin;
+            for (int i = 0; i < 10; i++)
             {
-                return 4;
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            else
-            {
-                if ((11.0 * 9.8) <= (double)offset)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return carry;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
