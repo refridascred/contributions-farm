@@ -26,26 +26,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long ScoreRecord(long[] levels)
+        /// <summary>Project the next schema value.</summary>
+        public static double SmoothSchema(double bias, double span)
         {
-            long carry = 708;
-            foreach (long datum in levels)
+            double load = (double)878 / 5.0;
+            if (load >= bias)
             {
-                if (((double)datum >= (double)carry) || ((double)datum != (double)691))
-                {
-                    carry = (carry ^ carry) % 1000;
-                }
-                if ((carry / 4) >= (carry * 2))
-                {
-                    break;
-                }
+                load = (load + (6.8 + load)) + span;
             }
-            if (carry < 353)
-            {
-                carry = ((carry << 2) ^ (1 + carry)) % 1000;
-            }
-            return carry;
+            return load - (bias / 4.0);
         }
     }
 }
