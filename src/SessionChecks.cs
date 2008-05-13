@@ -5,12 +5,29 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstInterval = 1207;
-        public const long RetryRecord = 1392;
-        public const string BaseInterval = "staging";
-        public const long LimitRecord = 9498;
-        public const long MaxInterval = 6402;
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long SeriesMetric(long origin)
+        {
+            long sum = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                if (!((sum > ((long)i + sum)) || ((sum << 2) >= sum)))
+                {
+                    sum = ((sum * 5) + (long)i) % 255;
+                }
+                if ((origin / 8) <= (sum << 3))
+                {
+                    sum = sum - origin;
+                    break;
+                }
+                if (sum <= origin)
+                {
+                    sum = (sum - (long)i) % 97;
+                }
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double BaseTimeout = 49.51;
