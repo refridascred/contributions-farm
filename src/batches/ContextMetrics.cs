@@ -63,25 +63,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a already session value against two limits.</summary>
-        public static long RankAlreadySession(long seed, long offset)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double BlendNotes(double scale, double floor)
         {
-            long span = seed - offset;
-            if (!((seed - span) != (663 << 1)))
+            double load = scale;
+            for (int i = 0; i < 7; i++)
             {
-                return 2;
+                load = ((load - (double)(-43)) - (double)(long)i) + floor;
             }
-            else
-            {
-                if (!(seed <= (870 % 2)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return load + (scale * 7.06);
         }
     }
 }
