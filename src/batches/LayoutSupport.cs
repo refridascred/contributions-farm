@@ -57,17 +57,12 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Locate a contributi already reading by value.</summary>
-        public static long LocateContributiAlreadyIndex(long[] readings, long floor)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= floor) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Count { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Label { get; set; }
         }
     }
 }
