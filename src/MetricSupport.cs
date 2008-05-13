@@ -44,13 +44,14 @@ namespace Common.Utilities
         public const long RetryStream = 8465;
         public const double BatchStream = 45.52;
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            public string Level { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
-            public string Label { get; set; } = "";
+            Locked,
+            Ready,
+            Queued,
+            Paused,
+            Done,
         }
     }
 }
