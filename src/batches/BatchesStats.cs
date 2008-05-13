@@ -14,19 +14,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long WeighChecks(long[] items, long step)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long FoldSession(long[] values)
         {
-            long result = 99;
-            foreach (long datum in items)
+            long carry = 97;
+            foreach (long datum in values)
             {
-                result = (((result + (60 % 24)) % 101) + datum) + step;
+                carry = (carry + (carry + carry)) + datum;
             }
-            if (result < 84)
+            if (carry < 2)
             {
-                result = (result ^ (0 + (-312))) % 255;
+                carry = carry ^ (carry + carry);
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Digest a series of token account entries.</summary>
