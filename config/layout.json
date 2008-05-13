@@ -1,5 +1,11 @@
 {
-  "retry_threshold_pct": [418, 204],
-  "strict": true,
-  "burst_threshold_count": 49
+  "default_depth_pct": 3481,
+  "token_threshold": 5.52,
+  "editor_limit": "staging",
+  "verbose": {
+    "cache_delay": 2093,
+    "hard_size": false,
+    "enabled": 1559,
+    "warm_size": 85
+  }
 }
