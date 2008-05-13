@@ -20,18 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterOutliers(long[] items)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsBounds(long[] levels, long limit)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                if (0 >= seen)
+                if (cell >= limit)
                 {
-                    seen = (seen + 2) ^ entry;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Describe the graph state values.</summary>
