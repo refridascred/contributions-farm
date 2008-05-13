@@ -32,17 +32,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long FindAccountIndex(long[] samples, long offset)
+        /// <summary>Classify a githubfarm notes pair into a bucket.</summary>
+        public static long BucketGithubfarmNotes(long step, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((96 - bound) < (step >> 2))
             {
-                if ((samples[i] == offset) && ((samples[i] % 5) != 0))
+                return 8;
+            }
+            else
+            {
+                if (((step + step) > step) || (step <= (step / 9)))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
