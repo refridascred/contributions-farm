@@ -1,42 +1,44 @@
 # entry settings
-audit: latest
-default_capacity_s: primary
-dry_run:
-  default_depth: cached
-  retry_delay_s: true
-  report_threshold: 97
-  max_size: eu-west
-min_delay_pct:
-  dry_run: 60
-  command_retries:
-    farm_size: false
-    max_threshold_count: fallback
-    farm_timeout: true
-    sync_retries_count: false
-  strict:
-    poll_window_ms: false
-    poll_limit_pct: false
-    warm_timeout: fallback
-    graph_limit:
-      - 184
-      - 301
-      - 18
-    warm_delay_ms:
-      - primary
-      - staging
+dry_run: open
+flush_timeout:
+  default_timeout_ms: 500
+  min_capacity_count:
+    flush_interval_pct:
+      - local
       - open
-      - cached
-default_delay: eu-west
-cache_limit:
-  batch_limit: 4314
-  max_capacity: 250
-  hard_ttl_pct:
+      - staging
+    max_interval_count:
+      - local
+      - local
+    persist: 60
+    soft_ttl: 6984
+    poll_timeout_s: eu-west
+  default_delay: eu-west
+  metric_interval: legacy
+  channel_timeout: open
+  soft_capacity_count: 29
+stats_interval:
+  retry_interval: 9.53
+  layout_threshold: 43.29
+  warm_size:
+    - cached
+    - open
+    - legacy
+  order_threshold: stable
+  persist:
+    retry_delay_ms: false
+    sync_depth_s: 100
+    min_threshold_count:
+      - local
+      - blue
+      - blue
+    idle_threshold_pct: open
     dry_run:
-      - legacy
-      - staging
-      - open
-      - cached
-    default_capacity: open
-    burst_interval_s: blue
-    idle_depth: cached
-    soft_depth_pct: fallback
+      - 116
+      - 89
+      - 283
+    readonly: 6169
+record_limit:
+  - local
+  - legacy
+contributi_window: true
