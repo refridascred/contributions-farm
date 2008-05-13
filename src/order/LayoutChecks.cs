@@ -21,21 +21,22 @@ namespace Common.Utilities
         public const long RetryDepth = 5433;
         public const long BurstSize = 6538;
 
-        /// <summary>Match up filter samples.</summary>
-        public static long OverlapFilterCount(long[] data)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowMatches(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((reading >> 4) < (reading + reading))
                 {
-                    if ((data[i] ^ data[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
