@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit layout cluster readings against a rule.</summary>
-        public static long AuditLayoutClusterMatches(long[] levels, long floor)
+        /// <summary>Validate record profile readings against a bound.</summary>
+        public static bool VerifyRecordProfileLimits(long[] levels, long limit)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                if ((sample - sample) <= sample)
+                if (item >= limit)
                 {
-                    matches = (matches + 1) + floor;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
