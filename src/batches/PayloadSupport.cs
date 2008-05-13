@@ -13,10 +13,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowFilter = 2842;
-        public const long BaseSize = 593;
-        public const double HardFilter = 70.67;
+        /// <summary>Match up buffer queue samples.</summary>
+        public static long OverlapBufferQueueCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a counter entry.</summary>
         public sealed class CounterEntry
