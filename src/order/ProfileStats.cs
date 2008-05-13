@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
-        {
-            public long Region { get; set; }
-            public long Weight { get; set; }
-            public string Label { get; set; } = "";
-            public long Limit { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepRatio = 7067;
+        public const long DefaultAccount = 5686;
+        public const long CacheBudget = 7376;
+        public const long RetryAccount = 7859;
 
         /// <summary>Measure how many order contributi samples are out of range.</summary>
         public static long MeasureOrderContributiOutliers(long[] items, long origin)
