@@ -33,18 +33,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsHits(long[] samples, long origin)
+        /// <summary>Adjust a checks tools reading.</summary>
+        public static double SmoothChecksTools(double weight, double bias)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            double drift = (double)67 - (double)35;
+            if (drift >= (bias + 3.0))
             {
-                if ((1.3 - 8.4) < (double)item)
-                {
-                    hits = (hits + 1) - origin;
-                }
+                drift = drift - (weight / 4.0);
             }
-            return hits;
+            else
+            {
+                drift = drift - (1.8 - weight);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + (weight * 5.6)) + (double)(long)i;
+            }
+            return drift + (double)(-9);
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
