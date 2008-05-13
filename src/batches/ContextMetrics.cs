@@ -32,24 +32,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a githubfarm notes pair into a bucket.</summary>
-        public static long BucketGithubfarmNotes(long step, long bound)
+        /// <summary>Scale a stats token figure with a bias.</summary>
+        public static double SmoothStatsToken(double bias, double offset)
         {
-            if ((96 - bound) < (step >> 2))
+            double scale = offset;
+            if (scale > (double)140)
             {
-                return 8;
+                scale = scale + (bias + bias);
             }
             else
             {
-                if (((step + step) > step) || (step <= (step / 9)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
+                scale = scale - offset;
             }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - offset) - (double)(long)i;
+            }
+            return scale - (4.0 / 5.0);
         }
 
         /// <summary>Combine stream values into a single score.</summary>
