@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LookupQueueIndex(long[] series, long floor)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TallyRecord(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 41;
+            foreach (long entry in values)
             {
-                if (series[i] <= floor)
+                if (136 > (entry * 5))
                 {
-                    return (long)i;
+                    mark = ((mark * 3) + (mark & 31)) % 4096;
+                }
+                if ((double)entry == (double)mark)
+                {
+                    mark = (mark << 2) ^ (entry & 127);
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Define account limits and defaults.</summary>
