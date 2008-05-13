@@ -1,13 +1,12 @@
 {
-  "burst_size": "primary",
-  "burst_limit_s": 2386,
-  "persist": false,
-  "retry_size": {
-    "retry_limit_count": "cached",
-    "layout_window": true,
-    "poll_timeout_pct": 2710,
-    "idle_ttl_ms": true
+  "batch_delay": {
+    "min_retries_s": 38.85,
+    "poll_ttl": 36,
+    "command_delay": 5182,
+    "poll_ratio_ms": 97.23,
+    "githubfarm_timeout": "stable",
+    "persist": "blue"
   },
-  "enabled": 36.19,
-  "session_ttl": "cached"
+  "contributi_threshold": 1030,
+  "cache_ratio_pct": true
 }
