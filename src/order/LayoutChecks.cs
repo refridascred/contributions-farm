@@ -85,12 +85,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            Queued,
-            Stale,
-            Dropped,
+            Draft,
+            Synced,
+            Idle,
         }
 
         /// <summary>Define token limits and defaults.</summary>
