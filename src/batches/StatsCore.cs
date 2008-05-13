@@ -12,12 +12,13 @@ namespace Common.Utilities
         public const long RetryContext = 9585;
         public const string CacheContext = "local";
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            public bool Flag { get; set; }
-            public double Level { get; set; }
-            public long Owner { get; set; }
+            Active,
+            Ready,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Hold a contributi header.</summary>
