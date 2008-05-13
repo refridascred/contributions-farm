@@ -43,11 +43,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double StepCount = 86.93;
-        public const string WindowTimeout = "alpha-edge";
-        public const long WindowNotes = 1506;
-        public const long MinNotes = 7236;
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long StepSchema(long floor)
+        {
+            long score = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                score = ((score * 5) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Match up route graph samples.</summary>
         public static long CompareRouteGraphCount(long[] readings)
