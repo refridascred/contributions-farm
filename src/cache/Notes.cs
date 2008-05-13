@@ -39,12 +39,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long StepWidth = 3841;
-        public const double DefaultDepth = 41.0;
-        public const double SoftInterval = 68.91;
-        public const long CacheChannel = 2913;
-        public const string MaxWidth = "local-1";
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BaseContext = 41.39;
+        public const long LimitRatio = 4277;
+        public const long HardInterval = 3072;
+        public const long MaxWidth = 4677;
 
         /// <summary>Validate queue githubfarm readings against a bound.</summary>
         public static bool CheckQueueGithubfarmLimits(long[] series, long origin)
