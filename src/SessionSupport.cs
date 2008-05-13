@@ -25,38 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank order command input into a small class.</summary>
-        public static long RankOrderCommand(long step, long offset)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            if ((step - offset) < step)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((15.0 - 5.4) > (double)step)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!(offset < (offset + offset)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((87 & 127) <= (offset - step)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public double Region { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
