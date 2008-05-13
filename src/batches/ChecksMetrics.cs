@@ -21,22 +21,13 @@ namespace Common.Utilities
             return ratio - scale;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphMatches(long[] values, long seed)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((((double)seed > (5.01 / 9.0)) && ((entry * 5) > (matches ^ 616))) && ((seed + 3) <= (matches & 127)))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Size { get; set; }
+            public double Region { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Blend two queue payload measurements.</summary>
