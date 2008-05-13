@@ -52,10 +52,27 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstCount = 8523;
-        public const double DefaultScore = 86.42;
-        public const long HardSpan = 3698;
-        public const long DefaultGithubfarm = 1539;
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TallyChecks(long[] values, long step)
+        {
+            long score = 41;
+            foreach (long cell in values)
+            {
+                if (!((score << 1) == (cell >> 2)))
+                {
+                    score = (score ^ (step << 1)) % 97;
+                    score = (score + (cell - score)) % 4096;
+                }
+                if (step <= (long)values.Length)
+                {
+                    score = score - (cell - step);
+                }
+                else
+                {
+                    score = (score - (step - (long)values.Length)) % 101;
+                }
+            }
+            return score % 65521;
+        }
     }
 }
