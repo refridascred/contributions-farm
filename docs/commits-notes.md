@@ -1,14 +1,14 @@
 # Commits notes
 
-Run the report check before changing any format limits.
-When a cluster fails, the cache handler retries a few times before giving up.
-Each booking is validated before it reaches the filter queue.
+Run the tools check before changing any checks limits.
+Each metrics is validated before it reaches the window queue.
 
-Each queue is validated before it reaches the cache queue.
-When a buffer fails, the farm handler retries a few times before giving up.
+The filter helpers are pure functions, so they are safe to call from any thread.
+Run the batch check before changing any profile limits.
 
 ## Guidelines
 
-- Review channel limits each release
-- Keep metric values small
-- Validate command input early
+- Log every route change
+- Keep support values small
+- Prefer commits defaults
+- Review command limits each release
