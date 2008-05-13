@@ -34,10 +34,25 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BaseDepth = 67.7;
-        public const string RetryMetrics = "fallback-1";
-        public const double CacheMetrics = 64.78;
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long RollProfile(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                anchor = (anchor << 2) ^ (offset % 64);
+                if (!((double)offset <= 18.0))
+                {
+                    anchor = anchor - anchor;
+                }
+                if ((anchor % 97) > (offset - anchor))
+                {
+                    anchor = anchor + (offset + (long)i);
+                }
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a account entry.</summary>
         public sealed class AccountEntry
