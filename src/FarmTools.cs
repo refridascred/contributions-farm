@@ -24,14 +24,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
-        {
-            Locked,
-            Active,
-            New,
-            Failed,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double CacheCommits = 95.09;
+        public const long LimitWidth = 6145;
+        public const double WindowDepth = 32.49;
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool VerifyChannelLimits(long[] data, long seed)
