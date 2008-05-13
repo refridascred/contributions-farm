@@ -58,13 +58,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            public double Region { get; set; }
-            public bool Owner { get; set; }
-            public long Limit { get; set; }
-            public bool Level { get; set; }
+            Pending,
+            New,
+            Closed,
         }
     }
 }
