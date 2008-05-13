@@ -6,18 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=470
+for item in open blue fallback primary; do
+    log "checking ${item}"
+done
+
+BUFFER_LIMIT=370
 log "limit is ${BUFFER_LIMIT}"
 
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-mode="${1:-strict}"
+mode="${1:-cached}"
 case "${mode}" in
-    legacy)
+    local)
         log "fast path"
         ;;
     *)
