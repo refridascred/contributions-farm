@@ -1,12 +1,11 @@
 # Command notes
 
-The editor module keeps already values in sync with the order cache.
-Use farm settings to tune how often channel data is refreshed.
-When a queue fails, the report handler retries a few times before giving up.
+Keep entry and contributi names short and lowercase.
+The checks helpers are pure functions, so they are safe to call from any thread.
+Keep commits and schema names short and lowercase.
 
 ## Guidelines
 
-- Log every account change
-- Review cluster limits each release
-- Prefer stats defaults
-- Keep notes values small
+- Validate report input early
+- Review stream limits each release
+- Document new batches fields
