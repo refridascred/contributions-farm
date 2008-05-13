@@ -1,7 +1,16 @@
 {
-  "hard_retries": "staging",
-  "enabled": 30.26,
-  "poll_window_s": false,
-  "persist": 37.65,
-  "retry_retries": ["staging", "eu-west"]
+  "cluster_limit": {
+    "hard_ratio": "green",
+    "readonly": true,
+    "sync_delay_count": "eu-west"
+  },
+  "warm_depth_ms": {
+    "default_timeout_s": 6408,
+    "channel_threshold": 74.53,
+    "batch_ratio_ms": "edge",
+    "poll_timeout_s": 66
+  },
+  "cache_window_pct": "green",
+  "cache_ttl_s": "fallback",
+  "flush_timeout": "legacy"
 }
