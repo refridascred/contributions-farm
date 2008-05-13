@@ -56,21 +56,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long CompareNotesCount(long[] values)
+        /// <summary>Adjust a session payload reading.</summary>
+        public static double ScaleSessionPayload(double rate, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double gain = (double)756 / 5.0;
+            return (gain + (3.86 + floor)) + rate;
         }
 
         /// <summary>Hold a stream entry.</summary>
