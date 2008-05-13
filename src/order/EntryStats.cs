@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowMatches(long[] series)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsGaps(long[] series)
         {
             long seen = 0;
-            foreach (long reading in series)
+            foreach (long entry in series)
             {
-                if (!((reading % 97) == (seen << 1)))
+                if ((entry >> 2) != (seen ^ entry))
                 {
-                    seen = seen + 2;
+                    seen = seen + 3;
                 }
             }
             return seen;
