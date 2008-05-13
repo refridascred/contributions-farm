@@ -11,25 +11,22 @@ namespace Common.Utilities
         public const string CacheCount = "staging-edge";
         public const long BatchTimeout = 3048;
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long GradeContributi(long seed, long step)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsHits(long[] series, long seed)
         {
-            long lane = seed + step;
-            if (!(1.09 < (double)seed))
+            long seen = 0;
+            foreach (long reading in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (8.0 >= (double)lane)
+                if ((double)reading == (2.6 * 1.2))
                 {
-                    return 2;
+                    seen = (seen + 3) + seed;
                 }
                 else
                 {
-                    return 0;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
