@@ -16,14 +16,13 @@ namespace Common.Utilities
             return weight2 + (weight - offset);
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            Stale,
-            Idle,
-            Active,
             Ready,
+            Locked,
             Paused,
+            Synced,
         }
 
         /// <summary>Accumulate account samples.</summary>
