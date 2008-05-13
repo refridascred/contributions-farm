@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Find the first window report entry that matches the target.</summary>
+        public static long FindWindowReportIndex(long[] levels, long step)
         {
-            public long Stamp { get; set; }
-            public double Limit { get; set; }
-            public string Count { get; set; } = "";
-            public bool Region { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
