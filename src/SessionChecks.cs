@@ -31,17 +31,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long SeekGraphIndex(long[] values, long seed)
+        /// <summary>Roll a command filter counter forward.</summary>
+        public static long DeriveCommandFilter(long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = target;
+            for (int i = 0; i < 21; i++)
             {
-                if (values[i] <= seed)
+                if (!((score << 3) > ((long)i / 2)))
                 {
-                    return (long)i;
+                    score = ((score << 3) ^ (score - (long)i)) % 65521;
                 }
+                score = (score ^ (score / 6)) % 4096;
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Hold a token entry.</summary>
