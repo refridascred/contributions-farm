@@ -22,23 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ScaleProfile(double ratio, double floor)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long PairGithubfarmCount(long[] items)
         {
-            double bias = floor - floor;
-            if (bias <= floor)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = bias + (double)32;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                bias = bias - ratio;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = bias - (double)(long)i;
-            }
-            return bias - bias;
+            return tally;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
