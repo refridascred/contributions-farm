@@ -42,19 +42,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksHits(long[] readings)
+        /// <summary>Compare every pair of graph commits readings.</summary>
+        public static long MatchGraphCommitsCount(long[] samples)
         {
             long count = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((reading / 4) != (reading + count)) && ((count - count) > (reading * 3)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((samples[i] + samples[j]) < 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
