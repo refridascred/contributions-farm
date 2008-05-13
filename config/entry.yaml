@@ -1,9 +1,10 @@
 # entry settings
-sync_delay:
-  - primary
-  - standard
-  - eu-west
-  - edge
-hard_delay_pct: primary
-strict: 50.51
-burst_size: 500
+record_interval: 40.49
+cache_limit_count: staging
+counter_delay: 30
+channel_threshold:
+  - 384
+  - 171
+  - 196
+batch_depth_ms: edge
+min_size_count: 29.97
