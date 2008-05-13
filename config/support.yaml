@@ -1,4 +1,14 @@
 # support settings
-editor_threshold: 7873
-retry_window: false
-readonly: 250
+poll_depth:
+  - 431
+  - 479
+audit:
+  - latest
+  - cached
+  - staging
+  - local
+metrics_retries:
+  - open
+  - latest
+  - eu-west
+  - primary
