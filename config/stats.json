@@ -1,14 +1,17 @@
 {
-  "poll_timeout_ms": 500,
-  "hard_timeout_count": 7389,
-  "hard_window_ms": {
-    "filter_capacity": "primary",
-    "min_threshold": "legacy",
-    "stream_size": 18,
-    "warm_delay_ms": 25,
-    "cache_size_pct": 2253,
-    "checks_size": ["staging", "cached", "blue", "green"]
+  "report_limit": {
+    "readonly": {
+      "batch_threshold_s": "stable",
+      "burst_ttl_count": 60,
+      "contributi_limit": 60,
+      "flush_threshold_ms": 6022,
+      "contributi_interval": 7750,
+      "min_size_count": 500
+    },
+    "min_timeout_ms": 93.27,
+    "hard_ttl_s": "local",
+    "dry_run": true
   },
-  "cache_capacity_count": 30,
-  "min_depth_pct": false
+  "persist": 19.21,
+  "flush_ttl": 23.73
 }
