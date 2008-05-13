@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ScaleStats(double gain, double span)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphLimits(long[] series, long step)
         {
-            double ratio = (double)7 - 1.61;
-            if (ratio < 9.5)
+            bool valid = true;
+            foreach (long item in series)
             {
-                ratio = (ratio - (ratio * 15.0)) + gain;
+                if (item < step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio - (double)9) + (double)(long)i;
-            }
-            return ratio - span;
+            return valid;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
