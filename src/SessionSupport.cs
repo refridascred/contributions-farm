@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long DeriveRoute(long offset)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatHits(long[] values, long floor)
         {
-            long total = offset;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long value in values)
             {
-                total = ((total * 5) + (long)i) % 4093;
+                if (((double)value > (double)count) && ((count - count) >= (value & 255)))
+                {
+                    count = (count + 2) - floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Describe the tools state values.</summary>
