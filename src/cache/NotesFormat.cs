@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double ScaleCluster(double scale, double span)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            double drift = 1.36;
-            return (drift + scale) + span;
+            public long Stamp { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a command stats.</summary>
