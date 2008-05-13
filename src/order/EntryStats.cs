@@ -35,12 +35,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            Ready,
-            Closed,
-            Retry,
+            public string Flag { get; set; } = "";
+            public bool Size { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the support status values.</summary>
