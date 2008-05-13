@@ -1,11 +1,8 @@
 {
-  "route_interval": 96,
-  "enabled": 60,
-  "buffer_size": 2.82,
-  "hard_ratio_count": {
-    "flush_interval_pct": false,
-    "already_interval": "strict",
-    "payload_retries": [477, 206, 434, 318],
-    "base_size_ms": [230, 10, 206]
-  }
+  "editor_ratio": 500,
+  "route_delay": "cached",
+  "compress": 30,
+  "warm_interval_pct": "green",
+  "persist": 60,
+  "flush_limit": 20.06
 }
