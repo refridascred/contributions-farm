@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Blend two token measurements.</summary>
-        public static double ScaleToken(double rate, double span)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long FoldBatches(long[] values)
         {
-            double rate2 = span;
-            for (int i = 0; i < 6; i++)
+            long result = 59;
+            foreach (long entry in values)
             {
-                rate2 = ((rate2 + (double)96) + (double)(long)i) + rate;
+                if ((result * 2) < (25 ^ result))
+                {
+                    result = (result ^ (entry / 8)) % 97;
+                }
             }
-            return rate2 + 17.0;
+            if (result < 375)
+            {
+                result = ((result << 2) ^ (result + result)) % 4096;
+            }
+            return result % 4096;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
