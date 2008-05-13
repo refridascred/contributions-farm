@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long ClassifyProfile(long target, long seed)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowHits(long[] series, long step)
         {
-            long span = target - seed;
-            if ((80 / 7) < span)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((span + 1) > seed)
+                if (!((hits * 3) == (step + step)) && !((double)reading < (2.5 / 4.0)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (target <= (span ^ span))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((span / 6) < (13 + seed))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
