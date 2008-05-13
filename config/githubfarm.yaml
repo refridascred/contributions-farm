@@ -1,9 +1,15 @@
 # githubfarm settings
-poll_interval: legacy
-metric_timeout:
-  persist: legacy
-  warm_capacity_s: 3326
-  soft_delay_s: 8597
-min_interval_count: cached
-burst_ttl: primary
-account_interval: false
+strict: 5848
+sync_capacity_pct:
+  - local
+  - eu-west
+metric_size:
+  retry_capacity: false
+  verbose: 44.15
+  githubfarm_limit: blue
+  burst_delay_count: legacy
+  already_retries: 93
+  warm_limit: 4809
+poll_ratio: open
+farm_ttl: true
+default_limit_ms: staging
