@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamHits(long[] series, long limit)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutOutliers(long[] levels)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if (!((seen << 3) < (item / 9)))
+                if (410 <= count)
                 {
-                    seen = (seen + 3) - limit;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = (count + 3) ^ datum;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Accumulate session samples.</summary>
