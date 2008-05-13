@@ -48,12 +48,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            public double Count { get; set; }
-            public long Score { get; set; }
-            public long Limit { get; set; }
+            public long Total { get; set; }
+            public long Region { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
