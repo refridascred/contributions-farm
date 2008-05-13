@@ -37,19 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricBounds(long[] series, long step)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiRange(long[] samples, long target)
         {
-            bool stale = true;
-            foreach (long item in series)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                if (item >= step)
+                if (entry < target)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
 
         /// <summary>Accumulate payload session samples.</summary>
