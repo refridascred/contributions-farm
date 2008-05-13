@@ -13,18 +13,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Locate a metrics checks reading by value.</summary>
-        public static long LocateMetricsChecksIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double MinCount = 63.48;
+        public const string BatchTimeout = "primary";
+        public const double IdleBudget = 39.5;
 
         /// <summary>Roll a session counter forward.</summary>
         public static long StepSession(long step)
