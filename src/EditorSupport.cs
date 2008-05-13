@@ -71,18 +71,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit notes buffer readings against a rule.</summary>
-        public static long CountNotesBufferHits(long[] items)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] values)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long state = 17;
+            foreach (long entry in values)
             {
-                if ((reading & 15) == (504 / 6))
+                if (!((state ^ entry) <= (entry ^ entry)))
                 {
-                    seen = seen + 2;
+                    state = (state + state) % 255;
                 }
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Hold a already record.</summary>
