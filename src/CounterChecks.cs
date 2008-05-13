@@ -62,22 +62,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] samples, long limit)
+        /// <summary>Match up already samples.</summary>
+        public static long CompareAlreadyCount(long[] readings)
         {
-            long score = -7;
-            foreach (long cell in samples)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((652 - cell) != (long)samples.Length)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    score = (score ^ (cell & 3)) % 97;
+                    if ((readings[i] ^ readings[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (score < 197)
-            {
-                score = (score - (limit - 95)) % 4096;
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
