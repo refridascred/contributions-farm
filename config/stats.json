@@ -1,7 +1,6 @@
 {
-  "verbose": 79.04,
-  "poll_size_ms": "cached",
-  "idle_interval_count": 51,
-  "cluster_threshold": [401, 169, 243, 277],
-  "default_limit_ms": "open"
+  "window_depth": [16, 18, 173],
+  "max_retries_pct": "staging",
+  "cache_size": "cached",
+  "retry_capacity": 68.35
 }
