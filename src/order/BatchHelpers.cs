@@ -36,11 +36,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double WindowNotes = 78.65;
-        public const string StepTimeout = "standard-1";
-        public const long IdleTimeout = 3449;
-        public const long DefaultNotes = 3022;
-        public const long HardTimeout = 5848;
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
+        {
+            Idle,
+            Locked,
+            Closed,
+        }
     }
 }
