@@ -1,14 +1,5 @@
 {
-  "support_delay": 41.85,
-  "githubfarm_size": 30,
-  "max_interval_s": {
-    "cache_delay": false,
-    "readonly": 3538,
-    "batch_delay_s": "staging",
-    "warm_timeout_ms": true,
-    "verbose": ["open", "latest", "stable"]
-  },
-  "compress": false,
-  "cache_depth_ms": [59, 444, 263, 5],
-  "order_limit": "blue"
+  "dry_run": true,
+  "sync_capacity_ms": 69.38,
+  "token_ratio": "standard"
 }
