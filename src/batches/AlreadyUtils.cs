@@ -16,19 +16,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutHits(long[] series)
-        {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((double)matches >= (19.0 / 8.0))
-                {
-                    matches = (matches + 1) ^ value;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowBudget = 7650;
+        public const long MaxTools = 568;
+        public const long BurstTimeout = 4823;
+        public const long DefaultCount = 8316;
+        public const long BaseLevel = 9005;
 
         /// <summary>Describe the graph status values.</summary>
         public enum GraphStatus
