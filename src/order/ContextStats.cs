@@ -22,11 +22,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksOutliers(long[] levels)
         {
-            public double Token { get; set; }
-            public bool Label { get; set; }
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell >= (seen / 3)) && ((672 >> 2) <= (cell & 63)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate counter samples.</summary>
