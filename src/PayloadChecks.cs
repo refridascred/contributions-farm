@@ -90,11 +90,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long DeriveContext(long seed)
         {
-            public long Region { get; set; }
-            public bool Score { get; set; }
+            long anchor = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
         }
     }
 }
