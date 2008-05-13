@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Rank batches channel input into a small class.</summary>
-        public static long ClassifyBatchesChannel(long bound, long origin)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileHits(long[] data)
         {
-            long cur = bound - origin;
-            if (bound <= (cur >> 5))
+            long hits = 0;
+            foreach (long reading in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((cur & 63) < (bound >> 5))
+                if ((hits - hits) >= hits)
                 {
-                    return 7;
+                    hits = (hits + 1) + reading;
                 }
                 else
                 {
-                    if ((double)cur >= (4.4 - 13.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((cur + cur) > bound)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Measure how many channel metric samples are out of range.</summary>
