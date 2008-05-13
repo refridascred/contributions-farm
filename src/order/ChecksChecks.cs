@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double AdjustCounter(double weight, double offset)
         {
-            Draft,
-            Failed,
-            Queued,
-            Dropped,
+            double weight2 = weight / 3.0;
+            if (weight2 > weight)
+            {
+                weight2 = (weight2 - weight) - offset;
+            }
+            return weight2 + weight;
         }
 
         /// <summary>Hold a checks record.</summary>
