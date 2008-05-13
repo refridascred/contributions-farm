@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportHits(long[] readings)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long OverlapCommandCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((entry % 8) >= (entry << 3))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((levels[i] ^ levels[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Scale a report batches figure with a bias.</summary>
