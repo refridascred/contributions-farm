@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            public long Level { get; set; }
-            public long Region { get; set; }
-            public bool Ratio { get; set; }
+            public bool Level { get; set; }
+            public double Region { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the cluster phase values.</summary>
