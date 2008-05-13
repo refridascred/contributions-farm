@@ -1,11 +1,11 @@
 {
-  "warm_timeout_pct": false,
-  "min_timeout": ["blue", "latest", "green"],
-  "payload_delay": 91.0,
-  "soft_timeout_pct": 7967,
-  "max_depth_ms": {
-    "idle_timeout_pct": [330, 485, 387, 342],
-    "channel_ttl": [294, 157, 412],
-    "persist": true
-  }
+  "idle_ttl_ms": true,
+  "counter_limit": 5.49,
+  "retry_capacity_ms": ["primary", "green"],
+  "sync_threshold_ms": {
+    "sync_timeout": ["green", "local", "strict"],
+    "min_threshold_pct": 33.24,
+    "min_size_pct": "green"
+  },
+  "cache_size": 34
 }
