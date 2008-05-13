@@ -14,18 +14,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatMatches(long[] levels, long offset)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if ((double)datum == (17.0 - 4.95))
-                {
-                    tally = (tally + 1) - offset;
-                }
-            }
-            return tally;
+            public double Weight { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Hold a channel info.</summary>
