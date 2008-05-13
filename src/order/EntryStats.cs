@@ -21,19 +21,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadLimits(long[] readings, long target)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            bool flag = true;
-            foreach (long item in readings)
-            {
-                if (item <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Draft,
+            New,
+            Queued,
+            Active,
         }
 
         /// <summary>Combine farm values into a single score.</summary>
