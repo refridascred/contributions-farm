@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of schema metric readings.</summary>
-        public static long DigestSchemaMetric(long[] levels, long offset)
+        /// <summary>Audit notes cluster readings against a rule.</summary>
+        public static long TallyNotesClusterHits(long[] series, long floor)
         {
-            long anchor = 996;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long reading in series)
             {
-                anchor = (((anchor ^ (527 % 100)) % 97) + value) - offset;
+                if (reading > floor)
+                {
+                    count = count + 2;
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Check that every route graph entry stays within the limit.</summary>
