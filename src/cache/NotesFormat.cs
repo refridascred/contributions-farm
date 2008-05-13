@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricBounds(long[] readings, long origin)
+        /// <summary>Audit filter batches readings against a rule.</summary>
+        public static long TallyFilterBatchesOutliers(long[] items)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if (item >= origin)
+                if ((seen - 6) != (datum - datum))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
