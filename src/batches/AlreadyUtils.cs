@@ -51,11 +51,12 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            public bool Region { get; set; }
-            public double Limit { get; set; }
+            Draft,
+            Ready,
+            New,
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
