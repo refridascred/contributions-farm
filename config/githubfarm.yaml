@@ -1,8 +1,9 @@
 # githubfarm settings
-dry_run: true
-idle_interval_s:
-  - fallback
-  - open
-  - legacy
-persist: standard
-stream_ttl: stable
+retry_limit_s: local
+verbose:
+  - strict
+  - staging
+  - standard
+  - stable
+cache_capacity: 250
+soft_depth: blue
