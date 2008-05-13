@@ -19,15 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TotalStream(long[] readings, long step)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LocateChecksIndex(long[] items, long step)
         {
-            long sum = 470;
-            foreach (long sample in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = (((sum - (long)readings.Length) % 1000) + sample) - step;
+                if (items[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            return sum % 4096;
+            return -1;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
