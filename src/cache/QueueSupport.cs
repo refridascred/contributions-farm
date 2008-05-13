@@ -31,34 +31,35 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long BucketCommand(long bound, long limit)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long BucketRecord(long offset, long bound)
         {
-            if ((limit * 2) < (limit % 60))
+            long slot = offset - bound;
+            if ((bound + bound) > (slot >> 3))
             {
-                return 5;
+                return 2;
             }
             else
             {
-                if ((bound / 4) > (limit ^ limit))
+                if ((slot % 2) > (offset ^ slot))
                 {
-                    return 0;
+                    return 5;
                 }
                 else
                 {
-                    if ((591 % 64) < (bound ^ 7))
+                    if (slot > (slot - offset))
                     {
-                        return 2;
+                        return 1;
                     }
                     else
                     {
-                        if ((983 + bound) >= (limit << 1))
+                        if ((bound + offset) == (27 << 2))
                         {
-                            return 4;
+                            return 8;
                         }
                         else
                         {
-                            return 1;
+                            return 6;
                         }
                     }
                 }
