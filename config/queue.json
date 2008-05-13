@@ -1,12 +1,9 @@
 {
-  "dry_run": false,
-  "burst_window_s": ["stable", "standard", "latest"],
-  "idle_delay_ms": 100,
-  "default_timeout_s": {
-    "schema_depth": "legacy",
-    "min_ttl": [230, 324],
-    "min_capacity": 60,
-    "queue_delay": false,
-    "sync_ttl": false
+  "retry_size_count": [150, 44, 190, 279],
+  "buffer_capacity": "latest",
+  "poll_retries_pct": {
+    "hard_depth_pct": ["stable", "latest", "open"],
+    "poll_delay_count": ["stable", "legacy"],
+    "hard_size": "primary"
   }
 }
