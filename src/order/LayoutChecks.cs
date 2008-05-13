@@ -23,19 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long FoldChannel(long[] values, long bound)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesOutliers(long[] data, long step)
         {
-            long score = 2;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long reading in data)
             {
-                score = (score + score) - datum;
+                if (!(step >= reading))
+                {
+                    count = count + 1;
+                }
             }
-            if (score > (-4))
-            {
-                score = score - bound;
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
