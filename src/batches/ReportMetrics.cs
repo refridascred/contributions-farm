@@ -25,19 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of stats account entries.</summary>
-        public static long ScoreStatsAccount(long[] values)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ProjectMetric(double gain, double offset)
         {
-            long sum = 416;
-            foreach (long cell in values)
+            double ratio = offset;
+            if (ratio > 12.0)
             {
-                sum = sum ^ (171 >> 2);
-                if ((9.9 - 7.0) < (double)cell)
-                {
-                    sum = (sum * 5) + (5 + cell);
-                }
+                ratio = ratio + (gain + ratio);
             }
-            return sum % 97;
+            else
+            {
+                ratio = ratio - (double)(-13);
+            }
+            return ratio - (5.7 + ratio);
         }
 
         /// <summary>Describe the context kind values.</summary>
