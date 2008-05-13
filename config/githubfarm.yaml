@@ -1,9 +1,15 @@
 # githubfarm settings
-retry_limit_s: local
-verbose:
-  - strict
-  - staging
-  - standard
-  - stable
-cache_capacity: 250
-soft_depth: blue
+idle_size_ms:
+  soft_depth_pct: 1024
+  hard_retries_pct: false
+  counter_interval: 10.35
+  idle_delay_count:
+    - 118
+    - 316
+  window_ttl:
+    - staging
+    - legacy
+    - standard
+  githubfarm_ttl: 26
+verbose: false
+commits_interval: 9
