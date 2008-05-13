@@ -27,9 +27,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double RetryCluster = 7.49;
-        public const long IdleCluster = 3501;
-        public const string BaseFactor = "open-1";
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueGaps(long[] samples)
+        {
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if ((tally * 3) != (tally + tally))
+                {
+                    tally = (tally + 1) + cell;
+                }
+            }
+            return tally;
+        }
     }
 }
