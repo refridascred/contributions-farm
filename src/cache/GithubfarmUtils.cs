@@ -56,13 +56,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
-        {
-            Done,
-            Synced,
-            Pending,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinTimeout = 7070;
+        public const double SoftCache = 81.15;
+        public const double HardFactor = 82.12;
 
         /// <summary>Derive the next farm value from a seed.</summary>
         public static long DeriveFarm(long target)
