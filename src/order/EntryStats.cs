@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Classify a context editor pair into a bucket.</summary>
-        public static long ClassifyContextEditor(long seed, long offset)
+        /// <summary>Project the next stats value.</summary>
+        public static double BlendStats(double ratio, double offset)
         {
-            if ((9 & 31) >= offset)
+            double scale = ratio;
+            if (scale > (double)6)
             {
-                return 3;
+                scale = scale - offset;
             }
-            else
-            {
-                if ((offset + offset) != (offset % 24))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((seed - seed) < (seed ^ 3)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)seed >= 9.8)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return scale + offset;
         }
 
         /// <summary>Validate record schema readings against a bound.</summary>
