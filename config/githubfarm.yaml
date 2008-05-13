@@ -1,13 +1,33 @@
 # githubfarm settings
-cache_ttl: false
-idle_delay: cached
-batch_size_ms: eu-west
-cluster_interval:
-  - 56
-  - 18
-  - 334
-compress:
-  - green
-  - legacy
-  - eu-west
-token_limit: 2625
+payload_window: 9409
+retry_ttl:
+  - 326
+  - 410
+  - 345
+layout_retries:
+  session_limit:
+    - 198
+    - 447
+    - 393
+    - 405
+  strict: 3
+  order_retries:
+    soft_retries_pct: false
+    retry_interval_count: edge
+    report_window: 4438
+    warm_window:
+      - 412
+      - 225
+    readonly:
+      - legacy
+      - staging
+  already_size: 30
+  readonly:
+    base_retries_pct: 30
+    queue_ratio: stable
+    audit:
+      - local
+      - cached
+      - blue
+    notes_ratio: cached
+    default_timeout: stable
