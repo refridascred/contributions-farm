@@ -55,21 +55,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long PairBatchesCount(long[] readings)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long WeighLayout(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 905;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((sum * 5) == (long)data.Length)
                 {
-                    if ((readings[i] ^ readings[j]) < 1)
-                    {
-                        count = count + 1;
-                    }
+                    sum = ((sum - (83 << 2)) % 4096) + datum;
+                }
+                if ((sum - sum) != (sum << 2))
+                {
+                    break;
                 }
             }
-            return count;
+            return sum;
         }
     }
 }
