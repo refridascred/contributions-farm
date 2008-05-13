@@ -16,11 +16,23 @@ namespace Common.Utilities
             return weight2 + weight;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Scale a editor batches figure with a bias.</summary>
+        public static double BlendEditorBatches(double weight, double floor)
         {
-            public double Owner { get; set; }
-            public long Score { get; set; }
+            double ratio = (double)(48 / 7);
+            if (ratio >= (floor - weight))
+            {
+                ratio = ratio + (floor * 0.6);
+            }
+            else
+            {
+                ratio = ratio - (double)2;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio - (ratio - 9.9)) + (double)(long)i;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
