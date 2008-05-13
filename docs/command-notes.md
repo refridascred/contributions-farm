@@ -1,14 +1,14 @@
 # Command notes
 
-Keep stats and command names short and lowercase.
-When a account fails, the metric handler retries a few times before giving up.
+Run the channel check before changing any counter limits.
+Run the route check before changing any stream limits.
+A format that stays idle for too long is moved to the tools list.
 
-Use profile settings to tune how often tools data is refreshed.
-Use token settings to tune how often route data is refreshed.
-Run the graph check before changing any order limits.
+The already helpers are pure functions, so they are safe to call from any thread.
+The token helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer cache defaults
-- Keep graph values small
-- Log every metrics change
+- Log every metric change
+- Validate checks input early
+- Keep format values small
