@@ -33,19 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterLimits(long[] levels, long bound)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            bool flag = true;
-            foreach (long reading in levels)
-            {
-                if (reading >= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Count { get; set; }
+            public bool Mode { get; set; }
+            public string Flag { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
