@@ -18,10 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double MinDepth = 41.92;
-        public const long MaxRatio = 2778;
-        public const string BurstBatch = "latest-edge";
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
+        {
+            public bool Token { get; set; }
+            public string Level { get; set; } = "";
+            public double Stamp { get; set; }
+        }
 
         /// <summary>Roll a context counter forward.</summary>
         public static long DeriveContext(long offset)
