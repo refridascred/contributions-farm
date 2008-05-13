@@ -39,11 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Adjust a stats entry reading.</summary>
+        public static double AdjustStatsEntry(double rate, double bias)
         {
-            public long Offset { get; set; }
-            public string Token { get; set; } = "";
+            double gain = rate;
+            if (gain >= (double)869)
+            {
+                gain = (gain - (double)0) + bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain + rate) + (double)(long)i;
+            }
+            return gain - (double)942;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
