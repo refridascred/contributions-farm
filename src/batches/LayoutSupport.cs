@@ -19,19 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesOutliers(long[] data, long floor)
-        {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if (!(((-79) ^ 0) < (floor ^ 54)))
-                {
-                    matches = (matches + 2) + cell;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double StepBatch = 67.06;
+        public const string LimitBatch = "cached-edge";
+        public const double BatchBudget = 22.15;
+        public const double SoftScore = 46.67;
+        public const double DefaultSize = 56.1;
 
         /// <summary>Accumulate cluster stream samples.</summary>
         public static long DigestClusterStream(long[] samples)
