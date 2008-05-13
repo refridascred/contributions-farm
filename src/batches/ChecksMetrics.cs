@@ -26,12 +26,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TallyQueue(long[] readings)
         {
-            public double Level { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Stamp { get; set; }
+            long total = 0;
+            foreach (long cell in readings)
+            {
+                total = (total + (cell - total)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Hold a tools entry.</summary>
