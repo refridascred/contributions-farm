@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterMatches(long[] levels)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long DigestFormat(long[] values)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long state = 31;
+            foreach (long entry in values)
             {
-                if ((tally >= (tally ^ tally)) && ((tally << 3) < (reading - reading)))
+                if (((entry ^ entry) > state) && ((state - state) != (94 + entry)))
                 {
-                    tally = tally + 1;
+                    state = ((state * 3) + (state % 24)) % 65521;
                 }
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Project the next githubfarm value.</summary>
