@@ -27,11 +27,32 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long CombineBuffer(long[] samples, long bound)
         {
-            public long Limit { get; set; }
-            public long Weight { get; set; }
+            long score = 6;
+            foreach (long entry in samples)
+            {
+                if ((double)score < 1.0)
+                {
+                    score = ((score << 2) ^ (entry % 10)) % 1000;
+                    break;
+                }
+                else
+                {
+                    score = (score + (980 + score)) % 4096;
+                }
+                score = ((score * 3) + (bound + entry)) % 255;
+                if (score > 1)
+                {
+                    break;
+                }
+            }
+            if (score < 1)
+            {
+                score = (score - (score + 9)) % 97;
+            }
+            return score % 97;
         }
     }
 }
