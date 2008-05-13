@@ -48,10 +48,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double CacheRatio = 81.23;
-        public const long MinMetric = 1337;
-        public const long BaseMetric = 7494;
-        public const long WindowMetric = 90;
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long CompareGraphCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
