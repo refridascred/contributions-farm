@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepQueue = 6275;
-        public const double HardQueue = 32.43;
-        public const double LimitQueue = 77.13;
-        public const long MinRatio = 1551;
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
+        {
+            public double Rank { get; set; }
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Validate notes readings against a bound.</summary>
         public static bool CheckNotesLimits(long[] values, long step)
