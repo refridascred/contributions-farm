@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] levels)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long score = 6;
-            foreach (long reading in levels)
-            {
-                score = (score + (reading & 255)) % 255;
-                if (((14.0 / 9.0) == (double)reading) || ((5.12 / 6.0) >= (19.0 + 1.8)))
-                {
-                    score = (score - (reading % 12)) % 1000;
-                }
-            }
-            return score;
+            public bool Ratio { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Locate a commits reading by value.</summary>
