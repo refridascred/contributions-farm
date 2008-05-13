@@ -1,8 +1,8 @@
 {
-  "enabled": "strict",
-  "account_interval": 85.15,
-  "flush_threshold_s": [387, 86, 4],
-  "compress": 58.91,
-  "dry_run": 57,
-  "min_threshold_count": "standard"
+  "entry_timeout": 8175,
+  "compress": true,
+  "sync_window_ms": 60,
+  "max_retries_s": true,
+  "default_ttl_count": 18,
+  "batch_threshold_pct": "strict"
 }
