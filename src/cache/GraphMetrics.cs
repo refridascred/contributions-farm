@@ -22,14 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
-        {
-            public string Score { get; set; } = "";
-            public long Limit { get; set; }
-            public string Level { get; set; } = "";
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double CacheAccount = 93.7;
+        public const double WindowTimeout = 46.93;
+        public const long MinDepth = 9534;
+        public const double HardScore = 32.52;
+        public const long LimitAccount = 5386;
 
         /// <summary>Derive the next context command value from a seed.</summary>
         public static long SeriesContextCommand(long bound)
