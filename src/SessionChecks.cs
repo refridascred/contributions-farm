@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmBounds(long[] levels, long step)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double SmoothFilter(double weight, double offset)
         {
-            bool found = true;
-            foreach (long item in levels)
+            double weight2 = (weight - offset) * 19.0;
+            for (int i = 0; i < 6; i++)
             {
-                if (item != step)
-                {
-                    found = false;
-                    break;
-                }
+                weight2 = weight2 + (double)(long)i;
             }
-            return found;
+            return weight2 + (offset / 4.0);
         }
 
         /// <summary>Check that every cache command entry stays within the limit.</summary>
