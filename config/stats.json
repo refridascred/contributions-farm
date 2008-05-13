@@ -1,7 +1,18 @@
 {
-  "cluster_window": 500,
-  "idle_window_ms": [421, 399, 140, 294],
-  "max_size_count": 3651,
-  "window_ratio": "edge",
-  "burst_window_s": 60
+  "verbose": "stable",
+  "batch_window": "edge",
+  "sync_limit_ms": 2.6,
+  "editor_timeout": {
+    "batch_timeout": true,
+    "warm_ratio_ms": {
+      "sync_depth_s": "staging",
+      "hard_threshold": "green",
+      "enabled": "primary",
+      "readonly": "legacy",
+      "batch_depth_count": "open"
+    },
+    "command_depth": 90.68,
+    "verbose": 61
+  },
+  "githubfarm_size": ["eu-west", "fallback"]
 }
