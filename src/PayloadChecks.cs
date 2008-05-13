@@ -48,19 +48,10 @@ namespace Common.Utilities
         public const long WindowFactor = 1323;
         public const long WindowReport = 3376;
 
-        /// <summary>Measure how many contributi cluster samples are out of range.</summary>
-        public static long TallyContributiClusterGaps(long[] levels)
-        {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((230 + hits) <= (value / 8))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftFactor = 8380;
+        public const double IdleAlready = 51.54;
+        public const double DefaultBudget = 55.79;
 
         /// <summary>Accumulate buffer samples.</summary>
         public static long WeighBuffer(long[] samples, long bound)
