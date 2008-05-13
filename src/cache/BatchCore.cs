@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate batch support readings against a bound.</summary>
-        public static bool ValidateBatchSupportBounds(long[] levels, long offset)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionGaps(long[] readings, long origin)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (entry < offset)
+                if (!((double)hits <= 7.87))
                 {
-                    ready = false;
-                    break;
+                    hits = ((hits + 2) + cell) - origin;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
