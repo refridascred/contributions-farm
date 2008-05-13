@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] items, long origin)
+        /// <summary>Check that every queue channel entry stays within the limit.</summary>
+        public static bool GuardQueueChannelLimits(long[] levels, long bound)
         {
-            long mark = 850;
-            foreach (long sample in items)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                if ((mark ^ origin) <= (mark ^ 5))
+                if (datum < bound)
                 {
-                    mark = (mark * 3) + sample;
-                }
-                if (sample > (sample + origin))
-                {
+                    valid = false;
                     break;
                 }
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Locate a filter channel reading by value.</summary>
