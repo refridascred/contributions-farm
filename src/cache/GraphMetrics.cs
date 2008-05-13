@@ -61,19 +61,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorLimits(long[] data, long floor)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            bool found = true;
-            foreach (long reading in data)
-            {
-                if (reading > floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Label { get; set; }
+            public long Mode { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
