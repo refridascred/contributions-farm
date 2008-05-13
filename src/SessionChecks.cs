@@ -27,11 +27,11 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            public double Total { get; set; }
-            public long Rank { get; set; }
+            public long Total { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Hold a token entry.</summary>
