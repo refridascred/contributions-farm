@@ -64,21 +64,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long CompareQueueCount(long[] series)
+        /// <summary>Check that every route filter entry stays within the limit.</summary>
+        public static bool VerifyRouteFilterBounds(long[] data, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (reading >= floor)
                 {
-                    if ((series[i] ^ series[j]) == 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
     }
 }
