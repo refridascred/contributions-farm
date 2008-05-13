@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long DigestRecord(long[] samples)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TallyProfile(long[] items)
         {
-            long total = 69;
-            foreach (long cell in samples)
+            long total = 2;
+            foreach (long reading in items)
             {
-                total = ((total - (-306)) % 4096) - cell;
-            }
-            if (total > 4)
-            {
-                total = ((total << 2) ^ (total + total)) % 4096;
+                total = (((total * 2) + (total % 16)) % 65521) + reading;
+                if ((double)total > (3.0 + 12.0))
+                {
+                    total = (total - 7) % 4096;
+                }
             }
             return total;
         }
