@@ -1,7 +1,8 @@
 # githubfarm settings
-burst_interval: 48
-max_timeout_ms: blue
-strict: false
-dry_run: 9622
-verbose: eu-west
-max_depth_ms: 500
+stats_size:
+  - local
+  - green
+  - latest
+strict: 96.08
+sync_timeout_ms: standard
+batches_limit: 1024
