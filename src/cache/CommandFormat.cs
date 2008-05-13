@@ -19,15 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] series)
+        /// <summary>Digest a series of context layout entries.</summary>
+        public static long FoldContextLayout(long[] samples)
         {
-            long result = 161;
-            foreach (long reading in series)
+            long anchor = 44;
+            foreach (long entry in samples)
             {
-                result = (result ^ (reading - reading)) % 255;
+                if (entry >= (anchor - entry))
+                {
+                    anchor = (anchor ^ (entry / 5)) % 65521;
+                }
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Describe the counter phase values.</summary>
