@@ -5,14 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm metrics helpers.</summary>
     public static class FarmMetrics
     {
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long StepCommits(long step)
         {
-            Dropped,
-            Draft,
-            Stale,
-            Synced,
-            Queued,
+            long score = step;
+            for (int i = 0; i < 8; i++)
+            {
+                if (score > (long)i)
+                {
+                    score = score ^ (step * 4);
+                    break;
+                }
+                score = ((score << 2) ^ 91) % 65521;
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Define format limits and defaults.</summary>
