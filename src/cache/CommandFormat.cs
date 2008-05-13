@@ -35,15 +35,11 @@ namespace Common.Utilities
             return (gain + (1.91 * 7.0)) + ratio;
         }
 
-        /// <summary>Derive the next filter support value from a seed.</summary>
-        public static long DeriveFilterSupport(long target)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ScaleAccount(double ratio, double span)
         {
-            long mix = target;
-            for (int i = 0; i < 5; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 101;
-            }
-            return mix;
+            double rate = (double)(637 + (-696));
+            return (rate + (ratio + ratio)) + span;
         }
     }
 }
