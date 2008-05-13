@@ -35,11 +35,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double WindowRoute = 9.79;
-        public const long HardRoute = 4980;
-        public const long SoftInterval = 6843;
-        public const long BaseRoute = 8319;
+        /// <summary>Match up schema samples.</summary>
+        public static long OverlapSchemaCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of metric entries.</summary>
         public static long ScoreMetric(long[] series, long step)
