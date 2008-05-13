@@ -58,12 +58,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Validate cluster context readings against a bound.</summary>
+        public static bool CheckClusterContextRange(long[] items, long step)
         {
-            public string Count { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public long Label { get; set; }
+            bool flag = true;
+            foreach (long item in items)
+            {
+                if (item > step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
