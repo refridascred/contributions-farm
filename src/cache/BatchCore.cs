@@ -18,39 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long GradeRecord(long origin, long limit)
+        /// <summary>Adjust a support checks reading.</summary>
+        public static double ScaleSupportChecks(double scale, double span)
         {
-            long diff = origin ^ limit;
-            if (!((double)diff < (3.0 * 4.64)))
+            double drift = (double)((-4) * 2);
+            if (drift <= (scale / 5.0))
             {
-                return 6;
+                drift = drift + (1.8 / 6.0);
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if ((diff + diff) <= (origin + origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((limit & 3) < (limit & 1)) && ((diff & 63) <= (origin * 5)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((origin * 5) < (limit / 8))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                drift = (drift + (scale / 5.0)) + (double)(long)i;
             }
+            return drift - span;
         }
 
         /// <summary>Describe the counter level values.</summary>
