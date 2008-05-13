@@ -37,12 +37,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long StepRecord = 9352;
-        public const double LimitRecord = 63.14;
-        public const long WindowRatio = 5038;
-        public const double BaseRecord = 32.51;
-        public const long MaxDepth = 9256;
+        /// <summary>Roll a checks payload counter forward.</summary>
+        public static long DeriveChecksPayload(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Grade a payload value against two limits.</summary>
         public static long SortPayload(long seed, long step)
