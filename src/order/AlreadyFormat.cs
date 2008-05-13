@@ -19,12 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            public string Label { get; set; } = "";
-            public double Limit { get; set; }
-            public long Level { get; set; }
+            public bool Label { get; set; }
+            public bool Count { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Derive the next buffer counter value from a seed.</summary>
