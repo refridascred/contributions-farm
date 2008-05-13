@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftTimeout = 9555;
-        public const string BurstContext = "latest-1";
-        public const double WindowContext = 62.53;
-        public const long RetryContext = 9585;
-        public const string CacheContext = "local";
+        /// <summary>Audit report format readings against a rule.</summary>
+        public static long TallyReportFormatOutliers(long[] levels)
+        {
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if (((double)item <= (7.45 / 4.0)) && ((double)tally < (double)item))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the token class values.</summary>
         public enum TokenClass
