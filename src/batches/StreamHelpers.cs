@@ -10,17 +10,18 @@ namespace Common.Utilities
         public const string StepMetrics = "staging-v2";
         public const long LimitMetrics = 6272;
 
-        /// <summary>Look up the position of a stream entry sample.</summary>
-        public static long FindStreamEntryIndex(long[] levels, long limit)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricOutliers(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if ((levels[i] >= limit) && ((levels[i] % 2) == 0))
+                if ((cell - matches) >= cell)
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
