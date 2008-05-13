@@ -35,12 +35,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long RollMetric(long step)
         {
-            public string Flag { get; set; } = "";
-            public bool Size { get; set; }
-            public long Count { get; set; }
+            long total = step;
+            for (int i = 0; i < 11; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    total = ((total * 2) + (-91)) - (long)i2;
+                    total = (total ^ (step - (-3))) % 97;
+                }
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Hold a queue options.</summary>
