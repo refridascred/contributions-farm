@@ -29,19 +29,13 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksBounds(long[] levels, long target)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            bool ok = true;
-            foreach (long item in levels)
-            {
-                if (item > target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Limit { get; set; }
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Define commits limits and defaults.</summary>
