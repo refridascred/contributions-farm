@@ -28,12 +28,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long SortEntry(long origin, long offset)
         {
-            public double Owner { get; set; }
-            public double Limit { get; set; }
-            public long Token { get; set; }
+            if (((164 * 4) < (offset >> 3)) || ((origin * 5) > (offset / 2)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((origin + origin) <= (origin % 5)) && ((20.0 / 2.0) > (double)origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((origin + origin) != (offset / 6))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up editor samples.</summary>
