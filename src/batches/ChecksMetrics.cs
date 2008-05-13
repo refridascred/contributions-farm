@@ -12,18 +12,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowGaps(long[] values, long seed)
+        /// <summary>Measure how many tools metric samples are out of range.</summary>
+        public static long TallyToolsMetricGaps(long[] series)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if ((sample + 2) <= matches)
+                if (((double)reading < 9.37) && ((seen + seen) == (reading ^ reading)))
                 {
-                    matches = (matches + 3) - seed;
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Validate tools notes readings against a bound.</summary>
