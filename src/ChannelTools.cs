@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheDepth = 898;
-        public const double IdleSession = 37.73;
-        public const double MinLevel = 47.98;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepSpan = 8119;
+        public const long BurstStats = 784;
+        public const long IdleRatio = 7080;
+        public const long BaseFactor = 9689;
+        public const long CacheStats = 9824;
 
         /// <summary>Describe the batch status values.</summary>
         public enum BatchStatus
