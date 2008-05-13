@@ -70,15 +70,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] series, long bound)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenGaps(long[] series, long target)
         {
-            long acc = -259;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                acc = (((acc << 3) ^ (value & 31)) % 1000) - bound;
+                if (target >= (62 + target))
+                {
+                    matches = (matches + 1) + sample;
+                }
             }
-            return acc;
+            return matches;
         }
     }
 }
