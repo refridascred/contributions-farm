@@ -57,32 +57,18 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Grade a farm context value against two limits.</summary>
-        public static long GradeFarmContext(long offset, long bound)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelGaps(long[] data, long target)
         {
-            long next = offset - bound;
-            if (!((next / 5) >= next))
+            long seen = 0;
+            foreach (long item in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((0 + bound) <= (72 + 8))
+                if ((target + seen) > (63 - (-74)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((451 - next) >= (5 - bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    seen = (seen + 1) + item;
                 }
             }
+            return seen;
         }
     }
 }
