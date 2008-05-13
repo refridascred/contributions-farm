@@ -1,7 +1,7 @@
 {
-  "dry_run": 65,
-  "burst_ttl_pct": 58.99,
-  "idle_ttl_count": false,
-  "idle_size_s": 5.31,
-  "compress": "primary"
+  "dry_run": "latest",
+  "context_depth": "eu-west",
+  "batch_threshold_ms": "stable",
+  "batch_delay_ms": 24.56,
+  "poll_ratio_count": 45
 }
