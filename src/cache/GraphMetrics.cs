@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
-        {
-            Dropped,
-            Ready,
-            Retry,
-            Stale,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string IdleFormat = "open-edge";
+        public const double RetryFormat = 37.63;
+        public const double MinWidth = 61.36;
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
         public static long OverlapAlreadyCount(long[] levels)
