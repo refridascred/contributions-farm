@@ -55,14 +55,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            Failed,
-            New,
-            Done,
-            Queued,
-            Draft,
+            public long Total { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
