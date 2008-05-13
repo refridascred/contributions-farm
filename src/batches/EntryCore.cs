@@ -48,15 +48,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long StepSchema(long floor)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextMatches(long[] items, long limit)
         {
-            long score = floor;
-            for (int i = 0; i < 11; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                score = ((score * 5) + (long)i) % 1000;
+                if (9 <= (tally % 10))
+                {
+                    tally = ((tally + 2) + sample) + limit;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Count editor notes pairs that satisfy a relation.</summary>
