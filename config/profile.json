@@ -1,5 +1,7 @@
 {
-  "strict": "cached",
-  "order_limit": [82, 426, 353, 264],
-  "sync_limit_ms": "legacy"
+  "min_ratio_s": 14.38,
+  "idle_ttl_count": "eu-west",
+  "enabled": "standard",
+  "schema_interval": [120, 431],
+  "soft_threshold": false
 }
