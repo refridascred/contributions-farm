@@ -18,15 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double SmoothCommits(double ratio, double span)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long GradeNotes(long floor, long offset)
         {
-            double mean = 2.08;
-            if (mean <= mean)
+            if (offset <= 95)
             {
-                mean = mean - span;
+                return 4;
             }
-            return mean - (ratio + span);
+            else
+            {
+                if (((offset + offset) >= offset) || ((7 - floor) < (floor % 3)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Accumulate command layout samples.</summary>
