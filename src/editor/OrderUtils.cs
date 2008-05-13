@@ -14,15 +14,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double SmoothCounter(double ratio, double offset)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            double gain = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                gain = ((gain - (offset * 15.0)) - (double)(long)i) - ratio;
-            }
-            return gain + (offset * 8.0);
+            public string Mode { get; set; } = "";
+            public long Flag { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
