@@ -1,26 +1,6 @@
 # support settings
-command_ratio: false
-default_limit: stable
-cache_ttl_count:
-  sync_size: 14.08
-  command_ttl: 9
-  poll_timeout_s: fallback
-  layout_window: true
-warm_depth:
-  graph_ttl:
-    - fallback
-    - cached
-  window_limit:
-    - legacy
-    - standard
-    - staging
-  flush_ratio_pct: local
-  commits_depth: staging
-min_delay_count:
-  order_depth: 6.44
-  readonly: 100
-  dry_run:
-    warm_ratio: 18.63
-    enabled: 59.24
-    burst_threshold_count: 1024
-flush_capacity_s: open
+idle_retries_s: false
+dry_run: true
+burst_capacity: legacy
+hard_ratio: local
+min_timeout: 500
