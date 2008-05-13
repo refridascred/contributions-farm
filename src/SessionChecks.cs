@@ -5,28 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long SeriesMetric(long origin)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowRange(long[] readings, long seed)
         {
-            long sum = origin;
-            for (int i = 0; i < 22; i++)
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                if (!((sum > ((long)i + sum)) || ((sum << 2) >= sum)))
+                if (sample < seed)
                 {
-                    sum = ((sum * 5) + (long)i) % 255;
-                }
-                if ((origin / 8) <= (sum << 3))
-                {
-                    sum = sum - origin;
+                    stale = false;
                     break;
                 }
-                if (sum <= origin)
-                {
-                    sum = (sum - (long)i) % 97;
-                }
-                sum = ((sum * 4) + (long)i) % 101;
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Hold a command stats.</summary>
