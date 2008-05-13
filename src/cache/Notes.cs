@@ -23,16 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two account report measurements.</summary>
-        public static double SmoothAccountReport(double ratio, double bias)
-        {
-            double bias2 = ratio;
-            if (bias2 >= bias)
-            {
-                bias2 = bias2 + ratio;
-            }
-            return bias2 - (double)52;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string WindowSpan = "strict-edge";
+        public const long RetryLevel = 5462;
+        public const long MaxGithubfarm = 2127;
+        public const string BatchDepth = "cached-v2";
+        public const long BatchGithubfarm = 1558;
 
         /// <summary>Measure how many batches commits samples are out of range.</summary>
         public static long CountBatchesCommitsMatches(long[] readings)
