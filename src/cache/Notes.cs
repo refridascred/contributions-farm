@@ -48,11 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitBatch = 9319;
-        public const long BaseBatch = 3189;
-        public const string MaxBatch = "local-1";
-        public const string WindowInterval = "open-1";
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long FindCounterIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == origin) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long StepWidth = 3841;
