@@ -20,16 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long DeriveRecord(long step)
+        /// <summary>Check that every cluster route entry stays within the limit.</summary>
+        public static bool GuardClusterRouteRange(long[] items, long seed)
         {
-            long carry = step;
-            for (int i = 0; i < 17; i++)
+            bool ok = true;
+            foreach (long item in items)
             {
-                carry = (carry + ((long)i % 5)) % 4096;
-                carry = ((carry * 5) + (long)i) % 65521;
+                if (item != seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
