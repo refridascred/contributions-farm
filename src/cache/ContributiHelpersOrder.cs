@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterGaps(long[] values)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferRange(long[] values, long target)
         {
-            long seen = 0;
+            bool valid = true;
             foreach (long reading in values)
             {
-                if (!((21 >= (reading - reading)) && ((reading & 255) >= (long)values.Length)))
+                if (reading >= target)
                 {
-                    seen = seen + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
