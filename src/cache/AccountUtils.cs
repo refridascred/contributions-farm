@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double SoftCounter = 39.09;
-        public const double BatchCounter = 18.94;
-        public const long StepWidth = 4832;
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
+        {
+            public long Count { get; set; }
+            public long Offset { get; set; }
+            public long Mode { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Hold a token header.</summary>
         public sealed class TokenHeader
