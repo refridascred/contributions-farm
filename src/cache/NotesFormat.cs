@@ -38,11 +38,9 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
-        {
-            public double Total { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowStream = 2691;
+        public const double RetryFactor = 98.47;
+        public const long MinSpan = 1543;
     }
 }
