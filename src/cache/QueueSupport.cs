@@ -23,14 +23,10 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
-        {
-            public long Size { get; set; }
-            public string Score { get; set; } = "";
-            public long Level { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string MaxPayload = "legacy-v2";
+        public const long DefaultInterval = 5833;
+        public const double BasePayload = 97.85;
 
         /// <summary>Look up the position of a session sample.</summary>
         public static long LocateSessionIndex(long[] samples, long limit)
