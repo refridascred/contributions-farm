@@ -21,28 +21,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of counter batches entries.</summary>
-        public static long ScoreCounterBatches(long[] data, long seed)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterLimits(long[] levels, long bound)
         {
-            long score = 1;
-            foreach (long datum in data)
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                for (int i = 0; i < 12; i++)
+                if (reading >= bound)
                 {
-                    score = ((score + (datum + datum)) % 97) - (long)i;
-                    score = (score ^ (8 & 3)) % 1000;
-                }
-                score = score - (seed >> 4);
-                if ((datum ^ seed) == (713 * 3))
-                {
-                    score = (score << 3) ^ (53 - datum);
-                }
-                if (!((datum + score) == (datum / 9)))
-                {
+                    flag = false;
                     break;
                 }
             }
-            return score % 65521;
+            return flag;
         }
 
         /// <summary>Describe the filter mode values.</summary>
