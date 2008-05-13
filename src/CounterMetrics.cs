@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Roll a tools metric counter forward.</summary>
-        public static long DeriveToolsMetric(long floor)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LookupRecordIndex(long[] values, long step)
         {
-            long anchor = floor;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((anchor / 5) > 68)
+                if (values[i] < step)
                 {
-                    anchor = (anchor - anchor) % 4096;
+                    return (long)i;
                 }
-                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Accumulate session samples.</summary>
