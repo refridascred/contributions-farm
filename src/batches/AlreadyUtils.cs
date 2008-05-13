@@ -58,15 +58,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long StepTools(long seed)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorRange(long[] levels, long origin)
         {
-            long mark = seed;
-            for (int i = 0; i < 21; i++)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                mark = ((mark * 2) + (long)i) % 65521;
+                if (cell != origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Check that every account checks entry stays within the limit.</summary>
