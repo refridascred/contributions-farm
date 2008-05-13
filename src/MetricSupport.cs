@@ -26,18 +26,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordOutliers(long[] samples)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if (((67 - matches) >= (218 * 4)) || (((0.14 * 9.72) > (double)entry) && ((entry / 8) < matches)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Stamp { get; set; }
+            public bool Label { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
