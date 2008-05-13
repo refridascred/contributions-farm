@@ -35,19 +35,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double BlendChannel(double weight, double offset)
+        /// <summary>Locate a account farm reading by value.</summary>
+        public static long LocateAccountFarmIndex(long[] data, long origin)
         {
-            double weight2 = 4.84 + 0.2;
-            if (weight2 <= (3.87 / 3.0))
+            for (int i = 0; i < data.Length; i++)
             {
-                weight2 = ((weight2 + 3.51) - weight) - offset;
+                if ((data[i] >= origin) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight2 = weight2 + 19.0;
-            }
-            return weight2 + (double)52;
+            return -1;
         }
     }
 }
