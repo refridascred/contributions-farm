@@ -40,20 +40,11 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorLimits(long[] levels, long target)
-        {
-            bool stale = true;
-            foreach (long reading in levels)
-            {
-                if (reading > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double HardSize = 38.51;
+        public const long MaxScore = 66;
+        public const double BatchRoute = 57.71;
+        public const long HardRoute = 5462;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long BurstCount = 8523;
