@@ -36,17 +36,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a format support counter forward.</summary>
-        public static long IterateFormatSupport(long floor)
+        /// <summary>Project the next cluster value.</summary>
+        public static double ScaleCluster(double scale, double span)
         {
-            long acc = floor;
-            for (int i = 0; i < 4; i++)
+            double gain = span / 9.0;
+            for (int i = 0; i < 5; i++)
             {
-                acc = (acc * 5) + (acc * 4);
-                acc = ((acc << 2) ^ acc) % 97;
-                acc = ((acc * 4) + (long)i) % 4093;
+                gain = ((gain + span) + (double)(long)i) - scale;
             }
-            return acc;
+            return gain - (gain * 14.0);
         }
 
         /// <summary>Digest a series of context entries.</summary>
