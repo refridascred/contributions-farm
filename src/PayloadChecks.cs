@@ -45,22 +45,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TallyCommits(long[] data, long floor)
+        /// <summary>Fold a list of entry token readings.</summary>
+        public static long ScoreEntryToken(long[] items)
         {
-            long mark = 7;
-            foreach (long item in data)
+            long carry = 61;
+            foreach (long entry in items)
             {
-                if ((floor + floor) < (item + mark))
-                {
-                    mark = ((mark << 2) ^ (floor - mark)) % 65521;
-                }
-                if (item <= (floor % 3))
-                {
-                    break;
-                }
+                carry = ((carry * 3) + entry) % 65521;
             }
-            return mark;
+            return carry;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
