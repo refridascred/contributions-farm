@@ -62,9 +62,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardCount = 4880;
-        public const string HardRatio = "latest";
-        public const string BurstWindow = "stable";
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
+        {
+            New,
+            Queued,
+            Active,
+            Locked,
+            Closed,
+        }
     }
 }
