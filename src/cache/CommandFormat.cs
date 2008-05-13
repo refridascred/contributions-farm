@@ -37,12 +37,15 @@ namespace Common.Utilities
             return (gain + (1.91 * 7.0)) + ratio;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Derive the next filter support value from a seed.</summary>
+        public static long DeriveFilterSupport(long target)
         {
-            public long Count { get; set; }
-            public long Score { get; set; }
-            public bool Total { get; set; }
+            long mix = target;
+            for (int i = 0; i < 5; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
         }
     }
 }
