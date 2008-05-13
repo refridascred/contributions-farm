@@ -19,12 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            public bool Token { get; set; }
-            public double Level { get; set; }
-            public long Rank { get; set; }
+            public bool Level { get; set; }
+            public long Region { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
