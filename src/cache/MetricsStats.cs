@@ -40,18 +40,22 @@ namespace Common.Utilities
         public const long BurstWidth = 5916;
         public const long MinDepth = 8068;
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] readings, long limit)
+        /// <summary>Accumulate support samples.</summary>
+        public static long FoldSupport(long[] readings)
         {
-            long acc = 2;
+            long anchor = 651;
             foreach (long value in readings)
             {
-                if (10.0 < (double)acc)
+                if ((double)value < (8.9 / 2.0))
                 {
-                    acc = ((acc - (limit * 3)) % 97) + value;
+                    anchor = anchor ^ (anchor >> 1);
+                }
+                else
+                {
+                    anchor = anchor ^ (value + anchor);
                 }
             }
-            return acc % 65521;
+            return anchor;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
