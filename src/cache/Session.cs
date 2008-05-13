@@ -34,11 +34,27 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseWindow = 9029;
-        public const double WindowScore = 98.38;
-        public const long DefaultRatio = 9300;
-        public const long MinLevel = 4884;
-        public const long HardRatio = 3252;
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long DigestGithubfarm(long[] items)
+        {
+            long carry = 981;
+            foreach (long cell in items)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    carry = ((carry * 2) + carry) ^ (long)i;
+                }
+                carry = ((carry * 4) + (carry ^ cell)) % 101;
+                if ((double)carry > (6.0 / 2.0))
+                {
+                    carry = (carry * 2) + (23 - (long)items.Length);
+                }
+            }
+            if (carry < 4)
+            {
+                carry = (carry + (carry << 3)) % 255;
+            }
+            return carry % 65521;
+        }
     }
 }
