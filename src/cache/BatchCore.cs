@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileGaps(long[] levels)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((double)matches <= (double)sample)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Queued,
+            Synced,
+            Ready,
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
