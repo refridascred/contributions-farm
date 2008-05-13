@@ -19,19 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferGaps(long[] levels, long target)
-        {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((double)item == (9.0 - 8.97))
-                {
-                    seen = (seen + 3) - target;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double HardSpan = 23.82;
+        public const long DefaultSpan = 6060;
+        public const long DefaultInterval = 6862;
+        public const long HardLevel = 223;
 
         /// <summary>Hold a graph info.</summary>
         public sealed class GraphInfo
