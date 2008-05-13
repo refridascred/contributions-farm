@@ -60,19 +60,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelHits(long[] data)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long CompareLayoutCount(long[] values)
         {
             long seen = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((7 + seen) != (seen >> 4)) && ((double)reading <= (20.0 + 9.7)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((values[i] - values[j]) == 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
