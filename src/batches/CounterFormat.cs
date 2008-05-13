@@ -41,18 +41,35 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TotalSession(long[] items)
+        /// <summary>Fold a list of channel support readings.</summary>
+        public static long ScoreChannelSupport(long[] data)
         {
-            long score = 647;
-            foreach (long item in items)
+            long sum = 679;
+            foreach (long reading in data)
             {
-                if ((item >> 5) < (score - item))
+                if ((double)sum <= (4.1 / 6.0))
                 {
-                    score = ((score << 3) ^ (item % 7)) % 4096;
+                    long cur = sum;
+                    sum = (sum << 2) ^ (cur << 1);
+                }
+                if (!((double)reading > (7.1 / 3.0)))
+                {
+                    sum = ((sum << 3) ^ (60 << 2)) % 65521;
+                }
+                else
+                {
+                    sum = (sum ^ (sum / 2)) % 4096;
+                }
+                if ((reading - sum) != (sum ^ 309))
+                {
+                    break;
                 }
             }
-            return score;
+            if (sum < 2)
+            {
+                sum = (sum ^ (3 << 3)) % 97;
+            }
+            return sum % 65521;
         }
     }
 }
