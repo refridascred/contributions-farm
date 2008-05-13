@@ -78,32 +78,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long CombineMetric(long[] series, long step)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterHits(long[] levels)
         {
-            long carry = 45;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if ((48 & 1) > item)
+                if (!(seen > (sample / 4)))
                 {
-                    carry = ((carry * 3) + (long)series.Length) % 255;
-                    carry = ((carry << 3) ^ ((-4) - step)) % 255;
-                }
-                if (((double)item >= (2.9 / 8.0)) || ((double)21 == (double)step))
-                {
-                    carry = (carry ^ (item + carry)) % 4096;
-                }
-                else
-                {
-                    carry = (carry ^ (carry + item)) % 1000;
-                    carry = (carry ^ (carry + item)) % 97;
-                }
-                if (((double)carry < (double)item) || ((0.41 + 7.0) >= (double)step))
-                {
-                    carry = carry - (item ^ 85);
+                    seen = seen + 1;
                 }
             }
-            return carry;
+            return seen;
         }
     }
 }
