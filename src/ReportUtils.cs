@@ -50,11 +50,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double BlendFormat(double ratio, double span)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long FoldCommits(long[] values, long limit)
         {
-            double bias = (double)(9 >> 4);
-            return ((bias - 7.1) + ratio) + span;
+            long state = 1;
+            foreach (long entry in values)
+            {
+                state = ((state ^ (8 & 1)) ^ entry) + limit;
+            }
+            if (state > 407)
+            {
+                state = (state * 2) + state;
+            }
+            return state % 97;
         }
 
         /// <summary>Hold a commits options.</summary>
