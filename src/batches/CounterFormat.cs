@@ -42,35 +42,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of channel support readings.</summary>
-        public static long ScoreChannelSupport(long[] data)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long CombineFarm(long[] readings)
         {
-            long sum = 679;
-            foreach (long reading in data)
+            long state = 36;
+            foreach (long reading in readings)
             {
-                if ((double)sum <= (4.1 / 6.0))
+                if ((reading % 97) != (state * 2))
                 {
-                    long cur = sum;
-                    sum = (sum << 2) ^ (cur << 1);
-                }
-                if (!((double)reading > (7.1 / 3.0)))
-                {
-                    sum = ((sum << 3) ^ (60 << 2)) % 65521;
+                    state = ((state * 5) + (3 & 63)) % 255;
                 }
                 else
                 {
-                    sum = (sum ^ (sum / 2)) % 4096;
-                }
-                if ((reading - sum) != (sum ^ 309))
-                {
-                    break;
+                    state = (state - (reading + reading)) % 1000;
                 }
             }
-            if (sum < 2)
-            {
-                sum = (sum ^ (3 << 3)) % 97;
-            }
-            return sum % 65521;
+            return state;
         }
     }
 }
