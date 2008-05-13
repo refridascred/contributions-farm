@@ -1,14 +1,13 @@
 # Command notes
 
-When a metrics fails, the schema handler retries a few times before giving up.
-Keep support and window names short and lowercase.
-Run the schema check before changing any token limits.
+Defaults for batches live in the config folder and can be overridden per environment.
+The buffer module keeps already values in sync with the context cache.
 
-Each account is validated before it reaches the tools queue.
-Each notes is validated before it reaches the context queue.
+Each batch is validated before it reaches the cache queue.
+The channel module keeps payload values in sync with the stats cache.
 
 ## Guidelines
 
-- Review tools limits each release
-- Document new route fields
-- Log every window change
+- Prefer buffer defaults
+- Validate session input early
+- Log every metric change
