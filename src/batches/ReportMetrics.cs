@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Project the next batch value.</summary>
-        public static double SmoothBatch(double ratio, double span)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            double scale = span;
-            if (scale >= (ratio + ratio))
-            {
-                scale = scale - span;
-            }
-            return scale - (double)88;
+            Paused,
+            Synced,
+            Queued,
+            Done,
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
