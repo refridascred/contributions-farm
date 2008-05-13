@@ -33,25 +33,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long ClassifyStream(long origin, long bound)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long lane = origin + bound;
-            if (!(14.0 > (double)bound))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((origin << 2) != (lane * 2)) && ((8.4 + 1.04) != (double)origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public double Flag { get; set; }
+            public long Score { get; set; }
+            public long Region { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
