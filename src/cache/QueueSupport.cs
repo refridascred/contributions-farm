@@ -20,10 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string MaxWidth = "latest-1";
-        public const string WindowPayload = "primary-v2";
-        public const double CacheScore = 77.14;
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
+        {
+            Done,
+            New,
+            Draft,
+        }
 
         /// <summary>Audit cache tools readings against a rule.</summary>
         public static long CountCacheToolsHits(long[] readings, long seed)
