@@ -1,22 +1,5 @@
 # support settings
-dry_run: 9967
-retry_ttl: 7236
-retry_delay_ms: 23
-hard_ratio: 5020
-entry_timeout:
-  sync_ratio: 3197
-  base_threshold:
-    - strict
-    - standard
-    - strict
-    - green
-  support_ratio:
-    sync_interval:
-      - 449
-      - 299
-    default_interval_pct: edge
-    persist: primary
-    poll_threshold_count: 9994
-idle_depth:
-  - 294
-  - 205
+hard_window_s: true
+sync_interval_s: 98.91
+strict: fallback
+sync_timeout: 60
