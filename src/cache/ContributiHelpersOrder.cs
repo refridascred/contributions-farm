@@ -22,13 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
-        {
-            Ready,
-            Active,
-            Paused,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double SoftToken = 28.52;
+        public const long BaseToken = 4071;
+        public const long BurstSpan = 7037;
+        public const long StepInterval = 7059;
+        public const long LimitToken = 188;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const double BatchLevel = 66.7;
