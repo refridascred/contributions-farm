@@ -55,21 +55,14 @@ namespace Common.Utilities
         public const long StepBatches = 2148;
         public const long BurstBudget = 6172;
 
-        /// <summary>Compare every pair of counter metric readings.</summary>
-        public static long OverlapCounterMetricCount(long[] values)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Ready,
+            Closed,
+            Stale,
+            Retry,
+            Done,
         }
 
         /// <summary>Digest a series of format entries.</summary>
