@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterMatches(long[] levels)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmOutliers(long[] series)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if (!((double)count > 1.0) || ((entry % 64) >= entry))
+                if (((74 & 63) < hits) && (entry < hits))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
