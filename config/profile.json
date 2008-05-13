@@ -1,11 +1,5 @@
 {
-  "checks_depth": 26,
-  "retry_retries_pct": {
-    "poll_ratio": "latest",
-    "batches_window": 250,
-    "max_depth_s": "standard",
-    "token_capacity": "fallback"
-  },
-  "cache_threshold": 547,
-  "poll_threshold_count": true
+  "min_limit": "staging",
+  "command_timeout": true,
+  "max_ratio_count": 60
 }
