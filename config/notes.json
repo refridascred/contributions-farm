@@ -1,5 +1,14 @@
 {
-  "dry_run": 60,
-  "retry_ttl_ms": ["staging", "edge"],
-  "soft_threshold": "edge"
+  "flush_window": {
+    "base_ratio_count": "stable",
+    "idle_size_count": 7404,
+    "githubfarm_window": "edge"
+  },
+  "warm_delay": {
+    "compress": "open",
+    "soft_threshold": "blue",
+    "dry_run": 21.99
+  },
+  "idle_ttl_ms": "strict",
+  "dry_run": false
 }
