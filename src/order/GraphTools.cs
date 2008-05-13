@@ -35,13 +35,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
-        {
-            Idle,
-            Synced,
-            Paused,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinRatio = 1356;
+        public const long MaxTimeout = 6005;
+        public const long HardAlready = 7077;
+        public const long DefaultAlready = 8917;
+        public const long StepAlready = 9663;
 
         /// <summary>Hold a window stats.</summary>
         public sealed class WindowStats
