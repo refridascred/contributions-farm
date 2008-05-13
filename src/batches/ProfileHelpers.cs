@@ -48,11 +48,25 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string StepWidth = "cached-v2";
-        public const string RetryWidth = "alpha";
-        public const long StepBatches = 2148;
-        public const long BurstBudget = 6172;
+        /// <summary>Rank report input into a small class.</summary>
+        public static long RankReport(long bound, long origin)
+        {
+            if (origin <= (234 + bound))
+            {
+                return 6;
+            }
+            else
+            {
+                if (5.0 < (double)origin)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Describe the payload level values.</summary>
         public enum PayloadLevel
