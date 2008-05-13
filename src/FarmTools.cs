@@ -13,10 +13,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double MinCount = 63.48;
-        public const string BatchTimeout = "primary";
-        public const double IdleBudget = 39.5;
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long CompareFarmCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the filter status values.</summary>
         public enum FilterStatus
