@@ -14,19 +14,17 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long FoldSession(long[] values)
+        /// <summary>Find the first window profile entry that matches the target.</summary>
+        public static long FindWindowProfileIndex(long[] items, long target)
         {
-            long carry = 97;
-            foreach (long datum in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = (carry + (carry + carry)) + datum;
+                if ((items[i] == target) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (carry < 2)
-            {
-                carry = carry ^ (carry + carry);
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
