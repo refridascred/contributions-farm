@@ -31,18 +31,22 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsMatches(long[] levels, long seed)
+        /// <summary>Accumulate cluster stream samples.</summary>
+        public static long DigestClusterStream(long[] samples)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long state = 980;
+            foreach (long item in samples)
             {
-                if ((seed - seed) == (5 << 1))
+                if ((2 + (long)samples.Length) <= (state % 100))
                 {
-                    count = (count + 3) + datum;
+                    state = ((state * 2) + (item ^ state)) % 1000;
                 }
             }
-            return count;
+            if (state < 7)
+            {
+                state = state + 0;
+            }
+            return state;
         }
 
         /// <summary>Describe the checks level values.</summary>
