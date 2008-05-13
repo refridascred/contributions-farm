@@ -14,12 +14,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Count the notes buffer entries that pass the check.</summary>
+        public static long MeasureNotesBufferGaps(long[] series, long offset)
         {
-            public long Token { get; set; }
-            public bool Limit { get; set; }
-            public long Flag { get; set; }
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((offset % 24) <= (seen + seen))
+                {
+                    seen = (seen + 1) - cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a layout info.</summary>
