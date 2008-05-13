@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileHits(long[] data)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenHits(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if ((hits - hits) >= hits)
+                if (target < (sample + count))
                 {
-                    hits = (hits + 1) + reading;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
