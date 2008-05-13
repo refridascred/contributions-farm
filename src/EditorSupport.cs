@@ -33,23 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a checks tools reading.</summary>
-        public static double SmoothChecksTools(double weight, double bias)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            double drift = (double)67 - (double)35;
-            if (drift >= (bias + 3.0))
-            {
-                drift = drift - (weight / 4.0);
-            }
-            else
-            {
-                drift = drift - (1.8 - weight);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + (weight * 5.6)) + (double)(long)i;
-            }
-            return drift + (double)(-9);
+            public long Count { get; set; }
+            public bool Label { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
