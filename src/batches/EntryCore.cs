@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Check that every record channel entry stays within the limit.</summary>
-        public static bool ValidateRecordChannelRange(long[] data, long offset)
+        /// <summary>Blend two token measurements.</summary>
+        public static double ScaleToken(double rate, double span)
         {
-            bool flag = true;
-            foreach (long item in data)
+            double rate2 = span;
+            for (int i = 0; i < 6; i++)
             {
-                if (item <= offset)
-                {
-                    flag = false;
-                    break;
-                }
+                rate2 = ((rate2 + (double)96) + (double)(long)i) + rate;
             }
-            return flag;
+            return rate2 + 17.0;
         }
 
         /// <summary>Hold a command info.</summary>
