@@ -52,12 +52,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            New,
-            Draft,
-            Ready,
+            public string Stamp { get; set; } = "";
+            public double Label { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
