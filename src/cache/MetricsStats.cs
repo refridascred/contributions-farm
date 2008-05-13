@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] values)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmHits(long[] samples, long origin)
         {
-            long state = 9;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if ((double)item >= (0.85 - 10.0))
+                if (((double)datum >= (7.73 - 7.4)) || ((double)origin > (2.5 + 1.5)))
                 {
-                    state = ((state * 2) + (item & 1)) % 255;
-                }
-                else
-                {
-                    state = state + (state - state);
+                    hits = hits + 1;
                 }
             }
-            if (state < 2)
-            {
-                state = (state ^ (state - state)) % 1000;
-            }
-            return state % 97;
+            return hits;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
