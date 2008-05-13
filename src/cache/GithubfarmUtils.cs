@@ -27,10 +27,10 @@ namespace Common.Utilities
         public const long MaxProfile = 1435;
         public const string RetryProfile = "local";
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinTimeout = 7070;
-        public const double SoftCache = 81.15;
-        public const double HardFactor = 82.12;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string LimitTimeout = "staging";
+        public const string WindowCount = "staging";
+        public const long BurstStream = 309;
 
         /// <summary>Hold a metrics info.</summary>
         public sealed class MetricsInfo
