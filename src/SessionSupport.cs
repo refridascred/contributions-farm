@@ -26,14 +26,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferRange(long[] values, long target)
         {
-            Retry,
-            Done,
-            Ready,
-            New,
-            Failed,
+            bool valid = true;
+            foreach (long entry in values)
+            {
+                if (entry != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
