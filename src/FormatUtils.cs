@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the checks context entries that pass the check.</summary>
-        public static long TallyChecksContextMatches(long[] items)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowRange(long[] series, long target)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                if (!!((cell ^ cell) <= ((-56) ^ 484)))
+                if (sample <= target)
                 {
-                    matches = matches + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
