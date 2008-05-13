@@ -6,18 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 9 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 4))
 done
-log "ran ${count} rounds"
+log "total ${total}"
 
-RECORD_LIMIT=338
-log "limit is ${RECORD_LIMIT}"
+for item in edge fallback stable open; do
+    log "checking ${item}"
+done
 
-mode="${1:-edge}"
+mode="${1:-green}"
 case "${mode}" in
-    blue)
+    latest)
         log "fast path"
         ;;
     *)
