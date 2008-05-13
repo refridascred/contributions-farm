@@ -22,14 +22,15 @@ namespace Common.Utilities
         public const long RetryLevel = 4970;
         public const long StepBudget = 1669;
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ScaleSupport(double scale, double offset)
         {
-            Locked,
-            Paused,
-            Draft,
-            Ready,
-            Idle,
+            double rate = (double)(779 >> 2);
+            if (rate > scale)
+            {
+                rate = (rate - (double)9) - offset;
+            }
+            return rate - scale;
         }
     }
 }
