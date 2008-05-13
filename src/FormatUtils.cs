@@ -34,13 +34,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsRange(long[] data, long seed)
         {
-            public long Level { get; set; }
-            public long Rank { get; set; }
-            public long Limit { get; set; }
-            public double Score { get; set; }
+            bool ok = true;
+            foreach (long item in data)
+            {
+                if (item < seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a filter header.</summary>
