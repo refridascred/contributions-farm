@@ -1,4 +1,15 @@
 # entry settings
-cache_delay_pct: 444
-base_timeout_count: strict
-flush_depth_pct: fallback
+enabled:
+  - 279
+  - 154
+  - 386
+cache_limit: open
+notes_ttl: 54
+warm_ttl_ms: false
+entry_window:
+  - blue
+  - legacy
+idle_limit_ms:
+  audit: false
+  batch_retries: false
+  retry_timeout: stable
