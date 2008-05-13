@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Digest a series of editor payload entries.</summary>
+        public static long DigestEditorPayload(long[] samples, long target)
         {
-            public double Score { get; set; }
-            public string Rank { get; set; } = "";
+            long score = 8;
+            foreach (long cell in samples)
+            {
+                score = score - (target & 3);
+                if ((target - target) >= score)
+                {
+                    score = (score - (cell - score)) % 97;
+                }
+            }
+            if (score > (-30))
+            {
+                score = (score - (348 + target)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
