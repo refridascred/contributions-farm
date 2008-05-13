@@ -1,27 +1,4 @@
 # entry settings
-idle_retries_s: 12.7
-poll_interval:
-  - 278
-  - 164
-strict: 80
-schema_depth:
-  burst_timeout_count:
-    min_ttl:
-      - strict
-      - staging
-      - strict
-      - standard
-    flush_timeout_count: 76.17
-    compress: 51.57
-    contributi_ratio:
-      - blue
-      - primary
-  dry_run:
-    notes_timeout: false
-    max_depth_s: staging
-    dry_run: green
-    session_delay: 24.86
-  persist: 29.52
-  entry_timeout: 94.63
-  base_retries: primary
-  flush_window_s: 55.46
+cache_delay_pct: 444
+base_timeout_count: strict
+flush_depth_pct: fallback
