@@ -1,8 +1,8 @@
-id,token,level,region,owner
-1,716,88.1,staging,59.34
-2,949,462,849,682
-3,95.48,153,257,351
-4,eu-west,699,83.89,424
-5,edge,47.74,primary,715
-6,green,40.56,149,fallback
-7,197,40.48,93.56,65.24
+id,owner,level
+1,staging,62.12
+2,311,legacy
+3,931,28
+4,local,98.08
+5,stable,stable
+6,stable,265
+7,397,492
