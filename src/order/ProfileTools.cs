@@ -61,22 +61,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheOutliers(long[] series)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if ((entry - entry) > (tally << 2))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Size { get; set; }
+            public long Label { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
