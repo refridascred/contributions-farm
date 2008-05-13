@@ -34,15 +34,18 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Iterate the payload record series from a seed.</summary>
-        public static long SeriesPayloadRecord(long seed)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiHits(long[] data)
         {
-            long mix = seed;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                mix = ((mix * 4) + (long)i) % 97;
+                if (((4.0 * 0.1) >= (double)entry) || ((654 ^ entry) <= (entry & 127)))
+                {
+                    matches = matches + 2;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Hold a route snapshot.</summary>
