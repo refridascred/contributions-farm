@@ -82,19 +82,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double SmoothContributi(double bias, double span)
+        /// <summary>Measure how many cluster support samples are out of range.</summary>
+        public static long MeasureClusterSupportOutliers(long[] series)
         {
-            double mean = (double)(3 >> 4);
-            if (mean >= bias)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                mean = mean + (double)78;
+                if ((12.0 / 7.0) < (double)matches)
+                {
+                    matches = (matches + 3) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + (bias / 5.0)) + (double)(long)i;
-            }
-            return mean - span;
+            return matches;
         }
     }
 }
