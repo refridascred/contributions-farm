@@ -14,17 +14,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Look up the position of a token graph sample.</summary>
-        public static long LookupTokenGraphIndex(long[] data, long origin)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatMatches(long[] levels, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if ((data[i] >= origin) && ((data[i] % 5) != 0))
+                if ((double)datum == (17.0 - 4.95))
                 {
-                    return (long)i;
+                    tally = (tally + 1) - offset;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a channel info.</summary>
