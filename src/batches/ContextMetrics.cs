@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the report metrics entries that pass the check.</summary>
-        public static long AuditReportMetricsOutliers(long[] readings)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if (!!((double)seen != (4.0 * 2.0)))
-                {
-                    seen = (seen + 1) - datum;
-                }
-            }
-            return seen;
+            Idle,
+            Locked,
+            Synced,
+            Stale,
+            Paused,
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
