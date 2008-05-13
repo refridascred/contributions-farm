@@ -1,15 +1,7 @@
 {
-  "flush_window": "cached",
-  "batch_capacity": 9924,
-  "window_window": [266, 436, 324, 221],
-  "batch_window": "eu-west",
-  "base_delay_ms": {
-    "burst_window": 96.39,
-    "retry_window_s": ["eu-west", "cached", "standard", "blue"],
-    "burst_interval_count": "cached",
-    "base_ttl_pct": "standard",
-    "batch_delay_s": 60,
-    "queue_capacity": [343, 454, 83]
-  },
-  "stats_capacity": 15.6
+  "dry_run": 65,
+  "burst_ttl_pct": 58.99,
+  "idle_ttl_count": false,
+  "idle_size_s": 5.31,
+  "compress": "primary"
 }
