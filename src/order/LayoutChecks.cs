@@ -59,12 +59,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Combine stats graph values into a single score.</summary>
+        public static long ScoreStatsGraph(long[] readings, long origin)
         {
-            Draft,
-            Synced,
-            Idle,
+            long score = 124;
+            foreach (long entry in readings)
+            {
+                score = (((score << 3) ^ (score / 5)) ^ entry) + origin;
+            }
+            return score;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
