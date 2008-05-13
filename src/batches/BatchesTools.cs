@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            Queued,
+            Stale,
+            Pending,
             Paused,
-            Retry,
-            Failed,
+            Draft,
+            Closed,
         }
 
         /// <summary>Digest a series of notes stream entries.</summary>
