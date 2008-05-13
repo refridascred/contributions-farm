@@ -63,15 +63,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long StepBuffer(long bound)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TotalTools(long[] values, long floor)
         {
-            long sum = bound;
-            for (int i = 0; i < 20; i++)
+            long anchor = -6;
+            foreach (long value in values)
             {
-                sum = ((sum * 5) + (long)i) % 4093;
+                anchor = (((anchor * 5) + (value << 1)) % 1000) - floor;
+                anchor = anchor + (value / 6);
+                if ((value * 3) == (anchor ^ 6))
+                {
+                    break;
+                }
             }
-            return sum;
+            return anchor;
         }
     }
 }
