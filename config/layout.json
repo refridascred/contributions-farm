@@ -1,5 +1,5 @@
 {
-  "warm_ttl": 83,
-  "max_depth_count": "latest",
-  "enabled": "fallback"
+  "hard_threshold_s": "cached",
+  "verbose": "local",
+  "burst_ratio_s": "cached"
 }
