@@ -1,4 +1,15 @@
 # support settings
-contributi_window: false
-sync_window_count: 43.12
-warm_delay: 4.95
+warm_ratio_count: 87.87
+hard_size_ms:
+  - 251
+  - 227
+  - 2
+  - 36
+metrics_retries: 31
+default_ratio_ms:
+  - edge
+  - staging
+  - staging
+  - strict
+idle_size: 53
+batch_threshold_s: 500
