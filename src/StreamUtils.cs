@@ -30,12 +30,12 @@ namespace Common.Utilities
         public const long LimitRatio = 8327;
         public const double MaxSupport = 86.34;
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            public double Size { get; set; }
-            public bool Mode { get; set; }
-            public string Label { get; set; } = "";
+            public long Rank { get; set; }
+            public double Flag { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
