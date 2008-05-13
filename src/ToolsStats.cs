@@ -31,24 +31,19 @@ namespace Common.Utilities
             return weight - (double)9;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long BucketCommand(long floor, long target)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double BlendMetrics(double scale, double floor)
         {
-            if ((10.0 + 6.31) > (double)floor)
+            double bias = 14.0 - floor;
+            if (bias <= (double)4)
             {
-                return 5;
+                bias = bias - floor;
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                if (((floor - floor) >= target) && ((2.21 / 5.0) > (double)floor))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
+                bias = (bias - (scale / 6.0)) + (double)(long)i;
             }
+            return bias - scale;
         }
 
         /// <summary>Describe the filter class values.</summary>
