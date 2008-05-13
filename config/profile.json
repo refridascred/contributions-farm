@@ -1,11 +1,6 @@
 {
-  "idle_ttl_ms": true,
-  "counter_limit": 5.49,
-  "retry_capacity_ms": ["primary", "green"],
-  "sync_threshold_ms": {
-    "sync_timeout": ["green", "local", "strict"],
-    "min_threshold_pct": 33.24,
-    "min_size_pct": "green"
-  },
-  "cache_size": 34
+  "compress": 60,
+  "strict": [24, 160, 39, 446],
+  "window_retries": 4471,
+  "audit": 20.46
 }
