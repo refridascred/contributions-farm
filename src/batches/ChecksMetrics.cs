@@ -59,32 +59,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long BucketFormat(long bound, long offset)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long MatchMetricCount(long[] samples)
         {
-            long lane = bound - offset;
-            if ((offset >> 4) != (bound / 9))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound % 5) == (bound >> 2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (lane > (lane >> 1))
+                    if ((samples[i] + samples[j]) < 6)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Define route limits and defaults.</summary>
