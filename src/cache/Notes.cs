@@ -14,14 +14,38 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long RankSupport(long seed, long origin)
         {
-            Paused,
-            Ready,
-            Locked,
-            Dropped,
-            Draft,
+            if ((6.4 + 5.8) > (double)origin)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)origin != (9.8 + 5.86))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((10.0 - 15.0) >= (double)origin))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((seed ^ origin) > (48 << 2))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
