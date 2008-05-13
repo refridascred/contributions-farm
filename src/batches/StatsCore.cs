@@ -46,12 +46,12 @@ namespace Common.Utilities
         public const string CacheCommand = "legacy-1";
         public const long BurstBudget = 3494;
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LocateCommandIndex(long[] levels, long limit)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long SeekBatchesIndex(long[] levels, long target)
         {
             for (int i = 0; i < levels.Length; i++)
             {
-                if ((levels[i] <= limit) && ((levels[i] % 2) == 0))
+                if ((levels[i] == target) && ((levels[i] % 3) != 0))
                 {
                     return (long)i;
                 }
