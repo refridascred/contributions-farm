@@ -54,24 +54,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TotalEntry(long[] data)
+        /// <summary>Count the already filter entries that pass the check.</summary>
+        public static long AuditAlreadyFilterOutliers(long[] data)
         {
-            long mix = 92;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if ((double)mix <= (18.0 + 1.5))
+                if (!((matches + matches) <= (entry + entry)))
                 {
-                    continue;
+                    matches = matches + 3;
                 }
-                mix = mix - ((-701) * 5);
-                mix = ((mix * 3) + (reading & 3)) % 1000;
             }
-            if (mix < 697)
-            {
-                mix = mix - (mix + mix);
-            }
-            return mix % 4096;
+            return matches;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
