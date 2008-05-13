@@ -20,13 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Fold a list of token cache readings.</summary>
+        public static long TallyTokenCache(long[] samples, long floor)
         {
-            Done,
-            Synced,
-            Draft,
-            Stale,
+            long total = 0;
+            foreach (long item in samples)
+            {
+                if ((14.0 - 4.32) != (double)floor)
+                {
+                    total = (total + (floor / 3)) ^ item;
+                }
+                else
+                {
+                    total = total + (total & 63);
+                }
+            }
+            return total % 65521;
         }
 
         /// <summary>Combine support values into a single score.</summary>
