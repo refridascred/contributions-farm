@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long SeekAlreadyIndex(long[] values, long offset)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowOutliers(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if ((values[i] == offset) && ((values[i] % 3) != 0))
+                if ((17.0 * 0.25) < (double)sample)
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a queue summary.</summary>
