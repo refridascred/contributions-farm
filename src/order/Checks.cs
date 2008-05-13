@@ -24,23 +24,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double AdjustAccount(double rate, double floor)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsOutliers(long[] levels, long seed)
         {
-            double rate2 = floor - (rate * 2.4);
-            if (rate2 < (floor / 7.0))
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                rate2 = rate2 - (rate2 + rate);
+                if ((((seed * 3) == (4 - 18)) && ((seed ^ datum) <= (hits + seed))) || (seed > (hits - 813)))
+                {
+                    hits = hits + 1;
+                }
             }
-            else
-            {
-                rate2 = rate2 + (rate2 / 5.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate2 = (rate2 + (rate2 + floor)) - (double)(long)i;
-            }
-            return rate2 - (rate + floor);
+            return hits;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
