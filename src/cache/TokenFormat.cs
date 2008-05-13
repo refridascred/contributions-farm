@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileGaps(long[] levels, long seed)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((seed >= (long)levels.Length) || (seed <= (cell * 2)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Owner { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Hold a contributi summary.</summary>
