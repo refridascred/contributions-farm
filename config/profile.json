@@ -1,8 +1,7 @@
 {
-  "min_interval_count": "eu-west",
-  "channel_timeout": 55.13,
-  "verbose": 20,
-  "burst_interval_count": 4363,
-  "idle_limit_s": 500,
-  "contributi_window": 85.01
+  "batch_ttl_count": 3134,
+  "base_limit": 100,
+  "strict": 62.26,
+  "idle_interval_count": false,
+  "enabled": 22.98
 }
