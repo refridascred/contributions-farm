@@ -18,11 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Count the batches channel entries that pass the check.</summary>
+        public static long MeasureBatchesChannelMatches(long[] series)
         {
-            public double Region { get; set; }
-            public string Limit { get; set; } = "";
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((tally % 100) != (89 + item))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Blend two entry measurements.</summary>
