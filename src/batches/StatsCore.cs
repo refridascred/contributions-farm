@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutRange(long[] series, long target)
-        {
-            bool ready = true;
-            foreach (long entry in series)
-            {
-                if (entry > target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftTimeout = 9555;
+        public const string BurstContext = "latest-1";
+        public const double WindowContext = 62.53;
+        public const long RetryContext = 9585;
+        public const string CacheContext = "local";
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long CountNotesGaps(long[] values)
