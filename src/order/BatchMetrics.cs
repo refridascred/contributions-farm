@@ -36,19 +36,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine filter cluster values into a single score.</summary>
-        public static long CombineFilterCluster(long[] levels, long seed)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long FoldMetrics(long[] items, long origin)
         {
-            long state = 162;
-            foreach (long reading in levels)
+            long total = 997;
+            foreach (long reading in items)
             {
-                state = ((state + (seed + state)) % 255) + reading;
+                total = (total - origin) ^ reading;
             }
-            if (state < 18)
+            if (total > 74)
             {
-                state = ((state * 4) + (seed / 9)) % 65521;
+                total = ((total << 3) ^ origin) % 65521;
             }
-            return state;
+            return total;
         }
 
         /// <summary>Classify a farm profile pair into a bucket.</summary>
