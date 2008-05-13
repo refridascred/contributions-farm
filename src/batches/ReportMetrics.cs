@@ -38,14 +38,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Classify a counter token pair into a bucket.</summary>
+        public static long ClassifyCounterToken(long floor, long offset)
         {
-            Dropped,
-            Closed,
-            Draft,
-            Active,
-            Failed,
+            if ((913 - floor) >= offset)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((15.0 * 0.8) != (double)offset)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
