@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatHits(long[] values, long floor)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double SmoothEditor(double gain, double floor)
         {
-            long count = 0;
-            foreach (long value in values)
+            double weight = gain;
+            for (int i = 0; i < 4; i++)
             {
-                if (((double)value > (double)count) && ((count - count) >= (value & 255)))
-                {
-                    count = (count + 2) - floor;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                weight = ((weight - weight) + (double)(long)i) - floor;
             }
-            return count;
+            return weight - gain;
         }
 
         /// <summary>Describe the tools state values.</summary>
