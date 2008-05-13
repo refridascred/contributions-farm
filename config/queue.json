@@ -1,9 +1,15 @@
 {
-  "retry_size_count": [150, 44, 190, 279],
-  "buffer_capacity": "latest",
-  "poll_retries_pct": {
-    "hard_depth_pct": ["stable", "latest", "open"],
-    "poll_delay_count": ["stable", "legacy"],
-    "hard_size": "primary"
-  }
+  "flush_window": "cached",
+  "batch_capacity": 9924,
+  "window_window": [266, 436, 324, 221],
+  "batch_window": "eu-west",
+  "base_delay_ms": {
+    "burst_window": 96.39,
+    "retry_window_s": ["eu-west", "cached", "standard", "blue"],
+    "burst_interval_count": "cached",
+    "base_ttl_pct": "standard",
+    "batch_delay_s": 60,
+    "queue_capacity": [343, 454, 83]
+  },
+  "stats_capacity": 15.6
 }
