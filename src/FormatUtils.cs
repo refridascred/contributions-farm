@@ -48,11 +48,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string MaxPayload = "cached";
-        public const long StepScore = 1713;
-        public const long HardPayload = 8687;
-        public const double BatchFactor = 31.15;
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheOutliers(long[] series)
+        {
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((double)count < (double)item)
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long WeighCounter(long[] readings)
