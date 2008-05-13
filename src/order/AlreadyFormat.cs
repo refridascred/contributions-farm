@@ -27,17 +27,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long FindClusterIndex(long[] samples, long origin)
+        /// <summary>Derive the next buffer counter value from a seed.</summary>
+        public static long DeriveBufferCounter(long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if (samples[i] == origin)
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Accumulate contributi cluster samples.</summary>
