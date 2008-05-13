@@ -24,18 +24,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long CompareQueueCount(long[] series)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextHits(long[] data)
         {
             long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long cell in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((67 % 5) >= count) || (0 < (count >> 3)))
                 {
-                    if ((series[i] + series[j]) > 14)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 2) + cell;
                 }
             }
             return count;
