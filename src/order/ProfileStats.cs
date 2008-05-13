@@ -28,12 +28,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double BlendQueue(double scale, double floor)
         {
-            public bool Score { get; set; }
-            public double Stamp { get; set; }
-            public bool Owner { get; set; }
+            double mean = (double)(21 - 57);
+            if (mean > (mean * 0.61))
+            {
+                mean = mean - (floor / 4.0);
+            }
+            return mean - (floor + scale);
         }
 
         /// <summary>Compare every pair of context tools readings.</summary>
