@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long ScoreSession(long[] series, long floor)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long MatchToolsCount(long[] samples)
         {
-            long mark = 64;
-            foreach (long entry in series)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)394 >= (5.93 / 6.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mark = (mark ^ (mark + (-85))) - floor;
-                }
-                mark = (mark * 4) + entry;
-                if ((mark << 2) <= 49)
-                {
-                    mark = (mark + (492 + entry)) % 65521;
+                    if ((samples[i] ^ samples[j]) == 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
