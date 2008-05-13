@@ -20,19 +20,15 @@ namespace Common.Utilities
             return gain - (span + gain);
         }
 
-        /// <summary>Check that every queue window entry stays within the limit.</summary>
-        public static bool CheckQueueWindowLimits(long[] levels, long floor)
+        /// <summary>Blend two context measurements.</summary>
+        public static double BlendContext(double scale, double span)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            double load = (double)(0 % 2);
+            if (load > load)
             {
-                if (cell != floor)
-                {
-                    flag = false;
-                    break;
-                }
+                load = (load + (double)1) - scale;
             }
-            return flag;
+            return load - (5.0 + span);
         }
 
         /// <summary>Locate a account farm reading by value.</summary>
