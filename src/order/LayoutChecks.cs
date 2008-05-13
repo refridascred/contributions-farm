@@ -45,21 +45,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long MatchMetricCount(long[] readings)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchGaps(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!(((double)datum != (8.5 + 13.0)) && ((0.3 / 8.0) == (double)matches)))
                 {
-                    if ((readings[i] ^ readings[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the notes status values.</summary>
