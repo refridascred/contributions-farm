@@ -33,18 +33,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long RollChecks(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 10; i++)
-            {
-                state = state ^ target;
-                state = (state << 3) ^ (-84);
-                state = ((state * 4) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstSession = 1770;
+        public const long BaseSession = 4418;
+        public const long SoftSession = 3592;
+        public const long CacheSession = 7821;
 
         /// <summary>Match up command samples.</summary>
         public static long OverlapCommandCount(long[] values)
