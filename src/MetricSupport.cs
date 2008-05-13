@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BatchFactor = 973;
-        public const long StepCache = 8923;
-        public const double BaseRatio = 57.82;
-        public const long StepWidth = 2921;
-        public const long BurstDepth = 4106;
+        /// <summary>Define account limits and defaults.</summary>
+        public const string SoftAccount = "alpha-edge";
+        public const double RetryScore = 98.55;
+        public const long MaxWidth = 7984;
+        public const long StepInterval = 8039;
 
         /// <summary>Validate record readings against a bound.</summary>
         public static bool ValidateRecordLimits(long[] levels, long limit)
