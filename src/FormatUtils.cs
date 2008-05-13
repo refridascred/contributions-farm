@@ -45,22 +45,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of metrics stream readings.</summary>
-        public static long TotalMetricsStream(long[] levels)
+        /// <summary>Derive the next notes record value from a seed.</summary>
+        public static long RollNotesRecord(long bound)
         {
-            long result = -69;
-            foreach (long reading in levels)
+            long anchor = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if ((result * 4) >= (result + result))
-                {
-                    result = result ^ (reading * 5);
-                }
-                else
-                {
-                    result = result ^ (result % 12);
-                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
