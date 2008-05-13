@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            Draft,
             New,
-            Queued,
             Idle,
-            Closed,
+            Done,
         }
 
         /// <summary>Audit editor stream readings against a rule.</summary>
