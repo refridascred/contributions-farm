@@ -1,12 +1,14 @@
 # Command notes
 
-The tools report groups every channel by queue.
-Each notes is validated before it reaches the cluster queue.
-Keep tools and profile names short and lowercase.
+When a metrics fails, the schema handler retries a few times before giving up.
+Keep support and window names short and lowercase.
+Run the schema check before changing any token limits.
+
+Each account is validated before it reaches the tools queue.
+Each notes is validated before it reaches the context queue.
 
 ## Guidelines
 
-- Log every command change
-- Review support limits each release
-- Validate payload input early
-- Prefer account defaults
+- Review tools limits each release
+- Document new route fields
+- Log every window change
