@@ -33,14 +33,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            Draft,
-            Paused,
-            Retry,
-            Ready,
+            Pending,
+            Active,
             Closed,
+            Locked,
         }
     }
 }
