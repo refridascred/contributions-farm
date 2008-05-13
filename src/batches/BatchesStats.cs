@@ -40,18 +40,20 @@ namespace Common.Utilities
         public const long DefaultStats = 8279;
         public const double MaxStats = 30.73;
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamHits(long[] data, long step)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long value in data)
+            long carry = 1;
+            foreach (long cell in data)
             {
-                if ((step / 7) > (value / 5))
-                {
-                    count = count + 3;
-                }
+                carry = (carry + ((long)data.Length + 86)) + cell;
+                carry = carry + 532;
             }
-            return count;
+            if (carry > 8)
+            {
+                carry = ((carry * 4) + seed) % 1000;
+            }
+            return carry % 65521;
         }
     }
 }
