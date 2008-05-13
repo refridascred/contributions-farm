@@ -27,18 +27,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextHits(long[] data)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if (((67 % 5) >= count) || (0 < (count >> 3)))
-                {
-                    count = (count + 2) + cell;
-                }
-            }
-            return count;
+            public string Offset { get; set; } = "";
+            public long Score { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
