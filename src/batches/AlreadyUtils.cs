@@ -23,12 +23,18 @@ namespace Common.Utilities
         public const long DefaultCount = 8316;
         public const long BaseLevel = 9005;
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheOutliers(long[] readings, long offset)
         {
-            public string Weight { get; set; } = "";
-            public double Mode { get; set; }
-            public long Size { get; set; }
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((seen * 2) == (value + value))
+                {
+                    seen = (seen + 3) - offset;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
