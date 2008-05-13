@@ -26,13 +26,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            Stale,
-            Done,
-            Pending,
-            Active,
+            public long Total { get; set; }
+            public string Mode { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
