@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long SeekQueueIndex(long[] series, long origin)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] series, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 43;
+            foreach (long entry in series)
             {
-                if (series[i] < origin)
+                if (state > (38 ^ bound))
                 {
-                    return (long)i;
+                    state = (state ^ ((-601) * 5)) + entry;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Define command limits and defaults.</summary>
