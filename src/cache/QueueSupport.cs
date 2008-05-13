@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterLimits(long[] levels, long step)
         {
-            Stale,
-            Draft,
-            Ready,
-            Dropped,
-            Paused,
+            bool stale = true;
+            foreach (long value in levels)
+            {
+                if (value >= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Measure how many graph profile samples are out of range.</summary>
