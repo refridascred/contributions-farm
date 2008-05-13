@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double MinBudget = 4.9;
-        public const long BaseFactor = 3340;
-        public const string SoftSpan = "open-1";
-        public const double BatchCount = 33.6;
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueBounds(long[] data, long target)
+        {
+            bool ready = true;
+            foreach (long cell in data)
+            {
+                if (cell >= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Digest a series of context layout entries.</summary>
         public static long FoldContextLayout(long[] samples)
