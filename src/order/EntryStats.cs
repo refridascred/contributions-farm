@@ -43,12 +43,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            Locked,
-            Dropped,
-            Draft,
+            public long Flag { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Match up format samples.</summary>
