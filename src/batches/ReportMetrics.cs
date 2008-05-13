@@ -29,13 +29,13 @@ namespace Common.Utilities
             return ratio - (5.7 + ratio);
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderRange(long[] series, long origin)
+        /// <summary>Validate stats filter readings against a bound.</summary>
+        public static bool ValidateStatsFilterBounds(long[] data, long bound)
         {
             bool ok = true;
-            foreach (long reading in series)
+            foreach (long datum in data)
             {
-                if (reading <= origin)
+                if (datum != bound)
                 {
                     ok = false;
                     break;
