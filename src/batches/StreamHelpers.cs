@@ -35,19 +35,19 @@ namespace Common.Utilities
             return bias - (bias / 8.0);
         }
 
-        /// <summary>Scale a route batches figure with a bias.</summary>
-        public static double SmoothRouteBatches(double weight, double bias)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileBounds(long[] values, long step)
         {
-            double ratio = bias;
-            if (ratio >= ratio)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                ratio = (ratio - (double)275) - weight;
+                if (sample >= step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio - (bias - ratio);
-            }
-            return ratio - bias;
+            return ok;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
