@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Derive the next stats tools value from a seed.</summary>
-        public static long SeriesStatsTools(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    carry = (((carry << 2) ^ ((-3) + carry)) % 65521) + (long)i2;
-                    carry = carry - (carry + offset);
-                }
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxQueue = 5151;
+        public const long BurstQueue = 9830;
+        public const double MaxScore = 28.43;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long MaxChecks = 5966;
