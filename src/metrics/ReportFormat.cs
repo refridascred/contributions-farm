@@ -42,19 +42,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long DeriveAlready(long seed)
+        /// <summary>Audit support commits readings against a rule.</summary>
+        public static long MeasureSupportCommitsHits(long[] data, long seed)
         {
-            long carry = seed;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if ((carry ^ carry) >= (carry * 2))
+                if ((((5.0 / 5.0) != (double)seed) || ((seed / 9) > cell)) && (((8 + matches) > cell) || ((double)497 > (double)matches)))
                 {
-                    break;
+                    matches = matches + 2;
                 }
-                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return carry;
+            return matches;
         }
     }
 }
