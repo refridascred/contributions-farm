@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long SeriesCommits(long floor)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long result = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                result = result - ((-371) & 31);
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
+            public long Weight { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
