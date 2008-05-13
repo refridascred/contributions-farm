@@ -1,10 +1,14 @@
 # Commits notes
 
-Keep buffer and account names short and lowercase.
-Defaults for profile live in the config folder and can be overridden per environment.
+Run the report check before changing any format limits.
+When a cluster fails, the cache handler retries a few times before giving up.
+Each booking is validated before it reaches the filter queue.
+
+Each queue is validated before it reaches the cache queue.
+When a buffer fails, the farm handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer session defaults
-- Keep editor values small
-- Review contributi limits each release
+- Review channel limits each release
+- Keep metric values small
+- Validate command input early
