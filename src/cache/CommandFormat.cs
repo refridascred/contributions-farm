@@ -20,18 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of context layout entries.</summary>
-        public static long FoldContextLayout(long[] samples)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long anchor = 44;
-            foreach (long entry in samples)
-            {
-                if (entry >= (anchor - entry))
-                {
-                    anchor = (anchor ^ (entry / 5)) % 65521;
-                }
-            }
-            return anchor;
+            Paused,
+            Active,
+            Queued,
+            Closed,
+            Draft,
         }
 
         /// <summary>Describe the counter phase values.</summary>
