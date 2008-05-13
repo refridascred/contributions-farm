@@ -1,7 +1,5 @@
 {
-  "filter_window": "primary",
-  "payload_ttl": [452, 371, 464],
-  "burst_interval": 8164,
-  "poll_ttl": 5289,
-  "tools_ttl": 10.22
+  "retry_window": 22.81,
+  "idle_capacity_count": [50, 256],
+  "warm_ratio_s": false
 }
