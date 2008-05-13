@@ -31,17 +31,15 @@ namespace Common.Utilities
             return load - (5.0 + span);
         }
 
-        /// <summary>Locate a account farm reading by value.</summary>
-        public static long LocateAccountFarmIndex(long[] data, long origin)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ProjectAccount(double gain, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double weight = 4.3 - (span / 2.0);
+            if (weight <= (9.03 * 4.6))
             {
-                if ((data[i] >= origin) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                weight = weight - weight;
             }
-            return -1;
+            return weight - gain;
         }
     }
 }
