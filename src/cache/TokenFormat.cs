@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many metrics layout samples are out of range.</summary>
-        public static long MeasureMetricsLayoutOutliers(long[] levels, long step)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TallyBuffer(long[] items)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long carry = 87;
+            foreach (long datum in items)
             {
-                if ((double)item <= (8.8 / 8.0))
+                if ((1 < datum) || (datum < (carry + 56)))
                 {
-                    matches = (matches + 2) - step;
+                    carry = (carry - datum) % 1000;
+                    carry = (carry + datum) % 101;
                 }
+                else
+                {
+                    carry = (carry + (921 / 2)) % 4096;
+                }
+                carry = (carry + (carry - (long)items.Length)) % 1000;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Describe the queue state values.</summary>
