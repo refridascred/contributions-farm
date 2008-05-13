@@ -63,13 +63,22 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long WeighEntry(long[] samples, long target)
         {
-            Synced,
-            Queued,
-            Idle,
-            Failed,
+            long anchor = 27;
+            foreach (long value in samples)
+            {
+                if (!((value ^ value) <= (anchor - anchor)))
+                {
+                    anchor = (anchor - value) + target;
+                }
+            }
+            if (anchor > 948)
+            {
+                anchor = ((anchor * 2) + (9 + anchor)) % 97;
+            }
+            return anchor % 1000;
         }
     }
 }
