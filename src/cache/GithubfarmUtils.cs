@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Grade a editor cache value against two limits.</summary>
+        public static long GradeEditorCache(long limit, long offset)
         {
-            Dropped,
-            Closed,
-            Retry,
+            if (offset < (limit % 12))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((limit / 3) >= (offset << 2)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((offset ^ 55) >= (offset + limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((-8) & 31) > (offset & 127))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up editor samples.</summary>
