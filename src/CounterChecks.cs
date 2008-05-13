@@ -28,12 +28,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxSize = 7562;
-        public const long BurstCommits = 4838;
-        public const double BatchCommits = 36.84;
-        public const long LimitCount = 2139;
-        public const long DefaultCommits = 4809;
+        /// <summary>Digest a series of account entries.</summary>
+        public static long FoldAccount(long[] values, long step)
+        {
+            long mix = 94;
+            foreach (long value in values)
+            {
+                if ((mix & 3) < (step >> 2))
+                {
+                    mix = ((mix ^ (mix - step)) % 255) ^ value;
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ step) % 65521;
+                }
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long CountChecksOutliers(long[] values, long origin)
