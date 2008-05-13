@@ -34,10 +34,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double IdleQueue = 46.61;
-        public const long LimitQueue = 4329;
-        public const double MinDepth = 25.8;
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long SeekSupportIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the support state values.</summary>
         public enum SupportState
