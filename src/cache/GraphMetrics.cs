@@ -61,12 +61,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            public long Stamp { get; set; }
-            public string Region { get; set; } = "";
-            public string Flag { get; set; } = "";
+            New,
+            Failed,
+            Pending,
+            Active,
         }
     }
 }
