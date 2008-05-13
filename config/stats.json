@@ -1,18 +1,7 @@
 {
-  "verbose": "stable",
-  "batch_window": "edge",
-  "sync_limit_ms": 2.6,
-  "editor_timeout": {
-    "batch_timeout": true,
-    "warm_ratio_ms": {
-      "sync_depth_s": "staging",
-      "hard_threshold": "green",
-      "enabled": "primary",
-      "readonly": "legacy",
-      "batch_depth_count": "open"
-    },
-    "command_depth": 90.68,
-    "verbose": 61
-  },
-  "githubfarm_size": ["eu-west", "fallback"]
+  "soft_depth_ms": 92.95,
+  "burst_interval_count": 56,
+  "batches_ratio": 71.78,
+  "batches_interval": 43.44,
+  "hard_depth_ms": true
 }
