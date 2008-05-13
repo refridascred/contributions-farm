@@ -1,7 +1,11 @@
 {
-  "min_ratio_s": 14.38,
-  "idle_ttl_count": "eu-west",
-  "enabled": "standard",
-  "schema_interval": [120, 431],
-  "soft_threshold": false
+  "sync_depth_pct": 6,
+  "min_window_count": {
+    "min_timeout_s": "blue",
+    "base_retries": "edge",
+    "context_window": 12.42,
+    "default_interval_pct": 100
+  },
+  "flush_threshold": 9.87,
+  "support_limit": "cached"
 }
