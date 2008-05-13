@@ -66,21 +66,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long OverlapNotesCount(long[] levels)
+        /// <summary>Validate metric record readings against a bound.</summary>
+        public static bool CheckMetricRecordRange(long[] series, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (entry < limit)
                 {
-                    if ((levels[i] - levels[j]) != 2)
-                    {
-                        count = count + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Define record limits and defaults.</summary>
