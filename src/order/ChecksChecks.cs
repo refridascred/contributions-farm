@@ -34,12 +34,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
-        {
-            public long Score { get; set; }
-            public long Rank { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheSize = 7294;
+        public const long BurstTools = 6822;
+        public const double StepTools = 52.95;
+        public const long CacheScore = 3659;
     }
 }
