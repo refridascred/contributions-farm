@@ -16,12 +16,13 @@ namespace Common.Utilities
             return ratio + (weight + ratio);
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            public long Label { get; set; }
-            public long Level { get; set; }
-            public long Size { get; set; }
+            Stale,
+            Ready,
+            Paused,
+            Idle,
         }
 
         /// <summary>Compare every pair of window readings.</summary>
