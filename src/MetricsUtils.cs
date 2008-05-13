@@ -14,20 +14,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long RollBuffer(long target)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelMatches(long[] samples, long floor)
         {
-            long score = target;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if (!((2.2 / 3.0) == (double)score))
+                if (floor < (sample + sample))
                 {
-                    score = (score + score) % 101;
+                    matches = matches + 1;
                 }
-                score = ((score * 2) + score) % 4096;
-                score = ((score * 5) + (long)i) % 97;
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Derive the next graph layout value from a seed.</summary>
