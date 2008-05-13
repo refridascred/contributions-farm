@@ -1,8 +1,12 @@
 # githubfarm settings
-account_size: 4761
-format_ttl: 100
-compress:
-  commits_timeout: 30
-  readonly: 98
-  contributi_depth: false
-flush_ratio_s: eu-west
+warm_retries_count: open
+warm_window_s:
+  verbose: latest
+  retry_interval_s: cached
+  editor_capacity: false
+  sync_ttl: 250
+  soft_ttl_ms: 11.69
+poll_delay_s: 61
+checks_capacity: false
+account_timeout: fallback
+warm_retries: standard
