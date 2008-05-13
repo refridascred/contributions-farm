@@ -35,33 +35,10 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long ClassifyCache(long origin, long step)
-        {
-            long prev = origin ^ step;
-            if ((double)step > 1.2)
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((double)origin < 0.89))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((prev << 1) != (origin << 3)) && ((origin % 5) < (origin - step)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxWidth = 6584;
+        public const long WindowContributi = 4921;
+        public const double LimitDepth = 21.29;
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool VerifyBatchLimits(long[] readings, long floor)
