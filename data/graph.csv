@@ -1,7 +1,10 @@
-id,region,label
-1,770,cached
-2,542,12.3
-3,open,826
-4,latest,latest
-5,744,996
-6,864,fallback
+id,rank,region
+1,local,local
+2,strict,648
+3,5.78,153
+4,704,16.65
+5,23.59,649
+6,staging,36.73
+7,blue,563
+8,56.94,415
+9,strict,78.44
