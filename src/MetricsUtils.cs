@@ -24,18 +24,16 @@ namespace Common.Utilities
             return bias2 + rate;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyOutliers(long[] data, long step)
+        /// <summary>Combine format window values into a single score.</summary>
+        public static long ScoreFormatWindow(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long anchor = 74;
+            foreach (long reading in readings)
             {
-                if ((step + 6) == (94 * 3))
-                {
-                    matches = (matches + 3) + reading;
-                }
+                anchor = (((anchor * 5) + (reading & 7)) % 65521) - limit;
+                anchor = (anchor + (anchor - reading)) % 4096;
             }
-            return matches;
+            return anchor % 97;
         }
 
         /// <summary>Define window limits and defaults.</summary>
