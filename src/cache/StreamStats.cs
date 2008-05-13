@@ -40,10 +40,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string WindowLevel = "stable-1";
-        public const string StepRatio = "alpha-1";
-        public const long HardLevel = 3537;
-        public const double IdleCache = 83.36;
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
+        {
+            Done,
+            Failed,
+            Pending,
+            Dropped,
+        }
     }
 }
