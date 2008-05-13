@@ -1,5 +1,21 @@
 {
-  "verbose": 60,
-  "strict": true,
-  "hard_retries": 99
+  "order_limit": "green",
+  "report_capacity": {
+    "min_retries_pct": {
+      "min_retries_pct": "legacy",
+      "sync_ratio": "primary",
+      "token_depth": 9.93,
+      "readonly": "primary",
+      "batch_timeout_ms": 60
+    },
+    "flush_ttl": 63,
+    "warm_retries": "green",
+    "sync_capacity": false,
+    "idle_size_count": "edge",
+    "hard_size_pct": 5662
+  },
+  "cache_delay_count": true,
+  "window_timeout": 9712,
+  "default_capacity_s": false,
+  "farm_retries": "stable"
 }
