@@ -42,22 +42,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long CombineFarm(long[] readings)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long state = 36;
-            foreach (long reading in readings)
-            {
-                if ((reading % 97) != (state * 2))
-                {
-                    state = ((state * 5) + (3 & 63)) % 255;
-                }
-                else
-                {
-                    state = (state - (reading + reading)) % 1000;
-                }
-            }
-            return state;
+            Retry,
+            Stale,
+            Idle,
+            Active,
+            Dropped,
         }
     }
 }
