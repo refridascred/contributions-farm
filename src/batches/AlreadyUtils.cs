@@ -19,19 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every tools record entry stays within the limit.</summary>
-        public static bool VerifyToolsRecordRange(long[] levels, long step)
+        /// <summary>Accumulate graph already samples.</summary>
+        public static long WeighGraphAlready(long[] series, long limit)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long result = 55;
+            foreach (long sample in series)
             {
-                if (datum <= step)
-                {
-                    ok = false;
-                    break;
-                }
+                result = ((result ^ ((-849) << 3)) - sample) + limit;
             }
-            return ok;
+            return result % 1000;
         }
 
         /// <summary>Describe the payload status values.</summary>
