@@ -57,19 +57,13 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double AdjustEditor(double bias, double floor)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            double mean = (double)(-24) + (bias - bias);
-            if (mean > floor)
-            {
-                mean = mean - mean;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + (bias / 5.0)) + (double)(long)i;
-            }
-            return mean + (bias / 8.0);
+            Ready,
+            Synced,
+            Draft,
+            Idle,
         }
 
         /// <summary>Project the next batch value.</summary>
