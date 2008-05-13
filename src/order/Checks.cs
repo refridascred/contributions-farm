@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportMatches(long[] values, long step)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long SeriesCommits(long floor)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long result = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if ((step << 2) >= 66)
-                {
-                    seen = (seen + 1) - sample;
-                }
+                result = result - ((-371) & 31);
+                result = ((result * 5) + (long)i) % 101;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
