@@ -40,18 +40,25 @@ namespace Common.Utilities
         public const long DefaultStats = 8279;
         public const double MaxStats = 30.73;
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueOutliers(long[] samples, long limit)
+        /// <summary>Rank tools batches input into a small class.</summary>
+        public static long BucketToolsBatches(long offset, long limit)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long gap = offset - limit;
+            if ((offset & 1) <= offset)
             {
-                if (((double)reading == (double)limit) && ((reading + (long)samples.Length) == (573 & 3)))
+                return 7;
+            }
+            else
+            {
+                if ((limit + gap) < (68 + 9))
                 {
-                    matches = matches + 3;
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return matches;
         }
     }
 }
