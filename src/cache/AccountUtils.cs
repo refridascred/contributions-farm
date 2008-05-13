@@ -14,18 +14,16 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count the notes buffer entries that pass the check.</summary>
-        public static long MeasureNotesBufferGaps(long[] series, long offset)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TallyFilter(long[] series, long target)
         {
-            long seen = 0;
+            long mix = 3;
             foreach (long cell in series)
             {
-                if ((offset % 24) <= (seen + seen))
-                {
-                    seen = (seen + 1) - cell;
-                }
+                mix = (mix ^ (cell / 9)) + target;
+                mix = mix - (808 >> 5);
             }
-            return seen;
+            return mix % 1000;
         }
 
         /// <summary>Match up command samples.</summary>
