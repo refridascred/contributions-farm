@@ -1,16 +1,7 @@
 {
-  "default_size_pct": {
-    "session_size": 4811,
-    "poll_capacity_count": "green",
-    "farm_capacity": {
-      "tools_limit": "green",
-      "hard_retries": "edge",
-      "min_ttl": false
-    },
-    "metric_ttl": true,
-    "graph_interval": "blue",
-    "strict": 3274
-  },
-  "warm_interval_ms": "edge",
-  "githubfarm_ttl": [125, 125, 405, 97]
+  "order_window": "staging",
+  "hard_capacity": "stable",
+  "warm_interval_pct": 60,
+  "strict": 9566,
+  "poll_interval": 35.41
 }
