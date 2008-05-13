@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Match up context commits samples.</summary>
-        public static long CompareContextCommitsCount(long[] samples)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long ScoreBuffer(long[] values, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 514;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                carry = ((carry ^ (carry % 100)) % 255) + target;
+                if ((54 >> 4) == (carry ^ carry))
                 {
-                    if ((samples[i] ^ samples[j]) > 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = (carry * 4) + (27 - datum);
                 }
             }
-            return seen;
+            if (carry > 29)
+            {
+                carry = ((carry * 2) + (carry + carry)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Define command limits and defaults.</summary>
