@@ -24,11 +24,19 @@ namespace Common.Utilities
         public const long WindowInterval = 1296;
         public const long LimitSize = 1018;
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheRange(long[] samples, long bound)
         {
-            public long Rank { get; set; }
-            public string Label { get; set; } = "";
+            bool stale = true;
+            foreach (long entry in samples)
+            {
+                if (entry > bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Measure how many window cache samples are out of range.</summary>
