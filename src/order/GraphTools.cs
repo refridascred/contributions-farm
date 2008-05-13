@@ -19,17 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first entry profile entry that matches the target.</summary>
-        public static long SeekEntryProfileIndex(long[] items, long target)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long DigestCluster(long[] series, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 8;
+            foreach (long item in series)
             {
-                if (items[i] <= target)
-                {
-                    return (long)i;
-                }
+                result = ((result - (result + 576)) - item) - target;
             }
-            return -1;
+            if (result < 462)
+            {
+                result = ((result << 3) ^ (9 + result)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Define already limits and defaults.</summary>
