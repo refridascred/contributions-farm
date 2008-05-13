@@ -13,14 +13,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            Retry,
-            Ready,
-            Failed,
-            Paused,
-            New,
+            public long Score { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
