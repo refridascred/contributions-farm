@@ -30,25 +30,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long ClassifyCommand(long origin, long floor)
-        {
-            long prev = origin - floor;
-            if ((origin - floor) >= origin)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((floor + prev) != (8 >> 3)) && (floor <= (floor - prev)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchBatches = 6008;
+        public const long MaxBatches = 8511;
+        public const long MinSpan = 7771;
+        public const string DefaultBudget = "staging-1";
+        public const string DefaultBatches = "stable";
     }
 }
