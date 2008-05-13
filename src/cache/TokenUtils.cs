@@ -13,18 +13,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesMatches(long[] series)
+        /// <summary>Count the account batches entries that pass the check.</summary>
+        public static long CountAccountBatchesMatches(long[] readings)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if ((11.0 / 4.0) <= (double)tally)
+                if ((value < (count - count)) || !(value >= (50 + count)))
                 {
-                    tally = (tally + 3) + value;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
