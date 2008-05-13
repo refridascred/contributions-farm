@@ -1,11 +1,15 @@
 # Command notes
 
-Defaults for counter live in the config folder and can be overridden per environment.
-When a buffer fails, the window handler retries a few times before giving up.
-Each schema is validated before it reaches the token queue.
+The session report groups every farm by account.
+Defaults for token live in the config folder and can be overridden per environment.
+
+Keep stream and graph names short and lowercase.
+The checks report groups every commits by context.
+The format module keeps githubfarm values in sync with the notes cache.
 
 ## Guidelines
 
-- Document new report fields
-- Validate cluster input early
-- Review commits limits each release
+- Validate channel input early
+- Document new record fields
+- Keep account values small
+- Log every route change
