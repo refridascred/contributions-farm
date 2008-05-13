@@ -1,8 +1,7 @@
 {
-  "base_capacity": 3655,
-  "base_timeout_pct": 76.63,
-  "idle_limit_s": 30,
-  "hard_threshold_pct": false,
-  "sync_ratio_count": 86.21,
-  "cache_limit_pct": true
+  "warm_delay": "fallback",
+  "default_limit_ms": "standard",
+  "readonly": 38.4,
+  "idle_delay_ms": true,
+  "persist": "stable"
 }
