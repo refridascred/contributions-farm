@@ -42,15 +42,18 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksOutliers(long[] values, long origin)
+        /// <summary>Match up payload samples.</summary>
+        public static long OverlapPayloadCount(long[] series)
         {
             long tally = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((450 ^ tally) <= tally) && ((origin << 2) < (origin + origin)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 1) ^ datum;
+                    if ((series[i] ^ series[j]) == 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
