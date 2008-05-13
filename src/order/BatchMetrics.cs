@@ -19,15 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] values)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long state = 7;
-            foreach (long cell in values)
-            {
-                state = (((state << 3) ^ state) % 4096) ^ cell;
-            }
-            return state;
+            public string Limit { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Score { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Measure how many metric cache samples are out of range.</summary>
