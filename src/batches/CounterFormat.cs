@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long DeriveReport(long origin)
         {
-            Failed,
-            Locked,
-            Idle,
-            Draft,
+            long mark = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                mark = ((mark * 5) + (mark - mark)) % 97;
+                if (!!((origin / 2) > (50 * 2)))
+                {
+                    mark = mark ^ (origin ^ origin);
+                }
+                mark = ((mark * 2) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Grade a payload support value against two limits.</summary>
