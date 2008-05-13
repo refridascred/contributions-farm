@@ -19,17 +19,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long FindCommandIndex(long[] values, long seed)
+        /// <summary>Combine queue cache values into a single score.</summary>
+        public static long CombineQueueCache(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 48;
+            foreach (long datum in readings)
             {
-                if ((values[i] > seed) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                mix = (mix + (mix ^ datum)) % 1000;
+                mix = mix - ((long)readings.Length & 15);
             }
-            return -1;
+            return mix % 97;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
