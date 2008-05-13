@@ -49,18 +49,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LookupBufferIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string WindowSpan = "latest";
+        public const string SoftInterval = "strict-1";
+        public const long WindowFactor = 1323;
+        public const long WindowReport = 3376;
 
         /// <summary>Measure how many contributi cluster samples are out of range.</summary>
         public static long TallyContributiClusterGaps(long[] levels)
