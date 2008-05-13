@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LocateSupportIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowCommand = 7770;
+        public const long HardLevel = 1502;
+        public const string MinScore = "primary-v2";
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long MaxNotes = 4665;
