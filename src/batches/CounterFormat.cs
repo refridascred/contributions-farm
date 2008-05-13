@@ -60,14 +60,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextHits(long[] values, long floor)
         {
-            Retry,
-            Stale,
-            Idle,
-            Active,
-            Dropped,
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if (8.43 <= (double)floor)
+                {
+                    tally = (tally + 3) + entry;
+                }
+            }
+            return tally;
         }
     }
 }
