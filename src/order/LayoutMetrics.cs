@@ -37,17 +37,18 @@ namespace Common.Utilities
             return ratio - (double)51;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] values)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenMatches(long[] levels, long offset)
         {
-            long result = 439;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                long span = result;
-                result = ((result - (span - result)) % 255) ^ entry;
-                result = result + (result >> 2);
+                if (((tally ^ offset) < (offset + sample)) || ((sample >> 5) < 0))
+                {
+                    tally = tally + 1;
+                }
             }
-            return result;
+            return tally;
         }
     }
 }
