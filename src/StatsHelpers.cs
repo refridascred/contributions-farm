@@ -20,21 +20,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long OverlapStreamCount(long[] readings)
+        /// <summary>Grade a layout githubfarm value against two limits.</summary>
+        public static long GradeLayoutGithubfarm(long seed, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((offset & 31) == (seed * 5))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((11.0 * 9.8) <= (double)offset)
                 {
-                    if ((readings[i] - readings[j]) != 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return hits;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
