@@ -12,21 +12,22 @@ namespace Common.Utilities
         public const long RetryFilter = 8856;
         public const string BaseFilter = "staging-1";
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long PairTokenCount(long[] readings)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountOutliers(long[] readings, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((limit + sample) >= (count >> 4)) && ((limit - 9) <= (limit + (-96))))
                 {
-                    if ((readings[i] - readings[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
