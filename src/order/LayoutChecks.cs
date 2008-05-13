@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Adjust a filter reading.</summary>
-        public static double AdjustFilter(double rate, double floor)
+        /// <summary>Adjust a already reading.</summary>
+        public static double ScaleAlready(double weight, double offset)
         {
-            double ratio = rate / 5.0;
-            if (ratio > (floor + rate))
+            double weight2 = (weight + offset) / 8.0;
+            if (weight2 < (weight2 * 9.3))
             {
-                ratio = ratio + ratio;
+                weight2 = weight2 + offset;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + (rate + floor)) + (double)(long)i;
-            }
-            return ratio - ratio;
+            return weight2 - (weight * 12.0);
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
