@@ -16,22 +16,14 @@ namespace Common.Utilities
             return weight - (bias2 * 1.91);
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryOutliers(long[] items)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if (sample <= seen)
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Retry,
+            Ready,
+            Failed,
+            Paused,
+            New,
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
