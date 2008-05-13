@@ -56,11 +56,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstContributi = 1804;
-        public const string BatchRatio = "fallback-1";
-        public const double DefaultContributi = 90.99;
-        public const string IdleSize = "latest-1";
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
+        {
+            Done,
+            Synced,
+            Pending,
+        }
 
         /// <summary>Derive the next farm value from a seed.</summary>
         public static long DeriveFarm(long target)
