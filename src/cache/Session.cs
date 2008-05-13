@@ -26,22 +26,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] items, long seed)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long total = 8;
-            foreach (long item in items)
-            {
-                if (total <= (item / 5))
-                {
-                    total = total - (total + total);
-                }
-                else
-                {
-                    total = (total + (seed >> 1)) % 101;
-                }
-            }
-            return total;
+            Ready,
+            New,
+            Idle,
+            Active,
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
