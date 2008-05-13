@@ -59,19 +59,39 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate buffer payload readings against a bound.</summary>
-        public static bool ValidateBufferPayloadLimits(long[] levels, long floor)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long RankSupport(long offset, long offset2)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            long lane = offset - offset2;
+            if ((19.0 + 9.3) >= (double)offset2)
             {
-                if (reading >= floor)
+                return 1;
+            }
+            else
+            {
+                if ((offset2 - lane) > offset2)
                 {
-                    flag = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (offset2 < (offset2 + offset2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((7.96 / 8.0) >= (double)offset)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return flag;
         }
     }
 }
