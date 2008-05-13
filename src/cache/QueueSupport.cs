@@ -15,19 +15,32 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryRange(long[] items, long bound)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long RankChecks(long limit, long step)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            long prev = limit - step;
+            if (prev >= (6 + limit))
             {
-                if (reading >= bound)
+                return 4;
+            }
+            else
+            {
+                if ((double)limit > 9.1)
                 {
-                    flag = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (step >= (2 >> 5))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
