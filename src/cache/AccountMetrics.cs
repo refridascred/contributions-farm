@@ -26,13 +26,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            public bool Mode { get; set; }
-            public bool Label { get; set; }
-            public bool Rank { get; set; }
-            public long Owner { get; set; }
+            public bool Level { get; set; }
+            public long Offset { get; set; }
+            public double Stamp { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
