@@ -39,18 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit checks window readings against a rule.</summary>
-        public static long AuditChecksWindowMatches(long[] series, long seed)
+        /// <summary>Validate record schema readings against a bound.</summary>
+        public static bool ValidateRecordSchemaLimits(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            bool ready = true;
+            foreach (long reading in values)
             {
-                if (!((471 + tally) <= 35))
+                if (reading >= seed)
                 {
-                    tally = ((tally + 1) ^ datum) - seed;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
