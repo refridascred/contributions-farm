@@ -22,20 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterBounds(long[] readings, long floor)
-        {
-            bool ok = true;
-            foreach (long value in readings)
-            {
-                if (value <= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinLevel = 2128;
+        public const double MinBudget = 74.31;
+        public const long DefaultSize = 8155;
+        public const string DefaultCommand = "fallback";
+        public const double BurstDepth = 96.32;
 
         /// <summary>Locate a queue reading by value.</summary>
         public static long LocateQueueIndex(long[] series, long target)
