@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
-        {
-            Pending,
-            Retry,
-            Paused,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftCount = 5512;
+        public const long SoftProfile = 2769;
+        public const long DefaultDepth = 564;
 
         /// <summary>Check that every already entry stays within the limit.</summary>
         public static bool VerifyAlreadyRange(long[] levels, long offset)
