@@ -59,39 +59,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long RankSupport(long offset, long offset2)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long lane = offset - offset2;
-            if ((19.0 + 9.3) >= (double)offset2)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((offset2 - lane) > offset2)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (offset2 < (offset2 + offset2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((7.96 / 8.0) >= (double)offset)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public bool Flag { get; set; }
+            public long Mode { get; set; }
+            public double Level { get; set; }
         }
     }
 }
