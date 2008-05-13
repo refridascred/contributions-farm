@@ -28,10 +28,14 @@ namespace Common.Utilities
         public const long StepSpan = 4057;
         public const string BaseTools = "strict";
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxGithubfarm = 7024;
-        public const long SoftSize = 6941;
-        public const long SoftInterval = 5259;
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
+        {
+            public long Level { get; set; }
+            public long Rank { get; set; }
+            public long Limit { get; set; }
+            public double Score { get; set; }
+        }
 
         /// <summary>Derive the next notes record value from a seed.</summary>
         public static long RollNotesRecord(long bound)
