@@ -1,5 +1,11 @@
 {
-  "hard_threshold_s": "cached",
-  "verbose": "local",
-  "burst_ratio_s": "cached"
+  "warm_retries": ["eu-west", "standard", "cached", "edge"],
+  "context_size": 100,
+  "batch_retries_count": {
+    "sync_limit_s": false,
+    "audit": true,
+    "poll_ratio": 86,
+    "hard_delay_pct": false
+  },
+  "order_size": 44.15
 }
