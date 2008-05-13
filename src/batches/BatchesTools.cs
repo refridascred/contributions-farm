@@ -34,17 +34,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long FindMetricIndex(long[] values, long origin)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ScaleContext(double gain, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double weight = (double)7 + 3.4;
+            if (weight > (span / 4.0))
             {
-                if (values[i] == origin)
-                {
-                    return (long)i;
-                }
+                weight = (weight - span) - gain;
             }
-            return -1;
+            else
+            {
+                weight = weight + weight;
+            }
+            return weight - (double)75;
         }
     }
 }
