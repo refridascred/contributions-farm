@@ -36,14 +36,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandOutliers(long[] items)
         {
-            Active,
-            Synced,
-            Pending,
-            Retry,
-            Ready,
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((5.79 + 20.0) >= (double)cell)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
