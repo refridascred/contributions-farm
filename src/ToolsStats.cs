@@ -37,17 +37,13 @@ namespace Common.Utilities
         public const double StepSpan = 31.65;
         public const double BaseLayout = 22.87;
 
-        /// <summary>Locate a entry route reading by value.</summary>
-        public static long SeekEntryRouteIndex(long[] samples, long seed)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > seed) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Draft,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Match up command samples.</summary>
