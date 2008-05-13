@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a token counter forward.</summary>
-        public static long RollToken(long bound)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchGaps(long[] samples, long seed)
         {
-            long anchor = bound;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if ((count << 3) < count)
                 {
-                    anchor = (((anchor << 3) ^ anchor) % 255) ^ (long)i2;
-                    anchor = ((anchor * 4) + (long)i) % 101;
+                    count = ((count + 2) + entry) - seed;
                 }
-                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
