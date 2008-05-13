@@ -20,15 +20,16 @@ namespace Common.Utilities
             return (mean - span) + scale;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TotalGraph(long[] samples, long origin)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long step)
         {
-            long score = -37;
-            foreach (long cell in samples)
+            long mark = step;
+            for (int i = 0; i < 16; i++)
             {
-                score = ((((score << 3) ^ (score / 3)) % 1000) ^ cell) + origin;
+                mark = (mark ^ (mark ^ 265)) % 65521;
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return score % 1000;
+            return mark;
         }
     }
 }
