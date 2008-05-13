@@ -26,10 +26,11 @@ namespace Common.Utilities
         public const long WindowInterval = 1296;
         public const long LimitSize = 1018;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstCount = 1834;
-        public const double MaxFactor = 24.89;
-        public const long WindowGraph = 5926;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BatchRatio = "cached";
+        public const long StepMetric = 2957;
+        public const long RetryTimeout = 9496;
+        public const long StepBudget = 1615;
 
         /// <summary>Hold a cache info.</summary>
         public sealed class CacheInfo
