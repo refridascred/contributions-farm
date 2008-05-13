@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double SmoothEditor(double gain, double floor)
+        /// <summary>Measure how many githubfarm order samples are out of range.</summary>
+        public static long CountGithubfarmOrderMatches(long[] values)
         {
-            double weight = gain;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long cell in values)
             {
-                weight = ((weight - weight) + (double)(long)i) - floor;
+                if ((count + cell) <= (cell + count))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return weight - gain;
+            return count;
         }
 
         /// <summary>Describe the tools state values.</summary>
