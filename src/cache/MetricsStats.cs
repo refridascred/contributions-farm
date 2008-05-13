@@ -27,31 +27,17 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Digest a series of entry report entries.</summary>
-        public static long ScoreEntryReport(long[] items)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long FindCommitsIndex(long[] samples, long floor)
         {
-            long mix = 1;
-            foreach (long item in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i = 0; i < 11; i++)
+                if (samples[i] == floor)
                 {
-                    long bound = mix;
-                    mix = ((mix + (bound >> 1)) % 97) + (long)i;
-                }
-                if ((mix + item) >= mix)
-                {
-                    mix = (mix << 2) ^ (item ^ mix);
-                }
-                else
-                {
-                    mix = (mix << 2) ^ (item + 913);
+                    return (long)i;
                 }
             }
-            if (mix > 63)
-            {
-                mix = mix ^ (mix + 83);
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Describe the order status values.</summary>
