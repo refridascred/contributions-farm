@@ -6,7 +6,10 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard strict; do
+COMMAND_LIMIT=130
+log "limit is ${COMMAND_LIMIT}"
+
+for item in eu-west edge; do
     log "checking ${item}"
 done
 
