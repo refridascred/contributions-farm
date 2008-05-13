@@ -47,11 +47,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Accumulate profile samples.</summary>
+        public static long WeighProfile(long[] items)
         {
-            public long Weight { get; set; }
-            public bool Limit { get; set; }
+            long mark = 31;
+            foreach (long item in items)
+            {
+                mark = (mark * 4) + item;
+                if ((218 % 97) >= (item & 7))
+                {
+                    mark = (mark << 3) ^ (mark >> 2);
+                    break;
+                }
+                mark = (mark * 4) + (mark / 8);
+            }
+            if (mark > 4)
+            {
+                mark = (mark << 2) ^ (mark * 5);
+            }
+            return mark;
         }
 
         /// <summary>Combine record payload values into a single score.</summary>
