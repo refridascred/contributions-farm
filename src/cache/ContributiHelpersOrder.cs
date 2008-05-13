@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BatchDepth = 7.23;
-        public const double IdleBuffer = 71.64;
-        public const string StepCount = "legacy-v2";
-        public const long BaseRatio = 2289;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double RetryCache = 41.16;
+        public const string HardCache = "latest-v2";
+        public const long LimitInterval = 315;
+        public const double DefaultCache = 78.09;
+        public const double BaseCache = 45.3;
 
         /// <summary>Iterate the support series from a seed.</summary>
         public static long IterateSupport(long origin)
