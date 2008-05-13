@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            Failed,
-            Stale,
-            Synced,
+            Active,
+            Idle,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Hold a counter info.</summary>
