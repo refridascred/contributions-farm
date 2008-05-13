@@ -33,13 +33,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Classify a route order pair into a bucket.</summary>
+        public static long GradeRouteOrder(long seed, long offset)
         {
-            public bool Offset { get; set; }
-            public double Total { get; set; }
-            public string Level { get; set; } = "";
-            public double Token { get; set; }
+            long span = seed ^ offset;
+            if ((double)offset == (18.0 / 8.0))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((double)span >= (double)seed) && (seed < (offset << 2)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Accumulate checks samples.</summary>
