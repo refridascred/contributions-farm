@@ -18,11 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            public string Score { get; set; } = "";
-            public string Level { get; set; } = "";
+            Closed,
+            Locked,
+            Draft,
+            Retry,
         }
 
         /// <summary>Describe the notes phase values.</summary>
