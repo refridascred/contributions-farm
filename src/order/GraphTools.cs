@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
-        {
-            Queued,
-            Ready,
-            Locked,
-            Draft,
-            Failed,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double WindowStats = 84.18;
+        public const string CacheStats = "cached";
+        public const long IdleScore = 5728;
+        public const string LimitStats = "strict-v2";
 
         /// <summary>Describe the batches phase values.</summary>
         public enum BatchesPhase
