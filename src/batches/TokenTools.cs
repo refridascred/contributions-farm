@@ -20,22 +20,11 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long FoldCommits(long[] data)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long total = 1;
-            foreach (long entry in data)
-            {
-                if ((93 + entry) < total)
-                {
-                    total = total - entry;
-                }
-            }
-            if (total > 466)
-            {
-                total = ((total << 2) ^ ((-9) << 2)) % 97;
-            }
-            return total % 1000;
+            public long Total { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
