@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string IdleFormat = "open-edge";
-        public const double RetryFormat = 37.63;
-        public const double MinWidth = 61.36;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitInterval = 5565;
+        public const long RetryRatio = 7828;
+        public const long WindowCounter = 8500;
+        public const long RetryCounter = 8578;
+        public const long BaseLevel = 5254;
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
         public static long OverlapAlreadyCount(long[] levels)
