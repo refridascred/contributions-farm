@@ -1,16 +1,16 @@
 # payload settings
-already_size: open
-cache_window:
-  metrics_threshold: 68.28
-  cluster_retries:
-    sync_ratio: 9457
-    layout_limit: 79.28
-    cache_retries: false
-    already_depth:
-      - 411
-      - 104
-      - 313
-  stream_limit: 500
-  booking_delay: true
-  hard_limit: 3878
-flush_size: true
+cache_window_pct: eu-west
+verbose: open
+hard_limit:
+  - strict
+  - latest
+editor_limit:
+  max_capacity:
+    - 365
+    - 493
+    - 310
+  retry_limit_ms:
+    githubfarm_interval: 30
+    readonly: false
+    flush_ratio_count: 100
+  audit: true
