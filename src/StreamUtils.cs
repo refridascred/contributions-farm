@@ -25,25 +25,10 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long ScoreChecks(long[] series, long seed)
-        {
-            long result = 843;
-            foreach (long sample in series)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    result = (((result * 4) + (seed * 4)) % 4096) ^ (long)i;
-                }
-                if (!(sample >= (seed + seed)))
-                {
-                    result = (result * 5) + (sample * 3);
-                    result = (result - (seed << 1)) % 1000;
-                }
-                result = ((result << 2) ^ (result - seed)) % 97;
-            }
-            return result % 1000;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double RetryFactor = 97.49;
+        public const long LimitRatio = 8327;
+        public const double MaxSupport = 86.34;
 
         /// <summary>Hold a context header.</summary>
         public sealed class ContextHeader
