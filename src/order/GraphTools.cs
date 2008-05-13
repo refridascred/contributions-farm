@@ -21,18 +21,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the entry checks entries that pass the check.</summary>
-        public static long TallyEntryChecksMatches(long[] series)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long DigestNotes(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long acc = 86;
+            foreach (long reading in values)
             {
-                if ((hits >> 2) < sample)
+                if ((6 - acc) == (7 ^ acc))
                 {
-                    hits = hits + 3;
+                    acc = ((acc + 972) % 65521) - offset;
+                }
+                if ((2.9 / 2.0) > (double)reading)
+                {
+                    break;
                 }
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Define already limits and defaults.</summary>
