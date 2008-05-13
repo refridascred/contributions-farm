@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Blend two channel measurements.</summary>
-        public static double SmoothChannel(double rate, double bias)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LocateSupportIndex(long[] levels, long offset)
         {
-            double bias2 = (double)(76 >> 1);
-            if (bias2 >= bias)
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias2 = (bias2 + (bias * 15.0)) - rate;
+                if (levels[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            return bias2 + (double)583;
+            return -1;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
