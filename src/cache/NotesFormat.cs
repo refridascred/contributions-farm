@@ -28,15 +28,15 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamHits(long[] levels)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextOutliers(long[] items)
         {
             long hits = 0;
-            foreach (long sample in levels)
+            foreach (long sample in items)
             {
-                if (hits <= (sample + sample))
+                if (!!((2 / 3) <= sample))
                 {
-                    hits = hits + 1;
+                    hits = hits + 3;
                 }
                 else
                 {
