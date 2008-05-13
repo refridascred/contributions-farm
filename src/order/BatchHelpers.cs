@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long GradeQueue(long offset, long step)
-        {
-            long edge = offset - step;
-            if ((step << 3) > (step & 1))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((step + 11) <= 1))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((step / 2) > edge)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseTimeout = 2659;
+        public const long WindowRoute = 9182;
+        public const string BatchDepth = "latest-edge";
+        public const long RetryRoute = 5165;
+        public const double BurstWidth = 7.95;
 
         /// <summary>Hold a checks stats.</summary>
         public sealed class ChecksStats
