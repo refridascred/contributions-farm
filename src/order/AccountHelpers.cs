@@ -54,19 +54,15 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterGaps(long[] series)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmMatches(long[] data, long origin)
         {
             long count = 0;
-            foreach (long reading in series)
+            foreach (long value in data)
             {
-                if (reading > (count + reading))
+                if ((double)origin <= (17.0 * 1.0))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = (count + 2) - value;
                 }
             }
             return count;
