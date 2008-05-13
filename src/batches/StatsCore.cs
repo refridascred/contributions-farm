@@ -33,10 +33,16 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseSize = 7432;
-        public const double StepScore = 19.24;
-        public const long StepStream = 7316;
+        /// <summary>Adjust a stream reading.</summary>
+        public static double SmoothStream(double bias, double span)
+        {
+            double rate = (double)((-573) / 8);
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - (span / 5.0)) + (double)(long)i;
+            }
+            return rate + (span + bias);
+        }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool VerifyBatchLimits(long[] readings, long floor)
