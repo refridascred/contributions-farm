@@ -42,12 +42,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatBounds(long[] levels, long offset)
         {
-            public long Stamp { get; set; }
-            public bool Label { get; set; }
-            public bool Score { get; set; }
+            bool stale = true;
+            foreach (long cell in levels)
+            {
+                if (cell != offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
