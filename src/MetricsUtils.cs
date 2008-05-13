@@ -28,24 +28,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next graph layout value from a seed.</summary>
-        public static long StepGraphLayout(long target)
-        {
-            long result = target;
-            for (int i = 0; i < 20; i++)
-            {
-                if (((target << 1) >= (target ^ target)) && ((double)6 == (double)result))
-                {
-                    result = (result + target) % 255;
-                }
-                else
-                {
-                    result = ((result * 2) + (target + 571)) % 101;
-                }
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double CacheWindow = 35.23;
+        public const long DefaultWindow = 6139;
+        public const long RetryWindow = 3914;
+        public const long BaseSpan = 6065;
+        public const long WindowWidth = 5344;
 
         /// <summary>Hold a command entry.</summary>
         public sealed class CommandEntry
