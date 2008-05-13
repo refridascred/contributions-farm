@@ -30,12 +30,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryBounds(long[] readings, long bound)
         {
-            public long Owner { get; set; }
-            public string Mode { get; set; } = "";
-            public long Rank { get; set; }
+            bool ready = true;
+            foreach (long value in readings)
+            {
+                if (value <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
