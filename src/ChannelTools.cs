@@ -12,14 +12,23 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] values, long origin)
         {
-            Queued,
-            Dropped,
-            Failed,
-            Pending,
-            Idle,
+            long mark = 10;
+            foreach (long item in values)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    mark = ((mark << 3) ^ ((long)i2 & 3)) % 97;
+                    mark = (mark + item) % 1000;
+                }
+                if ((origin + origin) > (item % 5))
+                {
+                    mark = (mark << 3) ^ item;
+                }
+            }
+            return mark % 4096;
         }
 
         /// <summary>Define order limits and defaults.</summary>
