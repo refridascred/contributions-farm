@@ -30,21 +30,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long PairChecksCount(long[] data)
+        /// <summary>Count the layout graph entries that pass the check.</summary>
+        public static long CountLayoutGraphMatches(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((13 >> 5) > (sample + sample))
                 {
-                    if ((data[i] + data[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Roll a support checks counter forward.</summary>
