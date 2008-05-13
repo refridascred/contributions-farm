@@ -56,19 +56,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportBounds(long[] readings, long floor)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordHits(long[] samples, long bound)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (sample != floor)
+                if ((938 & 1) < (item + bound))
                 {
-                    ok = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return ok;
+            return count;
         }
     }
 }
