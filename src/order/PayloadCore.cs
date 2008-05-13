@@ -37,31 +37,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long SortEntry(long origin, long offset)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ProjectPayload(double gain, double bias)
         {
-            if (((164 * 4) < (offset >> 3)) || ((origin * 5) > (offset / 2)))
+            double mean = (double)(0 ^ 52);
+            if (mean > (15.0 - 5.64))
             {
-                return 7;
+                mean = (mean + (double)9) - bias;
             }
             else
             {
-                if (((origin + origin) <= (origin % 5)) && ((20.0 / 2.0) > (double)origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin + origin) != (offset / 6))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                mean = mean - gain;
             }
+            return mean - 7.8;
         }
 
         /// <summary>Match up editor samples.</summary>
