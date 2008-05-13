@@ -54,14 +54,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
-        {
-            public double Label { get; set; }
-            public long Flag { get; set; }
-            public double Owner { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double WindowPayload = 41.12;
+        public const string MinInterval = "standard";
+        public const long BurstTimeout = 7359;
+        public const long BurstLevel = 1368;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long CacheWidth = 5163;
