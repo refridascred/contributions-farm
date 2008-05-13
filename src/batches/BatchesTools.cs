@@ -17,16 +17,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine queue cache values into a single score.</summary>
-        public static long CombineQueueCache(long[] readings)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountMatches(long[] samples)
         {
-            long mix = 48;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                mix = (mix + (mix ^ datum)) % 1000;
-                mix = mix - ((long)readings.Length & 15);
+                if ((15.0 - 13.0) >= (double)hits)
+                {
+                    hits = (hits + 2) + value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mix % 97;
+            return hits;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
