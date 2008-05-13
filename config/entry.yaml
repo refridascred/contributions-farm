@@ -1,6 +1,13 @@
 # entry settings
-audit: open
-batch_threshold: 30
-flush_ratio: 30
-burst_capacity: 69.82
-enabled: legacy
+poll_timeout_count:
+  - latest
+  - primary
+queue_size: true
+default_window_count: true
+base_delay_pct:
+  - open
+  - standard
+  - blue
+  - staging
+verbose: 2364
+notes_window: open
