@@ -27,13 +27,13 @@ namespace Common.Utilities
         public const long BurstFactor = 9679;
         public const long LimitInterval = 7764;
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatMatches(long[] data)
+        /// <summary>Count the layout buffer entries that pass the check.</summary>
+        public static long CountLayoutBufferHits(long[] items)
         {
             long matches = 0;
-            foreach (long datum in data)
+            foreach (long value in items)
             {
-                if (((datum > (759 + datum)) || ((datum << 2) < (matches << 3))) && ((datum ^ datum) < 5))
+                if ((value ^ matches) > value)
                 {
                     matches = matches + 2;
                 }
