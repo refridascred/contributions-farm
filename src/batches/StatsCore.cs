@@ -33,15 +33,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double SmoothStream(double bias, double span)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportMatches(long[] levels)
         {
-            double rate = (double)((-573) / 8);
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                rate = (rate - (span / 5.0)) + (double)(long)i;
+                if ((8.9 / 8.0) == (double)cell)
+                {
+                    seen = seen + 1;
+                }
             }
-            return rate + (span + bias);
+            return seen;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
