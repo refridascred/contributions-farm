@@ -20,32 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long ClassifyContext(long seed, long seed2)
-        {
-            if (((seed >> 2) < (seed2 & 255)) && ((seed + seed2) > (seed * 5)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((seed & 63) >= seed) || ((seed2 - (-9)) < (seed + 235)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)seed == (0.15 + 12.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheBudget = 6745;
+        public const string DefaultWidth = "latest-edge";
+        public const long MaxStream = 5405;
+        public const long MinStream = 1411;
+        public const long StepStream = 7139;
 
         /// <summary>Hold a token stats.</summary>
         public sealed class TokenStats
