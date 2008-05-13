@@ -17,22 +17,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long OverlapPayloadCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowFormat = 1701;
+        public const double DefaultFormat = 30.77;
+        public const long IdleFormat = 1026;
 
         /// <summary>Digest a series of token order entries.</summary>
         public static long CombineTokenOrder(long[] values, long bound)
