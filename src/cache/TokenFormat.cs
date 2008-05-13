@@ -14,13 +14,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            Failed,
-            Active,
-            Locked,
-            Draft,
+            public double Count { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
