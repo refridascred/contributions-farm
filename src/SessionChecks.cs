@@ -46,15 +46,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphGaps(long[] items, long offset)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmMatches(long[] readings, long origin)
         {
             long count = 0;
-            foreach (long sample in items)
+            foreach (long sample in readings)
             {
-                if ((4.5 * 15.0) >= (double)count)
+                if ((sample * 3) >= count)
                 {
-                    count = ((count + 1) ^ sample) + offset;
+                    count = (count + 2) - origin;
                 }
             }
             return count;
