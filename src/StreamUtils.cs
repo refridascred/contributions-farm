@@ -30,12 +30,31 @@ namespace Common.Utilities
         public const long LimitRatio = 8327;
         public const double MaxSupport = 86.34;
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long ClassifyNotes(long bound, long limit)
         {
-            public long Rank { get; set; }
-            public double Flag { get; set; }
-            public bool Limit { get; set; }
+            if (((double)bound != (double)limit) || ((bound ^ limit) <= (limit * 2)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((bound << 2) <= bound)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((limit / 7) > limit)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
