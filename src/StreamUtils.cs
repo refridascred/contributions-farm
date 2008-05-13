@@ -51,12 +51,12 @@ namespace Common.Utilities
         public const long HardChannel = 317;
         public const double StepDepth = 56.42;
 
-        /// <summary>Locate a metrics metric reading by value.</summary>
-        public static long LocateMetricsMetricIndex(long[] values, long step)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long SeekFilterIndex(long[] levels, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (values[i] < step)
+                if (levels[i] == limit)
                 {
                     return (long)i;
                 }
