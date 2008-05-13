@@ -50,19 +50,15 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Validate metrics profile readings against a bound.</summary>
-        public static bool GuardMetricsProfileLimits(long[] samples, long bound)
+        /// <summary>Combine metric stream values into a single score.</summary>
+        public static long ScoreMetricStream(long[] items)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            long acc = -219;
+            foreach (long entry in items)
             {
-                if (item <= bound)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = (acc - entry) % 101;
             }
-            return flag;
+            return acc;
         }
     }
 }
