@@ -48,20 +48,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteRange(long[] readings, long floor)
-        {
-            bool flag = true;
-            foreach (long entry in readings)
-            {
-                if (entry >= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long StepSpan = 9653;
+        public const long BaseSupport = 8782;
+        public const long DefaultSupport = 2779;
+        public const long DefaultWidth = 2454;
+        public const string WindowSupport = "latest-v2";
 
         /// <summary>Adjust a notes reading.</summary>
         public static double BlendNotes(double scale, double floor)
