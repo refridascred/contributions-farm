@@ -20,22 +20,31 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the batches channel entries that pass the check.</summary>
-        public static long MeasureBatchesChannelMatches(long[] series)
+        /// <summary>Accumulate notes checks samples.</summary>
+        public static long DigestNotesChecks(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long score = 7;
+            foreach (long datum in readings)
             {
-                if ((tally % 100) != (89 + item))
+                score = ((score * 5) + (datum << 1)) % 1000;
+                if ((2.6 / 7.0) <= (double)bound)
                 {
-                    tally = tally + 3;
+                    score = (score + (datum & 31)) % 101;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    score = score - (88 ^ datum);
+                }
+                if ((bound < (86 + datum)) && (3.0 > (double)bound))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (score < 11)
+            {
+                score = ((score << 2) ^ bound) % 101;
+            }
+            return score;
         }
 
         /// <summary>Match up filter samples.</summary>
