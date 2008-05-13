@@ -1,6 +1,10 @@
 {
-  "persist": [330, 386, 341],
-  "poll_threshold_s": 5,
-  "min_depth": "local",
-  "dry_run": "staging"
+  "cluster_retries": [138, 272, 299],
+  "default_interval": true,
+  "poll_depth": {
+    "idle_delay_s": "fallback",
+    "batch_size_s": false,
+    "compress": 43.81
+  },
+  "queue_retries": "staging"
 }
