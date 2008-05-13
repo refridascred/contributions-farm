@@ -19,13 +19,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long GradeContributi(long seed, long step)
         {
-            Closed,
-            Done,
-            Retry,
-            Dropped,
+            long lane = seed + step;
+            if (!(1.09 < (double)seed))
+            {
+                return 8;
+            }
+            else
+            {
+                if (8.0 >= (double)lane)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Describe the payload phase values.</summary>
