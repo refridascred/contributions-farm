@@ -54,19 +54,21 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Scale a batches notes figure with a bias.</summary>
-        public static double ProjectBatchesNotes(double scale, double bias)
+        /// <summary>Match up buffer token samples.</summary>
+        public static long PairBufferTokenCount(long[] data)
         {
-            double rate = 19.0;
-            if (rate >= scale)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                rate = (rate - scale) - bias;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = rate - (double)(long)i;
-            }
-            return rate + 14.0;
+            return matches;
         }
     }
 }
