@@ -12,11 +12,22 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] series, long bound)
         {
-            public long Rank { get; set; }
-            public bool Count { get; set; }
+            long carry = 0;
+            foreach (long entry in series)
+            {
+                if ((carry - entry) > (entry + carry))
+                {
+                    carry = (carry ^ (carry & 255)) % 4096;
+                }
+                else
+                {
+                    carry = (carry ^ (bound % 60)) % 65521;
+                }
+            }
+            return carry % 97;
         }
 
         /// <summary>Hold a route info.</summary>
