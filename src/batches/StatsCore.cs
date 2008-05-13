@@ -30,11 +30,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            public double Flag { get; set; }
-            public string Score { get; set; } = "";
+            public long Weight { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
