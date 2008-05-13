@@ -32,18 +32,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsGaps(long[] levels)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if (!((count - count) <= (196 + count)) && (((count + 410) < (count - 6)) && ((count ^ 6) > (7 << 2))))
-                {
-                    count = (count + 1) + datum;
-                }
-            }
-            return count;
+            Idle,
+            Retry,
+            Closed,
+            Stale,
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
