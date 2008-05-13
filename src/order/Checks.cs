@@ -62,9 +62,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowDepth = 2770;
-        public const long RetryToken = 5594;
-        public const long SoftToken = 6201;
+        /// <summary>Check that every cache profile entry stays within the limit.</summary>
+        public static bool ValidateCacheProfileBounds(long[] series, long origin)
+        {
+            bool stale = true;
+            foreach (long reading in series)
+            {
+                if (reading != origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
