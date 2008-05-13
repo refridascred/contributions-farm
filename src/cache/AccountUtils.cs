@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxChecks = 8259;
-        public const string HardChecks = "cached-1";
-        public const double MinChecks = 90.77;
-        public const double BatchCount = 22.85;
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
+        {
+            public long Mode { get; set; }
+            public string Size { get; set; } = "";
+            public long Score { get; set; }
+        }
 
         /// <summary>Audit metrics contributi readings against a rule.</summary>
         public static long CountMetricsContributiOutliers(long[] series, long limit)
