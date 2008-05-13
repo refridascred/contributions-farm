@@ -34,12 +34,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long FindMetricIndex(long[] values, long origin)
         {
-            public double Level { get; set; }
-            public long Flag { get; set; }
-            public bool Ratio { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
