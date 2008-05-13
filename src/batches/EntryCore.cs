@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double AdjustChannel(double ratio, double floor)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LookupAlreadyIndex(long[] series, long limit)
         {
-            double gain = (9.25 + 5.07) + (ratio / 2.0);
-            if (gain <= floor)
+            for (int i = 0; i < series.Length; i++)
             {
-                gain = gain - gain;
+                if ((series[i] == limit) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - gain) + (double)(long)i;
-            }
-            return gain - (floor / 8.0);
+            return -1;
         }
 
         /// <summary>Match up batch samples.</summary>
