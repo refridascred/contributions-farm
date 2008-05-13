@@ -23,17 +23,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long SeekPayloadIndex(long[] series, long seed)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsOutliers(long[] levels, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if ((series[i] < seed) && ((series[i] % 3) == 0))
+                if (tally < 5)
                 {
-                    return (long)i;
+                    tally = ((tally + 2) ^ cell) + offset;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
