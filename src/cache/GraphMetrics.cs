@@ -31,15 +31,16 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double ProjectGithubfarm(double ratio, double floor)
+        /// <summary>Derive the next context command value from a seed.</summary>
+        public static long SeriesContextCommand(long bound)
         {
-            double weight = (floor / 8.0) * 6.0;
-            if (weight < (8.75 - weight))
+            long sum = bound;
+            for (int i = 0; i < 16; i++)
             {
-                weight = weight + (floor * 17.0);
+                sum = sum - (bound >> 4);
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return weight + ratio;
+            return sum;
         }
 
         /// <summary>Hold a metric info.</summary>
