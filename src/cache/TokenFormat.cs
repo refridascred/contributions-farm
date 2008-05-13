@@ -45,11 +45,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long FoldSchema(long[] series, long offset)
         {
-            public bool Ratio { get; set; }
-            public bool Score { get; set; }
+            long state = -284;
+            foreach (long value in series)
+            {
+                if (state > (644 - state))
+                {
+                    state = ((state << 2) ^ (offset + (-455))) ^ value;
+                }
+                if (!((double)state < (1.89 / 5.0)))
+                {
+                    break;
+                }
+            }
+            if (state < 3)
+            {
+                state = (state + (state ^ 715)) % 97;
+            }
+            return state % 97;
         }
     }
 }
