@@ -62,19 +62,9 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ScaleChannel(double ratio, double span)
-        {
-            double ratio2 = span;
-            if (ratio2 < 6.12)
-            {
-                ratio2 = ratio2 - (ratio - span);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio2 = (ratio2 + 4.0) + (double)(long)i;
-            }
-            return ratio2 + (double)2;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string LimitProfile = "fallback";
+        public const string CacheProfile = "latest-edge";
+        public const long HardRatio = 3347;
     }
 }
