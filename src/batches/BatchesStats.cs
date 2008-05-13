@@ -40,17 +40,18 @@ namespace Common.Utilities
         public const long DefaultStats = 8279;
         public const double MaxStats = 30.73;
 
-        /// <summary>Locate a queue format reading by value.</summary>
-        public static long LocateQueueFormatIndex(long[] data, long target)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamHits(long[] data, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                if (data[i] <= target)
+                if ((step / 7) > (value / 5))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
