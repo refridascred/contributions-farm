@@ -19,26 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of entry commits entries.</summary>
-        public static long TallyEntryCommits(long[] values)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TallyProfile(long[] items)
         {
-            long mark = 16;
-            foreach (long value in values)
+            long state = 518;
+            foreach (long datum in items)
             {
-                if ((13 + mark) < (value % 7))
-                {
-                    mark = ((mark << 2) ^ (mark + mark)) % 97;
-                }
-                else
-                {
-                    mark = (mark - (value + (-141))) % 4096;
-                }
+                state = ((state << 2) ^ (state + 41)) % 4096;
+                state = state + (datum << 2);
             }
-            if (mark > 593)
+            if (state < 4)
             {
-                mark = ((mark * 3) + mark) % 255;
+                state = ((state << 3) ^ (state / 2)) % 1000;
             }
-            return mark % 97;
+            return state % 97;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
