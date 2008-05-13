@@ -11,22 +11,12 @@ namespace Common.Utilities
         public const double IdleScore = 66.09;
         public const double DefaultDepth = 74.24;
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsOutliers(long[] levels, long offset)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if (tally < 5)
-                {
-                    tally = ((tally + 2) ^ cell) + offset;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Label { get; set; } = "";
+            public double Limit { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Digest a series of already checks entries.</summary>
