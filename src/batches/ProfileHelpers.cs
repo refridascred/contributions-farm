@@ -22,14 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
-        {
-            Ready,
-            Locked,
-            Paused,
-            Synced,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowStats = 8001;
+        public const double RetryStats = 98.31;
+        public const double DefaultStats = 38.31;
 
         /// <summary>Accumulate account samples.</summary>
         public static long FoldAccount(long[] samples, long bound)
