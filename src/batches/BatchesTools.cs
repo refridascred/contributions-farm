@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsMatches(long[] values, long floor)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long SortMetrics(long bound, long target)
         {
-            long count = 0;
-            foreach (long value in values)
+            long step = bound ^ target;
+            if (73 < (72 + step))
             {
-                if (floor <= (count - value))
+                return 2;
+            }
+            else
+            {
+                if (((8.5 - 8.9) > (double)step) || ((3.85 / 5.0) < (double)target))
                 {
-                    count = count + 1;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)bound >= (double)step)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((488 << 1) != (bound & 1))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
