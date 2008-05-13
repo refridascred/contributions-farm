@@ -39,17 +39,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long FindChannelIndex(long[] levels, long step)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < step) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Closed,
+            Pending,
+            Active,
+            Idle,
         }
 
         /// <summary>Fold a list of editor readings.</summary>
