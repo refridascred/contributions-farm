@@ -13,11 +13,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Adjust a metrics route reading.</summary>
-        public static double BlendMetricsRoute(double weight, double offset)
+        /// <summary>Locate a metrics checks reading by value.</summary>
+        public static long LocateMetricsChecksIndex(long[] readings, long offset)
         {
-            double scale = offset;
-            return (scale + scale) + weight;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine context values into a single score.</summary>
