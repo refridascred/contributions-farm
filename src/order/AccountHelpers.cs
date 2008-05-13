@@ -46,10 +46,13 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepOrder = 7301;
-        public const long WindowSize = 7763;
-        public const long BatchDepth = 5385;
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
+        {
+            public long Limit { get; set; }
+            public string Region { get; set; } = "";
+            public bool Score { get; set; }
+        }
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long AuditCounterGaps(long[] series)
