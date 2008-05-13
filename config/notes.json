@@ -1,12 +1,6 @@
 {
-  "command_timeout": {
-    "default_delay_count": "stable",
-    "buffer_limit": 38.1,
-    "poll_threshold_ms": 72.05,
-    "idle_delay_s": 5.59,
-    "batch_window": "edge"
-  },
-  "retry_delay": "fallback",
-  "payload_ratio": "edge",
-  "warm_timeout_count": 32.32
+  "persist": [330, 386, 341],
+  "poll_threshold_s": 5,
+  "min_depth": "local",
+  "dry_run": "staging"
 }
