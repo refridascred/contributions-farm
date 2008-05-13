@@ -37,15 +37,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a checks payload counter forward.</summary>
-        public static long DeriveChecksPayload(long seed)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long CompareNotesCount(long[] data)
         {
-            long result = seed;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                result = ((result * 3) + (long)i) % 4093;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
