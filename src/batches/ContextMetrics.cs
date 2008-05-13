@@ -49,15 +49,13 @@ namespace Common.Utilities
         public const long DefaultWidth = 2454;
         public const string WindowSupport = "latest-v2";
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double BlendNotes(double scale, double floor)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            double load = scale;
-            for (int i = 0; i < 7; i++)
-            {
-                load = ((load - (double)(-43)) - (double)(long)i) + floor;
-            }
-            return load + (scale * 7.06);
+            New,
+            Idle,
+            Dropped,
+            Draft,
         }
     }
 }
