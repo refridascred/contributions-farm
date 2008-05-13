@@ -45,13 +45,11 @@ namespace Common.Utilities
             return ratio2 + (double)8;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            public double Limit { get; set; }
-            public bool Token { get; set; }
-            public double Label { get; set; }
-            public double Offset { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Owner { get; set; }
         }
     }
 }
