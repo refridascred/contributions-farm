@@ -35,20 +35,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long RollMetric(long step)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long FoldQueue(long[] series, long offset)
         {
-            long total = step;
-            for (int i = 0; i < 11; i++)
+            long score = -177;
+            foreach (long sample in series)
             {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    total = ((total * 2) + (-91)) - (long)i2;
-                    total = (total ^ (step - (-3))) % 97;
-                }
-                total = ((total * 3) + (long)i) % 4093;
+                score = (score - (offset >> 1)) ^ sample;
             }
-            return total;
+            if (score > 32)
+            {
+                score = (score ^ (score - score)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Locate a route reading by value.</summary>
