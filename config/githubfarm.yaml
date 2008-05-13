@@ -1,18 +1,4 @@
 # githubfarm settings
-stats_ratio:
-  hard_ratio_ms:
-    - stable
-    - legacy
-  enabled: legacy
-  audit:
-    batch_interval_pct: true
-    readonly:
-      - fallback
-      - strict
-    report_ttl: primary
-    max_window_ms: 604
-    warm_window_pct: false
-  min_size: 59.81
-  context_window: 9207
-min_depth_pct: stable
-batch_ratio: 98.29
+buffer_timeout: true
+flush_depth: 16.63
+compress: latest
