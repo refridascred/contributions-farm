@@ -6,16 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-blue}"
-case "${mode}" in
-    local)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+RECORD_LIMIT=257
+log "limit is ${RECORD_LIMIT}"
 
-for item in stable edge cached; do
+for item in legacy latest; do
     log "checking ${item}"
 done
