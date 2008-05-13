@@ -29,23 +29,13 @@ namespace Common.Utilities
         public const long LimitWidth = 6145;
         public const double WindowDepth = 32.49;
 
-        /// <summary>Project the next channel value.</summary>
-        public static double SmoothChannel(double gain, double floor)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            double bias = gain;
-            if (bias > (double)5)
-            {
-                bias = bias - (double)887;
-            }
-            else
-            {
-                bias = bias - (bias + floor);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias - floor) + (double)(long)i;
-            }
-            return bias + (double)21;
+            Pending,
+            Closed,
+            Dropped,
+            Active,
         }
     }
 }
