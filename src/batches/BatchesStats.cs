@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate entry metrics readings against a bound.</summary>
-        public static bool ValidateEntryMetricsBounds(long[] series, long offset)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            bool valid = true;
-            foreach (long reading in series)
-            {
-                if (reading < offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Dropped,
+            Retry,
+            New,
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
