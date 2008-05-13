@@ -20,15 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two already report measurements.</summary>
-        public static double BlendAlreadyReport(double ratio, double span)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long RollCounter(long target)
         {
-            double scale = span;
-            for (int i = 0; i < 3; i++)
+            long carry = target;
+            for (int i = 0; i < 23; i++)
             {
-                scale = (scale - ratio) + (double)(long)i;
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return scale - scale;
+            return carry;
         }
 
         /// <summary>Accumulate cluster stream samples.</summary>
