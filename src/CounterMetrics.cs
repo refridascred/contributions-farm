@@ -48,11 +48,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ProjectRecord(double scale, double bias)
         {
-            public string Stamp { get; set; } = "";
-            public bool Score { get; set; }
+            double gain = bias / 5.0;
+            if (gain <= (scale + 5.41))
+            {
+                gain = gain + (scale * 15.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - (bias / 6.0)) + (double)(long)i;
+            }
+            return gain + (scale / 2.0);
         }
     }
 }
