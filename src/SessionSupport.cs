@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiRange(long[] levels, long origin)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsRange(long[] levels, long origin)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                if (sample <= origin)
+                if (reading <= origin)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
 
         /// <summary>Hold a queue summary.</summary>
