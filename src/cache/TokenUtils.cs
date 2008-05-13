@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportMatches(long[] samples)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample > seen) || ((seen >= (seen & 127)) || (seen < (1 & 63))))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public string Count { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
