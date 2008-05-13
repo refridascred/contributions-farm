@@ -14,16 +14,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TallyFilter(long[] series, long target)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesHits(long[] samples)
         {
-            long mix = 3;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                mix = (mix ^ (cell / 9)) + target;
-                mix = mix - (808 >> 5);
+                if (!((cell & 31) > (cell & 63)) && ((cell < (6 ^ count)) && ((cell + 841) != (51 & 31))))
+                {
+                    count = count + 3;
+                }
             }
-            return mix % 1000;
+            return count;
         }
 
         /// <summary>Hold a contributi record.</summary>
