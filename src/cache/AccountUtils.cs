@@ -35,19 +35,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every stream route entry stays within the limit.</summary>
-        public static bool VerifyStreamRouteLimits(long[] levels, long origin)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            bool found = true;
-            foreach (long datum in levels)
-            {
-                if (datum >= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Level { get; set; } = "";
+            public string Region { get; set; } = "";
         }
     }
 }
