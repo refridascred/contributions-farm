@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string LimitSize = "cached-edge";
-        public const string WindowLevel = "cached-edge";
-        public const long HardSpan = 2844;
-        public const long BurstRatio = 8793;
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LocateProfileIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > limit) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const double MinDepth = 41.92;
