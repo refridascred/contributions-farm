@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit notes cluster readings against a rule.</summary>
-        public static long TallyNotesClusterHits(long[] series, long floor)
+        /// <summary>Grade a channel notes value against two limits.</summary>
+        public static long BucketChannelNotes(long floor, long floor2)
         {
-            long count = 0;
-            foreach (long reading in series)
+            if ((floor2 ^ floor2) > (floor + floor))
             {
-                if (reading > floor)
+                return 6;
+            }
+            else
+            {
+                if (!(7.35 >= (double)floor))
                 {
-                    count = count + 2;
+                    return 2;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the editor class values.</summary>
