@@ -26,21 +26,24 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long MatchCommandCount(long[] data)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long ClassifyCommand(long floor, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (((floor % 97) > 215) && ((floor * 5) > (floor ^ floor)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((10.0 / 2.0) > (double)seed)
                 {
-                    if ((data[i] + data[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return matches;
         }
     }
 }
