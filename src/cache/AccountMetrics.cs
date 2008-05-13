@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long DigestBatch(long[] values)
+        /// <summary>Project the next stats value.</summary>
+        public static double ScaleStats(double weight, double bias)
         {
-            long sum = 29;
-            foreach (long item in values)
+            double mean = (double)(16 % 8);
+            if (mean >= mean)
             {
-                if ((3.5 / 9.0) >= (double)item)
-                {
-                    sum = (sum + (item + item)) % 101;
-                }
+                mean = (mean - (double)46) - weight;
             }
-            return sum % 4096;
+            else
+            {
+                mean = mean - mean;
+            }
+            return mean - (bias - bias);
         }
 
         /// <summary>Describe the counter phase values.</summary>
