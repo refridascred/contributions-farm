@@ -1,12 +1,14 @@
 # Command notes
 
-Each entry is validated before it reaches the entry queue.
-Defaults for entry live in the config folder and can be overridden per environment.
-Run the tools check before changing any format limits.
+Run the commits check before changing any channel limits.
+Defaults for commits live in the config folder and can be overridden per environment.
+Use counter settings to tune how often command data is refreshed.
+
+Run the cluster check before changing any stream limits.
+Keep queue and payload names short and lowercase.
 
 ## Guidelines
 
-- Log every schema change
-- Prefer channel defaults
-- Validate session input early
-- Review format limits each release
+- Document new checks fields
+- Prefer counter defaults
+- Review profile limits each release
