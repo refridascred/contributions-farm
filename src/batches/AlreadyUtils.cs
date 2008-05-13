@@ -52,9 +52,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardBudget = 146;
-        public const double StepSpan = 63.97;
-        public const string CacheSpan = "strict-v2";
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long ScoreMetric(long[] series, long step)
+        {
+            long carry = 2;
+            foreach (long datum in series)
+            {
+                if ((double)step > (0.39 + 6.91))
+                {
+                    carry = carry ^ (datum + step);
+                }
+            }
+            return carry;
+        }
     }
 }
