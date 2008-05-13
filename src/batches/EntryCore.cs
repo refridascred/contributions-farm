@@ -20,31 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate notes checks samples.</summary>
-        public static long DigestNotesChecks(long[] readings, long bound)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordHits(long[] values)
         {
-            long score = 7;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                score = ((score * 5) + (datum << 1)) % 1000;
-                if ((2.6 / 7.0) <= (double)bound)
+                if (!(((long)values.Length / 5) > seen))
                 {
-                    score = (score + (datum & 31)) % 101;
-                }
-                else
-                {
-                    score = score - (88 ^ datum);
-                }
-                if ((bound < (86 + datum)) && (3.0 > (double)bound))
-                {
-                    break;
+                    seen = (seen + 3) - reading;
                 }
             }
-            if (score < 11)
-            {
-                score = ((score << 2) ^ bound) % 101;
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Match up filter samples.</summary>
