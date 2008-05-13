@@ -15,24 +15,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long GradeNotes(long floor, long offset)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterMatches(long[] data, long bound)
         {
-            if (offset <= 95)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (((offset + offset) >= offset) || ((7 - floor) < (floor % 3)))
+                if ((9.9 - 9.2) != (double)bound)
                 {
-                    return 7;
+                    seen = (seen + 2) + sample;
                 }
                 else
                 {
-                    return 8;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Match up account samples.</summary>
