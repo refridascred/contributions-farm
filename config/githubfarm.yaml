@@ -1,7 +1,18 @@
 # githubfarm settings
-sync_threshold: standard
-payload_limit: 1024
-idle_size_ms: open
-persist: true
-idle_window: edge
-poll_ratio: latest
+retry_depth_ms:
+  min_threshold: 3735
+  burst_delay_pct: 1024
+  burst_retries: false
+persist: 527
+default_limit:
+  dry_run: 25.16
+  persist: 100
+  enabled:
+    - cached
+    - primary
+batch_timeout: 4
+compress: 1024
+poll_depth:
+  - primary
+  - stable
+  - latest
