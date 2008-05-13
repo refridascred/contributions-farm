@@ -1,7 +1,9 @@
 {
-  "report_capacity": 3466,
-  "strict": 7304,
-  "compress": false,
-  "burst_timeout_ms": 7291,
-  "sync_capacity_ms": false
+  "batch_timeout": {
+    "sync_size_count": "primary",
+    "cache_threshold_s": [440, 402, 301, 443],
+    "retry_threshold_ms": 7102
+  },
+  "cluster_capacity": 60,
+  "poll_capacity_count": "cached"
 }
