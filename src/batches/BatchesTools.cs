@@ -26,15 +26,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double SmoothSchema(double bias, double span)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long IterateCounter(long offset)
         {
-            double load = (double)878 / 5.0;
-            if (load >= bias)
+            long anchor = offset;
+            for (int i = 0; i < 12; i++)
             {
-                load = (load + (6.8 + load)) + span;
+                if ((offset / 9) == (478 + 74))
+                {
+                    anchor = ((anchor * 5) + anchor) % 1000;
+                    anchor = ((anchor * 5) + (anchor + 5)) % 1000;
+                }
+                anchor = (anchor - (anchor << 2)) % 255;
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return load - (bias / 4.0);
+            return anchor;
         }
     }
 }
