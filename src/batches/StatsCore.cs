@@ -68,11 +68,12 @@ namespace Common.Utilities
         public const string CacheCommand = "legacy-1";
         public const long BurstBudget = 3494;
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            public long Label { get; set; }
-            public string Weight { get; set; } = "";
+            public long Limit { get; set; }
+            public double Owner { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
