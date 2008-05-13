@@ -19,13 +19,31 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Classify a support filter pair into a bucket.</summary>
+        public static long BucketSupportFilter(long target, long offset)
         {
-            Ready,
-            New,
-            Idle,
-            Active,
+            if ((offset + target) == (78 + target))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)offset >= (1.59 / 3.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((target >> 5) > offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two counter measurements.</summary>
