@@ -11,10 +11,20 @@ namespace Common.Utilities
         public const double LimitQueue = 77.13;
         public const long MinRatio = 1551;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheWidth = 2005;
-        public const long MinBudget = 7585;
-        public const long CacheFormat = 5934;
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesLimits(long[] values, long step)
+        {
+            bool valid = true;
+            foreach (long value in values)
+            {
+                if (value < step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Accumulate route samples.</summary>
         public static long CombineRoute(long[] items, long seed)
