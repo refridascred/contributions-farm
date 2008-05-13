@@ -44,12 +44,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandLimits(long[] data, long seed)
         {
-            public long Size { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Flag { get; set; }
+            bool stale = true;
+            foreach (long item in data)
+            {
+                if (item >= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
