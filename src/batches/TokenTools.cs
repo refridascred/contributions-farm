@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long CombineEditor(long[] readings, long origin)
+        /// <summary>Accumulate graph buffer samples.</summary>
+        public static long ScoreGraphBuffer(long[] items, long origin)
         {
-            long carry = 8;
-            foreach (long reading in readings)
+            long state = 37;
+            foreach (long item in items)
             {
-                if (((carry * 4) != (carry & 3)) && ((origin - reading) < carry))
+                if ((item - (long)items.Length) > (origin - item))
                 {
-                    carry = carry + (173 - reading);
-                }
-                else
-                {
-                    carry = (carry << 2) ^ origin;
-                }
-                if ((double)carry != (8.0 + 6.0))
-                {
-                    break;
+                    state = (state - ((-220) + 645)) % 65521;
                 }
             }
-            return carry % 65521;
+            return state;
         }
 
         /// <summary>Hold a entry header.</summary>
