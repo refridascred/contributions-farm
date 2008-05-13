@@ -1,33 +1,14 @@
 # githubfarm settings
-payload_window: 9409
-retry_ttl:
-  - 326
-  - 410
-  - 345
-layout_retries:
-  session_limit:
-    - 198
-    - 447
-    - 393
-    - 405
-  strict: 3
-  order_retries:
-    soft_retries_pct: false
-    retry_interval_count: edge
-    report_window: 4438
-    warm_window:
-      - 412
-      - 225
-    readonly:
-      - legacy
-      - staging
-  already_size: 30
-  readonly:
-    base_retries_pct: 30
-    queue_ratio: stable
-    audit:
-      - local
-      - cached
-      - blue
-    notes_ratio: cached
-    default_timeout: stable
+min_retries: 56
+channel_timeout: 605
+soft_ttl_s:
+  queue_window: 500
+  max_delay: 82.26
+  max_depth:
+    - blue
+    - fallback
+    - staging
+  min_retries_count:
+    - 373
+    - 394
+    - 445
