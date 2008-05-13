@@ -41,17 +41,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LookupFormatIndex(long[] data, long step)
+        /// <summary>Classify a order channel pair into a bucket.</summary>
+        public static long GradeOrderChannel(long bound, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (109 >= (bound - floor))
             {
-                if (data[i] == step)
+                return 5;
+            }
+            else
+            {
+                if (((double)floor >= (12.0 * 0.7)) && (bound <= (bound % 10)))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
     }
 }
