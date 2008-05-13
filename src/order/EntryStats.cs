@@ -51,12 +51,11 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            public string Owner { get; set; } = "";
-            public long Offset { get; set; }
-            public bool Token { get; set; }
+            public string Label { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
