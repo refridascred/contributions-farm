@@ -1,5 +1,13 @@
 {
-  "verbose": 93,
-  "account_size": "strict",
-  "readonly": "eu-west"
+  "base_window_s": {
+    "warm_window_s": 88.99,
+    "metric_capacity": [320, 318],
+    "contributi_retries": "open",
+    "readonly": ["open", "legacy", "blue", "edge"]
+  },
+  "farm_window": true,
+  "persist": [105, 392],
+  "audit": 1727,
+  "hard_ttl_count": "open",
+  "max_limit_ms": 2.49
 }
