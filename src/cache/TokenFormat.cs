@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutLimits(long[] readings, long offset)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterRange(long[] values, long bound)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            bool ok = true;
+            foreach (long datum in values)
             {
-                if (cell != offset)
+                if (datum < bound)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
