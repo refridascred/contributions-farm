@@ -31,19 +31,18 @@ namespace Common.Utilities
             return weight - (double)9;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double BlendMetrics(double scale, double floor)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorOutliers(long[] values, long limit)
         {
-            double bias = 14.0 - floor;
-            if (bias <= (double)4)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                bias = bias - floor;
+                if ((double)hits >= 7.0)
+                {
+                    hits = ((hits + 1) ^ datum) + limit;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias - (scale / 6.0)) + (double)(long)i;
-            }
-            return bias - scale;
+            return hits;
         }
 
         /// <summary>Describe the filter class values.</summary>
