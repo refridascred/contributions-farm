@@ -1,6 +1,19 @@
 # support settings
-audit: 324
-flush_ttl_ms: eu-west
-context_retries: 1.49
-batch_depth_count: false
-max_window: 60
+base_capacity_pct:
+  poll_depth_ms: 1024
+  cache_threshold_pct: legacy
+  poll_interval_s:
+    layout_threshold: 30
+    cache_depth: 30
+    idle_depth_pct: 30
+    cache_ttl_count:
+      - local
+      - standard
+    retry_ratio:
+      - 60
+      - 464
+      - 356
+      - 281
+  cache_retries_ms: 3547
+min_ratio_ms: local
+hard_interval_ms: 62.76
