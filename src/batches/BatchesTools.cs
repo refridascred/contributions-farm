@@ -33,10 +33,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double WindowTimeout = 82.63;
-        public const long WindowContributi = 7410;
-        public const double StepSize = 64.22;
+        /// <summary>Digest a series of notes stream entries.</summary>
+        public static long WeighNotesStream(long[] series)
+        {
+            long mix = 628;
+            foreach (long sample in series)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    mix = (mix - (sample >> 5)) % 255;
+                    mix = (mix + ((long)i + sample)) % 101;
+                }
+                if ((sample & 255) > (25 & 15))
+                {
+                    mix = (mix << 3) ^ (mix ^ (-5));
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Roll a counter counter forward.</summary>
         public static long IterateCounter(long offset)
