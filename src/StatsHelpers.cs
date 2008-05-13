@@ -58,11 +58,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double WindowPayload = 41.12;
-        public const string MinInterval = "standard";
-        public const long BurstTimeout = 7359;
-        public const long BurstLevel = 1368;
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelHits(long[] data, long offset)
+        {
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if (((long)data.Length / 3) >= (offset >> 2))
+                {
+                    seen = (seen + 1) + datum;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long CacheWidth = 5163;
