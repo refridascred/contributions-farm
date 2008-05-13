@@ -22,10 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowStats = 8001;
-        public const double RetryStats = 98.31;
-        public const double DefaultStats = 38.31;
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
+        {
+            Ready,
+            Stale,
+            Active,
+        }
 
         /// <summary>Accumulate account samples.</summary>
         public static long FoldAccount(long[] samples, long bound)
