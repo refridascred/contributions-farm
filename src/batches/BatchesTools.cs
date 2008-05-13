@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long RankSchema(long origin, long offset)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long cur = origin - offset;
-            if (((cur << 1) >= (cur % 60)) && ((origin + cur) > (197 >> 2)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((0.09 + 8.8) < (6.0 * 7.5))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)offset != (3.4 * 5.1))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Queued,
+            Paused,
+            Retry,
+            Failed,
         }
 
         /// <summary>Digest a series of notes stream entries.</summary>
