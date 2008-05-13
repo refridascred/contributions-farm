@@ -1,6 +1,6 @@
-id,region,level
-1,75.57,eu-west
-2,cached,851
-3,83.15,578
-4,70.38,848
-5,78.43,74.0
+id,count,level
+1,78.72,local
+2,standard,81.02
+3,441,55.93
+4,green,67.07
+5,primary,local
