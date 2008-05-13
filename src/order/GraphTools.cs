@@ -56,22 +56,11 @@ namespace Common.Utilities
             return scale + gain;
         }
 
-        /// <summary>Accumulate commits filter samples.</summary>
-        public static long ScoreCommitsFilter(long[] data, long origin)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long sum = 9;
-            foreach (long item in data)
-            {
-                if (483 < (origin % 64))
-                {
-                    sum = sum ^ 9;
-                }
-                if (!((origin >> 5) > (origin * 3)))
-                {
-                    sum = sum - (item - item);
-                }
-            }
-            return sum;
+            public string Total { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Describe the notes state values.</summary>
