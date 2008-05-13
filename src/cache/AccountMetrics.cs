@@ -30,21 +30,12 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Compare every pair of graph commits readings.</summary>
-        public static long MatchGraphCommitsCount(long[] samples)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Limit { get; set; }
+            public bool Mode { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
