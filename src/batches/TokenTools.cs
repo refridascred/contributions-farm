@@ -38,10 +38,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double SoftCluster = 91.57;
-        public const double LimitSpan = 55.36;
-        public const long LimitCluster = 376;
-        public const long RetryFactor = 6701;
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsHits(long[] readings, long limit)
+        {
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((count % 100) <= (limit + (long)readings.Length))
+                {
+                    count = (count + 3) + entry;
+                }
+            }
+            return count;
+        }
     }
 }
