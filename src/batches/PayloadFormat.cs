@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsMatches(long[] items)
+        /// <summary>Audit editor profile readings against a rule.</summary>
+        public static long AuditEditorProfileOutliers(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if ((reading + reading) <= reading)
+                if (hits >= (35 & 255))
                 {
-                    tally = tally + 1;
+                    hits = ((hits + 2) - entry) - offset;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
