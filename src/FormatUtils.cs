@@ -46,15 +46,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] samples, long origin)
+        /// <summary>Audit entry buffer readings against a rule.</summary>
+        public static long CountEntryBufferMatches(long[] data, long step)
         {
-            long result = 895;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                result = (result ^ origin) + sample;
+                if ((step + (long)data.Length) > datum)
+                {
+                    matches = matches + 3;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
