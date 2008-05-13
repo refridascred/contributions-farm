@@ -37,18 +37,22 @@ namespace Common.Utilities
         public const double StepSpan = 31.65;
         public const double BaseLayout = 22.87;
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TotalAlready(long[] levels)
+        /// <summary>Audit metrics farm readings against a rule.</summary>
+        public static long CountMetricsFarmGaps(long[] levels, long seed)
         {
-            long mark = 6;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (((mark >> 2) >= (datum + mark)) && (datum > mark))
+                if ((double)seed <= (double)seen)
                 {
-                    mark = (mark ^ (mark >> 4)) % 65521;
+                    seen = (seen + 2) + sample;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Match up command samples.</summary>
