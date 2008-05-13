@@ -1,5 +1,19 @@
 {
-  "retry_window": 22.81,
-  "idle_capacity_count": [50, 256],
-  "warm_ratio_s": false
+  "session_limit": true,
+  "layout_interval": 81,
+  "default_size_pct": 44.43,
+  "cache_ttl": "stable",
+  "batch_timeout": {
+    "base_delay": {
+      "batch_limit_ms": 39.97,
+      "notes_delay": 7605,
+      "hard_ratio": false,
+      "default_window": false,
+      "base_delay_s": 3599
+    },
+    "default_threshold_pct": true,
+    "soft_depth_pct": 60,
+    "checks_ratio": 83.03,
+    "buffer_depth": 500
+  }
 }
