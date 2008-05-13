@@ -70,15 +70,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long StepMetric(long floor)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterHits(long[] levels, long seed)
         {
-            long sum = floor;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                sum = ((sum * 3) + (long)i) % 4093;
+                if ((count - value) == (value >> 1))
+                {
+                    count = (count + 1) + seed;
+                }
             }
-            return sum;
+            return count;
         }
     }
 }
