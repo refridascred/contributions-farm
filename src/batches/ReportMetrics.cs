@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
             Locked,
-            Closed,
             Paused,
-            New,
+            Active,
             Stale,
         }
 
