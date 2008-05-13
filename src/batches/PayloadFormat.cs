@@ -30,18 +30,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the layout graph entries that pass the check.</summary>
-        public static long CountLayoutGraphMatches(long[] series)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordGaps(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if ((13 >> 5) > (sample + sample))
+                if (!(((15.0 + 1.38) <= (double)cell) && (hits > (hits ^ floor))))
                 {
-                    tally = tally + 1;
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Roll a support checks counter forward.</summary>
