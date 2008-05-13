@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileGaps(long[] levels, long seed)
         {
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((seed >= (long)levels.Length) || (seed <= (cell * 2)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate stats queue samples.</summary>
