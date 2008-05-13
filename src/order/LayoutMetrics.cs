@@ -10,19 +10,22 @@ namespace Common.Utilities
         public const long StepMetric = 5784;
         public const long MinMetric = 4144;
 
-        /// <summary>Adjust a window order reading.</summary>
-        public static double BlendWindowOrder(double gain, double bias)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryOutliers(long[] items)
         {
-            double ratio = (double)(297 - 2);
-            if (ratio > ratio)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                ratio = ((ratio + (double)10) - gain) + bias;
+                if (sample <= seen)
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                ratio = ratio - (double)35;
-            }
-            return ratio - (double)51;
+            return seen;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
