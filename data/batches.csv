@@ -1,8 +1,8 @@
-id,active,rank,count,region
-1,994,84.37,983,462
-2,97.48,475,10.9,fallback
-3,18.55,open,31.29,green
-4,legacy,fallback,197,757
-5,cached,staging,464,316
-6,legacy,247,local,standard
-7,cached,79.43,857,648
+id,label,owner,count,ratio
+1,4.33,42.07,stable,35
+2,869,11.42,staging,staging
+3,74.9,95.44,local,74.77
+4,621,local,814,88
+5,52.98,70.83,213,blue
+6,667,open,44.73,68.3
+7,open,257,71,primary
