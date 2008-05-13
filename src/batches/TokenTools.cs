@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterLimits(long[] samples, long target)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            bool found = true;
-            foreach (long entry in samples)
-            {
-                if (entry > target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Weight { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Hold a counter snapshot.</summary>
