@@ -1,12 +1,15 @@
 # Command notes
 
-The metrics module keeps cache values in sync with the support cache.
-Run the entry check before changing any report limits.
-The batch report groups every entry by batch.
+A tools that stays idle for too long is moved to the counter list.
+The record report groups every contributi by notes.
+Use filter settings to tune how often command data is refreshed.
+
+The batches helpers are pure functions, so they are safe to call from any thread.
+A support that stays idle for too long is moved to the support list.
 
 ## Guidelines
 
-- Keep metrics values small
-- Prefer commits defaults
-- Validate checks input early
-- Document new editor fields
+- Log every record change
+- Keep token values small
+- Prefer editor defaults
+- Document new farm fields
