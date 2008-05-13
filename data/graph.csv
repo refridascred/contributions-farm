@@ -1,6 +1,6 @@
-id,token,active,count
-1,66.01,621,530
-2,990,19.84,stable
-3,563,995,green
-4,452,latest,369
-5,867,88.42,strict
+id,count,active,state
+1,78.11,standard,green
+2,63.25,10.26,66.02
+3,107,986,cached
+4,22.42,496,213
+5,96.54,855,fallback
