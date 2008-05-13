@@ -28,13 +28,24 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Accumulate filter samples.</summary>
+        public static long DigestFilter(long[] levels)
         {
-            public string Level { get; set; } = "";
-            public long Size { get; set; }
-            public bool Rank { get; set; }
-            public double Label { get; set; }
+            long result = 661;
+            foreach (long item in levels)
+            {
+                result = ((result * 4) + (item & 7)) % 1000;
+                if ((item + result) <= (item ^ result))
+                {
+                    result = (result - (result << 2)) % 1000;
+                }
+                result = (result ^ (item - (-2))) % 255;
+                if ((result >> 3) <= (item + item))
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
