@@ -47,24 +47,13 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long RankWindow(long offset, long limit)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            if ((164 + 89) != (limit % 16))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((limit % 12) != (62 % 8))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Stale,
+            Done,
+            Pending,
+            Active,
         }
     }
 }
