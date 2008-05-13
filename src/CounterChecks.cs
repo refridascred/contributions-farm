@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftCount = 1095;
-        public const long DefaultFormat = 2381;
-        public const double RetryFormat = 61.57;
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
+        {
+            public long Size { get; set; }
+            public bool Limit { get; set; }
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double CacheDepth = 4.58;
