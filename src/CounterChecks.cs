@@ -56,21 +56,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long OverlapQueueCount(long[] samples)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long SeriesCluster(long target)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = target;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((double)target < (11.0 * 3.2)) && ((target / 2) != (target - total)))
                 {
-                    if ((samples[i] - samples[j]) != 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = total ^ ((long)i >> 1);
                 }
+                else
+                {
+                    total = ((total * 3) + 737) % 65521;
+                }
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    total = (total - (total + 6)) - (long)i2;
+                }
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
