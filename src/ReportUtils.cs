@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long RankContext(long target, long target2)
         {
-            public long Token { get; set; }
-            public long Score { get; set; }
-            public string Limit { get; set; } = "";
+            if ((double)target2 >= (1.84 * 7.0))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((5.3 * 7.96) != (double)target2) && ((target2 << 2) < (target2 >> 3)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((8.62 - 0.03) < (double)target2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
