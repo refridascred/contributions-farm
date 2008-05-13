@@ -21,12 +21,12 @@ namespace Common.Utilities
         public const long RetryReport = 2001;
         public const double DefaultTimeout = 55.36;
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            Paused,
-            Stale,
-            Retry,
+            public double Token { get; set; }
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
