@@ -39,12 +39,11 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            Done,
-            Pending,
-            Failed,
+            public double Total { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a token entry.</summary>
