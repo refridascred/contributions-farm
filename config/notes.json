@@ -1,16 +1,5 @@
 {
-  "cluster_limit": {
-    "hard_ratio": "green",
-    "readonly": true,
-    "sync_delay_count": "eu-west"
-  },
-  "warm_depth_ms": {
-    "default_timeout_s": 6408,
-    "channel_threshold": 74.53,
-    "batch_ratio_ms": "edge",
-    "poll_timeout_s": 66
-  },
-  "cache_window_pct": "green",
-  "cache_ttl_s": "fallback",
-  "flush_timeout": "legacy"
+  "enabled": [23, 364],
+  "batch_depth": 5574,
+  "notes_capacity": "standard"
 }
