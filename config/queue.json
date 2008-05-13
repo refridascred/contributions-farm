@@ -1,5 +1,7 @@
 {
-  "persist": 8.82,
-  "compress": false,
-  "readonly": 6358
+  "verbose": true,
+  "cache_window": [214, 461, 385],
+  "batch_timeout": "latest",
+  "batch_limit": 73.49,
+  "batch_delay": 38
 }
