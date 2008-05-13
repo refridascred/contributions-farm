@@ -44,13 +44,22 @@ namespace Common.Utilities
             return mean - (floor + scale);
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportGaps(long[] levels)
         {
-            public long Total { get; set; }
-            public long Token { get; set; }
-            public bool Weight { get; set; }
-            public long Size { get; set; }
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if (!((matches + 3) >= 684))
+                {
+                    matches = (matches + 2) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
