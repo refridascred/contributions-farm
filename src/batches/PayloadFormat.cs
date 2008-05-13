@@ -20,12 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheBudget = 6745;
-        public const string DefaultWidth = "latest-edge";
-        public const long MaxStream = 5405;
-        public const long MinStream = 1411;
-        public const long StepStream = 7139;
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
+        {
+            public long Stamp { get; set; }
+            public double Flag { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Hold a token stats.</summary>
         public sealed class TokenStats
