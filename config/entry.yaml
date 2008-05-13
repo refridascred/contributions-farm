@@ -1,7 +1,9 @@
 # entry settings
-sync_limit: false
-poll_timeout:
-  - 357
-  - 374
-  - 53
-batch_timeout_pct: green
+sync_delay:
+  - primary
+  - standard
+  - eu-west
+  - edge
+hard_delay_pct: primary
+strict: 50.51
+burst_size: 500
