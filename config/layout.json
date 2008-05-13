@@ -1,23 +1,5 @@
 {
-  "default_window_pct": [454, 32, 24],
-  "hard_size": {
-    "retry_delay_ms": ["staging", "staging", "standard"],
-    "cache_retries": 42.32,
-    "sync_ttl_ms": 1024,
-    "cache_size": "local",
-    "strict": "stable"
-  },
-  "route_window": {
-    "flush_ttl_s": "cached",
-    "audit": 30,
-    "editor_limit": 51.03,
-    "idle_ttl_ms": {
-      "persist": 9300,
-      "audit": 74.96,
-      "batch_retries": 500,
-      "cache_retries": "cached"
-    }
-  },
-  "compress": "edge",
-  "default_depth_count": 53.59
+  "account_retries": false,
+  "batch_ratio": true,
+  "soft_window_pct": 489
 }
