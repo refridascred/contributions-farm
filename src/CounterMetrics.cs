@@ -40,18 +40,11 @@ namespace Common.Utilities
         public const long BaseToken = 6173;
         public const long BaseFactor = 4099;
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmHits(long[] items)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((double)hits < (0.4 / 7.0))
-                {
-                    hits = (hits + 3) ^ entry;
-                }
-            }
-            return hits;
+            public string Stamp { get; set; } = "";
+            public bool Score { get; set; }
         }
     }
 }
