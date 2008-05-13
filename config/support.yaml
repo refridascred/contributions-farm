@@ -1,4 +1,6 @@
 # support settings
-payload_ttl: legacy
-layout_ratio: 17.14
-max_interval: 500
+soft_interval_pct: false
+flush_retries_ms: 84.99
+max_ttl_count: edge
+idle_delay_ms: true
+poll_timeout: false
