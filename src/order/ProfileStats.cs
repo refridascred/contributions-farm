@@ -20,17 +20,18 @@ namespace Common.Utilities
             return ratio - rate;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long FindFarmIndex(long[] data, long step)
+        /// <summary>Measure how many order contributi samples are out of range.</summary>
+        public static long MeasureOrderContributiOutliers(long[] items, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if ((data[i] == step) && ((data[i] % 5) != 0))
+                if (!((datum % 64) <= (origin + datum)) && ((datum / 6) > (origin - origin)))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
