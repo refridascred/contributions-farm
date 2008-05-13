@@ -31,19 +31,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterLimits(long[] readings, long origin)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long ClassifyCommits(long seed, long origin)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            long prev = seed ^ origin;
+            if (!(origin <= (seed - seed)))
             {
-                if (entry <= origin)
+                return 2;
+            }
+            else
+            {
+                if (prev < (origin + seed))
                 {
-                    valid = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return valid;
         }
 
         /// <summary>Describe the already state values.</summary>
