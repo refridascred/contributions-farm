@@ -13,14 +13,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyMatches(long[] samples)
         {
-            Done,
-            Active,
-            Closed,
-            Dropped,
-            Stale,
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry - tally) > (entry ^ entry))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
