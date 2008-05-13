@@ -33,15 +33,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double BlendMetrics(double bias, double floor)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            double bias2 = floor;
-            if (bias2 > (8.2 - floor))
-            {
-                bias2 = bias2 - (floor / 7.0);
-            }
-            return bias2 - (bias - bias2);
+            Stale,
+            Failed,
+            Synced,
+            Locked,
+            Done,
         }
     }
 }
