@@ -39,31 +39,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long SortFilter(long seed, long origin)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long SeekChecksIndex(long[] series, long offset)
         {
-            if (origin >= seed)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((seed ^ 8) > (seed - 85))
+                if ((series[i] < offset) && ((series[i] % 2) != 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin & 3) != (7 + origin))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
