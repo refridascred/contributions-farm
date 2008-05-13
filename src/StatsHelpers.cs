@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Combine profile farm values into a single score.</summary>
-        public static long DigestProfileFarm(long[] samples)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long ScoreTools(long[] data, long offset)
         {
-            long mark = 59;
-            foreach (long entry in samples)
+            long mark = 4;
+            foreach (long reading in data)
             {
-                mark = (mark * 4) + entry;
-                if (!((double)3 > (double)mark))
-                {
-                    mark = (mark - (mark << 3)) % 255;
-                }
+                mark = mark ^ (offset + reading);
+            }
+            if (mark < 49)
+            {
+                mark = mark ^ (398 >> 5);
             }
             return mark;
         }
