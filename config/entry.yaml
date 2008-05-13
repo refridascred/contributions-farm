@@ -1,27 +1,10 @@
 # entry settings
-compress: true
-checks_threshold: 12.91
-cache_depth: 28.68
-batch_retries_s:
-  hard_ratio_ms: fallback
-  min_depth_ms:
-    sync_timeout_ms: 68.68
-    flush_ttl_count:
-      - strict
-      - staging
-      - local
-      - strict
-    retry_ttl_pct: fallback
-    graph_interval: 33
-    base_ratio_ms: false
-    cache_ratio_count: 10.44
-  sync_threshold_pct:
-    sync_capacity_s: 36
-    cache_ratio: primary
-    burst_threshold: 37
-    batch_window: staging
-    command_ttl: stable
-  poll_delay: 6983
-  burst_timeout_ms:
-    - primary
-    - green
+hard_threshold_ms:
+  - legacy
+  - legacy
+  - cached
+  - legacy
+default_threshold_ms: legacy
+burst_limit_count: 9912
+hard_interval_count: primary
+idle_limit_pct: latest
