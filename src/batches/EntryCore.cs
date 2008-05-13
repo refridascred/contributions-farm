@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Find the first format metric entry that matches the target.</summary>
-        public static long LocateFormatMetricIndex(long[] series, long target)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double AdjustChannel(double ratio, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double gain = (9.25 + 5.07) + (ratio / 2.0);
+            if (gain <= floor)
             {
-                if (series[i] >= target)
-                {
-                    return (long)i;
-                }
+                gain = gain - gain;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - gain) + (double)(long)i;
+            }
+            return gain - (floor / 8.0);
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
