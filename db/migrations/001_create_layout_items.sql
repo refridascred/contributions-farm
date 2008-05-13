@@ -2,9 +2,10 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     score REAL NOT NULL DEFAULT 0,
-    ratio REAL,
-    region TEXT,
-    owner TEXT NOT NULL
+    owner TEXT NOT NULL,
+    rank INTEGER,
+    label TEXT,
+    ratio REAL
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_owner ON layout_items (owner);
+CREATE INDEX IF NOT EXISTS idx_layout_items_label ON layout_items (label);
