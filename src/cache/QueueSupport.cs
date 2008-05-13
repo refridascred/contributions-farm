@@ -20,18 +20,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many graph profile samples are out of range.</summary>
-        public static long CountGraphProfileMatches(long[] items, long step)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long SortReport(long step, long step2)
         {
-            long matches = 0;
-            foreach (long value in items)
+            if (step2 > (49 / 6))
             {
-                if ((double)matches != (5.3 / 3.0))
+                return 2;
+            }
+            else
+            {
+                if (!((40 ^ step2) == (step2 + step2)))
                 {
-                    matches = ((matches + 1) + value) + step;
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return matches;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
