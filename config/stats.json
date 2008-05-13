@@ -1,17 +1,6 @@
 {
-  "payload_retries": {
-    "base_ttl_ms": 84.5,
-    "metric_window": true,
-    "metrics_threshold": {
-      "hard_retries_ms": true,
-      "sync_ttl": 250,
-      "hard_window_pct": 83.44,
-      "idle_depth_pct": "open",
-      "warm_ttl_ms": ["fallback", "standard", "latest", "strict"],
-      "report_window": false
-    },
-    "batches_interval": ["latest", "blue"]
-  },
-  "enabled": "latest",
-  "soft_delay_count": 94.31
+  "route_size": true,
+  "default_ratio_pct": "open",
+  "warm_retries": "blue",
+  "poll_size_s": 6100
 }
