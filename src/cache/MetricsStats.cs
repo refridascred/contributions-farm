@@ -5,16 +5,26 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long DeriveRecord(long target)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] values)
         {
-            long anchor = target;
-            for (int i = 0; i < 16; i++)
+            long state = 9;
+            foreach (long item in values)
             {
-                anchor = (anchor + (target - 62)) % 4096;
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                if ((double)item >= (0.85 - 10.0))
+                {
+                    state = ((state * 2) + (item & 1)) % 255;
+                }
+                else
+                {
+                    state = state + (state - state);
+                }
             }
-            return anchor;
+            if (state < 2)
+            {
+                state = (state ^ (state - state)) % 1000;
+            }
+            return state % 97;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
