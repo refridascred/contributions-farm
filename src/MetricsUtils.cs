@@ -15,18 +15,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandGaps(long[] series)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if (item < (item & 3))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public double Token { get; set; }
+            public string Weight { get; set; } = "";
+            public long Flag { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Derive the next graph layout value from a seed.</summary>
