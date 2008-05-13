@@ -53,10 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double WindowCommand = 4.35;
-        public const long SoftCommand = 9190;
-        public const double BaseCommand = 51.22;
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
+        {
+            Closed,
+            Draft,
+            Pending,
+        }
 
         /// <summary>Hold a layout summary.</summary>
         public sealed class LayoutSummary
