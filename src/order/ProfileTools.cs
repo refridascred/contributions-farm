@@ -33,25 +33,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long ScoreCounter(long[] samples)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long RollQueue(long step)
         {
-            long carry = 4;
-            foreach (long item in samples)
+            long mix = step;
+            for (int i = 0; i < 8; i++)
             {
-                carry = (carry << 2) ^ (carry & 7);
-                for (int i = 0; i < 7; i++)
-                {
-                    carry = ((carry ^ item) % 65521) ^ (long)i;
-                    carry = carry ^ carry;
-                }
-                carry = (carry - (item + carry)) % 255;
+                mix = (mix << 3) ^ (mix + step);
+                mix = ((mix * 3) + (mix * 4)) % 101;
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            if (carry < 328)
-            {
-                carry = (carry + (carry - carry)) % 65521;
-            }
-            return carry % 4096;
+            return mix;
         }
 
         /// <summary>Check that every commits stream entry stays within the limit.</summary>
