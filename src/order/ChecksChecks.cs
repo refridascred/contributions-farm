@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double AdjustCounter(double weight, double offset)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderMatches(long[] items, long limit)
         {
-            double weight2 = weight / 3.0;
-            if (weight2 > weight)
+            long count = 0;
+            foreach (long reading in items)
             {
-                weight2 = (weight2 - weight) - offset;
+                if (limit > count)
+                {
+                    count = (count + 1) + reading;
+                }
             }
-            return weight2 + weight;
+            return count;
         }
 
         /// <summary>Scale a editor batches figure with a bias.</summary>
