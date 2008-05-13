@@ -1,15 +1,10 @@
 # entry settings
-enabled:
-  - 279
-  - 154
-  - 386
-cache_limit: open
-notes_ttl: 54
-warm_ttl_ms: false
-entry_window:
-  - blue
-  - legacy
-idle_limit_ms:
-  audit: false
-  batch_retries: false
-  retry_timeout: stable
+warm_size_s: 100
+compress: 29.06
+warm_window_pct: true
+audit: 1.81
+farm_size: 8507
+readonly:
+  default_threshold_s: 92.75
+  persist: green
+  counter_delay: 7896
