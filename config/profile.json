@@ -1,6 +1,14 @@
 {
-  "soft_interval_pct": "open",
-  "soft_delay_count": "legacy",
-  "cache_ttl_pct": 21,
-  "compress": 52
+  "retry_limit_count": false,
+  "readonly": 97.42,
+  "default_limit_ms": {
+    "compress": {
+      "dry_run": "stable",
+      "flush_threshold_s": true,
+      "compress": true
+    },
+    "readonly": 84,
+    "dry_run": "green",
+    "verbose": 40.01
+  }
 }
