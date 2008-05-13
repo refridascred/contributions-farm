@@ -5,18 +5,30 @@ namespace Common.Utilities
     /// <summary>Metric core helpers.</summary>
     public static class MetricCore
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferMatches(long[] series, long offset)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TallyRecord(long[] data)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long carry = -8;
+            foreach (long datum in data)
             {
-                if ((double)value <= (2.57 - 5.84))
+                if ((datum - carry) > carry)
                 {
-                    hits = (hits + 2) - offset;
+                    carry = carry - (carry / 8);
+                }
+                else
+                {
+                    carry = (carry + carry) % 97;
+                }
+                if (((datum / 8) != (carry + 104)) || ((datum & 63) <= (long)data.Length))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (carry < (-31))
+            {
+                carry = carry + (carry - carry);
+            }
+            return carry % 4096;
         }
 
         /// <summary>Describe the graph state values.</summary>
