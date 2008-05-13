@@ -40,18 +40,18 @@ namespace Common.Utilities
         public const long HardChannel = 317;
         public const double StepDepth = 56.42;
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenHits(long[] readings, long target)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyMatches(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (((sample / 4) > target) || (target >= (target % 60)))
+                if ((datum % 24) != (datum % 12))
                 {
-                    count = count + 3;
+                    seen = (seen + 2) + origin;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
