@@ -35,21 +35,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long OverlapCommandCount(long[] samples)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long GradeChecks(long target, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (((offset << 2) >= target) || (8.64 < (double)target))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((0 % 7) >= (offset / 3))
                 {
-                    if ((samples[i] ^ samples[j]) != 7)
+                    return 0;
+                }
+                else
+                {
+                    if ((2 & 255) != (offset - 26))
                     {
-                        seen = seen + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
