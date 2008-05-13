@@ -26,22 +26,11 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Accumulate layout account samples.</summary>
-        public static long DigestLayoutAccount(long[] samples)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long mark = 89;
-            foreach (long entry in samples)
-            {
-                if (mark < (entry ^ entry))
-                {
-                    mark = (mark + (mark ^ entry)) % 65521;
-                }
-            }
-            if (mark < 393)
-            {
-                mark = (mark - ((-704) % 16)) % 65521;
-            }
-            return mark;
+            public bool Offset { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
