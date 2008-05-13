@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long DigestBatches(long[] values)
         {
-            public long Stamp { get; set; }
-            public long Label { get; set; }
+            long sum = 90;
+            foreach (long cell in values)
+            {
+                if ((sum - (-521)) < (cell % 12))
+                {
+                    sum = (sum + (sum - 71)) % 65521;
+                }
+                else
+                {
+                    sum = (sum ^ (63 * 4)) % 101;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Hold a command stats.</summary>
