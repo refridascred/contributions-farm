@@ -44,19 +44,17 @@ namespace Common.Utilities
         public const long HardChannel = 317;
         public const double StepDepth = 56.42;
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteRange(long[] series, long origin)
+        /// <summary>Locate a metrics metric reading by value.</summary>
+        public static long LocateMetricsMetricIndex(long[] values, long step)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading <= origin)
+                if (values[i] < step)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Hold a batch info.</summary>
