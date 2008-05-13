@@ -14,11 +14,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            public double Count { get; set; }
-            public double Weight { get; set; }
+            Locked,
+            Pending,
+            Closed,
+            Queued,
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
