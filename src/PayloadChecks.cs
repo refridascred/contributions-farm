@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Roll a record counter forward.</summary>
+        public static long DeriveRecord(long target)
         {
-            public long Total { get; set; }
-            public double Limit { get; set; }
+            long mark = target;
+            for (int i = 0; i < 12; i++)
+            {
+                if (99 > (599 - mark))
+                {
+                    break;
+                }
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
