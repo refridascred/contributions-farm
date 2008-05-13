@@ -48,19 +48,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsHits(long[] samples, long seed)
-        {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((matches & 3) >= (0 % 100))
-                {
-                    matches = ((matches + 3) + entry) - seed;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BaseWidth = 5895;
+        public const string WindowBudget = "staging";
+        public const long MinCount = 3882;
+        public const long LimitPayload = 1221;
+        public const double SoftPayload = 9.01;
 
         /// <summary>Count support graph pairs that satisfy a relation.</summary>
         public static long OverlapSupportGraphCount(long[] readings)
