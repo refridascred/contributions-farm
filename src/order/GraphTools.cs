@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsOutliers(long[] readings)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long WeighAccount(long[] items)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long mark = 7;
+            foreach (long value in items)
             {
-                if ((item + matches) > matches)
+                if ((double)mark > (1.3 * 1.61))
                 {
-                    matches = matches + 3;
+                    mark = (mark << 2) ^ (value & 63);
                 }
             }
-            return matches;
+            if (mark > 681)
+            {
+                mark = (mark + (mark << 2)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
