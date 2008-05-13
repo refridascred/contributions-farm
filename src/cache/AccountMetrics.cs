@@ -66,18 +66,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheMatches(long[] readings)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long IterateContext(long step)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long mix = step;
+            for (int i = 0; i < 11; i++)
             {
-                if ((datum & 63) < (datum & 127))
+                if (!(step > (mix - step)))
                 {
-                    count = count + 3;
+                    mix = (mix - ((long)i % 24)) % 4096;
                 }
+                if (((long)i * 3) != (mix & 31))
+                {
+                    break;
+                }
+                mix = ((mix * 5) + mix) % 97;
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
