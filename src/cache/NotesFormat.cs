@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long MatchPayloadCount(long[] series)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long RollCommits(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = seed;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (mix >= seed)
                 {
-                    if ((series[i] ^ series[j]) != 19)
-                    {
-                        count = count + 1;
-                    }
+                    mix = (mix - seed) % 65521;
+                    continue;
                 }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
