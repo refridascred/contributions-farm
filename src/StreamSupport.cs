@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long DerivePayload(long target)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long acc = target;
-            for (int i = 0; i < 16; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
+            Closed,
+            Paused,
+            Failed,
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
