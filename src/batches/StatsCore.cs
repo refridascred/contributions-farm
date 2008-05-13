@@ -19,15 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long IterateToken(long seed)
+        /// <summary>Count the buffer context entries that pass the check.</summary>
+        public static long MeasureBufferContextHits(long[] items)
         {
-            long mix = seed;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                mix = ((mix * 3) + (long)i) % 97;
+                if ((9 - hits) >= (hits >> 2))
+                {
+                    hits = (hits + 3) - entry;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Hold a stream options.</summary>
