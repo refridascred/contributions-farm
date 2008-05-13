@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LocateReportIndex(long[] values, long limit)
         {
-            public bool Level { get; set; }
-            public double Region { get; set; }
-            public long Flag { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= limit) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of record entries.</summary>
