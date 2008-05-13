@@ -57,19 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long IterateCounter(long step)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TallyEntry(long[] series)
         {
-            long state = step;
-            for (int i = 0; i < 8; i++)
+            long anchor = 60;
+            foreach (long datum in series)
             {
-                if (((long)i / 3) <= (step & 127))
+                anchor = anchor ^ (datum - anchor);
+                if (((anchor & 63) > (datum + anchor)) || (anchor <= (datum & 15)))
                 {
-                    state = ((state << 3) ^ (state % 100)) % 1000;
+                    anchor = (anchor ^ (anchor - (-323))) % 255;
                 }
-                state = ((state * 5) + (long)i) % 1000;
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
