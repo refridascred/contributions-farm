@@ -24,11 +24,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultFactor = 1029;
-        public const long BasePayload = 2046;
-        public const long DefaultPayload = 9535;
-        public const long BaseLevel = 8193;
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadLimits(long[] readings, long target)
+        {
+            bool flag = true;
+            foreach (long item in readings)
+            {
+                if (item <= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long WeighCache(long[] readings, long limit)
