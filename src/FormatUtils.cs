@@ -19,21 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count session cache pairs that satisfy a relation.</summary>
-        public static long OverlapSessionCacheCount(long[] readings)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountHits(long[] levels, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)reading < 7.0)
                 {
-                    if ((readings[i] ^ readings[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 2) + origin;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
