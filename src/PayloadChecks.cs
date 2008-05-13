@@ -52,19 +52,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stats filter values into a single score.</summary>
-        public static long DigestStatsFilter(long[] items)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long total = 70;
-            foreach (long entry in items)
-            {
-                total = total ^ (total + entry);
-            }
-            if (total < 5)
-            {
-                total = total ^ (total + total);
-            }
-            return total % 97;
+            Closed,
+            Failed,
+            Retry,
+            New,
         }
 
         /// <summary>Derive the next session metric value from a seed.</summary>
