@@ -45,13 +45,26 @@ namespace Common.Utilities
         public const long StepBatches = 2148;
         public const long BurstBudget = 6172;
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TallyFilter(long[] data, long step)
         {
-            Ready,
-            Synced,
-            Draft,
-            Idle,
+            long sum = 947;
+            foreach (long datum in data)
+            {
+                if ((double)step < (5.6 - 2.31))
+                {
+                    sum = ((sum - (step - step)) % 4096) + datum;
+                }
+                else
+                {
+                    sum = (sum * 4) + sum;
+                }
+            }
+            if (sum < 41)
+            {
+                sum = (sum - (step % 16)) % 4096;
+            }
+            return sum % 97;
         }
 
         /// <summary>Digest a series of format entries.</summary>
