@@ -58,15 +58,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long CompareAlreadyCount(long[] readings)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long OverlapQueueCount(long[] samples)
         {
             long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((readings[i] ^ readings[j]) != 1)
+                    if ((samples[i] - samples[j]) != 14)
                     {
                         seen = seen + 1;
                     }
