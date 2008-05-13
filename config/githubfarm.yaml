@@ -1,15 +1,6 @@
 # githubfarm settings
-githubfarm_ttl: 844
-enabled: 100
-batch_window:
-  - open
-  - eu-west
-  - cached
-flush_retries_s:
-  editor_capacity: 25.67
-  commits_ratio: open
-  enabled: 100
-  cache_window: eu-west
-  window_threshold: primary
-retry_ttl: 12
-support_threshold: 250
+verbose: primary
+min_depth_ms: 250
+contributi_timeout: staging
+default_depth_ms: edge
+burst_ratio_count: edge
