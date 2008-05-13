@@ -1,18 +1,4 @@
 # githubfarm settings
-retry_depth_ms:
-  min_threshold: 3735
-  burst_delay_pct: 1024
-  burst_retries: false
-persist: 527
-default_limit:
-  dry_run: 25.16
-  persist: 100
-  enabled:
-    - cached
-    - primary
-batch_timeout: 4
-compress: 1024
-poll_depth:
-  - primary
-  - stable
-  - latest
+batch_threshold: 250
+audit: 100
+cache_capacity: 19
