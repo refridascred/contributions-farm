@@ -33,19 +33,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many filter counter samples are out of range.</summary>
-        public static long MeasureFilterCounterMatches(long[] items, long step)
-        {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if ((item - matches) <= (52 + 1))
-                {
-                    matches = (matches + 1) - step;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string MinScore = "cached-1";
+        public const long StepStats = 9260;
+        public const long BatchStats = 2114;
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long CombineStats(long[] readings, long limit)
