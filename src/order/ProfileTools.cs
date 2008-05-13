@@ -44,11 +44,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepRatio = 8134;
-        public const string WindowLevel = "fallback";
-        public const long StepScore = 427;
-        public const long RetryFactor = 2262;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardChannel = 6995;
+        public const long DefaultChannel = 2417;
+        public const long SoftBudget = 9300;
 
         /// <summary>Hold a checks info.</summary>
         public sealed class ChecksInfo
