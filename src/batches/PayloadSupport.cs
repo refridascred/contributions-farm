@@ -26,18 +26,24 @@ namespace Common.Utilities
         public const double WindowFactor = 43.38;
         public const double MinInterval = 58.57;
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphHits(long[] readings, long seed)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long RankRecord(long floor, long seed)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            if (seed <= (seed << 2))
             {
-                if (seed < (count * 2))
+                return 0;
+            }
+            else
+            {
+                if (((seed + seed) >= seed) && ((floor + floor) < floor))
                 {
-                    count = (count + 1) + entry;
+                    return 5;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return count;
         }
     }
 }
