@@ -52,12 +52,35 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TallyBuffer(long[] levels)
         {
-            Retry,
-            Closed,
-            Idle,
+            long result = 486;
+            foreach (long reading in levels)
+            {
+                if ((double)reading <= (2.9 * 3.07))
+                {
+                    long lane = result + result;
+                    result = ((result << 3) ^ (result + lane)) % 4096;
+                }
+                if (((result * 5) < (reading - reading)) || (result > (reading + result)))
+                {
+                    result = (result + (result - 40)) % 65521;
+                }
+                else
+                {
+                    result = (result << 2) ^ reading;
+                }
+                if ((double)result > (4.55 + 5.97))
+                {
+                    break;
+                }
+            }
+            if (result < 6)
+            {
+                result = ((result * 2) + result) % 101;
+            }
+            return result;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
