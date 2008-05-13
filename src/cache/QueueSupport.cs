@@ -15,10 +15,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string MaxPayload = "legacy-v2";
-        public const long DefaultInterval = 5833;
-        public const double BasePayload = 97.85;
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryRange(long[] items, long bound)
+        {
+            bool flag = true;
+            foreach (long reading in items)
+            {
+                if (reading >= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Roll a checks counter forward.</summary>
         public static long StepChecks(long limit)
