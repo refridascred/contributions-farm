@@ -35,15 +35,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long DigestTools(long[] data, long target)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long mark = 678;
-            foreach (long datum in data)
-            {
-                mark = ((mark + (datum << 2)) % 255) - target;
-            }
-            return mark % 4096;
+            Failed,
+            Closed,
+            Draft,
+            Queued,
         }
     }
 }
