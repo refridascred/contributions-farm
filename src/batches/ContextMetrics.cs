@@ -31,19 +31,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate cluster buffer readings against a bound.</summary>
-        public static bool CheckClusterBufferBounds(long[] items, long target)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            bool stale = true;
-            foreach (long datum in items)
-            {
-                if (datum <= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Ready,
+            Retry,
+            Queued,
+            Failed,
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
