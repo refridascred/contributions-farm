@@ -1,8 +1,12 @@
 # githubfarm settings
-graph_depth: 500
-session_size: cached
-warm_interval: eu-west
-enabled:
-  cache_threshold: blue
-  batch_threshold_count: false
-  token_depth: false
+readonly: 97
+min_ratio_count:
+  - legacy
+  - eu-west
+idle_window_ms: 30
+sync_retries: 30
+min_timeout: false
+persist:
+  - 19
+  - 284
+  - 285
