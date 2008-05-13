@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardEntry = 6999;
-        public const long WindowFactor = 4508;
-        public const double BatchBudget = 91.76;
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
+        {
+            Locked,
+            Closed,
+            Paused,
+            New,
+            Stale,
+        }
 
         /// <summary>Grade a notes value against two limits.</summary>
         public static long GradeNotes(long floor, long offset)
