@@ -34,15 +34,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double ScaleQueue(double gain, double bias)
-        {
-            double scale = gain;
-            if (scale <= scale)
-            {
-                scale = (scale - (double)95) - bias;
-            }
-            return scale + gain;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double MaxCommits = 87.78;
+        public const string DefaultSize = "stable";
+        public const string HardCommits = "staging-edge";
+        public const long BatchWidth = 8769;
     }
 }
