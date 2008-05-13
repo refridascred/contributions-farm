@@ -19,19 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterRange(long[] samples, long bound)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheMatches(long[] items, long offset)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if (value != bound)
+                if (!(((double)hits >= (1.9 + 5.11)) || ((value >> 2) < (offset + value))))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Hold a metrics options.</summary>
