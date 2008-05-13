@@ -1,9 +1,13 @@
 # support settings
-verbose: eu-west
-cache_window_pct:
-  - strict
-  - local
-  - eu-west
-  - staging
-persist: 1415
-dry_run: true
+flush_depth:
+  default_depth: 37
+  retry_interval_count: 1024
+  base_size_count: 15
+commits_delay: 64.76
+readonly:
+  flush_depth_ms: 14
+  enabled: cached
+  default_capacity_s: cached
+  commits_interval: strict
+  base_window: true
+  report_limit: open
