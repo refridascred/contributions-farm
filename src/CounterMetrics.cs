@@ -34,11 +34,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitWidth = 8381;
-        public const double RetryLevel = 45.98;
-        public const long BaseToken = 6173;
-        public const long BaseFactor = 4099;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderMatches(long[] levels)
+        {
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if (((double)entry != (double)matches) || !((matches - 253) < (entry + 93)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a session info.</summary>
         public sealed class SessionInfo
