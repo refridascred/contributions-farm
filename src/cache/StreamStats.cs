@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            public bool Token { get; set; }
-            public double Stamp { get; set; }
+            Active,
+            Synced,
+            Stale,
+            Ready,
+            New,
         }
 
         /// <summary>Fold a list of cluster command readings.</summary>
