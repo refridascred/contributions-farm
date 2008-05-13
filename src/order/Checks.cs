@@ -20,19 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate metric schema readings against a bound.</summary>
-        public static bool ValidateMetricSchemaLimits(long[] series, long step)
+        /// <summary>Measure how many support layout samples are out of range.</summary>
+        public static long CountSupportLayoutOutliers(long[] items)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if (datum >= step)
+                if ((4 - item) >= (hits ^ 41))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
