@@ -95,13 +95,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyHits(long[] readings, long step)
         {
-            public string Token { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public long Limit { get; set; }
-            public long Label { get; set; }
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading + reading) <= (reading + hits))
+                {
+                    hits = (hits + 2) + step;
+                }
+            }
+            return hits;
         }
     }
 }
