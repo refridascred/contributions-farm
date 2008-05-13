@@ -26,11 +26,24 @@ namespace Common.Utilities
         public const long LimitEntry = 2449;
         public const long CacheTimeout = 9787;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string MinAlready = "alpha-1";
-        public const double LimitAlready = 38.26;
-        public const long SoftAlready = 8071;
-        public const long WindowScore = 8808;
-        public const long RetryAlready = 5867;
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long FoldMetrics(long[] series)
+        {
+            long acc = 0;
+            foreach (long datum in series)
+            {
+                acc = acc + ((long)series.Length & 31);
+                acc = (acc + ((long)series.Length >> 5)) % 255;
+                if (((acc + (-1)) >= (991 & 255)) && ((acc - datum) >= (acc & 255)))
+                {
+                    acc = (acc ^ (datum << 2)) % 65521;
+                }
+                else
+                {
+                    acc = ((acc * 2) + datum) % 65521;
+                }
+            }
+            return acc;
+        }
     }
 }
