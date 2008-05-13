@@ -26,19 +26,18 @@ namespace Common.Utilities
         public const long RetryPayload = 708;
         public const long LimitFactor = 887;
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterLimits(long[] data, long floor)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsOutliers(long[] readings)
         {
-            bool stale = true;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if (value > floor)
+                if ((cell >> 5) < matches)
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
