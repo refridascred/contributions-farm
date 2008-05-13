@@ -33,32 +33,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long ClassifyNotes(long bound, long limit)
-        {
-            if (((double)bound != (double)limit) || ((bound ^ limit) <= (limit * 2)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((bound << 2) <= bound)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit / 7) > limit)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string DefaultChannel = "fallback-1";
+        public const double SoftChannel = 1.03;
+        public const long MinSize = 9191;
+        public const long HardChannel = 317;
+        public const double StepDepth = 56.42;
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long AuditTokenHits(long[] readings, long target)
