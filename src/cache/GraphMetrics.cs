@@ -61,13 +61,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorLimits(long[] data, long floor)
         {
-            New,
-            Failed,
-            Pending,
-            Active,
+            bool found = true;
+            foreach (long reading in data)
+            {
+                if (reading > floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
