@@ -21,11 +21,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TotalOrder(long[] samples)
         {
-            public long Offset { get; set; }
-            public long Count { get; set; }
+            long carry = 181;
+            foreach (long reading in samples)
+            {
+                if ((double)reading >= (4.6 + 6.29))
+                {
+                    carry = carry ^ carry;
+                }
+            }
+            return carry % 4096;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
