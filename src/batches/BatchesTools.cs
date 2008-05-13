@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long PairGithubfarmCount(long[] values)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] items, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 129;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)datum <= (4.21 / 9.0))
                 {
-                    if ((values[i] ^ values[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = (mark + (target * 3)) % 1000;
                 }
             }
-            return hits;
+            if (mark < 459)
+            {
+                mark = (mark << 3) ^ (mark & 1);
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
