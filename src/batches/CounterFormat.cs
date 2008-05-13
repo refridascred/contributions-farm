@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long PairSupportCount(long[] data)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterHits(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((16.0 / 4.0) == (double)matches)
                 {
-                    if ((data[i] ^ data[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 2) ^ value;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Grade a payload support value against two limits.</summary>
