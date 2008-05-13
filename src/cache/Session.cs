@@ -30,31 +30,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a support filter pair into a bucket.</summary>
-        public static long BucketSupportFilter(long target, long offset)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long CompareContributiCount(long[] readings)
         {
-            if ((offset + target) == (78 + target))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)offset >= (1.59 / 3.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((target >> 5) > offset)
+                    if ((readings[i] - readings[j]) != 15)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Combine report queue values into a single score.</summary>
