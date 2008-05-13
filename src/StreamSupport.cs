@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphRange(long[] readings, long step)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmHits(long[] items)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if (cell != step)
+                if ((double)datum < 8.02)
                 {
-                    found = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
