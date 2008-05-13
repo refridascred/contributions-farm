@@ -28,11 +28,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double ProjectMetrics(double ratio, double bias)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            double gain = bias + (double)2;
-            return (gain + (1.91 * 7.0)) + ratio;
+            public double Region { get; set; }
+            public long Level { get; set; }
+            public double Count { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
