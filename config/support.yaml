@@ -1,6 +1,33 @@
 # support settings
-idle_retries_s: false
-dry_run: true
-burst_capacity: legacy
-hard_ratio: local
-min_timeout: 500
+persist:
+  hard_window_ms:
+    stats_limit: false
+    record_ttl: 64
+    filter_ttl: 19.09
+  idle_ratio_ms:
+    command_limit:
+      - open
+      - primary
+      - latest
+      - strict
+    retry_ttl: false
+    strict:
+      - 183
+      - 105
+    already_interval: standard
+    soft_ttl_ms: 45
+    support_depth: 17.81
+  warm_ratio:
+    - 58
+    - 321
+base_limit_s:
+  - staging
+  - open
+  - cached
+min_threshold_pct: 250
+soft_delay_pct:
+  commits_timeout: 30
+  notes_size: cached
+  flush_size_count: 99
+compress: 8
+strict: fallback
