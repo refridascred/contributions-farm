@@ -21,16 +21,19 @@ namespace Common.Utilities
         public const double HardScore = 32.52;
         public const long LimitAccount = 5386;
 
-        /// <summary>Derive the next context command value from a seed.</summary>
-        public static long SeriesContextCommand(long bound)
+        /// <summary>Check that every farm stats entry stays within the limit.</summary>
+        public static bool ValidateFarmStatsLimits(long[] samples, long limit)
         {
-            long sum = bound;
-            for (int i = 0; i < 16; i++)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                sum = sum - (bound >> 4);
-                sum = ((sum * 2) + (long)i) % 65521;
+                if (cell != limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
