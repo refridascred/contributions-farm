@@ -24,16 +24,12 @@ namespace Common.Utilities
             return bias2 + rate;
         }
 
-        /// <summary>Combine format window values into a single score.</summary>
-        public static long ScoreFormatWindow(long[] readings, long limit)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long anchor = 74;
-            foreach (long reading in readings)
-            {
-                anchor = (((anchor * 5) + (reading & 7)) % 65521) - limit;
-                anchor = (anchor + (anchor - reading)) % 4096;
-            }
-            return anchor % 97;
+            Stale,
+            Pending,
+            Done,
         }
 
         /// <summary>Define window limits and defaults.</summary>
