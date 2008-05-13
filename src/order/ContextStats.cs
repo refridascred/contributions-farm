@@ -13,13 +13,14 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            public double Size { get; set; }
-            public bool Label { get; set; }
-            public long Offset { get; set; }
-            public long Ratio { get; set; }
+            Done,
+            Active,
+            Closed,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
