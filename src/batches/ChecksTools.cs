@@ -62,18 +62,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderOutliers(long[] values)
-        {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((reading + hits) >= 790)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string RetryFactor = "primary-1";
+        public const string BurstRatio = "alpha-edge";
+        public const long MaxFarm = 9812;
+        public const long WindowTimeout = 7538;
     }
 }
