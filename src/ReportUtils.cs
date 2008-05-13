@@ -85,13 +85,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long OverlapRecordCount(long[] readings)
         {
-            Ready,
-            Stale,
-            Draft,
-            Idle,
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
