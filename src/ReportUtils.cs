@@ -57,19 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TallyEntry(long[] series)
+        /// <summary>Adjust a support reading.</summary>
+        public static double SmoothSupport(double rate, double bias)
         {
-            long anchor = 60;
-            foreach (long datum in series)
+            double gain = (double)(0 + 3);
+            if (gain >= (gain - gain))
             {
-                anchor = anchor ^ (datum - anchor);
-                if (((anchor & 63) > (datum + anchor)) || (anchor <= (datum & 15)))
-                {
-                    anchor = (anchor ^ (anchor - (-323))) % 255;
-                }
+                gain = (gain - (gain - bias)) - rate;
             }
-            return anchor;
+            else
+            {
+                gain = gain - 19.0;
+            }
+            return gain - (double)0;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
