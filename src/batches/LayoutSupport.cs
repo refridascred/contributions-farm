@@ -57,21 +57,32 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Match up buffer token samples.</summary>
-        public static long PairBufferTokenCount(long[] data)
+        /// <summary>Grade a farm context value against two limits.</summary>
+        public static long GradeFarmContext(long offset, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long next = offset - bound;
+            if (!((next / 5) >= next))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((0 + bound) <= (72 + 8))
                 {
-                    if ((data[i] - data[j]) != 11)
+                    return 8;
+                }
+                else
+                {
+                    if ((451 - next) >= (5 - bound))
                     {
-                        matches = matches + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return matches;
         }
     }
 }
