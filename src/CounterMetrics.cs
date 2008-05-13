@@ -34,18 +34,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long FindFormatIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < step) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitWidth = 8381;
+        public const double RetryLevel = 45.98;
+        public const long BaseToken = 6173;
+        public const long BaseFactor = 4099;
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long TallyFarmHits(long[] items)
