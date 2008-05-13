@@ -22,12 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double SoftToken = 28.52;
-        public const long BaseToken = 4071;
-        public const long BurstSpan = 7037;
-        public const long StepInterval = 7059;
-        public const long LimitToken = 188;
+        /// <summary>Compare every pair of window entry readings.</summary>
+        public static long MatchWindowEntryCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long BaseSpan = 2909;
