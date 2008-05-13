@@ -53,15 +53,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long IterateTools(long limit)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheMatches(long[] readings)
         {
-            long carry = limit;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                carry = ((carry * 2) + (long)i) % 4093;
+                if ((datum & 63) < (datum & 127))
+                {
+                    count = count + 3;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
