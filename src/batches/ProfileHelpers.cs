@@ -16,18 +16,14 @@ namespace Common.Utilities
             return weight2 + (weight - offset);
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long FoldFilter(long[] values)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long mark = 4;
-            foreach (long value in values)
-            {
-                if ((mark & 127) >= value)
-                {
-                    mark = mark + 41;
-                }
-            }
-            return mark;
+            Stale,
+            Idle,
+            Active,
+            Ready,
+            Paused,
         }
 
         /// <summary>Accumulate account samples.</summary>
