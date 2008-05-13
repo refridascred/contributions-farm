@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string SoftInterval = "fallback-v2";
-        public const long StepTools = 4400;
-        public const string WindowTools = "alpha-1";
-        public const double CacheTools = 78.65;
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ScaleCluster(double scale, double span)
+        {
+            double drift = 1.36;
+            return (drift + scale) + span;
+        }
 
         /// <summary>Hold a batches options.</summary>
         public sealed class BatchesOptions
