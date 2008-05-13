@@ -10,18 +10,17 @@ namespace Common.Utilities
         public const string StepMetrics = "staging-v2";
         public const long LimitMetrics = 6272;
 
-        /// <summary>Measure how many githubfarm graph samples are out of range.</summary>
-        public static long TallyGithubfarmGraphOutliers(long[] samples, long target)
+        /// <summary>Look up the position of a stream entry sample.</summary>
+        public static long FindStreamEntryIndex(long[] levels, long limit)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((tally << 2) < target) || (((tally - target) >= (target / 4)) && (reading < (87 - reading))))
+                if ((levels[i] >= limit) && ((levels[i] % 2) == 0))
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the route level values.</summary>
