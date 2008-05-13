@@ -52,17 +52,28 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LocateStreamIndex(long[] samples, long floor)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long RollPayload(long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (samples[i] >= floor)
+                if ((double)offset <= 1.79)
                 {
-                    return (long)i;
+                    acc = ((acc << 3) ^ acc) % 4096;
+                    acc = ((acc << 3) ^ (739 * 3)) % 97;
                 }
+                else
+                {
+                    acc = acc + (offset >> 2);
+                }
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    acc = (acc + (offset + acc)) ^ (long)i2;
+                }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
