@@ -42,21 +42,26 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long OverlapPayloadCount(long[] series)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long FoldPayload(long[] items, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 44;
+            foreach (long value in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((step - step) != ((long)items.Length + value))
                 {
-                    if ((series[i] ^ series[j]) == 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = (carry << 2) ^ (1 << 1);
+                }
+                if (((-8) * 4) >= (carry + carry))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (carry > 79)
+            {
+                carry = ((carry << 3) ^ (carry + step)) % 1000;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
