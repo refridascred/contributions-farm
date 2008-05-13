@@ -1,7 +1,10 @@
 # entry settings
-burst_depth_count: 1024
-dry_run: 28
-entry_depth: 55
-channel_timeout: 100
-warm_size_pct: true
-burst_interval_ms: false
+order_timeout: 7690
+cluster_interval:
+  - stable
+  - staging
+  - stable
+  - stable
+enabled: cached
+base_retries_count: 41
+max_timeout_count: 20
