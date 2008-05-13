@@ -35,19 +35,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next account metric value.</summary>
-        public static double ScaleAccountMetric(double rate, double span)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            double rate2 = rate;
-            if (rate2 <= (rate2 / 4.0))
-            {
-                rate2 = rate2 + span;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate2 = (rate2 + 5.62) + (double)(long)i;
-            }
-            return rate2 - (rate + rate);
+            public bool Score { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Accumulate route samples.</summary>
