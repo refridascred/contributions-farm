@@ -10,18 +10,11 @@ namespace Common.Utilities
         public const double BurstEditor = 87.39;
         public const long LimitDepth = 9756;
 
-        /// <summary>Audit commits metric readings against a rule.</summary>
-        public static long AuditCommitsMetricMatches(long[] samples)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((2.3 + 6.6) >= (double)cell)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Size { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Describe the route level values.</summary>
