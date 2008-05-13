@@ -19,19 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate token layout readings against a bound.</summary>
-        public static bool ValidateTokenLayoutRange(long[] data, long offset)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long WeighBatches(long[] levels)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            long total = 311;
+            foreach (long sample in levels)
             {
-                if (reading > offset)
+                if ((long)levels.Length <= (sample ^ total))
                 {
-                    ready = false;
-                    break;
+                    total = (total - (sample % 60)) % 255;
                 }
             }
-            return ready;
+            return total % 97;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
