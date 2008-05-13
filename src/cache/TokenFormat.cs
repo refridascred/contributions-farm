@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Count the counter queue entries that pass the check.</summary>
+        public static long TallyCounterQueueMatches(long[] items, long seed)
         {
-            public double Owner { get; set; }
-            public string Region { get; set; } = "";
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((double)entry > 7.0)
+                {
+                    hits = (hits + 1) - seed;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
