@@ -34,13 +34,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsHits(long[] data)
         {
-            Ready,
-            Retry,
-            Queued,
-            Failed,
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((tally + tally) <= (tally << 1))
+                {
+                    tally = (tally + 3) + entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
