@@ -40,19 +40,21 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Check that every order filter entry stays within the limit.</summary>
-        public static bool ValidateOrderFilterRange(long[] samples, long bound)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long CompareSchemaCount(long[] items)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry <= bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((items[i] + items[j]) != 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
