@@ -1,5 +1,15 @@
 {
-  "burst_timeout_pct": "blue",
-  "warm_window_ms": 96,
-  "farm_delay": 84.22
+  "audit": 62,
+  "min_capacity": {
+    "account_capacity": 69.81,
+    "idle_threshold_s": "edge",
+    "soft_interval_s": {
+      "buffer_ttl": 46,
+      "base_ratio": "fallback",
+      "dry_run": true
+    },
+    "support_size": 34,
+    "warm_depth_s": true
+  },
+  "soft_window": false
 }
