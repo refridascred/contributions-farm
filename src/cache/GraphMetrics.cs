@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TallyRecord(long[] values)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long mark = 41;
-            foreach (long entry in values)
-            {
-                if (136 > (entry * 5))
-                {
-                    mark = ((mark * 3) + (mark & 31)) % 4096;
-                }
-                if ((double)entry == (double)mark)
-                {
-                    mark = (mark << 2) ^ (entry & 127);
-                }
-            }
-            return mark;
+            public long Owner { get; set; }
+            public double Total { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
