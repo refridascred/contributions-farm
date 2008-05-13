@@ -37,22 +37,17 @@ namespace Common.Utilities
         public const double StepSpan = 31.65;
         public const double BaseLayout = 22.87;
 
-        /// <summary>Audit metrics farm readings against a rule.</summary>
-        public static long CountMetricsFarmGaps(long[] levels, long seed)
+        /// <summary>Locate a entry route reading by value.</summary>
+        public static long SeekEntryRouteIndex(long[] samples, long seed)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)seed <= (double)seen)
+                if ((samples[i] > seed) && ((samples[i] % 3) != 0))
                 {
-                    seen = (seen + 2) + sample;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Match up command samples.</summary>
