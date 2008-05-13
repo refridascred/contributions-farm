@@ -68,22 +68,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine record payload values into a single score.</summary>
-        public static long TallyRecordPayload(long[] levels)
+        /// <summary>Iterate the graph window series from a seed.</summary>
+        public static long RollGraphWindow(long offset)
         {
-            long score = 164;
-            foreach (long entry in levels)
+            long anchor = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if ((entry ^ score) >= entry)
-                {
-                    score = (score - (score + score)) % 4096;
-                }
+                anchor = (anchor << 2) ^ (anchor + offset);
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            if (score > (-733))
-            {
-                score = (score ^ (score & 31)) % 65521;
-            }
-            return score;
+            return anchor;
         }
 
         /// <summary>Rank route input into a small class.</summary>
