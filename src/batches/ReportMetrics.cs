@@ -29,21 +29,19 @@ namespace Common.Utilities
             return ratio - (5.7 + ratio);
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long CompareAlreadyCount(long[] items)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderRange(long[] series, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (reading <= origin)
                 {
-                    if ((items[i] ^ items[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
     }
 }
