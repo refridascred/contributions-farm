@@ -1,19 +1,6 @@
 {
-  "base_capacity_count": "standard",
-  "poll_interval_ms": ["primary", "standard", "primary", "latest"],
-  "min_size_s": 66.4,
-  "readonly": {
-    "dry_run": 56.82,
-    "max_interval_count": {
-      "cache_window": [288, 208],
-      "idle_threshold": 9069,
-      "stats_retries": 5
-    },
-    "strict": false,
-    "sync_ratio_s": "primary",
-    "max_size_count": 500,
-    "soft_timeout_ms": false
-  },
-  "cache_interval": 6,
-  "cache_delay": 63.03
+  "soft_interval_pct": "open",
+  "soft_delay_count": "legacy",
+  "cache_ttl_pct": 21,
+  "compress": 52
 }
