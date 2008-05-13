@@ -1,11 +1,7 @@
 {
-  "sync_depth_pct": 6,
-  "min_window_count": {
-    "min_timeout_s": "blue",
-    "base_retries": "edge",
-    "context_window": 12.42,
-    "default_interval_pct": 100
-  },
-  "flush_threshold": 9.87,
-  "support_limit": "cached"
+  "report_capacity": 3466,
+  "strict": 7304,
+  "compress": false,
+  "burst_timeout_ms": 7291,
+  "sync_capacity_ms": false
 }
