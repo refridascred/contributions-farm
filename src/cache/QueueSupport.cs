@@ -37,30 +37,19 @@ namespace Common.Utilities
             return drift - (8.4 * 6.1);
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long ScoreEditor(long[] levels, long seed)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionLimits(long[] levels, long bound)
         {
-            long sum = 843;
-            foreach (long entry in levels)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                if ((entry - entry) < (seed << 2))
+                if (item != bound)
                 {
-                    sum = (sum << 3) ^ (seed & 127);
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ (sum + sum)) % 255;
-                }
-                if ((double)entry > (9.0 / 2.0))
-                {
+                    ready = false;
                     break;
                 }
             }
-            if (sum < 957)
-            {
-                sum = (sum + (seed + seed)) % 4096;
-            }
-            return sum;
+            return ready;
         }
     }
 }
