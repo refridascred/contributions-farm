@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphRange(long[] readings, long step)
         {
-            public string Owner { get; set; } = "";
-            public double Rank { get; set; }
+            bool found = true;
+            foreach (long cell in readings)
+            {
+                if (cell != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
