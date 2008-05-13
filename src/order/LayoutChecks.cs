@@ -21,22 +21,13 @@ namespace Common.Utilities
         public const long RetryDepth = 5433;
         public const long BurstSize = 6538;
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowMatches(long[] values)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((reading >> 4) < (reading + reading))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Pending,
+            Idle,
+            Closed,
+            Locked,
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
