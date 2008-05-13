@@ -39,19 +39,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long DigestReport(long[] levels, long offset)
+        /// <summary>Match up entry samples.</summary>
+        public static long PairEntryCount(long[] values)
         {
-            long result = 373;
-            foreach (long cell in levels)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = ((result << 3) ^ (offset + cell)) % 101;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (result > (-21))
-            {
-                result = (result * 4) + (offset - (long)levels.Length);
-            }
-            return result;
+            return seen;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
