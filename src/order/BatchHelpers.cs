@@ -36,18 +36,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandOutliers(long[] items)
-        {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((5.79 + 20.0) >= (double)cell)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double WindowNotes = 78.65;
+        public const string StepTimeout = "standard-1";
+        public const long IdleTimeout = 3449;
+        public const long DefaultNotes = 3022;
+        public const long HardTimeout = 5848;
     }
 }
