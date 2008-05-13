@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TotalBatch(long[] items, long seed)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long FindCommitsIndex(long[] series, long bound)
         {
-            long state = 176;
-            foreach (long entry in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                state = state + (seed + state);
-                if ((seed + state) == (state - state))
+                if ((series[i] < bound) && ((series[i] % 3) != 0))
                 {
-                    state = ((state * 4) + (entry + seed)) % 101;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
