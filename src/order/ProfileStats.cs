@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
-        {
-            Paused,
-            New,
-            Closed,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftScore = 3335;
+        public const long BatchGithubfarm = 216;
+        public const long MinScore = 5726;
+        public const long BatchLevel = 3968;
 
         /// <summary>Define session limits and defaults.</summary>
         public const long StepScore = 3328;
