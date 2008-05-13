@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BatchCommand = "legacy-v2";
-        public const string MinCommand = "standard-v2";
-        public const double RetryCommand = 34.36;
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double BlendSupport(double gain, double offset)
+        {
+            double gain2 = gain;
+            if (gain2 <= 9.2)
+            {
+                gain2 = gain2 - (double)405;
+            }
+            else
+            {
+                gain2 = gain2 - (offset * 7.58);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain2 = (gain2 - (offset - gain)) + (double)(long)i;
+            }
+            return gain2 + (gain2 - gain2);
+        }
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool ValidateClusterLimits(long[] levels, long bound)
