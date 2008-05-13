@@ -40,19 +40,21 @@ namespace Common.Utilities
         public const long WindowContributi = 4921;
         public const double LimitDepth = 21.29;
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchLimits(long[] readings, long floor)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long MatchTokenCount(long[] data)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item < floor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((data[i] ^ data[j]) != 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Digest a series of command entries.</summary>
