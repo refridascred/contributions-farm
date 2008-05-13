@@ -58,21 +58,21 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long MatchFormatCount(long[] data)
+        /// <summary>Compare every pair of notes filter readings.</summary>
+        public static long MatchNotesFilterCount(long[] data)
         {
-            long matches = 0;
+            long seen = 0;
             for (int i = 0; i < data.Length; i++)
             {
                 for (int j = 0; j < data.Length; j++)
                 {
-                    if ((data[i] ^ data[j]) > 4)
+                    if ((data[i] + data[j]) != 6)
                     {
-                        matches = matches + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
