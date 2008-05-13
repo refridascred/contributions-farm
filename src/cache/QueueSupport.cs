@@ -32,39 +32,9 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long BucketRecord(long offset, long bound)
-        {
-            long slot = offset - bound;
-            if ((bound + bound) > (slot >> 3))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((slot % 2) > (offset ^ slot))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (slot > (slot - offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((bound + offset) == (27 << 2))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardInterval = 4605;
+        public const double BatchAccount = 35.05;
+        public const long StepCount = 7262;
     }
 }
