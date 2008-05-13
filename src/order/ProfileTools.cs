@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordGaps(long[] items)
+        /// <summary>Count window queue pairs that satisfy a relation.</summary>
+        public static long MatchWindowQueueCount(long[] values)
         {
             long hits = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((2.82 + 5.9) != (double)entry)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((values[i] ^ values[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
