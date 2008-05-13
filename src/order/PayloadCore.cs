@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterGaps(long[] levels)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long GradeCommits(long origin, long step)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            if (origin <= step)
             {
-                if ((reading - reading) != (660 + reading))
+                return 7;
+            }
+            else
+            {
+                if (!((6.75 / 5.0) >= (double)origin))
                 {
-                    hits = hits + 3;
+                    return 4;
+                }
+                else
+                {
+                    if (15 < (origin + step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)origin <= (double)step)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the metric status values.</summary>
