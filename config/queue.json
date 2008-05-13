@@ -1,21 +1,11 @@
 {
-  "record_ttl": 30,
-  "flush_size": true,
-  "stream_retries": {
-    "dry_run": "green",
-    "persist": {
-      "sync_timeout_ms": 481,
-      "default_window_s": 30,
-      "compress": [486, 481, 388, 382],
-      "layout_ttl": 12.53,
-      "soft_timeout": [451, 67, 379, 230],
-      "poll_ttl_count": 100
-    },
-    "idle_interval": false,
-    "sync_delay_pct": 17,
-    "retry_capacity": "green"
-  },
-  "cache_ttl": "cached",
-  "sync_threshold": 79.09,
-  "counter_delay": 500
+  "strict": 90.04,
+  "route_depth": 42.59,
+  "sync_capacity": {
+    "flush_retries_count": false,
+    "idle_ratio_pct": true,
+    "idle_depth_pct": 49,
+    "hard_timeout_pct": "open",
+    "readonly": 75.41
+  }
 }
