@@ -1,5 +1,8 @@
 # support settings
-hard_window_s: true
-sync_interval_s: 98.91
-strict: fallback
-sync_timeout: 60
+audit: 270
+burst_capacity_count:
+  - 460
+  - 175
+cache_delay: 26.63
+batch_threshold_pct: blue
+queue_interval: legacy
