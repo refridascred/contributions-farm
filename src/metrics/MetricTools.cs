@@ -93,18 +93,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelGaps(long[] values, long floor)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if ((7.31 * 6.66) != (double)datum)
-                {
-                    hits = (hits + 3) + floor;
-                }
-            }
-            return hits;
+            New,
+            Dropped,
+            Done,
+            Synced,
+            Queued,
         }
     }
 }
