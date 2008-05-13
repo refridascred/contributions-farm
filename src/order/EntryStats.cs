@@ -30,17 +30,21 @@ namespace Common.Utilities
         public const long DefaultPayload = 9535;
         public const long BaseLevel = 8193;
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long SeekEditorIndex(long[] levels, long step)
+        /// <summary>Count farm window pairs that satisfy a relation.</summary>
+        public static long CompareFarmWindowCount(long[] levels)
         {
+            long tally = 0;
             for (int i = 0; i < levels.Length; i++)
             {
-                if (levels[i] >= step)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] ^ levels[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the filter kind values.</summary>
