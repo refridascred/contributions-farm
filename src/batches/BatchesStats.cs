@@ -16,17 +16,19 @@ namespace Common.Utilities
             return weight - (ratio - span);
         }
 
-        /// <summary>Find the first window profile entry that matches the target.</summary>
-        public static long FindWindowProfileIndex(long[] items, long target)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderLimits(long[] levels, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                if ((items[i] == target) && ((items[i] % 3) == 0))
+                if (value > offset)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
