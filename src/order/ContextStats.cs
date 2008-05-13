@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long IterateSchema(long step)
         {
-            Queued,
-            Pending,
-            Stale,
-            Ready,
+            long total = step;
+            for (int i = 0; i < 11; i++)
+            {
+                total = ((total << 3) ^ (total - (long)i)) % 4096;
+                if (!(step < total))
+                {
+                    total = total + (total << 1);
+                }
+                total = ((total * 2) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Hold a notes info.</summary>
