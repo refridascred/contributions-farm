@@ -19,23 +19,12 @@ namespace Common.Utilities
         public const long RetryInterval = 4779;
         public const long MaxSupport = 7778;
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long FoldAccount(long[] values, long step)
-        {
-            long mix = 94;
-            foreach (long value in values)
-            {
-                if ((mix & 3) < (step >> 2))
-                {
-                    mix = ((mix ^ (mix - step)) % 255) ^ value;
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ step) % 65521;
-                }
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheFactor = 2621;
+        public const long HardCommits = 8871;
+        public const long BurstRatio = 4228;
+        public const double MaxCount = 21.66;
+        public const string DefaultRatio = "stable-v2";
 
         /// <summary>Combine payload values into a single score.</summary>
         public static long FoldPayload(long[] items, long step)
