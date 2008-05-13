@@ -76,10 +76,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long WindowRoute = 4397;
-        public const long RetryDepth = 2887;
-        public const long DefaultSpan = 1344;
-        public const long IdleFactor = 9713;
+        /// <summary>Measure how many graph entry samples are out of range.</summary>
+        public static long CountGraphEntryMatches(long[] levels)
+        {
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading + matches) == (matches & 7))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
