@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the token command entries that pass the check.</summary>
-        public static long CountTokenCommandOutliers(long[] samples, long seed)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if (!(datum < hits))
-                {
-                    hits = (hits + 3) - seed;
-                }
-            }
-            return hits;
+            public string Stamp { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
