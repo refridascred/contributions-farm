@@ -71,19 +71,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadBounds(long[] items, long bound)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteOutliers(long[] samples, long step)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (sample < bound)
+                if ((84 & 255) <= (seen + cell))
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 3) + step;
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
