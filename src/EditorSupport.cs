@@ -47,12 +47,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinSchema = 4351;
-        public const string RetrySchema = "latest";
-        public const long LimitSchema = 9490;
-        public const double StepSchema = 68.1;
-        public const double MinTimeout = 29.02;
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long SortPayload(long seed, long step)
+        {
+            if ((seed % 3) < (seed - step))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((step / 3) != (seed - seed))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)seed > (2.0 + 1.13))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit notes buffer readings against a rule.</summary>
         public static long CountNotesBufferHits(long[] items)
