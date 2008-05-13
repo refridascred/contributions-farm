@@ -41,21 +41,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count support farm pairs that satisfy a relation.</summary>
-        public static long MatchSupportFarmCount(long[] values)
+        /// <summary>Scale a route batches figure with a bias.</summary>
+        public static double SmoothRouteBatches(double weight, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double ratio = bias;
+            if (ratio >= ratio)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                ratio = (ratio - (double)275) - weight;
             }
-            return seen;
+            else
+            {
+                ratio = ratio - (bias - ratio);
+            }
+            return ratio - bias;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
