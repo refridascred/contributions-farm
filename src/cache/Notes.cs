@@ -14,19 +14,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterLimits(long[] data, long offset)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            bool found = true;
-            foreach (long datum in data)
-            {
-                if (datum != offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Paused,
+            Ready,
+            Locked,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
