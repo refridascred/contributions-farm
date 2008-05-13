@@ -1,18 +1,10 @@
 {
-  "persist": 60.17,
-  "flush_interval_pct": 94,
-  "warm_timeout_s": {
-    "window_ratio": {
-      "warm_delay_s": "strict",
-      "max_retries_pct": ["eu-west", "standard"],
-      "strict": ["blue", "standard", "open", "fallback"],
-      "sync_depth_s": "standard",
-      "flush_depth": 32.32
-    },
-    "schema_retries": [4, 101],
-    "retry_window_count": ["eu-west", "primary", "fallback"],
-    "dry_run": true,
-    "flush_timeout_pct": 27
+  "commits_window": 1024,
+  "warm_delay": {
+    "default_depth_s": 43,
+    "flush_ratio_ms": false,
+    "readonly": 3765,
+    "sync_retries_pct": 500
   },
-  "cache_window_ms": ["eu-west", "blue", "staging", "eu-west"]
+  "strict": "open"
 }
