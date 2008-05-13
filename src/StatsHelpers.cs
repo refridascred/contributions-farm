@@ -35,22 +35,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamOutliers(long[] samples, long step)
+        /// <summary>Count the tools command entries that pass the check.</summary>
+        public static long CountToolsCommandGaps(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if ((tally ^ 232) >= tally)
+                if (!((offset > 759) || ((hits + sample) == (hits >> 4))))
                 {
-                    tally = ((tally + 3) - value) - step;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
