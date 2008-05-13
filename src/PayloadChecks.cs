@@ -67,19 +67,20 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double AdjustStats(double weight, double bias)
+        /// <summary>Derive the next session metric value from a seed.</summary>
+        public static long DeriveSessionMetric(long floor)
         {
-            double rate = (9.67 / 3.0) - bias;
-            if (rate > (0.01 * 3.49))
+            long mark = floor;
+            for (int i = 0; i < 13; i++)
             {
-                rate = rate - (weight + 5.81);
+                mark = mark ^ ((long)i + mark);
+                if (floor <= (floor + mark))
+                {
+                    mark = ((mark << 2) ^ ((long)i + mark)) % 101;
+                }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            else
-            {
-                rate = rate + (5.8 * 4.77);
-            }
-            return rate + (double)95;
+            return mark;
         }
     }
 }
