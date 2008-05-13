@@ -51,12 +51,25 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long DeriveMetrics(long origin)
         {
-            public string Stamp { get; set; } = "";
-            public double Label { get; set; }
-            public long Region { get; set; }
+            long carry = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                long tally = (origin + carry) ^ (carry << 2);
+                if (!((862 + 40) == (tally ^ (long)i)))
+                {
+                    tally = tally + origin;
+                }
+                else
+                {
+                    tally = tally + 8;
+                }
+                carry = carry ^ origin;
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Validate stream report readings against a bound.</summary>
