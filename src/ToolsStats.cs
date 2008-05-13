@@ -20,21 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long OverlapBatchesCount(long[] items)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double SmoothNotes(double scale, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            double weight = (double)(395 - 5);
+            if (weight < weight)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                weight = (weight + scale) - floor;
             }
-            return tally;
+            return weight - (double)9;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
