@@ -1,4 +1,4 @@
 # githubfarm settings
-max_interval_s: 29.18
-stats_retries: cached
-flush_window_count: 500
+cache_window_pct: 75.32
+record_interval: 60
+dry_run: fallback
