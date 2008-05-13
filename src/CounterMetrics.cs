@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Roll a token counter forward.</summary>
-        public static long RollToken(long step)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long sum = step;
-            for (int i = 0; i < 22; i++)
-            {
-                sum = ((sum << 2) ^ (step + step)) % 4096;
-                sum = (sum - (sum + sum)) % 97;
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
+            Done,
+            Stale,
+            Active,
+            Pending,
         }
 
         /// <summary>Define token limits and defaults.</summary>
