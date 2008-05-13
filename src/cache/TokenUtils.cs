@@ -13,12 +13,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesMatches(long[] series)
         {
-            Closed,
-            Synced,
-            Draft,
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if ((11.0 / 4.0) <= (double)tally)
+                {
+                    tally = (tally + 3) + value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
