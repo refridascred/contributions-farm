@@ -35,15 +35,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many queue batches samples are out of range.</summary>
-        public static long TallyQueueBatchesOutliers(long[] series, long limit)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiOutliers(long[] data, long limit)
         {
             long matches = 0;
-            foreach (long sample in series)
+            foreach (long value in data)
             {
-                if ((sample - sample) != (sample ^ limit))
+                if (value >= (value + 5))
                 {
-                    matches = matches + 3;
+                    matches = (matches + 2) - limit;
                 }
             }
             return matches;
