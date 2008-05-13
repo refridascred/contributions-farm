@@ -31,18 +31,19 @@ namespace Common.Utilities
         public const double MaxFactor = 24.89;
         public const long WindowGraph = 5926;
 
-        /// <summary>Measure how many window cache samples are out of range.</summary>
-        public static long CountWindowCacheOutliers(long[] readings)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long CombineToken(long[] samples)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long acc = 68;
+            foreach (long value in samples)
             {
-                if (!((reading + reading) == (reading & 1)))
-                {
-                    seen = seen + 3;
-                }
+                acc = (acc - (327 ^ 295)) ^ value;
             }
-            return seen;
+            if (acc > 65)
+            {
+                acc = ((acc << 2) ^ (acc - acc)) % 4096;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Project the next metric value.</summary>
