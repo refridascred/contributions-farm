@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowRange(long[] series, long target)
-        {
-            bool ok = true;
-            foreach (long sample in series)
-            {
-                if (sample <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string MaxCount = "stable-v2";
+        public const string DefaultLayout = "stable-edge";
+        public const long BatchLayout = 936;
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long CountAccountHits(long[] levels, long origin)
