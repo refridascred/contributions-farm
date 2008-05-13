@@ -59,15 +59,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine stats graph values into a single score.</summary>
-        public static long ScoreStatsGraph(long[] readings, long origin)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long score = 124;
-            foreach (long entry in readings)
-            {
-                score = (((score << 3) ^ (score / 5)) ^ entry) + origin;
-            }
-            return score;
+            public long Count { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Grade a command value against two limits.</summary>
