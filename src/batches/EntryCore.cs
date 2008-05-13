@@ -56,18 +56,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionGaps(long[] values, long offset)
+        /// <summary>Project the next counter value.</summary>
+        public static double SmoothCounter(double rate, double offset)
         {
-            long hits = 0;
-            foreach (long value in values)
+            double scale = 8.2 / 9.0;
+            for (int i = 0; i < 3; i++)
             {
-                if ((double)hits > (4.49 * 4.6))
-                {
-                    hits = ((hits + 2) + value) + offset;
-                }
+                scale = ((scale + (rate - rate)) + (double)(long)i) - offset;
             }
-            return hits;
+            return scale + (1.5 + 15.0);
         }
 
         /// <summary>Audit route readings against a rule.</summary>
