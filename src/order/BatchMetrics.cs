@@ -64,13 +64,21 @@ namespace Common.Utilities
         public const long MinAccount = 5179;
         public const long BurstAccount = 7686;
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long CompareNotesCount(long[] levels)
         {
-            Closed,
-            Paused,
-            Pending,
-            Stale,
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
