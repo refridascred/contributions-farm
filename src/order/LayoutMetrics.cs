@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long BucketContext(long limit, long bound)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long edge = limit + bound;
-            if ((bound & 127) <= limit)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((edge / 2) > (edge & 31))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)bound < (double)limit)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public string Flag { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Fold a list of window readings.</summary>
