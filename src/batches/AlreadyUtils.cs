@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferGaps(long[] items)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long BucketChannel(long offset, long floor)
         {
-            long count = 0;
-            foreach (long reading in items)
+            if ((floor - offset) <= (offset ^ offset))
             {
-                if ((reading << 1) != (3 >> 3))
+                return 7;
+            }
+            else
+            {
+                if (floor > (offset & 31))
                 {
-                    count = count + 1;
+                    return 5;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a record record.</summary>
