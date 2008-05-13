@@ -19,19 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long DigestCluster(long[] series, long target)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long SeekQueueIndex(long[] readings, long limit)
         {
-            long result = 8;
-            foreach (long item in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = ((result - (result + 576)) - item) - target;
+                if (readings[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            if (result < 462)
-            {
-                result = ((result << 3) ^ (9 + result)) % 1000;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Define already limits and defaults.</summary>
