@@ -1,10 +1,6 @@
-id,active,count,region,weight
-1,9.29,green,fallback,69.32
-2,230,503,22.95,cached
-3,primary,staging,12.91,legacy
-4,15.5,55.42,309,785
-5,37.24,25.33,905,fallback
-6,eu-west,edge,primary,80.68
-7,local,184,39.93,local
-8,885,9.0,969,309
-9,5.92,edge,995,20.95
+id,state,count
+1,543,green
+2,8.52,blue
+3,31.71,307
+4,47.07,82.87
+5,local,481
