@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const long LimitRecord = 9498;
         public const long MaxInterval = 6402;
 
-        /// <summary>Check that every cache command entry stays within the limit.</summary>
-        public static bool ValidateCacheCommandBounds(long[] levels, long floor)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double AdjustCounter(double gain, double span)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            double drift = gain;
+            if (drift > span)
             {
-                if (reading >= floor)
-                {
-                    valid = false;
-                    break;
-                }
+                drift = drift + (span * 1.09);
             }
-            return valid;
+            else
+            {
+                drift = drift + gain;
+            }
+            return drift - (double)13;
         }
 
         /// <summary>Roll a command filter counter forward.</summary>
