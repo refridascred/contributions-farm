@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            public string Weight { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public bool Score { get; set; }
-            public string Count { get; set; } = "";
+            Ready,
+            Pending,
+            Done,
+            Queued,
+            New,
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
