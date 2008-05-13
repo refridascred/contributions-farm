@@ -1,11 +1,4 @@
 # support settings
-sync_capacity:
-  - 321
-  - 499
-  - 353
-  - 286
-batch_delay: green
-hard_interval_count: true
-hard_limit_pct: 4117
-route_capacity: 5.14
-farm_capacity: 57.2
+base_retries_ms: false
+enabled: latest
+checks_ttl: stable
