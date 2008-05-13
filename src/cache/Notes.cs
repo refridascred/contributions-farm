@@ -44,22 +44,29 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long GradeGraph(long offset, long offset2)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long GradeProfile(long origin, long seed)
         {
-            if (((double)offset2 <= 8.0) && (341 >= (offset & 3)))
+            if (((7.0 / 5.0) <= (double)origin) && ((54 + seed) < seed))
             {
-                return 2;
+                return 5;
             }
             else
             {
-                if (offset >= offset2)
+                if ((2.89 * 6.0) != (double)origin)
                 {
-                    return 7;
+                    return 3;
                 }
                 else
                 {
-                    return 3;
+                    if ((origin - origin) >= seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
         }
