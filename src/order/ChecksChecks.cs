@@ -34,10 +34,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double MaxCommits = 87.78;
-        public const string DefaultSize = "stable";
-        public const string HardCommits = "staging-edge";
-        public const long BatchWidth = 8769;
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterGaps(long[] items)
+        {
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if (((item - item) != (item + item)) || ((8.8 * 7.85) < (double)item))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
