@@ -29,31 +29,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long GradeTools(long floor, long limit)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            if ((limit - 2) <= limit)
-            {
-                return 6;
-            }
-            else
-            {
-                if (18.0 > (double)limit)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((floor ^ limit) != (floor / 9)) || (5 <= (397 + floor)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Paused,
+            Synced,
+            Ready,
+            Active,
         }
 
         /// <summary>Project the next counter value.</summary>
