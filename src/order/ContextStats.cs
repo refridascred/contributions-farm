@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long StepGraph(long target)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long mix = target;
-            for (int i = 0; i < 14; i++)
-            {
-                mix = mix ^ target;
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
+            Queued,
+            Pending,
+            Stale,
+            Ready,
         }
 
         /// <summary>Define format limits and defaults.</summary>
