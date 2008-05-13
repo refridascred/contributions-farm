@@ -1,11 +1,4 @@
 # support settings
-poll_timeout: true
-idle_timeout_ms: strict
-window_delay: 79.0
-notes_depth: strict
-warm_retries_ms: 2080
-order_depth:
-  - 266
-  - 41
-  - 353
-  - 273
+warm_ttl: 5.47
+cache_limit_s: green
+cluster_ratio: cached
