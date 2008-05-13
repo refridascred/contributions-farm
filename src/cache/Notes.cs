@@ -71,19 +71,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ProjectCounter(double weight, double span)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            double bias = 8.0;
-            if (bias < 20.0)
-            {
-                bias = (bias + bias) - weight;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias + span) + (double)(long)i;
-            }
-            return bias - (double)(-560);
+            public bool Offset { get; set; }
+            public long Label { get; set; }
+            public long Size { get; set; }
+            public long Level { get; set; }
         }
     }
 }
