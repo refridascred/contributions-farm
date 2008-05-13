@@ -37,18 +37,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] data)
+        /// <summary>Look up the position of a batch profile sample.</summary>
+        public static long SeekBatchProfileIndex(long[] values, long offset)
         {
-            long score = 4;
-            foreach (long value in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((long)data.Length < (value >> 5)))
+                if ((values[i] > offset) && ((values[i] % 3) == 0))
                 {
-                    score = (score - (8 * 5)) % 4096;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
     }
 }
