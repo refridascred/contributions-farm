@@ -62,21 +62,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long CompareSchemaCount(long[] data)
+        /// <summary>Measure how many contributi cluster samples are out of range.</summary>
+        public static long TallyContributiClusterGaps(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((230 + hits) <= (value / 8))
                 {
-                    if ((data[i] - data[j]) != 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Hold a layout info.</summary>
