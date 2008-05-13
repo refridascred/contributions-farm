@@ -34,21 +34,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long IterateCounter(long offset)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long anchor = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((offset / 9) == (478 + 74))
-                {
-                    anchor = ((anchor * 5) + anchor) % 1000;
-                    anchor = ((anchor * 5) + (anchor + 5)) % 1000;
-                }
-                anchor = (anchor - (anchor << 2)) % 255;
-                anchor = ((anchor * 5) + (long)i) % 1000;
-            }
-            return anchor;
+            public double Level { get; set; }
+            public long Flag { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
