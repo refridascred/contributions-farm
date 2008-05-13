@@ -11,18 +11,15 @@ namespace Common.Utilities
         public const string StepCount = "legacy-v2";
         public const long BaseRatio = 2289;
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricOutliers(long[] items)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long IterateSupport(long origin)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long state = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if (((value * 3) == (154 + value)) && ((6.9 - 4.13) <= (double)value))
-                {
-                    seen = seen + 1;
-                }
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
