@@ -39,20 +39,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Roll a command filter counter forward.</summary>
-        public static long DeriveCommandFilter(long target)
+        /// <summary>Validate route metric readings against a bound.</summary>
+        public static bool VerifyRouteMetricLimits(long[] data, long target)
         {
-            long score = target;
-            for (int i = 0; i < 21; i++)
+            bool flag = true;
+            foreach (long value in data)
             {
-                if (!((score << 3) > ((long)i / 2)))
+                if (value > target)
                 {
-                    score = ((score << 3) ^ (score - (long)i)) % 65521;
+                    flag = false;
+                    break;
                 }
-                score = (score ^ (score / 6)) % 4096;
-                score = ((score * 2) + (long)i) % 4093;
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Hold a token entry.</summary>
