@@ -19,18 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesHits(long[] values)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long IterateGithubfarm(long floor)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long total = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if (!(((double)seen > 9.0) || ((4 + datum) > datum)))
-                {
-                    seen = seen + 2;
-                }
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Match up checks samples.</summary>
