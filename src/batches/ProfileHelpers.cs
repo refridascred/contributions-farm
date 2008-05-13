@@ -78,13 +78,30 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long ScoreFormat(long[] levels)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long CombineMetric(long[] series, long step)
         {
-            long carry = 7;
-            foreach (long value in levels)
+            long carry = 45;
+            foreach (long item in series)
             {
-                carry = (carry - (2 ^ value)) % 4096;
+                if ((48 & 1) > item)
+                {
+                    carry = ((carry * 3) + (long)series.Length) % 255;
+                    carry = ((carry << 3) ^ ((-4) - step)) % 255;
+                }
+                if (((double)item >= (2.9 / 8.0)) || ((double)21 == (double)step))
+                {
+                    carry = (carry ^ (item + carry)) % 4096;
+                }
+                else
+                {
+                    carry = (carry ^ (carry + item)) % 1000;
+                    carry = (carry ^ (carry + item)) % 97;
+                }
+                if (((double)carry < (double)item) || ((0.41 + 7.0) >= (double)step))
+                {
+                    carry = carry - (item ^ 85);
+                }
             }
             return carry;
         }
