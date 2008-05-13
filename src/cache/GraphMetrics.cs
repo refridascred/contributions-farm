@@ -45,13 +45,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            Draft,
-            Retry,
-            Synced,
+            Locked,
             Pending,
+            Idle,
+            Failed,
         }
 
         /// <summary>Hold a filter info.</summary>
