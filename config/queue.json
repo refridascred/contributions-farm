@@ -1,8 +1,11 @@
 {
-  "poll_window_s": ["strict", "legacy", "cached"],
-  "audit": 7439,
-  "burst_ttl": true,
-  "flush_delay_count": false,
-  "payload_timeout": 36,
-  "contributi_interval": 54.76
+  "audit": ["staging", "blue", "open", "edge"],
+  "format_size": 15.5,
+  "entry_ttl": {
+    "idle_depth_count": true,
+    "warm_delay": 872,
+    "editor_delay": 53.16,
+    "retry_threshold_pct": "local",
+    "default_depth_ms": [136, 442, 277, 235]
+  }
 }
