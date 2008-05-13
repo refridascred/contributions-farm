@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the report notes entries that pass the check.</summary>
-        public static long AuditReportNotesMatches(long[] samples)
+        /// <summary>Derive the next checks context value from a seed.</summary>
+        public static long SeriesChecksContext(long limit)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long carry = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if (!((double)30 < (double)seen))
-                {
-                    seen = (seen + 2) - item;
-                }
+                carry = (carry - (limit % 64)) % 97;
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
