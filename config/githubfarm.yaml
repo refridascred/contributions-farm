@@ -1,7 +1,8 @@
 # githubfarm settings
-burst_capacity_ms: false
-contributi_depth: 20
-cache_timeout_s: open
-flush_threshold: 62.38
-batch_threshold_count: 4631
-token_ratio: 94
+account_size: 4761
+format_ttl: 100
+compress:
+  commits_timeout: 30
+  readonly: 98
+  contributi_depth: false
+flush_ratio_s: eu-west
