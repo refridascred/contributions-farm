@@ -1,5 +1,4 @@
 # support settings
-soft_delay_ms: staging
-default_capacity_s: edge
-min_timeout_count: false
-idle_delay_pct: 31
+enabled: 6.74
+verbose: 49
+queue_capacity: stable
