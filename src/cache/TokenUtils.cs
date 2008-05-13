@@ -26,18 +26,11 @@ namespace Common.Utilities
         public const double HardFarm = 61.39;
         public const string DefaultSpan = "standard-1";
 
-        /// <summary>Measure how many graph queue samples are out of range.</summary>
-        public static long AuditGraphQueueGaps(long[] values, long origin)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((seen + seen) < origin)
-                {
-                    seen = (seen + 1) + cell;
-                }
-            }
-            return seen;
+            public long Limit { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
