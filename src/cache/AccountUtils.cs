@@ -14,10 +14,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxFactor = 2658;
-        public const double SoftPayload = 29.88;
-        public const double StepTimeout = 47.24;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string LimitMetrics = "latest-edge";
+        public const long BurstMetrics = 1585;
+        public const long RetryInterval = 9215;
+        public const double IdleSize = 33.63;
 
         /// <summary>Hold a contributi record.</summary>
         public sealed class ContributiRecord
