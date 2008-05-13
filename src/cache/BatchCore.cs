@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a order cache pair into a bucket.</summary>
-        public static long ClassifyOrderCache(long step, long seed)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            if ((954 < (2 ^ seed)) || ((seed >> 5) < (step % 10)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((17.0 * 6.12) >= (double)step)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Flag { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
