@@ -35,10 +35,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long RetrySize = 5424;
-        public const long BaseCount = 9525;
-        public const double SoftChannel = 23.19;
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
+        {
+            Idle,
+            Synced,
+            Paused,
+        }
 
         /// <summary>Hold a window stats.</summary>
         public sealed class WindowStats
