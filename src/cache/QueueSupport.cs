@@ -15,14 +15,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Measure how many graph profile samples are out of range.</summary>
+        public static long CountGraphProfileMatches(long[] items, long step)
         {
-            Draft,
-            Active,
-            New,
-            Done,
-            Closed,
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if ((double)matches != (5.3 / 3.0))
+                {
+                    matches = ((matches + 1) + value) + step;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
