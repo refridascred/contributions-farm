@@ -22,17 +22,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LookupWindowIndex(long[] samples, long step)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long FoldEditor(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 233;
+            foreach (long cell in data)
             {
-                if (samples[i] <= step)
+                carry = carry - 65;
+                if (((cell << 3) > (cell + carry)) || ((double)cell >= (double)carry))
                 {
-                    return (long)i;
+                    carry = (carry ^ (58 + carry)) % 65521;
+                }
+                else
+                {
+                    carry = (carry ^ (carry << 3)) % 255;
                 }
             }
-            return -1;
+            if (carry > 97)
+            {
+                carry = ((carry << 3) ^ carry) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
