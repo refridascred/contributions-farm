@@ -26,26 +26,38 @@ namespace Common.Utilities
         public const double WindowFactor = 43.38;
         public const double MinInterval = 58.57;
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long ScoreCache(long[] items)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long SortMetrics(long offset, long floor)
         {
-            long anchor = 245;
-            foreach (long cell in items)
+            if ((45 + floor) > (offset * 4))
             {
-                if (!((2.81 + 16.0) != (double)cell))
+                return 4;
+            }
+            else
+            {
+                if ((7.7 + 6.0) > (double)floor)
                 {
-                    anchor = anchor - cell;
+                    return 2;
                 }
                 else
                 {
-                    anchor = (anchor - (anchor >> 2)) % 65521;
+                    if ((floor & 1) >= offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)floor < (3.98 - 0.85))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            if (anchor < (-396))
-            {
-                anchor = anchor + (9 ^ anchor);
-            }
-            return anchor;
         }
     }
 }
