@@ -13,12 +13,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long FindStatsIndex(long[] values, long origin)
+        /// <summary>Locate a githubfarm farm reading by value.</summary>
+        public static long FindGithubfarmFarmIndex(long[] samples, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (values[i] > origin)
+                if ((samples[i] > step) && ((samples[i] % 2) != 0))
                 {
                     return (long)i;
                 }
