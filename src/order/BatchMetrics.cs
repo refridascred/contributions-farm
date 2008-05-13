@@ -68,22 +68,30 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyGaps(long[] levels)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long DigestMetric(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long mix = 3;
+            foreach (long reading in data)
             {
-                if ((sample + hits) != (48 & 255))
+                if ((2.6 * 5.36) < (double)mix)
                 {
-                    hits = hits + 1;
+                    mix = mix + (810 + reading);
+                }
+                if ((7.1 / 6.0) == (double)mix)
+                {
+                    mix = ((mix * 2) + ((-9) - reading)) % 97;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    mix = mix + (mix + origin);
                 }
             }
-            return hits;
+            if (mix < (-72))
+            {
+                mix = (mix ^ mix) % 255;
+            }
+            return mix % 97;
         }
 
         /// <summary>Rank route input into a small class.</summary>
