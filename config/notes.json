@@ -1,5 +1,7 @@
 {
-  "hard_limit_pct": 44,
-  "cache_delay_count": "strict",
-  "audit": ["fallback", "open", "green"]
+  "graph_ratio": 97,
+  "warm_interval_pct": 45,
+  "graph_size": 65,
+  "base_ratio_ms": false,
+  "warm_timeout_s": true
 }
