@@ -1,12 +1,4 @@
 # githubfarm settings
-warm_retries_count: open
-warm_window_s:
-  verbose: latest
-  retry_interval_s: cached
-  editor_capacity: false
-  sync_ttl: 250
-  soft_ttl_ms: 11.69
-poll_delay_s: 61
-checks_capacity: false
-account_timeout: fallback
-warm_retries: standard
+githubfarm_threshold: 10.1
+retry_timeout_pct: 32.41
+cache_timeout_s: 17.5
