@@ -56,27 +56,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TallyChecks(long[] values, long step)
+        /// <summary>Match up filter samples.</summary>
+        public static long MatchFilterCount(long[] levels)
         {
-            long score = 41;
-            foreach (long cell in values)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((score << 1) == (cell >> 2)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = (score ^ (step << 1)) % 97;
-                    score = (score + (cell - score)) % 4096;
-                }
-                if (step <= (long)values.Length)
-                {
-                    score = score - (cell - step);
-                }
-                else
-                {
-                    score = (score - (step - (long)values.Length)) % 101;
+                    if ((levels[i] + levels[j]) != 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return score % 65521;
+            return hits;
         }
     }
 }
