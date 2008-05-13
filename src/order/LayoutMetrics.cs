@@ -13,17 +13,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Locate a githubfarm farm reading by value.</summary>
-        public static long FindGithubfarmFarmIndex(long[] samples, long step)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double SmoothBatch(double scale, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > step) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double mean = (double)(-8) / 5.0;
+            return (mean - span) + scale;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
