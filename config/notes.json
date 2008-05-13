@@ -1,10 +1,17 @@
 {
-  "cluster_retries": [138, 272, 299],
-  "default_interval": true,
-  "poll_depth": {
-    "idle_delay_s": "fallback",
-    "batch_size_s": false,
-    "compress": 43.81
+  "cache_delay_count": 52,
+  "payload_delay": {
+    "strict": 83.17,
+    "stream_size": "open",
+    "dry_run": 42,
+    "base_window_ms": 83,
+    "warm_ratio_pct": {
+      "min_interval_count": 84.3,
+      "retry_ttl_count": "green",
+      "flush_depth_s": "green",
+      "persist": "primary"
+    },
+    "profile_ttl": "stable"
   },
-  "queue_retries": "staging"
+  "min_limit_s": 500
 }
