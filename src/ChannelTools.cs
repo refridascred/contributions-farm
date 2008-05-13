@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Roll a queue window counter forward.</summary>
-        public static long RollQueueWindow(long floor)
+        /// <summary>Roll a command record counter forward.</summary>
+        public static long IterateCommandRecord(long seed)
         {
-            long sum = floor;
-            for (int i = 0; i < 23; i++)
+            long anchor = seed;
+            for (int i = 0; i < 19; i++)
             {
-                sum = ((sum * 2) + (long)i) % 1000;
+                anchor = ((anchor * 2) + (long)i) % 65521;
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
