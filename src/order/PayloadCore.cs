@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Classify a batches cache pair into a bucket.</summary>
-        public static long RankBatchesCache(long floor, long seed)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long lane = floor + seed;
-            if (!((14.0 + 3.53) > (double)seed))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)floor == (double)lane)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public string Label { get; set; } = "";
+            public long Weight { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the metric status values.</summary>
