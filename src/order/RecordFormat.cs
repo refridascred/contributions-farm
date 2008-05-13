@@ -50,17 +50,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a route cache sample.</summary>
-        public static long SeekRouteCacheIndex(long[] readings, long seed)
+        /// <summary>Validate metrics profile readings against a bound.</summary>
+        public static bool GuardMetricsProfileLimits(long[] samples, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                if ((readings[i] >= seed) && ((readings[i] % 5) != 0))
+                if (item <= bound)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
