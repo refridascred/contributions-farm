@@ -19,17 +19,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long DeriveSchema(long floor)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long carry = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                long offset = (carry - carry) - (long)i;
-                carry = (carry + ((long)i + offset)) % 65521;
-                carry = ((carry * 5) + (long)i) % 1000;
-            }
-            return carry;
+            Idle,
+            Ready,
+            Stale,
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
