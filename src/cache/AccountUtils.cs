@@ -26,24 +26,22 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long ClassifyCommand(long floor, long seed)
+        /// <summary>Combine queue format values into a single score.</summary>
+        public static long TotalQueueFormat(long[] readings)
         {
-            if (((floor % 97) > 215) && ((floor * 5) > (floor ^ floor)))
+            long mark = -3;
+            foreach (long value in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((10.0 / 2.0) > (double)seed)
+                if (3.5 > (double)value)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    mark = mark ^ mark;
                 }
             }
+            if (mark > (-83))
+            {
+                mark = (mark + 2) % 255;
+            }
+            return mark % 1000;
         }
     }
 }
