@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long GradeRoute(long step, long floor)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            if ((double)step < (double)floor)
-            {
-                return 1;
-            }
-            else
-            {
-                if (floor <= 3)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Synced,
+            Done,
+            Idle,
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
