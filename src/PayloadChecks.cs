@@ -97,11 +97,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            public double Score { get; set; }
-            public bool Mode { get; set; }
+            public long Region { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
