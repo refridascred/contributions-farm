@@ -14,19 +14,10 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesHits(long[] samples)
-        {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if (!((cell & 31) > (cell & 63)) && ((cell < (6 ^ count)) && ((cell + 841) != (51 & 31))))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxFactor = 2658;
+        public const double SoftPayload = 29.88;
+        public const double StepTimeout = 47.24;
 
         /// <summary>Hold a contributi record.</summary>
         public sealed class ContributiRecord
