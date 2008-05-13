@@ -77,21 +77,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count entry metrics pairs that satisfy a relation.</summary>
-        public static long OverlapEntryMetricsCount(long[] items)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long WeighCounter(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 520;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                state = (state ^ (value << 3)) % 65521;
+                if (value <= (value & 15))
                 {
-                    if ((items[i] + items[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
+                    break;
                 }
             }
-            return count;
+            return state;
         }
     }
 }
