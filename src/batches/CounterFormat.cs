@@ -38,22 +38,15 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long FoldSupport(long[] levels)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double BlendNotes(double gain, double offset)
         {
-            long mix = 73;
-            foreach (long item in levels)
+            double rate = (double)(171 / 9);
+            if (rate <= 14.0)
             {
-                if ((item ^ item) == (mix << 1))
-                {
-                    mix = mix + (item - item);
-                }
+                rate = (rate + (2.1 + rate)) - offset;
             }
-            if (mix > 2)
-            {
-                mix = (mix ^ (73 & 7)) % 4096;
-            }
-            return mix;
+            return rate - (gain - rate);
         }
     }
 }
