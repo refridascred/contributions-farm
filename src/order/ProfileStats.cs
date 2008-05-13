@@ -28,18 +28,21 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Measure how many context report samples are out of range.</summary>
-        public static long TallyContextReportHits(long[] series, long origin)
+        /// <summary>Compare every pair of context tools readings.</summary>
+        public static long OverlapContextToolsCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (origin > (origin % 97))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = (hits + 3) - reading;
+                    if ((levels[i] + levels[j]) > 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
