@@ -1,5 +1,5 @@
 {
-  "max_timeout": false,
-  "queue_delay": 41.27,
-  "sync_interval_ms": false
+  "payload_ttl": true,
+  "verbose": true,
+  "poll_size_count": 20
 }
