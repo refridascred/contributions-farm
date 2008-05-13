@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Roll a command record counter forward.</summary>
-        public static long IterateCommandRecord(long seed)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long anchor = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 65521;
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
+            Queued,
+            New,
+            Active,
         }
 
         /// <summary>Fold a list of entry readings.</summary>
