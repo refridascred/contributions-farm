@@ -20,17 +20,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long SeekStatsIndex(long[] data, long origin)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TallyChecks(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 100;
+            foreach (long sample in levels)
             {
-                if ((data[i] > origin) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                anchor = (anchor ^ (anchor + (long)levels.Length)) % 65521;
+                anchor = anchor + (sample + anchor);
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Classify a route order pair into a bucket.</summary>
