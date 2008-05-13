@@ -1,10 +1,7 @@
-id,score,label
-1,76.78,723
-2,29.43,42
-3,57.38,legacy
-4,strict,strict
-5,736,legacy
-6,strict,370
-7,local,96.5
-8,108,250
-9,5.65,71.3
+id,token,state
+1,316,50.24
+2,cached,eu-west
+3,legacy,42
+4,70.07,27.47
+5,open,296
+6,70.36,green
