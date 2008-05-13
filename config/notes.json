@@ -1,5 +1,7 @@
 {
-  "sync_interval_pct": "green",
-  "hard_ttl_pct": true,
-  "poll_size_s": 40
+  "dry_run": 85.63,
+  "warm_threshold": 30,
+  "cluster_ttl": "legacy",
+  "base_delay_count": "fallback",
+  "audit": "local"
 }
