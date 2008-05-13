@@ -1,8 +1,5 @@
 {
-  "graph_threshold": 7464,
-  "persist": [354, 110, 377, 148],
-  "flush_size": 6339,
-  "compress": "edge",
-  "burst_depth": "strict",
-  "tools_ttl": "cached"
+  "audit": 20.4,
+  "cache_ttl_s": 3876,
+  "queue_threshold": "primary"
 }
