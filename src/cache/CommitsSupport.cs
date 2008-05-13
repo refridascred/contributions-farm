@@ -47,9 +47,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultChecks = 5995;
-        public const long CacheTimeout = 600;
-        public const string LimitChecks = "latest-1";
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadBounds(long[] items, long bound)
+        {
+            bool ready = true;
+            foreach (long sample in items)
+            {
+                if (sample < bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
