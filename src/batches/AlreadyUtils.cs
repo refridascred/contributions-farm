@@ -59,15 +59,24 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long RollLayout(long step)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TotalEntry(long[] data)
         {
-            long mark = step;
-            for (int i = 0; i < 5; i++)
+            long mix = 92;
+            foreach (long reading in data)
             {
-                mark = ((mark * 4) + (long)i) % 1000;
+                if ((double)mix <= (18.0 + 1.5))
+                {
+                    continue;
+                }
+                mix = mix - ((-701) * 5);
+                mix = ((mix * 3) + (reading & 3)) % 1000;
             }
-            return mark;
+            if (mix < 697)
+            {
+                mix = mix - (mix + mix);
+            }
+            return mix % 4096;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
