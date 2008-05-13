@@ -29,19 +29,19 @@ namespace Common.Utilities
         public const long LimitWidth = 6145;
         public const double WindowDepth = 32.49;
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelLimits(long[] data, long seed)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long RollContributi(long seed)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long carry = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if (entry > seed)
+                if ((long)i <= seed)
                 {
-                    ok = false;
-                    break;
+                    carry = (carry ^ (carry + (long)i)) % 1000;
                 }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return ok;
+            return carry;
         }
     }
 }
