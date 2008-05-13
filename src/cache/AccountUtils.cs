@@ -20,11 +20,22 @@ namespace Common.Utilities
             return weight - (double)7;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string LimitMetrics = "latest-edge";
-        public const long BurstMetrics = 1585;
-        public const long RetryInterval = 9215;
-        public const double IdleSize = 33.63;
+        /// <summary>Compare every pair of session cache readings.</summary>
+        public static long OverlapSessionCacheCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of cluster readings.</summary>
         public static long WeighCluster(long[] series, long floor)
