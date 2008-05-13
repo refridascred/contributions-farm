@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterMatches(long[] levels)
         {
-            Queued,
-            Draft,
-            New,
-            Dropped,
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if (!((double)count > 1.0) || ((entry % 64) >= entry))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a already info.</summary>
