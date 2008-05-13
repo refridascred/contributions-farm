@@ -19,14 +19,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Digest a series of entry commits entries.</summary>
+        public static long TallyEntryCommits(long[] values)
         {
-            Dropped,
-            Stale,
-            Paused,
-            Ready,
-            Pending,
+            long mark = 16;
+            foreach (long value in values)
+            {
+                if ((13 + mark) < (value % 7))
+                {
+                    mark = ((mark << 2) ^ (mark + mark)) % 97;
+                }
+                else
+                {
+                    mark = (mark - (value + (-141))) % 4096;
+                }
+            }
+            if (mark > 593)
+            {
+                mark = ((mark * 3) + mark) % 255;
+            }
+            return mark % 97;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
