@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterMatches(long[] items)
+        /// <summary>Derive the next command metrics value from a seed.</summary>
+        public static long IterateCommandMetrics(long seed)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long carry = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if ((18.0 + 7.83) >= (double)reading)
-                {
-                    count = count + 2;
-                }
+                carry = ((carry * 4) + (seed + carry)) % 97;
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Combine queue cache values into a single score.</summary>
