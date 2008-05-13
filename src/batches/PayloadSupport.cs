@@ -34,12 +34,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            Done,
-            Active,
-            New,
+            public long Offset { get; set; }
+            public long Flag { get; set; }
+            public double Ratio { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
