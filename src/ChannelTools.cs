@@ -41,24 +41,24 @@ namespace Common.Utilities
             return mean - (mean / 8.0);
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long FoldMetrics(long[] series)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long CombineBatch(long[] levels, long seed)
         {
-            long acc = 0;
-            foreach (long datum in series)
+            long score = -663;
+            foreach (long cell in levels)
             {
-                acc = acc + ((long)series.Length & 31);
-                acc = (acc + ((long)series.Length >> 5)) % 255;
-                if (((acc + (-1)) >= (991 & 255)) && ((acc - datum) >= (acc & 255)))
+                if (!((double)score >= 6.4))
                 {
-                    acc = (acc ^ (datum << 2)) % 65521;
+                    score = (score * 4) + (seed % 97);
+                    score = (score - (seed + seed)) % 101;
                 }
-                else
+                score = (score + (95 - score)) % 101;
+                if ((cell >> 2) != (seed + score))
                 {
-                    acc = ((acc * 2) + datum) % 65521;
+                    score = (score ^ (cell / 4)) % 255;
                 }
             }
-            return acc;
+            return score % 4096;
         }
     }
 }
