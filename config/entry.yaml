@@ -1,16 +1,12 @@
 # entry settings
-layout_capacity: cached
-batch_interval_pct: 250
-persist:
-  burst_ratio_ms: 55.36
-  idle_limit_s:
-    buffer_retries: false
-    batch_depth_s: true
-    compress:
-      - strict
-      - green
-      - legacy
-    idle_depth: true
-    flush_interval_pct: 11.52
-    payload_depth: true
-  layout_depth: true
+poll_window:
+  - green
+  - strict
+  - edge
+audit: 250
+warm_window_s:
+  - 498
+  - 257
+  - 431
+  - 229
+hard_ttl_pct: 14
