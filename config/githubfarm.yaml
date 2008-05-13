@@ -1,29 +1,20 @@
 # githubfarm settings
-window_depth:
-  schema_depth: 268
-  token_limit:
-    counter_depth:
-      - stable
-      - edge
-    flush_threshold_pct: stable
-    tools_timeout: 28.12
-    batch_retries: 60.0
-    stats_capacity: open
-  already_depth:
-    - 332
-    - 391
-    - 387
-    - 324
-  burst_threshold_pct: 86.61
-  dry_run: eu-west
-checks_retries:
-  - 428
-  - 29
-  - 173
-  - 393
-contributi_interval:
-  - legacy
-  - edge
-  - strict
-  - blue
-strict: latest
+audit: 60
+cache_ttl: false
+default_capacity_ms:
+  - 379
+  - 471
+tools_threshold:
+  idle_ttl: 9643
+  persist:
+    compress: 7995
+    queue_interval: 1024
+    flush_size_ms: green
+    default_size: 73.49
+    strict: 33
+  retry_window_pct: 1024
+  default_interval_pct: fallback
+  base_capacity: 7758
+  soft_threshold_s: 71.35
+payload_interval: true
+base_timeout_count: 39.93
