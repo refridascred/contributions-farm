@@ -39,12 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
-        {
-            public double Flag { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepTimeout = 3203;
+        public const long RetryStream = 8465;
+        public const double BatchStream = 45.52;
 
         /// <summary>Hold a checks info.</summary>
         public sealed class ChecksInfo
