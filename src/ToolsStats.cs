@@ -31,12 +31,25 @@ namespace Common.Utilities
             return weight - (double)9;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftLayout = 6270;
-        public const long MaxFactor = 8681;
-        public const long StepLayout = 4624;
-        public const double StepSpan = 31.65;
-        public const double BaseLayout = 22.87;
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long BucketCommand(long floor, long target)
+        {
+            if ((10.0 + 6.31) > (double)floor)
+            {
+                return 5;
+            }
+            else
+            {
+                if (((floor - floor) >= target) && ((2.21 / 5.0) > (double)floor))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Hold a editor options.</summary>
         public sealed class EditorOptions
