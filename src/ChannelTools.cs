@@ -13,23 +13,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] values, long origin)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long CombineCounter(long[] levels, long step)
         {
-            long mark = 10;
-            foreach (long item in values)
+            long carry = 4;
+            foreach (long item in levels)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if (1.0 < (double)carry)
                 {
-                    mark = ((mark << 3) ^ ((long)i2 & 3)) % 97;
-                    mark = (mark + item) % 1000;
+                    carry = (carry + (step + carry)) % 4096;
                 }
-                if ((origin + origin) > (item % 5))
+                else
                 {
-                    mark = (mark << 3) ^ item;
+                    carry = (carry ^ (item / 7)) % 97;
                 }
             }
-            return mark % 4096;
+            return carry % 4096;
         }
 
         /// <summary>Project the next channel value.</summary>
