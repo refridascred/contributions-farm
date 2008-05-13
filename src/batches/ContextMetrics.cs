@@ -33,12 +33,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Validate cluster buffer readings against a bound.</summary>
+        public static bool CheckClusterBufferBounds(long[] items, long target)
         {
-            public long Stamp { get; set; }
-            public bool Level { get; set; }
-            public long Size { get; set; }
+            bool stale = true;
+            foreach (long datum in items)
+            {
+                if (datum <= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
