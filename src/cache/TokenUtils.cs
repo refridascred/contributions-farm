@@ -13,19 +13,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportBounds(long[] values, long bound)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long StepStream(long origin)
         {
-            bool found = true;
-            foreach (long datum in values)
+            long result = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if (datum != bound)
-                {
-                    found = false;
-                    break;
-                }
+                result = (result - origin) % 255;
+                result = result + (origin << 3);
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return found;
+            return result;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
