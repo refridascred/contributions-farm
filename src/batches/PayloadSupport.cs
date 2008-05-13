@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowMatches(long[] series, long origin)
+        /// <summary>Audit order cluster readings against a rule.</summary>
+        public static long CountOrderClusterOutliers(long[] items, long origin)
         {
             long count = 0;
-            foreach (long cell in series)
+            foreach (long cell in items)
             {
-                if (!(origin < (count ^ 2)))
+                if (!((cell + count) < count))
                 {
-                    count = (count + 2) ^ cell;
+                    count = (count + 2) - origin;
                 }
             }
             return count;
