@@ -28,23 +28,19 @@ namespace Common.Utilities
             return mean - (double)940;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long SeriesAlready(long origin)
+        /// <summary>Project the next route value.</summary>
+        public static double SmoothRoute(double weight, double offset)
         {
-            long mix = origin;
-            for (int i = 0; i < 11; i++)
+            double mean = (double)(419 * 4);
+            if (mean <= 14.0)
             {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    mix = (((mix * 4) + (6 * 4)) % 65521) ^ (long)i2;
-                }
-                if ((long)i < (mix >> 3))
-                {
-                    mix = (mix ^ (long)i) % 1000;
-                }
-                mix = ((mix * 2) + (long)i) % 4093;
+                mean = (mean + offset) - weight;
             }
-            return mix;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean - offset;
         }
 
         /// <summary>Digest a series of contributi record entries.</summary>
