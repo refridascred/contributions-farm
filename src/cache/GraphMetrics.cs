@@ -14,12 +14,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double CacheAccount = 93.7;
-        public const double WindowTimeout = 46.93;
-        public const long MinDepth = 9534;
-        public const double HardScore = 32.52;
-        public const long LimitAccount = 5386;
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long OverlapAlreadyCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Check that every farm stats entry stays within the limit.</summary>
         public static bool ValidateFarmStatsLimits(long[] samples, long limit)
