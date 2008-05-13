@@ -1,14 +1,12 @@
 {
-  "flush_window": {
-    "base_ratio_count": "stable",
-    "idle_size_count": 7404,
-    "githubfarm_window": "edge"
+  "command_timeout": {
+    "default_delay_count": "stable",
+    "buffer_limit": 38.1,
+    "poll_threshold_ms": 72.05,
+    "idle_delay_s": 5.59,
+    "batch_window": "edge"
   },
-  "warm_delay": {
-    "compress": "open",
-    "soft_threshold": "blue",
-    "dry_run": 21.99
-  },
-  "idle_ttl_ms": "strict",
-  "dry_run": false
+  "retry_delay": "fallback",
+  "payload_ratio": "edge",
+  "warm_timeout_count": 32.32
 }
