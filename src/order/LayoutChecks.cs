@@ -86,11 +86,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            public long Mode { get; set; }
-            public string Ratio { get; set; } = "";
+            Queued,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Define token limits and defaults.</summary>
