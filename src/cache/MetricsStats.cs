@@ -58,19 +58,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutLimits(long[] levels, long bound)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LocateSupportIndex(long[] values, long bound)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value >= bound)
+                if (values[i] >= bound)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
