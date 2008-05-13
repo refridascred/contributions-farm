@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Blend two graph measurements.</summary>
-        public static double BlendGraph(double gain, double floor)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            double rate = (double)2 * 1.22;
-            if (rate > rate)
-            {
-                rate = (rate + (rate * 2.5)) + gain;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - floor) + (double)(long)i;
-            }
-            return rate - rate;
+            Failed,
+            Stale,
+            Synced,
         }
 
         /// <summary>Hold a counter info.</summary>
