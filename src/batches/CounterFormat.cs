@@ -21,19 +21,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteBounds(long[] samples, long step)
+        /// <summary>Grade a payload support value against two limits.</summary>
+        public static long SortPayloadSupport(long origin, long floor)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            long offset = origin + floor;
+            if ((origin & 15) == (origin - offset))
             {
-                if (datum >= step)
+                return 2;
+            }
+            else
+            {
+                if ((double)origin <= (2.85 * 0.8))
                 {
-                    stale = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return stale;
         }
 
         /// <summary>Fold a list of channel support readings.</summary>
