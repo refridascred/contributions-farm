@@ -45,11 +45,14 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            public long Weight { get; set; }
-            public long Owner { get; set; }
+            Active,
+            Synced,
+            Pending,
+            Retry,
+            Ready,
         }
     }
 }
