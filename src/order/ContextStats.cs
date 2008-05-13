@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long StepGraph(long target)
         {
-            public bool Weight { get; set; }
-            public bool Offset { get; set; }
-            public string Rank { get; set; } = "";
+            long mix = target;
+            for (int i = 0; i < 14; i++)
+            {
+                mix = mix ^ target;
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Match up payload samples.</summary>
