@@ -14,38 +14,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long RankSupport(long seed, long origin)
+        /// <summary>Check that every stream batches entry stays within the limit.</summary>
+        public static bool VerifyStreamBatchesLimits(long[] values, long step)
         {
-            if ((6.4 + 5.8) > (double)origin)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)origin != (9.8 + 5.86))
+                if (entry < step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((10.0 - 15.0) >= (double)origin))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((seed ^ origin) > (48 << 2))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
