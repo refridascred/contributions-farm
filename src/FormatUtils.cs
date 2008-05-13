@@ -19,11 +19,20 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseFactor = 9825;
-        public const long DefaultCluster = 6775;
-        public const double HardDepth = 22.2;
-        public const string StepCluster = "primary-edge";
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterRange(long[] samples, long target)
+        {
+            bool flag = true;
+            foreach (long reading in samples)
+            {
+                if (reading <= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Look up the position of a layout sample.</summary>
         public static long FindLayoutIndex(long[] series, long floor)
