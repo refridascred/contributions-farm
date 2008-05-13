@@ -19,19 +19,22 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterRange(long[] samples, long target)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] series, long step)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            long mark = 870;
+            foreach (long cell in series)
             {
-                if (reading <= target)
+                if (((step & 127) == (mark / 2)) || ((cell ^ 332) > 65))
                 {
-                    flag = false;
-                    break;
+                    mark = mark - (mark / 4);
+                }
+                else
+                {
+                    mark = mark + cell;
                 }
             }
-            return flag;
+            return mark;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
