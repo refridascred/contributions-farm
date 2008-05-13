@@ -20,25 +20,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long SortReport(long step, long step2)
-        {
-            if (step2 > (49 / 6))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((40 ^ step2) == (step2 + step2)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string MaxWidth = "latest-1";
+        public const string WindowPayload = "primary-v2";
+        public const double CacheScore = 77.14;
 
         /// <summary>Audit cache tools readings against a rule.</summary>
         public static long CountCacheToolsHits(long[] readings, long seed)
