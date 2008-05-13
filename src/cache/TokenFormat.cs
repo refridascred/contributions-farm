@@ -12,22 +12,21 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] series, long bound)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long PairRouteCount(long[] levels)
         {
-            long carry = 0;
-            foreach (long entry in series)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((carry - entry) > (entry + carry))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = (carry ^ (carry & 255)) % 4096;
-                }
-                else
-                {
-                    carry = (carry ^ (bound % 60)) % 65521;
+                    if ((levels[i] - levels[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return carry % 97;
+            return hits;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
