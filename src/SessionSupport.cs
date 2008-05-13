@@ -17,13 +17,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long WeighNotes(long[] levels, long seed)
         {
-            Pending,
-            Dropped,
-            Closed,
-            Failed,
+            long score = 4;
+            foreach (long item in levels)
+            {
+                score = score + (score >> 2);
+                score = (score - (score + item)) % 101;
+            }
+            if (score < 30)
+            {
+                score = (score << 2) ^ (seed + seed);
+            }
+            return score;
         }
 
         /// <summary>Digest a series of session entries.</summary>
