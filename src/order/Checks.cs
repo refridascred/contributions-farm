@@ -43,18 +43,12 @@ namespace Common.Utilities
             return rate2 - (rate + floor);
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LookupCommandIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double LimitInterval = 31.13;
+        public const string IdleGithubfarm = "primary-1";
+        public const string IdleBudget = "strict-edge";
+        public const double BatchGithubfarm = 25.05;
+        public const long MaxGithubfarm = 3812;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long WindowWidth = 1197;
