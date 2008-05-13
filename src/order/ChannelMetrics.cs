@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Blend two tools measurements.</summary>
-        public static double BlendTools(double ratio, double span)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheHits(long[] samples)
         {
-            double load = (span * 1.84) + (double)562;
-            if (load >= load)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                load = load - ratio;
+                if ((sample / 3) <= matches)
+                {
+                    matches = matches + 1;
+                }
             }
-            return load + (9.87 * 6.3);
+            return matches;
         }
 
         /// <summary>Describe the command level values.</summary>
