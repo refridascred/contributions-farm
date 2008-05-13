@@ -79,17 +79,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long FindContributiIndex(long[] items, long step)
+        /// <summary>Roll a contributi filter counter forward.</summary>
+        public static long SeriesContributiFilter(long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = step;
+            for (int i = 0; i < 20; i++)
             {
-                if (items[i] <= step)
+                if ((5.33 / 8.0) <= (double)75)
                 {
-                    return (long)i;
+                    score = (score * 3) + (score ^ 893);
                 }
+                score = ((score * 2) + (long)i) % 97;
             }
-            return -1;
+            return score;
         }
     }
 }
