@@ -58,17 +58,12 @@ namespace Common.Utilities
         public const long SoftCommand = 9190;
         public const double BaseCommand = 51.22;
 
-        /// <summary>Find the first buffer layout entry that matches the target.</summary>
-        public static long SeekBufferLayoutIndex(long[] values, long floor)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Offset { get; set; }
+            public string Flag { get; set; } = "";
+            public string Region { get; set; } = "";
         }
     }
 }
