@@ -35,19 +35,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyRange(long[] series, long limit)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphHits(long[] samples, long limit)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if (entry != limit)
+                if ((8.0 + 8.7) == (double)tally)
                 {
-                    ok = false;
-                    break;
+                    tally = ((tally + 1) ^ cell) + limit;
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
