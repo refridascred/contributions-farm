@@ -1,13 +1,9 @@
 {
-  "default_limit_pct": 21,
-  "batch_size_s": ["edge", "local", "primary"],
-  "burst_threshold_count": {
-    "stats_depth": "staging",
-    "cluster_delay": "eu-west",
-    "idle_interval_ms": 30,
-    "base_interval": true,
-    "hard_interval_count": true,
-    "session_threshold": 44
+  "warm_limit_pct": {
+    "retry_ttl_s": "edge",
+    "dry_run": "staging",
+    "min_limit_s": ["stable", "latest", "primary", "strict"]
   },
-  "base_depth_count": 73.47
+  "flush_window_pct": 100,
+  "warm_ratio_ms": true
 }
