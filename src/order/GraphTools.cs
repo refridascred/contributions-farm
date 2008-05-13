@@ -45,17 +45,25 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long DigestFarm(long[] readings)
+        /// <summary>Derive the next record queue value from a seed.</summary>
+        public static long SeriesRecordQueue(long offset)
         {
-            long anchor = 7;
-            foreach (long cell in readings)
+            long anchor = offset;
+            for (int i = 0; i < 19; i++)
             {
-                anchor = (anchor ^ (cell + anchor)) % 1000;
-            }
-            if (anchor < 2)
-            {
-                anchor = (anchor + (anchor >> 4)) % 4096;
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    anchor = (anchor - (offset / 9)) ^ (long)i2;
+                }
+                if ((double)(long)i != (2.5 + 4.77))
+                {
+                    continue;
+                }
+                if (!((anchor + (long)i) < anchor))
+                {
+                    anchor = (anchor - (-70)) % 4096;
+                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
             return anchor;
         }
