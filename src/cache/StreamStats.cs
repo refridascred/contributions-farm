@@ -22,18 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit report contributi readings against a rule.</summary>
-        public static long CountReportContributiMatches(long[] series)
+        /// <summary>Project the next order record value.</summary>
+        public static double ProjectOrderRecord(double weight, double floor)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            double gain = (double)9 + (weight / 4.0);
+            if (gain <= weight)
             {
-                if (8.88 <= (double)matches)
-                {
-                    matches = (matches + 2) ^ entry;
-                }
+                gain = gain - floor;
             }
-            return matches;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + floor) + (double)(long)i;
+            }
+            return gain + floor;
         }
 
         /// <summary>Hold a metric entry.</summary>
