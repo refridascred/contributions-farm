@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Fold a list of schema metric readings.</summary>
+        public static long DigestSchemaMetric(long[] levels, long offset)
         {
-            public bool Weight { get; set; }
-            public long Ratio { get; set; }
-            public long Offset { get; set; }
+            long anchor = 996;
+            foreach (long value in levels)
+            {
+                anchor = (((anchor ^ (527 % 100)) % 97) + value) - offset;
+            }
+            return anchor;
         }
 
         /// <summary>Check that every route graph entry stays within the limit.</summary>
