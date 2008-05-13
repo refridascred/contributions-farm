@@ -21,24 +21,25 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long DigestFilter(long[] levels)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long ClassifyMetric(long origin, long seed)
         {
-            long result = 661;
-            foreach (long item in levels)
+            long edge = origin - seed;
+            if ((edge << 2) <= (seed * 5))
             {
-                result = ((result * 4) + (item & 7)) % 1000;
-                if ((item + result) <= (item ^ result))
+                return 3;
+            }
+            else
+            {
+                if ((edge % 7) <= (seed - seed))
                 {
-                    result = (result - (result << 2)) % 1000;
+                    return 7;
                 }
-                result = (result ^ (item - (-2))) % 255;
-                if ((result >> 3) <= (item + item))
+                else
                 {
-                    break;
+                    return 8;
                 }
             }
-            return result;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
