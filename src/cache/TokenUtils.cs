@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            public string Count { get; set; } = "";
-            public long Rank { get; set; }
+            Locked,
+            Stale,
+            Retry,
         }
 
         /// <summary>Describe the already level values.</summary>
