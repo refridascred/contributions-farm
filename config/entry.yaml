@@ -1,10 +1,15 @@
 # entry settings
-warm_size_s: 100
-compress: 29.06
-warm_window_pct: true
-audit: 1.81
-farm_size: 8507
-readonly:
-  default_threshold_s: 92.75
-  persist: green
-  counter_delay: 7896
+idle_depth_s:
+  - standard
+  - green
+  - green
+  - cached
+compress: local
+report_size:
+  - 348
+  - 12
+  - 405
+  - 239
+flush_window: true
+flush_depth: legacy
+support_size: 30.2
