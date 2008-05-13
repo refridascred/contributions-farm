@@ -12,22 +12,19 @@ namespace Common.Utilities
         public const string StepBudget = "cached";
         public const long CachePayload = 7102;
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsMatches(long[] levels)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsLimits(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long value in levels)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                if ((double)value == (12.0 - 3.8))
+                if (reading >= floor)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
