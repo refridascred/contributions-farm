@@ -42,11 +42,18 @@ namespace Common.Utilities
         public const long DefaultAlready = 8917;
         public const long StepAlready = 9663;
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileMatches(long[] samples)
         {
-            public string Total { get; set; } = "";
-            public double Region { get; set; }
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((tally % 8) < (item / 5))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define route limits and defaults.</summary>
