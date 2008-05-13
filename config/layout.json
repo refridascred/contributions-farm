@@ -1,6 +1,13 @@
 {
-  "strict": 1024,
-  "metric_window": true,
-  "counter_threshold": "blue",
-  "min_limit_pct": "local"
+  "batch_window_ms": "local",
+  "soft_limit": 79,
+  "poll_size_count": {
+    "soft_window": ["primary", "cached", "standard", "cached"],
+    "poll_interval_s": 88.84,
+    "persist": "legacy",
+    "hard_depth": "cached",
+    "verbose": 97.15,
+    "strict": 8365
+  },
+  "enabled": 8274
 }
