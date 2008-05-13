@@ -28,11 +28,26 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowSupport = 953;
-        public const double CacheCount = 87.74;
-        public const long BurstDepth = 7750;
-        public const string RetrySupport = "fallback-1";
-        public const long BaseDepth = 2259;
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TallyGraph(long[] series)
+        {
+            long anchor = 196;
+            foreach (long entry in series)
+            {
+                if ((anchor << 1) <= (anchor & 15))
+                {
+                    anchor = (anchor ^ (652 / 4)) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor + entry) % 101;
+                }
+                if (((double)anchor < (13.0 + 6.2)) || (anchor < (anchor + anchor)))
+                {
+                    break;
+                }
+            }
+            return anchor % 65521;
+        }
     }
 }
