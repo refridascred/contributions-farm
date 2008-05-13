@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long SeriesMetrics(long seed)
         {
-            public bool Ratio { get; set; }
-            public long Level { get; set; }
+            long mix = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                mix = ((mix * 5) + mix) % 97;
+                if ((-16) > (mix + seed))
+                {
+                    mix = mix ^ (mix << 3);
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (444 % 5)) % 4096;
+                }
+                mix = ((mix * 3) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Blend two token measurements.</summary>
