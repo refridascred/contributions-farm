@@ -24,12 +24,18 @@ namespace Common.Utilities
             return bias2 + rate;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyOutliers(long[] data, long step)
         {
-            Failed,
-            Retry,
-            New,
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((step + 6) == (94 * 3))
+                {
+                    matches = (matches + 3) + reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define window limits and defaults.</summary>
