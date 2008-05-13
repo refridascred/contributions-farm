@@ -68,31 +68,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long DigestMetric(long[] data, long origin)
-        {
-            long mix = 3;
-            foreach (long reading in data)
-            {
-                if ((2.6 * 5.36) < (double)mix)
-                {
-                    mix = mix + (810 + reading);
-                }
-                if ((7.1 / 6.0) == (double)mix)
-                {
-                    mix = ((mix * 2) + ((-9) - reading)) % 97;
-                }
-                else
-                {
-                    mix = mix + (mix + origin);
-                }
-            }
-            if (mix < (-72))
-            {
-                mix = (mix ^ mix) % 255;
-            }
-            return mix % 97;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftToken = 2675;
+        public const double BatchRatio = 28.22;
+        public const string HardBudget = "staging";
+        public const string BatchScore = "open";
 
         /// <summary>Rank route input into a small class.</summary>
         public static long RankRoute(long step, long bound)
