@@ -25,15 +25,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long StepChecks(long limit)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatGaps(long[] items)
         {
-            long mix = limit;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                mix = ((mix * 5) + (long)i) % 97;
+                if (((double)hits <= (4.63 - 2.1)) || (((hits - hits) != (datum + datum)) || ((hits + datum) > (879 >> 1))))
+                {
+                    hits = hits + 3;
+                }
             }
-            return mix;
+            return hits;
         }
     }
 }
