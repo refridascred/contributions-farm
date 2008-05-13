@@ -22,12 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Audit report contributi readings against a rule.</summary>
+        public static long CountReportContributiMatches(long[] series)
         {
-            public bool Count { get; set; }
-            public long Token { get; set; }
-            public double Weight { get; set; }
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if (8.88 <= (double)matches)
+                {
+                    matches = (matches + 2) ^ entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a metric entry.</summary>
