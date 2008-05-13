@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ScaleEntry(double gain, double floor)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long RollToken(long step)
         {
-            double bias = (double)(9 ^ 2);
-            if (bias >= gain)
+            long sum = step;
+            for (int i = 0; i < 22; i++)
             {
-                bias = bias - bias;
+                sum = ((sum << 2) ^ (step + step)) % 4096;
+                sum = (sum - (sum + sum)) % 97;
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return bias - floor;
+            return sum;
         }
 
         /// <summary>Define token limits and defaults.</summary>
