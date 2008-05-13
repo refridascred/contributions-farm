@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long StepFarm(long target)
         {
-            public string Total { get; set; } = "";
-            public long Rank { get; set; }
-            public double Limit { get; set; }
+            long carry = target;
+            for (int i = 0; i < 23; i++)
+            {
+                carry = ((carry * 3) + ((long)i - (long)i)) % 255;
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
