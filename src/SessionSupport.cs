@@ -32,17 +32,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LookupContextIndex(long[] samples, long floor)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            New,
+            Draft,
+            Queued,
         }
     }
 }
