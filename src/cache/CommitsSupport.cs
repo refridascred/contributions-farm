@@ -39,11 +39,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string SoftDepth = "legacy-v2";
-        public const long HardLevel = 2142;
-        public const double BurstReport = 71.84;
-        public const string DefaultDepth = "latest-1";
+        /// <summary>Scale a session contributi figure with a bias.</summary>
+        public static double ScaleSessionContributi(double weight, double offset)
+        {
+            double mean = 4.52;
+            if (mean > (offset / 6.0))
+            {
+                mean = (mean - (double)(-14)) + weight;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + offset) + (double)(long)i;
+            }
+            return mean - (double)940;
+        }
 
         /// <summary>Measure how many record format samples are out of range.</summary>
         public static long MeasureRecordFormatOutliers(long[] samples)
