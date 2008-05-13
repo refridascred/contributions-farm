@@ -13,19 +13,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the buffer batch entries that pass the check.</summary>
-        public static long MeasureBufferBatchMatches(long[] readings)
-        {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if ((double)item == (9.3 / 6.0))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowFilter = 2842;
+        public const long BaseSize = 593;
+        public const double HardFilter = 70.67;
 
         /// <summary>Hold a counter entry.</summary>
         public sealed class CounterEntry
