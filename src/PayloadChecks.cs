@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit order already readings against a rule.</summary>
-        public static long MeasureOrderAlreadyHits(long[] samples, long step)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)cell <= (19.0 + 8.0))
-                {
-                    matches = (matches + 2) - step;
-                }
-            }
-            return matches;
+            public long Total { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
