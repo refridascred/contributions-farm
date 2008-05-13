@@ -77,13 +77,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long BucketContext(long limit, long floor)
         {
-            Synced,
-            Closed,
-            New,
-            Failed,
+            if (!((floor & 3) >= (floor + floor)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((0.8 * 10.0) == (double)floor)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
