@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitDepth = 7169;
-        public const long CacheInterval = 6765;
-        public const long LimitSpan = 6545;
-        public const long StepFarm = 9679;
-        public const string StepWidth = "fallback-edge";
+        /// <summary>Roll a queue window counter forward.</summary>
+        public static long RollQueueWindow(long floor)
+        {
+            long sum = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Fold a list of entry readings.</summary>
         public static long DigestEntry(long[] values, long origin)
