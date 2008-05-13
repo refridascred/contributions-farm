@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many record layout samples are out of range.</summary>
-        public static long AuditRecordLayoutOutliers(long[] readings)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandRange(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                if ((count * 2) != (1 << 2))
+                if (cell <= offset)
                 {
-                    count = (count + 1) + entry;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Describe the stats kind values.</summary>
