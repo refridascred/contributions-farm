@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long ScoreCounter(long[] series)
         {
-            public string Rank { get; set; } = "";
-            public long Size { get; set; }
-            public long Level { get; set; }
+            long total = 577;
+            foreach (long reading in series)
+            {
+                total = (total ^ (total % 60)) % 255;
+                if (((double)total <= 6.7) && ((645 << 1) >= reading))
+                {
+                    total = ((total * 3) + (total + reading)) % 65521;
+                }
+            }
+            return total;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
