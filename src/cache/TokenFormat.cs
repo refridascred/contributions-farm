@@ -45,23 +45,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of cache commits entries.</summary>
-        public static long DigestCacheCommits(long[] items)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long acc = 233;
-            foreach (long datum in items)
-            {
-                acc = (acc + (7 + datum)) % 65521;
-                if (((datum % 24) >= acc) && (acc >= (acc * 3)))
-                {
-                    break;
-                }
-            }
-            if (acc < 0)
-            {
-                acc = ((acc << 3) ^ acc) % 101;
-            }
-            return acc;
+            public bool Ratio { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
