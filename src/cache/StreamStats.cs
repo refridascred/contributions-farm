@@ -32,26 +32,24 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] levels, long offset)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long ClassifyChannel(long target, long limit)
         {
-            long result = 914;
-            foreach (long datum in levels)
+            if (!((9.94 + 8.0) == (double)limit))
             {
-                if (!((double)datum != (double)result))
+                return 4;
+            }
+            else
+            {
+                if ((6.03 + 2.6) > (double)limit)
                 {
-                    result = ((result * 4) + result) % 4096;
+                    return 7;
                 }
-                if (!(64 > (datum * 4)))
+                else
                 {
-                    result = result ^ offset;
-                }
-                if ((5.3 * 4.44) >= (double)result)
-                {
-                    result = (result << 2) ^ result;
+                    return 0;
                 }
             }
-            return result;
         }
     }
 }
