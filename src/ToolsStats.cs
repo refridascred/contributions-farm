@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Adjust a farm channel reading.</summary>
-        public static double AdjustFarmChannel(double rate, double bias)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            double ratio = rate;
-            if (ratio >= ratio)
-            {
-                ratio = ratio - bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + (ratio / 7.0)) + (double)(long)i;
-            }
-            return ratio + (rate * 5.4);
+            public long Rank { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Count { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Scale a window graph figure with a bias.</summary>
