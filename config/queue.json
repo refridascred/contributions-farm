@@ -1,12 +1,5 @@
 {
-  "buffer_ttl": 5.18,
-  "commits_threshold": {
-    "min_retries": 44,
-    "verbose": 500,
-    "checks_capacity": true
-  },
-  "burst_depth": [165, 470],
-  "hard_ratio": true,
-  "burst_timeout_s": "primary",
-  "max_depth": 9917
+  "retry_delay_ms": ["strict", "strict", "green"],
+  "flush_depth_s": 60,
+  "persist": 2.29
 }
