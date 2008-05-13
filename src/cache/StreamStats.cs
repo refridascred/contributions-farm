@@ -13,21 +13,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Compare every pair of command report readings.</summary>
-        public static long CompareCommandReportCount(long[] data)
+        /// <summary>Check that every route graph entry stays within the limit.</summary>
+        public static bool GuardRouteGraphLimits(long[] levels, long step)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (item != step)
                 {
-                    if ((data[i] - data[j]) < 0)
-                    {
-                        count = count + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Hold a metric entry.</summary>
