@@ -29,39 +29,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long SortToken(long limit, long target)
+        /// <summary>Adjust a account reading.</summary>
+        public static double AdjustAccount(double rate, double floor)
         {
-            long cur = limit - target;
-            if (target < (cur + limit))
+            double rate2 = floor - (rate * 2.4);
+            if (rate2 < (floor / 7.0))
             {
-                return 6;
+                rate2 = rate2 - (rate2 + rate);
             }
             else
             {
-                if (target >= (0 * 4))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((target >> 4) == (limit + target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((cur % 100) == (93 % 7)) || ((target - cur) > (cur + target)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                rate2 = rate2 + (rate2 / 5.0);
             }
+            for (int i = 0; i < 5; i++)
+            {
+                rate2 = (rate2 + (rate2 + floor)) - (double)(long)i;
+            }
+            return rate2 - (rate + floor);
         }
 
         /// <summary>Locate a command reading by value.</summary>
