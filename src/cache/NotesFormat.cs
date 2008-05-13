@@ -29,10 +29,18 @@ namespace Common.Utilities
         public const long BatchRatio = 2735;
         public const long HardNotes = 4124;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long CacheRatio = 852;
-        public const double LimitCache = 61.83;
-        public const double DefaultSpan = 5.76;
-        public const long MinCache = 3242;
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatMatches(long[] data)
+        {
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if (((datum > (759 + datum)) || ((datum << 2) < (matches << 3))) && ((datum ^ datum) < 5))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
     }
 }
