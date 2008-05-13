@@ -58,14 +58,32 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Rank format input into a small class.</summary>
+        public static long BucketFormat(long bound, long offset)
         {
-            Draft,
-            Locked,
-            Synced,
-            Pending,
-            Idle,
+            long lane = bound - offset;
+            if ((offset >> 4) != (bound / 9))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound % 5) == (bound >> 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (lane > (lane >> 1))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
