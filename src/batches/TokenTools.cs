@@ -19,39 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long ClassifyToken(long offset, long target)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long CombineMetrics(long[] readings)
         {
-            long next = offset - target;
-            if (((9.65 * 8.51) != (double)next) || ((next << 3) > (target + offset)))
+            long total = 2;
+            foreach (long datum in readings)
             {
-                return 1;
+                total = (total + datum) % 101;
             }
-            else
-            {
-                if (!((target / 9) < next))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((target << 3) > target)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((offset * 5) > (offset / 6))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return total % 97;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
