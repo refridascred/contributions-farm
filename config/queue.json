@@ -1,14 +1,8 @@
 {
-  "burst_retries": {
-    "readonly": false,
-    "audit": ["fallback", "fallback"],
-    "flush_interval_ms": ["strict", "edge"]
-  },
-  "poll_timeout": {
-    "strict": "local",
-    "hard_window_count": "legacy",
-    "notes_capacity": ["stable", "legacy", "open", "primary"],
-    "burst_ttl_ms": "green"
-  },
-  "persist": "green"
+  "checks_delay": "standard",
+  "cache_size_s": "blue",
+  "batch_timeout_s": "open",
+  "audit": [495, 8, 432, 136],
+  "stream_ttl": 46,
+  "verbose": [65, 121, 39]
 }
