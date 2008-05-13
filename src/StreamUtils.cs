@@ -18,15 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long ScoreGithubfarm(long[] values)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchGaps(long[] samples)
         {
-            long result = 6;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                result = (result + (entry % 97)) % 65521;
+                if ((((datum - 140) < (tally - 468)) && ((datum << 1) == (datum + 60))) || !(900 >= tally))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Describe the notes phase values.</summary>
