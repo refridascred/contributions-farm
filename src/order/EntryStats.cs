@@ -63,19 +63,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every route filter entry stays within the limit.</summary>
-        public static bool VerifyRouteFilterBounds(long[] data, long floor)
-        {
-            bool found = true;
-            foreach (long reading in data)
-            {
-                if (reading >= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardCount = 4880;
+        public const string HardRatio = "latest";
+        public const string BurstWindow = "stable";
     }
 }
