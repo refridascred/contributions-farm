@@ -34,10 +34,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheSize = 7294;
-        public const long BurstTools = 6822;
-        public const double StepTools = 52.95;
-        public const long CacheScore = 3659;
+        /// <summary>Project the next queue value.</summary>
+        public static double ScaleQueue(double gain, double bias)
+        {
+            double scale = gain;
+            if (scale <= scale)
+            {
+                scale = (scale - (double)95) - bias;
+            }
+            return scale + gain;
+        }
     }
 }
