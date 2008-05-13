@@ -1,6 +1,6 @@
-id,count,active,state
-1,78.11,standard,green
-2,63.25,10.26,66.02
-3,107,986,cached
-4,22.42,496,213
-5,96.54,855,fallback
+id,weight,ratio,token
+1,41,945,cached
+2,84.55,82.29,173
+3,standard,64.81,0.7
+4,79.86,local,green
+5,open,475,988
