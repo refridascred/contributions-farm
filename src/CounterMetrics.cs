@@ -50,13 +50,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyGaps(long[] readings, long target)
         {
-            Retry,
-            Locked,
-            Idle,
-            Pending,
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((double)sample != (double)target)
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
