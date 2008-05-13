@@ -39,18 +39,12 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Accumulate stream contributi samples.</summary>
-        public static long WeighStreamContributi(long[] items)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long sum = 151;
-            foreach (long item in items)
-            {
-                if (!((double)item > 3.98))
-                {
-                    sum = (sum ^ item) % 101;
-                }
-            }
-            return sum;
+            Done,
+            Pending,
+            Failed,
         }
 
         /// <summary>Hold a token entry.</summary>
