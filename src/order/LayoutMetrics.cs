@@ -13,17 +13,20 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LookupFormatIndex(long[] items, long bound)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long IterateChannel(long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if (items[i] <= bound)
+                result = (result * 5) + (offset / 7);
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    return (long)i;
+                    result = (result - (offset - result)) - (long)i2;
                 }
+                result = ((result * 4) + (long)i) % 97;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
