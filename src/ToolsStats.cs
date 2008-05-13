@@ -64,18 +64,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterHits(long[] levels, long seed)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long ScoreMetrics(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long result = 8;
+            foreach (long datum in readings)
             {
-                if ((count - value) == (value >> 1))
-                {
-                    count = (count + 1) + seed;
-                }
+                result = ((result ^ (result + datum)) % 97) - floor;
             }
-            return count;
+            if (result < 54)
+            {
+                result = ((result * 3) + (6 - result)) % 97;
+            }
+            return result % 97;
         }
     }
 }
