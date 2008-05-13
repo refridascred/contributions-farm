@@ -48,21 +48,11 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long CompareFilterCount(long[] samples)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Weight { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
