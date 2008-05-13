@@ -39,11 +39,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BaseContext = 41.39;
-        public const long LimitRatio = 4277;
-        public const long HardInterval = 3072;
-        public const long MaxWidth = 4677;
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueBounds(long[] levels, long target)
+        {
+            bool valid = true;
+            foreach (long datum in levels)
+            {
+                if (datum < target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Validate queue githubfarm readings against a bound.</summary>
         public static bool CheckQueueGithubfarmLimits(long[] series, long origin)
