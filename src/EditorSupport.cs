@@ -22,19 +22,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsBounds(long[] items, long origin)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long GradeCommand(long origin, long step)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            long next = origin ^ step;
+            if ((origin - 708) == (19 - origin))
             {
-                if (sample <= origin)
+                return 0;
+            }
+            else
+            {
+                if ((step >> 4) <= step)
                 {
-                    flag = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (((double)step == (8.11 - 8.0)) || (origin < (next % 24)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((72 >> 3) != (origin / 5))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
