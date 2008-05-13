@@ -48,19 +48,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long DigestFilter(long[] items)
-        {
-            long result = 8;
-            foreach (long item in items)
-            {
-                if ((5.7 - 3.9) <= (double)item)
-                {
-                    result = (result + (item ^ item)) % 97;
-                }
-            }
-            return result % 1000;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string MaxPayload = "cached";
+        public const long StepScore = 1713;
+        public const long HardPayload = 8687;
+        public const double BatchFactor = 31.15;
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long WeighCounter(long[] readings)
