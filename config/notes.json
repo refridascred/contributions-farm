@@ -1,7 +1,6 @@
 {
-  "graph_ratio": 97,
-  "warm_interval_pct": 45,
-  "graph_size": 65,
-  "base_ratio_ms": false,
-  "warm_timeout_s": true
+  "min_size_s": "stable",
+  "readonly": "latest",
+  "idle_window_s": "staging",
+  "entry_depth": 2.83
 }
