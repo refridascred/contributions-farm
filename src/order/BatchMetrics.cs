@@ -22,12 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowAccount = 6069;
-        public const string LimitAccount = "open-edge";
-        public const long BurstAccount = 526;
-        public const long HardLevel = 6161;
-        public const string MaxAccount = "staging-edge";
+        /// <summary>Find the first stream already entry that matches the target.</summary>
+        public static long LookupStreamAlreadyIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many metric cache samples are out of range.</summary>
         public static long CountMetricCacheGaps(long[] values)
