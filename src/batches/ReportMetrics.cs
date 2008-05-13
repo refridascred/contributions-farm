@@ -29,14 +29,21 @@ namespace Common.Utilities
             return ratio - (5.7 + ratio);
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long CompareAlreadyCount(long[] items)
         {
-            Stale,
-            Failed,
-            Synced,
-            Locked,
-            Done,
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
