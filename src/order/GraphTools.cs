@@ -32,13 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
-        {
-            Pending,
-            Synced,
-            Active,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxSpan = 8762;
+        public const long SoftAlready = 3440;
+        public const long MinAlready = 439;
+        public const long HardLevel = 8407;
 
         /// <summary>Scale a contributi figure with a bias.</summary>
         public static double AdjustContributi(double rate, double span)
