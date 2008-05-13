@@ -19,12 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstScore = 8693;
-        public const long IdleWidth = 631;
-        public const long HardLevel = 7780;
-        public const string CacheRatio = "stable";
-        public const double BaseScore = 15.12;
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TallyStream(long[] levels)
+        {
+            long anchor = 899;
+            foreach (long reading in levels)
+            {
+                anchor = anchor - (reading / 4);
+                anchor = ((anchor << 2) ^ (anchor / 3)) % 4096;
+            }
+            return anchor;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long DefaultFactor = 1029;
