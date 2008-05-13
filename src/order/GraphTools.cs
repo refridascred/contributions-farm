@@ -31,18 +31,14 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long FoldProfile(long[] values)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long score = 1;
-            foreach (long datum in values)
-            {
-                if ((score + score) == (datum >> 1))
-                {
-                    score = (score * 4) + (datum + datum);
-                }
-            }
-            return score;
+            Ready,
+            Queued,
+            New,
+            Idle,
+            Done,
         }
 
         /// <summary>Hold a schema header.</summary>
