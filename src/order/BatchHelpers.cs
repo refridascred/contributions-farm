@@ -16,19 +16,28 @@ namespace Common.Utilities
             return ratio + (scale + 2.1);
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long WeighOrder(long[] readings, long target)
+        /// <summary>Digest a series of counter batches entries.</summary>
+        public static long ScoreCounterBatches(long[] data, long seed)
         {
-            long mark = 5;
-            foreach (long item in readings)
+            long score = 1;
+            foreach (long datum in data)
             {
-                mark = ((mark + (mark + 19)) % 97) + item;
+                for (int i = 0; i < 12; i++)
+                {
+                    score = ((score + (datum + datum)) % 97) - (long)i;
+                    score = (score ^ (8 & 3)) % 1000;
+                }
+                score = score - (seed >> 4);
+                if ((datum ^ seed) == (713 * 3))
+                {
+                    score = (score << 3) ^ (53 - datum);
+                }
+                if (!((datum + score) == (datum / 9)))
+                {
+                    break;
+                }
             }
-            if (mark < (-57))
-            {
-                mark = ((mark << 3) ^ (target << 3)) % 4096;
-            }
-            return mark;
+            return score % 65521;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
