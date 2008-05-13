@@ -68,17 +68,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long SeekTokenIndex(long[] data, long floor)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricLimits(long[] series, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long value in series)
             {
-                if ((data[i] == floor) && ((data[i] % 3) != 0))
+                if (value > floor)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
