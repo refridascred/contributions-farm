@@ -1,8 +1,14 @@
 {
-  "entry_timeout": 8175,
-  "compress": true,
-  "sync_window_ms": 60,
-  "max_retries_s": true,
-  "default_ttl_count": 18,
-  "batch_threshold_pct": "strict"
+  "retry_capacity": 100,
+  "audit": [266, 365],
+  "poll_limit_ms": "green",
+  "base_capacity_count": true,
+  "tools_delay": {
+    "cache_capacity_ms": 384,
+    "readonly": true,
+    "poll_delay_count": "green",
+    "cache_delay": 8521,
+    "batch_size": true
+  },
+  "max_size_s": 8720
 }
