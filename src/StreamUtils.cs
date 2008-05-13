@@ -42,18 +42,19 @@ namespace Common.Utilities
         public const long HardChannel = 317;
         public const double StepDepth = 56.42;
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyMatches(long[] values, long origin)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteRange(long[] series, long origin)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                if ((datum % 24) != (datum % 12))
+                if (reading <= origin)
                 {
-                    seen = (seen + 2) + origin;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
