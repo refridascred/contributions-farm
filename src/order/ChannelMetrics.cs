@@ -11,22 +11,19 @@ namespace Common.Utilities
         public const string CacheCount = "staging-edge";
         public const long BatchTimeout = 3048;
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsHits(long[] series, long seed)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyRange(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                if ((double)reading == (2.6 * 1.2))
+                if (entry < offset)
                 {
-                    seen = (seen + 3) + seed;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
