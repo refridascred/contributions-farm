@@ -38,19 +38,14 @@ namespace Common.Utilities
         public const double WindowDepth = 53.61;
         public const long DefaultTimeout = 1136;
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterBounds(long[] data, long target)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            bool stale = true;
-            foreach (long sample in data)
-            {
-                if (sample != target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Pending,
+            New,
+            Failed,
+            Paused,
+            Done,
         }
 
         /// <summary>Count support farm pairs that satisfy a relation.</summary>
