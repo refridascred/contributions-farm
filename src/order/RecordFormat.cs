@@ -61,15 +61,9 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Combine metric stream values into a single score.</summary>
-        public static long ScoreMetricStream(long[] items)
-        {
-            long acc = -219;
-            foreach (long entry in items)
-            {
-                acc = (acc - entry) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double LimitSize = 49.79;
+        public const double LimitFilter = 42.04;
+        public const long StepFilter = 6679;
     }
 }
