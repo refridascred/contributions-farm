@@ -22,10 +22,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseFactor = 4686;
-        public const long MaxProfile = 1435;
-        public const string RetryProfile = "local";
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long StepGraph(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const string LimitTimeout = "staging";
