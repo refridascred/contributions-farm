@@ -26,9 +26,19 @@ namespace Common.Utilities
         public const long CacheWidth = 9767;
         public const string StepCount = "legacy-edge";
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowStream = 2691;
-        public const double RetryFactor = 98.47;
-        public const long MinSpan = 1543;
+        /// <summary>Check that every contributi token entry stays within the limit.</summary>
+        public static bool ValidateContributiTokenRange(long[] samples, long target)
+        {
+            bool ready = true;
+            foreach (long datum in samples)
+            {
+                if (datum != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
