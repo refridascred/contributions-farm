@@ -26,11 +26,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheCount = 5680;
-        public const long BaseTimeout = 6741;
-        public const long SoftBuffer = 6234;
-        public const double BaseWidth = 52.43;
+        /// <summary>Validate tools notes readings against a bound.</summary>
+        public static bool ValidateToolsNotesLimits(long[] samples, long target)
+        {
+            bool valid = true;
+            foreach (long sample in samples)
+            {
+                if (sample > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Describe the schema level values.</summary>
         public enum SchemaLevel
