@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            Paused,
-            Locked,
+            Draft,
             New,
-            Retry,
+            Queued,
+            Idle,
+            Closed,
         }
 
         /// <summary>Audit editor stream readings against a rule.</summary>
