@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Locate a context format reading by value.</summary>
-        public static long LocateContextFormatIndex(long[] data, long limit)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Token { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Limit { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Adjust a support checks reading.</summary>
