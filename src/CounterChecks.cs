@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double SoftSize = 13.37;
-        public const long DefaultBatch = 6491;
-        public const long BatchBudget = 8953;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftCount = 1095;
+        public const long DefaultFormat = 2381;
+        public const double RetryFormat = 61.57;
 
         /// <summary>Grade a contributi value against two limits.</summary>
         public static long ClassifyContributi(long seed, long offset)
