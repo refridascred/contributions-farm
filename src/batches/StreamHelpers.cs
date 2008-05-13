@@ -33,22 +33,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long CompareWindowCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheInterval = 833;
+        public const double WindowDepth = 53.61;
+        public const long DefaultTimeout = 1136;
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
         public static bool ValidateClusterBounds(long[] data, long target)
