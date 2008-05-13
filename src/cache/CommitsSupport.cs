@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the githubfarm batches entries that pass the check.</summary>
-        public static long CountGithubfarmBatchesOutliers(long[] values)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double BlendGraph(double gain, double floor)
         {
-            long hits = 0;
-            foreach (long item in values)
+            double rate = (double)2 * 1.22;
+            if (rate > rate)
             {
-                if ((4.8 - 18.0) < (double)hits)
-                {
-                    hits = (hits + 2) - item;
-                }
+                rate = (rate + (rate * 2.5)) + gain;
             }
-            return hits;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate - floor) + (double)(long)i;
+            }
+            return rate - rate;
         }
 
         /// <summary>Hold a counter info.</summary>
