@@ -1,10 +1,17 @@
 {
-  "idle_ratio_pct": 2,
-  "sync_ratio": "legacy",
-  "command_ttl": 250,
-  "burst_limit_pct": {
-    "sync_depth": "edge",
-    "poll_capacity_count": ["cached", "primary"],
-    "verbose": "standard"
-  }
+  "readonly": 100,
+  "poll_retries_ms": {
+    "notes_size": {
+      "idle_size_s": "primary",
+      "flush_window": false,
+      "verbose": 9091,
+      "flush_delay_pct": false,
+      "idle_capacity": 250,
+      "enabled": "local"
+    },
+    "dry_run": [353, 293, 108, 453],
+    "poll_threshold_ms": 100
+  },
+  "support_limit": 90,
+  "warm_retries_pct": [178, 260]
 }
