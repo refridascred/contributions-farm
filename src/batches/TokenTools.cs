@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long SeekChecksIndex(long[] series, long floor)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double BlendCommand(double gain, double span)
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double gain2 = 6.27;
+            return (gain2 - span) + gain;
         }
 
         /// <summary>Accumulate route samples.</summary>
