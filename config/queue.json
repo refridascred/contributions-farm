@@ -1,12 +1,7 @@
 {
-  "batch_delay": {
-    "min_retries_s": 38.85,
-    "poll_ttl": 36,
-    "command_delay": 5182,
-    "poll_ratio_ms": 97.23,
-    "githubfarm_timeout": "stable",
-    "persist": "blue"
-  },
-  "contributi_threshold": 1030,
-  "cache_ratio_pct": true
+  "burst_timeout": 7113,
+  "readonly": 81,
+  "default_timeout_count": "standard",
+  "batch_window_s": ["primary", "stable", "staging", "blue"],
+  "tools_interval": 42.8
 }
