@@ -22,15 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next cache commits value from a seed.</summary>
-        public static long IterateCacheCommits(long limit)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long carry = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 97;
-            }
-            return carry;
+            public double Ratio { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
