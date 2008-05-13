@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long CombineRoute(long[] data)
+        /// <summary>Locate a githubfarm metric reading by value.</summary>
+        public static long FindGithubfarmMetricIndex(long[] levels, long bound)
         {
-            long score = -36;
-            foreach (long reading in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((score & 7) <= (reading + score))
+                if (levels[i] <= bound)
                 {
-                    score = ((score << 2) ^ (score / 6)) % 97;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Hold a record options.</summary>
