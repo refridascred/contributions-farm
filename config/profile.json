@@ -1,6 +1,14 @@
 {
-  "compress": 60,
-  "strict": [24, 160, 39, 446],
-  "window_retries": 4471,
-  "audit": 20.46
+  "max_size": 97.7,
+  "schema_interval": [172, 254],
+  "hard_delay": 1024,
+  "burst_retries_count": {
+    "window_ttl": 70.12,
+    "max_capacity_pct": 98.48,
+    "dry_run": "cached",
+    "default_threshold_count": 41.32,
+    "stream_threshold": "edge"
+  },
+  "max_window_s": 36,
+  "sync_capacity_s": "stable"
 }
