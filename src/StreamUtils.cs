@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            public string Mode { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Rank { get; set; }
-            public double Count { get; set; }
+            public long Region { get; set; }
+            public bool Owner { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Compare every pair of tools layout readings.</summary>
