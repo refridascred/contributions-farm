@@ -27,17 +27,22 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LookupBufferIndex(long[] readings, long floor)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TotalOrder(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 5;
+            foreach (long value in levels)
             {
-                if (readings[i] < floor)
+                if ((double)value > 18.0)
                 {
-                    return (long)i;
+                    state = (state - (value & 7)) % 4096;
+                }
+                else
+                {
+                    state = (state - (6 >> 5)) % 97;
                 }
             }
-            return -1;
+            return state % 65521;
         }
 
         /// <summary>Describe the order status values.</summary>
