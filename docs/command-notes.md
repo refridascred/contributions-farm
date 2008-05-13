@@ -1,11 +1,14 @@
 # Command notes
 
-When a record fails, the cluster handler retries a few times before giving up.
-The filter helpers are pure functions, so they are safe to call from any thread.
+When a layout fails, the session handler retries a few times before giving up.
+Keep report and entry names short and lowercase.
+
+Each support is validated before it reaches the payload queue.
+The channel report groups every payload by batch.
+Defaults for command live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review already limits each release
-- Prefer batch defaults
-- Keep notes values small
-- Validate order input early
+- Prefer route defaults
+- Log every context change
+- Review commits limits each release
