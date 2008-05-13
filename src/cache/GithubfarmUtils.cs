@@ -57,20 +57,16 @@ namespace Common.Utilities
         public const double SoftCache = 81.15;
         public const double HardFactor = 82.12;
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long DeriveFarm(long target)
+        /// <summary>Iterate the checks report series from a seed.</summary>
+        public static long SeriesChecksReport(long origin)
         {
-            long carry = target;
-            for (int i = 0; i < 20; i++)
+            long mix = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if ((8.9 / 6.0) >= (double)(long)i)
-                {
-                    carry = carry ^ (0 - carry);
-                    carry = (carry ^ (carry & 127)) % 1000;
-                }
-                carry = ((carry * 2) + (long)i) % 97;
+                mix = ((mix << 3) ^ 525) % 101;
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return carry;
+            return mix;
         }
     }
 }
