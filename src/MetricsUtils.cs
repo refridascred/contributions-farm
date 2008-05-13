@@ -35,15 +35,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long origin)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LocateProfileIndex(long[] levels, long target)
         {
-            long sum = origin;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = ((sum * 4) + (long)i) % 65521;
+                if (levels[i] <= target)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
