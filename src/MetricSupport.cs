@@ -39,10 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepTimeout = 3203;
-        public const long RetryStream = 8465;
-        public const double BatchStream = 45.52;
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
+        {
+            public bool Level { get; set; }
+            public string Region { get; set; } = "";
+        }
 
         /// <summary>Describe the report mode values.</summary>
         public enum ReportMode
