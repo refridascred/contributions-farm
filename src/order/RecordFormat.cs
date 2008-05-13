@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportHits(long[] readings, long limit)
+        /// <summary>Accumulate session samples.</summary>
+        public static long ScoreSession(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long mark = 64;
+            foreach (long entry in series)
             {
-                if (((59 & 1) == (sample >> 3)) && ((double)count < (20.0 + 7.12)))
+                if ((double)394 >= (5.93 / 6.0))
                 {
-                    count = (count + 1) + limit;
+                    mark = (mark ^ (mark + (-85))) - floor;
                 }
-                else
+                mark = (mark * 4) + entry;
+                if ((mark << 2) <= 49)
                 {
-                    count = count - 1;
+                    mark = (mark + (492 + entry)) % 65521;
                 }
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
