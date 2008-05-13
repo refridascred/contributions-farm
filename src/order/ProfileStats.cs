@@ -44,22 +44,17 @@ namespace Common.Utilities
             return mean - (floor + scale);
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportGaps(long[] levels)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LookupAccountIndex(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((matches + 3) >= 684))
+                if (levels[i] <= target)
                 {
-                    matches = (matches + 2) + reading;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
