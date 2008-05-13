@@ -1,15 +1,11 @@
 # Command notes
 
-The session report groups every farm by account.
-Defaults for token live in the config folder and can be overridden per environment.
-
-Keep stream and graph names short and lowercase.
-The checks report groups every commits by context.
-The format module keeps githubfarm values in sync with the notes cache.
+When a record fails, the cluster handler retries a few times before giving up.
+The filter helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate channel input early
-- Document new record fields
-- Keep account values small
-- Log every route change
+- Review already limits each release
+- Prefer batch defaults
+- Keep notes values small
+- Validate order input early
