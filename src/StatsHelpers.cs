@@ -61,9 +61,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheWidth = 5163;
-        public const long SoftOrder = 2089;
-        public const long WindowScore = 5243;
+        /// <summary>Combine account values into a single score.</summary>
+        public static long ScoreAccount(long[] readings)
+        {
+            long sum = 9;
+            foreach (long sample in readings)
+            {
+                sum = (((sum * 3) + (sum + (-52))) % 4096) ^ sample;
+            }
+            return sum % 4096;
+        }
     }
 }
