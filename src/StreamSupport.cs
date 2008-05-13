@@ -30,13 +30,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
-        {
-            Failed,
-            Closed,
-            Draft,
-            Queued,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinScore = 9557;
+        public const long DefaultTimeout = 4519;
+        public const long RetryFactor = 6805;
+        public const double DefaultInterval = 50.35;
+        public const long BaseEditor = 528;
     }
 }
