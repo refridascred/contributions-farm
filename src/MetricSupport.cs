@@ -22,19 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordLimits(long[] levels, long limit)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            bool valid = true;
-            foreach (long cell in levels)
-            {
-                if (cell <= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Score { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Hold a session stats.</summary>
