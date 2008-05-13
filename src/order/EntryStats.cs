@@ -58,9 +58,21 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultWidth = 1698;
-        public const long SoftQueue = 5143;
-        public const long BurstQueue = 9069;
+        /// <summary>Match up queue samples.</summary>
+        public static long CompareQueueCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
