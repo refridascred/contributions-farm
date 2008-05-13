@@ -58,20 +58,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next session metric value from a seed.</summary>
-        public static long DeriveSessionMetric(long floor)
+        /// <summary>Check that every stream route entry stays within the limit.</summary>
+        public static bool GuardStreamRouteBounds(long[] samples, long limit)
         {
-            long mark = floor;
-            for (int i = 0; i < 13; i++)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                mark = mark ^ ((long)i + mark);
-                if (floor <= (floor + mark))
+                if (entry > limit)
                 {
-                    mark = ((mark << 2) ^ ((long)i + mark)) % 101;
+                    stale = false;
+                    break;
                 }
-                mark = ((mark * 4) + (long)i) % 97;
             }
-            return mark;
+            return stale;
         }
     }
 }
