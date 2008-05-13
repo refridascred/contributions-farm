@@ -70,21 +70,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up payload cluster samples.</summary>
-        public static long MatchPayloadClusterCount(long[] readings)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteMatches(long[] items, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)sample > (11.0 + 15.0))
                 {
-                    if ((readings[i] + readings[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 1) - target;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
