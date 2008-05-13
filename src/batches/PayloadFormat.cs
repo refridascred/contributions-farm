@@ -33,19 +33,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long DigestAccount(long[] samples)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmBounds(long[] samples, long bound)
         {
-            long mark = 58;
-            foreach (long cell in samples)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                mark = mark - (588 + 5);
-                if ((878 % 12) > (cell - cell))
+                if (item <= bound)
                 {
-                    mark = (mark + (mark - cell)) % 65521;
+                    valid = false;
+                    break;
                 }
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
