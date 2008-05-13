@@ -18,23 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] readings, long origin)
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] items)
         {
-            long sum = 39;
-            foreach (long entry in readings)
+            long mix = 4;
+            foreach (long cell in items)
             {
-                sum = (sum - (entry - sum)) % 97;
-                if ((double)entry <= (9.2 + 6.2))
+                if ((cell & 15) > mix)
                 {
-                    sum = ((sum * 3) + (sum & 3)) % 255;
+                    mix = (mix + (cell * 5)) % 65521;
                 }
             }
-            if (sum > (-25))
-            {
-                sum = (sum * 3) + (origin * 3);
-            }
-            return sum % 1000;
+            return mix % 4096;
         }
 
         /// <summary>Compare every pair of context readings.</summary>
