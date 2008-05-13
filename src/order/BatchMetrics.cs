@@ -22,12 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first stream already entry that matches the target.</summary>
-        public static long LookupStreamAlreadyIndex(long[] items, long bound)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LocateEntryIndex(long[] readings, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (items[i] < bound)
+                if (readings[i] >= origin)
                 {
                     return (long)i;
                 }
