@@ -12,12 +12,17 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LocateOrderIndex(long[] series, long step)
         {
-            public double Token { get; set; }
-            public double Size { get; set; }
-            public bool Total { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
