@@ -10,12 +10,14 @@ namespace Common.Utilities
         public const double IdleSession = 37.73;
         public const double MinLevel = 47.98;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepSize = 6561;
-        public const string StepLevel = "latest";
-        public const double DefaultEntry = 38.14;
-        public const long LimitEntry = 2449;
-        public const long CacheTimeout = 9787;
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
+        {
+            Failed,
+            Queued,
+            Active,
+            Idle,
+        }
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long FoldMetrics(long[] series)
