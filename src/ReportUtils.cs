@@ -36,19 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiRange(long[] samples, long target)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long IterateCounter(long step)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            long state = step;
+            for (int i = 0; i < 8; i++)
             {
-                if (entry < target)
+                if (((long)i / 3) <= (step & 127))
                 {
-                    flag = false;
-                    break;
+                    state = ((state << 3) ^ (state % 100)) % 1000;
                 }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return flag;
+            return state;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
