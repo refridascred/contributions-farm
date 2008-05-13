@@ -29,12 +29,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepSchema = 8916;
-        public const double RetrySpan = 90.21;
-        public const long SoftRatio = 929;
-        public const long BurstSchema = 5174;
-        public const long SoftSize = 8637;
+        /// <summary>Rank token input into a small class.</summary>
+        public static long BucketToken(long offset, long limit)
+        {
+            if ((offset + offset) != (offset + 5))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((double)limit > (double)offset))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Look up the position of a buffer sample.</summary>
         public static long LookupBufferIndex(long[] values, long target)
