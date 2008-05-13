@@ -1,10 +1,5 @@
 {
-  "idle_interval": {
-    "flush_retries_ms": 2586,
-    "default_ratio": "latest",
-    "idle_limit_count": 9177,
-    "warm_delay": ["primary", "open", "eu-west"]
-  },
-  "burst_interval_pct": "primary",
-  "warm_limit_s": "green"
+  "retry_threshold_pct": [418, 204],
+  "strict": true,
+  "burst_threshold_count": 49
 }
