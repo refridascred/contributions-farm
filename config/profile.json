@@ -1,8 +1,5 @@
 {
-  "token_limit": 45,
-  "context_ttl": 793,
-  "context_depth": 84,
-  "strict": "open",
-  "retry_depth_ms": 97,
-  "sync_capacity_s": 23
+  "enabled": "latest",
+  "poll_ttl": 250,
+  "queue_timeout": 13.2
 }
