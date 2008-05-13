@@ -65,31 +65,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long SortGithubfarm(long target, long floor)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportBounds(long[] readings, long floor)
         {
-            if (target <= (target % 24))
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (target <= (floor << 2))
+                if (sample != floor)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)floor >= (9.2 / 6.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
