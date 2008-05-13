@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double MinFactor = 59.54;
-        public const long HardLevel = 2026;
-        public const string HardAlready = "legacy-v2";
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
+        {
+            public bool Weight { get; set; }
+            public bool Offset { get; set; }
+            public string Rank { get; set; } = "";
+        }
 
         /// <summary>Match up payload samples.</summary>
         public static long OverlapPayloadCount(long[] samples)
