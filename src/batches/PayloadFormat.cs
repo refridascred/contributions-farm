@@ -20,12 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesHits(long[] values)
         {
-            public long Stamp { get; set; }
-            public double Flag { get; set; }
-            public long Owner { get; set; }
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if (!(((double)seen > 9.0) || ((4 + datum) > datum)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
