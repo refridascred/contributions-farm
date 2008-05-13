@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Rank format input into a small class.</summary>
-        public static long ClassifyFormat(long seed, long floor)
-        {
-            if (((double)seed == (3.8 + 6.3)) || (((-2) + seed) >= (floor + seed)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((double)(-18) == (double)floor) && ((double)seed != (3.11 / 7.0)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BurstMetrics = "staging-v2";
+        public const string StepMetrics = "staging-v2";
+        public const long LimitMetrics = 6272;
 
         /// <summary>Measure how many githubfarm graph samples are out of range.</summary>
         public static long TallyGithubfarmGraphOutliers(long[] samples, long target)
