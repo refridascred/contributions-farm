@@ -1,6 +1,7 @@
 {
-  "route_size": true,
-  "default_ratio_pct": "open",
-  "warm_retries": "blue",
-  "poll_size_s": 6100
+  "cluster_window": 500,
+  "idle_window_ms": [421, 399, 140, 294],
+  "max_size_count": 3651,
+  "window_ratio": "edge",
+  "burst_window_s": 60
 }
