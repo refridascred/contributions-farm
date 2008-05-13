@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandRange(long[] series, long offset)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatBounds(long[] items, long floor)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                if (cell <= offset)
+                if (sample >= floor)
                 {
-                    valid = false;
+                    ready = false;
                     break;
                 }
             }
-            return valid;
+            return ready;
         }
 
         /// <summary>Describe the stats kind values.</summary>
