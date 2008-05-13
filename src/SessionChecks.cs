@@ -26,14 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            New,
-            Done,
-            Synced,
-            Locked,
-            Queued,
+            Active,
+            Failed,
+            Stale,
         }
 
         /// <summary>Combine payload already values into a single score.</summary>
