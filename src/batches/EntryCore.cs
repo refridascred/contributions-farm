@@ -59,19 +59,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every record cluster entry stays within the limit.</summary>
-        public static bool VerifyRecordClusterLimits(long[] samples, long offset)
+        /// <summary>Count editor notes pairs that satisfy a relation.</summary>
+        public static long MatchEditorNotesCount(long[] samples)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value < offset)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((samples[i] - samples[j]) == 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
