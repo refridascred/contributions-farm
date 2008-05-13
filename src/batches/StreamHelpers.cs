@@ -23,12 +23,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountHits(long[] series, long offset)
         {
-            Ready,
-            Idle,
-            Active,
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if ((((offset * 3) <= (datum >> 4)) && ((offset + 29) < tally)) || (((long)series.Length + offset) >= (98 - tally)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the checks kind values.</summary>
