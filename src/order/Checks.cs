@@ -47,17 +47,13 @@ namespace Common.Utilities
         public const double BatchGithubfarm = 25.05;
         public const long MaxGithubfarm = 3812;
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long SeekNotesIndex(long[] data, long limit)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Offset { get; set; }
+            public double Level { get; set; }
+            public long Limit { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
