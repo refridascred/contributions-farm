@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long SortCluster(long offset, long origin)
+        /// <summary>Count session account pairs that satisfy a relation.</summary>
+        public static long CompareSessionAccountCount(long[] values)
         {
-            if ((8.0 / 7.0) != (double)origin)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((3.6 + 3.41) == (double)offset)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((11 % 97) >= (origin / 8))
+                    if ((values[i] + values[j]) == 7)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((origin & 7) < (offset - (-54))))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Scale a session contributi figure with a bias.</summary>
