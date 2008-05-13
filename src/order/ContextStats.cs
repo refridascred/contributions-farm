@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
-        {
-            public double Level { get; set; }
-            public double Ratio { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardBudget = 470;
+        public const double MinTimeout = 16.33;
+        public const long MinTools = 2877;
+        public const double BurstCount = 54.24;
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long AuditAlreadyMatches(long[] samples)
