@@ -65,18 +65,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsGaps(long[] levels)
+        /// <summary>Count support farm pairs that satisfy a relation.</summary>
+        public static long MatchSupportFarmCount(long[] values)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((17.0 / 6.0) >= (double)matches) || ((double)entry <= (20.0 - 5.22)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((values[i] - values[j]) == 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
