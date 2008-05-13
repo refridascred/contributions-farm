@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const long RetryContext = 9585;
         public const string CacheContext = "local";
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesGaps(long[] values)
-        {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((double)cell != (double)5)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BurstCount = 34.47;
+        public const string BaseSpan = "strict";
+        public const long CacheSize = 6098;
+        public const long DefaultSchema = 8567;
+        public const string LimitSize = "fallback-edge";
 
         /// <summary>Hold a githubfarm summary.</summary>
         public sealed class GithubfarmSummary
