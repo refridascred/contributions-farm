@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Match up cache farm samples.</summary>
-        public static long MatchCacheFarmCount(long[] items)
+        /// <summary>Count the schema queue entries that pass the check.</summary>
+        public static long CountSchemaQueueMatches(long[] readings, long step)
         {
             long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((double)entry > (19.0 * 6.2)) || ((step + hits) > (entry << 3)))
                 {
-                    if ((items[i] + items[j]) < 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
             return hits;
