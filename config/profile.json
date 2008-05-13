@@ -1,14 +1,7 @@
 {
-  "max_size": 97.7,
-  "schema_interval": [172, 254],
-  "hard_delay": 1024,
-  "burst_retries_count": {
-    "window_ttl": 70.12,
-    "max_capacity_pct": 98.48,
-    "dry_run": "cached",
-    "default_threshold_count": 41.32,
-    "stream_threshold": "edge"
-  },
-  "max_window_s": 36,
-  "sync_capacity_s": "stable"
+  "notes_threshold": 52.4,
+  "base_retries_pct": false,
+  "soft_threshold_pct": true,
+  "filter_ratio": "legacy",
+  "default_ratio_pct": 10.37
 }
