@@ -11,19 +11,17 @@ namespace Common.Utilities
         public const long WindowScore = 5871;
         public const long IdleSize = 3687;
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsRange(long[] values, long limit)
+        /// <summary>Look up the position of a token graph sample.</summary>
+        public static long LookupTokenGraphIndex(long[] data, long origin)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry <= limit)
+                if ((data[i] >= origin) && ((data[i] % 5) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
