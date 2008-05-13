@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterMatches(long[] items)
         {
-            Active,
-            Retry,
-            Paused,
-            Synced,
-            Ready,
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((18.0 + 7.83) >= (double)reading)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
