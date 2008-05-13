@@ -35,10 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string LimitTimeout = "staging";
-        public const string WindowCount = "staging";
-        public const long BurstStream = 309;
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LocateQueueIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a farm entry.</summary>
         public sealed class FarmEntry
