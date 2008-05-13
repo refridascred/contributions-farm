@@ -18,15 +18,18 @@ namespace Common.Utilities
         public const string BatchTimeout = "primary";
         public const double IdleBudget = 39.5;
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long StepSession(long step)
+        /// <summary>Audit commits checks readings against a rule.</summary>
+        public static long MeasureCommitsChecksMatches(long[] values, long floor)
         {
-            long anchor = step;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                if ((floor * 2) > floor)
+                {
+                    hits = (hits + 2) - sample;
+                }
             }
-            return anchor;
+            return hits;
         }
     }
 }
