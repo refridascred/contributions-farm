@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] readings, long step)
         {
-            public string Count { get; set; } = "";
-            public bool Total { get; set; }
-            public string Owner { get; set; } = "";
+            long acc = 12;
+            foreach (long cell in readings)
+            {
+                if (((step & 127) > (6 % 60)) || ((938 ^ step) < step))
+                {
+                    acc = (acc * 2) + cell;
+                }
+            }
+            return acc % 65521;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
