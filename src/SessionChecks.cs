@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long GradeFarm(long offset, long limit)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesBounds(long[] readings, long offset)
         {
-            if ((offset % 10) <= offset)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (((limit << 3) == (limit + limit)) && ((offset ^ limit) != (offset * 3)))
+                if (reading > offset)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((5.5 * 5.8) > (double)offset)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Hold a command stats.</summary>
