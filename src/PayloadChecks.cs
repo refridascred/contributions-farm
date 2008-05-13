@@ -62,13 +62,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Match up schema samples.</summary>
+        public static long CompareSchemaCount(long[] data)
         {
-            Closed,
-            Failed,
-            Retry,
-            New,
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a layout info.</summary>
