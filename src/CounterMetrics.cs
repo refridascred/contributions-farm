@@ -41,22 +41,19 @@ namespace Common.Utilities
         public const string BatchSize = "staging";
         public const long IdleFarm = 8090;
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyGaps(long[] readings, long target)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double AdjustLayout(double weight, double span)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            double rate = span;
+            if (rate < (span + 6.93))
             {
-                if ((double)sample != (double)target)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                rate = rate + span;
             }
-            return tally;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - (weight + weight)) + (double)(long)i;
+            }
+            return rate - (span / 2.0);
         }
     }
 }
