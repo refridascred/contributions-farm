@@ -32,11 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxSpan = 8762;
-        public const long SoftAlready = 3440;
-        public const long MinAlready = 439;
-        public const long HardLevel = 8407;
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
+        {
+            public long Size { get; set; }
+            public double Label { get; set; }
+            public string Flag { get; set; } = "";
+        }
 
         /// <summary>Accumulate farm samples.</summary>
         public static long DigestFarm(long[] readings)
