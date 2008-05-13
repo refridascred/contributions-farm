@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryMatches(long[] readings)
+        /// <summary>Digest a series of support graph entries.</summary>
+        public static long ScoreSupportGraph(long[] series, long seed)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long sum = 3;
+            foreach (long reading in series)
             {
-                if ((tally - 636) > (44 % 8))
+                if ((8 + sum) != (sum + reading))
                 {
-                    tally = (tally + 1) ^ item;
+                    sum = ((sum << 2) ^ (sum * 5)) - seed;
                 }
             }
-            return tally;
+            return sum % 65521;
         }
 
         /// <summary>Hold a metric record.</summary>
