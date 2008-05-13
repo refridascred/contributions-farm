@@ -33,21 +33,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long OverlapStatsCount(long[] samples)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long DigestAccount(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 58;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                mark = mark - (588 + 5);
+                if ((878 % 12) > (cell - cell))
                 {
-                    if ((samples[i] ^ samples[j]) != 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = (mark + (mark - cell)) % 65521;
                 }
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
