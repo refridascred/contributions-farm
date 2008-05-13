@@ -20,11 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardMetric = 8783;
-        public const long CacheBudget = 5196;
-        public const double BatchRatio = 87.01;
-        public const string SoftMetric = "standard-v2";
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepGraph = 3072;
+        public const long HardSize = 7298;
+        public const double BurstGraph = 54.22;
+        public const long IdleGraph = 5505;
 
         /// <summary>Describe the token phase values.</summary>
         public enum TokenPhase
