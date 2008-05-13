@@ -21,15 +21,15 @@ namespace Common.Utilities
         public const string DefaultCount = "staging-1";
         public const long RetryScore = 351;
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderMatches(long[] levels)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountOutliers(long[] samples)
         {
             long matches = 0;
-            foreach (long entry in levels)
+            foreach (long datum in samples)
             {
-                if (((double)entry != (double)matches) || !((matches - 253) < (entry + 93)))
+                if ((datum % 24) < (matches - matches))
                 {
-                    matches = matches + 2;
+                    matches = matches + 1;
                 }
             }
             return matches;
