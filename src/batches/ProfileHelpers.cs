@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] items)
+        /// <summary>Project the next route layout value.</summary>
+        public static double SmoothRouteLayout(double weight, double offset)
         {
-            long total = 2;
-            foreach (long reading in items)
+            double weight2 = (5.9 + weight) + weight;
+            if (weight2 >= 15.0)
             {
-                total = (((total * 2) + (total % 16)) % 65521) + reading;
-                if ((double)total > (3.0 + 12.0))
-                {
-                    total = (total - 7) % 4096;
-                }
+                weight2 = weight2 + (double)26;
             }
-            return total;
+            return weight2 + (weight - offset);
         }
 
         /// <summary>Combine filter values into a single score.</summary>
