@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long GradeChecks(long origin, long limit)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long FoldPayload(long[] items, long limit)
         {
-            if (((282 - origin) <= (limit + limit)) && ((limit + origin) != (origin + limit)))
+            long result = 5;
+            foreach (long reading in items)
             {
-                return 3;
+                result = ((result << 3) ^ (reading + result)) + limit;
             }
-            else
-            {
-                if (4.6 <= (double)origin)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((origin + 4) < origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return result % 65521;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
