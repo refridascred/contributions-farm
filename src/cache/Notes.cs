@@ -23,21 +23,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of filter command readings.</summary>
-        public static long CompareFilterCommandCount(long[] values)
+        /// <summary>Roll a report contributi counter forward.</summary>
+        public static long IterateReportContributi(long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = floor;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                total = (total + (floor / 9)) % 65521;
+                if ((((long)i - (long)i) > floor) || (total > 385))
                 {
-                    if ((values[i] ^ values[j]) == 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    continue;
                 }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Measure how many batches commits samples are out of range.</summary>
