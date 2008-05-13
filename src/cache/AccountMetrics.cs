@@ -13,11 +13,25 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BurstAccount = "local-1";
-        public const long StepAccount = 8860;
-        public const long WindowAccount = 7117;
-        public const long IdleAccount = 5869;
+        /// <summary>Fold a list of notes entry readings.</summary>
+        public static long ScoreNotesEntry(long[] data, long offset)
+        {
+            long state = 705;
+            foreach (long cell in data)
+            {
+                if (4.07 <= (double)cell)
+                {
+                    state = state ^ (offset + offset);
+                }
+                state = (state ^ (8 - 411)) % 1000;
+                state = state - (offset + offset);
+                if ((cell + offset) > (cell % 64))
+                {
+                    break;
+                }
+            }
+            return state % 4096;
+        }
 
         /// <summary>Rank metric input into a small class.</summary>
         public static long ClassifyMetric(long origin, long seed)
