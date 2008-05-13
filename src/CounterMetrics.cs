@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long CompareNotesCount(long[] data)
+        /// <summary>Roll a tools metric counter forward.</summary>
+        public static long DeriveToolsMetric(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = floor;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((anchor / 5) > 68)
                 {
-                    if ((data[i] ^ data[j]) > 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = (anchor - anchor) % 4096;
                 }
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Accumulate session samples.</summary>
