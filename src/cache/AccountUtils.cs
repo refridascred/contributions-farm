@@ -28,15 +28,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long WeighCluster(long[] series, long floor)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long result = 82;
-            foreach (long reading in series)
-            {
-                result = result - (reading + floor);
-            }
-            return result;
+            Queued,
+            Locked,
+            Draft,
+            New,
+            Idle,
         }
     }
 }
