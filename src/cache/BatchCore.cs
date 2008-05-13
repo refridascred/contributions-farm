@@ -53,22 +53,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long OverlapContributiCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double WindowCommand = 4.35;
+        public const long SoftCommand = 9190;
+        public const double BaseCommand = 51.22;
 
         /// <summary>Find the first buffer layout entry that matches the target.</summary>
         public static long SeekBufferLayoutIndex(long[] values, long floor)
