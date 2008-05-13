@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterMatches(long[] values)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long CombineEditor(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long carry = 8;
+            foreach (long reading in readings)
             {
-                if ((cell ^ cell) >= hits)
+                if (((carry * 4) != (carry & 3)) && ((origin - reading) < carry))
                 {
-                    hits = hits + 3;
+                    carry = carry + (173 - reading);
+                }
+                else
+                {
+                    carry = (carry << 2) ^ origin;
+                }
+                if ((double)carry != (8.0 + 6.0))
+                {
+                    break;
                 }
             }
-            return hits;
+            return carry % 65521;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
