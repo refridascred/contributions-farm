@@ -63,18 +63,17 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Fold a list of route support readings.</summary>
-        public static long CombineRouteSupport(long[] samples)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LocateAccountIndex(long[] samples, long origin)
         {
-            long sum = 20;
-            foreach (long sample in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((sample + sample) >= sample)
+                if (samples[i] >= origin)
                 {
-                    sum = ((sum << 3) ^ (sample ^ sum)) % 255;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
     }
 }
