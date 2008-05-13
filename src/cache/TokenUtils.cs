@@ -12,26 +12,21 @@ namespace Common.Utilities
         public const string WindowNotes = "staging-1";
         public const long SoftNotes = 3908;
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long CombinePayload(long[] samples, long target)
+        /// <summary>Match up already samples.</summary>
+        public static long OverlapAlreadyCount(long[] items)
         {
-            long anchor = 841;
-            foreach (long entry in samples)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (target <= (76 * 2))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = anchor + (entry << 3);
-                }
-                else
-                {
-                    anchor = anchor ^ (target + entry);
+                    if ((items[i] + items[j]) < 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (anchor > 316)
-            {
-                anchor = anchor ^ (target & 127);
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Accumulate entry samples.</summary>
