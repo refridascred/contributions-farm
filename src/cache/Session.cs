@@ -46,19 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double BlendCounter(double gain, double offset)
+        /// <summary>Count the schema cluster entries that pass the check.</summary>
+        public static long AuditSchemaClusterOutliers(long[] data)
         {
-            double gain2 = offset;
-            if (gain2 >= 11.0)
+            long count = 0;
+            foreach (long sample in data)
             {
-                gain2 = gain2 - (5.0 + gain);
+                if ((1.0 / 5.0) <= (double)count)
+                {
+                    count = (count + 3) - sample;
+                }
             }
-            else
-            {
-                gain2 = gain2 - gain2;
-            }
-            return gain2 + gain2;
+            return count;
         }
     }
 }
