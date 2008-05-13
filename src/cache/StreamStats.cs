@@ -19,19 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every route graph entry stays within the limit.</summary>
-        public static bool GuardRouteGraphLimits(long[] levels, long step)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            bool flag = true;
-            foreach (long item in levels)
-            {
-                if (item != step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Queued,
+            Locked,
+            Ready,
+            New,
+            Retry,
         }
 
         /// <summary>Look up the position of a support sample.</summary>
