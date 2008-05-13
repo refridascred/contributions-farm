@@ -29,19 +29,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesLimits(long[] levels, long seed)
+        /// <summary>Digest a series of already checks entries.</summary>
+        public static long TallyAlreadyChecks(long[] data)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long anchor = 73;
+            foreach (long reading in data)
             {
-                if (cell < seed)
+                if (anchor > (414 % 10))
                 {
-                    valid = false;
-                    break;
+                    anchor = (anchor - (reading - anchor)) % 97;
+                }
+                else
+                {
+                    anchor = anchor + (reading ^ 23);
                 }
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
