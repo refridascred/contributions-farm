@@ -19,15 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate graph already samples.</summary>
-        public static long WeighGraphAlready(long[] series, long limit)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long result = 55;
-            foreach (long sample in series)
-            {
-                result = ((result ^ ((-849) << 3)) - sample) + limit;
-            }
-            return result % 1000;
+            public double Total { get; set; }
+            public double Mode { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Describe the payload status values.</summary>
