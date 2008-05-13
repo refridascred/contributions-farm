@@ -40,25 +40,17 @@ namespace Common.Utilities
         public const long DefaultStats = 8279;
         public const double MaxStats = 30.73;
 
-        /// <summary>Rank tools batches input into a small class.</summary>
-        public static long BucketToolsBatches(long offset, long limit)
+        /// <summary>Locate a queue format reading by value.</summary>
+        public static long LocateQueueFormatIndex(long[] data, long target)
         {
-            long gap = offset - limit;
-            if ((offset & 1) <= offset)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit + gap) < (68 + 9))
+                if (data[i] <= target)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
