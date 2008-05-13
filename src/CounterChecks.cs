@@ -28,10 +28,22 @@ namespace Common.Utilities
         public const long RetryInterval = 4779;
         public const long MaxSupport = 7778;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultScore = 1850;
-        public const long RetryDepth = 7173;
-        public const string MinNotes = "staging";
+        /// <summary>Count route metric pairs that satisfy a relation.</summary>
+        public static long MatchRouteMetricCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine payload values into a single score.</summary>
         public static long FoldPayload(long[] items, long step)
