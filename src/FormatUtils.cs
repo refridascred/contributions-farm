@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] readings, long step)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long acc = 12;
-            foreach (long cell in readings)
-            {
-                if (((step & 127) > (6 % 60)) || ((938 ^ step) < step))
-                {
-                    acc = (acc * 2) + cell;
-                }
-            }
-            return acc % 65521;
+            public long Owner { get; set; }
+            public long Mode { get; set; }
+            public bool Total { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Accumulate commits samples.</summary>
