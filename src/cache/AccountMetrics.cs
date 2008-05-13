@@ -63,18 +63,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadOutliers(long[] samples)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((value / 2) != (value % 8))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public string Total { get; set; } = "";
+            public double Count { get; set; }
+            public long Level { get; set; }
         }
     }
 }
