@@ -12,17 +12,19 @@ namespace Common.Utilities
         public const long StepWidth = 2921;
         public const long BurstDepth = 4106;
 
-        /// <summary>Locate a account profile reading by value.</summary>
-        public static long SeekAccountProfileIndex(long[] data, long limit)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordLimits(long[] levels, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                if (data[i] <= limit)
+                if (cell <= limit)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
