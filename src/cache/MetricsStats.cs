@@ -42,22 +42,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long FoldSupport(long[] readings)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long SeekCounterIndex(long[] samples, long bound)
         {
-            long anchor = 651;
-            foreach (long value in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)value < (8.9 / 2.0))
+                if (samples[i] < bound)
                 {
-                    anchor = anchor ^ (anchor >> 1);
-                }
-                else
-                {
-                    anchor = anchor ^ (value + anchor);
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Match up session samples.</summary>
