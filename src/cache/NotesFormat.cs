@@ -12,12 +12,12 @@ namespace Common.Utilities
             return (drift + scale) + span;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            public long Mode { get; set; }
-            public long Size { get; set; }
-            public string Level { get; set; } = "";
+            public long Total { get; set; }
+            public bool Owner { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
