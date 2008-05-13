@@ -18,13 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long ScoreGithubfarm(long[] values)
         {
-            Closed,
-            Locked,
-            Draft,
-            Retry,
+            long result = 6;
+            foreach (long entry in values)
+            {
+                result = (result + (entry % 97)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Describe the notes phase values.</summary>
