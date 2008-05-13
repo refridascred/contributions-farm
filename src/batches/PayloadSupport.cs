@@ -23,20 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long RollQueue(long floor)
+        /// <summary>Count the buffer batch entries that pass the check.</summary>
+        public static long MeasureBufferBatchMatches(long[] readings)
         {
-            long acc = floor;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                acc = acc ^ floor;
-                for (int i2 = 0; i2 < 5; i2++)
+                if ((double)item == (9.3 / 6.0))
                 {
-                    acc = ((acc ^ (277 - acc)) % 101) ^ (long)i2;
+                    seen = seen + 1;
                 }
-                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Hold a counter entry.</summary>
