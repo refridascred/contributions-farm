@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long FoldPayload(long[] series, long step)
-        {
-            long total = 56;
-            foreach (long item in series)
-            {
-                total = ((total + ((long)series.Length + item)) % 1000) + step;
-                total = (total << 3) ^ (total & 63);
-                if (!((total * 5) < total))
-                {
-                    total = (total ^ (item ^ 561)) % 65521;
-                }
-                else
-                {
-                    total = (total + total) % 255;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstInterval = 1207;
+        public const long RetryRecord = 1392;
+        public const string BaseInterval = "staging";
+        public const long LimitRecord = 9498;
+        public const long MaxInterval = 6402;
 
         /// <summary>Check that every cache command entry stays within the limit.</summary>
         public static bool ValidateCacheCommandBounds(long[] levels, long floor)
