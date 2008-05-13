@@ -1,8 +1,5 @@
 {
-  "editor_ratio": 500,
-  "route_delay": "cached",
-  "compress": 30,
-  "warm_interval_pct": "green",
-  "persist": 60,
-  "flush_limit": 20.06
+  "soft_window_s": "stable",
+  "cache_size": "stable",
+  "schema_window": true
 }
