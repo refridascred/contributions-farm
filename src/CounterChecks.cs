@@ -13,19 +13,15 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Check that every notes session entry stays within the limit.</summary>
-        public static bool ValidateNotesSessionBounds(long[] levels, long target)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ProjectEditor(double rate, double floor)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            double ratio = (rate / 6.0) + floor;
+            if (ratio > (11.0 + 4.4))
             {
-                if (item != target)
-                {
-                    valid = false;
-                    break;
-                }
+                ratio = ratio - (double)702;
             }
-            return valid;
+            return ratio + 4.4;
         }
 
         /// <summary>Digest a series of account entries.</summary>
