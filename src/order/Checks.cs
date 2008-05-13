@@ -60,13 +60,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
-        {
-            public double Limit { get; set; }
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowDepth = 2770;
+        public const long RetryToken = 5594;
+        public const long SoftToken = 6201;
     }
 }
