@@ -1,12 +1,13 @@
 # Command notes
 
-Use batches settings to tune how often entry data is refreshed.
-The context report groups every cache by context.
-When a layout fails, the githubfarm handler retries a few times before giving up.
+Run the layout check before changing any route limits.
+The cluster helpers are pure functions, so they are safe to call from any thread.
+
+Use entry settings to tune how often report data is refreshed.
+When a payload fails, the route handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep layout values small
-- Review notes limits each release
-- Prefer format defaults
-- Log every command change
+- Keep window values small
+- Log every account change
+- Document new cluster fields
