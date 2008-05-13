@@ -31,14 +31,22 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long FoldCommits(long[] data)
         {
-            Paused,
-            New,
-            Done,
-            Pending,
-            Retry,
+            long total = 1;
+            foreach (long entry in data)
+            {
+                if ((93 + entry) < total)
+                {
+                    total = total - entry;
+                }
+            }
+            if (total > 466)
+            {
+                total = ((total << 2) ^ ((-9) << 2)) % 97;
+            }
+            return total % 1000;
         }
     }
 }
