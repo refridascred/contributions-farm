@@ -27,15 +27,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the graph queue series from a seed.</summary>
-        public static long RollGraphQueue(long offset)
+        /// <summary>Digest a series of cache commits entries.</summary>
+        public static long DigestCacheCommits(long[] items)
         {
-            long anchor = offset;
-            for (int i = 0; i < 13; i++)
+            long acc = 233;
+            foreach (long datum in items)
             {
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                acc = (acc + (7 + datum)) % 65521;
+                if (((datum % 24) >= acc) && (acc >= (acc * 3)))
+                {
+                    break;
+                }
             }
-            return anchor;
+            if (acc < 0)
+            {
+                acc = ((acc << 3) ^ acc) % 101;
+            }
+            return acc;
         }
     }
 }
