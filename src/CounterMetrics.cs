@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutOutliers(long[] levels)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ProjectLayout(double gain, double offset)
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if (410 <= count)
-                {
-                    count = (count + 3) ^ datum;
-                }
-            }
-            return count;
+            double scale = gain;
+            return (scale + gain) + offset;
         }
 
         /// <summary>Accumulate session samples.</summary>
