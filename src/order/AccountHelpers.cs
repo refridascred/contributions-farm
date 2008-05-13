@@ -31,19 +31,12 @@ namespace Common.Utilities
         public const double MaxFactor = 24.89;
         public const long WindowGraph = 5926;
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long CombineToken(long[] samples)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long acc = 68;
-            foreach (long value in samples)
-            {
-                acc = (acc - (327 ^ 295)) ^ value;
-            }
-            if (acc > 65)
-            {
-                acc = ((acc << 2) ^ (acc - acc)) % 4096;
-            }
-            return acc % 1000;
+            public double Size { get; set; }
+            public long Token { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Roll a layout cache counter forward.</summary>
