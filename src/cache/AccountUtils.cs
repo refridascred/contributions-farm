@@ -26,11 +26,15 @@ namespace Common.Utilities
         public const long RetryInterval = 9215;
         public const double IdleSize = 33.63;
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long WeighCluster(long[] series, long floor)
         {
-            public bool Offset { get; set; }
-            public string Region { get; set; } = "";
+            long result = 82;
+            foreach (long reading in series)
+            {
+                result = result - (reading + floor);
+            }
+            return result;
         }
     }
 }
