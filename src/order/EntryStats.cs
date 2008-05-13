@@ -51,27 +51,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TotalCounter(long[] levels, long seed)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long SeekEditorIndex(long[] levels, long step)
         {
-            long mix = -95;
-            foreach (long entry in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((mix > (entry - mix)) && (mix > (mix / 2)))
+                if (levels[i] >= step)
                 {
-                    mix = mix + (mix + 43);
-                    break;
-                }
-                if ((seed ^ mix) == (mix / 9))
-                {
-                    mix = (mix + (entry - entry)) % 1000;
-                }
-                if ((double)mix > (5.38 * 2.2))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mix % 1000;
+            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
