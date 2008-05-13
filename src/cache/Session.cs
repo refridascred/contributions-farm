@@ -19,12 +19,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftPayload = 14;
-        public const long DefaultRatio = 6585;
-        public const string BatchPayload = "fallback-1";
-        public const long RetryPayload = 708;
-        public const long LimitFactor = 887;
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TallyCache(long[] data, long bound)
+        {
+            long acc = 7;
+            foreach (long value in data)
+            {
+                acc = ((acc - (bound / 4)) % 4096) ^ value;
+            }
+            return acc % 1000;
+        }
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long TallyMetricsOutliers(long[] readings)
