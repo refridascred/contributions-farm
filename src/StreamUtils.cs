@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowQueue = 6089;
-        public const long DefaultCount = 8947;
-        public const long IdleQueue = 1124;
+        /// <summary>Locate a filter report reading by value.</summary>
+        public static long LookupFilterReportIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= floor) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a context schema value against two limits.</summary>
         public static long SortContextSchema(long target, long origin)
