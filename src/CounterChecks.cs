@@ -10,21 +10,15 @@ namespace Common.Utilities
         public const long DefaultFormat = 2381;
         public const double RetryFormat = 61.57;
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long OverlapClusterCount(long[] readings)
+        /// <summary>Project the next queue value.</summary>
+        public static double SmoothQueue(double weight, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double scale = 8.0;
+            if (scale > weight)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                scale = scale - weight;
             }
-            return matches;
+            return scale + offset;
         }
 
         /// <summary>Count batches profile pairs that satisfy a relation.</summary>
