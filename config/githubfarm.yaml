@@ -1,8 +1,29 @@
 # githubfarm settings
-buffer_limit: 5.47
-compress: 90
-retry_capacity: 91.42
-route_size:
-  - 144
-  - 5
-  - 117
+window_depth:
+  schema_depth: 268
+  token_limit:
+    counter_depth:
+      - stable
+      - edge
+    flush_threshold_pct: stable
+    tools_timeout: 28.12
+    batch_retries: 60.0
+    stats_capacity: open
+  already_depth:
+    - 332
+    - 391
+    - 387
+    - 324
+  burst_threshold_pct: 86.61
+  dry_run: eu-west
+checks_retries:
+  - 428
+  - 29
+  - 173
+  - 393
+contributi_interval:
+  - legacy
+  - edge
+  - strict
+  - blue
+strict: latest
