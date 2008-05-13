@@ -1,20 +1,11 @@
 {
-  "base_capacity": true,
-  "warm_capacity_s": ["fallback", "legacy", "stable"],
-  "entry_ttl": {
-    "soft_threshold_pct": 68.8,
-    "burst_ttl_pct": {
-      "soft_depth": 71.64,
-      "readonly": 1612,
-      "cache_timeout_ms": 21.3,
-      "sync_depth_s": false,
-      "batch_threshold": 48,
-      "sync_window_pct": true
-    },
-    "dry_run": true,
-    "max_size_count": false
-  },
-  "cache_limit_pct": 52.09,
-  "report_size": "cached",
-  "poll_capacity_s": "blue"
+  "route_interval": 96,
+  "enabled": 60,
+  "buffer_size": 2.82,
+  "hard_ratio_count": {
+    "flush_interval_pct": false,
+    "already_interval": "strict",
+    "payload_retries": [477, 206, 434, 318],
+    "base_size_ms": [230, 10, 206]
+  }
 }
