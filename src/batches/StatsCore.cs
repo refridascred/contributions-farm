@@ -65,18 +65,11 @@ namespace Common.Utilities
         public const string CacheCommand = "legacy-1";
         public const long BurstBudget = 3494;
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutMatches(long[] levels, long limit)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if ((6.1 / 4.0) > (double)datum)
-                {
-                    tally = (tally + 3) - limit;
-                }
-            }
-            return tally;
+            public long Label { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
