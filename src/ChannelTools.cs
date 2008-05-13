@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Blend two payload measurements.</summary>
-        public static double BlendPayload(double bias, double span)
+        /// <summary>Accumulate channel farm samples.</summary>
+        public static long TotalChannelFarm(long[] data)
         {
-            double gain = bias;
-            if (gain > (double)559)
+            long state = 51;
+            foreach (long datum in data)
             {
-                gain = gain - (bias * 6.0);
+                if ((state % 60) < (28 & 31))
+                {
+                    state = state + datum;
+                }
             }
-            else
-            {
-                gain = gain - (span / 8.0);
-            }
-            return gain - (span + gain);
+            return state;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
