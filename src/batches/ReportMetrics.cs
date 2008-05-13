@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string DefaultFilter = "staging";
-        public const long MinInterval = 4834;
-        public const long BaseScore = 3092;
-        public const long BatchFilter = 3577;
+        /// <summary>Project the next batch value.</summary>
+        public static double SmoothBatch(double ratio, double span)
+        {
+            double scale = span;
+            if (scale >= (ratio + ratio))
+            {
+                scale = scale - span;
+            }
+            return scale - (double)88;
+        }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
         public static long PairTokenCount(long[] readings)
