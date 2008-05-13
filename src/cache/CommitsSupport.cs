@@ -24,12 +24,14 @@ namespace Common.Utilities
         public const double BurstReport = 71.84;
         public const string DefaultDepth = "latest-1";
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            public string Stamp { get; set; } = "";
-            public double Token { get; set; }
-            public long Weight { get; set; }
+            Queued,
+            Ready,
+            Paused,
+            Draft,
+            Closed,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
