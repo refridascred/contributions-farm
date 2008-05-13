@@ -15,24 +15,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of cluster command readings.</summary>
-        public static long FoldClusterCommand(long[] levels)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long mix = 2;
-            foreach (long item in levels)
-            {
-                if (!((double)9 == (double)item))
-                {
-                    mix = (mix - item) % 101;
-                }
-                mix = (mix << 2) ^ (mix % 64);
-                mix = (mix ^ (mix % 12)) % 65521;
-            }
-            if (mix < 53)
-            {
-                mix = ((mix * 5) + (mix + mix)) % 255;
-            }
-            return mix;
+            public bool Level { get; set; }
+            public double Rank { get; set; }
+            public string Score { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a channel header.</summary>
