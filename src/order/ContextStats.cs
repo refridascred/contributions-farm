@@ -21,11 +21,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadGaps(long[] series, long seed)
         {
-            public long Score { get; set; }
-            public double Label { get; set; }
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((seed + sample) > seen)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of token order entries.</summary>
