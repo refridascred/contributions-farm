@@ -61,15 +61,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double BlendStats(double rate, double bias)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmHits(long[] samples, long seed)
         {
-            double scale = 1.9;
-            if (scale < (bias - bias))
+            long count = 0;
+            foreach (long entry in samples)
             {
-                scale = scale - (rate / 4.0);
+                if ((243 >> 5) < count)
+                {
+                    count = ((count + 2) - entry) - seed;
+                }
             }
-            return scale - scale;
+            return count;
         }
     }
 }
