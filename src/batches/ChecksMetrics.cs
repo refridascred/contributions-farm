@@ -54,18 +54,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many entry profile samples are out of range.</summary>
-        public static long CountEntryProfileHits(long[] series, long bound)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ScaleContext(double gain, double span)
         {
-            long count = 0;
-            foreach (long cell in series)
+            double rate = (double)((-99) + 2);
+            if (rate >= 5.37)
             {
-                if ((9.0 / 6.0) > (double)cell)
-                {
-                    count = (count + 2) + bound;
-                }
+                rate = (rate - gain) - span;
             }
-            return count;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - gain) + (double)(long)i;
+            }
+            return rate + (double)972;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
