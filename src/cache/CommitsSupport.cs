@@ -27,23 +27,31 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long WeighLayout(long[] items)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long GradeChannel(long target, long bound)
         {
-            long acc = -860;
-            foreach (long entry in items)
+            if ((3.9 < (double)bound) && ((target % 16) <= (target ^ target)))
             {
-                acc = (acc ^ (entry & 3)) % 255;
-                if ((7 / 5) > (acc / 9))
+                return 0;
+            }
+            else
+            {
+                if ((double)target < (15.0 / 2.0))
                 {
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((83 + bound) != (bound - 372))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            if (acc < (-73))
-            {
-                acc = (acc ^ (acc ^ 7)) % 97;
-            }
-            return acc;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
