@@ -35,32 +35,12 @@ namespace Common.Utilities
         public const string MinAccount = "stable-v2";
         public const long LimitWidth = 2056;
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long GradeProfile(long origin, long seed)
-        {
-            if (((7.0 / 5.0) <= (double)origin) && ((54 + seed) < seed))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((2.89 * 6.0) != (double)origin)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin - origin) >= seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftEntry = 7537;
+        public const long BaseCount = 5425;
+        public const long RetryTimeout = 7925;
+        public const string BurstEntry = "local-1";
+        public const string WindowEntry = "strict";
 
         /// <summary>Hold a entry entry.</summary>
         public sealed class EntryEntry
