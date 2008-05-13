@@ -16,12 +16,13 @@ namespace Common.Utilities
             return ratio + (weight + ratio);
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double IdleRecord = 87.99;
-        public const double CacheRecord = 98.06;
-        public const long BaseLevel = 6516;
-        public const string StepRecord = "alpha-1";
-        public const long DefaultSpan = 9827;
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
+        {
+            public long Label { get; set; }
+            public long Level { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Compare every pair of window readings.</summary>
         public static long OverlapWindowCount(long[] items)
