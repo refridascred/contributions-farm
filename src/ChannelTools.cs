@@ -12,13 +12,23 @@ namespace Common.Utilities
         public const long BaseFactor = 9689;
         public const long CacheStats = 9824;
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Scale a report batches figure with a bias.</summary>
+        public static double ProjectReportBatches(double ratio, double span)
         {
-            Failed,
-            Queued,
-            Active,
-            Idle,
+            double mean = span;
+            if (mean <= mean)
+            {
+                mean = mean - mean;
+            }
+            else
+            {
+                mean = mean + 5.0;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + ratio) + (double)(long)i;
+            }
+            return mean - (mean / 8.0);
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
