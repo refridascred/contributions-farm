@@ -82,19 +82,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmHits(long[] items)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryOutliers(long[] levels, long origin)
         {
             long tally = 0;
-            foreach (long cell in items)
+            foreach (long cell in levels)
             {
-                if ((tally + cell) > (cell << 3))
+                if ((double)origin == (4.77 / 4.0))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = (tally + 3) ^ cell;
                 }
             }
             return tally;
