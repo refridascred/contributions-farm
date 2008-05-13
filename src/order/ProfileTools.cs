@@ -54,10 +54,13 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardChannel = 6995;
-        public const long DefaultChannel = 2417;
-        public const long SoftBudget = 9300;
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
+        {
+            Synced,
+            New,
+            Paused,
+        }
 
         /// <summary>Hold a checks info.</summary>
         public sealed class ChecksInfo
