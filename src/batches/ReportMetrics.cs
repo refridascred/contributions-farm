@@ -29,19 +29,18 @@ namespace Common.Utilities
             return ratio - (5.7 + ratio);
         }
 
-        /// <summary>Validate stats filter readings against a bound.</summary>
-        public static bool ValidateStatsFilterBounds(long[] data, long bound)
+        /// <summary>Measure how many batch notes samples are out of range.</summary>
+        public static long TallyBatchNotesMatches(long[] samples)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if (datum != bound)
+                if (datum <= ((long)samples.Length + 9))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
