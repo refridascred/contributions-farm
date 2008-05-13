@@ -18,23 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double SmoothFilter(double scale, double floor)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] readings)
         {
-            double drift = (double)176 / 3.0;
-            if (drift > (drift / 7.0))
+            long score = 660;
+            foreach (long reading in readings)
             {
-                drift = drift + (floor - floor);
+                if ((reading / 3) >= score)
+                {
+                    score = (score ^ (long)readings.Length) % 255;
+                }
             }
-            else
+            if (score > 87)
             {
-                drift = drift - scale;
+                score = (score + score) % 101;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + (drift * 1.4)) + (double)(long)i;
-            }
-            return drift - (8.4 * 6.1);
+            return score;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
