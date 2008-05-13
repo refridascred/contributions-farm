@@ -43,22 +43,17 @@ namespace Common.Utilities
             return mean - offset;
         }
 
-        /// <summary>Digest a series of contributi record entries.</summary>
-        public static long CombineContributiRecord(long[] items, long bound)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LocateBufferIndex(long[] values, long target)
         {
-            long result = 63;
-            foreach (long item in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (bound < (bound + result))
+                if ((values[i] <= target) && ((values[i] % 3) != 0))
                 {
-                    result = ((result * 3) + item) % 97;
+                    return (long)i;
                 }
             }
-            if (result < 8)
-            {
-                result = (result - (6 - bound)) % 1000;
-            }
-            return result % 97;
+            return -1;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
