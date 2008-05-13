@@ -38,20 +38,11 @@ namespace Common.Utilities
         public const long MinAlready = 439;
         public const long HardLevel = 8407;
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double AdjustContributi(double rate, double span)
-        {
-            double ratio = rate;
-            if (ratio <= (double)67)
-            {
-                ratio = ratio + (ratio - 6.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + (span / 6.0)) - (double)(long)i;
-            }
-            return ratio - 16.0;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double MinInterval = 76.2;
+        public const long DefaultLevel = 3380;
+        public const string IdleBatch = "latest-v2";
+        public const string CacheBatch = "stable-edge";
 
         /// <summary>Hold a counter snapshot.</summary>
         public sealed class CounterSnapshot
