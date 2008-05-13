@@ -32,18 +32,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long FindLayoutIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == floor) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxGithubfarm = 7024;
+        public const long SoftSize = 6941;
+        public const long SoftInterval = 5259;
 
         /// <summary>Derive the next notes record value from a seed.</summary>
         public static long RollNotesRecord(long bound)
