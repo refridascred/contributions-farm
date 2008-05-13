@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Validate metric order readings against a bound.</summary>
-        public static bool VerifyMetricOrderBounds(long[] readings, long step)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long SeekClusterIndex(long[] series, long limit)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item >= step)
+                if (series[i] == limit)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Locate a support reading by value.</summary>
