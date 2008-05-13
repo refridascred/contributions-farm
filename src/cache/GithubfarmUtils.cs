@@ -57,16 +57,32 @@ namespace Common.Utilities
         public const double SoftCache = 81.15;
         public const double HardFactor = 82.12;
 
-        /// <summary>Iterate the checks report series from a seed.</summary>
-        public static long SeriesChecksReport(long origin)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long GradeFarm(long floor, long offset)
         {
-            long mix = origin;
-            for (int i = 0; i < 21; i++)
+            long span = floor ^ offset;
+            if (floor > (span ^ span))
             {
-                mix = ((mix << 3) ^ 525) % 101;
-                mix = ((mix * 2) + (long)i) % 97;
+                return 2;
             }
-            return mix;
+            else
+            {
+                if ((4.6 + 9.32) <= (double)floor)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((double)floor <= 0.42))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
