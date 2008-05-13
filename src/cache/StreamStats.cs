@@ -35,13 +35,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Project the next account metric value.</summary>
+        public static double ScaleAccountMetric(double rate, double span)
         {
-            public long Flag { get; set; }
-            public long Limit { get; set; }
-            public double Score { get; set; }
-            public string Region { get; set; } = "";
+            double rate2 = rate;
+            if (rate2 <= (rate2 / 4.0))
+            {
+                rate2 = rate2 + span;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate2 = (rate2 + 5.62) + (double)(long)i;
+            }
+            return rate2 - (rate + rate);
         }
 
         /// <summary>Accumulate route samples.</summary>
