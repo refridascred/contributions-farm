@@ -58,19 +58,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterBounds(long[] values, long target)
+        /// <summary>Validate stream report readings against a bound.</summary>
+        public static bool ValidateStreamReportRange(long[] samples, long floor)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                if (reading >= target)
+                if (cell > floor)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
