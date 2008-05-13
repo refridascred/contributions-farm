@@ -1,8 +1,5 @@
 {
-  "support_depth": ["local", "green", "fallback", "staging"],
-  "cluster_capacity": 81.43,
-  "min_depth": "strict",
-  "verbose": [63, 174, 425],
-  "sync_timeout_s": "standard",
-  "record_ratio": 65
+  "dry_run": 7720,
+  "cache_threshold": 1024,
+  "burst_delay_s": "standard"
 }
