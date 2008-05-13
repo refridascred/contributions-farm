@@ -1,22 +1,5 @@
 {
-  "min_capacity_pct": 500,
-  "max_interval": 8890,
-  "retry_threshold_ms": 8809,
-  "queue_ttl": {
-    "audit": "blue",
-    "idle_ratio": [89, 216],
-    "compress": {
-      "compress": [240, 397, 413, 300],
-      "max_capacity": 26.62,
-      "metrics_timeout": 2126
-    }
-  },
-  "flush_depth": 12,
-  "max_depth_count": {
-    "farm_timeout": ["blue", "primary"],
-    "verbose": "staging",
-    "flush_delay": true,
-    "idle_window_s": "cached",
-    "flush_size_pct": true
-  }
+  "max_timeout": false,
+  "queue_delay": 41.27,
+  "sync_interval_ms": false
 }
