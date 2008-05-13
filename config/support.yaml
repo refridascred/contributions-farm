@@ -1,8 +1,11 @@
 # support settings
-audit: 270
-burst_capacity_count:
-  - 460
-  - 175
-cache_delay: 26.63
-batch_threshold_pct: blue
-queue_interval: legacy
+githubfarm_capacity: 48
+max_size_pct: staging
+audit:
+  queue_size: legacy
+  format_depth: false
+  warm_ratio: primary
+  readonly:
+    - 331
+    - 59
+  cache_threshold: cached
