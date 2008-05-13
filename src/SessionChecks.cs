@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Find the first contributi tools entry that matches the target.</summary>
-        public static long LookupContributiToolsIndex(long[] samples, long origin)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long GradeFarm(long offset, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((offset % 10) <= offset)
             {
-                if (samples[i] > origin)
+                return 7;
+            }
+            else
+            {
+                if (((limit << 3) == (limit + limit)) && ((offset ^ limit) != (offset * 3)))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((5.5 * 5.8) > (double)offset)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a command stats.</summary>
