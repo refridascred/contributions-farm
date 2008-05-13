@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long RollCommits(long seed)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricBounds(long[] readings, long origin)
         {
-            long mix = seed;
-            for (int i = 0; i < 6; i++)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                if (mix >= seed)
+                if (item >= origin)
                 {
-                    mix = (mix - seed) % 65521;
-                    continue;
+                    ok = false;
+                    break;
                 }
-                mix = ((mix * 4) + (long)i) % 101;
             }
-            return mix;
+            return ok;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
