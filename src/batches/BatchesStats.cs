@@ -27,10 +27,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardRatio = 890;
-        public const string DefaultScore = "latest-edge";
-        public const double WindowGithubfarm = 52.9;
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
+        {
+            public string Owner { get; set; } = "";
+            public double Offset { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long TotalQueue(long[] data)
