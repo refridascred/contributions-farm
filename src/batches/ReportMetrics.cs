@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ProjectFilter(double weight, double offset)
         {
-            Locked,
-            Paused,
-            Active,
-            Stale,
+            double ratio = offset;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + (5.87 + weight)) + (double)(long)i;
+            }
+            return ratio + (weight + ratio);
         }
 
         /// <summary>Define record limits and defaults.</summary>
