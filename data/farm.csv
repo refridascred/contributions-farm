@@ -1,6 +1,6 @@
-id,level,token,count
-1,285,531,317
-2,54.38,cached,cached
-3,99,938,primary
-4,78.71,584,475
-5,799,open,213
+id,weight,count,token,ratio
+1,446,81.19,31.12,84.63
+2,675,edge,legacy,178
+3,72.76,70.61,164,fallback
+4,84.61,331,58.58,20.62
+5,34.51,58,173,376
