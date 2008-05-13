@@ -45,17 +45,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long SeriesEditor(long limit)
-        {
-            long result = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                result = result ^ ((long)i % 12);
-                result = result - (limit >> 5);
-                result = ((result * 4) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepInterval = 7184;
+        public const long BurstFilter = 1488;
+        public const long DefaultRatio = 7378;
+        public const long CacheTimeout = 9320;
+        public const long MinWidth = 7684;
     }
 }
