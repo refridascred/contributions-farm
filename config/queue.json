@@ -1,7 +1,12 @@
 {
-  "dry_run": "latest",
-  "context_depth": "eu-west",
-  "batch_threshold_ms": "stable",
-  "batch_delay_ms": 24.56,
-  "poll_ratio_count": 45
+  "buffer_ttl": 5.18,
+  "commits_threshold": {
+    "min_retries": 44,
+    "verbose": 500,
+    "checks_capacity": true
+  },
+  "burst_depth": [165, 470],
+  "hard_ratio": true,
+  "burst_timeout_s": "primary",
+  "max_depth": 9917
 }
