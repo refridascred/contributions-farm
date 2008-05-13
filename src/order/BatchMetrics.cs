@@ -19,18 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmGaps(long[] data, long offset)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] values)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long state = 7;
+            foreach (long cell in values)
             {
-                if ((double)seen < (double)7)
-                {
-                    seen = ((seen + 3) ^ cell) + offset;
-                }
+                state = (((state << 3) ^ state) % 4096) ^ cell;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Measure how many metric cache samples are out of range.</summary>
