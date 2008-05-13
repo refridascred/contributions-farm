@@ -36,12 +36,20 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepSpan = 9653;
-        public const long BaseSupport = 8782;
-        public const long DefaultSupport = 2779;
-        public const long DefaultWidth = 2454;
-        public const string WindowSupport = "latest-v2";
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorLimits(long[] levels, long target)
+        {
+            bool stale = true;
+            foreach (long reading in levels)
+            {
+                if (reading > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long BurstCount = 8523;
