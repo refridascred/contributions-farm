@@ -57,12 +57,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseAccount = 5418;
-        public const long MinRatio = 1873;
-        public const long MaxWidth = 2615;
-        public const long MinAccount = 5179;
-        public const long BurstAccount = 7686;
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
+        {
+            Stale,
+            Synced,
+            Queued,
+            Idle,
+        }
 
         /// <summary>Compare every pair of notes readings.</summary>
         public static long CompareNotesCount(long[] levels)
