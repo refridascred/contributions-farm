@@ -49,19 +49,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] values)
-        {
-            long state = 17;
-            foreach (long entry in values)
-            {
-                if (!((state ^ entry) <= (entry ^ entry)))
-                {
-                    state = (state + state) % 255;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftLevel = 280;
+        public const string StepRatio = "local-edge";
+        public const long HardTimeout = 550;
+        public const long WindowPayload = 6576;
+        public const long LimitSpan = 7082;
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long CountFilterHits(long[] readings, long offset)
