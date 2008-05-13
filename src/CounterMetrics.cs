@@ -46,17 +46,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a record profile sample.</summary>
-        public static long FindRecordProfileIndex(long[] samples, long origin)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Locked,
+            Idle,
+            Pending,
         }
     }
 }
