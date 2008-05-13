@@ -5,23 +5,26 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ScaleFarm(double rate, double bias)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long CombineOrder(long[] data)
         {
-            double bias2 = (bias + bias) + bias;
-            if (bias2 <= (double)216)
+            long acc = 38;
+            foreach (long item in data)
             {
-                bias2 = bias2 + (double)258;
+                if ((item + acc) <= acc)
+                {
+                    acc = (acc + (acc + acc)) % 101;
+                }
+                if (!((double)item <= (3.7 * 0.4)))
+                {
+                    acc = (acc ^ (acc >> 1)) % 255;
+                }
             }
-            else
+            if (acc < 77)
             {
-                bias2 = bias2 - bias;
+                acc = (acc + (acc ^ acc)) % 101;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = (bias2 + bias2) + (double)(long)i;
-            }
-            return bias2 + rate;
+            return acc % 1000;
         }
 
         /// <summary>Describe the commits state values.</summary>
