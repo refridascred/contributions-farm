@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of githubfarm layout readings.</summary>
-        public static long ScoreGithubfarmLayout(long[] values)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] series, long floor)
         {
-            long anchor = 9;
-            foreach (long datum in values)
+            long total = -5;
+            foreach (long datum in series)
             {
-                anchor = (anchor * 2) + (datum * 4);
-                anchor = (anchor * 2) + (datum ^ anchor);
+                total = ((total ^ (total + datum)) % 101) + floor;
             }
-            if (anchor < 907)
-            {
-                anchor = ((anchor << 2) ^ (anchor / 8)) % 65521;
-            }
-            return anchor;
+            return total % 97;
         }
 
         /// <summary>Grade a payload support value against two limits.</summary>
