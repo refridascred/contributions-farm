@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long WeighAccount(long[] items)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long mark = 7;
-            foreach (long value in items)
-            {
-                if ((double)mark > (1.3 * 1.61))
-                {
-                    mark = (mark << 2) ^ (value & 63);
-                }
-            }
-            if (mark > 681)
-            {
-                mark = (mark + (mark << 2)) % 97;
-            }
-            return mark;
+            public long Limit { get; set; }
+            public long Offset { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
