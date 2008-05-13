@@ -32,11 +32,10 @@ namespace Common.Utilities
         public const string WindowCount = "staging";
         public const long BurstStream = 309;
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            public string Score { get; set; } = "";
-            public long Offset { get; set; }
+            public bool Flag { get; set; }
             public string Size { get; set; } = "";
         }
     }
