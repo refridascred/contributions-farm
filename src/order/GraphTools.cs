@@ -40,11 +40,12 @@ namespace Common.Utilities
         public const long MinAlready = 439;
         public const long HardLevel = 8407;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double MinInterval = 76.2;
-        public const long DefaultLevel = 3380;
-        public const string IdleBatch = "latest-v2";
-        public const string CacheBatch = "stable-edge";
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
+        {
+            public long Rank { get; set; }
+            public bool Region { get; set; }
+        }
 
         /// <summary>Hold a counter snapshot.</summary>
         public sealed class CounterSnapshot
