@@ -14,11 +14,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionOutliers(long[] readings, long bound)
         {
-            public long Offset { get; set; }
-            public string Owner { get; set; } = "";
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((bound * 2) <= (value / 4))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a graph info.</summary>
