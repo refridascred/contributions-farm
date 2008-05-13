@@ -19,15 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long RollCounter(long target)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesOutliers(long[] data, long floor)
         {
-            long carry = target;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                carry = ((carry * 4) + (long)i) % 1000;
+                if (!(((-79) ^ 0) < (floor ^ 54)))
+                {
+                    matches = (matches + 2) + cell;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Accumulate cluster stream samples.</summary>
