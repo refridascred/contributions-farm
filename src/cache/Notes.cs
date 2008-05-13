@@ -14,14 +14,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            Idle,
-            Failed,
-            Draft,
             Closed,
-            Done,
+            Paused,
+            New,
+            Pending,
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
