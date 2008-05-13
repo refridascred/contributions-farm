@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmGaps(long[] levels)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheOutliers(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if ((7.4 - 2.0) < (double)datum)
+                if ((66 & 31) == (floor ^ tally))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = (tally + 3) + entry;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
