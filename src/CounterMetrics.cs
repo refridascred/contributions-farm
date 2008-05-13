@@ -48,19 +48,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ProjectRecord(double scale, double bias)
-        {
-            double gain = bias / 5.0;
-            if (gain <= (scale + 5.41))
-            {
-                gain = gain + (scale * 15.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - (bias / 6.0)) + (double)(long)i;
-            }
-            return gain + (scale / 2.0);
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftEditor = 3225;
+        public const long DefaultEditor = 2471;
+        public const string MinEditor = "primary-1";
     }
 }
