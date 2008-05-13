@@ -24,11 +24,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            public bool Score { get; set; }
-            public long Offset { get; set; }
+            public long Limit { get; set; }
+            public long Token { get; set; }
+            public bool Count { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Accumulate route samples.</summary>
