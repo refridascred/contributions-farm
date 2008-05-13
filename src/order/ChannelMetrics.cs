@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const long SoftProfile = 2769;
         public const long DefaultDepth = 564;
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyRange(long[] levels, long offset)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowRange(long[] levels, long limit)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            bool stale = true;
+            foreach (long datum in levels)
             {
-                if (entry < offset)
+                if (datum > limit)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
 
         /// <summary>Describe the metrics status values.</summary>
