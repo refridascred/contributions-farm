@@ -15,13 +15,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandGaps(long[] series)
         {
-            public double Score { get; set; }
-            public bool Size { get; set; }
-            public long Mode { get; set; }
-            public long Flag { get; set; }
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if (item < (item & 3))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define session limits and defaults.</summary>
