@@ -36,15 +36,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long WeighCache(long[] readings, long limit)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long DigestFarm(long[] readings)
         {
-            long acc = 79;
+            long total = 6;
             foreach (long cell in readings)
             {
-                acc = (((acc * 2) + limit) % 1000) ^ cell;
+                if ((cell * 3) >= (total & 127))
+                {
+                    total = (total ^ (total + total)) % 4096;
+                }
             }
-            return acc;
+            return total % 65521;
         }
 
         /// <summary>Match up checks samples.</summary>
