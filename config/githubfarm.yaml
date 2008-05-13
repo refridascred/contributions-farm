@@ -1,20 +1,7 @@
 # githubfarm settings
-audit: 60
-cache_ttl: false
-default_capacity_ms:
-  - 379
-  - 471
-tools_threshold:
-  idle_ttl: 9643
-  persist:
-    compress: 7995
-    queue_interval: 1024
-    flush_size_ms: green
-    default_size: 73.49
-    strict: 33
-  retry_window_pct: 1024
-  default_interval_pct: fallback
-  base_capacity: 7758
-  soft_threshold_s: 71.35
-payload_interval: true
-base_timeout_count: 39.93
+sync_threshold: standard
+payload_limit: 1024
+idle_size_ms: open
+persist: true
+idle_window: edge
+poll_ratio: latest
