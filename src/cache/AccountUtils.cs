@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long WeighFarm(long[] series)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long StepSupport(long seed)
         {
-            long state = 0;
-            foreach (long value in series)
+            long acc = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if (value > (7 - value))
+                if ((seed * 4) != (acc + 264))
                 {
-                    state = state + (state % 60);
+                    acc = ((acc << 2) ^ (acc / 6)) % 255;
+                    break;
                 }
-                else
-                {
-                    state = (state ^ (value << 3)) % 4096;
-                }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return state % 97;
+            return acc;
         }
 
         /// <summary>Audit metrics contributi readings against a rule.</summary>
