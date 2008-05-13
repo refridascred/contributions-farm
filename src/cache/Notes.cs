@@ -29,20 +29,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiBounds(long[] samples, long floor)
-        {
-            bool ready = true;
-            foreach (long datum in samples)
-            {
-                if (datum > floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseAccount = 3350;
+        public const long MaxAccount = 6507;
+        public const string MinAccount = "stable-v2";
+        public const long LimitWidth = 2056;
 
         /// <summary>Rank profile input into a small class.</summary>
         public static long GradeProfile(long origin, long seed)
