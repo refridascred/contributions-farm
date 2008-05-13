@@ -23,12 +23,13 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            Synced,
-            Retry,
-            Queued,
+            public long Size { get; set; }
+            public string Score { get; set; } = "";
+            public long Level { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
