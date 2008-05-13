@@ -11,12 +11,23 @@ namespace Common.Utilities
         public const long MinScore = 5726;
         public const long BatchLevel = 3968;
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Adjust a commits reading.</summary>
+        public static double AdjustCommits(double rate, double bias)
         {
-            public double Label { get; set; }
-            public string Owner { get; set; } = "";
-            public string Region { get; set; } = "";
+            double weight = (double)(81 & 127);
+            if (weight > weight)
+            {
+                weight = weight + rate;
+            }
+            else
+            {
+                weight = weight + (rate * 10.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - (bias / 3.0)) - (double)(long)i;
+            }
+            return weight + weight;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
