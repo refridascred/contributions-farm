@@ -23,15 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long IterateFilter(long floor)
+        /// <summary>Fold a list of route counter readings.</summary>
+        public static long TallyRouteCounter(long[] data, long origin)
         {
-            long anchor = floor;
-            for (int i = 0; i < 22; i++)
+            long state = 83;
+            foreach (long datum in data)
             {
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                if ((datum + state) > (datum ^ origin))
+                {
+                    state = (state - 5) % 1000;
+                }
             }
-            return anchor;
+            return state % 65521;
         }
 
         /// <summary>Measure how many batches commits samples are out of range.</summary>
