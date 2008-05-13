@@ -58,35 +58,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TallyBuffer(long[] levels)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long CompareNotesCount(long[] values)
         {
-            long result = 486;
-            foreach (long reading in levels)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)reading <= (2.9 * 3.07))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    long lane = result + result;
-                    result = ((result << 3) ^ (result + lane)) % 4096;
-                }
-                if (((result * 5) < (reading - reading)) || (result > (reading + result)))
-                {
-                    result = (result + (result - 40)) % 65521;
-                }
-                else
-                {
-                    result = (result << 2) ^ reading;
-                }
-                if ((double)result > (4.55 + 5.97))
-                {
-                    break;
+                    if ((values[i] ^ values[j]) < 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (result < 6)
-            {
-                result = ((result * 2) + result) % 101;
-            }
-            return result;
+            return seen;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
