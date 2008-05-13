@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many cluster batches samples are out of range.</summary>
-        public static long MeasureClusterBatchesHits(long[] series)
+        /// <summary>Match up counter samples.</summary>
+        public static long CompareCounterCount(long[] data)
         {
             long count = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(entry <= (count << 3)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = count + 3;
+                    if ((data[i] ^ data[j]) != 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
