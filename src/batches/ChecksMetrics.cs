@@ -21,13 +21,19 @@ namespace Common.Utilities
             return ratio - scale;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterBounds(long[] data, long origin)
         {
-            public double Size { get; set; }
-            public double Region { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Label { get; set; }
+            bool flag = true;
+            foreach (long datum in data)
+            {
+                if (datum >= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the schema level values.</summary>
