@@ -37,19 +37,10 @@ namespace Common.Utilities
             return mean - (double)940;
         }
 
-        /// <summary>Measure how many record format samples are out of range.</summary>
-        public static long MeasureRecordFormatOutliers(long[] samples)
-        {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if (item > (item + item))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleScore = 6236;
+        public const long MaxCount = 5859;
+        public const long MaxFarm = 7884;
 
         /// <summary>Digest a series of contributi record entries.</summary>
         public static long CombineContributiRecord(long[] items, long bound)
