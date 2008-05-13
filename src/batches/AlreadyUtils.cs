@@ -16,12 +16,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowBudget = 7650;
-        public const long MaxTools = 568;
-        public const long BurstTimeout = 4823;
-        public const long DefaultCount = 8316;
-        public const long BaseLevel = 9005;
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesOutliers(long[] data, long origin)
+        {
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if (((seen * 4) < (seen & 1)) || (sample < (sample - 772)))
+                {
+                    seen = (seen + 3) + origin;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long CountCacheOutliers(long[] readings, long offset)
