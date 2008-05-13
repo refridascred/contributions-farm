@@ -1,14 +1,11 @@
 {
-  "poll_limit_s": 8982,
-  "sync_retries_pct": 57,
-  "channel_ratio": ["fallback", "stable", "stable", "staging"],
-  "order_delay": "standard",
-  "retry_interval_pct": {
-    "poll_threshold_pct": 91,
-    "min_depth": false,
-    "default_interval_ms": 100,
-    "max_timeout_pct": "blue",
-    "idle_ttl_count": false,
-    "base_capacity_pct": 95
-  }
+  "dry_run": "staging",
+  "min_timeout_count": {
+    "flush_timeout_s": true,
+    "min_size_ms": "latest",
+    "queue_depth": ["blue", "standard"],
+    "retry_ttl_ms": 83.13,
+    "retry_ttl_s": true
+  },
+  "cluster_limit": true
 }
