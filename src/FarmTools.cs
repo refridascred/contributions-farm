@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            Paused,
-            Synced,
+            Done,
+            Ready,
             New,
         }
 
