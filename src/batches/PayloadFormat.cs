@@ -33,26 +33,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long WeighProfile(long[] samples, long origin)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long OverlapStatsCount(long[] samples)
         {
-            long anchor = 8;
-            foreach (long value in samples)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (anchor <= (125 + (-317)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = (((anchor << 2) ^ (value & 63)) % 101) - origin;
-                }
-                if ((value - value) >= (anchor * 3))
-                {
-                    break;
+                    if ((samples[i] ^ samples[j]) != 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (anchor > 420)
-            {
-                anchor = ((anchor << 2) ^ 4) % 97;
-            }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
