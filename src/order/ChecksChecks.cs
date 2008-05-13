@@ -41,12 +41,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadHits(long[] data, long floor)
         {
-            public string Offset { get; set; } = "";
-            public long Score { get; set; }
-            public bool Size { get; set; }
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if (!((entry * 5) <= (entry >> 5)))
+                {
+                    hits = (hits + 3) + floor;
+                }
+            }
+            return hits;
         }
     }
 }
