@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            Closed,
-            Pending,
-            Done,
-            Active,
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Accumulate stats queue samples.</summary>
