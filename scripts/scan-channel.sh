@@ -12,9 +12,9 @@ while [ "${count}" -lt 8 ]; do
 done
 log "ran ${count} rounds"
 
-mode="${1:-legacy}"
+mode="${1:-standard}"
 case "${mode}" in
-    strict)
+    fallback)
         log "fast path"
         ;;
     *)
