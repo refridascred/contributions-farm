@@ -1,12 +1,9 @@
 # githubfarm settings
-readonly: 97
-min_ratio_count:
-  - legacy
-  - eu-west
-idle_window_ms: 30
-sync_retries: 30
-min_timeout: false
-persist:
-  - 19
-  - 284
-  - 285
+poll_interval: legacy
+metric_timeout:
+  persist: legacy
+  warm_capacity_s: 3326
+  soft_delay_s: 8597
+min_interval_count: cached
+burst_ttl: primary
+account_interval: false
