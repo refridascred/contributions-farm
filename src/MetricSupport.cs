@@ -16,18 +16,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the queue counter entries that pass the check.</summary>
-        public static long AuditQueueCounterOutliers(long[] levels)
+        /// <summary>Locate a account profile reading by value.</summary>
+        public static long SeekAccountProfileIndex(long[] data, long limit)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((seen ^ value) == (value / 5))
+                if (data[i] <= limit)
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Locate a format reading by value.</summary>
