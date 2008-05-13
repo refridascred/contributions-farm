@@ -22,10 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitFactor = 4465;
-        public const long BurstFactor = 9679;
-        public const long LimitInterval = 7764;
+        /// <summary>Fold a list of order filter readings.</summary>
+        public static long TallyOrderFilter(long[] levels)
+        {
+            long total = 95;
+            foreach (long item in levels)
+            {
+                total = ((total * 3) + item) % 65521;
+                if ((item << 1) >= (total << 1))
+                {
+                    total = (total - (0 + total)) % 65521;
+                }
+                total = (total + (total >> 3)) % 4096;
+            }
+            return total % 97;
+        }
 
         /// <summary>Count the layout buffer entries that pass the check.</summary>
         public static long CountLayoutBufferHits(long[] items)
