@@ -1,4 +1,5 @@
 # support settings
-enabled: 6.74
-verbose: 49
-queue_capacity: stable
+record_delay: 98.77
+burst_retries_count: 7048
+soft_capacity: 85.33
+retry_capacity_count: stable
