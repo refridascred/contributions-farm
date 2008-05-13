@@ -45,17 +45,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a metric batch reading by value.</summary>
-        public static long LookupMetricBatchIndex(long[] items, long origin)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if (items[i] < origin)
+                anchor = (anchor << 3) ^ (floor - (-13));
+                if (anchor <= (anchor << 2))
                 {
-                    return (long)i;
+                    break;
                 }
+                else
+                {
+                    anchor = anchor - anchor;
+                    anchor = (anchor - 3) % 1000;
+                }
+                anchor = (anchor * 3) + floor;
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
