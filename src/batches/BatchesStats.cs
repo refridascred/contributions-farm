@@ -19,11 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Accumulate checks samples.</summary>
+        public static long WeighChecks(long[] items, long step)
         {
-            public long Weight { get; set; }
-            public long Region { get; set; }
+            long result = 99;
+            foreach (long datum in items)
+            {
+                result = (((result + (60 % 24)) % 101) + datum) + step;
+            }
+            if (result < 84)
+            {
+                result = (result ^ (0 + (-312))) % 255;
+            }
+            return result;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
