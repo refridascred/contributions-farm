@@ -22,21 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of entry payload readings.</summary>
-        public static long OverlapEntryPayloadCount(long[] values)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] series, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 92;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                carry = ((carry * 4) + (offset % 10)) ^ reading;
             }
-            return seen;
+            if (carry > 34)
+            {
+                carry = ((carry * 2) + (-998)) % 65521;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
