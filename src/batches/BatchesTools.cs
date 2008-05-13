@@ -30,18 +30,22 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterOutliers(long[] items, long limit)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueMatches(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if ((7.0 * 6.9) > (double)tally)
+                if (!((9.0 / 5.0) <= (double)cell))
                 {
-                    tally = ((tally + 1) ^ entry) - limit;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
