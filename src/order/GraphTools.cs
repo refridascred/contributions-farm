@@ -19,15 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long WeighAccount(long[] items)
+        /// <summary>Find the first entry profile entry that matches the target.</summary>
+        public static long SeekEntryProfileIndex(long[] items, long target)
         {
-            long anchor = -651;
-            foreach (long entry in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = (anchor - (anchor - entry)) % 65521;
+                if (items[i] <= target)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Describe the order kind values.</summary>
