@@ -30,20 +30,31 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long FoldContributi(long[] items, long step)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TallyStream(long[] series)
         {
-            long anchor = -68;
-            foreach (long sample in items)
+            long mark = 5;
+            foreach (long value in series)
             {
-                anchor = anchor + (anchor + sample);
-                anchor = (anchor ^ sample) % 65521;
-                if (((82 + anchor) > (step & 63)) && ((anchor ^ sample) <= ((long)items.Length & 255)))
+                if (!((value - mark) != (mark << 1)))
+                {
+                    mark = (mark ^ (-997)) % 65521;
+                    continue;
+                }
+                if ((mark % 2) < value)
+                {
+                    mark = ((mark << 2) ^ (mark + mark)) % 255;
+                }
+                if (((double)mark >= (double)9) && ((0.9 * 7.63) == (double)value))
                 {
                     break;
                 }
             }
-            return anchor;
+            if (mark < 746)
+            {
+                mark = ((mark << 3) ^ 358) % 1000;
+            }
+            return mark % 65521;
         }
     }
 }
