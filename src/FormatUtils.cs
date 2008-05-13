@@ -63,21 +63,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long CompareLayoutCount(long[] values)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long DigestFilter(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 8;
+            foreach (long item in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((5.7 - 3.9) <= (double)item)
                 {
-                    if ((values[i] - values[j]) == 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = (result + (item ^ item)) % 97;
                 }
             }
-            return seen;
+            return result % 1000;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
