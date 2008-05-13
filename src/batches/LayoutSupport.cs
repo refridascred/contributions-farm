@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many window stream samples are out of range.</summary>
-        public static long TallyWindowStreamOutliers(long[] values, long limit)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesHits(long[] samples)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if ((hits & 63) < (0 - limit))
+                if ((13.0 - 19.0) < (double)entry)
                 {
-                    hits = (hits + 3) + cell;
+                    seen = seen + 3;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
