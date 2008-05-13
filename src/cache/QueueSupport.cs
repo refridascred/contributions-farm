@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long PairContextCount(long[] data)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long FoldEditor(long[] series, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 29;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((reading + total) < (origin + origin)))
                 {
-                    if ((data[i] + data[j]) != 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = total ^ (reading >> 1);
                 }
             }
-            return seen;
+            if (total < (-2))
+            {
+                total = (total - (total * 4)) % 255;
+            }
+            return total % 65521;
         }
 
         /// <summary>Describe the contributi class values.</summary>
