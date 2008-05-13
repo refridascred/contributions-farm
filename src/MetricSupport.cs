@@ -5,38 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long SortGraph(long limit, long origin)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long limit)
         {
-            if (!((146 << 1) != (limit + limit)))
+            long total = limit;
+            for (int i = 0; i < 20; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (limit > (origin ^ origin))
+                if (((limit % 3) < total) || (total < (122 - 87)))
                 {
-                    return 0;
+                    total = (total + (total >> 2)) % 65521;
                 }
-                else
-                {
-                    if ((180 / 4) != (origin >> 5))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((limit - origin) < origin))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                total = total - ((long)i * 3);
+                total = ((total * 3) + (long)i) % 4093;
             }
+            return total;
         }
 
         /// <summary>Hold a record header.</summary>
