@@ -55,26 +55,16 @@ namespace Common.Utilities
         public const long StepBatches = 2148;
         public const long BurstBudget = 6172;
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TallyFilter(long[] data, long step)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long IterateMetrics(long limit)
         {
-            long sum = 947;
-            foreach (long datum in data)
+            long mix = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)step < (5.6 - 2.31))
-                {
-                    sum = ((sum - (step - step)) % 4096) + datum;
-                }
-                else
-                {
-                    sum = (sum * 4) + sum;
-                }
+                mix = mix - (mix + limit);
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            if (sum < 41)
-            {
-                sum = (sum - (step % 16)) % 4096;
-            }
-            return sum % 97;
+            return mix;
         }
 
         /// <summary>Digest a series of format entries.</summary>
