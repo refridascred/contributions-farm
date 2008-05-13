@@ -23,17 +23,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a queue graph reading by value.</summary>
-        public static long FindQueueGraphIndex(long[] series, long floor)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long SortFormat(long limit, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((floor % 16) < 98)
             {
-                if ((series[i] < floor) && ((series[i] % 2) != 0))
+                return 7;
+            }
+            else
+            {
+                if ((limit + floor) >= (floor ^ floor))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)floor <= (7.8 * 14.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((9.0 - 13.0) == (double)floor)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
