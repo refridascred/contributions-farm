@@ -27,27 +27,11 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long RollFilter(long offset)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long mix = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((((long)i % 97) < 32) && ((mix / 6) <= (long)i))
-                {
-                    continue;
-                }
-                if ((long)i < (84 + offset))
-                {
-                    mix = mix ^ (16 << 3);
-                }
-                else
-                {
-                    mix = (mix - offset) % 101;
-                }
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
+            public long Offset { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
