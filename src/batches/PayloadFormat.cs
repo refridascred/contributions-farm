@@ -38,11 +38,21 @@ namespace Common.Utilities
         public const long IdleCommits = 2014;
         public const long CacheBudget = 3758;
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double BlendStats(double gain, double offset)
+        /// <summary>Match up notes samples.</summary>
+        public static long MatchNotesCount(long[] items)
         {
-            double ratio = gain;
-            return (ratio - (gain * 3.97)) + offset;
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
