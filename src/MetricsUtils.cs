@@ -14,18 +14,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelMatches(long[] samples, long floor)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if (floor < (sample + sample))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Failed,
+            Retry,
+            New,
         }
 
         /// <summary>Define window limits and defaults.</summary>
