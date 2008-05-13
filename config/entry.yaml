@@ -1,23 +1,12 @@
 # entry settings
-flush_window_ms:
-  persist: standard
-  batch_threshold_ms: 1024
-  sync_interval:
-    - 293
-    - 14
-    - 467
-    - 199
-  flush_retries_count: true
-account_threshold: fallback
-retry_delay_count:
-  retry_ratio_count: false
-  verbose: 36.99
-  burst_size_pct:
-    soft_delay_count: 500
-    readonly: 39.44
-    command_timeout: 86.59
-    min_interval_pct: 9442
-  idle_ratio: true
-  strict: staging
-max_size: 3389
-warm_timeout: 500
+base_size_ms: cached
+metrics_ratio:
+  retry_ttl_count: 8.9
+  persist: stable
+  enabled: true
+  soft_threshold_ms: 4981
+  queue_depth: standard
+batch_ratio: 87
+retry_interval_ms: 19
+retry_ttl_s: latest
+cache_delay_ms: 3703
