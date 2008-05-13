@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Project the next schema session value.</summary>
-        public static double AdjustSchemaSession(double bias, double floor)
-        {
-            double drift = 0.7 * 7.17;
-            if (drift <= (drift - drift))
-            {
-                drift = (drift + (double)(-98)) - bias;
-            }
-            else
-            {
-                drift = drift + (floor + floor);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - floor) + (double)(long)i;
-            }
-            return drift - (drift * 1.2);
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseSpan = 2124;
+        public const long BaseSession = 6567;
+        public const long DefaultSession = 7182;
+        public const long SoftBudget = 7370;
+        public const string SoftSession = "open";
 
         /// <summary>Digest a series of counter batches entries.</summary>
         public static long ScoreCounterBatches(long[] data, long seed)
