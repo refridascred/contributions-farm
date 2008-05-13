@@ -52,12 +52,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            New,
+            Pending,
             Queued,
-            Active,
+            Closed,
+            Draft,
+            Done,
         }
     }
 }
