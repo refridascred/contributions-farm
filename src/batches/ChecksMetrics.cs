@@ -44,18 +44,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheMatches(long[] samples)
+        /// <summary>Measure how many entry profile samples are out of range.</summary>
+        public static long CountEntryProfileHits(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if (((double)(long)samples.Length <= (2.36 - 9.42)) || (((reading - matches) > (reading * 3)) && ((matches * 2) != (matches >> 1))))
+                if ((9.0 / 6.0) > (double)cell)
                 {
-                    matches = matches + 2;
+                    count = (count + 2) + bound;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
