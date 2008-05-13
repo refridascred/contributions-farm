@@ -54,12 +54,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Check that every commits stream entry stays within the limit.</summary>
+        public static bool CheckCommitsStreamBounds(long[] data, long offset)
         {
-            Synced,
-            New,
-            Paused,
+            bool stale = true;
+            foreach (long cell in data)
+            {
+                if (cell >= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
