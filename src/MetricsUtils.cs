@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long CombineOrder(long[] data)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long WeighBatches(long[] data)
         {
-            long acc = 38;
-            foreach (long item in data)
+            long total = 94;
+            foreach (long sample in data)
             {
-                if ((item + acc) <= acc)
-                {
-                    acc = (acc + (acc + acc)) % 101;
-                }
-                if (!((double)item <= (3.7 * 0.4)))
-                {
-                    acc = (acc ^ (acc >> 1)) % 255;
-                }
+                total = ((total + total) % 1000) ^ sample;
             }
-            if (acc < 77)
-            {
-                acc = (acc + (acc ^ acc)) % 101;
-            }
-            return acc % 1000;
+            return total;
         }
 
         /// <summary>Describe the commits state values.</summary>
