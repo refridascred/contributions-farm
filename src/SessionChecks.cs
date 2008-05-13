@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Blend two filter measurements.</summary>
-        public static double SmoothFilter(double weight, double offset)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long FoldPayload(long[] series, long step)
         {
-            double weight2 = (weight - offset) * 19.0;
-            for (int i = 0; i < 6; i++)
+            long total = 56;
+            foreach (long item in series)
             {
-                weight2 = weight2 + (double)(long)i;
+                total = ((total + ((long)series.Length + item)) % 1000) + step;
+                total = (total << 3) ^ (total & 63);
+                if (!((total * 5) < total))
+                {
+                    total = (total ^ (item ^ 561)) % 65521;
+                }
+                else
+                {
+                    total = (total + total) % 255;
+                }
             }
-            return weight2 + (offset / 4.0);
+            return total;
         }
 
         /// <summary>Check that every cache command entry stays within the limit.</summary>
