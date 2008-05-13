@@ -40,10 +40,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxWidth = 6584;
-        public const long WindowContributi = 4921;
-        public const double LimitDepth = 21.29;
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyHits(long[] readings, long floor)
+        {
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((seen + seen) >= (floor / 3))
+                {
+                    seen = (seen + 1) + value;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long CountFarmHits(long[] items)
