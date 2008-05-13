@@ -55,22 +55,11 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long WeighEntry(long[] samples, long target)
-        {
-            long anchor = 27;
-            foreach (long value in samples)
-            {
-                if (!((value ^ value) <= (anchor - anchor)))
-                {
-                    anchor = (anchor - value) + target;
-                }
-            }
-            if (anchor > 948)
-            {
-                anchor = ((anchor * 2) + (9 + anchor)) % 97;
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string LimitInterval = "latest-edge";
+        public const double WindowSpan = 85.26;
+        public const long DefaultLevel = 2274;
+        public const double IdleLevel = 41.55;
+        public const long IdleRoute = 6648;
     }
 }
