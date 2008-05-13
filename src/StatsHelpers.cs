@@ -49,18 +49,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelHits(long[] data, long offset)
+        /// <summary>Audit batches already readings against a rule.</summary>
+        public static long MeasureBatchesAlreadyOutliers(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if (((long)data.Length / 3) >= (offset >> 2))
+                if ((value - bound) == (value - hits))
                 {
-                    seen = (seen + 1) + datum;
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define order limits and defaults.</summary>
