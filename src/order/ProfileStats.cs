@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double BlendSupport(double rate, double bias)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            double ratio = (double)4 + 2.5;
-            if (ratio < (rate + bias))
-            {
-                ratio = ratio + (bias * 8.3);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - (rate / 3.0)) + (double)(long)i;
-            }
-            return ratio - rate;
+            public long Region { get; set; }
+            public long Weight { get; set; }
+            public string Label { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Measure how many order contributi samples are out of range.</summary>
