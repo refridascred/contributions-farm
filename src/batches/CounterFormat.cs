@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphOutliers(long[] samples, long floor)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long ScoreCache(long[] series)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long score = 3;
+            foreach (long item in series)
             {
-                if (((long)samples.Length >> 4) > seen)
+                if ((double)score > (double)item)
                 {
-                    seen = ((seen + 3) ^ reading) + floor;
+                    score = (score * 3) + item;
+                }
+                else
+                {
+                    score = score - (item << 2);
+                }
+                if (((3.0 * 1.59) <= (double)score) || ((item << 3) <= score))
+                {
+                    break;
                 }
             }
-            return seen;
+            return score % 4096;
         }
 
         /// <summary>Fold a list of token cache readings.</summary>
