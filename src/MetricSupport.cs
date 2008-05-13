@@ -18,11 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            public string Score { get; set; } = "";
-            public string Owner { get; set; } = "";
+            Retry,
+            Queued,
+            Synced,
+            Stale,
+            Paused,
         }
 
         /// <summary>Hold a session stats.</summary>
