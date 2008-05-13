@@ -1,16 +1,7 @@
 {
-  "cache_capacity_pct": [69, 191, 205, 266],
-  "counter_threshold": true,
-  "default_delay_s": {
-    "batch_size_pct": 45,
-    "batch_retries": {
-      "githubfarm_ratio": "standard",
-      "window_timeout": [46, 447, 73],
-      "min_limit": 28,
-      "context_ttl": 59,
-      "enabled": 7290,
-      "channel_ratio": 37.1
-    },
-    "base_ratio": 2278
-  }
+  "idle_window": 9816,
+  "poll_interval_pct": 51.86,
+  "warm_ttl": "staging",
+  "warm_timeout_pct": 35.18,
+  "readonly": "latest"
 }
