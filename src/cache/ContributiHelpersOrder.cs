@@ -22,15 +22,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long IterateSupport(long origin)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long SortStats(long floor, long origin)
         {
-            long state = origin;
-            for (int i = 0; i < 7; i++)
+            long gap = floor ^ origin;
+            if ((origin ^ origin) > (gap * 2))
             {
-                state = ((state * 2) + (long)i) % 4093;
+                return 8;
             }
-            return state;
+            else
+            {
+                if (origin >= 0)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Describe the buffer phase values.</summary>
