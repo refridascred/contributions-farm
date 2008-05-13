@@ -51,12 +51,11 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            Synced,
-            Draft,
-            Active,
+            public bool Region { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Roll a tools counter forward.</summary>
