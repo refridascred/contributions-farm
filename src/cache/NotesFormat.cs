@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Project the next commits value.</summary>
+        public static double BlendCommits(double rate, double bias)
         {
-            public string Stamp { get; set; } = "";
-            public double Total { get; set; }
+            double scale = 4.0 + (0.1 * 16.0);
+            for (int i = 0; i < 3; i++)
+            {
+                scale = ((scale + (double)9) + (double)(long)i) - bias;
+            }
+            return scale + rate;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
