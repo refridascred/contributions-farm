@@ -48,20 +48,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long IterateSupport(long offset)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandMatches(long[] data, long offset)
         {
-            long score = offset;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                long matches = score - (score / 4);
-                if ((56 << 2) >= (matches + matches))
+                if ((double)offset <= (20.0 / 3.0))
                 {
-                    continue;
+                    hits = (hits + 2) + entry;
                 }
-                score = ((score * 5) + (long)i) % 1000;
             }
-            return score;
+            return hits;
         }
     }
 }
