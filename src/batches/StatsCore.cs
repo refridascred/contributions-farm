@@ -35,17 +35,32 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LookupBatchIndex(long[] data, long seed)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long ClassifyCache(long origin, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long prev = origin ^ step;
+            if ((double)step > 1.2)
             {
-                if ((data[i] == seed) && ((data[i] % 5) != 0))
+                return 5;
+            }
+            else
+            {
+                if (!((double)origin < 0.89))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (((prev << 1) != (origin << 3)) && ((origin % 5) < (origin - step)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
