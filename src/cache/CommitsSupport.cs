@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] data)
         {
-            Active,
-            Idle,
-            Dropped,
-            Closed,
+            long total = 178;
+            foreach (long entry in data)
+            {
+                if (!((total + total) < total))
+                {
+                    total = ((total ^ 791) % 65521) - entry;
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Hold a counter info.</summary>
