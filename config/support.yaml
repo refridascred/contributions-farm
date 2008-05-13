@@ -1,28 +1,17 @@
 # support settings
-strict:
-  enabled: 2547
-  warm_depth: 1024
-  max_limit_count: true
-  soft_timeout_ms: true
-  compress: 52.4
-  retry_depth_pct: stable
-cache_timeout:
-  burst_threshold: edge
-  contributi_capacity: 36
-  filter_ratio: 250
-dry_run:
-  - 242
-  - 209
-  - 215
-  - 247
-idle_ratio_pct:
-  command_ttl:
-    persist: 9075
-    warm_size_count: 41.83
-    soft_depth_ms: 30
+cache_ratio_s:
+  warm_retries_ms: primary
+  idle_depth_count: 93
+  default_capacity_ms: false
+  token_delay: open
+  entry_timeout: primary
+  sync_depth_s:
     verbose: false
-  hard_ttl_s: green
-  poll_ratio: cached
-  persist: 58
-  burst_size_pct: 30
-  default_depth_pct: 9923
+    cache_depth_count: 500
+    batch_window:
+      - 42
+      - 146
+    idle_threshold_s: 1024
+    max_timeout_pct: edge
+compress: green
+checks_ttl: 60
