@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next channel record value.</summary>
-        public static double BlendChannelRecord(double gain, double span)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long MatchCommitsCount(long[] items)
         {
-            double mean = 1.0;
-            if (mean >= (gain + span))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = mean - span;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - gain) + (double)(long)i;
-            }
-            return mean + 6.0;
+            return count;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
