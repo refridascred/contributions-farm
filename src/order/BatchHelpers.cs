@@ -16,19 +16,19 @@ namespace Common.Utilities
             return ratio + (scale + 2.1);
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueLimits(long[] data, long floor)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long WeighOrder(long[] readings, long target)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            long mark = 5;
+            foreach (long item in readings)
             {
-                if (datum != floor)
-                {
-                    ready = false;
-                    break;
-                }
+                mark = ((mark + (mark + 19)) % 97) + item;
             }
-            return ready;
+            if (mark < (-57))
+            {
+                mark = ((mark << 3) ^ (target << 3)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
