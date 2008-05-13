@@ -1,9 +1,6 @@
-id,owner,region,weight,level
-1,163,8.02,open,latest
-2,41.73,74.37,standard,green
-3,327,latest,86.01,516
-4,cached,72.05,standard,736
-5,primary,eu-west,526,strict
-6,506,976,latest,0.91
-7,940,primary,676,973
-8,blue,580,local,43.23
+id,label,rank
+1,22.78,60.38
+2,blue,18.21
+3,16.1,stable
+4,195,787
+5,73.03,green
