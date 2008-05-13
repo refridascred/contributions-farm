@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long WeighToken(long[] values, long step)
+        /// <summary>Validate entry metrics readings against a bound.</summary>
+        public static bool ValidateEntryMetricsBounds(long[] series, long offset)
         {
-            long anchor = 916;
-            foreach (long value in values)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                if (step > (value % 60))
+                if (reading < offset)
                 {
-                    anchor = (anchor + (anchor % 64)) % 101;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (anchor + value)) % 255;
+                    valid = false;
+                    break;
                 }
             }
-            if (anchor < 864)
-            {
-                anchor = ((anchor << 2) ^ (anchor - 3)) % 101;
-            }
-            return anchor % 97;
+            return valid;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
