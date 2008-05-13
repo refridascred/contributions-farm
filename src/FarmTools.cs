@@ -30,13 +30,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Grade a context githubfarm value against two limits.</summary>
+        public static long RankContextGithubfarm(long offset, long bound)
         {
-            Synced,
-            Done,
-            Idle,
-            Active,
+            long lane = offset + bound;
+            if ((offset + lane) > 2)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((offset < bound) && (9 >= (bound ^ lane)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((offset - bound) <= lane) && ((offset % 5) < (offset + lane)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((1.0 - 1.09) == (double)offset)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
