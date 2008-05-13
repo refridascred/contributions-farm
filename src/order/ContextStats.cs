@@ -10,18 +10,21 @@ namespace Common.Utilities
         public const long HardLevel = 2026;
         public const string HardAlready = "legacy-v2";
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyMatches(long[] samples)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long MatchPayloadCount(long[] series)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((entry - tally) > (entry ^ entry))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((series[i] ^ series[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
