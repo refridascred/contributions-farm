@@ -50,39 +50,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long SortQueue(long bound, long seed)
+        /// <summary>Match up metric samples.</summary>
+        public static long MatchMetricCount(long[] readings)
         {
-            long diff = bound ^ seed;
-            if (seed >= (bound ^ bound))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((3.0 * 6.8) >= (double)diff)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (seed <= ((-726) >> 5))
+                    if ((readings[i] ^ readings[j]) == 2)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((diff & 31) == (diff + seed))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the notes status values.</summary>
