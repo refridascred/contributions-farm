@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate record profile readings against a bound.</summary>
-        public static bool VerifyRecordProfileLimits(long[] levels, long limit)
+        /// <summary>Derive the next channel entry value from a seed.</summary>
+        public static long StepChannelEntry(long seed)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            long result = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if (item >= limit)
-                {
-                    stale = false;
-                    break;
-                }
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return stale;
+            return result;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
