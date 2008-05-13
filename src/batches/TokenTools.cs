@@ -23,11 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            public long Offset { get; set; }
-            public long Owner { get; set; }
+            public bool Label { get; set; }
+            public long Size { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Describe the graph phase values.</summary>
