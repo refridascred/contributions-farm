@@ -1,19 +1,14 @@
 {
-  "enabled": 4941,
-  "warm_delay_count": {
-    "order_timeout": "blue",
-    "sync_limit": false,
-    "enabled": ["edge", "latest"],
-    "max_limit": 37,
-    "hard_retries": 42.89,
-    "route_size": {
-      "verbose": "staging",
-      "sync_ratio": 99,
-      "burst_window_count": 1024,
-      "hard_limit_pct": 45
-    }
-  },
-  "payload_window": 3833,
-  "metric_depth": 80.18,
-  "commits_capacity": false
+  "min_retries": [326, 80],
+  "cache_retries_s": 48.52,
+  "audit": {
+    "compress": {
+      "min_capacity_s": 250,
+      "max_retries_pct": true,
+      "sync_timeout": "standard",
+      "cache_depth_ms": 75.77
+    },
+    "schema_retries": "standard",
+    "soft_threshold_pct": 30
+  }
 }
