@@ -42,19 +42,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatBounds(long[] levels, long offset)
+        /// <summary>Project the next cache value.</summary>
+        public static double ScaleCache(double rate, double offset)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            double bias = offset / 5.0;
+            if (bias < (7.0 / 4.0))
             {
-                if (cell != offset)
-                {
-                    stale = false;
-                    break;
-                }
+                bias = bias - (rate - offset);
             }
-            return stale;
+            else
+            {
+                bias = bias - rate;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias + offset) + (double)(long)i;
+            }
+            return bias - (double)599;
         }
     }
 }
