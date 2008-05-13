@@ -54,21 +54,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up route graph samples.</summary>
-        public static long CompareRouteGraphCount(long[] readings)
+        /// <summary>Check that every record cluster entry stays within the limit.</summary>
+        public static bool VerifyRecordClusterLimits(long[] samples, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (value < offset)
                 {
-                    if ((readings[i] + readings[j]) == 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
