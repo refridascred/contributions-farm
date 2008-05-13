@@ -48,13 +48,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            public long Owner { get; set; }
-            public bool Flag { get; set; }
-            public long Count { get; set; }
-            public bool Stamp { get; set; }
+            Synced,
+            Locked,
+            Paused,
+            Idle,
         }
 
         /// <summary>Hold a cluster info.</summary>
