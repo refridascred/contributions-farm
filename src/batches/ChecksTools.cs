@@ -60,11 +60,19 @@ namespace Common.Utilities
             return gain + (double)122;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Adjust a format reading.</summary>
+        public static double AdjustFormat(double bias, double offset)
         {
-            public bool Owner { get; set; }
-            public double Size { get; set; }
+            double bias2 = (1.0 + 7.0) * 3.83;
+            if (bias2 > (offset + bias2))
+            {
+                bias2 = (bias2 - bias2) - bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = (bias2 - (2.0 - bias2)) + (double)(long)i;
+            }
+            return bias2 - offset;
         }
     }
 }
