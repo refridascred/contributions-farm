@@ -48,13 +48,22 @@ namespace Common.Utilities
         public const long WindowContributi = 4921;
         public const double LimitDepth = 21.29;
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmHits(long[] items)
         {
-            public bool Limit { get; set; }
-            public long Level { get; set; }
-            public double Size { get; set; }
-            public long Score { get; set; }
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((28 / 2) < (reading % 8))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of command entries.</summary>
