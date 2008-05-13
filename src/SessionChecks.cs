@@ -29,11 +29,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BaseTimeout = 49.51;
-        public const string WindowBudget = "standard-1";
-        public const long RetryCache = 4711;
-        public const long MinRatio = 4193;
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
+        {
+            public double Label { get; set; }
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Roll a command filter counter forward.</summary>
         public static long DeriveCommandFilter(long target)
