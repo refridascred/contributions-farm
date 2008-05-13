@@ -20,18 +20,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LookupBatchesIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double IdleFilter = 93.49;
+        public const long RetrySpan = 1991;
+        public const double CacheFilter = 10.31;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const string WindowGithubfarm = "local-1";
