@@ -42,11 +42,13 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double DefaultContext = 71.95;
-        public const long HardSize = 7795;
-        public const long BatchCount = 772;
-        public const long BaseContext = 8594;
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
+        {
+            public long Owner { get; set; }
+            public bool Count { get; set; }
+            public bool Region { get; set; }
+        }
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long TallyChannel(long[] series, long bound)
