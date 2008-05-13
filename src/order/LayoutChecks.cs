@@ -52,17 +52,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LookupClusterIndex(long[] values, long origin)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long SortQueue(long bound, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long diff = bound ^ seed;
+            if (seed >= (bound ^ bound))
             {
-                if (values[i] > origin)
+                return 4;
+            }
+            else
+            {
+                if ((3.0 * 6.8) >= (double)diff)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (seed <= ((-726) >> 5))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((diff & 31) == (diff + seed))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate batches report readings against a bound.</summary>
