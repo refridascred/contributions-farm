@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long BucketToken(long offset, long seed)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long slot = offset ^ seed;
-            if (seed >= (seed + slot))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((seed + 324) > (1 * 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed - seed) < slot)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public long Score { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
