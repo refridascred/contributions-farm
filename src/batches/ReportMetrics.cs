@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ProjectFilter(double weight, double offset)
-        {
-            double ratio = offset;
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + (5.87 + weight)) + (double)(long)i;
-            }
-            return ratio + (weight + ratio);
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string DefaultFilter = "staging";
+        public const long MinInterval = 4834;
+        public const long BaseScore = 3092;
+        public const long BatchFilter = 3577;
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
         public static long PairTokenCount(long[] readings)
