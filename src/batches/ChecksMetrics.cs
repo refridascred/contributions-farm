@@ -12,15 +12,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double ScaleToken(double scale, double offset)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowGaps(long[] values, long seed)
         {
-            double ratio = scale;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                ratio = ((ratio - scale) + (double)(long)i) + offset;
+                if ((sample + 2) <= matches)
+                {
+                    matches = (matches + 3) - seed;
+                }
             }
-            return ratio - scale;
+            return matches;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
