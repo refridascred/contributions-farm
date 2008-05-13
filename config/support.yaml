@@ -1,5 +1,12 @@
 # support settings
-record_delay: 98.77
-burst_retries_count: 7048
-soft_capacity: 85.33
-retry_capacity_count: stable
+tools_limit:
+  max_ttl: local
+  sync_delay: staging
+  min_capacity: true
+  compress:
+    - primary
+    - eu-west
+    - open
+queue_ratio: 9413
+route_limit: 41
+counter_depth: green
