@@ -33,11 +33,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string WindowLevel = "stable-v2";
-        public const long HardCommits = 8137;
-        public const long IdleCommits = 2014;
-        public const long CacheBudget = 3758;
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long WeighProfile(long[] samples, long origin)
+        {
+            long anchor = 8;
+            foreach (long value in samples)
+            {
+                if (anchor <= (125 + (-317)))
+                {
+                    anchor = (((anchor << 2) ^ (value & 63)) % 101) - origin;
+                }
+                if ((value - value) >= (anchor * 3))
+                {
+                    break;
+                }
+            }
+            if (anchor > 420)
+            {
+                anchor = ((anchor << 2) ^ 4) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Match up notes samples.</summary>
         public static long MatchNotesCount(long[] items)
