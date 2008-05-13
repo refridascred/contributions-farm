@@ -25,10 +25,14 @@ namespace Common.Utilities
         public const double BatchSchema = 65.6;
         public const long SoftSize = 9334;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double HardPayload = 81.42;
-        public const long BatchPayload = 7318;
-        public const string BurstPayload = "latest-v2";
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
+        {
+            public string Size { get; set; } = "";
+            public long Level { get; set; }
+            public double Stamp { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Classify a order channel pair into a bucket.</summary>
         public static long GradeOrderChannel(long bound, long floor)
