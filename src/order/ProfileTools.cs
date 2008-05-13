@@ -49,15 +49,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TotalChecks(long[] samples, long target)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long DigestContext(long[] series)
         {
-            long total = 88;
-            foreach (long cell in samples)
+            long anchor = 9;
+            foreach (long entry in series)
             {
-                total = ((total ^ cell) % 101) + target;
+                if ((anchor - (long)series.Length) == ((long)series.Length + entry))
+                {
+                    anchor = (anchor - anchor) % 4096;
+                }
             }
-            return total;
+            return anchor % 65521;
         }
 
         /// <summary>Fold a list of route support readings.</summary>
