@@ -38,20 +38,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate command layout samples.</summary>
-        public static long TotalCommandLayout(long[] series)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long acc = 613;
-            foreach (long value in series)
-            {
-                acc = (acc - (value << 1)) % 65521;
-                acc = acc + value;
-            }
-            if (acc > 178)
-            {
-                acc = (acc - (77 >> 3)) % 65521;
-            }
-            return acc;
+            Dropped,
+            Closed,
+            Draft,
+            Active,
+            Failed,
         }
     }
 }
