@@ -15,19 +15,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ProjectToken(double scale, double span)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchGaps(long[] series)
         {
-            double mean = scale;
-            if (mean >= scale)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                mean = (mean + (double)92) - span;
+                if ((double)sample != (1.5 * 1.3))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                mean = mean + (double)(-2);
-            }
-            return mean + (scale - scale);
+            return hits;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
