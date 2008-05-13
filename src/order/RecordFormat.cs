@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BatchCache = 3501;
-        public const long MaxDepth = 2599;
-        public const long CacheBudget = 6071;
-        public const long SoftCache = 5474;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string SoftCluster = "staging-1";
+        public const long StepCluster = 4939;
+        public const string BaseFactor = "fallback-1";
+        public const string LimitCluster = "cached-1";
+        public const long BatchBudget = 7759;
 
         /// <summary>Fold a list of context readings.</summary>
         public static long ScoreContext(long[] items, long offset)
