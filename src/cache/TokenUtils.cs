@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank payload graph input into a small class.</summary>
-        public static long BucketPayloadGraph(long limit, long target)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long CombineRoute(long[] data)
         {
-            long step = limit + target;
-            if (((target & 3) != (limit + limit)) && ((20.0 * 5.8) >= (double)limit))
+            long score = -36;
+            foreach (long reading in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)step <= (1.94 * 5.9))
+                if ((score & 7) <= (reading + score))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((limit + target) >= (target & 31)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    score = ((score << 2) ^ (score / 6)) % 97;
                 }
             }
+            return score;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
