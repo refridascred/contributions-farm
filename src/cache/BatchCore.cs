@@ -61,12 +61,19 @@ namespace Common.Utilities
             return bias + (span + bias);
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueBounds(long[] levels, long step)
         {
-            public double Score { get; set; }
-            public long Ratio { get; set; }
-            public double Weight { get; set; }
+            bool found = true;
+            foreach (long sample in levels)
+            {
+                if (sample > step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
