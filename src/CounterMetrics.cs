@@ -33,27 +33,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long ScoreLayout(long[] data)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileHits(long[] values)
         {
-            long score = -2;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if (((cell + score) > score) || ((score << 1) >= (score >> 2)))
+                if ((seen / 9) < seen)
                 {
-                    score = (score ^ (cell & 1)) % 97;
-                    continue;
-                }
-                else
-                {
-                    score = (score * 2) + ((long)data.Length >> 3);
-                }
-                if ((double)77 != (double)score)
-                {
-                    score = ((score * 3) + (cell + cell)) % 97;
+                    seen = (seen + 2) + sample;
                 }
             }
-            return score % 1000;
+            return seen;
         }
 
         /// <summary>Count editor batch pairs that satisfy a relation.</summary>
