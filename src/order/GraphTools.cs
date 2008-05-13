@@ -45,12 +45,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinRatio = 1356;
-        public const long MaxTimeout = 6005;
-        public const long HardAlready = 7077;
-        public const long DefaultAlready = 8917;
-        public const long StepAlready = 9663;
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
+        {
+            public double Total { get; set; }
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long MeasureProfileMatches(long[] samples)
