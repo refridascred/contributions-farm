@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long FindCommitsIndex(long[] series, long bound)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long MatchGraphCount(long[] series)
         {
+            long matches = 0;
             for (int i = 0; i < series.Length; i++)
             {
-                if ((series[i] < bound) && ((series[i] % 3) != 0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] + series[j]) == 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Combine format values into a single score.</summary>
