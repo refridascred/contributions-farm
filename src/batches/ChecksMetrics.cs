@@ -76,22 +76,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many graph entry samples are out of range.</summary>
-        public static long CountGraphEntryMatches(long[] levels)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long GradeRecord(long step, long bound)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            if (step <= (step & 31))
             {
-                if ((reading + matches) == (matches & 7))
+                return 8;
+            }
+            else
+            {
+                if ((double)step >= (2.3 / 8.0))
                 {
-                    matches = matches + 3;
+                    return 4;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((bound / 8) < ((-759) * 2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
