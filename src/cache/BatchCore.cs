@@ -11,11 +11,39 @@ namespace Common.Utilities
         public const long WindowRatio = 1012;
         public const long HardLevel = 682;
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long SortFilter(long origin, long seed)
         {
-            public bool Score { get; set; }
-            public double Limit { get; set; }
+            long bound = origin + seed;
+            if ((seed + origin) == (seed - bound))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)seed != (double)origin)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (6.15 <= (double)bound)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((7.36 * 9.0) != (double)seed) || (184 > (seed % 97)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
