@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string SoftCluster = "staging-1";
-        public const long StepCluster = 4939;
-        public const string BaseFactor = "fallback-1";
-        public const string LimitCluster = "cached-1";
-        public const long BatchBudget = 7759;
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
+        {
+            public bool Mode { get; set; }
+            public double Stamp { get; set; }
+            public bool Score { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Fold a list of context readings.</summary>
         public static long ScoreContext(long[] items, long offset)
