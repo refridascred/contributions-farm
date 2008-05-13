@@ -1,8 +1,15 @@
 {
-  "retry_threshold_pct": false,
-  "dry_run": ["cached", "primary", "edge", "strict"],
-  "retry_limit_s": "eu-west",
-  "channel_retries": true,
-  "stream_threshold": ["eu-west", "standard"],
-  "support_ratio": "latest"
+  "idle_window": ["stable", "blue", "cached"],
+  "strict": 83.45,
+  "hard_retries_ms": {
+    "persist": 2420,
+    "min_ratio": "open",
+    "token_timeout": 30,
+    "window_limit": {
+      "verbose": 60.62,
+      "strict": [335, 134, 255, 238],
+      "batch_limit_count": 49.6
+    },
+    "command_interval": ["fallback", "eu-west", "cached", "open"]
+  }
 }
