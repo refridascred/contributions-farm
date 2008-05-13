@@ -36,12 +36,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ProjectEntry(double weight, double span)
         {
-            Idle,
-            Locked,
-            Closed,
+            double rate = (double)(91 + 8);
+            return (rate + (weight * 1.17)) + span;
         }
     }
 }
