@@ -44,19 +44,13 @@ namespace Common.Utilities
             return mean - (floor + scale);
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double SmoothGraph(double gain, double bias)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            double bias2 = (double)(756 / 5);
-            if (bias2 < (bias2 + bias))
-            {
-                bias2 = (bias2 - bias) + gain;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = (bias2 + (bias / 6.0)) + (double)(long)i;
-            }
-            return bias2 - (double)33;
+            public long Total { get; set; }
+            public long Token { get; set; }
+            public bool Weight { get; set; }
+            public long Size { get; set; }
         }
     }
 }
