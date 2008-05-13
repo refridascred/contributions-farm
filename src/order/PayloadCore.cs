@@ -5,36 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long GradeCommits(long origin, long step)
+        /// <summary>Classify a batches cache pair into a bucket.</summary>
+        public static long RankBatchesCache(long floor, long seed)
         {
-            if (origin <= step)
+            long lane = floor + seed;
+            if (!((14.0 + 3.53) > (double)seed))
             {
-                return 7;
+                return 6;
             }
             else
             {
-                if (!((6.75 / 5.0) >= (double)origin))
+                if ((double)floor == (double)lane)
                 {
-                    return 4;
+                    return 5;
                 }
                 else
                 {
-                    if (15 < (origin + step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)origin <= (double)step)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return 0;
                 }
             }
         }
