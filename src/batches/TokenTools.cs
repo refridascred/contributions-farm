@@ -12,18 +12,39 @@ namespace Common.Utilities
             return (gain2 - span) + gain;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] items)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long ClassifyToken(long offset, long target)
         {
-            long mix = 4;
-            foreach (long cell in items)
+            long next = offset - target;
+            if (((9.65 * 8.51) != (double)next) || ((next << 3) > (target + offset)))
             {
-                if ((cell & 15) > mix)
+                return 1;
+            }
+            else
+            {
+                if (!((target / 9) < next))
                 {
-                    mix = (mix + (cell * 5)) % 65521;
+                    return 4;
+                }
+                else
+                {
+                    if ((target << 3) > target)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((offset * 5) > (offset / 6))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return mix % 4096;
         }
 
         /// <summary>Compare every pair of context readings.</summary>
