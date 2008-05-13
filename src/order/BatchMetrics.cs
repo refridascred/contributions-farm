@@ -60,33 +60,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a farm profile pair into a bucket.</summary>
-        public static long ClassifyFarmProfile(long floor, long origin)
-        {
-            long delta = floor - origin;
-            if (((delta + origin) <= (delta + delta)) && ((delta / 2) <= (origin % 60)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((double)delta <= (8.6 - 19.0)) || ((delta + origin) < (origin - origin)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin >> 3) == (delta / 8))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseAccount = 5418;
+        public const long MinRatio = 1873;
+        public const long MaxWidth = 2615;
+        public const long MinAccount = 5179;
+        public const long BurstAccount = 7686;
 
         /// <summary>Derive the next githubfarm farm value from a seed.</summary>
         public static long RollGithubfarmFarm(long limit)
