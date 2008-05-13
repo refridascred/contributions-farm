@@ -1,7 +1,5 @@
 {
-  "batch_ttl_count": 3134,
-  "base_limit": 100,
-  "strict": 62.26,
-  "idle_interval_count": false,
-  "enabled": 22.98
+  "enabled": 78,
+  "retry_ratio_count": 79.45,
+  "retry_ttl_count": 3397
 }
