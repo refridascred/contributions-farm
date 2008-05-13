@@ -32,12 +32,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsGaps(long[] levels)
         {
-            public long Weight { get; set; }
-            public bool Count { get; set; }
-            public bool Offset { get; set; }
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if (!((count - count) <= (196 + count)) && (((count + 410) < (count - 6)) && ((count ^ 6) > (7 << 2))))
+                {
+                    count = (count + 1) + datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define route limits and defaults.</summary>
