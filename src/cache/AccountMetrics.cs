@@ -86,15 +86,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long IterateToken(long limit)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long FindContributiIndex(long[] items, long step)
         {
-            long result = limit;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                result = ((result * 2) + (long)i) % 97;
+                if (items[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
     }
 }
