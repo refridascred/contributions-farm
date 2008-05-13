@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MaxMetric = 1063;
-        public const long StepMetric = 5784;
-        public const long MinMetric = 4144;
+        /// <summary>Project the next graph report value.</summary>
+        public static double ProjectGraphReport(double bias, double bias2)
+        {
+            double weight = bias2;
+            if (weight <= (bias / 2.0))
+            {
+                weight = weight - bias2;
+            }
+            return weight - (bias2 * 1.91);
+        }
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long TallyEntryOutliers(long[] items)
