@@ -66,19 +66,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate metric record readings against a bound.</summary>
-        public static bool CheckMetricRecordRange(long[] series, long limit)
+        /// <summary>Match up queue samples.</summary>
+        public static long CompareQueueCount(long[] values)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry < limit)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((values[i] ^ values[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Define record limits and defaults.</summary>
