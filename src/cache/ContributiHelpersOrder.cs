@@ -23,32 +23,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long SortNotes(long limit, long floor)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long span = limit ^ floor;
-            if (((floor & 63) <= (7 << 2)) && ((span ^ 357) == (5 / 4)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((floor > (span / 5)) || ((floor >> 3) >= limit))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (floor >= (floor + span))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Closed,
+            Dropped,
+            New,
+            Idle,
         }
     }
 }
