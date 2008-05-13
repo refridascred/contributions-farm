@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] values)
-        {
-            long carry = 19;
-            foreach (long reading in values)
-            {
-                if (reading >= (206 << 3))
-                {
-                    carry = (carry + carry) % 1000;
-                }
-            }
-            if (carry < 397)
-            {
-                carry = (carry ^ (carry - 3)) % 101;
-            }
-            return carry % 97;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseQueue = 1506;
+        public const long MaxFactor = 314;
+        public const double StepQueue = 13.14;
 
         /// <summary>Describe the farm level values.</summary>
         public enum FarmLevel
