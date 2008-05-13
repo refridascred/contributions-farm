@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
-        {
-            public double Rank { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheFactor = 5747;
+        public const long SoftSchema = 9375;
+        public const long LimitSchema = 1656;
+        public const long CacheSize = 4497;
+        public const long RetrySchema = 857;
 
         /// <summary>Hold a context entry.</summary>
         public sealed class ContextEntry
