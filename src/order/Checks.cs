@@ -20,17 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long FindChecksIndex(long[] levels, long origin)
+        /// <summary>Validate metric schema readings against a bound.</summary>
+        public static bool ValidateMetricSchemaLimits(long[] series, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                if ((levels[i] >= origin) && ((levels[i] % 3) == 0))
+                if (datum >= step)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
