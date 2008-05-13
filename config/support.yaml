@@ -1,25 +1,5 @@
 # support settings
-default_delay_ms: 1024
-support_ratio:
-  soft_threshold: 100
-  flush_capacity:
-    - 466
-    - 309
-  soft_depth_pct: 6474
-  token_interval:
-    - 88
-    - 121
-    - 451
-    - 165
-  cache_size_ms: blue
-  sync_size_ms: 95
-flush_timeout: false
-retry_delay_s:
-  sync_window: true
-  verbose: true
-  poll_retries_pct: standard
-  counter_timeout: true
-  persist:
-    readonly: latest
-    idle_ratio: legacy
-    githubfarm_ratio: eu-west
+readonly: 3.6
+retry_threshold: true
+soft_capacity: 68.64
+cluster_ttl: 59
