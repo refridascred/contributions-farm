@@ -1,10 +1,6 @@
 # entry settings
-hard_threshold_ms:
-  - legacy
-  - legacy
-  - cached
-  - legacy
-default_threshold_ms: legacy
-burst_limit_count: 9912
-hard_interval_count: primary
-idle_limit_pct: latest
+base_interval: 10.02
+report_retries: false
+soft_limit: 82.87
+flush_window_pct: 3457
+burst_window_count: 30
