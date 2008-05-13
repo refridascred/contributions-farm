@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long RankRoute(long floor, long bound)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long PairStreamCount(long[] levels)
         {
-            if ((floor + bound) <= (bound >> 2))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((2 - bound) <= ((-15) * 4))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((floor + bound) == (bound & 15)) && ((double)floor == (14.0 * 1.68)))
+                    if ((levels[i] + levels[j]) == 0)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the commits status values.</summary>
