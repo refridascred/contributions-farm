@@ -29,19 +29,23 @@ namespace Common.Utilities
         public const long LimitWidth = 6145;
         public const double WindowDepth = 32.49;
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long RollContributi(long seed)
+        /// <summary>Project the next channel value.</summary>
+        public static double SmoothChannel(double gain, double floor)
         {
-            long carry = seed;
-            for (int i = 0; i < 21; i++)
+            double bias = gain;
+            if (bias > (double)5)
             {
-                if ((long)i <= seed)
-                {
-                    carry = (carry ^ (carry + (long)i)) % 1000;
-                }
-                carry = ((carry * 5) + (long)i) % 97;
+                bias = bias - (double)887;
             }
-            return carry;
+            else
+            {
+                bias = bias - (bias + floor);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias - floor) + (double)(long)i;
+            }
+            return bias + (double)21;
         }
     }
 }
