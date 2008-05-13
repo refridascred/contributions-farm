@@ -98,18 +98,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheOutliers(long[] items, long floor)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((floor + 832) > 5)
-                {
-                    hits = (hits + 1) + item;
-                }
-            }
-            return hits;
+            public double Score { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
