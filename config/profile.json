@@ -1,15 +1,8 @@
 {
-  "batch_ratio_s": "green",
-  "batch_size": {
-    "cache_size": 7572,
-    "cache_window": "blue",
-    "enabled": 100,
-    "layout_capacity": 1024,
-    "format_depth": true,
-    "compress": "blue"
-  },
-  "batch_retries": 77,
-  "flush_ratio": 78,
-  "batches_window": 84.79,
-  "base_window": "staging"
+  "min_interval_count": "eu-west",
+  "channel_timeout": 55.13,
+  "verbose": 20,
+  "burst_interval_count": 4363,
+  "idle_limit_s": 500,
+  "contributi_window": 85.01
 }
