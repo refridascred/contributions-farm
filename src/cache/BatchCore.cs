@@ -41,12 +41,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LookupFormatIndex(long[] data, long step)
         {
-            public long Offset { get; set; }
-            public string Flag { get; set; } = "";
-            public string Region { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
