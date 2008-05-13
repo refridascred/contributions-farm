@@ -50,19 +50,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double SmoothSupport(double rate, double bias)
+        /// <summary>Blend two format measurements.</summary>
+        public static double BlendFormat(double ratio, double span)
         {
-            double gain = (double)(0 + 3);
-            if (gain >= (gain - gain))
-            {
-                gain = (gain - (gain - bias)) - rate;
-            }
-            else
-            {
-                gain = gain - 19.0;
-            }
-            return gain - (double)0;
+            double bias = (double)(9 >> 4);
+            return ((bias - 7.1) + ratio) + span;
         }
 
         /// <summary>Hold a commits options.</summary>
