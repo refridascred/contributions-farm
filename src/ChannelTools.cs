@@ -41,24 +41,15 @@ namespace Common.Utilities
             return mean - (mean / 8.0);
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long CombineBatch(long[] levels, long seed)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long seed)
         {
-            long score = -663;
-            foreach (long cell in levels)
+            long sum = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if (!((double)score >= 6.4))
-                {
-                    score = (score * 4) + (seed % 97);
-                    score = (score - (seed + seed)) % 101;
-                }
-                score = (score + (95 - score)) % 101;
-                if ((cell >> 2) != (seed + score))
-                {
-                    score = (score ^ (cell / 4)) % 255;
-                }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return score % 4096;
+            return sum;
         }
     }
 }
