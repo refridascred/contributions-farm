@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesOutliers(long[] data)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((hits / 9) <= hits)
-                {
-                    hits = (hits + 2) + sample;
-                }
-            }
-            return hits;
+            Draft,
+            Failed,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Hold a checks record.</summary>
