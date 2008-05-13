@@ -1,5 +1,8 @@
 # githubfarm settings
-retry_threshold: 8796
-enabled: 32.83
-retry_size_count: 500
-idle_limit_pct: true
+buffer_limit: 5.47
+compress: 90
+retry_capacity: 91.42
+route_size:
+  - 144
+  - 5
+  - 117
