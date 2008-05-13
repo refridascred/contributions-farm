@@ -68,14 +68,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long SeekTokenIndex(long[] data, long floor)
         {
-            Ready,
-            Closed,
-            Stale,
-            Retry,
-            Done,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == floor) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
