@@ -30,9 +30,10 @@ namespace Common.Utilities
         public const long LimitToken = 188;
 
         /// <summary>Define graph limits and defaults.</summary>
-        public const double BatchLevel = 66.7;
-        public const double HardLevel = 3.49;
-        public const string LimitGraph = "primary-1";
-        public const long IdleBudget = 567;
+        public const long BaseSpan = 2909;
+        public const double LimitGraph = 29.28;
+        public const string BatchGraph = "open-1";
+        public const long HardWidth = 4625;
+        public const string CacheGraph = "cached-1";
     }
 }
