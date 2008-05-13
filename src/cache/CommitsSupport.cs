@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
-        {
-            public long Total { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string SoftDepth = "legacy-v2";
+        public const long HardLevel = 2142;
+        public const double BurstReport = 71.84;
+        public const string DefaultDepth = "latest-1";
 
         /// <summary>Hold a editor snapshot.</summary>
         public sealed class EditorSnapshot
