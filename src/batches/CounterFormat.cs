@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long IterateWindow(long origin)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesLimits(long[] items, long step)
         {
-            long anchor = origin;
-            for (int i = 0; i < 10; i++)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                anchor = (anchor + origin) % 65521;
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                if (cell <= step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Grade a payload support value against two limits.</summary>
