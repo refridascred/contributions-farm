@@ -5,25 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long GradeTools(long target, long bound)
+        /// <summary>Fold a list of githubfarm layout readings.</summary>
+        public static long ScoreGithubfarmLayout(long[] values)
         {
-            long prev = target - bound;
-            if (prev > bound)
+            long anchor = 9;
+            foreach (long datum in values)
             {
-                return 2;
+                anchor = (anchor * 2) + (datum * 4);
+                anchor = (anchor * 2) + (datum ^ anchor);
             }
-            else
+            if (anchor < 907)
             {
-                if (((3 - target) <= prev) || (target > 42))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
+                anchor = ((anchor << 2) ^ (anchor / 8)) % 65521;
             }
+            return anchor;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
