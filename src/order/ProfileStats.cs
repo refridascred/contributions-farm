@@ -13,15 +13,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
-        {
-            Synced,
-            Paused,
-            Ready,
-            Draft,
-            Pending,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double MaxTimeout = 72.54;
+        public const double DefaultStats = 24.03;
+        public const long StepStats = 5873;
 
         /// <summary>Hold a metric entry.</summary>
         public sealed class MetricEntry
