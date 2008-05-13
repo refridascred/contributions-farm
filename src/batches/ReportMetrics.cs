@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double DefaultTimeout = 53.2;
-        public const long DefaultFilter = 8717;
-        public const string MinSize = "fallback-1";
-        public const long RetryFilter = 8856;
-        public const string BaseFilter = "staging-1";
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutOutliers(long[] readings, long bound)
+        {
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if (((matches > (entry ^ bound)) || (matches <= (bound - bound))) && !(entry > (entry / 2)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the notes state values.</summary>
         public enum NotesState
