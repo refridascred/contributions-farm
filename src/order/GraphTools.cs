@@ -56,27 +56,22 @@ namespace Common.Utilities
             return scale + gain;
         }
 
-        /// <summary>Derive the next record queue value from a seed.</summary>
-        public static long SeriesRecordQueue(long offset)
+        /// <summary>Accumulate commits filter samples.</summary>
+        public static long ScoreCommitsFilter(long[] data, long origin)
         {
-            long anchor = offset;
-            for (int i = 0; i < 19; i++)
+            long sum = 9;
+            foreach (long item in data)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if (483 < (origin % 64))
                 {
-                    anchor = (anchor - (offset / 9)) ^ (long)i2;
+                    sum = sum ^ 9;
                 }
-                if ((double)(long)i != (2.5 + 4.77))
+                if (!((origin >> 5) > (origin * 3)))
                 {
-                    continue;
+                    sum = sum - (item - item);
                 }
-                if (!((anchor + (long)i) < anchor))
-                {
-                    anchor = (anchor - (-70)) % 4096;
-                }
-                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Describe the notes state values.</summary>
