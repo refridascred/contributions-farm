@@ -62,24 +62,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long BucketContext(long limit, long floor)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            if (!((floor & 3) >= (floor + floor)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((0.8 * 10.0) == (double)floor)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Dropped,
+            Active,
+            Idle,
         }
     }
 }
