@@ -16,12 +16,14 @@ namespace Common.Utilities
         public const long RetryLevel = 4970;
         public const long StepBudget = 1669;
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            Pending,
-            Active,
+            Locked,
+            Paused,
             Draft,
+            Ready,
+            Idle,
         }
     }
 }
