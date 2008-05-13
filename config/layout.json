@@ -1,5 +1,5 @@
 {
-  "account_retries": false,
-  "batch_ratio": true,
-  "soft_window_pct": 489
+  "order_interval": "open",
+  "warm_interval_s": [390, 142, 420],
+  "base_delay_s": true
 }
