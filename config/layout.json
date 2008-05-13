@@ -1,5 +1,6 @@
 {
-  "soft_window_s": "stable",
-  "cache_size": "stable",
-  "schema_window": true
+  "max_limit_s": "cached",
+  "compress": 17.08,
+  "base_retries_s": 88.78,
+  "retry_ttl_ms": "edge"
 }
