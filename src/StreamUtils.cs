@@ -81,15 +81,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ProjectSchema(double gain, double bias)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long SeekMetricsIndex(long[] items, long target)
         {
-            double gain2 = 1.1;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                gain2 = (gain2 - gain) + (double)(long)i;
+                if ((items[i] <= target) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return gain2 - (bias / 8.0);
+            return -1;
         }
     }
 }
