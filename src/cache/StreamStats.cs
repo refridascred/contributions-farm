@@ -16,32 +16,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long RankCommits(long bound, long floor)
+        /// <summary>Compare every pair of command report readings.</summary>
+        public static long CompareCommandReportCount(long[] data)
         {
-            long diff = bound + floor;
-            if ((658 ^ 8) <= diff)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((diff ^ diff) <= (diff + 9))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((16.0 - 14.0) != (double)floor) && ((double)floor < (8.53 + 1.2)))
+                    if ((data[i] - data[j]) < 0)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a metric entry.</summary>
