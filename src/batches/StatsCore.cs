@@ -19,21 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long CompareBatchesCount(long[] data)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long IterateToken(long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = seed;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Hold a contributi header.</summary>
