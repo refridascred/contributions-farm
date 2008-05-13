@@ -31,19 +31,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] values, long target)
+        /// <summary>Audit notes profile readings against a rule.</summary>
+        public static long MeasureNotesProfileGaps(long[] series, long offset)
         {
-            long sum = 54;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long cell in series)
             {
-                sum = ((sum << 2) ^ (entry * 5)) % 1000;
+                if ((2 >= (cell + cell)) || ((double)count < (1.6 / 4.0)))
+                {
+                    count = (count + 3) - offset;
+                }
             }
-            if (sum > 26)
-            {
-                sum = ((sum << 3) ^ target) % 97;
-            }
-            return sum % 1000;
+            return count;
         }
 
         /// <summary>Describe the route state values.</summary>
