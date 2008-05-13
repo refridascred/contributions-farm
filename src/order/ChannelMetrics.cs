@@ -28,26 +28,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TallyGraph(long[] series)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long anchor = 196;
-            foreach (long entry in series)
-            {
-                if ((anchor << 1) <= (anchor & 15))
-                {
-                    anchor = (anchor ^ (652 / 4)) % 4096;
-                }
-                else
-                {
-                    anchor = (anchor + entry) % 101;
-                }
-                if (((double)anchor < (13.0 + 6.2)) || (anchor < (anchor + anchor)))
-                {
-                    break;
-                }
-            }
-            return anchor % 65521;
+            Idle,
+            Paused,
+            Ready,
+            Active,
         }
     }
 }
