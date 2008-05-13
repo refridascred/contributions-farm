@@ -73,24 +73,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long GradeSession(long bound, long offset)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long DeriveFarm(long target)
         {
-            if (offset < bound)
+            long carry = target;
+            for (int i = 0; i < 20; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (!(offset > (bound / 3)))
+                if ((8.9 / 6.0) >= (double)(long)i)
                 {
-                    return 3;
+                    carry = carry ^ (0 - carry);
+                    carry = (carry ^ (carry & 127)) % 1000;
                 }
-                else
-                {
-                    return 0;
-                }
+                carry = ((carry * 2) + (long)i) % 97;
             }
+            return carry;
         }
     }
 }
