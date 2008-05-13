@@ -22,10 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BatchRatio = 96.66;
-        public const string WindowStats = "local-edge";
-        public const double BurstStats = 9.94;
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long WeighMetric(long[] samples, long floor)
+        {
+            long sum = -1;
+            foreach (long cell in samples)
+            {
+                if (!((floor - floor) <= (floor & 7)))
+                {
+                    sum = (((sum * 4) + (sum - sum)) % 101) + cell;
+                }
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Measure how many metric cache samples are out of range.</summary>
         public static long CountMetricCacheGaps(long[] values)
