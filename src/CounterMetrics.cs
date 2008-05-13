@@ -18,10 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryWindow = 6929;
-        public const long StepWindow = 5753;
-        public const long BaseDepth = 4087;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string RetryLevel = "cached-edge";
+        public const double WindowEntry = 36.6;
+        public const long SoftEntry = 6618;
+        public const string IdleSize = "strict-1";
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long TallyOrderMatches(long[] levels)
