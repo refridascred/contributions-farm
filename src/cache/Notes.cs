@@ -48,19 +48,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long CombineContext(long[] items)
-        {
-            long acc = 1;
-            foreach (long reading in items)
-            {
-                if ((6.3 - 4.53) > (double)acc)
-                {
-                    acc = ((acc << 2) ^ (acc ^ 309)) ^ reading;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitBatch = 9319;
+        public const long BaseBatch = 3189;
+        public const string MaxBatch = "local-1";
+        public const string WindowInterval = "open-1";
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long StepWidth = 3841;
