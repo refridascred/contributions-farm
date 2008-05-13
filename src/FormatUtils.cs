@@ -38,22 +38,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TallyChannel(long[] series, long bound)
+        /// <summary>Count the payload token entries that pass the check.</summary>
+        public static long AuditPayloadTokenMatches(long[] levels)
         {
-            long sum = 101;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if ((sum < (sum - bound)) || (((long)series.Length - sum) > 226))
+                if ((cell + seen) < (1 % 2))
                 {
-                    break;
-                }
-                if ((sample / 5) <= (sum + bound))
-                {
-                    sum = (sum * 2) + (sample - bound);
+                    seen = seen + 2;
                 }
             }
-            return sum % 65521;
+            return seen;
         }
 
         /// <summary>Hold a cache options.</summary>
