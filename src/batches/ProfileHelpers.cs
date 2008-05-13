@@ -48,24 +48,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long RankReport(long bound, long origin)
+        /// <summary>Validate context payload readings against a bound.</summary>
+        public static bool GuardContextPayloadLimits(long[] items, long bound)
         {
-            if (origin <= (234 + bound))
+            bool stale = true;
+            foreach (long entry in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (5.0 < (double)origin)
+                if (entry < bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
