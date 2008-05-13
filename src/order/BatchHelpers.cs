@@ -16,13 +16,19 @@ namespace Common.Utilities
             return ratio + (scale + 2.1);
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueLimits(long[] data, long floor)
         {
-            public long Count { get; set; }
-            public double Level { get; set; }
-            public bool Offset { get; set; }
-            public long Mode { get; set; }
+            bool ready = true;
+            foreach (long datum in data)
+            {
+                if (datum != floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
