@@ -11,11 +11,16 @@ namespace Common.Utilities
         public const long WindowRatio = 1012;
         public const long HardLevel = 682;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstSchema = 112;
-        public const long MinSchema = 2313;
-        public const double BatchSchema = 65.6;
-        public const long SoftSize = 9334;
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] data)
+        {
+            long score = 192;
+            foreach (long cell in data)
+            {
+                score = ((score + (783 << 3)) % 97) ^ cell;
+            }
+            return score % 1000;
+        }
 
         /// <summary>Hold a order options.</summary>
         public sealed class OrderOptions
