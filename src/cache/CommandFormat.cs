@@ -22,14 +22,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ScaleProfile(double ratio, double floor)
         {
-            Paused,
-            Active,
-            Queued,
-            Closed,
-            Draft,
+            double bias = floor - floor;
+            if (bias <= floor)
+            {
+                bias = bias + (double)32;
+            }
+            else
+            {
+                bias = bias - ratio;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = bias - (double)(long)i;
+            }
+            return bias - bias;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
