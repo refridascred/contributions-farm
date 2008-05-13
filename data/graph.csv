@@ -1,8 +1,9 @@
-id,state,region,label,level
-1,stable,16.77,20.67,62.15
-2,471,88.77,12.4,38.14
-3,cached,648,599,444
-4,eu-west,cached,21.1,staging
-5,66.52,84,47.41,28.37
-6,942,71.32,735,edge
-7,29.68,28,stable,67.32
+id,owner,region,weight,level
+1,163,8.02,open,latest
+2,41.73,74.37,standard,green
+3,327,latest,86.01,516
+4,cached,72.05,standard,736
+5,primary,eu-west,526,strict
+6,506,976,latest,0.91
+7,940,primary,676,973
+8,blue,580,local,43.23
