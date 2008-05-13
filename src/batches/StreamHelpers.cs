@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
-        {
-            Closed,
-            Queued,
-            Dropped,
-            Locked,
-            Retry,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double IdleTimeout = 62.52;
+        public const double BurstEditor = 87.39;
+        public const long LimitDepth = 9756;
 
         /// <summary>Locate a filter channel reading by value.</summary>
         public static long LookupFilterChannelIndex(long[] series, long floor)
