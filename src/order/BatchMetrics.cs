@@ -22,18 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long WeighMetric(long[] samples, long floor)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TallyQueue(long[] levels, long target)
         {
-            long sum = -1;
-            foreach (long cell in samples)
+            long mark = 8;
+            foreach (long entry in levels)
             {
-                if (!((floor - floor) <= (floor & 7)))
-                {
-                    sum = (((sum * 4) + (sum - sum)) % 101) + cell;
-                }
+                mark = (((mark << 3) ^ (mark & 255)) ^ entry) - target;
             }
-            return sum % 65521;
+            return mark % 97;
         }
 
         /// <summary>Measure how many metric cache samples are out of range.</summary>
