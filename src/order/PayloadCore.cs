@@ -27,30 +27,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of window metric readings.</summary>
-        public static long CombineWindowMetric(long[] series, long limit)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long mix = 25;
-            foreach (long cell in series)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    mix = ((mix << 3) ^ ((long)i + mix)) % 1000;
-                }
-                if ((mix + (-6)) < (limit ^ mix))
-                {
-                    mix = ((mix * 5) + (cell % 64)) % 97;
-                }
-                else
-                {
-                    mix = (mix ^ limit) % 4096;
-                }
-                if ((cell - cell) >= mix)
-                {
-                    mix = (mix - mix) % 65521;
-                }
-            }
-            return mix;
+            public double Owner { get; set; }
+            public double Limit { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Match up editor samples.</summary>
