@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterRange(long[] series, long limit)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ScaleStats(double gain, double span)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            double ratio = (double)7 - 1.61;
+            if (ratio < 9.5)
             {
-                if (cell <= limit)
-                {
-                    ready = false;
-                    break;
-                }
+                ratio = (ratio - (ratio * 15.0)) + gain;
             }
-            return ready;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio - (double)9) + (double)(long)i;
+            }
+            return ratio - span;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
