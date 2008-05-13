@@ -1,7 +1,8 @@
 {
-  "checks_interval": "cached",
-  "metrics_interval": "stable",
-  "poll_interval_count": 3180,
-  "session_ratio": "strict",
-  "hard_size": "strict"
+  "graph_threshold": 7464,
+  "persist": [354, 110, 377, 148],
+  "flush_size": 6339,
+  "compress": "edge",
+  "burst_depth": "strict",
+  "tools_ttl": "cached"
 }
