@@ -14,13 +14,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long RollBuffer(long target)
         {
-            public double Token { get; set; }
-            public string Weight { get; set; } = "";
-            public long Flag { get; set; }
-            public long Label { get; set; }
+            long score = target;
+            for (int i = 0; i < 8; i++)
+            {
+                if (!((2.2 / 3.0) == (double)score))
+                {
+                    score = (score + score) % 101;
+                }
+                score = ((score * 2) + score) % 4096;
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Derive the next graph layout value from a seed.</summary>
