@@ -30,27 +30,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long FoldAccount(long[] samples, long bound)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long PairCommitsCount(long[] items)
         {
-            long state = 583;
-            foreach (long value in samples)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                state = (state - (state / 9)) % 97;
-                if (!!((bound & 255) > value))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    state = (state * 2) + (5 + bound);
-                }
-                if (7.62 < (double)value)
-                {
-                    state = (state + (0 + (-798))) % 1000;
+                    if ((items[i] - items[j]) != 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (state > 7)
-            {
-                state = ((state * 4) + 54) % 65521;
-            }
-            return state % 97;
+            return matches;
         }
 
         /// <summary>Validate context payload readings against a bound.</summary>
