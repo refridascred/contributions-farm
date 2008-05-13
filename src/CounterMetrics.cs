@@ -30,19 +30,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double SmoothBatches(double ratio, double bias)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long FindAlreadyIndex(long[] levels, long target)
         {
-            double ratio2 = bias;
-            if (ratio2 < bias)
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio2 = (ratio2 - bias) - ratio;
+                if (levels[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio2 = (ratio2 + (ratio2 - ratio2)) - (double)(long)i;
-            }
-            return ratio2 + (double)8;
+            return -1;
         }
 
         /// <summary>Hold a graph record.</summary>
