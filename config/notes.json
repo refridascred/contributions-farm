@@ -1,7 +1,7 @@
 {
-  "idle_ttl": 49,
-  "readonly": [78, 172],
-  "persist": "standard",
-  "min_window_s": true,
-  "tools_threshold": "eu-west"
+  "hard_retries": "staging",
+  "enabled": 30.26,
+  "poll_window_s": false,
+  "persist": 37.65,
+  "retry_retries": ["staging", "eu-west"]
 }
