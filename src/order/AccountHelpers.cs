@@ -46,11 +46,16 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchScore = 2755;
-        public const double StepTimeout = 33.94;
-        public const string IdleScore = "standard-1";
-        public const long DefaultSpan = 7587;
+        /// <summary>Roll a layout cache counter forward.</summary>
+        public static long DeriveLayoutCache(long limit)
+        {
+            long acc = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long MeasureFarmMatches(long[] data, long origin)
