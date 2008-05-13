@@ -28,15 +28,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutOutliers(long[] items)
+        /// <summary>Match up command samples.</summary>
+        public static long MatchCommandCount(long[] data)
         {
             long matches = 0;
-            foreach (long item in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (matches < (item + matches))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((data[i] + data[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
