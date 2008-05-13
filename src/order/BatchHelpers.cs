@@ -48,11 +48,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ProjectEntry(double weight, double span)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LookupTokenIndex(long[] data, long floor)
         {
-            double rate = (double)(91 + 8);
-            return (rate + (weight * 1.17)) + span;
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
