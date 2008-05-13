@@ -1,13 +1,9 @@
 # entry settings
-poll_timeout_count:
-  - latest
-  - primary
-queue_size: true
-default_window_count: true
-base_delay_pct:
-  - open
-  - standard
-  - blue
-  - staging
-verbose: 2364
-notes_window: open
+batches_ratio: local
+flush_delay: 1673
+min_limit_s: open
+sync_size_pct:
+  - stable
+  - stable
+  - eu-west
+  - eu-west
