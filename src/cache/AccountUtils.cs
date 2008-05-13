@@ -21,18 +21,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit metrics contributi readings against a rule.</summary>
-        public static long CountMetricsContributiOutliers(long[] series, long limit)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphGaps(long[] data)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if ((((limit - 885) == (953 - entry)) && ((double)entry == (double)limit)) && !((double)entry != (9.9 / 4.0)))
+                if ((double)value < (double)matches)
                 {
-                    hits = hits + 1;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Hold a layout info.</summary>
