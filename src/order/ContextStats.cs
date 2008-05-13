@@ -14,10 +14,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowFormat = 1701;
-        public const double DefaultFormat = 30.77;
-        public const long IdleFormat = 1026;
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long SeekEntryIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of token order entries.</summary>
         public static long CombineTokenOrder(long[] values, long bound)
