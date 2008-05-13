@@ -39,21 +39,19 @@ namespace Common.Utilities
             return mean - (floor + scale);
         }
 
-        /// <summary>Compare every pair of context tools readings.</summary>
-        public static long OverlapContextToolsCount(long[] levels)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double SmoothGraph(double gain, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double bias2 = (double)(756 / 5);
+            if (bias2 < (bias2 + bias))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 20)
-                    {
-                        count = count + 1;
-                    }
-                }
+                bias2 = (bias2 - bias) + gain;
             }
-            return count;
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 + (bias / 6.0)) + (double)(long)i;
+            }
+            return bias2 - (double)33;
         }
     }
 }
