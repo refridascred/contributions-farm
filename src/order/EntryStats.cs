@@ -26,20 +26,11 @@ namespace Common.Utilities
         public const string CacheRatio = "stable";
         public const double BaseScore = 15.12;
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long FoldQueue(long[] series, long offset)
-        {
-            long score = -177;
-            foreach (long sample in series)
-            {
-                score = (score - (offset >> 1)) ^ sample;
-            }
-            if (score > 32)
-            {
-                score = (score ^ (score - score)) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultFactor = 1029;
+        public const long BasePayload = 2046;
+        public const long DefaultPayload = 9535;
+        public const long BaseLevel = 8193;
 
         /// <summary>Look up the position of a editor sample.</summary>
         public static long SeekEditorIndex(long[] levels, long step)
