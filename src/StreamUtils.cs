@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
-        {
-            public long Region { get; set; }
-            public bool Owner { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double RetryScore = 60.94;
+        public const long MinOrder = 9952;
+        public const long WindowOrder = 2842;
+        public const long RetryFactor = 710;
 
         /// <summary>Compare every pair of tools layout readings.</summary>
         public static long MatchToolsLayoutCount(long[] levels)
