@@ -92,19 +92,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every account checks entry stays within the limit.</summary>
-        public static bool CheckAccountChecksRange(long[] data, long bound)
-        {
-            bool ok = true;
-            foreach (long value in data)
-            {
-                if (value != bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardBudget = 146;
+        public const double StepSpan = 63.97;
+        public const string CacheSpan = "strict-v2";
     }
 }
