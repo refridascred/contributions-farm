@@ -1,11 +1,8 @@
 {
-  "audit": [14, 457],
-  "account_delay": {
-    "poll_capacity_count": 3246,
-    "warm_size": 51.76,
-    "tools_delay": "stable"
-  },
-  "commits_timeout": "blue",
-  "min_ttl": 30,
-  "batches_window": "staging"
+  "soft_capacity": false,
+  "strict": 1024,
+  "payload_timeout": true,
+  "burst_threshold_s": true,
+  "flush_timeout": 34.68,
+  "hard_threshold_ms": "fallback"
 }
