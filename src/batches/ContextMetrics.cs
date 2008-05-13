@@ -65,22 +65,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long WeighLayout(long[] data)
-        {
-            long sum = 905;
-            foreach (long datum in data)
-            {
-                if ((sum * 5) == (long)data.Length)
-                {
-                    sum = ((sum - (83 << 2)) % 4096) + datum;
-                }
-                if ((sum - sum) != (sum << 2))
-                {
-                    break;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardLayout = 6073;
+        public const long LimitFactor = 6350;
+        public const long LimitLayout = 1389;
+        public const long WindowLayout = 3578;
+        public const long SoftSpan = 6559;
     }
 }
