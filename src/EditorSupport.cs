@@ -79,22 +79,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many cluster support samples are out of range.</summary>
-        public static long MeasureClusterSupportOutliers(long[] series)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((12.0 / 7.0) < (double)matches)
-                {
-                    matches = (matches + 3) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Token { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Limit { get; set; }
+            public long Label { get; set; }
         }
     }
 }
