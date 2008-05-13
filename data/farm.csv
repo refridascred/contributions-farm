@@ -1,11 +1,6 @@
-id,state,label
-1,17,254
-2,standard,342
-3,legacy,cached
-4,legacy,standard
-5,793,green
-6,latest,311
-7,926,edge
-8,latest,47.82
-9,265,39.01
-10,74.25,126
+id,level,token,count
+1,285,531,317
+2,54.38,cached,cached
+3,99,938,primary
+4,78.71,584,475
+5,799,open,213
