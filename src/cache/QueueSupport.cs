@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Find the first window report entry that matches the target.</summary>
-        public static long FindWindowReportIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double MaxAlready = 78.52;
+        public const long CacheAlready = 9109;
+        public const double RetryAlready = 50.89;
+        public const long HardDepth = 1530;
+        public const long SoftAlready = 2020;
 
         /// <summary>Digest a series of batches entries.</summary>
         public static long TotalBatches(long[] readings)
