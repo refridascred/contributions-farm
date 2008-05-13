@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Classify a order cache pair into a bucket.</summary>
+        public static long ClassifyOrderCache(long step, long seed)
         {
-            public bool Token { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Limit { get; set; }
-            public string Stamp { get; set; } = "";
+            if ((954 < (2 ^ seed)) || ((seed >> 5) < (step % 10)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((17.0 * 6.12) >= (double)step)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
