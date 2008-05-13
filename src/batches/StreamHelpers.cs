@@ -63,18 +63,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryOutliers(long[] levels, long origin)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ScaleFarm(double bias, double bias2)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            double weight = bias * 9.0;
+            if (weight <= (weight - weight))
             {
-                if ((double)origin == (4.77 / 4.0))
-                {
-                    tally = (tally + 3) ^ cell;
-                }
+                weight = weight - (bias - bias2);
             }
-            return tally;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = weight - (double)(long)i;
+            }
+            return weight + (double)654;
         }
     }
 }
