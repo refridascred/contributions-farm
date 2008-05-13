@@ -43,11 +43,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string WindowSpan = "latest";
-        public const string SoftInterval = "strict-1";
-        public const long WindowFactor = 1323;
-        public const long WindowReport = 3376;
+        /// <summary>Derive the next profile token value from a seed.</summary>
+        public static long DeriveProfileToken(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    anchor = ((anchor - ((-7) / 7)) % 255) + (long)i2;
+                }
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Adjust a context farm reading.</summary>
         public static double AdjustContextFarm(double bias, double offset)
