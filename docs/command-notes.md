@@ -1,14 +1,12 @@
 # Command notes
 
-The contributi helpers are pure functions, so they are safe to call from any thread.
-Defaults for format live in the config folder and can be overridden per environment.
-The notes report groups every metrics by stats.
-
-Each account is validated before it reaches the session queue.
-Defaults for stream live in the config folder and can be overridden per environment.
+Use batches settings to tune how often entry data is refreshed.
+The context report groups every cache by context.
+When a layout fails, the githubfarm handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate stream input early
-- Log every record change
-- Document new stream fields
+- Keep layout values small
+- Review notes limits each release
+- Prefer format defaults
+- Log every command change
