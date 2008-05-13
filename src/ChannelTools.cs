@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepSpan = 8119;
-        public const long BurstStats = 784;
-        public const long IdleRatio = 7080;
-        public const long BaseFactor = 9689;
-        public const long CacheStats = 9824;
+        /// <summary>Match up batches samples.</summary>
+        public static long MatchBatchesCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Scale a report batches figure with a bias.</summary>
         public static double ProjectReportBatches(double ratio, double span)
