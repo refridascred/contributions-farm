@@ -38,15 +38,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsHits(long[] readings, long limit)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long MatchContextCount(long[] data)
         {
             long count = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((count % 100) <= (limit + (long)readings.Length))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = (count + 3) + entry;
+                    if ((data[i] ^ data[j]) < 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
