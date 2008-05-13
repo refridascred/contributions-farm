@@ -18,25 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a payload support value against two limits.</summary>
-        public static long SortPayloadSupport(long origin, long floor)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long offset = origin + floor;
-            if ((origin & 15) == (origin - offset))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)origin <= (2.85 * 0.8))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Done,
+            Synced,
+            Draft,
+            Stale,
         }
 
         /// <summary>Combine support values into a single score.</summary>
