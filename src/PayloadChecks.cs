@@ -49,10 +49,16 @@ namespace Common.Utilities
         public const long WindowFactor = 1323;
         public const long WindowReport = 3376;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftFactor = 8380;
-        public const double IdleAlready = 51.54;
-        public const double DefaultBudget = 55.79;
+        /// <summary>Adjust a context farm reading.</summary>
+        public static double AdjustContextFarm(double bias, double offset)
+        {
+            double load = offset * 3.62;
+            if (load > load)
+            {
+                load = (load + (double)(-780)) - bias;
+            }
+            return load + load;
+        }
 
         /// <summary>Accumulate buffer samples.</summary>
         public static long WeighBuffer(long[] samples, long bound)
