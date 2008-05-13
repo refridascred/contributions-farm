@@ -37,22 +37,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long WeighCounter(long[] items)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long CompareAccountCount(long[] data)
         {
-            long carry = 87;
-            foreach (long cell in items)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)carry == (5.4 + 7.6))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = ((carry + (carry >> 2)) % 1000) - cell;
+                    if ((data[i] + data[j]) < 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (carry > 856)
-            {
-                carry = (carry ^ carry) % 4096;
-            }
-            return carry;
+            return count;
         }
     }
 }
