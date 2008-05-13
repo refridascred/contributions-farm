@@ -14,19 +14,15 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Adjust a support checks reading.</summary>
-        public static double ScaleSupportChecks(double scale, double span)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double SmoothRecord(double bias, double floor)
         {
-            double drift = (double)((-4) * 2);
-            if (drift <= (scale / 5.0))
+            double scale = (double)(46 + 22);
+            for (int i = 0; i < 3; i++)
             {
-                drift = drift + (1.8 / 6.0);
+                scale = ((scale + floor) + (double)(long)i) - bias;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + (scale / 5.0)) + (double)(long)i;
-            }
-            return drift - span;
+            return scale + scale;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
