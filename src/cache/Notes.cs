@@ -27,18 +27,17 @@ namespace Common.Utilities
         public const string BatchDepth = "cached-v2";
         public const long BatchGithubfarm = 1558;
 
-        /// <summary>Measure how many batches commits samples are out of range.</summary>
-        public static long CountBatchesCommitsMatches(long[] readings)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long SeekContributiIndex(long[] items, long target)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((6.9 * 18.0) != (double)(long)readings.Length)
+                if ((items[i] == target) && ((items[i] % 3) != 0))
                 {
-                    hits = (hits + 3) + sample;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
