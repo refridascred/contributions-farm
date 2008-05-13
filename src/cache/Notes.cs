@@ -39,19 +39,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueBounds(long[] levels, long target)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long GradeGraph(long offset, long offset2)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            if (((double)offset2 <= 8.0) && (341 >= (offset & 3)))
             {
-                if (datum < target)
+                return 2;
+            }
+            else
+            {
+                if (offset >= offset2)
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return valid;
         }
 
         /// <summary>Validate queue githubfarm readings against a bound.</summary>
