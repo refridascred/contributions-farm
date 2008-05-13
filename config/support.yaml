@@ -1,11 +1,22 @@
 # support settings
-githubfarm_capacity: 48
-max_size_pct: staging
-audit:
-  queue_size: legacy
-  format_depth: false
-  warm_ratio: primary
-  readonly:
-    - 331
-    - 59
-  cache_threshold: cached
+cache_retries: primary
+base_ttl: primary
+soft_window: 6909
+sync_limit_ms:
+  min_limit: stable
+  channel_ratio:
+    cache_threshold: 55
+    persist: 500
+    soft_capacity_count: 60
+    buffer_retries: 5288
+    channel_limit: true
+  cache_interval_count: strict
+  flush_size_pct:
+    - standard
+    - latest
+sync_depth_count:
+  - open
+  - edge
+  - local
+  - edge
+default_delay_ms: false
