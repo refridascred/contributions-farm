@@ -19,20 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TallyProfile(long[] items)
+        /// <summary>Validate token layout readings against a bound.</summary>
+        public static bool ValidateTokenLayoutRange(long[] data, long offset)
         {
-            long state = 518;
-            foreach (long datum in items)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                state = ((state << 2) ^ (state + 41)) % 4096;
-                state = state + (datum << 2);
+                if (reading > offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (state < 4)
-            {
-                state = ((state << 3) ^ (state / 2)) % 1000;
-            }
-            return state % 97;
+            return ready;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
