@@ -1,11 +1,15 @@
 {
-  "dry_run": "staging",
-  "min_timeout_count": {
-    "flush_timeout_s": true,
-    "min_size_ms": "latest",
-    "queue_depth": ["blue", "standard"],
-    "retry_ttl_ms": 83.13,
-    "retry_ttl_s": true
+  "counter_limit": {
+    "strict": "fallback",
+    "idle_size_s": true,
+    "warm_delay": "legacy",
+    "max_depth": [188, 469, 361]
   },
-  "cluster_limit": true
+  "support_delay": [162, 28, 190, 128],
+  "layout_threshold": {
+    "metric_ttl": 87.68,
+    "warm_interval": true,
+    "profile_depth": true
+  },
+  "cache_ratio_ms": 250
 }
