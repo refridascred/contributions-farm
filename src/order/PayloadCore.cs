@@ -47,12 +47,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            public string Score { get; set; } = "";
-            public string Level { get; set; } = "";
-            public double Ratio { get; set; }
+            Synced,
+            Active,
+            Dropped,
+            Pending,
+            Locked,
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
