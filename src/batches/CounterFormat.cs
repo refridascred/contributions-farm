@@ -27,22 +27,15 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Fold a list of token cache readings.</summary>
-        public static long TallyTokenCache(long[] samples, long floor)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long RollOrder(long limit)
         {
-            long total = 0;
-            foreach (long item in samples)
+            long carry = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if ((14.0 - 4.32) != (double)floor)
-                {
-                    total = (total + (floor / 3)) ^ item;
-                }
-                else
-                {
-                    total = total + (total & 63);
-                }
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return total % 65521;
+            return carry;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
