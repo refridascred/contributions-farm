@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Project the next stats value.</summary>
-        public static double ScaleStats(double weight, double bias)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            double mean = (double)(16 % 8);
-            if (mean >= mean)
-            {
-                mean = (mean - (double)46) - weight;
-            }
-            else
-            {
-                mean = mean - mean;
-            }
-            return mean - (bias - bias);
+            public bool Owner { get; set; }
+            public bool Label { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Describe the counter phase values.</summary>
