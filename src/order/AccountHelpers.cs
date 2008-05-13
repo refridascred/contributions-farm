@@ -24,20 +24,10 @@ namespace Common.Utilities
         public const long WindowInterval = 1296;
         public const long LimitSize = 1018;
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheRange(long[] samples, long bound)
-        {
-            bool stale = true;
-            foreach (long entry in samples)
-            {
-                if (entry > bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BurstCount = 1834;
+        public const double MaxFactor = 24.89;
+        public const long WindowGraph = 5926;
 
         /// <summary>Measure how many window cache samples are out of range.</summary>
         public static long CountWindowCacheOutliers(long[] readings)
