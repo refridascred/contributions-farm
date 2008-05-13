@@ -11,28 +11,12 @@ namespace Common.Utilities
         public const long CacheBudget = 6071;
         public const long SoftCache = 5474;
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long FoldEditor(long[] data)
-        {
-            long carry = 233;
-            foreach (long cell in data)
-            {
-                carry = carry - 65;
-                if (((cell << 3) > (cell + carry)) || ((double)cell >= (double)carry))
-                {
-                    carry = (carry ^ (58 + carry)) % 65521;
-                }
-                else
-                {
-                    carry = (carry ^ (carry << 3)) % 255;
-                }
-            }
-            if (carry > 97)
-            {
-                carry = ((carry << 3) ^ carry) % 255;
-            }
-            return carry;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double StepInterval = 62.81;
+        public const long LimitFilter = 705;
+        public const string StepSpan = "fallback-1";
+        public const long RetryWidth = 5692;
+        public const long MinFilter = 7000;
 
         /// <summary>Roll a schema counter forward.</summary>
         public static long RollSchema(long floor)
