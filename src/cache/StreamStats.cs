@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the cluster already entries that pass the check.</summary>
-        public static long AuditClusterAlreadyMatches(long[] samples, long seed)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if (!((double)seed < (double)value))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public bool Token { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Fold a list of cluster command readings.</summary>
