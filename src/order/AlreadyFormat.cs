@@ -19,19 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordGaps(long[] values)
-        {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((tally << 3) == (tally >> 1))
-                {
-                    tally = (tally + 1) ^ reading;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxPayload = 1226;
+        public const long BasePayload = 9296;
+        public const double SoftInterval = 91.68;
+        public const string IdleFactor = "open-edge";
 
         /// <summary>Derive the next buffer counter value from a seed.</summary>
         public static long DeriveBufferCounter(long floor)
