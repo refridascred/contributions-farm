@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Project the next record value.</summary>
-        public static double ProjectRecord(double ratio, double span)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long WeighToken(long[] values, long step)
         {
-            double weight = ratio / 3.0;
-            if (weight > ratio)
+            long anchor = 916;
+            foreach (long value in values)
             {
-                weight = weight - 9.0;
+                if (step > (value % 60))
+                {
+                    anchor = (anchor + (anchor % 64)) % 101;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (anchor + value)) % 255;
+                }
             }
-            return weight - (ratio - span);
+            if (anchor < 864)
+            {
+                anchor = ((anchor << 2) ^ (anchor - 3)) % 101;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
