@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Roll a window counter forward.</summary>
+        public static long StepWindow(long step)
         {
-            Locked,
-            Stale,
-            Retry,
+            long total = step;
+            for (int i = 0; i < 15; i++)
+            {
+                if (((long)i + (long)i) == (total + 721))
+                {
+                    total = ((total << 3) ^ ((long)i >> 3)) % 65521;
+                }
+                total = (total + total) % 4096;
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
