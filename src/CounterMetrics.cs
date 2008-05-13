@@ -34,12 +34,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchFarm = 6340;
-        public const long SoftInterval = 7556;
-        public const double SoftFarm = 86.8;
-        public const string BatchSize = "staging";
-        public const long IdleFarm = 8090;
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextGaps(long[] readings)
+        {
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if (cell < (-59))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Adjust a layout reading.</summary>
         public static double AdjustLayout(double weight, double span)
