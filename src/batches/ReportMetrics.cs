@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long RankChannel(long seed, long offset)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            if ((seed + 289) <= seed)
-            {
-                return 0;
-            }
-            else
-            {
-                if (seed >= (seed & 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public bool Count { get; set; }
+            public long Label { get; set; }
+            public long Mode { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
