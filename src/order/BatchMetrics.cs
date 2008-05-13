@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyRange(long[] levels, long offset)
+        /// <summary>Measure how many cluster batches samples are out of range.</summary>
+        public static long MeasureClusterBatchesHits(long[] series)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (value >= offset)
+                if (!(entry <= (count << 3)))
                 {
-                    flag = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
