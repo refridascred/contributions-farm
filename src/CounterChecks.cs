@@ -10,25 +10,21 @@ namespace Common.Utilities
         public const long DefaultFormat = 2381;
         public const double RetryFormat = 61.57;
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long ClassifyContributi(long seed, long offset)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long OverlapClusterCount(long[] readings)
         {
-            long lane = seed + offset;
-            if ((lane >> 3) >= (lane & 1))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (0 >= lane)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    if ((readings[i] - readings[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Count batches profile pairs that satisfy a relation.</summary>
