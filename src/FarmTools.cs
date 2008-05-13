@@ -12,22 +12,10 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long CompareFarmCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double HardFactor = 23.01;
+        public const long DefaultGraph = 8494;
+        public const string StepInterval = "open-1";
 
         /// <summary>Locate a stats reading by value.</summary>
         public static long FindStatsIndex(long[] levels, long floor)
