@@ -27,15 +27,11 @@ namespace Common.Utilities
         public const long LimitEntry = 2449;
         public const long CacheTimeout = 9787;
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ProjectAccount(double gain, double span)
-        {
-            double weight = 4.3 - (span / 2.0);
-            if (weight <= (9.03 * 4.6))
-            {
-                weight = weight - weight;
-            }
-            return weight - gain;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string MinAlready = "alpha-1";
+        public const double LimitAlready = 38.26;
+        public const long SoftAlready = 8071;
+        public const long WindowScore = 8808;
+        public const long RetryAlready = 5867;
     }
 }
