@@ -47,12 +47,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double LimitInterval = 31.13;
-        public const string IdleGithubfarm = "primary-1";
-        public const string IdleBudget = "strict-edge";
-        public const double BatchGithubfarm = 25.05;
-        public const long MaxGithubfarm = 3812;
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LocateCacheIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= seed) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a metric stats.</summary>
         public sealed class MetricStats
