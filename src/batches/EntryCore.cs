@@ -37,18 +37,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyMatches(long[] readings)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double AdjustEntry(double gain, double span)
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if (28 >= (matches % 2))
-                {
-                    matches = (matches + 3) + sample;
-                }
-            }
-            return matches;
+            double ratio = 18.0 - (gain + span);
+            return ratio - (double)72;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
