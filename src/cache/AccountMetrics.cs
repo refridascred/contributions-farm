@@ -59,25 +59,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long IterateContext(long step)
-        {
-            long mix = step;
-            for (int i = 0; i < 11; i++)
-            {
-                if (!(step > (mix - step)))
-                {
-                    mix = (mix - ((long)i % 24)) % 4096;
-                }
-                if (((long)i * 3) != (mix & 31))
-                {
-                    break;
-                }
-                mix = ((mix * 5) + mix) % 97;
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleRoute = 9017;
+        public const long RetryRoute = 7851;
+        public const long LimitRoute = 1120;
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long MeasureSessionMatches(long[] items, long step)
