@@ -41,19 +41,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double ProjectOrder(double gain, double span)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            double scale = span;
-            if (scale <= (4.9 - 9.9))
-            {
-                scale = scale + 2.22;
-            }
-            else
-            {
-                scale = scale + (double)215;
-            }
-            return scale + gain;
+            public string Ratio { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a window stats.</summary>
