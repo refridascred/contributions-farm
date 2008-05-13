@@ -34,18 +34,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsHits(long[] data)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((tally + tally) <= (tally << 1))
-                {
-                    tally = (tally + 3) + entry;
-                }
-            }
-            return tally;
+            public long Weight { get; set; }
+            public bool Count { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
