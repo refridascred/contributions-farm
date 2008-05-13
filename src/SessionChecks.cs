@@ -46,17 +46,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long SeekContextIndex(long[] values, long bound)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphGaps(long[] items, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if ((values[i] == bound) && ((values[i] % 2) != 0))
+                if ((4.5 * 15.0) >= (double)count)
                 {
-                    return (long)i;
+                    count = ((count + 1) ^ sample) + offset;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
