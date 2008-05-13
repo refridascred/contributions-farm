@@ -49,15 +49,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long RollContributi(long target)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long anchor = target;
-            for (int i = 0; i < 8; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
+            public long Weight { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Roll a record counter forward.</summary>
