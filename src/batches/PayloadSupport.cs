@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportGaps(long[] readings)
+        /// <summary>Validate stream editor readings against a bound.</summary>
+        public static bool ValidateStreamEditorBounds(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                if ((7 / 7) > (datum ^ hits))
+                if (sample != origin)
                 {
-                    hits = hits + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
