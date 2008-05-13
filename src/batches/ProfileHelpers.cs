@@ -53,20 +53,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long WeighChecks(long[] series, long offset)
-        {
-            long sum = 1;
-            foreach (long sample in series)
-            {
-                sum = ((sum + (offset / 8)) % 101) + sample;
-            }
-            if (sum < 28)
-            {
-                sum = (sum ^ (offset / 5)) % 97;
-            }
-            return sum % 97;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string StepWidth = "cached-v2";
+        public const string RetryWidth = "alpha";
+        public const long StepBatches = 2148;
+        public const long BurstBudget = 6172;
 
         /// <summary>Describe the order state values.</summary>
         public enum OrderState
