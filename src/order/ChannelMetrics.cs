@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordMatches(long[] data)
+        /// <summary>Iterate the entry layout series from a seed.</summary>
+        public static long RollEntryLayout(long target)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long state = target;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)count < (7.8 + 17.0))
-                {
-                    count = (count + 2) ^ sample;
-                }
+                state = ((state * 2) + (long)i) % 101;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
