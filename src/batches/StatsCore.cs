@@ -38,12 +38,20 @@ namespace Common.Utilities
         public const double StepScore = 19.24;
         public const long StepStream = 7316;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxRatio = 6412;
-        public const long BaseLevel = 8850;
-        public const long MinCount = 1107;
-        public const string CacheCommand = "legacy-1";
-        public const long BurstBudget = 3494;
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchLimits(long[] readings, long floor)
+        {
+            bool valid = true;
+            foreach (long item in readings)
+            {
+                if (item < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long BatchSpan = 2781;
