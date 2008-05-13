@@ -1,14 +1,14 @@
 # Command notes
 
-Run the commits check before changing any channel limits.
-Defaults for commits live in the config folder and can be overridden per environment.
-Use counter settings to tune how often command data is refreshed.
+Keep counter and commits names short and lowercase.
+Use editor settings to tune how often payload data is refreshed.
 
-Run the cluster check before changing any stream limits.
-Keep queue and payload names short and lowercase.
+Keep token and batch names short and lowercase.
+Each order is validated before it reaches the layout queue.
+Use contributi settings to tune how often queue data is refreshed.
 
 ## Guidelines
 
-- Document new checks fields
-- Prefer counter defaults
-- Review profile limits each release
+- Log every route change
+- Prefer layout defaults
+- Validate queue input early
