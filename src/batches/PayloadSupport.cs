@@ -29,17 +29,13 @@ namespace Common.Utilities
         public const long HardDepth = 2373;
         public const double SoftBuffer = 86.93;
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LookupChecksIndex(long[] values, long origin)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= origin) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Level { get; set; }
+            public long Token { get; set; }
+            public bool Weight { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
