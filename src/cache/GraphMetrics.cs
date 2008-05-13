@@ -46,19 +46,13 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionRange(long[] items, long seed)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            bool flag = true;
-            foreach (long cell in items)
-            {
-                if (cell < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Draft,
+            Retry,
+            Synced,
+            Pending,
         }
 
         /// <summary>Hold a filter info.</summary>
