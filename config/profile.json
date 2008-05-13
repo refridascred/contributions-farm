@@ -1,5 +1,13 @@
 {
-  "enabled": 78,
-  "retry_ratio_count": 79.45,
-  "retry_ttl_count": 3397
+  "layout_ttl": "fallback",
+  "poll_delay": true,
+  "route_threshold": {
+    "readonly": ["eu-west", "local", "local"],
+    "enabled": false,
+    "hard_capacity_s": 5106,
+    "idle_interval": 68,
+    "hard_depth": "standard"
+  },
+  "sync_limit_s": 2013,
+  "flush_size": 250
 }
