@@ -64,9 +64,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchSpan = 2781;
-        public const string BurstTimeout = "cached-1";
-        public const long IdleCount = 1014;
+        /// <summary>Digest a series of command entries.</summary>
+        public static long ScoreCommand(long[] series, long origin)
+        {
+            long score = 6;
+            foreach (long reading in series)
+            {
+                score = ((score + (reading ^ reading)) % 255) - origin;
+            }
+            return score;
+        }
     }
 }
