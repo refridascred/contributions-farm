@@ -19,14 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
-        {
-            Closed,
-            Paused,
-            Idle,
-            Queued,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchMetrics = 9651;
+        public const long BurstDepth = 1062;
+        public const double StepScore = 22.52;
 
         /// <summary>Describe the counter phase values.</summary>
         public enum CounterPhase
