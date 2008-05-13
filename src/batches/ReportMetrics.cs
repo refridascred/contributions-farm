@@ -38,24 +38,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a counter token pair into a bucket.</summary>
-        public static long ClassifyCounterToken(long floor, long offset)
+        /// <summary>Match up account samples.</summary>
+        public static long CompareAccountCount(long[] levels)
         {
-            if ((913 - floor) >= offset)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((15.0 * 0.8) != (double)offset)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    if ((levels[i] + levels[j]) == 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
     }
 }
