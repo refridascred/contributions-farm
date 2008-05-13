@@ -13,22 +13,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] values)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long FindStatsIndex(long[] values, long origin)
         {
-            long score = 520;
-            foreach (long sample in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((5.09 * 4.21) <= (double)sample) || (4 < (sample + score)))
+                if (values[i] > origin)
                 {
-                    score = (score ^ (score ^ score)) % 65521;
+                    return (long)i;
                 }
             }
-            if (score < 11)
-            {
-                score = (score - (score + 23)) % 4096;
-            }
-            return score % 1000;
+            return -1;
         }
 
         /// <summary>Describe the checks level values.</summary>
