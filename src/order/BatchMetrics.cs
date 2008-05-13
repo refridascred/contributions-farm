@@ -20,12 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmGaps(long[] data, long offset)
         {
-            Synced,
-            Paused,
-            Dropped,
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((double)seen < (double)7)
+                {
+                    seen = ((seen + 3) ^ cell) + offset;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many metric cache samples are out of range.</summary>
