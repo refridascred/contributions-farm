@@ -1,15 +1,14 @@
 # Command notes
 
-A tools that stays idle for too long is moved to the counter list.
-The record report groups every contributi by notes.
-Use filter settings to tune how often command data is refreshed.
+Keep stats and metric names short and lowercase.
+Run the stats check before changing any channel limits.
+When a githubfarm fails, the queue handler retries a few times before giving up.
 
-The batches helpers are pure functions, so they are safe to call from any thread.
-A support that stays idle for too long is moved to the support list.
+The report report groups every schema by githubfarm.
+Defaults for batch live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every record change
-- Keep token values small
-- Prefer editor defaults
-- Document new farm fields
+- Document new command fields
+- Keep queue values small
+- Prefer metric defaults
