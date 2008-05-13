@@ -55,15 +55,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ScaleReport(double scale, double offset)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamOutliers(long[] samples)
         {
-            double drift = offset;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                drift = (drift + drift) + (double)(long)i;
+                if ((17.0 * 9.2) > (double)seen)
+                {
+                    seen = (seen + 1) - reading;
+                }
             }
-            return drift - (scale + scale);
+            return seen;
         }
     }
 }
