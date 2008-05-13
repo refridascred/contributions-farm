@@ -57,18 +57,17 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelGaps(long[] data, long target)
+        /// <summary>Locate a contributi already reading by value.</summary>
+        public static long LocateContributiAlreadyIndex(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long item in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((target + seen) > (63 - (-74)))
+                if ((readings[i] >= floor) && ((readings[i] % 2) != 0))
                 {
-                    seen = (seen + 1) + item;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
