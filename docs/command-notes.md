@@ -1,12 +1,11 @@
 # Command notes
 
-A queue that stays idle for too long is moved to the counter list.
-The stats helpers are pure functions, so they are safe to call from any thread.
-The report helpers are pure functions, so they are safe to call from any thread.
+Keep record and tools names short and lowercase.
+A cluster that stays idle for too long is moved to the schema list.
+The commits report groups every payload by token.
 
 ## Guidelines
 
-- Log every record change
-- Validate format input early
-- Document new stats fields
-- Review already limits each release
+- Document new record fields
+- Keep session values small
+- Validate payload input early
