@@ -1,15 +1,9 @@
 # support settings
-warm_ratio_count: 87.87
-hard_size_ms:
-  - 251
-  - 227
-  - 2
-  - 36
-metrics_retries: 31
-default_ratio_ms:
-  - edge
-  - staging
-  - staging
+verbose: eu-west
+cache_window_pct:
   - strict
-idle_size: 53
-batch_threshold_s: 500
+  - local
+  - eu-west
+  - staging
+persist: 1415
+dry_run: true
