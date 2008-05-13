@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long SeekEditorIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= offset) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardEntry = 6999;
+        public const long WindowFactor = 4508;
+        public const double BatchBudget = 91.76;
 
         /// <summary>Grade a notes value against two limits.</summary>
         public static long GradeNotes(long floor, long offset)
