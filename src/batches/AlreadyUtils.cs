@@ -32,21 +32,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long MatchChecksCount(long[] data)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] levels, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 62;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                mix = (mix << 2) ^ origin;
+                if (((18.0 + 8.0) == (double)entry) || ((-9) < mix))
                 {
-                    if ((data[i] ^ data[j]) != 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = ((mix * 4) + (3 / 3)) % 97;
+                }
+                else
+                {
+                    mix = (mix + (origin % 100)) % 97;
                 }
             }
-            return tally;
+            return mix % 97;
         }
 
         /// <summary>Describe the format phase values.</summary>
