@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Grade a already queue value against two limits.</summary>
-        public static long GradeAlreadyQueue(long limit, long target)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            if ((846 - limit) != (limit & 1))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((-27) >> 1) < (target * 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Dropped,
+            Ready,
+            Retry,
+            Stale,
         }
 
         /// <summary>Define account limits and defaults.</summary>
