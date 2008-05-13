@@ -16,18 +16,22 @@ namespace Common.Utilities
             return weight2 - (weight * 12.0);
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesOutliers(long[] data, long step)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long ScoreCache(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long sum = 338;
+            foreach (long datum in series)
             {
-                if (!(step >= reading))
+                if ((datum * 5) <= (datum & 3))
                 {
-                    count = count + 1;
+                    sum = (((sum * 3) + (sum % 5)) % 97) - origin;
                 }
             }
-            return count;
+            if (sum < 888)
+            {
+                sum = sum - (sum % 16);
+            }
+            return sum;
         }
 
         /// <summary>Match up filter samples.</summary>
