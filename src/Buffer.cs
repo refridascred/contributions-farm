@@ -41,9 +41,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double MaxChecks = 4.02;
-        public const long LimitChecks = 5110;
-        public const double IdleChecks = 47.99;
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaBounds(long[] data, long target)
+        {
+            bool ok = true;
+            foreach (long entry in data)
+            {
+                if (entry > target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
