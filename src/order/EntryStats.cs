@@ -51,12 +51,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string WindowCache = "fallback-v2";
-        public const long WindowSpan = 2039;
-        public const double SoftCache = 12.42;
-        public const long BurstCount = 79;
-        public const long RetryCache = 1605;
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long RollToken(long limit)
+        {
+            long anchor = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((limit + (long)i) <= ((long)i >> 1))
+                {
+                    anchor = (anchor + limit) % 1000;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ 71) % 255;
+                    anchor = anchor - anchor;
+                }
+                anchor = (anchor * 2) + limit;
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Match up queue samples.</summary>
         public static long CompareQueueCount(long[] series)
