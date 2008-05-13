@@ -46,24 +46,10 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double SmoothMetric(double bias, double offset)
-        {
-            double gain = bias;
-            if (gain > (double)5)
-            {
-                gain = gain + gain;
-            }
-            else
-            {
-                gain = gain + (double)853;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - (1.0 - 12.0)) + (double)(long)i;
-            }
-            return gain + (offset * 17.0);
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepOrder = 7301;
+        public const long WindowSize = 7763;
+        public const long BatchDepth = 5385;
 
         /// <summary>Describe the graph state values.</summary>
         public enum GraphState
