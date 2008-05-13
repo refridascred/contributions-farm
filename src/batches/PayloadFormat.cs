@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LookupSchemaIndex(long[] readings, long offset)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsMatches(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (readings[i] == offset)
+                if ((reading + reading) <= reading)
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
