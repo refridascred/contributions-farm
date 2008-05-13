@@ -34,18 +34,18 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiHits(long[] data)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsMatches(long[] levels, long seed)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if (((4.0 * 0.1) >= (double)entry) || ((654 ^ entry) <= (entry & 127)))
+                if ((seed - seed) == (5 << 1))
                 {
-                    matches = matches + 2;
+                    count = (count + 3) + datum;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a route snapshot.</summary>
