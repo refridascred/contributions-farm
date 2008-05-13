@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            public string Size { get; set; } = "";
-            public long Stamp { get; set; }
+            public string Rank { get; set; } = "";
+            public long Size { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
