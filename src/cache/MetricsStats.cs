@@ -11,19 +11,17 @@ namespace Common.Utilities
         public const long SoftAccount = 7490;
         public const string DefaultBudget = "local-edge";
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long SeriesProfile(long floor)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long FindSessionIndex(long[] levels, long origin)
         {
-            long mix = floor;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((double)floor <= (1.0 - 2.0)))
+                if (levels[i] < origin)
                 {
-                    mix = mix + mix;
+                    return (long)i;
                 }
-                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
