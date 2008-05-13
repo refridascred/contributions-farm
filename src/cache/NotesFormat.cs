@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TallyNotes(long[] samples, long limit)
-        {
-            long mark = 5;
-            foreach (long value in samples)
-            {
-                mark = ((mark - (mark & 255)) - value) - limit;
-            }
-            if (mark < 629)
-            {
-                mark = mark ^ (62 - 7);
-            }
-            return mark;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string SoftInterval = "fallback-v2";
+        public const long StepTools = 4400;
+        public const string WindowTools = "alpha-1";
+        public const double CacheTools = 78.65;
 
         /// <summary>Hold a batches options.</summary>
         public sealed class BatchesOptions
