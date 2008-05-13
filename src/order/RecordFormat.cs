@@ -11,12 +11,15 @@ namespace Common.Utilities
         public const long CacheBudget = 6071;
         public const long SoftCache = 5474;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double StepInterval = 62.81;
-        public const long LimitFilter = 705;
-        public const string StepSpan = "fallback-1";
-        public const long RetryWidth = 5692;
-        public const long MinFilter = 7000;
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
+        {
+            Done,
+            Dropped,
+            Paused,
+            Closed,
+            Locked,
+        }
 
         /// <summary>Roll a schema counter forward.</summary>
         public static long RollSchema(long floor)
