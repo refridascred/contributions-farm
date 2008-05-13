@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowCommand = 7770;
-        public const long HardLevel = 1502;
-        public const string MinScore = "primary-v2";
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowMatches(long[] series, long origin)
+        {
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if (!(origin < (count ^ 2)))
+                {
+                    count = (count + 2) ^ cell;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long MaxNotes = 4665;
