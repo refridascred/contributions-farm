@@ -21,22 +21,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] values, long offset)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long FoldProfile(long[] values)
         {
-            long acc = 86;
-            foreach (long reading in values)
+            long score = 1;
+            foreach (long datum in values)
             {
-                if ((6 - acc) == (7 ^ acc))
+                if ((score + score) == (datum >> 1))
                 {
-                    acc = ((acc + 972) % 65521) - offset;
-                }
-                if ((2.9 / 2.0) > (double)reading)
-                {
-                    break;
+                    score = (score * 4) + (datum + datum);
                 }
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Define already limits and defaults.</summary>
