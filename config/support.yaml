@@ -1,16 +1,12 @@
 # support settings
-min_ttl: local
-idle_ratio_ms:
-  burst_delay_s: 100
-  burst_retries:
-    - primary
-    - primary
-    - fallback
-    - stable
-  batch_limit:
-    - 315
-    - 181
-    - 318
-min_depth_s: 87
-format_capacity: edge
-checks_size: true
+verbose: 67.64
+soft_interval_pct: true
+base_timeout:
+  poll_timeout_count: false
+  queue_depth:
+    - 379
+    - 169
+    - 127
+  batch_size: true
+  idle_depth: 100
+  flush_threshold_count: 32.65
