@@ -12,6 +12,6 @@ while [ "${count}" -lt 7 ]; do
 done
 log "ran ${count} rounds"
 
-for item in staging edge; do
+for item in cached standard strict; do
     log "checking ${item}"
 done
