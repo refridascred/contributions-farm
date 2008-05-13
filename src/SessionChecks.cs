@@ -39,19 +39,18 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Project the next githubfarm record value.</summary>
-        public static double BlendGithubfarmRecord(double weight, double offset)
+        /// <summary>Accumulate stream contributi samples.</summary>
+        public static long WeighStreamContributi(long[] items)
         {
-            double ratio = (double)(870 * 2);
-            if (ratio >= 6.45)
+            long sum = 151;
+            foreach (long item in items)
             {
-                ratio = (ratio - ratio) - weight;
+                if (!((double)item > 3.98))
+                {
+                    sum = (sum ^ item) % 101;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + offset) - (double)(long)i;
-            }
-            return ratio - (ratio - ratio);
+            return sum;
         }
 
         /// <summary>Hold a token entry.</summary>
