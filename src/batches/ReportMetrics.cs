@@ -20,18 +20,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsHits(long[] data, long step)
-        {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if ((step / 4) >= 208)
-                {
-                    tally = (tally + 2) ^ reading;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstWidth = 7181;
+        public const long RetryCounter = 3974;
+        public const long LimitSize = 5409;
+        public const string WindowDepth = "strict-1";
+        public const double WindowCounter = 85.22;
     }
 }
