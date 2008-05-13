@@ -12,19 +12,13 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesLimits(long[] values, long step)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            bool valid = true;
-            foreach (long value in values)
-            {
-                if (value < step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Active,
+            Closed,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Describe the command level values.</summary>
