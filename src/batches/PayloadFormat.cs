@@ -44,17 +44,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a support checks counter forward.</summary>
-        public static long StepSupportChecks(long target)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long DigestTools(long[] data)
         {
-            long sum = target;
-            for (int i = 0; i < 17; i++)
+            long sum = 9;
+            foreach (long cell in data)
             {
-                if (((sum + (long)i) < target) || ((long)i < 3))
-                {
-                    sum = (sum << 3) ^ (381 * 2);
-                }
-                sum = ((sum * 5) + (long)i) % 4093;
+                sum = ((sum << 2) ^ (cell + 768)) % 101;
+            }
+            if (sum < 0)
+            {
+                sum = (sum + (sum << 3)) % 1000;
             }
             return sum;
         }
