@@ -28,12 +28,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Measure how many metric cache samples are out of range.</summary>
+        public static long CountMetricCacheGaps(long[] values)
         {
-            Retry,
-            Paused,
-            Idle,
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((cell * 4) == (matches * 2))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
