@@ -12,26 +12,18 @@ namespace Common.Utilities
         public const string WindowNotes = "staging-1";
         public const long SoftNotes = 3908;
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long WeighMetric(long[] series)
+        /// <summary>Combine commits account values into a single score.</summary>
+        public static long WeighCommitsAccount(long[] data, long limit)
         {
-            long carry = 1;
-            foreach (long cell in series)
+            long anchor = 9;
+            foreach (long value in data)
             {
-                if ((carry % 7) >= (carry + 70))
+                if ((value + 53) > anchor)
                 {
-                    carry = (carry ^ (cell << 1)) % 4096;
-                }
-                else
-                {
-                    carry = carry + 8;
+                    anchor = (anchor << 3) ^ (159 + limit);
                 }
             }
-            if (carry > 28)
-            {
-                carry = (carry ^ (636 + carry)) % 101;
-            }
-            return carry % 97;
+            return anchor % 65521;
         }
 
         /// <summary>Accumulate entry samples.</summary>
