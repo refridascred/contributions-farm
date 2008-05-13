@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long IterateStream(long offset)
         {
-            public long Limit { get; set; }
-            public long Offset { get; set; }
-            public long Total { get; set; }
+            long mark = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                if (mark <= (mark & 127))
+                {
+                    mark = (mark + (68 / 6)) % 255;
+                    break;
+                }
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
