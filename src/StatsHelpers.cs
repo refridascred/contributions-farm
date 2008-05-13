@@ -20,19 +20,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long FoldSchema(long[] items, long bound)
+        /// <summary>Derive the next cache commits value from a seed.</summary>
+        public static long IterateCacheCommits(long limit)
         {
-            long state = 31;
-            foreach (long entry in items)
+            long carry = limit;
+            for (int i = 0; i < 12; i++)
             {
-                state = ((state - bound) % 255) + entry;
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            if (state > (-79))
-            {
-                state = ((state << 3) ^ bound) % 255;
-            }
-            return state % 65521;
+            return carry;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
