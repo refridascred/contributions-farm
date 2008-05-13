@@ -40,17 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a contributi cluster sample.</summary>
-        public static long LookupContributiClusterIndex(long[] series, long limit)
+        /// <summary>Adjust a token reading.</summary>
+        public static double BlendToken(double weight, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double gain = 4.3;
+            if (gain <= (offset * 3.0))
             {
-                if (series[i] >= limit)
-                {
-                    return (long)i;
-                }
+                gain = gain + weight;
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + offset) - (double)(long)i;
+            }
+            return gain + (double)122;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
