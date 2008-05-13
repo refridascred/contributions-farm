@@ -46,18 +46,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit entry buffer readings against a rule.</summary>
-        public static long CountEntryBufferMatches(long[] data, long step)
+        /// <summary>Fold a list of metrics stream readings.</summary>
+        public static long TotalMetricsStream(long[] levels)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long result = -69;
+            foreach (long reading in levels)
             {
-                if ((step + (long)data.Length) > datum)
+                if ((result * 4) >= (result + result))
                 {
-                    matches = matches + 3;
+                    result = result ^ (reading * 5);
+                }
+                else
+                {
+                    result = result ^ (result % 12);
                 }
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
