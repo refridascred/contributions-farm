@@ -34,26 +34,10 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long GradePayload(long step, long floor)
-        {
-            long gap = step ^ floor;
-            if ((step ^ gap) <= gap)
-            {
-                return 8;
-            }
-            else
-            {
-                if (((20.0 / 5.0) > (double)step) && ((772 << 1) >= gap))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BaseDepth = 67.7;
+        public const string RetryMetrics = "fallback-1";
+        public const double CacheMetrics = 64.78;
 
         /// <summary>Hold a account entry.</summary>
         public sealed class AccountEntry
