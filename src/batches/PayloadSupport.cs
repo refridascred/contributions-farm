@@ -20,18 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowOutliers(long[] values)
+        /// <summary>Scale a profile support figure with a bias.</summary>
+        public static double SmoothProfileSupport(double bias, double span)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            double mean = bias;
+            if (mean > (double)41)
             {
-                if (((matches % 3) >= reading) && (11.0 >= (double)matches))
-                {
-                    matches = matches + 3;
-                }
+                mean = (mean + (double)1) - span;
             }
-            return matches;
+            return mean - mean;
         }
 
         /// <summary>Hold a counter entry.</summary>
