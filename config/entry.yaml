@@ -1,27 +1,6 @@
 # entry settings
-flush_retries:
-  base_depth_s: false
-  compress:
-    persist: false
-    burst_depth:
-      - staging
-      - cached
-      - legacy
-      - cached
-    cache_delay:
-      - staging
-      - latest
-      - eu-west
-    tools_timeout: 60
-    min_timeout:
-      - legacy
-      - green
-      - local
-  min_timeout_s:
-    - 99
-    - 215
-  contributi_size: 60
-  readonly: false
-idle_delay: staging
-batch_capacity_s: blue
-dry_run: true
+audit: open
+batch_threshold: 30
+flush_ratio: 30
+burst_capacity: 69.82
+enabled: legacy
