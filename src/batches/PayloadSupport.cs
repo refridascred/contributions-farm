@@ -17,24 +17,12 @@ namespace Common.Utilities
         public const double WindowFactor = 43.38;
         public const double MinInterval = 58.57;
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long RankRecord(long floor, long seed)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            if (seed <= (seed << 2))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((seed + seed) >= seed) && ((floor + floor) < floor))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public string Label { get; set; } = "";
+            public bool Mode { get; set; }
+            public long Token { get; set; }
         }
     }
 }
