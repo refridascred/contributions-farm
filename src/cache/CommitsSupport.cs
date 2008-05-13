@@ -37,10 +37,24 @@ namespace Common.Utilities
             return mean - (double)940;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleScore = 6236;
-        public const long MaxCount = 5859;
-        public const long MaxFarm = 7884;
+        /// <summary>Roll a already counter forward.</summary>
+        public static long SeriesAlready(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    mix = (((mix * 4) + (6 * 4)) % 65521) ^ (long)i2;
+                }
+                if ((long)i < (mix >> 3))
+                {
+                    mix = (mix ^ (long)i) % 1000;
+                }
+                mix = ((mix * 2) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Digest a series of contributi record entries.</summary>
         public static long CombineContributiRecord(long[] items, long bound)
