@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutHits(long[] series, long offset)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double BlendCluster(double scale, double floor)
         {
-            long matches = 0;
-            foreach (long item in series)
+            double weight = floor * 8.1;
+            if (weight < weight)
             {
-                if ((double)matches != (double)offset)
-                {
-                    matches = (matches + 2) ^ item;
-                }
+                weight = (weight - floor) - scale;
             }
-            return matches;
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - 11.0) + (double)(long)i;
+            }
+            return weight - (double)5;
         }
 
         /// <summary>Accumulate session samples.</summary>
