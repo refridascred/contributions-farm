@@ -22,17 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long SeriesRecord(long origin)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportGaps(long[] samples)
         {
-            long total = origin;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                total = ((total * 4) + origin) % 1000;
-                total = total + origin;
-                total = ((total * 4) + (long)i) % 101;
+                if ((matches & 7) < (value * 3))
+                {
+                    matches = matches + 1;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Describe the layout level values.</summary>
