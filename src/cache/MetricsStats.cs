@@ -58,17 +58,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LocateSupportIndex(long[] values, long bound)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Region { get; set; }
+            public bool Owner { get; set; }
+            public long Limit { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
