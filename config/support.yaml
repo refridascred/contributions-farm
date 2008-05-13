@@ -1,12 +1,4 @@
 # support settings
-tools_limit:
-  max_ttl: local
-  sync_delay: staging
-  min_capacity: true
-  compress:
-    - primary
-    - eu-west
-    - open
-queue_ratio: 9413
-route_limit: 41
-counter_depth: green
+editor_threshold: 7873
+retry_window: false
+readonly: 250
