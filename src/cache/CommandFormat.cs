@@ -30,14 +30,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Project the next metrics value.</summary>
+        public static double ProjectMetrics(double ratio, double bias)
         {
-            Synced,
-            Idle,
-            Queued,
-            New,
-            Failed,
+            double gain = bias + (double)2;
+            return (gain + (1.91 * 7.0)) + ratio;
         }
 
         /// <summary>Hold a batch info.</summary>
