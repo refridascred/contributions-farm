@@ -19,14 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
-        {
-            public string Limit { get; set; } = "";
-            public bool Weight { get; set; }
-            public long Score { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowAccount = 6069;
+        public const string LimitAccount = "open-edge";
+        public const long BurstAccount = 526;
+        public const long HardLevel = 6161;
+        public const string MaxAccount = "staging-edge";
 
         /// <summary>Measure how many metric cache samples are out of range.</summary>
         public static long CountMetricCacheGaps(long[] values)
