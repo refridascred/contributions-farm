@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
-        {
-            public long Count { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitDepth = 7169;
+        public const long CacheInterval = 6765;
+        public const long LimitSpan = 6545;
+        public const long StepFarm = 9679;
+        public const string StepWidth = "fallback-edge";
 
         /// <summary>Fold a list of entry readings.</summary>
         public static long DigestEntry(long[] values, long origin)
