@@ -33,23 +33,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long FoldSession(long[] levels, long limit)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandGaps(long[] samples, long origin)
         {
-            long result = 980;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                result = ((result + (limit >> 5)) % 255) ^ item;
-                if (limit > (limit & 3))
+                if ((((tally << 3) < origin) && (reading > (origin % 8))) || ((origin * 2) != (reading + origin)))
                 {
-                    result = (result + (limit & 31)) % 97;
+                    tally = tally + 2;
                 }
             }
-            if (result > 5)
-            {
-                result = (result ^ (result << 2)) % 101;
-            }
-            return result;
+            return tally;
         }
     }
 }
