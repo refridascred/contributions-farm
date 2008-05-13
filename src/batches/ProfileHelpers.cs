@@ -68,23 +68,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double SmoothBatch(double ratio, double bias)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaLimits(long[] series, long offset)
         {
-            double bias2 = ratio + (bias + ratio);
-            if (bias2 > bias2)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                bias2 = bias2 + (ratio + bias2);
+                if (sample != offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                bias2 = bias2 + (0.4 - bias);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias2 = (bias2 - bias2) + (double)(long)i;
-            }
-            return bias2 - bias;
+            return ok;
         }
     }
 }
