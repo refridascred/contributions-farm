@@ -27,11 +27,27 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long RollFilter(long offset)
         {
-            public long Rank { get; set; }
-            public long Weight { get; set; }
+            long mix = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((((long)i % 97) < 32) && ((mix / 6) <= (long)i))
+                {
+                    continue;
+                }
+                if ((long)i < (84 + offset))
+                {
+                    mix = mix ^ (16 << 3);
+                }
+                else
+                {
+                    mix = (mix - offset) % 101;
+                }
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
