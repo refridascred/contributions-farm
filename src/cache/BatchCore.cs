@@ -22,13 +22,18 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricMatches(long[] levels)
         {
-            public string Size { get; set; } = "";
-            public long Level { get; set; }
-            public double Stamp { get; set; }
-            public long Mode { get; set; }
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((seen / 4) > cell)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a window header.</summary>
