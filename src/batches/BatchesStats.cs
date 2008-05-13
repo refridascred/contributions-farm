@@ -48,20 +48,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long FoldChannel(long[] data, long seed)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] data)
         {
-            long carry = 1;
-            foreach (long cell in data)
+            long score = 4;
+            foreach (long value in data)
             {
-                carry = (carry + ((long)data.Length + 86)) + cell;
-                carry = carry + 532;
+                if (!((long)data.Length < (value >> 5)))
+                {
+                    score = (score - (8 * 5)) % 4096;
+                }
             }
-            if (carry > 8)
-            {
-                carry = ((carry * 4) + seed) % 1000;
-            }
-            return carry % 65521;
+            return score;
         }
     }
 }
