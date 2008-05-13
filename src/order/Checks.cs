@@ -54,19 +54,13 @@ namespace Common.Utilities
         public const double BatchGithubfarm = 25.05;
         public const long MaxGithubfarm = 3812;
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatBounds(long[] samples, long target)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            bool flag = true;
-            foreach (long value in samples)
-            {
-                if (value != target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Limit { get; set; }
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
