@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowCommits = 8055;
-        public const long RetryDepth = 8711;
-        public const string DefaultCommits = "strict-1";
+        /// <summary>Match up context samples.</summary>
+        public static long OverlapContextCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Blend two token measurements.</summary>
         public static double ScaleToken(double scale, double offset)
