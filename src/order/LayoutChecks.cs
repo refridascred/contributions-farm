@@ -86,19 +86,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate batches report readings against a bound.</summary>
-        public static bool ValidateBatchesReportLimits(long[] readings, long target)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            bool valid = true;
-            foreach (long datum in readings)
-            {
-                if (datum >= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Mode { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Define token limits and defaults.</summary>
