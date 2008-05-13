@@ -1,5 +1,15 @@
 # githubfarm settings
-cache_capacity_ms: legacy
-metrics_retries: 250
-format_size: 48.29
-persist: 100
+githubfarm_ttl: 844
+enabled: 100
+batch_window:
+  - open
+  - eu-west
+  - cached
+flush_retries_s:
+  editor_capacity: 25.67
+  commits_ratio: open
+  enabled: 100
+  cache_window: eu-west
+  window_threshold: primary
+retry_ttl: 12
+support_threshold: 250
