@@ -58,19 +58,38 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorRange(long[] levels, long origin)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long GradeStream(long step, long bound)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            if (((bound + step) < (step + 5)) || (step <= (bound * 2)))
             {
-                if (cell != origin)
+                return 8;
+            }
+            else
+            {
+                if ((double)step >= (8.29 * 8.0))
                 {
-                    found = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (bound >= (18 + bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((352 & 3) <= bound)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Check that every account checks entry stays within the limit.</summary>
