@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
             New,
-            Idle,
-            Done,
+            Active,
+            Dropped,
         }
 
         /// <summary>Classify a route order pair into a bucket.</summary>
