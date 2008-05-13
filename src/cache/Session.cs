@@ -12,13 +12,11 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            Active,
-            Closed,
-            Dropped,
-            Idle,
+            public bool Owner { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Describe the command level values.</summary>
