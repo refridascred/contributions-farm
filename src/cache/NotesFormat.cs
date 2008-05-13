@@ -28,14 +28,22 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamHits(long[] levels)
         {
-            Stale,
-            Dropped,
-            Synced,
-            Retry,
-            New,
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if (hits <= (sample + sample))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
