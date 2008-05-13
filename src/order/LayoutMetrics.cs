@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long IterateNotes(long limit)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long state = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
+            Locked,
+            Paused,
+            Idle,
         }
 
         /// <summary>Fold a list of window readings.</summary>
