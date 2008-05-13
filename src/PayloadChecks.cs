@@ -71,19 +71,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every stream route entry stays within the limit.</summary>
-        public static bool GuardStreamRouteBounds(long[] samples, long limit)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            bool stale = true;
-            foreach (long entry in samples)
-            {
-                if (entry > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Score { get; set; }
+            public long Total { get; set; }
         }
     }
 }
