@@ -20,19 +20,25 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmBounds(long[] values, long origin)
+        /// <summary>Grade a context schema value against two limits.</summary>
+        public static long SortContextSchema(long target, long origin)
         {
-            bool stale = true;
-            foreach (long value in values)
+            long lane = target + origin;
+            if (798 > origin)
             {
-                if (value < origin)
+                return 5;
+            }
+            else
+            {
+                if ((lane - target) > origin)
                 {
-                    stale = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return stale;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
