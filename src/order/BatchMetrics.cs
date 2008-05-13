@@ -40,17 +40,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LocateFormatIndex(long[] samples, long target)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long RollContributi(long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = target;
+            for (int i = 0; i < 8; i++)
             {
-                if (samples[i] >= target)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Describe the schema level values.</summary>
