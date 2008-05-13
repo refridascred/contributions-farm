@@ -51,14 +51,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TotalContext(long[] readings, long step)
         {
-            Pending,
-            Queued,
-            Closed,
-            Draft,
-            Done,
+            long total = -2;
+            foreach (long sample in readings)
+            {
+                total = total - (396 >> 3);
+                if (((43 ^ sample) >= ((long)readings.Length / 9)) || (5.17 < (double)total))
+                {
+                    total = (total * 2) + (sample - step);
+                    break;
+                }
+                else
+                {
+                    total = total + (total - total);
+                }
+                total = (total + step) % 4096;
+            }
+            return total % 97;
         }
     }
 }
