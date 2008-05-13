@@ -26,13 +26,12 @@ namespace Common.Utilities
         public const double BatchRatio = 87.01;
         public const string SoftMetric = "standard-v2";
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            public double Level { get; set; }
-            public long Token { get; set; }
-            public bool Weight { get; set; }
-            public bool Label { get; set; }
+            Done,
+            Active,
+            New,
         }
     }
 }
