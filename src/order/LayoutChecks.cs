@@ -33,18 +33,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesMatches(long[] items, long bound)
+        /// <summary>Match up filter samples.</summary>
+        public static long OverlapFilterCount(long[] data)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(((565 % 5) <= (seen << 2)) || (28 > (seen % 64))))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = ((seen + 3) + entry) + bound;
+                    if ((data[i] ^ data[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
