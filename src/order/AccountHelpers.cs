@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] series, long bound)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long SeriesCluster(long step)
         {
-            long state = 43;
-            foreach (long entry in series)
+            long carry = step;
+            for (int i = 0; i < 21; i++)
             {
-                if (state > (38 ^ bound))
+                carry = (carry ^ (carry + step)) % 255;
+                if ((carry * 4) > step)
                 {
-                    state = (state ^ ((-601) * 5)) + entry;
+                    carry = (carry - (carry % 16)) % 101;
                 }
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return state;
+            return carry;
         }
 
         /// <summary>Define command limits and defaults.</summary>
