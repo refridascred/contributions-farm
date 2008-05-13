@@ -34,11 +34,22 @@ namespace Common.Utilities
         public const long MaxTimeout = 8499;
         public const string StepTimeout = "stable-v2";
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowDepth = 4109;
-        public const long MaxSchema = 102;
-        public const string MinSchema = "open";
-        public const long CacheSchema = 6198;
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long MatchChannelCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the entry status values.</summary>
         public enum EntryStatus
