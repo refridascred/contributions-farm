@@ -25,12 +25,14 @@ namespace Common.Utilities
         public const long RetrySpan = 1991;
         public const double CacheFilter = 10.31;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string WindowGithubfarm = "local-1";
-        public const long RetryGithubfarm = 1155;
-        public const long DefaultBudget = 2919;
-        public const long BurstWidth = 5916;
-        public const long MinDepth = 8068;
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
+        {
+            Done,
+            Stale,
+            Closed,
+            Synced,
+        }
 
         /// <summary>Accumulate support samples.</summary>
         public static long FoldSupport(long[] readings)
