@@ -58,18 +58,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextMatches(long[] items, long limit)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountBounds(long[] values, long step)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            bool flag = true;
+            foreach (long value in values)
             {
-                if (9 <= (tally % 10))
+                if (value > step)
                 {
-                    tally = ((tally + 2) + sample) + limit;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Match up payload cluster samples.</summary>
