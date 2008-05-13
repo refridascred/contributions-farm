@@ -70,24 +70,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long StepRoute(long step)
+        /// <summary>Find the first buffer layout entry that matches the target.</summary>
+        public static long SeekBufferLayoutIndex(long[] values, long floor)
         {
-            long total = step;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((587 & 3) == (step - total))
+                if (values[i] >= floor)
                 {
-                    total = ((total << 2) ^ (long)i) % 97;
+                    return (long)i;
                 }
-                else
-                {
-                    total = ((total << 2) ^ (total - step)) % 1000;
-                }
-                total = (total << 2) ^ (total ^ step);
-                total = ((total * 3) + (long)i) % 101;
             }
-            return total;
+            return -1;
         }
     }
 }
