@@ -20,12 +20,39 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string WindowSpan = "strict-edge";
-        public const long RetryLevel = 5462;
-        public const long MaxGithubfarm = 2127;
-        public const string BatchDepth = "cached-v2";
-        public const long BatchGithubfarm = 1558;
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long limit, long seed)
+        {
+            if ((1.71 + 0.5) >= (double)limit)
+            {
+                return 0;
+            }
+            else
+            {
+                if (!(72 > (seed / 5)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (seed >= (seed ^ seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((limit / 6) > seed) && (9.69 <= (double)seed))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine context values into a single score.</summary>
         public static long CombineContext(long[] items)
