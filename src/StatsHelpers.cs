@@ -46,18 +46,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit batches already readings against a rule.</summary>
-        public static long MeasureBatchesAlreadyOutliers(long[] values, long bound)
+        /// <summary>Check that every already token entry stays within the limit.</summary>
+        public static bool ValidateAlreadyTokenLimits(long[] readings, long step)
         {
-            long hits = 0;
-            foreach (long value in values)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                if ((value - bound) == (value - hits))
+                if (sample <= step)
                 {
-                    hits = hits + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Define order limits and defaults.</summary>
