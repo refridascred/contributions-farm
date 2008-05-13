@@ -1,4 +1,6 @@
 # githubfarm settings
-buffer_timeout: true
-flush_depth: 16.63
-compress: latest
+dry_run: false
+window_delay: 22.55
+hard_ratio_count: 60
+strict: 3
+support_retries: 67.7
