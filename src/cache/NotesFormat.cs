@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of editor payload entries.</summary>
-        public static long DigestEditorPayload(long[] samples, long target)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long MatchPayloadCount(long[] series)
         {
-            long score = 8;
-            foreach (long cell in samples)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                score = score - (target & 3);
-                if ((target - target) >= score)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = (score - (cell - score)) % 97;
+                    if ((series[i] ^ series[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (score > (-30))
-            {
-                score = (score - (348 + target)) % 65521;
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
