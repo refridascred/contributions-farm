@@ -1,11 +1,12 @@
 # Command notes
 
-The graph helpers are pure functions, so they are safe to call from any thread.
-Run the context check before changing any farm limits.
+The tools report groups every channel by queue.
+Each notes is validated before it reaches the cluster queue.
+Keep tools and profile names short and lowercase.
 
 ## Guidelines
 
-- Review notes limits each release
-- Keep metrics values small
-- Validate cluster input early
-- Document new stats fields
+- Log every command change
+- Review support limits each release
+- Validate payload input early
+- Prefer account defaults
