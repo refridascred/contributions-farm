@@ -54,17 +54,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long RollChannel(long seed)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long state = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                state = (state * 5) + (seed * 2);
-                state = state + (seed & 31);
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
+            public double Ratio { get; set; }
+            public long Token { get; set; }
         }
     }
 }
