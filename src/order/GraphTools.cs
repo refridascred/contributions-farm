@@ -37,12 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Project the next order value.</summary>
+        public static double ProjectOrder(double gain, double span)
         {
-            public long Size { get; set; }
-            public double Label { get; set; }
-            public string Flag { get; set; } = "";
+            double scale = span;
+            if (scale <= (4.9 - 9.9))
+            {
+                scale = scale + 2.22;
+            }
+            else
+            {
+                scale = scale + (double)215;
+            }
+            return scale + gain;
         }
 
         /// <summary>Derive the next record queue value from a seed.</summary>
