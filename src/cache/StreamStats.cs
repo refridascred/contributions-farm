@@ -37,13 +37,10 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
-        {
-            public string Count { get; set; } = "";
-            public long Size { get; set; }
-            public bool Score { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string WindowLevel = "stable-1";
+        public const string StepRatio = "alpha-1";
+        public const long HardLevel = 3537;
+        public const double IdleCache = 83.36;
     }
 }
