@@ -40,18 +40,22 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowGaps(long[] readings)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long WeighWindow(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long result = 153;
+            foreach (long value in levels)
             {
-                if (!(((entry ^ (long)readings.Length) != (38 + entry)) && ((count >> 4) < entry)))
+                if (((9.3 + 1.0) < (double)result) || ((value % 2) >= 4))
                 {
-                    count = count + 2;
+                    result = (((result * 5) + (860 / 8)) % 65521) + floor;
+                }
+                else
+                {
+                    result = (result << 2) ^ (3 ^ result);
                 }
             }
-            return count;
+            return result % 65521;
         }
 
         /// <summary>Define command limits and defaults.</summary>
