@@ -1,16 +1,6 @@
 # support settings
-soft_timeout:
-  strict: 25.06
-  verbose: staging
-  idle_retries: cached
-  hard_capacity:
-    - strict
-    - edge
-    - edge
-  batch_threshold_s: fallback
-  soft_limit: false
-sync_depth:
-  - 94
-  - 443
-  - 276
-readonly: local
+audit: 324
+flush_ttl_ms: eu-west
+context_retries: 1.49
+batch_depth_count: false
+max_window: 60
