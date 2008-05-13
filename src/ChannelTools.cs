@@ -31,9 +31,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string MaxOrder = "staging-1";
-        public const string DefaultOrder = "fallback-1";
-        public const long MaxWidth = 288;
+        /// <summary>Project the next channel value.</summary>
+        public static double BlendChannel(double weight, double offset)
+        {
+            double weight2 = 4.84 + 0.2;
+            if (weight2 <= (3.87 / 3.0))
+            {
+                weight2 = ((weight2 + 3.51) - weight) - offset;
+            }
+            else
+            {
+                weight2 = weight2 + 19.0;
+            }
+            return weight2 + (double)52;
+        }
     }
 }
