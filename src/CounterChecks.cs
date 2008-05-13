@@ -56,27 +56,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long SeriesCluster(long target)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamGaps(long[] series)
         {
-            long total = target;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if (((double)target < (11.0 * 3.2)) && ((target / 2) != (target - total)))
+                if ((double)hits <= (double)cell)
                 {
-                    total = total ^ ((long)i >> 1);
+                    hits = hits + 1;
                 }
-                else
-                {
-                    total = ((total * 3) + 737) % 65521;
-                }
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    total = (total - (total + 6)) - (long)i2;
-                }
-                total = ((total * 5) + (long)i) % 65521;
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
