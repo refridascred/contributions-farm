@@ -34,24 +34,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TallyTools(long[] levels)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long MatchStatsCount(long[] items)
         {
-            long result = 7;
-            foreach (long datum in levels)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(5 <= (datum << 1)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = (result - datum) % 65521;
+                    if ((items[i] - items[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
                 }
-                result = ((result * 4) + (datum - result)) % 4096;
-                result = ((result << 3) ^ (87 * 2)) % 97;
             }
-            if (result < 2)
-            {
-                result = (result + result) % 97;
-            }
-            return result % 4096;
+            return count;
         }
     }
 }
