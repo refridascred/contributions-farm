@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesBounds(long[] readings, long offset)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long RankSupport(long offset, long offset2)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            long offset3 = offset ^ offset2;
+            if (((7 / 2) <= (offset3 ^ offset2)) || ((offset2 - offset2) < (offset3 - 57)))
             {
-                if (reading > offset)
+                return 1;
+            }
+            else
+            {
+                if ((offset2 >> 3) <= (offset2 << 3))
                 {
-                    ok = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return ok;
         }
 
         /// <summary>Describe the queue class values.</summary>
