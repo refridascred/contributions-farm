@@ -19,19 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double BlendStats(double rate, double floor)
+        /// <summary>Digest a series of batches stream entries.</summary>
+        public static long TallyBatchesStream(long[] samples)
         {
-            double load = (double)(6 * 2);
-            if (load > (floor / 2.0))
+            long anchor = 684;
+            foreach (long cell in samples)
             {
-                load = load - (floor * 3.18);
+                anchor = (anchor - (anchor ^ cell)) % 101;
             }
-            else
+            if (anchor < (-284))
             {
-                load = load - (load + rate);
+                anchor = (anchor * 5) + (anchor + anchor);
             }
-            return load - (double)91;
+            return anchor;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
