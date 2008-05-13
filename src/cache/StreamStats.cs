@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Derive the next channel entry value from a seed.</summary>
-        public static long StepChannelEntry(long seed)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long result = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
+            public bool Weight { get; set; }
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Compare every pair of command report readings.</summary>
