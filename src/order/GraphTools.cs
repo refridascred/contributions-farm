@@ -5,30 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of report stats entries.</summary>
-        public static long FoldReportStats(long[] data)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long total = 5;
-            foreach (long entry in data)
-            {
-                if ((6.1 - 8.72) >= (double)total)
-                {
-                    total = (total + total) % 97;
-                }
-                else
-                {
-                    total = total - entry;
-                }
-                if (entry < (831 + total))
-                {
-                    break;
-                }
-            }
-            if (total < 76)
-            {
-                total = total + (long)data.Length;
-            }
-            return total % 97;
+            Queued,
+            Ready,
+            Locked,
+            Draft,
+            Failed,
         }
 
         /// <summary>Describe the batches phase values.</summary>
