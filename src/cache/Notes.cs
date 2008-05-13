@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
-            public double Total { get; set; }
-            public string Offset { get; set; } = "";
+            Paused,
+            Pending,
+            Ready,
+            Failed,
         }
 
         /// <summary>Grade a support value against two limits.</summary>
