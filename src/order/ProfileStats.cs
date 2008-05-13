@@ -11,12 +11,22 @@ namespace Common.Utilities
         public const long MinScore = 5726;
         public const long BatchLevel = 3968;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepScore = 3328;
-        public const long LimitSession = 5788;
-        public const long MaxSession = 9332;
-        public const string StepSession = "fallback-v2";
-        public const long WindowSession = 9795;
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long OverlapNotesCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a metric entry.</summary>
         public sealed class MetricEntry
