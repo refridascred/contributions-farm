@@ -13,40 +13,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a cache window pair into a bucket.</summary>
-        public static long SortCacheWindow(long seed, long seed2)
-        {
-            long delta = seed - seed2;
-            if (((double)seed > (3.0 + 3.5)) && (delta > (delta / 7)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((264 ^ delta) == (seed2 % 3))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (delta > (805 - 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((seed2 % 60) < (delta ^ delta))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepScore = 3328;
+        public const long LimitSession = 5788;
+        public const long MaxSession = 9332;
+        public const string StepSession = "fallback-v2";
+        public const long WindowSession = 9795;
 
         /// <summary>Hold a metric entry.</summary>
         public sealed class MetricEntry
