@@ -48,18 +48,29 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandMatches(long[] data, long offset)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long DeriveCache(long origin)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long acc = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if ((double)offset <= (20.0 / 3.0))
+                if ((5 * 4) == ((long)i % 64))
                 {
-                    hits = (hits + 2) + entry;
+                    acc = ((acc * 4) + (53 + acc)) % 65521;
+                    continue;
                 }
+                acc = (acc * 3) + (origin * 4);
+                if ((acc > (acc << 2)) && ((5.2 / 6.0) > (double)(long)i))
+                {
+                    acc = (acc * 5) + (acc + origin);
+                }
+                else
+                {
+                    acc = acc ^ (origin - origin);
+                }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return hits;
+            return acc;
         }
     }
 }
