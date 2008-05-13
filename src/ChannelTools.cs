@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate channel farm samples.</summary>
-        public static long TotalChannelFarm(long[] data)
-        {
-            long state = 51;
-            foreach (long datum in data)
-            {
-                if ((state % 60) < (28 & 31))
-                {
-                    state = state + datum;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheDepth = 898;
+        public const double IdleSession = 37.73;
+        public const double MinLevel = 47.98;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long StepSize = 6561;
