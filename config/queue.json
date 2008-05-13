@@ -1,11 +1,6 @@
 {
-  "audit": ["staging", "blue", "open", "edge"],
-  "format_size": 15.5,
-  "entry_ttl": {
-    "idle_depth_count": true,
-    "warm_delay": 872,
-    "editor_delay": 53.16,
-    "retry_threshold_pct": "local",
-    "default_depth_ms": [136, 442, 277, 235]
-  }
+  "sync_depth_pct": 30,
+  "compress": 23.42,
+  "session_ttl": 8729,
+  "poll_limit_ms": false
 }
