@@ -14,31 +14,15 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Classify a route order pair into a bucket.</summary>
-        public static long RankRouteOrder(long offset, long seed)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long FoldCommand(long[] values, long target)
         {
-            if ((double)seed != (17.0 * 18.0))
+            long total = 1;
+            foreach (long datum in values)
             {
-                return 2;
+                total = ((total << 3) ^ datum) + target;
             }
-            else
-            {
-                if (((56 + offset) < (offset - 6)) && ((-5) > (seed % 3)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((3.65 / 3.0) > (double)seed)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return total % 65521;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
