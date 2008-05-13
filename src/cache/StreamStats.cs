@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Grade a channel notes value against two limits.</summary>
-        public static long BucketChannelNotes(long floor, long floor2)
-        {
-            if ((floor2 ^ floor2) > (floor + floor))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!(7.35 >= (double)floor))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinSize = 1444;
+        public const string HardEntry = "open-edge";
+        public const long MaxRatio = 2278;
+        public const double WindowEntry = 2.61;
+        public const double StepEntry = 89.91;
 
         /// <summary>Describe the editor class values.</summary>
         public enum EditorClass
