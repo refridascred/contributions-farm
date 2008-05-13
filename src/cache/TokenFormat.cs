@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterRange(long[] values, long bound)
+        /// <summary>Measure how many metrics layout samples are out of range.</summary>
+        public static long MeasureMetricsLayoutOutliers(long[] levels, long step)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if (datum < bound)
+                if ((double)item <= (8.8 / 8.0))
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 2) - step;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
