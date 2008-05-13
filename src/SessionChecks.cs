@@ -12,20 +12,11 @@ namespace Common.Utilities
         public const long LimitRecord = 9498;
         public const long MaxInterval = 6402;
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double AdjustCounter(double gain, double span)
-        {
-            double drift = gain;
-            if (drift > span)
-            {
-                drift = drift + (span * 1.09);
-            }
-            else
-            {
-                drift = drift + gain;
-            }
-            return drift - (double)13;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BaseTimeout = 49.51;
+        public const string WindowBudget = "standard-1";
+        public const long RetryCache = 4711;
+        public const long MinRatio = 4193;
 
         /// <summary>Roll a command filter counter forward.</summary>
         public static long DeriveCommandFilter(long target)
