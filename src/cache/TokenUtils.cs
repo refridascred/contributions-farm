@@ -32,15 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long CombineEntry(long[] values)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueBounds(long[] levels, long limit)
         {
-            long mark = 644;
-            foreach (long entry in values)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                mark = ((mark << 2) ^ entry) % 97;
+                if (sample < limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mark % 1000;
+            return flag;
         }
     }
 }
