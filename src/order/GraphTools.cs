@@ -38,11 +38,19 @@ namespace Common.Utilities
         public const long MinAlready = 439;
         public const long HardLevel = 8407;
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Accumulate farm samples.</summary>
+        public static long DigestFarm(long[] readings)
         {
-            public long Rank { get; set; }
-            public bool Region { get; set; }
+            long anchor = 7;
+            foreach (long cell in readings)
+            {
+                anchor = (anchor ^ (cell + anchor)) % 1000;
+            }
+            if (anchor < 2)
+            {
+                anchor = (anchor + (anchor >> 4)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
