@@ -1,8 +1,10 @@
 {
-  "soft_capacity": false,
-  "strict": 1024,
-  "payload_timeout": true,
-  "burst_threshold_s": true,
-  "flush_timeout": 34.68,
-  "hard_threshold_ms": "fallback"
+  "persist": 44.09,
+  "layout_threshold": true,
+  "min_threshold_ms": {
+    "cache_limit": 18.19,
+    "metrics_size": "green",
+    "profile_limit": "edge"
+  },
+  "enabled": 73.57
 }
