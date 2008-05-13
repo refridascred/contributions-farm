@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches support helpers.</summary>
     public static class BatchesSupport
     {
-        /// <summary>Match up support samples.</summary>
-        public static long PairSupportCount(long[] samples)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long WeighCounter(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 7;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                carry = (carry + (reading ^ reading)) % 97;
+                if ((double)217 < (double)(long)series.Length)
                 {
-                    if ((samples[i] - samples[j]) == 14)
-                    {
-                        count = count + 1;
-                    }
+                    break;
                 }
             }
-            return count;
+            return carry % 65521;
         }
 
         /// <summary>Match up already samples.</summary>
