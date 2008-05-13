@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long FindGithubfarmIndex(long[] data, long origin)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long SortCluster(long offset, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((8.0 / 7.0) != (double)origin)
             {
-                if ((data[i] >= origin) && ((data[i] % 3) != 0))
+                return 4;
+            }
+            else
+            {
+                if ((3.6 + 3.41) == (double)offset)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((11 % 97) >= (origin / 8))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((origin & 7) < (offset - (-54))))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
