@@ -56,11 +56,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a session payload reading.</summary>
-        public static double ScaleSessionPayload(double rate, double floor)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            double gain = (double)756 / 5.0;
-            return (gain + (3.86 + floor)) + rate;
+            public long Label { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Hold a stream entry.</summary>
