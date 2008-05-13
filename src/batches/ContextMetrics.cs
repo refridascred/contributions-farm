@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] levels, long bound)
+        /// <summary>Count the report metrics entries that pass the check.</summary>
+        public static long AuditReportMetricsOutliers(long[] readings)
         {
-            long state = 2;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                state = (((state << 2) ^ (state >> 1)) ^ cell) - bound;
+                if (!!((double)seen != (4.0 * 2.0)))
+                {
+                    seen = (seen + 1) - datum;
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
