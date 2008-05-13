@@ -1,6 +1,39 @@
 # githubfarm settings
-dry_run: false
-window_delay: 22.55
-hard_ratio_count: 60
-strict: 3
-support_retries: 67.7
+soft_delay: 124
+retry_timeout: 1024
+min_timeout:
+  context_capacity:
+    hard_ttl_ms: 2659
+    dry_run: 8624
+    filter_capacity: false
+    hard_interval_count: 100
+  base_ttl:
+    - 345
+    - 412
+    - 335
+  poll_limit_s: 9581
+  burst_delay_s: 24.01
+  farm_limit:
+    - stable
+    - strict
+  warm_size: 98.59
+batches_depth: green
+default_size: 3443
+cache_threshold_s:
+  burst_ratio: false
+  dry_run: 2
+  account_depth:
+    schema_retries: 68.38
+    min_ratio_count: 6375
+    batch_window_s: 8
+    checks_ratio: 27.16
+  batch_capacity:
+    warm_window_ms:
+      - 221
+      - 296
+      - 96
+      - 417
+    max_limit: edge
+    poll_interval_ms: green
+  max_timeout: 100
+  cache_retries_s: legacy
