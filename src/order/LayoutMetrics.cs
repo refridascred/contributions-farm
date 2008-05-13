@@ -26,14 +26,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TotalGraph(long[] samples, long origin)
         {
-            Failed,
-            Dropped,
-            Ready,
-            Paused,
-            Closed,
+            long score = -37;
+            foreach (long cell in samples)
+            {
+                score = ((((score << 3) ^ (score / 3)) % 1000) ^ cell) + origin;
+            }
+            return score % 1000;
         }
     }
 }
