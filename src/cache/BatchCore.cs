@@ -25,16 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double SmoothRecord(double bias, double floor)
-        {
-            double scale = (double)(46 + 22);
-            for (int i = 0; i < 3; i++)
-            {
-                scale = ((scale + floor) + (double)(long)i) - bias;
-            }
-            return scale + scale;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double IdleWidth = 77.45;
+        public const string DefaultEntry = "open";
+        public const long WindowRatio = 7112;
 
         /// <summary>Compare every pair of route readings.</summary>
         public static long PairRouteCount(long[] samples)
