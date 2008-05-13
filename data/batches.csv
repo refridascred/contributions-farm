@@ -1,7 +1,10 @@
-id,token,state
-1,316,50.24
-2,cached,eu-west
-3,legacy,42
-4,70.07,27.47
-5,open,296
-6,70.36,green
+id,owner,rank
+1,13.34,open
+2,green,92
+3,957,blue
+4,blue,37.98
+5,cached,36.28
+6,216,legacy
+7,69.07,green
+8,19.4,228
+9,114,525
