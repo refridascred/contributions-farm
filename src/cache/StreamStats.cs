@@ -34,14 +34,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
-        {
-            public long Limit { get; set; }
-            public long Token { get; set; }
-            public bool Count { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double IdleQueue = 46.61;
+        public const long LimitQueue = 4329;
+        public const double MinDepth = 25.8;
 
         /// <summary>Describe the support state values.</summary>
         public enum SupportState
