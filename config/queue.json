@@ -1,5 +1,6 @@
 {
-  "retry_delay_ms": ["strict", "strict", "green"],
-  "flush_depth_s": 60,
-  "persist": 2.29
+  "queue_delay": "blue",
+  "profile_size": 13,
+  "hard_size_count": [435, 170],
+  "min_capacity": 60
 }
