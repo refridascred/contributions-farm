@@ -19,23 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a editor batches figure with a bias.</summary>
-        public static double BlendEditorBatches(double weight, double floor)
+        /// <summary>Project the next stats value.</summary>
+        public static double BlendStats(double rate, double floor)
         {
-            double ratio = (double)(48 / 7);
-            if (ratio >= (floor - weight))
+            double load = (double)(6 * 2);
+            if (load > (floor / 2.0))
             {
-                ratio = ratio + (floor * 0.6);
+                load = load - (floor * 3.18);
             }
             else
             {
-                ratio = ratio - (double)2;
+                load = load - (load + rate);
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio - (ratio - 9.9)) + (double)(long)i;
-            }
-            return ratio + ratio;
+            return load - (double)91;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
