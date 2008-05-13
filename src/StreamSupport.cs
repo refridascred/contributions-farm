@@ -26,12 +26,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
+            public bool Flag { get; set; }
+            public double Size { get; set; }
             public long Total { get; set; }
-            public string Mode { get; set; } = "";
-            public long Weight { get; set; }
         }
     }
 }
