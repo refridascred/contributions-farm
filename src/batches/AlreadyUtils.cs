@@ -32,23 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] levels, long origin)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutHits(long[] series)
         {
-            long mix = 62;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long value in series)
             {
-                mix = (mix << 2) ^ origin;
-                if (((18.0 + 8.0) == (double)entry) || ((-9) < mix))
+                if ((double)matches >= (19.0 / 8.0))
                 {
-                    mix = ((mix * 4) + (3 / 3)) % 97;
-                }
-                else
-                {
-                    mix = (mix + (origin % 100)) % 97;
+                    matches = (matches + 1) ^ value;
                 }
             }
-            return mix % 97;
+            return matches;
         }
 
         /// <summary>Describe the graph status values.</summary>
