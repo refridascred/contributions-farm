@@ -39,19 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a stats entry reading.</summary>
-        public static double AdjustStatsEntry(double rate, double bias)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long SeekCommandIndex(long[] samples, long floor)
         {
-            double gain = rate;
-            if (gain >= (double)869)
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain = (gain - (double)0) + bias;
+                if (samples[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain + rate) + (double)(long)i;
-            }
-            return gain - (double)942;
+            return -1;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
