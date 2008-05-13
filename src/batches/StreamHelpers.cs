@@ -59,15 +59,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long MatchFilterCount(long[] samples)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long MatchOrderCount(long[] data)
         {
             long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((samples[i] ^ samples[j]) == 1)
+                    if ((data[i] - data[j]) != 16)
                     {
                         matches = matches + 1;
                     }
