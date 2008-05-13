@@ -49,15 +49,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long RollLayout(long offset)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelHits(long[] data)
         {
-            long sum = offset;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                sum = ((sum * 5) + (long)i) % 1000;
+                if (((7 + seen) != (seen >> 4)) && ((double)reading <= (20.0 + 9.7)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Count entry metrics pairs that satisfy a relation.</summary>
