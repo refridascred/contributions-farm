@@ -1,11 +1,6 @@
-id,active,label,count,region
-1,61.09,618,894,35.7
-2,149,904,local,eu-west
-3,edge,staging,142,610
-4,eu-west,159,904,638
-5,blue,green,798,fallback
-6,619,146,545,blue
-7,101,146,primary,189
-8,197,11.75,364,18
-9,edge,286,staging,260
-10,900,28.08,stable,583
+id,label,active
+1,786,fallback
+2,346,84.68
+3,legacy,55.61
+4,485,157
+5,69,195
