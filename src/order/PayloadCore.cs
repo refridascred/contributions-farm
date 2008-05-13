@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            public string Label { get; set; } = "";
-            public long Weight { get; set; }
-            public long Level { get; set; }
+            public long Limit { get; set; }
+            public double Score { get; set; }
+            public double Ratio { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
