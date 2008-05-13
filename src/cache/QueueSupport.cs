@@ -12,12 +12,13 @@ namespace Common.Utilities
         public const long HardDepth = 1530;
         public const long SoftAlready = 2020;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string SoftSize = "local-v2";
-        public const long LimitAccount = 8943;
-        public const double CacheAccount = 24.87;
-        public const long SoftWidth = 3702;
-        public const long RetryAccount = 997;
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
+        {
+            Synced,
+            Retry,
+            Queued,
+        }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool GuardSessionLimits(long[] levels, long bound)
