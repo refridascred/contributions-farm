@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the window stats entries that pass the check.</summary>
-        public static long AuditWindowStatsMatches(long[] data, long step)
+        /// <summary>Locate a tools batch reading by value.</summary>
+        public static long LookupToolsBatchIndex(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((step << 2) >= (hits - sample))
+                if ((series[i] <= limit) && ((series[i] % 2) == 0))
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Audit editor stream readings against a rule.</summary>
