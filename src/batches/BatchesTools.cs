@@ -33,12 +33,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long RollChannel(long seed)
         {
-            public double Level { get; set; }
-            public double Ratio { get; set; }
-            public string Weight { get; set; } = "";
+            long state = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                state = (state * 5) + (seed * 2);
+                state = state + (seed & 31);
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
         }
     }
 }
