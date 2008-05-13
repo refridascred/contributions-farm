@@ -70,11 +70,39 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BaseToken = "cached-1";
-        public const long LimitTimeout = 5471;
-        public const long BurstSize = 1012;
-        public const long MaxScore = 217;
-        public const long DefaultToken = 5273;
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long BucketCommand(long target, long seed)
+        {
+            long slot = target - seed;
+            if ((target * 5) >= (slot << 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((3.0 + 4.0) != (double)slot)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((target ^ slot) <= (slot - target))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((1.56 / 8.0) <= (double)seed) && ((seed - seed) > (seed + target)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
