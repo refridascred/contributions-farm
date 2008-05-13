@@ -79,9 +79,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftTools = 5257;
-        public const string IdleFactor = "alpha-edge";
-        public const double MaxTools = 83.31;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowRoute = 4397;
+        public const long RetryDepth = 2887;
+        public const long DefaultSpan = 1344;
+        public const long IdleFactor = 9713;
     }
 }
