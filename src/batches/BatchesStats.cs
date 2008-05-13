@@ -56,10 +56,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string SoftSession = "open-1";
-        public const long SoftInterval = 4597;
-        public const long DefaultSession = 6100;
-        public const string BaseSize = "cached";
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
+        {
+            Pending,
+            Queued,
+            Dropped,
+        }
     }
 }
