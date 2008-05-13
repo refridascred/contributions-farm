@@ -20,16 +20,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long IterateCache(long limit)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long FoldSchema(long[] items, long bound)
         {
-            long score = limit;
-            for (int i = 0; i < 16; i++)
+            long state = 31;
+            foreach (long entry in items)
             {
-                score = ((score << 2) ^ (long)i) % 65521;
-                score = ((score * 4) + (long)i) % 1000;
+                state = ((state - bound) % 255) + entry;
             }
-            return score;
+            if (state > (-79))
+            {
+                state = ((state << 3) ^ bound) % 255;
+            }
+            return state % 65521;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
