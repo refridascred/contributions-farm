@@ -54,9 +54,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BatchQueue = 42.41;
-        public const long DefaultQueue = 994;
-        public const string IdleInterval = "legacy";
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowSize = 9549;
+        public const string StepCache = "staging-1";
+        public const long WindowRatio = 8524;
+        public const long DefaultLevel = 7780;
     }
 }
