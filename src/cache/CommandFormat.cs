@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
-        {
-            public long Level { get; set; }
-            public long Count { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string LimitSize = "cached-edge";
+        public const string WindowLevel = "cached-edge";
+        public const long HardSpan = 2844;
+        public const long BurstRatio = 8793;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const double MinDepth = 41.92;
