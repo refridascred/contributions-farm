@@ -46,22 +46,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long PairRouteCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double HardPayload = 81.42;
+        public const long BatchPayload = 7318;
+        public const string BurstPayload = "latest-v2";
 
         /// <summary>Classify a order channel pair into a bucket.</summary>
         public static long GradeOrderChannel(long bound, long floor)
