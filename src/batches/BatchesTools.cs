@@ -19,18 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LocateChecksIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string LimitFactor = "strict-1";
+        public const double HardAccount = 47.82;
+        public const long BurstWidth = 4001;
+        public const double WindowAccount = 75.17;
+        public const long HardScore = 300;
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long AuditQueueMatches(long[] items)
