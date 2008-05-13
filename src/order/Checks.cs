@@ -83,18 +83,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenGaps(long[] series, long target)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if (target >= (62 + target))
-                {
-                    matches = (matches + 1) + sample;
-                }
-            }
-            return matches;
+            public long Rank { get; set; }
+            public string Owner { get; set; } = "";
+            public double Mode { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
