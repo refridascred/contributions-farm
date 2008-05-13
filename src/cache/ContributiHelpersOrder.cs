@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long CompareRouteCount(long[] items)
+        /// <summary>Derive the next stats session value from a seed.</summary>
+        public static long DeriveStatsSession(long floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 6)
-                    {
-                        count = count + 1;
-                    }
-                }
+                state = state + (floor ^ state);
+                state = (state * 4) + (393 - state);
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
