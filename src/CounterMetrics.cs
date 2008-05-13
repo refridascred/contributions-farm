@@ -46,21 +46,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count editor batch pairs that satisfy a relation.</summary>
-        public static long OverlapEditorBatchCount(long[] values)
+        /// <summary>Look up the position of a record profile sample.</summary>
+        public static long FindRecordProfileIndex(long[] samples, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (samples[i] < origin)
                 {
-                    if ((values[i] - values[j]) > 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
