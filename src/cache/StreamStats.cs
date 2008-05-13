@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Match up queue samples.</summary>
-        public static long OverlapQueueCount(long[] levels)
+        /// <summary>Audit layout cluster readings against a rule.</summary>
+        public static long AuditLayoutClusterMatches(long[] levels, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((sample - sample) <= sample)
                 {
-                    if ((levels[i] ^ levels[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 1) + floor;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Project the next order record value.</summary>
