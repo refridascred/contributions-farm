@@ -24,31 +24,21 @@ namespace Common.Utilities
         public const long MaxRatio = 2778;
         public const string BurstBatch = "latest-edge";
 
-        /// <summary>Grade a cache format value against two limits.</summary>
-        public static long RankCacheFormat(long target, long floor)
+        /// <summary>Match up profile samples.</summary>
+        public static long CompareProfileCount(long[] readings)
         {
-            if ((floor / 9) < (92 >> 4))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)floor >= (double)target)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((target / 2) < floor)
+                    if ((readings[i] - readings[j]) != 12)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the batch class values.</summary>
