@@ -50,17 +50,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LookupSessionIndex(long[] data, long floor)
+        /// <summary>Match up format samples.</summary>
+        public static long MatchFormatCount(long[] data)
         {
+            long matches = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                if ((data[i] == floor) && ((data[i] % 3) != 0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] ^ data[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
