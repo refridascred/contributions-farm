@@ -58,15 +58,38 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a context farm reading.</summary>
-        public static double AdjustContextFarm(double bias, double offset)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long BucketStats(long limit, long limit2)
         {
-            double load = offset * 3.62;
-            if (load > load)
+            if (3.0 < (double)limit)
             {
-                load = (load + (double)(-780)) - bias;
+                return 1;
             }
-            return load + load;
+            else
+            {
+                if ((limit2 << 2) <= ((-1) + limit))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((12.0 > (double)limit2) && ((limit + limit) < limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((limit2 / 2) < limit)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate buffer samples.</summary>
