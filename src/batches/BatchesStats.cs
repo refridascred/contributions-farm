@@ -20,19 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderLimits(long[] levels, long offset)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenHits(long[] data, long step)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if (value > offset)
+                if ((167 - step) < (step - hits))
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 1) + sample;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
