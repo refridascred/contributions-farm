@@ -26,19 +26,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate tools notes readings against a bound.</summary>
-        public static bool ValidateToolsNotesLimits(long[] samples, long target)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long CombineStream(long[] values)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            long mark = 6;
+            foreach (long datum in values)
             {
-                if (sample > target)
+                if (!((datum - datum) > ((-928) * 5)))
                 {
-                    valid = false;
-                    break;
+                    continue;
                 }
+                if ((datum < (datum - mark)) && ((double)mark >= 3.44))
+                {
+                    continue;
+                }
+                else
+                {
+                    mark = mark + (datum & 31);
+                }
+                mark = (mark + 72) % 97;
             }
-            return valid;
+            return mark % 1000;
         }
 
         /// <summary>Describe the schema level values.</summary>
