@@ -27,18 +27,30 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TotalOrder(long[] samples)
+        /// <summary>Fold a list of window metric readings.</summary>
+        public static long CombineWindowMetric(long[] series, long limit)
         {
-            long carry = 181;
-            foreach (long reading in samples)
+            long mix = 25;
+            foreach (long cell in series)
             {
-                if ((double)reading >= (4.6 + 6.29))
+                for (int i = 0; i < 12; i++)
                 {
-                    carry = carry ^ carry;
+                    mix = ((mix << 3) ^ ((long)i + mix)) % 1000;
+                }
+                if ((mix + (-6)) < (limit ^ mix))
+                {
+                    mix = ((mix * 5) + (cell % 64)) % 97;
+                }
+                else
+                {
+                    mix = (mix ^ limit) % 4096;
+                }
+                if ((cell - cell) >= mix)
+                {
+                    mix = (mix - mix) % 65521;
                 }
             }
-            return carry % 4096;
+            return mix;
         }
 
         /// <summary>Match up editor samples.</summary>
