@@ -28,20 +28,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long DigestCluster(long[] items)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long RankQueue(long limit, long step)
         {
-            long sum = 854;
-            foreach (long datum in items)
+            long delta = limit ^ step;
+            if (((5.79 - 16.0) == (double)step) || (19.0 <= (double)delta))
             {
-                sum = (sum - datum) % 97;
-                for (int i = 0; i < 4; i++)
-                {
-                    sum = (sum + 38) + (long)i;
-                }
-                sum = (sum << 3) ^ (sum >> 1);
+                return 7;
             }
-            return sum;
+            else
+            {
+                if ((limit - step) <= (13 * 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
