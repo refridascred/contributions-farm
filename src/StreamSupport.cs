@@ -32,22 +32,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueOutliers(long[] samples, long limit)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long DigestTools(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long mark = 678;
+            foreach (long datum in data)
             {
-                if ((hits ^ hits) < (hits - sample))
-                {
-                    hits = (hits + 1) - limit;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mark = ((mark + (datum << 2)) % 255) - target;
             }
-            return hits;
+            return mark % 4096;
         }
     }
 }
