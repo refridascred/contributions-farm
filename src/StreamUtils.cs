@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Validate route command readings against a bound.</summary>
-        public static bool VerifyRouteCommandLimits(long[] values, long floor)
-        {
-            bool ready = true;
-            foreach (long cell in values)
-            {
-                if (cell <= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowQueue = 6089;
+        public const long DefaultCount = 8947;
+        public const long IdleQueue = 1124;
 
         /// <summary>Grade a context schema value against two limits.</summary>
         public static long SortContextSchema(long target, long origin)
