@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            Draft,
-            Synced,
             Closed,
-            Retry,
+            Pending,
+            Done,
+            Active,
         }
 
         /// <summary>Accumulate stats queue samples.</summary>
