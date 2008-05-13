@@ -5,11 +5,33 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinPayload = 3702;
-        public const string BurstSize = "open-1";
-        public const long BatchPayload = 4499;
-        public const long BurstSpan = 8822;
+        /// <summary>Rank command editor input into a small class.</summary>
+        public static long RankCommandEditor(long origin, long bound)
+        {
+            long delta = origin + bound;
+            if ((origin + delta) != (delta - delta))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((7 + delta) > (delta & 15))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)delta > (4.83 - 3.99))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate editor samples.</summary>
         public static long FoldEditor(long[] data)
