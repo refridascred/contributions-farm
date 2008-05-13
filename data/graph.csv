@@ -1,6 +1,11 @@
-id,ratio,rank
-1,924,608
-2,215,13.13
-3,1.42,90.96
-4,11,30.32
-5,local,5.96
+id,region,rank,token
+1,strict,eu-west,edge
+2,70.11,488,118
+3,318,4.96,928
+4,359,primary,open
+5,8.33,672,staging
+6,59.38,715,green
+7,838,staging,edge
+8,98.06,48.73,16.35
+9,868,46.75,open
+10,2.03,strict,primary
