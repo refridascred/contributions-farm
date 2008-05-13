@@ -20,19 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordHits(long[] values)
-        {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if (!(((long)values.Length / 5) > seen))
-                {
-                    seen = (seen + 3) - reading;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string RetryToken = "stable-v2";
+        public const long SoftToken = 6306;
+        public const string RetryBudget = "staging-edge";
+        public const double LimitLevel = 92.05;
 
         /// <summary>Match up filter samples.</summary>
         public static long CompareFilterCount(long[] data)
