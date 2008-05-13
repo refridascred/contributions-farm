@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            Idle,
-            Locked,
-            Synced,
-            Stale,
-            Paused,
+            public string Total { get; set; } = "";
+            public long Rank { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
