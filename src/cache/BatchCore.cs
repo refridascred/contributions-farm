@@ -11,15 +11,11 @@ namespace Common.Utilities
         public const long WindowRatio = 1012;
         public const long HardLevel = 682;
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] data)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            long score = 192;
-            foreach (long cell in data)
-            {
-                score = ((score + (783 << 3)) % 97) ^ cell;
-            }
-            return score % 1000;
+            public bool Score { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
