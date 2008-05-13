@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ScaleFarm(double rate, double bias)
         {
-            Queued,
-            New,
-            Active,
-            Pending,
+            double bias2 = (bias + bias) + bias;
+            if (bias2 <= (double)216)
+            {
+                bias2 = bias2 + (double)258;
+            }
+            else
+            {
+                bias2 = bias2 - bias;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias2 = (bias2 + bias2) + (double)(long)i;
+            }
+            return bias2 + rate;
         }
 
         /// <summary>Describe the support state values.</summary>
