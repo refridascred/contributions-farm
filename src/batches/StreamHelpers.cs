@@ -51,10 +51,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double BatchSpan = 53.48;
-        public const string WindowSession = "standard-v2";
-        public const double RetryFactor = 75.09;
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long MatchFilterCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Scale a farm figure with a bias.</summary>
         public static double ScaleFarm(double bias, double bias2)
