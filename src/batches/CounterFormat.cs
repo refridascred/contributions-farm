@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long DeriveReport(long origin)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long PairSupportCount(long[] data)
         {
-            long mark = origin;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = ((mark * 5) + (mark - mark)) % 97;
-                if (!!((origin / 2) > (50 * 2)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = mark ^ (origin ^ origin);
+                    if ((data[i] ^ data[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
                 }
-                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Grade a payload support value against two limits.</summary>
