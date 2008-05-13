@@ -19,32 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long ClassifyNotes(long offset, long origin)
-        {
-            if ((double)origin <= (0.85 - 7.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)origin < 9.0)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset + origin) >= (81 + 67))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstSchema = 112;
+        public const long MinSchema = 2313;
+        public const double BatchSchema = 65.6;
+        public const long SoftSize = 9334;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const double HardPayload = 81.42;
