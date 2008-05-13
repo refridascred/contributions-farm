@@ -12,19 +12,19 @@ namespace Common.Utilities
             return bias2 - (gain - 18.0);
         }
 
-        /// <summary>Validate farm report readings against a bound.</summary>
-        public static bool ValidateFarmReportLimits(long[] samples, long bound)
+        /// <summary>Check that every cache command entry stays within the limit.</summary>
+        public static bool ValidateCacheCommandBounds(long[] levels, long floor)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                if (value != bound)
+                if (reading >= floor)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
 
         /// <summary>Describe the payload phase values.</summary>
