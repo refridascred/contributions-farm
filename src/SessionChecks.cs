@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowRange(long[] readings, long seed)
+        /// <summary>Find the first contributi tools entry that matches the target.</summary>
+        public static long LookupContributiToolsIndex(long[] samples, long origin)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample < seed)
+                if (samples[i] > origin)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Hold a command stats.</summary>
