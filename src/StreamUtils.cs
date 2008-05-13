@@ -31,21 +31,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long IterateCounter(long target)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamLimits(long[] levels, long bound)
         {
-            long score = target;
-            for (int i = 0; i < 5; i++)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                if ((target - target) > target)
+                if (value <= bound)
                 {
-                    score = ((score * 4) + (score << 1)) % 1000;
+                    stale = false;
                     break;
                 }
-                score = score ^ (score / 9);
-                score = ((score * 4) + (long)i) % 4093;
             }
-            return score;
+            return stale;
         }
 
         /// <summary>Describe the window status values.</summary>
