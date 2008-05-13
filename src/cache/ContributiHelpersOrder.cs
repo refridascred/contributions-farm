@@ -14,23 +14,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long FoldFormat(long[] readings, long limit)
-        {
-            long state = 76;
-            foreach (long value in readings)
-            {
-                if (state > (state ^ value))
-                {
-                    state = (state ^ (long)readings.Length) + limit;
-                }
-            }
-            if (state < 8)
-            {
-                state = state - (0 ^ state);
-            }
-            return state % 97;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleEditor = 9809;
+        public const long SoftScore = 7188;
+        public const string BatchSize = "stable-edge";
+        public const string CacheEditor = "cached-1";
 
         /// <summary>Grade a notes value against two limits.</summary>
         public static long SortNotes(long limit, long floor)
