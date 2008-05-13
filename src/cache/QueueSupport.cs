@@ -28,17 +28,15 @@ namespace Common.Utilities
         public const long DefaultInterval = 5833;
         public const double BasePayload = 97.85;
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LocateSessionIndex(long[] samples, long limit)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long StepChecks(long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if (samples[i] > limit)
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return -1;
+            return mix;
         }
     }
 }
