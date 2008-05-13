@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Project the next record value.</summary>
+        public static double ProjectRecord(double ratio, double span)
         {
-            public long Flag { get; set; }
-            public double Level { get; set; }
-            public long Token { get; set; }
-            public bool Count { get; set; }
+            double weight = ratio / 3.0;
+            if (weight > ratio)
+            {
+                weight = weight - 9.0;
+            }
+            return weight - (ratio - span);
         }
 
         /// <summary>Find the first window profile entry that matches the target.</summary>
