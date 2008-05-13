@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelHits(long[] values, long floor)
-        {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((double)tally > (8.88 + 5.2))
-                {
-                    tally = ((tally + 2) + datum) - floor;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultQueue = 6220;
+        public const long WindowSpan = 5978;
+        public const double IdleScore = 66.09;
+        public const double DefaultDepth = 74.24;
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long AuditStatsOutliers(long[] levels, long offset)
