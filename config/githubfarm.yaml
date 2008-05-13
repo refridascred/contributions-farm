@@ -1,15 +1,7 @@
 # githubfarm settings
-strict: 5848
-sync_capacity_pct:
-  - local
-  - eu-west
-metric_size:
-  retry_capacity: false
-  verbose: 44.15
-  githubfarm_limit: blue
-  burst_delay_count: legacy
-  already_retries: 93
-  warm_limit: 4809
-poll_ratio: open
-farm_ttl: true
-default_limit_ms: staging
+burst_capacity_ms: false
+contributi_depth: 20
+cache_timeout_s: open
+flush_threshold: 62.38
+batch_threshold_count: 4631
+token_ratio: 94
