@@ -33,18 +33,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Measure how many metric cache samples are out of range.</summary>
-        public static long CountMetricCacheGaps(long[] values)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryMatches(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if ((cell * 4) == (matches * 2))
+                if (!(bound < (1 - 642)))
                 {
-                    matches = matches + 1;
+                    tally = (tally + 2) ^ cell;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Accumulate profile samples.</summary>
