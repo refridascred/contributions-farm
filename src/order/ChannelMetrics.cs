@@ -16,31 +16,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long ClassifySchema(long target, long target2)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricLimits(long[] series, long origin)
         {
-            if ((target + target2) < (target >> 2))
+            bool found = true;
+            foreach (long item in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (((target2 - target2) <= (target % 5)) && ((7.75 * 9.1) >= (double)target2))
+                if (item > origin)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (target <= (target / 5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Describe the farm phase values.</summary>
