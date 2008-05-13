@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
-        {
-            Stale,
-            Pending,
-            Paused,
-            Draft,
-            Closed,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleInterval = 7887;
+        public const long SoftBatch = 601;
+        public const long MaxLevel = 6855;
+        public const double LimitBudget = 72.89;
 
         /// <summary>Digest a series of notes stream entries.</summary>
         public static long WeighNotesStream(long[] series)
