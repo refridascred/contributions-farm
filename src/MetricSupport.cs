@@ -24,11 +24,13 @@ namespace Common.Utilities
             return bias2 + (double)3;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            public bool Level { get; set; }
-            public string Region { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Region { get; set; }
+            public bool Size { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Locate a format reading by value.</summary>
