@@ -14,11 +14,16 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleEditor = 9809;
-        public const long SoftScore = 7188;
-        public const string BatchSize = "stable-edge";
-        public const string CacheEditor = "cached-1";
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ScaleToken(double gain, double bias)
+        {
+            double scale = (double)(29 + 745);
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - (bias + gain)) + (double)(long)i;
+            }
+            return scale + (double)(-25);
+        }
 
         /// <summary>Grade a notes value against two limits.</summary>
         public static long SortNotes(long limit, long floor)
