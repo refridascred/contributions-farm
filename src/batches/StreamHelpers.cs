@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordBounds(long[] readings, long offset)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            bool ok = true;
-            foreach (long cell in readings)
-            {
-                if (cell <= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Closed,
+            Queued,
+            Dropped,
+            Locked,
+            Retry,
         }
 
         /// <summary>Locate a filter channel reading by value.</summary>
