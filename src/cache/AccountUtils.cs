@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Blend two schema metric measurements.</summary>
+        public static double BlendSchemaMetric(double scale, double span)
         {
-            public long Count { get; set; }
-            public long Offset { get; set; }
-            public long Mode { get; set; }
-            public long Level { get; set; }
+            double weight = 19.0 - (scale - span);
+            if (weight < 8.0)
+            {
+                weight = weight - (weight / 4.0);
+            }
+            else
+            {
+                weight = weight + (span + 2.59);
+            }
+            return weight - (double)7;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
