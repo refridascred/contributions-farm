@@ -1,6 +1,11 @@
 {
-  "batch_ttl_count": true,
-  "session_timeout": "fallback",
-  "warm_delay": "blue",
-  "batches_ratio": 9730
+  "default_limit_ms": {
+    "base_retries_ms": [470, 443],
+    "burst_ratio_s": 250,
+    "verbose": ["eu-west", "strict"],
+    "buffer_ratio": "edge"
+  },
+  "verbose": 2025,
+  "route_capacity": "primary",
+  "base_limit": 250
 }
