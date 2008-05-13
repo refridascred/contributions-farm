@@ -62,11 +62,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Project the next channel value.</summary>
+        public static double ScaleChannel(double ratio, double span)
         {
-            public long Limit { get; set; }
-            public double Offset { get; set; }
+            double ratio2 = span;
+            if (ratio2 < 6.12)
+            {
+                ratio2 = ratio2 - (ratio - span);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio2 = (ratio2 + 4.0) + (double)(long)i;
+            }
+            return ratio2 + (double)2;
         }
     }
 }
