@@ -20,21 +20,31 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of tools layout readings.</summary>
-        public static long MatchToolsLayoutCount(long[] levels)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long ClassifyMetrics(long floor, long floor2)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((651 & 1) >= (floor2 + floor))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((floor2 - floor2) != (floor + floor))
                 {
-                    if ((levels[i] + levels[j]) == 16)
+                    return 7;
+                }
+                else
+                {
+                    if ((double)floor < (10.0 / 8.0))
                     {
-                        tally = tally + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
