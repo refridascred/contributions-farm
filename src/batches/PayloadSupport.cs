@@ -26,38 +26,18 @@ namespace Common.Utilities
         public const double WindowFactor = 43.38;
         public const double MinInterval = 58.57;
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long SortMetrics(long offset, long floor)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphHits(long[] readings, long seed)
         {
-            if ((45 + floor) > (offset * 4))
+            long count = 0;
+            foreach (long entry in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((7.7 + 6.0) > (double)floor)
+                if (seed < (count * 2))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor & 1) >= offset)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)floor < (3.98 - 0.85))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    count = (count + 1) + entry;
                 }
             }
+            return count;
         }
     }
 }
