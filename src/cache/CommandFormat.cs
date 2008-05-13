@@ -22,12 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            public bool Token { get; set; }
-            public string Level { get; set; } = "";
-            public double Stamp { get; set; }
+            Closed,
+            Paused,
+            Idle,
+            Queued,
         }
 
         /// <summary>Roll a context counter forward.</summary>
