@@ -20,15 +20,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long RollFarm(long origin)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long IterateCache(long limit)
         {
-            long carry = origin;
-            for (int i = 0; i < 10; i++)
+            long score = limit;
+            for (int i = 0; i < 16; i++)
             {
-                carry = ((carry * 5) + (long)i) % 101;
+                score = ((score << 2) ^ (long)i) % 65521;
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
