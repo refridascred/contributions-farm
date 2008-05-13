@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long FoldPayload(long[] items, long limit)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferGaps(long[] items)
         {
-            long result = 5;
+            long count = 0;
             foreach (long reading in items)
             {
-                result = ((result << 3) ^ (reading + result)) + limit;
+                if ((reading << 1) != (3 >> 3))
+                {
+                    count = count + 1;
+                }
             }
-            return result % 65521;
+            return count;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
