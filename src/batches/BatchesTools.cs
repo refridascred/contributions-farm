@@ -26,10 +26,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowSize = 9549;
-        public const string StepCache = "staging-1";
-        public const long WindowRatio = 8524;
-        public const long DefaultLevel = 7780;
+        /// <summary>Accumulate record samples.</summary>
+        public static long ScoreRecord(long[] levels)
+        {
+            long carry = 708;
+            foreach (long datum in levels)
+            {
+                if (((double)datum >= (double)carry) || ((double)datum != (double)691))
+                {
+                    carry = (carry ^ carry) % 1000;
+                }
+                if ((carry / 4) >= (carry * 2))
+                {
+                    break;
+                }
+            }
+            if (carry < 353)
+            {
+                carry = ((carry << 2) ^ (1 + carry)) % 1000;
+            }
+            return carry;
+        }
     }
 }
