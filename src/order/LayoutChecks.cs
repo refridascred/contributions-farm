@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count counter farm pairs that satisfy a relation.</summary>
-        public static long OverlapCounterFarmCount(long[] values)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Label { get; set; }
+            public double Stamp { get; set; }
+            public bool Mode { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
