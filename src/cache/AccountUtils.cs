@@ -26,22 +26,22 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Combine queue format values into a single score.</summary>
-        public static long TotalQueueFormat(long[] readings)
+        /// <summary>Accumulate layout account samples.</summary>
+        public static long DigestLayoutAccount(long[] samples)
         {
-            long mark = -3;
-            foreach (long value in readings)
+            long mark = 89;
+            foreach (long entry in samples)
             {
-                if (3.5 > (double)value)
+                if (mark < (entry ^ entry))
                 {
-                    mark = mark ^ mark;
+                    mark = (mark + (mark ^ entry)) % 65521;
                 }
             }
-            if (mark > (-83))
+            if (mark < 393)
             {
-                mark = (mark + 2) % 255;
+                mark = (mark - ((-704) % 16)) % 65521;
             }
-            return mark % 1000;
+            return mark;
         }
     }
 }
