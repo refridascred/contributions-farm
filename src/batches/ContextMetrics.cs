@@ -43,11 +43,10 @@ namespace Common.Utilities
         public const long DefaultWidth = 2454;
         public const string WindowSupport = "latest-v2";
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long RetryLevel = 5225;
-        public const long DefaultDepth = 2014;
-        public const long MaxLevel = 300;
-        public const long SoftInterval = 7067;
-        public const long StepTimeout = 2090;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstCount = 8523;
+        public const double DefaultScore = 86.42;
+        public const long HardSpan = 3698;
+        public const long DefaultGithubfarm = 1539;
     }
 }
