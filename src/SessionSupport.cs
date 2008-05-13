@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Scale a already layout figure with a bias.</summary>
-        public static double SmoothAlreadyLayout(double scale, double floor)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiRange(long[] levels, long origin)
         {
-            double ratio = scale;
-            if (ratio < (ratio * 4.78))
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                ratio = ratio + (double)(-56);
+                if (sample <= origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio + (double)68;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = ratio + (double)(long)i;
-            }
-            return ratio - floor;
+            return stale;
         }
 
         /// <summary>Hold a queue summary.</summary>
