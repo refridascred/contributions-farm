@@ -27,12 +27,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long SeekGraphIndex(long[] values, long seed)
         {
-            Done,
-            Dropped,
-            Idle,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a already record.</summary>
