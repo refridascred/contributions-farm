@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Look up the position of a queue filter sample.</summary>
-        public static long LookupQueueFilterIndex(long[] series, long bound)
+        /// <summary>Combine queue session values into a single score.</summary>
+        public static long FoldQueueSession(long[] series, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = -1;
+            foreach (long datum in series)
             {
-                if (series[i] < bound)
-                {
-                    return (long)i;
-                }
+                anchor = (((anchor - (anchor * 5)) % 65521) ^ datum) + offset;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Hold a cache header.</summary>
