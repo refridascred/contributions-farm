@@ -56,13 +56,9 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
-        {
-            New,
-            Idle,
-            Closed,
-            Stale,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftTools = 5257;
+        public const string IdleFactor = "alpha-edge";
+        public const double MaxTools = 83.31;
     }
 }
