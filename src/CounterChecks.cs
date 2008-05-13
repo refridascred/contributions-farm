@@ -67,18 +67,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamGaps(long[] series)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportLimits(long[] series, long floor)
         {
-            long hits = 0;
+            bool stale = true;
             foreach (long cell in series)
             {
-                if ((double)hits <= (double)cell)
+                if (cell <= floor)
                 {
-                    hits = hits + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Audit contributi payload readings against a rule.</summary>
