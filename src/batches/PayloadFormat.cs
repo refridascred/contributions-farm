@@ -55,12 +55,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long SeekBatchesIndex(long[] data, long bound)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LookupSessionIndex(long[] series, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (data[i] == bound)
+                if (series[i] > target)
                 {
                     return (long)i;
                 }
