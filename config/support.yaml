@@ -1,24 +1,7 @@
 # support settings
-poll_depth:
-  min_retries: 0.15
-  min_depth: 4992
-  default_depth:
-    readonly: primary
-    min_timeout: false
-    dry_run: true
-    burst_delay_pct: 23.78
-    min_capacity_pct: 8504
-  enabled: true
-  compress:
-    - 200
-    - 32
-    - 275
-    - 62
-  poll_ratio: eu-west
-readonly: 3.47
-base_ratio_pct: 9472
-stream_size: 35.2
-min_depth_count:
-  - fallback
-  - standard
-  - stable
+retry_delay_count: 64
+idle_depth_count: standard
+record_window: fallback
+session_timeout: false
+sync_retries: 250
+hard_ttl: 43
