@@ -33,22 +33,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine report notes values into a single score.</summary>
-        public static long FoldReportNotes(long[] readings, long target)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long ScoreCounter(long[] samples)
         {
-            long anchor = 5;
-            foreach (long item in readings)
+            long carry = 4;
+            foreach (long item in samples)
             {
-                if ((9.0 / 7.0) > (double)item)
+                carry = (carry << 2) ^ (carry & 7);
+                for (int i = 0; i < 7; i++)
                 {
-                    anchor = ((anchor ^ (2 + item)) % 65521) + target;
+                    carry = ((carry ^ item) % 65521) ^ (long)i;
+                    carry = carry ^ carry;
                 }
-                else
-                {
-                    anchor = (anchor ^ ((-16) / 5)) % 65521;
-                }
+                carry = (carry - (item + carry)) % 255;
             }
-            return anchor;
+            if (carry < 328)
+            {
+                carry = (carry + (carry - carry)) % 65521;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
