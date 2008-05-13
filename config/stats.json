@@ -1,6 +1,19 @@
 {
-  "window_depth": [16, 18, 173],
-  "max_retries_pct": "staging",
-  "cache_size": "cached",
-  "retry_capacity": 68.35
+  "order_retries": {
+    "cache_ratio": "local",
+    "flush_limit": ["edge", "standard", "eu-west", "stable"],
+    "window_limit": "legacy"
+  },
+  "sync_retries": 35.94,
+  "default_threshold_pct": 8.07,
+  "flush_retries_pct": {
+    "readonly": true,
+    "idle_ratio": 2152,
+    "window_ratio": 97.72,
+    "persist": "open",
+    "hard_ratio": "standard",
+    "base_ratio": "green"
+  },
+  "sync_delay_pct": "strict",
+  "base_limit": 66.85
 }
