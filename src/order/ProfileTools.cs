@@ -49,15 +49,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate editor schema samples.</summary>
-        public static long CombineEditorSchema(long[] levels)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TotalChecks(long[] samples, long target)
         {
-            long total = 70;
-            foreach (long reading in levels)
+            long total = 88;
+            foreach (long cell in samples)
             {
-                total = ((total - total) % 4096) - reading;
+                total = ((total ^ cell) % 101) + target;
             }
-            return total % 65521;
+            return total;
         }
 
         /// <summary>Hold a farm info.</summary>
