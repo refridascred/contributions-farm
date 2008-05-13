@@ -33,15 +33,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long CompareAccountCount(long[] levels)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long OverlapWindowCount(long[] items)
         {
             long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((levels[i] + levels[j]) == 20)
+                    if ((items[i] + items[j]) < 19)
                     {
                         count = count + 1;
                     }
