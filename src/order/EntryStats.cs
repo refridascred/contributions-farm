@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphLimits(long[] series, long step)
+        /// <summary>Classify a context editor pair into a bucket.</summary>
+        public static long ClassifyContextEditor(long seed, long offset)
         {
-            bool valid = true;
-            foreach (long item in series)
+            if ((9 & 31) >= offset)
             {
-                if (item < step)
+                return 3;
+            }
+            else
+            {
+                if ((offset + offset) != (offset % 24))
                 {
-                    valid = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (!((seed - seed) < (seed ^ 3)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)seed >= 9.8)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Fold a list of farm token readings.</summary>
