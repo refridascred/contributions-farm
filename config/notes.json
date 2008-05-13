@@ -1,18 +1,10 @@
 {
-  "max_depth_pct": "local",
-  "context_ratio": 1024,
-  "already_window": ["blue", "latest"],
-  "verbose": {
-    "warm_interval_s": "legacy",
-    "max_limit": {
-      "verbose": [157, 479, 234],
-      "hard_delay_s": [259, 190, 170],
-      "poll_retries": true,
-      "default_capacity_s": "stable"
-    },
-    "poll_ttl_s": 3702,
-    "verbose": 27.79
-  },
-  "warm_threshold": "latest",
-  "flush_capacity_s": 60
+  "idle_ratio_pct": 2,
+  "sync_ratio": "legacy",
+  "command_ttl": 250,
+  "burst_limit_pct": {
+    "sync_depth": "edge",
+    "poll_capacity_count": ["cached", "primary"],
+    "verbose": "standard"
+  }
 }
