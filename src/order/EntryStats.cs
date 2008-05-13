@@ -51,12 +51,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
-        {
-            public long Flag { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string WindowCache = "fallback-v2";
+        public const long WindowSpan = 2039;
+        public const double SoftCache = 12.42;
+        public const long BurstCount = 79;
+        public const long RetryCache = 1605;
 
         /// <summary>Match up queue samples.</summary>
         public static long CompareQueueCount(long[] series)
