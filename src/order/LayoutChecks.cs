@@ -52,11 +52,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LocateStreamIndex(long[] samples, long floor)
         {
-            public long Count { get; set; }
-            public long Score { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
