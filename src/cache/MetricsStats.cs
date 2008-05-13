@@ -67,12 +67,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Compare every pair of context graph readings.</summary>
+        public static long OverlapContextGraphCount(long[] data)
         {
-            Pending,
-            New,
-            Closed,
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
