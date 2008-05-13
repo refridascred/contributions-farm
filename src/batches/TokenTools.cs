@@ -32,21 +32,31 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long OverlapTokenCount(long[] levels)
+        /// <summary>Rank schema report input into a small class.</summary>
+        public static long BucketSchemaReport(long limit, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((limit * 5) >= (bound + limit))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((1.98 + 5.6) <= (double)bound)
                 {
-                    if ((levels[i] ^ levels[j]) != 12)
+                    return 6;
+                }
+                else
+                {
+                    if (limit >= (limit / 2))
                     {
-                        matches = matches + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return matches;
         }
     }
 }
