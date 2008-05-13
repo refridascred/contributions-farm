@@ -41,21 +41,30 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long CompareGraphCount(long[] items)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TallyCluster(long[] levels, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 3;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((value < (value ^ value)) || ((65 ^ step) >= value))
                 {
-                    if ((items[i] + items[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = (acc ^ (step % 16)) % 65521;
+                }
+                else
+                {
+                    acc = (acc ^ (acc - step)) % 101;
+                }
+                if ((step + step) < (57 >> 2))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (acc > 18)
+            {
+                acc = (acc ^ ((long)levels.Length + step)) % 65521;
+            }
+            return acc;
         }
     }
 }
