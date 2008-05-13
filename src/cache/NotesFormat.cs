@@ -26,19 +26,19 @@ namespace Common.Utilities
         public const long CacheWidth = 9767;
         public const string StepCount = "legacy-edge";
 
-        /// <summary>Check that every contributi token entry stays within the limit.</summary>
-        public static bool ValidateContributiTokenRange(long[] samples, long target)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutRange(long[] data, long seed)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                if (datum != target)
+                if (sample >= seed)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
     }
 }
