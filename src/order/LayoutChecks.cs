@@ -80,12 +80,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
-        {
-            public double Stamp { get; set; }
-            public long Mode { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BaseToken = "cached-1";
+        public const long LimitTimeout = 5471;
+        public const long BurstSize = 1012;
+        public const long MaxScore = 217;
+        public const long DefaultToken = 5273;
     }
 }
