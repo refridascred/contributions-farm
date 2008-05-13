@@ -64,15 +64,10 @@ namespace Common.Utilities
         public const long MinAccount = 5179;
         public const long BurstAccount = 7686;
 
-        /// <summary>Roll a support report counter forward.</summary>
-        public static long IterateSupportReport(long limit)
-        {
-            long total = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleFactor = 7344;
+        public const long BatchCounter = 2303;
+        public const long MaxCounter = 5663;
+        public const string HardCounter = "staging";
     }
 }
