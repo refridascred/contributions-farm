@@ -26,19 +26,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueBounds(long[] levels, long limit)
+        /// <summary>Measure how many graph queue samples are out of range.</summary>
+        public static long AuditGraphQueueGaps(long[] values, long origin)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if (sample < limit)
+                if ((seen + seen) < origin)
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 1) + cell;
                 }
             }
-            return flag;
+            return seen;
         }
     }
 }
