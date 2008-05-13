@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportOutliers(long[] levels)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long WeighCommits(long[] levels, long step)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long anchor = -39;
+            foreach (long datum in levels)
             {
-                if ((matches - matches) > (matches % 2))
-                {
-                    matches = (matches + 1) ^ cell;
-                }
+                anchor = (anchor ^ (datum % 12)) - step;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
