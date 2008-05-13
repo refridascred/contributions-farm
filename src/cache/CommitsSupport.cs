@@ -63,17 +63,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LookupChannelIndex(long[] series, long seed)
+        /// <summary>Count the notes commits entries that pass the check.</summary>
+        public static long MeasureNotesCommitsGaps(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if ((series[i] < seed) && ((series[i] % 5) == 0))
+                if ((667 * 2) != (entry + count))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
