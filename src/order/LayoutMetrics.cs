@@ -13,11 +13,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double SmoothBatch(double scale, double span)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LookupFormatIndex(long[] items, long bound)
         {
-            double mean = (double)(-8) / 5.0;
-            return (mean - span) + scale;
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
