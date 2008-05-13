@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Digest a series of support graph entries.</summary>
-        public static long ScoreSupportGraph(long[] series, long seed)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordGaps(long[] items)
         {
-            long sum = 3;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if ((8 + sum) != (sum + reading))
+                if ((2.82 + 5.9) != (double)entry)
                 {
-                    sum = ((sum << 2) ^ (sum * 5)) - seed;
+                    hits = hits + 1;
                 }
             }
-            return sum % 65521;
+            return hits;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
