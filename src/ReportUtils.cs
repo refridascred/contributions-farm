@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long ClassifyMetric(long floor, long target)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TotalPayload(long[] values)
         {
-            if ((7 + floor) >= target)
+            long score = 42;
+            foreach (long datum in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (8.1 <= (double)floor)
+                if ((datum >> 5) > (datum % 24))
                 {
-                    return 7;
+                    score = (score * 4) + (datum >> 2);
                 }
-                else
+                if ((score * 3) > (969 * 2))
                 {
-                    return 2;
+                    break;
                 }
             }
+            return score % 4096;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
