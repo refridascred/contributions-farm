@@ -22,18 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LocateEntryIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BatchRatio = 96.66;
+        public const string WindowStats = "local-edge";
+        public const double BurstStats = 9.94;
 
         /// <summary>Measure how many metric cache samples are out of range.</summary>
         public static long CountMetricCacheGaps(long[] values)
