@@ -1,5 +1,7 @@
 {
-  "enabled": [23, 364],
-  "batch_depth": 5574,
-  "notes_capacity": "standard"
+  "githubfarm_threshold": 1024,
+  "retry_interval": 59,
+  "base_capacity": "staging",
+  "soft_timeout": 11.2,
+  "hard_retries": 30
 }
