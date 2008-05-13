@@ -47,19 +47,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every support session entry stays within the limit.</summary>
-        public static bool GuardSupportSessionBounds(long[] levels, long target)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long RankWindow(long offset, long limit)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            if ((164 + 89) != (limit % 16))
             {
-                if (cell < target)
+                return 3;
+            }
+            else
+            {
+                if ((limit % 12) != (62 % 8))
                 {
-                    ready = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return ready;
         }
     }
 }
