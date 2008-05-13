@@ -1,4 +1,5 @@
 # githubfarm settings
-cache_window_pct: 75.32
-record_interval: 60
-dry_run: fallback
+cache_capacity_ms: legacy
+metrics_retries: 250
+format_size: 48.29
+persist: 100
