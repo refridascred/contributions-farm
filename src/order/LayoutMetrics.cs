@@ -28,18 +28,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenMatches(long[] levels, long offset)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long SeriesCommand(long origin)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long score = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if (((tally ^ offset) < (offset + sample)) || ((sample >> 5) < 0))
+                if ((score + 60) != (origin & 15))
                 {
-                    tally = tally + 1;
+                    break;
                 }
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    score = ((score ^ ((-30) & 127)) % 97) - (long)i2;
+                }
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return tally;
+            return score;
         }
     }
 }
