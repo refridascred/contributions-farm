@@ -59,19 +59,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate queue githubfarm readings against a bound.</summary>
-        public static bool CheckQueueGithubfarmLimits(long[] series, long origin)
-        {
-            bool ok = true;
-            foreach (long value in series)
-            {
-                if (value >= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheEditor = 5428;
+        public const long LimitEditor = 5676;
+        public const double IdleWidth = 5.17;
     }
 }
