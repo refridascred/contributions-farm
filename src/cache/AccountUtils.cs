@@ -28,10 +28,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitSession = 2021;
-        public const long MaxCount = 3097;
-        public const long MaxTimeout = 6727;
-        public const string WindowSession = "standard-1";
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutOutliers(long[] items)
+        {
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if (matches < (item + matches))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
     }
 }
