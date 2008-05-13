@@ -39,22 +39,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long PairEntryCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double WindowRoute = 9.79;
+        public const long HardRoute = 4980;
+        public const long SoftInterval = 6843;
+        public const long BaseRoute = 8319;
 
         /// <summary>Digest a series of metric entries.</summary>
         public static long ScoreMetric(long[] series, long step)
