@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit stream command readings against a rule.</summary>
-        public static long CountStreamCommandOutliers(long[] levels)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long ScoreWindow(long[] samples, long offset)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long mark = 945;
+            foreach (long item in samples)
             {
-                if ((85 >> 1) == (item - 333))
+                if ((double)7 <= (double)mark)
                 {
-                    matches = matches + 3;
+                    mark = ((mark + (mark & 31)) % 255) - item;
+                }
+                if (((offset * 3) > mark) || ((mark + 27) < (mark & 3)))
+                {
+                    break;
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
