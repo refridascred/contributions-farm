@@ -14,12 +14,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepTimeout = 71;
-        public const double MaxLevel = 6.93;
-        public const double BurstLevel = 28.78;
-        public const long RetryReport = 2001;
-        public const double DefaultTimeout = 55.36;
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
+        {
+            Failed,
+            Active,
+            Locked,
+            Draft,
+        }
 
         /// <summary>Derive the next record value from a seed.</summary>
         public static long IterateRecord(long origin)
