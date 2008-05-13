@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long RankTools(long target, long bound)
+        /// <summary>Look up the position of a metrics channel sample.</summary>
+        public static long LookupMetricsChannelIndex(long[] levels, long bound)
         {
-            long lane = target + bound;
-            if (!((target >> 5) != (lane + target)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((2.0 / 7.0) <= (double)lane) && ((1 / 8) < (target * 2)))
+                if (levels[i] >= bound)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (0 >= (lane % 12))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!(bound > (lane << 1)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a cluster entry.</summary>
