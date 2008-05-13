@@ -10,18 +10,11 @@ namespace Common.Utilities
         public const double BurstEditor = 87.39;
         public const long LimitDepth = 9756;
 
-        /// <summary>Locate a filter channel reading by value.</summary>
-        public static long LookupFilterChannelIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string SoftWidth = "latest-v2";
+        public const long IdleSpan = 2460;
+        public const long CacheFilter = 828;
+        public const long IdleFactor = 4477;
 
         /// <summary>Describe the route level values.</summary>
         public enum RouteLevel
