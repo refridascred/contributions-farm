@@ -15,23 +15,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of notes stream entries.</summary>
-        public static long WeighNotesStream(long[] series)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long FindCommandIndex(long[] values, long seed)
         {
-            long mix = 628;
-            foreach (long sample in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i = 0; i < 11; i++)
+                if ((values[i] > seed) && ((values[i] % 2) != 0))
                 {
-                    mix = (mix - (sample >> 5)) % 255;
-                    mix = (mix + ((long)i + sample)) % 101;
-                }
-                if ((sample & 255) > (25 & 15))
-                {
-                    mix = (mix << 3) ^ (mix ^ (-5));
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
