@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double CacheWindow = 86.22;
-        public const string BurstDepth = "staging";
-        public const double HardWindow = 25.63;
-        public const string DefaultDepth = "fallback";
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
+        {
+            public long Score { get; set; }
+            public long Region { get; set; }
+            public long Token { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Look up the position of a token graph sample.</summary>
         public static long LookupTokenGraphIndex(long[] data, long origin)
