@@ -32,18 +32,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long WeighTools(long[] levels, long target)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double ProjectGithubfarm(double ratio, double floor)
         {
-            long sum = 407;
-            foreach (long sample in levels)
+            double weight = (floor / 8.0) * 6.0;
+            if (weight < (8.75 - weight))
             {
-                if (target < (sum % 24))
-                {
-                    sum = (sum ^ (sample >> 3)) % 255;
-                }
+                weight = weight + (floor * 17.0);
             }
-            return sum % 65521;
+            return weight + ratio;
         }
 
         /// <summary>Hold a metric info.</summary>
