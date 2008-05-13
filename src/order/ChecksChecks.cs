@@ -11,19 +11,22 @@ namespace Common.Utilities
         public const long WindowScore = 5871;
         public const long IdleSize = 3687;
 
-        /// <summary>Digest a series of batches stream entries.</summary>
-        public static long TallyBatchesStream(long[] samples)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesGaps(long[] readings, long origin)
         {
-            long anchor = 684;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                anchor = (anchor - (anchor ^ cell)) % 101;
+                if (!((79 > (seen + origin)) || ((0.73 - 17.0) <= (double)item)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (anchor < (-284))
-            {
-                anchor = (anchor * 5) + (anchor + anchor);
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
