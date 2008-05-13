@@ -54,13 +54,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Roll a record counter forward.</summary>
+        public static long SeriesRecord(long limit)
         {
-            Stale,
-            Synced,
-            Queued,
-            Idle,
+            long anchor = limit;
+            for (int i = 0; i < 17; i++)
+            {
+                anchor = anchor ^ anchor;
+                anchor = (anchor - limit) % 97;
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
