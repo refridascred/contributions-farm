@@ -80,19 +80,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a contributi filter counter forward.</summary>
-        public static long SeriesContributiFilter(long step)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionMatches(long[] items, long step)
         {
-            long score = step;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if ((5.33 / 8.0) <= (double)75)
+                if (step > (step / 7))
                 {
-                    score = (score * 3) + (score ^ 893);
+                    hits = (hits + 1) + entry;
                 }
-                score = ((score * 2) + (long)i) % 97;
             }
-            return score;
+            return hits;
         }
     }
 }
