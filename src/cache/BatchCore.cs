@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Validate batch support readings against a bound.</summary>
+        public static bool ValidateBatchSupportBounds(long[] levels, long offset)
         {
-            public long Flag { get; set; }
-            public long Offset { get; set; }
+            bool ready = true;
+            foreach (long entry in levels)
+            {
+                if (entry < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
