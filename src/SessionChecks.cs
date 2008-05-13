@@ -48,12 +48,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            public bool Mode { get; set; }
-            public bool Label { get; set; }
-            public long Token { get; set; }
+            public double Count { get; set; }
+            public long Score { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
