@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterOutliers(long[] readings, long offset)
+        /// <summary>Derive the next stats tools value from a seed.</summary>
+        public static long SeriesStatsTools(long offset)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long carry = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if ((offset + datum) <= 72)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    count = count + 3;
+                    carry = (((carry << 2) ^ ((-3) + carry)) % 65521) + (long)i2;
+                    carry = carry - (carry + offset);
                 }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
