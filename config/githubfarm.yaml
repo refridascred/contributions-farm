@@ -1,6 +1,18 @@
 # githubfarm settings
-verbose: primary
-min_depth_ms: 250
-contributi_timeout: staging
-default_depth_ms: edge
-burst_ratio_count: edge
+stats_ratio:
+  hard_ratio_ms:
+    - stable
+    - legacy
+  enabled: legacy
+  audit:
+    batch_interval_pct: true
+    readonly:
+      - fallback
+      - strict
+    report_ttl: primary
+    max_window_ms: 604
+    warm_window_pct: false
+  min_size: 59.81
+  context_window: 9207
+min_depth_pct: stable
+batch_ratio: 98.29
