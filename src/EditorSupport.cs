@@ -26,14 +26,17 @@ namespace Common.Utilities
         public const long CacheCount = 6477;
         public const long MinChecks = 8069;
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Derive the next editor session value from a seed.</summary>
+        public static long RollEditorSession(long offset)
         {
-            Active,
-            Retry,
-            Paused,
-            Pending,
-            Stale,
+            long sum = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                sum = (sum ^ (offset - (long)i)) % 97;
+                sum = sum - (offset % 7);
+                sum = ((sum * 2) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Describe the notes level values.</summary>
