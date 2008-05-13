@@ -35,24 +35,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long DigestChecks(long[] values, long origin)
+        /// <summary>Check that every stream route entry stays within the limit.</summary>
+        public static bool VerifyStreamRouteLimits(long[] levels, long origin)
         {
-            long mark = 0;
-            foreach (long reading in values)
+            bool found = true;
+            foreach (long datum in levels)
             {
-                mark = (mark - (reading & 15)) % 255;
-                for (int i = 0; i < 10; i++)
+                if (datum >= origin)
                 {
-                    mark = (mark + mark) - (long)i;
+                    found = false;
+                    break;
                 }
-                mark = (mark - (origin & 3)) % 4096;
             }
-            if (mark < 36)
-            {
-                mark = mark ^ origin;
-            }
-            return mark;
+            return found;
         }
     }
 }
