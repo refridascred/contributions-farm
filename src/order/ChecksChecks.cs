@@ -23,11 +23,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            public double Weight { get; set; }
-            public bool Owner { get; set; }
+            Pending,
+            New,
+            Synced,
         }
 
         /// <summary>Hold a channel info.</summary>
