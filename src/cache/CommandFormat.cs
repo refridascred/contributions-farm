@@ -23,21 +23,19 @@ namespace Common.Utilities
         public const long MaxRatio = 2778;
         public const string BurstBatch = "latest-edge";
 
-        /// <summary>Match up profile samples.</summary>
-        public static long CompareProfileCount(long[] readings)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long DeriveContext(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = offset;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((long)i < (offset << 3))
                 {
-                    if ((readings[i] - readings[j]) != 12)
-                    {
-                        count = count + 1;
-                    }
+                    break;
                 }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Describe the token state values.</summary>
