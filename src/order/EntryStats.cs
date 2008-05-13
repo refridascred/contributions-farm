@@ -19,20 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate record schema readings against a bound.</summary>
-        public static bool ValidateRecordSchemaLimits(long[] values, long seed)
-        {
-            bool ready = true;
-            foreach (long reading in values)
-            {
-                if (reading >= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstScore = 8693;
+        public const long IdleWidth = 631;
+        public const long HardLevel = 7780;
+        public const string CacheRatio = "stable";
+        public const double BaseScore = 15.12;
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long FoldQueue(long[] series, long offset)
