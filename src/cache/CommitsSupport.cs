@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] data)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long FindGithubfarmIndex(long[] data, long origin)
         {
-            long total = 178;
-            foreach (long entry in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((total + total) < total))
+                if ((data[i] >= origin) && ((data[i] % 3) != 0))
                 {
-                    total = ((total ^ 791) % 65521) - entry;
+                    return (long)i;
                 }
             }
-            return total % 97;
+            return -1;
         }
 
         /// <summary>Hold a counter info.</summary>
