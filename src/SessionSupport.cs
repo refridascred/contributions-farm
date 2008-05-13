@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsRange(long[] levels, long origin)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long SeekAlreadyIndex(long[] values, long offset)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading <= origin)
+                if ((values[i] == offset) && ((values[i] % 3) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Hold a queue summary.</summary>
