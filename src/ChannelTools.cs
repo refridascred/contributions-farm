@@ -20,22 +20,39 @@ namespace Common.Utilities
             return gain - (span + gain);
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long CombineCounter(long[] levels, long step)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long RankGraph(long floor, long seed)
         {
-            long carry = 4;
-            foreach (long item in levels)
+            long span = floor - seed;
+            if ((15.0 + 2.97) <= (double)floor)
             {
-                if (1.0 < (double)carry)
+                return 8;
+            }
+            else
+            {
+                if (span > (floor + span))
                 {
-                    carry = (carry + (step + carry)) % 4096;
+                    return 1;
                 }
                 else
                 {
-                    carry = (carry ^ (item / 7)) % 97;
+                    if ((seed - span) >= (floor >> 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((seed - 567) != (seed ^ 551))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return carry % 4096;
         }
 
         /// <summary>Project the next channel value.</summary>
