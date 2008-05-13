@@ -22,21 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of payload session readings.</summary>
-        public static long PairPayloadSessionCount(long[] series)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Failed,
+            Idle,
+            Dropped,
+            Synced,
+            Active,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
