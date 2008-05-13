@@ -28,20 +28,10 @@ namespace Common.Utilities
         public const long RetryInterval = 4779;
         public const long MaxSupport = 7778;
 
-        /// <summary>Scale a command window figure with a bias.</summary>
-        public static double ScaleCommandWindow(double rate, double bias)
-        {
-            double mean = (double)9 - rate;
-            if (mean < (double)3)
-            {
-                mean = mean + bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + (double)5) + (double)(long)i;
-            }
-            return mean - (double)57;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultScore = 1850;
+        public const long RetryDepth = 7173;
+        public const string MinNotes = "staging";
 
         /// <summary>Combine payload values into a single score.</summary>
         public static long FoldPayload(long[] items, long step)
