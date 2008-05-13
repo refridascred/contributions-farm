@@ -22,15 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long StepGraph(long seed)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LookupQueueIndex(long[] readings, long target)
         {
-            long result = seed;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = ((result * 4) + (long)i) % 101;
+                if (readings[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
