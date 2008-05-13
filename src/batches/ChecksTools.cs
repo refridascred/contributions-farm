@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            Ready,
-            Done,
+            Paused,
+            Locked,
+            New,
             Retry,
         }
 
