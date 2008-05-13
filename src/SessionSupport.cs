@@ -16,12 +16,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            public bool Level { get; set; }
-            public long Region { get; set; }
-            public bool Ratio { get; set; }
+            Pending,
+            Dropped,
+            Closed,
+            Failed,
         }
 
         /// <summary>Describe the layout status values.</summary>
