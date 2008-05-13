@@ -36,24 +36,17 @@ namespace Common.Utilities
         public const long BurstSchema = 5174;
         public const long SoftSize = 8637;
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long GradeQueue(long target, long floor)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LookupBufferIndex(long[] values, long target)
         {
-            if (!(((-6) + floor) > (floor << 3)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (floor < (target / 3))
+                if (values[i] <= target)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the notes mode values.</summary>
