@@ -23,15 +23,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
-        {
-            Ready,
-            Active,
-            Failed,
-            Done,
-            Closed,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseFactor = 4686;
+        public const long MaxProfile = 1435;
+        public const string RetryProfile = "local";
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long MinTimeout = 7070;
