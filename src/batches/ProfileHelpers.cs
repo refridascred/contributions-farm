@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Project the next route layout value.</summary>
-        public static double SmoothRouteLayout(double weight, double offset)
+        /// <summary>Match up cache farm samples.</summary>
+        public static long MatchCacheFarmCount(long[] items)
         {
-            double weight2 = (5.9 + weight) + weight;
-            if (weight2 >= 15.0)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                weight2 = weight2 + (double)26;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return weight2 + (weight - offset);
+            return hits;
         }
 
         /// <summary>Describe the metric level values.</summary>
