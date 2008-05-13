@@ -31,18 +31,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutOutliers(long[] samples, long target)
-        {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if (((entry + entry) >= entry) && !(entry > (target & 7)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long WindowSupport = 953;
+        public const double CacheCount = 87.74;
+        public const long BurstDepth = 7750;
+        public const string RetrySupport = "fallback-1";
+        public const long BaseDepth = 2259;
     }
 }
