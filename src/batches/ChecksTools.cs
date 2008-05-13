@@ -45,19 +45,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double BlendToken(double weight, double offset)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long CompareRecordCount(long[] samples)
         {
-            double gain = 4.3;
-            if (gain <= (offset * 3.0))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain = gain + weight;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain + offset) - (double)(long)i;
-            }
-            return gain + (double)122;
+            return count;
         }
 
         /// <summary>Adjust a format reading.</summary>
