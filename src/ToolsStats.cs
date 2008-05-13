@@ -37,17 +37,18 @@ namespace Common.Utilities
         public const double StepSpan = 31.65;
         public const double BaseLayout = 22.87;
 
-        /// <summary>Find the first graph report entry that matches the target.</summary>
-        public static long SeekGraphReportIndex(long[] samples, long seed)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TotalAlready(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 6;
+            foreach (long datum in levels)
             {
-                if (samples[i] > seed)
+                if (((mark >> 2) >= (datum + mark)) && (datum > mark))
                 {
-                    return (long)i;
+                    mark = (mark ^ (mark >> 4)) % 65521;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Match up command samples.</summary>
