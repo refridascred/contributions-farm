@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            Retry,
-            Pending,
-            Idle,
+            public double Score { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Compare every pair of record readings.</summary>
