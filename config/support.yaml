@@ -1,9 +1,4 @@
 # support settings
-dry_run:
-  - fallback
-  - latest
-  - fallback
-  - edge
-soft_limit: open
-sync_interval: 13
-githubfarm_ttl: 1443
+cache_size: latest
+report_depth: primary
+layout_delay: 7999
