@@ -1,9 +1,7 @@
 {
-  "compress": {
-    "format_limit": false,
-    "dry_run": "cached",
-    "hard_depth": 38.23
-  },
-  "batch_limit_count": 92.32,
-  "batch_window": ["primary", "stable", "cached", "cached"]
+  "flush_capacity_count": "local",
+  "base_ratio": 85.56,
+  "burst_size_pct": ["legacy", "blue", "standard"],
+  "dry_run": "blue",
+  "burst_timeout_count": "stable"
 }
