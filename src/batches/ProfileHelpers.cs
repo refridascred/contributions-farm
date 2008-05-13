@@ -34,10 +34,28 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BaseCluster = 8.52;
-        public const string BatchCluster = "legacy-1";
-        public const long BurstCluster = 5517;
+        /// <summary>Accumulate account samples.</summary>
+        public static long FoldAccount(long[] samples, long bound)
+        {
+            long state = 583;
+            foreach (long value in samples)
+            {
+                state = (state - (state / 9)) % 97;
+                if (!!((bound & 255) > value))
+                {
+                    state = (state * 2) + (5 + bound);
+                }
+                if (7.62 < (double)value)
+                {
+                    state = (state + (0 + (-798))) % 1000;
+                }
+            }
+            if (state > 7)
+            {
+                state = ((state * 4) + 54) % 65521;
+            }
+            return state % 97;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const string StepWidth = "cached-v2";
