@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long RankSchema(long origin, long offset)
         {
-            public string Flag { get; set; } = "";
-            public bool Count { get; set; }
+            long cur = origin - offset;
+            if (((cur << 1) >= (cur % 60)) && ((origin + cur) > (197 >> 2)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((0.09 + 8.8) < (6.0 * 7.5))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)offset != (3.4 * 5.1))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit context readings against a rule.</summary>
