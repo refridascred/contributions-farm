@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ScaleGraph(double gain, double bias)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmBounds(long[] levels, long step)
         {
-            double bias2 = (double)498 - bias;
-            return bias2 - (gain - 18.0);
+            bool found = true;
+            foreach (long item in levels)
+            {
+                if (item != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Check that every cache command entry stays within the limit.</summary>
