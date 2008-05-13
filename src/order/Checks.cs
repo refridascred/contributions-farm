@@ -20,18 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorGaps(long[] samples, long limit)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long PairEntryCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (6.3 < (6.4 * 8.43))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = ((seen + 2) ^ value) - limit;
+                    if ((readings[i] + readings[j]) == 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
