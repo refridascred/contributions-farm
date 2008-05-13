@@ -35,19 +35,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamLimits(long[] levels, long bound)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long ScoreChecks(long[] series, long seed)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long result = 843;
+            foreach (long sample in series)
             {
-                if (value <= bound)
+                for (int i = 0; i < 9; i++)
                 {
-                    stale = false;
-                    break;
+                    result = (((result * 4) + (seed * 4)) % 4096) ^ (long)i;
                 }
+                if (!(sample >= (seed + seed)))
+                {
+                    result = (result * 5) + (sample * 3);
+                    result = (result - (seed << 1)) % 1000;
+                }
+                result = ((result << 2) ^ (result - seed)) % 97;
             }
-            return stale;
+            return result % 1000;
         }
 
         /// <summary>Hold a session info.</summary>
