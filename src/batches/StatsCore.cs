@@ -20,19 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every cluster route entry stays within the limit.</summary>
-        public static bool GuardClusterRouteRange(long[] items, long seed)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesGaps(long[] values)
         {
-            bool ok = true;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if (item != seed)
+                if ((double)cell != (double)5)
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
