@@ -28,23 +28,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long SeriesCommand(long origin)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsBounds(long[] samples, long floor)
         {
-            long score = origin;
-            for (int i = 0; i < 15; i++)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                if ((score + 60) != (origin & 15))
+                if (entry >= floor)
                 {
+                    flag = false;
                     break;
                 }
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    score = ((score ^ ((-30) & 127)) % 97) - (long)i2;
-                }
-                score = ((score * 3) + (long)i) % 1000;
             }
-            return score;
+            return flag;
         }
     }
 }
