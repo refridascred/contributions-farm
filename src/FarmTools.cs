@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long RankCache(long step, long target)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long SeekTokenIndex(long[] items, long limit)
         {
-            long delta = step - target;
-            if (((target >> 3) == (35 + target)) || ((delta - 3) <= target))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (delta <= target)
+                if ((items[i] >= limit) && ((items[i] % 3) == 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
