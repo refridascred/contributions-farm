@@ -14,12 +14,11 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            Synced,
-            Closed,
-            Retry,
+            public long Total { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Accumulate editor samples.</summary>
