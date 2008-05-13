@@ -12,16 +12,13 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] levels)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long anchor = 899;
-            foreach (long reading in levels)
-            {
-                anchor = anchor - (reading / 4);
-                anchor = ((anchor << 2) ^ (anchor / 3)) % 4096;
-            }
-            return anchor;
+            Locked,
+            Retry,
+            Failed,
+            Stale,
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
