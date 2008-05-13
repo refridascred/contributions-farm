@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long PairTokenCount(long[] items)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportHits(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((entry % 8) >= (entry << 3))
                 {
-                    if ((items[i] - items[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Scale a report batches figure with a bias.</summary>
