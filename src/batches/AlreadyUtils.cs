@@ -37,21 +37,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long OverlapSchemaCount(long[] levels)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long ScoreCounter(long[] series, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 45;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((entry % 60) > (406 ^ entry)) || ((entry + floor) <= (entry << 2)))
                 {
-                    if ((levels[i] + levels[j]) < 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = ((result << 3) ^ (5 * 2)) % 65521;
+                }
+                else
+                {
+                    result = ((result * 2) + (result ^ floor)) % 1000;
                 }
             }
-            return seen;
+            if (result > 89)
+            {
+                result = ((result << 3) ^ result) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
