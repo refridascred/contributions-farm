@@ -41,21 +41,13 @@ namespace Common.Utilities
         public const long WindowContributi = 4921;
         public const double LimitDepth = 21.29;
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long MatchTokenCount(long[] data)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Limit { get; set; }
+            public long Level { get; set; }
+            public double Size { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Digest a series of command entries.</summary>
