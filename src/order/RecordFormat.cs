@@ -50,13 +50,17 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Look up the position of a route cache sample.</summary>
+        public static long SeekRouteCacheIndex(long[] readings, long seed)
         {
-            Active,
-            Stale,
-            Queued,
-            Ready,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= seed) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
