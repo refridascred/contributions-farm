@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long OverlapProfileCount(long[] values)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportOutliers(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((matches - matches) > (matches % 2))
                 {
-                    if ((values[i] + values[j]) < 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 1) ^ cell;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
