@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Find the first commits contributi entry that matches the target.</summary>
+        public static long LocateCommitsContributiIndex(long[] readings, long step)
         {
-            Queued,
-            Synced,
-            Retry,
-            Locked,
-            Done,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == step) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a route order pair into a bucket.</summary>
