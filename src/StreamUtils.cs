@@ -57,19 +57,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesBounds(long[] values, long limit)
+        /// <summary>Validate buffer payload readings against a bound.</summary>
+        public static bool ValidateBufferPayloadLimits(long[] levels, long floor)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                if (entry >= limit)
+                if (reading >= floor)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
     }
 }
