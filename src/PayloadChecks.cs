@@ -31,24 +31,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long BucketToken(long offset, long limit)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorRange(long[] items, long offset)
         {
-            if ((offset + offset) != (offset + 5))
+            bool valid = true;
+            foreach (long entry in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((double)limit > (double)offset))
+                if (entry < offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
