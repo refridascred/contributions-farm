@@ -33,10 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string MinScore = "cached-1";
-        public const long StepStats = 9260;
-        public const long BatchStats = 2114;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string WindowGithubfarm = "local-1";
+        public const long RetryGithubfarm = 1155;
+        public const long DefaultBudget = 2919;
+        public const long BurstWidth = 5916;
+        public const long MinDepth = 8068;
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long CombineStats(long[] readings, long limit)
