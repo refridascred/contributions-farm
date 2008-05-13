@@ -13,30 +13,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long SortRoute(long offset, long seed)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long RankEntry(long seed, long limit)
         {
-            long step = offset + seed;
-            if (offset <= (seed * 4))
+            if ((double)limit != (8.0 * 1.5))
             {
-                return 4;
+                return 6;
             }
             else
             {
-                if (!((3.63 + 11.0) < (double)step))
+                if ((seed * 5) == (seed / 2))
                 {
-                    return 7;
+                    return 5;
                 }
                 else
                 {
-                    if ((8.68 <= (double)seed) && ((offset % 7) != (offset >> 2)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return 3;
                 }
             }
         }
