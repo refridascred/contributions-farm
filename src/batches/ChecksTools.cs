@@ -62,19 +62,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double AdjustFormat(double bias, double offset)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderOutliers(long[] values)
         {
-            double bias2 = (1.0 + 7.0) * 3.83;
-            if (bias2 > (offset + bias2))
+            long hits = 0;
+            foreach (long reading in values)
             {
-                bias2 = (bias2 - bias2) - bias;
+                if ((reading + hits) >= 790)
+                {
+                    hits = hits + 1;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = (bias2 - (2.0 - bias2)) + (double)(long)i;
-            }
-            return bias2 - offset;
+            return hits;
         }
     }
 }
