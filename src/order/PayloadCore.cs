@@ -33,19 +33,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryRange(long[] readings, long floor)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long FindStreamIndex(long[] values, long bound)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell < floor)
+                if ((values[i] == bound) && ((values[i] % 5) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
