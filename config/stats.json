@@ -1,5 +1,5 @@
 {
-  "dry_run": 7720,
-  "cache_threshold": 1024,
-  "burst_delay_s": "standard"
+  "verbose": 93,
+  "account_size": "strict",
+  "readonly": "eu-west"
 }
