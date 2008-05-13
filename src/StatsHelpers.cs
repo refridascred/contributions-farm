@@ -37,21 +37,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long MatchBatchesCount(long[] samples)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamOutliers(long[] samples, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((tally ^ 232) >= tally)
                 {
-                    if ((samples[i] ^ samples[j]) != 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = ((tally + 3) - value) - step;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
