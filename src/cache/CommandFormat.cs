@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsMatches(long[] series)
-        {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if (((double)sample < 7.11) && ((19 > (matches << 2)) || (18 <= (sample + sample))))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double MinBudget = 4.9;
+        public const long BaseFactor = 3340;
+        public const string SoftSpan = "open-1";
+        public const double BatchCount = 33.6;
 
         /// <summary>Digest a series of context layout entries.</summary>
         public static long FoldContextLayout(long[] samples)
