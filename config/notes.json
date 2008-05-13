@@ -1,7 +1,19 @@
 {
-  "warm_delay": "fallback",
-  "default_limit_ms": "standard",
-  "readonly": 38.4,
-  "idle_delay_ms": true,
-  "persist": "stable"
+  "enabled": 4941,
+  "warm_delay_count": {
+    "order_timeout": "blue",
+    "sync_limit": false,
+    "enabled": ["edge", "latest"],
+    "max_limit": 37,
+    "hard_retries": 42.89,
+    "route_size": {
+      "verbose": "staging",
+      "sync_ratio": 99,
+      "burst_window_count": 1024,
+      "hard_limit_pct": 45
+    }
+  },
+  "payload_window": 3833,
+  "metric_depth": 80.18,
+  "commits_capacity": false
 }
