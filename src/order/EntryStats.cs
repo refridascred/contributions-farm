@@ -51,25 +51,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long RollToken(long limit)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LocateRouteIndex(long[] values, long bound)
         {
-            long anchor = limit;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((limit + (long)i) <= ((long)i >> 1))
+                if ((values[i] == bound) && ((values[i] % 3) == 0))
                 {
-                    anchor = (anchor + limit) % 1000;
+                    return (long)i;
                 }
-                else
-                {
-                    anchor = ((anchor << 2) ^ 71) % 255;
-                    anchor = anchor - anchor;
-                }
-                anchor = (anchor * 2) + limit;
-                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Match up queue samples.</summary>
