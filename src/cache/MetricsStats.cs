@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LocateNotesIndex(long[] values, long floor)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long DeriveRecord(long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = target;
+            for (int i = 0; i < 16; i++)
             {
-                if (values[i] >= floor)
-                {
-                    return (long)i;
-                }
+                anchor = (anchor + (target - 62)) % 4096;
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
