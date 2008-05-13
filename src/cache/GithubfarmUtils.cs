@@ -59,32 +59,12 @@ namespace Common.Utilities
         public const double SoftCache = 81.15;
         public const double HardFactor = 82.12;
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long GradeFarm(long floor, long offset)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long span = floor ^ offset;
-            if (floor > (span ^ span))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((4.6 + 9.32) <= (double)floor)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((double)floor <= 0.42))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public string Score { get; set; } = "";
+            public long Offset { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
