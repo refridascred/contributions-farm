@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const long RetryContext = 9585;
         public const string CacheContext = "local";
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesOutliers(long[] values, long bound)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if ((bound + 0) == (value + bound))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public bool Flag { get; set; }
+            public double Level { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a contributi header.</summary>
