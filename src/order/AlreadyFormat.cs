@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultQueue = 6220;
-        public const long WindowSpan = 5978;
-        public const double IdleScore = 66.09;
-        public const double DefaultDepth = 74.24;
+        /// <summary>Count the context checks entries that pass the check.</summary>
+        public static long TallyContextChecksMatches(long[] items)
+        {
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if (((-443) & 1) < hits)
+                {
+                    hits = (hits + 3) - entry;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a checks entry.</summary>
         public sealed class ChecksEntry
