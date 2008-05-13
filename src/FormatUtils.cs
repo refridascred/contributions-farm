@@ -22,15 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
-        {
-            Draft,
-            Retry,
-            Synced,
-            Locked,
-            Paused,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double StepCount = 81.84;
+        public const string BurstBudget = "alpha-edge";
+        public const long StepSpan = 4057;
+        public const string BaseTools = "strict";
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long MaxGithubfarm = 7024;
