@@ -1,7 +1,8 @@
-id,token,owner,region,level
-1,legacy,green,42.22,standard
-2,890,307,918,61.93
-3,strict,741,77,745
-4,open,cached,strict,403
-5,44.5,604,blue,32.93
-6,616,60.27,325,staging
+id,state,token,score
+1,419,546,171
+2,153,85.54,16.46
+3,primary,33.24,18.35
+4,560,637,923
+5,763,302,129
+6,462,strict,473
+7,824,204,946
