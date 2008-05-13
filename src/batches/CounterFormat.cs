@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long WeighChannel(long[] series, long floor)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long IterateWindow(long origin)
         {
-            long total = -5;
-            foreach (long datum in series)
+            long anchor = origin;
+            for (int i = 0; i < 10; i++)
             {
-                total = ((total ^ (total + datum)) % 101) + floor;
+                anchor = (anchor + origin) % 65521;
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return total % 97;
+            return anchor;
         }
 
         /// <summary>Grade a payload support value against two limits.</summary>
