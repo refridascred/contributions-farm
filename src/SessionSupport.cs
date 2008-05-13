@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryBudget = 1863;
-        public const double MaxPayload = 62.54;
-        public const long CacheWidth = 9052;
-        public const string StepBudget = "cached";
-        public const long CachePayload = 7102;
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long DeriveStream(long bound)
+        {
+            long mark = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                mark = (mark * 3) + (mark << 3);
+                mark = ((mark * 3) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Validate metrics readings against a bound.</summary>
         public static bool GuardMetricsLimits(long[] series, long floor)
