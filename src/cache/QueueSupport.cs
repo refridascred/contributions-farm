@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long FoldEditor(long[] series, long origin)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long total = 29;
-            foreach (long reading in series)
-            {
-                if (!((reading + total) < (origin + origin)))
-                {
-                    total = total ^ (reading >> 1);
-                }
-            }
-            if (total < (-2))
-            {
-                total = (total - (total * 4)) % 255;
-            }
-            return total % 65521;
+            Stale,
+            Draft,
+            Ready,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
