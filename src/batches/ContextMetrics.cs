@@ -33,10 +33,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitScore = 1256;
-        public const long MaxTimeout = 8499;
-        public const string StepTimeout = "stable-v2";
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
+        {
+            public long Stamp { get; set; }
+            public bool Level { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Compare every pair of channel readings.</summary>
         public static long MatchChannelCount(long[] items)
