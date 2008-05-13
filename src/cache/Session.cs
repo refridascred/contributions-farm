@@ -47,19 +47,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine report queue values into a single score.</summary>
-        public static long TotalReportQueue(long[] data)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long anchor = 80;
-            foreach (long cell in data)
-            {
-                anchor = (anchor - cell) % 101;
-                if ((277 / 2) > (cell * 4))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            Pending,
+            Queued,
+            Draft,
+            Synced,
+            Ready,
         }
     }
 }
