@@ -46,21 +46,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long MatchFilterCount(long[] series)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsHits(long[] samples, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((matches & 3) >= (0 % 100))
                 {
-                    if ((series[i] ^ series[j]) < 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = ((matches + 3) + entry) - seed;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the metric mode values.</summary>
