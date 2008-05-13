@@ -17,15 +17,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
-        {
-            Pending,
-            Stale,
-            Draft,
-            Closed,
-            Ready,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string StepEntry = "cached";
+        public const long CacheEntry = 1344;
+        public const long IdleScore = 9076;
 
         /// <summary>Fold a list of cluster readings.</summary>
         public static long WeighCluster(long[] series, long floor)
