@@ -62,11 +62,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long WeighBuffer(long[] samples, long bound)
         {
-            public long Score { get; set; }
-            public long Total { get; set; }
+            long acc = 2;
+            foreach (long cell in samples)
+            {
+                acc = ((acc + (bound + bound)) % 97) + cell;
+                acc = ((acc << 2) ^ (acc + 1)) % 65521;
+            }
+            return acc;
         }
     }
 }
