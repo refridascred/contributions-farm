@@ -31,15 +31,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TallyCache(long[] data, long bound)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LocateClusterIndex(long[] readings, long step)
         {
-            long acc = 7;
-            foreach (long value in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = ((acc - (bound / 4)) % 4096) ^ value;
+                if (readings[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            return acc % 1000;
+            return -1;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
