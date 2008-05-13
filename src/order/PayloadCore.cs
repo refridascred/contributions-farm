@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenOutliers(long[] values)
+        /// <summary>Locate a commits window reading by value.</summary>
+        public static long LookupCommitsWindowIndex(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long value in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((value / 4) >= count) || (((value & 1) >= (count - count)) && (count < (value & 3))))
+                if ((readings[i] < offset) && ((readings[i] % 3) != 0))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
