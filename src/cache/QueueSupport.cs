@@ -32,9 +32,17 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardInterval = 4605;
-        public const double BatchAccount = 35.05;
-        public const long StepCount = 7262;
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LocateSessionIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
