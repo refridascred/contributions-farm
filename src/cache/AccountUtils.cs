@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Blend two schema metric measurements.</summary>
-        public static double BlendSchemaMetric(double scale, double span)
+        /// <summary>Iterate the command payload series from a seed.</summary>
+        public static long SeriesCommandPayload(long limit)
         {
-            double weight = 19.0 - (scale - span);
-            if (weight < 8.0)
+            long mix = limit;
+            for (int i = 0; i < 21; i++)
             {
-                weight = weight - (weight / 4.0);
+                mix = ((mix << 3) ^ (limit >> 4)) % 1000;
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            else
-            {
-                weight = weight + (span + 2.59);
-            }
-            return weight - (double)7;
+            return mix;
         }
 
         /// <summary>Describe the graph level values.</summary>
