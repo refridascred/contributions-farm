@@ -29,12 +29,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepBudget = 9358;
-        public const double DefaultGithubfarm = 53.03;
-        public const double MinFactor = 70.34;
-        public const long BurstGithubfarm = 9069;
-        public const string SoftSpan = "staging-v2";
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BurstCount = 59.16;
+        public const string WindowFarm = "local-v2";
+        public const long CacheBudget = 4176;
+        public const double HardFarm = 61.39;
+        public const string DefaultSpan = "standard-1";
 
         /// <summary>Measure how many graph queue samples are out of range.</summary>
         public static long AuditGraphQueueGaps(long[] values, long origin)
