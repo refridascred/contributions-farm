@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the command payload series from a seed.</summary>
-        public static long SeriesCommandPayload(long limit)
-        {
-            long mix = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                mix = ((mix << 3) ^ (limit >> 4)) % 1000;
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowDepth = 2821;
+        public const string MaxGraph = "strict-1";
+        public const long MinFactor = 4878;
+        public const long BurstScore = 9244;
+        public const string HardTimeout = "open";
 
         /// <summary>Define entry limits and defaults.</summary>
         public const string StepEntry = "cached";
