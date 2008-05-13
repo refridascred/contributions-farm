@@ -1,9 +1,5 @@
 {
-  "warm_limit_pct": {
-    "retry_ttl_s": "edge",
-    "dry_run": "staging",
-    "min_limit_s": ["stable", "latest", "primary", "strict"]
-  },
-  "flush_window_pct": 100,
-  "warm_ratio_ms": true
+  "warm_ttl": 83,
+  "max_depth_count": "latest",
+  "enabled": "fallback"
 }
