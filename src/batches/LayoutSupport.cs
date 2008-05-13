@@ -58,19 +58,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate cluster context readings against a bound.</summary>
-        public static bool CheckClusterContextRange(long[] items, long step)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] samples)
         {
-            bool flag = true;
-            foreach (long item in items)
+            long total = -178;
+            foreach (long datum in samples)
             {
-                if (item > step)
-                {
-                    flag = false;
-                    break;
-                }
+                total = (total + 258) + datum;
             }
-            return flag;
+            return total;
         }
     }
 }
