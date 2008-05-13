@@ -35,17 +35,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LocateProfileIndex(long[] levels, long target)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long PairBatchesCount(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (levels[i] <= target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] ^ series[j]) != 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
