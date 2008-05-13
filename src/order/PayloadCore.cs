@@ -41,30 +41,21 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TallyCluster(long[] levels, long step)
+        /// <summary>Match up editor samples.</summary>
+        public static long OverlapEditorCount(long[] samples)
         {
-            long acc = 3;
-            foreach (long value in levels)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((value < (value ^ value)) || ((65 ^ step) >= value))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = (acc ^ (step % 16)) % 65521;
-                }
-                else
-                {
-                    acc = (acc ^ (acc - step)) % 101;
-                }
-                if ((step + step) < (57 >> 2))
-                {
-                    break;
+                    if ((samples[i] ^ samples[j]) < 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (acc > 18)
-            {
-                acc = (acc ^ ((long)levels.Length + step)) % 65521;
-            }
-            return acc;
+            return matches;
         }
     }
 }
