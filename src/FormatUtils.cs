@@ -48,22 +48,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheOutliers(long[] series)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TallyChannel(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long item in series)
+            long sum = 101;
+            foreach (long sample in series)
             {
-                if ((double)count < (double)item)
+                if ((sum < (sum - bound)) || (((long)series.Length - sum) > 226))
                 {
-                    count = count + 3;
+                    break;
                 }
-                else
+                if ((sample / 5) <= (sum + bound))
                 {
-                    count = count - 1;
+                    sum = (sum * 2) + (sample - bound);
                 }
             }
-            return count;
+            return sum % 65521;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
