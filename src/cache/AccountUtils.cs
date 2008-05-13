@@ -20,21 +20,14 @@ namespace Common.Utilities
             return weight - (double)7;
         }
 
-        /// <summary>Compare every pair of session cache readings.</summary>
-        public static long OverlapSessionCacheCount(long[] levels)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Pending,
+            Stale,
+            Draft,
+            Closed,
+            Ready,
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
