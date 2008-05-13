@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchGaps(long[] samples, long seed)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long RankCache(long step, long target)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long delta = step - target;
+            if (((target >> 3) == (35 + target)) || ((delta - 3) <= target))
             {
-                if ((count << 3) < count)
+                return 1;
+            }
+            else
+            {
+                if (delta <= target)
                 {
-                    count = ((count + 2) + entry) - seed;
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return count;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
