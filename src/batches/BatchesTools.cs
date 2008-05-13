@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long SortMetrics(long bound, long target)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long step = bound ^ target;
-            if (73 < (72 + step))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((8.5 - 8.9) > (double)step) || ((3.85 / 5.0) < (double)target))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)bound >= (double)step)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((488 << 1) != (bound & 1))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public string Flag { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Audit context readings against a rule.</summary>
