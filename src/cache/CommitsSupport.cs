@@ -90,18 +90,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteOutliers(long[] samples, long step)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((84 & 255) <= (seen + cell))
-                {
-                    seen = (seen + 3) + step;
-                }
-            }
-            return seen;
+            Failed,
+            Dropped,
+            Stale,
+            New,
         }
     }
 }
