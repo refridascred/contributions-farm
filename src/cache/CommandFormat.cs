@@ -31,15 +31,31 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long FoldWindow(long[] values, long floor)
+        /// <summary>Grade a cache format value against two limits.</summary>
+        public static long RankCacheFormat(long target, long floor)
         {
-            long mark = 908;
-            foreach (long reading in values)
+            if ((floor / 9) < (92 >> 4))
             {
-                mark = (((mark * 4) + (mark & 15)) - reading) - floor;
+                return 1;
             }
-            return mark;
+            else
+            {
+                if ((double)floor >= (double)target)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((target / 2) < floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the batch class values.</summary>
