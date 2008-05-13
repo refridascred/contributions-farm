@@ -47,18 +47,18 @@ namespace Common.Utilities
             return gain - (gain * 14.0);
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long DigestContext(long[] series)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderMatches(long[] levels)
         {
-            long anchor = 9;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if ((anchor - (long)series.Length) == ((long)series.Length + entry))
+                if ((73 >> 5) < (reading + 461))
                 {
-                    anchor = (anchor - anchor) % 4096;
+                    matches = matches + 2;
                 }
             }
-            return anchor % 65521;
+            return matches;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
