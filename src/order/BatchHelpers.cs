@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double BlendSupport(double gain, double offset)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double BlendRecord(double ratio, double floor)
         {
-            double gain2 = gain;
-            if (gain2 <= 9.2)
+            double load = (double)(834 + 1);
+            if (load >= (floor * 9.7))
             {
-                gain2 = gain2 - (double)405;
+                load = load - (ratio + floor);
             }
-            else
-            {
-                gain2 = gain2 - (offset * 7.58);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain2 = (gain2 - (offset - gain)) + (double)(long)i;
-            }
-            return gain2 + (gain2 - gain2);
+            return load + (double)0;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
