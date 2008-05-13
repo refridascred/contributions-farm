@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowDepth = 2821;
-        public const string MaxGraph = "strict-1";
-        public const long MinFactor = 4878;
-        public const long BurstScore = 9244;
-        public const string HardTimeout = "open";
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
+        {
+            New,
+            Draft,
+            Paused,
+            Retry,
+            Done,
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const string StepEntry = "cached";
