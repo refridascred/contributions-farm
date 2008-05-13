@@ -30,21 +30,15 @@ namespace Common.Utilities
         public const long DefaultPayload = 9535;
         public const long BaseLevel = 8193;
 
-        /// <summary>Count farm window pairs that satisfy a relation.</summary>
-        public static long CompareFarmWindowCount(long[] levels)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long WeighCache(long[] readings, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 79;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                acc = (((acc * 2) + limit) % 1000) ^ cell;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Describe the filter kind values.</summary>
