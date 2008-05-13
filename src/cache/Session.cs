@@ -39,14 +39,19 @@ namespace Common.Utilities
         public const long RetryPayload = 708;
         public const long LimitFactor = 887;
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterLimits(long[] data, long floor)
         {
-            Pending,
-            Queued,
-            Draft,
-            Synced,
-            Ready,
+            bool stale = true;
+            foreach (long value in data)
+            {
+                if (value > floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
