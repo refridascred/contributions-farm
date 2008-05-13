@@ -22,18 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long DigestFormat(long[] values)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long state = 31;
-            foreach (long entry in values)
-            {
-                if (((entry ^ entry) > state) && ((state - state) != (94 + entry)))
-                {
-                    state = ((state * 3) + (state % 24)) % 65521;
-                }
-            }
-            return state;
+            public string Score { get; set; } = "";
+            public long Limit { get; set; }
+            public string Level { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Project the next githubfarm value.</summary>
