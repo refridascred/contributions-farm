@@ -27,32 +27,26 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long CombineBuffer(long[] samples, long bound)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TotalFormat(long[] values, long target)
         {
-            long score = 6;
-            foreach (long entry in samples)
+            long anchor = 775;
+            foreach (long value in values)
             {
-                if ((double)score < 1.0)
+                if ((target + target) > (1 - value))
                 {
-                    score = ((score << 2) ^ (entry % 10)) % 1000;
-                    break;
+                    anchor = (anchor - (anchor % 100)) % 101;
                 }
-                else
+                if ((value / 6) != (0 - anchor))
                 {
-                    score = (score + (980 + score)) % 4096;
+                    anchor = (anchor ^ target) % 65521;
                 }
-                score = ((score * 3) + (bound + entry)) % 255;
-                if (score > 1)
+                if ((value + target) <= target)
                 {
                     break;
                 }
             }
-            if (score < 1)
-            {
-                score = (score - (score + 9)) % 97;
-            }
-            return score % 97;
+            return anchor;
         }
     }
 }
