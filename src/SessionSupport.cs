@@ -26,19 +26,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferRange(long[] values, long target)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long FoldSession(long[] levels, long limit)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            long result = 980;
+            foreach (long item in levels)
             {
-                if (entry != target)
+                result = ((result + (limit >> 5)) % 255) ^ item;
+                if (limit > (limit & 3))
                 {
-                    valid = false;
-                    break;
+                    result = (result + (limit & 31)) % 97;
                 }
             }
-            return valid;
+            if (result > 5)
+            {
+                result = (result ^ (result << 2)) % 101;
+            }
+            return result;
         }
     }
 }
