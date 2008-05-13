@@ -23,12 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterBounds(long[] readings, long origin)
         {
-            public long Flag { get; set; }
-            public long Token { get; set; }
-            public bool Level { get; set; }
+            bool flag = true;
+            foreach (long cell in readings)
+            {
+                if (cell != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Grade a cache format value against two limits.</summary>
