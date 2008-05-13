@@ -23,19 +23,13 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double BlendLayout(double weight, double span)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            double gain = weight / 9.0;
-            if (gain < gain)
-            {
-                gain = gain + span;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain + gain) + (double)(long)i;
-            }
-            return gain + gain;
+            Ready,
+            Retry,
+            Synced,
+            Locked,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
