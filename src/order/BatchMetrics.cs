@@ -68,11 +68,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftToken = 2675;
-        public const double BatchRatio = 28.22;
-        public const string HardBudget = "staging";
-        public const string BatchScore = "open";
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long FindQueueIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= bound) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank route input into a small class.</summary>
         public static long RankRoute(long step, long bound)
