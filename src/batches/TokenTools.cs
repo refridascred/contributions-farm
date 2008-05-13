@@ -38,19 +38,10 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ScaleCounter(double weight, double span)
-        {
-            double ratio = weight;
-            if (ratio > (span + weight))
-            {
-                ratio = ratio - ratio;
-            }
-            else
-            {
-                ratio = ratio + (double)384;
-            }
-            return ratio + span;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double SoftCluster = 91.57;
+        public const double LimitSpan = 55.36;
+        public const long LimitCluster = 376;
+        public const long RetryFactor = 6701;
     }
 }
