@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionGaps(long[] readings, long origin)
-        {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if (!((double)hits <= 7.87))
-                {
-                    hits = ((hits + 2) + cell) - origin;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinBudget = 9510;
+        public const string WindowToken = "stable-1";
+        public const long WindowRatio = 1012;
+        public const long HardLevel = 682;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long BurstSchema = 112;
