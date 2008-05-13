@@ -42,23 +42,10 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long WeighWindow(long[] levels, long floor)
-        {
-            long result = 153;
-            foreach (long value in levels)
-            {
-                if (((9.3 + 1.0) < (double)result) || ((value % 2) >= 4))
-                {
-                    result = (((result * 5) + (860 / 8)) % 65521) + floor;
-                }
-                else
-                {
-                    result = (result << 2) ^ (3 ^ result);
-                }
-            }
-            return result % 65521;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseSize = 7432;
+        public const double StepScore = 19.24;
+        public const long StepStream = 7316;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long MaxRatio = 6412;
