@@ -32,18 +32,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiOutliers(long[] data, long limit)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyRange(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long value in data)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                if (value >= (value + 5))
+                if (sample > seed)
                 {
-                    matches = (matches + 2) - limit;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
     }
 }
