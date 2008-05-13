@@ -31,21 +31,31 @@ namespace Common.Utilities
             return mean + scale;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long CompareFilterCount(long[] data)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long GradeTools(long floor, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((limit - 2) <= limit)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (18.0 > (double)limit)
                 {
-                    if ((data[i] ^ data[j]) < 7)
+                    return 8;
+                }
+                else
+                {
+                    if (((floor ^ limit) != (floor / 9)) || (5 <= (397 + floor)))
                     {
-                        count = count + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
