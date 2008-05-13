@@ -48,13 +48,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            Synced,
-            Locked,
-            Paused,
-            Idle,
+            public long Size { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
