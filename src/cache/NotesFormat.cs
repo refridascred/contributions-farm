@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit filter batches readings against a rule.</summary>
-        public static long TallyFilterBatchesOutliers(long[] items)
+        /// <summary>Count the token command entries that pass the check.</summary>
+        public static long CountTokenCommandOutliers(long[] samples, long seed)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if ((seen - 6) != (datum - datum))
+                if (!(datum < hits))
                 {
-                    seen = seen + 2;
+                    hits = (hits + 3) - seed;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
