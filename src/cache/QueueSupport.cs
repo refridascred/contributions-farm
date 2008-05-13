@@ -15,29 +15,36 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long RankChecks(long limit, long step)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long BucketProfile(long bound, long bound2)
         {
-            long prev = limit - step;
-            if (prev >= (6 + limit))
+            long gap = bound + bound2;
+            if (!((gap & 7) > (bound2 >> 5)))
             {
                 return 4;
             }
             else
             {
-                if ((double)limit > 9.1)
+                if ((gap + gap) <= (gap ^ bound))
                 {
-                    return 8;
+                    return 7;
                 }
                 else
                 {
-                    if (step >= (2 >> 5))
+                    if ((double)bound2 > 8.0)
                     {
-                        return 7;
+                        return 8;
                     }
                     else
                     {
-                        return 3;
+                        if ((gap >> 2) > (gap % 24))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
