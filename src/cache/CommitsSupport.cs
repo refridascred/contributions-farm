@@ -63,18 +63,9 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Count the notes commits entries that pass the check.</summary>
-        public static long MeasureNotesCommitsGaps(long[] data)
-        {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if ((667 * 2) != (entry + count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultChecks = 5995;
+        public const long CacheTimeout = 600;
+        public const string LimitChecks = "latest-1";
     }
 }
