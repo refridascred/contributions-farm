@@ -46,12 +46,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long SeekContextIndex(long[] values, long bound)
         {
-            public long Total { get; set; }
-            public long Region { get; set; }
-            public string Score { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == bound) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
