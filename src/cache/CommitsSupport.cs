@@ -21,31 +21,12 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long GradeChannel(long target, long bound)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            if ((3.9 < (double)bound) && ((target % 16) <= (target ^ target)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)target < (15.0 / 2.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((83 + bound) != (bound - 372))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public string Stamp { get; set; } = "";
+            public double Token { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
