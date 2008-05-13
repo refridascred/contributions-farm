@@ -61,13 +61,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
-        {
-            public long Rank { get; set; }
-            public string Owner { get; set; } = "";
-            public double Mode { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowWidth = 1197;
+        public const long MinSchema = 8363;
+        public const long BurstDepth = 5383;
     }
 }
