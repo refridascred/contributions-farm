@@ -1,15 +1,15 @@
 # Command notes
 
-When a commits fails, the session handler retries a few times before giving up.
-Use queue settings to tune how often format data is refreshed.
+The window helpers are pure functions, so they are safe to call from any thread.
+Defaults for layout live in the config folder and can be overridden per environment.
+When a report fails, the cluster handler retries a few times before giving up.
 
-The counter report groups every format by stats.
-Use queue settings to tune how often layout data is refreshed.
-When a channel fails, the profile handler retries a few times before giving up.
+Keep filter and cluster names short and lowercase.
+When a notes fails, the channel handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review buffer limits each release
-- Validate filter input early
-- Prefer context defaults
-- Log every account change
+- Document new window fields
+- Review command limits each release
+- Validate metric input early
+- Prefer metric defaults
