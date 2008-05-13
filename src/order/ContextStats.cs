@@ -13,21 +13,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long RollWindow(long step)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long sum = step;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((double)step >= (double)sum)
-                {
-                    sum = (sum - (sum ^ 381)) % 4096;
-                    sum = (sum ^ sum) % 4096;
-                }
-                sum = (sum - ((long)i * 4)) % 4096;
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
+            public double Size { get; set; }
+            public bool Label { get; set; }
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a command snapshot.</summary>
