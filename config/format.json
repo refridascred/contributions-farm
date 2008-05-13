@@ -1,7 +1,9 @@
 {
-  "audit": true,
-  "strict": false,
-  "warm_threshold_count": [45, 470],
-  "poll_ttl": 84,
-  "max_window": "edge"
+  "compress": {
+    "format_limit": false,
+    "dry_run": "cached",
+    "hard_depth": 38.23
+  },
+  "batch_limit_count": 92.32,
+  "batch_window": ["primary", "stable", "cached", "cached"]
 }
