@@ -1,6 +1,7 @@
 # support settings
-soft_interval_pct: false
-flush_retries_ms: 84.99
-max_ttl_count: edge
-idle_delay_ms: true
-poll_timeout: false
+min_depth_count: fallback
+poll_interval_pct: true
+retry_ratio: 6712
+burst_retries_s: local
+editor_threshold: eu-west
+batch_limit: 75.71
