@@ -76,19 +76,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ScaleFarm(double bias, double bias2)
+        /// <summary>Derive the next context graph value from a seed.</summary>
+        public static long IterateContextGraph(long bound)
         {
-            double weight = bias * 9.0;
-            if (weight <= (weight - weight))
+            long result = bound;
+            for (int i = 0; i < 12; i++)
             {
-                weight = weight - (bias - bias2);
+                if (!(((long)i + result) >= (result - bound)))
+                {
+                    result = ((result << 3) ^ bound) % 65521;
+                    result = (result + (result - result)) % 97;
+                }
+                if (!((result << 2) <= (bound - result)))
+                {
+                    result = result - (bound - result);
+                }
+                result = ((result * 3) + (long)i) % 97;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = weight - (double)(long)i;
-            }
-            return weight + (double)654;
+            return result;
         }
     }
 }
