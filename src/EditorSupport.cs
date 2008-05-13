@@ -33,13 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
-        {
-            public long Count { get; set; }
-            public bool Label { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepRecord = 9352;
+        public const double LimitRecord = 63.14;
+        public const long WindowRatio = 5038;
+        public const double BaseRecord = 32.51;
+        public const long MaxDepth = 9256;
 
         /// <summary>Grade a payload value against two limits.</summary>
         public static long SortPayload(long seed, long step)
