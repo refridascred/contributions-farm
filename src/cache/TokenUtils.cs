@@ -20,11 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksOutliers(long[] items)
         {
-            public double Flag { get; set; }
-            public long Count { get; set; }
+            long count = 0;
+            foreach (long item in items)
+            {
+                if (((9 * 2) >= count) && ((count + item) > (item ^ count)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate format samples.</summary>
