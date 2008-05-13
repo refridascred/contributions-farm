@@ -29,21 +29,10 @@ namespace Common.Utilities
         public const long BatchRatio = 2735;
         public const long HardNotes = 4124;
 
-        /// <summary>Match up checks samples.</summary>
-        public static long MatchChecksCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long CacheRatio = 852;
+        public const double LimitCache = 61.83;
+        public const double DefaultSpan = 5.76;
+        public const long MinCache = 3242;
     }
 }
