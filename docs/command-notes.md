@@ -1,14 +1,13 @@
 # Command notes
 
-Keep counter and commits names short and lowercase.
-Use editor settings to tune how often payload data is refreshed.
+Use context settings to tune how often report data is refreshed.
+Keep notes and already names short and lowercase.
 
-Keep token and batch names short and lowercase.
-Each order is validated before it reaches the layout queue.
-Use contributi settings to tune how often queue data is refreshed.
+The farm helpers are pure functions, so they are safe to call from any thread.
+Defaults for batch live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every route change
-- Prefer layout defaults
-- Validate queue input early
+- Keep commits values small
+- Prefer graph defaults
+- Log every report change
