@@ -46,18 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the schema cluster entries that pass the check.</summary>
-        public static long AuditSchemaClusterOutliers(long[] data)
+        /// <summary>Combine report queue values into a single score.</summary>
+        public static long TotalReportQueue(long[] data)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long anchor = 80;
+            foreach (long cell in data)
             {
-                if ((1.0 / 5.0) <= (double)count)
+                anchor = (anchor - cell) % 101;
+                if ((277 / 2) > (cell * 4))
                 {
-                    count = (count + 3) - sample;
+                    break;
                 }
             }
-            return count;
+            return anchor;
         }
     }
 }
