@@ -46,20 +46,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every already token entry stays within the limit.</summary>
-        public static bool ValidateAlreadyTokenLimits(long[] readings, long step)
-        {
-            bool ok = true;
-            foreach (long sample in readings)
-            {
-                if (sample <= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultCommits = 2513;
+        public const double BaseCommits = 86.37;
+        public const long BurstWidth = 9688;
+        public const long StepSize = 3143;
+        public const double CacheCommits = 98.26;
 
         /// <summary>Combine account values into a single score.</summary>
         public static long ScoreAccount(long[] readings)
