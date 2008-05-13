@@ -30,13 +30,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
-        {
-            Failed,
-            New,
-            Closed,
-            Done,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BatchLevel = 66.7;
+        public const double HardLevel = 3.49;
+        public const string LimitGraph = "primary-1";
+        public const long IdleBudget = 567;
     }
 }
