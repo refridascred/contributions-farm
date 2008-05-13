@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine queue session values into a single score.</summary>
-        public static long FoldQueueSession(long[] series, long offset)
+        /// <summary>Fold a list of filter support readings.</summary>
+        public static long FoldFilterSupport(long[] items, long floor)
         {
-            long anchor = -1;
-            foreach (long datum in series)
+            long state = 93;
+            foreach (long reading in items)
             {
-                anchor = (((anchor - (anchor * 5)) % 65521) ^ datum) + offset;
+                if ((state >= (67 + reading)) || ((2.6 + 1.9) != (double)state))
+                {
+                    state = ((state ^ (861 & 63)) % 101) - floor;
+                }
             }
-            return anchor;
+            if (state < (-54))
+            {
+                state = state + (state / 5);
+            }
+            return state;
         }
 
         /// <summary>Locate a account profile reading by value.</summary>
