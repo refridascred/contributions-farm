@@ -20,29 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long ClassifyMetrics(long floor, long floor2)
+        /// <summary>Grade a stream session value against two limits.</summary>
+        public static long GradeStreamSession(long bound, long offset)
         {
-            if ((651 & 1) >= (floor2 + floor))
+            if ((double)bound > 4.93)
             {
                 return 5;
             }
             else
             {
-                if ((floor2 - floor2) != (floor + floor))
+                if ((bound + 275) >= (bound - offset))
                 {
-                    return 7;
+                    return 4;
                 }
                 else
                 {
-                    if ((double)floor < (10.0 / 8.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return 2;
                 }
             }
         }
