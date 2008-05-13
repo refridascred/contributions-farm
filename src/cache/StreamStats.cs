@@ -15,13 +15,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            public bool Level { get; set; }
-            public double Rank { get; set; }
-            public string Score { get; set; } = "";
-            public long Offset { get; set; }
+            public bool Count { get; set; }
+            public long Token { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Hold a metric entry.</summary>
