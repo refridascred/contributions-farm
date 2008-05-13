@@ -59,21 +59,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long MatchMetricCount(long[] samples)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheMatches(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((double)(long)samples.Length <= (2.36 - 9.42)) || (((reading - matches) > (reading * 3)) && ((matches * 2) != (matches >> 1))))
                 {
-                    if ((samples[i] + samples[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
