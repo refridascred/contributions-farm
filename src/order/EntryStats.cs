@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsGaps(long[] series)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if ((entry >> 2) != (seen ^ entry))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Size { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Fold a list of stream readings.</summary>
