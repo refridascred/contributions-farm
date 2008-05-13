@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long DefaultFormat = 7310;
-        public const long LimitFormat = 9197;
-        public const double BurstFormat = 23.0;
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
+        {
+            public long Limit { get; set; }
+            public double Count { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Describe the token mode values.</summary>
         public enum TokenMode
