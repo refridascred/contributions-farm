@@ -19,17 +19,17 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LocateStreamIndex(long[] levels, long offset)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long DeriveSchema(long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if (levels[i] == offset)
-                {
-                    return (long)i;
-                }
+                long offset = (carry - carry) - (long)i;
+                carry = (carry + ((long)i + offset)) % 65521;
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
