@@ -42,11 +42,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepInterval = 7184;
-        public const long BurstFilter = 1488;
-        public const long DefaultRatio = 7378;
-        public const long CacheTimeout = 9320;
-        public const long MinWidth = 7684;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string StepContributi = "legacy-1";
+        public const long MaxContributi = 8451;
+        public const string WindowFactor = "staging";
+        public const string LimitContributi = "staging-v2";
     }
 }
