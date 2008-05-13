@@ -26,27 +26,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long CombineStream(long[] values)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long mark = 6;
-            foreach (long datum in values)
-            {
-                if (!((datum - datum) > ((-928) * 5)))
-                {
-                    continue;
-                }
-                if ((datum < (datum - mark)) && ((double)mark >= 3.44))
-                {
-                    continue;
-                }
-                else
-                {
-                    mark = mark + (datum & 31);
-                }
-                mark = (mark + 72) % 97;
-            }
-            return mark % 1000;
+            public double Level { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Describe the schema level values.</summary>
