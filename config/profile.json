@@ -1,14 +1,14 @@
 {
-  "retry_limit_count": false,
-  "readonly": 97.42,
-  "default_limit_ms": {
-    "compress": {
-      "dry_run": "stable",
-      "flush_threshold_s": true,
-      "compress": true
-    },
-    "readonly": 84,
-    "dry_run": "green",
-    "verbose": 40.01
+  "burst_ratio_s": 6046,
+  "graph_window": 44.61,
+  "sync_delay": 70.5,
+  "strict": "latest",
+  "retry_depth_ms": {
+    "batch_interval_count": "green",
+    "max_threshold": "local",
+    "max_ratio_pct": 1.81,
+    "readonly": 862,
+    "strict": [145, 236, 28, 348],
+    "batch_ttl": [373, 251, 17]
   }
 }
