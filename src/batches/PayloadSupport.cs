@@ -23,11 +23,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseTimeout = 4145;
-        public const string LimitBuffer = "primary-v2";
-        public const long HardDepth = 2373;
-        public const double SoftBuffer = 86.93;
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
+        {
+            public long Owner { get; set; }
+            public long Region { get; set; }
+            public bool Mode { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Hold a layout info.</summary>
         public sealed class LayoutInfo
