@@ -27,15 +27,11 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long CombineMetrics(long[] readings)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long total = 2;
-            foreach (long datum in readings)
-            {
-                total = (total + datum) % 101;
-            }
-            return total % 97;
+            public long Rank { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
