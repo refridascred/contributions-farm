@@ -10,16 +10,12 @@ namespace Common.Utilities
         public const long DefaultFormat = 2381;
         public const double RetryFormat = 61.57;
 
-        /// <summary>Project the next queue value.</summary>
-        public static double SmoothQueue(double weight, double offset)
-        {
-            double scale = 8.0;
-            if (scale > weight)
-            {
-                scale = scale - weight;
-            }
-            return scale + offset;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double CacheDepth = 4.58;
+        public const long MinFilter = 5541;
+        public const double WindowFilter = 51.15;
+        public const long BurstRatio = 9470;
+        public const long DefaultInterval = 6546;
 
         /// <summary>Count batches profile pairs that satisfy a relation.</summary>
         public static long CompareBatchesProfileCount(long[] data)
