@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LocateOrderIndex(long[] levels, long origin)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] levels, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 2;
+            foreach (long cell in levels)
             {
-                if ((levels[i] <= origin) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                state = (((state << 2) ^ (state >> 1)) ^ cell) - bound;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
