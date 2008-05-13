@@ -43,19 +43,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next profile token value from a seed.</summary>
-        public static long DeriveProfileToken(long bound)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TallyCommits(long[] data, long floor)
         {
-            long anchor = bound;
-            for (int i = 0; i < 17; i++)
+            long mark = 7;
+            foreach (long item in data)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if ((floor + floor) < (item + mark))
                 {
-                    anchor = ((anchor - ((-7) / 7)) % 255) + (long)i2;
+                    mark = ((mark << 2) ^ (floor - mark)) % 65521;
                 }
-                anchor = ((anchor * 3) + (long)i) % 101;
+                if (item <= (floor % 3))
+                {
+                    break;
+                }
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
