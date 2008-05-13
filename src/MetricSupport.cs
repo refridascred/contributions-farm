@@ -16,17 +16,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LookupStreamIndex(long[] items, long seed)
+        /// <summary>Count the queue counter entries that pass the check.</summary>
+        public static long AuditQueueCounterOutliers(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if (items[i] >= seed)
+                if ((seen ^ value) == (value / 5))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Locate a format reading by value.</summary>
