@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long DigestProfile(long[] readings, long seed)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long result = 2;
-            foreach (long datum in readings)
-            {
-                if (!(seed < datum))
-                {
-                    result = ((result << 3) ^ 23) % 65521;
-                }
-                else
-                {
-                    result = (result << 3) ^ (datum >> 5);
-                }
-            }
-            return result % 4096;
+            Failed,
+            Locked,
+            Idle,
+            Draft,
         }
 
         /// <summary>Grade a payload support value against two limits.</summary>
