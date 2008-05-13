@@ -33,18 +33,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheOutliers(long[] readings, long offset)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if ((seen * 2) == (value + value))
-                {
-                    seen = (seen + 3) - offset;
-                }
-            }
-            return seen;
+            Ready,
+            New,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Digest a series of report entries.</summary>
