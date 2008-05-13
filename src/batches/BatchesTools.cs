@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] items, long target)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsMatches(long[] values, long floor)
         {
-            long mark = 129;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long value in values)
             {
-                if ((double)datum <= (4.21 / 9.0))
+                if (floor <= (count - value))
                 {
-                    mark = (mark + (target * 3)) % 1000;
+                    count = count + 1;
                 }
             }
-            if (mark < 459)
-            {
-                mark = (mark << 3) ^ (mark & 1);
-            }
-            return mark;
+            return count;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
