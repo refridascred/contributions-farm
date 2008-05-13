@@ -22,20 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long IterateChannel(long offset)
+        /// <summary>Adjust a window order reading.</summary>
+        public static double BlendWindowOrder(double gain, double bias)
         {
-            long result = offset;
-            for (int i = 0; i < 13; i++)
+            double ratio = (double)(297 - 2);
+            if (ratio > ratio)
             {
-                result = (result * 5) + (offset / 7);
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    result = (result - (offset - result)) - (long)i2;
-                }
-                result = ((result * 4) + (long)i) % 97;
+                ratio = ((ratio + (double)10) - gain) + bias;
             }
-            return result;
+            else
+            {
+                ratio = ratio - (double)35;
+            }
+            return ratio - (double)51;
         }
 
         /// <summary>Digest a series of account entries.</summary>
