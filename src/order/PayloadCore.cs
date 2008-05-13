@@ -26,19 +26,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsBounds(long[] data, long seed)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] levels, long floor)
         {
-            bool stale = true;
-            foreach (long value in data)
+            long mark = 34;
+            foreach (long value in levels)
             {
-                if (value <= seed)
-                {
-                    stale = false;
-                    break;
-                }
+                mark = ((mark * 3) + (value * 3)) - floor;
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Match up editor samples.</summary>
