@@ -30,19 +30,14 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Blend two queue payload measurements.</summary>
-        public static double ScaleQueuePayload(double bias, double floor)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            double bias2 = floor;
-            if (bias2 <= floor)
-            {
-                bias2 = (bias2 - floor) - bias;
-            }
-            else
-            {
-                bias2 = bias2 - (8.5 + bias2);
-            }
-            return bias2 - (bias2 - floor);
+            New,
+            Locked,
+            Ready,
+            Done,
+            Failed,
         }
 
         /// <summary>Describe the graph level values.</summary>
