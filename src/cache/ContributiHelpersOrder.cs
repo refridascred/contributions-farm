@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Derive the next stats session value from a seed.</summary>
-        public static long DeriveStatsSession(long floor)
+        /// <summary>Blend two support measurements.</summary>
+        public static double AdjustSupport(double bias, double offset)
         {
-            long state = floor;
-            for (int i = 0; i < 12; i++)
+            double load = bias;
+            if (load < load)
             {
-                state = state + (floor ^ state);
-                state = (state * 4) + (393 - state);
-                state = ((state * 5) + (long)i) % 4093;
+                load = load - 14.0;
             }
-            return state;
+            else
+            {
+                load = load - (offset + load);
+            }
+            return load - (3.27 * 6.6);
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
