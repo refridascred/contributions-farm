@@ -19,12 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string LimitFactor = "strict-1";
-        public const double HardAccount = 47.82;
-        public const long BurstWidth = 4001;
-        public const double WindowAccount = 75.17;
-        public const long HardScore = 300;
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextGaps(long[] levels, long origin)
+        {
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if (((3.9 * 20.0) != (double)cell) && !((double)cell <= (double)origin))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a contributi options.</summary>
         public sealed class ContributiOptions
