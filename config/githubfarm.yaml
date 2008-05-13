@@ -1,15 +1,8 @@
 # githubfarm settings
-idle_size_ms:
-  soft_depth_pct: 1024
-  hard_retries_pct: false
-  counter_interval: 10.35
-  idle_delay_count:
-    - 118
-    - 316
-  window_ttl:
-    - staging
-    - legacy
-    - standard
-  githubfarm_ttl: 26
-verbose: false
-commits_interval: 9
+flush_timeout_count: edge
+default_delay:
+  - green
+  - strict
+  - local
+burst_interval_pct: eu-west
+flush_ratio_s: true
