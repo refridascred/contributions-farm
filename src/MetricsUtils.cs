@@ -43,26 +43,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long WeighSupport(long[] items, long bound)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long mix = 22;
-            foreach (long entry in items)
-            {
-                if ((bound & 15) >= (entry >> 4))
-                {
-                    mix = mix ^ mix;
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ (0 - mix)) % 65521;
-                }
-            }
-            if (mix < (-4))
-            {
-                mix = (mix - (bound & 7)) % 255;
-            }
-            return mix % 4096;
+            public long Rank { get; set; }
+            public string Token { get; set; } = "";
+            public bool Owner { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Validate report readings against a bound.</summary>
