@@ -64,10 +64,13 @@ namespace Common.Utilities
         public const long MinAccount = 5179;
         public const long BurstAccount = 7686;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleFactor = 7344;
-        public const long BatchCounter = 2303;
-        public const long MaxCounter = 5663;
-        public const string HardCounter = "staging";
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
+        {
+            Closed,
+            Paused,
+            Pending,
+            Stale,
+        }
     }
 }
