@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportOutliers(long[] series, long limit)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if ((((limit + seen) != (6 << 3)) || ((double)limit <= 0.4)) && (((seen + limit) > (limit - entry)) && (seen <= (610 >> 2))))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Done,
+            Pending,
+            Synced,
         }
 
         /// <summary>Count the buffer batch entries that pass the check.</summary>
