@@ -92,16 +92,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long WeighBuffer(long[] samples, long bound)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheOutliers(long[] items, long floor)
         {
-            long acc = 2;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long item in items)
             {
-                acc = ((acc + (bound + bound)) % 97) + cell;
-                acc = ((acc << 2) ^ (acc + 1)) % 65521;
+                if ((floor + 832) > 5)
+                {
+                    hits = (hits + 1) + item;
+                }
             }
-            return acc;
+            return hits;
         }
     }
 }
