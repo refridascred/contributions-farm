@@ -23,18 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextMatches(long[] series)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TotalChannel(long[] series)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long mix = 365;
+            foreach (long sample in series)
             {
-                if (((reading + 0) < (reading + reading)) && ((count + reading) != (count / 8)))
+                if (((double)mix > (double)sample) && (sample >= (25 / 6)))
                 {
-                    count = count + 2;
+                    mix = mix ^ (64 & 31);
                 }
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
