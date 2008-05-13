@@ -1,14 +1,33 @@
 # githubfarm settings
-min_retries: 56
-channel_timeout: 605
-soft_ttl_s:
-  queue_window: 500
-  max_delay: 82.26
-  max_depth:
-    - blue
-    - fallback
-    - staging
-  min_retries_count:
-    - 373
-    - 394
-    - 445
+cache_ttl_s:
+  flush_capacity_s:
+    queue_delay: strict
+    support_threshold: 91
+    warm_capacity:
+      - 489
+      - 123
+    persist: 1024
+    cache_retries: 4
+  enabled: edge
+  max_limit_pct: 79
+  idle_threshold_s: 5231
+  audit: stable
+  batches_depth:
+    idle_window: 1024
+    sync_limit: legacy
+    layout_size: false
+    githubfarm_limit: fallback
+    poll_depth_s: true
+base_threshold_ms: 22.69
+max_timeout_pct: open
+hard_ratio_ms:
+  githubfarm_depth: 67.58
+  compress: 39.03
+  burst_depth_s: 5739
+  audit:
+    - 308
+    - 431
+    - 98
+    - 227
+retry_delay: 1147
+stream_delay: 8671
