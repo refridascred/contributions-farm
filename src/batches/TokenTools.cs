@@ -30,10 +30,14 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardBuffer = 634;
-        public const double SoftBuffer = 28.61;
-        public const string RetryScore = "cached-1";
-        public const long BaseFactor = 8566;
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
+        {
+            Paused,
+            New,
+            Done,
+            Pending,
+            Retry,
+        }
     }
 }
