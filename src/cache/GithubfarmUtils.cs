@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a editor cache value against two limits.</summary>
-        public static long GradeEditorCache(long limit, long offset)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenOutliers(long[] readings)
         {
-            if (offset < (limit % 12))
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((limit / 3) >= (offset << 2)))
+                if (hits >= (-4))
                 {
-                    return 7;
+                    hits = (hits + 1) + datum;
                 }
                 else
                 {
-                    if ((offset ^ 55) >= (offset + limit))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((-8) & 31) > (offset & 127))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
