@@ -5,29 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long RankContext(long target, long target2)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long ClassifyMetric(long floor, long target)
         {
-            if ((double)target2 >= (1.84 * 7.0))
+            if ((7 + floor) >= target)
             {
-                return 6;
+                return 0;
             }
             else
             {
-                if (((5.3 * 7.96) != (double)target2) && ((target2 << 2) < (target2 >> 3)))
+                if (8.1 <= (double)floor)
                 {
                     return 7;
                 }
                 else
                 {
-                    if (!((8.62 - 0.03) < (double)target2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return 2;
                 }
             }
         }
