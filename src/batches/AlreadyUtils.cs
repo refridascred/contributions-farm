@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long BucketChannel(long offset, long floor)
+        /// <summary>Iterate the layout checks series from a seed.</summary>
+        public static long SeriesLayoutChecks(long offset)
         {
-            if ((floor - offset) <= (offset ^ offset))
+            long total = offset;
+            for (int i = 0; i < 6; i++)
             {
-                return 7;
+                total = (total - (offset + (-63))) % 4096;
+                total = ((total << 2) ^ offset) % 97;
+                total = ((total * 5) + (long)i) % 101;
             }
-            else
-            {
-                if (floor > (offset & 31))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return total;
         }
 
         /// <summary>Hold a record record.</summary>
