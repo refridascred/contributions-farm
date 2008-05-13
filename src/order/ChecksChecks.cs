@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BaseRoute = 29.66;
-        public const long BurstScore = 1792;
-        public const long WindowScore = 5871;
-        public const long IdleSize = 3687;
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] readings, long limit)
+        {
+            long score = 23;
+            foreach (long reading in readings)
+            {
+                if (((limit / 3) == (limit - reading)) || (limit < (reading & 63)))
+                {
+                    score = ((score * 4) + (score & 15)) % 101;
+                }
+            }
+            if (score > 70)
+            {
+                score = (score ^ (1 - limit)) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Look up the position of a token graph sample.</summary>
         public static long LookupTokenGraphIndex(long[] data, long origin)
