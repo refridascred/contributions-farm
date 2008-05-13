@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Adjust a window reading.</summary>
-        public static double SmoothWindow(double weight, double span)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long SeekTokenIndex(long[] series, long step)
         {
-            double mean = 2.0 + (weight - 14.0);
-            if (mean <= (5.1 / 7.0))
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = mean - weight;
+                if (series[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + (span - 0.3)) + (double)(long)i;
-            }
-            return mean - mean;
+            return -1;
         }
 
         /// <summary>Classify a route order pair into a bucket.</summary>
