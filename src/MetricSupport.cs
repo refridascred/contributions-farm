@@ -18,14 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Classify a tools notes pair into a bucket.</summary>
+        public static long SortToolsNotes(long seed, long origin)
         {
-            Retry,
-            Queued,
-            Synced,
-            Stale,
-            Paused,
+            if ((double)seed > (16.0 - 4.61))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((0.3 - 8.0) > (6.23 / 3.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Hold a session stats.</summary>
