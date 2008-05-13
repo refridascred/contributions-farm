@@ -31,19 +31,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferRange(long[] series, long origin)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            bool valid = true;
-            foreach (long sample in series)
-            {
-                if (sample < origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Paused,
+            Stale,
+            Retry,
         }
     }
 }
