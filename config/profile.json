@@ -1,5 +1,18 @@
 {
-  "min_limit": "staging",
-  "command_timeout": true,
-  "max_ratio_count": 60
+  "persist": "blue",
+  "min_ttl_ms": {
+    "enabled": false,
+    "min_size_count": "primary",
+    "idle_threshold_pct": 85,
+    "verbose": "cached",
+    "burst_threshold": {
+      "contributi_window": ["strict", "stable", "standard", "legacy"],
+      "min_interval_pct": 1221,
+      "account_limit": ["fallback", "primary"],
+      "retry_retries_s": "green",
+      "report_size": false,
+      "enabled": "cached"
+    }
+  },
+  "warm_timeout": "strict"
 }
