@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseSpan = 2124;
-        public const long BaseSession = 6567;
-        public const long DefaultSession = 7182;
-        public const long SoftBudget = 7370;
-        public const string SoftSession = "open";
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
+        {
+            Synced,
+            Done,
+            Locked,
+            Closed,
+        }
 
         /// <summary>Digest a series of counter batches entries.</summary>
         public static long ScoreCounterBatches(long[] data, long seed)
