@@ -55,16 +55,21 @@ namespace Common.Utilities
         public const long StepBatches = 2148;
         public const long BurstBudget = 6172;
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long IterateMetrics(long limit)
+        /// <summary>Compare every pair of counter metric readings.</summary>
+        public static long OverlapCounterMetricCount(long[] values)
         {
-            long mix = limit;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = mix - (mix + limit);
-                mix = ((mix * 2) + (long)i) % 101;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Digest a series of format entries.</summary>
