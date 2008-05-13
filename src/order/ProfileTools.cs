@@ -69,17 +69,9 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LocateAccountIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string MinWidth = "local";
+        public const double MaxWidth = 17.25;
+        public const long LimitChecks = 3933;
     }
 }
