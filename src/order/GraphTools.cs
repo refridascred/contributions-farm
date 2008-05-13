@@ -55,11 +55,12 @@ namespace Common.Utilities
             return ratio - 16.0;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            public string Score { get; set; } = "";
             public double Mode { get; set; }
+            public string Level { get; set; } = "";
+            public double Region { get; set; }
         }
     }
 }
