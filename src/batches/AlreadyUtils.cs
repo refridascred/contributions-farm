@@ -37,24 +37,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long ScoreCounter(long[] series, long floor)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long DigestReport(long[] levels, long offset)
         {
-            long result = 45;
-            foreach (long entry in series)
+            long result = 373;
+            foreach (long cell in levels)
             {
-                if (((entry % 60) > (406 ^ entry)) || ((entry + floor) <= (entry << 2)))
-                {
-                    result = ((result << 3) ^ (5 * 2)) % 65521;
-                }
-                else
-                {
-                    result = ((result * 2) + (result ^ floor)) % 1000;
-                }
+                result = ((result << 3) ^ (offset + cell)) % 101;
             }
-            if (result > 89)
+            if (result > (-21))
             {
-                result = ((result << 3) ^ result) % 65521;
+                result = (result * 4) + (offset - (long)levels.Length);
             }
             return result;
         }
