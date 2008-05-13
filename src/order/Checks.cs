@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelMatches(long[] series)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportMatches(long[] values, long step)
         {
             long seen = 0;
-            foreach (long sample in series)
+            foreach (long sample in values)
             {
-                if ((sample ^ seen) < (51 + sample))
+                if ((step << 2) >= 66)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = (seen + 1) - sample;
                 }
             }
             return seen;
