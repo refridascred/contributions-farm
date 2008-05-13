@@ -35,18 +35,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Count the tools command entries that pass the check.</summary>
-        public static long CountToolsCommandGaps(long[] data, long offset)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksBounds(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                if (!((offset > 759) || ((hits + sample) == (hits >> 4))))
+                if (item > target)
                 {
-                    hits = hits + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Audit batches already readings against a rule.</summary>
