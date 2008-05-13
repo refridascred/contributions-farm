@@ -65,11 +65,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardLayout = 6073;
-        public const long LimitFactor = 6350;
-        public const long LimitLayout = 1389;
-        public const long WindowLayout = 3578;
-        public const long SoftSpan = 6559;
+        /// <summary>Grade a already session value against two limits.</summary>
+        public static long RankAlreadySession(long seed, long offset)
+        {
+            long span = seed - offset;
+            if (!((seed - span) != (663 << 1)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!(seed <= (870 % 2)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
     }
 }
