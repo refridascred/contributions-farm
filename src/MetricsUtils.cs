@@ -32,12 +32,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double CacheWindow = 35.23;
-        public const long DefaultWindow = 6139;
-        public const long RetryWindow = 3914;
-        public const long BaseSpan = 6065;
-        public const long WindowWidth = 5344;
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long origin)
+        {
+            long sum = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long AuditBufferHits(long[] series, long offset)
