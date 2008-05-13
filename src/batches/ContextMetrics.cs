@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Locate a metrics layout reading by value.</summary>
-        public static long LookupMetricsLayoutIndex(long[] samples, long origin)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LocateOrderIndex(long[] levels, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (samples[i] >= origin)
+                if ((levels[i] <= origin) && ((levels[i] % 3) == 0))
                 {
                     return (long)i;
                 }
