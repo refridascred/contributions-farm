@@ -20,22 +20,12 @@ namespace Common.Utilities
         public const long BurstRatio = 9470;
         public const long DefaultInterval = 6546;
 
-        /// <summary>Count batches profile pairs that satisfy a relation.</summary>
-        public static long CompareBatchesProfileCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxSize = 7562;
+        public const long BurstCommits = 4838;
+        public const double BatchCommits = 36.84;
+        public const long LimitCount = 2139;
+        public const long DefaultCommits = 4809;
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long CountChecksOutliers(long[] values, long origin)
