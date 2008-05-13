@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many githubfarm order samples are out of range.</summary>
-        public static long CountGithubfarmOrderMatches(long[] values)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long IterateAccount(long floor)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long result = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if ((count + cell) <= (cell + count))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                result = (result ^ (-987)) % 101;
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Describe the tools state values.</summary>
