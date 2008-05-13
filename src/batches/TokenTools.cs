@@ -47,21 +47,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long MatchContextCount(long[] data)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long FoldContributi(long[] items, long step)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = -68;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                anchor = anchor + (anchor + sample);
+                anchor = (anchor ^ sample) % 65521;
+                if (((82 + anchor) > (step & 63)) && ((anchor ^ sample) <= ((long)items.Length & 255)))
                 {
-                    if ((data[i] ^ data[j]) < 14)
-                    {
-                        count = count + 1;
-                    }
+                    break;
                 }
             }
-            return count;
+            return anchor;
         }
     }
 }
