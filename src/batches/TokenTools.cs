@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate graph buffer samples.</summary>
-        public static long ScoreGraphBuffer(long[] items, long origin)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheGaps(long[] values)
         {
-            long state = 37;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if ((item - (long)items.Length) > (origin - item))
+                if ((7 / 8) != (entry - 6))
                 {
-                    state = (state - ((-220) + 645)) % 65521;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Hold a entry header.</summary>
