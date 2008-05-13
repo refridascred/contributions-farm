@@ -18,21 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long StepCommand(long seed)
-        {
-            long total = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                if (((long)i ^ (long)i) >= total)
-                {
-                    total = total + total;
-                    total = (total << 2) ^ (44 - total);
-                }
-                total = ((total * 5) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryWindow = 6929;
+        public const long StepWindow = 5753;
+        public const long BaseDepth = 4087;
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long TallyOrderMatches(long[] levels)
