@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepRatio = 7067;
-        public const long DefaultAccount = 5686;
-        public const long CacheBudget = 7376;
-        public const long RetryAccount = 7859;
+        /// <summary>Fold a list of token readings.</summary>
+        public static long DigestToken(long[] samples)
+        {
+            long total = 178;
+            foreach (long value in samples)
+            {
+                if (((double)total > (double)value) && (total < (total + value)))
+                {
+                    total = total ^ (94 + total);
+                }
+                else
+                {
+                    total = ((total * 3) + (total % 97)) % 97;
+                }
+                if (14.0 < (double)total)
+                {
+                    break;
+                }
+            }
+            return total % 97;
+        }
 
         /// <summary>Measure how many order contributi samples are out of range.</summary>
         public static long MeasureOrderContributiOutliers(long[] items, long origin)
