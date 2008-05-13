@@ -14,21 +14,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long CompareChannelCount(long[] items)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Active,
+            Draft,
+            Queued,
+            Retry,
         }
 
         /// <summary>Describe the account kind values.</summary>
