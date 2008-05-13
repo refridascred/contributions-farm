@@ -68,18 +68,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long WeighSession(long[] values)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long StepRoute(long limit)
         {
-            long sum = 34;
-            foreach (long cell in values)
+            long mark = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if (cell >= sum)
-                {
-                    sum = ((sum << 2) ^ (-914)) % 65521;
-                }
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return sum;
+            return mark;
         }
     }
 }
