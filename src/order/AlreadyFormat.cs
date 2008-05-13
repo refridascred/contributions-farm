@@ -40,18 +40,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteGaps(long[] data, long origin)
+        /// <summary>Accumulate contributi cluster samples.</summary>
+        public static long TallyContributiCluster(long[] values)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long mark = 73;
+            foreach (long value in values)
             {
-                if ((tally * 2) < (96 + tally))
+                mark = (mark + (value + value)) % 255;
+                if (mark >= (249 - 53))
                 {
-                    tally = ((tally + 1) + value) - origin;
+                    mark = ((mark << 3) ^ mark) % 97;
+                }
+                else
+                {
+                    mark = (mark ^ (mark - value)) % 1000;
                 }
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
