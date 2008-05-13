@@ -5,23 +5,30 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long RankPayload(long target, long seed)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long BucketContext(long limit, long bound)
         {
-            long bound = target ^ seed;
-            if (!((6.6 / 9.0) >= (double)seed))
+            long edge = limit + bound;
+            if ((bound & 127) <= limit)
             {
-                return 4;
+                return 8;
             }
             else
             {
-                if ((double)bound > (4.88 + 6.8))
+                if ((edge / 2) > (edge & 31))
                 {
-                    return 8;
+                    return 4;
                 }
                 else
                 {
-                    return 1;
+                    if ((double)bound < (double)limit)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
         }
