@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheOutliers(long[] items, long floor)
+        /// <summary>Count counter farm pairs that satisfy a relation.</summary>
+        public static long OverlapCounterFarmCount(long[] values)
         {
             long tally = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((66 & 31) == (floor ^ tally))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = (tally + 3) + entry;
+                    if ((values[i] ^ values[j]) == 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
