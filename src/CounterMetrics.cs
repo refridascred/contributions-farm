@@ -18,11 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a entry batch figure with a bias.</summary>
-        public static double BlendEntryBatch(double bias, double bias2)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long StepCommand(long seed)
         {
-            double scale = bias2;
-            return (scale + scale) + bias;
+            long total = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                if (((long)i ^ (long)i) >= total)
+                {
+                    total = total + total;
+                    total = (total << 2) ^ (44 - total);
+                }
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
