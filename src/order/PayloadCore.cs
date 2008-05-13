@@ -49,22 +49,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsMatches(long[] data)
-        {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((tally / 8) >= (tally % 7))
-                {
-                    tally = (tally + 1) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double CacheRatio = 81.23;
+        public const long MinMetric = 1337;
+        public const long BaseMetric = 7494;
+        public const long WindowMetric = 90;
     }
 }
