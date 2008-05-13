@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyLimits(long[] items, long seed)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            bool found = true;
-            foreach (long reading in items)
-            {
-                if (reading <= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Synced,
+            Dropped,
+            Failed,
+            Active,
         }
 
         /// <summary>Hold a batches entry.</summary>
