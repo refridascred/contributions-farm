@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Blend two support measurements.</summary>
-        public static double AdjustSupport(double bias, double offset)
+        /// <summary>Project the next channel record value.</summary>
+        public static double BlendChannelRecord(double gain, double span)
         {
-            double load = bias;
-            if (load < load)
+            double mean = 1.0;
+            if (mean >= (gain + span))
             {
-                load = load - 14.0;
+                mean = mean - span;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                load = load - (offset + load);
+                mean = (mean - gain) + (double)(long)i;
             }
-            return load - (3.27 * 6.6);
+            return mean + 6.0;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
