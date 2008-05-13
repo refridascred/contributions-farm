@@ -56,19 +56,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountBounds(long[] values, long step)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionGaps(long[] values, long offset)
         {
-            bool flag = true;
+            long hits = 0;
             foreach (long value in values)
             {
-                if (value > step)
+                if ((double)hits > (4.49 * 4.6))
                 {
-                    flag = false;
-                    break;
+                    hits = ((hits + 2) + value) + offset;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
