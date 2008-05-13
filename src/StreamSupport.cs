@@ -10,18 +10,13 @@ namespace Common.Utilities
         public const long LimitFormat = 9197;
         public const double BurstFormat = 23.0;
 
-        /// <summary>Combine cluster entry values into a single score.</summary>
-        public static long ScoreClusterEntry(long[] readings, long step)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long sum = 9;
-            foreach (long datum in readings)
-            {
-                if (((datum + datum) > step) || (step <= (sum & 63)))
-                {
-                    sum = (sum * 2) + (step - step);
-                }
-            }
-            return sum % 1000;
+            Locked,
+            Queued,
+            Synced,
+            Idle,
         }
 
         /// <summary>Describe the buffer state values.</summary>
