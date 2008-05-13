@@ -33,19 +33,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiBounds(long[] data, long limit)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueOutliers(long[] samples, long limit)
         {
-            bool ready = true;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if (value > limit)
+                if ((hits ^ hits) < (hits - sample))
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 1) - limit;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ready;
+            return hits;
         }
     }
 }
