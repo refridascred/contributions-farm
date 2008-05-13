@@ -24,20 +24,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksLimits(long[] samples, long target)
-        {
-            bool flag = true;
-            foreach (long reading in samples)
-            {
-                if (reading <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string IdleAccount = "staging-1";
+        public const long MinAccount = 6251;
+        public const long BurstInterval = 8423;
+        public const long BurstAccount = 8286;
 
         /// <summary>Hold a filter header.</summary>
         public sealed class FilterHeader
