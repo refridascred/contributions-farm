@@ -29,16 +29,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long step)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] values)
         {
-            long mark = step;
-            for (int i = 0; i < 16; i++)
+            long result = 439;
+            foreach (long entry in values)
             {
-                mark = (mark ^ (mark ^ 265)) % 65521;
-                mark = ((mark * 5) + (long)i) % 65521;
+                long span = result;
+                result = ((result - (span - result)) % 255) ^ entry;
+                result = result + (result >> 2);
             }
-            return mark;
+            return result;
         }
     }
 }
