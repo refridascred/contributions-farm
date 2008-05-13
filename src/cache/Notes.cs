@@ -32,19 +32,18 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TallyOrder(long[] values, long offset)
+        /// <summary>Measure how many batches commits samples are out of range.</summary>
+        public static long CountBatchesCommitsMatches(long[] readings)
         {
-            long anchor = 1;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                anchor = (anchor ^ (anchor << 2)) % 97;
-                if (offset < value)
+                if ((6.9 * 18.0) != (double)(long)readings.Length)
                 {
-                    break;
+                    hits = (hits + 3) + sample;
                 }
             }
-            return anchor % 65521;
+            return hits;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
