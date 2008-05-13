@@ -1,6 +1,7 @@
 # entry settings
-commits_threshold: false
-command_threshold: false
-verbose: true
-batch_timeout_count: edge
-flush_delay_count: 14
+sync_limit: false
+poll_timeout:
+  - 357
+  - 374
+  - 53
+batch_timeout_pct: green
