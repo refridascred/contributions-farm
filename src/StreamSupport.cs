@@ -26,12 +26,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiBounds(long[] data, long limit)
         {
-            public bool Flag { get; set; }
-            public double Size { get; set; }
-            public long Total { get; set; }
+            bool ready = true;
+            foreach (long value in data)
+            {
+                if (value > limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
