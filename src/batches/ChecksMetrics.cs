@@ -55,17 +55,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LookupAccountIndex(long[] series, long target)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Idle,
+            Closed,
+            Stale,
         }
     }
 }
