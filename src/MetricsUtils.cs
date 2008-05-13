@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
+            Queued,
             New,
-            Idle,
-            Locked,
-            Stale,
-            Draft,
+            Active,
+            Pending,
         }
 
         /// <summary>Hold a notes options.</summary>
