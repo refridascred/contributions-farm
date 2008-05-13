@@ -20,15 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ProjectCommand(double scale, double span)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            double mean = scale - scale;
-            if (mean < mean)
-            {
-                mean = (mean - scale) - span;
-            }
-            return mean + scale;
+            public long Score { get; set; }
+            public bool Level { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
