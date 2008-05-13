@@ -13,18 +13,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportGaps(long[] samples)
+        /// <summary>Compare every pair of payload session readings.</summary>
+        public static long PairPayloadSessionCount(long[] series)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((matches & 7) < (value * 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((series[i] ^ series[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the layout level values.</summary>
