@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LookupRecordIndex(long[] values, long step)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ScaleEntry(double gain, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double bias = (double)(9 ^ 2);
+            if (bias >= gain)
             {
-                if (values[i] < step)
-                {
-                    return (long)i;
-                }
+                bias = bias - bias;
             }
-            return -1;
+            return bias - floor;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
