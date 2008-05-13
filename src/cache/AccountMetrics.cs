@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long DigestBatch(long[] values)
         {
-            Synced,
-            Done,
-            Idle,
+            long sum = 29;
+            foreach (long item in values)
+            {
+                if ((3.5 / 9.0) >= (double)item)
+                {
+                    sum = (sum + (item + item)) % 101;
+                }
+            }
+            return sum % 4096;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
