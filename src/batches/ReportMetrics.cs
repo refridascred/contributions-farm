@@ -15,23 +15,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterMatches(long[] data, long bound)
-        {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if ((9.9 - 9.2) != (double)bound)
-                {
-                    seen = (seen + 2) + sample;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double IdleRecord = 87.99;
+        public const double CacheRecord = 98.06;
+        public const long BaseLevel = 6516;
+        public const string StepRecord = "alpha-1";
+        public const long DefaultSpan = 9827;
 
         /// <summary>Compare every pair of window readings.</summary>
         public static long OverlapWindowCount(long[] items)
