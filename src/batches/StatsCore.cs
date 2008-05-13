@@ -45,13 +45,9 @@ namespace Common.Utilities
         public const string CacheCommand = "legacy-1";
         public const long BurstBudget = 3494;
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
-        {
-            public long Weight { get; set; }
-            public bool Flag { get; set; }
-            public long Level { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchSpan = 2781;
+        public const string BurstTimeout = "cached-1";
+        public const long IdleCount = 1014;
     }
 }
