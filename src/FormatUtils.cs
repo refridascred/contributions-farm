@@ -34,19 +34,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsRange(long[] data, long seed)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksLimits(long[] samples, long target)
         {
-            bool ok = true;
-            foreach (long item in data)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                if (item < seed)
+                if (reading <= target)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
 
         /// <summary>Hold a filter header.</summary>
