@@ -1,22 +1,18 @@
 # support settings
-cache_retries: primary
-base_ttl: primary
-soft_window: 6909
-sync_limit_ms:
-  min_limit: stable
-  channel_ratio:
-    cache_threshold: 55
-    persist: 500
-    soft_capacity_count: 60
-    buffer_retries: 5288
-    channel_limit: true
-  cache_interval_count: strict
-  flush_size_pct:
-    - standard
-    - latest
-sync_depth_count:
-  - open
-  - edge
-  - local
-  - edge
-default_delay_ms: false
+max_ttl_ms: false
+cache_ratio:
+  persist: 63.54
+  notes_depth: false
+  cache_ttl_pct: cached
+  flush_depth_count: 24.74
+  compress: 88
+  base_ratio:
+    batch_timeout: false
+    batch_retries_s: 65.36
+    order_window: edge
+    metrics_limit: latest
+    enabled: false
+enabled: true
+verbose: 78.87
+batch_ttl: open
+burst_size_s: 60
