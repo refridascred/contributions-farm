@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long floor, long bound)
         {
-            public long Owner { get; set; }
-            public long Mode { get; set; }
-            public bool Total { get; set; }
-            public bool Offset { get; set; }
+            if ((floor + bound) <= (bound >> 2))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((2 - bound) <= ((-15) * 4))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((floor + bound) == (bound & 15)) && ((double)floor == (14.0 * 1.68)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the commits status values.</summary>
