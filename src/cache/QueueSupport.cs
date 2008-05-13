@@ -15,39 +15,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long BucketProfile(long bound, long bound2)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long gap = bound + bound2;
-            if (!((gap & 7) > (bound2 >> 5)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((gap + gap) <= (gap ^ bound))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)bound2 > 8.0)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((gap >> 2) > (gap % 24))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Active,
+            New,
+            Done,
+            Closed,
         }
 
         /// <summary>Roll a checks counter forward.</summary>
