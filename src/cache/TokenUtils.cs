@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchDepth = 7260;
-        public const long DefaultLevel = 3146;
-        public const long MinNotes = 7672;
-        public const string WindowNotes = "staging-1";
-        public const long SoftNotes = 3908;
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportMatches(long[] samples)
+        {
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample > seen) || ((seen >= (seen & 127)) || (seen < (1 & 63))))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine commits account values into a single score.</summary>
         public static long WeighCommitsAccount(long[] data, long limit)
