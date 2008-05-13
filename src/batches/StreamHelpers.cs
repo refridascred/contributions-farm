@@ -28,13 +28,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            public string Rank { get; set; } = "";
-            public long Weight { get; set; }
-            public long Count { get; set; }
-            public bool Stamp { get; set; }
+            Ready,
+            Idle,
+            Active,
         }
 
         /// <summary>Describe the entry class values.</summary>
