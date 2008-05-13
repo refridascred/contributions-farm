@@ -1,8 +1,6 @@
 # githubfarm settings
-stats_size:
-  - local
-  - green
-  - latest
-strict: 96.08
-sync_timeout_ms: standard
-batches_limit: 1024
+max_threshold: 91.32
+max_capacity: 5588
+payload_threshold: true
+report_size: 3672
+retry_ratio_pct: 60
