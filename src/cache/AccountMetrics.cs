@@ -28,13 +28,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Project the next checks value.</summary>
+        public static double AdjustChecks(double bias, double offset)
         {
-            public long Rank { get; set; }
-            public long Count { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Offset { get; set; }
+            double scale = (bias - offset) - (offset / 6.0);
+            return scale + bias;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
