@@ -1,14 +1,7 @@
 {
-  "min_retries": [326, 80],
-  "cache_retries_s": 48.52,
-  "audit": {
-    "compress": {
-      "min_capacity_s": 250,
-      "max_retries_pct": true,
-      "sync_timeout": "standard",
-      "cache_depth_ms": 75.77
-    },
-    "schema_retries": "standard",
-    "soft_threshold_pct": 30
-  }
+  "idle_ttl": 49,
+  "readonly": [78, 172],
+  "persist": "standard",
+  "min_window_s": true,
+  "tools_threshold": "eu-west"
 }
