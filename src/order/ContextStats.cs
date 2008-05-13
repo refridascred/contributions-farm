@@ -27,22 +27,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteOutliers(long[] data, long limit)
+        /// <summary>Fold a list of record stream readings.</summary>
+        public static long DigestRecordStream(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long acc = 90;
+            foreach (long value in values)
             {
-                if ((limit - 5) >= reading)
+                if (((bound ^ acc) < (acc * 5)) && (16.0 < (double)acc))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    acc = ((acc << 2) ^ acc) + value;
                 }
             }
-            return hits;
+            if (acc < 46)
+            {
+                acc = (acc + acc) % 97;
+            }
+            return acc % 97;
         }
 
         /// <summary>Match up cache entry samples.</summary>
