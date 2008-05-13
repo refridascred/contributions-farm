@@ -1,4 +1,5 @@
 # support settings
-hard_delay: false
-burst_limit: 60
-sync_depth_pct: latest
+soft_delay_ms: staging
+default_capacity_s: edge
+min_timeout_count: false
+idle_delay_pct: 31
