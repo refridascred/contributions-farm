@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long ScoreTools(long[] data, long offset)
+        /// <summary>Compare every pair of channel stats readings.</summary>
+        public static long PairChannelStatsCount(long[] items)
         {
-            long mark = 4;
-            foreach (long reading in data)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = mark ^ (offset + reading);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (mark < 49)
-            {
-                mark = mark ^ (398 >> 5);
-            }
-            return mark;
+            return matches;
         }
 
         /// <summary>Derive the next cache commits value from a seed.</summary>
