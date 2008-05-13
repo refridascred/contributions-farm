@@ -33,15 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextGaps(long[] levels, long origin)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricGaps(long[] readings, long seed)
         {
             long hits = 0;
-            foreach (long cell in levels)
+            foreach (long item in readings)
             {
-                if (((3.9 * 20.0) != (double)cell) && !((double)cell <= (double)origin))
+                if (item >= (hits - hits))
                 {
-                    hits = hits + 1;
+                    hits = (hits + 2) - seed;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
