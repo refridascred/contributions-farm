@@ -58,15 +58,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double BlendCommits(double rate, double offset)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            double drift = offset * 2.2;
-            for (int i = 0; i < 4; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift - rate;
+            Synced,
+            Closed,
+            New,
+            Failed,
         }
     }
 }
