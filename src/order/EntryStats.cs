@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Project the next stats value.</summary>
-        public static double BlendStats(double ratio, double offset)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowMatches(long[] series)
         {
-            double scale = ratio;
-            if (scale > (double)6)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                scale = scale - offset;
+                if (!((reading % 97) == (seen << 1)))
+                {
+                    seen = seen + 2;
+                }
             }
-            return scale + offset;
+            return seen;
         }
 
         /// <summary>Validate record schema readings against a bound.</summary>
