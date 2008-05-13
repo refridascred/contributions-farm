@@ -47,14 +47,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            Synced,
-            Active,
-            Dropped,
-            Pending,
-            Locked,
+            public long Offset { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
