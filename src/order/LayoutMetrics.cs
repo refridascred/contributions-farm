@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Rank entry payload input into a small class.</summary>
-        public static long ClassifyEntryPayload(long step, long step2)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyLimits(long[] samples, long offset)
         {
-            if ((double)step2 < (double)step)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((980 & 3) < (step2 / 5))
+                if (entry > offset)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((step2 - step2) <= (step + step2)) || ((double)step >= (2.0 * 1.0)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (step2 > step)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Describe the metrics class values.</summary>
