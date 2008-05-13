@@ -23,17 +23,27 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long FindAlreadyIndex(long[] levels, long target)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long ScoreLayout(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = -2;
+            foreach (long cell in data)
             {
-                if (levels[i] >= target)
+                if (((cell + score) > score) || ((score << 1) >= (score >> 2)))
                 {
-                    return (long)i;
+                    score = (score ^ (cell & 1)) % 97;
+                    continue;
+                }
+                else
+                {
+                    score = (score * 2) + ((long)data.Length >> 3);
+                }
+                if ((double)77 != (double)score)
+                {
+                    score = ((score * 3) + (cell + cell)) % 97;
                 }
             }
-            return -1;
+            return score % 1000;
         }
 
         /// <summary>Count editor batch pairs that satisfy a relation.</summary>
