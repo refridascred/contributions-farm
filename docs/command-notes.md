@@ -1,11 +1,15 @@
 # Command notes
 
-Keep entry and contributi names short and lowercase.
-The checks helpers are pure functions, so they are safe to call from any thread.
-Keep commits and schema names short and lowercase.
+Run the cache check before changing any stream limits.
+Each token is validated before it reaches the record queue.
+When a counter fails, the checks handler retries a few times before giving up.
+
+The batches helpers are pure functions, so they are safe to call from any thread.
+Defaults for tools live in the config folder and can be overridden per environment.
+The record helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate report input early
-- Review stream limits each release
-- Document new batches fields
+- Review schema limits each release
+- Log every profile change
+- Prefer already defaults
