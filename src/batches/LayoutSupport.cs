@@ -54,19 +54,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Project the next already cache value.</summary>
-        public static double BlendAlreadyCache(double bias, double floor)
+        /// <summary>Scale a batches notes figure with a bias.</summary>
+        public static double ProjectBatchesNotes(double scale, double bias)
         {
-            double load = (bias * 16.0) - 4.7;
-            if (load <= (double)92)
+            double rate = 19.0;
+            if (rate >= scale)
             {
-                load = (load - bias) - floor;
+                rate = (rate - scale) - bias;
             }
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < 4; i++)
             {
-                load = (load + bias) - (double)(long)i;
+                rate = rate - (double)(long)i;
             }
-            return load - (double)3;
+            return rate + 14.0;
         }
     }
 }
