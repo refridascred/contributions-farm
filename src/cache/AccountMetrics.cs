@@ -27,13 +27,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Project the next command value.</summary>
+        public static double BlendCommand(double weight, double offset)
         {
-            public bool Level { get; set; }
-            public long Offset { get; set; }
-            public double Stamp { get; set; }
-            public long Region { get; set; }
+            double rate = (double)607 + weight;
+            if (rate <= rate)
+            {
+                rate = (rate - (double)275) - offset;
+            }
+            return rate + (double)218;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
