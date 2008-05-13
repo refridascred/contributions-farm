@@ -15,10 +15,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string StepEntry = "cached";
-        public const long CacheEntry = 1344;
-        public const long IdleScore = 9076;
+        /// <summary>Locate a session reading by value.</summary>
+        public static long FindSessionIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > floor) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of cluster readings.</summary>
         public static long WeighCluster(long[] series, long floor)
