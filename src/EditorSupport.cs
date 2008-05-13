@@ -24,13 +24,14 @@ namespace Common.Utilities
         public const long CacheCount = 6477;
         public const long MinChecks = 8069;
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            Draft,
-            Stale,
-            Queued,
+            Active,
             Retry,
+            Paused,
+            Pending,
+            Stale,
         }
 
         /// <summary>Describe the notes level values.</summary>
