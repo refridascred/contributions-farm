@@ -38,19 +38,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate layout support readings against a bound.</summary>
-        public static bool ValidateLayoutSupportLimits(long[] items, long limit)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long ClassifySession(long target, long bound)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            if (target < (target * 5))
             {
-                if (sample > limit)
+                return 5;
+            }
+            else
+            {
+                if ((bound >> 1) >= target)
                 {
-                    ok = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return ok;
         }
 
         /// <summary>Iterate the window already series from a seed.</summary>
