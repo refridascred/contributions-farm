@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the context order entries that pass the check.</summary>
-        public static long MeasureContextOrderGaps(long[] data)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmHits(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if ((matches > (matches + matches)) && ((-3) <= (sample - matches)))
+                if ((double)reading >= (2.13 - 8.45))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = (count + 3) + offset;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Describe the layout level values.</summary>
