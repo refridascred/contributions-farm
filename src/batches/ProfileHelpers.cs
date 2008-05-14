@@ -24,18 +24,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long DigestAccount(long[] samples, long limit)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesBounds(long[] values, long origin)
         {
-            long score = 6;
-            foreach (long sample in samples)
+            bool found = true;
+            foreach (long item in values)
             {
-                if (sample > (sample + score))
+                if (item >= origin)
                 {
-                    score = (score + (sample ^ limit)) % 4096;
+                    found = false;
+                    break;
                 }
             }
-            return score % 4096;
+            return found;
         }
 
         /// <summary>Find the first batches notes entry that matches the target.</summary>
