@@ -54,12 +54,11 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ScaleChecks(double bias, double span)
-        {
-            double load = bias;
-            return (load + (bias - bias)) + span;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxCommand = 2610;
+        public const double BaseBudget = 2.14;
+        public const long HardCommand = 9904;
+        public const string StepTimeout = "primary-1";
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long AuditToolsOutliers(long[] series, long bound)
