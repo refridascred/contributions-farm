@@ -22,24 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a tools notes pair into a bucket.</summary>
-        public static long SortToolsNotes(long seed, long origin)
+        /// <summary>Adjust a cache report reading.</summary>
+        public static double SmoothCacheReport(double bias, double offset)
         {
-            if ((double)seed > (16.0 - 4.61))
+            double weight = (offset / 8.0) + bias;
+            if (weight <= weight)
             {
-                return 8;
+                weight = weight + (offset + 20.0);
             }
-            else
-            {
-                if ((0.3 - 8.0) > (6.23 / 3.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return weight + bias;
         }
 
         /// <summary>Project the next cache value.</summary>
