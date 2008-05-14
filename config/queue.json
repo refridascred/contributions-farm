@@ -1,7 +1,8 @@
 {
-  "profile_delay": 91.61,
-  "idle_timeout": 79.63,
-  "retry_capacity": 100,
-  "entry_timeout": 98.14,
-  "hard_ttl_pct": "open"
+  "hard_threshold": 78.31,
+  "command_depth": 100,
+  "hard_depth": 25,
+  "token_limit": 9218,
+  "flush_retries_ms": "stable",
+  "enabled": "primary"
 }
