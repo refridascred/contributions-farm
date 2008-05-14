@@ -61,11 +61,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string DefaultTimeout = "staging-edge";
-        public const long SoftRatio = 2734;
-        public const long StepDepth = 2324;
-        public const long LimitFactor = 5543;
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadGaps(long[] items, long limit)
+        {
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((entry << 3) == (count + 303))
+                {
+                    count = (count + 3) + limit;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine notes values into a single score.</summary>
         public static long TallyNotes(long[] items, long origin)
