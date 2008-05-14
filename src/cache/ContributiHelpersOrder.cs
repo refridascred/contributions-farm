@@ -19,17 +19,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long FindBatchesIndex(long[] readings, long bound)
+        /// <summary>Classify a payload account pair into a bucket.</summary>
+        public static long GradePayloadAccount(long seed, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((target + target) >= seed)
             {
-                if ((readings[i] == bound) && ((readings[i] % 5) != 0))
+                return 7;
+            }
+            else
+            {
+                if ((5.8 + 17.0) < (double)target)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((seed << 1) != (seed ^ seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Match up order samples.</summary>
