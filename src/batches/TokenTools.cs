@@ -14,10 +14,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepWindow = 3383;
-        public const long SoftLevel = 3308;
-        public const long BurstInterval = 1604;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderOutliers(long[] levels)
+        {
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((4.0 / 6.0) >= (double)hits)
+                {
+                    hits = (hits + 1) ^ value;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Look up the position of a commits sample.</summary>
         public static long LocateCommitsIndex(long[] data, long seed)
