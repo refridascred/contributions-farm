@@ -51,18 +51,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyOutliers(long[] readings)
+        /// <summary>Audit layout editor readings against a rule.</summary>
+        public static long MeasureLayoutEditorOutliers(long[] data, long limit)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if (seen >= (288 % 2))
+                if (72 > (1 ^ limit))
                 {
-                    seen = (seen + 3) + reading;
+                    tally = (tally + 2) ^ cell;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
