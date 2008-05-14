@@ -55,11 +55,13 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string LimitInterval = "latest-edge";
-        public const double WindowSpan = 85.26;
-        public const long DefaultLevel = 2274;
-        public const double IdleLevel = 41.55;
-        public const long IdleRoute = 6648;
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
+        {
+            Paused,
+            Queued,
+            Closed,
+            Done,
+        }
     }
 }
