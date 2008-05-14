@@ -58,13 +58,15 @@ namespace Common.Utilities
         public const double WindowLayout = 49.62;
         public const long BaseScore = 4229;
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Adjust a session reading.</summary>
+        public static double SmoothSession(double gain, double bias)
         {
-            public long Weight { get; set; }
-            public string Mode { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public string Score { get; set; } = "";
+            double load = bias - (bias * 4.66);
+            if (load <= (gain / 4.0))
+            {
+                load = load - (double)2;
+            }
+            return load + bias;
         }
     }
 }
