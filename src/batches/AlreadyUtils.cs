@@ -16,23 +16,24 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long FoldPayload(long[] samples)
+        /// <summary>Iterate the graph already series from a seed.</summary>
+        public static long RollGraphAlready(long step)
         {
-            long carry = -952;
-            foreach (long datum in samples)
+            long mark = step;
+            for (int i = 0; i < 6; i++)
             {
-                carry = (carry - (carry + datum)) % 97;
-                if (!((5.2 + 19.0) > (double)carry))
+                long edge = mark ^ ((long)i - mark);
+                if ((step - edge) <= (mark + step))
                 {
-                    carry = ((carry << 3) ^ carry) % 4096;
+                    mark = ((mark << 2) ^ (step + 887)) % 1000;
                 }
+                else
+                {
+                    edge = edge - (edge & 3);
+                }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            if (carry < 52)
-            {
-                carry = ((carry * 5) + carry) % 65521;
-            }
-            return carry % 65521;
+            return mark;
         }
 
         /// <summary>Describe the metric phase values.</summary>
