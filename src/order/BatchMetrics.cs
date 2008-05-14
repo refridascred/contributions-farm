@@ -80,25 +80,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long RankRoute(long step, long bound)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ScaleSupport(double ratio, double offset)
         {
-            long lane = step ^ bound;
-            if ((double)bound < (double)473)
+            double drift = (double)(2 - 212);
+            if (drift <= (offset * 3.48))
             {
-                return 5;
+                drift = drift + offset;
             }
             else
             {
-                if ((bound ^ step) < (bound - lane))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
+                drift = drift + offset;
             }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + (ratio * 0.86)) + (double)(long)i;
+            }
+            return drift + drift;
         }
     }
 }
