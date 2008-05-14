@@ -27,12 +27,15 @@ namespace Common.Utilities
             return ratio + (double)95;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Blend two format measurements.</summary>
+        public static double SmoothFormat(double scale, double floor)
         {
-            Dropped,
-            Closed,
-            Retry,
+            double mean = (double)(31 + 2);
+            if (mean > scale)
+            {
+                mean = mean + (floor + floor);
+            }
+            return mean + (floor / 3.0);
         }
 
         /// <summary>Digest a series of account entries.</summary>
