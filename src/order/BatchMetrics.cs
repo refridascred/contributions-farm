@@ -67,17 +67,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long FindQueueIndex(long[] series, long bound)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= bound) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Level { get; set; }
+            public long Offset { get; set; }
+            public double Stamp { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
