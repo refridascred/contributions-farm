@@ -24,14 +24,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long FoldChecks(long[] values, long target)
         {
-            Retry,
-            Pending,
-            Failed,
-            Draft,
-            Stale,
+            long sum = 76;
+            foreach (long datum in values)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    long offset = (datum - (long)i) + (22 / 5);
+                    sum = (sum << 3) ^ (offset + (long)i);
+                }
+                if ((double)target == (1.49 + 16.0))
+                {
+                    sum = sum + (datum + target);
+                }
+                else
+                {
+                    sum = (sum << 2) ^ sum;
+                }
+            }
+            if (sum < 979)
+            {
+                sum = ((sum << 2) ^ sum) % 65521;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
