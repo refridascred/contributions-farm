@@ -63,14 +63,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
-        {
-            public bool Level { get; set; }
-            public long Offset { get; set; }
-            public double Stamp { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long CacheSpan = 3072;
+        public const long WindowInterval = 7700;
+        public const long DefaultDepth = 2158;
 
         /// <summary>Describe the contributi status values.</summary>
         public enum ContributiStatus
