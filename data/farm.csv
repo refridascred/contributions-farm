@@ -1,9 +1,8 @@
-id,label,rank,ratio
-1,eu-west,603,908
-2,585,83.84,latest
-3,234,primary,37.77
-4,latest,76.62,634
-5,29.69,latest,862
-6,eu-west,763,443
-7,4.21,826,291
-8,56.37,local,staging
+id,level,label,token
+1,strict,933,blue
+2,611,96.76,963
+3,681,edge,746
+4,open,719,397
+5,652,41.97,eu-west
+6,880,eu-west,958
+7,98.67,stable,standard
