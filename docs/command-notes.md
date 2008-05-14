@@ -1,13 +1,16 @@
 # Command notes
 
-The graph report groups every buffer by metrics.
-Each record is validated before it reaches the support queue.
+Run the support check before changing any stream limits.
+Each account is validated before it reaches the schema queue.
+Keep format and account names short and lowercase.
 
-Use cache settings to tune how often queue data is refreshed.
-Each format is validated before it reaches the metric queue.
+The editor module keeps window values in sync with the checks cache.
+Defaults for filter live in the config folder and can be overridden per environment.
+The cache module keeps metric values in sync with the account cache.
 
 ## Guidelines
 
-- Document new payload fields
-- Log every account change
-- Review order limits each release
+- Document new account fields
+- Validate contributi input early
+- Review farm limits each release
+- Log every payload change
