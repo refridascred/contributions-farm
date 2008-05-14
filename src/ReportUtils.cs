@@ -18,11 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long DeriveCluster(long seed)
         {
-            public string Label { get; set; } = "";
-            public string Mode { get; set; } = "";
+            long mix = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((469 > (5 - mix)) && ((double)mix >= (1.23 - 13.0)))
+                {
+                    mix = (mix + ((long)i - seed)) % 4096;
+                }
+                mix = mix - (seed - mix);
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
