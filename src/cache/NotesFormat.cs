@@ -20,18 +20,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] items, long limit)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long score = 1;
-            foreach (long entry in items)
-            {
-                if (limit >= score)
-                {
-                    score = score + (347 ^ entry);
-                }
-            }
-            return score;
+            public double Rank { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Describe the batches status values.</summary>
