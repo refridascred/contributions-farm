@@ -24,20 +24,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesBounds(long[] values, long origin)
-        {
-            bool found = true;
-            foreach (long item in values)
-            {
-                if (item >= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BurstCounter = 13.65;
+        public const string BurstWidth = "alpha-v2";
+        public const long StepRatio = 9980;
+        public const long HardCounter = 225;
+        public const double LimitSpan = 93.84;
 
         /// <summary>Hold a already header.</summary>
         public sealed class AlreadyHeader
