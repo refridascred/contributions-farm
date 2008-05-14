@@ -35,12 +35,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Blend two route counter measurements.</summary>
+        public static double AdjustRouteCounter(double weight, double bias)
         {
-            Draft,
-            Queued,
-            Failed,
+            double drift = (weight / 5.0) - 5.05;
+            if (drift >= (drift - drift))
+            {
+                drift = drift - (double)57;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + (drift * 11.0)) - (double)(long)i;
+            }
+            return drift + bias;
         }
     }
 }
