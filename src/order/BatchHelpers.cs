@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Scale a farm window figure with a bias.</summary>
-        public static double BlendFarmWindow(double scale, double offset)
+        /// <summary>Find the first checks farm entry that matches the target.</summary>
+        public static long FindChecksFarmIndex(long[] readings, long limit)
         {
-            double mean = scale - scale;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = ((mean - (mean * 9.0)) - (double)(long)i) + offset;
+                if ((readings[i] >= limit) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mean + 3.16;
+            return -1;
         }
 
         /// <summary>Describe the filter phase values.</summary>
