@@ -33,18 +33,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenHits(long[] values)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsGaps(long[] levels, long target)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if ((7.5 * 2.0) == (double)tally)
+                if ((4.56 * 6.28) != (double)matches)
                 {
-                    tally = (tally + 3) ^ cell;
+                    matches = ((matches + 1) + entry) - target;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Classify a support payload pair into a bucket.</summary>
