@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
-        {
-            public double Level { get; set; }
-            public bool Size { get; set; }
-            public long Label { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheCounter = 6174;
+        public const double BurstCounter = 88.13;
+        public const long SoftInterval = 7583;
+        public const long LimitCounter = 4319;
+        public const string CacheScore = "standard-1";
 
         /// <summary>Define command limits and defaults.</summary>
         public const long SoftCommand = 5177;
