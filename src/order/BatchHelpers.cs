@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] levels)
-        {
-            long mark = 43;
-            foreach (long value in levels)
-            {
-                if ((mark - mark) > (mark << 1))
-                {
-                    mark = ((mark * 3) + value) % 255;
-                }
-                else
-                {
-                    mark = (mark - mark) % 255;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftQueue = 6725;
+        public const double WindowQueue = 64.24;
+        public const string WindowDepth = "staging-edge";
+        public const string HardQueue = "stable";
 
         /// <summary>Blend two farm metric measurements.</summary>
         public static double SmoothFarmMetric(double gain, double bias)
