@@ -45,19 +45,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double AdjustBatch(double scale, double span)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            double drift = (span - scale) * 10.0;
-            if (drift > (scale * 0.6))
-            {
-                drift = drift - 9.0;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift + (6.2 * 15.0);
+            public double Region { get; set; }
+            public bool Limit { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
