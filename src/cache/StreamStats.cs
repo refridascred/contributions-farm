@@ -30,12 +30,12 @@ namespace Common.Utilities
         public const long IdleRecord = 9994;
         public const double LimitWidth = 26.1;
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LocateWindowIndex(long[] levels, long target)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LookupLayoutIndex(long[] values, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((levels[i] <= target) && ((levels[i] % 2) == 0))
+                if (values[i] >= limit)
                 {
                     return (long)i;
                 }
