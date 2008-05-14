@@ -23,16 +23,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TallyEntry(long[] levels)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long FindCommandIndex(long[] series, long limit)
         {
-            long total = -8;
-            foreach (long item in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                total = ((total - total) % 65521) ^ item;
-                total = (total * 4) + (total - total);
+                if ((series[i] <= limit) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
