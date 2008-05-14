@@ -1,7 +1,5 @@
 {
-  "idle_threshold_pct": 62,
-  "soft_threshold_ms": "staging",
-  "cache_timeout_s": 21,
-  "enabled": 2120,
-  "hard_size": "cached"
+  "enabled": false,
+  "profile_depth": 95,
+  "max_window_count": "strict"
 }
