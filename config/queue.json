@@ -1,8 +1,30 @@
 {
-  "default_timeout": 47.07,
-  "batches_threshold": false,
-  "base_delay": 15.33,
-  "persist": false,
-  "default_delay_ms": "standard",
-  "cache_capacity": true
+  "profile_retries": "staging",
+  "warm_delay_s": 33.53,
+  "cache_delay_count": 24.54,
+  "enabled": {
+    "warm_timeout": {
+      "profile_depth": "cached",
+      "counter_ratio": 51.09,
+      "cache_delay_pct": "local"
+    },
+    "soft_timeout_count": 31.06,
+    "default_capacity": {
+      "readonly": 4332,
+      "metrics_timeout": 8935,
+      "batch_timeout_s": "edge",
+      "cache_size": "cached",
+      "default_capacity_count": "cached",
+      "sync_interval_count": 56
+    },
+    "sync_capacity_pct": "blue",
+    "max_ratio_pct": "fallback",
+    "channel_size": "blue"
+  },
+  "audit": {
+    "verbose": "primary",
+    "hard_delay_s": "fallback",
+    "warm_timeout_ms": 4744,
+    "strict": false
+  }
 }
