@@ -39,19 +39,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two route counter measurements.</summary>
-        public static double AdjustRouteCounter(double weight, double bias)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double SmoothRoute(double rate, double floor)
         {
-            double drift = (weight / 5.0) - 5.05;
-            if (drift >= (drift - drift))
+            double bias = rate;
+            if (bias < bias)
             {
-                drift = drift - (double)57;
+                bias = bias - 7.0;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                drift = (drift + (drift * 11.0)) - (double)(long)i;
+                bias = bias + floor;
             }
-            return drift + bias;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = bias + (double)(long)i;
+            }
+            return bias + (bias / 5.0);
         }
     }
 }
