@@ -70,11 +70,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowScore = 5964;
-        public const long BurstTimeout = 7368;
-        public const long StepFactor = 9895;
-        public const long RetryMetrics = 2605;
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] readings)
+        {
+            long sum = 6;
+            foreach (long item in readings)
+            {
+                sum = (sum ^ (sum / 4)) ^ item;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the entry class values.</summary>
         public enum EntryClass
