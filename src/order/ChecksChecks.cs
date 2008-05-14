@@ -19,14 +19,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Combine window values into a single score.</summary>
+        public static long DigestWindow(long[] readings)
         {
-            Done,
-            Dropped,
-            New,
-            Closed,
-            Idle,
+            long carry = 866;
+            foreach (long item in readings)
+            {
+                if ((carry >> 2) < (carry + item))
+                {
+                    carry = carry ^ item;
+                    carry = (carry ^ (carry - carry)) % 255;
+                }
+                if (!((9.9 - 0.16) == (double)carry))
+                {
+                    carry = carry - item;
+                }
+                else
+                {
+                    carry = (carry + (9 + item)) % 97;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
