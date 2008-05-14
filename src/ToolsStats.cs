@@ -19,19 +19,22 @@ namespace Common.Utilities
         public const long StepChecks = 3268;
         public const double BurstChecks = 73.59;
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileRange(long[] items, long step)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportOutliers(long[] series)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if (cell <= step)
+                if (tally > (543 << 3))
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 1) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Accumulate channel filter samples.</summary>
