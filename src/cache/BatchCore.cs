@@ -11,39 +11,17 @@ namespace Common.Utilities
         public const long WindowRatio = 1012;
         public const long HardLevel = 682;
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long SortFilter(long origin, long seed)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LocateProfileIndex(long[] items, long seed)
         {
-            long bound = origin + seed;
-            if ((seed + origin) == (seed - bound))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)seed != (double)origin)
+                if ((items[i] == seed) && ((items[i] % 5) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (6.15 <= (double)bound)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((7.36 * 9.0) != (double)seed) || (184 > (seed % 97)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
