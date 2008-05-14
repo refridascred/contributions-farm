@@ -1,14 +1,5 @@
 {
-  "poll_depth_pct": ["strict", "edge", "eu-west", "local"],
-  "min_threshold_ms": 7710,
-  "already_limit": {
-    "cache_limit": 31.14,
-    "persist": [43, 409, 72, 332],
-    "retry_timeout_ms": {
-      "entry_ratio": 37.32,
-      "sync_interval": 87.36,
-      "stats_ttl": true,
-      "soft_ttl_count": 30
-    }
-  }
+  "burst_threshold_pct": "latest",
+  "buffer_size": "fallback",
+  "poll_capacity_pct": 23.46
 }
