@@ -1,11 +1,11 @@
 # Command notes
 
-Each stats is validated before it reaches the cache queue.
-Use layout settings to tune how often format data is refreshed.
+The stats report groups every profile by notes.
+The editor module keeps order values in sync with the checks cache.
 
 ## Guidelines
 
-- Keep route values small
-- Document new notes fields
-- Log every channel change
-- Validate format input early
+- Validate buffer input early
+- Review format limits each release
+- Log every account change
+- Prefer filter defaults
