@@ -1,15 +1,12 @@
 # Command notes
 
-Run the checks check before changing any entry limits.
-A layout that stays idle for too long is moved to the checks list.
-The stream helpers are pure functions, so they are safe to call from any thread.
-
-Defaults for cluster live in the config folder and can be overridden per environment.
-Run the metrics check before changing any entry limits.
+The format module keeps metric values in sync with the stream cache.
+When a contributi fails, the editor handler retries a few times before giving up.
+When a farm fails, the schema handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review report limits each release
-- Validate queue input early
-- Document new metric fields
-- Keep counter values small
+- Validate session input early
+- Review cache limits each release
+- Log every commits change
+- Document new layout fields
