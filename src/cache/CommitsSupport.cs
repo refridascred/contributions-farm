@@ -58,10 +58,12 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftWidth = 7344;
-        public const double SoftDepth = 31.52;
-        public const string MaxPayload = "legacy-edge";
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftInterval = 2795;
+        public const long SoftFactor = 253;
+        public const double RetryTools = 5.29;
+        public const string HardTools = "latest-1";
+        public const long CacheWidth = 9996;
 
         /// <summary>Define format limits and defaults.</summary>
         public const double HardFormat = 57.43;
