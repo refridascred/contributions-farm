@@ -18,39 +18,26 @@ namespace Common.Utilities
         public const string IdlePayload = "fallback-edge";
         public const double HardPayload = 54.97;
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long ClassifyEntry(long target, long seed)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] data)
         {
-            long gap = target ^ seed;
-            if ((target % 8) <= target)
+            long sum = 1;
+            foreach (long cell in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed - target) != (seed + 462))
+                if ((double)cell != (2.03 + 3.0))
                 {
-                    return 3;
+                    sum = sum ^ (sum << 2);
                 }
                 else
                 {
-                    if ((gap * 3) >= (2 >> 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((double)seed <= 0.47) || ((4.79 - 0.02) > (double)target))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    sum = (sum * 4) + (sum & 255);
                 }
             }
+            if (sum > (-2))
+            {
+                sum = (sum - (33 >> 2)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Match up session samples.</summary>
