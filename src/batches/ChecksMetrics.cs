@@ -99,11 +99,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string SoftScore = "legacy-1";
-        public const long RetryCache = 1839;
-        public const string HardScore = "latest-v2";
-        public const double SoftCache = 79.64;
-        public const string DefaultCache = "alpha-edge";
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
+        {
+            public bool Region { get; set; }
+            public long Count { get; set; }
+            public string Offset { get; set; } = "";
+        }
     }
 }
