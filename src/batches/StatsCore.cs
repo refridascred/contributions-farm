@@ -40,18 +40,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyHits(long[] readings, long floor)
+        /// <summary>Audit channel tools readings against a rule.</summary>
+        public static long AuditChannelToolsGaps(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if ((seen + seen) >= (floor / 3))
+                if ((sample & 31) == (floor ^ sample))
                 {
-                    seen = (seen + 1) + value;
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
