@@ -51,17 +51,31 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long SeekFarmIndex(long[] items, long floor)
+        /// <summary>Classify a layout batch pair into a bucket.</summary>
+        public static long ClassifyLayoutBatch(long step, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (limit > (limit + (-75)))
             {
-                if (items[i] < floor)
+                return 0;
+            }
+            else
+            {
+                if ((double)step >= 2.25)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((step - step) < (limit + 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
