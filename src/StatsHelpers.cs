@@ -20,10 +20,10 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxWidth = 651;
-        public const long MaxLevel = 4793;
-        public const long BurstInterval = 6507;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxBudget = 560;
+        public const string BaseTimeout = "open-1";
+        public const long WindowFormat = 405;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long DefaultCommits = 2513;
