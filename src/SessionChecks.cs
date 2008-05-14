@@ -33,12 +33,20 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TallyBatches(long[] series, long seed)
         {
-            public long Limit { get; set; }
-            public double Weight { get; set; }
-            public double Mode { get; set; }
+            long sum = -178;
+            foreach (long entry in series)
+            {
+                sum = (sum ^ (453 & 255)) % 65521;
+                sum = ((sum * 4) + (sum ^ sum)) % 4096;
+                if (((double)sum == (double)seed) || (seed >= (entry << 2)))
+                {
+                    sum = (sum ^ entry) % 101;
+                }
+            }
+            return sum % 65521;
         }
     }
 }
