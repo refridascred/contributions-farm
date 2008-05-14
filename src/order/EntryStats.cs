@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TotalContributi(long[] series)
+        /// <summary>Locate a graph commits reading by value.</summary>
+        public static long LocateGraphCommitsIndex(long[] levels, long seed)
         {
-            long mark = 87;
-            foreach (long cell in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((cell + 743) <= cell)
+                if ((levels[i] > seed) && ((levels[i] % 2) != 0))
                 {
-                    mark = mark ^ (cell + cell);
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
