@@ -31,14 +31,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Match up buffer stream samples.</summary>
+        public static long OverlapBufferStreamCount(long[] readings)
         {
-            Retry,
-            Stale,
-            Done,
-            Locked,
-            Active,
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
