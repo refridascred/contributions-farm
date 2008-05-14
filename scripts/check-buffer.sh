@@ -6,9 +6,24 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=77
-log "limit is ${BUFFER_LIMIT}"
-
-for item in local latest blue strict; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 1))
 done
+log "total ${total}"
+
+mode="${1:-local}"
+case "${mode}" in
+    green)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
