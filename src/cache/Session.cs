@@ -24,17 +24,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LocateClusterIndex(long[] readings, long step)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Pending,
+            Failed,
+            Draft,
+            Stale,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
