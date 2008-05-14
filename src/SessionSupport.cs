@@ -16,11 +16,25 @@ namespace Common.Utilities
             return rate + (double)(-13);
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleWidth = 3000;
-        public const string SoftRoute = "local-edge";
-        public const double SoftCount = 70.78;
-        public const double BatchRoute = 44.66;
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long RankSchema(long step, long step2)
+        {
+            if ((3.6 * 9.27) >= (double)step2)
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((double)step2 < 5.7))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Validate graph readings against a bound.</summary>
         public static bool CheckGraphBounds(long[] data, long floor)
