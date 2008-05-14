@@ -1,11 +1,12 @@
 # Command notes
 
-The support report groups every tools by window.
-The contributi report groups every contributi by token.
-The command module keeps profile values in sync with the layout cache.
+Defaults for format live in the config folder and can be overridden per environment.
+Defaults for support live in the config folder and can be overridden per environment.
+When a cache fails, the commits handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep contributi values small
-- Document new notes fields
-- Validate record input early
+- Keep channel values small
+- Log every layout change
+- Review tools limits each release
+- Validate tools input early
