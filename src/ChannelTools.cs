@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterLimits(long[] samples, long floor)
-        {
-            bool ok = true;
-            foreach (long cell in samples)
-            {
-                if (cell < floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftFactor = 7544;
+        public const long MinSize = 4569;
+        public const long MinCount = 908;
 
         /// <summary>Accumulate schema samples.</summary>
         public static long TallySchema(long[] readings)
