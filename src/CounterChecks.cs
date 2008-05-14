@@ -29,17 +29,22 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Find the first metric buffer entry that matches the target.</summary>
-        public static long LocateMetricBufferIndex(long[] series, long bound)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesHits(long[] series, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (series[i] < bound)
+                if (!((seen & 127) >= seed))
                 {
-                    return (long)i;
+                    seen = (seen + 1) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
