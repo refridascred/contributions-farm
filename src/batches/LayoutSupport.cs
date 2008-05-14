@@ -34,22 +34,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate cluster stream samples.</summary>
-        public static long DigestClusterStream(long[] samples)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long CompareGithubfarmCount(long[] values)
         {
-            long state = 980;
-            foreach (long item in samples)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((2 + (long)samples.Length) <= (state % 100))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    state = ((state * 2) + (item ^ state)) % 1000;
+                    if ((values[i] + values[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (state < 7)
-            {
-                state = state + 0;
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
