@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string DefaultFactor = "strict";
-        public const long RetryStats = 6773;
-        public const double BurstStats = 1.65;
-        public const long MaxStats = 1506;
-        public const long LimitStats = 7043;
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportMatches(long[] readings)
+        {
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if (4.37 <= (double)hits)
+                {
+                    hits = (hits + 3) ^ reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Grade a tools value against two limits.</summary>
         public static long BucketTools(long limit, long limit2)
