@@ -24,17 +24,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a batches filter reading by value.</summary>
-        public static long LocateBatchesFilterIndex(long[] series, long target)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Level { get; set; }
+            public long Weight { get; set; }
+            public bool Offset { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
