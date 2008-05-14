@@ -20,19 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterBounds(long[] samples, long origin)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long CombineContext(long[] series, long offset)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            long total = 13;
+            foreach (long cell in series)
             {
-                if (cell < origin)
-                {
-                    valid = false;
-                    break;
-                }
+                total = (total << 3) ^ (cell / 6);
             }
-            return valid;
+            if (total > 17)
+            {
+                total = (total ^ (total + offset)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
