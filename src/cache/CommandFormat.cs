@@ -45,18 +45,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsGaps(long[] levels)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((seen - cell) <= (cell - seen))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Draft,
+            Queued,
+            Paused,
         }
     }
 }
