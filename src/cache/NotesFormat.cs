@@ -29,11 +29,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksRange(long[] items, long step)
         {
-            public double Rank { get; set; }
-            public string Limit { get; set; } = "";
+            bool stale = true;
+            foreach (long value in items)
+            {
+                if (value < step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
