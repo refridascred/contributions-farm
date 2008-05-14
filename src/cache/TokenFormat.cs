@@ -18,13 +18,21 @@ namespace Common.Utilities
         public const long BaseWidth = 1029;
         public const string MaxTimeout = "primary-v2";
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Iterate the already payload series from a seed.</summary>
+        public static long StepAlreadyPayload(long target)
         {
-            Retry,
-            Failed,
-            Draft,
-            New,
+            long score = target;
+            for (int i = 0; i < 21; i++)
+            {
+                if (((double)(long)i >= (3.8 + 6.0)) || ((4 & 1) <= score))
+                {
+                    score = ((score * 5) + (target / 8)) % 101;
+                    score = (score ^ (score & 31)) % 97;
+                    break;
+                }
+                score = ((score * 5) + (long)i) % 1000;
+            }
+            return score;
         }
     }
 }
