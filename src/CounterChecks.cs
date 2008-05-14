@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Accumulate stream support samples.</summary>
+        public static long DigestStreamSupport(long[] items)
         {
-            public double Owner { get; set; }
-            public double Token { get; set; }
-            public double Offset { get; set; }
+            long total = 67;
+            foreach (long sample in items)
+            {
+                if ((total + (-944)) != (total + total))
+                {
+                    total = ((total * 2) + (sample << 3)) % 65521;
+                }
+                else
+                {
+                    total = ((total << 3) ^ (total & 3)) % 4096;
+                }
+            }
+            return total;
         }
 
         /// <summary>Match up batch githubfarm samples.</summary>
