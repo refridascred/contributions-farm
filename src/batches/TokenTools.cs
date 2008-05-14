@@ -14,18 +14,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderOutliers(long[] levels)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteGaps(long[] data)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if ((4.0 / 6.0) >= (double)hits)
+                if (!((entry & 127) <= 64))
                 {
-                    hits = (hits + 1) ^ value;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
