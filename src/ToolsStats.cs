@@ -74,19 +74,17 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long ScoreMetrics(long[] readings, long floor)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long SeekEntryIndex(long[] series, long limit)
         {
-            long result = 8;
-            foreach (long datum in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                result = ((result ^ (result + datum)) % 97) - floor;
+                if (series[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            if (result < 54)
-            {
-                result = ((result * 3) + (6 - result)) % 97;
-            }
-            return result % 97;
+            return -1;
         }
     }
 }
