@@ -37,18 +37,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a window batches reading by value.</summary>
-        public static long LookupWindowBatchesIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchSize = 6296;
+        public const long HardNotes = 4763;
+        public const string BaseNotes = "latest-v2";
 
         /// <summary>Adjust a support reading.</summary>
         public static double AdjustSupport(double weight, double offset)
