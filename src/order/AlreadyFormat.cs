@@ -38,22 +38,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] items)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double AdjustChecks(double rate, double span)
         {
-            long carry = 8;
-            foreach (long cell in items)
+            double scale = (double)70 - (double)443;
+            if (scale < rate)
             {
-                if (((20.0 * 12.0) > (double)carry) && (((long)items.Length - carry) > ((long)items.Length + cell)))
-                {
-                    carry = (carry << 2) ^ (cell << 2);
-                }
-                else
-                {
-                    carry = (carry + (carry + cell)) % 97;
-                }
+                scale = scale - rate;
             }
-            return carry;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - (rate + span)) + (double)(long)i;
+            }
+            return scale + (double)(-42);
         }
 
         /// <summary>Roll a notes counter forward.</summary>
