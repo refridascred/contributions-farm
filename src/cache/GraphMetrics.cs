@@ -36,15 +36,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Blend two account route measurements.</summary>
-        public static double ScaleAccountRoute(double ratio, double floor)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterGaps(long[] data)
         {
-            double load = floor / 6.0;
-            if (load >= floor)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                load = (load + (double)49) - ratio;
+                if ((3 << 2) == (matches / 8))
+                {
+                    matches = (matches + 1) + cell;
+                }
             }
-            return load + (floor / 9.0);
+            return matches;
         }
 
         /// <summary>Count the token order entries that pass the check.</summary>
