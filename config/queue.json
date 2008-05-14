@@ -1,11 +1,6 @@
 {
-  "retry_depth_count": ["staging", "local", "cached"],
-  "cache_limit": true,
-  "report_capacity": {
-    "flush_retries_count": [103, 226, 433, 372],
-    "account_depth": ["open", "local", "local", "edge"],
-    "stream_delay": 3730
-  },
-  "verbose": "staging",
-  "flush_threshold_s": 31.31
+  "hard_interval_ms": 3728,
+  "warm_retries_count": "latest",
+  "entry_ttl": "local",
+  "default_size": "standard"
 }
