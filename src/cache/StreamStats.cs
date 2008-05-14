@@ -13,24 +13,10 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double BlendCommits(double ratio, double span)
-        {
-            double gain = (double)(61 >> 3);
-            if (gain > (double)384)
-            {
-                gain = gain + (double)(-8);
-            }
-            else
-            {
-                gain = gain + (span * 9.02);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain - ratio) + (double)(long)i;
-            }
-            return gain + (6.98 * 3.61);
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstLevel = 4040;
+        public const string IdlePayload = "fallback-edge";
+        public const double HardPayload = 54.97;
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long ClassifyEntry(long target, long seed)
