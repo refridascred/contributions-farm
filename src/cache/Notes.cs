@@ -64,12 +64,15 @@ namespace Common.Utilities
         public const string BurstEntry = "local-1";
         public const string WindowEntry = "strict";
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Roll a payload stats counter forward.</summary>
+        public static long StepPayloadStats(long bound)
         {
-            Queued,
-            New,
-            Synced,
+            long score = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
         }
     }
 }
