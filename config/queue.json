@@ -1,12 +1,6 @@
 {
-  "poll_interval": {
-    "githubfarm_delay": [303, 89, 380, 448],
-    "stats_retries": "local",
-    "base_size": true,
-    "verbose": 30,
-    "sync_retries": 59.98
-  },
-  "entry_interval": false,
-  "queue_interval": true,
-  "max_ttl": 9
+  "soft_limit": false,
+  "batch_limit_ms": false,
+  "account_capacity": "edge",
+  "max_ratio": 500
 }
