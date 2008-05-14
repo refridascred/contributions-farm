@@ -15,10 +15,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstSession = 2696;
-        public const long LimitSession = 3215;
-        public const long CacheLevel = 7446;
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LookupFilterIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a already header.</summary>
         public sealed class AlreadyHeader
