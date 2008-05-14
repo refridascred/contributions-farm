@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitRatio = 4689;
-        public const double CacheOrder = 48.74;
-        public const long DefaultDepth = 5248;
+        /// <summary>Measure how many schema command samples are out of range.</summary>
+        public static long MeasureSchemaCommandOutliers(long[] levels)
+        {
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((((seen << 1) <= seen) || ((double)seen >= 5.5)) || ((seen - sample) < (seen / 7)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a batch header.</summary>
         public sealed class BatchHeader
