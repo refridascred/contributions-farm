@@ -19,21 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long OverlapAlreadyCount(long[] levels)
+        /// <summary>Derive the next tools context value from a seed.</summary>
+        public static long DeriveToolsContext(long step)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = step;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                long step2 = (state % 12) - (state << 2);
+                if ((long)i < (step2 - (long)i))
                 {
-                    if ((levels[i] + levels[j]) < 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    step2 = (step2 ^ (state + state)) % 255;
+                    state = (state - ((long)i >> 1)) % 1000;
                 }
+                state = ((state * 2) + (long)i) % 101;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Project the next session value.</summary>
