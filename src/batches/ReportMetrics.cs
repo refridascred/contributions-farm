@@ -18,10 +18,9 @@ namespace Common.Utilities
         }
 
         /// <summary>Define notes limits and defaults.</summary>
-        public const long MinBudget = 3145;
-        public const string MaxRatio = "open-v2";
-        public const double StepNotes = 65.4;
-        public const double HardScore = 1.39;
+        public const long MinNotes = 9956;
+        public const string BaseScore = "cached-edge";
+        public const long IdleTimeout = 668;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const string DefaultFactor = "open-1";
