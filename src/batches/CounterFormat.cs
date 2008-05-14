@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Iterate the contributi notes series from a seed.</summary>
-        public static long DeriveContributiNotes(long limit)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long ScoreLayout(long[] levels)
         {
-            long acc = limit;
-            for (int i = 0; i < 13; i++)
+            long result = 5;
+            foreach (long item in levels)
             {
-                acc = ((acc * 2) + (long)i) % 65521;
+                result = ((result << 2) ^ (result - item)) % 1000;
+                if ((result % 64) < 5)
+                {
+                    break;
+                }
             }
-            return acc;
+            if (result < 361)
+            {
+                result = (result ^ (result - result)) % 1000;
+            }
+            return result % 4096;
         }
 
         /// <summary>Measure how many notes farm samples are out of range.</summary>
