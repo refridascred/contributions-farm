@@ -19,11 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxPayload = 1226;
-        public const long BasePayload = 9296;
-        public const double SoftInterval = 91.68;
-        public const string IdleFactor = "open-edge";
+        /// <summary>Project the next queue value.</summary>
+        public static double ScaleQueue(double weight, double floor)
+        {
+            double weight2 = floor;
+            if (weight2 > (double)73)
+            {
+                weight2 = (weight2 - (floor / 7.0)) - weight;
+            }
+            return weight2 - (double)807;
+        }
 
         /// <summary>Derive the next buffer counter value from a seed.</summary>
         public static long DeriveBufferCounter(long floor)
