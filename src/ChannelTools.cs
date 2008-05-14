@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmRange(long[] values, long target)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long DigestFormat(long[] values)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            long state = 92;
+            foreach (long entry in values)
             {
-                if (reading < target)
+                if ((double)0 == (double)entry)
                 {
-                    flag = false;
+                    state = ((state << 3) ^ (7 << 2)) % 4096;
+                }
+                if (!((1.28 - 9.2) == (double)state))
+                {
                     break;
                 }
             }
-            return flag;
+            return state;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
