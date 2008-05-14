@@ -1,11 +1,6 @@
 {
-  "poll_limit_ms": "latest",
-  "schema_ttl": {
-    "soft_size": "cached",
-    "enabled": "fallback",
-    "hard_ttl_pct": "staging",
-    "max_threshold_ms": "primary"
-  },
-  "batch_ttl": false,
-  "verbose": 1024
+  "cache_interval": "latest",
+  "persist": "open",
+  "dry_run": true,
+  "warm_retries_s": 2739
 }
