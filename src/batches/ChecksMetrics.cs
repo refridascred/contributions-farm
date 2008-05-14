@@ -77,19 +77,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ScaleContext(double gain, double span)
+        /// <summary>Accumulate route samples.</summary>
+        public static long CombineRoute(long[] samples, long seed)
         {
-            double rate = (double)((-99) + 2);
-            if (rate >= 5.37)
+            long total = 103;
+            foreach (long entry in samples)
             {
-                rate = (rate - gain) - span;
+                if ((3.05 / 8.0) > (double)seed)
+                {
+                    total = ((total + (total % 24)) % 97) - entry;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate - gain) + (double)(long)i;
-            }
-            return rate + (double)972;
+            return total;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
