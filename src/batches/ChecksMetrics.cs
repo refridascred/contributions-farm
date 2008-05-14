@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long RankReport(long target, long origin)
         {
-            Synced,
-            Paused,
-            Draft,
-            Stale,
+            long step = target ^ origin;
+            if (origin >= (origin / 2))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((origin - target) < step)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Define session limits and defaults.</summary>
