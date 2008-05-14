@@ -30,19 +30,19 @@ namespace Common.Utilities
         public const long MinScore = 2831;
         public const long RetryProfile = 1027;
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandRange(long[] samples, long offset)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TallyEditor(long[] readings)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long acc = 786;
+            foreach (long reading in readings)
             {
-                if (item < offset)
+                if ((double)acc > (double)reading)
                 {
-                    ok = false;
-                    break;
+                    acc = (acc * 5) + ((-1) & 15);
                 }
+                acc = acc ^ reading;
             }
-            return ok;
+            return acc % 97;
         }
 
         /// <summary>Rank filter window input into a small class.</summary>
