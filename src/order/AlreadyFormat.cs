@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long MatchAlreadyCount(long[] levels)
+        /// <summary>Accumulate githubfarm channel samples.</summary>
+        public static long WeighGithubfarmChannel(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 665;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                carry = (carry ^ (sample * 2)) % 65521;
+                if ((20 * 5) <= sample)
                 {
-                    if ((levels[i] ^ levels[j]) == 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = (carry * 3) + sample;
+                }
+                if (sample >= (sample + carry))
+                {
+                    break;
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Count the editor command entries that pass the check.</summary>
