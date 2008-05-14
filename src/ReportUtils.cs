@@ -60,18 +60,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmOutliers(long[] series)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long RollCluster(long offset)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long sum = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if (!((sample + count) >= (count << 1)))
-                {
-                    count = count + 1;
-                }
+                sum = sum ^ sum;
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return count;
+            return sum;
         }
     }
 }
