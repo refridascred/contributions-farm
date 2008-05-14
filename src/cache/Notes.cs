@@ -58,15 +58,13 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Roll a payload stats counter forward.</summary>
-        public static long StepPayloadStats(long bound)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long score = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
+            Idle,
+            Paused,
+            Active,
+            Retry,
         }
     }
 }
