@@ -36,22 +36,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryMatches(long[] series)
+        /// <summary>Locate a window batches reading by value.</summary>
+        public static long LookupWindowBatchesIndex(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell < (cell - seen))
+                if (items[i] < step)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Adjust a support reading.</summary>
