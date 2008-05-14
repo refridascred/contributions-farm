@@ -28,15 +28,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ProjectProfile(double ratio, double span)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long RollStats(long step)
         {
-            double load = (double)(286 & 7);
-            if (load >= (ratio - ratio))
+            long mark = step;
+            for (int i = 0; i < 23; i++)
             {
-                load = (load - ratio) - span;
+                long seen = (mark - mark) + (mark * 3);
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    mark = (((mark * 3) + seen) % 4096) ^ (long)i2;
+                }
+                seen = (seen ^ seen) % 4096;
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return load + ratio;
+            return mark;
         }
     }
 }
