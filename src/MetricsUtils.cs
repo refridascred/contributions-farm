@@ -43,13 +43,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            Locked,
-            Ready,
-            Dropped,
-            Queued,
+            public double Flag { get; set; }
+            public bool Offset { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
