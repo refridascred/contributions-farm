@@ -43,24 +43,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double SmoothMetric(double gain, double offset)
-        {
-            double bias = (double)6 * 8.6;
-            if (bias >= bias)
-            {
-                bias = (bias - (double)1) + offset;
-            }
-            else
-            {
-                bias = bias - (gain / 7.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias - bias) + (double)(long)i;
-            }
-            return bias - (double)0;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string HardMetric = "stable-1";
+        public const long CacheWidth = 5033;
+        public const long StepTimeout = 2597;
+        public const double DefaultCount = 2.56;
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool ValidateRouteRange(long[] series, long origin)
