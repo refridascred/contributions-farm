@@ -33,14 +33,18 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Count the format counter entries that pass the check.</summary>
+        public static long AuditFormatCounterHits(long[] levels)
         {
-            Idle,
-            Closed,
-            Locked,
-            Draft,
-            Stale,
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((count - 0) >= (count * 5))
+                {
+                    count = (count + 2) - sample;
+                }
+            }
+            return count;
         }
     }
 }
