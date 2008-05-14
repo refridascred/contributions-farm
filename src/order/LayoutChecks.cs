@@ -76,22 +76,12 @@ namespace Common.Utilities
         public const long StepFactor = 9895;
         public const long RetryMetrics = 2605;
 
-        /// <summary>Count the buffer format entries that pass the check.</summary>
-        public static long TallyBufferFormatOutliers(long[] data)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if ((reading > (reading % 10)) || ((reading % 3) < (reading - reading)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Active,
+            New,
+            Queued,
         }
     }
 }
