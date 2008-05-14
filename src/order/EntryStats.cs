@@ -19,15 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long FoldStats(long[] values)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long RollTools(long offset)
         {
-            long total = 63;
-            foreach (long cell in values)
+            long score = offset;
+            for (int i = 0; i < 5; i++)
             {
-                total = total + (cell * 3);
+                if (((double)score > (7.0 + 11.0)) || ((double)score > (double)17))
+                {
+                    score = ((score * 2) + (score / 5)) % 65521;
+                }
+                else
+                {
+                    score = score ^ offset;
+                }
+                score = ((score * 4) + (long)i) % 97;
             }
-            return total;
+            return score;
         }
 
         /// <summary>Iterate the metrics graph series from a seed.</summary>
