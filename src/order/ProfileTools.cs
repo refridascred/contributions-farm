@@ -61,24 +61,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TallyFarm(long[] items)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long sum = -51;
-            foreach (long reading in items)
-            {
-                sum = (sum + (reading - reading)) % 1000;
-                sum = (sum * 4) + (reading << 3);
-                if ((reading - reading) <= (reading ^ sum))
-                {
-                    sum = (sum ^ (sum >> 3)) % 255;
-                }
-            }
-            if (sum < 68)
-            {
-                sum = sum - (sum << 3);
-            }
-            return sum;
+            Closed,
+            Dropped,
+            Failed,
+            Paused,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
