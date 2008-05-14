@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            Queued,
-            Synced,
-            Done,
-            Draft,
-            Failed,
+            public string Limit { get; set; } = "";
+            public double Region { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
