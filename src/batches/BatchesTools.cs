@@ -30,10 +30,18 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitCache = 455;
-        public const long BurstCache = 22;
-        public const double MaxSize = 25.43;
-        public const double IdleCache = 94.76;
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphHits(long[] data)
+        {
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((cell <= (cell & 255)) && (1.0 > (double)cell))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
