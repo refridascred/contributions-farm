@@ -1,6 +1,8 @@
 {
-  "persist": 2096,
-  "metrics_timeout": 50.69,
-  "entry_size": false,
-  "base_delay_count": 2.53
+  "burst_depth": 60,
+  "schema_depth": "latest",
+  "readonly": 54.01,
+  "sync_timeout_count": "stable",
+  "hard_timeout": 1,
+  "min_limit_pct": "primary"
 }
