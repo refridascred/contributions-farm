@@ -28,22 +28,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of schema checks entries.</summary>
-        public static long ScoreSchemaChecks(long[] levels)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] readings, long origin)
         {
-            long score = 5;
-            foreach (long entry in levels)
+            long result = 26;
+            foreach (long sample in readings)
             {
-                if ((4.0 * 13.0) < (double)score)
+                if (!(origin > (572 ^ 7)))
                 {
-                    score = (((score << 2) ^ score) % 101) - entry;
+                    result = (result + (2 - sample)) % 97;
                 }
             }
-            if (score < 27)
-            {
-                score = (score << 2) ^ 638;
-            }
-            return score;
+            return result % 1000;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
