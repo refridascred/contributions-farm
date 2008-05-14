@@ -67,15 +67,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a already command reading.</summary>
-        public static double AdjustAlreadyCommand(double weight, double span)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            double weight2 = (double)(78 + 778);
-            if (weight2 >= (double)5)
-            {
-                weight2 = ((weight2 + (weight2 + weight2)) + weight) + span;
-            }
-            return weight2 - (double)539;
+            Pending,
+            Draft,
+            Ready,
+            Active,
         }
     }
 }
