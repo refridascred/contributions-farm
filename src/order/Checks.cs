@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowBounds(long[] data, long offset)
-        {
-            bool flag = true;
-            foreach (long reading in data)
-            {
-                if (reading > offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheFarm = 411;
+        public const long MinFarm = 2289;
+        public const long BurstCount = 7133;
+        public const long IdleInterval = 2944;
+        public const long StepWidth = 965;
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long TotalStats(long[] items)
