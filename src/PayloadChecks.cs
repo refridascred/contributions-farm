@@ -48,15 +48,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of entry token readings.</summary>
-        public static long ScoreEntryToken(long[] items)
+        /// <summary>Locate a schema githubfarm reading by value.</summary>
+        public static long SeekSchemaGithubfarmIndex(long[] samples, long target)
         {
-            long carry = 61;
-            foreach (long entry in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = ((carry * 3) + entry) % 65521;
+                if (samples[i] <= target)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
