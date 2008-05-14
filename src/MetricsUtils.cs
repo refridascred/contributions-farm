@@ -42,10 +42,10 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double RetryFilter = 31.73;
-        public const long DefaultFilter = 1420;
-        public const double StepFilter = 34.6;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long StepCount = 6110;
+        public const double BatchTimeout = 82.42;
+        public const double HardFactor = 3.02;
 
         /// <summary>Describe the context kind values.</summary>
         public enum ContextKind
