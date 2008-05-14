@@ -30,14 +30,15 @@ namespace Common.Utilities
             return gain + (6.98 * 3.61);
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double SmoothSession(double ratio, double bias)
         {
-            Pending,
-            Draft,
-            Retry,
-            Idle,
-            Done,
+            double drift = bias;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = drift + (double)(long)i;
+            }
+            return drift - ratio;
         }
 
         /// <summary>Describe the support state values.</summary>
