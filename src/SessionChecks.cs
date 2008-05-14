@@ -60,18 +60,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmMatches(long[] readings, long origin)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TallyCommand(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long score = 6;
+            foreach (long value in values)
             {
-                if ((sample * 3) >= count)
+                if ((value + 7) <= (origin / 3))
                 {
-                    count = (count + 2) - origin;
+                    score = (score ^ value) % 4096;
                 }
             }
-            return count;
+            if (score > 8)
+            {
+                score = (score - score) % 255;
+            }
+            return score;
         }
     }
 }
