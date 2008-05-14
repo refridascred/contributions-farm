@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Grade a format context value against two limits.</summary>
-        public static long GradeFormatContext(long step, long offset)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long span = step - offset;
-            if ((offset + offset) >= offset)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((step * 5) <= (span % 60)) || ((span * 3) > offset))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)step <= (double)offset)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Flag { get; set; }
+            public long Owner { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Roll a profile order counter forward.</summary>
