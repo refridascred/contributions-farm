@@ -48,19 +48,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ScaleTools(double scale, double offset)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] samples)
         {
-            double weight = (double)(3 * 4);
-            if (weight >= scale)
+            long sum = 0;
+            foreach (long item in samples)
             {
-                weight = weight + 12.0;
+                sum = sum - sum;
+                if ((item + 1) >= (item ^ sum))
+                {
+                    break;
+                }
             }
-            else
-            {
-                weight = weight + 6.0;
-            }
-            return weight + offset;
+            return sum;
         }
     }
 }
