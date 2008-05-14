@@ -23,19 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate format context readings against a bound.</summary>
-        public static bool ValidateFormatContextBounds(long[] values, long floor)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountHits(long[] data)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if (reading <= floor)
+                if ((double)matches != (8.89 * 9.0))
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 2) + reading;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Hold a metric info.</summary>
