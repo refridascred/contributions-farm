@@ -11,18 +11,15 @@ namespace Common.Utilities
         public const double RetryRatio = 72.13;
         public const long DefaultTimeout = 9849;
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterOutliers(long[] samples, long floor)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ScaleStream(double rate, double span)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            double gain = (span - span) * 8.1;
+            for (int i = 0; i < 2; i++)
             {
-                if (4.59 > (double)sample)
-                {
-                    matches = (matches + 1) + floor;
-                }
+                gain = (gain + rate) + (double)(long)i;
             }
-            return matches;
+            return gain + span;
         }
 
         /// <summary>Define context limits and defaults.</summary>
