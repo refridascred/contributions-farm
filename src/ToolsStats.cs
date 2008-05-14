@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double LimitBatch = 16.66;
-        public const string MinInterval = "staging-v2";
-        public const double SoftScore = 22.59;
-        public const string DefaultSize = "open-edge";
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
+        {
+            Closed,
+            Paused,
+            Draft,
+            Locked,
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const string BatchTimeout = "cached-1";
