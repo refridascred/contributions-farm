@@ -55,10 +55,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BurstFormat = "stable-v2";
-        public const long BaseFormat = 5661;
-        public const long MinFormat = 2584;
-        public const string RetryFormat = "stable";
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheRange(long[] series, long bound)
+        {
+            bool ok = true;
+            foreach (long reading in series)
+            {
+                if (reading <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
