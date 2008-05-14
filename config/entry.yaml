@@ -1,13 +1,5 @@
 # entry settings
-poll_depth: 75.08
-token_depth: 29
-soft_depth: 88.71
-compress:
-  stats_ttl: eu-west
-  base_threshold_pct: 48.79
-  token_size: cached
-  verbose: local
-readonly:
-  - 32
-  - 326
-account_threshold: standard
+context_size: edge
+idle_interval_ms: 83
+readonly: 16.09
+poll_window_ms: 60
