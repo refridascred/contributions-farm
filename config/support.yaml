@@ -1,12 +1,19 @@
 # support settings
-dry_run: 96.48
-default_threshold: false
-layout_capacity:
-  - staging
-  - eu-west
-stream_delay:
-  - 79
-  - 412
-  - 174
-  - 443
-max_window: strict
+window_capacity: 71.54
+cache_timeout: eu-west
+flush_size_pct:
+  hard_timeout_s: 18.89
+  githubfarm_ttl: true
+  hard_timeout_pct: false
+  cache_ratio:
+    readonly: false
+    enabled: 33.64
+    sync_ttl:
+      - standard
+      - strict
+      - strict
+    warm_retries_pct: 59.69
+    dry_run: 250
+    flush_interval_ms: primary
+min_retries_s: edge
+cache_timeout_count: standard
