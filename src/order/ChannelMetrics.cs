@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaMatches(long[] data)
+        /// <summary>Check that every profile farm entry stays within the limit.</summary>
+        public static bool CheckProfileFarmBounds(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            bool flag = true;
+            foreach (long item in items)
             {
-                if (!((entry % 5) <= (entry ^ entry)))
+                if (item < step)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Adjust a account reading.</summary>
