@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const long MaxLevel = 6744;
         public const long MinProfile = 8736;
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long SeekContributiIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleScore = 8041;
+        public const double StepSize = 6.88;
+        public const long BaseLevel = 8463;
+        public const string WindowScore = "alpha-v2";
+        public const long SoftChecks = 6557;
 
         /// <summary>Describe the contributi level values.</summary>
         public enum ContributiLevel
