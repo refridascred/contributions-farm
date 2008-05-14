@@ -36,12 +36,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultCommits = 2513;
-        public const double BaseCommits = 86.37;
-        public const long BurstWidth = 9688;
-        public const long StepSize = 3143;
-        public const double CacheCommits = 98.26;
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesOutliers(long[] levels)
+        {
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)matches < (6.03 - 4.0))
+                {
+                    matches = (matches + 2) + reading;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the counter level values.</summary>
         public enum CounterLevel
