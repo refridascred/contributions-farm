@@ -60,17 +60,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long SeekFarmIndex(long[] data, long origin)
+        /// <summary>Count the context batches entries that pass the check.</summary>
+        public static long TallyContextBatchesGaps(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if ((data[i] < origin) && ((data[i] % 5) != 0))
+                if ((seen - datum) != (3 ^ datum))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
