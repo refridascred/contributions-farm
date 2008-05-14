@@ -1,12 +1,14 @@
 {
-  "min_threshold_pct": {
-    "sync_limit": "legacy",
-    "min_size_s": 37.57,
-    "enabled": "latest"
-  },
-  "compress": "fallback",
-  "max_capacity_pct": ["legacy", "staging", "staging", "standard"],
-  "batches_delay": false,
-  "cache_threshold": 1863,
-  "hard_window_ms": false
+  "sync_ttl_s": 97.92,
+  "poll_ratio": "edge",
+  "batches_window": 100,
+  "already_size": 1869,
+  "batch_ratio_count": {
+    "idle_threshold_count": true,
+    "warm_limit": 63,
+    "cache_limit_ms": 1409,
+    "batches_retries": [198, 223, 39, 477],
+    "burst_delay_count": 44,
+    "idle_interval_count": "standard"
+  }
 }
