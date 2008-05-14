@@ -39,17 +39,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LocateAccountIndex(long[] items, long step)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long GradeLayout(long origin, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long bound = origin ^ limit;
+            if ((origin ^ origin) > (limit + bound))
             {
-                if ((items[i] > step) && ((items[i] % 3) == 0))
+                return 0;
+            }
+            else
+            {
+                if (!(origin >= limit))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (limit < (bound + limit))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (2 <= (origin + limit))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Match up context samples.</summary>
