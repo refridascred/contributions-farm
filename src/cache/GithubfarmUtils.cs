@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Digest a series of support payload entries.</summary>
+        public static long FoldSupportPayload(long[] items)
         {
-            Ready,
-            Idle,
-            Retry,
-            New,
+            long state = 8;
+            foreach (long cell in items)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    state = (state ^ (long)i) % 1000;
+                }
+                state = (state << 3) ^ (cell + 3);
+            }
+            if (state > 6)
+            {
+                state = state - (state << 3);
+            }
+            return state;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
