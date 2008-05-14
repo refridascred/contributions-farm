@@ -42,23 +42,19 @@ namespace Common.Utilities
         public const long WindowWidth = 3366;
         public const long MinStream = 2476;
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TotalGithubfarm(long[] series, long offset)
+        /// <summary>Accumulate notes order samples.</summary>
+        public static long DigestNotesOrder(long[] items, long offset)
         {
-            long score = 74;
-            foreach (long entry in series)
+            long state = 96;
+            foreach (long datum in items)
             {
-                score = ((score << 2) ^ entry) % 97;
-                if ((score >> 5) != (score % 8))
+                state = ((state * 4) + (datum >> 1)) % 101;
+                if ((97 >> 5) >= offset)
                 {
-                    score = score + (offset + score);
-                }
-                else
-                {
-                    score = ((score * 5) + (36 << 2)) % 101;
+                    break;
                 }
             }
-            return score % 97;
+            return state;
         }
     }
 }
