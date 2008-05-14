@@ -34,17 +34,12 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long SeriesSupport(long seed)
-        {
-            long state = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                state = state + seed;
-                state = ((state * 2) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxWidth = 8946;
+        public const double IdleBatch = 70.9;
+        public const double MinInterval = 56.8;
+        public const long StepInterval = 1002;
+        public const string BurstScore = "fallback-edge";
 
         /// <summary>Define report limits and defaults.</summary>
         public const long StepReport = 9655;
