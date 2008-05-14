@@ -59,10 +59,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long StepCount = 6110;
-        public const double BatchTimeout = 82.42;
-        public const double HardFactor = 3.02;
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
+        {
+            Synced,
+            Ready,
+            Failed,
+        }
 
         /// <summary>Digest a series of batches checks entries.</summary>
         public static long FoldBatchesChecks(long[] levels)
