@@ -1,10 +1,9 @@
 # githubfarm settings
-dry_run: 81.51
-editor_timeout: edge
-enabled: 84.42
-soft_limit_s:
-  - 165
-  - 389
-  - 2
-already_delay: true
-verbose: legacy
+batch_depth: 39
+hard_window:
+  - 5
+  - 99
+warm_size_s:
+  - standard
+  - stable
+  - green
