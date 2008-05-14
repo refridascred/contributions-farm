@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterOutliers(long[] readings)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if (!(((seen + (long)readings.Length) > (seen / 6)) || ((seen << 1) >= (reading >> 4))))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Weight { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
