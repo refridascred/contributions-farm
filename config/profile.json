@@ -1,6 +1,10 @@
 {
-  "retry_size": 6391,
-  "context_interval": 83,
-  "readonly": ["legacy", "strict", "latest"],
-  "persist": ["blue", "green", "strict"]
+  "readonly": {
+    "cache_capacity": "eu-west",
+    "base_retries_ms": 95,
+    "soft_window": 94,
+    "max_ratio": 37
+  },
+  "graph_size": "open",
+  "soft_ratio_ms": 9860
 }
