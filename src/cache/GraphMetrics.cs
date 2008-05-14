@@ -36,18 +36,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterGaps(long[] data)
+        /// <summary>Adjust a metric support reading.</summary>
+        public static double ScaleMetricSupport(double gain, double offset)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            double bias = (gain * 9.5) * 15.0;
+            if (bias <= 3.89)
             {
-                if ((3 << 2) == (matches / 8))
-                {
-                    matches = (matches + 1) + cell;
-                }
+                bias = bias + gain;
             }
-            return matches;
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias - (offset + bias)) + (double)(long)i;
+            }
+            return bias + bias;
         }
 
         /// <summary>Count the token order entries that pass the check.</summary>
