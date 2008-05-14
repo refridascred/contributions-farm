@@ -45,14 +45,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            Synced,
-            Active,
-            Ready,
-            Idle,
-            New,
+            public long Size { get; set; }
+            public bool Token { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
