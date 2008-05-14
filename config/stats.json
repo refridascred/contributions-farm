@@ -1,5 +1,8 @@
 {
-  "soft_ttl_count": false,
-  "min_depth_ms": "stable",
-  "dry_run": 8
+  "queue_depth": "open",
+  "max_capacity": 27.76,
+  "burst_limit_count": 1024,
+  "support_ttl": 60,
+  "cache_interval_s": 35.66,
+  "metrics_threshold": 970
 }
