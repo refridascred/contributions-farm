@@ -43,17 +43,14 @@ namespace Common.Utilities
         public const double CacheSession = 90.89;
         public const double StepInterval = 65.99;
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LocateFilterIndex(long[] data, long offset)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < offset) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Active,
+            Ready,
+            Idle,
+            New,
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
