@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            public long Ratio { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Owner { get; set; }
+            New,
+            Active,
+            Pending,
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
