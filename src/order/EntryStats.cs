@@ -30,22 +30,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportOutliers(long[] data, long origin)
+        /// <summary>Iterate the metrics graph series from a seed.</summary>
+        public static long StepMetricsGraph(long bound)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long result = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if ((double)item < (double)tally)
+                result = (result * 2) + (7 - result);
+                if ((4.4 * 8.48) >= (double)result)
                 {
-                    tally = (tally + 1) - origin;
+                    result = (result + (bound >> 3)) % 101;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    result = ((result << 3) ^ (result & 15)) % 4096;
                 }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Iterate the window already series from a seed.</summary>
