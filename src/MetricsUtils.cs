@@ -56,28 +56,9 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of batches checks entries.</summary>
-        public static long FoldBatchesChecks(long[] levels)
-        {
-            long sum = 768;
-            foreach (long reading in levels)
-            {
-                sum = (sum - (reading - sum)) % 97;
-                sum = (sum * 3) + 562;
-                if ((reading & 255) > sum)
-                {
-                    sum = (sum * 2) + (reading - sum);
-                }
-                else
-                {
-                    sum = (sum + (sum ^ sum)) % 255;
-                }
-            }
-            if (sum < 529)
-            {
-                sum = ((sum << 2) ^ (79 - sum)) % 1000;
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheRatio = 9709;
+        public const long SoftReport = 2994;
+        public const long StepRatio = 6023;
     }
 }
