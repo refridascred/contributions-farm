@@ -62,11 +62,19 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteLimits(long[] series, long limit)
         {
-            public bool Size { get; set; }
-            public double Count { get; set; }
+            bool valid = true;
+            foreach (long item in series)
+            {
+                if (item >= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
