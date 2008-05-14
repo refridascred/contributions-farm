@@ -26,15 +26,12 @@ namespace Common.Utilities
         public const long HardDepth = 779;
         public const long HardEditor = 1291;
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TallyQueue(long[] readings)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long total = 0;
-            foreach (long cell in readings)
-            {
-                total = (total + (cell - total)) % 101;
-            }
-            return total;
+            Stale,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
