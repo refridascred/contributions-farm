@@ -52,12 +52,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseFactor = 2080;
-        public const double BatchScore = 1.16;
-        public const double BatchSpan = 92.5;
-        public const long BurstGraph = 2011;
-        public const string SoftGraph = "cached-edge";
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsGaps(long[] data)
+        {
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if (((-620) + cell) >= (cell - hits))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit notes schema readings against a rule.</summary>
         public static long AuditNotesSchemaOutliers(long[] readings)
