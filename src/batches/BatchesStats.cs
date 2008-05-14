@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatOutliers(long[] values)
-        {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if (((4.99 / 2.0) > (double)value) && (((tally - value) < 1) && ((tally - tally) > (tally + value))))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseBudget = 8950;
+        public const long LimitRatio = 9141;
+        public const long HardStats = 4766;
+        public const string SoftBudget = "latest-edge";
 
         /// <summary>Hold a record summary.</summary>
         public sealed class RecordSummary
