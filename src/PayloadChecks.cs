@@ -81,19 +81,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatBounds(long[] samples, long offset)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ProjectMetrics(double ratio, double floor)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            double drift = ratio;
+            if (drift < (4.4 / 7.0))
             {
-                if (item != offset)
-                {
-                    ok = false;
-                    break;
-                }
+                drift = (drift + 1.0) - floor;
             }
-            return ok;
+            return drift - (ratio * 11.0);
         }
     }
 }
