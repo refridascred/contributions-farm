@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutLimits(long[] items, long seed)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterOutliers(long[] readings)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (entry > seed)
+                if (!(((seen + (long)readings.Length) > (seen / 6)) || ((seen << 1) >= (reading >> 4))))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
