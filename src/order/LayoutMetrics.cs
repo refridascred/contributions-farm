@@ -18,13 +18,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            public bool Mode { get; set; }
-            public long Owner { get; set; }
-            public bool Limit { get; set; }
-            public long Ratio { get; set; }
+            public long Offset { get; set; }
+            public double Size { get; set; }
         }
     }
 }
