@@ -34,18 +34,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Count the channel entry entries that pass the check.</summary>
-        public static long CountChannelEntryMatches(long[] samples, long seed)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenOutliers(long[] samples)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (!(((reading - hits) >= (hits - seed)) && ((4.1 * 17.0) != (double)seed)))
+                if ((matches - entry) < 37)
                 {
-                    hits = hits + 3;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
