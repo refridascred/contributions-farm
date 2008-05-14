@@ -24,14 +24,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            Draft,
-            Pending,
-            Closed,
             Idle,
-            Locked,
+            Synced,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Hold a window header.</summary>
