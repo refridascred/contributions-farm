@@ -37,12 +37,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long IterateFilter(long step)
         {
-            Draft,
-            Queued,
-            Paused,
+            long mark = step;
+            for (int i = 0; i < 13; i++)
+            {
+                mark = (mark ^ (mark / 4)) % 65521;
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
