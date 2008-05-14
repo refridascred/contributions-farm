@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double CacheDepth = 52.62;
-        public const long BaseInterval = 3831;
-        public const long HardScore = 2718;
-        public const long StepFarm = 163;
-        public const long CacheFarm = 6909;
+        /// <summary>Define record limits and defaults.</summary>
+        public const string MinRatio = "legacy-1";
+        public const long RetrySize = 9862;
+        public const double StepSize = 88.77;
 
         /// <summary>Roll a metric counter forward.</summary>
         public static long DeriveMetric(long origin)
