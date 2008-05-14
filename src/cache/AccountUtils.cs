@@ -59,15 +59,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmGaps(long[] samples)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextHits(long[] levels)
         {
             long tally = 0;
-            foreach (long cell in samples)
+            foreach (long reading in levels)
             {
-                if (((-57) - (-97)) < (tally + 73))
+                if (((tally - 2) > (tally ^ reading)) && ((reading + reading) >= 7))
                 {
-                    tally = (tally + 1) - cell;
+                    tally = tally + 1;
                 }
             }
             return tally;
