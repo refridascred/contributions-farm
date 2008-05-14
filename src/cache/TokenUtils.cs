@@ -32,18 +32,21 @@ namespace Common.Utilities
             return weight + (double)34;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportOutliers(long[] levels)
+        /// <summary>Match up stats stream samples.</summary>
+        public static long MatchStatsStreamCount(long[] series)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((1.0 + 2.0) <= (double)tally)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 2) ^ reading;
+                    if ((series[i] + series[j]) < 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
