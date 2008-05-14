@@ -12,11 +12,13 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstCache = 1158;
-        public const long StepLevel = 1141;
-        public const double CacheLevel = 0.73;
-        public const long LimitDepth = 2913;
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
+        {
+            public long Rank { get; set; }
+            public bool Total { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Roll a entry commits counter forward.</summary>
         public static long SeriesEntryCommits(long origin)
