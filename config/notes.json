@@ -1,8 +1,17 @@
 {
-  "idle_ratio": "blue",
-  "base_window_s": 75.34,
-  "notes_ttl": false,
-  "soft_window": 4577,
-  "min_timeout_count": false,
-  "burst_ttl_s": "stable"
+  "buffer_capacity": "primary",
+  "cluster_window": ["local", "local", "eu-west", "standard"],
+  "verbose": {
+    "retry_timeout_pct": {
+      "retry_threshold_ms": 78.01,
+      "metrics_depth": 60.73,
+      "profile_size": 21.1,
+      "schema_interval": "standard"
+    },
+    "default_retries": false,
+    "sync_limit_count": 0.13,
+    "sync_ratio": true
+  },
+  "sync_limit_count": 46.47,
+  "strict": "legacy"
 }
