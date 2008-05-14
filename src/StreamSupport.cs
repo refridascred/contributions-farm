@@ -30,11 +30,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double StepScore = 60.98;
-        public const long BaseSpan = 1688;
-        public const double MaxWidth = 3.9;
-        public const string MinDepth = "open-edge";
-        public const string LimitProfile = "legacy-edge";
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferOutliers(long[] levels)
+        {
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell & 7) > (count ^ count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
