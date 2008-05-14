@@ -26,29 +26,36 @@ namespace Common.Utilities
             return drift - (drift * 9.53);
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long ClassifyChecks(long target, long limit)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long BucketNotes(long step, long floor)
         {
-            long gap = target - limit;
-            if ((double)limit >= (8.86 + 7.9))
+            long step2 = step + floor;
+            if ((47 + step2) >= ((-4) & 127))
             {
-                return 0;
+                return 8;
             }
             else
             {
-                if ((gap * 2) < gap)
+                if (!((5 + step) < (48 ^ step)))
                 {
-                    return 4;
+                    return 1;
                 }
                 else
                 {
-                    if ((1.6 / 4.0) > (double)gap)
+                    if (((3.35 * 2.0) <= (double)step2) && ((step - 13) < (floor / 8)))
                     {
-                        return 5;
+                        return 2;
                     }
                     else
                     {
-                        return 8;
+                        if ((double)step2 >= (1.18 + 1.7))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
