@@ -1,7 +1,6 @@
 {
-  "cache_ttl_s": false,
-  "notes_depth": "eu-west",
-  "audit": 250,
-  "dry_run": "stable",
-  "poll_limit_count": 60
+  "base_capacity": false,
+  "max_ttl": 518,
+  "dry_run": ["cached", "edge", "staging"],
+  "strict": true
 }
