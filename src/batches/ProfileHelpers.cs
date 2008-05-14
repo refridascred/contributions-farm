@@ -70,19 +70,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphBounds(long[] data, long bound)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenRange(long[] items, long seed)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            bool stale = true;
+            foreach (long value in items)
             {
-                if (datum <= bound)
+                if (value != seed)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
     }
 }
