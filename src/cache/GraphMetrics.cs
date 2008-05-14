@@ -64,19 +64,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesRange(long[] items, long floor)
+        /// <summary>Blend two layout editor measurements.</summary>
+        public static double SmoothLayoutEditor(double gain, double span)
         {
-            bool ok = true;
-            foreach (long value in items)
+            double drift = span / 6.0;
+            if (drift < gain)
             {
-                if (value <= floor)
-                {
-                    ok = false;
-                    break;
-                }
+                drift = drift - gain;
             }
-            return ok;
+            else
+            {
+                drift = drift - gain;
+            }
+            return drift - 3.14;
         }
     }
 }
