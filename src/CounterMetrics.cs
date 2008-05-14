@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitAlready = 7807;
-        public const double WindowFactor = 5.89;
-        public const long MaxSize = 9015;
-        public const double MinAlready = 72.52;
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long WeighCommits(long[] series)
+        {
+            long anchor = 0;
+            foreach (long datum in series)
+            {
+                anchor = anchor ^ (anchor + datum);
+            }
+            if (anchor > 3)
+            {
+                anchor = (anchor + (anchor / 4)) % 65521;
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Match up checks farm samples.</summary>
         public static long MatchChecksFarmCount(long[] readings)
