@@ -31,11 +31,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            public long Offset { get; set; }
-            public long Limit { get; set; }
+            public double Token { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
