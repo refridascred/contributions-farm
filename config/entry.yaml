@@ -1,6 +1,9 @@
 # entry settings
-min_ttl: 87.15
-stats_ttl: legacy
-persist: 53.24
-idle_size: 2576
-default_ratio: false
+cache_limit_s: true
+batch_threshold:
+  entry_size: local
+  support_threshold: 7048
+  burst_interval: 8
+  retry_ratio: true
+  order_limit: 100
+warm_size_count: 30
