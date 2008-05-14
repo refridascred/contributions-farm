@@ -61,18 +61,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesOutliers(long[] data, long step)
-        {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if (!((reading + step) > (659 % 12)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxGithubfarm = 9909;
+        public const long WindowGithubfarm = 955;
+        public const double WindowScore = 14.86;
     }
 }
