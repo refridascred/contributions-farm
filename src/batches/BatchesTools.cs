@@ -34,12 +34,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] items, long floor)
         {
-            Queued,
-            Paused,
-            New,
+            long anchor = 857;
+            foreach (long sample in items)
+            {
+                if (sample < ((long)items.Length - 36))
+                {
+                    anchor = (anchor ^ (anchor ^ anchor)) + floor;
+                }
+                else
+                {
+                    anchor = (anchor + (972 >> 2)) % 97;
+                }
+            }
+            return anchor % 97;
         }
     }
 }
