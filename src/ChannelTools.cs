@@ -23,11 +23,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            public string Total { get; set; } = "";
-            public bool Label { get; set; }
+            Failed,
+            Draft,
+            Active,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
