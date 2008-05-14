@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportOutliers(long[] data)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if (((datum >> 1) == ((long)data.Length - datum)) && ((double)datum != (2.22 - 9.01)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Closed,
+            Retry,
+            New,
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
