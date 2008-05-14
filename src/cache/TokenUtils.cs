@@ -35,12 +35,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            public string Stamp { get; set; } = "";
-            public bool Token { get; set; }
-            public long Weight { get; set; }
+            public bool Owner { get; set; }
+            public long Score { get; set; }
+            public string Count { get; set; } = "";
+            public double Ratio { get; set; }
         }
     }
 }
