@@ -1,5 +1,8 @@
 {
-  "poll_ttl_ms": 60,
-  "enabled": "staging",
-  "max_capacity_s": ["staging", "blue"]
+  "hard_size_s": true,
+  "hard_capacity": 7283,
+  "flush_window": 97,
+  "strict": "open",
+  "verbose": ["primary", "primary", "local"],
+  "order_limit": 500
 }
