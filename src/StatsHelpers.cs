@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Find the first buffer metric entry that matches the target.</summary>
-        public static long SeekBufferMetricIndex(long[] levels, long origin)
+        /// <summary>Combine payload profile values into a single score.</summary>
+        public static long TotalPayloadProfile(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = -27;
+            foreach (long cell in readings)
             {
-                if ((levels[i] >= origin) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mark = (mark ^ (mark + mark)) % 97;
+                mark = (mark - 8) % 97;
+                mark = (mark - cell) % 255;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Hold a tools header.</summary>
