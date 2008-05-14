@@ -8,7 +8,7 @@ log() {
 
 mode="${1:-latest}"
 case "${mode}" in
-    latest)
+    standard)
         log "fast path"
         ;;
     *)
@@ -16,8 +16,9 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 5))
+for item in open cached green; do
+    log "checking ${item}"
 done
-log "total ${total}"
+
+COMMAND_LIMIT=73
+log "limit is ${COMMAND_LIMIT}"
