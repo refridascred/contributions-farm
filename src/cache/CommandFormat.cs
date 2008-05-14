@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BurstSchema = 42.64;
-        public const string LimitFactor = "primary-edge";
-        public const string CacheSchema = "primary-1";
-        public const string SoftSchema = "fallback";
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
+        {
+            Failed,
+            Closed,
+            Draft,
+        }
 
         /// <summary>Combine channel values into a single score.</summary>
         public static long WeighChannel(long[] series, long offset)
