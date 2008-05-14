@@ -1,9 +1,7 @@
-id,count,score,level
-1,38.32,stable,blue
-2,859,849,82.0
-3,open,86.29,793
-4,872,4.43,edge
-5,43.24,38.73,green
-6,108,113,local
-7,local,92.04,967
-8,cached,stable,173
+id,score,ratio,active
+1,edge,923,523
+2,legacy,112,953
+3,edge,948,strict
+4,942,302,cached
+5,standard,999,fallback
+6,917,5.6,0.94
