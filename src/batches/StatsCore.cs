@@ -19,21 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of window farm readings.</summary>
-        public static long OverlapWindowFarmCount(long[] data)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long MatchOrderCount(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((data[i] - data[j]) == 6)
+                    if ((samples[i] + samples[j]) == 12)
                     {
-                        hits = hits + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Count the record metrics entries that pass the check.</summary>
