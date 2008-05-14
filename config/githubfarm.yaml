@@ -1,10 +1,20 @@
 # githubfarm settings
-burst_threshold_ms: true
-burst_retries_count: 8256
-schema_window: legacy
-cache_ttl: 37
-idle_delay:
-  - 23
-  - 486
-  - 47
-  - 400
+dry_run: 13.61
+context_capacity:
+  - strict
+  - stable
+  - edge
+  - fallback
+burst_window: stable
+sync_retries:
+  default_size_ms: blue
+  cache_depth_s:
+    - 106
+    - 169
+  stream_retries: 9602
+  soft_threshold_ms:
+    - legacy
+    - stable
+    - staging
+    - standard
+  default_size_pct: standard
