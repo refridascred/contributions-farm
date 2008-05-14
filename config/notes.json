@@ -1,19 +1,7 @@
 {
-  "already_ttl": ["standard", "eu-west", "standard"],
-  "audit": 4970,
-  "batch_size": {
-    "base_delay": "edge",
-    "hard_ratio_pct": 12,
-    "burst_capacity": "strict",
-    "enabled": {
-      "poll_timeout": 250,
-      "max_delay_count": false,
-      "entry_capacity": ["local", "edge", "edge", "cached"],
-      "hard_capacity_s": "eu-west",
-      "dry_run": 563
-    }
-  },
-  "burst_ratio_s": 82.7,
-  "burst_timeout_ms": 100,
-  "batches_delay": "edge"
+  "cache_limit_ms": "edge",
+  "stats_capacity": [53, 102],
+  "max_retries": "standard",
+  "batches_ttl": [334, 143, 461, 325],
+  "sync_depth_ms": "eu-west"
 }
