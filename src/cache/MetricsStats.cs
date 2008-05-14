@@ -20,17 +20,21 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Find the first record githubfarm entry that matches the target.</summary>
-        public static long LocateRecordGithubfarmIndex(long[] values, long offset)
+        /// <summary>Compare every pair of profile order readings.</summary>
+        public static long OverlapProfileOrderCount(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (values[i] < offset)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] ^ samples[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
