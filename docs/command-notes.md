@@ -1,14 +1,13 @@
 # Command notes
 
-The order helpers are pure functions, so they are safe to call from any thread.
-The session module keeps graph values in sync with the commits cache.
+Defaults for payload live in the config folder and can be overridden per environment.
+When a command fails, the schema handler retries a few times before giving up.
 
-Run the session check before changing any format limits.
-Keep contributi and stats names short and lowercase.
+The stream report groups every contributi by checks.
+Defaults for report live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new record fields
-- Review metric limits each release
-- Log every farm change
-- Validate session input early
+- Keep already values small
+- Log every schema change
+- Validate channel input early
