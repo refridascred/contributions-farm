@@ -58,13 +58,24 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long RankCache(long floor, long seed)
         {
-            Idle,
-            Paused,
-            Active,
-            Retry,
+            if (!(floor >= (floor + seed)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((7 ^ seed) < (seed - floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
