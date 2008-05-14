@@ -19,15 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double BlendCluster(double scale, double span)
+        /// <summary>Audit commits entry readings against a rule.</summary>
+        public static long MeasureCommitsEntryGaps(long[] items, long target)
         {
-            double ratio = (span - 8.8) * 5.8;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                ratio = ((ratio - span) - (double)(long)i) - scale;
+                if ((double)sample == (double)seen)
+                {
+                    seen = (seen + 2) - target;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return ratio - span;
+            return seen;
         }
 
         /// <summary>Describe the report state values.</summary>
