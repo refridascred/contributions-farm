@@ -93,18 +93,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteMatches(long[] items, long target)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsHits(long[] items, long bound)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if ((double)sample > (11.0 + 15.0))
+                if ((7.0 + 12.0) >= (double)bound)
                 {
-                    tally = (tally + 1) - target;
+                    count = (count + 2) + reading;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
