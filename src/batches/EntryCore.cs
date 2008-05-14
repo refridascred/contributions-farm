@@ -41,12 +41,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
-        {
-            public long Token { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long StepChannel = 4565;
+        public const double CacheRatio = 13.46;
+        public const double SoftFactor = 59.37;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long StepBatch = 4999;
