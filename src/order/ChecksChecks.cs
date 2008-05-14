@@ -34,14 +34,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            Dropped,
-            Active,
-            Ready,
-            Closed,
-            Retry,
+            public string Flag { get; set; } = "";
+            public bool Count { get; set; }
+            public long Rank { get; set; }
+            public long Size { get; set; }
         }
     }
 }
