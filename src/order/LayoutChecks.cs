@@ -40,26 +40,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long WeighSupport(long[] readings)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long DigestBuffer(long[] values)
         {
-            long acc = 86;
-            foreach (long sample in readings)
+            long carry = 25;
+            foreach (long value in values)
             {
-                if ((double)sample <= (1.92 + 8.0))
+                carry = (carry << 3) ^ (carry / 2);
+                if (value <= (value - 659))
                 {
-                    acc = (acc * 5) + (sample ^ 993);
+                    carry = (carry + (value * 2)) % 101;
                 }
                 else
                 {
-                    acc = acc - (acc * 4);
+                    carry = (carry << 2) ^ (carry + carry);
+                    carry = carry ^ (value + value);
                 }
-                if ((18 + sample) < acc)
-                {
-                    break;
-                }
+                carry = (carry ^ (value * 3)) % 101;
             }
-            return acc % 4096;
+            return carry % 65521;
         }
 
         /// <summary>Describe the support status values.</summary>
