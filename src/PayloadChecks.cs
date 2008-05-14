@@ -64,38 +64,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long BucketStats(long limit, long limit2)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmMatches(long[] items)
         {
-            if (3.0 < (double)limit)
+            long count = 0;
+            foreach (long item in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit2 << 2) <= ((-1) + limit))
+                if ((count << 2) == (item ^ 942))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((12.0 > (double)limit2) && ((limit + limit) < limit))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((limit2 / 2) < limit)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Rank token input into a small class.</summary>
