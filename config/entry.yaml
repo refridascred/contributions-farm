@@ -1,6 +1,14 @@
 # entry settings
-idle_ratio_s: staging
-soft_size: fallback
-cluster_window: stable
-already_interval: 8381
-verbose: 500
+batch_limit: 7186
+default_ratio_s:
+  entry_size: 18.32
+  hard_threshold_ms:
+    counter_window: true
+    layout_delay: 67
+    audit: cached
+  idle_window:
+    - 295
+    - 142
+batch_interval: true
+payload_window: 29.27
+cache_threshold: 52
