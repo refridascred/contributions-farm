@@ -30,17 +30,13 @@ namespace Common.Utilities
             return rate - floor;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LocateAccountIndex(long[] readings, long step)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Offset { get; set; } = "";
+            public double Size { get; set; }
+            public string Limit { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
