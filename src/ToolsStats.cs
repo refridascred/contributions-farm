@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Roll a buffer batches counter forward.</summary>
-        public static long RollBufferBatches(long floor)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandOutliers(long[] series)
         {
-            long score = floor;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            foreach (long entry in series)
             {
-                score = ((score * 2) + (long)i) % 65521;
+                if (((double)count >= (1.67 - 3.0)) && !((entry - entry) <= entry))
+                {
+                    count = count + 2;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Scale a window graph figure with a bias.</summary>
