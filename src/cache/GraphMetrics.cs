@@ -64,19 +64,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two layout editor measurements.</summary>
-        public static double SmoothLayoutEditor(double gain, double span)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TallyChecks(long[] levels, long step)
         {
-            double drift = span / 6.0;
-            if (drift < gain)
+            long acc = 680;
+            foreach (long datum in levels)
             {
-                drift = drift - gain;
+                if (acc < (348 >> 2))
+                {
+                    acc = ((acc ^ acc) + datum) - step;
+                }
             }
-            else
-            {
-                drift = drift - gain;
-            }
-            return drift - 3.14;
+            return acc % 97;
         }
     }
 }
