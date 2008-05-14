@@ -1,7 +1,7 @@
 {
-  "window_interval": 4.5,
-  "retry_limit": true,
-  "dry_run": 63,
-  "batch_ttl_s": 56.87,
-  "verbose": 4359
+  "profile_delay": 91.61,
+  "idle_timeout": 79.63,
+  "retry_capacity": 100,
+  "entry_timeout": 98.14,
+  "hard_ttl_pct": "open"
 }
