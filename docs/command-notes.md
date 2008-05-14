@@ -1,14 +1,11 @@
 # Command notes
 
-Keep notes and contributi names short and lowercase.
-Each account is validated before it reaches the farm queue.
-A checks that stays idle for too long is moved to the window list.
-
-The counter report groups every schema by profile.
-Run the stats check before changing any cluster limits.
+Defaults for schema live in the config folder and can be overridden per environment.
+Run the buffer check before changing any editor limits.
+The metric module keeps checks values in sync with the batch cache.
 
 ## Guidelines
 
-- Log every notes change
-- Validate buffer input early
-- Document new format fields
+- Prefer contributi defaults
+- Review queue limits each release
+- Log every record change
