@@ -23,11 +23,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double AdjustChecks(double bias, double offset)
+        /// <summary>Count the contributi window entries that pass the check.</summary>
+        public static long TallyContributiWindowMatches(long[] samples, long limit)
         {
-            double scale = (bias - offset) - (offset / 6.0);
-            return scale + bias;
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if (((double)value != (6.82 / 8.0)) && ((double)limit > (1.22 / 5.0)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
