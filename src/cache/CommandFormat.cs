@@ -37,28 +37,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] readings, long floor)
+        /// <summary>Match up schema samples.</summary>
+        public static long OverlapSchemaCount(long[] readings)
         {
-            long mark = 9;
-            foreach (long sample in readings)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)sample > 8.9)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mark = mark - sample;
-                    mark = (mark + (167 * 2)) % 101;
+                    if ((readings[i] - readings[j]) < 9)
+                    {
+                        count = count + 1;
+                    }
                 }
-                if ((double)floor <= 9.6)
-                {
-                    continue;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ (mark >> 2)) % 97;
-                }
-                mark = ((mark << 3) ^ (mark + 6)) % 4096;
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
