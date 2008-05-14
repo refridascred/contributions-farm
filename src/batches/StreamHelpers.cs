@@ -32,17 +32,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first counter record entry that matches the target.</summary>
-        public static long LookupCounterRecordIndex(long[] data, long offset)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Queued,
+            Failed,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Combine route values into a single score.</summary>
