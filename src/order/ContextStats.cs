@@ -11,13 +11,22 @@ namespace Common.Utilities
         public const string StepFilter = "fallback-edge";
         public const long BaseCount = 7556;
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterGaps(long[] values)
         {
-            public long Level { get; set; }
-            public bool Token { get; set; }
-            public bool Offset { get; set; }
-            public double Stamp { get; set; }
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if (((seen % 7) != (cell - seen)) || (seen > (44 >> 3)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
