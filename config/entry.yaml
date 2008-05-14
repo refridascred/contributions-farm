@@ -1,7 +1,4 @@
 # entry settings
-default_limit_s: cached
-channel_retries: 49
-soft_threshold_ms:
-  - 345
-  - 346
-metric_limit: legacy
+batches_delay: open
+cache_limit_s: false
+context_retries: 37.09
