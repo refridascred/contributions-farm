@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmHits(long[] series)
         {
-            Ready,
-            Pending,
-            Done,
-            Queued,
-            New,
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((double)count >= 9.5)
+                {
+                    count = (count + 1) - entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
