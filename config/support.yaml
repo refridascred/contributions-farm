@@ -1,19 +1,9 @@
 # support settings
-dry_run: strict
-sync_retries:
-  default_capacity_ms: 64.11
-  strict:
-    readonly: open
-    flush_ratio_pct:
-      - staging
-      - primary
-    poll_capacity_ms: true
-  burst_ratio_ms: 55
-  tools_ttl:
-    - standard
-    - latest
-    - edge
-  graph_retries: 1843
-default_timeout_s: standard
-base_depth: 8410
-sync_threshold_ms: true
+warm_limit_pct: false
+warm_depth_ms:
+  - edge
+  - eu-west
+  - cached
+  - local
+cache_window_pct: 5.52
+soft_ttl: true
