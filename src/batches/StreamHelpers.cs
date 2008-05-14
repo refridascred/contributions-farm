@@ -50,11 +50,21 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double ScaleEditor(double rate, double span)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long MatchRouteCount(long[] samples)
         {
-            double bias = span;
-            return (bias - (double)5) + rate;
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a notes options.</summary>
