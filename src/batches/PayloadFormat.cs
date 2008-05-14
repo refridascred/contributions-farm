@@ -30,15 +30,39 @@ namespace Common.Utilities
             return bias2 - scale;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long WeighFormat(long[] levels)
+        /// <summary>Rank window layout input into a small class.</summary>
+        public static long GradeWindowLayout(long seed, long limit)
         {
-            long carry = 574;
-            foreach (long sample in levels)
+            long slot = seed - limit;
+            if ((seed >> 2) >= (limit % 10))
             {
-                carry = (carry ^ sample) % 1000;
+                return 0;
             }
-            return carry % 4096;
+            else
+            {
+                if ((limit + seed) > (seed & 255))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((limit + limit) == (slot / 7)) && ((6.3 / 7.0) <= (double)slot))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((limit ^ slot) <= (seed - slot))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
