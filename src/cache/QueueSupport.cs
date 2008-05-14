@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxInterval = 9040;
-        public const string LimitInterval = "open-v2";
-        public const long HardWidth = 6297;
-        public const long CacheGithubfarm = 7992;
-        public const string CacheBudget = "stable-v2";
+        /// <summary>Digest a series of order record entries.</summary>
+        public static long TotalOrderRecord(long[] series, long seed)
+        {
+            long mark = 94;
+            foreach (long item in series)
+            {
+                if ((item - item) < 672)
+                {
+                    mark = mark + (-655);
+                }
+            }
+            if (mark > 16)
+            {
+                mark = (mark - (seed >> 3)) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Hold a githubfarm record.</summary>
         public sealed class GithubfarmRecord
