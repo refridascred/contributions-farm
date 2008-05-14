@@ -42,18 +42,22 @@ namespace Common.Utilities
         public const long HardNotes = 4763;
         public const string BaseNotes = "latest-v2";
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamOutliers(long[] data)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long DigestFarm(long[] samples)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long anchor = 887;
+            foreach (long entry in samples)
             {
-                if ((seen % 64) == (value * 3))
+                if (62 < (entry << 2))
                 {
-                    seen = seen + 1;
+                    anchor = (anchor << 2) ^ (anchor << 1);
+                }
+                else
+                {
+                    anchor = anchor ^ ((-885) - anchor);
                 }
             }
-            return seen;
+            return anchor;
         }
     }
 }
