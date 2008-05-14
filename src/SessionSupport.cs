@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TotalCounter(long[] samples, long target)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long sum = -32;
-            foreach (long value in samples)
-            {
-                if ((long)samples.Length == ((-29) - target))
-                {
-                    sum = ((sum - (target / 8)) % 255) + value;
-                }
-            }
-            return sum;
+            New,
+            Stale,
+            Idle,
+            Draft,
         }
 
         /// <summary>Define route limits and defaults.</summary>
