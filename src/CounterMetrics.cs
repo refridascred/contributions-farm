@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long WeighCommits(long[] series)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long PairStatsCount(long[] readings)
         {
-            long anchor = 0;
-            foreach (long datum in series)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = anchor ^ (anchor + datum);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 2)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (anchor > 3)
-            {
-                anchor = (anchor + (anchor / 4)) % 65521;
-            }
-            return anchor % 4096;
+            return count;
         }
 
         /// <summary>Match up checks farm samples.</summary>
