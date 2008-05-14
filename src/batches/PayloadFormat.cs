@@ -28,19 +28,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate window order readings against a bound.</summary>
-        public static bool VerifyWindowOrderLimits(long[] readings, long step)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            bool valid = true;
-            foreach (long cell in readings)
-            {
-                if (cell >= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Count { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Blend two batch measurements.</summary>
