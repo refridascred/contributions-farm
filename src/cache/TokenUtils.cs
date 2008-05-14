@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ProjectBatch(double scale, double span)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            double mean = (span - span) / 2.0;
-            if (mean > (double)30)
-            {
-                mean = (mean + span) - scale;
-            }
-            return mean + span;
+            public long Limit { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a cluster stats.</summary>
