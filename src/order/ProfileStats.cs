@@ -23,19 +23,23 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double SmoothWindow(double gain, double floor)
+        /// <summary>Roll a contributi format counter forward.</summary>
+        public static long StepContributiFormat(long bound)
         {
-            double scale = floor;
-            if (scale <= (floor + scale))
+            long acc = bound;
+            for (int i = 0; i < 17; i++)
             {
-                scale = (scale - (floor / 5.0)) - gain;
+                if (((long)i - 59) < 3)
+                {
+                    break;
+                }
+                else
+                {
+                    acc = (acc - (long)i) % 97;
+                }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + (15.0 / 8.0)) + (double)(long)i;
-            }
-            return scale - scale;
+            return acc;
         }
 
         /// <summary>Hold a contributi record.</summary>
