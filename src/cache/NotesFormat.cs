@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of buffer record entries.</summary>
-        public static long TotalBufferRecord(long[] values, long offset)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long result = 9;
-            foreach (long reading in values)
-            {
-                if (((reading / 2) == (784 - (-1))) || ((2.0 / 3.0) > (double)offset))
-                {
-                    result = ((result * 2) + (3 * 3)) % 101;
-                    result = (result ^ (result - reading)) % 65521;
-                }
-                if (result <= (result / 7))
-                {
-                    result = ((result << 3) ^ ((long)values.Length & 31)) % 4096;
-                }
-            }
-            return result % 65521;
+            public long Score { get; set; }
+            public bool Total { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Hold a command stats.</summary>
