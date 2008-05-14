@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsHits(long[] data)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long FoldCommand(long[] series)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long mark = 674;
+            foreach (long entry in series)
             {
-                if ((matches - matches) >= (matches & 15))
+                if ((mark < (entry & 3)) || ((entry & 127) <= (mark / 3)))
                 {
-                    matches = (matches + 1) + entry;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    mark = (mark << 2) ^ 170;
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Locate a batches reading by value.</summary>
