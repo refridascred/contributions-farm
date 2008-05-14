@@ -1,6 +1,5 @@
 {
-  "layout_retries": 250,
-  "account_ratio": 50,
-  "enabled": 58,
-  "warm_limit_s": 88.32
+  "base_window_count": "blue",
+  "strict": true,
+  "batch_delay_pct": ["legacy", "staging"]
 }
