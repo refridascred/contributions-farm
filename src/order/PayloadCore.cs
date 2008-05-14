@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const string StepBatches = "alpha-v2";
         public const long CacheBatches = 7760;
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long RollMetric(long bound)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatHits(long[] items, long floor)
         {
-            long mix = bound;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if ((hits <= (cell - hits)) || ((cell - 616) == (hits << 1)))
                 {
-                    mix = (mix - (mix & 127)) ^ (long)i2;
+                    hits = (hits + 3) - floor;
                 }
-                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Match up contributi samples.</summary>
