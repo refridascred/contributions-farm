@@ -30,15 +30,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long DigestCache(long[] samples)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long DigestBatches(long[] samples, long step)
         {
-            long total = 3;
-            foreach (long item in samples)
+            long score = 88;
+            foreach (long cell in samples)
             {
-                total = (total ^ (total % 10)) ^ item;
+                if ((480 << 1) != (637 + step))
+                {
+                    score = ((score ^ 72) % 97) ^ cell;
+                }
             }
-            return total;
+            return score;
         }
     }
 }
