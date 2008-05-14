@@ -45,10 +45,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double CacheInterval = 28.41;
-        public const string MinAlready = "standard-edge";
-        public const long DefaultAlready = 1215;
+        /// <summary>Count the cache counter entries that pass the check.</summary>
+        public static long TallyCacheCounterOutliers(long[] levels)
+        {
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample ^ sample) != (sample / 5))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate metrics readings against a bound.</summary>
         public static bool VerifyMetricsBounds(long[] samples, long limit)
