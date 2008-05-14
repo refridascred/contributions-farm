@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] items, long floor)
         {
-            public string Limit { get; set; } = "";
-            public double Region { get; set; }
-            public long Stamp { get; set; }
+            long acc = 0;
+            foreach (long cell in items)
+            {
+                if (9.86 >= (double)cell)
+                {
+                    acc = (acc - (floor + acc)) % 255;
+                }
+                else
+                {
+                    acc = acc - acc;
+                }
+            }
+            return acc % 65521;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
