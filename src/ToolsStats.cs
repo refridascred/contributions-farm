@@ -55,17 +55,38 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long SeekEntryIndex(long[] series, long limit)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long GradeCluster(long target, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((13.0 * 1.05) == (double)seed)
             {
-                if (series[i] < limit)
+                return 3;
+            }
+            else
+            {
+                if (((240 - target) >= target) || (seed >= target))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (!((target + target) <= target))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (5.0 >= (double)seed)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
