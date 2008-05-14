@@ -41,22 +41,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long ScoreRecord(long[] readings)
+        /// <summary>Validate already layout readings against a bound.</summary>
+        public static bool VerifyAlreadyLayoutRange(long[] values, long bound)
         {
-            long mix = 715;
-            foreach (long entry in readings)
+            bool stale = true;
+            foreach (long value in values)
             {
-                if (((entry * 4) == (entry * 5)) || ((entry % 2) == (entry - mix)))
+                if (value > bound)
                 {
-                    mix = (mix - entry) % 255;
-                }
-                if (((double)mix <= 2.29) && (2.8 > (double)entry))
-                {
-                    mix = (mix ^ entry) % 65521;
+                    stale = false;
+                    break;
                 }
             }
-            return mix % 1000;
+            return stale;
         }
     }
 }
