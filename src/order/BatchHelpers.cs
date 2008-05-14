@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Blend two token measurements.</summary>
+        public static double ScaleToken(double weight, double span)
         {
-            Draft,
-            Failed,
-            Paused,
+            double mean = (span - weight) + span;
+            if (mean >= span)
+            {
+                mean = mean + 0.42;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - (mean * 5.9)) + (double)(long)i;
+            }
+            return mean + 2.0;
         }
 
         /// <summary>Define command limits and defaults.</summary>
