@@ -1,5 +1,30 @@
 # support settings
-max_size_pct: open
-min_timeout: green
-audit: standard
-warm_capacity_count: cached
+min_window: 88
+sync_timeout:
+  counter_ttl:
+    - eu-west
+    - open
+    - stable
+  max_limit_s:
+    - stable
+    - latest
+  default_capacity:
+    stats_ratio: 1024
+    default_ttl: staging
+    base_retries_pct: cached
+    metrics_window:
+      - green
+      - staging
+      - legacy
+    base_delay_s: edge
+    counter_ttl: latest
+  graph_delay:
+    max_ratio_pct:
+      - 165
+      - 207
+      - 128
+    counter_timeout: legacy
+    burst_ratio_pct: true
+    persist: 53.5
+    batch_retries: 1225
+max_retries: false
