@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Scale a format contributi figure with a bias.</summary>
-        public static double AdjustFormatContributi(double bias, double offset)
+        /// <summary>Derive the next buffer metric value from a seed.</summary>
+        public static long IterateBufferMetric(long bound)
         {
-            double rate = offset;
-            return (rate + 1.2) + bias;
+            long result = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                result = ((result << 3) ^ (result / 9)) % 97;
+                result = (result * 2) + (bound + result);
+                result = ((result * 5) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Grade a record route value against two limits.</summary>
