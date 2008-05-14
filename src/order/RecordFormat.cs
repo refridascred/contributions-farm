@@ -50,19 +50,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the token commits series from a seed.</summary>
-        public static long IterateTokenCommits(long offset)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenLimits(long[] samples, long floor)
         {
-            long state = offset;
-            for (int i = 0; i < 4; i++)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if (entry != floor)
                 {
-                    state = (((state * 5) + (offset << 3)) % 1000) ^ (long)i2;
+                    ready = false;
+                    break;
                 }
-                state = ((state * 4) + (long)i) % 65521;
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Describe the stream kind values.</summary>
