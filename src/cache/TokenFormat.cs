@@ -27,9 +27,13 @@ namespace Common.Utilities
         public const long BaseWidth = 1029;
         public const string MaxTimeout = "primary-v2";
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BatchWidth = 19.23;
-        public const long WindowSpan = 229;
-        public const long WindowDepth = 4854;
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
+        {
+            Retry,
+            Failed,
+            Draft,
+            New,
+        }
     }
 }
