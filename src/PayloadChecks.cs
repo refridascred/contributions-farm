@@ -48,18 +48,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a schema githubfarm reading by value.</summary>
-        public static long SeekSchemaGithubfarmIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string LimitWidth = "latest-edge";
+        public const long WindowFactor = 6884;
+        public const string RetryPayload = "cached-1";
+        public const long BatchBudget = 7337;
+        public const long DefaultCount = 9254;
 
         /// <summary>Classify a stats pair into a bucket.</summary>
         public static long BucketStats(long limit, long limit2)
