@@ -1,11 +1,11 @@
 # Command notes
 
-The stats report groups every profile by notes.
-The editor module keeps order values in sync with the checks cache.
+Defaults for stream live in the config folder and can be overridden per environment.
+Defaults for order live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate buffer input early
-- Review format limits each release
-- Log every account change
-- Prefer filter defaults
+- Log every schema change
+- Prefer schema defaults
+- Validate batch input early
+- Document new window fields
