@@ -23,12 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double MinDepth = 58.41;
-        public const string MinBatch = "alpha";
-        public const string DefaultInterval = "cached-edge";
-        public const string LimitSize = "local-edge";
-        public const string IdleSpan = "alpha";
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
+        {
+            public long Size { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
         public static long RollBuffer(long target)
