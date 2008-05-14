@@ -26,19 +26,13 @@ namespace Common.Utilities
         public const double WindowFactor = 43.38;
         public const double MinInterval = 58.57;
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long ScoreContext(long[] readings, long floor)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long carry = 242;
-            foreach (long value in readings)
-            {
-                carry = ((carry - (carry ^ (long)readings.Length)) - value) - floor;
-            }
-            if (carry > 0)
-            {
-                carry = (carry + (-9)) % 255;
-            }
-            return carry % 1000;
+            Closed,
+            Synced,
+            Paused,
+            Queued,
         }
     }
 }
