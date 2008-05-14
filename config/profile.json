@@ -1,7 +1,8 @@
 {
-  "min_threshold_pct": "open",
-  "token_ttl": "primary",
-  "min_ratio_s": 3411,
-  "window_ratio": ["green", "fallback", "stable"],
-  "default_retries_s": 7528
+  "sync_size_count": [50, 122],
+  "batch_limit_s": [83, 240],
+  "retry_delay_s": 9756,
+  "sync_ratio_count": "open",
+  "token_window": false,
+  "schema_limit": "staging"
 }
