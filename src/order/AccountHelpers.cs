@@ -38,13 +38,10 @@ namespace Common.Utilities
         public const long BaseFactor = 7434;
         public const string LimitFactor = "cached-1";
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
-        {
-            public double Size { get; set; }
-            public long Token { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double RetrySpan = 48.44;
+        public const long MaxTimeout = 626;
+        public const long MinChecks = 1547;
 
         /// <summary>Fold a list of stats batches readings.</summary>
         public static long WeighStatsBatches(long[] series)
