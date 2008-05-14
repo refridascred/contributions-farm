@@ -10,31 +10,19 @@ namespace Common.Utilities
         public const long MinSize = 4569;
         public const long MinCount = 908;
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long SortFarm(long step, long floor)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsLimits(long[] levels, long target)
         {
-            if (((2.7 + 9.0) < (double)step) || (step > (step / 7)))
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (57 <= (300 + step))
+                if (cell > target)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((3.0 + 15.0) >= (double)floor) && ((floor - floor) == (3 ^ 31)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
