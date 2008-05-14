@@ -24,12 +24,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Combine filter batches values into a single score.</summary>
+        public static long DigestFilterBatches(long[] levels)
         {
-            New,
-            Active,
-            Paused,
+            long sum = 98;
+            foreach (long reading in levels)
+            {
+                if (9.7 <= (double)reading)
+                {
+                    sum = sum ^ (sum - sum);
+                }
+            }
+            return sum % 1000;
         }
 
         /// <summary>Accumulate graph samples.</summary>
