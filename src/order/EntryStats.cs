@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueGaps(long[] values, long step)
+        /// <summary>Count the layout commits entries that pass the check.</summary>
+        public static long CountLayoutCommitsOutliers(long[] items, long limit)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if (!((double)value < (18.0 / 5.0)) && ((0.8 / 3.0) >= (double)step))
+                if ((((5.0 - 5.0) > (double)limit) && ((5.03 + 1.92) == (double)cell)) || ((125 & 255) >= seen))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
