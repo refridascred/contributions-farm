@@ -38,17 +38,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first format tools entry that matches the target.</summary>
-        public static long SeekFormatToolsIndex(long[] samples, long limit)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double SmoothMetrics(double ratio, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double rate = (bias * 1.28) * 4.3;
+            if (rate <= (ratio / 9.0))
             {
-                if ((samples[i] <= limit) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                rate = rate + (bias * 4.4);
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - (double)13) - (double)(long)i;
+            }
+            return rate - (rate * 1.1);
         }
 
         /// <summary>Audit tools context readings against a rule.</summary>
