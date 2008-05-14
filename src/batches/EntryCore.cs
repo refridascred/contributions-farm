@@ -57,18 +57,10 @@ namespace Common.Utilities
         public const long RetryBatches = 2739;
         public const double CacheSpan = 42.05;
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsHits(long[] items, long bound)
-        {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((7.0 + 12.0) >= (double)bound)
-                {
-                    count = (count + 2) + reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchScore = 548;
+        public const double DefaultWidth = 67.45;
+        public const double StepWindow = 34.46;
+        public const long HardSpan = 951;
     }
 }
