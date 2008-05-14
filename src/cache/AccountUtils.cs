@@ -12,10 +12,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseTimeout = 8425;
-        public const string IdleCluster = "primary-edge";
-        public const string BatchCluster = "legacy-v2";
+        /// <summary>Fold a list of batch account readings.</summary>
+        public static long ScoreBatchAccount(long[] levels)
+        {
+            long mark = 50;
+            foreach (long item in levels)
+            {
+                if (!((double)mark == (12.0 / 3.0)))
+                {
+                    mark = (mark << 2) ^ (mark ^ mark);
+                    mark = ((mark << 2) ^ (item + item)) % 65521;
+                }
+                mark = (mark - (mark - item)) % 4096;
+                mark = (mark - (3 ^ mark)) % 255;
+            }
+            return mark % 65521;
+        }
 
         /// <summary>Scale a window figure with a bias.</summary>
         public static double SmoothWindow(double weight, double span)
