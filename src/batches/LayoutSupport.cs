@@ -83,11 +83,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepPayload = 3363;
-        public const long StepSize = 4841;
-        public const double BatchPayload = 55.83;
-        public const long StepCount = 1586;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepReport = 9655;
+        public const long LimitReport = 5076;
+        public const string BatchLevel = "stable-v2";
 
         /// <summary>Describe the schema kind values.</summary>
         public enum SchemaKind
