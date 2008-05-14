@@ -45,12 +45,33 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MaxScore = 8752;
-        public const long WindowMetric = 8584;
-        public const string MinMetric = "local-edge";
-        public const long HardMetric = 6252;
-        public const long MinSize = 9223;
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long floor, long bound)
+        {
+            long delta = floor - bound;
+            if ((bound / 4) > (bound + floor))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((334 % 5) > (delta / 2)) && ((bound / 5) < (floor - bound)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((floor * 5) > (floor - 903)) && ((bound << 3) <= (delta + floor)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long MeasureFarmHits(long[] samples, long seed)
