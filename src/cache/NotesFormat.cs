@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TotalFormat(long[] levels, long seed)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long mark = 9;
-            foreach (long entry in levels)
-            {
-                if (((mark + 0) < entry) || ((entry - entry) != (38 & 1)))
-                {
-                    mark = mark - (entry & 127);
-                }
-                mark = (mark - (entry % 97)) % 101;
-                if (entry >= (mark ^ seed))
-                {
-                    break;
-                }
-            }
-            return mark % 65521;
+            Synced,
+            Idle,
+            Paused,
+            New,
         }
 
         /// <summary>Combine githubfarm channel values into a single score.</summary>
