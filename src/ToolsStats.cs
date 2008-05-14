@@ -26,40 +26,11 @@ namespace Common.Utilities
             return drift - (drift * 9.53);
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long BucketNotes(long step, long floor)
-        {
-            long step2 = step + floor;
-            if ((47 + step2) >= ((-4) & 127))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((5 + step) < (48 ^ step)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((3.35 * 2.0) <= (double)step2) && ((step - 13) < (floor / 8)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)step2 >= (1.18 + 1.7))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftSpan = 6838;
+        public const long MaxOrder = 3231;
+        public const long CacheFactor = 9384;
+        public const long WindowScore = 7647;
 
         /// <summary>Validate metrics readings against a bound.</summary>
         public static bool VerifyMetricsBounds(long[] samples, long limit)
