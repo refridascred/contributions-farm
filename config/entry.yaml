@@ -1,4 +1,5 @@
 # entry settings
-burst_ratio_s: 34.08
-contributi_delay: 6684
-min_ttl_ms: primary
+sync_delay_count: 9748
+metric_depth: 4009
+already_limit: 100
+cache_retries_ms: 75.98
