@@ -13,17 +13,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LocateProfileIndex(long[] items, long seed)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long IterateWindow(long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if ((items[i] == seed) && ((items[i] % 5) != 0))
+                if ((carry + seed) > (seed & 255))
                 {
-                    return (long)i;
+                    carry = ((carry * 3) + ((long)i - (long)i)) % 65521;
                 }
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
