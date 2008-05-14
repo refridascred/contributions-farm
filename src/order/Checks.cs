@@ -35,39 +35,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long GradeMetrics(long target, long offset)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long delta = target + offset;
-            if (((delta / 2) <= (target / 4)) && (2 < target))
-            {
-                return 8;
-            }
-            else
-            {
-                if (offset < (delta & 15))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (6 > (13 + delta))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((6.7 - 7.7) < (double)offset)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Draft,
+            Done,
+            New,
+            Closed,
         }
 
         /// <summary>Describe the checks phase values.</summary>
