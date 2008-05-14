@@ -50,18 +50,11 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Count the batch metrics entries that pass the check.</summary>
-        public static long MeasureBatchMetricsHits(long[] items)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double ScaleEditor(double rate, double span)
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((double)matches <= (16.0 + 3.8))
-                {
-                    matches = (matches + 2) ^ cell;
-                }
-            }
-            return matches;
+            double bias = span;
+            return (bias - (double)5) + rate;
         }
 
         /// <summary>Hold a notes options.</summary>
