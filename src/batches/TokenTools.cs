@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmHits(long[] data, long seed)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if (((double)seed == (2.3 * 6.1)) || (((double)tally > (double)2) || ((double)value >= (7.1 / 7.0))))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Locked,
+            Idle,
+            Queued,
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
