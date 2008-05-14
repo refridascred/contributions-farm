@@ -57,12 +57,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ProjectEditor(double rate, double span)
         {
-            New,
-            Retry,
-            Active,
+            double weight = (3.7 - rate) * 3.22;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight + span) + (double)(long)i;
+            }
+            return weight + (2.0 / 9.0);
         }
 
         /// <summary>Combine payload values into a single score.</summary>
