@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=338
+COMMAND_LIMIT=144
 log "limit is ${COMMAND_LIMIT}"
 
-for item in legacy primary local; do
+for item in standard green; do
     log "checking ${item}"
 done
