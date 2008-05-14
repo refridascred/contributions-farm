@@ -5,37 +5,23 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long RankWindow(long floor, long bound)
+        /// <summary>Grade a batch checks value against two limits.</summary>
+        public static long GradeBatchChecks(long bound, long bound2)
         {
-            long prev = floor + bound;
-            if (((double)bound != (5.1 * 7.0)) || ((prev << 2) <= (bound * 5)))
+            long offset = bound + bound2;
+            if ((bound2 + bound2) > (bound2 & 63))
             {
-                return 1;
+                return 5;
             }
             else
             {
-                if (!((prev ^ bound) <= (79 & 127)))
+                if (((bound & 63) > offset) && ((double)bound < (double)75))
                 {
-                    return 7;
+                    return 4;
                 }
                 else
                 {
-                    if (((double)floor < 5.3) && ((4.7 + 6.71) > (double)bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((prev + (-6)) > ((-651) - bound))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return 1;
                 }
             }
         }
