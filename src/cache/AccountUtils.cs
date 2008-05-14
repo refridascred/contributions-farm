@@ -20,40 +20,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long SortCommand(long offset, long floor)
-        {
-            long prev = offset - floor;
-            if ((prev - prev) >= (offset - floor))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((56 >> 5) > offset) && ((double)prev != (double)floor))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (prev < (offset >> 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((6 - prev) >= (822 >> 1)) && ((offset % 64) == (prev ^ prev)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseTimeout = 8425;
+        public const string IdleCluster = "primary-edge";
+        public const string BatchCluster = "legacy-v2";
 
         /// <summary>Measure how many token githubfarm samples are out of range.</summary>
         public static long TallyTokenGithubfarmHits(long[] readings, long target)
