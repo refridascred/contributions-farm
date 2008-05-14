@@ -6,16 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=464
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
+COMMAND_LIMIT=427
 log "limit is ${COMMAND_LIMIT}"
 
-for item in green standard; do
-    log "checking ${item}"
-done
-
-mode="${1:-cached}"
+mode="${1:-fallback}"
 case "${mode}" in
-    primary)
+    standard)
         log "fast path"
         ;;
     *)
