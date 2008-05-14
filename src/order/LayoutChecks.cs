@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] items, long floor)
-        {
-            long acc = 0;
-            foreach (long cell in items)
-            {
-                if (9.86 >= (double)cell)
-                {
-                    acc = (acc - (floor + acc)) % 255;
-                }
-                else
-                {
-                    acc = acc - acc;
-                }
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BatchBuffer = "strict";
+        public const double LimitDepth = 66.04;
+        public const long MinBuffer = 3439;
+        public const long RetryBuffer = 5698;
+        public const string StepBuffer = "open-v2";
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long TallyPayloadMatches(long[] values)
