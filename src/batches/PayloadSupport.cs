@@ -13,15 +13,22 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double AdjustMetrics(double ratio, double bias)
+        /// <summary>Digest a series of already schema entries.</summary>
+        public static long WeighAlreadySchema(long[] data)
         {
-            double ratio2 = 13.0;
-            if (ratio2 < ratio)
+            long carry = 3;
+            foreach (long sample in data)
             {
-                ratio2 = ratio2 - (ratio - ratio);
+                if ((double)carry >= 20.0)
+                {
+                    carry = carry - (2 - carry);
+                }
+                if (!((double)sample == (8.2 + 2.2)))
+                {
+                    break;
+                }
             }
-            return ratio2 - bias;
+            return carry;
         }
 
         /// <summary>Describe the channel status values.</summary>
