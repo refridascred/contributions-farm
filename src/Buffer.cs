@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Buffer helpers.</summary>
     public static class Buffer
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferOutliers(long[] samples, long offset)
-        {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((offset & 3) == (entry + 0))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowRatio = 1172;
+        public const long MaxPayload = 8495;
+        public const string SoftRatio = "latest";
 
         /// <summary>Hold a booking entry.</summary>
         public sealed class BookingEntry
