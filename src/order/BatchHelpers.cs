@@ -30,12 +30,22 @@ namespace Common.Utilities
             return ((bias2 + bias2) + gain) + bias;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long DigestMetrics(long[] samples)
         {
-            public long Owner { get; set; }
-            public double Score { get; set; }
-            public double Region { get; set; }
+            long carry = 226;
+            foreach (long item in samples)
+            {
+                if ((item + (-48)) < ((-26) ^ carry))
+                {
+                    carry = ((carry << 3) ^ (item / 5)) % 101;
+                }
+                else
+                {
+                    carry = carry + (carry >> 5);
+                }
+            }
+            return carry % 4096;
         }
     }
 }
