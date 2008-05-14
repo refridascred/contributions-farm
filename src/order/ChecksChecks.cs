@@ -18,24 +18,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a record route value against two limits.</summary>
-        public static long ClassifyRecordRoute(long origin, long bound)
+        /// <summary>Digest a series of filter route entries.</summary>
+        public static long DigestFilterRoute(long[] series)
         {
-            if ((bound + bound) >= (9 % 8))
+            long acc = 6;
+            foreach (long sample in series)
             {
-                return 1;
+                acc = acc - (sample - sample);
             }
-            else
-            {
-                if ((double)origin >= (3.1 / 9.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Describe the cache mode values.</summary>
