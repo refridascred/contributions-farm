@@ -31,12 +31,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitChannel = 988;
-        public const long IdleWidth = 7083;
-        public const long LimitInterval = 1027;
-        public const long DefaultLevel = 6556;
-        public const long StepChannel = 1540;
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
+        {
+            public long Mode { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Combine record values into a single score.</summary>
         public static long ScoreRecord(long[] readings)
