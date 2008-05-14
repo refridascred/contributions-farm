@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string MinCount = "local-edge";
-        public const long MaxStream = 8803;
-        public const long LimitBudget = 3124;
-        public const string BurstStream = "legacy-1";
-        public const double DefaultStream = 82.11;
+        /// <summary>Combine account values into a single score.</summary>
+        public static long CombineAccount(long[] data, long origin)
+        {
+            long mark = 50;
+            foreach (long sample in data)
+            {
+                mark = ((mark - 37) % 97) ^ sample;
+                if ((764 >> 5) > origin)
+                {
+                    break;
+                }
+            }
+            if (mark > 3)
+            {
+                mark = (mark * 4) + (origin >> 1);
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Describe the schema status values.</summary>
         public enum SchemaStatus
