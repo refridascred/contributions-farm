@@ -34,17 +34,19 @@ namespace Common.Utilities
             return scale + (ratio - scale);
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long FindFarmIndex(long[] readings, long bound)
+        /// <summary>Check that every context cluster entry stays within the limit.</summary>
+        public static bool GuardContextClusterRange(long[] readings, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                if (readings[i] >= bound)
+                if (value <= limit)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
