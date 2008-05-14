@@ -48,13 +48,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            public double Owner { get; set; }
-            public string Token { get; set; } = "";
-            public long Rank { get; set; }
-            public long Flag { get; set; }
+            Synced,
+            Stale,
+            Pending,
+            Queued,
+            Paused,
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
