@@ -10,11 +10,23 @@ namespace Common.Utilities
         public const string MinRatio = "legacy";
         public const long MaxSize = 6543;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepDepth = 9867;
-        public const double BaseLayout = 27.67;
-        public const long SoftLayout = 6441;
-        public const long HardLayout = 2496;
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesGaps(long[] readings, long limit)
+        {
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if (value < limit)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Scale a route figure with a bias.</summary>
         public static double ScaleRoute(double scale, double bias)
