@@ -27,11 +27,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
             public double Limit { get; set; }
-            public bool Flag { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Count the tools batches entries that pass the check.</summary>
