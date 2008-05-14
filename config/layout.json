@@ -1,5 +1,5 @@
 {
-  "burst_threshold_pct": "latest",
-  "buffer_size": "fallback",
-  "poll_capacity_pct": 23.46
+  "flush_limit": [304, 360, 219, 410],
+  "idle_window": "latest",
+  "sync_depth": false
 }
