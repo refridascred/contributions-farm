@@ -43,19 +43,11 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Validate support context readings against a bound.</summary>
-        public static bool GuardSupportContextBounds(long[] levels, long offset)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            bool ready = true;
-            foreach (long cell in levels)
-            {
-                if (cell != offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Mode { get; set; }
+            public long Token { get; set; }
         }
     }
 }
