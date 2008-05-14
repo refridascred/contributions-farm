@@ -23,19 +23,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordGaps(long[] readings, long floor)
-        {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if (!(((15.0 + 1.38) <= (double)cell) && (hits > (hits ^ floor))))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultEntry = 7804;
+        public const long LimitEntry = 2434;
+        public const long BatchEntry = 2104;
+        public const long RetryEntry = 648;
 
         /// <summary>Combine format values into a single score.</summary>
         public static long WeighFormat(long[] levels)
