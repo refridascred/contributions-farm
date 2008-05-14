@@ -15,10 +15,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheSize = 3804;
-        public const long BatchBatches = 9598;
-        public const double SoftScore = 40.25;
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long MatchChecksCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Rank checks input into a small class.</summary>
         public static long BucketChecks(long floor, long offset)
