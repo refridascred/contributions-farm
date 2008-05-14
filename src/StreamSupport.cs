@@ -32,22 +32,24 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutGaps(long[] items)
+        /// <summary>Grade a report cluster value against two limits.</summary>
+        public static long ClassifyReportCluster(long limit, long origin)
         {
-            long count = 0;
-            foreach (long value in items)
+            if ((2 >= (limit >> 1)) || (limit >= (origin << 3)))
             {
-                if ((value + count) == (2 % 16))
+                return 1;
+            }
+            else
+            {
+                if (!((origin + limit) > (limit + origin)))
                 {
-                    count = count + 2;
+                    return 0;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 2;
                 }
             }
-            return count;
         }
     }
 }
