@@ -18,15 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long RollCounter(long offset)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long RankCommits(long step, long offset)
         {
-            long score = offset;
-            for (int i = 0; i < 13; i++)
+            long gap = step - offset;
+            if (gap <= (gap / 6))
             {
-                score = ((score * 4) + (long)i) % 4093;
+                return 1;
             }
-            return score;
+            else
+            {
+                if ((double)step == (5.4 + 19.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Validate layout support readings against a bound.</summary>
