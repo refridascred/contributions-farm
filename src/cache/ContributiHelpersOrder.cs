@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long FoldCommand(long[] series)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderLimits(long[] series, long floor)
         {
-            long mark = 674;
-            foreach (long entry in series)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                if ((mark < (entry & 3)) || ((entry & 127) <= (mark / 3)))
+                if (reading > floor)
                 {
-                    mark = (mark << 2) ^ 170;
+                    ok = false;
+                    break;
                 }
             }
-            return mark;
+            return ok;
         }
 
         /// <summary>Classify a payload account pair into a bucket.</summary>
