@@ -56,18 +56,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long FindCacheIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftWidth = 7344;
+        public const double SoftDepth = 31.52;
+        public const string MaxPayload = "legacy-edge";
 
         /// <summary>Hold a batches options.</summary>
         public sealed class BatchesOptions
