@@ -20,22 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of counter githubfarm entries.</summary>
-        public static long DigestCounterGithubfarm(long[] items, long floor)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountLimits(long[] samples, long bound)
         {
-            long mix = 8;
-            foreach (long datum in items)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                if ((datum * 4) >= (mix & 255))
+                if (item >= bound)
                 {
-                    mix = mix ^ mix;
+                    ok = false;
+                    break;
                 }
             }
-            if (mix < 607)
-            {
-                mix = (mix << 3) ^ (floor - floor);
-            }
-            return mix % 97;
+            return ok;
         }
 
         /// <summary>Hold a format summary.</summary>
