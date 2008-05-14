@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long PairGithubfarmCount(long[] levels)
+        /// <summary>Match up window samples.</summary>
+        public static long CompareWindowCount(long[] values)
         {
             long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((levels[i] ^ levels[j]) == 14)
+                    if ((values[i] - values[j]) != 10)
                     {
                         matches = matches + 1;
                     }
