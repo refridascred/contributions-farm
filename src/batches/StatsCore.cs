@@ -19,18 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the buffer context entries that pass the check.</summary>
-        public static long MeasureBufferContextHits(long[] items)
+        /// <summary>Locate a contributi commits reading by value.</summary>
+        public static long LocateContributiCommitsIndex(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((9 - hits) >= (hits >> 2))
+                if ((data[i] == seed) && ((data[i] % 5) == 0))
                 {
-                    hits = (hits + 3) - entry;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Hold a stream options.</summary>
