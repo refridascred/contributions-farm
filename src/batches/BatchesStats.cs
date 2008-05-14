@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Scale a account cache figure with a bias.</summary>
-        public static double AdjustAccountCache(double scale, double bias)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatOutliers(long[] values)
         {
-            double scale2 = scale;
-            for (int i = 0; i < 3; i++)
+            long tally = 0;
+            foreach (long value in values)
             {
-                scale2 = ((scale2 + scale) - (double)(long)i) - bias;
+                if (((4.99 / 2.0) > (double)value) && (((tally - value) < 1) && ((tally - tally) > (tally + value))))
+                {
+                    tally = tally + 2;
+                }
             }
-            return scale2 + (double)0;
+            return tally;
         }
 
         /// <summary>Hold a support header.</summary>
