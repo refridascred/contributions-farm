@@ -42,14 +42,10 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
-        {
-            public long Mode { get; set; }
-            public double Size { get; set; }
-            public bool Region { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double RetryFilter = 31.73;
+        public const long DefaultFilter = 1420;
+        public const double StepFilter = 34.6;
 
         /// <summary>Describe the context kind values.</summary>
         public enum ContextKind
