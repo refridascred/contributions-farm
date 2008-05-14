@@ -23,12 +23,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseCommand = 3236;
-        public const long MinCommand = 8606;
-        public const long HardCommand = 8636;
-        public const long WindowLevel = 7617;
-        public const long IdleCommand = 1392;
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TotalStats(long[] items)
+        {
+            long state = 5;
+            foreach (long sample in items)
+            {
+                state = ((state << 3) ^ (94 + sample)) % 97;
+                state = ((state * 5) + (sample - state)) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
         public static long GradeStream(long step, long limit)
