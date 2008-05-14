@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const long RetrySize = 9862;
         public const double StepSize = 88.77;
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long DeriveMetric(long origin)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long mark = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    mark = (mark + (origin & 63)) + (long)i2;
-                }
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
+            Draft,
+            Paused,
+            New,
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
