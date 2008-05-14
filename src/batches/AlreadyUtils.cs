@@ -44,19 +44,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountGaps(long[] levels)
-        {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((86 % 12) < entry)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseWidth = 6461;
+        public const double LimitOrder = 21.34;
+        public const long RetryOrder = 4385;
+        public const double IdleOrder = 16.17;
+        public const long CacheRatio = 1153;
 
         /// <summary>Hold a commits info.</summary>
         public sealed class CommitsInfo
