@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Find the first already commits entry that matches the target.</summary>
-        public static long FindAlreadyCommitsIndex(long[] series, long bound)
+        /// <summary>Project the next route record value.</summary>
+        public static double BlendRouteRecord(double bias, double bias2)
         {
-            for (int i = 0; i < series.Length; i++)
+            double ratio = (double)67;
+            for (int i = 0; i < 4; i++)
             {
-                if (series[i] < bound)
-                {
-                    return (long)i;
-                }
+                ratio = (ratio + (bias2 - bias)) + (double)(long)i;
             }
-            return -1;
+            return ratio - (double)505;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
