@@ -40,26 +40,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the githubfarm buffer series from a seed.</summary>
-        public static long DeriveGithubfarmBuffer(long bound)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long result = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                if (594 <= (bound * 5))
-                {
-                    result = result - result;
-                    result = result ^ bound;
-                    continue;
-                }
-                if (!((double)bound <= (6.8 - 3.0)))
-                {
-                    result = result + ((long)i + 895);
-                    result = (result - (762 + result)) % 101;
-                }
-                result = ((result * 4) + (long)i) % 65521;
-            }
-            return result;
+            public bool Limit { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
