@@ -29,13 +29,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelOutliers(long[] data, long offset)
         {
-            public long Stamp { get; set; }
-            public double Limit { get; set; }
-            public long Offset { get; set; }
-            public double Flag { get; set; }
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if (((hits - hits) >= hits) || !((double)hits >= 8.53))
+                {
+                    hits = ((hits + 1) + datum) - offset;
+                }
+            }
+            return hits;
         }
     }
 }
