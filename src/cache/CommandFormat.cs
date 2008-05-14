@@ -51,16 +51,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long IterateFilter(long step)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandBounds(long[] levels, long seed)
         {
-            long mark = step;
-            for (int i = 0; i < 13; i++)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                mark = (mark ^ (mark / 4)) % 65521;
-                mark = ((mark * 2) + (long)i) % 4093;
+                if (cell < seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mark;
+            return found;
         }
     }
 }
