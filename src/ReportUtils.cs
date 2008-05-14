@@ -26,19 +26,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterBounds(long[] values, long seed)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            bool valid = true;
-            foreach (long item in values)
-            {
-                if (item >= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Draft,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Combine schema values into a single score.</summary>
