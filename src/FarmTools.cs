@@ -34,25 +34,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long RankQueue(long seed, long bound)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsHits(long[] items)
         {
-            long prev = seed ^ bound;
-            if ((double)prev == (0.3 / 2.0))
+            long count = 0;
+            foreach (long entry in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((prev - seed) > (seed / 4))
+                if (!((count - (long)items.Length) <= count))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    count = (count + 2) ^ entry;
                 }
             }
+            return count;
         }
     }
 }
