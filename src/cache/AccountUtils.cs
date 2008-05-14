@@ -24,17 +24,39 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long SeekWindowIndex(long[] levels, long step)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long SortCommand(long offset, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long prev = offset - floor;
+            if ((prev - prev) >= (offset - floor))
             {
-                if ((levels[i] <= step) && ((levels[i] % 2) != 0))
+                return 5;
+            }
+            else
+            {
+                if (((56 >> 5) > offset) && ((double)prev != (double)floor))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (prev < (offset >> 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((6 - prev) >= (822 >> 1)) && ((offset % 64) == (prev ^ prev)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
