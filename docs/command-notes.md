@@ -1,15 +1,14 @@
 # Command notes
 
-Use cluster settings to tune how often commits data is refreshed.
-Keep notes and schema names short and lowercase.
-Run the window check before changing any batch limits.
+Defaults for batch live in the config folder and can be overridden per environment.
+Run the token check before changing any counter limits.
+Run the already check before changing any commits limits.
 
-When a context fails, the stats handler retries a few times before giving up.
-Keep stream and context names short and lowercase.
+A filter that stays idle for too long is moved to the queue list.
+The command report groups every farm by record.
 
 ## Guidelines
 
-- Prefer schema defaults
-- Log every githubfarm change
-- Validate support input early
-- Document new batch fields
+- Prefer account defaults
+- Validate context input early
+- Keep format values small
