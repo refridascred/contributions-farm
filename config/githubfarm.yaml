@@ -1,6 +1,21 @@
 # githubfarm settings
-readonly: 55.7
-token_limit: strict
-burst_delay: 4
-retry_ttl: false
-hard_depth: 34
+idle_size_s: true
+sync_ttl:
+  min_timeout_pct: fallback
+  default_limit_pct: 30
+  filter_size: 500
+  cache_interval:
+    enabled:
+      - strict
+      - legacy
+      - green
+      - green
+    githubfarm_threshold: 61
+    warm_threshold_pct: staging
+    burst_depth: 8789
+    max_ttl_count: 24
+    verbose: 25.43
+notes_size:
+  readonly: 19
+  warm_interval_s: 1347
+  dry_run: eu-west
