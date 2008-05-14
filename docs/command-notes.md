@@ -1,13 +1,15 @@
 # Command notes
 
-Defaults for stream live in the config folder and can be overridden per environment.
-Defaults for editor live in the config folder and can be overridden per environment.
+Keep channel and stats names short and lowercase.
+Keep route and checks names short and lowercase.
+Run the session check before changing any notes limits.
 
-When a session fails, the cache handler retries a few times before giving up.
-A batches that stays idle for too long is moved to the commits list.
+Each cluster is validated before it reaches the session queue.
+Use profile settings to tune how often cluster data is refreshed.
+Run the token check before changing any metrics limits.
 
 ## Guidelines
 
-- Log every metrics change
-- Document new order fields
-- Prefer token defaults
+- Prefer layout defaults
+- Document new farm fields
+- Validate session input early
