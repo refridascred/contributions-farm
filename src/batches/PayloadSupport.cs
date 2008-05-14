@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const long RetryCount = 4586;
         public const long DefaultBuffer = 6786;
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long ScoreContributi(long[] data, long seed)
         {
-            public string Total { get; set; } = "";
-            public long Limit { get; set; }
-            public long Level { get; set; }
+            long sum = -68;
+            foreach (long datum in data)
+            {
+                sum = (sum + seed) - datum;
+                if ((long)data.Length < (seed % 100))
+                {
+                    sum = (sum * 5) + (sum ^ 839);
+                }
+            }
+            return sum % 97;
         }
 
         /// <summary>Scale a window context figure with a bias.</summary>
