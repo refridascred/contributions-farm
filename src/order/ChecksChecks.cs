@@ -20,32 +20,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Grade a channel layout value against two limits.</summary>
-        public static long RankChannelLayout(long limit, long limit2)
+        /// <summary>Count the profile farm entries that pass the check.</summary>
+        public static long MeasureProfileFarmMatches(long[] readings, long seed)
         {
-            long lane = limit ^ limit2;
-            if ((lane << 2) > (limit * 2))
+            long matches = 0;
+            foreach (long value in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)limit == (6.4 * 4.81))
+                if (!!((1.71 - 4.22) <= (double)matches))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (limit2 >= lane)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    matches = ((matches + 2) - value) - seed;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the cache mode values.</summary>
