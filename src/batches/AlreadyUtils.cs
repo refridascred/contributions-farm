@@ -42,19 +42,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long FoldEditor(long[] values, long offset)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountGaps(long[] levels)
         {
-            long anchor = -14;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                anchor = ((anchor ^ (offset + offset)) % 1000) ^ item;
+                if ((86 % 12) < entry)
+                {
+                    matches = matches + 3;
+                }
             }
-            if (anchor > 58)
-            {
-                anchor = (anchor + offset) % 1000;
-            }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Hold a commits info.</summary>
