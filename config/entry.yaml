@@ -1,5 +1,10 @@
 # entry settings
-sync_delay_count: 9748
-metric_depth: 4009
-already_limit: 100
-cache_retries_ms: 75.98
+base_delay_count:
+  - open
+  - local
+soft_ttl: 100
+dry_run:
+  - 95
+  - 99
+  - 256
+burst_ttl_pct: 4244
