@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ScaleCounter(double gain, double span)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorHits(long[] data, long limit)
         {
-            double rate = gain;
-            if (rate > (rate - span))
+            long seen = 0;
+            foreach (long value in data)
             {
-                rate = rate - (gain + gain);
+                if ((double)value == (double)limit)
+                {
+                    seen = seen + 1;
+                }
             }
-            return rate + (double)(-13);
+            return seen;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
