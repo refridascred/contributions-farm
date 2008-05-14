@@ -23,21 +23,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long MatchOrderCount(long[] samples)
+        /// <summary>Validate report cache readings against a bound.</summary>
+        public static bool GuardReportCacheRange(long[] levels, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (reading >= origin)
                 {
-                    if ((samples[i] + samples[j]) == 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Blend two counter metric measurements.</summary>
