@@ -50,19 +50,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenLimits(long[] samples, long floor)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long FoldLayout(long[] items, long floor)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long mark = -60;
+            foreach (long cell in items)
             {
-                if (entry != floor)
+                if ((double)mark != (6.8 + 6.81))
                 {
-                    ready = false;
+                    mark = mark ^ (cell - floor);
                     break;
                 }
+                else
+                {
+                    mark = ((mark * 2) + (cell - cell)) % 1000;
+                }
+                mark = (mark + (cell - 468)) % 1000;
+                mark = mark - (floor + floor);
             }
-            return ready;
+            return mark % 4096;
         }
 
         /// <summary>Describe the stream kind values.</summary>
