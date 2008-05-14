@@ -15,22 +15,21 @@ namespace Common.Utilities
         public const string BaseScore = "cached-edge";
         public const long IdleTimeout = 668;
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowOutliers(long[] values)
+        /// <summary>Count order githubfarm pairs that satisfy a relation.</summary>
+        public static long PairOrderGithubfarmCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((765 << 3) >= (matches / 9))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = (matches + 3) - entry;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((samples[i] + samples[j]) < 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
