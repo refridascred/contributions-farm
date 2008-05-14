@@ -42,18 +42,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long DigestFarm(long[] readings)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphRange(long[] items, long origin)
         {
-            long total = 6;
-            foreach (long cell in readings)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                if ((cell * 3) >= (total & 127))
+                if (entry < origin)
                 {
-                    total = (total ^ (total + total)) % 4096;
+                    ok = false;
+                    break;
                 }
             }
-            return total % 65521;
+            return ok;
         }
 
         /// <summary>Hold a channel info.</summary>
