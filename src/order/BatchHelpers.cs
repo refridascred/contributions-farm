@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowTimeout = 7947;
-        public const string IdleRatio = "staging-edge";
-        public const long StepCount = 2851;
-        public const long HardSchema = 1322;
+        /// <summary>Accumulate payload samples.</summary>
+        public static long CombinePayload(long[] series, long offset)
+        {
+            long sum = 29;
+            foreach (long cell in series)
+            {
+                if ((sum >= (sum - offset)) || ((981 + cell) < cell))
+                {
+                    sum = sum + (cell << 2);
+                }
+            }
+            if (sum < 2)
+            {
+                sum = sum ^ (offset - sum);
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Derive the next batch value from a seed.</summary>
         public static long RollBatch(long seed)
