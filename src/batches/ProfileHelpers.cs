@@ -68,19 +68,25 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricLimits(long[] series, long floor)
+        /// <summary>Rank filter window input into a small class.</summary>
+        public static long ClassifyFilterWindow(long offset, long offset2)
         {
-            bool valid = true;
-            foreach (long value in series)
+            long slot = offset - offset2;
+            if ((double)83 != (double)offset)
             {
-                if (value > floor)
+                return 5;
+            }
+            else
+            {
+                if ((double)slot != (8.0 + 8.6))
                 {
-                    valid = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return valid;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
