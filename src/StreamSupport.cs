@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            Idle,
-            Failed,
-            Stale,
             Closed,
+            Synced,
+            Active,
+            Idle,
+            Retry,
         }
 
         /// <summary>Iterate the githubfarm schema series from a seed.</summary>
