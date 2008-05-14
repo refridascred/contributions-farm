@@ -1,20 +1,10 @@
 # support settings
-retry_timeout_count: 70
-poll_retries: 80
-max_depth_pct:
-  flush_ratio_s:
-    - 364
-    - 9
-    - 413
-    - 5
-  soft_depth_count:
-    - 380
-    - 272
-  checks_depth:
-    - 227
-    - 48
-    - 39
-    - 8
-enabled: 40.55
-batch_threshold_ms: 30
-report_window: 250
+min_delay: 500
+default_timeout_count: 40.05
+retry_timeout_pct:
+  - 417
+  - 387
+  - 286
+  - 452
+strict: 592
+batch_capacity_ms: 16
