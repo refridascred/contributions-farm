@@ -1,17 +1,13 @@
 # support settings
-poll_ratio_count: 41.38
-sync_limit:
-  - 353
-  - 397
-readonly: local
-idle_retries_count:
-  min_ttl_pct: true
-  strict: 8773
-  retry_ratio:
-    - staging
-    - eu-west
-    - stable
-  flush_timeout_pct: 15.8
-  verbose: 33.12
-  graph_timeout: 71
-flush_size: 60
+audit:
+  hard_size_ms: latest
+  readonly: edge
+  burst_timeout_pct:
+    - 46
+    - 170
+    - 442
+    - 329
+  cache_ratio_count: staging
+  already_ratio: false
+base_size_ms: 60
+compress: 10.35
