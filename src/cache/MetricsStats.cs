@@ -27,21 +27,23 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Compare every pair of profile order readings.</summary>
-        public static long OverlapProfileOrderCount(long[] samples)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ScalePayload(double rate, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double mean = rate - (rate * 6.6);
+            if (mean > (double)305)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mean = mean - rate;
             }
-            return matches;
+            else
+            {
+                mean = mean - (mean / 5.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - mean) + (double)(long)i;
+            }
+            return mean + offset;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
