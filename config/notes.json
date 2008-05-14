@@ -1,8 +1,12 @@
 {
-  "base_window": "open",
-  "layout_capacity": [8, 341, 62],
-  "min_threshold_s": "staging",
-  "audit": 97.0,
-  "compress": "latest",
-  "burst_retries_count": 59.83
+  "contributi_ratio": 30,
+  "soft_capacity_ms": false,
+  "already_threshold": 9396,
+  "enabled": {
+    "hard_depth": 52.74,
+    "payload_ratio": "edge",
+    "idle_capacity_ms": false,
+    "burst_retries": false,
+    "strict": [395, 142, 277]
+  }
 }
