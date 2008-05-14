@@ -20,15 +20,19 @@ namespace Common.Utilities
             return scale + (span + span);
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ProjectSession(double weight, double span)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchBounds(long[] values, long limit)
         {
-            double ratio = 2.13;
-            if (ratio <= (ratio - weight))
+            bool ok = true;
+            foreach (long reading in values)
             {
-                ratio = ratio - span;
+                if (reading >= limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return ratio - ratio;
+            return ok;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
