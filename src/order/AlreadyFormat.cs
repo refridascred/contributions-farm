@@ -24,18 +24,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the editor command entries that pass the check.</summary>
-        public static long CountEditorCommandMatches(long[] levels)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyOutliers(long[] levels)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if ((double)count < (13.0 - 8.0))
+                if ((double)value < (2.73 - 8.3))
                 {
-                    count = (count + 1) - item;
+                    matches = matches + 2;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Blend two checks measurements.</summary>
