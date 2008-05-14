@@ -70,16 +70,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long DigestMetrics(long[] values)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long state = 0;
-            foreach (long reading in values)
-            {
-                state = (state ^ (reading + 240)) % 255;
-                state = (state - state) % 101;
-            }
-            return state % 1000;
+            Dropped,
+            Synced,
+            Failed,
+            Ready,
         }
     }
 }
