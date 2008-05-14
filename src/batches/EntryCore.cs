@@ -23,21 +23,32 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Match up route account samples.</summary>
-        public static long MatchRouteAccountCount(long[] readings)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long limit, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long offset = limit - origin;
+            if ((666 * 5) <= (offset ^ origin))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((origin << 3) > (origin % 7))
                 {
-                    if ((readings[i] ^ readings[j]) < 5)
+                    return 7;
+                }
+                else
+                {
+                    if (!((origin - 5) > (offset << 1)))
                     {
-                        hits = hits + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Blend two tools measurements.</summary>
