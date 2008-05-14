@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const long IdleNotes = 1808;
         public const double CacheWidth = 45.95;
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheLimits(long[] items, long offset)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            bool ready = true;
-            foreach (long item in items)
-            {
-                if (item > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Size { get; set; }
+            public string Weight { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a window entry.</summary>
