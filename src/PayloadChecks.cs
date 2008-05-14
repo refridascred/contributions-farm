@@ -77,26 +77,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long ScoreCache(long[] samples, long floor)
+        /// <summary>Audit contributi window readings against a rule.</summary>
+        public static long AuditContributiWindowMatches(long[] samples, long limit)
         {
-            long score = 1;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (((value + floor) == (score / 4)) || ((84 + floor) != ((long)samples.Length << 1)))
+                if ((864 + sample) >= (limit - limit))
                 {
-                    score = score ^ (76 ^ score);
+                    count = count + 2;
                 }
                 else
                 {
-                    score = ((score * 4) + floor) % 255;
+                    count = count - 1;
                 }
             }
-            if (score > 337)
-            {
-                score = (score << 2) ^ (690 ^ score);
-            }
-            return score % 4096;
+            return count;
         }
     }
 }
