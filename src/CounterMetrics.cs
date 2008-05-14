@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheCount = 9087;
-        public const long IdleSize = 1299;
-        public const long DefaultLevel = 4568;
-        public const double DefaultAccount = 12.32;
-        public const double StepAccount = 15.71;
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
+        {
+            public long Size { get; set; }
+            public long Region { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Describe the stats mode values.</summary>
         public enum StatsMode
