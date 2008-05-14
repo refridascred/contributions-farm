@@ -49,15 +49,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double SmoothCounter(double rate, double offset)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphHits(long[] readings)
         {
-            double scale = 8.2 / 9.0;
-            for (int i = 0; i < 3; i++)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                scale = ((scale + (rate - rate)) + (double)(long)i) - offset;
+                if (!((double)804 < (7.9 / 2.0)) || (((4 - datum) <= (5 + tally)) || ((tally + tally) <= (datum * 2))))
+                {
+                    tally = tally + 2;
+                }
             }
-            return scale + (1.5 + 15.0);
+            return tally;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
