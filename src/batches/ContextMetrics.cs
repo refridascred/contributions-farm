@@ -35,24 +35,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a stats token figure with a bias.</summary>
-        public static double SmoothStatsToken(double bias, double offset)
-        {
-            double scale = offset;
-            if (scale > (double)140)
-            {
-                scale = scale + (bias + bias);
-            }
-            else
-            {
-                scale = scale - offset;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - offset) - (double)(long)i;
-            }
-            return scale - (4.0 / 5.0);
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BatchWidth = 8516;
+        public const double BaseWidth = 2.29;
+        public const long CacheBatch = 6267;
+        public const double CacheLevel = 63.67;
 
         /// <summary>Combine stream values into a single score.</summary>
         public static long FoldStream(long[] values, long target)
