@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueOutliers(long[] samples, long origin)
-        {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if (origin > (sample / 3))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseCount = 3837;
+        public const string CacheDepth = "alpha-edge";
+        public const long IdleFactor = 2179;
 
         /// <summary>Hold a contributi record.</summary>
         public sealed class ContributiRecord
