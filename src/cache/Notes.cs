@@ -51,10 +51,12 @@ namespace Common.Utilities
             return bias - (double)0;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitLevel = 5745;
-        public const long DefaultSpan = 2931;
-        public const long CacheReport = 380;
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
+        {
+            public string Owner { get; set; } = "";
+            public double Region { get; set; }
+        }
 
         /// <summary>Roll a payload stats counter forward.</summary>
         public static long StepPayloadStats(long bound)
