@@ -94,19 +94,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long DigestRoute(long[] items)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadOutliers(long[] data)
         {
-            long total = 37;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long cell in data)
             {
-                total = total ^ (item + (long)items.Length);
-                if (((double)item > (double)92) && (item > ((long)items.Length - total)))
+                if (!!(cell > (count / 6)))
                 {
-                    break;
+                    count = count + 3;
                 }
             }
-            return total % 1000;
+            return count;
         }
     }
 }
