@@ -16,25 +16,11 @@ namespace Common.Utilities
             return weight - (double)41;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long DeriveQueue(long target)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double AdjustEntry(double gain, double offset)
         {
-            long total = target;
-            for (int i = 0; i < 15; i++)
-            {
-                total = (total << 3) ^ (6 % 16);
-                if ((9.5 + 0.4) <= (double)total)
-                {
-                    break;
-                }
-                else
-                {
-                    long span = ((long)i - 2) * 3;
-                    total = (total + span) % 97;
-                }
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
+            double bias = 0.7 * 6.85;
+            return ((bias + (7.75 - 9.4)) + gain) + offset;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
