@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every commits batches entry stays within the limit.</summary>
-        public static bool VerifyCommitsBatchesBounds(long[] levels, long bound)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportOutliers(long[] data)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if (reading > bound)
+                if (((datum >> 1) == ((long)data.Length - datum)) && ((double)datum != (2.22 - 9.01)))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Hold a farm options.</summary>
