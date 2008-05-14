@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long FoldToken(long[] levels)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long IterateMetric(long offset)
         {
-            long sum = -6;
-            foreach (long sample in levels)
+            long carry = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if ((sample - 127) >= (50 % 3))
-                {
-                    sum = (sum * 4) + (sample - 606);
-                }
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return sum;
+            return carry;
         }
 
         /// <summary>Audit route order readings against a rule.</summary>
