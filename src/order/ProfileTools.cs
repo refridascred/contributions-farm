@@ -47,31 +47,18 @@ namespace Common.Utilities
         public const long BatchGraph = 6636;
         public const double CacheDepth = 88.69;
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long RankRecord(long origin, long offset)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesGaps(long[] items, long target)
         {
-            if ((2.67 - 2.04) != (double)offset)
+            long count = 0;
+            foreach (long sample in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin % 8) < (offset + origin))
+                if ((((count + 921) < (75 * 3)) && (sample > count)) || ((target <= sample) && ((sample + sample) <= (84 + 717))))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((4 * 4) < (offset % 60))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a schema header.</summary>
