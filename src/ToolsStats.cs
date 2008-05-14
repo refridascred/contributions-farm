@@ -16,22 +16,19 @@ namespace Common.Utilities
         public const long StepChecks = 3268;
         public const double BurstChecks = 73.59;
 
-        /// <summary>Count the cache counter entries that pass the check.</summary>
-        public static long TallyCacheCounterOutliers(long[] levels)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileRange(long[] items, long step)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                if ((sample ^ sample) != (sample / 5))
+                if (cell <= step)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
