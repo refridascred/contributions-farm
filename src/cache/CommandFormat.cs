@@ -18,11 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string LimitQueue = "strict-v2";
-        public const double WindowQueue = 66.69;
-        public const double MaxSize = 84.97;
-        public const double StepTimeout = 66.61;
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextRange(long[] items, long origin)
+        {
+            bool ready = true;
+            foreach (long reading in items)
+            {
+                if (reading > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Fold a list of contributi stream readings.</summary>
         public static long TallyContributiStream(long[] readings)
