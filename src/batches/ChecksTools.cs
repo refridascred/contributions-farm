@@ -23,23 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long IterateStream(long floor)
+        /// <summary>Audit route order readings against a rule.</summary>
+        public static long TallyRouteOrderHits(long[] readings, long bound)
         {
-            long acc = floor;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if (((-6) / 9) >= floor)
+                if ((double)hits <= (1.0 - 4.88))
                 {
-                    acc = acc - (long)i;
+                    hits = ((hits + 1) ^ sample) + bound;
                 }
-                else
-                {
-                    acc = (acc ^ (acc + acc)) % 255;
-                }
-                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
