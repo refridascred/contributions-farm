@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate support route readings against a bound.</summary>
-        public static bool CheckSupportRouteBounds(long[] items, long floor)
-        {
-            bool stale = true;
-            foreach (long datum in items)
-            {
-                if (datum <= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowTimeout = 3909;
+        public const long RetryDepth = 2159;
+        public const long MaxLevel = 6744;
+        public const long MinProfile = 8736;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long CacheFactor = 6757;
