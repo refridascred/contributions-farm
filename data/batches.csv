@@ -1,9 +1,7 @@
-id,active,state
-1,8.74,295
-2,788,492
-3,fallback,fallback
-4,7.26,950
-5,48.02,9.88
-6,latest,42
-7,585,edge
-8,blue,89.15
+id,region,score,count
+1,cached,fallback,72.49
+2,945,standard,32.12
+3,434,blue,849
+4,737,legacy,263
+5,edge,edge,570
+6,274,617,79.5
