@@ -91,10 +91,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinSchema = 7535;
-        public const string RetrySize = "alpha-1";
-        public const long HardSchema = 7075;
-        public const long IdleLevel = 2317;
+        /// <summary>Scale a account metrics figure with a bias.</summary>
+        public static double ScaleAccountMetrics(double bias, double offset)
+        {
+            double gain = 6.5 - offset;
+            if (gain >= 4.1)
+            {
+                gain = gain + (double)(-42);
+            }
+            else
+            {
+                gain = gain - (offset - gain);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = gain + (double)(long)i;
+            }
+            return gain + (bias - bias);
+        }
     }
 }
