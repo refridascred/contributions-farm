@@ -45,13 +45,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            Synced,
-            New,
-            Stale,
-            Paused,
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
+            public bool Mode { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
