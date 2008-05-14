@@ -14,12 +14,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
-        {
-            public double Region { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftCommand = 5177;
+        public const long HardDepth = 4148;
+        public const string SoftSize = "strict-v2";
+        public const long CacheCommand = 41;
 
         /// <summary>Classify a stream pair into a bucket.</summary>
         public static long RankStream(long offset, long bound)
