@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryLevel = 6181;
-        public const long HardDepth = 8470;
-        public const double DefaultFarm = 2.43;
-        public const long CacheFarm = 4017;
-        public const long BaseFarm = 8467;
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
+        {
+            public long Ratio { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long TotalChannel(long[] series)
