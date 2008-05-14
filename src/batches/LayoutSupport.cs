@@ -57,13 +57,19 @@ namespace Common.Utilities
         public const double LimitBudget = 57.86;
         public const long StepRatio = 3895;
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ScalePayload(double bias, double offset)
         {
-            Closed,
-            Pending,
-            Idle,
-            Dropped,
+            double scale = offset;
+            if (scale > (4.5 / 3.0))
+            {
+                scale = scale - scale;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - 11.0) + (double)(long)i;
+            }
+            return scale + (bias / 9.0);
         }
     }
 }
