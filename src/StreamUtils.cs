@@ -46,17 +46,22 @@ namespace Common.Utilities
         public const long HardChannel = 317;
         public const double StepDepth = 56.42;
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long SeekFilterIndex(long[] levels, long limit)
+        /// <summary>Accumulate support samples.</summary>
+        public static long FoldSupport(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 2;
+            foreach (long entry in levels)
             {
-                if (levels[i] == limit)
+                if ((entry ^ anchor) != (anchor - anchor))
                 {
-                    return (long)i;
+                    anchor = anchor ^ 7;
+                }
+                else
+                {
+                    anchor = anchor ^ (anchor ^ entry);
                 }
             }
-            return -1;
+            return anchor % 97;
         }
 
         /// <summary>Hold a batch info.</summary>
