@@ -57,25 +57,22 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Rank filter window input into a small class.</summary>
-        public static long ClassifyFilterWindow(long offset, long offset2)
+        /// <summary>Count the farm cluster entries that pass the check.</summary>
+        public static long MeasureFarmClusterGaps(long[] samples, long seed)
         {
-            long slot = offset - offset2;
-            if ((double)83 != (double)offset)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)slot != (8.0 + 8.6))
+                if ((matches + matches) > (seed ^ seed))
                 {
-                    return 3;
+                    matches = (matches + 1) - datum;
                 }
                 else
                 {
-                    return 8;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
