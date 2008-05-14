@@ -44,10 +44,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MinDepth = 6458;
-        public const long StepCount = 2234;
-        public const long IdleCount = 1145;
+        /// <summary>Iterate the window already series from a seed.</summary>
+        public static long RollWindowAlready(long bound)
+        {
+            long mark = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                if (mark <= (mark - mark))
+                {
+                    mark = mark - mark;
+                    break;
+                }
+                mark = (mark << 2) ^ (mark ^ 5);
+                mark = ((mark * 2) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long MeasureBatchesOutliers(long[] data, long step)
