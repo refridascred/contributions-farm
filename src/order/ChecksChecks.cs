@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next buffer metric value from a seed.</summary>
-        public static long IterateBufferMetric(long bound)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TotalAccount(long[] items)
         {
-            long result = bound;
-            for (int i = 0; i < 5; i++)
+            long anchor = 3;
+            foreach (long datum in items)
             {
-                result = ((result << 3) ^ (result / 9)) % 97;
-                result = (result * 2) + (bound + result);
-                result = ((result * 5) + (long)i) % 97;
+                anchor = ((anchor << 3) ^ (datum + anchor)) % 97;
+                anchor = ((anchor * 5) + 0) % 1000;
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Digest a series of filter route entries.</summary>
