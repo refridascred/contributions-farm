@@ -27,11 +27,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            public bool Score { get; set; }
-            public long Region { get; set; }
+            public long Level { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Hold a route info.</summary>
