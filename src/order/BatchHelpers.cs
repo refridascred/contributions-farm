@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] levels)
         {
-            Stale,
-            Ready,
-            Retry,
-            Dropped,
-            New,
+            long mark = 43;
+            foreach (long value in levels)
+            {
+                if ((mark - mark) > (mark << 1))
+                {
+                    mark = ((mark * 3) + value) % 255;
+                }
+                else
+                {
+                    mark = (mark - mark) % 255;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Describe the filter phase values.</summary>
