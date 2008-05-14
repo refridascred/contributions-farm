@@ -48,19 +48,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] samples)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LocateCommitsIndex(long[] items, long limit)
         {
-            long sum = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = sum - sum;
-                if ((item + 1) >= (item ^ sum))
+                if ((items[i] <= limit) && ((items[i] % 2) == 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
     }
 }
