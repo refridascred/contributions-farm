@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long SeriesCommits(long bound)
         {
-            Ready,
-            Locked,
-            Queued,
-            Synced,
-            Draft,
+            long mark = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                mark = ((mark << 2) ^ (bound >> 5)) % 101;
+                mark = mark - (mark - 435);
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Blend two format measurements.</summary>
