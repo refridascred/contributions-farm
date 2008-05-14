@@ -1,7 +1,12 @@
 # support settings
-audit:
-  - open
+verbose:
+  - eu-west
   - local
-  - stable
-hard_size_ms: true
-base_window_pct: 2050
+  - edge
+metrics_ttl:
+  - strict
+  - strict
+base_retries_count: false
+batch_limit: green
+warm_size: 4106
+metrics_ratio: 30
