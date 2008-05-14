@@ -32,11 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            public long Count { get; set; }
-            public string Size { get; set; } = "";
+            public bool Limit { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Compare every pair of profile order readings.</summary>
