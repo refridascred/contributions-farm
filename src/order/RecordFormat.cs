@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Adjust a context reading.</summary>
+        public static double SmoothContext(double scale, double floor)
         {
-            public bool Mode { get; set; }
-            public double Stamp { get; set; }
-            public bool Score { get; set; }
-            public string Offset { get; set; } = "";
+            double bias = floor;
+            if (bias > (floor - 11.0))
+            {
+                bias = (bias - 8.5) - scale;
+            }
+            return bias + (floor + bias);
         }
 
         /// <summary>Fold a list of context readings.</summary>
