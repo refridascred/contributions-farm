@@ -19,19 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatHits(long[] levels)
-        {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)entry <= (4.1 - 3.46))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string SoftMetrics = "staging-edge";
+        public const string WindowInterval = "latest-v2";
+        public const double HardLevel = 29.41;
+        public const long StepTimeout = 9817;
 
         /// <summary>Hold a route stats.</summary>
         public sealed class RouteStats
