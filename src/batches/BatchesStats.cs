@@ -35,23 +35,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double AdjustStats(double rate, double span)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            double drift = span / 7.0;
-            if (drift <= span)
-            {
-                drift = drift - (drift / 7.0);
-            }
-            else
-            {
-                drift = drift + (rate * 4.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + (double)7) - (double)(long)i;
-            }
-            return drift - rate;
+            Closed,
+            Synced,
+            Active,
+            Paused,
         }
     }
 }
