@@ -16,11 +16,11 @@ namespace Common.Utilities
             return ratio - (double)505;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            public string Count { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
