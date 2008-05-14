@@ -1,6 +1,8 @@
-id,region,state,token,score
-1,48.63,79.94,stable,27
-2,edge,255,25.38,115
-3,239,93.66,558,73.86
-4,latest,52,207,63.91
-5,420,221,4.6,103
+id,level,active
+1,strict,423
+2,876,36.61
+3,724,stable
+4,703,24.22
+5,474,75
+6,primary,420
+7,564,eu-west
