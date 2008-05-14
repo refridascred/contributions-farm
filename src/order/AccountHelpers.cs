@@ -28,16 +28,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Derive the next metric metrics value from a seed.</summary>
-        public static long StepMetricMetrics(long origin)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamHits(long[] data, long floor)
         {
-            long acc = origin;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                acc = ((acc << 3) ^ origin) % 1000;
-                acc = ((acc * 2) + (long)i) % 65521;
+                if (((seen + floor) == (864 ^ (long)data.Length)) || (sample >= (seen + 1)))
+                {
+                    seen = seen + 3;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
