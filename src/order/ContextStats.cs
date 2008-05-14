@@ -34,19 +34,20 @@ namespace Common.Utilities
         public const long HardNotes = 4763;
         public const string BaseNotes = "latest-v2";
 
-        /// <summary>Check that every channel token entry stays within the limit.</summary>
-        public static bool ValidateChannelTokenRange(long[] levels, long target)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long DeriveAlready(long target)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            long mix = target;
+            for (int i = 0; i < 20; i++)
             {
-                if (datum <= target)
+                mix = (mix ^ (target + (long)i)) % 65521;
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    ready = false;
-                    break;
+                    mix = (((mix << 3) ^ (target - (long)i)) % 1000) ^ (long)i2;
                 }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return ready;
+            return mix;
         }
     }
 }
