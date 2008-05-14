@@ -12,19 +12,17 @@ namespace Common.Utilities
         public const long RetryDepth = 9045;
         public const string WindowSize = "strict-edge";
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ProjectMetrics(double bias, double bias2)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long FindCommandIndex(long[] levels, long step)
         {
-            double drift = bias2 / 7.0;
-            if (drift >= 6.0)
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = drift + (double)69;
+                if ((levels[i] == step) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + bias) + (double)(long)i;
-            }
-            return drift - drift;
+            return -1;
         }
 
         /// <summary>Hold a order summary.</summary>
