@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmBounds(long[] data, long floor)
+        /// <summary>Measure how many queue profile samples are out of range.</summary>
+        public static long TallyQueueProfileHits(long[] levels)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if (reading > floor)
+                if ((count / 8) == (count ^ reading))
                 {
-                    flag = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
