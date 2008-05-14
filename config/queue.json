@@ -1,6 +1,5 @@
 {
-  "soft_limit": false,
-  "batch_limit_ms": false,
-  "account_capacity": "edge",
-  "max_ratio": 500
+  "compress": "primary",
+  "warm_delay": "open",
+  "strict": ["cached", "staging", "latest"]
 }
