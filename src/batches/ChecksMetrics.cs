@@ -69,23 +69,10 @@ namespace Common.Utilities
             return rate + (double)972;
         }
 
-        /// <summary>Blend two command report measurements.</summary>
-        public static double BlendCommandReport(double rate, double floor)
-        {
-            double rate2 = (floor - rate) + rate;
-            if (rate2 <= (floor / 9.0))
-            {
-                rate2 = rate2 - (0.95 - rate2);
-            }
-            else
-            {
-                rate2 = rate2 - floor;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate2 = (rate2 - 2.8) + (double)(long)i;
-            }
-            return rate2 + (rate2 + rate2);
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultSize = 2500;
+        public const string RetryInterval = "standard-edge";
+        public const string HardEntry = "strict-edge";
+        public const string BaseEntry = "staging-1";
     }
 }
