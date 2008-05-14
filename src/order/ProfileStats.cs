@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Match up entry editor samples.</summary>
-        public static long PairEntryEditorCount(long[] samples)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long StepChannel(long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = seed;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                anchor = ((anchor << 2) ^ (anchor ^ anchor)) % 65521;
+                if ((anchor - seed) == (seed + seed))
                 {
-                    if ((samples[i] - samples[j]) == 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = anchor + (anchor & 127);
+                    continue;
                 }
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Define already limits and defaults.</summary>
