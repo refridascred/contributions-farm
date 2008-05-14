@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchQueue = 2306;
-        public const long CacheQueue = 7758;
-        public const long CacheBudget = 9260;
-        public const string StepQueue = "local-edge";
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportBounds(long[] levels, long bound)
+        {
+            bool valid = true;
+            foreach (long value in levels)
+            {
+                if (value != bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long BurstFactor = 8391;
