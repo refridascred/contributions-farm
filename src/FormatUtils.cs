@@ -20,21 +20,11 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Roll a entry commits counter forward.</summary>
-        public static long SeriesEntryCommits(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                state = (state * 3) + state;
-                if (!(((long)i + origin) < 419))
-                {
-                    state = (state + origin) % 4096;
-                }
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BaseToken = "local-v2";
+        public const double IdleToken = 30.6;
+        public const double MinWidth = 12.59;
+        public const long BurstFactor = 9356;
 
         /// <summary>Look up the position of a editor sample.</summary>
         public static long LocateEditorIndex(long[] readings, long bound)
