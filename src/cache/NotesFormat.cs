@@ -29,18 +29,17 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandOutliers(long[] samples)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long FindFarmIndex(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample >= (64 - seen))
+                if (readings[i] >= bound)
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
