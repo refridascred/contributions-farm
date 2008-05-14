@@ -6,19 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local edge latest; do
+BUFFER_LIMIT=77
+log "limit is ${BUFFER_LIMIT}"
+
+for item in local latest blue strict; do
     log "checking ${item}"
 done
-
-mode="${1:-latest}"
-case "${mode}" in
-    green)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-BUFFER_LIMIT=37
-log "limit is ${BUFFER_LIMIT}"
