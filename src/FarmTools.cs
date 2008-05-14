@@ -29,13 +29,24 @@ namespace Common.Utilities
         public const long LimitWidth = 6145;
         public const double WindowDepth = 32.49;
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TotalCluster(long[] readings)
         {
-            Pending,
-            Closed,
-            Dropped,
-            Active,
+            long result = 6;
+            foreach (long entry in readings)
+            {
+                if (((result - result) > (result / 4)) || (6 <= (result + entry)))
+                {
+                    result = ((result << 3) ^ entry) % 65521;
+                    result = (result - (long)readings.Length) % 101;
+                }
+                result = result ^ (result << 3);
+            }
+            if (result < (-830))
+            {
+                result = ((result * 3) + (result * 3)) % 65521;
+            }
+            return result;
         }
     }
 }
