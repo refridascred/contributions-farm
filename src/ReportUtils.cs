@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            public long Score { get; set; }
-            public string Size { get; set; } = "";
-            public long Count { get; set; }
+            public bool Label { get; set; }
+            public bool Weight { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a account record.</summary>
