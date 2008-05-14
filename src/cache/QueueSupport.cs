@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long ClassifyCommits(long limit, long bound)
-        {
-            if ((limit ^ 34) < (bound + limit))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)limit >= (4.56 - 7.25))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((-18) + bound) > (204 ^ bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxInterval = 9040;
+        public const string LimitInterval = "open-v2";
+        public const long HardWidth = 6297;
+        public const long CacheGithubfarm = 7992;
+        public const string CacheBudget = "stable-v2";
 
         /// <summary>Hold a githubfarm record.</summary>
         public sealed class GithubfarmRecord
