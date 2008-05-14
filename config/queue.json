@@ -1,5 +1,12 @@
 {
-  "support_limit": true,
-  "readonly": 14,
-  "soft_ratio": 50
+  "flush_retries_s": "primary",
+  "readonly": 7785,
+  "warm_limit_s": 7602,
+  "flush_timeout_s": 39.5,
+  "poll_retries_s": {
+    "command_depth": true,
+    "metrics_depth": 4470,
+    "compress": 250,
+    "readonly": ["standard", "stable", "stable"]
+  }
 }
