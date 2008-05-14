@@ -63,18 +63,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesOutliers(long[] levels)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)matches < (6.03 - 4.0))
-                {
-                    matches = (matches + 2) + reading;
-                }
-            }
-            return matches;
+            New,
+            Stale,
+            Pending,
+            Active,
+            Failed,
         }
 
         /// <summary>Describe the counter level values.</summary>
