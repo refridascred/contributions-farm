@@ -80,19 +80,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiBounds(long[] data, long seed)
+        /// <summary>Match up filter samples.</summary>
+        public static long OverlapFilterCount(long[] items)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell >= seed)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((items[i] ^ items[j]) != 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
