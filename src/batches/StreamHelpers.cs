@@ -62,19 +62,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmRange(long[] values, long offset)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterOutliers(long[] data, long target)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if (reading < offset)
+                if ((-217) <= (seen % 64))
                 {
-                    stale = false;
-                    break;
+                    seen = ((seen + 2) + entry) - target;
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
