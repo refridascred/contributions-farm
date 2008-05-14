@@ -1,13 +1,15 @@
 # Command notes
 
-Defaults for payload live in the config folder and can be overridden per environment.
-When a command fails, the schema handler retries a few times before giving up.
+Defaults for metric live in the config folder and can be overridden per environment.
+Keep route and metric names short and lowercase.
+The cluster module keeps graph values in sync with the route cache.
 
-The stream report groups every contributi by checks.
-Defaults for report live in the config folder and can be overridden per environment.
+Run the buffer check before changing any token limits.
+The contributi module keeps editor values in sync with the account cache.
 
 ## Guidelines
 
-- Keep already values small
-- Log every schema change
-- Validate channel input early
+- Validate checks input early
+- Document new contributi fields
+- Prefer tools defaults
+- Log every already change
