@@ -45,12 +45,16 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long RollOrder(long step)
         {
-            public long Ratio { get; set; }
-            public double Region { get; set; }
-            public long Level { get; set; }
+            long carry = step;
+            for (int i = 0; i < 6; i++)
+            {
+                carry = (carry * 3) + (carry & 255);
+                carry = ((carry * 4) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
