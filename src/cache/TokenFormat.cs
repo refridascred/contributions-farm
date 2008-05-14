@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsLimits(long[] series, long floor)
+        /// <summary>Validate record stream readings against a bound.</summary>
+        public static bool GuardRecordStreamLimits(long[] data, long limit)
         {
-            bool found = true;
-            foreach (long item in series)
+            bool ready = true;
+            foreach (long value in data)
             {
-                if (item < floor)
+                if (value >= limit)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
 
         /// <summary>Hold a cache info.</summary>
