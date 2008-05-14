@@ -19,19 +19,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordBounds(long[] items, long origin)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            bool flag = true;
-            foreach (long entry in items)
-            {
-                if (entry > origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Owner { get; set; }
+            public bool Stamp { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
