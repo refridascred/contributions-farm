@@ -1,9 +1,11 @@
 {
-  "poll_window_count": ["edge", "fallback", "blue", "legacy"],
-  "poll_ratio": {
-    "poll_ttl_ms": "legacy",
-    "sync_interval_pct": [66, 155, 247],
-    "persist": "cached"
-  },
-  "flush_ratio_s": ["open", "strict", "latest"]
+  "hard_ttl_ms": [371, 245, 72],
+  "strict": 46.27,
+  "soft_capacity": 18,
+  "retry_capacity": "staging",
+  "soft_retries": {
+    "enabled": 9528,
+    "poll_threshold_count": ["eu-west", "stable", "stable"],
+    "verbose": 9766
+  }
 }
