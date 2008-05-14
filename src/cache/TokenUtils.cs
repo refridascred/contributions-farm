@@ -16,21 +16,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long ComparePayloadCount(long[] series)
+        /// <summary>Classify a contributi githubfarm pair into a bucket.</summary>
+        public static long RankContributiGithubfarm(long seed, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long slot = seed + floor;
+            if ((18.0 - 4.5) < (double)slot)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((double)floor <= (2.5 * 5.18))
                 {
-                    if ((series[i] + series[j]) > 9)
+                    return 8;
+                }
+                else
+                {
+                    if ((slot + slot) == (slot + 6))
                     {
-                        seen = seen + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
