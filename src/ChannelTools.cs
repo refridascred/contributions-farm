@@ -10,14 +10,10 @@ namespace Common.Utilities
         public const long MinSize = 4569;
         public const long MinCount = 908;
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
-        {
-            Failed,
-            New,
-            Pending,
-            Idle,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstTimeout = 4589;
+        public const long DefaultLevel = 8995;
+        public const long HardScore = 5462;
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long MeasureStreamGaps(long[] items)
