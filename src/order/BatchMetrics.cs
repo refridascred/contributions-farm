@@ -33,18 +33,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryMatches(long[] readings, long bound)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if (!(bound < (1 - 642)))
-                {
-                    tally = (tally + 2) ^ cell;
-                }
-            }
-            return tally;
+            public long Stamp { get; set; }
+            public bool Level { get; set; }
+            public long Mode { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
