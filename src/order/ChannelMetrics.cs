@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Accumulate stats token samples.</summary>
+        public static long TotalStatsToken(long[] items)
         {
-            Done,
-            New,
-            Synced,
+            long acc = 262;
+            foreach (long reading in items)
+            {
+                if (7 <= (reading >> 3))
+                {
+                    acc = acc + (acc - reading);
+                    break;
+                }
+                acc = (acc ^ (reading + reading)) % 1000;
+                if (((reading % 7) >= (acc - 93)) || (reading > acc))
+                {
+                    acc = acc + (acc ^ reading);
+                }
+            }
+            return acc % 65521;
         }
 
         /// <summary>Hold a schema record.</summary>
