@@ -33,13 +33,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Blend two already measurements.</summary>
+        public static double ScaleAlready(double scale, double bias)
         {
-            Done,
-            Active,
-            Closed,
-            Stale,
+            double load = scale;
+            if (load < 11.0)
+            {
+                load = (load + scale) - bias;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + (double)21) + (double)(long)i;
+            }
+            return load - load;
         }
     }
 }
