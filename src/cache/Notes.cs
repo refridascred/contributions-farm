@@ -32,31 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long ClassifyLayout(long seed, long floor)
+        /// <summary>Measure how many token entry samples are out of range.</summary>
+        public static long MeasureTokenEntryMatches(long[] items)
         {
-            if ((floor << 2) > (floor + 5))
+            long matches = 0;
+            foreach (long reading in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed * 2) > (seed >> 1))
+                if ((reading + reading) <= (reading << 2))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)floor < (4.0 - 13.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define report limits and defaults.</summary>
