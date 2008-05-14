@@ -37,16 +37,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the queue editor series from a seed.</summary>
-        public static long RollQueueEditor(long origin)
+        /// <summary>Blend two record measurements.</summary>
+        public static double ProjectRecord(double scale, double span)
         {
-            long result = origin;
-            for (int i = 0; i < 10; i++)
+            double mean = span / 9.0;
+            if (mean >= (double)(-8))
             {
-                result = (result - (origin ^ origin)) % 65521;
-                result = ((result * 5) + (long)i) % 101;
+                mean = (mean + (double)5) + scale;
             }
-            return result;
+            return mean + (span / 3.0);
         }
     }
 }
