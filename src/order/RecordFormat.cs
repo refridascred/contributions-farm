@@ -66,13 +66,15 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long SeriesFilter(long floor)
         {
-            Failed,
-            Synced,
-            Draft,
-            Retry,
+            long result = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
         }
     }
 }
