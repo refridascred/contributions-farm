@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] values)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long IterateFormat(long bound)
         {
-            long state = 92;
-            foreach (long entry in values)
+            long mix = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if ((double)0 == (double)entry)
-                {
-                    state = ((state << 3) ^ (7 << 2)) % 4096;
-                }
-                if (!((1.28 - 9.2) == (double)state))
+                if ((double)bound <= (7.61 - 16.0))
                 {
                     break;
                 }
+                else
+                {
+                    mix = (mix ^ mix) % 101;
+                }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
