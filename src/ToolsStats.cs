@@ -61,17 +61,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long DeriveContext(long floor)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsBounds(long[] samples, long limit)
         {
-            long mix = floor;
-            for (int i = 0; i < 7; i++)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                mix = (mix ^ (long)i) % 101;
-                mix = (mix * 2) + (long)i;
-                mix = ((mix * 2) + (long)i) % 97;
+                if (datum > limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Hold a format entry.</summary>
