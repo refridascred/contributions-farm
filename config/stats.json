@@ -1,14 +1,5 @@
 {
-  "base_threshold_count": "standard",
-  "max_retries": 250,
-  "min_ttl": 100,
-  "poll_capacity_s": 500,
-  "min_window_s": "standard",
-  "format_interval": {
-    "warm_delay_pct": "stable",
-    "metrics_window": 500,
-    "strict": 84.57,
-    "base_capacity_count": ["primary", "green", "standard"],
-    "compress": "eu-west"
-  }
+  "cluster_ratio": "legacy",
+  "default_interval": 95.33,
+  "sync_delay_ms": true
 }
