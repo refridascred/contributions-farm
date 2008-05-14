@@ -19,18 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] samples, long origin)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LookupClusterIndex(long[] levels, long floor)
         {
-            long carry = 875;
-            foreach (long cell in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((6.1 / 4.0) != (double)origin)
+                if ((levels[i] >= floor) && ((levels[i] % 5) == 0))
                 {
-                    carry = ((carry * 4) + (462 % 97)) + cell;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
