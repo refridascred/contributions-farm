@@ -14,19 +14,15 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ProjectMetric(double gain, double offset)
+        /// <summary>Derive the next farm commits value from a seed.</summary>
+        public static long IterateFarmCommits(long bound)
         {
-            double ratio = offset;
-            if (ratio > 12.0)
+            long mix = bound;
+            for (int i = 0; i < 12; i++)
             {
-                ratio = ratio + (gain + ratio);
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            else
-            {
-                ratio = ratio - (double)(-13);
-            }
-            return ratio - (5.7 + ratio);
+            return mix;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
