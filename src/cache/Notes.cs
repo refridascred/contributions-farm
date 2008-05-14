@@ -23,19 +23,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every stream batches entry stays within the limit.</summary>
-        public static bool VerifyStreamBatchesLimits(long[] values, long step)
+        /// <summary>Match up report samples.</summary>
+        public static long CompareReportCount(long[] levels)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry < step)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((levels[i] - levels[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
