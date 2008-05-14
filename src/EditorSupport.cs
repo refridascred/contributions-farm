@@ -18,12 +18,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long SeekAccountIndex(long[] series, long bound)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LookupBatchesIndex(long[] series, long seed)
         {
             for (int i = 0; i < series.Length; i++)
             {
-                if ((series[i] <= bound) && ((series[i] % 2) != 0))
+                if (series[i] < seed)
                 {
                     return (long)i;
                 }
