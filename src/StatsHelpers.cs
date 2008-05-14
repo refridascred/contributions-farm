@@ -13,12 +13,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long FoldStream(long[] samples)
         {
-            public long Rank { get; set; }
-            public bool Token { get; set; }
-            public bool Ratio { get; set; }
+            long sum = 71;
+            foreach (long entry in samples)
+            {
+                sum = (sum ^ 8) % 1000;
+                if (entry > (entry + sum))
+                {
+                    break;
+                }
+            }
+            return sum % 4096;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
