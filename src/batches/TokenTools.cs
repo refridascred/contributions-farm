@@ -14,15 +14,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double SmoothBuffer(double ratio, double floor)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphRange(long[] samples, long seed)
         {
-            double scale = (double)(50 ^ 74);
-            if (scale >= (scale + ratio))
+            bool flag = true;
+            foreach (long value in samples)
             {
-                scale = scale + scale;
+                if (value <= seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return scale + (floor * 9.63);
+            return flag;
         }
 
         /// <summary>Rank entry batches input into a small class.</summary>
