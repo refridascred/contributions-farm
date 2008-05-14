@@ -32,12 +32,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Find the first counter record entry that matches the target.</summary>
+        public static long LookupCounterRecordIndex(long[] data, long offset)
         {
-            Stale,
-            Failed,
-            Closed,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine route values into a single score.</summary>
