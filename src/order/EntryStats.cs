@@ -58,23 +58,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double BlendRecord(double bias, double offset)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double AdjustBatches(double weight, double span)
         {
-            double mean = bias + (7.63 + 5.58);
-            if (mean >= bias)
+            double gain = (double)(49 + 678);
+            if (gain <= span)
             {
-                mean = (mean + mean) + offset;
+                gain = gain - 5.7;
             }
             else
             {
-                mean = mean + 2.9;
+                gain = gain + gain;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - mean) + (double)(long)i;
-            }
-            return mean + (double)(-2);
+            return gain + (weight / 5.0);
         }
     }
 }
