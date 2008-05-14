@@ -41,19 +41,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate already layout readings against a bound.</summary>
-        public static bool VerifyAlreadyLayoutRange(long[] values, long bound)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LookupSessionIndex(long[] readings, long target)
         {
-            bool stale = true;
-            foreach (long value in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value > bound)
+                if (readings[i] > target)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
