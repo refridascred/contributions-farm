@@ -64,21 +64,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long MatchOrderCount(long[] data)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
+            public double Score { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Derive the next context graph value from a seed.</summary>
