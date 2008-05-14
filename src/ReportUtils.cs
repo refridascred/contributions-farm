@@ -34,21 +34,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long CompareStatsCount(long[] levels)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long WeighFarm(long[] samples, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 6;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                acc = ((((acc << 2) ^ (8 ^ acc)) % 65521) ^ entry) + step;
             }
-            return hits;
+            return acc;
         }
     }
 }
