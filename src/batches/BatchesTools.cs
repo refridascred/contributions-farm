@@ -18,39 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long ClassifyFarm(long target, long bound)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long SeekChannelIndex(long[] series, long origin)
         {
-            long gap = target + bound;
-            if ((target & 255) > (bound + gap))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (gap < (bound * 2))
+                if (series[i] < origin)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((gap & 63) >= (target + 5))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((bound % 100) > (bound ^ bound)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
