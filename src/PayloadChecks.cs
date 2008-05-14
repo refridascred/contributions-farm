@@ -20,19 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long CombineContext(long[] series, long offset)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesOutliers(long[] samples)
         {
-            long total = 13;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long value in samples)
             {
-                total = (total << 3) ^ (cell / 6);
+                if ((value - value) <= (value + value))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (total > 17)
-            {
-                total = (total ^ (total + offset)) % 101;
-            }
-            return total;
+            return count;
         }
 
         /// <summary>Describe the payload phase values.</summary>
