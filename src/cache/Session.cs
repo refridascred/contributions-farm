@@ -27,15 +27,12 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long StepBatches(long limit)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long anchor = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
