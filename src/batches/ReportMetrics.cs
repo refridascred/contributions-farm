@@ -34,38 +34,18 @@ namespace Common.Utilities
             return ratio - (5.7 + ratio);
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long GradeLayout(long limit, long seed)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmHits(long[] data, long target)
         {
-            if (((2.4 - 13.0) > (double)limit) || (limit >= (2 - seed)))
+            long tally = 0;
+            foreach (long datum in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit >= (seed & 3)) && ((double)limit <= (5.34 + 4.0)))
+                if (((9.3 * 9.2) <= (double)tally) || ((double)datum <= 2.6))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (limit > (90 - 52))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((limit + 82) > seed)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    tally = (tally + 1) - target;
                 }
             }
+            return tally;
         }
     }
 }
