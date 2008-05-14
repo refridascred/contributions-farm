@@ -19,22 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] items, long offset)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long SeekAccountIndex(long[] readings, long offset)
         {
-            long mix = 2;
-            foreach (long cell in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((cell & 63) != (offset % 3)) || ((double)offset < (5.0 * 4.14)))
+                if ((readings[i] >= offset) && ((readings[i] % 5) == 0))
                 {
-                    mix = mix + (mix - mix);
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ (mix + offset)) % 65521;
+                    return (long)i;
                 }
             }
-            return mix % 4096;
+            return -1;
         }
 
         /// <summary>Find the first metric batch entry that matches the target.</summary>
