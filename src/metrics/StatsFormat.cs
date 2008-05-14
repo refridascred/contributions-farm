@@ -36,18 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many farm format samples are out of range.</summary>
-        public static long AuditFarmFormatGaps(long[] levels)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum & 31) == (53 >> 3))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public bool Mode { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
