@@ -77,15 +77,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long ScoreCommand(long[] series, long origin)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long score = 6;
-            foreach (long reading in series)
-            {
-                score = ((score + (reading ^ reading)) % 255) - origin;
-            }
-            return score;
+            Active,
+            New,
+            Closed,
+            Done,
         }
     }
 }
