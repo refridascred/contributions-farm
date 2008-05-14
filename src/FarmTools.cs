@@ -29,24 +29,17 @@ namespace Common.Utilities
         public const long LimitWidth = 6145;
         public const double WindowDepth = 32.49;
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TotalCluster(long[] readings)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LocateCounterIndex(long[] series, long origin)
         {
-            long result = 6;
-            foreach (long entry in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((result - result) > (result / 4)) || (6 <= (result + entry)))
+                if (series[i] >= origin)
                 {
-                    result = ((result << 3) ^ entry) % 65521;
-                    result = (result - (long)readings.Length) % 101;
+                    return (long)i;
                 }
-                result = result ^ (result << 3);
             }
-            if (result < (-830))
-            {
-                result = ((result * 3) + (result * 3)) % 65521;
-            }
-            return result;
+            return -1;
         }
     }
 }
