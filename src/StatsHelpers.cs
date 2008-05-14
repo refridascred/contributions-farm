@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Combine payload profile values into a single score.</summary>
-        public static long TotalPayloadProfile(long[] readings)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsBounds(long[] items, long offset)
         {
-            long mark = -27;
-            foreach (long cell in readings)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                mark = (mark ^ (mark + mark)) % 97;
-                mark = (mark - 8) % 97;
-                mark = (mark - cell) % 255;
+                if (reading != offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Hold a tools header.</summary>
