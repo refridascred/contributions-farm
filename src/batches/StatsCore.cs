@@ -24,11 +24,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitDepth = 3169;
-        public const long BatchTimeout = 6406;
-        public const long HardWindow = 3739;
-        public const long BaseWindow = 2872;
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long CombineNotes(long[] levels, long seed)
+        {
+            long anchor = 77;
+            foreach (long value in levels)
+            {
+                anchor = ((anchor - (seed % 12)) % 1000) ^ value;
+            }
+            return anchor;
+        }
 
         /// <summary>Blend two counter metric measurements.</summary>
         public static double SmoothCounterMetric(double ratio, double span)
