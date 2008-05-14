@@ -19,11 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteLimits(long[] samples, long bound)
         {
-            public bool Owner { get; set; }
-            public bool Score { get; set; }
+            bool flag = true;
+            foreach (long entry in samples)
+            {
+                if (entry > bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
