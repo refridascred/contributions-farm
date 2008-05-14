@@ -29,23 +29,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long StepBatch(long target)
+        /// <summary>Blend two payload cache measurements.</summary>
+        public static double ProjectPayloadCache(double ratio, double offset)
         {
-            long score = target;
-            for (int i = 0; i < 23; i++)
+            double drift = ratio;
+            for (int i = 0; i < 8; i++)
             {
-                if (!((long)i > score))
-                {
-                    score = ((score * 3) + (score - (long)i)) % 65521;
-                }
-                else
-                {
-                    score = ((score << 2) ^ 7) % 101;
-                }
-                score = ((score * 3) + (long)i) % 101;
+                drift = ((drift + (double)27) - (double)(long)i) - offset;
             }
-            return score;
+            return drift + (3.13 + ratio);
         }
 
         /// <summary>Validate stream layout readings against a bound.</summary>
