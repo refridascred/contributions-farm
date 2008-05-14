@@ -21,17 +21,21 @@ namespace Common.Utilities
         public const string WindowSession = "staging";
         public const long StepLevel = 6403;
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long SeekStreamIndex(long[] readings, long limit)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long MatchGraphCount(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (readings[i] <= limit)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] + values[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
