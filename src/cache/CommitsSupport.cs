@@ -53,12 +53,33 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftInterval = 2795;
-        public const long SoftFactor = 253;
-        public const double RetryTools = 5.29;
-        public const string HardTools = "latest-1";
-        public const long CacheWidth = 9996;
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long SortOrder(long seed, long step)
+        {
+            long span = seed ^ step;
+            if (7 > (span + seed))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((step << 2) > step)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((605 > (span + seed)) && (span > 252))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const double HardFormat = 57.43;
