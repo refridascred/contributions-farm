@@ -21,22 +21,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many farm layout samples are out of range.</summary>
-        public static long CountFarmLayoutOutliers(long[] readings)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesGaps(long[] data, long bound)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if (22 < (item - item))
+                if (((reading & 127) == (bound & 15)) || ((reading / 7) >= (reading << 1)))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the metrics state values.</summary>
