@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Locate a already reading by value.</summary>
-        public static long SeekAlreadyIndex(long[] values, long origin)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long RollStats(long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 19; i++)
             {
-                if (values[i] < origin)
-                {
-                    return (long)i;
-                }
+                acc = (acc << 2) ^ step;
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Digest a series of account entries.</summary>
