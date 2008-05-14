@@ -22,10 +22,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BaseAlready = 73.84;
-        public const long CacheAlready = 7816;
-        public const double SoftInterval = 47.12;
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double SmoothWindow(double gain, double floor)
+        {
+            double scale = floor;
+            if (scale <= (floor + scale))
+            {
+                scale = (scale - (floor / 5.0)) - gain;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + (15.0 / 8.0)) + (double)(long)i;
+            }
+            return scale - scale;
+        }
 
         /// <summary>Adjust a session notes reading.</summary>
         public static double AdjustSessionNotes(double scale, double bias)
