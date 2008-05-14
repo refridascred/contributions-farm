@@ -55,13 +55,12 @@ namespace Common.Utilities
         public const string BurstEntry = "local-1";
         public const string WindowEntry = "strict";
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            public bool Offset { get; set; }
-            public long Label { get; set; }
-            public long Size { get; set; }
-            public long Level { get; set; }
+            Queued,
+            New,
+            Synced,
         }
     }
 }
