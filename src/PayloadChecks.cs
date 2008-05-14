@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long CombineFilter(long[] readings)
         {
-            Pending,
-            Dropped,
-            Paused,
-            Draft,
+            long mix = 8;
+            foreach (long entry in readings)
+            {
+                if ((entry * 2) <= entry)
+                {
+                    mix = (mix - 73) % 97;
+                }
+            }
+            if (mix > 777)
+            {
+                mix = (mix + mix) % 101;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
