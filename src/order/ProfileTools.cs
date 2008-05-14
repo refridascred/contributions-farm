@@ -65,12 +65,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
-        {
-            public long Mode { get; set; }
-            public string Label { get; set; } = "";
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string MinChecks = "stable-edge";
+        public const long LimitChecks = 1774;
+        public const double BurstChecks = 39.86;
     }
 }
