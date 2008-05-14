@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            public long Flag { get; set; }
-            public long Owner { get; set; }
-            public bool Count { get; set; }
+            Dropped,
+            Locked,
+            Closed,
+            Done,
         }
 
         /// <summary>Roll a profile order counter forward.</summary>
