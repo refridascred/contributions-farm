@@ -39,11 +39,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleTimeout = 1839;
-        public const long BaseSchema = 5372;
-        public const double SoftScore = 22.93;
-        public const string IdleSize = "cached-edge";
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long ClassifyPayload(long limit, long bound)
+        {
+            if ((limit >> 3) <= limit)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)bound == (double)limit)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (limit < (limit & 31))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Match up context samples.</summary>
         public static long MatchContextCount(long[] values)
