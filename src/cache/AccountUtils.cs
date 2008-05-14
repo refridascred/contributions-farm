@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long DeriveStream(long origin)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long result = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                if (((origin - (long)i) > origin) && (8.4 > (double)(long)i))
-                {
-                    continue;
-                }
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
+            public string Score { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
