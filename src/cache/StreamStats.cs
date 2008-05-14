@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinSize = 1444;
-        public const string HardEntry = "open-edge";
-        public const long MaxRatio = 2278;
-        public const double WindowEntry = 2.61;
-        public const double StepEntry = 89.91;
+        /// <summary>Combine report buffer values into a single score.</summary>
+        public static long CombineReportBuffer(long[] series)
+        {
+            long anchor = 3;
+            foreach (long cell in series)
+            {
+                if ((anchor ^ cell) >= cell)
+                {
+                    anchor = anchor ^ (6 << 2);
+                }
+            }
+            if (anchor > (-169))
+            {
+                anchor = (anchor ^ anchor) % 101;
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Describe the editor class values.</summary>
         public enum EditorClass
