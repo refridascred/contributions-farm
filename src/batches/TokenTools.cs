@@ -28,11 +28,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            public bool Score { get; set; }
-            public double Rank { get; set; }
+            Draft,
+            Queued,
+            Failed,
         }
     }
 }
