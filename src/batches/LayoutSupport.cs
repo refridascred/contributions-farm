@@ -39,10 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string RetryWidth = "cached-v2";
-        public const string HardStream = "local-1";
-        public const string StepRatio = "standard-edge";
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleTimeout = 1839;
+        public const long BaseSchema = 5372;
+        public const double SoftScore = 22.93;
+        public const string IdleSize = "cached-edge";
 
         /// <summary>Match up context samples.</summary>
         public static long MatchContextCount(long[] values)
