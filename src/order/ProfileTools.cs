@@ -53,15 +53,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ScaleCluster(double scale, double span)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ScaleMetric(double ratio, double offset)
         {
-            double gain = span / 9.0;
-            for (int i = 0; i < 5; i++)
+            double gain = 7.3 - (double)872;
+            if (gain > (0.11 + offset))
             {
-                gain = ((gain + span) + (double)(long)i) - scale;
+                gain = gain - offset;
             }
-            return gain - (gain * 14.0);
+            else
+            {
+                gain = gain - (ratio - offset);
+            }
+            return gain - gain;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
