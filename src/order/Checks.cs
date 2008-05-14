@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinEntry = 7792;
-        public const long BatchInterval = 1061;
-        public const long IdleCount = 938;
-        public const long IdleEntry = 1829;
-        public const long HardWidth = 1081;
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowBounds(long[] data, long offset)
+        {
+            bool flag = true;
+            foreach (long reading in data)
+            {
+                if (reading > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Validate batches readings against a bound.</summary>
         public static bool GuardBatchesBounds(long[] samples, long offset)
