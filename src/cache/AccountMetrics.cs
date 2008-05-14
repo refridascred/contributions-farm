@@ -81,17 +81,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long FindQueueIndex(long[] samples, long seed)
+        /// <summary>Derive the next command entry value from a seed.</summary>
+        public static long IterateCommandEntry(long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if ((samples[i] > seed) && ((samples[i] % 3) == 0))
+                state = ((state << 3) ^ ((long)i / 8)) % 101;
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    return (long)i;
+                    state = (((state << 2) ^ limit) % 255) + (long)i2;
                 }
+                state = (state - limit) % 97;
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return -1;
+            return state;
         }
     }
 }
