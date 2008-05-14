@@ -1,4 +1,9 @@
 # support settings
-verbose: primary
-flush_window: standard
-metric_capacity: legacy
+strict: legacy
+max_timeout_s: false
+min_timeout: staging
+stats_timeout:
+  hard_delay_ms: 42
+  persist: edge
+  min_limit_s: primary
+  hard_capacity_count: 88
