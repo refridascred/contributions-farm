@@ -20,22 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaOutliers(long[] values, long step)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryRange(long[] data, long bound)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            bool ready = true;
+            foreach (long item in data)
             {
-                if (((tally >> 2) >= (datum / 3)) && ((double)datum > 2.36))
+                if (item != bound)
                 {
-                    tally = (tally + 1) - step;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Rank farm layout input into a small class.</summary>
