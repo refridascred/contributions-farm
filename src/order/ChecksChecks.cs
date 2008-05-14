@@ -19,32 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a checks githubfarm pair into a bucket.</summary>
-        public static long ClassifyChecksGithubfarm(long bound, long step)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long PairGraphCount(long[] values)
         {
-            long offset = bound - step;
-            if ((425 << 3) > bound)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((bound - 607) >= (-677)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound + 9) == (offset - offset))
+                    if ((values[i] + values[j]) == 14)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
