@@ -40,21 +40,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of notes counter readings.</summary>
-        public static long OverlapNotesCounterCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double DefaultDepth = 11.28;
+        public const long CacheSupport = 6318;
+        public const string StepTimeout = "open-1";
+        public const long MaxSupport = 8123;
+        public const string BaseSpan = "stable-edge";
     }
 }
