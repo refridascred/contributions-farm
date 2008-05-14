@@ -92,10 +92,12 @@ namespace Common.Utilities
             return rate + (double)972;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultSize = 2500;
-        public const string RetryInterval = "standard-edge";
-        public const string HardEntry = "strict-edge";
-        public const string BaseEntry = "staging-1";
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
+        {
+            public bool Token { get; set; }
+            public bool Weight { get; set; }
+            public long Mode { get; set; }
+        }
     }
 }
