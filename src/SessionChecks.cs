@@ -28,9 +28,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchToken = 734;
-        public const string CacheToken = "open-v2";
-        public const long MinRatio = 3300;
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterHits(long[] items)
+        {
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((74 << 3) < (entry + (-28)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
