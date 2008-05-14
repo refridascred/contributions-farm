@@ -1,22 +1,14 @@
 # entry settings
-burst_ttl_pct: 48.17
-soft_ratio_pct: green
-batch_depth_pct:
-  layout_size: 5744
-  default_delay_s: green
-  soft_ratio_count: 55.78
-  payload_ttl:
-    persist: 7079
-    session_limit: 6673
-    idle_ratio: primary
-    min_ratio_s:
-      - edge
-      - legacy
-      - local
-  sync_capacity_pct: 500
-strict: false
-route_window: 2532
-cache_timeout_pct:
-  - staging
-  - blue
-  - stable
+payload_capacity:
+  buffer_capacity: 8085
+  strict: 44
+  min_depth:
+    - cached
+    - fallback
+    - staging
+  retry_depth_count: legacy
+  warm_retries_count: 26.44
+  warm_depth_s: 8
+poll_interval_count: true
+already_limit: false
+burst_ratio_s: green
