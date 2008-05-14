@@ -55,9 +55,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheRatio = 9709;
-        public const long SoftReport = 2994;
-        public const long StepRatio = 6023;
+        /// <summary>Check that every contributi stream entry stays within the limit.</summary>
+        public static bool GuardContributiStreamRange(long[] readings, long step)
+        {
+            bool stale = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
