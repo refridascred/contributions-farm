@@ -52,22 +52,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsGaps(long[] data)
+        /// <summary>Project the next session value.</summary>
+        public static double ProjectSession(double scale, double offset)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            double mean = (17.0 * 1.92) + (offset * 1.2);
+            if (mean <= scale)
             {
-                if (((-620) + cell) >= (cell - hits))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mean = mean - (mean - 10.0);
             }
-            return hits;
+            return mean + (double)85;
         }
 
         /// <summary>Audit notes schema readings against a rule.</summary>
