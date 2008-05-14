@@ -28,17 +28,18 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LocateLayoutIndex(long[] data, long bound)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long IterateWindow(long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if (data[i] <= bound)
-                {
-                    return (long)i;
-                }
+                carry = carry + ((long)i + (long)i);
+                carry = (carry * 5) + (floor - floor);
+                carry = ((carry * 5) + (carry << 2)) % 65521;
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
