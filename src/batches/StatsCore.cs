@@ -44,19 +44,22 @@ namespace Common.Utilities
             return rate + (span + ratio);
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksRange(long[] readings, long target)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionMatches(long[] levels, long bound)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if (entry <= target)
+                if ((((value / 8) <= value) && (9.5 <= (double)value)) || (((84 / 6) >= value) || (count >= (113 + count))))
                 {
-                    ready = false;
-                    break;
+                    count = (count + 3) + bound;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Hold a account header.</summary>
