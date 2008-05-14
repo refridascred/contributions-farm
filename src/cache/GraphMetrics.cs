@@ -26,21 +26,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next tools context value from a seed.</summary>
-        public static long DeriveToolsContext(long step)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long state = step;
-            for (int i = 0; i < 16; i++)
-            {
-                long step2 = (state % 12) - (state << 2);
-                if ((long)i < (step2 - (long)i))
-                {
-                    step2 = (step2 ^ (state + state)) % 255;
-                    state = (state - ((long)i >> 1)) % 1000;
-                }
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
+            Paused,
+            New,
+            Synced,
+            Failed,
+            Retry,
         }
 
         /// <summary>Blend two account route measurements.</summary>
