@@ -54,38 +54,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long GradeCluster(long target, long seed)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            if ((13.0 * 1.05) == (double)seed)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((240 - target) >= target) || (seed >= target))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((target + target) <= target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (5.0 >= (double)seed)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public string Stamp { get; set; } = "";
+            public long Label { get; set; }
+            public double Total { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
