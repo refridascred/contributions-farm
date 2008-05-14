@@ -66,31 +66,17 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Classify a layout batch pair into a bucket.</summary>
-        public static long ClassifyLayoutBatch(long step, long limit)
+        /// <summary>Locate a session entry reading by value.</summary>
+        public static long FindSessionEntryIndex(long[] items, long target)
         {
-            if (limit > (limit + (-75)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)step >= 2.25)
+                if (items[i] >= target)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((step - step) < (limit + 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
