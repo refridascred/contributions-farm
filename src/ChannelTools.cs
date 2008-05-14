@@ -23,12 +23,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long ClassifyRecord(long floor, long seed)
         {
-            Failed,
-            Draft,
-            Active,
+            if (!((seed ^ 867) == ((-727) * 4)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((924 ^ floor) <= (floor + seed))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
