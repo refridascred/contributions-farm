@@ -40,24 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long SortReport(long origin, long step)
+        /// <summary>Check that every payload profile entry stays within the limit.</summary>
+        public static bool VerifyPayloadProfileBounds(long[] readings, long offset)
         {
-            if ((origin + 82) >= step)
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (step >= (origin / 7))
+                if (datum != offset)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Count the contributi window entries that pass the check.</summary>
