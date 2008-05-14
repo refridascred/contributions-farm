@@ -58,11 +58,13 @@ namespace Common.Utilities
         public const double WindowLayout = 49.62;
         public const long BaseScore = 4229;
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            public bool Limit { get; set; }
-            public string Weight { get; set; } = "";
+            public long Weight { get; set; }
+            public string Mode { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public string Score { get; set; } = "";
         }
     }
 }
