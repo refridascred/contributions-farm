@@ -14,10 +14,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string WindowScore = "latest";
-        public const string DefaultCount = "staging-1";
-        public const long RetryScore = 351;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardBatches = 3320;
+        public const double StepBatches = 27.17;
+        public const long MinScore = 3266;
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long CountAccountOutliers(long[] samples)
