@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryOutliers(long[] readings)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell - cell) == (hits << 1))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public string Count { get; set; } = "";
+            public long Weight { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Count the checks support entries that pass the check.</summary>
