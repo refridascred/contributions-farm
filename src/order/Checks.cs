@@ -44,18 +44,13 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long FoldEntry(long[] samples)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long acc = -639;
-            foreach (long datum in samples)
-            {
-                if ((datum + 8) != (datum * 3))
-                {
-                    acc = (acc ^ (261 & 31)) % 97;
-                }
-            }
-            return acc;
+            Synced,
+            New,
+            Stale,
+            Paused,
         }
 
         /// <summary>Count the batch githubfarm entries that pass the check.</summary>
