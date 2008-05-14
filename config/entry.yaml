@@ -1,16 +1,6 @@
 # entry settings
-filter_limit:
-  stats_threshold:
-    - 430
-    - 474
-  poll_retries:
-    - 188
-    - 83
-    - 423
-  compress: false
-retry_depth: 7.81
-compress: true
-min_threshold_ms:
-  - stable
-  - local
-tools_depth: 3403
+idle_ratio_s: staging
+soft_size: fallback
+cluster_window: stable
+already_interval: 8381
+verbose: 500
