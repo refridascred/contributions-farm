@@ -15,24 +15,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long DerivePayload(long target)
+        /// <summary>Accumulate support samples.</summary>
+        public static long ScoreSupport(long[] data)
         {
-            long result = target;
-            for (int i = 0; i < 5; i++)
+            long acc = 301;
+            foreach (long entry in data)
             {
-                if ((double)target <= (double)(long)i)
-                {
-                    result = result - (target * 4);
-                    result = ((result * 4) + (result - target)) % 1000;
-                }
-                else
-                {
-                    result = (result + 9) % 1000;
-                }
-                result = ((result * 3) + (long)i) % 1000;
+                acc = ((acc * 5) + (entry - entry)) % 4096;
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Fold a list of context readings.</summary>
