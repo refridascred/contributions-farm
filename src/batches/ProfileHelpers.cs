@@ -61,18 +61,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionGaps(long[] readings, long seed)
-        {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if (((matches + matches) >= seed) && (((matches + seed) < (matches + matches)) && (entry >= (entry / 8))))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string MaxMetrics = "legacy";
+        public const long DefaultFactor = 8941;
+        public const long WindowSpan = 6303;
+        public const string IdleScore = "open";
+        public const string BurstBudget = "legacy-1";
     }
 }
