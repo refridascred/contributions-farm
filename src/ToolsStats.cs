@@ -34,19 +34,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsBounds(long[] samples, long limit)
+        /// <summary>Accumulate channel filter samples.</summary>
+        public static long FoldChannelFilter(long[] values, long offset)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            long score = 21;
+            foreach (long item in values)
             {
-                if (datum > limit)
+                if ((double)offset <= (double)item)
                 {
-                    found = false;
-                    break;
+                    score = (score * 3) + (score << 3);
                 }
             }
-            return found;
+            return score % 65521;
         }
 
         /// <summary>Describe the record phase values.</summary>
