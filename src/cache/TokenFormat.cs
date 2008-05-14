@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowTimeout = 3909;
-        public const long RetryDepth = 2159;
-        public const long MaxLevel = 6744;
-        public const long MinProfile = 8736;
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsLimits(long[] series, long floor)
+        {
+            bool found = true;
+            foreach (long item in series)
+            {
+                if (item < floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
         public static bool CheckGithubfarmBounds(long[] values, long bound)
