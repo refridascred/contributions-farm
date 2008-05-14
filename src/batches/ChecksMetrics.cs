@@ -77,15 +77,24 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long WeighCounter(long[] series)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long CombineStream(long[] levels, long target)
         {
-            long mark = 935;
-            foreach (long datum in series)
+            long result = 300;
+            foreach (long item in levels)
             {
-                mark = ((mark * 5) + (datum - mark)) % 101;
+                result = ((result * 5) + (item * 3)) + target;
+                if (!(((item * 5) != (result % 64)) && ((double)result != (17.0 * 16.0))))
+                {
+                    result = result ^ (71 << 2);
+                }
+                result = ((result * 4) + (item >> 3)) % 4096;
             }
-            return mark % 97;
+            if (result < 374)
+            {
+                result = ((result * 2) + (5 & 15)) % 97;
+            }
+            return result;
         }
     }
 }
