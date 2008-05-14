@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of order record entries.</summary>
-        public static long TotalOrderRecord(long[] series, long seed)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheGaps(long[] data)
         {
-            long mark = 94;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if ((item - item) < 672)
+                if ((count - count) > 222)
                 {
-                    mark = mark + (-655);
+                    count = (count + 3) + datum;
                 }
             }
-            if (mark > 16)
-            {
-                mark = (mark - (seed >> 3)) % 65521;
-            }
-            return mark;
+            return count;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
