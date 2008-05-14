@@ -20,11 +20,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ProjectStats(double weight, double floor)
         {
-            public string Size { get; set; } = "";
-            public long Label { get; set; }
+            double load = (weight / 6.0) + (double)77;
+            if (load > 2.49)
+            {
+                load = load + floor;
+            }
+            return load - (weight - load);
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
