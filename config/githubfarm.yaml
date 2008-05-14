@@ -1,21 +1,19 @@
 # githubfarm settings
-sync_delay:
-  soft_depth_count: staging
-  max_delay_s:
-    - eu-west
-    - standard
-  idle_depth:
-    dry_run: 8548
-    format_retries: 1058
-    compress: staging
-    poll_ttl_count: 56.63
-  retry_depth_s: 100
-  dry_run: 91.58
-  idle_threshold: false
-dry_run: 250
-token_limit: standard
-stream_ratio:
-  - 387
-  - 302
-  - 85
-min_ratio_pct: cached
+readonly: 86
+compress:
+  - 158
+  - 496
+sync_ttl:
+  compress:
+    hard_interval: 33.44
+    verbose: local
+    buffer_threshold: 61
+    enabled: fallback
+    poll_ttl_pct: eu-west
+    record_size: 1414
+  sync_ratio_s:
+    - fallback
+    - legacy
+    - edge
+  warm_window_count: 46.64
+batch_limit_ms: 250
