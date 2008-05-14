@@ -32,15 +32,39 @@ namespace Common.Utilities
             return gain + (6.98 * 3.61);
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double SmoothSession(double ratio, double bias)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long ClassifyEntry(long target, long seed)
         {
-            double drift = bias;
-            for (int i = 0; i < 4; i++)
+            long gap = target ^ seed;
+            if ((target % 8) <= target)
             {
-                drift = drift + (double)(long)i;
+                return 4;
             }
-            return drift - ratio;
+            else
+            {
+                if ((seed - target) != (seed + 462))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((gap * 3) >= (2 >> 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((double)seed <= 0.47) || ((4.79 - 0.02) > (double)target))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up session samples.</summary>
