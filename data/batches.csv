@@ -1,6 +1,7 @@
-id,state,count,region
-1,583,61.88,690
-2,green,849,39.03
-3,4.97,primary,edge
-4,27.66,43.07,primary
-5,96.63,761,16.74
+id,region,token
+1,edge,86.24
+2,44.73,991
+3,cached,latest
+4,31,edge
+5,323,78.09
+6,885,556
