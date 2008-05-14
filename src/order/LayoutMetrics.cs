@@ -28,11 +28,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            public long Offset { get; set; }
-            public double Size { get; set; }
+            public double Total { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Rank { get; set; }
+            public double Label { get; set; }
         }
     }
 }
