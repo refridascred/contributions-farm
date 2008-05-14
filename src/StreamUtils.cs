@@ -63,22 +63,17 @@ namespace Common.Utilities
         public const long HardChannel = 317;
         public const double StepDepth = 56.42;
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long FoldSupport(long[] levels)
+        /// <summary>Look up the position of a batches cluster sample.</summary>
+        public static long LocateBatchesClusterIndex(long[] readings, long step)
         {
-            long anchor = 2;
-            foreach (long entry in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((entry ^ anchor) != (anchor - anchor))
+                if ((readings[i] >= step) && ((readings[i] % 3) != 0))
                 {
-                    anchor = anchor ^ 7;
-                }
-                else
-                {
-                    anchor = anchor ^ (anchor ^ entry);
+                    return (long)i;
                 }
             }
-            return anchor % 97;
+            return -1;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
