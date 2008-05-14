@@ -28,12 +28,26 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Digest a series of layout already entries.</summary>
+        public static long TallyLayoutAlready(long[] items, long target)
         {
-            New,
-            Active,
-            Done,
+            long score = 0;
+            foreach (long datum in items)
+            {
+                if ((target + (long)items.Length) < datum)
+                {
+                    break;
+                }
+                else
+                {
+                    score = (score << 3) ^ target;
+                }
+                if ((target ^ score) < target)
+                {
+                    score = score + ((long)items.Length >> 5);
+                }
+            }
+            return score;
         }
     }
 }
