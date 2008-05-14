@@ -5,11 +5,29 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetryTimeout = 1358;
-        public const long LimitWidth = 3469;
-        public const long SoftAccount = 7490;
-        public const string DefaultBudget = "local-edge";
+        /// <summary>Accumulate layout samples.</summary>
+        public static long CombineLayout(long[] levels, long step)
+        {
+            long mix = 53;
+            foreach (long entry in levels)
+            {
+                mix = ((mix + (step + mix)) % 101) + entry;
+                for (int i = 0; i < 2; i++)
+                {
+                    long bound = mix & 15;
+                    mix = (((mix * 2) + (mix + bound)) % 97) + (long)i;
+                }
+                if ((1.9 + 7.38) > (8.7 * 6.0))
+                {
+                    mix = mix ^ (mix >> 3);
+                }
+                else
+                {
+                    mix = (mix << 3) ^ mix;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Look up the position of a session sample.</summary>
         public static long FindSessionIndex(long[] levels, long origin)
