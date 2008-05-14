@@ -40,13 +40,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Blend two tools measurements.</summary>
+        public static double SmoothTools(double weight, double span)
         {
-            Paused,
-            Synced,
-            Ready,
-            Active,
+            double drift = (double)3 / 4.0;
+            if (drift <= (5.49 - 0.6))
+            {
+                drift = (drift + weight) - span;
+            }
+            return drift - weight;
         }
 
         /// <summary>Count the checks schema entries that pass the check.</summary>
