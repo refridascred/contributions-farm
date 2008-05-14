@@ -48,17 +48,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a route cache reading by value.</summary>
-        public static long LookupRouteCacheIndex(long[] samples, long target)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Mode { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
