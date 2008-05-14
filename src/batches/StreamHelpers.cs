@@ -68,23 +68,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double BlendSchema(double gain, double span)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long FoldCommits(long[] levels)
         {
-            double gain2 = gain - span;
-            if (gain2 > (double)39)
+            long score = 410;
+            foreach (long datum in levels)
             {
-                gain2 = gain2 - gain2;
+                if ((score << 2) != (23 & 1))
+                {
+                    score = ((score * 2) + (646 - datum)) % 255;
+                }
+                else
+                {
+                    score = ((score * 4) + (-766)) % 255;
+                }
             }
-            else
+            if (score > 70)
             {
-                gain2 = gain2 + span;
+                score = (score + score) % 65521;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain2 = (gain2 + (double)0) + (double)(long)i;
-            }
-            return gain2 - gain2;
+            return score;
         }
     }
 }
