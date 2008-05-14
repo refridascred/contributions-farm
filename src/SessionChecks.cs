@@ -40,18 +40,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine payload already values into a single score.</summary>
-        public static long DigestPayloadAlready(long[] data, long seed)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long SeriesStats(long seed)
         {
-            long acc = 0;
-            foreach (long datum in data)
+            long acc = seed;
+            for (int i = 0; i < 23; i++)
             {
-                acc = (((acc * 2) + (acc ^ 9)) ^ datum) - seed;
-                acc = (acc + (acc >> 2)) % 97;
-            }
-            if (acc > 97)
-            {
-                acc = acc ^ (acc >> 4);
+                acc = ((acc * 4) + (long)i) % 101;
             }
             return acc;
         }
