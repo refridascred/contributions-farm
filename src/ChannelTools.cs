@@ -10,10 +10,20 @@ namespace Common.Utilities
         public const long MinSize = 4569;
         public const long MinCount = 908;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstTimeout = 4589;
-        public const long DefaultLevel = 8995;
-        public const long HardScore = 5462;
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsBounds(long[] values, long floor)
+        {
+            bool valid = true;
+            foreach (long item in values)
+            {
+                if (item != floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long MeasureStreamGaps(long[] items)
