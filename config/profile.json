@@ -1,11 +1,8 @@
 {
-  "profile_threshold": "blue",
-  "channel_ratio": 250,
-  "compress": "staging",
-  "audit": 500,
-  "poll_size": {
-    "base_depth_ms": 62,
-    "metric_capacity": "staging",
-    "counter_depth": 100
-  }
+  "entry_timeout": true,
+  "base_retries": 60,
+  "soft_ratio_pct": 55.6,
+  "cache_limit_count": 92,
+  "retry_depth_s": [44, 375],
+  "flush_size": false
 }
