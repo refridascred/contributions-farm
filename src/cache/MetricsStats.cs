@@ -36,12 +36,17 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Find the first record githubfarm entry that matches the target.</summary>
+        public static long LocateRecordGithubfarmIndex(long[] values, long offset)
         {
-            public double Flag { get; set; }
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
