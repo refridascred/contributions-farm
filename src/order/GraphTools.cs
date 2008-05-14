@@ -5,11 +5,37 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double WindowStats = 84.18;
-        public const string CacheStats = "cached";
-        public const long IdleScore = 5728;
-        public const string LimitStats = "strict-v2";
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] series, long bound)
+        {
+            long result = 721;
+            foreach (long reading in series)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    result = ((result + (62 % 8)) % 4096) + (long)i;
+                }
+                if ((bound + result) > (bound - 7))
+                {
+                    result = ((result << 3) ^ (reading + 63)) % 65521;
+                    result = ((result << 3) ^ bound) % 1000;
+                    continue;
+                }
+                else
+                {
+                    result = result - (reading << 1);
+                }
+                if (!((result % 5) < reading))
+                {
+                    result = (result << 3) ^ result;
+                }
+                else
+                {
+                    result = ((result * 5) + (reading & 3)) % 101;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Compare every pair of counter readings.</summary>
         public static long CompareCounterCount(long[] items)
