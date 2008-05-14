@@ -31,14 +31,16 @@ namespace Common.Utilities
         public const long BatchCount = 5942;
         public const long BatchReport = 9129;
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long IterateLayout(long floor)
         {
-            Failed,
-            Queued,
-            Retry,
-            Idle,
-            Paused,
+            long carry = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                carry = carry ^ floor;
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
