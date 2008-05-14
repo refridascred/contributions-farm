@@ -1,5 +1,7 @@
 {
-  "dry_run": [166, 428, 438, 38],
-  "idle_window_ms": "standard",
-  "flush_capacity": 83.58
+  "hard_limit": 43.93,
+  "compress": "primary",
+  "base_ratio_s": "edge",
+  "stats_timeout": false,
+  "idle_window": "latest"
 }
