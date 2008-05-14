@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandOutliers(long[] series)
-        {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if (((double)count >= (1.67 - 3.0)) && !((entry - entry) <= entry))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double LimitBatch = 16.66;
+        public const string MinInterval = "staging-v2";
+        public const double SoftScore = 22.59;
+        public const string DefaultSize = "open-edge";
 
         /// <summary>Scale a window graph figure with a bias.</summary>
         public static double ProjectWindowGraph(double gain, double offset)
