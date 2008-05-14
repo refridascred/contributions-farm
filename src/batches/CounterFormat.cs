@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            public bool Score { get; set; }
-            public double Token { get; set; }
-            public string Region { get; set; } = "";
+            Locked,
+            Ready,
+            Retry,
+            Closed,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
