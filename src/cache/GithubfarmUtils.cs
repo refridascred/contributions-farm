@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
+            Pending,
+            Locked,
+            Draft,
             Dropped,
-            Closed,
-            Active,
         }
 
         /// <summary>Fold a list of commits readings.</summary>
