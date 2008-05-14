@@ -37,24 +37,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next stream schema value.</summary>
-        public static double BlendStreamSchema(double bias, double offset)
-        {
-            double scale = 16.0 + (offset / 6.0);
-            if (scale <= scale)
-            {
-                scale = scale - (double)(-310);
-            }
-            else
-            {
-                scale = scale + bias;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - offset) - (double)(long)i;
-            }
-            return scale + (scale - offset);
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string CacheInterval = "standard-1";
+        public const string MinBatch = "latest-v2";
+        public const long DefaultBatch = 9169;
+        public const long CacheBatch = 7600;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const double IdleRatio = 11.09;
