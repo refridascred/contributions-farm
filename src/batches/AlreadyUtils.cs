@@ -36,13 +36,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatLimits(long[] samples, long floor)
         {
-            Synced,
-            New,
-            Ready,
-            Locked,
+            bool found = true;
+            foreach (long cell in samples)
+            {
+                if (cell > floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
