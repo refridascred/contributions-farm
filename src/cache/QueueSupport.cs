@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long RankReport(long offset, long target)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long FindWindowIndex(long[] items, long bound)
         {
-            long cur = offset + target;
-            if ((99 + 355) <= (offset - offset))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (offset > (33 * 5))
+                if ((items[i] <= bound) && ((items[i] % 3) == 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)cur != (1.2 + 5.8))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((double)target <= (6.62 - 10.0)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
