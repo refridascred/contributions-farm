@@ -24,24 +24,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a batch route pair into a bucket.</summary>
-        public static long SortBatchRoute(long floor, long floor2)
+        /// <summary>Audit stats support readings against a rule.</summary>
+        public static long TallyStatsSupportOutliers(long[] levels)
         {
-            if ((floor + floor2) > (floor * 3))
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (((floor2 % 7) > floor) && ((double)floor2 <= 8.5))
+                if ((double)reading < (6.39 * 3.06))
                 {
-                    return 3;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    return 6;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a already stats.</summary>
