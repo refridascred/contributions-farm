@@ -1,6 +1,19 @@
 # support settings
-retry_timeout_ms: 6
-poll_depth: 16
-flush_interval: green
-retry_limit_count: open
-batch_ratio_s: 1024
+dry_run: strict
+sync_retries:
+  default_capacity_ms: 64.11
+  strict:
+    readonly: open
+    flush_ratio_pct:
+      - staging
+      - primary
+    poll_capacity_ms: true
+  burst_ratio_ms: 55
+  tools_ttl:
+    - standard
+    - latest
+    - edge
+  graph_retries: 1843
+default_timeout_s: standard
+base_depth: 8410
+sync_threshold_ms: true
