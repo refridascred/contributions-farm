@@ -6,21 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+RECORD_LIMIT=255
+log "limit is ${RECORD_LIMIT}"
 
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 3))
+for item in local latest staging fallback; do
+    log "checking ${item}"
 done
-log "total ${total}"
 
-mode="${1:-legacy}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    blue)
+    latest)
         log "fast path"
         ;;
     *)
