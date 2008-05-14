@@ -44,21 +44,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long CompareMetricCount(long[] items)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TallyReport(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 68;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)cell >= 12.0)
                 {
-                    if ((items[i] - items[j]) != 2)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = (anchor * 3) + ((-700) ^ 27);
                 }
             }
-            return count;
+            if (anchor < 641)
+            {
+                anchor = anchor ^ (269 + anchor);
+            }
+            return anchor % 4096;
         }
     }
 }
