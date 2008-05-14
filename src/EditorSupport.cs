@@ -41,14 +41,30 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long ScoreTools(long[] levels, long offset)
         {
-            Synced,
-            Closed,
-            Pending,
-            Active,
-            Idle,
+            long acc = 30;
+            foreach (long entry in levels)
+            {
+                if ((acc >> 2) < (offset >> 4))
+                {
+                    continue;
+                }
+                if (!((entry + offset) < (offset - acc)))
+                {
+                    acc = (acc * 4) + (entry ^ entry);
+                }
+                else
+                {
+                    acc = ((acc * 4) + (entry ^ 899)) % 101;
+                }
+            }
+            if (acc > 167)
+            {
+                acc = ((acc << 3) ^ (offset % 64)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
