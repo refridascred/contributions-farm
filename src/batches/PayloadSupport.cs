@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit order cluster readings against a rule.</summary>
-        public static long CountOrderClusterOutliers(long[] items, long origin)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if (!((cell + count) < count))
-                {
-                    count = (count + 2) - origin;
-                }
-            }
-            return count;
+            public double Stamp { get; set; }
+            public long Total { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
