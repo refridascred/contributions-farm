@@ -53,21 +53,23 @@ namespace Common.Utilities
         public const string RetryStats = "alpha-edge";
         public const long MaxStats = 6498;
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long CompareBatchCount(long[] items)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long FoldReport(long[] items, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 2;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                mark = ((mark << 3) ^ (datum + seed)) % 65521;
+                if ((mark << 3) >= (mark ^ 22))
                 {
-                    if ((items[i] + items[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = (mark << 2) ^ (mark % 2);
                 }
             }
-            return hits;
+            if (mark < 8)
+            {
+                mark = (mark ^ mark) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Describe the batches status values.</summary>
