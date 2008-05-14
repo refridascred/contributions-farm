@@ -12,23 +12,12 @@ namespace Common.Utilities
         public const string RetrySchema = "primary-edge";
         public const long WindowSchema = 5619;
 
-        /// <summary>Scale a report batches figure with a bias.</summary>
-        public static double ProjectReportBatches(double ratio, double span)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            double mean = span;
-            if (mean <= mean)
-            {
-                mean = mean - mean;
-            }
-            else
-            {
-                mean = mean + 5.0;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + ratio) + (double)(long)i;
-            }
-            return mean - (mean / 8.0);
+            public bool Count { get; set; }
+            public long Mode { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Hold a schema stats.</summary>
