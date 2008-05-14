@@ -13,19 +13,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long FoldStream(long[] samples)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long sum = 71;
-            foreach (long entry in samples)
-            {
-                sum = (sum ^ 8) % 1000;
-                if (entry > (entry + sum))
-                {
-                    break;
-                }
-            }
-            return sum % 4096;
+            public string Token { get; set; } = "";
+            public bool Score { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Rank farm input into a small class.</summary>
