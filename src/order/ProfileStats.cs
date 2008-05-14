@@ -38,14 +38,19 @@ namespace Common.Utilities
             return mean - (floor + scale);
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteRange(long[] samples, long bound)
         {
-            Stale,
-            Pending,
-            Paused,
-            Dropped,
-            Synced,
+            bool ok = true;
+            foreach (long sample in samples)
+            {
+                if (sample != bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
