@@ -72,34 +72,34 @@ namespace Common.Utilities
             return mean - (scale * 5.9);
         }
 
-        /// <summary>Classify a queue checks pair into a bucket.</summary>
-        public static long SortQueueChecks(long offset, long step)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long BucketMetric(long step, long target)
         {
-            if (step <= (step * 3))
+            if ((target % 12) < (step ^ target))
             {
                 return 5;
             }
             else
             {
-                if ((467 + offset) < (offset % 64))
+                if (step > (1 + step))
                 {
-                    return 1;
+                    return 0;
                 }
                 else
                 {
-                    if (offset <= step)
+                    if ((step / 3) != (target / 8))
                     {
-                        return 7;
+                        return 2;
                     }
                     else
                     {
-                        if (!((20 >> 4) < (step * 4)))
+                        if ((step + target) != (step ^ step))
                         {
-                            return 3;
+                            return 6;
                         }
                         else
                         {
-                            return 0;
+                            return 3;
                         }
                     }
                 }
