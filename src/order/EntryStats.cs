@@ -30,24 +30,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long ClassifySession(long target, long bound)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportOutliers(long[] data, long origin)
         {
-            if (target < (target * 5))
+            long tally = 0;
+            foreach (long item in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound >> 1) >= target)
+                if ((double)item < (double)tally)
                 {
-                    return 4;
+                    tally = (tally + 1) - origin;
                 }
                 else
                 {
-                    return 1;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Iterate the window already series from a seed.</summary>
