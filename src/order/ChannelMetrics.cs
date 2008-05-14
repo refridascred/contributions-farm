@@ -34,13 +34,12 @@ namespace Common.Utilities
             return load - (double)39;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            public string Offset { get; set; } = "";
-            public double Size { get; set; }
-            public string Limit { get; set; } = "";
-            public long Count { get; set; }
+            New,
+            Active,
+            Done,
         }
     }
 }
