@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long HardSpan = 5064;
-        public const long BaseCount = 3751;
-        public const long MinBudget = 1900;
+        /// <summary>Match up batch samples.</summary>
+        public static long PairBatchCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long TallyGraphGaps(long[] values, long step)
