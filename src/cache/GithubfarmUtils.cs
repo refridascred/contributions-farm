@@ -54,15 +54,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two queue tools measurements.</summary>
-        public static double ProjectQueueTools(double ratio, double offset)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            double bias = ratio;
-            if (bias >= (double)(-89))
-            {
-                bias = bias + (bias / 6.0);
-            }
-            return bias + offset;
+            public bool Count { get; set; }
+            public long Offset { get; set; }
+            public long Label { get; set; }
         }
     }
 }
