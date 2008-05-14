@@ -27,18 +27,11 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Measure how many order contributi samples are out of range.</summary>
-        public static long MeasureOrderContributiOutliers(long[] items, long origin)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if (!((datum % 64) <= (origin + datum)) && ((datum / 6) > (origin - origin)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public string Label { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
