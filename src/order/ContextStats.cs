@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const string StepFilter = "fallback-edge";
         public const long BaseCount = 7556;
 
-        /// <summary>Blend two cache route measurements.</summary>
-        public static double BlendCacheRoute(double gain, double bias)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyOutliers(long[] values, long target)
         {
-            double bias2 = bias;
-            if (bias2 >= (bias2 - gain))
+            long hits = 0;
+            foreach (long entry in values)
             {
-                bias2 = bias2 + (gain - bias);
+                if ((4.0 / 7.0) < (2.0 - 9.74))
+                {
+                    hits = ((hits + 3) + entry) + target;
+                }
             }
-            else
-            {
-                bias2 = bias2 + (bias * 12.0);
-            }
-            return bias2 + (bias + 2.97);
+            return hits;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
