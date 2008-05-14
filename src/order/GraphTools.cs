@@ -38,21 +38,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long OverlapPayloadCount(long[] values)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long RollAccount(long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = origin;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                score = (score << 3) ^ score;
+                score = score + ((long)i & 31);
+                if (origin < (score + (long)i))
                 {
-                    if ((values[i] ^ values[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = (score - origin) % 1000;
                 }
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Describe the metric status values.</summary>
