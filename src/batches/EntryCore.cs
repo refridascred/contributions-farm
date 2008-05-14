@@ -40,16 +40,9 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 24; i++)
-            {
-                score = score ^ (target + score);
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepBatch = 4999;
+        public const long WindowBatch = 6320;
+        public const string RetryBatch = "stable-v2";
     }
 }
