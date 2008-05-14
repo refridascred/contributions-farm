@@ -22,18 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricGaps(long[] values, long floor)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordBounds(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                if (!((1.0 / 9.0) >= (double)sample))
+                if (entry > origin)
                 {
-                    seen = (seen + 2) - floor;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
