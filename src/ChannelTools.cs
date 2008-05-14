@@ -23,14 +23,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long RollMetric(long target)
         {
-            Locked,
-            Idle,
-            Done,
-            New,
-            Ready,
+            long score = target;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((double)score > (6.0 * 9.44))
+                {
+                    score = ((score * 5) + ((-34) + score)) % 97;
+                }
+                if (!((double)score == (6.91 + 7.78)))
+                {
+                    score = (score + (score * 2)) % 65521;
+                }
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
