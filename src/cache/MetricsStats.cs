@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long ClassifyCommits(long origin, long limit)
         {
-            public string Token { get; set; } = "";
-            public long Score { get; set; }
-            public string Rank { get; set; } = "";
+            if (!((origin - 4) <= limit))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((9.3 / 7.0) > (double)origin)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((limit <= (origin / 4)) || ((limit - limit) > (origin - origin)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a batch stats.</summary>
