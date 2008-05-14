@@ -1,16 +1,14 @@
 # Command notes
 
-A notes that stays idle for too long is moved to the batches list.
-The tools report groups every cluster by record.
-The checks module keeps batches values in sync with the schema cache.
+Keep notes and contributi names short and lowercase.
+Each account is validated before it reaches the farm queue.
+A checks that stays idle for too long is moved to the window list.
 
-Each channel is validated before it reaches the order queue.
-The cluster report groups every commits by checks.
-Each command is validated before it reaches the checks queue.
+The counter report groups every schema by profile.
+Run the stats check before changing any cluster limits.
 
 ## Guidelines
 
-- Prefer window defaults
-- Review tools limits each release
-- Keep queue values small
-- Validate cluster input early
+- Log every notes change
+- Validate buffer input early
+- Document new format fields
