@@ -55,14 +55,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            Ready,
-            Locked,
-            Paused,
-            Done,
-            Dropped,
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
+            public bool Label { get; set; }
+            public long Token { get; set; }
         }
     }
 }
