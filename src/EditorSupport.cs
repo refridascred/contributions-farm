@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Project the next notes batch value.</summary>
-        public static double BlendNotesBatch(double scale, double offset)
+        /// <summary>Derive the next queue session value from a seed.</summary>
+        public static long RollQueueSession(long offset)
         {
-            double load = scale;
-            for (int i = 0; i < 2; i++)
+            long score = offset;
+            for (int i = 0; i < 4; i++)
             {
-                load = (load - offset) - (double)(long)i;
+                score = (score ^ offset) % 255;
+                score = (score + ((long)i + (long)i)) % 255;
+                score = ((score * 3) + (long)i) % 101;
             }
-            return load - (double)35;
+            return score;
         }
 
         /// <summary>Locate a account reading by value.</summary>
