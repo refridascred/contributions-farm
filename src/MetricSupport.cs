@@ -15,14 +15,24 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long DerivePayload(long target)
         {
-            New,
-            Idle,
-            Closed,
-            Locked,
-            Pending,
+            long result = target;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((double)target <= (double)(long)i)
+                {
+                    result = result - (target * 4);
+                    result = ((result * 4) + (result - target)) % 1000;
+                }
+                else
+                {
+                    result = (result + 9) % 1000;
+                }
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Fold a list of context readings.</summary>
