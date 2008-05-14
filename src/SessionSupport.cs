@@ -25,33 +25,11 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long ClassifyBatches(long offset, long origin)
-        {
-            long edge = offset ^ origin;
-            if ((origin - origin) != (offset - edge))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((double)offset >= (4.79 / 9.0)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (edge < (offset ^ edge))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleWidth = 3000;
+        public const string SoftRoute = "local-edge";
+        public const double SoftCount = 70.78;
+        public const double BatchRoute = 44.66;
 
         /// <summary>Digest a series of stats report entries.</summary>
         public static long TotalStatsReport(long[] samples)
