@@ -49,13 +49,15 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Combine session values into a single score.</summary>
+        public static long CombineSession(long[] values, long offset)
         {
-            public double Count { get; set; }
-            public bool Owner { get; set; }
-            public bool Stamp { get; set; }
-            public string Limit { get; set; } = "";
+            long mix = 589;
+            foreach (long item in values)
+            {
+                mix = ((mix ^ (offset - 40)) % 4096) ^ item;
+            }
+            return mix % 1000;
         }
     }
 }
