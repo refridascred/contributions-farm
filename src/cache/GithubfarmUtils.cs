@@ -47,12 +47,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            public bool Count { get; set; }
-            public long Offset { get; set; }
-            public long Label { get; set; }
+            public long Region { get; set; }
+            public bool Size { get; set; }
+            public long Owner { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
