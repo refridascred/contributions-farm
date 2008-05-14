@@ -1,11 +1,10 @@
 # entry settings
-batches_delay: true
-schema_ratio: 47
-burst_depth: 58
-dry_run: 50.16
-sync_threshold_ms:
-  - blue
-  - cached
-  - latest
-  - blue
-support_threshold: false
+idle_depth_count: open
+account_retries:
+  min_retries_ms: stable
+  batch_interval: 60
+  sync_ttl_ms: 250
+  counter_depth: 86.87
+idle_ttl: 96
+cache_delay_ms: blue
+flush_limit_count: 32.19
