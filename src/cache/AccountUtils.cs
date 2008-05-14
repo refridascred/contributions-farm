@@ -23,22 +23,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadHits(long[] data)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutOutliers(long[] levels, long origin)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if ((6.59 * 19.0) >= (double)tally)
+                if ((0.67 / 6.0) > (double)origin)
                 {
-                    tally = (tally + 3) + cell;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = (count + 3) ^ entry;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
