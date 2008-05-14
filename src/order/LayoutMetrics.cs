@@ -24,13 +24,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiBounds(long[] items, long bound)
         {
-            public double Total { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Rank { get; set; }
-            public double Label { get; set; }
+            bool stale = true;
+            foreach (long item in items)
+            {
+                if (item > bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
