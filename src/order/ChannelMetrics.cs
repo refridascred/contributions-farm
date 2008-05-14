@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long GradeStats(long floor, long step)
         {
-            public long Rank { get; set; }
-            public string Total { get; set; } = "";
-            public bool Region { get; set; }
+            if ((double)floor == (8.45 + 18.0))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((81 + floor) > (step - 48)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
