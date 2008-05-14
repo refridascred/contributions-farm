@@ -19,25 +19,14 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long GradeGithubfarm(long floor, long offset)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long lane = floor - offset;
-            if ((13.0 + 6.61) < (double)lane)
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((double)floor >= (8.79 + 6.49)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Retry,
+            Closed,
+            Locked,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Roll a batch counter forward.</summary>
