@@ -53,17 +53,13 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long RollContributi(long floor)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long mix = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                mix = ((mix * 5) + ((long)i + floor)) % 101;
-                mix = mix ^ (mix - floor);
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
+            public long Limit { get; set; }
+            public long Level { get; set; }
+            public bool Score { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
