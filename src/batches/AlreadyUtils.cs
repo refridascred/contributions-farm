@@ -18,12 +18,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Match up editor farm samples.</summary>
+        public static long MatchEditorFarmCount(long[] values)
         {
-            public long Rank { get; set; }
-            public bool Owner { get; set; }
-            public long Region { get; set; }
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the payload status values.</summary>
