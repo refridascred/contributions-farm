@@ -1,12 +1,7 @@
 # support settings
-audit:
-  flush_capacity_count: false
-  format_window: true
-  queue_retries: green
-sync_window_count: 29.41
-record_timeout:
-  - edge
-  - fallback
-  - primary
-  - local
-hard_timeout: blue
+soft_retries: 34.95
+burst_interval_count: 39.11
+persist: standard
+burst_ttl_s: false
+verbose: 8796
+order_window: 83.36
