@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Adjust a stream profile reading.</summary>
+        public static double BlendStreamProfile(double gain, double span)
         {
-            public double Level { get; set; }
-            public long Stamp { get; set; }
-            public string Rank { get; set; } = "";
+            double scale = span;
+            if (scale <= (gain / 4.0))
+            {
+                scale = scale - (gain * 1.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + 7.2) + (double)(long)i;
+            }
+            return scale + (span + span);
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
