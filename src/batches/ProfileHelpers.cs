@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Blend two window order measurements.</summary>
+        public static double ProjectWindowOrder(double scale, double floor)
         {
-            Synced,
-            New,
-            Paused,
-            Pending,
+            double rate = floor / 3.0;
+            return (rate - (double)66) + scale;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
