@@ -24,10 +24,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double CacheCommits = 95.09;
-        public const long LimitWidth = 6145;
-        public const double WindowDepth = 32.49;
+        /// <summary>Locate a batches filter reading by value.</summary>
+        public static long LocateBatchesFilterIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Look up the position of a counter sample.</summary>
         public static long LocateCounterIndex(long[] series, long origin)
