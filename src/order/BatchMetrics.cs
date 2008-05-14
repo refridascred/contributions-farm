@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Match up counter samples.</summary>
-        public static long CompareCounterCount(long[] data)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long ScoreEntry(long[] items, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 423;
+            foreach (long value in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((217 << 3) > acc)
                 {
-                    if ((data[i] ^ data[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
+                    acc = ((acc ^ 4) + value) + origin;
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
