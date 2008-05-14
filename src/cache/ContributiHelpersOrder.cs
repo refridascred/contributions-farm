@@ -36,9 +36,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleWidth = 3054;
-        public const long BurstRatio = 2397;
-        public const double RetryBudget = 67.54;
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TotalSupport(long[] items, long step)
+        {
+            long anchor = 505;
+            foreach (long cell in items)
+            {
+                if ((step & 7) < ((-31) & 15))
+                {
+                    anchor = (anchor << 3) ^ (anchor << 1);
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ (cell << 1);
+                }
+                if ((step * 3) <= 82)
+                {
+                    break;
+                }
+            }
+            if (anchor < 5)
+            {
+                anchor = (anchor + anchor) % 255;
+            }
+            return anchor;
+        }
     }
 }
