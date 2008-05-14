@@ -42,11 +42,13 @@ namespace Common.Utilities
             return (rate + (double)(-395)) + bias;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            public string Label { get; set; } = "";
-            public double Ratio { get; set; }
+            public long Ratio { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Token { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Audit notes schema readings against a rule.</summary>
