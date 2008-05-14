@@ -17,15 +17,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of filter route entries.</summary>
-        public static long DigestFilterRoute(long[] series)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long acc = 6;
-            foreach (long sample in series)
-            {
-                acc = acc - (sample - sample);
-            }
-            return acc;
+            public long Score { get; set; }
+            public bool Count { get; set; }
+            public string Level { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the cache mode values.</summary>
