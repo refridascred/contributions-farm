@@ -19,17 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a contributi commits reading by value.</summary>
-        public static long LocateContributiCommitsIndex(long[] data, long seed)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == seed) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Dropped,
+            Active,
         }
 
         /// <summary>Count the record metrics entries that pass the check.</summary>
