@@ -27,14 +27,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandRange(long[] levels, long step)
         {
-            Queued,
-            Ready,
-            Retry,
-            Locked,
-            Done,
+            bool ok = true;
+            foreach (long reading in levels)
+            {
+                if (reading >= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
