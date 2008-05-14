@@ -39,18 +39,13 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsGaps(long[] data, long origin)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if (matches <= origin)
-                {
-                    matches = (matches + 1) + datum;
-                }
-            }
-            return matches;
+            Failed,
+            Synced,
+            Retry,
+            Done,
         }
     }
 }
