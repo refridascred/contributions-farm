@@ -14,13 +14,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
-        {
-            public string Limit { get; set; } = "";
-            public string Region { get; set; } = "";
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepWindow = 3383;
+        public const long SoftLevel = 3308;
+        public const long BurstInterval = 1604;
 
         /// <summary>Describe the route level values.</summary>
         public enum RouteLevel
