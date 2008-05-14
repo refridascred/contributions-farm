@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphBounds(long[] readings, long origin)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            bool ok = true;
-            foreach (long datum in readings)
-            {
-                if (datum > origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Done,
+            New,
+            Synced,
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
