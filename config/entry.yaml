@@ -1,4 +1,4 @@
 # entry settings
-dry_run: 465
-batch_ratio: eu-west
-batch_window_pct: 61
+default_limit: legacy
+strict: true
+flush_size_s: local
