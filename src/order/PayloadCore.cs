@@ -13,18 +13,18 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TotalChannel(long[] series)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterOutliers(long[] samples, long floor)
         {
-            long mix = 365;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if (((double)mix > (double)sample) && (sample >= (25 / 6)))
+                if (4.59 > (double)sample)
                 {
-                    mix = mix ^ (64 & 31);
+                    matches = (matches + 1) + floor;
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Define context limits and defaults.</summary>
