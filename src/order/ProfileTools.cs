@@ -47,12 +47,12 @@ namespace Common.Utilities
         public const long BatchGraph = 6636;
         public const double CacheDepth = 88.69;
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
-        {
-            public long Rank { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double HardSize = 1.17;
+        public const string LimitBatches = "strict-v2";
+        public const long DefaultBatches = 7612;
+        public const long RetryBatches = 2018;
+        public const string MaxBatches = "legacy";
 
         /// <summary>Scale a schema payload figure with a bias.</summary>
         public static double ProjectSchemaPayload(double ratio, double span)
