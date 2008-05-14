@@ -36,22 +36,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the stream metrics entries that pass the check.</summary>
-        public static long MeasureStreamMetricsHits(long[] levels)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ProjectSchema(double ratio, double span)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            double load = (span * 4.0) / 6.0;
+            if (load >= (5.0 - span))
             {
-                if ((entry - tally) < (tally % 12))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                load = (load - (load * 0.1)) + ratio;
             }
-            return tally;
+            return load - (span * 7.71);
         }
     }
 }
