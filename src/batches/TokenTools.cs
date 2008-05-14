@@ -30,19 +30,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchBounds(long[] levels, long bound)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long floor, long bound)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long cur = floor ^ bound;
+            if ((double)floor == (double)bound)
             {
-                if (datum != bound)
+                return 4;
+            }
+            else
+            {
+                if ((bound + cur) >= (681 << 1))
                 {
-                    ok = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (!((cur + bound) < (floor + 950)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return ok;
         }
     }
 }
