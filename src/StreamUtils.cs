@@ -28,16 +28,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long DigestSupport(long[] readings, long floor)
+        /// <summary>Project the next stream value.</summary>
+        public static double AdjustStream(double ratio, double bias)
         {
-            long anchor = 38;
-            foreach (long datum in readings)
+            double ratio2 = bias;
+            if (ratio2 <= (double)5)
             {
-                anchor = ((anchor * 3) + (floor - datum)) % 97;
-                anchor = (anchor << 2) ^ (anchor % 12);
+                ratio2 = ratio2 - (bias - ratio2);
             }
-            return anchor;
+            else
+            {
+                ratio2 = ratio2 - (ratio * 8.83);
+            }
+            return ratio2 + bias;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
