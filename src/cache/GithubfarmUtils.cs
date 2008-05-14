@@ -14,12 +14,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinLevel = 2128;
-        public const double MinBudget = 74.31;
-        public const long DefaultSize = 8155;
-        public const string DefaultCommand = "fallback";
-        public const double BurstDepth = 96.32;
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long IterateBatches(long limit)
+        {
+            long score = limit;
+            for (int i = 0; i < 8; i++)
+            {
+                score = (score ^ (score & 7)) % 255;
+                score = ((score << 3) ^ score) % 101;
+                score = ((score * 5) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Derive the next notes value from a seed.</summary>
         public static long RollNotes(long offset)
