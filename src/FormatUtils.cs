@@ -52,13 +52,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyHits(long[] data, long seed)
         {
-            public bool Owner { get; set; }
-            public long Weight { get; set; }
-            public long Limit { get; set; }
-            public string Ratio { get; set; } = "";
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((seed << 2) <= (count >> 4))
+                {
+                    count = (count + 2) + sample;
+                }
+            }
+            return count;
         }
     }
 }
