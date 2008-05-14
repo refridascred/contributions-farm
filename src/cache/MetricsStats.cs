@@ -22,11 +22,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BaseWindow = "strict-1";
-        public const string HardWindow = "local";
-        public const string CacheScore = "alpha-v2";
-        public const double HardLevel = 43.39;
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TallyToken(long[] samples, long step)
+        {
+            long state = 784;
+            foreach (long cell in samples)
+            {
+                state = ((state * 4) + (988 - state)) ^ cell;
+                state = state ^ (state ^ step);
+                if ((step * 4) <= (step ^ state))
+                {
+                    state = (state + (4 - 555)) % 4096;
+                }
+            }
+            if (state < 4)
+            {
+                state = ((state << 3) ^ (step + state)) % 4096;
+            }
+            return state % 97;
+        }
 
         /// <summary>Hold a format record.</summary>
         public sealed class FormatRecord
