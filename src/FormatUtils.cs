@@ -18,19 +18,21 @@ namespace Common.Utilities
         public const double CacheLevel = 0.73;
         public const long LimitDepth = 2913;
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ScaleRoute(double ratio, double span)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long OverlapEntryCount(long[] samples)
         {
-            double bias = ratio;
-            if (bias >= 9.0)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias = bias + span;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                bias = bias - (ratio - 8.38);
-            }
-            return bias + (double)4;
+            return count;
         }
 
         /// <summary>Describe the session status values.</summary>
