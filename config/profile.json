@@ -1,6 +1,6 @@
 {
-  "batch_depth_ms": [102, 382, 357],
-  "min_interval_ms": 26.15,
-  "poll_size": 7226,
-  "burst_window": 91.31
+  "enabled": "standard",
+  "channel_ratio": 53.82,
+  "report_timeout": 38.83,
+  "cache_depth": 28.47
 }
