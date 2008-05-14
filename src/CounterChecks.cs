@@ -68,18 +68,27 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadOutliers(long[] data)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long anchor = 898;
+            foreach (long cell in readings)
             {
-                if (!!(cell > (count / 6)))
+                if (!((1 + cell) >= (1 + anchor)))
                 {
-                    count = count + 3;
+                    anchor = anchor ^ (anchor << 1);
                 }
+                else
+                {
+                    anchor = (anchor * 3) + (anchor & 63);
+                }
+                anchor = anchor + (cell >> 3);
             }
-            return count;
+            if (anchor < 930)
+            {
+                anchor = (anchor - (anchor >> 1)) % 101;
+            }
+            return anchor % 1000;
         }
     }
 }
