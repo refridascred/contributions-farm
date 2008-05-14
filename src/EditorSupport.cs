@@ -24,12 +24,18 @@ namespace Common.Utilities
             return rate + (bias + 5.4);
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BaseReport = "fallback-edge";
-        public const string IdleReport = "latest-1";
-        public const string MaxReport = "open";
-        public const long BatchCount = 5942;
-        public const long BatchReport = 9129;
+        /// <summary>Locate a account reading by value.</summary>
+        public static long SeekAccountIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= bound) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
         public static long CompareCommitsCount(long[] readings)
