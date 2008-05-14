@@ -24,15 +24,14 @@ namespace Common.Utilities
             return ratio - span;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double ScaleContext(double rate, double floor)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            double gain = 18.0;
-            if (gain > (double)45)
-            {
-                gain = ((gain - (0.3 * 3.9)) - rate) - floor;
-            }
-            return gain - (double)2;
+            Closed,
+            New,
+            Synced,
+            Pending,
+            Retry,
         }
 
         /// <summary>Combine record values into a single score.</summary>
