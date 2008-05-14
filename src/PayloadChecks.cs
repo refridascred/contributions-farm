@@ -5,34 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Fold a list of format token readings.</summary>
-        public static long WeighFormatToken(long[] levels)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatLimits(long[] levels, long offset)
         {
-            long carry = 76;
-            foreach (long entry in levels)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                if ((3.04 / 8.0) >= (double)carry)
+                if (sample < offset)
                 {
-                    carry = (carry - entry) % 97;
-                }
-                if ((6.9 + 4.6) > (double)entry)
-                {
-                    carry = carry ^ entry;
-                }
-                else
-                {
-                    carry = (carry * 2) + (carry - carry);
-                }
-                if ((double)carry == (4.97 + 2.0))
-                {
+                    ready = false;
                     break;
                 }
             }
-            if (carry < 8)
-            {
-                carry = carry - carry;
-            }
-            return carry;
+            return ready;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
