@@ -32,17 +32,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LookupFilterIndex(long[] data, long step)
+        /// <summary>Project the next order value.</summary>
+        public static double AdjustOrder(double bias, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double rate = (double)(31 - 4);
+            if (rate > offset)
             {
-                if ((data[i] == step) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                rate = rate + bias;
             }
-            return -1;
+            else
+            {
+                rate = rate - (double)35;
+            }
+            return rate + (double)1;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
