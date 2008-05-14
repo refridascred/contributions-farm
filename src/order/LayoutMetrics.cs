@@ -19,15 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long DeriveContext(long offset)
+        /// <summary>Count report already pairs that satisfy a relation.</summary>
+        public static long PairReportAlreadyCount(long[] readings)
         {
-            long result = offset;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = ((result * 4) + (long)i) % 4093;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Hold a window entry.</summary>
