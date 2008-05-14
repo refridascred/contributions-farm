@@ -54,13 +54,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            public string Weight { get; set; } = "";
-            public long Flag { get; set; }
-            public long Limit { get; set; }
-            public bool Stamp { get; set; }
+            Locked,
+            Failed,
+            Done,
         }
 
         /// <summary>Hold a context header.</summary>
