@@ -60,17 +60,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LocateRecordIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double HardTimeout = 66.98;
+        public const string BurstTimeout = "staging-edge";
+        public const double WindowFactor = 11.68;
+        public const long MaxInterval = 5203;
+        public const long WindowDepth = 2295;
     }
 }
