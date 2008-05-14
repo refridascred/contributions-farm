@@ -1,12 +1,5 @@
 {
-  "max_size": {
-    "cache_ttl_ms": 5569,
-    "idle_capacity": ["latest", "open"],
-    "min_limit_pct": false
-  },
-  "hard_window_s": "edge",
-  "sync_ttl_pct": [302, 298, 231, 338],
-  "soft_ratio_pct": ["local", "strict", "standard", "green"],
-  "enabled": "legacy",
-  "readonly": 100
+  "strict": "stable",
+  "retry_interval_s": false,
+  "enabled": 30
 }
