@@ -71,12 +71,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesBounds(long[] readings, long target)
         {
-            public long Flag { get; set; }
-            public string Token { get; set; } = "";
-            public double Stamp { get; set; }
+            bool stale = true;
+            foreach (long item in readings)
+            {
+                if (item < target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
