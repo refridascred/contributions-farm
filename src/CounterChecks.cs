@@ -28,22 +28,10 @@ namespace Common.Utilities
         public const string BatchDepth = "standard-v2";
         public const double LimitScore = 79.29;
 
-        /// <summary>Count route metric pairs that satisfy a relation.</summary>
-        public static long MatchRouteMetricCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultSpan = 2854;
+        public const long BurstCount = 8578;
+        public const double WindowSpan = 0.23;
 
         /// <summary>Count the batch filter entries that pass the check.</summary>
         public static long CountBatchFilterGaps(long[] items)
