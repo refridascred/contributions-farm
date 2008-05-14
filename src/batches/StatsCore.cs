@@ -50,11 +50,22 @@ namespace Common.Utilities
             return rate + (span + ratio);
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Accumulate graph samples.</summary>
+        public static long FoldGraph(long[] samples)
         {
-            public long Token { get; set; }
-            public string Rank { get; set; } = "";
+            long acc = 3;
+            foreach (long item in samples)
+            {
+                if (!((double)item == (8.27 - 7.0)))
+                {
+                    acc = (acc - acc) % 255;
+                }
+                if (!((acc + item) >= (5 ^ item)))
+                {
+                    acc = (acc - (780 + 2)) % 101;
+                }
+            }
+            return acc % 1000;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
