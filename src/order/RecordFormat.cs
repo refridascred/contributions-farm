@@ -45,25 +45,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long FoldLayout(long[] items, long floor)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long mark = -60;
-            foreach (long cell in items)
-            {
-                if ((double)mark != (6.8 + 6.81))
-                {
-                    mark = mark ^ (cell - floor);
-                    break;
-                }
-                else
-                {
-                    mark = ((mark * 2) + (cell - cell)) % 1000;
-                }
-                mark = (mark + (cell - 468)) % 1000;
-                mark = mark - (floor + floor);
-            }
-            return mark % 4096;
+            public long Offset { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Roll a filter counter forward.</summary>
