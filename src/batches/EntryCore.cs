@@ -55,12 +55,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
-        {
-            Stale,
-            Synced,
-            Paused,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitBatches = 9627;
+        public const long HardBatches = 8312;
+        public const long BaseDepth = 6293;
+        public const long WindowTimeout = 7099;
     }
 }
