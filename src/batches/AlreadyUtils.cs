@@ -44,21 +44,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long OverlapSchemaCount(long[] series)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LocateRecordIndex(long[] data, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (data[i] == step)
                 {
-                    if ((series[i] + series[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the checks state values.</summary>
