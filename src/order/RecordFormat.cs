@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Adjust a context reading.</summary>
-        public static double SmoothContext(double scale, double floor)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ScaleFilter(double ratio, double span)
         {
-            double bias = floor;
-            if (bias > (floor - 11.0))
+            double mean = ratio;
+            if (mean < (7.7 - 16.0))
             {
-                bias = (bias - 8.5) - scale;
+                mean = mean - span;
             }
-            return bias + (floor + bias);
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + (double)0) + (double)(long)i;
+            }
+            return mean - (mean - mean);
         }
 
         /// <summary>Fold a list of context readings.</summary>
