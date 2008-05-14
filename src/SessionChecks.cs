@@ -24,16 +24,13 @@ namespace Common.Utilities
             return mean - (double)7;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long StepEditor(long floor)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long sum = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                sum = (sum + (floor - 34)) % 65521;
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
+            Idle,
+            Locked,
+            Closed,
+            Paused,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
