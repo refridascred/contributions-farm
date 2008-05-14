@@ -1,20 +1,7 @@
 {
-  "retry_depth_pct": true,
-  "default_size_s": true,
-  "base_threshold": "blue",
-  "retry_threshold_count": ["stable", "fallback"],
-  "hard_ratio_s": 1024,
-  "default_interval": {
-    "retry_retries": 97.17,
-    "max_ratio": {
-      "poll_interval": 56.46,
-      "audit": "latest",
-      "dry_run": 78,
-      "soft_limit_pct": true,
-      "enabled": 500
-    },
-    "verbose": "legacy",
-    "order_delay": 18,
-    "persist": ["fallback", "green", "strict"]
-  }
+  "burst_retries_s": [93, 182],
+  "compress": 100,
+  "max_limit": 60,
+  "batch_ttl": 1024,
+  "readonly": 3914
 }
