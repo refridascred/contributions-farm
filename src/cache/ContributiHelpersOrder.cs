@@ -20,31 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a payload account pair into a bucket.</summary>
-        public static long GradePayloadAccount(long seed, long target)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaOutliers(long[] values, long step)
         {
-            if ((target + target) >= seed)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((5.8 + 17.0) < (double)target)
+                if (((tally >> 2) >= (datum / 3)) && ((double)datum > 2.36))
                 {
-                    return 2;
+                    tally = (tally + 1) - step;
                 }
                 else
                 {
-                    if ((seed << 1) != (seed ^ seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Rank farm layout input into a small class.</summary>
