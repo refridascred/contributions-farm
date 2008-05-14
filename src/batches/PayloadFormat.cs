@@ -44,11 +44,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultEntry = 7804;
-        public const long LimitEntry = 2434;
-        public const long BatchEntry = 2104;
-        public const long RetryEntry = 648;
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long DeriveEditor(long target)
+        {
+            long carry = target;
+            for (int i = 0; i < 24; i++)
+            {
+                carry = ((carry * 2) + target) % 1000;
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Combine format values into a single score.</summary>
         public static long WeighFormat(long[] levels)
