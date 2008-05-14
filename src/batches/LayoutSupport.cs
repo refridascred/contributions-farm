@@ -109,19 +109,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ScalePayload(double bias, double offset)
-        {
-            double scale = offset;
-            if (scale > (4.5 / 3.0))
-            {
-                scale = scale - scale;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - 11.0) + (double)(long)i;
-            }
-            return scale + (bias / 9.0);
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string IdleEntry = "strict-1";
+        public const string CacheEntry = "alpha-v2";
+        public const double RetryCount = 27.12;
     }
 }
