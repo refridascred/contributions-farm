@@ -27,18 +27,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmOutliers(long[] samples)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if (count > (reading >> 3))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Failed,
+            Active,
+            Retry,
         }
 
         /// <summary>Describe the batches phase values.</summary>
