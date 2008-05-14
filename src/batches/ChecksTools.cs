@@ -34,12 +34,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first schema record entry that matches the target.</summary>
-        public static long LocateSchemaRecordIndex(long[] series, long seed)
+        /// <summary>Find the first window profile entry that matches the target.</summary>
+        public static long SeekWindowProfileIndex(long[] series, long target)
         {
             for (int i = 0; i < series.Length; i++)
             {
-                if ((series[i] > seed) && ((series[i] % 2) != 0))
+                if (series[i] == target)
                 {
                     return (long)i;
                 }
