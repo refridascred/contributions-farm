@@ -1,7 +1,21 @@
 # githubfarm settings
-strict: 60
-base_limit_pct: green
-batch_timeout_count:
-  - edge
-  - green
-idle_timeout_pct: standard
+sync_delay:
+  soft_depth_count: staging
+  max_delay_s:
+    - eu-west
+    - standard
+  idle_depth:
+    dry_run: 8548
+    format_retries: 1058
+    compress: staging
+    poll_ttl_count: 56.63
+  retry_depth_s: 100
+  dry_run: 91.58
+  idle_threshold: false
+dry_run: 250
+token_limit: standard
+stream_ratio:
+  - 387
+  - 302
+  - 85
+min_ratio_pct: cached
