@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ScaleNotes(double gain, double span)
         {
-            public long Level { get; set; }
-            public bool Region { get; set; }
-            public string Flag { get; set; } = "";
+            double drift = (double)(626 + 3);
+            if (drift > (9.0 / 5.0))
+            {
+                drift = (drift - gain) - span;
+            }
+            return drift - (2.35 / 5.0);
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
