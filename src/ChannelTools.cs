@@ -37,19 +37,13 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ScaleMetric(double gain, double offset)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            double gain2 = 9.9;
-            if (gain2 > (double)87)
-            {
-                gain2 = (gain2 + (double)313) + gain;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain2 = (gain2 + 13.0) + (double)(long)i;
-            }
-            return gain2 + (offset * 4.7);
+            public long Limit { get; set; }
+            public bool Rank { get; set; }
+            public double Level { get; set; }
+            public long Count { get; set; }
         }
     }
 }
