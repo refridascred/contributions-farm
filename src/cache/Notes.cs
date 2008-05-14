@@ -43,11 +43,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string HardMetric = "stable-1";
-        public const long CacheWidth = 5033;
-        public const long StepTimeout = 2597;
-        public const double DefaultCount = 2.56;
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LookupSupportIndex(long[] data, long target)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool ValidateRouteRange(long[] series, long origin)
