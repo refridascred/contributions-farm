@@ -1,31 +1,7 @@
 # entry settings
-strict:
-  burst_depth_pct: 0.53
-  retry_retries: 1
-  farm_size: strict
-audit: true
-soft_depth_count:
-  audit: 53.12
-  editor_limit: green
-  soft_ttl: eu-west
-  hard_window: legacy
-  cache_size_pct: 78.85
-  dry_run:
-    - 18
-    - 252
-    - 259
-poll_ratio:
-  batch_depth_count:
-    enabled: edge
-    poll_interval_s: 41.11
-    poll_ttl: fallback
-    flush_retries_s: fallback
-  soft_window_s: 86
-  contributi_size:
-    - open
-    - stable
-  token_ttl:
-    - primary
-    - open
-queue_ratio: primary
-hard_delay: strict
+warm_timeout: cached
+context_interval: 98
+retry_threshold: cached
+sync_interval: false
+window_size: edge
+verbose: 250
