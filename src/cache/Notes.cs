@@ -38,11 +38,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            public long Limit { get; set; }
-            public long Weight { get; set; }
+            Draft,
+            New,
+            Ready,
+            Idle,
+            Locked,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
