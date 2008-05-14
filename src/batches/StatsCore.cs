@@ -56,13 +56,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsOutliers(long[] values, long offset)
         {
-            public long Limit { get; set; }
-            public long Level { get; set; }
-            public bool Score { get; set; }
-            public string Token { get; set; } = "";
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if (!((double)count >= (3.03 - 0.6)))
+                {
+                    count = ((count + 2) + reading) - offset;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
