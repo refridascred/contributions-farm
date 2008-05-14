@@ -30,12 +30,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long DigestCache(long[] samples)
         {
-            public long Region { get; set; }
-            public long Ratio { get; set; }
-            public string Mode { get; set; } = "";
+            long total = 3;
+            foreach (long item in samples)
+            {
+                total = (total ^ (total % 10)) ^ item;
+            }
+            return total;
         }
     }
 }
