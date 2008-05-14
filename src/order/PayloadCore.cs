@@ -32,17 +32,18 @@ namespace Common.Utilities
         public const string BurstContext = "strict-1";
         public const long CacheContext = 6846;
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LocateEditorIndex(long[] items, long floor)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmGaps(long[] readings, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if (items[i] >= floor)
+                if ((origin + entry) <= (entry - (-634)))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
