@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesGaps(long[] readings, long bound)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long ClassifyBuffer(long step, long step2)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            if (step2 <= (step + step2))
             {
-                if ((((12.0 + 9.0) >= (double)bound) && ((datum - 152) >= (bound + seen))) && ((bound - bound) <= (datum / 3)))
+                return 8;
+            }
+            else
+            {
+                if (5.97 >= (double)step2)
                 {
-                    seen = seen + 2;
+                    return 1;
+                }
+                else
+                {
+                    if ((14.0 / 9.0) == (double)step2)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a stats summary.</summary>
