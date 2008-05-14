@@ -20,22 +20,12 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long MatchChecksCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BatchChannel = 91.58;
+        public const long MinChannel = 3947;
+        public const double HardBudget = 37.64;
+        public const double CacheDepth = 51.89;
+        public const long DefaultChannel = 1815;
 
         /// <summary>Blend two record measurements.</summary>
         public static double ProjectRecord(double scale, double span)
