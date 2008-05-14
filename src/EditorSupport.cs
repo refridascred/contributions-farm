@@ -31,12 +31,14 @@ namespace Common.Utilities
         public const long BatchCount = 5942;
         public const long BatchReport = 9129;
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            public long Ratio { get; set; }
-            public bool Total { get; set; }
-            public long Region { get; set; }
+            Failed,
+            Queued,
+            Retry,
+            Idle,
+            Paused,
         }
 
         /// <summary>Describe the support class values.</summary>
