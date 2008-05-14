@@ -44,19 +44,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphRange(long[] items, long origin)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long GradeTools(long floor, long origin)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            if ((double)floor <= (17.0 * 1.7))
             {
-                if (entry < origin)
+                return 7;
+            }
+            else
+            {
+                if ((origin + floor) > floor)
                 {
-                    ok = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return ok;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
