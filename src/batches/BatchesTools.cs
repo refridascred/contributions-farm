@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextGaps(long[] series, long seed)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if ((double)datum >= (2.9 + 9.96))
-                {
-                    matches = (matches + 1) + seed;
-                }
-            }
-            return matches;
+            Dropped,
+            Paused,
+            Synced,
+            Ready,
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
