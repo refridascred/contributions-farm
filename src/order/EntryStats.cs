@@ -60,11 +60,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesOutliers(long[] data, long step)
         {
-            public string Label { get; set; } = "";
-            public long Flag { get; set; }
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if (!((reading + step) > (659 % 12)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
