@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of filter batches entries.</summary>
-        public static long FoldFilterBatches(long[] samples, long target)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long mix = 95;
-            foreach (long value in samples)
-            {
-                if (((0 + (-9)) != (mix * 5)) && (target > 12))
-                {
-                    mix = (mix + 573) % 255;
-                }
-                else
-                {
-                    mix = (mix ^ (value ^ value)) % 97;
-                }
-            }
-            return mix;
+            public double Level { get; set; }
+            public long Stamp { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
