@@ -23,22 +23,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up batch githubfarm samples.</summary>
-        public static long CompareBatchGithubfarmCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstBatch = 8260;
+        public const long StepLevel = 1485;
+        public const string BatchDepth = "standard-v2";
+        public const double LimitScore = 79.29;
 
         /// <summary>Count route metric pairs that satisfy a relation.</summary>
         public static long MatchRouteMetricCount(long[] levels)
