@@ -74,18 +74,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] samples, long seed)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long total = 103;
-            foreach (long entry in samples)
-            {
-                if ((3.05 / 8.0) > (double)seed)
-                {
-                    total = ((total + (total % 24)) % 97) - entry;
-                }
-            }
-            return total;
+            public double Weight { get; set; }
+            public string Total { get; set; } = "";
+            public long Owner { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Fold a list of counter readings.</summary>
