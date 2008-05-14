@@ -32,13 +32,18 @@ namespace Common.Utilities
             return weight + (double)34;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportOutliers(long[] levels)
         {
-            Paused,
-            Synced,
-            Dropped,
-            Ready,
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if ((1.0 + 2.0) <= (double)tally)
+                {
+                    tally = (tally + 2) ^ reading;
+                }
+            }
+            return tally;
         }
     }
 }
