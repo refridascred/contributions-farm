@@ -21,15 +21,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ScaleAccount(double scale, double bias)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            double ratio = (bias + 9.8) - scale;
-            if (ratio <= ratio)
-            {
-                ratio = ratio - bias;
-            }
-            return ratio - ratio;
+            public long Owner { get; set; }
+            public string Total { get; set; } = "";
+            public long Level { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Derive the next metric metrics value from a seed.</summary>
