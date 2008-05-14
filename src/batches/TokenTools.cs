@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileGaps(long[] data)
+        /// <summary>Accumulate contributi account samples.</summary>
+        public static long CombineContributiAccount(long[] data)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long carry = 340;
+            foreach (long datum in data)
             {
-                if ((matches >> 4) < matches)
-                {
-                    matches = (matches + 2) + reading;
-                }
+                carry = ((carry ^ (5 + 7)) % 1000) + datum;
+                carry = (carry - (5 - 26)) % 1000;
             }
-            return matches;
+            if (carry < 3)
+            {
+                carry = (carry - (carry / 9)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
