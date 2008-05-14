@@ -54,17 +54,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LookupTokenIndex(long[] data, long floor)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenHits(long[] levels, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if (data[i] <= floor)
+                if ((origin >> 2) < 52)
                 {
-                    return (long)i;
+                    tally = (tally + 3) ^ item;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
