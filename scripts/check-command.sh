@@ -6,19 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict fallback; do
+COMMAND_LIMIT=486
+log "limit is ${COMMAND_LIMIT}"
+
+for item in staging primary edge open; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
-
-mode="${1:-green}"
+mode="${1:-staging}"
 case "${mode}" in
-    standard)
+    staging)
         log "fast path"
         ;;
     *)
