@@ -41,21 +41,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long SeriesStats(long target)
-        {
-            long result = target;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((18.0 * 6.0) != (double)result)
-                {
-                    result = (result - ((long)i ^ result)) % 101;
-                }
-                result = result - (result - target);
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepGraph = 1294;
+        public const long BatchGraph = 6636;
+        public const double CacheDepth = 88.69;
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
         public static long PairPayloadCount(long[] levels)
