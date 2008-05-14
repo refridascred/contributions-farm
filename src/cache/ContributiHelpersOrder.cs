@@ -28,11 +28,19 @@ namespace Common.Utilities
         public const long WindowReport = 2185;
         public const long CacheReport = 8603;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseSpan = 2909;
-        public const double LimitGraph = 29.28;
-        public const string BatchGraph = "open-1";
-        public const long HardWidth = 4625;
-        public const string CacheGraph = "cached-1";
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsLimits(long[] readings, long limit)
+        {
+            bool found = true;
+            foreach (long datum in readings)
+            {
+                if (datum > limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
