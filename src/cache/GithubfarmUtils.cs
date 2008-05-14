@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long SeekAccountIndex(long[] items, long floor)
         {
-            Pending,
-            Locked,
-            Draft,
-            Dropped,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
