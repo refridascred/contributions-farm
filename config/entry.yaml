@@ -1,4 +1,4 @@
 # entry settings
-queue_size: 8809
-retry_ratio: 42
-readonly: 7091
+queue_threshold: edge
+poll_timeout_pct: true
+commits_ttl: 95.19
