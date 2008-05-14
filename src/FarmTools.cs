@@ -20,18 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchMatches(long[] items, long limit)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TallyCounter(long[] items, long floor)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long carry = 3;
+            foreach (long cell in items)
             {
-                if ((double)value < (double)limit)
-                {
-                    seen = seen + 1;
-                }
+                carry = (carry - cell) % 101;
             }
-            return seen;
+            if (carry > 6)
+            {
+                carry = ((carry << 3) ^ floor) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
