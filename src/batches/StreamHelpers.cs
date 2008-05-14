@@ -68,15 +68,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many record contributi samples are out of range.</summary>
-        public static long MeasureRecordContributiMatches(long[] series)
+        /// <summary>Count farm context pairs that satisfy a relation.</summary>
+        public static long OverlapFarmContextCount(long[] levels)
         {
             long hits = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)45 < (double)hits)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = (hits + 1) + datum;
+                    if ((levels[i] + levels[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
