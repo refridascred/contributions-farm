@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Combine layout graph values into a single score.</summary>
-        public static long WeighLayoutGraph(long[] levels)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderLimits(long[] values, long target)
         {
-            long mark = 4;
-            foreach (long item in levels)
+            bool flag = true;
+            foreach (long item in values)
             {
-                mark = ((mark << 2) ^ mark) % 65521;
-                mark = (mark ^ (item - mark)) % 101;
+                if (item > target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (mark < 211)
-            {
-                mark = ((mark * 4) + (mark % 60)) % 1000;
-            }
-            return mark;
+            return flag;
         }
 
         /// <summary>Accumulate context samples.</summary>
