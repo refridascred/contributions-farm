@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long SeekProfileIndex(long[] items, long offset)
+        /// <summary>Roll a buffer batches counter forward.</summary>
+        public static long RollBufferBatches(long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if (items[i] <= offset)
-                {
-                    return (long)i;
-                }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Scale a window graph figure with a bias.</summary>
