@@ -27,22 +27,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of token order entries.</summary>
-        public static long CombineTokenOrder(long[] values, long bound)
+        /// <summary>Rank report batches input into a small class.</summary>
+        public static long GradeReportBatches(long target, long seed)
         {
-            long total = 99;
-            foreach (long sample in values)
+            if (!((target << 1) > (seed % 5)))
             {
-                if (8 > (sample + (long)values.Length))
+                return 1;
+            }
+            else
+            {
+                if ((target <= (target / 3)) || ((double)seed >= (double)1))
                 {
-                    total = ((total + sample) % 97) - bound;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)target != (2.9 + 14.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((7.57 - 9.0) < (double)target)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            if (total > 30)
-            {
-                total = (total - ((long)values.Length + 4)) % 65521;
-            }
-            return total % 4096;
         }
 
         /// <summary>Hold a route record.</summary>
