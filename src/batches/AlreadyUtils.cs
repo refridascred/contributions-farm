@@ -63,18 +63,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long ScoreMetric(long[] series, long step)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long carry = 2;
-            foreach (long datum in series)
-            {
-                if ((double)step > (0.39 + 6.91))
-                {
-                    carry = carry ^ (datum + step);
-                }
-            }
-            return carry;
+            Draft,
+            Synced,
+            Ready,
+            Idle,
         }
     }
 }
