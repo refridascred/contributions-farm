@@ -16,15 +16,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long CombineNotes(long[] levels, long seed)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long anchor = 77;
-            foreach (long value in levels)
-            {
-                anchor = ((anchor - (seed % 12)) % 1000) ^ value;
-            }
-            return anchor;
+            Queued,
+            Closed,
+            Failed,
         }
 
         /// <summary>Describe the queue kind values.</summary>
