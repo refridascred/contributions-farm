@@ -20,13 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            Failed,
-            Idle,
-            Queued,
             Draft,
+            Idle,
+            Pending,
+            Stale,
+            Queued,
         }
 
         /// <summary>Define support limits and defaults.</summary>
