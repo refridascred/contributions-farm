@@ -36,39 +36,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long BucketFarm(long seed, long limit)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long diff = seed - limit;
-            if (!((seed + diff) >= (seed >> 4)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((limit + limit) < seed)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((seed << 1) == (seed * 5)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (limit <= (diff >> 3))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public long Limit { get; set; }
+            public string Owner { get; set; } = "";
+            public string Token { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Fold a list of context readings.</summary>
