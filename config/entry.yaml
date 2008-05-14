@@ -1,14 +1,4 @@
 # entry settings
-batch_limit: 7186
-default_ratio_s:
-  entry_size: 18.32
-  hard_threshold_ms:
-    counter_window: true
-    layout_delay: 67
-    audit: cached
-  idle_window:
-    - 295
-    - 142
-batch_interval: true
-payload_window: 29.27
-cache_threshold: 52
+burst_ratio_s: 34.08
+contributi_delay: 6684
+min_ttl_ms: primary
