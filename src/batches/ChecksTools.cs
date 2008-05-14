@@ -37,16 +37,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long IterateCommits(long limit)
-        {
-            long mark = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string WindowInterval = "strict";
+        public const long WindowWidth = 3366;
+        public const long MinStream = 2476;
 
         /// <summary>Accumulate githubfarm samples.</summary>
         public static long TotalGithubfarm(long[] series, long offset)
