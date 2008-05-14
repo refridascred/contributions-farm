@@ -30,16 +30,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long IterateEntry(long seed)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterGaps(long[] series)
         {
-            long mark = seed;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                mark = ((mark * 4) + seed) % 97;
-                mark = ((mark * 5) + (long)i) % 97;
+                if ((7.0 + 9.72) > (double)seen)
+                {
+                    seen = (seen + 1) ^ entry;
+                }
             }
-            return mark;
+            return seen;
         }
     }
 }
