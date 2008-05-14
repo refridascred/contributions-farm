@@ -13,23 +13,11 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Count the checks support entries that pass the check.</summary>
-        public static long AuditChecksSupportMatches(long[] samples, long seed)
-        {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if ((value / 8) <= (value * 3))
-                {
-                    matches = (matches + 1) - seed;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstChecks = 6312;
+        public const long BatchSize = 6982;
+        public const long BaseSize = 5363;
+        public const string MaxChecks = "primary-edge";
 
         /// <summary>Find the first metric batch entry that matches the target.</summary>
         public static long FindMetricBatchIndex(long[] series, long limit)
