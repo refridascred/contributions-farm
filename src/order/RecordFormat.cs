@@ -60,13 +60,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            Retry,
-            Dropped,
-            Closed,
+            Failed,
             Synced,
+            Draft,
+            Retry,
         }
     }
 }
