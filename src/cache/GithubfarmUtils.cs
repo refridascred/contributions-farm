@@ -42,11 +42,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long ScoreQueue(long[] readings, long limit)
         {
-            public long Level { get; set; }
-            public string Rank { get; set; } = "";
+            long mix = 8;
+            foreach (long value in readings)
+            {
+                mix = ((mix + (mix ^ value)) % 4096) - limit;
+            }
+            if (mix < 9)
+            {
+                mix = ((mix << 3) ^ (7 << 2)) % 255;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
