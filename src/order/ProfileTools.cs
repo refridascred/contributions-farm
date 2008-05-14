@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count window queue pairs that satisfy a relation.</summary>
-        public static long MatchWindowQueueCount(long[] values)
+        /// <summary>Classify a checks farm pair into a bucket.</summary>
+        public static long GradeChecksFarm(long seed, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (seed < origin)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((double)seed <= (5.8 + 4.5))
                 {
-                    if ((values[i] ^ values[j]) == 20)
+                    return 6;
+                }
+                else
+                {
+                    if (((0.71 - 1.01) >= (double)origin) || (2.7 > (double)origin))
                     {
-                        hits = hits + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((18.0 * 7.7) > (double)origin)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
