@@ -18,24 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long ClassifySchema(long limit, long bound)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            if (((3.0 / 2.0) < (double)limit) && (664 < bound))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)limit <= (double)(-98))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public long Offset { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Look up the position of a batch session sample.</summary>
