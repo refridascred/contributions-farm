@@ -27,15 +27,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double ScaleSession(double weight, double offset)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long PairChecksCount(long[] readings)
         {
-            double rate = weight;
-            if (rate >= (6.0 * 17.0))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate = (rate + (rate / 8.0)) - offset;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return rate + (weight / 5.0);
+            return hits;
         }
 
         /// <summary>Locate a format reading by value.</summary>
