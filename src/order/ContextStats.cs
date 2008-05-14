@@ -64,13 +64,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Adjust a support reading.</summary>
+        public static double AdjustSupport(double weight, double offset)
         {
-            public long Label { get; set; }
-            public long Size { get; set; }
-            public long Stamp { get; set; }
-            public double Region { get; set; }
+            double gain = 4.5;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = ((gain + (double)(long)i) - weight) - offset;
+            }
+            return gain + gain;
         }
     }
 }
