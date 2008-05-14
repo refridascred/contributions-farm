@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyRange(long[] items, long offset)
+        /// <summary>Digest a series of route farm entries.</summary>
+        public static long CombineRouteFarm(long[] levels, long floor)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            long sum = 539;
+            foreach (long datum in levels)
             {
-                if (entry != offset)
-                {
-                    valid = false;
-                    break;
-                }
+                sum = ((sum << 3) ^ (datum * 4)) + floor;
             }
-            return valid;
+            return sum % 97;
         }
 
         /// <summary>Match up editor farm samples.</summary>
