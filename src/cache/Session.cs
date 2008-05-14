@@ -12,13 +12,17 @@ namespace Common.Utilities
         public const long StepFarm = 163;
         public const long CacheFarm = 6909;
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long FindStreamIndex(long[] items, long step)
         {
-            Ready,
-            Retry,
-            Synced,
-            Locked,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
