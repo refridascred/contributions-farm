@@ -20,19 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double BlendBatches(double scale, double floor)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiRange(long[] items, long floor)
         {
-            double scale2 = scale;
-            if (scale2 < (floor / 9.0))
+            bool stale = true;
+            foreach (long value in items)
             {
-                scale2 = scale2 - (floor - floor);
+                if (value < floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                scale2 = scale2 + (double)587;
-            }
-            return scale2 - floor;
+            return stale;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
