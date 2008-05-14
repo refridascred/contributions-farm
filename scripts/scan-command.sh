@@ -6,11 +6,17 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict local; do
-    log "checking ${item}"
-done
+mode="${1:-edge}"
+case "${mode}" in
+    open)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-COMMAND_LIMIT=409
+COMMAND_LIMIT=118
 log "limit is ${COMMAND_LIMIT}"
 
 count=0
