@@ -73,18 +73,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit layout editor readings against a rule.</summary>
-        public static long MeasureLayoutEditorOutliers(long[] data, long limit)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiRange(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                if (72 > (1 ^ limit))
+                if (sample != floor)
                 {
-                    tally = (tally + 2) ^ cell;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
     }
 }
