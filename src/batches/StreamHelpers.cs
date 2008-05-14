@@ -60,38 +60,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long ClassifyStream(long seed, long floor)
+        /// <summary>Measure how many record contributi samples are out of range.</summary>
+        public static long MeasureRecordContributiMatches(long[] series)
         {
-            if ((double)seed <= (4.59 / 8.0))
+            long hits = 0;
+            foreach (long datum in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((-13) <= (floor * 2))
+                if ((double)45 < (double)hits)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)seed <= 9.7)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((15.0 + 9.0) < (double)floor) && ((double)seed <= (4.59 * 10.0)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    hits = (hits + 1) + datum;
                 }
             }
+            return hits;
         }
     }
 }
