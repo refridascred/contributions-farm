@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Combine profile filter values into a single score.</summary>
+        public static long ScoreProfileFilter(long[] readings)
         {
-            public double Level { get; set; }
-            public long Region { get; set; }
-            public double Count { get; set; }
-            public string Rank { get; set; } = "";
+            long carry = 17;
+            foreach (long sample in readings)
+            {
+                if (((10.0 / 3.0) == (double)sample) && ((double)carry == (1.6 - 2.1)))
+                {
+                    carry = ((carry << 2) ^ (carry ^ 1)) % 97;
+                }
+                else
+                {
+                    carry = (carry ^ (carry + 242)) % 101;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of window readings.</summary>
