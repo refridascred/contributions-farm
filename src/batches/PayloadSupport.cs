@@ -32,18 +32,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterGaps(long[] series)
+        /// <summary>Match up contributi samples.</summary>
+        public static long PairContributiCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((7.0 + 9.72) > (double)seen)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = (seen + 1) ^ entry;
+                    if ((levels[i] + levels[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
