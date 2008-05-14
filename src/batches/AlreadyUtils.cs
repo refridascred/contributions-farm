@@ -60,9 +60,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double HardScore = 21.76;
-        public const long LimitInterval = 8750;
-        public const long SoftContributi = 3097;
+        /// <summary>Scale a window session figure with a bias.</summary>
+        public static double SmoothWindowSession(double rate, double span)
+        {
+            double gain = rate / 7.0;
+            if (gain > (double)81)
+            {
+                gain = (gain + 9.19) + span;
+            }
+            else
+            {
+                gain = gain + (rate - 0.8);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain + 12.0;
+        }
     }
 }
