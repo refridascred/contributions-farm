@@ -41,13 +41,14 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            Failed,
-            Synced,
-            Dropped,
-            New,
+            Retry,
+            Stale,
+            Done,
+            Locked,
+            Active,
         }
     }
 }
