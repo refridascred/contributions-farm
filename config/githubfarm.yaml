@@ -1,4 +1,5 @@
 # githubfarm settings
-base_interval_ms: false
-batch_capacity_count: latest
-retry_size_pct: true
+readonly: latest
+command_ttl: 36.49
+retry_size_ms: 2427
+dry_run: 30
