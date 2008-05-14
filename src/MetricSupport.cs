@@ -22,11 +22,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxNotes = 3871;
-        public const double WindowSpan = 68.25;
-        public const string BaseSpan = "strict";
-        public const long SoftScore = 34;
-        public const long BaseSize = 4230;
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
+        {
+            Draft,
+            New,
+            Locked,
+            Pending,
+            Closed,
+        }
     }
 }
