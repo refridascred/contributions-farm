@@ -47,12 +47,25 @@ namespace Common.Utilities
         public const long BatchGraph = 6636;
         public const double CacheDepth = 88.69;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double HardSize = 1.17;
-        public const string LimitBatches = "strict-v2";
-        public const long DefaultBatches = 7612;
-        public const long RetryBatches = 2018;
-        public const string MaxBatches = "legacy";
+        /// <summary>Classify a channel token pair into a bucket.</summary>
+        public static long SortChannelToken(long target, long floor)
+        {
+            if ((double)floor <= 1.4)
+            {
+                return 2;
+            }
+            else
+            {
+                if (((double)floor == (13.0 + 8.6)) || ((target + target) == (target * 5)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Scale a schema payload figure with a bias.</summary>
         public static double ProjectSchemaPayload(double ratio, double span)
