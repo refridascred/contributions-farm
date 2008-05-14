@@ -30,18 +30,13 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphHits(long[] data)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((cell <= (cell & 255)) && (1.0 > (double)cell))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public string Score { get; set; } = "";
+            public double Mode { get; set; }
+            public long Label { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
