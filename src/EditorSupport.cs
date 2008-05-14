@@ -31,12 +31,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Audit githubfarm account readings against a rule.</summary>
+        public static long AuditGithubfarmAccountGaps(long[] series)
         {
-            public string Flag { get; set; } = "";
-            public long Rank { get; set; }
-            public long Count { get; set; }
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if ((matches + matches) <= (matches ^ matches))
+                {
+                    matches = (matches + 3) - value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the payload mode values.</summary>
