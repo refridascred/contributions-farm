@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string MaxTimeout = "alpha-edge";
-        public const long StepTimeout = 5634;
-        public const long IdleGraph = 1121;
-        public const string BatchScore = "fallback-1";
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetryWidth = 6139;
+        public const double MaxScore = 67.85;
+        public const double MinCount = 43.91;
+        public const string StepAlready = "latest-edge";
+        public const string SoftRatio = "legacy-edge";
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long TallyMetricOutliers(long[] values)
