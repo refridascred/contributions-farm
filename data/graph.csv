@@ -1,8 +1,9 @@
-id,token,active,weight,count
-1,86.71,980,98.22,cached
-2,68.27,116,latest,722
-3,cached,latest,cached,green
-4,15.04,open,10.31,primary
-5,475,stable,67.38,edge
-6,blue,96.69,88.83,55.33
-7,200,366,560,standard
+id,ratio,state,rank
+1,fallback,stable,832
+2,0.9,83.68,54.14
+3,115,875,52.09
+4,537,650,fallback
+5,3.38,979,73.6
+6,535,565,eu-west
+7,229,705,standard
+8,428,513,primary
