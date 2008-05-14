@@ -50,13 +50,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
-        {
-            public bool Offset { get; set; }
-            public long Score { get; set; }
-            public long Label { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string StepFactor = "local-edge";
+        public const string DefaultQueue = "cached-1";
+        public const double RetryQueue = 6.59;
+        public const long BaseQueue = 2944;
+        public const long RetryTimeout = 9755;
     }
 }
