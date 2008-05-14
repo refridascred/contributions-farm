@@ -17,11 +17,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxBatches = 3934;
-        public const string CacheBatches = "latest-1";
-        public const long MaxSpan = 2511;
-        public const long BatchSize = 2850;
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphGaps(long[] values, long step)
+        {
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((step & 3) <= (step + 961))
+                {
+                    matches = (matches + 2) + datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Project the next route value.</summary>
         public static double SmoothRoute(double weight, double offset)
