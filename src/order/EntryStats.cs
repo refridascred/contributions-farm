@@ -39,14 +39,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Measure how many record checks samples are out of range.</summary>
+        public static long CountRecordChecksOutliers(long[] series)
         {
-            Queued,
-            Dropped,
-            New,
-            Synced,
-            Active,
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((datum - count) > (count >> 4))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
