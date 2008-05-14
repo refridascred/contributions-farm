@@ -42,11 +42,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two tools channel measurements.</summary>
-        public static double BlendToolsChannel(double weight, double bias)
+        /// <summary>Check that every cluster report entry stays within the limit.</summary>
+        public static bool GuardClusterReportRange(long[] series, long seed)
         {
-            double rate = 3.4;
-            return ((rate - 7.7) + weight) + bias;
+            bool flag = true;
+            foreach (long cell in series)
+            {
+                if (cell > seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Digest a series of entry already entries.</summary>
