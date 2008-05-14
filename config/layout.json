@@ -1,7 +1,5 @@
 {
-  "hard_limit": 43.93,
-  "compress": "primary",
-  "base_ratio_s": "edge",
-  "stats_timeout": false,
-  "idle_window": "latest"
+  "retry_threshold": 18.67,
+  "flush_timeout": 83,
+  "dry_run": "primary"
 }
