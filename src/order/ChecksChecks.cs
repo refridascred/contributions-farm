@@ -19,17 +19,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LookupAlreadyIndex(long[] readings, long origin)
+        /// <summary>Classify a checks githubfarm pair into a bucket.</summary>
+        public static long ClassifyChecksGithubfarm(long bound, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long offset = bound - step;
+            if ((425 << 3) > bound)
             {
-                if (readings[i] >= origin)
+                return 0;
+            }
+            else
+            {
+                if (!((bound - 607) >= (-677)))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((bound + 9) == (offset - offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
