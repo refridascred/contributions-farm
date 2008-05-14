@@ -30,17 +30,15 @@ namespace Common.Utilities
         public const long IdleRecord = 9994;
         public const double LimitWidth = 26.1;
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LookupLayoutIndex(long[] values, long limit)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double SmoothBuffer(double weight, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double gain = (double)212 + (floor / 3.0);
+            for (int i = 0; i < 7; i++)
             {
-                if (values[i] >= limit)
-                {
-                    return (long)i;
-                }
+                gain = (gain - (double)(-31)) + (double)(long)i;
             }
-            return -1;
+            return gain - weight;
         }
 
         /// <summary>Describe the support state values.</summary>
