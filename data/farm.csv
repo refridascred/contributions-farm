@@ -1,6 +1,10 @@
-id,active,token,owner,score
-1,32.58,36.32,830,49.98
-2,primary,green,legacy,288
-3,stable,850,open,309
-4,cached,33.56,local,558
-5,601,85.05,685,312
+id,token,label
+1,428,92.09
+2,491,standard
+3,93.97,strict
+4,658,65.68
+5,10.31,739
+6,729,75.48
+7,eu-west,48.65
+8,133,156
+9,889,385
