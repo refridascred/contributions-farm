@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
-        {
-            public long Stamp { get; set; }
-            public bool Level { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinToken = 7362;
+        public const long StepToken = 2679;
+        public const long WindowSpan = 1818;
 
         /// <summary>Iterate the window series from a seed.</summary>
         public static long IterateWindow(long seed)
