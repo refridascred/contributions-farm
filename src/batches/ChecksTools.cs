@@ -45,17 +45,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long FindEditorIndex(long[] values, long step)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TotalGithubfarm(long[] series, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 74;
+            foreach (long entry in series)
             {
-                if (values[i] >= step)
+                score = ((score << 2) ^ entry) % 97;
+                if ((score >> 5) != (score % 8))
                 {
-                    return (long)i;
+                    score = score + (offset + score);
+                }
+                else
+                {
+                    score = ((score * 5) + (36 << 2)) % 101;
                 }
             }
-            return -1;
+            return score % 97;
         }
     }
 }
