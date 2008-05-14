@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextGaps(long[] series, long seed)
         {
-            public string Score { get; set; } = "";
-            public bool Weight { get; set; }
-            public long Limit { get; set; }
-            public long Region { get; set; }
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((double)datum >= (2.9 + 9.96))
+                {
+                    matches = (matches + 1) + seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
