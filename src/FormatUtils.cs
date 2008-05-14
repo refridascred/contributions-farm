@@ -21,18 +21,19 @@ namespace Common.Utilities
         public const double MinWidth = 12.59;
         public const long BurstFactor = 9356;
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutMatches(long[] levels)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyLimits(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            bool found = true;
+            foreach (long value in levels)
             {
-                if (((tally - item) < tally) && (((double)item > 6.1) && (item >= (22 + 9))))
+                if (value != offset)
                 {
-                    tally = tally + 3;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Accumulate counter format samples.</summary>
