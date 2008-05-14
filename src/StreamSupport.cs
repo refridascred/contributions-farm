@@ -28,38 +28,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long BucketChecks(long floor, long offset)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteGaps(long[] readings, long floor)
         {
-            if ((8 + offset) > offset)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (((6.36 / 4.0) == (double)offset) && ((double)offset >= (double)55))
+                if ((sample + sample) < (sample & 15))
                 {
-                    return 5;
+                    tally = (tally + 3) + floor;
                 }
                 else
                 {
-                    if ((0.5 - 2.0) == (double)offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((offset << 2) <= floor)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
