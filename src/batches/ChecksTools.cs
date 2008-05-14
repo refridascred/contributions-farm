@@ -43,12 +43,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
-        {
-            Draft,
-            Ready,
-            Idle,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BurstSize = 89.72;
+        public const string DefaultNotes = "standard-edge";
+        public const long WindowNotes = 8419;
     }
 }
