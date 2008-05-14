@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ScaleNotes(double gain, double span)
+        /// <summary>Compare every pair of layout graph readings.</summary>
+        public static long CompareLayoutGraphCount(long[] data)
         {
-            double drift = (double)(626 + 3);
-            if (drift > (9.0 / 5.0))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = (drift - gain) - span;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return drift - (2.35 / 5.0);
+            return hits;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
