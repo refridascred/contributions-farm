@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long FindClusterIndex(long[] values, long offset)
+        /// <summary>Locate a commits metric reading by value.</summary>
+        public static long FindCommitsMetricIndex(long[] series, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (values[i] < offset)
+                if (series[i] >= bound)
                 {
                     return (long)i;
                 }
