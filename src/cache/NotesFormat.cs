@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Accumulate record cache samples.</summary>
+        public static long FoldRecordCache(long[] data, long offset)
         {
-            Idle,
-            Closed,
-            Done,
-            Synced,
-            Retry,
+            long total = 1;
+            foreach (long value in data)
+            {
+                total = ((total - offset) % 1000) ^ value;
+            }
+            if (total < 19)
+            {
+                total = (total ^ (offset ^ offset)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
