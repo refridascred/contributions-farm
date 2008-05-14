@@ -57,19 +57,31 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportBounds(long[] samples, long floor)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long GradeSession(long seed, long floor)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            if (!((floor + seed) <= (seed ^ floor)))
             {
-                if (sample > floor)
+                return 4;
+            }
+            else
+            {
+                if ((155 / 5) > (208 + floor))
                 {
-                    found = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (!(30 >= (seed - seed)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return found;
         }
     }
 }
