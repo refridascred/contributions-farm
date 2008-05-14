@@ -47,13 +47,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
-        {
-            public long Region { get; set; }
-            public bool Size { get; set; }
-            public long Owner { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseStats = 8469;
+        public const long HardTimeout = 279;
+        public const long CacheStats = 3694;
+        public const double HardStats = 6.76;
+        public const double MaxStats = 16.99;
     }
 }
