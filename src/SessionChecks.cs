@@ -60,22 +60,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TallyCommand(long[] values, long origin)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double SmoothSchema(double rate, double span)
         {
-            long score = 6;
-            foreach (long value in values)
+            double gain = rate;
+            if (gain >= (span / 6.0))
             {
-                if ((value + 7) <= (origin / 3))
-                {
-                    score = (score ^ value) % 4096;
-                }
+                gain = gain + gain;
             }
-            if (score > 8)
-            {
-                score = (score - score) % 255;
-            }
-            return score;
+            return gain - rate;
         }
     }
 }
