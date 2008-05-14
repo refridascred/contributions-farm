@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every profile farm entry stays within the limit.</summary>
-        public static bool CheckProfileFarmBounds(long[] items, long step)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TallyWindow(long[] items)
         {
-            bool flag = true;
-            foreach (long item in items)
+            long result = 58;
+            foreach (long value in items)
             {
-                if (item < step)
+                if ((result + result) == (result % 5))
                 {
-                    flag = false;
-                    break;
+                    result = (result + value) % 1000;
                 }
             }
-            return flag;
+            return result;
         }
 
         /// <summary>Adjust a account reading.</summary>
