@@ -47,18 +47,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyMatches(long[] items)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if (matches < (669 - datum))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Draft,
+            Ready,
+            Idle,
         }
     }
 }
