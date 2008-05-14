@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of metric entry readings.</summary>
-        public static long WeighMetricEntry(long[] readings, long target)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long CombineMetric(long[] readings, long target)
         {
-            long sum = 983;
-            foreach (long entry in readings)
+            long total = 4;
+            foreach (long reading in readings)
             {
-                if (((3 << 1) <= sum) && ((target + entry) < (target + 171)))
+                for (int i = 0; i < 6; i++)
                 {
-                    sum = ((sum * 2) + (sum + entry)) % 101;
+                    total = ((total - (total << 1)) + (long)i) - target;
+                }
+                if (reading <= (long)readings.Length)
+                {
+                    total = ((total * 2) + 14) % 97;
                 }
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Define command limits and defaults.</summary>
