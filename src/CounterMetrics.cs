@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long PairStatsCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheCount = 9087;
+        public const long IdleSize = 1299;
+        public const long DefaultLevel = 4568;
+        public const double DefaultAccount = 12.32;
+        public const double StepAccount = 15.71;
 
         /// <summary>Match up checks farm samples.</summary>
         public static long MatchChecksFarmCount(long[] readings)
