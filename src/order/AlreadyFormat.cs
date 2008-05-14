@@ -22,15 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double BlendContributi(double bias, double span)
+        /// <summary>Count the editor command entries that pass the check.</summary>
+        public static long CountEditorCommandMatches(long[] levels)
         {
-            double rate = span;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                rate = ((rate - (double)346) + (double)(long)i) - bias;
+                if ((double)count < (13.0 - 8.0))
+                {
+                    count = (count + 1) - item;
+                }
             }
-            return rate + 3.1;
+            return count;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
