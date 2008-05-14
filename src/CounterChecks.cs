@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long RankCounter(long target, long bound)
         {
-            public long Count { get; set; }
-            public long Token { get; set; }
-            public bool Limit { get; set; }
+            if ((1.64 + 20.0) > (double)target)
+            {
+                return 2;
+            }
+            else
+            {
+                if (((target / 8) < (target * 3)) && ((double)bound > (5.0 - 4.0)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
