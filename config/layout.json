@@ -1,8 +1,7 @@
 {
-  "farm_size": 3042,
-  "hard_capacity_count": 20.61,
-  "burst_capacity_pct": 9224,
-  "base_threshold_pct": true,
-  "notes_timeout": 0.67,
-  "base_ratio_count": 58.6
+  "sync_size_pct": 47.64,
+  "flush_depth_ms": true,
+  "persist": ["fallback", "edge", "local"],
+  "sync_capacity": 72,
+  "soft_delay_s": "standard"
 }
