@@ -44,13 +44,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Count the queue buffer entries that pass the check.</summary>
+        public static long MeasureQueueBufferHits(long[] values, long step)
         {
-            public long Mode { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Limit { get; set; }
-            public long Stamp { get; set; }
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((5.97 - 9.19) > (double)reading)
+                {
+                    matches = (matches + 3) + step;
+                }
+            }
+            return matches;
         }
     }
 }
