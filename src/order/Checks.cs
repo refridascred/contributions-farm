@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many support layout samples are out of range.</summary>
-        public static long CountSupportLayoutOutliers(long[] items)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesBounds(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long item in items)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                if ((4 - item) >= (hits ^ 41))
+                if (sample <= offset)
                 {
-                    hits = hits + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
