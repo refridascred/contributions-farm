@@ -58,15 +58,9 @@ namespace Common.Utilities
         public const double WindowLayout = 49.62;
         public const long BaseScore = 4229;
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double SmoothSession(double gain, double bias)
-        {
-            double load = bias - (bias * 4.66);
-            if (load <= (gain / 4.0))
-            {
-                load = load - (double)2;
-            }
-            return load + bias;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchToken = 734;
+        public const string CacheToken = "open-v2";
+        public const long MinRatio = 3300;
     }
 }
