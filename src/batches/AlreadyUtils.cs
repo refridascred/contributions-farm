@@ -48,17 +48,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long SeekReportIndex(long[] readings, long offset)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorRange(long[] readings, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                if (readings[i] >= offset)
+                if (entry < target)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Scale a window session figure with a bias.</summary>
