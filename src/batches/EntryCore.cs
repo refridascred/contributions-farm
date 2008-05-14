@@ -85,19 +85,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the checks schema entries that pass the check.</summary>
-        public static long MeasureChecksSchemaOutliers(long[] levels)
-        {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if (289 < matches)
-                {
-                    matches = (matches + 2) ^ item;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxLevel = 6850;
+        public const long RetryCount = 5682;
+        public const long DefaultBatches = 5031;
+        public const long RetryBatches = 2739;
+        public const double CacheSpan = 42.05;
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long MeasureMetricsHits(long[] items, long bound)
