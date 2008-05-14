@@ -1,8 +1,6 @@
 {
-  "batch_capacity": 24,
-  "cache_retries": 8,
-  "verbose": 500,
-  "batches_timeout": "strict",
-  "poll_capacity_count": ["green", "strict", "strict"],
-  "persist": 11
+  "batch_depth_ms": [102, 382, 357],
+  "min_interval_ms": 26.15,
+  "poll_size": 7226,
+  "burst_window": 91.31
 }
