@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleChannel = 459;
-        public const long RetryRatio = 1364;
-        public const double DefaultChannel = 60.42;
-        public const long BurstBudget = 6346;
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] readings, long offset)
+        {
+            long mark = -365;
+            foreach (long value in readings)
+            {
+                if ((mark % 12) > value)
+                {
+                    mark = mark ^ 70;
+                }
+                mark = mark ^ (mark - offset);
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
         public static long MatchChecksCount(long[] data)
