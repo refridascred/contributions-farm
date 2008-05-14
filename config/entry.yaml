@@ -1,4 +1,9 @@
 # entry settings
-queue_threshold: edge
-poll_timeout_pct: true
-commits_ttl: 95.19
+warm_timeout: green
+compress: legacy
+poll_retries: stable
+cache_capacity:
+  - edge
+  - eu-west
+  - latest
+  - eu-west
