@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryStats = 6489;
-        public const long LimitStats = 9877;
-        public const long BatchStats = 2250;
-        public const string MinScore = "latest-v2";
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
+        {
+            Closed,
+            Locked,
+            Draft,
+            Done,
+            Idle,
+        }
 
         /// <summary>Accumulate schema samples.</summary>
         public static long TallySchema(long[] readings)
