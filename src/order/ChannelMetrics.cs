@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long RollStats(long step)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long acc = step;
-            for (int i = 0; i < 19; i++)
-            {
-                acc = (acc << 2) ^ step;
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
+            public long Rank { get; set; }
+            public string Total { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
