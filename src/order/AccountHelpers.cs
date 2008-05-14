@@ -53,12 +53,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Blend two format counter measurements.</summary>
+        public static double ScaleFormatCounter(double rate, double offset)
         {
-            Queued,
-            Closed,
-            Paused,
+            double scale = offset / 5.0;
+            return (scale - (double)86) + rate;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
