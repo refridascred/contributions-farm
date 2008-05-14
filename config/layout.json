@@ -1,16 +1,15 @@
 {
-  "soft_size_s": 16.71,
-  "cluster_limit": 100,
-  "flush_ttl": 19.45,
-  "batch_timeout": 500,
-  "idle_limit": {
-    "idle_retries": 39.91,
-    "enabled": 1309,
-    "hard_window": {
-      "audit": 98,
-      "base_retries_s": 1024,
-      "cluster_depth": false,
-      "record_timeout": "local"
-    }
-  }
+  "max_limit_pct": {
+    "readonly": "blue",
+    "compress": "blue",
+    "warm_ratio_count": 20
+  },
+  "poll_interval_count": {
+    "soft_retries": "fallback",
+    "flush_ratio_pct": "staging",
+    "max_interval": 96
+  },
+  "max_delay_count": 9751,
+  "batch_ratio": 30,
+  "cache_size_s": "standard"
 }
