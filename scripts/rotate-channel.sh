@@ -6,9 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest green primary eu-west; do
+for item in fallback open strict primary; do
     log "checking ${item}"
 done
 
-CHANNEL_LIMIT=295
-log "limit is ${CHANNEL_LIMIT}"
+mode="${1:-stable}"
+case "${mode}" in
+    standard)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
