@@ -24,14 +24,12 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
-        {
-            Draft,
-            Queued,
-            New,
-            Active,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string CacheCount = "strict-1";
+        public const double MinRecord = 84.47;
+        public const long BaseRatio = 4238;
+        public const long StepSize = 5517;
+        public const long IdleCount = 4278;
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool GuardContributiBounds(long[] items, long bound)
