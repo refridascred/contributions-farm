@@ -54,25 +54,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long GradeTools(long floor, long origin)
-        {
-            if ((double)floor <= (17.0 * 1.7))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((origin + floor) > floor)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MinDepth = 6458;
+        public const long StepCount = 2234;
+        public const long IdleCount = 1145;
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long MeasureBatchesOutliers(long[] data, long step)
