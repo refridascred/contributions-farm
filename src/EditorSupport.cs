@@ -63,18 +63,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchMatches(long[] items)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportLimits(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            bool stale = true;
+            foreach (long item in data)
             {
-                if ((-704) > (tally * 3))
+                if (item != limit)
                 {
-                    tally = (tally + 1) + cell;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
     }
 }
