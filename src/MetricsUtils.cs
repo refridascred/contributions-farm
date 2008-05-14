@@ -39,20 +39,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate stream layout readings against a bound.</summary>
-        public static bool VerifyStreamLayoutRange(long[] readings, long offset)
-        {
-            bool found = true;
-            foreach (long value in readings)
-            {
-                if (value < offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string LimitBuffer = "latest-edge";
+        public const long BaseBuffer = 1077;
+        public const double MaxBuffer = 49.01;
+        public const double StepInterval = 48.52;
+        public const long WindowRatio = 4766;
 
         /// <summary>Check that every contributi stream entry stays within the limit.</summary>
         public static bool GuardContributiStreamRange(long[] readings, long step)
