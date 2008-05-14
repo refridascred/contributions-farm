@@ -40,13 +40,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long StepBatch(long target)
         {
-            public string Rank { get; set; } = "";
-            public long Level { get; set; }
-            public long Total { get; set; }
-            public bool Region { get; set; }
+            long score = target;
+            for (int i = 0; i < 23; i++)
+            {
+                if (!((long)i > score))
+                {
+                    score = ((score * 3) + (score - (long)i)) % 65521;
+                }
+                else
+                {
+                    score = ((score << 2) ^ 7) % 101;
+                }
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
