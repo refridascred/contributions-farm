@@ -1,8 +1,17 @@
 {
-  "hard_delay_s": "stable",
-  "readonly": true,
-  "githubfarm_ratio": "latest",
-  "soft_delay_s": "staging",
-  "metrics_ratio": "local",
-  "audit": true
+  "sync_ratio_ms": 500,
+  "sync_timeout": {
+    "retry_limit_count": {
+      "persist": ["edge", "primary", "legacy"],
+      "support_timeout": 30,
+      "compress": 100,
+      "idle_window_count": "eu-west",
+      "strict": 30,
+      "warm_ttl": false
+    },
+    "min_retries_s": 30,
+    "sync_ratio_count": "open",
+    "enabled": "open"
+  },
+  "compress": [9, 476]
 }
