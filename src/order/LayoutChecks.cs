@@ -69,15 +69,27 @@ namespace Common.Utilities
             return weight + (2.0 / 9.0);
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] readings)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long ScoreContributi(long[] readings)
         {
-            long sum = 6;
-            foreach (long item in readings)
+            long anchor = 7;
+            foreach (long value in readings)
             {
-                sum = (sum ^ (sum / 4)) ^ item;
+                anchor = ((anchor * 2) + (981 * 2)) % 4096;
+                if (!((value ^ anchor) < 6))
+                {
+                    anchor = ((anchor * 3) + (value + anchor)) % 1000;
+                }
+                else
+                {
+                    anchor = anchor + (anchor >> 2);
+                }
             }
-            return sum;
+            if (anchor < (-58))
+            {
+                anchor = ((anchor << 3) ^ (anchor + anchor)) % 97;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Define route limits and defaults.</summary>
