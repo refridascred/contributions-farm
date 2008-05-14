@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached primary; do
+for item in legacy stable staging; do
     log "checking ${item}"
 done
 
-CHANNEL_LIMIT=150
+CHANNEL_LIMIT=363
 log "limit is ${CHANNEL_LIMIT}"
