@@ -55,18 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextHits(long[] levels)
+        /// <summary>Measure how many token githubfarm samples are out of range.</summary>
+        public static long TallyTokenGithubfarmHits(long[] readings, long target)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (((tally - 2) > (tally ^ reading)) && ((reading + reading) >= 7))
+                if ((seen + reading) > 5)
                 {
-                    tally = tally + 1;
+                    seen = (seen + 3) - target;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
