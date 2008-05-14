@@ -27,15 +27,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TallyGraph(long[] readings)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long SeekStreamIndex(long[] readings, long limit)
         {
-            long acc = 63;
-            foreach (long item in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = ((acc * 4) + (item ^ 931)) % 1000;
+                if (readings[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
