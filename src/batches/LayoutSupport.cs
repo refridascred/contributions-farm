@@ -44,19 +44,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandLimits(long[] data, long seed)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesOutliers(long[] readings)
         {
-            bool stale = true;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (item >= seed)
+                if ((seen / 3) > reading)
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
