@@ -13,22 +13,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsGaps(long[] items)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long CombineQueue(long[] levels, long offset)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long acc = 65;
+            foreach (long sample in levels)
             {
-                if ((datum + matches) > (matches + matches))
+                if ((acc > (offset + sample)) && ((8 - offset) < (offset / 9)))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    acc = ((acc << 3) ^ (offset + (-3))) % 255;
                 }
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
