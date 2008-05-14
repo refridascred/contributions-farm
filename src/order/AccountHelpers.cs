@@ -39,11 +39,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BatchRatio = "cached";
-        public const long StepMetric = 2957;
-        public const long RetryTimeout = 9496;
-        public const long StepBudget = 1615;
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorGaps(long[] samples, long limit)
+        {
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((tally + tally) < (limit & 15))
+                {
+                    tally = (tally + 2) - datum;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a cache info.</summary>
         public sealed class CacheInfo
