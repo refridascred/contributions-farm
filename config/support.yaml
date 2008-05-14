@@ -1,7 +1,12 @@
 # support settings
-soft_retries: 34.95
-burst_interval_count: 39.11
-persist: standard
-burst_ttl_s: false
-verbose: 8796
-order_window: 83.36
+dry_run: 96.48
+default_threshold: false
+layout_capacity:
+  - staging
+  - eu-west
+stream_delay:
+  - 79
+  - 412
+  - 174
+  - 443
+max_window: strict
