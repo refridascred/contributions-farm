@@ -41,23 +41,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double SmoothRoute(double rate, double floor)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchBounds(long[] levels, long bound)
         {
-            double bias = rate;
-            if (bias < bias)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                bias = bias - 7.0;
+                if (datum != bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                bias = bias + floor;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = bias + (double)(long)i;
-            }
-            return bias + (bias / 5.0);
+            return ok;
         }
     }
 }
