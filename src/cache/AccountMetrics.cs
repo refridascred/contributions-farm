@@ -57,18 +57,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the contributi window entries that pass the check.</summary>
-        public static long TallyContributiWindowMatches(long[] samples, long limit)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatOutliers(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if (((double)value != (6.82 / 8.0)) && ((double)limit > (1.22 / 5.0)))
+                if (4 > (39 - count))
                 {
-                    matches = matches + 3;
+                    count = ((count + 3) ^ cell) - offset;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
