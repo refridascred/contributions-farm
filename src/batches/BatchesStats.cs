@@ -47,24 +47,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a support payload pair into a bucket.</summary>
-        public static long RankSupportPayload(long floor, long offset)
+        /// <summary>Check that every cache profile entry stays within the limit.</summary>
+        public static bool VerifyCacheProfileRange(long[] samples, long target)
         {
-            if (!((offset * 2) < offset))
+            bool stale = true;
+            foreach (long item in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)floor <= (9.8 * 5.39))
+                if (item > target)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
