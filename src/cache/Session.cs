@@ -37,18 +37,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsOutliers(long[] readings)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell >> 5) < matches)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Score { get; set; }
+            public bool Token { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
