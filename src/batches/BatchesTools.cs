@@ -13,17 +13,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LocateStreamIndex(long[] values, long offset)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ProjectSession(double weight, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double ratio = 2.13;
+            if (ratio <= (ratio - weight))
             {
-                if (values[i] < offset)
-                {
-                    return (long)i;
-                }
+                ratio = ratio - span;
             }
-            return -1;
+            return ratio - ratio;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
