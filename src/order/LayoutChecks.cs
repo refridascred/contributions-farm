@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Adjust a already reading.</summary>
-        public static double ScaleAlready(double weight, double offset)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            double weight2 = (weight + offset) / 8.0;
-            if (weight2 < (weight2 * 9.3))
-            {
-                weight2 = weight2 + offset;
-            }
-            return weight2 - (weight * 12.0);
+            Queued,
+            Synced,
+            Done,
+            Draft,
+            Failed,
         }
 
         /// <summary>Define context limits and defaults.</summary>
