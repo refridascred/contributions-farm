@@ -47,17 +47,11 @@ namespace Common.Utilities
         public const long BatchGraph = 6636;
         public const double CacheDepth = 88.69;
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long FindChannelIndex(long[] data, long target)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Rank { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Scale a schema payload figure with a bias.</summary>
