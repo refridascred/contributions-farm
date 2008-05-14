@@ -33,32 +33,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a tools already value against two limits.</summary>
-        public static long SortToolsAlready(long bound, long limit)
+        /// <summary>Match up graph samples.</summary>
+        public static long OverlapGraphCount(long[] items)
         {
-            long diff = bound - limit;
-            if ((92 - limit) > (limit - diff))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)diff >= (1.45 - 6.08))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound < (44 / 6)) || ((6.63 - 4.32) < (double)limit))
+                    if ((items[i] ^ items[j]) > 0)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
