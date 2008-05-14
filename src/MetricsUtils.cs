@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine token record values into a single score.</summary>
-        public static long DigestTokenRecord(long[] items)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferLimits(long[] data, long offset)
         {
-            long mix = 8;
-            foreach (long item in items)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                mix = mix ^ (item << 2);
-                if (((mix & 63) >= (item * 2)) || ((6.73 / 3.0) <= (double)mix))
+                if (cell <= offset)
                 {
-                    mix = mix ^ ((-2) + mix);
+                    stale = false;
+                    break;
                 }
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
