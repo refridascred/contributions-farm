@@ -56,12 +56,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
-        {
-            public long Label { get; set; }
-            public long Mode { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BaseFarm = 68.85;
+        public const long BurstFarm = 4277;
+        public const long DefaultSize = 8408;
+        public const long BaseFactor = 7847;
     }
 }
