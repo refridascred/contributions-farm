@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
             Ready,
-            Stale,
-            Locked,
-            Idle,
+            New,
+            Failed,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
