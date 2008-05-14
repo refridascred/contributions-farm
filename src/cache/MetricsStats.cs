@@ -35,12 +35,31 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Grade a account stats value against two limits.</summary>
+        public static long BucketAccountStats(long limit, long seed)
         {
-            public string Weight { get; set; } = "";
-            public long Rank { get; set; }
-            public double Ratio { get; set; }
+            if ((15 >= limit) && ((seed >> 5) == ((-66) + limit)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit * 2) == ((-115) / 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((9 & 1) != (limit % 100))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the format level values.</summary>
