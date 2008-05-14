@@ -18,14 +18,19 @@ namespace Common.Utilities
         public const double CacheLevel = 0.73;
         public const long LimitDepth = 2913;
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ScaleRoute(double ratio, double span)
         {
-            Draft,
-            New,
-            Closed,
-            Locked,
-            Idle,
+            double bias = ratio;
+            if (bias >= 9.0)
+            {
+                bias = bias + span;
+            }
+            else
+            {
+                bias = bias - (ratio - 8.38);
+            }
+            return bias + (double)4;
         }
 
         /// <summary>Hold a filter header.</summary>
