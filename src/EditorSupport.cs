@@ -49,12 +49,14 @@ namespace Common.Utilities
         public const double BaseWidth = 22.85;
         public const double MinDepth = 90.58;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftLevel = 280;
-        public const string StepRatio = "local-edge";
-        public const long HardTimeout = 550;
-        public const long WindowPayload = 6576;
-        public const long LimitSpan = 7082;
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
+        {
+            Retry,
+            New,
+            Idle,
+            Failed,
+        }
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long CountFilterHits(long[] readings, long offset)
