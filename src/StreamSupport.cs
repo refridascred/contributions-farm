@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] readings, long offset)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TallyNotes(long[] series)
         {
-            long mark = -365;
-            foreach (long value in readings)
+            long score = 9;
+            foreach (long cell in series)
             {
-                if ((mark % 12) > value)
-                {
-                    mark = mark ^ 70;
-                }
-                mark = mark ^ (mark - offset);
+                score = ((score << 3) ^ (cell - 6)) % 65521;
+                score = score ^ (cell & 1);
             }
-            return mark % 4096;
+            return score;
         }
 
         /// <summary>Find the first token format entry that matches the target.</summary>
