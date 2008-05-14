@@ -20,12 +20,32 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Grade a channel layout value against two limits.</summary>
+        public static long RankChannelLayout(long limit, long limit2)
         {
-            public long Mode { get; set; }
-            public string Token { get; set; } = "";
-            public long Size { get; set; }
+            long lane = limit ^ limit2;
+            if ((lane << 2) > (limit * 2))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)limit == (6.4 * 4.81))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (limit2 >= lane)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the cache mode values.</summary>
