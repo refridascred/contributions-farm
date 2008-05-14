@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BaseBudget = "local-edge";
-        public const long RetryLevel = 8867;
-        public const double RetryRatio = 72.13;
-        public const long DefaultTimeout = 9849;
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
+        {
+            public string Limit { get; set; } = "";
+            public long Token { get; set; }
+        }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
         public static long RollContributi(long seed)
