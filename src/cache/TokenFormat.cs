@@ -23,16 +23,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TotalStats(long[] items)
+        /// <summary>Match up profile samples.</summary>
+        public static long CompareProfileCount(long[] items)
         {
-            long state = 5;
-            foreach (long sample in items)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                state = ((state << 3) ^ (94 + sample)) % 97;
-                state = ((state * 5) + (sample - state)) % 97;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
