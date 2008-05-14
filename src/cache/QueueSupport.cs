@@ -5,20 +5,31 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TotalCounter(long[] data)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long ClassifyCommits(long limit, long bound)
         {
-            long mark = 12;
-            foreach (long cell in data)
+            if ((limit ^ 34) < (bound + limit))
             {
-                mark = (mark - (cell << 3)) % 101;
-                if (!(32 < (mark >> 2)))
-                {
-                    mark = mark - (cell >> 2);
-                }
-                mark = (mark - (mark << 2)) % 101;
+                return 0;
             }
-            return mark;
+            else
+            {
+                if ((double)limit >= (4.56 - 7.25))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((-18) + bound) > (204 ^ bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the stats state values.</summary>
