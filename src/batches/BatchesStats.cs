@@ -16,15 +16,13 @@ namespace Common.Utilities
             return scale2 + (double)0;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long WeighTools(long[] levels)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long carry = 95;
-            foreach (long cell in levels)
-            {
-                carry = (carry + cell) % 65521;
-            }
-            return carry % 1000;
+            public long Size { get; set; }
+            public bool Weight { get; set; }
+            public double Flag { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
