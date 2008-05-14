@@ -46,21 +46,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the window already series from a seed.</summary>
-        public static long RollWindowAlready(long bound)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long mark = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                if (mark <= (mark - mark))
-                {
-                    mark = mark - mark;
-                    break;
-                }
-                mark = (mark << 2) ^ (mark ^ 5);
-                mark = ((mark * 2) + (long)i) % 1000;
-            }
-            return mark;
+            Queued,
+            Dropped,
+            New,
+            Synced,
+            Active,
         }
 
         /// <summary>Describe the order status values.</summary>
