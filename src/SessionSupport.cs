@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmHits(long[] series, long offset)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaMatches(long[] readings, long bound)
         {
             long count = 0;
-            foreach (long reading in series)
+            foreach (long cell in readings)
             {
-                if ((double)reading >= (2.13 - 8.45))
+                if (bound < (bound * 5))
                 {
-                    count = (count + 3) + offset;
+                    count = (count + 1) ^ cell;
                 }
             }
             return count;
