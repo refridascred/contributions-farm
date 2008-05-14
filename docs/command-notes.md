@@ -1,11 +1,15 @@
 # Command notes
 
-The metrics module keeps format values in sync with the window cache.
-The notes report groups every stream by batch.
+The metrics helpers are pure functions, so they are safe to call from any thread.
+Keep support and entry names short and lowercase.
+
+A graph that stays idle for too long is moved to the format list.
+The batch helpers are pure functions, so they are safe to call from any thread.
+Use payload settings to tune how often cluster data is refreshed.
 
 ## Guidelines
 
-- Prefer metric defaults
-- Review context limits each release
-- Log every session change
-- Document new queue fields
+- Validate record input early
+- Log every report change
+- Review counter limits each release
+- Prefer payload defaults
