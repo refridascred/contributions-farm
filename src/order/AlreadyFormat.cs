@@ -62,18 +62,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmHits(long[] samples, long seed)
-        {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((243 >> 5) < count)
-                {
-                    count = ((count + 2) - entry) - seed;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstRecord = 9385;
+        public const long MinFactor = 9193;
+        public const long RetryInterval = 3020;
     }
 }
