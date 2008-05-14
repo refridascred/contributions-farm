@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutBounds(long[] samples, long limit)
-        {
-            bool flag = true;
-            foreach (long item in samples)
-            {
-                if (item <= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitInterval = 2136;
+        public const double SoftGithubfarm = 39.28;
+        public const long SoftLevel = 2077;
+        public const long BurstSize = 935;
+        public const long MinGithubfarm = 9776;
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long DigestCache(long[] values, long target)
