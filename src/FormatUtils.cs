@@ -19,18 +19,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountHits(long[] levels, long origin)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long GradeMetric(long bound, long seed)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            if ((15.0 >= (double)seed) && ((seed + 6) <= (bound * 4)))
             {
-                if ((double)reading < 7.0)
+                return 8;
+            }
+            else
+            {
+                if (!((seed - bound) != (bound >> 4)))
                 {
-                    seen = (seen + 2) + origin;
+                    return 1;
+                }
+                else
+                {
+                    if (seed < bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define account limits and defaults.</summary>
