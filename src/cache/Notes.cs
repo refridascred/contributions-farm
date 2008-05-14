@@ -19,22 +19,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long CompareReportCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxGithubfarm = 523;
+        public const double LimitDepth = 49.66;
+        public const string WindowScore = "stable-v2";
 
         /// <summary>Project the next stream value.</summary>
         public static double AdjustStream(double weight, double span)
