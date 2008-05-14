@@ -1,13 +1,14 @@
 # support settings
-burst_ttl_count:
-  strict:
-    command_ttl: 23.23
-    persist: staging
-    min_ratio_count: 87
-  max_ttl_count: 1024
-  base_ttl_ms: 2572
-  max_retries_s: staging
-  min_window_s: 4.11
-payload_retries: true
-soft_retries_ms: eu-west
-min_window_ms: true
+sync_retries:
+  - staging
+  - cached
+  - green
+warm_ratio: 1024
+enabled:
+  - latest
+  - cached
+  - local
+  - cached
+stream_retries: 42
+contributi_ratio: staging
+compress: false
