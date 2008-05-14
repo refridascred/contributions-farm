@@ -38,12 +38,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Accumulate order samples.</summary>
+        public static long ScoreOrder(long[] levels, long offset)
         {
-            Failed,
-            Locked,
-            Draft,
+            long state = 255;
+            foreach (long datum in levels)
+            {
+                if ((state - state) >= (datum << 1))
+                {
+                    state = state - (offset - state);
+                }
+                else
+                {
+                    state = (state * 3) + 24;
+                }
+            }
+            return state % 1000;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
