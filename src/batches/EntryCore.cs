@@ -49,18 +49,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphHits(long[] readings)
+        /// <summary>Count the checks schema entries that pass the check.</summary>
+        public static long MeasureChecksSchemaOutliers(long[] levels)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if (!((double)804 < (7.9 / 2.0)) || (((4 - datum) <= (5 + tally)) || ((tally + tally) <= (datum * 2))))
+                if (289 < matches)
                 {
-                    tally = tally + 2;
+                    matches = (matches + 2) ^ item;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
