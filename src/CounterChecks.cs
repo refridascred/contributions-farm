@@ -5,21 +5,28 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long CompareSessionCount(long[] items)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TallyMetrics(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 4;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                state = (state * 3) + 64;
+                state = (state + (state - state)) % 255;
+                if (datum > (datum - state))
                 {
-                    if ((items[i] ^ items[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
+                    state = ((state * 4) + (datum >> 1)) % 65521;
+                }
+                if (((datum & 255) == (state - 4)) && ((double)datum < 9.0))
+                {
+                    break;
                 }
             }
-            return count;
+            if (state < (-96))
+            {
+                state = (state * 5) + (state << 2);
+            }
+            return state % 4096;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
