@@ -32,11 +32,17 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double DefaultDepth = 3.27;
-        public const double BatchTools = 5.79;
-        public const long BaseFactor = 7434;
-        public const string LimitFactor = "cached-1";
+        /// <summary>Derive the next metric metrics value from a seed.</summary>
+        public static long StepMetricMetrics(long origin)
+        {
+            long acc = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                acc = ((acc << 3) ^ origin) % 1000;
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const double RetrySpan = 48.44;
