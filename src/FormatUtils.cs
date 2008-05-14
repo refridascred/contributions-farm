@@ -18,21 +18,20 @@ namespace Common.Utilities
         public const double CacheLevel = 0.73;
         public const long LimitDepth = 2913;
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long OverlapEntryCount(long[] samples)
+        /// <summary>Roll a entry commits counter forward.</summary>
+        public static long SeriesEntryCommits(long origin)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = origin;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                state = (state * 3) + state;
+                if (!(((long)i + origin) < 419))
                 {
-                    if ((samples[i] + samples[j]) > 18)
-                    {
-                        count = count + 1;
-                    }
+                    state = (state + origin) % 4096;
                 }
+                state = ((state * 4) + (long)i) % 97;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
