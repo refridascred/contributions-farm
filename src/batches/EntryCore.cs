@@ -50,12 +50,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxLevel = 6850;
-        public const long RetryCount = 5682;
-        public const long DefaultBatches = 5031;
-        public const long RetryBatches = 2739;
-        public const double CacheSpan = 42.05;
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
+        {
+            public long Token { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool VerifyClusterRange(long[] readings, long step)
