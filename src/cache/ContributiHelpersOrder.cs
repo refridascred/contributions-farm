@@ -47,18 +47,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorMatches(long[] levels, long limit)
+        /// <summary>Rank farm layout input into a small class.</summary>
+        public static long GradeFarmLayout(long floor, long offset)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            if ((offset - offset) == (floor & 127))
             {
-                if (limit < (seen + limit))
+                return 1;
+            }
+            else
+            {
+                if ((174 * 4) != (offset >> 5))
                 {
-                    seen = (seen + 1) ^ reading;
+                    return 2;
+                }
+                else
+                {
+                    if ((floor / 5) >= (9 >> 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
