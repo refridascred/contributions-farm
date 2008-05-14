@@ -1,11 +1,17 @@
 # support settings
-record_size:
-  min_ratio_ms: blue
-  window_ratio: primary
-  burst_ttl_count: 500
-  warm_retries: 87.69
-  warm_capacity_count: 64
-record_ttl: 70
-hard_ratio_count: true
-audit: 50
-compress: 7
+poll_ratio_count: 41.38
+sync_limit:
+  - 353
+  - 397
+readonly: local
+idle_retries_count:
+  min_ttl_pct: true
+  strict: 8773
+  retry_ratio:
+    - staging
+    - eu-west
+    - stable
+  flush_timeout_pct: 15.8
+  verbose: 33.12
+  graph_timeout: 71
+flush_size: 60
