@@ -38,19 +38,14 @@ namespace Common.Utilities
             return weight - offset;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsLimits(long[] levels, long offset)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            bool flag = true;
-            foreach (long item in levels)
-            {
-                if (item != offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Pending,
+            Queued,
+            Ready,
+            Synced,
+            Paused,
         }
     }
 }
