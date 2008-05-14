@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsBounds(long[] items, long offset)
+        /// <summary>Project the next account value.</summary>
+        public static double SmoothAccount(double bias, double floor)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            double scale = (double)(14 + 284);
+            if (scale > (double)702)
             {
-                if (reading != offset)
-                {
-                    valid = false;
-                    break;
-                }
+                scale = ((scale - (scale * 9.7)) - bias) - floor;
             }
-            return valid;
+            return scale + 10.0;
         }
 
         /// <summary>Hold a tools header.</summary>
