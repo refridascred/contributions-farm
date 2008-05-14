@@ -19,12 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterHits(long[] items)
         {
-            Failed,
-            Dropped,
-            Active,
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if (((reading >= (matches - 4)) && ((matches - reading) < (matches ^ matches))) || ((double)reading < (3.0 - 12.0)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the record metrics entries that pass the check.</summary>
