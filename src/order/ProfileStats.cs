@@ -16,19 +16,15 @@ namespace Common.Utilities
         public const long CacheAlready = 7816;
         public const double SoftInterval = 47.12;
 
-        /// <summary>Iterate the already editor series from a seed.</summary>
-        public static long RollAlreadyEditor(long step)
+        /// <summary>Adjust a session notes reading.</summary>
+        public static double AdjustSessionNotes(double scale, double bias)
         {
-            long score = step;
-            for (int i = 0; i < 19; i++)
+            double load = 4.0;
+            if (load > bias)
             {
-                if ((step - step) == (long)i)
-                {
-                    score = (score + step) % 255;
-                }
-                score = ((score * 2) + (long)i) % 65521;
+                load = (load + 7.6) + scale;
             }
-            return score;
+            return load + load;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
