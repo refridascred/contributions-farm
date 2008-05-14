@@ -67,18 +67,11 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportHits(long[] levels)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if ((((sample + seen) > (seen ^ 6)) && ((153 % 60) < seen)) && (sample >= (long)levels.Length))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public bool Size { get; set; }
+            public double Count { get; set; }
         }
     }
 }
