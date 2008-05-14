@@ -13,13 +13,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Match up commits samples.</summary>
+        public static long MatchCommitsCount(long[] readings)
         {
-            Closed,
-            Synced,
-            Ready,
-            Locked,
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the order level values.</summary>
