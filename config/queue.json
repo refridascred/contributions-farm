@@ -1,12 +1,16 @@
 {
-  "soft_timeout": "blue",
-  "warm_size": 1094,
-  "metrics_size": "open",
-  "persist": {
-    "soft_limit_pct": 250,
-    "default_delay": "open",
-    "route_retries": 16.69
-  },
-  "hard_delay": 63,
-  "payload_ttl": 100
+  "warm_delay_s": "cached",
+  "strict": true,
+  "persist": ["stable", "staging", "eu-west"],
+  "sync_retries": {
+    "idle_interval_s": {
+      "format_retries": 100,
+      "hard_size_count": "edge",
+      "persist": true,
+      "sync_size_pct": true,
+      "counter_size": 500
+    },
+    "default_size": 79.33,
+    "batch_delay": "standard"
+  }
 }
