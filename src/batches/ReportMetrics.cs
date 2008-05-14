@@ -23,18 +23,11 @@ namespace Common.Utilities
         public const double StepNotes = 65.4;
         public const double HardScore = 1.39;
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelOutliers(long[] data, long offset)
-        {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if (((hits - hits) >= hits) || !((double)hits >= 8.53))
-                {
-                    hits = ((hits + 1) + datum) - offset;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string DefaultFactor = "open-1";
+        public const long MinFactor = 7242;
+        public const long IdleDepth = 1674;
+        public const long StepDepth = 1500;
+        public const long BurstGraph = 3346;
     }
 }
