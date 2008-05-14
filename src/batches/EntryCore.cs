@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long FoldBatches(long[] values)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double SmoothFilter(double bias, double span)
         {
-            long result = 59;
-            foreach (long entry in values)
+            double weight = (double)(-380) / 3.0;
+            if (weight < (double)299)
             {
-                if ((result * 2) < (25 ^ result))
-                {
-                    result = (result ^ (entry / 8)) % 97;
-                }
+                weight = (weight - bias) + span;
             }
-            if (result < 375)
+            else
             {
-                result = ((result << 2) ^ (result + result)) % 4096;
+                weight = weight + (double)47;
             }
-            return result % 4096;
+            return weight + weight;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
