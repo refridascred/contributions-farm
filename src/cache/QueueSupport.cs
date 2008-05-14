@@ -19,12 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            public long Flag { get; set; }
-            public long Count { get; set; }
-            public long Label { get; set; }
+            Stale,
+            Failed,
+            Pending,
+            Closed,
+            Ready,
         }
 
         /// <summary>Digest a series of cache entries.</summary>
