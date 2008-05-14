@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long ScoreEntry(long[] items, long origin)
+        /// <summary>Count the record cluster entries that pass the check.</summary>
+        public static long AuditRecordClusterOutliers(long[] levels)
         {
-            long acc = 423;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if ((217 << 3) > acc)
+                if ((entry * 2) < (entry - entry))
                 {
-                    acc = ((acc ^ 4) + value) + origin;
+                    seen = seen + 1;
                 }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
