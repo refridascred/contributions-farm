@@ -34,14 +34,22 @@ namespace Common.Utilities
             return scale + (ratio - scale);
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Count the tools batches entries that pass the check.</summary>
+        public static long CountToolsBatchesMatches(long[] values)
         {
-            Draft,
-            Paused,
-            Locked,
-            Failed,
-            Idle,
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((item >> 4) <= (634 - (long)values.Length))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
