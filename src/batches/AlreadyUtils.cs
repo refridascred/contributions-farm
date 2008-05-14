@@ -60,13 +60,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
-        {
-            Draft,
-            Synced,
-            Ready,
-            Idle,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double HardScore = 21.76;
+        public const long LimitInterval = 8750;
+        public const long SoftContributi = 3097;
     }
 }
