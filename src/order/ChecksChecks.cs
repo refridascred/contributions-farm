@@ -33,18 +33,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadHits(long[] data, long floor)
+        /// <summary>Rank layout schema input into a small class.</summary>
+        public static long RankLayoutSchema(long origin, long limit)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            if ((limit / 2) <= (origin / 7))
             {
-                if (!((entry * 5) <= (entry >> 5)))
+                return 4;
+            }
+            else
+            {
+                if ((origin - origin) > limit)
                 {
-                    hits = (hits + 3) + floor;
+                    return 3;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return hits;
         }
     }
 }
