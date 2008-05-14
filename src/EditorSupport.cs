@@ -45,18 +45,17 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TallyFarm(long[] items)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LocateFilterIndex(long[] data, long offset)
         {
-            long carry = 80;
-            foreach (long value in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((value - 59) >= (carry ^ value)) || ((double)carry == (8.4 * 19.0)))
+                if ((data[i] < offset) && ((data[i] % 3) == 0))
                 {
-                    carry = (carry ^ 331) % 65521;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
