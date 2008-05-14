@@ -14,19 +14,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many notes farm samples are out of range.</summary>
-        public static long MeasureNotesFarmGaps(long[] values)
-        {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((matches / 5) <= 822)
-                {
-                    matches = (matches + 3) - sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleTimeout = 5328;
+        public const long SoftCount = 1597;
+        public const string BaseSize = "local";
+        public const long BurstBudget = 3959;
 
         /// <summary>Iterate the stats series from a seed.</summary>
         public static long RollStats(long step)
