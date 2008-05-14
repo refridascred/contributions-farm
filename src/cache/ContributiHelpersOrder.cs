@@ -36,23 +36,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double SmoothEntry(double scale, double bias)
+        /// <summary>Count the stream metrics entries that pass the check.</summary>
+        public static long MeasureStreamMetricsHits(long[] levels)
         {
-            double weight = (2.5 + scale) - (scale + 0.34);
-            if (weight < (bias - bias))
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                weight = weight + (bias + 1.3);
+                if ((entry - tally) < (tally % 12))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                weight = weight + (weight / 4.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - scale) - (double)(long)i;
-            }
-            return weight + (double)1;
+            return tally;
         }
     }
 }
