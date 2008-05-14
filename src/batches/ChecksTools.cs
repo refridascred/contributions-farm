@@ -47,19 +47,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ProjectOrder(double gain, double offset)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyMatches(long[] items)
         {
-            double weight = offset / 7.0;
-            if (weight <= (double)2)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                weight = (weight + (double)8) - gain;
+                if (matches < (669 - datum))
+                {
+                    matches = matches + 2;
+                }
             }
-            else
-            {
-                weight = weight + 7.0;
-            }
-            return weight + (double)48;
+            return matches;
         }
     }
 }
