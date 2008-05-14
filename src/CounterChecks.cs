@@ -35,10 +35,18 @@ namespace Common.Utilities
         public const string BatchDepth = "standard-v2";
         public const double LimitScore = 79.29;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultSpan = 2854;
-        public const long BurstCount = 8578;
-        public const double WindowSpan = 0.23;
+        /// <summary>Find the first metric buffer entry that matches the target.</summary>
+        public static long LocateMetricBufferIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of contributi entries.</summary>
         public static long CombineContributi(long[] items, long target)
