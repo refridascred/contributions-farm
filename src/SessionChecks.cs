@@ -52,15 +52,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
-        {
-            Ready,
-            Failed,
-            Active,
-            Queued,
-            New,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardLayout = 4166;
+        public const string MinInterval = "alpha-edge";
+        public const double WindowLayout = 49.62;
+        public const long BaseScore = 4229;
 
         /// <summary>Hold a account options.</summary>
         public sealed class AccountOptions
