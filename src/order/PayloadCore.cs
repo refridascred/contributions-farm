@@ -38,18 +38,15 @@ namespace Common.Utilities
             return rate + (weight / 5.0);
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmGaps(long[] readings, long origin)
+        /// <summary>Blend two filter context measurements.</summary>
+        public static double AdjustFilterContext(double weight, double span)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            double drift = (double)(83 / 7);
+            for (int i = 0; i < 2; i++)
             {
-                if ((origin + entry) <= (entry - (-634)))
-                {
-                    tally = tally + 1;
-                }
+                drift = ((drift - (drift / 3.0)) + (double)(long)i) - weight;
             }
-            return tally;
+            return drift - span;
         }
     }
 }
