@@ -30,24 +30,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a report cluster value against two limits.</summary>
-        public static long ClassifyReportCluster(long limit, long origin)
-        {
-            if ((2 >= (limit >> 1)) || (limit >= (origin << 3)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((origin + limit) > (limit + origin)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double StepScore = 60.98;
+        public const long BaseSpan = 1688;
+        public const double MaxWidth = 3.9;
+        public const string MinDepth = "open-edge";
+        public const string LimitProfile = "legacy-edge";
     }
 }
