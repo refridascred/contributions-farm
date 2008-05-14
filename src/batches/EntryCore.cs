@@ -55,9 +55,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepBatch = 4999;
-        public const long WindowBatch = 6320;
-        public const string RetryBatch = "stable-v2";
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
+        {
+            Stale,
+            Synced,
+            Paused,
+        }
     }
 }
