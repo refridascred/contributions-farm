@@ -19,22 +19,18 @@ namespace Common.Utilities
         public const long StepChecks = 3268;
         public const double BurstChecks = 73.59;
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportOutliers(long[] series)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportHits(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if (tally > (543 << 3))
+                if ((6.7 - 7.5) != (double)count)
                 {
-                    tally = (tally + 1) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = ((count + 1) ^ value) + step;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Accumulate channel filter samples.</summary>
