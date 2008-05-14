@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderBounds(long[] series, long seed)
         {
-            Dropped,
-            Locked,
-            Closed,
-            Done,
+            bool ok = true;
+            foreach (long entry in series)
+            {
+                if (entry != seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Roll a profile order counter forward.</summary>
