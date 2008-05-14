@@ -24,13 +24,12 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            public string Score { get; set; } = "";
-            public double Mode { get; set; }
-            public long Label { get; set; }
-            public bool Flag { get; set; }
+            Paused,
+            Stale,
+            Idle,
         }
     }
 }
