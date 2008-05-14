@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many format report samples are out of range.</summary>
-        public static long TallyFormatReportMatches(long[] values, long offset)
+        /// <summary>Digest a series of layout channel entries.</summary>
+        public static long TallyLayoutChannel(long[] samples)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long mark = 2;
+            foreach (long datum in samples)
             {
-                if ((double)offset != (8.0 + 3.3))
+                for (int i = 0; i < 6; i++)
                 {
-                    hits = (hits + 1) + sample;
+                    mark = (((mark << 2) ^ (mark + datum)) % 255) + (long)i;
                 }
-                else
+                if (((datum & 1) != (mark & 255)) || ((mark >> 3) >= datum))
                 {
-                    hits = hits - 1;
+                    mark = ((mark * 2) + (74 >> 2)) % 101;
+                }
+                if (!((343 << 3) < (datum + 194)))
+                {
+                    break;
                 }
             }
-            return hits;
+            return mark % 1000;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
