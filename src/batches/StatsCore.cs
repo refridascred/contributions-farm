@@ -50,22 +50,11 @@ namespace Common.Utilities
             return rate + (span + ratio);
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionMatches(long[] levels, long bound)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((((value / 8) <= value) && (9.5 <= (double)value)) || (((84 / 6) >= value) || (count >= (113 + count))))
-                {
-                    count = (count + 3) + bound;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Token { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Describe the order phase values.</summary>
