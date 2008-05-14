@@ -43,22 +43,11 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterOutliers(long[] series)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if (!((sample + hits) == (sample ^ hits)) || ((hits + (long)series.Length) >= (sample << 1)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Ratio { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Hold a graph record.</summary>
