@@ -1,5 +1,5 @@
 {
-  "cluster_ratio": "legacy",
-  "default_interval": 95.33,
-  "sync_delay_ms": true
+  "retry_interval_ms": [352, 300, 485],
+  "cache_capacity": 58.26,
+  "audit": "cached"
 }
