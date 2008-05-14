@@ -29,18 +29,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmHits(long[] data, long target)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if (((9.3 * 9.2) <= (double)tally) || ((double)datum <= 2.6))
-                {
-                    tally = (tally + 1) - target;
-                }
-            }
-            return tally;
+            public long Stamp { get; set; }
+            public double Limit { get; set; }
+            public long Offset { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
