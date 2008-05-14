@@ -23,29 +23,35 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long limit, long origin)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long SortSchema(long seed, long offset)
         {
-            long offset = limit - origin;
-            if ((666 * 5) <= (offset ^ origin))
+            if (!((seed << 1) < (seed / 9)))
             {
-                return 1;
+                return 8;
             }
             else
             {
-                if ((origin << 3) > (origin % 7))
+                if (offset > (offset << 2))
                 {
                     return 7;
                 }
                 else
                 {
-                    if (!((origin - 5) > (offset << 1)))
+                    if ((seed + seed) == (offset + offset))
                     {
-                        return 5;
+                        return 4;
                     }
                     else
                     {
-                        return 6;
+                        if ((double)seed < (8.0 * 12.0))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
