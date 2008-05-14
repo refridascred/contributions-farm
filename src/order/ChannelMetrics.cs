@@ -30,26 +30,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of layout already entries.</summary>
-        public static long TallyLayoutAlready(long[] items, long target)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmLimits(long[] series, long floor)
         {
-            long score = 0;
-            foreach (long datum in items)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                if ((target + (long)items.Length) < datum)
+                if (entry < floor)
                 {
+                    flag = false;
                     break;
                 }
-                else
-                {
-                    score = (score << 3) ^ target;
-                }
-                if ((target ^ score) < target)
-                {
-                    score = score + ((long)items.Length >> 5);
-                }
             }
-            return score;
+            return flag;
         }
     }
 }
