@@ -27,12 +27,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BatchContext = 1.14;
-        public const string StepSpan = "cached";
-        public const string MinWidth = "local-edge";
-        public const long StepBudget = 8217;
-        public const long HardContext = 5716;
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double SmoothChecks(double ratio, double floor)
+        {
+            double scale = ratio - floor;
+            return scale + (ratio - scale);
+        }
 
         /// <summary>Look up the position of a farm sample.</summary>
         public static long FindFarmIndex(long[] readings, long bound)
