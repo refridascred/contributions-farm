@@ -29,17 +29,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a context counter sample.</summary>
-        public static long LocateContextCounterIndex(long[] levels, long seed)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long CompareChannelCount(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((levels[i] <= seed) && ((levels[i] % 2) != 0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] ^ items[j]) == 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Count the token order entries that pass the check.</summary>
