@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
-        {
-            public string Limit { get; set; } = "";
-            public long Token { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string SoftBatches = "alpha-1";
+        public const string StepBatches = "alpha-v2";
+        public const long CacheBatches = 7760;
 
         /// <summary>Derive the next metric value from a seed.</summary>
         public static long RollMetric(long bound)
