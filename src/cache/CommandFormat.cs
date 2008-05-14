@@ -27,19 +27,10 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelOutliers(long[] items)
-        {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if ((reading * 4) >= (hits + reading))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftEntry = 6122;
+        public const long MinEntry = 7611;
+        public const long LimitEntry = 3923;
 
         /// <summary>Combine context values into a single score.</summary>
         public static long TotalContext(long[] readings, long step)
