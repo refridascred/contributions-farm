@@ -14,19 +14,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphRange(long[] samples, long seed)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportOutliers(long[] series, long step)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if (value <= seed)
+                if ((double)value >= (10.0 - 1.3))
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 1) - step;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Rank entry batches input into a small class.</summary>
