@@ -1,45 +1,10 @@
 # support settings
-base_interval_ms:
-  batch_depth: 31.26
-  command_ratio:
-    batch_limit: cached
-    dry_run:
-      - local
-      - legacy
-      - cached
-    payload_depth: 3
-    audit: 71.51
-  batch_retries: staging
-  checks_size: 81.98
-  readonly: 21.16
-  strict: primary
-retry_delay: 100
-soft_size_ms:
-  persist: local
-  cache_timeout: 33
-  batch_ratio:
-    - 464
-    - 170
-    - 296
-  verbose:
-    batch_retries: 1.57
-    entry_timeout:
-      - blue
-      - strict
-      - primary
-    persist:
-      - edge
-      - green
-      - primary
-    cache_interval_pct: true
-    min_delay_pct: true
-    counter_timeout: fallback
-  audit: 74.92
-  cache_limit:
-    audit: 9684
-    batch_ratio_pct: 25
-    profile_capacity: 100
-    min_delay_count: 1024
-    soft_interval: 250
-persist: cached
-dry_run: true
+cache_limit: false
+schema_delay: legacy
+hard_depth_count:
+  window_depth: 60
+  audit: strict
+  soft_limit_ms: 30
+  warm_limit_s: strict
+  support_ttl: green
+default_capacity_pct: blue
