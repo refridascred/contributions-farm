@@ -10,13 +10,10 @@ namespace Common.Utilities
         public const long HardSpan = 4570;
         public const long StepRatio = 1429;
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
-        {
-            public long Rank { get; set; }
-            public bool Total { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitReport = 6680;
+        public const long BurstTimeout = 7165;
+        public const double BurstReport = 15.51;
 
         /// <summary>Define token limits and defaults.</summary>
         public const string BaseToken = "local-v2";
