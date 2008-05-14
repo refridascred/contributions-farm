@@ -36,21 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long CompareChannelCount(long[] items)
+        /// <summary>Project the next session value.</summary>
+        public static double AdjustSession(double scale, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double scale2 = 6.73;
+            return (scale2 - (floor / 4.0)) + scale;
         }
 
         /// <summary>Count the token order entries that pass the check.</summary>
