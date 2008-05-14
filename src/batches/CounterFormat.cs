@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many layout editor samples are out of range.</summary>
-        public static long CountLayoutEditorHits(long[] data, long origin)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if ((item + item) <= (origin & 15))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public bool Score { get; set; }
+            public double Token { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Define payload limits and defaults.</summary>
