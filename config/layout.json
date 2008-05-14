@@ -1,7 +1,12 @@
 {
-  "farm_ttl": 250,
-  "warm_depth": "stable",
-  "warm_ratio_ms": "standard",
-  "warm_ttl_ms": 1024,
-  "idle_delay_count": 85.76
+  "readonly": "edge",
+  "retry_timeout_count": [225, 290],
+  "base_capacity": "cached",
+  "max_delay_ms": {
+    "max_threshold_ms": 29.17,
+    "default_interval": ["latest", "open", "strict", "green"],
+    "batch_window": 30,
+    "min_capacity_ms": [477, 202, 352, 299]
+  },
+  "layout_threshold": "strict"
 }
