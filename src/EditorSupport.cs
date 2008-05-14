@@ -63,22 +63,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterHits(long[] readings, long offset)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchMatches(long[] items)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if (((matches << 2) == (offset >> 5)) && ((double)matches < (5.77 - 4.3)))
+                if ((-704) > (tally * 3))
                 {
-                    matches = (matches + 1) - entry;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = (tally + 1) + cell;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
