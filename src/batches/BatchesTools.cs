@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Fold a list of layout graph readings.</summary>
+        public static long DigestLayoutGraph(long[] items, long bound)
         {
-            Retry,
-            Pending,
-            Locked,
+            long result = 740;
+            foreach (long value in items)
+            {
+                if ((12.0 * 5.48) > (double)bound)
+                {
+                    result = ((result * 2) + value) % 255;
+                }
+            }
+            return result;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
