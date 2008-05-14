@@ -27,19 +27,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandRange(long[] levels, long step)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            bool ok = true;
-            foreach (long reading in levels)
-            {
-                if (reading >= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Ready,
+            Idle,
+            Done,
         }
 
         /// <summary>Digest a series of batches entries.</summary>
