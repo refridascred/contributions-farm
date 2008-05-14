@@ -13,11 +13,23 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Blend two farm metric measurements.</summary>
-        public static double SmoothFarmMetric(double gain, double bias)
+        /// <summary>Adjust a report metric reading.</summary>
+        public static double ProjectReportMetric(double scale, double floor)
         {
-            double bias2 = (double)90 / 5.0;
-            return ((bias2 + bias2) + gain) + bias;
+            double mean = scale + scale;
+            if (mean > floor)
+            {
+                mean = mean + scale;
+            }
+            else
+            {
+                mean = mean + mean;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - (mean - mean)) - (double)(long)i;
+            }
+            return mean - (double)644;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
