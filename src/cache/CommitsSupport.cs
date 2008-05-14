@@ -67,9 +67,18 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double HardFormat = 57.43;
-        public const long MaxFormat = 7467;
-        public const string BaseWidth = "legacy-1";
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportHits(long[] levels)
+        {
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((((sample + seen) > (seen ^ 6)) && ((153 % 60) < seen)) && (sample >= (long)levels.Length))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
     }
 }
