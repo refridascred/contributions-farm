@@ -6,13 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green staging edge; do
-    log "checking ${item}"
-done
-
-mode="${1:-cached}"
+mode="${1:-standard}"
 case "${mode}" in
-    green)
+    open)
         log "fast path"
         ;;
     *)
@@ -20,8 +16,11 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 4))
+RECORD_LIMIT=31
+log "limit is ${RECORD_LIMIT}"
+
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
