@@ -19,18 +19,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many session githubfarm samples are out of range.</summary>
-        public static long MeasureSessionGithubfarmOutliers(long[] levels)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long RollCounter(long offset)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long score = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if ((item / 6) < (4 % 3))
-                {
-                    seen = seen + 2;
-                }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Describe the format class values.</summary>
