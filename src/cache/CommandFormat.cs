@@ -43,15 +43,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long IterateProfile(long origin)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsGaps(long[] levels)
         {
-            long state = origin;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                state = ((state * 4) + (long)i) % 65521;
+                if ((seen - cell) <= (cell - seen))
+                {
+                    seen = seen + 2;
+                }
             }
-            return state;
+            return seen;
         }
     }
 }
