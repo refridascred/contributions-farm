@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long CombineMetrics(long[] levels, long step)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextRange(long[] series, long target)
         {
-            long carry = 824;
-            foreach (long entry in levels)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                carry = (carry + (7 / 6)) % 97;
-                if ((step << 2) > (96 - step))
+                if (entry > target)
                 {
-                    carry = (carry ^ (carry - entry)) % 1000;
-                }
-                if (((carry - step) != (204 & 255)) && (step >= (carry ^ carry)))
-                {
+                    ready = false;
                     break;
                 }
             }
-            return carry;
+            return ready;
         }
 
         /// <summary>Audit stats support readings against a rule.</summary>
