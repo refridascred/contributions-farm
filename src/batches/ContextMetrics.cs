@@ -56,19 +56,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheRange(long[] series, long bound)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportBounds(long[] samples, long floor)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                if (reading <= bound)
+                if (sample > floor)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
     }
 }
