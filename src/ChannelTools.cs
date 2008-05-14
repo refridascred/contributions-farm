@@ -20,18 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphHits(long[] readings)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterOutliers(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if (((count % 97) >= (227 * 2)) && ((count + item) >= count))
+                if ((origin >> 3) >= (datum >> 1))
                 {
-                    count = count + 1;
+                    matches = matches + 2;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Digest a series of schema checks entries.</summary>
