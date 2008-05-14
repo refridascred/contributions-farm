@@ -19,12 +19,13 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            public string Flag { get; set; } = "";
-            public bool Weight { get; set; }
-            public double Mode { get; set; }
+            Synced,
+            Queued,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Hold a stats header.</summary>
