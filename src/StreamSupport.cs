@@ -22,11 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Iterate the githubfarm schema series from a seed.</summary>
+        public static long SeriesGithubfarmSchema(long bound)
         {
-            public bool Rank { get; set; }
-            public bool Size { get; set; }
+            long mark = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    mark = (mark - (bound / 8)) ^ (long)i2;
+                }
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Grade a report cluster value against two limits.</summary>
