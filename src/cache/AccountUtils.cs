@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Scale a payload batch figure with a bias.</summary>
-        public static double ScalePayloadBatch(double scale, double span)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long DeriveStream(long origin)
         {
-            double rate = scale;
-            return (rate + rate) + span;
+            long result = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                if (((origin - (long)i) > origin) && (8.4 > (double)(long)i))
+                {
+                    continue;
+                }
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
