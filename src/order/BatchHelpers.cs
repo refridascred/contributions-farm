@@ -16,10 +16,15 @@ namespace Common.Utilities
             return mean + 3.16;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double IdleCommand = 40.97;
-        public const double MinSize = 80.91;
-        public const double MaxCommand = 23.49;
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
+        {
+            Locked,
+            Dropped,
+            Active,
+            Draft,
+            Synced,
+        }
 
         /// <summary>Compare every pair of cluster record readings.</summary>
         public static long PairClusterRecordCount(long[] readings)
