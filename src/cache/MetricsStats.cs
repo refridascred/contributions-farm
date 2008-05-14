@@ -72,13 +72,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            public string Limit { get; set; } = "";
-            public bool Count { get; set; }
-            public double Flag { get; set; }
-            public double Region { get; set; }
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
