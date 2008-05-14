@@ -33,11 +33,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long SeriesStats(long target)
         {
-            public string Ratio { get; set; } = "";
-            public bool Label { get; set; }
+            long result = target;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((18.0 * 6.0) != (double)result)
+                {
+                    result = (result - ((long)i ^ result)) % 101;
+                }
+                result = result - (result - target);
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
