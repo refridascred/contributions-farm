@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long ScoreRecord(long[] series)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionOutliers(long[] data, long bound)
         {
-            long carry = 666;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long item in data)
             {
-                carry = (carry - (reading % 24)) % 4096;
-                if (!((double)reading != (double)3))
+                if (((456 + seen) >= (bound / 7)) && ((double)bound <= 3.8))
                 {
-                    carry = ((carry * 3) + (23 >> 5)) % 4096;
-                }
-                if (!((reading ^ carry) < (reading + (long)series.Length)))
-                {
-                    carry = carry - (reading >> 1);
+                    seen = (seen + 2) + item;
                 }
             }
-            return carry % 4096;
+            return seen;
         }
 
         /// <summary>Hold a window snapshot.</summary>
