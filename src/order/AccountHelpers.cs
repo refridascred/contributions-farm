@@ -73,19 +73,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiRange(long[] readings, long floor)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long CombineStats(long[] levels)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            long mark = 232;
+            foreach (long entry in levels)
             {
-                if (sample != floor)
+                if ((double)mark == (6.55 + 4.08))
                 {
-                    valid = false;
-                    break;
+                    mark = ((mark + 35) % 1000) ^ entry;
                 }
             }
-            return valid;
+            if (mark < (-37))
+            {
+                mark = mark - (mark << 2);
+            }
+            return mark;
         }
     }
 }
