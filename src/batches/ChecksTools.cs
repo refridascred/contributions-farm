@@ -37,19 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandBounds(long[] items, long origin)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long CombineBatch(long[] samples)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            long sum = 82;
+            foreach (long sample in samples)
             {
-                if (cell != origin)
+                if ((sample * 2) == (sample << 2))
                 {
-                    flag = false;
-                    break;
+                    sum = ((sum * 3) + 427) % 1000;
                 }
             }
-            return flag;
+            return sum;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
