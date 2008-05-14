@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long IterateBatch(long floor)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphOutliers(long[] values)
         {
-            long score = floor;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long value in values)
             {
-                score = score ^ floor;
-                score = ((score << 2) ^ (318 - score)) % 4096;
-                if ((-6) >= floor)
+                if (((seen & 3) < (seen >> 3)) || ((85 >> 1) >= (value & 3)))
                 {
-                    score = (score - floor) % 4096;
+                    seen = seen + 3;
                 }
-                score = ((score * 3) + (long)i) % 65521;
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Fold a list of contributi stream readings.</summary>
