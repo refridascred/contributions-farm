@@ -13,18 +13,17 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TotalCluster(long[] samples, long step)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long SeekMetricIndex(long[] items, long limit)
         {
-            long mix = 7;
-            foreach (long datum in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((77 <= (mix + step)) && ((double)step != (5.0 * 13.0)))
+                if (items[i] >= limit)
                 {
-                    mix = (mix + (step % 100)) - datum;
+                    return (long)i;
                 }
             }
-            return mix % 4096;
+            return -1;
         }
 
         /// <summary>Accumulate route samples.</summary>
