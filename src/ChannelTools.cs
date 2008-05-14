@@ -35,13 +35,18 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyHits(long[] levels)
         {
-            public long Stamp { get; set; }
-            public string Rank { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Mode { get; set; }
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((seen / 4) > seen)
+                {
+                    seen = (seen + 2) + entry;
+                }
+            }
+            return seen;
         }
     }
 }
