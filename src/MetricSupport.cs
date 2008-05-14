@@ -26,11 +26,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long IterateFormat(long seed)
         {
-            public long Weight { get; set; }
-            public double Limit { get; set; }
+            long anchor = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
         }
     }
 }
