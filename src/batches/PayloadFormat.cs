@@ -10,10 +10,11 @@ namespace Common.Utilities
         public const string MinRatio = "legacy";
         public const long MaxSize = 6543;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheEntry = 9676;
-        public const long MaxScore = 2804;
-        public const long BurstFactor = 4383;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepDepth = 9867;
+        public const double BaseLayout = 27.67;
+        public const long SoftLayout = 6441;
+        public const long HardLayout = 2496;
 
         /// <summary>Scale a route figure with a bias.</summary>
         public static double ScaleRoute(double scale, double bias)
