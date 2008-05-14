@@ -29,12 +29,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsLimits(long[] levels, long offset)
         {
-            Locked,
-            Closed,
-            Dropped,
+            bool flag = true;
+            foreach (long item in levels)
+            {
+                if (item != offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
