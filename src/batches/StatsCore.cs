@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Audit report format readings against a rule.</summary>
-        public static long TallyReportFormatOutliers(long[] levels)
+        /// <summary>Digest a series of farm batch entries.</summary>
+        public static long WeighFarmBatch(long[] samples)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long anchor = 791;
+            foreach (long reading in samples)
             {
-                if (((double)item <= (7.45 / 4.0)) && ((double)tally < (double)item))
+                if ((double)anchor > (6.0 / 9.0))
                 {
-                    tally = tally + 1;
+                    anchor = (anchor << 2) ^ ((long)samples.Length + reading);
                 }
             }
-            return tally;
+            if (anchor > 1)
+            {
+                anchor = anchor ^ (anchor - anchor);
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
