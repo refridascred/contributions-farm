@@ -19,19 +19,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double ScaleStats(double weight, double floor)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long DeriveQueue(long target)
         {
-            double load = weight;
-            if (load > (19.0 - floor))
+            long total = target;
+            for (int i = 0; i < 15; i++)
             {
-                load = load - load;
+                total = (total << 3) ^ (6 % 16);
+                if ((9.5 + 0.4) <= (double)total)
+                {
+                    break;
+                }
+                else
+                {
+                    long span = ((long)i - 2) * 3;
+                    total = (total + span) % 97;
+                }
+                total = ((total * 3) + (long)i) % 1000;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + (floor - load)) + (double)(long)i;
-            }
-            return load + (weight * 7.8);
+            return total;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
