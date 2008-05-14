@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long FindEntryIndex(long[] levels, long limit)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long DigestCommits(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 7;
+            foreach (long datum in data)
             {
-                if (levels[i] > limit)
+                mix = (mix << 3) ^ (datum + mix);
+                if ((datum & 7) >= mix)
                 {
-                    return (long)i;
+                    mix = (mix ^ (mix % 3)) % 4096;
+                }
+                if ((datum % 2) >= (datum + datum))
+                {
+                    mix = (mix << 3) ^ (datum % 12);
                 }
             }
-            return -1;
+            return mix % 97;
         }
 
         /// <summary>Digest a series of already schema entries.</summary>
