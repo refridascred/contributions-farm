@@ -38,10 +38,24 @@ namespace Common.Utilities
         public const long BaseCount = 5092;
         public const long HardFilter = 8776;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double RetrySpan = 48.44;
-        public const long MaxTimeout = 626;
-        public const long MinChecks = 1547;
+        /// <summary>Accumulate window channel samples.</summary>
+        public static long TallyWindowChannel(long[] values, long origin)
+        {
+            long mix = 3;
+            foreach (long entry in values)
+            {
+                mix = ((mix << 3) ^ (entry % 60)) % 1000;
+                if (!((double)origin < (7.17 / 7.0)))
+                {
+                    mix = (mix + (mix ^ origin)) % 1000;
+                }
+            }
+            if (mix < 272)
+            {
+                mix = ((mix * 3) + (mix * 4)) % 4096;
+            }
+            return mix % 97;
+        }
 
         /// <summary>Hold a schema snapshot.</summary>
         public sealed class SchemaSnapshot
