@@ -19,16 +19,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ScaleAccount(double weight, double floor)
-        {
-            double rate = weight;
-            if (rate < 0.5)
-            {
-                rate = rate + floor;
-            }
-            return rate - floor;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BatchChannel = "legacy-v2";
+        public const string BurstChannel = "staging-1";
+        public const long WindowFactor = 5465;
 
         /// <summary>Hold a stream entry.</summary>
         public sealed class StreamEntry
