@@ -41,12 +41,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyLimits(long[] data, long step)
         {
-            public double Flag { get; set; }
-            public bool Offset { get; set; }
-            public long Mode { get; set; }
+            bool valid = true;
+            foreach (long datum in data)
+            {
+                if (datum > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
