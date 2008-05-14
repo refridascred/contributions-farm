@@ -33,14 +33,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            Pending,
-            Retry,
-            Dropped,
-            Ready,
-            Failed,
+            Done,
+            Active,
+            Closed,
+            Stale,
         }
     }
 }
