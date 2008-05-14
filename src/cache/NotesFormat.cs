@@ -27,11 +27,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long SeekCounterIndex(long[] data, long bound)
         {
-            public double Limit { get; set; }
-            public double Level { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= bound) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the tools batches entries that pass the check.</summary>
