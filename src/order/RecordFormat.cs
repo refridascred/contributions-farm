@@ -19,17 +19,16 @@ namespace Common.Utilities
         public const long BaseSize = 5363;
         public const string MaxChecks = "primary-edge";
 
-        /// <summary>Find the first metric batch entry that matches the target.</summary>
-        public static long FindMetricBatchIndex(long[] series, long limit)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long IteratePayload(long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 19; i++)
             {
-                if ((series[i] >= limit) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                acc = (acc * 2) + ((long)i << 2);
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
