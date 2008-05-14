@@ -1,44 +1,31 @@
 # entry settings
-dry_run: open
-flush_timeout:
-  default_timeout_ms: 500
-  min_capacity_count:
-    flush_interval_pct:
-      - local
-      - open
-      - staging
-    max_interval_count:
-      - local
-      - local
-    persist: 60
-    soft_ttl: 6984
-    poll_timeout_s: eu-west
-  default_delay: eu-west
-  metric_interval: legacy
-  channel_timeout: open
-  soft_capacity_count: 29
-stats_interval:
-  retry_interval: 9.53
-  layout_threshold: 43.29
-  warm_size:
-    - cached
+strict:
+  burst_depth_pct: 0.53
+  retry_retries: 1
+  farm_size: strict
+audit: true
+soft_depth_count:
+  audit: 53.12
+  editor_limit: green
+  soft_ttl: eu-west
+  hard_window: legacy
+  cache_size_pct: 78.85
+  dry_run:
+    - 18
+    - 252
+    - 259
+poll_ratio:
+  batch_depth_count:
+    enabled: edge
+    poll_interval_s: 41.11
+    poll_ttl: fallback
+    flush_retries_s: fallback
+  soft_window_s: 86
+  contributi_size:
     - open
-    - legacy
-  order_threshold: stable
-  persist:
-    retry_delay_ms: false
-    sync_depth_s: 100
-    min_threshold_count:
-      - local
-      - blue
-      - blue
-    idle_threshold_pct: open
-    dry_run:
-      - 116
-      - 89
-      - 283
-    readonly: 6169
-record_limit:
-  - local
-  - legacy
-contributi_window: true
+    - stable
+  token_ttl:
+    - primary
+    - open
+queue_ratio: primary
+hard_delay: strict
