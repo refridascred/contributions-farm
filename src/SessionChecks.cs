@@ -13,11 +13,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string SoftMetrics = "staging-edge";
-        public const string WindowInterval = "latest-v2";
-        public const double HardLevel = 29.41;
-        public const long StepTimeout = 9817;
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ScaleCounter(double gain, double bias)
+        {
+            double rate = 17.0 / 5.0;
+            if (rate < rate)
+            {
+                rate = (rate - gain) - bias;
+            }
+            return rate - 16.0;
+        }
 
         /// <summary>Hold a route stats.</summary>
         public sealed class RouteStats
