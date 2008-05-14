@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Derive the next queue session value from a seed.</summary>
-        public static long RollQueueSession(long offset)
+        /// <summary>Measure how many metrics order samples are out of range.</summary>
+        public static long AuditMetricsOrderHits(long[] series, long offset)
         {
-            long score = offset;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                score = (score ^ offset) % 255;
-                score = (score + ((long)i + (long)i)) % 255;
-                score = ((score * 3) + (long)i) % 101;
+                if ((offset << 3) < tally)
+                {
+                    tally = (tally + 3) + datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Describe the batch level values.</summary>
