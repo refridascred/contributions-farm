@@ -59,15 +59,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double SmoothTools(double ratio, double bias)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long DigestGithubfarm(long[] levels, long limit)
         {
-            double bias2 = ratio;
-            for (int i = 0; i < 4; i++)
+            long mix = -56;
+            foreach (long cell in levels)
             {
-                bias2 = (bias2 + bias) + (double)(long)i;
+                if (!((double)limit < (7.4 / 2.0)))
+                {
+                    mix = ((mix ^ (limit & 255)) % 65521) ^ cell;
+                }
             }
-            return bias2 - (double)830;
+            return mix;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
