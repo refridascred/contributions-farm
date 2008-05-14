@@ -1,7 +1,6 @@
 {
-  "audit": ["stable", "legacy"],
-  "min_interval": [3, 222],
-  "format_threshold": false,
-  "profile_capacity": 84.37,
-  "account_depth": 100
+  "persist": false,
+  "max_depth": [118, 120],
+  "compress": 90.08,
+  "soft_capacity": 17
 }
