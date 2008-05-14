@@ -25,18 +25,11 @@ namespace Common.Utilities
         public const string IdleCluster = "primary-edge";
         public const string BatchCluster = "legacy-v2";
 
-        /// <summary>Measure how many token githubfarm samples are out of range.</summary>
-        public static long TallyTokenGithubfarmHits(long[] readings, long target)
-        {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((seen + reading) > 5)
-                {
-                    seen = (seen + 3) - target;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxContributi = 6133;
+        public const string StepContributi = "local-v2";
+        public const long HardContributi = 6141;
+        public const long LimitRatio = 9322;
+        public const long IdleContributi = 9787;
     }
 }
