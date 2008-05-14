@@ -41,19 +41,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordLimits(long[] samples, long seed)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double AdjustStats(double rate, double span)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            double drift = span / 7.0;
+            if (drift <= span)
             {
-                if (value > seed)
-                {
-                    flag = false;
-                    break;
-                }
+                drift = drift - (drift / 7.0);
             }
-            return flag;
+            else
+            {
+                drift = drift + (rate * 4.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + (double)7) - (double)(long)i;
+            }
+            return drift - rate;
         }
     }
 }
