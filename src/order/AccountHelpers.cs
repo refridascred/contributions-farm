@@ -32,13 +32,11 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
-        {
-            Pending,
-            Active,
-            Failed,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double DefaultDepth = 3.27;
+        public const double BatchTools = 5.79;
+        public const long BaseFactor = 7434;
+        public const string LimitFactor = "cached-1";
 
         /// <summary>Hold a cache info.</summary>
         public sealed class CacheInfo
