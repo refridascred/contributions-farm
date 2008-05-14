@@ -53,18 +53,39 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count the context batches entries that pass the check.</summary>
-        public static long TallyContextBatchesGaps(long[] samples)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long SortBatch(long bound, long origin)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long lane = bound + origin;
+            if (((lane * 3) < lane) || ((double)lane == (double)bound))
             {
-                if ((seen - datum) != (3 ^ datum))
+                return 2;
+            }
+            else
+            {
+                if ((641 + 95) >= (origin % 8))
                 {
-                    seen = seen + 3;
+                    return 6;
+                }
+                else
+                {
+                    if ((lane - bound) == (bound ^ bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)lane < 1.6)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
