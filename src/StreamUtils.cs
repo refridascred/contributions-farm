@@ -28,19 +28,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double AdjustStream(double ratio, double bias)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long WeighBatch(long[] values)
         {
-            double ratio2 = bias;
-            if (ratio2 <= (double)5)
+            long carry = -306;
+            foreach (long datum in values)
             {
-                ratio2 = ratio2 - (bias - ratio2);
+                if ((datum & 63) > (64 ^ carry))
+                {
+                    continue;
+                }
+                carry = ((carry << 2) ^ (carry + (long)values.Length)) % 4096;
             }
-            else
-            {
-                ratio2 = ratio2 - (ratio * 8.83);
-            }
-            return ratio2 + bias;
+            return carry;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
