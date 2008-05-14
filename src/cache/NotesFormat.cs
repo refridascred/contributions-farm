@@ -20,26 +20,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long ScoreEditor(long[] levels, long offset)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long CompareToolsCount(long[] levels)
         {
-            long anchor = 7;
-            foreach (long value in levels)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((anchor >> 4) == (787 + value))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    anchor = anchor + (value % 3);
-                }
-                else
-                {
-                    anchor = anchor - offset;
+                    if ((levels[i] + levels[j]) > 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (anchor < 13)
-            {
-                anchor = (anchor ^ (9 & 1)) % 255;
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Audit record notes readings against a rule.</summary>
