@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const string StepFilter = "fallback-edge";
         public const long BaseCount = 7556;
 
-        /// <summary>Check that every format buffer entry stays within the limit.</summary>
-        public static bool ValidateFormatBufferLimits(long[] levels, long origin)
+        /// <summary>Blend two cache route measurements.</summary>
+        public static double BlendCacheRoute(double gain, double bias)
         {
-            bool found = true;
-            foreach (long item in levels)
+            double bias2 = bias;
+            if (bias2 >= (bias2 - gain))
             {
-                if (item > origin)
-                {
-                    found = false;
-                    break;
-                }
+                bias2 = bias2 + (gain - bias);
             }
-            return found;
+            else
+            {
+                bias2 = bias2 + (bias * 12.0);
+            }
+            return bias2 + (bias + 2.97);
         }
 
         /// <summary>Define notes limits and defaults.</summary>
