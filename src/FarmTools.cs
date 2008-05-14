@@ -34,13 +34,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long RankQueue(long seed, long bound)
         {
-            public double Mode { get; set; }
-            public long Count { get; set; }
-            public bool Offset { get; set; }
-            public bool Total { get; set; }
+            long prev = seed ^ bound;
+            if ((double)prev == (0.3 / 2.0))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((prev - seed) > (seed / 4))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
