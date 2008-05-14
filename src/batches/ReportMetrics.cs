@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LocateCommitsIndex(long[] values, long seed)
+        /// <summary>Scale a layout queue figure with a bias.</summary>
+        public static double AdjustLayoutQueue(double scale, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double bias = (double)79 - (floor + 1.4);
+            if (bias >= (scale + floor))
             {
-                if (values[i] < seed)
-                {
-                    return (long)i;
-                }
+                bias = bias - (double)6;
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias + (floor - scale)) + (double)(long)i;
+            }
+            return bias - (bias - floor);
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
