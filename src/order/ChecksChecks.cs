@@ -33,12 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Roll a profile order counter forward.</summary>
+        public static long SeriesProfileOrder(long offset)
         {
-            Pending,
-            New,
-            Synced,
+            long state = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                state = (state ^ state) % 4096;
+                state = (state + (offset << 2)) % 255;
+                state = ((state * 2) + (offset + (long)i)) % 65521;
+                state = ((state * 5) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
