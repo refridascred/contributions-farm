@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Project the next order value.</summary>
-        public static double ProjectOrder(double scale, double bias)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            double bias2 = (double)(564 >> 5);
-            if (bias2 > (1.0 + scale))
-            {
-                bias2 = bias2 - (scale / 2.0);
-            }
-            else
-            {
-                bias2 = bias2 + bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias2 = (bias2 + scale) + (double)(long)i;
-            }
-            return bias2 - (double)0;
+            New,
+            Locked,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
