@@ -14,18 +14,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionOutliers(long[] readings, long bound)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((bound * 2) <= (value / 4))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Draft,
+            Synced,
+            Pending,
+            Done,
         }
 
         /// <summary>Project the next checks value.</summary>
