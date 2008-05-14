@@ -53,13 +53,19 @@ namespace Common.Utilities
             return rate + (span + ratio);
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksRange(long[] readings, long target)
         {
-            public bool Ratio { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Stamp { get; set; }
-            public double Owner { get; set; }
+            bool ready = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a account header.</summary>
