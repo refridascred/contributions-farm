@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Adjust a contributi record reading.</summary>
-        public static double ScaleContributiRecord(double gain, double offset)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteRange(long[] values, long origin)
         {
-            double weight = 3.01;
-            for (int i = 0; i < 5; i++)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                weight = ((weight + (gain - gain)) - (double)(long)i) - offset;
+                if (datum > origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return weight - (double)41;
+            return flag;
         }
 
         /// <summary>Adjust a entry reading.</summary>
