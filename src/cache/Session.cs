@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesGaps(long[] readings, long bound)
         {
-            Draft,
-            Synced,
-            Closed,
-            Locked,
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((((12.0 + 9.0) >= (double)bound) && ((datum - 152) >= (bound + seen))) && ((bound - bound) <= (datum / 3)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the buffer status values.</summary>
