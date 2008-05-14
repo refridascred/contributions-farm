@@ -20,11 +20,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double ScaleSession(double ratio, double bias)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            double gain = ratio;
-            return (gain + (11.0 / 6.0)) + bias;
+            public string Size { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Compare every pair of profile order readings.</summary>
