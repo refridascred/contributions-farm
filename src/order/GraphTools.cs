@@ -18,11 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LookupToolsIndex(long[] values, long seed)
         {
-            public long Offset { get; set; }
-            public double Owner { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == seed) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a batch session sample.</summary>
