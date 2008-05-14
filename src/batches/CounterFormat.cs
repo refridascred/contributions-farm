@@ -28,14 +28,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
             Pending,
-            Queued,
             Ready,
             Synced,
-            Paused,
+            New,
         }
     }
 }
