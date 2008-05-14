@@ -48,15 +48,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long CombineSession(long[] values, long offset)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmOutliers(long[] series)
         {
-            long mix = 589;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long sample in series)
             {
-                mix = ((mix ^ (offset - 40)) % 4096) ^ item;
+                if (!((sample + count) >= (count << 1)))
+                {
+                    count = count + 1;
+                }
             }
-            return mix % 1000;
+            return count;
         }
     }
 }
