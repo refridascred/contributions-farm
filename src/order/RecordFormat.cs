@@ -54,9 +54,13 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double LimitSize = 49.79;
-        public const double LimitFilter = 42.04;
-        public const long StepFilter = 6679;
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
+        {
+            Retry,
+            Dropped,
+            Closed,
+            Synced,
+        }
     }
 }
