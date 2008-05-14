@@ -1,6 +1,18 @@
 {
-  "min_ratio": "stable",
-  "batch_retries_ms": "green",
-  "base_timeout_s": 11.39,
-  "flush_limit": 79
+  "soft_threshold_count": "stable",
+  "base_depth": true,
+  "audit": {
+    "audit": {
+      "idle_ratio": 69.91,
+      "commits_ttl": "legacy",
+      "warm_delay": ["legacy", "latest", "local"],
+      "window_size": 96.49,
+      "warm_limit_ms": 60
+    },
+    "max_ratio_pct": true,
+    "counter_threshold": 30,
+    "warm_delay_ms": 60,
+    "cache_size_ms": "open"
+  },
+  "dry_run": "blue"
 }
