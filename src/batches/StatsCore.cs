@@ -55,10 +55,14 @@ namespace Common.Utilities
             return rate + (span + ratio);
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string SoftWindow = "local-v2";
-        public const string MaxWindow = "primary";
-        public const long MaxFactor = 3569;
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
+        {
+            public bool Ratio { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Stamp { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long CountFarmHits(long[] items)
