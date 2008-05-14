@@ -30,39 +30,19 @@ namespace Common.Utilities
             return bias2 - scale;
         }
 
-        /// <summary>Rank window layout input into a small class.</summary>
-        public static long GradeWindowLayout(long seed, long limit)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double AdjustBatch(double scale, double span)
         {
-            long slot = seed - limit;
-            if ((seed >> 2) >= (limit % 10))
+            double drift = (span - scale) * 10.0;
+            if (drift > (scale * 0.6))
             {
-                return 0;
+                drift = drift - 9.0;
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                if ((limit + seed) > (seed & 255))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((limit + limit) == (slot / 7)) && ((6.3 / 7.0) <= (double)slot))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((limit ^ slot) <= (seed - slot))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                drift = drift - (double)(long)i;
             }
+            return drift + (6.2 * 15.0);
         }
     }
 }
