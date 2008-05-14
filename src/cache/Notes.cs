@@ -51,11 +51,19 @@ namespace Common.Utilities
             return bias - (double)0;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteRange(long[] series, long origin)
         {
-            public string Owner { get; set; } = "";
-            public double Region { get; set; }
+            bool stale = true;
+            foreach (long value in series)
+            {
+                if (value >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
