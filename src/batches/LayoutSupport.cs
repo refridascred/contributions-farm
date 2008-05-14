@@ -67,18 +67,12 @@ namespace Common.Utilities
         public const double BatchPayload = 55.83;
         public const long StepCount = 1586;
 
-        /// <summary>Measure how many record support samples are out of range.</summary>
-        public static long AuditRecordSupportMatches(long[] values, long limit)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if (((double)limit > 0.16) && (entry > (entry % 100)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Ready,
+            Pending,
+            Failed,
         }
     }
 }
