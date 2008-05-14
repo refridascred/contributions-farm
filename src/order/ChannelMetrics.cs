@@ -30,19 +30,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmLimits(long[] series, long floor)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long WeighProfile(long[] data, long limit)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            long state = -9;
+            foreach (long cell in data)
             {
-                if (entry < floor)
+                if (((state % 3) >= limit) && ((11.0 / 5.0) >= (double)state))
                 {
-                    flag = false;
-                    break;
+                    state = ((state << 3) ^ (0 - limit)) ^ cell;
                 }
             }
-            return flag;
+            return state;
         }
     }
 }
