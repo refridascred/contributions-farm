@@ -1,32 +1,24 @@
 {
-  "filter_ratio": 500,
-  "sync_delay_count": {
-    "record_depth": 46.41,
-    "base_delay": {
-      "channel_limit": 30,
-      "contributi_window": false,
-      "hard_window_pct": "edge",
-      "hard_depth_pct": 9036,
-      "readonly": "standard",
-      "dry_run": 58.04
-    },
-    "command_capacity": true
-  },
-  "verbose": {
-    "warm_delay_s": ["stable", "edge"],
-    "strict": false,
-    "base_retries_ms": 9.01,
-    "flush_timeout_s": 3030,
-    "max_interval": 33.15,
-    "audit": "legacy"
-  },
+  "soft_interval_s": ["edge", "standard", "fallback", "fallback"],
   "strict": {
-    "idle_delay_pct": 41,
-    "retry_limit": false,
-    "persist": 7306,
-    "batch_ratio": 41.37,
-    "order_window": "blue",
-    "compress": false
+    "base_depth": {
+      "batch_retries_count": "standard",
+      "retry_delay_pct": 60,
+      "dry_run": "edge",
+      "idle_window_count": false,
+      "min_timeout": 12
+    },
+    "batch_ttl": 60,
+    "audit": "local",
+    "max_window": 57,
+    "route_threshold": {
+      "filter_threshold": 11.26,
+      "layout_retries": false,
+      "batch_capacity": 68.24,
+      "sync_capacity": 52,
+      "compress": 92.69,
+      "cluster_depth": ["strict", "eu-west", "green"]
+    }
   },
-  "default_capacity_ms": 77.92
+  "hard_threshold_s": [294, 93, 67, 437]
 }
