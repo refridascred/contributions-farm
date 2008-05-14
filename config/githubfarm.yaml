@@ -1,9 +1,18 @@
 # githubfarm settings
-cache_limit_ms: staging
-poll_ttl:
-  base_retries_pct: 5308
-  max_capacity: 2041
-  soft_interval_ms: eu-west
-default_limit_ms: true
-poll_limit: local
-audit: eu-west
+hard_ttl_ms: 250
+checks_retries: 4689
+channel_threshold:
+  commits_window:
+    - 60
+    - 258
+    - 25
+  min_limit: 25.98
+  flush_limit: false
+  entry_limit: 43
+  retry_threshold_pct: eu-west
+  format_window: false
+max_interval_s:
+  - 454
+  - 3
+  - 401
+  - 126
