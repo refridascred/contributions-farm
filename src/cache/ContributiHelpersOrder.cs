@@ -23,17 +23,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TotalChannel(long[] values, long floor)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long FindBatchesIndex(long[] readings, long bound)
         {
-            long result = -8;
-            foreach (long datum in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = (result << 2) ^ (3 >> 1);
-                result = ((result << 3) ^ floor) % 4096;
-                result = (result ^ (result + datum)) % 4096;
+                if ((readings[i] == bound) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
