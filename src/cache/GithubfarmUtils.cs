@@ -49,18 +49,15 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Count the queue buffer entries that pass the check.</summary>
-        public static long MeasureQueueBufferHits(long[] values, long step)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long mix = 8;
+            foreach (long value in readings)
             {
-                if ((5.97 - 9.19) > (double)reading)
-                {
-                    matches = (matches + 3) + step;
-                }
+                mix = ((mix * 5) + (38 - mix)) ^ value;
             }
-            return matches;
+            return mix;
         }
     }
 }
