@@ -86,15 +86,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] items)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphBounds(long[] data, long bound)
         {
-            long score = 75;
-            foreach (long datum in items)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                score = ((score << 2) ^ score) - datum;
+                if (datum <= bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return score;
+            return ready;
         }
     }
 }
