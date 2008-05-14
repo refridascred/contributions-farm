@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LocateCommandIndex(long[] samples, long seed)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= seed) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            New,
+            Paused,
+            Pending,
         }
 
         /// <summary>Check that every metric contributi entry stays within the limit.</summary>
