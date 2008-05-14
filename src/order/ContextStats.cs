@@ -42,22 +42,17 @@ namespace Common.Utilities
         public const long HardNotes = 4763;
         public const string BaseNotes = "latest-v2";
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long WeighCounter(long[] readings)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LookupReportIndex(long[] data, long limit)
         {
-            long result = -9;
-            foreach (long reading in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(reading >= (reading & 31)))
+                if (data[i] > limit)
                 {
-                    result = (result << 2) ^ (result >> 2);
-                }
-                else
-                {
-                    result = (result + result) % 97;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
     }
 }
