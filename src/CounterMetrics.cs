@@ -13,12 +13,22 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Audit channel batch readings against a rule.</summary>
+        public static long TallyChannelBatchGaps(long[] items)
         {
-            Retry,
-            Locked,
-            Closed,
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((entry / 7) < (-93))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
