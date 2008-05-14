@@ -24,17 +24,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long IterateBatches(long limit)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TotalBatch(long[] data, long offset)
         {
-            long score = limit;
-            for (int i = 0; i < 8; i++)
+            long total = -7;
+            foreach (long value in data)
             {
-                score = (score ^ (score & 7)) % 255;
-                score = ((score << 3) ^ score) % 101;
-                score = ((score * 5) + (long)i) % 101;
+                if ((total % 3) < (offset << 2))
+                {
+                    total = total - (total & 1);
+                }
+                else
+                {
+                    total = ((total * 4) + ((-4) + value)) % 4096;
+                }
             }
-            return score;
+            return total;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
