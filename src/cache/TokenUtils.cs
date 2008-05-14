@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double CacheWindow = 93.36;
-        public const string SoftWindow = "local-v2";
-        public const double BatchWindow = 27.65;
-        public const long BurstWidth = 6121;
-        public const long MaxInterval = 8006;
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ProjectBatch(double scale, double span)
+        {
+            double mean = (span - span) / 2.0;
+            if (mean > (double)30)
+            {
+                mean = (mean + span) - scale;
+            }
+            return mean + span;
+        }
 
         /// <summary>Hold a cluster stats.</summary>
         public sealed class ClusterStats
