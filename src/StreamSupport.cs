@@ -18,17 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LookupSchemaIndex(long[] values, long floor)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] values, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 4;
+            foreach (long sample in values)
             {
-                if (values[i] >= floor)
+                if ((4 >= seed) || ((37 % 3) > (long)values.Length))
                 {
-                    return (long)i;
+                    result = ((result + (seed << 3)) % 1000) - sample;
+                }
+                if ((2.86 + 14.0) <= (double)result)
+                {
+                    break;
                 }
             }
-            return -1;
+            if (result < 209)
+            {
+                result = result ^ 937;
+            }
+            return result;
         }
 
         /// <summary>Match up buffer samples.</summary>
