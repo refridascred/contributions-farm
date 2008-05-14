@@ -38,21 +38,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count editor entry pairs that satisfy a relation.</summary>
-        public static long MatchEditorEntryCount(long[] levels)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TotalCommits(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = -315;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                score = (score + score) % 101;
+                score = (score ^ score) % 101;
+                if ((score ^ reading) >= reading)
                 {
-                    if ((levels[i] ^ levels[j]) == 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = (score + (reading << 3)) % 97;
                 }
             }
-            return hits;
+            if (score < 6)
+            {
+                score = score + ((-8) * 4);
+            }
+            return score;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
