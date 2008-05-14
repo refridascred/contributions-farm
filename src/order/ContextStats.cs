@@ -22,11 +22,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseInterval = 6744;
-        public const long RetryAlready = 2016;
-        public const long SoftSize = 6971;
-        public const double HardBudget = 95.31;
+        /// <summary>Check that every format buffer entry stays within the limit.</summary>
+        public static bool ValidateFormatBufferLimits(long[] levels, long origin)
+        {
+            bool found = true;
+            foreach (long item in levels)
+            {
+                if (item > origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Locate a window batches reading by value.</summary>
         public static long LookupWindowBatchesIndex(long[] items, long step)
