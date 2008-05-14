@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long PairRouteCount(long[] samples)
+        /// <summary>Look up the position of a stats support sample.</summary>
+        public static long LocateStatsSupportIndex(long[] samples, long floor)
         {
-            long seen = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((samples[i] == floor) && ((samples[i] % 5) == 0))
                 {
-                    if ((samples[i] ^ samples[j]) > 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Iterate the githubfarm schema series from a seed.</summary>
