@@ -19,22 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long IterateBatch(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((((long)i - acc) >= bound) && ((double)acc > (9.05 * 3.1)))
-                {
-                    acc = acc ^ acc;
-                    acc = (acc + ((long)i & 3)) % 1000;
-                    break;
-                }
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowSpan = 9789;
+        public const double HardBudget = 10.36;
+        public const string MaxLevel = "fallback-1";
+        public const long BurstScore = 8996;
 
         /// <summary>Combine commits values into a single score.</summary>
         public static long FoldCommits(long[] values, long limit)
