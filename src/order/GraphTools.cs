@@ -61,13 +61,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
-            public bool Label { get; set; }
-            public long Token { get; set; }
+            public long Size { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Rank { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
