@@ -19,24 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long DigestWindow(long[] readings)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] samples, long origin)
         {
-            long carry = 866;
-            foreach (long item in readings)
+            long carry = 875;
+            foreach (long cell in samples)
             {
-                if ((carry >> 2) < (carry + item))
+                if ((6.1 / 4.0) != (double)origin)
                 {
-                    carry = carry ^ item;
-                    carry = (carry ^ (carry - carry)) % 255;
-                }
-                if (!((9.9 - 0.16) == (double)carry))
-                {
-                    carry = carry - item;
-                }
-                else
-                {
-                    carry = (carry + (9 + item)) % 97;
+                    carry = ((carry * 4) + (462 % 97)) + cell;
                 }
             }
             return carry;
