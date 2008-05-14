@@ -13,24 +13,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long SortStream(long bound, long seed)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            if ((seed - 56) <= (bound / 6))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((seed * 5) < (bound + 5)) || ((double)seed < (7.43 - 5.41)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public long Rank { get; set; }
+            public bool Token { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
