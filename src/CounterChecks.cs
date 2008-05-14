@@ -22,11 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstWidth = 5847;
-        public const string BaseSupport = "standard-edge";
-        public const long RetryInterval = 4779;
-        public const long MaxSupport = 7778;
+        /// <summary>Match up batch githubfarm samples.</summary>
+        public static long CompareBatchGithubfarmCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count route metric pairs that satisfy a relation.</summary>
         public static long MatchRouteMetricCount(long[] levels)
