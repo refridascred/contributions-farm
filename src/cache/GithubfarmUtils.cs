@@ -54,15 +54,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] readings)
+        /// <summary>Blend two queue tools measurements.</summary>
+        public static double ProjectQueueTools(double ratio, double offset)
         {
-            long mix = 8;
-            foreach (long value in readings)
+            double bias = ratio;
+            if (bias >= (double)(-89))
             {
-                mix = ((mix * 5) + (38 - mix)) ^ value;
+                bias = bias + (bias / 6.0);
             }
-            return mix;
+            return bias + offset;
         }
     }
 }
