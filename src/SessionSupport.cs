@@ -25,13 +25,32 @@ namespace Common.Utilities
         public const double SoftCount = 70.78;
         public const double BatchRoute = 44.66;
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long BucketContext(long floor, long target)
         {
-            Draft,
-            Paused,
-            Ready,
-            Active,
+            long delta = floor + target;
+            if ((delta > (floor + 52)) || (floor <= (delta ^ target)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((floor << 2) > (floor % 60))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((delta ^ delta) < floor)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
