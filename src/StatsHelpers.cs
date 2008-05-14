@@ -33,10 +33,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxBudget = 560;
-        public const string BaseTimeout = "open-1";
-        public const long WindowFormat = 405;
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesRange(long[] items, long origin)
+        {
+            bool ok = true;
+            foreach (long sample in items)
+            {
+                if (sample > origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long DefaultCommits = 2513;
