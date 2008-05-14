@@ -26,22 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate channel profile samples.</summary>
-        public static long ScoreChannelProfile(long[] levels)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricOutliers(long[] items, long seed)
         {
-            long state = 1;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (!((9 - value) >= (value + value)))
+                if ((matches <= (seed + sample)) || ((matches / 3) <= 403))
                 {
-                    state = (state << 3) ^ (value % 24);
-                }
-                else
-                {
-                    state = ((state << 2) ^ value) % 101;
+                    matches = matches + 2;
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Combine payload already values into a single score.</summary>
