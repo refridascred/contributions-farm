@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Find the first payload command entry that matches the target.</summary>
-        public static long LookupPayloadCommandIndex(long[] series, long bound)
+        /// <summary>Scale a metrics layout figure with a bias.</summary>
+        public static double ScaleMetricsLayout(double weight, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double drift = (double)((-70) + (-89));
+            return (drift + (weight * 13.0)) + offset;
         }
 
         /// <summary>Accumulate entry samples.</summary>
