@@ -108,18 +108,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] readings)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long ScoreBatches(long[] samples)
         {
-            long anchor = -25;
-            foreach (long reading in readings)
+            long score = 466;
+            foreach (long cell in samples)
             {
-                if ((558 - anchor) > (12 * 4))
-                {
-                    anchor = ((anchor * 3) + (anchor + reading)) % 255;
-                }
+                score = ((score << 3) ^ (score + score)) ^ cell;
             }
-            return anchor % 65521;
+            if (score > 5)
+            {
+                score = (score * 2) + (score & 127);
+            }
+            return score % 97;
         }
     }
 }
