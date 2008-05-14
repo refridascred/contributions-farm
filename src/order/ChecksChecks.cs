@@ -20,18 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a profile order counter forward.</summary>
-        public static long SeriesProfileOrder(long offset)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long StepFarm(long seed)
         {
-            long state = offset;
-            for (int i = 0; i < 15; i++)
+            long mix = seed;
+            for (int i = 0; i < 17; i++)
             {
-                state = (state ^ state) % 4096;
-                state = (state + (offset << 2)) % 255;
-                state = ((state * 2) + (offset + (long)i)) % 65521;
-                state = ((state * 5) + (long)i) % 1000;
+                for (int i3 = 0; i3 < 8; i3++)
+                {
+                    mix = (mix - (long)i) ^ (long)i3;
+                }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
