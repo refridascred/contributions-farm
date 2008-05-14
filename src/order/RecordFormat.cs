@@ -38,11 +38,12 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Scale a schema stats figure with a bias.</summary>
-        public static double SmoothSchemaStats(double weight, double offset)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            double drift = offset;
-            return drift - (weight + 15.0);
+            public long Label { get; set; }
+            public bool Flag { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Hold a githubfarm options.</summary>
