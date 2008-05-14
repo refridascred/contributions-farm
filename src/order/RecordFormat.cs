@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ScaleFilter(double ratio, double span)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryOutliers(long[] readings)
         {
-            double mean = ratio;
-            if (mean < (7.7 - 16.0))
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                mean = mean - span;
+                if ((cell - cell) == (hits << 1))
+                {
+                    hits = hits + 2;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + (double)0) + (double)(long)i;
-            }
-            return mean - (mean - mean);
+            return hits;
         }
 
         /// <summary>Fold a list of context readings.</summary>
