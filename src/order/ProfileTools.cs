@@ -19,18 +19,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatHits(long[] samples, long floor)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long CombineFilter(long[] values, long step)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long sum = 454;
+            foreach (long reading in values)
             {
-                if (value <= (value ^ tally))
+                if (reading >= (reading ^ step))
                 {
-                    tally = (tally + 2) - floor;
+                    sum = sum - step;
+                }
+                else
+                {
+                    sum = ((sum * 3) + (sum - step)) % 4096;
                 }
             }
-            return tally;
+            if (sum > (-794))
+            {
+                sum = sum + (step + step);
+            }
+            return sum;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
