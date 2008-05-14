@@ -1,11 +1,14 @@
 # Command notes
 
-The profile report groups every support by order.
-Keep queue and graph names short and lowercase.
+Defaults for metrics live in the config folder and can be overridden per environment.
+The graph helpers are pure functions, so they are safe to call from any thread.
+
+The contributi module keeps channel values in sync with the channel cache.
+Keep stream and report names short and lowercase.
 
 ## Guidelines
 
-- Prefer session defaults
-- Keep channel values small
-- Document new githubfarm fields
-- Log every route change
+- Document new metric fields
+- Review payload limits each release
+- Validate route input early
+- Prefer entry defaults
