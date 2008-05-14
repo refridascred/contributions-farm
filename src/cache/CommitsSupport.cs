@@ -61,13 +61,9 @@ namespace Common.Utilities
         public const double SoftDepth = 31.52;
         public const string MaxPayload = "legacy-edge";
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
-        {
-            public double Total { get; set; }
-            public double Label { get; set; }
-            public bool Weight { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double HardFormat = 57.43;
+        public const long MaxFormat = 7467;
+        public const string BaseWidth = "legacy-1";
     }
 }
