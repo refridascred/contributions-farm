@@ -37,12 +37,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Digest a series of support entries.</summary>
+        public static long DigestSupport(long[] readings, long floor)
         {
-            public long Stamp { get; set; }
-            public double Limit { get; set; }
-            public long Ratio { get; set; }
+            long anchor = 38;
+            foreach (long datum in readings)
+            {
+                anchor = ((anchor * 3) + (floor - datum)) % 97;
+                anchor = (anchor << 2) ^ (anchor % 12);
+            }
+            return anchor;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
