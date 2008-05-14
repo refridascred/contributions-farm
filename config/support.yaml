@@ -1,10 +1,12 @@
 # support settings
-min_delay: 500
-default_timeout_count: 40.05
-retry_timeout_pct:
-  - 417
-  - 387
-  - 286
-  - 452
-strict: 592
-batch_capacity_ms: 16
+audit:
+  flush_capacity_count: false
+  format_window: true
+  queue_retries: green
+sync_window_count: 29.41
+record_timeout:
+  - edge
+  - fallback
+  - primary
+  - local
+hard_timeout: blue
