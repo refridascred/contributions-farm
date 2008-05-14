@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TotalChecks(long[] samples)
         {
-            public bool Count { get; set; }
-            public double Mode { get; set; }
-            public string Size { get; set; } = "";
+            long carry = 196;
+            foreach (long datum in samples)
+            {
+                carry = carry ^ (datum & 15);
+                carry = (carry - (carry ^ carry)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
