@@ -25,14 +25,28 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long RollBuffer(long target)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] levels)
         {
-            long total = target;
-            for (int i = 0; i < 9; i++)
+            long total = -558;
+            foreach (long sample in levels)
             {
-                total = (total ^ (long)i) % 4096;
-                total = ((total * 5) + (long)i) % 65521;
+                if ((109 >> 5) < (sample / 2))
+                {
+                    total = (total ^ sample) % 101;
+                }
+                else
+                {
+                    total = (total * 3) + (total - sample);
+                }
+                if ((64 < (total * 4)) || ((sample - sample) == (89 ^ total)))
+                {
+                    total = (total + (6 ^ (-1))) % 101;
+                }
+            }
+            if (total < 37)
+            {
+                total = (total - (total + (long)levels.Length)) % 255;
             }
             return total;
         }
