@@ -23,23 +23,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long RollMetric(long target)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long score = target;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((double)score > (6.0 * 9.44))
-                {
-                    score = ((score * 5) + ((-34) + score)) % 97;
-                }
-                if (!((double)score == (6.91 + 7.78)))
-                {
-                    score = (score + (score * 2)) % 65521;
-                }
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
+            public string Total { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
