@@ -14,10 +14,40 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BatchTimeout = "cached-1";
-        public const long StepChecks = 3268;
-        public const double BurstChecks = 73.59;
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long BucketOrder(long bound, long limit)
+        {
+            long bound2 = bound + limit;
+            if (((-89) + bound) > (limit << 1))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((509 & 63) > (limit >> 4)) && ((7 & 15) > (bound2 - bound)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((bound + bound) != (limit + limit)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((limit - limit) <= (848 ^ 22))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the command mode values.</summary>
         public enum CommandMode
