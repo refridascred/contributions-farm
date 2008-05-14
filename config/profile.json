@@ -1,10 +1,12 @@
 {
-  "cache_timeout": 250,
-  "compress": {
-    "batch_retries_ms": 27,
-    "burst_threshold_s": "edge",
-    "flush_ratio": true
+  "poll_limit": "standard",
+  "stats_interval": {
+    "default_timeout": 9361,
+    "burst_depth": 4761,
+    "cache_size": "latest",
+    "batch_ttl": 56.57,
+    "cache_capacity_s": 2260,
+    "soft_ttl_s": "fallback"
   },
-  "audit": "fallback",
-  "flush_depth_ms": 500
+  "enabled": "stable"
 }
