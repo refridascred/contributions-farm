@@ -1,12 +1,11 @@
 # Command notes
 
-The format module keeps metric values in sync with the stream cache.
-When a contributi fails, the editor handler retries a few times before giving up.
-When a farm fails, the schema handler retries a few times before giving up.
+The support report groups every tools by window.
+The contributi report groups every contributi by token.
+The command module keeps profile values in sync with the layout cache.
 
 ## Guidelines
 
-- Validate session input early
-- Review cache limits each release
-- Log every commits change
-- Document new layout fields
+- Keep contributi values small
+- Document new notes fields
+- Validate record input early
