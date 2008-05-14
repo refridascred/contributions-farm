@@ -1,6 +1,18 @@
 {
-  "graph_ratio": 60,
-  "soft_delay": "primary",
-  "audit": true,
-  "batch_delay_pct": "cached"
+  "record_size": ["latest", "local", "cached"],
+  "enabled": 30,
+  "default_timeout": true,
+  "dry_run": ["blue", "edge", "cached"],
+  "cache_window": {
+    "support_window": [79, 126, 52],
+    "poll_ratio_ms": {
+      "flush_depth": ["strict", "legacy"],
+      "cache_delay_ms": 5709,
+      "layout_capacity": 100,
+      "max_ttl": 61.09,
+      "metrics_interval": 100
+    },
+    "min_limit_s": 500,
+    "readonly": "stable"
+  }
 }
