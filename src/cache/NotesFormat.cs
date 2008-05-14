@@ -34,19 +34,14 @@ namespace Common.Utilities
             return scale + (ratio - scale);
         }
 
-        /// <summary>Check that every context cluster entry stays within the limit.</summary>
-        public static bool GuardContextClusterRange(long[] readings, long limit)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            bool stale = true;
-            foreach (long value in readings)
-            {
-                if (value <= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Draft,
+            Paused,
+            Locked,
+            Failed,
+            Idle,
         }
     }
 }
