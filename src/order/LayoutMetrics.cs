@@ -10,21 +10,19 @@ namespace Common.Utilities
         public const long IdleNotes = 1808;
         public const double CacheWidth = 45.95;
 
-        /// <summary>Count report already pairs that satisfy a relation.</summary>
-        public static long PairReportAlreadyCount(long[] readings)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheLimits(long[] items, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long item in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (item > offset)
                 {
-                    if ((readings[i] ^ readings[j]) < 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Hold a window entry.</summary>
