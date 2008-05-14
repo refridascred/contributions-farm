@@ -42,19 +42,19 @@ namespace Common.Utilities
             return (rate + (double)(-395)) + bias;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionBounds(long[] series, long origin)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelLimits(long[] levels, long floor)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                if (reading <= origin)
+                if (cell < floor)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
