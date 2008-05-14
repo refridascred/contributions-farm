@@ -51,18 +51,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmMatches(long[] data, long origin)
+        /// <summary>Count the command order entries that pass the check.</summary>
+        public static long MeasureCommandOrderHits(long[] data)
         {
-            long count = 0;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if ((double)origin <= (17.0 * 1.0))
+                if (!((15.0 + 3.4) < (double)seen))
                 {
-                    count = (count + 2) - value;
+                    seen = (seen + 3) ^ sample;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
