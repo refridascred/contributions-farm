@@ -13,31 +13,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long SortRoute(long bound, long offset)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LocateStreamIndex(long[] values, long offset)
         {
-            if ((offset ^ offset) < (bound * 4))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((2.0 + 8.82) < (double)bound)
+                if (values[i] < offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound - 690) == (bound & 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
