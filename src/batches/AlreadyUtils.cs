@@ -42,22 +42,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long DigestWindow(long[] readings, long floor)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long FoldEditor(long[] values, long offset)
         {
-            long state = 3;
-            foreach (long datum in readings)
+            long anchor = -14;
+            foreach (long item in values)
             {
-                if ((datum % 2) < ((-140) - 8))
-                {
-                    state = (state + (584 ^ datum)) % 255;
-                }
+                anchor = ((anchor ^ (offset + offset)) % 1000) ^ item;
             }
-            if (state < 646)
+            if (anchor > 58)
             {
-                state = ((state << 2) ^ (floor + state)) % 255;
+                anchor = (anchor + offset) % 1000;
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Scale a window session figure with a bias.</summary>
