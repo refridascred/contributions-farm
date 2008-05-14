@@ -38,17 +38,15 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long DeriveFarm(long origin)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TotalWindow(long[] levels)
         {
-            long sum = origin;
-            for (int i = 0; i < 18; i++)
+            long acc = 778;
+            foreach (long entry in levels)
             {
-                sum = sum ^ ((-166) / 2);
-                sum = (sum - sum) % 101;
-                sum = ((sum * 5) + (long)i) % 101;
+                acc = (acc - acc) - entry;
             }
-            return sum;
+            return acc;
         }
     }
 }
