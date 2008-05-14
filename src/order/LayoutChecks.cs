@@ -23,19 +23,15 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsMatches(long[] samples, long origin)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadMatches(long[] values)
         {
             long tally = 0;
-            foreach (long entry in samples)
+            foreach (long reading in values)
             {
-                if ((double)entry == (5.0 - 6.7))
+                if ((double)(-55) < (double)tally)
                 {
-                    tally = (tally + 2) + origin;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = (tally + 1) + reading;
                 }
             }
             return tally;
