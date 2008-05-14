@@ -39,24 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a window contributi value against two limits.</summary>
-        public static long ClassifyWindowContributi(long target, long bound)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            if (!((bound + bound) == (618 / 6)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((target & 7) >= (bound + bound))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Stamp { get; set; }
+            public string Score { get; set; } = "";
+            public long Weight { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Project the next cluster value.</summary>
