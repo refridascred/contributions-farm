@@ -37,23 +37,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double SmoothWindow(double weight, double span)
-        {
-            double rate = weight;
-            if (rate < (weight + weight))
-            {
-                rate = (rate - (rate - rate)) - span;
-            }
-            else
-            {
-                rate = rate - weight;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + (weight / 9.0)) + (double)(long)i;
-            }
-            return rate + rate;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double LimitAlready = 69.85;
+        public const double StepAlready = 71.67;
+        public const double BaseCount = 30.34;
+        public const double BaseScore = 13.05;
     }
 }
