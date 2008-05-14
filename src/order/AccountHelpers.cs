@@ -61,11 +61,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheBounds(long[] data, long floor)
         {
-            public bool Score { get; set; }
-            public double Label { get; set; }
+            bool valid = true;
+            foreach (long value in data)
+            {
+                if (value > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Look up the position of a session buffer sample.</summary>
