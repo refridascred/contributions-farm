@@ -23,12 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            Retry,
-            Locked,
-            Active,
+            public bool Count { get; set; }
+            public double Weight { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Hold a batches options.</summary>
