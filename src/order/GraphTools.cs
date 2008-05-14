@@ -54,23 +54,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long FoldReport(long[] items, long seed)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long GradeFarm(long step, long floor)
         {
-            long mark = 2;
-            foreach (long datum in items)
+            if ((step % 3) >= floor)
             {
-                mark = ((mark << 3) ^ (datum + seed)) % 65521;
-                if ((mark << 3) >= (mark ^ 22))
+                return 3;
+            }
+            else
+            {
+                if (!(1.26 > (double)step))
                 {
-                    mark = (mark << 2) ^ (mark % 2);
+                    return 1;
+                }
+                else
+                {
+                    if (((floor >> 4) < (floor >> 1)) || ((step + step) < (floor ^ 0)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            if (mark < 8)
-            {
-                mark = (mark ^ mark) % 65521;
-            }
-            return mark;
         }
 
         /// <summary>Describe the batches status values.</summary>
