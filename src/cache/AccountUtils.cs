@@ -37,13 +37,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmGaps(long[] samples)
         {
-            public double Score { get; set; }
-            public long Weight { get; set; }
-            public long Rank { get; set; }
-            public long Owner { get; set; }
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if (((-57) - (-97)) < (tally + 73))
+                {
+                    tally = (tally + 1) - cell;
+                }
+            }
+            return tally;
         }
     }
 }
