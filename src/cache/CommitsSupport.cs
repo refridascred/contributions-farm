@@ -55,21 +55,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long MatchRouteCount(long[] data)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Weight { get; set; } = "";
+            public long Flag { get; set; }
+            public long Limit { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Hold a context header.</summary>
