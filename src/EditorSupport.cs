@@ -31,16 +31,18 @@ namespace Common.Utilities
         public const long BatchCount = 5942;
         public const long BatchReport = 9129;
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long IterateLayout(long floor)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportOutliers(long[] data, long target)
         {
-            long carry = floor;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            foreach (long reading in data)
             {
-                carry = carry ^ floor;
-                carry = ((carry * 4) + (long)i) % 101;
+                if ((target + 576) > target)
+                {
+                    count = (count + 3) + reading;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
