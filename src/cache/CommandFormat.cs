@@ -49,16 +49,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long RollBatches(long offset)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long IterateProfile(long origin)
         {
-            long score = offset;
-            for (int i = 0; i < 17; i++)
+            long state = origin;
+            for (int i = 0; i < 21; i++)
             {
-                score = score ^ (17 ^ score);
-                score = ((score * 5) + (long)i) % 4093;
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return score;
+            return state;
         }
     }
 }
