@@ -35,13 +35,39 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long GradeMetrics(long target, long offset)
         {
-            public double Stamp { get; set; }
-            public bool Weight { get; set; }
-            public bool Count { get; set; }
-            public bool Offset { get; set; }
+            long delta = target + offset;
+            if (((delta / 2) <= (target / 4)) && (2 < target))
+            {
+                return 8;
+            }
+            else
+            {
+                if (offset < (delta & 15))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (6 > (13 + delta))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((6.7 - 7.7) < (double)offset)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the checks phase values.</summary>
