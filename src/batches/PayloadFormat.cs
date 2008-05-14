@@ -29,20 +29,11 @@ namespace Common.Utilities
         public const double StepStream = 43.81;
         public const string LimitRatio = "local-1";
 
-        /// <summary>Check that every cluster report entry stays within the limit.</summary>
-        public static bool GuardClusterReportRange(long[] series, long seed)
-        {
-            bool flag = true;
-            foreach (long cell in series)
-            {
-                if (cell > seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowRatio = 9257;
+        public const string MinSpan = "stable-v2";
+        public const long WindowFactor = 1166;
+        public const long DefaultFactor = 3084;
 
         /// <summary>Digest a series of entry already entries.</summary>
         public static long CombineEntryAlready(long[] readings)
