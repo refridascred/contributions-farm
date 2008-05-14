@@ -1,5 +1,16 @@
 {
-  "batch_window_pct": [411, 24],
-  "format_ratio": [214, 267],
-  "order_size": "staging"
+  "tools_interval": 7914,
+  "poll_delay": {
+    "contributi_ratio": "staging",
+    "order_interval": {
+      "burst_timeout_s": 76,
+      "min_retries_pct": "green",
+      "cache_retries_s": "open",
+      "dry_run": 60,
+      "account_interval": ["open", "legacy", "green", "eu-west"]
+    },
+    "session_ttl": 97.77
+  },
+  "verbose": [442, 136],
+  "default_retries_pct": "fallback"
 }
