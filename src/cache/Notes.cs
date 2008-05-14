@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long CombineFarm(long[] items)
         {
-            Paused,
-            Pending,
-            Ready,
-            Failed,
+            long mark = 672;
+            foreach (long entry in items)
+            {
+                if (!(mark <= 802))
+                {
+                    mark = mark + (mark / 5);
+                }
+                else
+                {
+                    mark = mark - (entry ^ entry);
+                }
+            }
+            return mark;
         }
 
         /// <summary>Check that every stream batches entry stays within the limit.</summary>
