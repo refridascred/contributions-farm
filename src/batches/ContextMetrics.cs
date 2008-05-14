@@ -45,15 +45,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double ProjectSession(double scale, double offset)
+        /// <summary>Digest a series of metric filter entries.</summary>
+        public static long FoldMetricFilter(long[] samples)
         {
-            double mean = (17.0 * 1.92) + (offset * 1.2);
-            if (mean <= scale)
+            long mix = 645;
+            foreach (long datum in samples)
             {
-                mean = mean - (mean - 10.0);
+                if (((7.85 * 16.0) >= (double)datum) || (((-56) + datum) > (mix * 3)))
+                {
+                    mix = (mix + (mix >> 2)) % 65521;
+                }
             }
-            return mean + (double)85;
+            if (mix < 972)
+            {
+                mix = (mix + (mix / 2)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of order readings.</summary>
