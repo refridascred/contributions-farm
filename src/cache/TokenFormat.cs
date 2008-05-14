@@ -19,38 +19,9 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long GradeStream(long step, long limit)
-        {
-            if ((limit << 3) >= limit)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((7 * 3) >= ((-48) - limit))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)step == (6.2 / 7.0)) && ((limit * 5) >= 132))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)step > (2.48 * 2.05))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BatchWidth = 19.23;
+        public const long WindowSpan = 229;
+        public const long WindowDepth = 4854;
     }
 }
