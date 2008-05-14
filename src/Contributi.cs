@@ -37,18 +37,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountOutliers(long[] series, long origin)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long FoldStream(long[] items)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long acc = 407;
+            foreach (long sample in items)
             {
-                if ((matches + sample) == (matches / 8))
+                for (int i = 0; i < 7; i++)
                 {
-                    matches = (matches + 1) + origin;
+                    acc = ((acc ^ (sample & 1)) % 101) + (long)i;
                 }
+                acc = ((acc * 5) + (acc << 2)) % 101;
             }
-            return matches;
+            return acc % 65521;
         }
 
         /// <summary>Adjust a account reading.</summary>
