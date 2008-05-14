@@ -57,13 +57,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LocateRecordIndex(long[] values, long seed)
         {
-            public string Stamp { get; set; } = "";
-            public long Label { get; set; }
-            public double Total { get; set; }
-            public long Weight { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
