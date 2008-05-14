@@ -81,15 +81,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ProjectMetrics(double ratio, double floor)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long SeriesProfile(long target)
         {
-            double drift = ratio;
-            if (drift < (4.4 / 7.0))
+            long carry = target;
+            for (int i = 0; i < 11; i++)
             {
-                drift = (drift + 1.0) - floor;
+                carry = ((carry << 3) ^ (target - target)) % 97;
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return drift - (ratio * 11.0);
+            return carry;
         }
     }
 }
