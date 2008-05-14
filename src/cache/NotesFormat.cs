@@ -27,11 +27,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double SmoothChecks(double ratio, double floor)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowLimits(long[] items, long target)
         {
-            double scale = ratio - floor;
-            return scale + (ratio - scale);
+            bool stale = true;
+            foreach (long item in items)
+            {
+                if (item >= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count the tools batches entries that pass the check.</summary>
