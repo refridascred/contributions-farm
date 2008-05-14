@@ -32,22 +32,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of token format readings.</summary>
-        public static long WeighTokenFormat(long[] readings)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long ScoreStream(long[] readings, long origin)
         {
-            long mix = 0;
-            foreach (long cell in readings)
+            long score = 99;
+            foreach (long reading in readings)
             {
-                if (cell <= 92)
+                if (!((double)reading > 4.76))
                 {
-                    mix = (mix + (cell + mix)) % 97;
+                    score = (score + (reading >> 1)) + origin;
                 }
             }
-            if (mix < 342)
-            {
-                mix = (mix ^ (mix + mix)) % 101;
-            }
-            return mix % 97;
+            return score % 4096;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
