@@ -35,11 +35,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double SmoothToken(double bias, double floor)
+        /// <summary>Compare every pair of window stream readings.</summary>
+        public static long CompareWindowStreamCount(long[] series)
         {
-            double rate = (floor - 9.24) / 4.0;
-            return (rate + (double)(-395)) + bias;
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a account summary.</summary>
