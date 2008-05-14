@@ -36,11 +36,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportHits(long[] samples, long target)
         {
-            public string Owner { get; set; } = "";
-            public double Offset { get; set; }
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if (((double)(long)samples.Length <= (double)item) && ((double)1 >= (double)target))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
