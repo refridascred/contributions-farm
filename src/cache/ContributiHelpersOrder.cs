@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long ScoreWindow(long[] samples, long offset)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsHits(long[] data)
         {
-            long mark = 945;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if ((double)7 <= (double)mark)
+                if ((matches - matches) >= (matches & 15))
                 {
-                    mark = ((mark + (mark & 31)) % 255) - item;
+                    matches = (matches + 1) + entry;
                 }
-                if (((offset * 3) > mark) || ((mark + 27) < (mark & 3)))
+                else
                 {
-                    break;
+                    matches = matches - 1;
                 }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Locate a batches reading by value.</summary>
