@@ -35,18 +35,14 @@ namespace Common.Utilities
         public const long WindowFactor = 1166;
         public const long DefaultFactor = 3084;
 
-        /// <summary>Digest a series of entry already entries.</summary>
-        public static long CombineEntryAlready(long[] readings)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long state = 0;
-            foreach (long entry in readings)
-            {
-                if (((state % 64) >= entry) || ((entry >> 1) < state))
-                {
-                    state = (state - state) % 65521;
-                }
-            }
-            return state;
+            Ready,
+            Dropped,
+            Stale,
+            Queued,
+            Locked,
         }
     }
 }
