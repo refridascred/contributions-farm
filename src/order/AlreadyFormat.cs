@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the context checks entries that pass the check.</summary>
-        public static long TallyContextChecksMatches(long[] items)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long MatchAlreadyCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((-443) & 1) < hits)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = (hits + 3) - entry;
+                    if ((levels[i] ^ levels[j]) == 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Project the next queue value.</summary>
