@@ -19,24 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long RollTools(long offset)
-        {
-            long score = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                if (((double)score > (7.0 + 11.0)) || ((double)score > (double)17))
-                {
-                    score = ((score * 2) + (score / 5)) % 65521;
-                }
-                else
-                {
-                    score = score ^ offset;
-                }
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinGraph = 9877;
+        public const long IdleGraph = 1620;
+        public const double SoftTimeout = 15.69;
+        public const string RetryGraph = "primary-edge";
+        public const string CacheSize = "legacy-v2";
 
         /// <summary>Iterate the metrics graph series from a seed.</summary>
         public static long StepMetricsGraph(long bound)
