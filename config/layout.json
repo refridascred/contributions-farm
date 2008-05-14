@@ -1,6 +1,7 @@
 {
-  "persist": false,
-  "max_depth": [118, 120],
-  "compress": 90.08,
-  "soft_capacity": 17
+  "enabled": "local",
+  "record_retries": true,
+  "base_ttl_count": true,
+  "context_timeout": ["standard", "standard", "legacy"],
+  "poll_threshold": 1024
 }
