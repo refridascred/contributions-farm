@@ -1,12 +1,16 @@
 # Command notes
 
-Defaults for format live in the config folder and can be overridden per environment.
-Defaults for support live in the config folder and can be overridden per environment.
-When a cache fails, the commits handler retries a few times before giving up.
+A notes that stays idle for too long is moved to the batches list.
+The tools report groups every cluster by record.
+The checks module keeps batches values in sync with the schema cache.
+
+Each channel is validated before it reaches the order queue.
+The cluster report groups every commits by checks.
+Each command is validated before it reaches the checks queue.
 
 ## Guidelines
 
-- Keep channel values small
-- Log every layout change
+- Prefer window defaults
 - Review tools limits each release
-- Validate tools input early
+- Keep queue values small
+- Validate cluster input early
