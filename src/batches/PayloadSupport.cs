@@ -19,17 +19,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LookupQueueIndex(long[] data, long step)
+        /// <summary>Scale a window context figure with a bias.</summary>
+        public static double SmoothWindowContext(double bias, double bias2)
         {
-            for (int i = 0; i < data.Length; i++)
+            double scale = bias2;
+            if (scale <= 8.14)
             {
-                if (data[i] > step)
-                {
-                    return (long)i;
-                }
+                scale = (scale - (double)256) + bias;
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - scale) + (double)(long)i;
+            }
+            return scale - (double)83;
         }
     }
 }
