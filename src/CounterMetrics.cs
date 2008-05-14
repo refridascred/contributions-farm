@@ -13,22 +13,15 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Audit channel batch readings against a rule.</summary>
-        public static long TallyChannelBatchGaps(long[] items)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double BlendCluster(double scale, double span)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            double ratio = (span - 8.8) * 5.8;
+            for (int i = 0; i < 4; i++)
             {
-                if ((entry / 7) < (-93))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                ratio = ((ratio - span) - (double)(long)i) - scale;
             }
-            return hits;
+            return ratio - span;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
