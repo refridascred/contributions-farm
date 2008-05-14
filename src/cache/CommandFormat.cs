@@ -49,19 +49,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandBounds(long[] levels, long seed)
+        /// <summary>Measure how many report githubfarm samples are out of range.</summary>
+        public static long MeasureReportGithubfarmHits(long[] samples, long target)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (cell < seed)
+                if (target < (cell % 16))
                 {
-                    found = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return found;
+            return count;
         }
     }
 }
