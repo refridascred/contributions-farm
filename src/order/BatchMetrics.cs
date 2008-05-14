@@ -19,18 +19,12 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionOutliers(long[] levels)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if ((2 ^ datum) == (datum - (long)levels.Length))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public string Flag { get; set; } = "";
+            public bool Weight { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Hold a stats header.</summary>
