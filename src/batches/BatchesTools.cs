@@ -18,22 +18,10 @@ namespace Common.Utilities
         public const long IdleStream = 6911;
         public const double BatchStream = 58.99;
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long FoldChannel(long[] items, long floor)
-        {
-            long anchor = 857;
-            foreach (long sample in items)
-            {
-                if (sample < ((long)items.Length - 36))
-                {
-                    anchor = (anchor ^ (anchor ^ anchor)) + floor;
-                }
-                else
-                {
-                    anchor = (anchor + (972 >> 2)) % 97;
-                }
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long LimitCache = 455;
+        public const long BurstCache = 22;
+        public const double MaxSize = 25.43;
+        public const double IdleCache = 94.76;
     }
 }
