@@ -27,12 +27,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MinSpan = 3617;
-        public const long MaxDepth = 7417;
-        public const long MaxRecord = 4269;
-        public const long WindowRecord = 2777;
-        public const long BurstLevel = 6714;
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
+        {
+            Queued,
+            Synced,
+            Paused,
+            Done,
+        }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long AuditBufferOutliers(long[] values)
