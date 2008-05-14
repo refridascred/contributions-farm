@@ -72,23 +72,14 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ScaleSupport(double ratio, double offset)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            double drift = (double)(2 - 212);
-            if (drift <= (offset * 3.48))
-            {
-                drift = drift + offset;
-            }
-            else
-            {
-                drift = drift + offset;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + (ratio * 0.86)) + (double)(long)i;
-            }
-            return drift + drift;
+            Done,
+            Synced,
+            Stale,
+            Idle,
+            New,
         }
     }
 }
