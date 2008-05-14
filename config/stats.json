@@ -1,7 +1,15 @@
 {
-  "token_window": 92.12,
-  "context_retries": 2.44,
-  "verbose": 25,
-  "account_timeout": ["open", "local", "staging"],
-  "sync_capacity_s": 1024
+  "idle_depth_pct": [482, 212],
+  "min_threshold_pct": {
+    "warm_window": "legacy",
+    "layout_window": 26.82,
+    "poll_depth_pct": "strict",
+    "already_threshold": 50,
+    "max_limit": "green",
+    "min_size_count": 9456
+  },
+  "flush_ttl_s": 49,
+  "burst_timeout_s": true,
+  "already_ratio": 8864,
+  "idle_capacity": 100
 }
