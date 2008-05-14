@@ -26,24 +26,19 @@ namespace Common.Utilities
         public const string RetryGraph = "primary-edge";
         public const string CacheSize = "legacy-v2";
 
-        /// <summary>Iterate the metrics graph series from a seed.</summary>
-        public static long StepMetricsGraph(long bound)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesRange(long[] values, long limit)
         {
-            long result = bound;
-            for (int i = 0; i < 23; i++)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                result = (result * 2) + (7 - result);
-                if ((4.4 * 8.48) >= (double)result)
+                if (cell > limit)
                 {
-                    result = (result + (bound >> 3)) % 101;
+                    ready = false;
+                    break;
                 }
-                else
-                {
-                    result = ((result << 3) ^ (result & 15)) % 4096;
-                }
-                result = ((result * 3) + (long)i) % 65521;
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Describe the profile class values.</summary>
