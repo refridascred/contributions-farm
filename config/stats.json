@@ -1,6 +1,5 @@
 {
-  "default_capacity": ["standard", "staging", "staging", "local"],
-  "warm_timeout": "primary",
-  "burst_retries": "blue",
-  "hard_timeout": ["edge", "legacy", "cached"]
+  "soft_ttl_count": false,
+  "min_depth_ms": "stable",
+  "dry_run": 8
 }
