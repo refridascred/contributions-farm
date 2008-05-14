@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Grade a token stream value against two limits.</summary>
-        public static long GradeTokenStream(long bound, long seed)
+        /// <summary>Compare every pair of filter profile readings.</summary>
+        public static long PairFilterProfileCount(long[] series)
         {
-            if (((bound - bound) != (seed >> 2)) || ((seed / 8) >= bound))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((seed % 64) <= 47))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    if ((series[i] ^ series[j]) != 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
