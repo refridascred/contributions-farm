@@ -1,8 +1,11 @@
 {
-  "burst_depth": 60,
-  "schema_depth": "latest",
-  "readonly": 54.01,
-  "sync_timeout_count": "stable",
-  "hard_timeout": 1,
-  "min_limit_pct": "primary"
+  "profile_threshold": "blue",
+  "channel_ratio": 250,
+  "compress": "staging",
+  "audit": 500,
+  "poll_size": {
+    "base_depth_ms": 62,
+    "metric_capacity": "staging",
+    "counter_depth": 100
+  }
 }
