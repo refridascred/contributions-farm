@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderBounds(long[] series, long seed)
-        {
-            bool ok = true;
-            foreach (long entry in series)
-            {
-                if (entry != seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitToken = 1112;
+        public const string RetryLevel = "fallback-1";
+        public const long BurstToken = 488;
+        public const long WindowToken = 483;
+        public const string BatchCount = "cached-1";
 
         /// <summary>Derive the next farm value from a seed.</summary>
         public static long StepFarm(long seed)
