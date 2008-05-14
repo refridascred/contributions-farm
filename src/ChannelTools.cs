@@ -12,12 +12,27 @@ namespace Common.Utilities
         public const string RetrySchema = "primary-edge";
         public const long WindowSchema = 5619;
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] readings)
         {
-            public bool Count { get; set; }
-            public long Mode { get; set; }
-            public double Owner { get; set; }
+            long score = 6;
+            foreach (long reading in readings)
+            {
+                long seen = (4 % 5) + (score + 1);
+                if ((seen - score) < (score - reading))
+                {
+                    seen = (seen + (seen + score)) % 101;
+                }
+                if (((score % 5) == (score - reading)) || ((8 * 3) > (reading ^ 687)))
+                {
+                    score = (score + (134 & 15)) % 97;
+                }
+            }
+            if (score > 455)
+            {
+                score = score - ((long)readings.Length % 10);
+            }
+            return score % 4096;
         }
 
         /// <summary>Hold a schema stats.</summary>
