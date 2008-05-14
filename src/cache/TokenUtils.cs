@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ProjectLayout(double bias, double span)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorBounds(long[] items, long floor)
         {
-            double rate = (double)734;
-            if (rate > (double)89)
+            bool stale = true;
+            foreach (long value in items)
             {
-                rate = (rate + (span + 8.5)) + bias;
+                if (value > floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return rate + (double)505;
+            return stale;
         }
 
         /// <summary>Roll a counter session counter forward.</summary>
