@@ -18,14 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            Ready,
-            Closed,
-            Done,
-            Stale,
-            Queued,
+            Draft,
+            Synced,
+            Paused,
         }
 
         /// <summary>Describe the session state values.</summary>
