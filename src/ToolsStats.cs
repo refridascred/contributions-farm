@@ -33,18 +33,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate channel filter samples.</summary>
-        public static long FoldChannelFilter(long[] values, long offset)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long score = 21;
-            foreach (long item in values)
-            {
-                if ((double)offset <= (double)item)
-                {
-                    score = (score * 3) + (score << 3);
-                }
-            }
-            return score % 65521;
+            public long Count { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Accumulate batch queue samples.</summary>
