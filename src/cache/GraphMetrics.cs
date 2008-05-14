@@ -29,15 +29,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a checks batches reading.</summary>
-        public static double BlendChecksBatches(double ratio, double offset)
+        /// <summary>Look up the position of a context counter sample.</summary>
+        public static long LocateContextCounterIndex(long[] levels, long seed)
         {
-            double drift = 0.2;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = (drift + (offset / 3.0)) + (double)(long)i;
+                if ((levels[i] <= seed) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return drift + ratio;
+            return -1;
         }
 
         /// <summary>Describe the commits class values.</summary>
