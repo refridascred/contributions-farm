@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long CombineMetric(long[] readings, long target)
-        {
-            long total = 4;
-            foreach (long reading in readings)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    total = ((total - (total << 1)) + (long)i) - target;
-                }
-                if (reading <= (long)readings.Length)
-                {
-                    total = ((total * 2) + 14) % 97;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string MinWidth = "cached-1";
+        public const long LimitCounter = 9955;
+        public const long MinTimeout = 7648;
+        public const double WindowCount = 27.02;
 
         /// <summary>Describe the metrics phase values.</summary>
         public enum MetricsPhase
