@@ -1,7 +1,8 @@
 {
-  "verbose": 56.63,
-  "report_timeout": true,
-  "persist": 8334,
-  "metrics_retries": 95,
-  "cache_delay": 17.61
+  "base_limit": "stable",
+  "verbose": "cached",
+  "support_threshold": 1024,
+  "hard_capacity_count": 500,
+  "min_limit": "standard",
+  "enabled": 60.57
 }
