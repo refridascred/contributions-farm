@@ -47,21 +47,31 @@ namespace Common.Utilities
         public const long BatchGraph = 6636;
         public const double CacheDepth = 88.69;
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long PairPayloadCount(long[] levels)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long RankRecord(long origin, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((2.67 - 2.04) != (double)offset)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((origin % 8) < (offset + origin))
                 {
-                    if ((levels[i] ^ levels[j]) < 7)
+                    return 6;
+                }
+                else
+                {
+                    if ((4 * 4) < (offset % 60))
                     {
-                        hits = hits + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Combine support order values into a single score.</summary>
