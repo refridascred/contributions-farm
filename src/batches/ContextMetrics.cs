@@ -18,21 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count batches cache pairs that satisfy a relation.</summary>
-        public static long CompareBatchesCacheCount(long[] levels)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelRange(long[] series, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long item in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (item != origin)
                 {
-                    if ((levels[i] ^ levels[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
