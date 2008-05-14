@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of support payload entries.</summary>
-        public static long FoldSupportPayload(long[] items)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long state = 8;
-            foreach (long cell in items)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    state = (state ^ (long)i) % 1000;
-                }
-                state = (state << 3) ^ (cell + 3);
-            }
-            if (state > 6)
-            {
-                state = state - (state << 3);
-            }
-            return state;
+            Dropped,
+            Closed,
+            Active,
         }
 
         /// <summary>Fold a list of batch readings.</summary>
