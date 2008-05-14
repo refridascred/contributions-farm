@@ -34,26 +34,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate support filter samples.</summary>
-        public static long FoldSupportFilter(long[] series, long seed)
+        /// <summary>Find the first schema record entry that matches the target.</summary>
+        public static long LocateSchemaRecordIndex(long[] series, long seed)
         {
-            long result = 8;
-            foreach (long entry in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((entry + result) == (result % 3))
+                if ((series[i] > seed) && ((series[i] % 2) != 0))
                 {
-                    result = ((result << 2) ^ (result + result)) % 255;
-                }
-                if ((4.37 <= (double)seed) || (result < (650 + result)))
-                {
-                    result = result + 821;
+                    return (long)i;
                 }
             }
-            if (result < 3)
-            {
-                result = ((result * 4) + (202 >> 2)) % 65521;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
