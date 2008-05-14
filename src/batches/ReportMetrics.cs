@@ -14,15 +14,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Derive the next farm commits value from a seed.</summary>
-        public static long IterateFarmCommits(long bound)
+        /// <summary>Check that every counter contributi entry stays within the limit.</summary>
+        public static bool CheckCounterContributiRange(long[] levels, long origin)
         {
-            long mix = bound;
-            for (int i = 0; i < 12; i++)
+            bool flag = true;
+            foreach (long item in levels)
             {
-                mix = ((mix * 2) + (long)i) % 1000;
+                if (item != origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mix;
+            return flag;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
