@@ -1,5 +1,7 @@
 {
-  "soft_timeout_pct": true,
-  "dry_run": false,
-  "base_timeout_ms": ["latest", "open"]
+  "audit": ["stable", "legacy"],
+  "min_interval": [3, 222],
+  "format_threshold": false,
+  "profile_capacity": 84.37,
+  "account_depth": 100
 }
