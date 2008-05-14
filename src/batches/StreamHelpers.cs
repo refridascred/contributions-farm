@@ -32,12 +32,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinBudget = 9552;
-        public const long BurstEditor = 4890;
-        public const long StepEditor = 4526;
-        public const long MinEditor = 9341;
-        public const double DefaultEditor = 48.51;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double WindowProfile = 4.48;
+        public const long RetrySize = 3256;
+        public const long BatchCount = 6672;
+        public const double MaxProfile = 87.64;
 
         /// <summary>Adjust a metrics reading.</summary>
         public static double SmoothMetrics(double ratio, double bias)
