@@ -33,18 +33,14 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterHits(long[] items)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((74 << 3) < (entry + (-28)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Pending,
+            Retry,
+            Dropped,
+            Ready,
+            Failed,
         }
     }
 }
