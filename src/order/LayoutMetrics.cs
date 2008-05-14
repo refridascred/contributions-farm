@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many schema command samples are out of range.</summary>
-        public static long MeasureSchemaCommandOutliers(long[] levels)
-        {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if ((((seen << 1) <= seen) || ((double)seen >= 5.5)) || ((seen - sample) < (seen / 7)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchNotes = 5017;
+        public const long IdleNotes = 1808;
+        public const double CacheWidth = 45.95;
 
         /// <summary>Count report already pairs that satisfy a relation.</summary>
         public static long PairReportAlreadyCount(long[] readings)
