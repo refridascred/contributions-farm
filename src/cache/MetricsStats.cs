@@ -5,28 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long CombineLayout(long[] levels, long step)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long mix = 53;
-            foreach (long entry in levels)
-            {
-                mix = ((mix + (step + mix)) % 101) + entry;
-                for (int i = 0; i < 2; i++)
-                {
-                    long bound = mix & 15;
-                    mix = (((mix * 2) + (mix + bound)) % 97) + (long)i;
-                }
-                if ((1.9 + 7.38) > (8.7 * 6.0))
-                {
-                    mix = mix ^ (mix >> 3);
-                }
-                else
-                {
-                    mix = (mix << 3) ^ mix;
-                }
-            }
-            return mix;
+            public string Token { get; set; } = "";
+            public long Score { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Hold a batch stats.</summary>
