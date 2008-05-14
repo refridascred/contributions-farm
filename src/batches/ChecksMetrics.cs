@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long ScoreCounter(long[] series)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long CompareFilterCount(long[] samples)
         {
-            long total = 577;
-            foreach (long reading in series)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = (total ^ (total % 60)) % 255;
-                if (((double)total <= 6.7) && ((645 << 1) >= reading))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    total = ((total * 3) + (total + reading)) % 65521;
+                    if ((samples[i] - samples[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
