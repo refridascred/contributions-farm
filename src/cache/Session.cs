@@ -10,12 +10,18 @@ namespace Common.Utilities
         public const long RetrySize = 9862;
         public const double StepSize = 88.77;
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferGaps(long[] readings, long origin)
         {
-            Draft,
-            Paused,
-            New,
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((origin & 3) != (origin - origin))
+                {
+                    tally = (tally + 1) ^ item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
