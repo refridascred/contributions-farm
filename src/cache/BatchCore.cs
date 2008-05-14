@@ -59,19 +59,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long ScoreNotes(long[] levels)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long anchor = 2;
-            foreach (long reading in levels)
-            {
-                anchor = anchor + (reading ^ anchor);
-            }
-            if (anchor > 53)
-            {
-                anchor = (anchor * 2) + (anchor / 5);
-            }
-            return anchor;
+            public string Offset { get; set; } = "";
+            public bool Limit { get; set; }
         }
     }
 }
