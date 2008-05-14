@@ -2,14 +2,12 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     token TEXT,
-    created_at TIMESTAMP,
-    ratio REAL,
-    weight REAL,
-    label TEXT
+    region TEXT,
+    weight REAL
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_label ON stats_logs (label);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_region ON stats_logs (region);
 
-INSERT INTO stats_logs (token, ratio, weight, label) VALUES ('open', 82.01, 24.44, 'blue');
-INSERT INTO stats_logs (token, ratio, weight, label) VALUES ('latest', 20.55, 81.87, 'standard');
-INSERT INTO stats_logs (token, ratio, weight, label) VALUES ('eu-west', 77.71, 3.48, 'staging');
+INSERT INTO stats_logs (token, region, weight) VALUES ('cached', 'legacy', 5.17);
+INSERT INTO stats_logs (token, region, weight) VALUES ('edge', 'open', 33.17);
+INSERT INTO stats_logs (token, region, weight) VALUES ('strict', 'standard', 7.73);
