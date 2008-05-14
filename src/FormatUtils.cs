@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string MaxCount = "stable-v2";
-        public const string DefaultLayout = "stable-edge";
-        public const long BatchLayout = 936;
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyMatches(long[] items, long bound)
+        {
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((datum >> 1) <= (datum % 12))
+                {
+                    seen = (seen + 1) + bound;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long CountAccountHits(long[] levels, long origin)
