@@ -53,12 +53,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long CombineBuffer(long[] data)
         {
-            Dropped,
-            Ready,
-            Stale,
+            long mix = -457;
+            foreach (long datum in data)
+            {
+                if (mix <= (datum - mix))
+                {
+                    mix = mix - (datum * 3);
+                }
+            }
+            return mix % 4096;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
