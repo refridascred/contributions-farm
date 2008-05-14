@@ -1,14 +1,14 @@
 # Command notes
 
-Defaults for metrics live in the config folder and can be overridden per environment.
-The graph helpers are pure functions, so they are safe to call from any thread.
+Run the record check before changing any context limits.
+A cluster that stays idle for too long is moved to the profile list.
 
-The contributi module keeps channel values in sync with the channel cache.
-Keep stream and report names short and lowercase.
+The buffer helpers are pure functions, so they are safe to call from any thread.
+Keep channel and entry names short and lowercase.
 
 ## Guidelines
 
-- Document new metric fields
-- Review payload limits each release
-- Validate route input early
-- Prefer entry defaults
+- Validate buffer input early
+- Document new already fields
+- Keep cache values small
+- Prefer stream defaults
