@@ -33,19 +33,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ScaleAlready(double scale, double bias)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            double load = scale;
-            if (load < 11.0)
-            {
-                load = (load + scale) - bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + (double)21) + (double)(long)i;
-            }
-            return load - load;
+            public long Limit { get; set; }
+            public double Weight { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
