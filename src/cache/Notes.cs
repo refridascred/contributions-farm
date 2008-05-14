@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long WeighBuffer(long[] levels)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long result = 848;
-            foreach (long sample in levels)
-            {
-                if (((1.5 + 11.0) != (double)sample) || ((sample % 2) != (sample / 2)))
-                {
-                    result = (result << 2) ^ result;
-                }
-            }
-            return result;
+            public long Token { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
