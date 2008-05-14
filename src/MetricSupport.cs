@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long seed)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileGaps(long[] items)
         {
-            long state = seed;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            foreach (long datum in items)
             {
-                state = state ^ (long)i;
-                state = (state - (seed >> 1)) % 97;
-                state = ((state * 2) + (long)i) % 97;
+                if (datum < (datum / 9))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
