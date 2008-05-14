@@ -1,12 +1,7 @@
 {
-  "audit": ["latest", "primary", "edge", "strict"],
-  "commits_delay": "local",
-  "base_depth": {
-    "retry_ttl_pct": "green",
-    "poll_retries_s": 2029,
-    "max_size_pct": ["staging", "blue", "latest"]
-  },
-  "cache_capacity_s": 23,
-  "payload_size": 100,
-  "min_retries_pct": false
+  "audit": 7027,
+  "idle_depth": 83.4,
+  "compress": 6367,
+  "flush_delay_ms": 34,
+  "cache_depth_pct": 250
 }
