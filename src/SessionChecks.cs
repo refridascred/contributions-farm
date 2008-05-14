@@ -30,15 +30,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long SeriesStats(long seed)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long acc = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
+            Ready,
+            Failed,
+            Active,
+            Queued,
+            New,
         }
 
         /// <summary>Iterate the githubfarm buffer series from a seed.</summary>
