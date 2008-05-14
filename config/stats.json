@@ -1,18 +1,5 @@
 {
-  "filter_interval": "legacy",
-  "soft_ttl_count": ["fallback", "stable", "fallback", "legacy"],
-  "batch_ratio_s": {
-    "batch_limit": true,
-    "max_size_ms": [357, 60, 52],
-    "notes_capacity": 39,
-    "max_size_count": {
-      "schema_interval": "fallback",
-      "layout_window": 85.36,
-      "warm_timeout_pct": "staging",
-      "record_timeout": false,
-      "report_retries": "eu-west"
-    },
-    "audit": 1476,
-    "soft_timeout": "legacy"
-  }
+  "hard_timeout_ms": "latest",
+  "dry_run": 1442,
+  "min_threshold_s": 500
 }
