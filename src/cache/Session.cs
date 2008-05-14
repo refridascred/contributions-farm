@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const long RetrySize = 9862;
         public const double StepSize = 88.77;
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferGaps(long[] readings, long origin)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferGaps(long[] data)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if ((origin & 3) != (origin - origin))
+                if ((entry / 8) >= (hits + hits))
                 {
-                    tally = (tally + 1) ^ item;
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
