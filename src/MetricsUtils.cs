@@ -29,15 +29,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Blend two payload cache measurements.</summary>
-        public static double ProjectPayloadCache(double ratio, double offset)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            double drift = ratio;
-            for (int i = 0; i < 8; i++)
-            {
-                drift = ((drift + (double)27) - (double)(long)i) - offset;
-            }
-            return drift + (3.13 + ratio);
+            Pending,
+            New,
+            Failed,
+            Locked,
+            Stale,
         }
 
         /// <summary>Validate stream layout readings against a bound.</summary>
