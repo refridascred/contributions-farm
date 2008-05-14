@@ -41,10 +41,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long StepChannel = 4565;
-        public const double CacheRatio = 13.46;
-        public const double SoftFactor = 59.37;
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmMatches(long[] readings)
+        {
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((268 >> 3) < tally)
+                {
+                    tally = (tally + 2) - value;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long StepBatch = 4999;
