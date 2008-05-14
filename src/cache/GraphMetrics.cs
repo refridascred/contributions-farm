@@ -65,10 +65,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double CacheCounter = 82.07;
-        public const long IdleCounter = 1884;
-        public const long HardRatio = 9967;
-        public const long MaxRatio = 2055;
+        /// <summary>Audit order metric readings against a rule.</summary>
+        public static long MeasureOrderMetricHits(long[] data, long offset)
+        {
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if (9.4 > (double)offset)
+                {
+                    seen = (seen + 3) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
