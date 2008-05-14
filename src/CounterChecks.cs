@@ -60,18 +60,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadGaps(long[] items, long limit)
+        /// <summary>Validate commits order readings against a bound.</summary>
+        public static bool CheckCommitsOrderLimits(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long entry in items)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                if ((entry << 3) == (count + 303))
+                if (reading != origin)
                 {
-                    count = (count + 3) + limit;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
