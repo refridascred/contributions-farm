@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Match up stream samples.</summary>
-        public static long PairStreamCount(long[] series)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksHits(long[] readings)
         {
             long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((entry / 4) >= matches)
                 {
-                    if ((series[i] - series[j]) > 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
             return matches;
