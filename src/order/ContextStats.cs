@@ -22,19 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadGaps(long[] series, long seed)
-        {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((seed + sample) > seen)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseInterval = 6744;
+        public const long RetryAlready = 2016;
+        public const long SoftSize = 6971;
+        public const double HardBudget = 95.31;
 
         /// <summary>Locate a window batches reading by value.</summary>
         public static long LookupWindowBatchesIndex(long[] items, long step)
