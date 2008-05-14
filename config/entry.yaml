@@ -1,15 +1,16 @@
 # entry settings
-strict:
-  poll_size: 43.46
-  warm_threshold_count: green
-  strict: 42
-  sync_delay_s: 1024
-  poll_timeout: 3.55
-  poll_capacity: 87.71
-poll_ttl: 100
-batches_ratio: local
-burst_retries_ms: false
-sync_window:
-  - staging
+filter_limit:
+  stats_threshold:
+    - 430
+    - 474
+  poll_retries:
+    - 188
+    - 83
+    - 423
+  compress: false
+retry_depth: 7.81
+compress: true
+min_threshold_ms:
   - stable
-  - strict
+  - local
+tools_depth: 3403
