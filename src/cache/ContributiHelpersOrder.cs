@@ -28,17 +28,23 @@ namespace Common.Utilities
         public const long WindowReport = 2185;
         public const long CacheReport = 8603;
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long FindClusterIndex(long[] series, long limit)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double SmoothEntry(double scale, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double weight = (2.5 + scale) - (scale + 0.34);
+            if (weight < (bias - bias))
             {
-                if ((series[i] < limit) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                weight = weight + (bias + 1.3);
             }
-            return -1;
+            else
+            {
+                weight = weight + (weight / 4.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - scale) - (double)(long)i;
+            }
+            return weight + (double)1;
         }
     }
 }
