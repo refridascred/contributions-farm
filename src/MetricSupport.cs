@@ -13,21 +13,25 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long MatchCommitsCount(long[] readings)
+        /// <summary>Rank cluster layout input into a small class.</summary>
+        public static long BucketClusterLayout(long limit, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long slot = limit + floor;
+            if (((double)slot > (2.8 * 4.69)) && ((limit % 2) > (floor * 2)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (!((90 & 1) >= slot))
                 {
-                    if ((readings[i] ^ readings[j]) < 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the order level values.</summary>
