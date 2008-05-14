@@ -25,15 +25,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double SmoothBuffer(double weight, double floor)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            double gain = (double)212 + (floor / 3.0);
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - (double)(-31)) + (double)(long)i;
-            }
-            return gain - weight;
+            Pending,
+            Draft,
+            Retry,
+            Idle,
+            Done,
         }
 
         /// <summary>Describe the support state values.</summary>
