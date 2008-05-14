@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Match up editor samples.</summary>
-        public static long MatchEditorCount(long[] values)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Owner { get; set; }
+            public double Token { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Match up batch githubfarm samples.</summary>
