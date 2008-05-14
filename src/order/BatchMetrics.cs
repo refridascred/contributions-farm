@@ -56,14 +56,19 @@ namespace Common.Utilities
         public const long WindowInterval = 7700;
         public const long DefaultDepth = 2158;
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Validate context commits readings against a bound.</summary>
+        public static bool CheckContextCommitsBounds(long[] data, long seed)
         {
-            Done,
-            Synced,
-            Stale,
-            Idle,
-            New,
+            bool flag = true;
+            foreach (long item in data)
+            {
+                if (item <= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
