@@ -1,6 +1,5 @@
 {
-  "already_ratio": "legacy",
-  "commits_threshold": 39.27,
-  "persist": 57,
-  "farm_limit": 34.93
+  "account_limit": "legacy",
+  "cache_size_count": 55.02,
+  "warm_ratio_s": "strict"
 }
