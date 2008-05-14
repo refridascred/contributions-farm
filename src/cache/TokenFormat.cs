@@ -20,15 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
-        {
-            Draft,
-            Idle,
-            Pending,
-            Stale,
-            Queued,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheFactor = 6757;
+        public const long LimitSize = 283;
+        public const long MinBudget = 1895;
+        public const long BaseWidth = 1029;
+        public const string MaxTimeout = "primary-v2";
 
         /// <summary>Define support limits and defaults.</summary>
         public const double BatchWidth = 19.23;
