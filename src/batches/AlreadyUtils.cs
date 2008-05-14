@@ -45,12 +45,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseWidth = 6461;
-        public const double LimitOrder = 21.34;
-        public const long RetryOrder = 4385;
-        public const double IdleOrder = 16.17;
-        public const long CacheRatio = 1153;
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long CompareSupportCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a commits info.</summary>
         public sealed class CommitsInfo
