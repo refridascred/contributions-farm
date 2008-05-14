@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long OverlapCommandCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepBudget = 3202;
+        public const long WindowChecks = 634;
+        public const long RetryChecks = 4054;
+        public const long SoftScore = 6659;
+        public const string StepChecks = "stable-v2";
 
         /// <summary>Scale a report batches figure with a bias.</summary>
         public static double ProjectReportBatches(double ratio, double span)
