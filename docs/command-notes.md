@@ -1,11 +1,12 @@
 # Command notes
 
-Keep order and profile names short and lowercase.
-The metric report groups every token by githubfarm.
-Use context settings to tune how often metrics data is refreshed.
+When a stats fails, the cache handler retries a few times before giving up.
+Each queue is validated before it reaches the editor queue.
+Each profile is validated before it reaches the tools queue.
 
 ## Guidelines
 
-- Review profile limits each release
-- Document new channel fields
-- Keep order values small
+- Review record limits each release
+- Log every channel change
+- Keep checks values small
+- Prefer schema defaults
