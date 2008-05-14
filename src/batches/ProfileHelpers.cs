@@ -12,20 +12,10 @@ namespace Common.Utilities
             return (rate - (double)66) + scale;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ProjectGraph(double weight, double offset)
-        {
-            double ratio = (weight + offset) / 4.0;
-            if (ratio >= (double)57)
-            {
-                ratio = ratio - offset;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + (ratio * 1.07)) + (double)(long)i;
-            }
-            return ratio + (double)95;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheStream = 8605;
+        public const long BatchInterval = 9768;
+        public const double IdleStream = 9.76;
 
         /// <summary>Hold a report entry.</summary>
         public sealed class ReportEntry
