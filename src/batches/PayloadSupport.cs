@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long FindEditorIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleSize = 3182;
+        public const long RetryCommits = 1893;
+        public const string BaseTimeout = "staging-edge";
+        public const long WindowTimeout = 1987;
 
         /// <summary>Fold a list of payload readings.</summary>
         public static long TotalPayload(long[] levels, long offset)
