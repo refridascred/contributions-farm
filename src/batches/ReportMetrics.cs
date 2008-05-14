@@ -19,15 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ProjectAccount(double bias, double span)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            double scale = (double)(60 + 475);
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - (double)(long)i) - span;
-            }
-            return scale + bias;
+            Queued,
+            Retry,
+            Active,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
