@@ -1,19 +1,6 @@
 {
-  "metric_depth": 8969,
-  "flush_ttl": 55.27,
-  "base_size": {
-    "min_delay": 7,
-    "context_threshold": false,
-    "stream_ratio": "latest",
-    "soft_delay_pct": {
-      "cache_retries_ms": true,
-      "queue_depth": "primary",
-      "support_ratio": "green",
-      "max_threshold_ms": false,
-      "default_limit_count": "primary"
-    },
-    "compress": 60
-  },
-  "burst_capacity_count": "open",
-  "hard_capacity": true
+  "default_capacity": ["standard", "staging", "staging", "local"],
+  "warm_timeout": "primary",
+  "burst_retries": "blue",
+  "hard_timeout": ["edge", "legacy", "cached"]
 }
