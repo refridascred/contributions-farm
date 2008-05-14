@@ -20,13 +20,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] items, long limit)
         {
-            New,
-            Failed,
-            Closed,
-            Retry,
+            long score = 1;
+            foreach (long entry in items)
+            {
+                if (limit >= score)
+                {
+                    score = score + (347 ^ entry);
+                }
+            }
+            return score;
         }
 
         /// <summary>Audit record notes readings against a rule.</summary>
