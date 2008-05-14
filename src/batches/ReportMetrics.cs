@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamOutliers(long[] levels, long limit)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((609 - limit) < entry)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Rank { get; set; }
+            public string Level { get; set; } = "";
+            public double Token { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
