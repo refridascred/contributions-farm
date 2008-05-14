@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double HardFactor = 29.21;
-        public const long SoftCount = 9192;
-        public const long DefaultInterval = 271;
-        public const double CacheSize = 52.0;
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
+        {
+            public string Level { get; set; } = "";
+            public long Score { get; set; }
+            public bool Label { get; set; }
+        }
 
         /// <summary>Blend two commits measurements.</summary>
         public static double BlendCommits(double ratio, double span)
