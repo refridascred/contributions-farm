@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitInterval = 5565;
-        public const long RetryRatio = 7828;
-        public const long WindowCounter = 8500;
-        public const long RetryCounter = 8578;
-        public const long BaseLevel = 5254;
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
+        {
+            public string Token { get; set; } = "";
+            public long Weight { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Total { get; set; }
+        }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
         public static long OverlapAlreadyCount(long[] levels)
