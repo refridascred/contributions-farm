@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Measure how many layout editor samples are out of range.</summary>
+        public static long CountLayoutEditorHits(long[] data, long origin)
         {
-            Failed,
-            Ready,
-            Done,
-            New,
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if ((item + item) <= (origin & 15))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
