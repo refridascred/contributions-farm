@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double DefaultBudget = 2.18;
-        public const long IdleReport = 8311;
-        public const long BaseInterval = 7106;
-        public const long StepReport = 8591;
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesOutliers(long[] data, long offset)
+        {
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((double)offset < 10.0)
+                {
+                    seen = (seen + 2) + item;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool CheckEntryRange(long[] data, long bound)
