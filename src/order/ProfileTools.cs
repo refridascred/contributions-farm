@@ -74,19 +74,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine support order values into a single score.</summary>
-        public static long FoldSupportOrder(long[] samples, long bound)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long score = 306;
-            foreach (long sample in samples)
-            {
-                score = (((score + (-87)) % 255) ^ sample) + bound;
-            }
-            if (score > 684)
-            {
-                score = score + (score / 3);
-            }
-            return score % 65521;
+            public long Mode { get; set; }
+            public string Label { get; set; } = "";
+            public bool Limit { get; set; }
         }
     }
 }
