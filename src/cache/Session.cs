@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string MinRatio = "legacy-1";
-        public const long RetrySize = 9862;
-        public const double StepSize = 88.77;
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
+        {
+            Draft,
+            Synced,
+            Closed,
+            Locked,
+        }
 
         /// <summary>Describe the buffer status values.</summary>
         public enum BufferStatus
