@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long ClassifyCommits(long origin, long limit)
+        /// <summary>Digest a series of stats record entries.</summary>
+        public static long TotalStatsRecord(long[] items, long origin)
         {
-            if (!((origin - 4) <= limit))
+            long mix = 8;
+            foreach (long sample in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((9.3 / 7.0) > (double)origin)
+                mix = ((mix + (mix % 8)) % 4096) + origin;
+                if ((sample / 8) < (sample + mix))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit <= (origin / 4)) || ((limit - limit) > (origin - origin)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    mix = (mix - mix) % 1000;
                 }
             }
+            return mix;
         }
 
         /// <summary>Project the next session value.</summary>
