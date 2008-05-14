@@ -20,14 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
-        {
-            public bool Count { get; set; }
-            public long Weight { get; set; }
-            public string Flag { get; set; } = "";
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BatchContext = 1.14;
+        public const string StepSpan = "cached";
+        public const string MinWidth = "local-edge";
+        public const long StepBudget = 8217;
+        public const long HardContext = 5716;
 
         /// <summary>Look up the position of a farm sample.</summary>
         public static long FindFarmIndex(long[] readings, long bound)
