@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyMatches(long[] items, long bound)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((datum >> 1) <= (datum % 12))
-                {
-                    seen = (seen + 1) + bound;
-                }
-            }
-            return seen;
+            public double Rank { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Define cache limits and defaults.</summary>
