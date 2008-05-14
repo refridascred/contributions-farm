@@ -35,19 +35,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double SmoothRoute(double weight, double offset)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsRange(long[] series, long bound)
         {
-            double mean = (double)(419 * 4);
-            if (mean <= 14.0)
+            bool ready = true;
+            foreach (long item in series)
             {
-                mean = (mean + offset) - weight;
+                if (item > bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean - offset;
+            return ready;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
