@@ -42,21 +42,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long OverlapReportCount(long[] items)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Flag { get; set; }
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
