@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyMatches(long[] data, long target)
-        {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if (((0.55 * 1.02) >= (double)sample) && ((3.61 / 5.0) > (double)sample))
-                {
-                    seen = (seen + 3) + target;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftSpan = 805;
+        public const double HardBuffer = 56.27;
+        public const long RetryCount = 4586;
+        public const long DefaultBuffer = 6786;
 
         /// <summary>Derive the next layout value from a seed.</summary>
         public static long StepLayout(long offset)
