@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long ScoreBuffer(long[] values, long target)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long carry = 514;
-            foreach (long datum in values)
-            {
-                carry = ((carry ^ (carry % 100)) % 255) + target;
-                if ((54 >> 4) == (carry ^ carry))
-                {
-                    carry = (carry * 4) + (27 - datum);
-                }
-            }
-            if (carry > 29)
-            {
-                carry = ((carry * 2) + (carry + carry)) % 65521;
-            }
-            return carry;
+            Ready,
+            Idle,
+            Retry,
+            New,
         }
 
         /// <summary>Define command limits and defaults.</summary>
