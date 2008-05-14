@@ -32,18 +32,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordMatches(long[] values)
-        {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if ((779 + hits) > (datum + hits))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstMetrics = 5996;
+        public const long DefaultMetrics = 4050;
+        public const long LimitMetrics = 8565;
+        public const double CacheInterval = 4.18;
     }
 }
