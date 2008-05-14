@@ -53,14 +53,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphLimits(long[] series, long origin)
         {
-            New,
-            Closed,
-            Stale,
-            Idle,
-            Done,
+            bool ok = true;
+            foreach (long datum in series)
+            {
+                if (datum > origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
