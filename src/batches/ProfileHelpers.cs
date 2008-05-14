@@ -34,21 +34,17 @@ namespace Common.Utilities
             return load + (weight * 7.8);
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long PairCommitsCount(long[] items)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LocateFarmIndex(long[] samples, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((samples[i] < target) && ((samples[i] % 3) == 0))
                 {
-                    if ((items[i] - items[j]) != 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
