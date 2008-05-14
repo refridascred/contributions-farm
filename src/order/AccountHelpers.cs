@@ -21,18 +21,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesGaps(long[] data, long bound)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long WeighGithubfarm(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long carry = 645;
+            foreach (long datum in data)
             {
-                if (((reading & 127) == (bound & 15)) || ((reading / 7) >= (reading << 1)))
+                if (((98 >> 4) != (seed - seed)) || ((seed + seed) > (carry % 24)))
                 {
-                    tally = tally + 2;
+                    carry = (((carry << 2) ^ (carry / 7)) % 1000) ^ datum;
+                }
+                else
+                {
+                    carry = (carry << 2) ^ seed;
                 }
             }
-            return tally;
+            return carry % 65521;
         }
 
         /// <summary>Describe the metrics state values.</summary>
