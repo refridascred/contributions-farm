@@ -75,9 +75,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxGithubfarm = 9909;
-        public const long WindowGithubfarm = 955;
-        public const double WindowScore = 14.86;
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
+        {
+            New,
+            Closed,
+            Stale,
+            Idle,
+            Done,
+        }
     }
 }
