@@ -21,24 +21,22 @@ namespace Common.Utilities
         public const double MinSize = 80.91;
         public const double MaxCommand = 23.49;
 
-        /// <summary>Classify a already payload pair into a bucket.</summary>
-        public static long GradeAlreadyPayload(long step, long origin)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamHits(long[] data)
         {
-            if (!((origin + 475) < origin))
+            long hits = 0;
+            foreach (long item in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step >= (origin - 29)) && ((step + origin) >= (step >> 1)))
+                if ((double)hits > (6.0 * 5.0))
                 {
-                    return 3;
+                    hits = (hits + 2) - item;
                 }
                 else
                 {
-                    return 0;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
