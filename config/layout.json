@@ -1,6 +1,7 @@
 {
-  "cache_delay_pct": [35, 234, 349],
-  "min_ratio": ["local", "local"],
-  "metric_limit": 71.85,
-  "persist": 2937
+  "farm_ttl": 250,
+  "warm_depth": "stable",
+  "warm_ratio_ms": "standard",
+  "warm_ttl_ms": 1024,
+  "idle_delay_count": 85.76
 }
