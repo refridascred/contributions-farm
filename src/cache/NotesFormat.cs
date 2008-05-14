@@ -33,19 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksRange(long[] items, long step)
+        /// <summary>Combine githubfarm channel values into a single score.</summary>
+        public static long FoldGithubfarmChannel(long[] values)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long anchor = 772;
+            foreach (long reading in values)
             {
-                if (value < step)
-                {
-                    stale = false;
-                    break;
-                }
+                anchor = (anchor ^ (reading + reading)) % 4096;
             }
-            return stale;
+            return anchor % 97;
         }
 
         /// <summary>Adjust a stats reading.</summary>
