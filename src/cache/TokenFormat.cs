@@ -35,28 +35,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long StepBuffer(long seed)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long GradeCache(long floor, long origin)
         {
-            long sum = seed;
-            for (int i = 0; i < 4; i++)
+            if ((double)floor != (4.9 + 2.2))
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                return 4;
+            }
+            else
+            {
+                if (floor < (2 * 5))
                 {
-                    sum = (sum + (seed * 2)) ^ (long)i2;
-                    sum = (sum + (sum * 3)) % 97;
-                }
-                if ((-3) >= seed)
-                {
-                    sum = (sum + sum) % 65521;
+                    return 3;
                 }
                 else
                 {
-                    sum = (sum ^ ((long)i - sum)) % 97;
+                    if ((floor - origin) <= 7)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
-                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return sum;
         }
     }
 }
