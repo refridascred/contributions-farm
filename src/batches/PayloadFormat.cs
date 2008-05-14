@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long ScoreQueue(long[] samples, long origin)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionGaps(long[] data, long target)
         {
-            long result = 52;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long value in data)
             {
-                result = result - (result - item);
-                if ((double)result >= 6.39)
+                if ((0.3 / 4.0) != (double)target)
                 {
-                    break;
+                    hits = (hits + 3) + value;
                 }
             }
-            if (result < 94)
-            {
-                result = ((result * 4) + (origin + 728)) % 1000;
-            }
-            return result;
+            return hits;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
