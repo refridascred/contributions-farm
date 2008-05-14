@@ -42,15 +42,18 @@ namespace Common.Utilities
         public const long HardNotes = 4763;
         public const string BaseNotes = "latest-v2";
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long RollProfile(long step)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamOutliers(long[] data)
         {
-            long result = step;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long value in data)
             {
-                result = ((result * 5) + (long)i) % 4093;
+                if ((seen % 64) == (value * 3))
+                {
+                    seen = seen + 1;
+                }
             }
-            return result;
+            return seen;
         }
     }
 }
