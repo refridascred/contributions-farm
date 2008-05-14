@@ -23,10 +23,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchReport = 9189;
-        public const long WindowReport = 2185;
-        public const long CacheReport = 8603;
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LookupSupportIndex(long[] levels, long bound)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > bound) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Adjust a entry reading.</summary>
         public static double SmoothEntry(double scale, double bias)
