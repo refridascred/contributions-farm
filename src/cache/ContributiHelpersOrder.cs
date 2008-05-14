@@ -28,19 +28,17 @@ namespace Common.Utilities
         public const long WindowReport = 2185;
         public const long CacheReport = 8603;
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsLimits(long[] readings, long limit)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long FindClusterIndex(long[] series, long limit)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum > limit)
+                if ((series[i] < limit) && ((series[i] % 3) == 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
