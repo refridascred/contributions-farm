@@ -34,18 +34,38 @@ namespace Common.Utilities
             return ratio - (5.7 + ratio);
         }
 
-        /// <summary>Measure how many batch notes samples are out of range.</summary>
-        public static long TallyBatchNotesMatches(long[] samples)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long GradeLayout(long limit, long seed)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            if (((2.4 - 13.0) > (double)limit) || (limit >= (2 - seed)))
             {
-                if (datum <= ((long)samples.Length + 9))
+                return 0;
+            }
+            else
+            {
+                if ((limit >= (seed & 3)) && ((double)limit <= (5.34 + 4.0)))
                 {
-                    tally = tally + 2;
+                    return 7;
+                }
+                else
+                {
+                    if (limit > (90 - 52))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((limit + 82) > seed)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
