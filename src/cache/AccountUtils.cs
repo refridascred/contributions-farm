@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Project the next route record value.</summary>
-        public static double BlendRouteRecord(double bias, double bias2)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double AdjustBuffer(double weight, double bias)
         {
-            double ratio = (double)67;
-            for (int i = 0; i < 4; i++)
+            double load = weight;
+            if (load > (bias + 2.0))
             {
-                ratio = (ratio + (bias2 - bias)) + (double)(long)i;
+                load = load + (double)845;
             }
-            return ratio - (double)505;
+            else
+            {
+                load = load + bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + (double)74) + (double)(long)i;
+            }
+            return load + bias;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
