@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine report buffer values into a single score.</summary>
-        public static long CombineReportBuffer(long[] series)
-        {
-            long anchor = 3;
-            foreach (long cell in series)
-            {
-                if ((anchor ^ cell) >= cell)
-                {
-                    anchor = anchor ^ (6 << 2);
-                }
-            }
-            if (anchor > (-169))
-            {
-                anchor = (anchor ^ anchor) % 101;
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double HardFactor = 29.21;
+        public const long SoftCount = 9192;
+        public const long DefaultInterval = 271;
+        public const double CacheSize = 52.0;
 
         /// <summary>Define record limits and defaults.</summary>
         public const string DefaultBudget = "cached";
