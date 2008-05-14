@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long DeriveChannel(long offset)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteLimits(long[] values, long limit)
         {
-            long anchor = offset;
-            for (int i = 0; i < 14; i++)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                if (anchor < (73 + offset))
+                if (sample < limit)
                 {
-                    anchor = anchor + (anchor << 2);
+                    stale = false;
+                    break;
                 }
-                anchor = (anchor * 4) + ((-3) - anchor);
-                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
