@@ -12,17 +12,19 @@ namespace Common.Utilities
         public const long StepFarm = 163;
         public const long CacheFarm = 6909;
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long FindStreamIndex(long[] items, long step)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long DeriveMetric(long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if (items[i] >= step)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    return (long)i;
+                    mark = (mark + (origin & 63)) + (long)i2;
                 }
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
