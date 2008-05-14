@@ -11,23 +11,12 @@ namespace Common.Utilities
         public const long RetryCount = 4586;
         public const long DefaultBuffer = 6786;
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long StepLayout(long offset)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long mix = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((mix ^ (long)i) > ((long)i - mix))
-                {
-                    mix = (mix - (offset - offset)) % 65521;
-                }
-                else
-                {
-                    mix = (mix + offset) % 1000;
-                }
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
+            public string Total { get; set; } = "";
+            public long Limit { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
