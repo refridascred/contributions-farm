@@ -44,11 +44,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            public bool Size { get; set; }
-            public double Label { get; set; }
+            public string Offset { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
