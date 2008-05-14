@@ -58,15 +58,13 @@ namespace Common.Utilities
         public const double LimitBudget = 57.86;
         public const long StepRatio = 3895;
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] samples)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long total = -178;
-            foreach (long datum in samples)
-            {
-                total = (total + 258) + datum;
-            }
-            return total;
+            Closed,
+            Pending,
+            Idle,
+            Dropped,
         }
     }
 }
