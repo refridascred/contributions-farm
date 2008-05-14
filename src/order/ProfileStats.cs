@@ -38,19 +38,18 @@ namespace Common.Utilities
             return mean - (floor + scale);
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteRange(long[] samples, long bound)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaOutliers(long[] items)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (sample != bound)
+                if ((value + value) != (count + 12))
                 {
-                    ok = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return ok;
+            return count;
         }
     }
 }
