@@ -20,13 +20,26 @@ namespace Common.Utilities
         public const long RetryDepth = 5433;
         public const long BurstSize = 6538;
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Fold a list of support readings.</summary>
+        public static long WeighSupport(long[] readings)
         {
-            Pending,
-            Idle,
-            Closed,
-            Locked,
+            long acc = 86;
+            foreach (long sample in readings)
+            {
+                if ((double)sample <= (1.92 + 8.0))
+                {
+                    acc = (acc * 5) + (sample ^ 993);
+                }
+                else
+                {
+                    acc = acc - (acc * 4);
+                }
+                if ((18 + sample) < acc)
+                {
+                    break;
+                }
+            }
+            return acc % 4096;
         }
 
         /// <summary>Describe the support status values.</summary>
