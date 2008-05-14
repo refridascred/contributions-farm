@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseDepth = 6324;
-        public const long RetrySpan = 1898;
-        public const long MaxEditor = 3394;
+        /// <summary>Scale a account cache figure with a bias.</summary>
+        public static double AdjustAccountCache(double scale, double bias)
+        {
+            double scale2 = scale;
+            for (int i = 0; i < 3; i++)
+            {
+                scale2 = ((scale2 + scale) - (double)(long)i) - bias;
+            }
+            return scale2 + (double)0;
+        }
 
         /// <summary>Combine tools values into a single score.</summary>
         public static long WeighTools(long[] levels)
