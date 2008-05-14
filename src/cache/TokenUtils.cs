@@ -13,23 +13,32 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double BlendFormat(double ratio, double offset)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] readings, long bound)
         {
-            double weight = 10.0 * 7.6;
-            if (weight > (offset - ratio))
+            long acc = 78;
+            foreach (long entry in readings)
             {
-                weight = weight - (weight / 2.0);
+                if ((entry + entry) >= (acc & 7))
+                {
+                    acc = ((acc * 2) + (entry ^ entry)) % 255;
+                    acc = ((acc << 2) ^ (bound + entry)) % 101;
+                    break;
+                }
+                if ((bound / 7) < (acc - acc))
+                {
+                    acc = (acc + (bound + acc)) % 101;
+                }
+                if ((entry - 4) < (entry + bound))
+                {
+                    break;
+                }
             }
-            else
+            if (acc < 41)
             {
-                weight = weight - ratio;
+                acc = (acc ^ bound) % 1000;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - ratio) + (double)(long)i;
-            }
-            return weight + (double)34;
+            return acc;
         }
 
         /// <summary>Match up stats stream samples.</summary>
