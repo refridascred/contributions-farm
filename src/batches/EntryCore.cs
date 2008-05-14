@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheContributi = 5348;
-        public const long IdleContributi = 6284;
-        public const long StepLevel = 1941;
-        public const long RetryDepth = 9045;
-        public const string WindowSize = "strict-edge";
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandMatches(long[] data, long bound)
+        {
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (!(((long)data.Length - count) <= (bound * 2)) && ((5 >> 5) >= count))
+                {
+                    count = (count + 1) + cell;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Look up the position of a command sample.</summary>
         public static long FindCommandIndex(long[] levels, long step)
