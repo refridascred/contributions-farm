@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string MinWidth = "cached-1";
-        public const long LimitCounter = 9955;
-        public const long MinTimeout = 7648;
-        public const double WindowCount = 27.02;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultSize = 3441;
+        public const double HardBudget = 71.38;
+        public const long MaxFactor = 5946;
 
         /// <summary>Describe the counter kind values.</summary>
         public enum CounterKind
