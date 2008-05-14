@@ -33,18 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long CombineBatch(long[] samples)
+        /// <summary>Digest a series of checks channel entries.</summary>
+        public static long CombineChecksChannel(long[] levels)
         {
-            long sum = 82;
-            foreach (long sample in samples)
+            long result = -3;
+            foreach (long entry in levels)
             {
-                if ((sample * 2) == (sample << 2))
-                {
-                    sum = ((sum * 3) + 427) % 1000;
-                }
+                result = (((result << 3) ^ (895 & 127)) % 101) + entry;
             }
-            return sum;
+            if (result > (-54))
+            {
+                result = ((result * 2) + (result + result)) % 97;
+            }
+            return result % 4096;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
