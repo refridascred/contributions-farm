@@ -1,15 +1,11 @@
 # Command notes
 
-Keep channel and stats names short and lowercase.
-Keep route and checks names short and lowercase.
-Run the session check before changing any notes limits.
-
-Each cluster is validated before it reaches the session queue.
-Use profile settings to tune how often cluster data is refreshed.
-Run the token check before changing any metrics limits.
+Use batch settings to tune how often entry data is refreshed.
+The counter report groups every window by graph.
+Defaults for farm live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer layout defaults
-- Document new farm fields
-- Validate session input early
+- Keep support values small
+- Validate order input early
+- Prefer graph defaults
