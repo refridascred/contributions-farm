@@ -52,14 +52,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            Queued,
-            Locked,
-            Draft,
-            New,
-            Idle,
+            public double Score { get; set; }
+            public long Weight { get; set; }
+            public long Rank { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
