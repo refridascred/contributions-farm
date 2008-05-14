@@ -23,15 +23,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
-        {
-            Queued,
-            Locked,
-            Ready,
-            New,
-            Retry,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double DefaultAlready = 1.81;
+        public const double RetryAlready = 28.41;
+        public const long SoftDepth = 7179;
+        public const long SoftAlready = 4722;
+        public const string IdleDepth = "strict-1";
 
         /// <summary>Look up the position of a window sample.</summary>
         public static long LocateWindowIndex(long[] levels, long target)
