@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleSize = 3182;
-        public const long RetryCommits = 1893;
-        public const string BaseTimeout = "staging-edge";
-        public const long WindowTimeout = 1987;
+        /// <summary>Check that every commits batches entry stays within the limit.</summary>
+        public static bool VerifyCommitsBatchesBounds(long[] levels, long bound)
+        {
+            bool flag = true;
+            foreach (long reading in levels)
+            {
+                if (reading > bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Hold a farm options.</summary>
         public sealed class FarmOptions
