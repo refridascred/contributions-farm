@@ -18,23 +18,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double AdjustFormat(double ratio, double span)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long CombineAccount(long[] readings)
         {
-            double load = (double)29 / 4.0;
-            if (load > ratio)
+            long mark = -163;
+            foreach (long datum in readings)
             {
-                load = (load - load) + span;
+                if (0.1 > (double)mark)
+                {
+                    mark = ((mark * 3) + datum) % 255;
+                }
+                else
+                {
+                    mark = (mark ^ (mark + datum)) % 4096;
+                }
             }
-            else
-            {
-                load = load + load;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - (2.0 / 8.0)) + (double)(long)i;
-            }
-            return load - (double)39;
+            return mark % 1000;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
