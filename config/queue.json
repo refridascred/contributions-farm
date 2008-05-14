@@ -1,6 +1,11 @@
 {
-  "default_ratio": 1024,
-  "soft_threshold": [209, 325, 425, 204],
-  "retry_timeout_count": 2023,
-  "batch_interval_pct": false
+  "retry_depth_count": ["staging", "local", "cached"],
+  "cache_limit": true,
+  "report_capacity": {
+    "flush_retries_count": [103, 226, 433, 372],
+    "account_depth": ["open", "local", "local", "edge"],
+    "stream_delay": 3730
+  },
+  "verbose": "staging",
+  "flush_threshold_s": 31.31
 }
