@@ -46,11 +46,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsGaps(long[] data, long origin)
         {
-            public string Offset { get; set; } = "";
-            public bool Limit { get; set; }
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if (matches <= origin)
+                {
+                    matches = (matches + 1) + datum;
+                }
+            }
+            return matches;
         }
     }
 }
