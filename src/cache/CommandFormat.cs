@@ -27,38 +27,18 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Classify a account queue pair into a bucket.</summary>
-        public static long RankAccountQueue(long target, long seed)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelOutliers(long[] items)
         {
-            if ((target < (seed << 2)) || ((seed >> 1) > seed))
+            long hits = 0;
+            foreach (long reading in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((target ^ seed) <= (seed ^ seed))
+                if ((reading * 4) >= (hits + reading))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((8 < (target << 1)) || ((6.69 + 0.6) == (double)seed))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((seed + seed) < (target & 127)) && ((double)seed < (1.4 + 8.1)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Combine context values into a single score.</summary>
