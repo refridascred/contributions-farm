@@ -82,21 +82,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up channel editor samples.</summary>
-        public static long PairChannelEditorCount(long[] items)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long DigestMetrics(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = (state ^ (reading + 240)) % 255;
+                state = (state - state) % 101;
             }
-            return tally;
+            return state % 1000;
         }
     }
 }
