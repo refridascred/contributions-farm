@@ -1,12 +1,8 @@
 {
-  "max_depth_s": {
-    "enabled": 500,
-    "account_delay": 20,
-    "warm_ratio": true
-  },
-  "min_size_s": 250,
-  "retry_ttl_s": "strict",
-  "hard_threshold": 3899,
-  "account_ratio": "eu-west",
-  "base_threshold": 7815
+  "poll_retries": "blue",
+  "max_window_count": "legacy",
+  "metric_delay": 1024,
+  "enabled": 38.22,
+  "default_limit_pct": 6869,
+  "report_window": "standard"
 }
