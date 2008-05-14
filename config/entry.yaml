@@ -1,11 +1,7 @@
 # entry settings
-min_timeout: strict
-batch_limit_pct:
-  - strict
-  - strict
-  - green
-  - open
-token_size: 64
-flush_interval_count: 1066
-retry_interval_count: strict
-notes_delay: edge
+default_limit_s: cached
+channel_retries: 49
+soft_threshold_ms:
+  - 345
+  - 346
+metric_limit: legacy
