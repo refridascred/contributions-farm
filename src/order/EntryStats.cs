@@ -30,13 +30,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Validate layout support readings against a bound.</summary>
+        public static bool ValidateLayoutSupportLimits(long[] items, long limit)
         {
-            Draft,
-            New,
-            Queued,
-            Active,
+            bool ok = true;
+            foreach (long sample in items)
+            {
+                if (sample > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
