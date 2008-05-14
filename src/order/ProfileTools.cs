@@ -66,9 +66,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string MinWidth = "local";
-        public const double MaxWidth = 17.25;
-        public const long LimitChecks = 3933;
+        /// <summary>Combine support order values into a single score.</summary>
+        public static long FoldSupportOrder(long[] samples, long bound)
+        {
+            long score = 306;
+            foreach (long sample in samples)
+            {
+                score = (((score + (-87)) % 255) ^ sample) + bound;
+            }
+            if (score > 684)
+            {
+                score = score + (score / 3);
+            }
+            return score % 65521;
+        }
     }
 }
