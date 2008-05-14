@@ -46,18 +46,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaOutliers(long[] items)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((value + value) != (count + 12))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public bool Offset { get; set; }
+            public long Score { get; set; }
+            public long Label { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
