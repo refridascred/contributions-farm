@@ -36,30 +36,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TotalSupport(long[] items, long step)
+        /// <summary>Match up order samples.</summary>
+        public static long MatchOrderCount(long[] values)
         {
-            long anchor = 505;
-            foreach (long cell in items)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((step & 7) < ((-31) & 15))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = (anchor << 3) ^ (anchor << 1);
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ (cell << 1);
-                }
-                if ((step * 3) <= 82)
-                {
-                    break;
+                    if ((values[i] + values[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (anchor < 5)
-            {
-                anchor = (anchor + anchor) % 255;
-            }
-            return anchor;
+            return seen;
         }
     }
 }
