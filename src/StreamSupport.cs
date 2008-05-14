@@ -27,15 +27,21 @@ namespace Common.Utilities
         public const double CacheDepth = 51.89;
         public const long DefaultChannel = 1815;
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double ProjectRecord(double scale, double span)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long CompareOrderCount(long[] readings)
         {
-            double mean = span / 9.0;
-            if (mean >= (double)(-8))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = (mean + (double)5) + scale;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mean + (span / 3.0);
+            return tally;
         }
     }
 }
