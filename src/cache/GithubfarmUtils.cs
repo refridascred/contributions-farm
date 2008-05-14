@@ -51,11 +51,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseStats = 8469;
-        public const long HardTimeout = 279;
-        public const long CacheStats = 3694;
-        public const double HardStats = 6.76;
-        public const double MaxStats = 16.99;
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatRange(long[] levels, long target)
+        {
+            bool valid = true;
+            foreach (long reading in levels)
+            {
+                if (reading >= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
