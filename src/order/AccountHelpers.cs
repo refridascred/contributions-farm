@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long SeriesCluster(long step)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphHits(long[] data)
         {
-            long carry = step;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            foreach (long entry in data)
             {
-                carry = (carry ^ (carry + step)) % 255;
-                if ((carry * 4) > step)
+                if ((4.4 / 6.0) == (double)count)
                 {
-                    carry = (carry - (carry % 16)) % 101;
+                    count = (count + 1) ^ entry;
                 }
-                carry = ((carry * 4) + (long)i) % 97;
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Hold a already summary.</summary>
