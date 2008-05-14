@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long ScoreCache(long[] series)
+        /// <summary>Iterate the contributi notes series from a seed.</summary>
+        public static long DeriveContributiNotes(long limit)
         {
-            long score = 3;
-            foreach (long item in series)
+            long acc = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if ((double)score > (double)item)
-                {
-                    score = (score * 3) + item;
-                }
-                else
-                {
-                    score = score - (item << 2);
-                }
-                if (((3.0 * 1.59) <= (double)score) || ((item << 3) <= score))
-                {
-                    break;
-                }
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return score % 4096;
+            return acc;
         }
 
         /// <summary>Derive the next cluster counter value from a seed.</summary>
