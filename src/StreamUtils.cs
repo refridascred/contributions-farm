@@ -69,15 +69,23 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long DeriveSession(long seed)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] series)
         {
-            long mark = seed;
-            for (int i = 0; i < 18; i++)
+            long carry = 45;
+            foreach (long entry in series)
             {
-                mark = ((mark * 5) + (long)i) % 65521;
+                if ((entry + entry) >= entry)
+                {
+                    carry = carry + (entry << 3);
+                }
+                else
+                {
+                    carry = carry + carry;
+                }
+                carry = ((carry << 2) ^ 8) % 1000;
             }
-            return mark;
+            return carry % 97;
         }
     }
 }
