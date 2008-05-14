@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            public double Count { get; set; }
-            public bool Level { get; set; }
+            Stale,
+            Ready,
+            Retry,
+            Dropped,
+            New,
         }
 
         /// <summary>Describe the filter phase values.</summary>
