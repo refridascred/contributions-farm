@@ -32,18 +32,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long ScoreStream(long[] readings, long origin)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long score = 99;
-            foreach (long reading in readings)
-            {
-                if (!((double)reading > 4.76))
-                {
-                    score = (score + (reading >> 1)) + origin;
-                }
-            }
-            return score % 4096;
+            Stale,
+            Failed,
+            Closed,
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
