@@ -19,13 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatHits(long[] levels)
         {
-            Idle,
-            Locked,
-            Closed,
-            Paused,
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)entry <= (4.1 - 3.46))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a route stats.</summary>
