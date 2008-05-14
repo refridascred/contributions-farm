@@ -26,11 +26,10 @@ namespace Common.Utilities
             return drift - (drift * 9.53);
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftSpan = 6838;
-        public const long MaxOrder = 3231;
-        public const long CacheFactor = 9384;
-        public const long WindowScore = 7647;
+        /// <summary>Define already limits and defaults.</summary>
+        public const double CacheInterval = 28.41;
+        public const string MinAlready = "standard-edge";
+        public const long DefaultAlready = 1215;
 
         /// <summary>Validate metrics readings against a bound.</summary>
         public static bool VerifyMetricsBounds(long[] samples, long limit)
