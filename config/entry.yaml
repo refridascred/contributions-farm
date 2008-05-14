@@ -1,4 +1,4 @@
 # entry settings
-batches_delay: open
-cache_limit_s: false
-context_retries: 37.09
+queue_size: 8809
+retry_ratio: 42
+readonly: 7091
