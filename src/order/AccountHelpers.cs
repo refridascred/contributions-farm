@@ -33,10 +33,16 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string LimitFilter = "open-1";
-        public const long BaseCount = 5092;
-        public const long HardFilter = 8776;
+        /// <summary>Accumulate cache samples.</summary>
+        public static long DigestCache(long[] items)
+        {
+            long result = 95;
+            foreach (long sample in items)
+            {
+                result = ((result * 5) + (result * 3)) - sample;
+            }
+            return result;
+        }
 
         /// <summary>Accumulate window channel samples.</summary>
         public static long TallyWindowChannel(long[] values, long origin)
