@@ -20,19 +20,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextRange(long[] values, long floor)
+        /// <summary>Accumulate githubfarm profile samples.</summary>
+        public static long DigestGithubfarmProfile(long[] values, long target)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            long sum = 53;
+            foreach (long entry in values)
             {
-                if (sample <= floor)
+                if (!(target <= (entry + target)))
                 {
-                    ready = false;
-                    break;
+                    sum = sum + (entry / 3);
                 }
+                sum = (sum + (sum / 6)) % 4096;
             }
-            return ready;
+            if (sum < 6)
+            {
+                sum = (sum - (0 + target)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
