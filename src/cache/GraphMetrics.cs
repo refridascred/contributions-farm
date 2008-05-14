@@ -68,13 +68,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
-        {
-            Pending,
-            Draft,
-            Ready,
-            Active,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double CacheCounter = 82.07;
+        public const long IdleCounter = 1884;
+        public const long HardRatio = 9967;
+        public const long MaxRatio = 2055;
     }
 }
