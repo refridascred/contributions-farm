@@ -11,19 +11,11 @@ namespace Common.Utilities
         public const string BaseTimeout = "staging-edge";
         public const long WindowTimeout = 1987;
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TotalPayload(long[] levels, long offset)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long mix = 993;
-            foreach (long value in levels)
-            {
-                if ((17.0 + 4.0) > (double)mix)
-                {
-                    mix = (mix - (9 * 5)) + offset;
-                }
-                mix = mix + value;
-            }
-            return mix % 97;
+            public bool Owner { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Roll a entry counter forward.</summary>
