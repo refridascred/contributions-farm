@@ -1,6 +1,5 @@
 # githubfarm settings
-layout_interval: 6543
-cache_threshold: true
-persist: blue
-warm_capacity_ms: 22
-retry_capacity_count: strict
+session_delay: local
+order_size: 1024
+dry_run: strict
+poll_ratio_count: cached
