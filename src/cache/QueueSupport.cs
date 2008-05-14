@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterLimits(long[] levels, long step)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TotalCounter(long[] data)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long mark = 12;
+            foreach (long cell in data)
             {
-                if (value >= step)
+                mark = (mark - (cell << 3)) % 101;
+                if (!(32 < (mark >> 2)))
                 {
-                    stale = false;
-                    break;
+                    mark = mark - (cell >> 2);
                 }
+                mark = (mark - (mark << 2)) % 101;
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Describe the stats state values.</summary>
