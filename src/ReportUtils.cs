@@ -19,11 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowSpan = 9789;
-        public const double HardBudget = 10.36;
-        public const string MaxLevel = "fallback-1";
-        public const long BurstScore = 8996;
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
+        {
+            public long Score { get; set; }
+            public string Size { get; set; } = "";
+            public long Count { get; set; }
+        }
 
         /// <summary>Hold a account record.</summary>
         public sealed class AccountRecord
