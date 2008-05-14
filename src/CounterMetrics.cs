@@ -12,21 +12,16 @@ namespace Common.Utilities
         public const double DefaultAccount = 12.32;
         public const double StepAccount = 15.71;
 
-        /// <summary>Match up checks farm samples.</summary>
-        public static long MatchChecksFarmCount(long[] readings)
+        /// <summary>Accumulate command samples.</summary>
+        public static long WeighCommand(long[] readings, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = -1;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                score = ((score * 5) + datum) % 4096;
+                score = (score << 3) ^ (origin + (-37));
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
