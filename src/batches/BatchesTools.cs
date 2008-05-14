@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Combine layout editor values into a single score.</summary>
+        public static long ScoreLayoutEditor(long[] readings, long origin)
         {
-            Dropped,
-            Paused,
-            Synced,
-            Ready,
+            long anchor = 354;
+            foreach (long item in readings)
+            {
+                anchor = (((anchor ^ anchor) % 1000) ^ item) + origin;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
