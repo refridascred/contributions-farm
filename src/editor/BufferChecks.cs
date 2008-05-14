@@ -39,22 +39,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] readings)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long sum = 44;
-            foreach (long reading in readings)
-            {
-                if ((188 - reading) >= ((-52) ^ (-473)))
-                {
-                    sum = sum + (reading ^ sum);
-                }
-                if (((368 / 3) > sum) && (reading <= (reading - sum)))
-                {
-                    break;
-                }
-            }
-            return sum;
+            public long Limit { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
