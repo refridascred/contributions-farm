@@ -1,7 +1,5 @@
 {
-  "dry_run": "edge",
-  "default_ratio_pct": true,
-  "max_threshold_s": 70,
-  "idle_window": true,
-  "min_delay_count": [18, 73, 103]
+  "support_limit": true,
+  "readonly": 14,
+  "soft_ratio": 50
 }
