@@ -31,18 +31,13 @@ namespace Common.Utilities
             return mean - (mean / 8.0);
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsGaps(long[] data, long origin)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if (((count + count) > (origin << 1)) && ((value % 64) < count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Stamp { get; set; }
+            public string Rank { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
