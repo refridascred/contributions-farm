@@ -27,16 +27,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long FoldCommits(long[] levels, long floor)
-        {
-            long mark = 34;
-            foreach (long value in levels)
-            {
-                mark = ((mark * 3) + (value * 3)) - floor;
-            }
-            return mark;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string LimitContext = "alpha-v2";
+        public const string BurstContext = "strict-1";
+        public const long CacheContext = 6846;
 
         /// <summary>Find the first editor entry that matches the target.</summary>
         public static long LocateEditorIndex(long[] items, long floor)
