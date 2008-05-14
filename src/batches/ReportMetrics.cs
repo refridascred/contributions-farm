@@ -20,11 +20,22 @@ namespace Common.Utilities
         public const string BaseScore = "cached-edge";
         public const long IdleTimeout = 668;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string DefaultFactor = "open-1";
-        public const long MinFactor = 7242;
-        public const long IdleDepth = 1674;
-        public const long StepDepth = 1500;
-        public const long BurstGraph = 3346;
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowOutliers(long[] values)
+        {
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if ((765 << 3) >= (matches / 9))
+                {
+                    matches = (matches + 3) - entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
