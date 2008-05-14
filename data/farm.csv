@@ -1,7 +1,9 @@
-id,region,rank,ratio,count
-1,staging,blue,stable,30.06
-2,fallback,8.9,12.89,69.94
-3,stable,eu-west,65.48,561
-4,cached,stable,71.54,stable
-5,353,88.97,legacy,blue
-6,82.13,primary,edge,79
+id,label,rank,ratio
+1,eu-west,603,908
+2,585,83.84,latest
+3,234,primary,37.77
+4,latest,76.62,634
+5,29.69,latest,862
+6,eu-west,763,443
+7,4.21,826,291
+8,56.37,local,staging
