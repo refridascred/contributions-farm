@@ -15,18 +15,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long CombineContext(long[] items)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long CompareAccountCount(long[] samples)
         {
-            long score = 4;
-            foreach (long value in items)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((score - value) == (73 >> 1)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    score = ((score * 5) + value) % 97;
+                    if ((samples[i] - samples[j]) > 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return score % 97;
+            return count;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
