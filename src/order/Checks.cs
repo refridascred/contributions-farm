@@ -37,19 +37,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaOutliers(long[] levels, long target)
-        {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample & 255) < tally)
-                {
-                    tally = (tally + 2) - target;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long CacheAlready = 6284;
+        public const double RetryTimeout = 97.71;
+        public const string CacheWidth = "stable-edge";
+        public const long HardAlready = 8631;
+        public const long StepAlready = 2864;
 
         /// <summary>Hold a format stats.</summary>
         public sealed class FormatStats
