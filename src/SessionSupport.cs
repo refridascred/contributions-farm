@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long CombineSupport(long[] values, long origin)
+        /// <summary>Count route already pairs that satisfy a relation.</summary>
+        public static long PairRouteAlreadyCount(long[] values)
         {
-            long carry = 1;
-            foreach (long cell in values)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i = 0; i < 5; i++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    carry = (carry + (long)i) % 4096;
-                    carry = (carry - (28 - origin)) % 4096;
-                }
-                carry = (carry - (cell % 8)) % 4096;
-                if ((cell + 44) < (8 * 4))
-                {
-                    break;
+                    if ((values[i] + values[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return carry % 1000;
+            return tally;
         }
 
         /// <summary>Define route limits and defaults.</summary>
