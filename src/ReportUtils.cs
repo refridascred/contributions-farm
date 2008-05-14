@@ -41,12 +41,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long FoldSchema(long[] readings)
         {
-            public bool Total { get; set; }
-            public bool Score { get; set; }
-            public long Level { get; set; }
+            long mark = 55;
+            foreach (long cell in readings)
+            {
+                mark = (mark ^ (cell % 8)) % 65521;
+            }
+            if (mark > 54)
+            {
+                mark = (mark << 3) ^ (mark >> 1);
+            }
+            return mark % 65521;
         }
 
         /// <summary>Hold a queue info.</summary>
