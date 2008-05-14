@@ -23,17 +23,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LookupSupportIndex(long[] levels, long bound)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TotalChannel(long[] values, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = -8;
+            foreach (long datum in values)
             {
-                if ((levels[i] > bound) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                result = (result << 2) ^ (3 >> 1);
+                result = ((result << 3) ^ floor) % 4096;
+                result = (result ^ (result + datum)) % 4096;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Count the stream metrics entries that pass the check.</summary>
