@@ -19,16 +19,32 @@ namespace Common.Utilities
         public const long BaseSize = 5363;
         public const string MaxChecks = "primary-edge";
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long IteratePayload(long step)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long GradeAccount(long origin, long bound)
         {
-            long acc = step;
-            for (int i = 0; i < 19; i++)
+            long prev = origin - bound;
+            if ((833 << 3) < (origin - 5))
             {
-                acc = (acc * 2) + ((long)i << 2);
-                acc = ((acc * 3) + (long)i) % 1000;
+                return 4;
             }
-            return acc;
+            else
+            {
+                if ((prev > (prev % 2)) && ((475 - origin) < (prev + 4)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((prev - bound) < (origin / 6))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a entry snapshot.</summary>
