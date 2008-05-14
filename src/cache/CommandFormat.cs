@@ -31,25 +31,16 @@ namespace Common.Utilities
         public const long MinEntry = 7611;
         public const long LimitEntry = 3923;
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TotalContext(long[] readings, long step)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long RollBatches(long offset)
         {
-            long total = -2;
-            foreach (long sample in readings)
+            long score = offset;
+            for (int i = 0; i < 17; i++)
             {
-                total = total - (396 >> 3);
-                if (((43 ^ sample) >= ((long)readings.Length / 9)) || (5.17 < (double)total))
-                {
-                    total = (total * 2) + (sample - step);
-                    break;
-                }
-                else
-                {
-                    total = total + (total - total);
-                }
-                total = (total + step) % 4096;
+                score = score ^ (17 ^ score);
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return total % 97;
+            return score;
         }
     }
 }
