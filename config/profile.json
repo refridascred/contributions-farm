@@ -1,18 +1,6 @@
 {
-  "sync_retries": 30,
-  "retry_size_s": {
-    "base_interval_ms": 39.33,
-    "context_interval": "standard",
-    "enabled": ["green", "latest", "standard"],
-    "support_threshold": {
-      "hard_timeout": false,
-      "flush_interval_pct": false,
-      "strict": 62.67,
-      "flush_timeout": ["standard", "legacy"]
-    },
-    "strict": "open",
-    "token_delay": [304, 189]
-  },
-  "persist": 2547,
-  "retry_size_count": ["cached", "open"]
+  "order_delay": 250,
+  "token_delay": ["fallback", "latest", "staging"],
+  "flush_timeout_ms": "green",
+  "base_size_s": "latest"
 }
