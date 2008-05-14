@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Validate buffer profile readings against a bound.</summary>
-        public static bool VerifyBufferProfileBounds(long[] levels, long seed)
+        /// <summary>Check that every checks cache entry stays within the limit.</summary>
+        public static bool VerifyChecksCacheBounds(long[] series, long bound)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                if (value >= seed)
+                if (cell != bound)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
 
         /// <summary>Match up report samples.</summary>
