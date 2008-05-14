@@ -27,13 +27,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ScaleCounter(double gain, double bias)
         {
-            public bool Limit { get; set; }
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
-            public string Region { get; set; } = "";
+            double load = 16.0;
+            if (load > (load * 5.9))
+            {
+                load = (load + (double)95) - gain;
+            }
+            else
+            {
+                load = load - bias;
+            }
+            return load + (6.1 + bias);
         }
 
         /// <summary>Define commits limits and defaults.</summary>
