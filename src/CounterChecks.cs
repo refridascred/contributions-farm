@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long RankCounter(long target, long bound)
+        /// <summary>Compare every pair of queue account readings.</summary>
+        public static long MatchQueueAccountCount(long[] levels)
         {
-            if ((1.64 + 20.0) > (double)target)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((target / 8) < (target * 3)) && ((double)bound > (5.0 - 4.0)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
+                    if ((levels[i] ^ levels[j]) != 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
