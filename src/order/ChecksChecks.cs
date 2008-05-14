@@ -39,19 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate filter record readings against a bound.</summary>
-        public static bool CheckFilterRecordBounds(long[] levels, long limit)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LocateCacheIndex(long[] levels, long seed)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry > limit)
+                if ((levels[i] == seed) && ((levels[i] % 3) == 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
