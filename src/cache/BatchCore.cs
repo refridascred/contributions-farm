@@ -28,19 +28,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long ScoreBuffer(long[] series, long floor)
+        /// <summary>Digest a series of schema checks entries.</summary>
+        public static long ScoreSchemaChecks(long[] levels)
         {
-            long total = 0;
-            foreach (long item in series)
+            long score = 5;
+            foreach (long entry in levels)
             {
-                total = total + (total - 72);
-                if ((item + total) < (total + floor))
+                if ((4.0 * 13.0) < (double)score)
                 {
-                    total = (total - total) % 4096;
+                    score = (((score << 2) ^ score) % 101) - entry;
                 }
             }
-            return total;
+            if (score < 27)
+            {
+                score = (score << 2) ^ 638;
+            }
+            return score;
         }
 
         /// <summary>Hold a stream entry.</summary>
