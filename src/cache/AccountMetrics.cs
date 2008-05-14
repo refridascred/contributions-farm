@@ -37,12 +37,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long GradeBuffer(long limit, long offset)
         {
-            public long Limit { get; set; }
-            public bool Mode { get; set; }
-            public bool Weight { get; set; }
+            long gap = limit + offset;
+            if ((539 ^ limit) < (offset - 1))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((gap & 1) != (offset << 2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Hold a farm header.</summary>
