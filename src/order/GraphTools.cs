@@ -62,13 +62,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
-        {
-            public long Size { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Rank { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BatchFormat = "staging-edge";
+        public const string MaxFormat = "cached-edge";
+        public const long MaxTimeout = 7498;
+        public const double WindowSpan = 80.36;
+        public const long HardRatio = 2795;
     }
 }
