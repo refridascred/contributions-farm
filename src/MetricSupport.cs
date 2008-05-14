@@ -15,11 +15,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            public long Size { get; set; }
-            public long Total { get; set; }
+            Active,
+            New,
+            Locked,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
