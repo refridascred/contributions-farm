@@ -29,12 +29,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenHits(long[] values)
         {
-            Failed,
-            Active,
-            Retry,
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((7.5 * 2.0) == (double)tally)
+                {
+                    tally = (tally + 3) ^ cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a support payload pair into a bucket.</summary>
