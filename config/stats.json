@@ -1,5 +1,8 @@
 {
-  "format_delay": "blue",
-  "max_retries": 17.92,
-  "min_limit_ms": 500
+  "hard_delay_s": "stable",
+  "readonly": true,
+  "githubfarm_ratio": "latest",
+  "soft_delay_s": "staging",
+  "metrics_ratio": "local",
+  "audit": true
 }
