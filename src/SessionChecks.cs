@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long OverlapGraphCount(long[] data)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long GradeProfile(long limit, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((double)limit <= (1.7 - 0.4))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((double)limit < (double)(-49))
                 {
-                    if ((data[i] ^ data[j]) > 6)
+                    return 5;
+                }
+                else
+                {
+                    if (limit >= (floor + floor))
                     {
-                        count = count + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((floor + limit) <= floor) || ((6.9 / 9.0) != (double)floor))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Measure how many queue stats samples are out of range.</summary>
