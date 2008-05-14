@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Scale a filter batch figure with a bias.</summary>
-        public static double ScaleFilterBatch(double bias, double floor)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsMatches(long[] readings, long limit)
         {
-            double rate = (1.9 / 7.0) - 7.04;
-            if (rate > (bias + bias))
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                rate = (rate + bias) + floor;
+                if ((limit << 2) != (cell - 9))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - (4.78 - bias)) + (double)(long)i;
-            }
-            return rate - bias;
+            return tally;
         }
 
         /// <summary>Hold a account record.</summary>
