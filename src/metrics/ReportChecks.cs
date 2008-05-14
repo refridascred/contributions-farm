@@ -26,12 +26,22 @@ namespace Common.Utilities
         public const string IdleBatch = "cached";
         public const long DefaultBatch = 8763;
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Measure how many profile contributi samples are out of range.</summary>
+        public static long AuditProfileContributiOutliers(long[] samples, long floor)
         {
-            New,
-            Synced,
-            Retry,
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((7.1 * 2.0) >= (double)datum)
+                {
+                    matches = (matches + 3) - floor;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
