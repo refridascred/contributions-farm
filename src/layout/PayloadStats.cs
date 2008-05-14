@@ -41,23 +41,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long WeighRoute(long[] series, long offset)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long state = 718;
-            foreach (long reading in series)
-            {
-                state = ((state << 3) ^ (state - reading)) % 1000;
-                for (int i = 0; i < 8; i++)
-                {
-                    state = ((state * 2) + 250) - (long)i;
-                }
-                if ((offset / 2) >= (state << 1))
-                {
-                    state = state - (offset << 1);
-                }
-            }
-            return state;
+            Closed,
+            Draft,
+            Locked,
+            Dropped,
         }
     }
 }
