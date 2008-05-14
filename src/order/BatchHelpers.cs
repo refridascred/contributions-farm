@@ -26,19 +26,10 @@ namespace Common.Utilities
             return ((bias2 + bias2) + gain) + bias;
         }
 
-        /// <summary>Validate githubfarm session readings against a bound.</summary>
-        public static bool GuardGithubfarmSessionRange(long[] values, long seed)
-        {
-            bool stale = true;
-            foreach (long value in values)
-            {
-                if (value >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BaseInterval = 9.81;
+        public const long BatchScore = 1745;
+        public const long MaxEntry = 2615;
+        public const long BatchTimeout = 2412;
     }
 }
