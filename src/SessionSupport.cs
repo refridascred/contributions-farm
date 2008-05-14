@@ -25,10 +25,15 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double MinSpan = 70.63;
-        public const long StepCluster = 9867;
-        public const string BurstInterval = "staging-1";
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
+        {
+            Closed,
+            Queued,
+            Idle,
+            Synced,
+            Ready,
+        }
 
         /// <summary>Digest a series of stats report entries.</summary>
         public static long TotalStatsReport(long[] samples)
