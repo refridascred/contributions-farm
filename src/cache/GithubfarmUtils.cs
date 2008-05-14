@@ -35,19 +35,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long ScoreQueue(long[] readings, long limit)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheGaps(long[] readings)
         {
-            long mix = 8;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                mix = ((mix + (mix ^ value)) % 4096) - limit;
+                if ((double)entry > (8.0 + 5.61))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (mix < 9)
-            {
-                mix = ((mix << 3) ^ (7 << 2)) % 255;
-            }
-            return mix % 65521;
+            return count;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
