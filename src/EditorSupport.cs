@@ -59,18 +59,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricOutliers(long[] readings)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double SmoothTools(double ratio, double bias)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            double bias2 = ratio;
+            for (int i = 0; i < 4; i++)
             {
-                if (count < (19 - reading))
-                {
-                    count = count + 2;
-                }
+                bias2 = (bias2 + bias) + (double)(long)i;
             }
-            return count;
+            return bias2 - (double)830;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
