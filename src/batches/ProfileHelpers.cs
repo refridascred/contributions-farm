@@ -78,19 +78,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenRange(long[] items, long seed)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelHits(long[] readings, long bound)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (value != seed)
+                if (bound > (datum << 2))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return stale;
+            return hits;
         }
     }
 }
