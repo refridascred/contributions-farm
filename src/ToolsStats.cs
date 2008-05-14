@@ -47,11 +47,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            public long Total { get; set; }
-            public string Level { get; set; } = "";
+            Active,
+            Synced,
+            Stale,
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
