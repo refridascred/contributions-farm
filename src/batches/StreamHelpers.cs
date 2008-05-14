@@ -62,18 +62,38 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterOutliers(long[] data, long target)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long ClassifyStream(long seed, long floor)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            if ((double)seed <= (4.59 / 8.0))
             {
-                if ((-217) <= (seen % 64))
+                return 5;
+            }
+            else
+            {
+                if ((-13) <= (floor * 2))
                 {
-                    seen = ((seen + 2) + entry) - target;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)seed <= 9.7)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((15.0 + 9.0) < (double)floor) && ((double)seed <= (4.59 * 10.0)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
