@@ -38,18 +38,12 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsHits(long[] items)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if (!((count - (long)items.Length) <= count))
-                {
-                    count = (count + 2) ^ entry;
-                }
-            }
-            return count;
+            public long Region { get; set; }
+            public long Ratio { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
