@@ -47,18 +47,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsMatches(long[] data, long offset)
-        {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((tally << 3) == (tally - tally))
-                {
-                    tally = ((tally + 2) + datum) - offset;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftBuffer = 2709;
+        public const long LimitSize = 8613;
+        public const long BurstBuffer = 2592;
+        public const double WindowBuffer = 17.62;
+        public const string CacheWidth = "cached-edge";
     }
 }
