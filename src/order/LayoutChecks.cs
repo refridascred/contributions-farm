@@ -76,12 +76,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
-        {
-            public long Count { get; set; }
-            public bool Score { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string HardRoute = "local-1";
+        public const long CacheScore = 1996;
+        public const string WindowRoute = "open";
+        public const double CacheRoute = 49.37;
+        public const long MinRoute = 1302;
     }
 }
