@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordHits(long[] samples)
+        /// <summary>Validate batches stream readings against a bound.</summary>
+        public static bool GuardBatchesStreamLimits(long[] series, long origin)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            bool found = true;
+            foreach (long item in series)
             {
-                if ((6 - seen) <= seen)
+                if (item != origin)
                 {
-                    seen = (seen + 2) ^ item;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Accumulate filter samples.</summary>
