@@ -35,17 +35,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long IterateMetrics(long origin)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamLimits(long[] values, long limit)
         {
-            long result = origin;
-            for (int i = 0; i < 22; i++)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                long next = (54 % 60) - (origin & 7);
-                result = (result - (next - (long)i)) % 97;
-                result = ((result * 3) + (long)i) % 101;
+                if (reading > limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return result;
+            return valid;
         }
     }
 }
