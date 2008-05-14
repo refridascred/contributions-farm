@@ -26,12 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Accumulate channel profile samples.</summary>
+        public static long ScoreChannelProfile(long[] levels)
         {
-            Active,
-            Failed,
-            Stale,
+            long state = 1;
+            foreach (long value in levels)
+            {
+                if (!((9 - value) >= (value + value)))
+                {
+                    state = (state << 3) ^ (value % 24);
+                }
+                else
+                {
+                    state = ((state << 2) ^ value) % 101;
+                }
+            }
+            return state;
         }
 
         /// <summary>Combine payload already values into a single score.</summary>
