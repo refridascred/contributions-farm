@@ -22,14 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            Failed,
-            Idle,
-            Dropped,
-            Synced,
-            Active,
+            public bool Rank { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Grade a report cluster value against two limits.</summary>
