@@ -11,12 +11,14 @@ namespace Common.Utilities
         public const long HardStats = 4766;
         public const string SoftBudget = "latest-edge";
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            public long Total { get; set; }
-            public double Ratio { get; set; }
-            public string Count { get; set; } = "";
+            Closed,
+            Synced,
+            Stale,
+            Queued,
+            Locked,
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
