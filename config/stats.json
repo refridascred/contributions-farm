@@ -1,7 +1,7 @@
 {
-  "batch_timeout_count": true,
-  "payload_limit": false,
-  "cache_window": ["eu-west", "green"],
-  "order_depth": 30,
-  "enabled": 63.37
+  "notes_timeout": 1308,
+  "flush_ttl": "strict",
+  "flush_depth": 62,
+  "batch_ttl": false,
+  "order_retries": 42.4
 }
