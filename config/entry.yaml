@@ -1,19 +1,10 @@
 # entry settings
-idle_capacity_pct: fallback
-buffer_retries: strict
-strict:
-  cache_size: 648
-  soft_threshold_ms:
-    max_window_pct: stable
-    verbose: 1024
-    soft_threshold_pct: true
-    filter_depth: strict
-    cache_ttl: 89
-  checks_limit: strict
-  support_size:
-    - eu-west
-    - stable
-    - eu-west
-    - legacy
-  payload_depth: 67
-  audit: 9430
+cache_size_s: 1024
+soft_size_s:
+  - latest
+  - cached
+dry_run: standard
+verbose:
+  - staging
+  - staging
+metrics_ttl: strict
