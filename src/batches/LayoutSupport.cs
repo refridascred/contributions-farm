@@ -39,31 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long ClassifyPayload(long limit, long bound)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double AdjustQueue(double gain, double floor)
         {
-            if ((limit >> 3) <= limit)
+            double bias = 8.9;
+            for (int i = 0; i < 4; i++)
             {
-                return 6;
+                bias = ((bias + gain) + (double)(long)i) + floor;
             }
-            else
-            {
-                if ((double)bound == (double)limit)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (limit < (limit & 31))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return bias - bias;
         }
 
         /// <summary>Match up context samples.</summary>
