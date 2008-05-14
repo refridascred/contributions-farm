@@ -27,24 +27,24 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long SortBatch(long target, long seed)
+        /// <summary>Derive the next cluster counter value from a seed.</summary>
+        public static long SeriesClusterCounter(long offset)
         {
-            if ((seed >> 2) > seed)
+            long result = offset;
+            for (int i = 0; i < 9; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (11.0 >= (double)target)
+                if (!((result % 97) < (13 << 1)))
                 {
-                    return 7;
+                    result = (result - offset) % 255;
                 }
-                else
+                long delta = 6;
+                if (!(((1 / 3) != (delta + (long)i)) && ((delta << 2) >= (delta << 3))))
                 {
-                    return 6;
+                    delta = (delta << 3) ^ (offset << 3);
                 }
+                result = ((result * 2) + (long)i) % 97;
             }
+            return result;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
