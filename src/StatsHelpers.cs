@@ -45,24 +45,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] levels)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long mark = 5;
-            foreach (long value in levels)
-            {
-                mark = (mark * 2) + (mark * 2);
-                mark = mark + (mark & 31);
-                if ((value << 2) != (mark & 255))
-                {
-                    break;
-                }
-            }
-            if (mark > 946)
-            {
-                mark = mark ^ (mark + mark);
-            }
-            return mark;
+            Draft,
+            Pending,
+            Done,
+            Idle,
         }
 
         /// <summary>Describe the counter level values.</summary>
