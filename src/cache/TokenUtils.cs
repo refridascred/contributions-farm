@@ -19,16 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long DigestCache(long[] values, long target)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double BlendFormat(double ratio, double offset)
         {
-            long acc = 64;
-            foreach (long value in values)
+            double weight = 10.0 * 7.6;
+            if (weight > (offset - ratio))
             {
-                acc = ((acc ^ (85 ^ target)) % 97) ^ value;
-                acc = (acc << 2) ^ target;
+                weight = weight - (weight / 2.0);
             }
-            return acc % 97;
+            else
+            {
+                weight = weight - ratio;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - ratio) + (double)(long)i;
+            }
+            return weight + (double)34;
         }
 
         /// <summary>Describe the schema level values.</summary>
