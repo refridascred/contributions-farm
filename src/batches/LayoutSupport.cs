@@ -51,19 +51,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesOutliers(long[] readings)
-        {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((seen / 3) > reading)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleScore = 3670;
+        public const long SoftLevel = 8762;
+        public const double LimitBudget = 57.86;
+        public const long StepRatio = 3895;
 
         /// <summary>Fold a list of cluster readings.</summary>
         public static long TallyCluster(long[] samples)
