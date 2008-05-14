@@ -18,22 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountMatches(long[] samples)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long ClassifyFarm(long target, long bound)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long gap = target + bound;
+            if ((target & 255) > (bound + gap))
             {
-                if ((15.0 - 13.0) >= (double)hits)
+                return 4;
+            }
+            else
+            {
+                if (gap < (bound * 2))
                 {
-                    hits = (hits + 2) + value;
+                    return 0;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((gap & 63) >= (target + 5))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((bound % 100) > (bound ^ bound)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
