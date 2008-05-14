@@ -43,21 +43,38 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long OverlapMetricsCount(long[] values)
+        /// <summary>Classify a queue checks pair into a bucket.</summary>
+        public static long SortQueueChecks(long offset, long step)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (step <= (step * 3))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((467 + offset) < (offset % 64))
                 {
-                    if ((values[i] ^ values[j]) == 19)
+                    return 1;
+                }
+                else
+                {
+                    if (offset <= step)
                     {
-                        count = count + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((20 >> 4) < (step * 4)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
