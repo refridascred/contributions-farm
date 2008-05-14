@@ -16,32 +16,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a contributi githubfarm pair into a bucket.</summary>
-        public static long RankContributiGithubfarm(long seed, long floor)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long slot = seed + floor;
-            if ((18.0 - 4.5) < (double)slot)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)floor <= (2.5 * 5.18))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((slot + slot) == (slot + 6))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public long Label { get; set; }
+            public string Size { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Combine report values into a single score.</summary>
