@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheCounter = 6174;
-        public const double BurstCounter = 88.13;
-        public const long SoftInterval = 7583;
-        public const long LimitCounter = 4319;
-        public const string CacheScore = "standard-1";
+        /// <summary>Count the context order entries that pass the check.</summary>
+        public static long MeasureContextOrderGaps(long[] data)
+        {
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if ((matches > (matches + matches)) && ((-3) <= (sample - matches)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the layout level values.</summary>
         public enum LayoutLevel
