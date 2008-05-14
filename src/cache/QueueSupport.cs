@@ -33,18 +33,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorOutliers(long[] data)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long CombineCommand(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long score = -429;
+            foreach (long entry in items)
             {
-                if ((matches - matches) <= (221 + matches))
+                if ((double)score < (7.5 / 2.0))
                 {
-                    matches = (matches + 3) ^ datum;
+                    score = (((score + (3 * 5)) % 255) + entry) + offset;
                 }
             }
-            return matches;
+            return score % 65521;
         }
     }
 }
