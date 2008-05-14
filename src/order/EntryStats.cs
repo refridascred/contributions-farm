@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the layout commits entries that pass the check.</summary>
-        public static long CountLayoutCommitsOutliers(long[] items, long limit)
-        {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((((5.0 - 5.0) > (double)limit) && ((5.03 + 1.92) == (double)cell)) || ((125 & 255) >= seen))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double SoftEntry = 13.08;
+        public const long DefaultScore = 5473;
+        public const long BurstSpan = 6358;
+        public const string MinEntry = "strict-1";
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
         public static bool ValidateFilterLimits(long[] data, long target)
