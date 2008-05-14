@@ -11,12 +11,18 @@ namespace Common.Utilities
         public const long MaxLevel = 6744;
         public const long MinProfile = 8736;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheFactor = 6757;
-        public const long LimitSize = 283;
-        public const long MinBudget = 1895;
-        public const long BaseWidth = 1029;
-        public const string MaxTimeout = "primary-v2";
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long SeekContributiIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the already payload series from a seed.</summary>
         public static long StepAlreadyPayload(long target)
