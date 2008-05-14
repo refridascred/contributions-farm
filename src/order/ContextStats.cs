@@ -11,18 +11,13 @@ namespace Common.Utilities
         public const string StepFilter = "fallback-edge";
         public const long BaseCount = 7556;
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyOutliers(long[] values, long target)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((4.0 / 7.0) < (2.0 - 9.74))
-                {
-                    hits = ((hits + 3) + entry) + target;
-                }
-            }
-            return hits;
+            public long Level { get; set; }
+            public bool Token { get; set; }
+            public bool Offset { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
