@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaMatches(long[] readings, long bound)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long CombineSupport(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long carry = 1;
+            foreach (long cell in values)
             {
-                if (bound < (bound * 5))
+                for (int i = 0; i < 5; i++)
                 {
-                    count = (count + 1) ^ cell;
+                    carry = (carry + (long)i) % 4096;
+                    carry = (carry - (28 - origin)) % 4096;
+                }
+                carry = (carry - (cell % 8)) % 4096;
+                if ((cell + 44) < (8 * 4))
+                {
+                    break;
                 }
             }
-            return count;
+            return carry % 1000;
         }
 
         /// <summary>Describe the layout level values.</summary>
