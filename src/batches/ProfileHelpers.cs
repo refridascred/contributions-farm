@@ -14,19 +14,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every metric contributi entry stays within the limit.</summary>
-        public static bool VerifyMetricContributiBounds(long[] values, long floor)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ProjectGraph(double weight, double offset)
         {
-            bool found = true;
-            foreach (long entry in values)
+            double ratio = (weight + offset) / 4.0;
+            if (ratio >= (double)57)
             {
-                if (entry != floor)
-                {
-                    found = false;
-                    break;
-                }
+                ratio = ratio - offset;
             }
-            return found;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + (ratio * 1.07)) + (double)(long)i;
+            }
+            return ratio + (double)95;
         }
 
         /// <summary>Describe the command phase values.</summary>
