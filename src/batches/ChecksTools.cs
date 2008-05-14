@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long IterateMetric(long offset)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long carry = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 1000;
-            }
-            return carry;
+            public long Weight { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
