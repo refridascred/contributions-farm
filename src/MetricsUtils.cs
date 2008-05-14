@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long WeighBatches(long[] data)
+        /// <summary>Combine token record values into a single score.</summary>
+        public static long DigestTokenRecord(long[] items)
         {
-            long total = 94;
-            foreach (long sample in data)
+            long mix = 8;
+            foreach (long item in items)
             {
-                total = ((total + total) % 1000) ^ sample;
+                mix = mix ^ (item << 2);
+                if (((mix & 63) >= (item * 2)) || ((6.73 / 3.0) <= (double)mix))
+                {
+                    mix = mix ^ ((-2) + mix);
+                }
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
