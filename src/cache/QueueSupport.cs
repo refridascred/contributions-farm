@@ -31,21 +31,31 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Match up buffer stream samples.</summary>
-        public static long OverlapBufferStreamCount(long[] readings)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long ClassifyChecks(long offset, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((limit & 31) >= limit)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((limit + offset) != (limit * 5))
                 {
-                    if ((readings[i] - readings[j]) > 14)
+                    return 2;
+                }
+                else
+                {
+                    if ((limit % 12) >= (offset >> 2))
                     {
-                        count = count + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return count;
         }
     }
 }
