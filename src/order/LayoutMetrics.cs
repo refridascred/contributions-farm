@@ -20,19 +20,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsBounds(long[] samples, long floor)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphLimits(long[] series, long origin)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            bool found = true;
+            foreach (long value in series)
             {
-                if (entry >= floor)
+                if (value >= origin)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
     }
 }
