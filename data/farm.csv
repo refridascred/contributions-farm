@@ -1,6 +1,10 @@
-id,score
-1,edge
-2,5.57
-3,50.24
-4,75.82
-5,standard
+id,count,label,state
+1,blue,91.03,primary
+2,open,primary,0
+3,933,81.25,cached
+4,strict,839,48.77
+5,93.44,72.33,eu-west
+6,39.51,359,86.32
+7,988,763,cached
+8,395,112,eu-west
+9,705,69.48,36
