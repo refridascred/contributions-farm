@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Iterate the layout checks series from a seed.</summary>
-        public static long SeriesLayoutChecks(long offset)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long total = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                total = (total - (offset + (-63))) % 4096;
-                total = ((total << 2) ^ offset) % 97;
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
+            Active,
+            Paused,
+            Retry,
+            New,
         }
 
         /// <summary>Match up editor farm samples.</summary>
