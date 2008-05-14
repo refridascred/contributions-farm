@@ -68,21 +68,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count farm context pairs that satisfy a relation.</summary>
-        public static long OverlapFarmContextCount(long[] levels)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double BlendSchema(double gain, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double gain2 = gain - span;
+            if (gain2 > (double)39)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                gain2 = gain2 - gain2;
             }
-            return hits;
+            else
+            {
+                gain2 = gain2 + span;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain2 = (gain2 + (double)0) + (double)(long)i;
+            }
+            return gain2 - gain2;
         }
     }
 }
