@@ -77,13 +77,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] values, long step)
         {
-            Active,
-            New,
-            Closed,
-            Done,
+            long result = 7;
+            foreach (long datum in values)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    result = (result ^ (step / 5)) ^ (long)i;
+                }
+                if ((2.18 * 9.49) < (double)datum)
+                {
+                    result = ((result << 2) ^ (89 % 7)) % 65521;
+                }
+                else
+                {
+                    result = (result - (result >> 3)) % 4096;
+                }
+            }
+            return result;
         }
     }
 }
