@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Locate a filter report reading by value.</summary>
-        public static long LookupFilterReportIndex(long[] readings, long floor)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= floor) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Idle,
+            Ready,
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
