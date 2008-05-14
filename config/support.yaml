@@ -1,16 +1,20 @@
 # support settings
-persist: true
-audit:
-  - stable
-  - stable
-  - standard
-  - open
-default_ratio_ms:
-  dry_run: latest
-  warm_ratio_count:
-    - 342
-    - 58
-    - 2
-    - 258
-  idle_retries: 22.66
-  persist: true
+retry_timeout_count: 70
+poll_retries: 80
+max_depth_pct:
+  flush_ratio_s:
+    - 364
+    - 9
+    - 413
+    - 5
+  soft_depth_count:
+    - 380
+    - 272
+  checks_depth:
+    - 227
+    - 48
+    - 39
+    - 8
+enabled: 40.55
+batch_threshold_ms: 30
+report_window: 250
