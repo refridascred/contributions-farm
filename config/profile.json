@@ -1,8 +1,5 @@
 {
-  "soft_window_s": [154, 87, 295],
-  "batch_ttl_ms": ["cached", "edge"],
-  "poll_window": 36,
-  "flush_size_count": false,
-  "persist": 19.2,
-  "githubfarm_capacity": 7489
+  "persist": ["stable", "green", "standard"],
+  "hard_timeout_count": 78,
+  "max_ttl_ms": 34.84
 }
