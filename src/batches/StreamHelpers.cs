@@ -32,14 +32,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Locate a githubfarm cluster reading by value.</summary>
+        public static long SeekGithubfarmClusterIndex(long[] samples, long origin)
         {
-            New,
-            Queued,
-            Failed,
-            Stale,
-            Dropped,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= origin) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine route values into a single score.</summary>
