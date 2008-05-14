@@ -23,38 +23,17 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long SortSchema(long seed, long offset)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LocateCommandIndex(long[] samples, long seed)
         {
-            if (!((seed << 1) < (seed / 9)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (offset > (offset << 2))
+                if ((samples[i] >= seed) && ((samples[i] % 2) == 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed + seed) == (offset + offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)seed < (8.0 * 12.0))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Grade a tools already value against two limits.</summary>
