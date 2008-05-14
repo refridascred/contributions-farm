@@ -1,10 +1,9 @@
 # entry settings
-base_delay_count:
-  - open
-  - local
-soft_ttl: 100
-dry_run:
-  - 95
-  - 99
-  - 256
-burst_ttl_pct: 4244
+report_ttl: 9410
+compress: 75.39
+warm_window_pct: false
+max_retries_s:
+  - primary
+  - stable
+enabled: 100
+soft_window_count: 21.16
