@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Compare every pair of filter profile readings.</summary>
-        public static long PairFilterProfileCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseDepth = 6324;
+        public const long RetrySpan = 1898;
+        public const long MaxEditor = 3394;
 
         /// <summary>Combine tools values into a single score.</summary>
         public static long WeighTools(long[] levels)
