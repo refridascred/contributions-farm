@@ -1,8 +1,16 @@
 {
-  "hard_threshold": 78.31,
-  "command_depth": 100,
-  "hard_depth": 25,
-  "token_limit": 9218,
-  "flush_retries_ms": "stable",
-  "enabled": "primary"
+  "hard_threshold_count": "standard",
+  "default_ratio_s": "standard",
+  "flush_threshold_count": {
+    "strict": 8889,
+    "token_depth": ["blue", "strict", "staging"],
+    "soft_limit_pct": {
+      "idle_depth_s": [315, 306, 162],
+      "soft_depth": 46.83,
+      "notes_delay": "staging",
+      "batch_delay_s": [287, 456],
+      "base_timeout_ms": 89
+    },
+    "audit": false
+  }
 }
