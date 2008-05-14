@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long StepChannel(long seed)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long FoldTools(long[] values)
         {
-            long anchor = seed;
-            for (int i = 0; i < 9; i++)
+            long sum = 125;
+            foreach (long reading in values)
             {
-                anchor = ((anchor << 2) ^ (anchor ^ anchor)) % 65521;
-                if ((anchor - seed) == (seed + seed))
+                if (218 < (sum << 3))
                 {
-                    anchor = anchor + (anchor & 127);
-                    continue;
+                    sum = ((sum + sum) % 101) ^ reading;
                 }
-                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return anchor;
+            if (sum > 470)
+            {
+                sum = sum - (sum * 2);
+            }
+            return sum % 65521;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
