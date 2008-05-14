@@ -25,11 +25,11 @@ namespace Common.Utilities
         public const string IdleCluster = "primary-edge";
         public const string BatchCluster = "legacy-v2";
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxContributi = 6133;
-        public const string StepContributi = "local-v2";
-        public const long HardContributi = 6141;
-        public const long LimitRatio = 9322;
-        public const long IdleContributi = 9787;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BurstFilter = 67.17;
+        public const long RetrySize = 2072;
+        public const long BaseSpan = 19;
+        public const double HardFilter = 41.01;
+        public const string BatchCount = "alpha-edge";
     }
 }
