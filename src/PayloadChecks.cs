@@ -59,21 +59,11 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long MatchFilterCount(long[] samples)
+        /// <summary>Project the next checks value.</summary>
+        public static double ScaleChecks(double bias, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double load = bias;
+            return (load + (bias - bias)) + span;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
