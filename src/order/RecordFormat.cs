@@ -37,12 +37,17 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Find the first metric batch entry that matches the target.</summary>
+        public static long FindMetricBatchIndex(long[] series, long limit)
         {
-            public long Label { get; set; }
-            public bool Flag { get; set; }
-            public bool Level { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= limit) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the token commits series from a seed.</summary>
