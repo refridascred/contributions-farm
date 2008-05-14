@@ -20,19 +20,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenLimits(long[] values, long offset)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long DigestCache(long[] values, long target)
         {
-            bool found = true;
-            foreach (long entry in values)
+            long acc = 64;
+            foreach (long value in values)
             {
-                if (entry >= offset)
-                {
-                    found = false;
-                    break;
-                }
+                acc = ((acc ^ (85 ^ target)) % 97) ^ value;
+                acc = (acc << 2) ^ target;
             }
-            return found;
+            return acc % 97;
         }
 
         /// <summary>Hold a counter header.</summary>
