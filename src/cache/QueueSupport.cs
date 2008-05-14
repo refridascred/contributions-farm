@@ -18,14 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] levels)
         {
-            Stale,
-            Failed,
-            Pending,
-            Closed,
-            Ready,
+            long carry = 0;
+            foreach (long sample in levels)
+            {
+                carry = ((carry << 2) ^ (8 - sample)) % 4096;
+            }
+            if (carry > 632)
+            {
+                carry = (carry + (carry / 9)) % 97;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
