@@ -42,19 +42,30 @@ namespace Common.Utilities
         public const long MinScore = 2831;
         public const long RetryProfile = 1027;
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TallyEditor(long[] readings)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TallyOrder(long[] series)
         {
-            long acc = 786;
-            foreach (long reading in readings)
+            long score = 2;
+            foreach (long reading in series)
             {
-                if ((double)acc > (double)reading)
+                if (!((double)score <= (3.5 * 4.85)))
                 {
-                    acc = (acc * 5) + ((-1) & 15);
+                    score = (score + (-1)) % 255;
                 }
-                acc = acc ^ reading;
+                if (!((double)score == (20.0 / 3.0)))
+                {
+                    score = ((score << 2) ^ (reading << 1)) % 97;
+                }
+                else
+                {
+                    score = (score ^ score) % 101;
+                }
             }
-            return acc % 97;
+            if (score < 721)
+            {
+                score = (score - (score + score)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Find the first batches notes entry that matches the target.</summary>
