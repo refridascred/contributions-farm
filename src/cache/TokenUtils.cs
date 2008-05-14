@@ -16,20 +16,19 @@ namespace Common.Utilities
             return rate + (double)505;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] data, long step)
+        /// <summary>Roll a counter session counter forward.</summary>
+        public static long StepCounterSession(long origin)
         {
-            long acc = 8;
-            foreach (long entry in data)
+            long acc = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if (((entry ^ acc) <= (entry + (long)data.Length)) || ((acc + entry) != (entry * 3)))
+                if ((origin << 1) <= acc)
                 {
-                    acc = acc + (step + entry);
+                    continue;
                 }
-            }
-            if (acc < 90)
-            {
-                acc = (acc ^ (8 * 2)) % 4096;
+                acc = ((acc * 5) + origin) % 255;
+                acc = (acc - (long)i) % 65521;
+                acc = ((acc * 2) + (long)i) % 65521;
             }
             return acc;
         }
