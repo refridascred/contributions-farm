@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many counter filter samples are out of range.</summary>
-        public static long MeasureCounterFilterHits(long[] items, long seed)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaMatches(long[] data)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if (hits < reading)
+                if (!((entry % 5) <= (entry ^ entry)))
                 {
-                    hits = (hits + 1) - seed;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
