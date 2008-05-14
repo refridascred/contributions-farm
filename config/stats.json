@@ -1,8 +1,19 @@
 {
-  "base_limit": "stable",
-  "verbose": "cached",
-  "support_threshold": 1024,
-  "hard_capacity_count": 500,
-  "min_limit": "standard",
-  "enabled": 60.57
+  "warm_capacity": {
+    "poll_delay_s": 31,
+    "warm_capacity": "cached",
+    "enabled": "cached"
+  },
+  "retry_timeout_s": 1761,
+  "dry_run": 52.33,
+  "soft_timeout_count": 706,
+  "default_timeout_ms": false,
+  "strict": {
+    "audit": "strict",
+    "max_capacity_s": 15.54,
+    "persist": "stable",
+    "notes_threshold": "open",
+    "dry_run": true,
+    "verbose": 15.75
+  }
 }
