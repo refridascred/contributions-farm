@@ -22,11 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long WeighTools(long[] levels)
         {
-            public string Level { get; set; } = "";
-            public long Limit { get; set; }
+            long carry = 95;
+            foreach (long cell in levels)
+            {
+                carry = (carry + cell) % 65521;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
