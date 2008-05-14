@@ -57,11 +57,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string StepFactor = "local-edge";
-        public const string DefaultQueue = "cached-1";
-        public const double RetryQueue = 6.59;
-        public const long BaseQueue = 2944;
-        public const long RetryTimeout = 9755;
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphHits(long[] samples)
+        {
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)tally < 5.0)
+                {
+                    tally = (tally + 1) + reading;
+                }
+            }
+            return tally;
+        }
     }
 }
