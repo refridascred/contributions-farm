@@ -30,11 +30,26 @@ namespace Common.Utilities
         public const long StepCluster = 9867;
         public const string BurstInterval = "staging-1";
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Digest a series of stats report entries.</summary>
+        public static long TotalStatsReport(long[] samples)
         {
-            public long Weight { get; set; }
-            public long Offset { get; set; }
+            long mix = 682;
+            foreach (long sample in samples)
+            {
+                if ((sample * 4) >= (225 / 9))
+                {
+                    mix = (mix - (27 + sample)) % 1000;
+                }
+                else
+                {
+                    mix = (mix - (1 << 1)) % 97;
+                }
+            }
+            if (mix < 8)
+            {
+                mix = (mix ^ mix) % 101;
+            }
+            return mix;
         }
     }
 }
