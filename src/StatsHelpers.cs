@@ -32,12 +32,12 @@ namespace Common.Utilities
         public const long StepSize = 3143;
         public const double CacheCommits = 98.26;
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            Pending,
-            Locked,
+            Stale,
             New,
+            Queued,
         }
     }
 }
