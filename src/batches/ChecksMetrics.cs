@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long GradeFormat(long limit, long origin)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long delta = limit ^ origin;
-            if ((14.0 + 8.47) > (double)limit)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((origin + 756) <= origin)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin ^ limit) < (limit + limit))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((delta + delta) <= (delta % 64))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Synced,
+            Paused,
+            Draft,
+            Stale,
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
