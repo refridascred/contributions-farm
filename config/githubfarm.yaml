@@ -1,9 +1,5 @@
 # githubfarm settings
-batch_depth: 39
-hard_window:
-  - 5
-  - 99
-warm_size_s:
-  - standard
-  - stable
-  - green
+poll_size_count: true
+audit: blue
+batch_threshold: 40
+persist: edge
