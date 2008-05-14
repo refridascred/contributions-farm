@@ -21,12 +21,21 @@ namespace Common.Utilities
         public const double MinSize = 80.91;
         public const double MaxCommand = 23.49;
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Compare every pair of cluster record readings.</summary>
+        public static long PairClusterRecordCount(long[] readings)
         {
-            Ready,
-            Synced,
-            Locked,
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
