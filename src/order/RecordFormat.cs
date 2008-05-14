@@ -52,15 +52,17 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Accumulate batch queue samples.</summary>
-        public static long TotalBatchQueue(long[] items, long limit)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long DeriveFarm(long origin)
         {
-            long acc = 966;
-            foreach (long value in items)
+            long sum = origin;
+            for (int i = 0; i < 18; i++)
             {
-                acc = ((acc + (limit * 4)) % 4096) - value;
+                sum = sum ^ ((-166) / 2);
+                sum = (sum - sum) % 101;
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return acc % 1000;
+            return sum;
         }
     }
 }
