@@ -21,24 +21,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long RankCommits(long floor, long origin)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphGaps(long[] samples, long offset)
         {
-            if (((floor >> 2) > origin) || ((double)origin == (2.9 + 19.0)))
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (floor <= (floor ^ origin))
+                if (!((double)offset > 13.0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
+                    seen = (seen + 1) + entry;
                 }
             }
+            return seen;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
