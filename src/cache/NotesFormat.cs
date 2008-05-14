@@ -40,22 +40,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the tools batches entries that pass the check.</summary>
-        public static long CountToolsBatchesMatches(long[] values)
+        /// <summary>Iterate the commits farm series from a seed.</summary>
+        public static long StepCommitsFarm(long offset)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long state = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if ((item >> 4) <= (634 - (long)values.Length))
+                state = state - state;
+                if ((offset + 5) <= 8)
                 {
-                    matches = matches + 3;
+                    state = (state ^ ((long)i + 74)) % 1000;
                 }
-                else
+                if ((offset * 2) > (state + offset))
                 {
-                    matches = matches - 1;
+                    state = state - (509 >> 2);
+                    state = (state << 2) ^ offset;
                 }
+                state = ((state * 2) + (long)i) % 97;
             }
-            return matches;
+            return state;
         }
     }
 }
