@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextLimits(long[] items, long offset)
+        /// <summary>Count the route context entries that pass the check.</summary>
+        public static long CountRouteContextOutliers(long[] series, long target)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (sample > offset)
+                if (((hits << 3) != (target ^ sample)) && ((hits > (hits >> 1)) && (((-37) - target) < (hits * 3))))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Hold a window snapshot.</summary>
