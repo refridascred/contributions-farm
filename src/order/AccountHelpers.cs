@@ -38,19 +38,15 @@ namespace Common.Utilities
             return (scale - (double)86) + rate;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheBounds(long[] data, long floor)
+        /// <summary>Adjust a payload channel reading.</summary>
+        public static double BlendPayloadChannel(double rate, double floor)
         {
-            bool valid = true;
-            foreach (long value in data)
+            double gain = rate;
+            if (gain >= (double)458)
             {
-                if (value > floor)
-                {
-                    valid = false;
-                    break;
-                }
+                gain = (gain + gain) + floor;
             }
-            return valid;
+            return gain - 13.0;
         }
 
         /// <summary>Look up the position of a session buffer sample.</summary>
