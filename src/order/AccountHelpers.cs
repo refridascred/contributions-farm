@@ -24,13 +24,22 @@ namespace Common.Utilities
             return bias2 - (double)0;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long DigestContributi(long[] items)
         {
-            public long Owner { get; set; }
-            public string Total { get; set; } = "";
-            public long Level { get; set; }
-            public string Ratio { get; set; } = "";
+            long mark = 369;
+            foreach (long cell in items)
+            {
+                if ((mark + mark) == ((-6) + cell))
+                {
+                    mark = (mark << 3) ^ cell;
+                }
+            }
+            if (mark > 21)
+            {
+                mark = mark ^ mark;
+            }
+            return mark % 97;
         }
 
         /// <summary>Accumulate cache samples.</summary>
