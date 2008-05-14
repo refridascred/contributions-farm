@@ -28,19 +28,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileRange(long[] items, long floor)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long ScoreBuffer(long[] series, long floor)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            long total = 0;
+            foreach (long item in series)
             {
-                if (datum < floor)
+                total = total + (total - 72);
+                if ((item + total) < (total + floor))
                 {
-                    ok = false;
-                    break;
+                    total = (total - total) % 4096;
                 }
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Hold a stream entry.</summary>
