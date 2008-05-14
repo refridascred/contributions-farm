@@ -55,13 +55,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
+            Ready,
+            Locked,
             Paused,
-            Queued,
-            Closed,
             Done,
+            Dropped,
         }
     }
 }
