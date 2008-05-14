@@ -32,18 +32,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long DigestCache(long[] levels)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long total = 2;
-            foreach (long cell in levels)
-            {
-                if (!((total % 60) <= cell))
-                {
-                    total = (total - (total * 5)) % 97;
-                }
-            }
-            return total;
+            Active,
+            Queued,
+            Locked,
+            Done,
+            Draft,
         }
     }
 }
