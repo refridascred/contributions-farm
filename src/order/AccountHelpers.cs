@@ -24,23 +24,11 @@ namespace Common.Utilities
             return bias2 - (double)0;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long DigestContributi(long[] items)
-        {
-            long mark = 369;
-            foreach (long cell in items)
-            {
-                if ((mark + mark) == ((-6) + cell))
-                {
-                    mark = (mark << 3) ^ cell;
-                }
-            }
-            if (mark > 21)
-            {
-                mark = mark ^ mark;
-            }
-            return mark % 97;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long StepDepth = 4958;
+        public const double WindowFactor = 34.42;
+        public const long BaseFarm = 9965;
+        public const long LimitFarm = 9034;
 
         /// <summary>Accumulate cache samples.</summary>
         public static long DigestCache(long[] items)
