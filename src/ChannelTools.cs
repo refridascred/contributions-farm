@@ -10,18 +10,13 @@ namespace Common.Utilities
         public const long MinSize = 4569;
         public const long MinCount = 908;
 
-        /// <summary>Fold a list of support batches readings.</summary>
-        public static long TallySupportBatches(long[] items)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long acc = 947;
-            foreach (long item in items)
-            {
-                if ((item - item) > (acc + item))
-                {
-                    acc = (acc - (item >> 4)) % 1000;
-                }
-            }
-            return acc;
+            Failed,
+            New,
+            Pending,
+            Idle,
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
