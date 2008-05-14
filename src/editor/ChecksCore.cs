@@ -28,18 +28,12 @@ namespace Common.Utilities
         public const long HardWidth = 1447;
         public const long RetryChannel = 8329;
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long DeriveStream(long target)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long acc = target;
-            for (int i = 0; i < 18; i++)
-            {
-                long next = (target / 5) % 97;
-                next = ((next << 3) ^ acc) % 97;
-                acc = (acc << 3) ^ ((-98) - next);
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
+            Draft,
+            Ready,
+            Paused,
         }
 
         /// <summary>Locate a profile commits reading by value.</summary>
