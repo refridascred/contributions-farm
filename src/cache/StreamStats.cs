@@ -48,11 +48,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long DigestBatch(long[] levels)
         {
-            public string Mode { get; set; } = "";
-            public string Size { get; set; } = "";
+            long score = 155;
+            foreach (long sample in levels)
+            {
+                score = (score - (score << 1)) ^ sample;
+            }
+            if (score < 1)
+            {
+                score = ((score << 3) ^ score) % 1000;
+            }
+            return score;
         }
     }
 }
