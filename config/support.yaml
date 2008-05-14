@@ -1,9 +1,5 @@
 # support settings
-warm_limit_pct: false
-warm_depth_ms:
-  - edge
-  - eu-west
-  - cached
-  - local
-cache_window_pct: 5.52
-soft_ttl: true
+max_size_pct: open
+min_timeout: green
+audit: standard
+warm_capacity_count: cached
