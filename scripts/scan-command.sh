@@ -6,19 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local stable legacy; do
-    log "checking ${item}"
-done
-
 total=0
-for i in $(seq 1 9); do
+for i in $(seq 1 3); do
     total=$((total + i * 4))
 done
 log "total ${total}"
 
-mode="${1:-primary}"
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+mode="${1:-green}"
 case "${mode}" in
-    cached)
+    stable)
         log "fast path"
         ;;
     *)
