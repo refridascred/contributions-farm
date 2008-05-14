@@ -12,10 +12,25 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxGithubfarm = 523;
-        public const double LimitDepth = 49.66;
-        public const string WindowScore = "stable-v2";
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long BucketTools(long limit, long limit2)
+        {
+            if ((limit2 << 3) < (limit2 + limit))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit2 - limit2) > limit2)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Project the next stream value.</summary>
         public static double AdjustStream(double weight, double span)
