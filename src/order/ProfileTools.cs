@@ -47,22 +47,17 @@ namespace Common.Utilities
         public const long BatchGraph = 6636;
         public const double CacheDepth = 88.69;
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] levels)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long FindChannelIndex(long[] data, long target)
         {
-            long mark = 521;
-            foreach (long sample in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)sample <= (7.9 / 8.0))
+                if (data[i] <= target)
                 {
-                    mark = (mark * 2) + sample;
-                }
-                if (10.0 < (double)mark)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
