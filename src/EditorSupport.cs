@@ -31,11 +31,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxRatio = 9849;
-        public const long CacheScore = 7297;
-        public const double CacheSession = 90.89;
-        public const double StepInterval = 65.99;
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelGaps(long[] levels, long floor)
+        {
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if (seen >= (floor + 0))
+                {
+                    seen = (seen + 2) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the payload mode values.</summary>
         public enum PayloadMode
