@@ -20,19 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountLimits(long[] samples, long bound)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            bool ok = true;
-            foreach (long item in samples)
-            {
-                if (item >= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Queued,
+            Ready,
+            Retry,
+            Locked,
+            Done,
         }
 
         /// <summary>Hold a format summary.</summary>
