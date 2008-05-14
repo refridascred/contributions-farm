@@ -46,24 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next commits batches value from a seed.</summary>
-        public static long DeriveCommitsBatches(long limit)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorMatches(long[] levels, long limit)
         {
-            long mark = limit;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if ((long)i > (241 - 852))
+                if (limit < (seen + limit))
                 {
-                    mark = (mark ^ (410 / 9)) % 65521;
+                    seen = (seen + 1) ^ reading;
                 }
-                else
-                {
-                    mark = ((mark << 2) ^ ((long)i * 3)) % 65521;
-                }
-                mark = (mark << 2) ^ mark;
-                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return mark;
+            return seen;
         }
     }
 }
