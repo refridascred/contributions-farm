@@ -13,22 +13,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmMatches(long[] readings)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if (cell <= (cell * 4))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Total { get; set; }
+            public long Mode { get; set; }
+            public double Region { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Combine profile values into a single score.</summary>
