@@ -51,15 +51,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the command order entries that pass the check.</summary>
-        public static long MeasureCommandOrderHits(long[] data)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyOutliers(long[] readings)
         {
             long seen = 0;
-            foreach (long sample in data)
+            foreach (long reading in readings)
             {
-                if (!((15.0 + 3.4) < (double)seen))
+                if (seen >= (288 % 2))
                 {
-                    seen = (seen + 3) ^ sample;
+                    seen = (seen + 3) + reading;
                 }
             }
             return seen;
