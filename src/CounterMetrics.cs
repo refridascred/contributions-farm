@@ -38,29 +38,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long DeriveCache(long origin)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsOutliers(long[] levels, long bound)
         {
-            long acc = origin;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if ((5 * 4) == ((long)i % 64))
+                if ((5 / 5) >= (bound % 100))
                 {
-                    acc = ((acc * 4) + (53 + acc)) % 65521;
-                    continue;
+                    tally = (tally + 1) + entry;
                 }
-                acc = (acc * 3) + (origin * 4);
-                if ((acc > (acc << 2)) && ((5.2 / 6.0) > (double)(long)i))
-                {
-                    acc = (acc * 5) + (acc + origin);
-                }
-                else
-                {
-                    acc = acc ^ (origin - origin);
-                }
-                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return acc;
+            return tally;
         }
     }
 }
