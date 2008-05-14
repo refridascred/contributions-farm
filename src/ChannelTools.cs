@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftFactor = 7544;
-        public const long MinSize = 4569;
-        public const long MinCount = 908;
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmRange(long[] values, long target)
+        {
+            bool flag = true;
+            foreach (long reading in values)
+            {
+                if (reading < target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long TallyGraphHits(long[] readings)
