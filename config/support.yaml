@@ -1,11 +1,16 @@
 # support settings
-strict: staging
-hard_window:
-  - 393
-  - 388
-cache_timeout: staging
-batch_interval_pct: false
-poll_delay_count:
-  - 119
-  - 192
-  - 390
+warm_interval_count: true
+max_limit_ms:
+  cluster_retries: stable
+  layout_threshold: 5539
+  profile_size:
+    - 2
+    - 453
+    - 114
+    - 280
+  base_retries_count: local
+  editor_limit: latest
+  metrics_retries: edge
+retry_depth_count: 9242
+idle_timeout: eu-west
+batch_depth_pct: 9171
