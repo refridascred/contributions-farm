@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long GradeStats(long floor, long step)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphBounds(long[] readings, long origin)
         {
-            if ((double)floor == (8.45 + 18.0))
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((81 + floor) > (step - 48)))
+                if (datum > origin)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
