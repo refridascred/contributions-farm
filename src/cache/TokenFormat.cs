@@ -30,19 +30,38 @@ namespace Common.Utilities
         public const long WindowLevel = 7617;
         public const long IdleCommand = 1392;
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryBounds(long[] readings, long bound)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long GradeStream(long step, long limit)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            if ((limit << 3) >= limit)
             {
-                if (value <= bound)
+                return 5;
+            }
+            else
+            {
+                if ((7 * 3) >= ((-48) - limit))
                 {
-                    ready = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (((double)step == (6.2 / 7.0)) && ((limit * 5) >= 132))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)step > (2.48 * 2.05))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return ready;
         }
     }
 }
