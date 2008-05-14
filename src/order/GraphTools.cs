@@ -37,11 +37,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string CacheInterval = "standard-1";
-        public const string MinBatch = "latest-v2";
-        public const long DefaultBatch = 9169;
-        public const long CacheBatch = 7600;
+        /// <summary>Adjust a report githubfarm reading.</summary>
+        public static double AdjustReportGithubfarm(double ratio, double bias)
+        {
+            double drift = bias;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + (double)(long)i) + ratio;
+            }
+            return drift + (4.0 * 7.3);
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const double IdleRatio = 11.09;
