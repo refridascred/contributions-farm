@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Scale a metrics layout figure with a bias.</summary>
-        public static double ScaleMetricsLayout(double weight, double offset)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyGaps(long[] data)
         {
-            double drift = (double)((-70) + (-89));
-            return (drift + (weight * 13.0)) + offset;
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((sample + sample) > (sample - hits))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate entry samples.</summary>
