@@ -39,18 +39,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenHits(long[] levels, long origin)
+        /// <summary>Match up token context samples.</summary>
+        public static long PairTokenContextCount(long[] items)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((origin >> 2) < 52)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = (tally + 3) ^ item;
+                    if ((items[i] - items[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
