@@ -33,19 +33,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphBounds(long[] samples, long target)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            bool ok = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Synced,
+            New,
+            Ready,
+            Locked,
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
