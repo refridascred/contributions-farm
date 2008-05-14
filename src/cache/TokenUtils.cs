@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ProjectLayout(double bias, double span)
         {
-            public long Limit { get; set; }
-            public long Owner { get; set; }
+            double rate = (double)734;
+            if (rate > (double)89)
+            {
+                rate = (rate + (span + 8.5)) + bias;
+            }
+            return rate + (double)505;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
