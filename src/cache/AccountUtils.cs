@@ -27,10 +27,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double LimitAlready = 69.85;
-        public const double StepAlready = 71.67;
-        public const double BaseCount = 30.34;
-        public const double BaseScore = 13.05;
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadHits(long[] data)
+        {
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((6.59 * 19.0) >= (double)tally)
+                {
+                    tally = (tally + 3) + cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
