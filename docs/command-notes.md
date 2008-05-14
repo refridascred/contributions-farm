@@ -1,12 +1,16 @@
 # Command notes
 
-The entry module keeps metrics values in sync with the contributi cache.
-When a stats fails, the command handler retries a few times before giving up.
-Use editor settings to tune how often batch data is refreshed.
+The window report groups every githubfarm by stream.
+A stream that stays idle for too long is moved to the githubfarm list.
+Each entry is validated before it reaches the checks queue.
+
+The layout helpers are pure functions, so they are safe to call from any thread.
+A contributi that stays idle for too long is moved to the record list.
+The stream report groups every notes by layout.
 
 ## Guidelines
 
-- Keep token values small
-- Document new payload fields
-- Prefer session defaults
-- Log every account change
+- Prefer command defaults
+- Validate schema input early
+- Log every format change
+- Document new counter fields
