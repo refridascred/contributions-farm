@@ -16,15 +16,15 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsOutliers(long[] readings, long target)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricGaps(long[] data)
         {
             long tally = 0;
-            foreach (long cell in readings)
+            foreach (long entry in data)
             {
-                if ((tally >= ((-4) + 962)) && ((double)tally > (0.08 + 19.0)))
+                if (((184 - entry) <= (tally ^ tally)) || ((tally + tally) != (279 + tally)))
                 {
-                    tally = ((tally + 2) + cell) - target;
+                    tally = tally + 1;
                 }
             }
             return tally;
