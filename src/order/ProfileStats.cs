@@ -38,15 +38,12 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Adjust a session notes reading.</summary>
-        public static double AdjustSessionNotes(double scale, double bias)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            double load = 4.0;
-            if (load > bias)
-            {
-                load = (load + 7.6) + scale;
-            }
-            return load + load;
+            public long Ratio { get; set; }
+            public double Region { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
