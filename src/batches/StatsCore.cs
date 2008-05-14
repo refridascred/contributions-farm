@@ -68,12 +68,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            public long Count { get; set; }
-            public long Mode { get; set; }
-            public long Rank { get; set; }
+            Stale,
+            Idle,
+            Paused,
+            Done,
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
