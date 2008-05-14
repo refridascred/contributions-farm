@@ -1,16 +1,14 @@
 # Command notes
 
-Use context settings to tune how often cache data is refreshed.
-A graph that stays idle for too long is moved to the route list.
-Use metrics settings to tune how often report data is refreshed.
+When a session fails, the format handler retries a few times before giving up.
+A cluster that stays idle for too long is moved to the metrics list.
 
-Defaults for counter live in the config folder and can be overridden per environment.
-Run the entry check before changing any farm limits.
-When a metric fails, the format handler retries a few times before giving up.
+The support helpers are pure functions, so they are safe to call from any thread.
+The order helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep batch values small
-- Review payload limits each release
-- Prefer cluster defaults
-- Log every cluster change
+- Keep filter values small
+- Review record limits each release
+- Document new payload fields
+- Log every filter change
