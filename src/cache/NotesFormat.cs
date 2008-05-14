@@ -27,19 +27,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowLimits(long[] items, long target)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            bool stale = true;
-            foreach (long item in items)
-            {
-                if (item >= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Limit { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Count the tools batches entries that pass the check.</summary>
