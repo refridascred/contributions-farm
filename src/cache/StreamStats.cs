@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const long DefaultInterval = 271;
         public const double CacheSize = 52.0;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string DefaultBudget = "cached";
-        public const long MaxRecord = 9565;
-        public const long RetryRecord = 1675;
-        public const long IdleRecord = 9994;
-        public const double LimitWidth = 26.1;
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountGaps(long[] levels, long origin)
+        {
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((((tally / 8) != (sample ^ origin)) && ((origin / 7) >= (origin ^ origin))) || (origin <= (tally ^ 7)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
         public static double SmoothBuffer(double weight, double floor)
