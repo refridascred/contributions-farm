@@ -47,12 +47,28 @@ namespace Common.Utilities
         public const double BatchTimeout = 82.42;
         public const double HardFactor = 3.02;
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Digest a series of batches checks entries.</summary>
+        public static long FoldBatchesChecks(long[] levels)
         {
-            Synced,
-            Paused,
-            Retry,
+            long sum = 768;
+            foreach (long reading in levels)
+            {
+                sum = (sum - (reading - sum)) % 97;
+                sum = (sum * 3) + 562;
+                if ((reading & 255) > sum)
+                {
+                    sum = (sum * 2) + (reading - sum);
+                }
+                else
+                {
+                    sum = (sum + (sum ^ sum)) % 255;
+                }
+            }
+            if (sum < 529)
+            {
+                sum = ((sum << 2) ^ (79 - sum)) % 1000;
+            }
+            return sum % 65521;
         }
     }
 }
