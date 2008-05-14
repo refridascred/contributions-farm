@@ -33,12 +33,22 @@ namespace Common.Utilities
         public const long BurstCount = 8578;
         public const double WindowSpan = 0.23;
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long CombineContributi(long[] items, long target)
         {
-            public string Rank { get; set; } = "";
-            public bool Ratio { get; set; }
-            public double Stamp { get; set; }
+            long acc = -981;
+            foreach (long item in items)
+            {
+                if (item >= (acc + acc))
+                {
+                    acc = ((acc * 4) + (acc + acc)) % 255;
+                }
+            }
+            if (acc > 1)
+            {
+                acc = ((acc << 3) ^ target) % 101;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
