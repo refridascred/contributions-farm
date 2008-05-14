@@ -1,4 +1,13 @@
 # githubfarm settings
-max_retries_s: 329
-profile_capacity: 500
-compress: 35.68
+channel_threshold: staging
+batch_threshold_pct: false
+enabled: 46
+hard_window:
+  hard_window: 1024
+  checks_retries: 632
+  min_limit_pct: 30
+  cache_limit_count: 2.73
+tools_limit:
+  audit: standard
+  cluster_interval: 5611
+  verbose: 4609
