@@ -1,20 +1,14 @@
 # support settings
-enabled: 67
-payload_limit:
-  base_ttl_pct: true
-  account_retries: 7691
-  enabled: 27.42
-  batch_window:
-    cache_timeout_ms: fallback
-    cache_limit: 500
-    compress: 48
-    retry_size: false
-  notes_size:
-    - 322
-    - 217
-    - 49
-    - 184
-  batch_threshold_ms: open
-sync_ratio: true
-batch_ratio: 1024
-channel_size: 79.0
+burst_timeout_s: 500
+cache_capacity_count:
+  cache_size: 14.31
+  route_ratio:
+    - primary
+    - legacy
+  idle_threshold: green
+  compress: 9.83
+  soft_ratio_count: latest
+persist: 30
+burst_limit:
+  - 347
+  - 288
