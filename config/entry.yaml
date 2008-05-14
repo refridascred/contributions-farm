@@ -1,4 +1,6 @@
 # entry settings
-default_limit: legacy
-strict: true
-flush_size_s: local
+min_ttl: 87.15
+stats_ttl: legacy
+persist: 53.24
+idle_size: 2576
+default_ratio: false
