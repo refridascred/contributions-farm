@@ -39,18 +39,29 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long WeighProfile(long[] data, long limit)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long StepStats(long offset)
         {
-            long state = -9;
-            foreach (long cell in data)
+            long sum = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (((state % 3) >= limit) && ((11.0 / 5.0) >= (double)state))
+                if ((2 <= (sum ^ (long)i)) || ((long)i < (sum + sum)))
                 {
-                    state = ((state << 3) ^ (0 - limit)) ^ cell;
+                    sum = sum + (sum >> 1);
+                    break;
                 }
+                else
+                {
+                    sum = sum ^ (offset - sum);
+                }
+                sum = (sum - (offset % 10)) % 97;
+                if (((long)i * 5) == (sum >> 4))
+                {
+                    sum = (sum - (sum - (long)i)) % 97;
+                }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return state;
+            return sum;
         }
     }
 }
