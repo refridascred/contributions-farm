@@ -41,17 +41,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long IterateChannel(long bound)
-        {
-            long score = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                score = (score * 3) + score;
-                score = ((score * 3) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MaxScore = 8752;
+        public const long WindowMetric = 8584;
+        public const string MinMetric = "local-edge";
+        public const long HardMetric = 6252;
+        public const long MinSize = 9223;
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long MeasureFarmHits(long[] samples, long seed)
