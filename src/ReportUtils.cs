@@ -18,12 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            public bool Label { get; set; }
-            public bool Weight { get; set; }
-            public long Offset { get; set; }
+            Ready,
+            Closed,
+            Done,
+            Stale,
+            Queued,
         }
 
         /// <summary>Describe the session state values.</summary>
