@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardBudget = 9752;
-        public const long LimitSpan = 2126;
-        public const long WindowCommits = 8766;
-        public const string BatchSpan = "standard-1";
-        public const long MinCommits = 8626;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BurstSchema = 42.64;
+        public const string LimitFactor = "primary-edge";
+        public const string CacheSchema = "primary-1";
+        public const string SoftSchema = "fallback";
 
         /// <summary>Combine channel values into a single score.</summary>
         public static long WeighChannel(long[] series, long offset)
