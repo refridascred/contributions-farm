@@ -23,19 +23,17 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextRange(long[] items, long origin)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long DigestMetric(long[] readings, long limit)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            long score = 507;
+            foreach (long cell in readings)
             {
-                if (reading > origin)
-                {
-                    ready = false;
-                    break;
-                }
+                score = (((score * 5) + (cell + score)) % 101) + limit;
+                score = (score * 4) + score;
+                score = (score + (63 / 7)) % 1000;
             }
-            return ready;
+            return score % 65521;
         }
 
         /// <summary>Fold a list of contributi stream readings.</summary>
