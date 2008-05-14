@@ -36,38 +36,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank report batches input into a small class.</summary>
-        public static long GradeReportBatches(long target, long seed)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryMatches(long[] series)
         {
-            if (!((target << 1) > (seed % 5)))
+            long seen = 0;
+            foreach (long cell in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target <= (target / 3)) || ((double)seed >= (double)1))
+                if (cell < (cell - seen))
                 {
-                    return 8;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    if ((double)target != (2.9 + 14.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((7.57 - 9.0) < (double)target)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Adjust a support reading.</summary>
