@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountGaps(long[] series)
+        /// <summary>Digest a series of filter batches entries.</summary>
+        public static long FoldFilterBatches(long[] samples, long target)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long mix = 95;
+            foreach (long value in samples)
             {
-                if ((tally * 4) > (-2))
+                if (((0 + (-9)) != (mix * 5)) && (target > 12))
                 {
-                    tally = (tally + 1) + item;
+                    mix = (mix + 573) % 255;
+                }
+                else
+                {
+                    mix = (mix ^ (value ^ value)) % 97;
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
