@@ -16,13 +16,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
-        {
-            Stale,
-            Pending,
-            Done,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxFactor = 5852;
+        public const long LimitPayload = 3059;
+        public const long HardScore = 1718;
+        public const long SoftSize = 7486;
+        public const double SoftPayload = 68.06;
 
         /// <summary>Describe the session state values.</summary>
         public enum SessionState
