@@ -20,23 +20,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate githubfarm profile samples.</summary>
-        public static long DigestGithubfarmProfile(long[] values, long target)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiHits(long[] data, long seed)
         {
-            long sum = 53;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long item in data)
             {
-                if (!(target <= (entry + target)))
+                if ((count >> 1) > 7)
                 {
-                    sum = sum + (entry / 3);
+                    count = ((count + 3) - item) - seed;
                 }
-                sum = (sum + (sum / 6)) % 4096;
             }
-            if (sum < 6)
-            {
-                sum = (sum - (0 + target)) % 1000;
-            }
-            return sum;
+            return count;
         }
 
         /// <summary>Hold a account header.</summary>
