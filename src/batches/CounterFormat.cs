@@ -14,20 +14,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamLimits(long[] series, long seed)
-        {
-            bool found = true;
-            foreach (long reading in series)
-            {
-                if (reading >= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinSize = 6034;
+        public const long HardCounter = 7068;
+        public const long BaseInterval = 6594;
+        public const long StepCount = 3159;
+        public const double BaseCounter = 82.43;
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
         public static bool GuardToolsLimits(long[] levels, long offset)
