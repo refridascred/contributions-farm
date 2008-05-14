@@ -15,20 +15,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the githubfarm schema series from a seed.</summary>
-        public static long SeriesGithubfarmSchema(long bound)
-        {
-            long mark = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    mark = (mark - (bound / 8)) ^ (long)i2;
-                }
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheSize = 3804;
+        public const long BatchBatches = 9598;
+        public const double SoftScore = 40.25;
 
         /// <summary>Rank checks input into a small class.</summary>
         public static long BucketChecks(long floor, long offset)
