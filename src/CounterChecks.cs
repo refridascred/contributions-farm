@@ -61,18 +61,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a session entry reading by value.</summary>
-        public static long FindSessionEntryIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string DefaultTimeout = "staging-edge";
+        public const long SoftRatio = 2734;
+        public const long StepDepth = 2324;
+        public const long LimitFactor = 5543;
 
         /// <summary>Combine notes values into a single score.</summary>
         public static long TallyNotes(long[] items, long origin)
