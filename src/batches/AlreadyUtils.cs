@@ -35,13 +35,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long IterateProfile(long floor)
         {
-            Ready,
-            New,
-            Dropped,
-            Stale,
+            long mark = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                mark = (mark * 3) + mark;
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
