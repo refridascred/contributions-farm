@@ -1,6 +1,20 @@
 {
-  "soft_threshold_count": 81,
-  "cache_timeout": 37.62,
-  "verbose": "edge",
-  "warm_ratio": 75
+  "sync_retries_pct": 13.08,
+  "min_ratio_pct": {
+    "warm_size": ["open", "standard", "strict"],
+    "soft_threshold_s": 2445,
+    "readonly": "staging",
+    "burst_ttl": "staging"
+  },
+  "burst_ratio": [441, 225, 51, 406],
+  "audit": "stable",
+  "already_ttl": "fallback",
+  "enabled": {
+    "warm_interval": 5309,
+    "default_ttl_count": 3552,
+    "cache_delay_pct": "strict",
+    "warm_retries_count": "strict",
+    "metrics_threshold": true,
+    "hard_capacity": [401, 485, 288, 340]
+  }
 }
