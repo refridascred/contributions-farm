@@ -22,12 +22,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long SeekSupportIndex(long[] readings, long limit)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LocateWindowIndex(long[] levels, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (readings[i] < limit)
+                if ((levels[i] <= target) && ((levels[i] % 2) == 0))
                 {
                     return (long)i;
                 }
