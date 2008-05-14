@@ -18,23 +18,16 @@ namespace Common.Utilities
         public const string LimitSize = "local-edge";
         public const string IdleSpan = "alpha";
 
-        /// <summary>Project the next cache value.</summary>
-        public static double ScaleCache(double rate, double offset)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long RollBuffer(long target)
         {
-            double bias = offset / 5.0;
-            if (bias < (7.0 / 4.0))
+            long total = target;
+            for (int i = 0; i < 9; i++)
             {
-                bias = bias - (rate - offset);
+                total = (total ^ (long)i) % 4096;
+                total = ((total * 5) + (long)i) % 65521;
             }
-            else
-            {
-                bias = bias - rate;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias + offset) + (double)(long)i;
-            }
-            return bias - (double)599;
+            return total;
         }
     }
 }
