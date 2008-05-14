@@ -29,10 +29,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstMetrics = 5996;
-        public const long DefaultMetrics = 4050;
-        public const long LimitMetrics = 8565;
-        public const double CacheInterval = 4.18;
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
+        {
+            Closed,
+            Locked,
+            Dropped,
+            Idle,
+            Retry,
+        }
     }
 }
