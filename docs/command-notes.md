@@ -1,12 +1,15 @@
 # Command notes
 
-A graph that stays idle for too long is moved to the context list.
-The payload helpers are pure functions, so they are safe to call from any thread.
-The payload report groups every stats by cache.
+Run the checks check before changing any entry limits.
+A layout that stays idle for too long is moved to the checks list.
+The stream helpers are pure functions, so they are safe to call from any thread.
+
+Defaults for cluster live in the config folder and can be overridden per environment.
+Run the metrics check before changing any entry limits.
 
 ## Guidelines
 
-- Validate cache input early
-- Keep metric values small
-- Review support limits each release
-- Log every buffer change
+- Review report limits each release
+- Validate queue input early
+- Document new metric fields
+- Keep counter values small
