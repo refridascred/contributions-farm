@@ -93,24 +93,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long CombineStream(long[] levels, long target)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long StepSupport(long step)
         {
-            long result = 300;
-            foreach (long item in levels)
+            long acc = step;
+            for (int i = 0; i < 20; i++)
             {
-                result = ((result * 5) + (item * 3)) + target;
-                if (!(((item * 5) != (result % 64)) && ((double)result != (17.0 * 16.0))))
-                {
-                    result = result ^ (71 << 2);
-                }
-                result = ((result * 4) + (item >> 3)) % 4096;
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            if (result < 374)
-            {
-                result = ((result * 2) + (5 & 15)) % 97;
-            }
-            return result;
+            return acc;
         }
     }
 }
