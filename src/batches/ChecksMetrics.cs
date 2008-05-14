@@ -27,23 +27,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ProjectNotes(double scale, double bias)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TallyGraph(long[] readings)
         {
-            double mean = 19.0;
-            if (mean >= mean)
+            long acc = 63;
+            foreach (long item in readings)
             {
-                mean = mean + (scale * 0.9);
+                acc = ((acc * 4) + (item ^ 931)) % 1000;
             }
-            else
-            {
-                mean = mean - scale;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - (bias - 8.0)) + (double)(long)i;
-            }
-            return mean - (scale * 5.9);
+            return acc;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
