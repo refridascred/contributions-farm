@@ -78,39 +78,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long RankToken(long step, long limit)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatBounds(long[] samples, long offset)
         {
-            long diff = step ^ limit;
-            if ((limit << 2) == (diff + diff))
+            bool ok = true;
+            foreach (long item in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((limit & 1) < (step << 1)))
+                if (item != offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((limit / 3) < diff))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((diff * 3) < (3 % 100)) && ((46 ^ diff) < (step / 8)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
