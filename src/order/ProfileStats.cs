@@ -45,16 +45,39 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long RollOrder(long step)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long RankContributi(long target, long seed)
         {
-            long carry = step;
-            for (int i = 0; i < 6; i++)
+            long prev = target + seed;
+            if ((70 + prev) >= 8)
             {
-                carry = (carry * 3) + (carry & 255);
-                carry = ((carry * 4) + (long)i) % 97;
+                return 2;
             }
-            return carry;
+            else
+            {
+                if (!(seed <= (399 / 2)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((11.0 / 8.0) == (double)seed)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((seed * 3) >= (seed + 4))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
