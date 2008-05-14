@@ -13,10 +13,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstLevel = 4040;
-        public const string IdlePayload = "fallback-edge";
-        public const double HardPayload = 54.97;
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TotalCluster(long[] samples, long step)
+        {
+            long mix = 7;
+            foreach (long datum in samples)
+            {
+                if ((77 <= (mix + step)) && ((double)step != (5.0 * 13.0)))
+                {
+                    mix = (mix + (step % 100)) - datum;
+                }
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Accumulate route samples.</summary>
         public static long TotalRoute(long[] data)
