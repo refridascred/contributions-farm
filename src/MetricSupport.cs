@@ -15,17 +15,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LookupFilterIndex(long[] items, long origin)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long SeriesEntry(long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if (items[i] < origin)
-                {
-                    return (long)i;
-                }
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Hold a already header.</summary>
