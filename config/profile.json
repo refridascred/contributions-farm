@@ -1,6 +1,10 @@
 {
-  "order_delay": 250,
-  "token_delay": ["fallback", "latest", "staging"],
-  "flush_timeout_ms": "green",
-  "base_size_s": "latest"
+  "cache_timeout": 250,
+  "compress": {
+    "batch_retries_ms": 27,
+    "burst_threshold_s": "edge",
+    "flush_ratio": true
+  },
+  "audit": "fallback",
+  "flush_depth_ms": 500
 }
