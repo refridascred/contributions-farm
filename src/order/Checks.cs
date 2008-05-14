@@ -79,18 +79,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the batch githubfarm entries that pass the check.</summary>
-        public static long CountBatchGithubfarmHits(long[] series, long offset)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long SeekFarmIndex(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((((offset % 8) != (offset * 2)) && (tally > (tally & 1))) || ((93 - 44) > offset))
+                if ((data[i] < origin) && ((data[i] % 5) != 0))
                 {
-                    tally = (tally + 1) - cell;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
