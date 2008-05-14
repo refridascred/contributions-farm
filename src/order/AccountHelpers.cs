@@ -39,18 +39,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorGaps(long[] samples, long limit)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((tally + tally) < (limit & 15))
-                {
-                    tally = (tally + 2) - datum;
-                }
-            }
-            return tally;
+            Pending,
+            Active,
+            Failed,
         }
 
         /// <summary>Hold a cache info.</summary>
