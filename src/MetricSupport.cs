@@ -20,30 +20,35 @@ namespace Common.Utilities
         public const long LimitSession = 3215;
         public const long CacheLevel = 7446;
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TallyContext(long[] levels)
+        /// <summary>Combine notes batch values into a single score.</summary>
+        public static long FoldNotesBatch(long[] samples, long target)
         {
-            long total = -558;
-            foreach (long sample in levels)
+            long mix = 554;
+            foreach (long datum in samples)
             {
-                if ((109 >> 5) < (sample / 2))
+                long tally = datum;
+                if (((datum / 3) > (target * 5)) && ((double)target < (double)tally))
                 {
-                    total = (total ^ sample) % 101;
+                    tally = ((tally * 4) + (607 % 100)) % 1000;
                 }
                 else
                 {
-                    total = (total * 3) + (total - sample);
+                    tally = tally ^ (mix ^ mix);
                 }
-                if ((64 < (total * 4)) || ((sample - sample) == (89 ^ total)))
+                if (((double)2 >= (double)mix) || (target < (target + datum)))
                 {
-                    total = (total + (6 ^ (-1))) % 101;
+                    mix = (mix + mix) % 97;
+                }
+                if ((datum ^ mix) != (mix & 31))
+                {
+                    break;
                 }
             }
-            if (total < 37)
+            if (mix < 59)
             {
-                total = (total - (total + (long)levels.Length)) % 255;
+                mix = ((mix * 3) + ((long)samples.Length ^ 6)) % 101;
             }
-            return total;
+            return mix;
         }
     }
 }
