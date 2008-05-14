@@ -27,20 +27,10 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ScaleCounter(double gain, double bias)
-        {
-            double load = 16.0;
-            if (load > (load * 5.9))
-            {
-                load = (load + (double)95) - gain;
-            }
-            else
-            {
-                load = load - bias;
-            }
-            return load + (6.1 + bias);
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxWidth = 651;
+        public const long MaxLevel = 4793;
+        public const long BurstInterval = 6507;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long DefaultCommits = 2513;
