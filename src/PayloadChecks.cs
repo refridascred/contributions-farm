@@ -46,12 +46,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string LimitWidth = "latest-edge";
-        public const long WindowFactor = 6884;
-        public const string RetryPayload = "cached-1";
-        public const long BatchBudget = 7337;
-        public const long DefaultCount = 9254;
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchGaps(long[] data)
+        {
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((cell % 5) <= (cell - cell))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
         public static long BucketStats(long limit, long limit2)
