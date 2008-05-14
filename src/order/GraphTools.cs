@@ -20,15 +20,24 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Adjust a report githubfarm reading.</summary>
-        public static double AdjustReportGithubfarm(double ratio, double bias)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long ClassifySchema(long limit, long bound)
         {
-            double drift = bias;
-            for (int i = 0; i < 4; i++)
+            if (((3.0 / 2.0) < (double)limit) && (664 < bound))
             {
-                drift = (drift + (double)(long)i) + ratio;
+                return 2;
             }
-            return drift + (4.0 * 7.3);
+            else
+            {
+                if ((double)limit <= (double)(-98))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Count the farm checks entries that pass the check.</summary>
