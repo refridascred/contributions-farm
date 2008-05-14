@@ -30,13 +30,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ProjectCache(double gain, double offset)
         {
-            Failed,
-            Idle,
-            Ready,
-            Draft,
+            double weight = offset + 2.0;
+            if (weight < gain)
+            {
+                weight = weight + 0.8;
+            }
+            else
+            {
+                weight = weight + gain;
+            }
+            return weight - (gain / 7.0);
         }
     }
 }
