@@ -15,17 +15,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long RollFilter(long target)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long total = target;
-            for (int i = 0; i < 6; i++)
-            {
-                total = (total * 5) + (target + total);
-                total = (total << 3) ^ (390 + (long)i);
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
+            New,
+            Idle,
+            Closed,
+            Locked,
+            Pending,
         }
 
         /// <summary>Fold a list of context readings.</summary>
