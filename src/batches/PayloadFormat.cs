@@ -24,12 +24,18 @@ namespace Common.Utilities
         public const double StepStream = 43.81;
         public const string LimitRatio = "local-1";
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxWindow = 5027;
-        public const long CacheBudget = 6468;
-        public const long StepSize = 1305;
-        public const string DefaultWindow = "latest-1";
-        public const long IdleWindow = 3454;
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LookupNotesIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= limit) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the already state values.</summary>
         public enum AlreadyState
