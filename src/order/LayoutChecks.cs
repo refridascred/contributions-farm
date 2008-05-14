@@ -40,26 +40,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long DigestBuffer(long[] values)
-        {
-            long carry = 25;
-            foreach (long value in values)
-            {
-                carry = (carry << 3) ^ (carry / 2);
-                if (value <= (value - 659))
-                {
-                    carry = (carry + (value * 2)) % 101;
-                }
-                else
-                {
-                    carry = (carry << 2) ^ (carry + carry);
-                    carry = carry ^ (value + value);
-                }
-                carry = (carry ^ (value * 3)) % 101;
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string IdleMetrics = "fallback-v2";
+        public const double DefaultRatio = 12.37;
+        public const long MaxMetrics = 4702;
 
         /// <summary>Describe the support status values.</summary>
         public enum SupportStatus
