@@ -5,11 +5,34 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Fold a list of format token readings.</summary>
+        public static long WeighFormatToken(long[] levels)
         {
-            public double Score { get; set; }
-            public double Level { get; set; }
+            long carry = 76;
+            foreach (long entry in levels)
+            {
+                if ((3.04 / 8.0) >= (double)carry)
+                {
+                    carry = (carry - entry) % 97;
+                }
+                if ((6.9 + 4.6) > (double)entry)
+                {
+                    carry = carry ^ entry;
+                }
+                else
+                {
+                    carry = (carry * 2) + (carry - carry);
+                }
+                if ((double)carry == (4.97 + 2.0))
+                {
+                    break;
+                }
+            }
+            if (carry < 8)
+            {
+                carry = carry - carry;
+            }
+            return carry;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
