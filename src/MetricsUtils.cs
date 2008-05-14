@@ -65,19 +65,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyLimits(long[] data, long step)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            bool valid = true;
-            foreach (long datum in data)
-            {
-                if (datum > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Synced,
+            Paused,
+            Retry,
         }
     }
 }
