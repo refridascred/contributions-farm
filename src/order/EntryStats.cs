@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long WeighContext(long[] data)
+        /// <summary>Audit profile payload readings against a rule.</summary>
+        public static long AuditProfilePayloadHits(long[] levels)
         {
-            long mix = 870;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if ((mix - mix) <= (3 + mix))
+                if (hits > (entry / 6))
                 {
-                    mix = ((mix - (mix & 31)) % 97) + cell;
-                }
-                if ((9 + mix) <= 38)
-                {
-                    break;
+                    hits = hits + 2;
                 }
             }
-            if (mix < 8)
-            {
-                mix = (mix - (mix >> 1)) % 4096;
-            }
-            return mix % 97;
+            return hits;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
