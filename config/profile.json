@@ -1,12 +1,8 @@
 {
-  "poll_limit": "standard",
-  "stats_interval": {
-    "default_timeout": 9361,
-    "burst_depth": 4761,
-    "cache_size": "latest",
-    "batch_ttl": 56.57,
-    "cache_capacity_s": 2260,
-    "soft_ttl_s": "fallback"
-  },
-  "enabled": "stable"
+  "batch_capacity": 24,
+  "cache_retries": 8,
+  "verbose": 500,
+  "batches_timeout": "strict",
+  "poll_capacity_count": ["green", "strict", "strict"],
+  "persist": 11
 }
