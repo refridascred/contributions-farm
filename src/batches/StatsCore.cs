@@ -82,19 +82,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of metrics buffer readings.</summary>
-        public static long FoldMetricsBuffer(long[] readings)
+        /// <summary>Match up channel editor samples.</summary>
+        public static long PairChannelEditorCount(long[] items)
         {
-            long score = 355;
-            foreach (long reading in readings)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                score = (((score * 4) + (507 + (-78))) % 97) - reading;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (score < (-684))
-            {
-                score = ((score * 5) + (score * 3)) % 255;
-            }
-            return score % 1000;
+            return tally;
         }
     }
 }
