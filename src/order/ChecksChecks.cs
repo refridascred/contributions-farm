@@ -34,13 +34,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] readings, long target)
         {
-            public string Flag { get; set; } = "";
-            public bool Count { get; set; }
-            public long Rank { get; set; }
-            public long Size { get; set; }
+            long anchor = 43;
+            foreach (long cell in readings)
+            {
+                if ((298 + 951) >= (target * 3))
+                {
+                    anchor = ((anchor * 4) + (cell % 64)) % 101;
+                }
+            }
+            return anchor % 4096;
         }
     }
 }
