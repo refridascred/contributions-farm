@@ -1,12 +1,10 @@
 {
-  "contributi_ratio": 30,
-  "soft_capacity_ms": false,
-  "already_threshold": 9396,
-  "enabled": {
-    "hard_depth": 52.74,
-    "payload_ratio": "edge",
-    "idle_capacity_ms": false,
-    "burst_retries": false,
-    "strict": [395, 142, 277]
-  }
+  "max_limit_pct": "legacy",
+  "counter_delay": 1024,
+  "min_capacity_ms": {
+    "persist": false,
+    "flush_threshold": "open",
+    "flush_interval_count": 43.37
+  },
+  "batch_retries": false
 }
