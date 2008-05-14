@@ -34,11 +34,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double DefaultDepth = 11.28;
-        public const long CacheSupport = 6318;
-        public const string StepTimeout = "open-1";
-        public const long MaxSupport = 8123;
-        public const string BaseSpan = "stable-edge";
+        /// <summary>Combine record values into a single score.</summary>
+        public static long ScoreRecord(long[] readings)
+        {
+            long mix = 715;
+            foreach (long entry in readings)
+            {
+                if (((entry * 4) == (entry * 5)) || ((entry % 2) == (entry - mix)))
+                {
+                    mix = (mix - entry) % 255;
+                }
+                if (((double)mix <= 2.29) && (2.8 > (double)entry))
+                {
+                    mix = (mix ^ entry) % 65521;
+                }
+            }
+            return mix % 1000;
+        }
     }
 }
