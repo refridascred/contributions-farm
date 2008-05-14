@@ -31,10 +31,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowEntry = 42;
-        public const long CacheEntry = 9650;
-        public const long StepEntry = 4271;
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
+        {
+            public string Flag { get; set; } = "";
+            public long Rank { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Describe the payload mode values.</summary>
         public enum PayloadMode
