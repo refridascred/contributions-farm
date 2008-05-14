@@ -34,18 +34,16 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmMatches(long[] values, long target)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long SeriesSupport(long seed)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long state = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if ((matches / 3) == (matches >> 5))
-                {
-                    matches = ((matches + 2) - sample) - target;
-                }
+                state = state + seed;
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Define report limits and defaults.</summary>
