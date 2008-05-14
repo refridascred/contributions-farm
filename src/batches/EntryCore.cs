@@ -57,10 +57,19 @@ namespace Common.Utilities
         public const long RetryBatches = 2739;
         public const double CacheSpan = 42.05;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchScore = 548;
-        public const double DefaultWidth = 67.45;
-        public const double StepWindow = 34.46;
-        public const long HardSpan = 951;
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterRange(long[] readings, long step)
+        {
+            bool flag = true;
+            foreach (long sample in readings)
+            {
+                if (sample != step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
