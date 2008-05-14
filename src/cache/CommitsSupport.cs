@@ -53,32 +53,13 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long SortOrder(long seed, long step)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long span = seed ^ step;
-            if (7 > (span + seed))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step << 2) > step)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((605 > (span + seed)) && (span > 252))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public string Offset { get; set; } = "";
+            public double Mode { get; set; }
+            public bool Score { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
