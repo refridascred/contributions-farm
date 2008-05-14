@@ -39,12 +39,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Grade a window contributi value against two limits.</summary>
+        public static long ClassifyWindowContributi(long target, long bound)
         {
-            public long Region { get; set; }
-            public long Flag { get; set; }
-            public long Count { get; set; }
+            if (!((bound + bound) == (618 / 6)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((target & 7) >= (bound + bound))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Project the next cluster value.</summary>
