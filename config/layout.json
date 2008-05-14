@@ -1,6 +1,6 @@
 {
-  "base_capacity": false,
-  "max_ttl": 518,
-  "dry_run": ["cached", "edge", "staging"],
-  "strict": true
+  "layout_retries": 250,
+  "account_ratio": 50,
+  "enabled": 58,
+  "warm_limit_s": 88.32
 }
