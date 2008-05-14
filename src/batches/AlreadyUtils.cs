@@ -16,21 +16,23 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Match up editor farm samples.</summary>
-        public static long MatchEditorFarmCount(long[] values)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long FoldPayload(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = -952;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                carry = (carry - (carry + datum)) % 97;
+                if (!((5.2 + 19.0) > (double)carry))
                 {
-                    if ((values[i] + values[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = ((carry << 3) ^ carry) % 4096;
                 }
             }
-            return matches;
+            if (carry < 52)
+            {
+                carry = ((carry * 5) + carry) % 65521;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Describe the metric phase values.</summary>
