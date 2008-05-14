@@ -1,5 +1,6 @@
 {
-  "farm_ratio": "legacy",
-  "batch_delay": "stable",
-  "base_delay": "strict"
+  "retry_size": 6391,
+  "context_interval": 83,
+  "readonly": ["legacy", "strict", "latest"],
+  "persist": ["blue", "green", "strict"]
 }
