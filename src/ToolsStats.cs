@@ -19,18 +19,13 @@ namespace Common.Utilities
         public const long StepChecks = 3268;
         public const double BurstChecks = 73.59;
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportHits(long[] samples, long step)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((6.7 - 7.5) != (double)count)
-                {
-                    count = ((count + 1) ^ value) + step;
-                }
-            }
-            return count;
+            Closed,
+            Pending,
+            Synced,
+            Draft,
         }
 
         /// <summary>Hold a schema summary.</summary>
