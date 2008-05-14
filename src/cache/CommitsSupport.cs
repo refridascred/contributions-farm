@@ -50,19 +50,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] values, long offset)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long MatchRouteCount(long[] data)
         {
-            long mix = 2;
-            foreach (long reading in values)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = ((mix + (mix % 97)) - reading) - offset;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (mix > 27)
-            {
-                mix = (mix * 3) + 615;
-            }
-            return mix % 1000;
+            return count;
         }
 
         /// <summary>Hold a context header.</summary>
