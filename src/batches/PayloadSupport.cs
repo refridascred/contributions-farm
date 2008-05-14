@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyMatches(long[] data, long target)
         {
-            Closed,
-            Retry,
-            New,
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if (((0.55 * 1.02) >= (double)sample) && ((3.61 / 5.0) > (double)sample))
+                {
+                    seen = (seen + 3) + target;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
