@@ -1,11 +1,13 @@
 # Command notes
 
-Defaults for schema live in the config folder and can be overridden per environment.
-Run the buffer check before changing any editor limits.
-The metric module keeps checks values in sync with the batch cache.
+The graph report groups every buffer by metrics.
+Each record is validated before it reaches the support queue.
+
+Use cache settings to tune how often queue data is refreshed.
+Each format is validated before it reaches the metric queue.
 
 ## Guidelines
 
-- Prefer contributi defaults
-- Review queue limits each release
-- Log every record change
+- Document new payload fields
+- Log every account change
+- Review order limits each release
