@@ -35,28 +35,29 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank farm layout input into a small class.</summary>
-        public static long GradeFarmLayout(long floor, long offset)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long bound, long target)
         {
-            if ((offset - offset) == (floor & 127))
+            long prev = bound + target;
+            if ((bound & 127) < (bound << 2))
             {
-                return 1;
+                return 2;
             }
             else
             {
-                if ((174 * 4) != (offset >> 5))
+                if ((double)prev <= (double)30)
                 {
-                    return 2;
+                    return 4;
                 }
                 else
                 {
-                    if ((floor / 5) >= (9 >> 3))
+                    if (!((prev >> 1) > (bound << 1)))
                     {
-                        return 0;
+                        return 6;
                     }
                     else
                     {
-                        return 7;
+                        return 5;
                     }
                 }
             }
