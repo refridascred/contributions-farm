@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            public long Score { get; set; }
-            public bool Total { get; set; }
-            public double Owner { get; set; }
+            Idle,
+            Closed,
+            Done,
+            Synced,
+            Retry,
         }
 
         /// <summary>Hold a command stats.</summary>
