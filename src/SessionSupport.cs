@@ -21,19 +21,32 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyRange(long[] items, long seed)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long RankStream(long offset, long bound)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            long gap = offset - bound;
+            if (gap >= (gap >> 5))
             {
-                if (sample > seed)
+                return 2;
+            }
+            else
+            {
+                if (!((547 ^ gap) != (677 + 2)))
                 {
-                    ready = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (offset < (gap * 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return ready;
         }
     }
 }
