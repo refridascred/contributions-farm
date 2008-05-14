@@ -1,16 +1,11 @@
 # Command notes
 
-The window report groups every githubfarm by stream.
-A stream that stays idle for too long is moved to the githubfarm list.
-Each entry is validated before it reaches the checks queue.
-
-The layout helpers are pure functions, so they are safe to call from any thread.
-A contributi that stays idle for too long is moved to the record list.
-The stream report groups every notes by layout.
+Each stats is validated before it reaches the cache queue.
+Use layout settings to tune how often format data is refreshed.
 
 ## Guidelines
 
-- Prefer command defaults
-- Validate schema input early
-- Log every format change
-- Document new counter fields
+- Keep route values small
+- Document new notes fields
+- Log every channel change
+- Validate format input early
