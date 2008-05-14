@@ -20,15 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine githubfarm channel values into a single score.</summary>
-        public static long FoldGithubfarmChannel(long[] values)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long anchor = 772;
-            foreach (long reading in values)
-            {
-                anchor = (anchor ^ (reading + reading)) % 4096;
-            }
-            return anchor % 97;
+            public bool Count { get; set; }
+            public long Weight { get; set; }
+            public string Flag { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Audit command readings against a rule.</summary>
