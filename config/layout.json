@@ -1,20 +1,13 @@
 {
-  "base_depth": "local",
-  "soft_interval_pct": 68,
-  "burst_interval": {
-    "batch_ratio": 70,
-    "stats_delay": 58.5,
-    "persist": {
-      "strict": [291, 436, 494],
-      "min_window_s": "open",
-      "notes_ttl": ["primary", "blue", "stable"],
-      "hard_ratio": false,
-      "persist": 40.79,
-      "contributi_interval": 97.77
-    },
-    "enabled": 6045,
-    "buffer_size": 30
+  "hard_limit": "open",
+  "min_window_ms": 17.59,
+  "soft_ratio": "open",
+  "readonly": {
+    "warm_delay_ms": "green",
+    "strict": 100,
+    "default_limit": [372, 133],
+    "idle_size": "blue",
+    "hard_ratio": "stable"
   },
-  "persist": [366, 393],
-  "audit": "latest"
+  "audit": 39.27
 }
