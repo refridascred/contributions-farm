@@ -1,8 +1,8 @@
-id,level,active
-1,strict,423
-2,876,36.61
-3,724,stable
-4,703,24.22
-5,474,75
-6,primary,420
-7,564,eu-west
+id,weight,level,owner,token
+1,latest,79.7,0.1,blue
+2,latest,green,52.86,893
+3,41.99,94.13,fallback,73.25
+4,76.98,primary,1.79,40
+5,872,edge,376,local
+6,standard,primary,open,70.27
+7,green,92.56,88.14,primary
