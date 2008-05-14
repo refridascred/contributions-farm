@@ -54,13 +54,18 @@ namespace Common.Utilities
         public const double BaseWidth = 22.85;
         public const double MinDepth = 90.58;
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricOutliers(long[] readings)
         {
-            Retry,
-            New,
-            Idle,
-            Failed,
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if (count < (19 - reading))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
