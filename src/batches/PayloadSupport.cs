@@ -19,12 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxNotes = 4665;
-        public const long BatchNotes = 759;
-        public const double IdleInterval = 33.16;
-        public const double WindowFactor = 43.38;
-        public const double MinInterval = 58.57;
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksGaps(long[] values)
+        {
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((hits + reading) < (reading & 7))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the channel status values.</summary>
         public enum ChannelStatus
