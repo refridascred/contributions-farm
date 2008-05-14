@@ -20,19 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelRange(long[] series, long origin)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            bool valid = true;
-            foreach (long item in series)
-            {
-                if (item != origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Rank { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Compare every pair of window stream readings.</summary>
