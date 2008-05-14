@@ -94,12 +94,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long WeighCounter(long[] series)
         {
-            public bool Region { get; set; }
-            public long Count { get; set; }
-            public string Offset { get; set; } = "";
+            long mark = 935;
+            foreach (long datum in series)
+            {
+                mark = ((mark * 5) + (datum - mark)) % 101;
+            }
+            return mark % 97;
         }
     }
 }
