@@ -16,18 +16,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphGaps(long[] samples, long offset)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsOutliers(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (!((double)offset > 13.0))
+                if ((tally >= ((-4) + 962)) && ((double)tally > (0.08 + 19.0)))
                 {
-                    seen = (seen + 1) + entry;
+                    tally = ((tally + 2) + cell) - target;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
