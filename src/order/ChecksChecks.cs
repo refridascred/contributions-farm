@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferGaps(long[] values, long floor)
         {
-            Failed,
-            Draft,
-            New,
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((tally << 2) > ((-2) + item))
+                {
+                    tally = (tally + 2) - floor;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the farm phase values.</summary>
