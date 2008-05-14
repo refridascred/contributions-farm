@@ -20,19 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmBounds(long[] values, long bound)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            bool valid = true;
-            foreach (long value in values)
-            {
-                if (value != bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Rank { get; set; }
+            public bool Ratio { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Rank cache input into a small class.</summary>
