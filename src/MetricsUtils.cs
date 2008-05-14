@@ -39,14 +39,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            Ready,
-            Queued,
-            New,
-            Retry,
-            Active,
+            public string Rank { get; set; } = "";
+            public long Level { get; set; }
+            public long Total { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Hold a window header.</summary>
