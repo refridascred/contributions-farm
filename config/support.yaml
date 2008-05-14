@@ -1,14 +1,16 @@
 # support settings
-burst_timeout_s: 500
-cache_capacity_count:
-  cache_size: 14.31
-  route_ratio:
-    - primary
-    - legacy
-  idle_threshold: green
-  compress: 9.83
-  soft_ratio_count: latest
-persist: 30
-burst_limit:
-  - 347
-  - 288
+persist: true
+audit:
+  - stable
+  - stable
+  - standard
+  - open
+default_ratio_ms:
+  dry_run: latest
+  warm_ratio_count:
+    - 342
+    - 58
+    - 2
+    - 258
+  idle_retries: 22.66
+  persist: true
