@@ -1,10 +1,11 @@
 # entry settings
-cache_size_s: 1024
-soft_size_s:
-  - latest
-  - cached
-dry_run: standard
-verbose:
-  - staging
-  - staging
-metrics_ttl: strict
+min_timeout: strict
+batch_limit_pct:
+  - strict
+  - strict
+  - green
+  - open
+token_size: 64
+flush_interval_count: 1066
+retry_interval_count: strict
+notes_delay: edge
