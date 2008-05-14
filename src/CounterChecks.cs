@@ -68,27 +68,26 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] readings)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TallyNotes(long[] items, long origin)
         {
-            long anchor = 898;
-            foreach (long cell in readings)
+            long score = 878;
+            foreach (long sample in items)
             {
-                if (!((1 + cell) >= (1 + anchor)))
+                if ((score & 7) <= (origin * 5))
                 {
-                    anchor = anchor ^ (anchor << 1);
+                    score = (((score * 3) + origin) % 101) ^ sample;
                 }
-                else
+                if ((8.86 / 7.0) <= (double)score)
                 {
-                    anchor = (anchor * 3) + (anchor & 63);
+                    break;
                 }
-                anchor = anchor + (cell >> 3);
             }
-            if (anchor < 930)
+            if (score > 4)
             {
-                anchor = (anchor - (anchor >> 1)) % 101;
+                score = (score - 86) % 4096;
             }
-            return anchor % 1000;
+            return score % 1000;
         }
     }
 }
