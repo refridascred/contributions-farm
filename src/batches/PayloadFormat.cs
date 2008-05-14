@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit editor profile readings against a rule.</summary>
-        public static long AuditEditorProfileOutliers(long[] levels, long offset)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueGaps(long[] series)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (hits >= (35 & 255))
+                if ((28 % 10) != (count & 1))
                 {
-                    hits = ((hits + 2) - entry) - offset;
+                    count = (count + 1) + item;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
