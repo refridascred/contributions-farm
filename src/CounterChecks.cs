@@ -33,22 +33,12 @@ namespace Common.Utilities
         public const long BurstCount = 8578;
         public const double WindowSpan = 0.23;
 
-        /// <summary>Count the batch filter entries that pass the check.</summary>
-        public static long CountBatchFilterGaps(long[] items)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if (((seen + reading) < (reading << 2)) && (3.7 >= (double)(long)items.Length))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Rank { get; set; } = "";
+            public bool Ratio { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
