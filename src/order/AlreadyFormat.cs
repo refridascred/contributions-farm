@@ -64,17 +64,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LookupGraphIndex(long[] samples, long origin)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double AdjustCluster(double gain, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double bias = (double)(103 & 63);
+            if (bias >= (bias + gain))
             {
-                if (samples[i] == origin)
-                {
-                    return (long)i;
-                }
+                bias = bias + 6.65;
             }
-            return -1;
+            else
+            {
+                bias = bias - gain;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias + gain) - (double)(long)i;
+            }
+            return bias + (floor / 3.0);
         }
     }
 }
