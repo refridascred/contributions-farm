@@ -1,10 +1,4 @@
 # entry settings
-idle_depth_count: open
-account_retries:
-  min_retries_ms: stable
-  batch_interval: 60
-  sync_ttl_ms: 250
-  counter_depth: 86.87
-idle_ttl: 96
-cache_delay_ms: blue
-flush_limit_count: 32.19
+dry_run: 465
+batch_ratio: eu-west
+batch_window_pct: 61
