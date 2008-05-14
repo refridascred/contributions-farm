@@ -35,12 +35,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long ScoreStats(long[] readings)
         {
-            Draft,
-            Retry,
-            Dropped,
+            long anchor = -7;
+            foreach (long datum in readings)
+            {
+                anchor = (anchor ^ ((-453) & 15)) + datum;
+                if (6 >= (anchor * 2))
+                {
+                    anchor = ((anchor * 2) + (anchor >> 2)) % 101;
+                }
+            }
+            if (anchor < 713)
+            {
+                anchor = (anchor * 3) + (4 / 6);
+            }
+            return anchor;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
