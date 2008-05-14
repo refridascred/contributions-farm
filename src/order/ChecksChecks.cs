@@ -33,24 +33,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank layout schema input into a small class.</summary>
-        public static long RankLayoutSchema(long origin, long limit)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsHits(long[] data)
         {
-            if ((limit / 2) <= (origin / 7))
+            long seen = 0;
+            foreach (long cell in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin - origin) > limit)
+                if (((seen - seen) <= (cell >> 3)) || ((cell >= (seen * 5)) || ((667 % 10) > cell)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
     }
 }
