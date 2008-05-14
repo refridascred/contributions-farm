@@ -11,14 +11,11 @@ namespace Common.Utilities
         public const long MinTimeout = 7648;
         public const double WindowCount = 27.02;
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
-        {
-            New,
-            Queued,
-            Ready,
-            Synced,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryInterval = 5644;
+        public const long LimitRoute = 729;
+        public const long CacheSize = 6879;
+        public const string BaseDepth = "latest-1";
 
         /// <summary>Classify a stream pair into a bucket.</summary>
         public static long GradeStream(long step, long limit)
