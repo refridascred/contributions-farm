@@ -1,7 +1,7 @@
 {
-  "cache_limit_ms": "edge",
-  "stats_capacity": [53, 102],
-  "max_retries": "standard",
-  "batches_ttl": [334, 143, 461, 325],
-  "sync_depth_ms": "eu-west"
+  "audit": 3685,
+  "retry_threshold": true,
+  "burst_ratio_s": 8,
+  "batch_size": "staging",
+  "metric_window": false
 }
