@@ -14,12 +14,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdleInterval = 3201;
-        public const long SoftFactor = 3977;
-        public const long StepCount = 5608;
-        public const long BasePayload = 1237;
-        public const long MinCount = 1841;
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchGaps(long[] levels)
+        {
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if (tally <= (tally + tally))
+                {
+                    tally = (tally + 2) ^ item;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the graph state values.</summary>
         public enum GraphState
