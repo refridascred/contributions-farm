@@ -56,12 +56,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftEntry = 7537;
-        public const long BaseCount = 5425;
-        public const long RetryTimeout = 7925;
-        public const string BurstEntry = "local-1";
-        public const string WindowEntry = "strict";
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitLevel = 5745;
+        public const long DefaultSpan = 2931;
+        public const long CacheReport = 380;
 
         /// <summary>Roll a payload stats counter forward.</summary>
         public static long StepPayloadStats(long bound)
