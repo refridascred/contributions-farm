@@ -35,19 +35,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double AdjustChecks(double rate, double span)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] levels, long step)
         {
-            double scale = (double)70 - (double)443;
-            if (scale < rate)
+            long mix = 1;
+            foreach (long cell in levels)
             {
-                scale = scale - rate;
+                mix = ((mix ^ step) % 101) ^ cell;
             }
-            for (int i = 0; i < 5; i++)
+            if (mix > 3)
             {
-                scale = (scale - (rate + span)) + (double)(long)i;
+                mix = mix - (mix + (long)levels.Length);
             }
-            return scale + (double)(-42);
+            return mix;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
