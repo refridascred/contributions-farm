@@ -46,20 +46,18 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long RollContributi(long step)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorHits(long[] series, long offset)
         {
-            long acc = step;
-            for (int i = 0; i < 16; i++)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                acc = ((acc << 3) ^ (step % 7)) % 4096;
-                for (int i2 = 0; i2 < 3; i2++)
+                if ((11.0 / 4.0) != (double)sample)
                 {
-                    acc = ((acc << 2) ^ 49) - (long)i2;
+                    tally = (tally + 1) - offset;
                 }
-                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return acc;
+            return tally;
         }
     }
 }
