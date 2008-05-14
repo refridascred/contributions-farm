@@ -61,23 +61,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsGaps(long[] levels, long floor)
-        {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)count == (7.0 * 5.6))
-                {
-                    count = ((count + 1) + reading) - floor;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepPayload = 3363;
+        public const long StepSize = 4841;
+        public const double BatchPayload = 55.83;
+        public const long StepCount = 1586;
 
         /// <summary>Measure how many record support samples are out of range.</summary>
         public static long AuditRecordSupportMatches(long[] values, long limit)
