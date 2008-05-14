@@ -37,19 +37,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a metric support reading.</summary>
-        public static double ScaleMetricSupport(double gain, double offset)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            double bias = (gain * 9.5) * 15.0;
-            if (bias <= 3.89)
-            {
-                bias = bias + gain;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias - (offset + bias)) + (double)(long)i;
-            }
-            return bias + bias;
+            public double Flag { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Roll a route counter forward.</summary>
