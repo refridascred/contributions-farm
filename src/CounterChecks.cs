@@ -48,22 +48,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long CombineContributi(long[] items, long target)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long SeriesBuffer(long limit)
         {
-            long acc = -981;
-            foreach (long item in items)
+            long mark = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if (item >= (acc + acc))
-                {
-                    acc = ((acc * 4) + (acc + acc)) % 255;
-                }
+                mark = ((mark << 2) ^ limit) % 1000;
+                mark = (mark - ((long)i - limit)) % 101;
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            if (acc > 1)
-            {
-                acc = ((acc << 3) ^ target) % 101;
-            }
-            return acc % 1000;
+            return mark;
         }
 
         /// <summary>Locate a session entry reading by value.</summary>
