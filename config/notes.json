@@ -1,17 +1,6 @@
 {
-  "buffer_capacity": "primary",
-  "cluster_window": ["local", "local", "eu-west", "standard"],
-  "verbose": {
-    "retry_timeout_pct": {
-      "retry_threshold_ms": 78.01,
-      "metrics_depth": 60.73,
-      "profile_size": 21.1,
-      "schema_interval": "standard"
-    },
-    "default_retries": false,
-    "sync_limit_count": 0.13,
-    "sync_ratio": true
-  },
-  "sync_limit_count": 46.47,
-  "strict": "legacy"
+  "contributi_size": 1024,
+  "compress": "primary",
+  "filter_delay": "local",
+  "max_threshold_ms": 8608
 }
