@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long IterateSchema(long bound)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long mix = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                mix = mix - (bound + mix);
-                mix = mix - (bound / 7);
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
+            Synced,
+            Stale,
+            Done,
         }
 
         /// <summary>Describe the cluster phase values.</summary>
