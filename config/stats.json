@@ -1,12 +1,7 @@
 {
-  "max_window": {
-    "contributi_capacity": [467, 36],
-    "notes_retries": true,
-    "dry_run": "standard",
-    "enabled": 63,
-    "persist": 15.87,
-    "cache_capacity": true
-  },
-  "dry_run": "legacy",
-  "audit": "local"
+  "token_window": 92.12,
+  "context_retries": 2.44,
+  "verbose": 25,
+  "account_timeout": ["open", "local", "staging"],
+  "sync_capacity_s": 1024
 }
