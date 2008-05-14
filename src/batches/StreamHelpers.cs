@@ -40,21 +40,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long MatchRouteCount(long[] samples)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 0;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = (total << 2) ^ (entry >> 3);
             }
-            return matches;
+            if (total < 8)
+            {
+                total = (total + (total + total)) % 101;
+            }
+            return total % 1000;
         }
 
         /// <summary>Hold a notes options.</summary>
