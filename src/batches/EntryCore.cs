@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Blend two filter measurements.</summary>
-        public static double SmoothFilter(double bias, double span)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long PairGithubfarmCount(long[] levels)
         {
-            double weight = (double)(-380) / 3.0;
-            if (weight < (double)299)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight = (weight - bias) + span;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                weight = weight + (double)47;
-            }
-            return weight + weight;
+            return matches;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
