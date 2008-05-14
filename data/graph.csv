@@ -1,9 +1,6 @@
-id,ratio,state,rank
-1,fallback,stable,832
-2,0.9,83.68,54.14
-3,115,875,52.09
-4,537,650,fallback
-5,3.38,979,73.6
-6,535,565,eu-west
-7,229,705,standard
-8,428,513,primary
+id,ratio
+1,15.53
+2,839
+3,33.93
+4,edge
+5,115
