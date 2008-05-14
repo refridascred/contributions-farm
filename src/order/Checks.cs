@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheFarm = 411;
-        public const long MinFarm = 2289;
-        public const long BurstCount = 7133;
-        public const long IdleInterval = 2944;
-        public const long StepWidth = 965;
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long DigestFarm(long[] levels)
+        {
+            long anchor = 86;
+            foreach (long value in levels)
+            {
+                if (697 >= value)
+                {
+                    anchor = ((anchor << 3) ^ (anchor + value)) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor + (anchor + 565)) % 65521;
+                }
+                if ((anchor - value) >= value)
+                {
+                    anchor = (anchor - 82) % 1000;
+                }
+            }
+            if (anchor < 639)
+            {
+                anchor = ((anchor << 2) ^ anchor) % 101;
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long TotalStats(long[] items)
