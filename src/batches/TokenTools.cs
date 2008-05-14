@@ -28,38 +28,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank entry batches input into a small class.</summary>
-        public static long ClassifyEntryBatches(long limit, long limit2)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            if ((3.5 - 1.95) <= (double)limit2)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((limit >= (limit + 9)) || ((double)limit2 >= (double)limit))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((double)limit2 != (double)4))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((limit2 - limit2) < (limit2 * 3)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public bool Score { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
