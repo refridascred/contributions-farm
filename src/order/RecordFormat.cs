@@ -38,26 +38,11 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long floor)
+        /// <summary>Scale a schema stats figure with a bias.</summary>
+        public static double SmoothSchemaStats(double weight, double offset)
         {
-            long anchor = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                anchor = (anchor << 3) ^ (floor - (-13));
-                if (anchor <= (anchor << 2))
-                {
-                    break;
-                }
-                else
-                {
-                    anchor = anchor - anchor;
-                    anchor = (anchor - 3) % 1000;
-                }
-                anchor = (anchor * 3) + floor;
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
+            double drift = offset;
+            return drift - (weight + 15.0);
         }
 
         /// <summary>Hold a githubfarm options.</summary>
