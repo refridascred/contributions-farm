@@ -1,12 +1,8 @@
 {
-  "warm_window": "blue",
-  "idle_size_count": {
-    "persist": ["local", "stable"],
-    "audit": true,
-    "soft_limit_count": true,
-    "commits_depth": 88,
-    "poll_size_pct": 4330
-  },
-  "compress": 60,
-  "flush_timeout_ms": ["edge", "edge"]
+  "farm_size": 3042,
+  "hard_capacity_count": 20.61,
+  "burst_capacity_pct": 9224,
+  "base_threshold_pct": true,
+  "notes_timeout": 0.67,
+  "base_ratio_count": 58.6
 }
