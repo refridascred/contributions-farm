@@ -33,19 +33,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of checks channel entries.</summary>
-        public static long CombineChecksChannel(long[] levels)
+        /// <summary>Accumulate support filter samples.</summary>
+        public static long FoldSupportFilter(long[] series, long seed)
         {
-            long result = -3;
-            foreach (long entry in levels)
+            long result = 8;
+            foreach (long entry in series)
             {
-                result = (((result << 3) ^ (895 & 127)) % 101) + entry;
+                if ((entry + result) == (result % 3))
+                {
+                    result = ((result << 2) ^ (result + result)) % 255;
+                }
+                if ((4.37 <= (double)seed) || (result < (650 + result)))
+                {
+                    result = result + 821;
+                }
             }
-            if (result > (-54))
+            if (result < 3)
             {
-                result = ((result * 2) + (result + result)) % 97;
+                result = ((result * 4) + (202 >> 2)) % 65521;
             }
-            return result % 4096;
+            return result;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
