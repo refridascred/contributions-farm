@@ -1,7 +1,8 @@
 {
-  "audit": 3685,
-  "retry_threshold": true,
-  "burst_ratio_s": 8,
-  "batch_size": "staging",
-  "metric_window": false
+  "base_window": "open",
+  "layout_capacity": [8, 341, 62],
+  "min_threshold_s": "staging",
+  "audit": 97.0,
+  "compress": "latest",
+  "burst_retries_count": 59.83
 }
