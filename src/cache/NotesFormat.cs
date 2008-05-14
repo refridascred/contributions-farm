@@ -5,28 +5,32 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long DigestWindow(long[] series, long seed)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long target, long step)
         {
-            long sum = 71;
-            foreach (long entry in series)
+            long offset = target + step;
+            if (!(12.0 >= (double)step))
             {
-                sum = (sum ^ 2) % 4096;
-                sum = sum + (entry + 98);
-                if (!(((long)series.Length << 3) < (entry + entry)))
+                return 0;
+            }
+            else
+            {
+                if (target <= (target - step))
                 {
-                    sum = (sum << 2) ^ (entry + entry);
+                    return 5;
                 }
                 else
                 {
-                    sum = sum ^ (seed % 100);
+                    if ((offset & 7) < target)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (sum > (-56))
-            {
-                sum = (sum << 2) ^ seed;
-            }
-            return sum;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
