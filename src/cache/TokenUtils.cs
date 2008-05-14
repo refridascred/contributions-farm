@@ -32,13 +32,17 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LookupQueueIndex(long[] values, long seed)
         {
-            public bool Owner { get; set; }
-            public long Score { get; set; }
-            public string Count { get; set; } = "";
-            public double Ratio { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
