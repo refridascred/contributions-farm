@@ -89,20 +89,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TotalTools(long[] values, long floor)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] items)
         {
-            long anchor = -6;
-            foreach (long value in values)
+            long score = 75;
+            foreach (long datum in items)
             {
-                anchor = (((anchor * 5) + (value << 1)) % 1000) - floor;
-                anchor = anchor + (value / 6);
-                if ((value * 3) == (anchor ^ 6))
-                {
-                    break;
-                }
+                score = ((score << 2) ^ score) - datum;
             }
-            return anchor;
+            return score;
         }
     }
 }
