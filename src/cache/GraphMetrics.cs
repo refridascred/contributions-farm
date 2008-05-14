@@ -66,10 +66,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double BaseFarm = 68.85;
-        public const long BurstFarm = 4277;
-        public const long DefaultSize = 8408;
-        public const long BaseFactor = 7847;
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ScaleFarm(double ratio, double floor)
+        {
+            double weight = (double)(0 << 2);
+            if (weight >= 12.0)
+            {
+                weight = ((weight + 6.9) + ratio) - floor;
+            }
+            return weight + 14.0;
+        }
     }
 }
