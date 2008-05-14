@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphHits(long[] data)
+        /// <summary>Project the next order value.</summary>
+        public static double ProjectOrder(double scale, double bias)
         {
-            long count = 0;
-            foreach (long entry in data)
+            double bias2 = (double)(564 >> 5);
+            if (bias2 > (1.0 + scale))
             {
-                if ((4.4 / 6.0) == (double)count)
-                {
-                    count = (count + 1) ^ entry;
-                }
+                bias2 = bias2 - (scale / 2.0);
             }
-            return count;
+            else
+            {
+                bias2 = bias2 + bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = (bias2 + scale) + (double)(long)i;
+            }
+            return bias2 - (double)0;
         }
 
         /// <summary>Hold a already summary.</summary>
