@@ -19,11 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long DeriveContext(long offset)
         {
-            public long Score { get; set; }
-            public long Total { get; set; }
+            long result = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Hold a window entry.</summary>
