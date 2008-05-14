@@ -34,19 +34,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long FoldSchema(long[] readings)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksOutliers(long[] samples)
         {
-            long mark = 55;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                mark = (mark ^ (cell % 8)) % 65521;
+                if ((double)hits <= (1.6 * 4.44))
+                {
+                    hits = (hits + 1) ^ entry;
+                }
             }
-            if (mark > 54)
-            {
-                mark = (mark << 3) ^ (mark >> 1);
-            }
-            return mark % 65521;
+            return hits;
         }
 
         /// <summary>Combine session values into a single score.</summary>
