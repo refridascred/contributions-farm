@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Match up window samples.</summary>
-        public static long CompareWindowCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheContributi = 5348;
+        public const long IdleContributi = 6284;
+        public const long StepLevel = 1941;
+        public const long RetryDepth = 9045;
+        public const string WindowSize = "strict-edge";
 
         /// <summary>Blend two metrics measurements.</summary>
         public static double ProjectMetrics(double bias, double bias2)
