@@ -1,10 +1,4 @@
 # support settings
-cache_limit: false
-schema_delay: legacy
-hard_depth_count:
-  window_depth: 60
-  audit: strict
-  soft_limit_ms: 30
-  warm_limit_s: strict
-  support_ttl: green
-default_capacity_pct: blue
+verbose: primary
+flush_window: standard
+metric_capacity: legacy
