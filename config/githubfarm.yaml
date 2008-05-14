@@ -1,19 +1,4 @@
 # githubfarm settings
-cluster_capacity:
-  queue_ratio:
-    profile_ratio: 65.06
-    batch_ratio_s: true
-    min_retries: 45
-    hard_depth_pct: local
-    base_ratio: strict
-  hard_limit_s: cached
-  already_interval: true
-  burst_size_count: true
-readonly: 60
-cache_interval: 14
-entry_size:
-  - 140
-  - 465
-  - 220
-hard_size_ms: 1024
-retry_limit_ms: legacy
+base_interval_ms: false
+batch_capacity_count: latest
+retry_size_pct: true
