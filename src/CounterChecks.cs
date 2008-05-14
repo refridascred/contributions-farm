@@ -36,26 +36,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long FoldPayload(long[] items, long step)
+        /// <summary>Count the batch filter entries that pass the check.</summary>
+        public static long CountBatchFilterGaps(long[] items)
         {
-            long carry = 44;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if ((step - step) != ((long)items.Length + value))
+                if (((seen + reading) < (reading << 2)) && (3.7 >= (double)(long)items.Length))
                 {
-                    carry = (carry << 2) ^ (1 << 1);
+                    seen = seen + 1;
                 }
-                if (((-8) * 4) >= (carry + carry))
+                else
                 {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            if (carry > 79)
-            {
-                carry = ((carry << 3) ^ (carry + step)) % 1000;
-            }
-            return carry % 4096;
+            return seen;
         }
 
         /// <summary>Describe the session kind values.</summary>
