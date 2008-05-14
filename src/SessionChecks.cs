@@ -5,14 +5,39 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long RankStats(long offset, long floor)
         {
-            Retry,
-            Dropped,
-            New,
-            Pending,
-            Draft,
+            long delta = offset - floor;
+            if (offset < (offset << 1))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!(floor < (offset + delta)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((16.0 + 6.86) > (double)floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((delta + floor) < (26 * 2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
