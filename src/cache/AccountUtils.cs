@@ -15,16 +15,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double AdjustGraph(double bias, double bias2)
-        {
-            double mean = (double)(5 + 18);
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (((mean - mean) - (double)(long)i) + bias) - bias2;
-            }
-            return mean + (mean * 3.31);
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstSpan = 8162;
+        public const double MinContext = 96.79;
+        public const long WindowLevel = 1102;
+        public const double BatchContext = 22.32;
+        public const string IdleSize = "latest";
 
         /// <summary>Describe the command state values.</summary>
         public enum CommandState
