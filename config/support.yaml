@@ -1,14 +1,7 @@
 # support settings
-poll_depth:
-  - 431
-  - 479
 audit:
-  - latest
-  - cached
-  - staging
-  - local
-metrics_retries:
   - open
-  - latest
-  - eu-west
-  - primary
+  - local
+  - stable
+hard_size_ms: true
+base_window_pct: 2050
