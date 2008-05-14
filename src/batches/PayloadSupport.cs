@@ -13,18 +13,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksGaps(long[] values)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandMatches(long[] series, long offset)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if ((hits + reading) < (reading & 7))
+                if ((tally << 3) != (5 % 3))
                 {
-                    hits = hits + 2;
+                    tally = ((tally + 3) + datum) + offset;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Describe the channel status values.</summary>
