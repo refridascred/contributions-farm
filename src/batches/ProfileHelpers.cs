@@ -40,30 +40,18 @@ namespace Common.Utilities
         public const long MinScore = 2831;
         public const long RetryProfile = 1027;
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] series)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long DigestAccount(long[] samples, long limit)
         {
-            long score = 2;
-            foreach (long reading in series)
+            long score = 6;
+            foreach (long sample in samples)
             {
-                if (!((double)score <= (3.5 * 4.85)))
+                if (sample > (sample + score))
                 {
-                    score = (score + (-1)) % 255;
-                }
-                if (!((double)score == (20.0 / 3.0)))
-                {
-                    score = ((score << 2) ^ (reading << 1)) % 97;
-                }
-                else
-                {
-                    score = (score ^ score) % 101;
+                    score = (score + (sample ^ limit)) % 4096;
                 }
             }
-            if (score < 721)
-            {
-                score = (score - (score + score)) % 65521;
-            }
-            return score;
+            return score % 4096;
         }
 
         /// <summary>Find the first batches notes entry that matches the target.</summary>
