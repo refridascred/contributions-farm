@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Measure how many format report samples are out of range.</summary>
+        public static long TallyFormatReportMatches(long[] values, long offset)
         {
-            Ready,
-            New,
-            Failed,
-            Queued,
-            Dropped,
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if ((double)offset != (8.0 + 3.3))
+                {
+                    hits = (hits + 1) + sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
