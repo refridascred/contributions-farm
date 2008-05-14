@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count the record cluster entries that pass the check.</summary>
-        public static long AuditRecordClusterOutliers(long[] levels)
+        /// <summary>Digest a series of order buffer entries.</summary>
+        public static long TallyOrderBuffer(long[] series)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long score = 7;
+            foreach (long value in series)
             {
-                if ((entry * 2) < (entry - entry))
+                if (((score % 97) >= score) || ((value << 1) < (score * 3)))
                 {
-                    seen = seen + 1;
+                    score = score + score;
                 }
             }
-            return seen;
+            return score % 4096;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
