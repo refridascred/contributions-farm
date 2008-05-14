@@ -18,21 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long OverlapCounterCount(long[] data)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Label { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Fold a list of stats readings.</summary>
