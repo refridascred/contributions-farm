@@ -27,11 +27,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long DigestCache(long[] levels)
         {
-            public bool Offset { get; set; }
-            public double Region { get; set; }
+            long total = 2;
+            foreach (long cell in levels)
+            {
+                if (!((total % 60) <= cell))
+                {
+                    total = (total - (total * 5)) % 97;
+                }
+            }
+            return total;
         }
     }
 }
