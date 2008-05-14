@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitInterval = 2136;
-        public const double SoftGithubfarm = 39.28;
-        public const long SoftLevel = 2077;
-        public const long BurstSize = 935;
-        public const long MinGithubfarm = 9776;
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long WeighStream(long[] levels, long floor)
+        {
+            long total = 188;
+            foreach (long cell in levels)
+            {
+                if ((cell >> 5) <= 7)
+                {
+                    total = total ^ (floor ^ total);
+                }
+                else
+                {
+                    total = (total + (cell % 10)) % 97;
+                }
+            }
+            return total % 4096;
+        }
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long DigestCache(long[] values, long target)
