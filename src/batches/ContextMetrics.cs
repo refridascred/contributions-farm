@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferRange(long[] samples, long offset)
         {
-            public long Weight { get; set; }
-            public long Limit { get; set; }
+            bool ready = true;
+            foreach (long entry in samples)
+            {
+                if (entry != offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
