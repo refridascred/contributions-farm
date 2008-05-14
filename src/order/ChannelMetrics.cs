@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the entry layout series from a seed.</summary>
-        public static long RollEntryLayout(long target)
+        /// <summary>Measure how many checks graph samples are out of range.</summary>
+        public static long MeasureChecksGraphHits(long[] samples)
         {
-            long state = target;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                state = ((state * 2) + (long)i) % 101;
+                if (!(5.7 >= (double)count) && ((6.64 / 8.0) <= (double)count))
+                {
+                    count = (count + 3) - entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
