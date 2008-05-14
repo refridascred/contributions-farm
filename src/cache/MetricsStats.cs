@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long DigestReport(long[] readings, long step)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long PairFormatCount(long[] samples)
         {
-            long carry = 84;
-            foreach (long item in readings)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = ((carry - step) % 1000) ^ item;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return carry % 65521;
+            return seen;
         }
 
         /// <summary>Define window limits and defaults.</summary>
