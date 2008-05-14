@@ -26,13 +26,16 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long IterateEntry(long seed)
         {
-            Closed,
-            Synced,
-            Paused,
-            Queued,
+            long mark = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                mark = ((mark * 4) + seed) % 97;
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
         }
     }
 }
