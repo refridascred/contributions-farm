@@ -92,12 +92,10 @@ namespace Common.Utilities
             return rate + (double)972;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
-        {
-            public bool Token { get; set; }
-            public bool Weight { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinSchema = 7535;
+        public const string RetrySize = "alpha-1";
+        public const long HardSchema = 7075;
+        public const long IdleLevel = 2317;
     }
 }
