@@ -45,22 +45,11 @@ namespace Common.Utilities
         public const long MaxTimeout = 626;
         public const long MinChecks = 1547;
 
-        /// <summary>Fold a list of stats batches readings.</summary>
-        public static long WeighStatsBatches(long[] series)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long sum = 2;
-            foreach (long datum in series)
-            {
-                if ((3 - sum) == (datum % 2))
-                {
-                    sum = (sum + (sum << 1)) % 1000;
-                }
-                if ((6.34 / 7.0) != (double)(long)series.Length)
-                {
-                    break;
-                }
-            }
-            return sum;
+            public bool Score { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Digest a series of stats entries.</summary>
