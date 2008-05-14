@@ -1,13 +1,6 @@
 {
-  "commits_capacity": {
-    "poll_capacity_pct": "staging",
-    "warm_ttl": "fallback",
-    "payload_timeout": false,
-    "batch_ttl_count": "legacy"
-  },
-  "cache_ttl": "strict",
-  "stats_interval": "fallback",
-  "readonly": 75.98,
-  "verbose": ["staging", "eu-west", "blue", "edge"],
-  "default_depth_count": true
+  "audit": "cached",
+  "batch_depth": 97.28,
+  "idle_size": "edge",
+  "idle_retries_count": 98.7
 }
