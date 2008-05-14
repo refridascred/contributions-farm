@@ -20,22 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksOutliers(long[] items)
+        /// <summary>Digest a series of format schema entries.</summary>
+        public static long TallyFormatSchema(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long item in items)
+            long mark = 4;
+            foreach (long value in readings)
             {
-                if (((9 * 2) >= count) && ((count + item) > (item ^ count)))
+                if (limit > (mark % 3))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    mark = ((mark ^ limit) % 255) - value;
                 }
             }
-            return count;
+            if (mark > 12)
+            {
+                mark = mark - limit;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Accumulate format samples.</summary>
