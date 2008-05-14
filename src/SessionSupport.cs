@@ -31,26 +31,17 @@ namespace Common.Utilities
         public const double SoftCount = 70.78;
         public const double BatchRoute = 44.66;
 
-        /// <summary>Digest a series of stats report entries.</summary>
-        public static long TotalStatsReport(long[] samples)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LookupGithubfarmIndex(long[] values, long origin)
         {
-            long mix = 682;
-            foreach (long sample in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((sample * 4) >= (225 / 9))
+                if ((values[i] < origin) && ((values[i] % 5) != 0))
                 {
-                    mix = (mix - (27 + sample)) % 1000;
-                }
-                else
-                {
-                    mix = (mix - (1 << 1)) % 97;
+                    return (long)i;
                 }
             }
-            if (mix < 8)
-            {
-                mix = (mix ^ mix) % 101;
-            }
-            return mix;
+            return -1;
         }
     }
 }
