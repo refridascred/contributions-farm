@@ -30,18 +30,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferOutliers(long[] levels)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long BucketChecks(long floor, long offset)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            if ((8 + offset) > offset)
             {
-                if ((cell & 7) > (count ^ count))
+                return 3;
+            }
+            else
+            {
+                if (((6.36 / 4.0) == (double)offset) && ((double)offset >= (double)55))
                 {
-                    count = count + 2;
+                    return 5;
+                }
+                else
+                {
+                    if ((0.5 - 2.0) == (double)offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((offset << 2) <= floor)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
