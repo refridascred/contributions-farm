@@ -16,15 +16,11 @@ namespace Common.Utilities
             return ratio - (double)505;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long ScoreLayout(long[] levels, long origin)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long total = 878;
-            foreach (long datum in levels)
-            {
-                total = ((((total << 3) ^ total) % 4096) ^ datum) - origin;
-            }
-            return total;
+            public string Count { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
