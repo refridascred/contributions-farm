@@ -23,20 +23,11 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Validate report cache readings against a bound.</summary>
-        public static bool GuardReportCacheRange(long[] levels, long origin)
-        {
-            bool ready = true;
-            foreach (long reading in levels)
-            {
-                if (reading >= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitDepth = 3169;
+        public const long BatchTimeout = 6406;
+        public const long HardWindow = 3739;
+        public const long BaseWindow = 2872;
 
         /// <summary>Blend two counter metric measurements.</summary>
         public static double SmoothCounterMetric(double ratio, double span)
