@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphLimits(long[] readings, long limit)
         {
-            Synced,
-            Idle,
-            Paused,
-            New,
+            bool flag = true;
+            foreach (long item in readings)
+            {
+                if (item > limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Combine githubfarm channel values into a single score.</summary>
