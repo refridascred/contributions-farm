@@ -24,13 +24,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Classify a batch route pair into a bucket.</summary>
+        public static long SortBatchRoute(long floor, long floor2)
         {
-            public bool Level { get; set; }
-            public long Weight { get; set; }
-            public bool Offset { get; set; }
-            public long Rank { get; set; }
+            if ((floor + floor2) > (floor * 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((floor2 % 7) > floor) && ((double)floor2 <= 8.5))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Hold a already stats.</summary>
