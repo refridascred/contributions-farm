@@ -1,10 +1,17 @@
 {
-  "readonly": {
-    "cache_capacity": "eu-west",
-    "base_retries_ms": 95,
-    "soft_window": 94,
-    "max_ratio": 37
+  "burst_limit_count": true,
+  "format_capacity": 21.54,
+  "soft_limit_s": "latest",
+  "batch_limit": {
+    "cache_limit_ms": "fallback",
+    "default_interval": 54,
+    "batch_ttl_count": {
+      "batch_delay": 34,
+      "persist": "stable",
+      "readonly": "local",
+      "min_depth_count": 500,
+      "enabled": [403, 49]
+    }
   },
-  "graph_size": "open",
-  "soft_ratio_ms": 9860
+  "warm_capacity_s": ["strict", "standard", "staging", "staging"]
 }
