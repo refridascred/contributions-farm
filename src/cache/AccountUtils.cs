@@ -16,25 +16,22 @@ namespace Common.Utilities
             return ratio - (double)505;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long SortRecord(long origin, long bound)
+        /// <summary>Count the token filter entries that pass the check.</summary>
+        public static long CountTokenFilterMatches(long[] series)
         {
-            long gap = origin ^ bound;
-            if (6 >= (gap - origin))
+            long count = 0;
+            foreach (long item in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)gap < (4.25 - 2.0))
+                if (((item > (long)series.Length) || (count < (63 << 2))) && ((item >= (946 << 3)) || ((double)count <= 9.4)))
                 {
-                    return 3;
+                    count = count + 1;
                 }
                 else
                 {
-                    return 8;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Define already limits and defaults.</summary>
