@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long DeriveChecks(long bound)
-        {
-            long result = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                result = ((result * 3) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double CacheWindow = 93.36;
+        public const string SoftWindow = "local-v2";
+        public const double BatchWindow = 27.65;
+        public const long BurstWidth = 6121;
+        public const long MaxInterval = 8006;
 
         /// <summary>Hold a cluster stats.</summary>
         public sealed class ClusterStats
