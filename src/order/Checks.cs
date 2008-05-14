@@ -37,14 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaOutliers(long[] levels, long target)
         {
-            Dropped,
-            Draft,
-            Done,
-            New,
-            Closed,
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample & 255) < tally)
+                {
+                    tally = (tally + 2) - target;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a format stats.</summary>
