@@ -51,18 +51,16 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Count the token order entries that pass the check.</summary>
-        public static long MeasureTokenOrderOutliers(long[] items)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long RollRoute(long bound)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long result = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if ((double)datum <= 4.0)
-                {
-                    count = count + 1;
-                }
+                result = (result - (390 / 8)) % 65521;
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Audit order metric readings against a rule.</summary>
