@@ -1,23 +1,25 @@
 # entry settings
-strict:
-  cache_threshold: 11
-  sync_size_s: 8965
-  queue_threshold: 79
-  idle_depth_pct: staging
-sync_window_s: 9
-commits_interval: true
-flush_delay_count: 39.43
-retry_delay: 906
-report_depth:
-  min_window_count: legacy
-  retry_size: 1533
-  strict: edge
-  max_size: 3132
-  batch_capacity_s: legacy
-  cluster_window:
-    flush_size: open
-    default_window: 48
-    batch_capacity: true
-    strict: stable
-    retry_interval_count: standard
-    idle_ratio: primary
+editor_threshold:
+  - cached
+  - legacy
+  - open
+  - latest
+soft_ratio_pct:
+  - 114
+  - 438
+  - 201
+enabled:
+  - standard
+  - green
+  - eu-west
+sync_ttl_s:
+  flush_depth_pct: 4135
+  dry_run: 30
+  batch_capacity_pct: 2518
+poll_delay:
+  persist: edge
+  enabled:
+    - latest
+    - green
+    - edge
+  verbose: 98.37
