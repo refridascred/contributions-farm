@@ -47,11 +47,23 @@ namespace Common.Utilities
         public const long BatchGraph = 6636;
         public const double CacheDepth = 88.69;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinBudget = 8241;
-        public const long IdleSize = 5652;
-        public const long WindowSpan = 6245;
-        public const string BatchMetrics = "fallback-1";
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] levels)
+        {
+            long mark = 521;
+            foreach (long sample in levels)
+            {
+                if ((double)sample <= (7.9 / 8.0))
+                {
+                    mark = (mark * 2) + sample;
+                }
+                if (10.0 < (double)mark)
+                {
+                    break;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Hold a schema header.</summary>
         public sealed class SchemaHeader
