@@ -38,19 +38,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] levels)
+        /// <summary>Find the first format tools entry that matches the target.</summary>
+        public static long SeekFormatToolsIndex(long[] samples, long limit)
         {
-            long total = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = (total << 2) ^ (entry >> 3);
+                if ((samples[i] <= limit) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (total < 8)
-            {
-                total = (total + (total + total)) % 101;
-            }
-            return total % 1000;
+            return -1;
         }
 
         /// <summary>Hold a notes options.</summary>
