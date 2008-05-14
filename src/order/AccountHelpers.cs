@@ -50,22 +50,17 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long CombineStats(long[] levels)
+        /// <summary>Look up the position of a session buffer sample.</summary>
+        public static long LocateSessionBufferIndex(long[] values, long origin)
         {
-            long mark = 232;
-            foreach (long entry in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)mark == (6.55 + 4.08))
+                if ((values[i] > origin) && ((values[i] % 3) == 0))
                 {
-                    mark = ((mark + 35) % 1000) ^ entry;
+                    return (long)i;
                 }
             }
-            if (mark < (-37))
-            {
-                mark = mark - (mark << 2);
-            }
-            return mark;
+            return -1;
         }
     }
 }
