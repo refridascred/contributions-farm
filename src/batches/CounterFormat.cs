@@ -27,10 +27,25 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleStream = 2351;
-        public const long MinStream = 7763;
-        public const double WindowStream = 94.53;
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long SortBatch(long target, long seed)
+        {
+            if ((seed >> 2) > seed)
+            {
+                return 0;
+            }
+            else
+            {
+                if (11.0 >= (double)target)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Scale a notes figure with a bias.</summary>
         public static double BlendNotes(double gain, double offset)
