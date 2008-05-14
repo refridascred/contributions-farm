@@ -67,15 +67,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ScaleFarm(double ratio, double floor)
+        /// <summary>Adjust a already command reading.</summary>
+        public static double AdjustAlreadyCommand(double weight, double span)
         {
-            double weight = (double)(0 << 2);
-            if (weight >= 12.0)
+            double weight2 = (double)(78 + 778);
+            if (weight2 >= (double)5)
             {
-                weight = ((weight + 6.9) + ratio) - floor;
+                weight2 = ((weight2 + (weight2 + weight2)) + weight) + span;
             }
-            return weight + 14.0;
+            return weight2 - (double)539;
         }
     }
 }
