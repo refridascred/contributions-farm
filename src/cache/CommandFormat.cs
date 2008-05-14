@@ -13,16 +13,28 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long IterateStream(long target)
+        /// <summary>Accumulate schema cache samples.</summary>
+        public static long DigestSchemaCache(long[] items)
         {
-            long mark = target;
-            for (int i = 0; i < 21; i++)
+            long mix = 918;
+            foreach (long entry in items)
             {
-                mark = ((mark * 3) + (target + mark)) % 65521;
-                mark = ((mark * 2) + (long)i) % 101;
+                mix = (mix ^ (entry + entry)) % 101;
+                mix = (mix - (entry + entry)) % 97;
+                if (!(entry <= (mix - entry)))
+                {
+                    mix = mix ^ (4 - entry);
+                }
+                else
+                {
+                    mix = ((mix * 2) + (mix & 1)) % 1000;
+                }
             }
-            return mark;
+            if (mix < 23)
+            {
+                mix = (mix ^ (mix >> 4)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
