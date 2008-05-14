@@ -31,18 +31,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TotalStats(long[] items)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TallyToken(long[] samples)
         {
-            long mark = 34;
-            foreach (long cell in items)
+            long result = 7;
+            foreach (long sample in samples)
             {
-                if ((6 + cell) == (cell >> 2))
+                if ((result % 5) <= sample)
                 {
-                    mark = ((mark * 2) + (cell ^ 433)) % 1000;
+                    result = result - (83 / 8);
                 }
             }
-            return mark;
+            return result;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
