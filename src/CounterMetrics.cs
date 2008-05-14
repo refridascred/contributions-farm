@@ -31,18 +31,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsOutliers(long[] levels, long bound)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((5 / 5) >= (bound % 100))
-                {
-                    tally = (tally + 1) + entry;
-                }
-            }
-            return tally;
+            New,
+            Closed,
+            Failed,
+            Synced,
+            Pending,
         }
     }
 }
