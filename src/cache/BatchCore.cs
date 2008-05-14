@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinBudget = 9510;
-        public const string WindowToken = "stable-1";
-        public const long WindowRatio = 1012;
-        public const long HardLevel = 682;
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
+        {
+            public long Stamp { get; set; }
+            public bool Level { get; set; }
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
         public static long LocateProfileIndex(long[] items, long seed)
