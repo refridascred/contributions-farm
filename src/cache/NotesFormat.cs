@@ -44,18 +44,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportHits(long[] samples, long target)
-        {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if (((double)(long)samples.Length <= (double)item) && ((double)1 >= (double)target))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultInterval = 7247;
+        public const long BatchOrder = 9184;
+        public const long BurstOrder = 8916;
+        public const long StepOrder = 6489;
     }
 }
