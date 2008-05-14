@@ -1,10 +1,16 @@
 {
-  "flush_threshold_s": {
-    "warm_delay": true,
-    "persist": "open",
-    "sync_interval_ms": 12.48
-  },
-  "base_timeout": true,
-  "compress": 31,
-  "flush_ttl_count": 60
+  "soft_delay": false,
+  "githubfarm_limit": false,
+  "burst_timeout": {
+    "base_delay_pct": "stable",
+    "verbose": [52, 171, 5, 33],
+    "poll_delay": "latest",
+    "counter_limit": 33.18,
+    "editor_depth": false,
+    "enabled": {
+      "batch_limit_s": "standard",
+      "queue_size": 1,
+      "batch_capacity_pct": 23.63
+    }
+  }
 }
