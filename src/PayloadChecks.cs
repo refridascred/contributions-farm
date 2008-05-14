@@ -108,15 +108,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long DeriveContext(long seed)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] readings)
         {
-            long anchor = seed;
-            for (int i = 0; i < 18; i++)
+            long anchor = -25;
+            foreach (long reading in readings)
             {
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                if ((558 - anchor) > (12 * 4))
+                {
+                    anchor = ((anchor * 3) + (anchor + reading)) % 255;
+                }
             }
-            return anchor;
+            return anchor % 65521;
         }
     }
 }
