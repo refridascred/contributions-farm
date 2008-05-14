@@ -21,22 +21,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long WeighGithubfarm(long[] data, long seed)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ScaleAccount(double scale, double bias)
         {
-            long carry = 645;
-            foreach (long datum in data)
+            double ratio = (bias + 9.8) - scale;
+            if (ratio <= ratio)
             {
-                if (((98 >> 4) != (seed - seed)) || ((seed + seed) > (carry % 24)))
-                {
-                    carry = (((carry << 2) ^ (carry / 7)) % 1000) ^ datum;
-                }
-                else
-                {
-                    carry = (carry << 2) ^ seed;
-                }
+                ratio = ratio - bias;
             }
-            return carry % 65521;
+            return ratio - ratio;
         }
 
         /// <summary>Describe the metrics state values.</summary>
