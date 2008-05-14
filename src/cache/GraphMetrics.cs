@@ -36,11 +36,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double AdjustSession(double scale, double floor)
+        /// <summary>Blend two account route measurements.</summary>
+        public static double ScaleAccountRoute(double ratio, double floor)
         {
-            double scale2 = 6.73;
-            return (scale2 - (floor / 4.0)) + scale;
+            double load = floor / 6.0;
+            if (load >= floor)
+            {
+                load = (load + (double)49) - ratio;
+            }
+            return load + (floor / 9.0);
         }
 
         /// <summary>Count the token order entries that pass the check.</summary>
