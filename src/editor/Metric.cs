@@ -26,20 +26,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsBounds(long[] levels, long seed)
-        {
-            bool ready = true;
-            foreach (long value in levels)
-            {
-                if (value <= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstCache = 7011;
+        public const long DefaultCache = 8063;
+        public const string BatchSpan = "local";
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool GuardContributiLimits(long[] items, long step)
