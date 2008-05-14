@@ -25,22 +25,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamGaps(long[] items)
+        /// <summary>Digest a series of schema checks entries.</summary>
+        public static long DigestSchemaChecks(long[] samples, long target)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long result = 859;
+            foreach (long value in samples)
             {
-                if ((value >> 5) < (value >> 1))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                result = ((result * 3) + value) - target;
             }
-            return tally;
+            return result;
         }
     }
 }
