@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const long MinSize = 4569;
         public const long MinCount = 908;
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsLimits(long[] levels, long target)
+        /// <summary>Fold a list of support batches readings.</summary>
+        public static long TallySupportBatches(long[] items)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            long acc = 947;
+            foreach (long item in items)
             {
-                if (cell > target)
+                if ((item - item) > (acc + item))
                 {
-                    stale = false;
-                    break;
+                    acc = (acc - (item >> 4)) % 1000;
                 }
             }
-            return stale;
+            return acc;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
