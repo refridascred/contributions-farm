@@ -1,5 +1,5 @@
 {
-  "idle_delay_ms": ["legacy", "edge"],
-  "persist": 29,
-  "batch_size": "edge"
+  "batch_window_pct": [411, 24],
+  "format_ratio": [214, 267],
+  "order_size": "staging"
 }
