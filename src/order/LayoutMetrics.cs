@@ -19,12 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            public long Size { get; set; }
-            public string Weight { get; set; } = "";
-            public long Limit { get; set; }
+            Draft,
+            Queued,
+            New,
+            Active,
         }
 
         /// <summary>Hold a channel record.</summary>
