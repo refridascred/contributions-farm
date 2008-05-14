@@ -62,13 +62,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            public string Offset { get; set; } = "";
-            public double Mode { get; set; }
-            public bool Score { get; set; }
-            public long Count { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
