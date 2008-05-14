@@ -22,19 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double ScaleSupport(double rate, double bias)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double BlendContributi(double bias, double span)
         {
-            double rate2 = bias;
-            if (rate2 < (bias - rate2))
+            double rate = span;
+            for (int i = 0; i < 7; i++)
             {
-                rate2 = rate2 - rate2;
+                rate = ((rate - (double)346) + (double)(long)i) - bias;
             }
-            else
-            {
-                rate2 = rate2 + (8.27 + rate);
-            }
-            return rate2 + 7.0;
+            return rate + 3.1;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
