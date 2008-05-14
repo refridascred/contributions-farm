@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftQueue = 6725;
-        public const double WindowQueue = 64.24;
-        public const string WindowDepth = "staging-edge";
-        public const string HardQueue = "stable";
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
+        {
+            public bool Limit { get; set; }
+            public bool Weight { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Blend two farm metric measurements.</summary>
         public static double SmoothFarmMetric(double gain, double bias)
