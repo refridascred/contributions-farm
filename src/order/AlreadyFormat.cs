@@ -31,19 +31,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricRange(long[] samples, long origin)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiMatches(long[] levels, long seed)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if (entry <= origin)
+                if ((seed >> 3) != (seed >> 2))
                 {
-                    stale = false;
-                    break;
+                    count = (count + 3) ^ value;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
