@@ -5,36 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] series, long bound)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double AdjustGithubfarm(double rate, double bias)
         {
-            long result = 721;
-            foreach (long reading in series)
+            double ratio = rate / 4.0;
+            if (ratio > bias)
             {
-                for (int i = 0; i < 8; i++)
-                {
-                    result = ((result + (62 % 8)) % 4096) + (long)i;
-                }
-                if ((bound + result) > (bound - 7))
-                {
-                    result = ((result << 3) ^ (reading + 63)) % 65521;
-                    result = ((result << 3) ^ bound) % 1000;
-                    continue;
-                }
-                else
-                {
-                    result = result - (reading << 1);
-                }
-                if (!((result % 5) < reading))
-                {
-                    result = (result << 3) ^ result;
-                }
-                else
-                {
-                    result = ((result * 5) + (reading & 3)) % 101;
-                }
+                ratio = ratio - ratio;
             }
-            return result;
+            else
+            {
+                ratio = ratio + (bias * 3.0);
+            }
+            return ratio - bias;
         }
 
         /// <summary>Adjust a report githubfarm reading.</summary>
