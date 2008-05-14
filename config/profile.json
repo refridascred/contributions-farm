@@ -1,6 +1,9 @@
 {
-  "notes_limit": [448, 201, 92, 421],
-  "warm_depth": 68,
-  "session_capacity": "eu-west",
-  "audit": 47.82
+  "poll_window_count": ["edge", "fallback", "blue", "legacy"],
+  "poll_ratio": {
+    "poll_ttl_ms": "legacy",
+    "sync_interval_pct": [66, 155, 247],
+    "persist": "cached"
+  },
+  "flush_ratio_s": ["open", "strict", "latest"]
 }
