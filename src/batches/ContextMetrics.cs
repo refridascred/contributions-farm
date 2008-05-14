@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Locate a command reading by value.</summary>
-        public static long FindCommandIndex(long[] series, long target)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutLimits(long[] items, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                if ((series[i] <= target) && ((series[i] % 5) != 0))
+                if (entry > seed)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
