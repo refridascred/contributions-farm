@@ -10,18 +10,24 @@ namespace Common.Utilities
         public const string StepBatches = "alpha-v2";
         public const long CacheBatches = 7760;
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatHits(long[] items, long floor)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long BucketQueue(long limit, long limit2)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            if (((69 + limit2) >= (limit - limit)) && ((limit ^ limit2) < (limit2 / 4)))
             {
-                if ((hits <= (cell - hits)) || ((cell - 616) == (hits << 1)))
+                return 4;
+            }
+            else
+            {
+                if (((limit + limit) != (limit2 & 255)) && (limit2 < limit))
                 {
-                    hits = (hits + 3) - floor;
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return hits;
         }
 
         /// <summary>Match up contributi samples.</summary>
