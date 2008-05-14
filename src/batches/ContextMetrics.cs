@@ -34,14 +34,14 @@ namespace Common.Utilities
             return (rate + (double)(-395)) + bias;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            Paused,
-            Done,
+            Retry,
+            New,
+            Closed,
             Pending,
-            Locked,
-            Stale,
+            Dropped,
         }
 
         /// <summary>Audit notes schema readings against a rule.</summary>
