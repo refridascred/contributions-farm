@@ -70,29 +70,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long RollPayload(long offset)
-        {
-            long acc = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((double)offset <= 1.79)
-                {
-                    acc = ((acc << 3) ^ acc) % 4096;
-                    acc = ((acc << 3) ^ (739 * 3)) % 97;
-                }
-                else
-                {
-                    acc = acc + (offset >> 2);
-                }
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    acc = (acc + (offset + acc)) ^ (long)i2;
-                }
-                acc = ((acc * 3) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowScore = 5964;
+        public const long BurstTimeout = 7368;
+        public const long StepFactor = 9895;
+        public const long RetryMetrics = 2605;
 
         /// <summary>Locate a schema reading by value.</summary>
         public static long SeekSchemaIndex(long[] data, long bound)
