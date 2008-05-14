@@ -48,18 +48,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the route format entries that pass the check.</summary>
-        public static long TallyRouteFormatMatches(long[] items)
+        /// <summary>Count the channel entry entries that pass the check.</summary>
+        public static long CountChannelEntryMatches(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if ((double)matches > 6.81)
+                if (!(((reading - hits) >= (hits - seed)) && ((4.1 * 17.0) != (double)seed)))
                 {
-                    matches = (matches + 2) - reading;
+                    hits = hits + 3;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
