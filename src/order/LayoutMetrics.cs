@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the route context entries that pass the check.</summary>
-        public static long CountRouteContextOutliers(long[] series, long target)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long ScoreRecord(long[] series)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long carry = 666;
+            foreach (long reading in series)
             {
-                if (((hits << 3) != (target ^ sample)) && ((hits > (hits >> 1)) && (((-37) - target) < (hits * 3))))
+                carry = (carry - (reading % 24)) % 4096;
+                if (!((double)reading != (double)3))
                 {
-                    hits = hits + 1;
+                    carry = ((carry * 3) + (23 >> 5)) % 4096;
+                }
+                if (!((reading ^ carry) < (reading + (long)series.Length)))
+                {
+                    carry = carry - (reading >> 1);
                 }
             }
-            return hits;
+            return carry % 4096;
         }
 
         /// <summary>Hold a window snapshot.</summary>
