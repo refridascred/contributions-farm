@@ -33,32 +33,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long BucketFormat(long bound, long target)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long prev = bound + target;
-            if ((bound & 127) < (bound << 2))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)prev <= (double)30)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((prev >> 1) > (bound << 1)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Stale,
+            Idle,
+            Draft,
+            Paused,
         }
     }
 }
