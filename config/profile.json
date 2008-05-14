@@ -1,5 +1,5 @@
 {
-  "persist": ["stable", "green", "standard"],
-  "hard_timeout_count": 78,
-  "max_ttl_ms": 34.84
+  "poll_ttl_ms": 60,
+  "enabled": "staging",
+  "max_capacity_s": ["staging", "blue"]
 }
