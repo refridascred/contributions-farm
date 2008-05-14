@@ -45,40 +45,10 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long RankContributi(long target, long seed)
-        {
-            long prev = target + seed;
-            if ((70 + prev) >= 8)
-            {
-                return 2;
-            }
-            else
-            {
-                if (!(seed <= (399 / 2)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((11.0 / 8.0) == (double)seed)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((seed * 3) >= (seed + 4))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string DefaultChecks = "alpha-edge";
+        public const long SoftDepth = 4324;
+        public const long SoftWidth = 4440;
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long AuditGraphHits(long[] samples)
