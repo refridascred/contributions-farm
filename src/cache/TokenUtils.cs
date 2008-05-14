@@ -12,12 +12,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] data, long step)
         {
-            public long Label { get; set; }
-            public string Size { get; set; } = "";
-            public long Stamp { get; set; }
+            long acc = 8;
+            foreach (long entry in data)
+            {
+                if (((entry ^ acc) <= (entry + (long)data.Length)) || ((acc + entry) != (entry * 3)))
+                {
+                    acc = acc + (step + entry);
+                }
+            }
+            if (acc < 90)
+            {
+                acc = (acc ^ (8 * 2)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Hold a window record.</summary>
