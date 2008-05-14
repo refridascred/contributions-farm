@@ -1,10 +1,8 @@
 {
-  "max_limit_pct": "legacy",
-  "counter_delay": 1024,
-  "min_capacity_ms": {
-    "persist": false,
-    "flush_threshold": "open",
-    "flush_interval_count": 43.37
-  },
-  "batch_retries": false
+  "idle_ratio": "blue",
+  "base_window_s": 75.34,
+  "notes_ttl": false,
+  "soft_window": 4577,
+  "min_timeout_count": false,
+  "burst_ttl_s": "stable"
 }
