@@ -12,15 +12,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long RollContributi(long seed)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long RollMetric(long bound)
         {
-            long anchor = seed;
-            for (int i = 0; i < 13; i++)
+            long mix = bound;
+            for (int i = 0; i < 21; i++)
             {
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    mix = (mix - (mix & 127)) ^ (long)i2;
+                }
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Blend two session measurements.</summary>
