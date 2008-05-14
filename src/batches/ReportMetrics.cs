@@ -19,15 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
-        {
-            Queued,
-            Retry,
-            Active,
-            Dropped,
-            Ready,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinBudget = 3145;
+        public const string MaxRatio = "open-v2";
+        public const double StepNotes = 65.4;
+        public const double HardScore = 1.39;
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long MeasureChannelOutliers(long[] data, long offset)
