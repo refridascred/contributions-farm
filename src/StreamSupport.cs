@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyGaps(long[] data)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((sample + sample) > (sample - hits))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Level { get; set; }
+            public long Region { get; set; }
+            public double Count { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Fold a list of window readings.</summary>
