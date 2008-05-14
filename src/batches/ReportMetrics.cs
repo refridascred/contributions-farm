@@ -14,19 +14,14 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Check that every counter contributi entry stays within the limit.</summary>
-        public static bool CheckCounterContributiRange(long[] levels, long origin)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            bool flag = true;
-            foreach (long item in levels)
-            {
-                if (item != origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Closed,
+            Pending,
+            Failed,
+            Paused,
+            Draft,
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
