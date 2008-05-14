@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long IterateProfile(long step)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowGaps(long[] levels, long target)
         {
-            long total = step;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if (13.0 < (double)matches)
                 {
-                    total = (total + ((long)i * 3)) - (long)i2;
-                    total = (total << 3) ^ (59 % 12);
+                    matches = ((matches + 2) ^ datum) + target;
                 }
-                total = ((total * 4) + (long)i) % 101;
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
