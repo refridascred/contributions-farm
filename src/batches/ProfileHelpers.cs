@@ -57,22 +57,17 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Count the farm cluster entries that pass the check.</summary>
-        public static long MeasureFarmClusterGaps(long[] samples, long seed)
+        /// <summary>Find the first batches notes entry that matches the target.</summary>
+        public static long FindBatchesNotesIndex(long[] levels, long floor)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((matches + matches) > (seed ^ seed))
+                if ((levels[i] >= floor) && ((levels[i] % 3) == 0))
                 {
-                    matches = (matches + 1) - datum;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
