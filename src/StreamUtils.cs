@@ -60,12 +60,22 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Digest a series of context metrics entries.</summary>
+        public static long CombineContextMetrics(long[] levels, long bound)
         {
-            public bool Flag { get; set; }
-            public long Mode { get; set; }
-            public double Level { get; set; }
+            long carry = 63;
+            foreach (long cell in levels)
+            {
+                if ((bound - 1) <= (bound << 1))
+                {
+                    carry = ((carry + (bound * 3)) % 1000) - cell;
+                }
+            }
+            if (carry < 479)
+            {
+                carry = carry - (carry % 2);
+            }
+            return carry;
         }
     }
 }
