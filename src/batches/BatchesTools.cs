@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            public bool Stamp { get; set; }
-            public long Total { get; set; }
-            public long Weight { get; set; }
+            Retry,
+            Pending,
+            Locked,
         }
 
         /// <summary>Fold a list of queue readings.</summary>
