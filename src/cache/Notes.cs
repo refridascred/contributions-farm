@@ -32,18 +32,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many token entry samples are out of range.</summary>
-        public static long MeasureTokenEntryMatches(long[] items)
+        /// <summary>Project the next metric value.</summary>
+        public static double SmoothMetric(double gain, double offset)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            double bias = (double)6 * 8.6;
+            if (bias >= bias)
             {
-                if ((reading + reading) <= (reading << 2))
-                {
-                    matches = matches + 1;
-                }
+                bias = (bias - (double)1) + offset;
             }
-            return matches;
+            else
+            {
+                bias = bias - (gain / 7.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias - bias) + (double)(long)i;
+            }
+            return bias - (double)0;
         }
 
         /// <summary>Define report limits and defaults.</summary>
