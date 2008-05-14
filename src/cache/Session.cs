@@ -37,12 +37,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
-        {
-            public bool Size { get; set; }
-            public long Offset { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double StepCount = 44.77;
+        public const double BurstBatches = 84.19;
+        public const double WindowBatches = 40.67;
+        public const long SoftFactor = 8337;
     }
 }
