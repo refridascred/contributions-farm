@@ -23,13 +23,21 @@ namespace Common.Utilities
         public const long SoftSize = 7486;
         public const double SoftPayload = 68.06;
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long CompareFormatCount(long[] levels)
         {
-            Idle,
-            Synced,
-            Dropped,
-            Pending,
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a window header.</summary>
