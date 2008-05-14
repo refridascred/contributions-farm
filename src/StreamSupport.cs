@@ -23,26 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long DigestEntry(long[] values, long seed)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long result = 4;
-            foreach (long sample in values)
-            {
-                if ((4 >= seed) || ((37 % 3) > (long)values.Length))
-                {
-                    result = ((result + (seed << 3)) % 1000) - sample;
-                }
-                if ((2.86 + 14.0) <= (double)result)
-                {
-                    break;
-                }
-            }
-            if (result < 209)
-            {
-                result = result ^ 937;
-            }
-            return result;
+            public string Owner { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Match up buffer samples.</summary>
