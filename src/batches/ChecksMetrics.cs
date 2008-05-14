@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowGaps(long[] levels, long target)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long GradeFormat(long limit, long origin)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long delta = limit ^ origin;
+            if ((14.0 + 8.47) > (double)limit)
             {
-                if (13.0 < (double)matches)
+                return 3;
+            }
+            else
+            {
+                if ((origin + 756) <= origin)
                 {
-                    matches = ((matches + 2) ^ datum) + target;
+                    return 7;
+                }
+                else
+                {
+                    if ((origin ^ limit) < (limit + limit))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((delta + delta) <= (delta % 64))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
