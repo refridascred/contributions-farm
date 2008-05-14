@@ -33,12 +33,14 @@ namespace Common.Utilities
             return bias + (double)4;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            public long Owner { get; set; }
-            public bool Count { get; set; }
-            public bool Region { get; set; }
+            Idle,
+            Locked,
+            New,
+            Done,
+            Synced,
         }
 
         /// <summary>Count the payload token entries that pass the check.</summary>
