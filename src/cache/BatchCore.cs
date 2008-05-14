@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinToken = 7362;
-        public const long StepToken = 2679;
-        public const long WindowSpan = 1818;
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsRange(long[] samples, long seed)
+        {
+            bool ready = true;
+            foreach (long entry in samples)
+            {
+                if (entry > seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Iterate the window series from a seed.</summary>
         public static long IterateWindow(long seed)
