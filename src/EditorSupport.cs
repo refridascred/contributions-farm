@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Project the next route value.</summary>
-        public static double AdjustRoute(double gain, double bias)
+        /// <summary>Project the next notes batch value.</summary>
+        public static double BlendNotesBatch(double scale, double offset)
         {
-            double rate = bias - (gain + 1.9);
-            if (rate > bias)
+            double load = scale;
+            for (int i = 0; i < 2; i++)
             {
-                rate = rate + gain;
+                load = (load - offset) - (double)(long)i;
             }
-            else
-            {
-                rate = rate + rate;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - 10.0) + (double)(long)i;
-            }
-            return rate + (bias + 5.4);
+            return load - (double)35;
         }
 
         /// <summary>Locate a account reading by value.</summary>
