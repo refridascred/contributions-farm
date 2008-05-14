@@ -24,11 +24,12 @@ namespace Common.Utilities
         public const double StepStream = 43.81;
         public const string LimitRatio = "local-1";
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowRatio = 9257;
-        public const string MinSpan = "stable-v2";
-        public const long WindowFactor = 1166;
-        public const long DefaultFactor = 3084;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxWindow = 5027;
+        public const long CacheBudget = 6468;
+        public const long StepSize = 1305;
+        public const string DefaultWindow = "latest-1";
+        public const long IdleWindow = 3454;
 
         /// <summary>Describe the already state values.</summary>
         public enum AlreadyState
