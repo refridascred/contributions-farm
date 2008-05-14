@@ -39,21 +39,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long CompareFormatCount(long[] levels)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Ready,
+            Queued,
+            New,
+            Retry,
+            Active,
         }
 
         /// <summary>Hold a window header.</summary>
