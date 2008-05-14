@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Rank farm session input into a small class.</summary>
+        public static long GradeFarmSession(long bound, long limit)
         {
-            public long Score { get; set; }
-            public long Token { get; set; }
-            public bool Rank { get; set; }
-            public long Level { get; set; }
+            long slot = bound - limit;
+            if (((double)bound == (1.0 / 9.0)) && ((double)slot != (18.0 * 0.81)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((double)slot <= 1.59) || (86 <= (limit & 31)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((limit * 3) != (46 / 3)) && (55 < (limit + limit)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((bound * 4) == (918 % 10))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
