@@ -69,11 +69,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double StepTools = 42.74;
-        public const long MaxTools = 9755;
-        public const long SoftTools = 5589;
-        public const double CacheTools = 39.08;
-        public const long RetryTools = 3697;
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
+        {
+            public double Total { get; set; }
+            public double Label { get; set; }
+            public bool Weight { get; set; }
+            public bool Region { get; set; }
+        }
     }
 }
