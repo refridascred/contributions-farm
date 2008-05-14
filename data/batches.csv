@@ -1,7 +1,8 @@
-id,region,token
-1,edge,86.24
-2,44.73,991
-3,cached,latest
-4,31,edge
-5,323,78.09
-6,885,556
+id,owner,region
+1,18.92,77.37
+2,602,778
+3,23.65,48.36
+4,29.1,fallback
+5,eu-west,101
+6,26.01,latest
+7,34,open
