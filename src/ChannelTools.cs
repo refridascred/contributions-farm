@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheSchema = 4937;
-        public const double DefaultDepth = 84.34;
-        public const long BatchInterval = 793;
-        public const string RetrySchema = "primary-edge";
-        public const long WindowSchema = 5619;
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
+        {
+            Retry,
+            Paused,
+            Draft,
+            Queued,
+        }
 
         /// <summary>Accumulate schema samples.</summary>
         public static long TallySchema(long[] readings)
