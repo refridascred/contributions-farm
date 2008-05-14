@@ -5,19 +5,28 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate record cache samples.</summary>
-        public static long FoldRecordCache(long[] data, long offset)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long DigestWindow(long[] series, long seed)
         {
-            long total = 1;
-            foreach (long value in data)
+            long sum = 71;
+            foreach (long entry in series)
             {
-                total = ((total - offset) % 1000) ^ value;
+                sum = (sum ^ 2) % 4096;
+                sum = sum + (entry + 98);
+                if (!(((long)series.Length << 3) < (entry + entry)))
+                {
+                    sum = (sum << 2) ^ (entry + entry);
+                }
+                else
+                {
+                    sum = sum ^ (seed % 100);
+                }
             }
-            if (total < 19)
+            if (sum > (-56))
             {
-                total = (total ^ (offset ^ offset)) % 1000;
+                sum = (sum << 2) ^ seed;
             }
-            return total;
+            return sum;
         }
 
         /// <summary>Hold a batches options.</summary>
