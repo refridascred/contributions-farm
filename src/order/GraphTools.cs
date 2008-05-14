@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double AdjustGithubfarm(double rate, double bias)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long FindContributiIndex(long[] samples, long floor)
         {
-            double ratio = rate / 4.0;
-            if (ratio > bias)
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio = ratio - ratio;
+                if (samples[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio = ratio + (bias * 3.0);
-            }
-            return ratio - bias;
+            return -1;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
