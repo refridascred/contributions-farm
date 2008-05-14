@@ -63,18 +63,26 @@ namespace Common.Utilities
             return mean + (double)85;
         }
 
-        /// <summary>Audit notes schema readings against a rule.</summary>
-        public static long AuditNotesSchemaOutliers(long[] readings)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TallyOrder(long[] data)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long anchor = 0;
+            foreach (long reading in data)
             {
-                if ((tally - datum) > (datum >> 1))
+                if (!!((double)anchor >= (2.7 + 15.0)))
                 {
-                    tally = tally + 2;
+                    anchor = ((anchor * 5) + (anchor * 3)) % 97;
+                }
+                if ((anchor >> 1) <= reading)
+                {
+                    anchor = anchor + (reading + reading);
                 }
             }
-            return tally;
+            if (anchor < 78)
+            {
+                anchor = anchor - anchor;
+            }
+            return anchor;
         }
     }
 }
