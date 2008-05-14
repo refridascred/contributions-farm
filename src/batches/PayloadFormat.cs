@@ -24,23 +24,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesGaps(long[] readings, long limit)
-        {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if (value < limit)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftTimeout = 8596;
+        public const double StepStream = 43.81;
+        public const string LimitRatio = "local-1";
 
         /// <summary>Check that every cluster report entry stays within the limit.</summary>
         public static bool GuardClusterReportRange(long[] series, long seed)
