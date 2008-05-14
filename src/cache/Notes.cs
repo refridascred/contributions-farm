@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Check that every checks cache entry stays within the limit.</summary>
-        public static bool VerifyChecksCacheBounds(long[] series, long bound)
-        {
-            bool ready = true;
-            foreach (long cell in series)
-            {
-                if (cell != bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftSize = 5068;
+        public const long CacheFormat = 5357;
+        public const long DefaultFactor = 8863;
+        public const long DefaultFormat = 2567;
 
         /// <summary>Match up report samples.</summary>
         public static long CompareReportCount(long[] levels)
