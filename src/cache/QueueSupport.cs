@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Match up stream samples.</summary>
-        public static long MatchStreamCount(long[] levels)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long RankReport(long offset, long target)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long cur = offset + target;
+            if ((99 + 355) <= (offset - offset))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (offset > (33 * 5))
                 {
-                    if ((levels[i] ^ levels[j]) > 16)
+                    return 0;
+                }
+                else
+                {
+                    if ((double)cur != (1.2 + 5.8))
                     {
-                        count = count + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((double)target <= (6.62 - 10.0)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
