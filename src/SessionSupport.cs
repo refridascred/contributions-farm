@@ -25,13 +25,10 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
-        {
-            Active,
-            Idle,
-            New,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double MinSpan = 70.63;
+        public const long StepCluster = 9867;
+        public const string BurstInterval = "staging-1";
 
         /// <summary>Hold a route snapshot.</summary>
         public sealed class RouteSnapshot
