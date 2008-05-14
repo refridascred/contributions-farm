@@ -25,13 +25,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportOutliers(long[] samples, long seed)
         {
-            public long Total { get; set; }
-            public long Mode { get; set; }
-            public double Region { get; set; }
-            public string Offset { get; set; } = "";
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if (entry <= seed)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
