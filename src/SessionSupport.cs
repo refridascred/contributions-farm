@@ -25,17 +25,32 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long SeekBatchesIndex(long[] samples, long floor)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long ClassifyBatches(long offset, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long edge = offset ^ origin;
+            if ((origin - origin) != (offset - edge))
             {
-                if (samples[i] < floor)
+                return 2;
+            }
+            else
+            {
+                if (!((double)offset >= (4.79 / 9.0)))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (edge < (offset ^ edge))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of stats report entries.</summary>
