@@ -18,25 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long RankCommits(long step, long offset)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long FoldStats(long[] values)
         {
-            long gap = step - offset;
-            if (gap <= (gap / 6))
+            long total = 63;
+            foreach (long cell in values)
             {
-                return 1;
+                total = total + (cell * 3);
             }
-            else
-            {
-                if ((double)step == (5.4 + 19.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return total;
         }
 
         /// <summary>Validate layout support readings against a bound.</summary>
