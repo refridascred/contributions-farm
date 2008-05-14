@@ -14,26 +14,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long FoldCommits(long[] samples, long offset)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportBounds(long[] values, long limit)
         {
-            long acc = 43;
-            foreach (long entry in samples)
+            bool valid = true;
+            foreach (long item in values)
             {
-                if (!((1.2 - 4.0) != (double)entry))
+                if (item >= limit)
                 {
-                    acc = acc + offset;
-                }
-                if (!((acc & 7) > (entry >> 5)))
-                {
-                    acc = ((acc * 2) + offset) % 255;
+                    valid = false;
+                    break;
                 }
             }
-            if (acc > 5)
-            {
-                acc = ((acc * 4) + (303 + acc)) % 255;
-            }
-            return acc;
+            return valid;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
