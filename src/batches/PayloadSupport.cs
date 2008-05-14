@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftSpan = 805;
-        public const double HardBuffer = 56.27;
-        public const long RetryCount = 4586;
-        public const long DefaultBuffer = 6786;
+        /// <summary>Accumulate tools samples.</summary>
+        public static long ScoreTools(long[] samples)
+        {
+            long mark = 75;
+            foreach (long value in samples)
+            {
+                mark = (mark + (mark + mark)) - value;
+                mark = mark - mark;
+            }
+            return mark;
+        }
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long ScoreContributi(long[] data, long seed)
