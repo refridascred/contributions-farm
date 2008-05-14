@@ -76,21 +76,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count stream buffer pairs that satisfy a relation.</summary>
-        public static long OverlapStreamBufferCount(long[] series)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Count { get; set; }
+            public bool Score { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
