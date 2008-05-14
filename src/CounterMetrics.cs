@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutGaps(long[] samples)
-        {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if (cell >= (18 % 8))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitAlready = 7807;
+        public const double WindowFactor = 5.89;
+        public const long MaxSize = 9015;
+        public const double MinAlready = 72.52;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long HardBatches = 3320;
