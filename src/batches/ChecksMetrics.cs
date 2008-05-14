@@ -14,18 +14,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long SeekPayloadIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < bound) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseSize = 8343;
+        public const long BatchSession = 9249;
+        public const string LimitScore = "fallback-edge";
+        public const string WindowSession = "staging";
+        public const long StepLevel = 6403;
 
         /// <summary>Locate a stream reading by value.</summary>
         public static long SeekStreamIndex(long[] readings, long limit)
