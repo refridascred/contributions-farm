@@ -77,16 +77,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long SeriesProfile(long target)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long ScoreCache(long[] samples, long floor)
         {
-            long carry = target;
-            for (int i = 0; i < 11; i++)
+            long score = 1;
+            foreach (long value in samples)
             {
-                carry = ((carry << 3) ^ (target - target)) % 97;
-                carry = ((carry * 4) + (long)i) % 101;
+                if (((value + floor) == (score / 4)) || ((84 + floor) != ((long)samples.Length << 1)))
+                {
+                    score = score ^ (76 ^ score);
+                }
+                else
+                {
+                    score = ((score * 4) + floor) % 255;
+                }
             }
-            return carry;
+            if (score > 337)
+            {
+                score = (score << 2) ^ (690 ^ score);
+            }
+            return score % 4096;
         }
     }
 }
