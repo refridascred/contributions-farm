@@ -44,15 +44,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double SmoothStats(double bias, double bias2)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandOutliers(long[] samples)
         {
-            double rate = bias2;
-            for (int i = 0; i < 2; i++)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                rate = (rate - (rate * 6.0)) - (double)(long)i;
+                if (sample >= (64 - seen))
+                {
+                    seen = seen + 3;
+                }
             }
-            return rate + bias;
+            return seen;
         }
     }
 }
