@@ -20,18 +20,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiHits(long[] data, long seed)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long GradeGithubfarm(long floor, long offset)
         {
-            long count = 0;
-            foreach (long item in data)
+            long lane = floor - offset;
+            if ((13.0 + 6.61) < (double)lane)
             {
-                if ((count >> 1) > 7)
+                return 5;
+            }
+            else
+            {
+                if (!((double)floor >= (8.79 + 6.49)))
                 {
-                    count = ((count + 3) - item) - seed;
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a account header.</summary>
