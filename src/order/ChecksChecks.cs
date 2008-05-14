@@ -39,18 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsHits(long[] data)
+        /// <summary>Validate filter record readings against a bound.</summary>
+        public static bool CheckFilterRecordBounds(long[] levels, long limit)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                if (((seen - seen) <= (cell >> 3)) || ((cell >= (seen * 5)) || ((667 % 10) > cell)))
+                if (entry > limit)
                 {
-                    seen = seen + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
     }
 }
