@@ -32,14 +32,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long DeriveCounter(long offset)
         {
-            Active,
-            Queued,
-            Locked,
-            Done,
-            Draft,
+            long mix = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                mix = ((mix << 2) ^ (long)i) % 97;
+                mix = (mix + (mix - mix)) % 255;
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
         }
     }
 }
