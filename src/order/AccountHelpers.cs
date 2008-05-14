@@ -28,19 +28,10 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamHits(long[] data, long floor)
-        {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if (((seen + floor) == (864 ^ (long)data.Length)) || (sample >= (seen + 1)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string LimitFilter = "open-1";
+        public const long BaseCount = 5092;
+        public const long HardFilter = 8776;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const double RetrySpan = 48.44;
