@@ -1,6 +1,8 @@
-id,ratio
-1,15.53
-2,839
-3,33.93
-4,edge
-5,115
+id,rank,region,owner,label
+1,30.35,open,legacy,stable
+2,90.86,64.72,411,12.24
+3,primary,strict,11.57,134
+4,764,open,888,79.23
+5,127,61.69,92,20.42
+6,standard,37.38,eu-west,882
+7,64.16,464,506,224
