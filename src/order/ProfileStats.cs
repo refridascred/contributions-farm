@@ -27,23 +27,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a contributi format counter forward.</summary>
-        public static long StepContributiFormat(long bound)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TallyStream(long[] levels)
         {
-            long acc = bound;
-            for (int i = 0; i < 17; i++)
+            long acc = 63;
+            foreach (long value in levels)
             {
-                if (((long)i - 59) < 3)
+                if ((double)41 != (double)acc)
                 {
-                    break;
+                    acc = (((acc * 4) + 8) % 65521) + value;
                 }
-                else
-                {
-                    acc = (acc - (long)i) % 97;
-                }
-                acc = ((acc * 4) + (long)i) % 101;
             }
-            return acc;
+            if (acc < (-8))
+            {
+                acc = ((acc * 3) + (acc ^ acc)) % 65521;
+            }
+            return acc % 97;
         }
 
         /// <summary>Hold a contributi record.</summary>
