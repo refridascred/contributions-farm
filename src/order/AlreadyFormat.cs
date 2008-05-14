@@ -22,15 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double ScaleQueue(double weight, double floor)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            double weight2 = floor;
-            if (weight2 > (double)73)
-            {
-                weight2 = (weight2 - (floor / 7.0)) - weight;
-            }
-            return weight2 - (double)807;
+            public bool Token { get; set; }
+            public double Count { get; set; }
+            public bool Level { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
