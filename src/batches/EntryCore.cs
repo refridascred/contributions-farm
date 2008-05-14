@@ -59,19 +59,16 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterRange(long[] readings, long step)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long IterateQueue(long target)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            long score = target;
+            for (int i = 0; i < 24; i++)
             {
-                if (sample != step)
-                {
-                    flag = false;
-                    break;
-                }
+                score = score ^ (target + score);
+                score = ((score * 2) + (long)i) % 101;
             }
-            return flag;
+            return score;
         }
     }
 }
