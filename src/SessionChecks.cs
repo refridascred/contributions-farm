@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Rank support input into a small class.</summary>
-        public static long RankSupport(long offset, long offset2)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long PairReportCount(long[] values)
         {
-            long offset3 = offset ^ offset2;
-            if (((7 / 2) <= (offset3 ^ offset2)) || ((offset2 - offset2) < (offset3 - 57)))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset2 >> 3) <= (offset2 << 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    if ((values[i] ^ values[j]) != 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
