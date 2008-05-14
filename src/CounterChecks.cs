@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Accumulate stream support samples.</summary>
-        public static long DigestStreamSupport(long[] items)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheGaps(long[] values, long offset)
         {
-            long total = 67;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if ((total + (-944)) != (total + total))
+                if (hits < (25 ^ (long)values.Length))
                 {
-                    total = ((total * 2) + (sample << 3)) % 65521;
-                }
-                else
-                {
-                    total = ((total << 3) ^ (total & 3)) % 4096;
+                    hits = ((hits + 2) + sample) - offset;
                 }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
