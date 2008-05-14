@@ -35,12 +35,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ProjectNotes(double scale, double bias)
         {
-            Stale,
-            Locked,
-            Dropped,
+            double mean = 19.0;
+            if (mean >= mean)
+            {
+                mean = mean + (scale * 0.9);
+            }
+            else
+            {
+                mean = mean - scale;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - (bias - 8.0)) + (double)(long)i;
+            }
+            return mean - (scale * 5.9);
         }
 
         /// <summary>Classify a queue checks pair into a bucket.</summary>
