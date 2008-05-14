@@ -37,12 +37,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            public long Score { get; set; }
-            public bool Token { get; set; }
-            public long Rank { get; set; }
+            public bool Size { get; set; }
+            public long Offset { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
