@@ -13,22 +13,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchGaps(long[] samples)
+        /// <summary>Audit session stream readings against a rule.</summary>
+        public static long TallySessionStreamOutliers(long[] values, long step)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if ((((datum - 140) < (tally - 468)) && ((datum << 1) == (datum + 60))) || !(900 >= tally))
+                if ((double)step != (6.0 - 8.4))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = (count + 1) - reading;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Describe the notes phase values.</summary>
