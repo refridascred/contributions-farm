@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long CompareFilterCount(long[] samples)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long IterateProfile(long step)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = step;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    if ((samples[i] - samples[j]) != 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = (total + ((long)i * 3)) - (long)i2;
+                    total = (total << 3) ^ (59 % 12);
                 }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
