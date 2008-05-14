@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferLimits(long[] data, long offset)
-        {
-            bool stale = true;
-            foreach (long cell in data)
-            {
-                if (cell <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftSize = 437;
+        public const long MinContributi = 5308;
+        public const double BaseContributi = 50.31;
+        public const double DefaultContributi = 3.64;
+        public const long MinLevel = 6986;
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
         public static long GradeGithubfarm(long floor, long offset)
