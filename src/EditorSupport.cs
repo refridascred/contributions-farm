@@ -31,23 +31,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelGaps(long[] levels, long floor)
-        {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if (seen >= (floor + 0))
-                {
-                    seen = (seen + 2) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowEntry = 42;
+        public const long CacheEntry = 9650;
+        public const long StepEntry = 4271;
 
         /// <summary>Describe the payload mode values.</summary>
         public enum PayloadMode
