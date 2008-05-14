@@ -19,13 +19,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Measure how many session githubfarm samples are out of range.</summary>
+        public static long MeasureSessionGithubfarmOutliers(long[] levels)
         {
-            Locked,
-            Retry,
-            Failed,
-            Stale,
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((item / 6) < (4 % 3))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the format class values.</summary>
