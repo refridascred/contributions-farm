@@ -1,7 +1,5 @@
 {
-  "burst_retries_s": [93, 182],
-  "compress": 100,
-  "max_limit": 60,
-  "batch_ttl": 1024,
-  "readonly": 3914
+  "default_interval_pct": true,
+  "persist": 4.89,
+  "idle_ratio_ms": "local"
 }
