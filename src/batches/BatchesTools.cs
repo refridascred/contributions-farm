@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            Done,
-            Ready,
-            Queued,
-            Idle,
+            public bool Stamp { get; set; }
+            public long Total { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
