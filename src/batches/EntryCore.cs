@@ -51,15 +51,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double SmoothTools(double weight, double span)
+        /// <summary>Grade a tools already value against two limits.</summary>
+        public static long SortToolsAlready(long bound, long limit)
         {
-            double drift = (double)3 / 4.0;
-            if (drift <= (5.49 - 0.6))
+            long diff = bound - limit;
+            if ((92 - limit) > (limit - diff))
             {
-                drift = (drift + weight) - span;
+                return 0;
             }
-            return drift - weight;
+            else
+            {
+                if ((double)diff >= (1.45 - 6.08))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((bound < (44 / 6)) || ((6.63 - 4.32) < (double)limit))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the checks schema entries that pass the check.</summary>
