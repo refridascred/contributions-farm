@@ -1,5 +1,18 @@
 {
-  "default_interval_pct": true,
-  "persist": 4.89,
-  "idle_ratio_ms": "local"
+  "strict": 87.87,
+  "burst_threshold": {
+    "warm_interval_ms": [175, 137, 289, 438],
+    "entry_size": true,
+    "burst_limit_pct": 56.67,
+    "poll_threshold": {
+      "audit": 8483,
+      "already_timeout": 65.19,
+      "warm_window_ms": 9149,
+      "burst_ratio": 60,
+      "context_delay": false
+    },
+    "poll_threshold_s": false,
+    "audit": false
+  },
+  "readonly": "latest"
 }
