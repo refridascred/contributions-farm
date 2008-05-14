@@ -16,18 +16,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit route order readings against a rule.</summary>
-        public static long TallyRouteOrderHits(long[] readings, long bound)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextHits(long[] readings, long bound)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if ((double)hits <= (1.0 - 4.88))
+                if ((6.36 / 7.0) <= (double)value)
                 {
-                    hits = ((hits + 1) ^ sample) + bound;
+                    seen = (seen + 2) + bound;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Accumulate support filter samples.</summary>
