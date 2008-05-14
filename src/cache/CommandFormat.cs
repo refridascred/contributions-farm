@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LookupRouteIndex(long[] series, long offset)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long WeighTools(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 760;
+            foreach (long sample in data)
             {
-                if ((series[i] <= offset) && ((series[i] % 3) != 0))
+                if (((double)state < (double)564) || ((state - sample) <= (sample + state)))
                 {
-                    return (long)i;
+                    state = (state ^ (sample & 1)) % 4096;
+                }
+                if ((sample / 6) >= state)
+                {
+                    break;
                 }
             }
-            return -1;
+            return state % 65521;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
