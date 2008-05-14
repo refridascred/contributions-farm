@@ -108,19 +108,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long ScoreBatches(long[] samples)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long RankToken(long step, long limit)
         {
-            long score = 466;
-            foreach (long cell in samples)
+            long diff = step ^ limit;
+            if ((limit << 2) == (diff + diff))
             {
-                score = ((score << 3) ^ (score + score)) ^ cell;
+                return 4;
             }
-            if (score > 5)
+            else
             {
-                score = (score * 2) + (score & 127);
+                if (!((limit & 1) < (step << 1)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((limit / 3) < diff))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((diff * 3) < (3 % 100)) && ((46 ^ diff) < (step / 8)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            return score % 97;
         }
     }
 }
