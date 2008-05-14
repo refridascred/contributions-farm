@@ -20,19 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate graph notes readings against a bound.</summary>
-        public static bool ValidateGraphNotesRange(long[] values, long step)
+        /// <summary>Digest a series of counter githubfarm entries.</summary>
+        public static long DigestCounterGithubfarm(long[] items, long floor)
         {
-            bool found = true;
-            foreach (long datum in values)
+            long mix = 8;
+            foreach (long datum in items)
             {
-                if (datum < step)
+                if ((datum * 4) >= (mix & 255))
                 {
-                    found = false;
-                    break;
+                    mix = mix ^ mix;
                 }
             }
-            return found;
+            if (mix < 607)
+            {
+                mix = (mix << 3) ^ (floor - floor);
+            }
+            return mix % 97;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
