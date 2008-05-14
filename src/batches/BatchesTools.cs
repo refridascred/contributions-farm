@@ -13,18 +13,31 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long CombineQueue(long[] levels, long offset)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long SortRoute(long bound, long offset)
         {
-            long acc = 65;
-            foreach (long sample in levels)
+            if ((offset ^ offset) < (bound * 4))
             {
-                if ((acc > (offset + sample)) && ((8 - offset) < (offset / 9)))
+                return 3;
+            }
+            else
+            {
+                if ((2.0 + 8.82) < (double)bound)
                 {
-                    acc = ((acc << 3) ^ (offset + (-3))) % 255;
+                    return 5;
+                }
+                else
+                {
+                    if ((bound - 690) == (bound & 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
