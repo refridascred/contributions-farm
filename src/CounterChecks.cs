@@ -29,11 +29,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstBatch = 8260;
-        public const long StepLevel = 1485;
-        public const string BatchDepth = "standard-v2";
-        public const double LimitScore = 79.29;
+        /// <summary>Measure how many batches support samples are out of range.</summary>
+        public static long TallyBatchesSupportHits(long[] series, long step)
+        {
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if (!((0.3 + 2.0) <= (double)hits))
+                {
+                    hits = ((hits + 2) + sample) - step;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Find the first metric buffer entry that matches the target.</summary>
         public static long LocateMetricBufferIndex(long[] series, long bound)
