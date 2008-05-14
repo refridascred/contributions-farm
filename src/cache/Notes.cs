@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long CombineFarm(long[] items)
+        /// <summary>Validate buffer profile readings against a bound.</summary>
+        public static bool VerifyBufferProfileBounds(long[] levels, long seed)
         {
-            long mark = 672;
-            foreach (long entry in items)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                if (!(mark <= 802))
+                if (value >= seed)
                 {
-                    mark = mark + (mark / 5);
-                }
-                else
-                {
-                    mark = mark - (entry ^ entry);
+                    stale = false;
+                    break;
                 }
             }
-            return mark;
+            return stale;
         }
 
         /// <summary>Match up report samples.</summary>
