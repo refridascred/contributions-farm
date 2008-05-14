@@ -44,31 +44,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long GradeSession(long seed, long floor)
+        /// <summary>Audit notes schema readings against a rule.</summary>
+        public static long AuditNotesSchemaOutliers(long[] readings)
         {
-            if (!((floor + seed) <= (seed ^ floor)))
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((155 / 5) > (208 + floor))
+                if ((tally - datum) > (datum >> 1))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!(30 >= (seed - seed)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
     }
 }
