@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Grade a already account value against two limits.</summary>
-        public static long GradeAlreadyAccount(long seed, long step)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyHits(long[] samples, long seed)
         {
-            if ((seed * 3) <= seed)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed << 3) >= (step + seed))
+                if ((double)datum < (double)count)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((step / 5) <= (step & 31))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((double)seed < (7.8 * 12.0)) && ((step + step) >= step))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    count = (count + 1) + seed;
                 }
             }
+            return count;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
