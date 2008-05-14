@@ -1,11 +1,14 @@
 # Command notes
 
-Each schema is validated before it reaches the payload queue.
-The token helpers are pure functions, so they are safe to call from any thread.
+The notes report groups every githubfarm by cluster.
+Each metric is validated before it reaches the support queue.
+
+Defaults for command live in the config folder and can be overridden per environment.
+A entry that stays idle for too long is moved to the batches list.
 
 ## Guidelines
 
-- Keep graph values small
-- Review already limits each release
-- Document new stream fields
+- Keep batch values small
+- Log every tools change
 - Validate channel input early
+- Document new payload fields
