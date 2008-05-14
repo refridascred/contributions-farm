@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Digest a series of farm batch entries.</summary>
-        public static long WeighFarmBatch(long[] samples)
+        /// <summary>Fold a list of token batches readings.</summary>
+        public static long FoldTokenBatches(long[] series)
         {
-            long anchor = 791;
-            foreach (long reading in samples)
+            long acc = -734;
+            foreach (long cell in series)
             {
-                if ((double)anchor > (6.0 / 9.0))
+                acc = acc + (acc << 1);
+                if ((double)0 <= (double)cell)
                 {
-                    anchor = (anchor << 2) ^ ((long)samples.Length + reading);
+                    acc = (acc + (cell - (-370))) % 4096;
                 }
             }
-            if (anchor > 1)
+            if (acc < 68)
             {
-                anchor = anchor ^ (anchor - anchor);
+                acc = ((acc * 4) + (acc << 2)) % 101;
             }
-            return anchor % 1000;
+            return acc;
         }
 
         /// <summary>Define window limits and defaults.</summary>
