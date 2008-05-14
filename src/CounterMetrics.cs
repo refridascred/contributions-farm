@@ -11,11 +11,22 @@ namespace Common.Utilities
         public const long MaxSize = 9015;
         public const double MinAlready = 72.52;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetryRatio = 2578;
-        public const long BatchAlready = 1791;
-        public const long WindowSpan = 3236;
-        public const string DefaultDepth = "open-edge";
+        /// <summary>Match up checks farm samples.</summary>
+        public static long MatchChecksFarmCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long CountAccountOutliers(long[] samples)
