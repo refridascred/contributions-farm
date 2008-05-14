@@ -81,12 +81,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Count stream buffer pairs that satisfy a relation.</summary>
+        public static long OverlapStreamBufferCount(long[] series)
         {
-            Active,
-            New,
-            Queued,
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 17)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
