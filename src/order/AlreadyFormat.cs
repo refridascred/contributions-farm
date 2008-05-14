@@ -56,13 +56,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long StepNotes(long floor)
         {
-            public string Region { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
-            public string Rank { get; set; } = "";
+            long state = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                if (!((floor ^ floor) < ((long)i & 7)))
+                {
+                    state = (state * 2) + 6;
+                }
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
