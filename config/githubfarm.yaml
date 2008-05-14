@@ -1,12 +1,10 @@
 # githubfarm settings
-strict: true
-already_limit: 63
-default_retries_ms: 60
-max_threshold_s:
-  context_delay: staging
-  soft_delay_ms: 60
-  base_ratio_count: 500
-  idle_window_s: true
-  metric_depth: standard
-  default_delay_ms: cached
-support_retries: strict
+dry_run: 81.51
+editor_timeout: edge
+enabled: 84.42
+soft_limit_s:
+  - 165
+  - 389
+  - 2
+already_delay: true
+verbose: legacy
