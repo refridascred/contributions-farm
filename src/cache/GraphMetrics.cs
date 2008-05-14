@@ -42,13 +42,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Count the token order entries that pass the check.</summary>
+        public static long MeasureTokenOrderOutliers(long[] items)
         {
-            Locked,
-            Pending,
-            Idle,
-            Failed,
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((double)datum <= 4.0)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a filter info.</summary>
