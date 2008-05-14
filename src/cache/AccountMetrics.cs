@@ -5,31 +5,31 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Rank farm session input into a small class.</summary>
-        public static long GradeFarmSession(long bound, long limit)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long RankWindow(long floor, long bound)
         {
-            long slot = bound - limit;
-            if (((double)bound == (1.0 / 9.0)) && ((double)slot != (18.0 * 0.81)))
+            long prev = floor + bound;
+            if (((double)bound != (5.1 * 7.0)) || ((prev << 2) <= (bound * 5)))
             {
-                return 8;
+                return 1;
             }
             else
             {
-                if (((double)slot <= 1.59) || (86 <= (limit & 31)))
+                if (!((prev ^ bound) <= (79 & 127)))
                 {
-                    return 6;
+                    return 7;
                 }
                 else
                 {
-                    if (((limit * 3) != (46 / 3)) && (55 < (limit + limit)))
+                    if (((double)floor < 5.3) && ((4.7 + 6.71) > (double)bound))
                     {
-                        return 4;
+                        return 8;
                     }
                     else
                     {
-                        if ((bound * 4) == (918 % 10))
+                        if ((prev + (-6)) > ((-651) - bound))
                         {
-                            return 7;
+                            return 4;
                         }
                         else
                         {
