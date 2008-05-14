@@ -19,13 +19,17 @@ namespace Common.Utilities
         public const long SoftLevel = 3308;
         public const long BurstInterval = 1604;
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LocateCommitsIndex(long[] data, long seed)
         {
-            New,
-            Dropped,
-            Stale,
-            Done,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < seed) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
