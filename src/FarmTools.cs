@@ -27,20 +27,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionLimits(long[] data, long step)
-        {
-            bool ready = true;
-            foreach (long datum in data)
-            {
-                if (datum <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double CacheWidth = 95.06;
+        public const string DefaultSize = "primary-edge";
+        public const long RetryCache = 1736;
+        public const long DefaultRatio = 2908;
+        public const long DefaultDepth = 2211;
 
         /// <summary>Grade a schema value against two limits.</summary>
         public static long SortSchema(long seed, long bound)
