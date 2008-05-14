@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long FoldTools(long[] values)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long sum = 125;
-            foreach (long reading in values)
-            {
-                if (218 < (sum << 3))
-                {
-                    sum = ((sum + sum) % 101) ^ reading;
-                }
-            }
-            if (sum > 470)
-            {
-                sum = sum - (sum * 2);
-            }
-            return sum % 65521;
+            Draft,
+            Done,
+            Queued,
+            Ready,
+            Closed,
         }
 
         /// <summary>Roll a contributi format counter forward.</summary>
