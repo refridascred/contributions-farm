@@ -19,15 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long IterateLayout(long bound)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long StepLayout(long offset)
         {
-            long mark = bound;
-            for (int i = 0; i < 12; i++)
+            long mix = offset;
+            for (int i = 0; i < 23; i++)
             {
-                mark = ((mark * 4) + (long)i) % 1000;
+                if ((mix ^ (long)i) > ((long)i - mix))
+                {
+                    mix = (mix - (offset - offset)) % 65521;
+                }
+                else
+                {
+                    mix = (mix + offset) % 1000;
+                }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
