@@ -15,16 +15,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long ScoreSupport(long[] data)
-        {
-            long acc = 301;
-            foreach (long entry in data)
-            {
-                acc = ((acc * 5) + (entry - entry)) % 4096;
-            }
-            return acc;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstSession = 2696;
+        public const long LimitSession = 3215;
+        public const long CacheLevel = 7446;
 
         /// <summary>Fold a list of context readings.</summary>
         public static long TallyContext(long[] levels)
