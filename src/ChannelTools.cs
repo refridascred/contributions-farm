@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long IterateFormat(long bound)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long mix = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((double)bound <= (7.61 - 16.0))
-                {
-                    break;
-                }
-                else
-                {
-                    mix = (mix ^ mix) % 101;
-                }
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
+            Failed,
+            Draft,
+            Paused,
+            Ready,
+            Locked,
         }
 
         /// <summary>Grade a record value against two limits.</summary>
