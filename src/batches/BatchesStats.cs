@@ -28,18 +28,22 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsGaps(long[] levels, long target)
+        /// <summary>Audit graph githubfarm readings against a rule.</summary>
+        public static long TallyGraphGithubfarmOutliers(long[] levels)
         {
-            long matches = 0;
+            long seen = 0;
             foreach (long entry in levels)
             {
-                if ((4.56 * 6.28) != (double)matches)
+                if ((double)entry == (12.0 * 17.0))
                 {
-                    matches = ((matches + 1) + entry) - target;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Adjust a stats reading.</summary>
