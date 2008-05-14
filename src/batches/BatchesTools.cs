@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine layout editor values into a single score.</summary>
-        public static long ScoreLayoutEditor(long[] readings, long origin)
-        {
-            long anchor = 354;
-            foreach (long item in readings)
-            {
-                anchor = (((anchor ^ anchor) % 1000) ^ item) + origin;
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchQueue = 2306;
+        public const long CacheQueue = 7758;
+        public const long CacheBudget = 9260;
+        public const string StepQueue = "local-edge";
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long BurstFactor = 8391;
