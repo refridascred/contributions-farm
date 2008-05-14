@@ -35,12 +35,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
-        {
-            Ready,
-            Closed,
-            New,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftChecks = 329;
+        public const long CacheCount = 8079;
+        public const long DefaultChecks = 8380;
     }
 }
