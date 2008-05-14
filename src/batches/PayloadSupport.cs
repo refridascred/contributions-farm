@@ -19,19 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteLimits(long[] samples, long bound)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long IterateLayout(long bound)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            long mark = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if (entry > bound)
-                {
-                    flag = false;
-                    break;
-                }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return flag;
+            return mark;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
