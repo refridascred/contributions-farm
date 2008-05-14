@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Grade a already account value against two limits.</summary>
+        public static long GradeAlreadyAccount(long seed, long step)
         {
-            public long Stamp { get; set; }
-            public double Token { get; set; }
+            if ((seed * 3) <= seed)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((seed << 3) >= (step + seed))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((step / 5) <= (step & 31))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((double)seed < (7.8 * 12.0)) && ((step + step) >= step))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a stats record.</summary>
