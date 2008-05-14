@@ -23,19 +23,15 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextOutliers(long[] items)
+        /// <summary>Audit record notes readings against a rule.</summary>
+        public static long AuditRecordNotesHits(long[] values, long limit)
         {
             long hits = 0;
-            foreach (long sample in items)
+            foreach (long sample in values)
             {
-                if (!!((2 / 3) <= sample))
+                if (((738 - (long)values.Length) > (230 % 64)) && (((double)sample < (8.4 + 13.0)) && ((543 + sample) != (sample << 1))))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = (hits + 2) + limit;
                 }
             }
             return hits;
