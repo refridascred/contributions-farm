@@ -40,19 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsMatches(long[] values, long step)
-        {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((755 > (74 + sample)) && !((double)sample != (4.9 + 6.0)))
-                {
-                    matches = (matches + 1) + step;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetrySpan = 2000;
+        public const long MaxCommand = 5374;
+        public const long CacheCommand = 5379;
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long AuditTokenHits(long[] levels, long origin)
