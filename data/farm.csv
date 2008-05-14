@@ -1,7 +1,6 @@
-id,level,region,active
-1,820,blue,847
-2,87,84.68,231
-3,826,13.85,48.73
-4,209,stable,206
-5,798,cached,eu-west
-6,blue,standard,fallback
+id,active,token,owner,score
+1,32.58,36.32,830,49.98
+2,primary,green,legacy,288
+3,stable,850,open,309
+4,cached,33.56,local,558
+5,601,85.05,685,312
