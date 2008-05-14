@@ -68,22 +68,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Digest a series of context metrics entries.</summary>
-        public static long CombineContextMetrics(long[] levels, long bound)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long carry = 63;
-            foreach (long cell in levels)
-            {
-                if ((bound - 1) <= (bound << 1))
-                {
-                    carry = ((carry + (bound * 3)) % 1000) - cell;
-                }
-            }
-            if (carry < 479)
-            {
-                carry = carry - (carry % 2);
-            }
-            return carry;
+            public long Flag { get; set; }
+            public string Token { get; set; } = "";
+            public double Stamp { get; set; }
         }
     }
 }
