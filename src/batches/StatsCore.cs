@@ -55,11 +55,10 @@ namespace Common.Utilities
             return rate + (span + ratio);
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitOrder = 978;
-        public const long LimitInterval = 3037;
-        public const double BatchOrder = 73.06;
-        public const long MaxScore = 6856;
+        /// <summary>Define window limits and defaults.</summary>
+        public const string SoftWindow = "local-v2";
+        public const string MaxWindow = "primary";
+        public const long MaxFactor = 3569;
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long CountFarmHits(long[] items)
