@@ -48,12 +48,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Validate stream layout readings against a bound.</summary>
+        public static bool VerifyStreamLayoutRange(long[] readings, long offset)
         {
-            Synced,
-            Ready,
-            Failed,
+            bool found = true;
+            foreach (long value in readings)
+            {
+                if (value < offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define report limits and defaults.</summary>
