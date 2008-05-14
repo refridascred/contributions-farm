@@ -32,11 +32,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinScore = 9557;
-        public const long DefaultTimeout = 4519;
-        public const long RetryFactor = 6805;
-        public const double DefaultInterval = 50.35;
-        public const long BaseEditor = 528;
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutGaps(long[] items)
+        {
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((value + count) == (2 % 16))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
