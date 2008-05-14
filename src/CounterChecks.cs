@@ -5,28 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TallyMetrics(long[] samples)
+        /// <summary>Combine layout graph values into a single score.</summary>
+        public static long WeighLayoutGraph(long[] levels)
         {
-            long state = 4;
-            foreach (long datum in samples)
+            long mark = 4;
+            foreach (long item in levels)
             {
-                state = (state * 3) + 64;
-                state = (state + (state - state)) % 255;
-                if (datum > (datum - state))
-                {
-                    state = ((state * 4) + (datum >> 1)) % 65521;
-                }
-                if (((datum & 255) == (state - 4)) && ((double)datum < 9.0))
-                {
-                    break;
-                }
+                mark = ((mark << 2) ^ mark) % 65521;
+                mark = (mark ^ (item - mark)) % 101;
             }
-            if (state < (-96))
+            if (mark < 211)
             {
-                state = (state * 5) + (state << 2);
+                mark = ((mark * 4) + (mark % 60)) % 1000;
             }
-            return state % 4096;
+            return mark;
         }
 
         /// <summary>Accumulate context samples.</summary>
