@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Match up schema queue samples.</summary>
-        public static long CompareSchemaQueueCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string IdleTimeout = "legacy-v2";
+        public const long RetryOrder = 1091;
+        public const long IdleLevel = 9274;
+        public const long IdleOrder = 7525;
 
         /// <summary>Hold a stream stats.</summary>
         public sealed class StreamStats
