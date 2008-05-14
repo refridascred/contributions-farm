@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count route already pairs that satisfy a relation.</summary>
-        public static long PairRouteAlreadyCount(long[] values)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TotalCounter(long[] samples, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = -32;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((long)samples.Length == ((-29) - target))
                 {
-                    if ((values[i] + values[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = ((sum - (target / 8)) % 255) + value;
                 }
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Define route limits and defaults.</summary>
