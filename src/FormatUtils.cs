@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
-        {
-            public double Rank { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double HardFactor = 20.87;
+        public const long HardSpan = 4570;
+        public const long StepRatio = 1429;
 
         /// <summary>Hold a channel summary.</summary>
         public sealed class ChannelSummary
