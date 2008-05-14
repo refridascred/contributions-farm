@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextMatches(long[] data)
         {
-            Locked,
-            Stale,
-            Closed,
-            Ready,
-            Paused,
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((double)item != (8.27 * 5.6))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
