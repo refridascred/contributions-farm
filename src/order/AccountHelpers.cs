@@ -44,23 +44,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate window channel samples.</summary>
-        public static long TallyWindowChannel(long[] values, long origin)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long mix = 3;
-            foreach (long entry in values)
-            {
-                mix = ((mix << 3) ^ (entry % 60)) % 1000;
-                if (!((double)origin < (7.17 / 7.0)))
-                {
-                    mix = (mix + (mix ^ origin)) % 1000;
-                }
-            }
-            if (mix < 272)
-            {
-                mix = ((mix * 3) + (mix * 4)) % 4096;
-            }
-            return mix % 97;
+            Queued,
+            Closed,
+            Paused,
         }
 
         /// <summary>Hold a schema snapshot.</summary>
