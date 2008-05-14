@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Fold a list of context readings.</summary>
+        public static long DigestContext(long[] readings)
         {
-            Draft,
-            Done,
-            Queued,
-            Ready,
-            Closed,
+            long acc = 6;
+            foreach (long entry in readings)
+            {
+                if ((entry + acc) <= acc)
+                {
+                    acc = (acc ^ 708) % 97;
+                }
+                else
+                {
+                    acc = acc ^ (entry >> 2);
+                }
+                if ((acc << 2) != (entry * 3))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Roll a contributi format counter forward.</summary>
