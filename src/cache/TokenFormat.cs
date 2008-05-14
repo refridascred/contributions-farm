@@ -35,22 +35,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] readings)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long RankProfile(long floor, long bound)
         {
-            long mark = 5;
-            foreach (long reading in readings)
+            if ((0.7 - 8.64) != (double)floor)
             {
-                if (((mark & 1) <= (784 / 6)) || ((reading + (long)readings.Length) > mark))
+                return 5;
+            }
+            else
+            {
+                if ((double)bound > (2.6 / 2.0))
                 {
-                    mark = mark ^ (mark ^ 1);
+                    return 0;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            if (mark > 56)
-            {
-                mark = (mark * 3) + mark;
-            }
-            return mark;
         }
     }
 }
