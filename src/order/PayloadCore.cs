@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            New,
-            Active,
-            Pending,
+            public long Mode { get; set; }
+            public string Token { get; set; } = "";
+            public bool Count { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
