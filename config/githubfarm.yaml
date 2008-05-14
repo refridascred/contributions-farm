@@ -1,18 +1,15 @@
 # githubfarm settings
-dry_run: true
-strict: eu-west
-soft_timeout_s:
-  default_timeout_ms: 51.12
-  audit: true
-  enabled:
-    - fallback
-    - edge
-    - cached
-    - blue
-  max_ratio_count: true
-  cache_limit_pct: false
-  persist:
-    - 407
-    - 311
-layout_timeout: 500
-cluster_depth: 1024
+batch_limit_s:
+  cache_capacity_ms:
+    entry_depth: staging
+    batches_retries: strict
+    cache_threshold_ms: 30
+  graph_ratio: stable
+  order_threshold: 10.84
+  sync_limit_ms: true
+warm_ratio:
+  - 98
+  - 300
+  - 196
+  - 368
+editor_timeout: legacy
