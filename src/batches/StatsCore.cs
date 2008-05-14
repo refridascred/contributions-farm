@@ -19,23 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterHits(long[] items)
-        {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if (((reading >= (matches - 4)) && ((matches - reading) < (matches ^ matches))) || ((double)reading < (3.0 - 12.0)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string RetryCommand = "stable-v2";
+        public const long WindowFactor = 3414;
+        public const double HardLevel = 17.66;
+        public const long DefaultSize = 6403;
+        public const double BaseCommand = 74.31;
 
         /// <summary>Count the record metrics entries that pass the check.</summary>
         public static long AuditRecordMetricsMatches(long[] levels, long origin)
