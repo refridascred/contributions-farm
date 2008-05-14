@@ -47,17 +47,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long SeriesBuffer(long limit)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long FoldEditor(long[] samples, long target)
         {
-            long mark = limit;
-            for (int i = 0; i < 18; i++)
+            long total = 4;
+            foreach (long sample in samples)
             {
-                mark = ((mark << 2) ^ limit) % 1000;
-                mark = (mark - ((long)i - limit)) % 101;
-                mark = ((mark * 5) + (long)i) % 65521;
+                if ((target & 255) >= (total * 3))
+                {
+                    total = (total + (target - sample)) % 4096;
+                }
             }
-            return mark;
+            if (total < 374)
+            {
+                total = (total * 2) + (target + 200);
+            }
+            return total;
         }
 
         /// <summary>Validate commits order readings against a bound.</summary>
