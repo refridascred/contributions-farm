@@ -29,15 +29,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountOutliers(long[] samples)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelOutliers(long[] samples)
         {
             long matches = 0;
-            foreach (long datum in samples)
+            foreach (long cell in samples)
             {
-                if ((datum % 24) < (matches - matches))
+                if (((-1) % 64) > (matches + matches))
                 {
-                    matches = matches + 1;
+                    matches = (matches + 1) + cell;
                 }
             }
             return matches;
