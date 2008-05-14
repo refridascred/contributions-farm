@@ -23,12 +23,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double DefaultAlready = 1.81;
-        public const double RetryAlready = 28.41;
-        public const long SoftDepth = 7179;
-        public const long SoftAlready = 4722;
-        public const string IdleDepth = "strict-1";
+        /// <summary>Define record limits and defaults.</summary>
+        public const string DefaultBudget = "cached";
+        public const long MaxRecord = 9565;
+        public const long RetryRecord = 1675;
+        public const long IdleRecord = 9994;
+        public const double LimitWidth = 26.1;
 
         /// <summary>Look up the position of a window sample.</summary>
         public static long LocateWindowIndex(long[] levels, long target)
