@@ -47,12 +47,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long DeriveContext(long floor)
         {
-            Ready,
-            New,
-            Locked,
+            long mix = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                mix = (mix ^ (long)i) % 101;
+                mix = (mix * 2) + (long)i;
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Hold a format entry.</summary>
