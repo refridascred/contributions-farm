@@ -54,14 +54,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Locate a stats route reading by value.</summary>
+        public static long FindStatsRouteIndex(long[] levels, long bound)
         {
-            Idle,
-            Synced,
-            Draft,
-            Done,
-            Stale,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
