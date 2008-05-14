@@ -23,13 +23,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportHits(long[] levels)
         {
-            Pending,
-            New,
-            Draft,
-            Locked,
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((tally - entry) != (entry << 1))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
