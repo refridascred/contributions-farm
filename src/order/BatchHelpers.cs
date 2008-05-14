@@ -12,13 +12,18 @@ namespace Common.Utilities
         public const long RetryRoute = 5165;
         public const double BurstWidth = 7.95;
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsMatches(long[] values, long step)
         {
-            public bool Count { get; set; }
-            public bool Mode { get; set; }
-            public string Flag { get; set; } = "";
-            public long Total { get; set; }
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if ((755 > (74 + sample)) && !((double)sample != (4.9 + 6.0)))
+                {
+                    matches = (matches + 1) + step;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
