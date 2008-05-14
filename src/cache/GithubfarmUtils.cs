@@ -13,22 +13,26 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TotalBatch(long[] data, long offset)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long FoldCommits(long[] samples, long offset)
         {
-            long total = -7;
-            foreach (long value in data)
+            long acc = 43;
+            foreach (long entry in samples)
             {
-                if ((total % 3) < (offset << 2))
+                if (!((1.2 - 4.0) != (double)entry))
                 {
-                    total = total - (total & 1);
+                    acc = acc + offset;
                 }
-                else
+                if (!((acc & 7) > (entry >> 5)))
                 {
-                    total = ((total * 4) + ((-4) + value)) % 4096;
+                    acc = ((acc * 2) + offset) % 255;
                 }
             }
-            return total;
+            if (acc > 5)
+            {
+                acc = ((acc * 4) + (303 + acc)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
