@@ -13,11 +13,24 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long SortStream(long bound, long seed)
         {
-            public double Ratio { get; set; }
-            public bool Count { get; set; }
+            if ((seed - 56) <= (bound / 6))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((seed * 5) < (bound + 5)) || ((double)seed < (7.43 - 5.41)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Define format limits and defaults.</summary>
