@@ -21,18 +21,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportOutliers(long[] series, long step)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TallyMetric(long[] values)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long state = 681;
+            foreach (long item in values)
             {
-                if ((double)value >= (10.0 - 1.3))
+                long bound = (item / 8) << 3;
+                state = (state * 2) + (bound / 6);
+                if (((double)state > (6.5 - 0.1)) && ((item & 3) > item))
                 {
-                    matches = (matches + 1) - step;
+                    state = ((state * 5) + state) % 255;
+                }
+                if ((item > (item + state)) && ((6 + item) != (item + item)))
+                {
+                    break;
                 }
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Blend two route counter measurements.</summary>
