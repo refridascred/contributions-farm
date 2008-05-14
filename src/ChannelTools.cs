@@ -37,18 +37,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyHits(long[] levels)
+        /// <summary>Project the next metric value.</summary>
+        public static double ScaleMetric(double gain, double offset)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            double gain2 = 9.9;
+            if (gain2 > (double)87)
             {
-                if ((seen / 4) > seen)
-                {
-                    seen = (seen + 2) + entry;
-                }
+                gain2 = (gain2 + (double)313) + gain;
             }
-            return seen;
+            for (int i = 0; i < 4; i++)
+            {
+                gain2 = (gain2 + 13.0) + (double)(long)i;
+            }
+            return gain2 + (offset * 4.7);
         }
     }
 }
