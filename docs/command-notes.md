@@ -1,14 +1,14 @@
 # Command notes
 
-Keep report and batches names short and lowercase.
-A farm that stays idle for too long is moved to the route list.
-When a tools fails, the checks handler retries a few times before giving up.
+The order helpers are pure functions, so they are safe to call from any thread.
+The session module keeps graph values in sync with the commits cache.
 
-Keep record and metric names short and lowercase.
-A notes that stays idle for too long is moved to the token list.
+Run the session check before changing any format limits.
+Keep contributi and stats names short and lowercase.
 
 ## Guidelines
 
-- Document new stats fields
-- Log every order change
-- Prefer queue defaults
+- Document new record fields
+- Review metric limits each release
+- Log every farm change
+- Validate session input early
