@@ -18,31 +18,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long FoldChecks(long[] values, long target)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long StepBatches(long limit)
         {
-            long sum = 76;
-            foreach (long datum in values)
+            long anchor = limit;
+            for (int i = 0; i < 22; i++)
             {
-                for (int i = 0; i < 7; i++)
-                {
-                    long offset = (datum - (long)i) + (22 / 5);
-                    sum = (sum << 3) ^ (offset + (long)i);
-                }
-                if ((double)target == (1.49 + 16.0))
-                {
-                    sum = sum + (datum + target);
-                }
-                else
-                {
-                    sum = (sum << 2) ^ sum;
-                }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            if (sum < 979)
-            {
-                sum = ((sum << 2) ^ sum) % 65521;
-            }
-            return sum % 4096;
+            return anchor;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
