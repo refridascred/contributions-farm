@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const double DefaultAccount = 12.32;
         public const double StepAccount = 15.71;
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutGaps(long[] values)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if (((2.1 * 8.0) == (double)matches) || (((reading >> 5) <= reading) && ((double)912 != (double)reading)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Flag { get; set; }
+            public double Offset { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
