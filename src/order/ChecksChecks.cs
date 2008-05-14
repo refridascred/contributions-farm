@@ -20,13 +20,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            public long Score { get; set; }
-            public bool Count { get; set; }
-            public string Level { get; set; } = "";
-            public long Weight { get; set; }
+            public long Mode { get; set; }
+            public string Token { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the cache mode values.</summary>
