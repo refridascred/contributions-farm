@@ -25,15 +25,17 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Project the next account command value.</summary>
-        public static double BlendAccountCommand(double bias, double span)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long SeekBatchesIndex(long[] samples, long floor)
         {
-            double gain = 5.8 / 2.0;
-            if (gain >= bias)
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain = gain + (gain - span);
+                if (samples[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            return gain + (bias * 6.5);
+            return -1;
         }
 
         /// <summary>Digest a series of stats report entries.</summary>
