@@ -18,12 +18,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Accumulate cache samples.</summary>
+        public static long DigestCache(long[] items, long step)
         {
-            public double Total { get; set; }
-            public double Mode { get; set; }
-            public double Owner { get; set; }
+            long anchor = 7;
+            foreach (long item in items)
+            {
+                anchor = (anchor - (anchor / 7)) - step;
+                if ((0.47 + 8.0) <= (double)item)
+                {
+                    anchor = anchor + (anchor & 1);
+                }
+                if ((75 - item) > item)
+                {
+                    break;
+                }
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Describe the payload status values.</summary>
