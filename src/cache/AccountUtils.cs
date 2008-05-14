@@ -16,22 +16,15 @@ namespace Common.Utilities
             return ratio - (double)505;
         }
 
-        /// <summary>Count the token filter entries that pass the check.</summary>
-        public static long CountTokenFilterMatches(long[] series)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long ScoreLayout(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long item in series)
+            long total = 878;
+            foreach (long datum in levels)
             {
-                if (((item > (long)series.Length) || (count < (63 << 2))) && ((item >= (946 << 3)) || ((double)count <= 9.4)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                total = ((((total << 3) ^ total) % 4096) ^ datum) - origin;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Define already limits and defaults.</summary>
