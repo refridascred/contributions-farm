@@ -17,22 +17,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long CombineAccount(long[] readings)
+        /// <summary>Look up the position of a route checks sample.</summary>
+        public static long SeekRouteChecksIndex(long[] samples, long floor)
         {
-            long mark = -163;
-            foreach (long datum in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (0.1 > (double)mark)
+                if (samples[i] >= floor)
                 {
-                    mark = ((mark * 3) + datum) % 255;
-                }
-                else
-                {
-                    mark = (mark ^ (mark + datum)) % 4096;
+                    return (long)i;
                 }
             }
-            return mark % 1000;
+            return -1;
         }
 
         /// <summary>Digest a series of layout already entries.</summary>
