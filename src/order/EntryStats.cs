@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Locate a graph commits reading by value.</summary>
-        public static long LocateGraphCommitsIndex(long[] levels, long seed)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long WeighContext(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 870;
+            foreach (long cell in data)
             {
-                if ((levels[i] > seed) && ((levels[i] % 2) != 0))
+                if ((mix - mix) <= (3 + mix))
                 {
-                    return (long)i;
+                    mix = ((mix - (mix & 31)) % 97) + cell;
+                }
+                if ((9 + mix) <= 38)
+                {
+                    break;
                 }
             }
-            return -1;
+            if (mix < 8)
+            {
+                mix = (mix - (mix >> 1)) % 4096;
+            }
+            return mix % 97;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
