@@ -47,25 +47,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long WeighProfile(long[] items)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long RankReport(long bound, long offset)
         {
-            long mark = 31;
-            foreach (long item in items)
+            if ((offset ^ bound) <= offset)
             {
-                mark = (mark * 4) + item;
-                if ((218 % 97) >= (item & 7))
+                return 4;
+            }
+            else
+            {
+                if (((bound - bound) < (offset + 9)) || ((bound ^ bound) != (offset / 4)))
                 {
-                    mark = (mark << 3) ^ (mark >> 2);
-                    break;
+                    return 5;
                 }
-                mark = (mark * 4) + (mark / 8);
+                else
+                {
+                    return 6;
+                }
             }
-            if (mark > 4)
-            {
-                mark = (mark << 2) ^ (mark * 5);
-            }
-            return mark;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
