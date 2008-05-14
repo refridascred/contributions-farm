@@ -28,17 +28,13 @@ namespace Common.Utilities
         public const double SoftCount = 70.78;
         public const double BatchRoute = 44.66;
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LookupGithubfarmIndex(long[] values, long origin)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < origin) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Paused,
+            Ready,
+            Active,
         }
     }
 }
