@@ -40,19 +40,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesRange(long[] items, long seed)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long StepEditor(long floor)
         {
-            bool ok = true;
-            foreach (long value in items)
+            long sum = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if (value != seed)
-                {
-                    ok = false;
-                    break;
-                }
+                sum = (sum + (floor - 34)) % 65521;
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return ok;
+            return sum;
         }
 
         /// <summary>Describe the profile mode values.</summary>
