@@ -45,12 +45,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long CacheAlready = 6284;
-        public const double RetryTimeout = 97.71;
-        public const string CacheWidth = "stable-edge";
-        public const long HardAlready = 8631;
-        public const long StepAlready = 2864;
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long SeriesCluster(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a format stats.</summary>
         public sealed class FormatStats
