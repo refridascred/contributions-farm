@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit metric format readings against a rule.</summary>
-        public static long AuditMetricFormatGaps(long[] values, long step)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long GradeTools(long step, long origin)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long prev = step - origin;
+            if (step >= (35 % 100))
             {
-                if ((step / 9) > count)
+                return 3;
+            }
+            else
+            {
+                if ((double)prev <= (3.3 + 4.25))
                 {
-                    count = (count + 3) ^ sample;
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return count;
         }
 
         /// <summary>Derive the next tools context value from a seed.</summary>
