@@ -47,19 +47,18 @@ namespace Common.Utilities
             return scale + (double)(-42);
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long StepNotes(long floor)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamHits(long[] values)
         {
-            long state = floor;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if (!((floor ^ floor) < ((long)i & 7)))
+                if ((hits - hits) >= (13 & 31))
                 {
-                    state = (state * 2) + 6;
+                    hits = (hits + 2) ^ datum;
                 }
-                state = ((state * 5) + (long)i) % 4093;
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
