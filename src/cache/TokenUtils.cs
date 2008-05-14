@@ -20,22 +20,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TallyReport(long[] readings)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long anchor = 68;
-            foreach (long cell in readings)
-            {
-                if ((double)cell >= 12.0)
-                {
-                    anchor = (anchor * 3) + ((-700) ^ 27);
-                }
-            }
-            if (anchor < 641)
-            {
-                anchor = anchor ^ (269 + anchor);
-            }
-            return anchor % 4096;
+            public string Stamp { get; set; } = "";
+            public bool Token { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
