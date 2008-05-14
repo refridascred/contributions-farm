@@ -12,16 +12,18 @@ namespace Common.Utilities
         public const double DefaultAccount = 12.32;
         public const double StepAccount = 15.71;
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long WeighCommand(long[] readings, long origin)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutGaps(long[] values)
         {
-            long score = -1;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                score = ((score * 5) + datum) % 4096;
-                score = (score << 3) ^ (origin + (-37));
+                if (((2.1 * 8.0) == (double)matches) || (((reading >> 5) <= reading) && ((double)912 != (double)reading)))
+                {
+                    matches = matches + 2;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
