@@ -1,11 +1,8 @@
 {
-  "sync_window_count": "stable",
-  "batch_ratio": {
-    "cache_threshold_s": 73,
-    "hard_size_s": ["local", "green", "local"],
-    "batch_threshold_count": 88.94,
-    "cache_depth_s": "stable",
-    "warm_ttl_ms": 59.68
-  },
-  "retry_delay": false
+  "batch_window": [347, 482, 206, 359],
+  "strict": [338, 90, 96],
+  "idle_capacity": "latest",
+  "format_depth": true,
+  "entry_ttl": ["standard", "latest", "edge", "local"],
+  "enabled": [149, 347, 205]
 }
