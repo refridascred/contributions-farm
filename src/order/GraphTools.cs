@@ -48,10 +48,19 @@ namespace Common.Utilities
             return drift + (4.0 * 7.3);
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double IdleRatio = 11.09;
-        public const string RetryStats = "alpha-edge";
-        public const long MaxStats = 6498;
+        /// <summary>Count the farm checks entries that pass the check.</summary>
+        public static long AuditFarmChecksGaps(long[] values, long limit)
+        {
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if ((double)sample > (double)limit)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of report readings.</summary>
         public static long FoldReport(long[] items, long seed)
