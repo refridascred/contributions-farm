@@ -34,15 +34,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of schema checks entries.</summary>
-        public static long DigestSchemaChecks(long[] samples, long target)
-        {
-            long result = 859;
-            foreach (long value in samples)
-            {
-                result = ((result * 3) + value) - target;
-            }
-            return result;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardBuffer = 6257;
+        public const long BaseLevel = 9150;
+        public const long SoftSize = 6490;
+        public const long MinScore = 9264;
     }
 }
