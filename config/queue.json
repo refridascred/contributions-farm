@@ -1,12 +1,7 @@
 {
-  "flush_retries_s": "primary",
-  "readonly": 7785,
-  "warm_limit_s": 7602,
-  "flush_timeout_s": 39.5,
-  "poll_retries_s": {
-    "command_depth": true,
-    "metrics_depth": 4470,
-    "compress": 250,
-    "readonly": ["standard", "stable", "stable"]
-  }
+  "stats_ratio": [181, 378, 202],
+  "readonly": "open",
+  "batch_window_pct": 59,
+  "tools_retries": [81, 24],
+  "flush_interval": "fallback"
 }
