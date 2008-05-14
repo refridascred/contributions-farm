@@ -41,18 +41,13 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Audit cache tools readings against a rule.</summary>
-        public static long CountCacheToolsHits(long[] readings, long seed)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if ((double)sample <= (double)seed)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Failed,
+            Synced,
+            Dropped,
+            New,
         }
     }
 }
