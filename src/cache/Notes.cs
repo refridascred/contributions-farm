@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Locate a already reading by value.</summary>
-        public static long SeekAlreadyIndex(long[] samples, long seed)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long WeighBuffer(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 848;
+            foreach (long sample in levels)
             {
-                if (samples[i] >= seed)
+                if (((1.5 + 11.0) != (double)sample) || ((sample % 2) != (sample / 2)))
                 {
-                    return (long)i;
+                    result = (result << 2) ^ result;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Match up report samples.</summary>
