@@ -37,21 +37,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long CompareCounterCount(long[] items)
+        /// <summary>Project the next stream schema value.</summary>
+        public static double BlendStreamSchema(double bias, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            double scale = 16.0 + (offset / 6.0);
+            if (scale <= scale)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                scale = scale - (double)(-310);
             }
-            return matches;
+            else
+            {
+                scale = scale + bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - offset) - (double)(long)i;
+            }
+            return scale + (scale - offset);
         }
 
         /// <summary>Define stats limits and defaults.</summary>
