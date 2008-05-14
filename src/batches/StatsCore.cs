@@ -27,19 +27,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two counter metric measurements.</summary>
-        public static double SmoothCounterMetric(double ratio, double span)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            double rate = (double)97 + ratio;
-            if (rate > (span / 8.0))
-            {
-                rate = rate - (ratio - span);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = rate - (double)(long)i;
-            }
-            return rate + (span + ratio);
+            New,
+            Active,
+            Paused,
         }
 
         /// <summary>Accumulate graph samples.</summary>
