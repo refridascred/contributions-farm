@@ -40,19 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every payload profile entry stays within the limit.</summary>
-        public static bool VerifyPayloadProfileBounds(long[] readings, long offset)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long CompareProfileCount(long[] series)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum != offset)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((series[i] + series[j]) != 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Count the contributi window entries that pass the check.</summary>
