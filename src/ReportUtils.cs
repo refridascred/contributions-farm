@@ -25,19 +25,12 @@ namespace Common.Utilities
         public const string MaxLevel = "fallback-1";
         public const long BurstScore = 8996;
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long FoldCommits(long[] values, long limit)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long state = 1;
-            foreach (long entry in values)
-            {
-                state = ((state ^ (8 & 1)) ^ entry) + limit;
-            }
-            if (state > 407)
-            {
-                state = (state * 2) + state;
-            }
-            return state % 97;
+            public double Offset { get; set; }
+            public long Rank { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Hold a commits options.</summary>
