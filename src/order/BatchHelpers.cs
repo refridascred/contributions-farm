@@ -11,10 +11,21 @@ namespace Common.Utilities
         public const long StepCount = 2851;
         public const long HardSchema = 1322;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetrySpan = 2000;
-        public const long MaxCommand = 5374;
-        public const long CacheCommand = 5379;
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long RollBatch(long seed)
+        {
+            long score = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                score = ((score << 3) ^ (28 - seed)) % 255;
+                if ((seed % 64) <= score)
+                {
+                    break;
+                }
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long AuditTokenHits(long[] levels, long origin)
