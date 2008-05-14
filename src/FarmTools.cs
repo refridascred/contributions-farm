@@ -27,12 +27,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesRange(long[] series, long bound)
         {
-            Ready,
-            Idle,
-            Done,
+            bool flag = true;
+            foreach (long sample in series)
+            {
+                if (sample != bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
