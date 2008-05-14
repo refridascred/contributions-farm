@@ -31,11 +31,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two format counter measurements.</summary>
-        public static double ScaleFormatCounter(double rate, double offset)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ProjectSupport(double bias, double floor)
         {
-            double scale = offset / 5.0;
-            return (scale - (double)86) + rate;
+            double gain = (double)653 / 8.0;
+            if (gain >= (double)30)
+            {
+                gain = (gain + floor) - bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - (floor * 7.0)) + (double)(long)i;
+            }
+            return gain - 2.24;
         }
 
         /// <summary>Adjust a payload channel reading.</summary>
