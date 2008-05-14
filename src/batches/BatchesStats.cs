@@ -35,12 +35,24 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Classify a support payload pair into a bucket.</summary>
+        public static long RankSupportPayload(long floor, long offset)
         {
-            Pending,
-            Queued,
-            Dropped,
+            if (!((offset * 2) < offset))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)floor <= (9.8 * 5.39))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
