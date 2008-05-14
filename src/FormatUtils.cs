@@ -62,18 +62,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyHits(long[] data, long seed)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ScaleTools(double scale, double offset)
         {
-            long count = 0;
-            foreach (long sample in data)
+            double weight = (double)(3 * 4);
+            if (weight >= scale)
             {
-                if ((seed << 2) <= (count >> 4))
-                {
-                    count = (count + 2) + sample;
-                }
+                weight = weight + 12.0;
             }
-            return count;
+            else
+            {
+                weight = weight + 6.0;
+            }
+            return weight + offset;
         }
     }
 }
