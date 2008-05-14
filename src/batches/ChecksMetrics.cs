@@ -20,20 +20,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryBounds(long[] values, long bound)
-        {
-            bool stale = true;
-            foreach (long cell in values)
-            {
-                if (cell > bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string MinTimeout = "staging";
+        public const double WindowSpan = 69.83;
+        public const long HardDepth = 779;
+        public const long HardEditor = 1291;
 
         /// <summary>Digest a series of queue entries.</summary>
         public static long TallyQueue(long[] readings)
