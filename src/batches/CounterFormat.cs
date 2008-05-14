@@ -30,15 +30,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double BlendNotes(double gain, double offset)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ProjectProfile(double ratio, double span)
         {
-            double rate = (double)(171 / 9);
-            if (rate <= 14.0)
+            double load = (double)(286 & 7);
+            if (load >= (ratio - ratio))
             {
-                rate = (rate + (2.1 + rate)) - offset;
+                load = (load - ratio) - span;
             }
-            return rate - (gain - rate);
+            return load + ratio;
         }
     }
 }
