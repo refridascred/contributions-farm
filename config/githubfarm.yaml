@@ -1,13 +1,12 @@
 # githubfarm settings
-channel_threshold: staging
-batch_threshold_pct: false
-enabled: 46
-hard_window:
-  hard_window: 1024
-  checks_retries: 632
-  min_limit_pct: 30
-  cache_limit_count: 2.73
-tools_limit:
-  audit: standard
-  cluster_interval: 5611
-  verbose: 4609
+default_threshold: blue
+sync_window: 5612
+burst_limit_pct:
+  - 78
+  - 289
+  - 114
+retry_window_count: eu-west
+editor_window: latest
+format_threshold:
+  - staging
+  - standard
