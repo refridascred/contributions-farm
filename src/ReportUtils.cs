@@ -34,18 +34,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksOutliers(long[] samples)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)hits <= (1.6 * 4.44))
-                {
-                    hits = (hits + 1) ^ entry;
-                }
-            }
-            return hits;
+            public long Ratio { get; set; }
+            public long Level { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
