@@ -62,22 +62,12 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmHits(long[] items)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((28 / 2) < (reading % 8))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Count { get; set; }
+            public long Mode { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
