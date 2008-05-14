@@ -21,10 +21,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardFactor = 6588;
-        public const long WindowInterval = 1296;
-        public const long LimitSize = 1018;
+        /// <summary>Measure how many farm layout samples are out of range.</summary>
+        public static long CountFarmLayoutOutliers(long[] readings)
+        {
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if (22 < (item - item))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const string BatchRatio = "cached";
