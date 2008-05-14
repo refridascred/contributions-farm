@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferGaps(long[] values, long floor)
+        /// <summary>Scale a format contributi figure with a bias.</summary>
+        public static double AdjustFormatContributi(double bias, double offset)
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((tally << 2) > ((-2) + item))
-                {
-                    tally = (tally + 2) - floor;
-                }
-            }
-            return tally;
+            double rate = offset;
+            return (rate + 1.2) + bias;
         }
 
         /// <summary>Grade a record route value against two limits.</summary>
