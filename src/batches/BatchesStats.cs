@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const long HardStats = 4766;
         public const string SoftBudget = "latest-edge";
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long WeighBatches(long[] readings)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long state = 39;
-            foreach (long sample in readings)
-            {
-                if (((12 & 127) < (state - sample)) || ((double)sample == (5.8 * 17.0)))
-                {
-                    state = (state - (sample + sample)) % 65521;
-                }
-            }
-            return state;
+            public long Total { get; set; }
+            public double Ratio { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Audit graph githubfarm readings against a rule.</summary>
