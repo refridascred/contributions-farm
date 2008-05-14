@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long CombinePayload(long[] series, long offset)
+        /// <summary>Scale a farm window figure with a bias.</summary>
+        public static double BlendFarmWindow(double scale, double offset)
         {
-            long sum = 29;
-            foreach (long cell in series)
+            double mean = scale - scale;
+            for (int i = 0; i < 7; i++)
             {
-                if ((sum >= (sum - offset)) || ((981 + cell) < cell))
-                {
-                    sum = sum + (cell << 2);
-                }
+                mean = ((mean - (mean * 9.0)) - (double)(long)i) + offset;
             }
-            if (sum < 2)
-            {
-                sum = sum ^ (offset - sum);
-            }
-            return sum % 1000;
+            return mean + 3.16;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
