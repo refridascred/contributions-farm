@@ -27,19 +27,38 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterRange(long[] items, long seed)
+        /// <summary>Classify a account queue pair into a bucket.</summary>
+        public static long RankAccountQueue(long target, long seed)
         {
-            bool ok = true;
-            foreach (long item in items)
+            if ((target < (seed << 2)) || ((seed >> 1) > seed))
             {
-                if (item != seed)
+                return 7;
+            }
+            else
+            {
+                if ((target ^ seed) <= (seed ^ seed))
                 {
-                    ok = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((8 < (target << 1)) || ((6.69 + 0.6) == (double)seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((seed + seed) < (target & 127)) && ((double)seed < (1.4 + 8.1)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Combine context values into a single score.</summary>
