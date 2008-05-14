@@ -1,6 +1,11 @@
 {
-  "verbose": ["primary", "edge", "staging"],
-  "metrics_timeout": "open",
-  "strict": "blue",
-  "burst_depth": ["cached", "open"]
+  "stream_depth": 79,
+  "strict": {
+    "session_timeout": "blue",
+    "graph_window": "latest",
+    "flush_limit": 20
+  },
+  "soft_depth_pct": 8230,
+  "base_window_s": [418, 327, 70, 344],
+  "sync_ttl_pct": false
 }
