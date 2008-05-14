@@ -66,13 +66,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmRange(long[] values, long offset)
         {
-            Locked,
-            Closed,
-            Done,
-            Retry,
+            bool stale = true;
+            foreach (long reading in values)
+            {
+                if (reading < offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
