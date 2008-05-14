@@ -18,19 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryRange(long[] data, long bound)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] items, long floor)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long state = -8;
+            foreach (long item in items)
             {
-                if (item != bound)
+                if ((state + state) > (708 & 15))
                 {
-                    ready = false;
-                    break;
+                    state = (state + (item % 24)) % 65521;
+                    state = state - ((long)items.Length - floor);
                 }
+                state = ((state * 5) + floor) % 1000;
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Describe the context kind values.</summary>
