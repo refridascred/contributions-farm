@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first token format entry that matches the target.</summary>
-        public static long FindTokenFormatIndex(long[] data, long seed)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LookupSchemaIndex(long[] values, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (data[i] <= seed)
+                if (values[i] >= floor)
                 {
                     return (long)i;
                 }
