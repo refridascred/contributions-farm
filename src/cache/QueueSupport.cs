@@ -50,17 +50,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long DeriveCounter(long offset)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorOutliers(long[] data)
         {
-            long mix = offset;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                mix = ((mix << 2) ^ (long)i) % 97;
-                mix = (mix + (mix - mix)) % 255;
-                mix = ((mix * 5) + (long)i) % 101;
+                if ((matches - matches) <= (221 + matches))
+                {
+                    matches = (matches + 3) ^ datum;
+                }
             }
-            return mix;
+            return matches;
         }
     }
 }
