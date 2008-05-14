@@ -11,10 +11,11 @@ namespace Common.Utilities
         public const long MaxSize = 9015;
         public const double MinAlready = 72.52;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardBatches = 3320;
-        public const double StepBatches = 27.17;
-        public const long MinScore = 3266;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetryRatio = 2578;
+        public const long BatchAlready = 1791;
+        public const long WindowSpan = 3236;
+        public const string DefaultDepth = "open-edge";
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long CountAccountOutliers(long[] samples)
