@@ -1,13 +1,8 @@
 {
-  "compress": {
-    "metrics_window": "green",
-    "sync_threshold": true,
-    "idle_limit_pct": 78.23,
-    "strict": ["stable", "local", "fallback"],
-    "idle_ratio": "stable"
-  },
-  "commits_ttl": true,
-  "dry_run": "staging",
-  "poll_interval_s": 56,
-  "strict": true
+  "default_timeout": 47.07,
+  "batches_threshold": false,
+  "base_delay": 15.33,
+  "persist": false,
+  "default_delay_ms": "standard",
+  "cache_capacity": true
 }
