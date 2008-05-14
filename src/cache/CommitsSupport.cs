@@ -38,18 +38,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchOutliers(long[] levels)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if ((seen + 4) <= (seen - seen))
-                {
-                    seen = (seen + 1) ^ datum;
-                }
-            }
-            return seen;
+            public double Ratio { get; set; }
+            public double Limit { get; set; }
+            public double Mode { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Describe the session class values.</summary>
