@@ -32,13 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            Pending,
-            Done,
-            Locked,
-            New,
+            Dropped,
+            Active,
+            Ready,
+            Closed,
+            Retry,
         }
     }
 }
