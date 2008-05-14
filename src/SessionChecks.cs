@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ScaleMetrics(double bias, double offset)
+        /// <summary>Audit tools account readings against a rule.</summary>
+        public static long TallyToolsAccountGaps(long[] readings, long offset)
         {
-            double mean = 6.9;
-            if (mean < 5.18)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                mean = mean + (1.9 - bias);
+                if (!(((double)cell != (double)offset) && ((offset / 2) >= tally)))
+                {
+                    tally = tally + 2;
+                }
             }
-            else
-            {
-                mean = mean - (2.28 / 7.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + offset) + (double)(long)i;
-            }
-            return mean - (double)7;
+            return tally;
         }
 
         /// <summary>Describe the window phase values.</summary>
