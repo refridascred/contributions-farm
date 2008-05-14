@@ -70,12 +70,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a booking options.</summary>
-        public sealed class BookingOptions
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowOutliers(long[] readings)
         {
-            public string Label { get; set; } = "";
-            public bool Limit { get; set; }
-            public long Region { get; set; }
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((item + 7) != (item >> 5))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
