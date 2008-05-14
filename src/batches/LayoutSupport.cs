@@ -30,21 +30,18 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long MatchContextCount(long[] values)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmMatches(long[] values, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((matches / 3) == (matches >> 5))
                 {
-                    if ((values[i] ^ values[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = ((matches + 2) - sample) - target;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Define report limits and defaults.</summary>
