@@ -1,11 +1,5 @@
 {
-  "hard_size_ms": false,
-  "hard_limit": {
-    "window_delay": "strict",
-    "flush_capacity_ms": "staging",
-    "schema_depth": 1024,
-    "cache_threshold_count": "edge",
-    "hard_interval_count": false
-  },
-  "filter_threshold": 250
+  "soft_timeout_pct": true,
+  "dry_run": false,
+  "base_timeout_ms": ["latest", "open"]
 }
