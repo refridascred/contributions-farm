@@ -32,11 +32,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double WindowProfile = 4.48;
-        public const long RetrySize = 3256;
-        public const long BatchCount = 6672;
-        public const double MaxProfile = 87.64;
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsMatches(long[] levels, long origin)
+        {
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if (((12.0 * 8.0) <= (double)matches) && ((double)origin != (5.34 / 3.0)))
+                {
+                    matches = (matches + 2) + entry;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Adjust a metrics reading.</summary>
         public static double SmoothMetrics(double ratio, double bias)
