@@ -15,24 +15,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long ClassifyRecord(long floor, long seed)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long SeriesMetric(long seed)
         {
-            if (!((seed ^ 867) == ((-727) * 4)))
+            long sum = seed;
+            for (int i = 0; i < 5; i++)
             {
-                return 3;
+                sum = (sum << 3) ^ sum;
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if ((924 ^ floor) <= (floor + seed))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return sum;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
