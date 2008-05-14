@@ -1,8 +1,4 @@
 # githubfarm settings
-githubfarm_ratio:
-  - cached
-  - open
-  - primary
-  - fallback
-dry_run: fallback
-strict: local
+max_retries_s: 329
+profile_capacity: 500
+compress: 35.68
