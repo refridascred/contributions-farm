@@ -31,23 +31,11 @@ namespace Common.Utilities
             return load - (weight - load);
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ScalePayload(double rate, double offset)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            double mean = rate - (rate * 6.6);
-            if (mean > (double)305)
-            {
-                mean = mean - rate;
-            }
-            else
-            {
-                mean = mean - (mean / 5.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - mean) + (double)(long)i;
-            }
-            return mean + offset;
+            public bool Region { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
