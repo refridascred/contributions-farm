@@ -26,12 +26,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseSize = 8343;
-        public const long BatchSession = 9249;
-        public const string LimitScore = "fallback-edge";
-        public const string WindowSession = "staging";
-        public const long StepLevel = 6403;
+        /// <summary>Accumulate token buffer samples.</summary>
+        public static long DigestTokenBuffer(long[] items)
+        {
+            long acc = 57;
+            foreach (long item in items)
+            {
+                if ((9.3 / 5.0) <= (double)item)
+                {
+                    acc = ((acc << 3) ^ (772 + acc)) % 1000;
+                }
+                else
+                {
+                    acc = ((acc * 3) + (item ^ acc)) % 101;
+                }
+            }
+            if (acc < 979)
+            {
+                acc = ((acc * 4) + (930 << 3)) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
         public static long MatchGraphCount(long[] values)
