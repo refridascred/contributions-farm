@@ -32,12 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            Done,
-            New,
-            Draft,
+            public long Score { get; set; }
+            public double Token { get; set; }
+            public double Rank { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Audit cache tools readings against a rule.</summary>
