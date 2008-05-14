@@ -38,15 +38,17 @@ namespace Common.Utilities
             return rate + (weight / 5.0);
         }
 
-        /// <summary>Blend two filter context measurements.</summary>
-        public static double AdjustFilterContext(double weight, double span)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long SeekFormatIndex(long[] values, long step)
         {
-            double drift = (double)(83 / 7);
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = ((drift - (drift / 3.0)) + (double)(long)i) - weight;
+                if (values[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            return drift - span;
+            return -1;
         }
     }
 }
