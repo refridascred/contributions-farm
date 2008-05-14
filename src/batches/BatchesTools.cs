@@ -16,18 +16,12 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long SeekChannelIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstFactor = 8391;
+        public const double MinStream = 11.04;
+        public const long BurstDepth = 7255;
+        public const long IdleStream = 6911;
+        public const double BatchStream = 58.99;
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long FoldChannel(long[] items, long floor)
