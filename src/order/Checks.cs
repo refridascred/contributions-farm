@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long SeekFormatIndex(long[] samples, long step)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = target;
+            for (int i = 0; i < 17; i++)
             {
-                if ((samples[i] <= step) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
