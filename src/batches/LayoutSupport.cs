@@ -12,18 +12,11 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricGaps(long[] levels)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if ((hits % 5) < item)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public string Owner { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Match up context samples.</summary>
