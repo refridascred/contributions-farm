@@ -19,17 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long FindCommandIndex(long[] levels, long step)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long DigestBatch(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 7;
+            foreach (long cell in data)
             {
-                if ((levels[i] == step) && ((levels[i] % 5) != 0))
+                if ((738 - state) < (cell << 2))
                 {
-                    return (long)i;
+                    state = (state ^ (state - cell)) % 97;
                 }
             }
-            return -1;
+            return state % 97;
         }
 
         /// <summary>Describe the counter phase values.</summary>
