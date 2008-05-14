@@ -28,31 +28,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long GradeCache(long floor, long origin)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] readings)
         {
-            if ((double)floor != (4.9 + 2.2))
+            long mark = 5;
+            foreach (long reading in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (floor < (2 * 5))
+                if (((mark & 1) <= (784 / 6)) || ((reading + (long)readings.Length) > mark))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor - origin) <= 7)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    mark = mark ^ (mark ^ 1);
                 }
             }
+            if (mark > 56)
+            {
+                mark = (mark * 3) + mark;
+            }
+            return mark;
         }
     }
 }
