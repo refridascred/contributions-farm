@@ -1,23 +1,6 @@
 {
-  "audit": {
-    "flush_size_pct": {
-      "checks_interval": 36.24,
-      "counter_window": 24.18,
-      "audit": "blue",
-      "verbose": "stable",
-      "default_window_s": 44.54,
-      "base_ratio": ["edge", "latest", "eu-west"]
-    },
-    "sync_capacity_ms": {
-      "readonly": "green",
-      "counter_timeout": 2265,
-      "soft_ttl_pct": [432, 496, 341, 42],
-      "metric_depth": "eu-west"
-    },
-    "warm_limit_pct": 34.6
-  },
-  "contributi_threshold": 100,
-  "dry_run": "latest",
-  "readonly": [439, 397],
-  "warm_window_ms": 83
+  "persist": 2096,
+  "metrics_timeout": 50.69,
+  "entry_size": false,
+  "base_delay_count": 2.53
 }
