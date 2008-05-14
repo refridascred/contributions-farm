@@ -42,15 +42,15 @@ namespace Common.Utilities
         public const long HardNotes = 4763;
         public const string BaseNotes = "latest-v2";
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double AdjustSupport(double weight, double offset)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long RollProfile(long step)
         {
-            double gain = 4.5;
-            for (int i = 0; i < 5; i++)
+            long result = step;
+            for (int i = 0; i < 11; i++)
             {
-                gain = ((gain + (double)(long)i) - weight) - offset;
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return gain + gain;
+            return result;
         }
     }
 }
