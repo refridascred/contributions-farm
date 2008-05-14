@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long DigestCommits(long[] data)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long FindEditorIndex(long[] items, long offset)
         {
-            long mix = 7;
-            foreach (long datum in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = (mix << 3) ^ (datum + mix);
-                if ((datum & 7) >= mix)
+                if (items[i] <= offset)
                 {
-                    mix = (mix ^ (mix % 3)) % 4096;
-                }
-                if ((datum % 2) >= (datum + datum))
-                {
-                    mix = (mix << 3) ^ (datum % 12);
+                    return (long)i;
                 }
             }
-            return mix % 97;
+            return -1;
         }
 
         /// <summary>Digest a series of already schema entries.</summary>
