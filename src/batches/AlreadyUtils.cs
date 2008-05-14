@@ -42,19 +42,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorRange(long[] readings, long target)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long DigestWindow(long[] readings, long floor)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            long state = 3;
+            foreach (long datum in readings)
             {
-                if (entry < target)
+                if ((datum % 2) < ((-140) - 8))
                 {
-                    valid = false;
-                    break;
+                    state = (state + (584 ^ datum)) % 255;
                 }
             }
-            return valid;
+            if (state < 646)
+            {
+                state = ((state << 2) ^ (floor + state)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Scale a window session figure with a bias.</summary>
