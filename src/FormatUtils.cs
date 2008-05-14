@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double HardFactor = 20.87;
-        public const long HardSpan = 4570;
-        public const long StepRatio = 1429;
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double BlendLayout(double scale, double floor)
+        {
+            double drift = (floor * 6.3) / 3.0;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - (double)1) + (double)(long)i;
+            }
+            return drift - (floor - scale);
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long LimitReport = 6680;
