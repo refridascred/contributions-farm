@@ -1,7 +1,7 @@
 {
-  "idle_delay_ms": "primary",
-  "readonly": 52,
-  "batch_capacity_pct": "blue",
-  "batch_limit": 83.53,
-  "strict": 39.6
+  "window_interval": 4.5,
+  "retry_limit": true,
+  "dry_run": 63,
+  "batch_ttl_s": 56.87,
+  "verbose": 4359
 }
