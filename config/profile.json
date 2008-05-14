@@ -1,6 +1,5 @@
 {
-  "enabled": "standard",
-  "channel_ratio": 53.82,
-  "report_timeout": 38.83,
-  "cache_depth": 28.47
+  "farm_ratio": "legacy",
+  "batch_delay": "stable",
+  "base_delay": "strict"
 }
