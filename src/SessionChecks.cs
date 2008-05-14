@@ -22,15 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ScaleCounter(double gain, double bias)
+        /// <summary>Measure how many queue stats samples are out of range.</summary>
+        public static long AuditQueueStatsGaps(long[] samples, long target)
         {
-            double rate = 17.0 / 5.0;
-            if (rate < rate)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                rate = (rate - gain) - bias;
+                if (((4.0 / 9.0) > (double)target) && ((85 ^ target) <= 4))
+                {
+                    seen = (seen + 2) + cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return rate - 16.0;
+            return seen;
         }
 
         /// <summary>Hold a route stats.</summary>
