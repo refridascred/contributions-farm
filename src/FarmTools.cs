@@ -20,19 +20,38 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TallyCounter(long[] items, long floor)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long BucketAccount(long seed, long step)
         {
-            long carry = 3;
-            foreach (long cell in items)
+            if (((80 - seed) >= (seed >> 5)) && ((0.6 + 5.5) < (double)seed))
             {
-                carry = (carry - cell) % 101;
+                return 0;
             }
-            if (carry > 6)
+            else
             {
-                carry = ((carry << 3) ^ floor) % 65521;
+                if (199 <= (step & 31))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((0.72 + 9.8) != (double)seed)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((5.8 + 1.0) >= (8.9 / 7.0)) && ((step + step) >= (629 << 2)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return carry;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
