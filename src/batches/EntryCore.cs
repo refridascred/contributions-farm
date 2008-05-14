@@ -25,12 +25,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            public bool Region { get; set; }
-            public long Token { get; set; }
-            public long Flag { get; set; }
+            Pending,
+            Failed,
+            Closed,
+            Done,
         }
 
         /// <summary>Hold a filter record.</summary>
