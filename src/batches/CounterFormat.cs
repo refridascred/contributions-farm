@@ -27,16 +27,10 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long RollOrder(long limit)
-        {
-            long carry = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleStream = 2351;
+        public const long MinStream = 7763;
+        public const double WindowStream = 94.53;
 
         /// <summary>Scale a notes figure with a bias.</summary>
         public static double BlendNotes(double gain, double offset)
