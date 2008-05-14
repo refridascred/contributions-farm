@@ -1,25 +1,11 @@
 # entry settings
-editor_threshold:
+batches_delay: true
+schema_ratio: 47
+burst_depth: 58
+dry_run: 50.16
+sync_threshold_ms:
+  - blue
   - cached
-  - legacy
-  - open
   - latest
-soft_ratio_pct:
-  - 114
-  - 438
-  - 201
-enabled:
-  - standard
-  - green
-  - eu-west
-sync_ttl_s:
-  flush_depth_pct: 4135
-  dry_run: 30
-  batch_capacity_pct: 2518
-poll_delay:
-  persist: edge
-  enabled:
-    - latest
-    - green
-    - edge
-  verbose: 98.37
+  - blue
+support_threshold: false
