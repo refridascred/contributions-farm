@@ -6,15 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=121
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in local standard edge primary; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
 total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 3))
+for i in $(seq 1 6); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
+
+for item in stable open fallback; do
+    log "checking ${item}"
+done
