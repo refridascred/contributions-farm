@@ -19,12 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            Synced,
-            Queued,
-            Idle,
+            public bool Limit { get; set; }
+            public bool Score { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
