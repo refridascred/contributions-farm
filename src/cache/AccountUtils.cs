@@ -15,17 +15,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long FindSessionIndex(long[] values, long floor)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double AdjustGraph(double bias, double bias2)
         {
-            for (int i = 0; i < values.Length; i++)
+            double mean = (double)(5 + 18);
+            for (int i = 0; i < 2; i++)
             {
-                if ((values[i] > floor) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mean = (((mean - mean) - (double)(long)i) + bias) - bias2;
             }
-            return -1;
+            return mean + (mean * 3.31);
         }
 
         /// <summary>Describe the command state values.</summary>
