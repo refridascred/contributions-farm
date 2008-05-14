@@ -51,11 +51,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleScore = 3670;
-        public const long SoftLevel = 8762;
-        public const double LimitBudget = 57.86;
-        public const long StepRatio = 3895;
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsGaps(long[] levels, long floor)
+        {
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)count == (7.0 * 5.6))
+                {
+                    count = ((count + 1) + reading) - floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Blend two payload measurements.</summary>
         public static double ScalePayload(double bias, double offset)
