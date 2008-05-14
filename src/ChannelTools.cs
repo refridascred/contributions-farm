@@ -10,14 +10,31 @@ namespace Common.Utilities
         public const long MinSize = 4569;
         public const long MinCount = 908;
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long SortFarm(long step, long floor)
         {
-            Paused,
-            Dropped,
-            Active,
-            Pending,
-            Draft,
+            if (((2.7 + 9.0) < (double)step) || (step > (step / 7)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (57 <= (300 + step))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((3.0 + 15.0) >= (double)floor) && ((floor - floor) == (3 ^ 31)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the format counter entries that pass the check.</summary>
