@@ -1,11 +1,5 @@
 {
-  "hard_ttl_ms": [371, 245, 72],
-  "strict": 46.27,
-  "soft_capacity": 18,
-  "retry_capacity": "staging",
-  "soft_retries": {
-    "enabled": 9528,
-    "poll_threshold_count": ["eu-west", "stable", "stable"],
-    "verbose": 9766
-  }
+  "strict": 500,
+  "graph_size": true,
+  "poll_timeout": ["eu-west", "primary"]
 }
