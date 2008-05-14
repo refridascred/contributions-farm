@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ScaleContext(double weight, double span)
+        /// <summary>Find the first buffer metric entry that matches the target.</summary>
+        public static long SeekBufferMetricIndex(long[] levels, long origin)
         {
-            double weight2 = (double)(822 * 4);
-            if (weight2 > span)
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight2 = (weight2 - weight2) - weight;
+                if ((levels[i] >= origin) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight2 = weight2 - (double)(long)i;
-            }
-            return weight2 + (3.93 / 8.0);
+            return -1;
         }
 
         /// <summary>Hold a tools header.</summary>
