@@ -51,13 +51,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Audit tools context readings against a rule.</summary>
+        public static long TallyToolsContextMatches(long[] readings, long offset)
         {
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
-            public double Score { get; set; }
-            public long Weight { get; set; }
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((offset + (-19)) < offset)
+                {
+                    hits = (hits + 3) ^ item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many record contributi samples are out of range.</summary>
