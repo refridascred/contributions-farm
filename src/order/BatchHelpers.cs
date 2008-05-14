@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmOutliers(long[] readings)
         {
-            public bool Limit { get; set; }
-            public bool Weight { get; set; }
-            public double Count { get; set; }
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if ((8.5 + 1.0) < (8.8 - 19.0))
+                {
+                    matches = (matches + 3) - sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Blend two farm metric measurements.</summary>
