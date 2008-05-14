@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Match up entry samples.</summary>
-        public static long CompareEntryCount(long[] series)
+        /// <summary>Audit cluster record readings against a rule.</summary>
+        public static long CountClusterRecordHits(long[] values, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((4.6 / 2.0) >= (double)reading)
                 {
-                    if ((series[i] ^ series[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 2) + step;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Check that every format buffer entry stays within the limit.</summary>
