@@ -48,18 +48,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the payload token entries that pass the check.</summary>
-        public static long AuditPayloadTokenMatches(long[] levels)
+        /// <summary>Count the route format entries that pass the check.</summary>
+        public static long TallyRouteFormatMatches(long[] items)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if ((cell + seen) < (1 % 2))
+                if ((double)matches > 6.81)
                 {
-                    seen = seen + 2;
+                    matches = (matches + 2) - reading;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
