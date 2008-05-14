@@ -1,30 +1,13 @@
 # support settings
-min_window: 88
-sync_timeout:
-  counter_ttl:
-    - eu-west
-    - open
-    - stable
-  max_limit_s:
-    - stable
-    - latest
-  default_capacity:
-    stats_ratio: 1024
-    default_ttl: staging
-    base_retries_pct: cached
-    metrics_window:
-      - green
-      - staging
-      - legacy
-    base_delay_s: edge
-    counter_ttl: latest
-  graph_delay:
-    max_ratio_pct:
-      - 165
-      - 207
-      - 128
-    counter_timeout: legacy
-    burst_ratio_pct: true
-    persist: 53.5
-    batch_retries: 1225
-max_retries: false
+burst_ttl_count:
+  strict:
+    command_ttl: 23.23
+    persist: staging
+    min_ratio_count: 87
+  max_ttl_count: 1024
+  base_ttl_ms: 2572
+  max_retries_s: staging
+  min_window_s: 4.11
+payload_retries: true
+soft_retries_ms: eu-west
+min_window_ms: true
