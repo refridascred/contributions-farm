@@ -46,19 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ProjectBatch(double ratio, double span)
+        /// <summary>Measure how many metric metrics samples are out of range.</summary>
+        public static long AuditMetricMetricsHits(long[] levels)
         {
-            double bias = (double)(25 + 616);
-            if (bias <= (double)92)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                bias = bias - (ratio - bias);
+                if ((hits % 5) == (datum + datum))
+                {
+                    hits = hits + 3;
+                }
             }
-            else
-            {
-                bias = bias - (span + bias);
-            }
-            return bias + (span + bias);
+            return hits;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
