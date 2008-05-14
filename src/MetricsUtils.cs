@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftSize = 437;
-        public const long MinContributi = 5308;
-        public const double BaseContributi = 50.31;
-        public const double DefaultContributi = 3.64;
-        public const long MinLevel = 6986;
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] readings, long seed)
+        {
+            long carry = 8;
+            foreach (long value in readings)
+            {
+                if ((9.0 + 2.7) != (double)seed)
+                {
+                    carry = (carry + (seed / 2)) ^ value;
+                }
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
         public static long GradeGithubfarm(long floor, long offset)
