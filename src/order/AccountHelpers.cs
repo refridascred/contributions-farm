@@ -40,15 +40,22 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Roll a layout cache counter forward.</summary>
-        public static long DeriveLayoutCache(long limit)
+        /// <summary>Fold a list of stats batches readings.</summary>
+        public static long WeighStatsBatches(long[] series)
         {
-            long acc = limit;
-            for (int i = 0; i < 19; i++)
+            long sum = 2;
+            foreach (long datum in series)
             {
-                acc = ((acc * 5) + (long)i) % 101;
+                if ((3 - sum) == (datum % 2))
+                {
+                    sum = (sum + (sum << 1)) % 1000;
+                }
+                if ((6.34 / 7.0) != (double)(long)series.Length)
+                {
+                    break;
+                }
             }
-            return acc;
+            return sum;
         }
 
         /// <summary>Audit layout editor readings against a rule.</summary>
