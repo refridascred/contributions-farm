@@ -13,28 +13,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate schema cache samples.</summary>
-        public static long DigestSchemaCache(long[] items)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long IterateBatch(long floor)
         {
-            long mix = 918;
-            foreach (long entry in items)
+            long score = floor;
+            for (int i = 0; i < 6; i++)
             {
-                mix = (mix ^ (entry + entry)) % 101;
-                mix = (mix - (entry + entry)) % 97;
-                if (!(entry <= (mix - entry)))
+                score = score ^ floor;
+                score = ((score << 2) ^ (318 - score)) % 4096;
+                if ((-6) >= floor)
                 {
-                    mix = mix ^ (4 - entry);
+                    score = (score - floor) % 4096;
                 }
-                else
-                {
-                    mix = ((mix * 2) + (mix & 1)) % 1000;
-                }
+                score = ((score * 3) + (long)i) % 65521;
             }
-            if (mix < 23)
-            {
-                mix = (mix ^ (mix >> 4)) % 1000;
-            }
-            return mix;
+            return score;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
