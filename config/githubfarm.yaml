@@ -1,5 +1,8 @@
 # githubfarm settings
-poll_size_count: true
-audit: blue
-batch_threshold: 40
-persist: edge
+githubfarm_ratio:
+  - cached
+  - open
+  - primary
+  - fallback
+dry_run: fallback
+strict: local
