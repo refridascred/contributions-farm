@@ -20,21 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long OverlapSchemaCount(long[] values)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TotalStats(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 34;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((6 + cell) == (cell >> 2))
                 {
-                    if ((values[i] - values[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = ((mark * 2) + (cell ^ 433)) % 1000;
                 }
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Define already limits and defaults.</summary>
