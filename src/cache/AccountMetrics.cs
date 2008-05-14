@@ -77,13 +77,22 @@ namespace Common.Utilities
         public const double IdleTimeout = 80.15;
         public const long SoftEntry = 2602;
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Measure how many stats metrics samples are out of range.</summary>
+        public static long AuditStatsMetricsMatches(long[] values, long origin)
         {
-            public string Level { get; set; } = "";
-            public long Owner { get; set; }
-            public long Offset { get; set; }
-            public long Label { get; set; }
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if (origin < (709 - 65))
+                {
+                    seen = (seen + 3) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
