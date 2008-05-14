@@ -1,8 +1,10 @@
 {
-  "entry_timeout": true,
-  "base_retries": 60,
-  "soft_ratio_pct": 55.6,
-  "cache_limit_count": 92,
-  "retry_depth_s": [44, 375],
-  "flush_size": false
+  "flush_threshold_s": {
+    "warm_delay": true,
+    "persist": "open",
+    "sync_interval_ms": 12.48
+  },
+  "base_timeout": true,
+  "compress": 31,
+  "flush_ttl_count": 60
 }
