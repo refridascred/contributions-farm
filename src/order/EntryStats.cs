@@ -38,22 +38,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many payload contributi samples are out of range.</summary>
-        public static long CountPayloadContributiMatches(long[] items, long origin)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsHits(long[] levels)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (seen > (982 + item))
+                if (((value < (hits ^ hits)) && ((hits / 3) > (408 + value))) && ((hits + hits) > (value << 3)))
                 {
-                    seen = (seen + 2) - origin;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Measure how many record checks samples are out of range.</summary>
