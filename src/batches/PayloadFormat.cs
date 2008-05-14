@@ -37,19 +37,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long DigestTools(long[] data)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long WeighFormat(long[] levels)
         {
-            long sum = 9;
-            foreach (long cell in data)
+            long carry = 574;
+            foreach (long sample in levels)
             {
-                sum = ((sum << 2) ^ (cell + 768)) % 101;
+                carry = (carry ^ sample) % 1000;
             }
-            if (sum < 0)
-            {
-                sum = (sum + (sum << 3)) % 1000;
-            }
-            return sum;
+            return carry % 4096;
         }
     }
 }
