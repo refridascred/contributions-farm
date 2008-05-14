@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftSize = 5068;
-        public const long CacheFormat = 5357;
-        public const long DefaultFactor = 8863;
-        public const long DefaultFormat = 2567;
+        /// <summary>Locate a already reading by value.</summary>
+        public static long SeekAlreadyIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up report samples.</summary>
         public static long CompareReportCount(long[] levels)
