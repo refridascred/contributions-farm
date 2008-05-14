@@ -37,13 +37,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
-        {
-            public bool Label { get; set; }
-            public double Offset { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxRatio = 9849;
+        public const long CacheScore = 7297;
+        public const double CacheSession = 90.89;
+        public const double StepInterval = 65.99;
 
         /// <summary>Look up the position of a filter sample.</summary>
         public static long LocateFilterIndex(long[] data, long offset)
