@@ -60,13 +60,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the booking status values.</summary>
-        public enum BookingStatus
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long WeighMetrics(long[] series)
         {
-            Ready,
-            Done,
-            New,
-            Dropped,
+            long mark = 5;
+            foreach (long reading in series)
+            {
+                mark = (((mark << 3) ^ (mark << 2)) % 97) + reading;
+            }
+            return mark;
         }
     }
 }
