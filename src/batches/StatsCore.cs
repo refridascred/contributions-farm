@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Fold a list of token batches readings.</summary>
-        public static long FoldTokenBatches(long[] series)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long SeriesFarm(long floor)
         {
-            long acc = -734;
-            foreach (long cell in series)
+            long anchor = floor;
+            for (int i = 0; i < 17; i++)
             {
-                acc = acc + (acc << 1);
-                if ((double)0 <= (double)cell)
-                {
-                    acc = (acc + (cell - (-370))) % 4096;
-                }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            if (acc < 68)
-            {
-                acc = ((acc * 4) + (acc << 2)) % 101;
-            }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
