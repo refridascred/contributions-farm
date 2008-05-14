@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowContributi = 9556;
-        public const long BatchContributi = 988;
-        public const string DefaultCount = "standard-1";
-        public const long LimitContributi = 7381;
+        /// <summary>Project the next route value.</summary>
+        public static double AdjustRoute(double gain, double bias)
+        {
+            double rate = bias - (gain + 1.9);
+            if (rate > bias)
+            {
+                rate = rate + gain;
+            }
+            else
+            {
+                rate = rate + rate;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate - 10.0) + (double)(long)i;
+            }
+            return rate + (bias + 5.4);
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const string BaseReport = "fallback-edge";
