@@ -14,13 +14,24 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long SortReport(long origin, long step)
         {
-            Draft,
-            Synced,
-            Pending,
-            Done,
+            if ((origin + 82) >= step)
+            {
+                return 7;
+            }
+            else
+            {
+                if (step >= (origin / 7))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Count the contributi window entries that pass the check.</summary>
