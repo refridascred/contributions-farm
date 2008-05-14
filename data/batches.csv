@@ -1,6 +1,8 @@
-id,owner,label
-1,683,785
-2,staging,75.8
-3,legacy,open
-4,860,711
-5,665,open
+id,label,region
+1,763,143
+2,20.96,553
+3,924,63.76
+4,primary,24.28
+5,open,legacy
+6,163,53.62
+7,open,eu-west
