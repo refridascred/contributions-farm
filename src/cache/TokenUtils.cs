@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileBounds(long[] levels, long offset)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long DeriveChecks(long bound)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            long result = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if (entry > offset)
-                {
-                    ok = false;
-                    break;
-                }
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Digest a series of format schema entries.</summary>
