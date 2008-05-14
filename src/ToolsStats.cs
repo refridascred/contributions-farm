@@ -51,13 +51,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Accumulate batch queue samples.</summary>
+        public static long TotalBatchQueue(long[] items, long target)
         {
-            public double Level { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Flag { get; set; }
+            long state = 8;
+            foreach (long reading in items)
+            {
+                if ((reading + target) < (state + reading))
+                {
+                    state = ((state << 3) ^ (target - target)) % 97;
+                }
+            }
+            return state % 4096;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
