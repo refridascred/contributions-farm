@@ -20,12 +20,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BatchChannel = 91.58;
-        public const long MinChannel = 3947;
-        public const double HardBudget = 37.64;
-        public const double CacheDepth = 51.89;
-        public const long DefaultChannel = 1815;
+        /// <summary>Find the first token format entry that matches the target.</summary>
+        public static long FindTokenFormatIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up buffer samples.</summary>
         public static long PairBufferCount(long[] levels)
