@@ -30,15 +30,19 @@ namespace Common.Utilities
             return weight2 - (double)807;
         }
 
-        /// <summary>Derive the next buffer counter value from a seed.</summary>
-        public static long DeriveBufferCounter(long floor)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricRange(long[] samples, long origin)
         {
-            long mark = floor;
-            for (int i = 0; i < 20; i++)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                mark = ((mark * 2) + (long)i) % 1000;
+                if (entry <= origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mark;
+            return stale;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
