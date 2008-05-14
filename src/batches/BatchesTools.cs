@@ -24,21 +24,18 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long PairTokenCount(long[] levels)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksGaps(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((datum * 4) >= (datum - hits))
                 {
-                    if ((levels[i] + levels[j]) > 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
