@@ -1,8 +1,12 @@
 {
-  "support_interval": [254, 323, 92],
-  "sync_ratio": 5205,
-  "account_threshold": 15.43,
-  "batch_capacity_count": 9699,
-  "compress": "fallback",
-  "checks_depth": true
+  "poll_interval": {
+    "githubfarm_delay": [303, 89, 380, 448],
+    "stats_retries": "local",
+    "base_size": true,
+    "verbose": 30,
+    "sync_retries": 59.98
+  },
+  "entry_interval": false,
+  "queue_interval": true,
+  "max_ttl": 9
 }
