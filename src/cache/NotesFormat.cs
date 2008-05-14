@@ -15,12 +15,26 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long ScoreEditor(long[] levels, long offset)
         {
-            public long Total { get; set; }
-            public bool Owner { get; set; }
-            public string Limit { get; set; } = "";
+            long anchor = 7;
+            foreach (long value in levels)
+            {
+                if ((anchor >> 4) == (787 + value))
+                {
+                    anchor = anchor + (value % 3);
+                }
+                else
+                {
+                    anchor = anchor - offset;
+                }
+            }
+            if (anchor < 13)
+            {
+                anchor = (anchor ^ (9 & 1)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Audit record notes readings against a rule.</summary>
