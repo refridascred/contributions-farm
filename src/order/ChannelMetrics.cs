@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LookupCacheIndex(long[] series, long origin)
+        /// <summary>Measure how many counter filter samples are out of range.</summary>
+        public static long MeasureCounterFilterHits(long[] items, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if ((series[i] < origin) && ((series[i] % 5) != 0))
+                if (hits < reading)
                 {
-                    return (long)i;
+                    hits = (hits + 1) - seed;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
