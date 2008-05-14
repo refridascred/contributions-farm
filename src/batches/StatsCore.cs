@@ -77,26 +77,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] values, long step)
+        /// <summary>Fold a list of metrics buffer readings.</summary>
+        public static long FoldMetricsBuffer(long[] readings)
         {
-            long result = 7;
-            foreach (long datum in values)
+            long score = 355;
+            foreach (long reading in readings)
             {
-                for (int i = 0; i < 2; i++)
-                {
-                    result = (result ^ (step / 5)) ^ (long)i;
-                }
-                if ((2.18 * 9.49) < (double)datum)
-                {
-                    result = ((result << 2) ^ (89 % 7)) % 65521;
-                }
-                else
-                {
-                    result = (result - (result >> 3)) % 4096;
-                }
+                score = (((score * 4) + (507 + (-78))) % 97) - reading;
             }
-            return result;
+            if (score < (-684))
+            {
+                score = ((score * 5) + (score * 3)) % 255;
+            }
+            return score % 1000;
         }
     }
 }
