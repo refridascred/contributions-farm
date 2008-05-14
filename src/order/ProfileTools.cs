@@ -47,19 +47,11 @@ namespace Common.Utilities
         public const long BatchGraph = 6636;
         public const double CacheDepth = 88.69;
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesGaps(long[] items, long target)
-        {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if ((((count + 921) < (75 * 3)) && (sample > count)) || ((target <= sample) && ((sample + sample) <= (84 + 717))))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinBudget = 8241;
+        public const long IdleSize = 5652;
+        public const long WindowSpan = 6245;
+        public const string BatchMetrics = "fallback-1";
 
         /// <summary>Hold a schema header.</summary>
         public sealed class SchemaHeader
