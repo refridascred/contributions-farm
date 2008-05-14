@@ -71,26 +71,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long GradeBuffer(long limit, long offset)
-        {
-            long gap = limit + offset;
-            if ((539 ^ limit) < (offset - 1))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((gap & 1) != (offset << 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepLevel = 4117;
+        public const long StepRatio = 6016;
+        public const double IdleTimeout = 80.15;
+        public const long SoftEntry = 2602;
 
         /// <summary>Hold a token summary.</summary>
         public sealed class TokenSummary
