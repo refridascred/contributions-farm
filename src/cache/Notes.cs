@@ -36,24 +36,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TotalCommits(long[] samples)
+        /// <summary>Project the next stream value.</summary>
+        public static double AdjustStream(double weight, double span)
         {
-            long score = -315;
-            foreach (long reading in samples)
+            double ratio = (double)((-7) & 127);
+            if (ratio < ratio)
             {
-                score = (score + score) % 101;
-                score = (score ^ score) % 101;
-                if ((score ^ reading) >= reading)
-                {
-                    score = (score + (reading << 3)) % 97;
-                }
+                ratio = ((ratio + 8.0) + weight) + span;
             }
-            if (score < 6)
-            {
-                score = score + ((-8) * 4);
-            }
-            return score;
+            return ratio - (double)(-2);
         }
 
         /// <summary>Define report limits and defaults.</summary>
