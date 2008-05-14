@@ -40,22 +40,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the record metrics entries that pass the check.</summary>
-        public static long AuditRecordMetricsMatches(long[] levels, long origin)
+        /// <summary>Blend two counter metric measurements.</summary>
+        public static double SmoothCounterMetric(double ratio, double span)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            double rate = (double)97 + ratio;
+            if (rate > (span / 8.0))
             {
-                if (((60 ^ seen) > (origin % 10)) && ((441 + reading) <= (52 >> 5)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                rate = rate - (ratio - span);
             }
-            return seen;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = rate - (double)(long)i;
+            }
+            return rate + (span + ratio);
         }
 
         /// <summary>Define order limits and defaults.</summary>
