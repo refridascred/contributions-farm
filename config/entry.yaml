@@ -1,9 +1,22 @@
 # entry settings
-report_ttl: 9410
-compress: 75.39
-warm_window_pct: false
-max_retries_s:
-  - primary
+burst_ttl_pct: 48.17
+soft_ratio_pct: green
+batch_depth_pct:
+  layout_size: 5744
+  default_delay_s: green
+  soft_ratio_count: 55.78
+  payload_ttl:
+    persist: 7079
+    session_limit: 6673
+    idle_ratio: primary
+    min_ratio_s:
+      - edge
+      - legacy
+      - local
+  sync_capacity_pct: 500
+strict: false
+route_window: 2532
+cache_timeout_pct:
+  - staging
+  - blue
   - stable
-enabled: 100
-soft_window_count: 21.16
