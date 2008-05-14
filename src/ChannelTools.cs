@@ -23,17 +23,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long FindCommandIndex(long[] series, long limit)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= limit) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Idle,
+            Done,
+            New,
+            Ready,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
