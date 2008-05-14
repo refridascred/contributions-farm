@@ -1,13 +1,15 @@
 # support settings
-cache_depth:
-  compress: green
-  min_size_count:
-    - eu-west
-    - standard
-    - stable
-    - standard
-  min_interval: 11
-  channel_capacity: staging
-flush_delay: true
-retry_window_count: 6
-hard_timeout: local
+idle_window_s:
+  - strict
+  - blue
+  - staging
+min_retries:
+  cache_ratio_count: 2948
+  readonly: 97
+  order_depth:
+    - local
+    - staging
+batch_timeout_count: staging
+verbose: 30.6
+cache_depth: local
+hard_delay: 74
