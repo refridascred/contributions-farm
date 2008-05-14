@@ -21,25 +21,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TallyMetric(long[] values)
-        {
-            long state = 681;
-            foreach (long item in values)
-            {
-                long bound = (item / 8) << 3;
-                state = (state * 2) + (bound / 6);
-                if (((double)state > (6.5 - 0.1)) && ((item & 3) > item))
-                {
-                    state = ((state * 5) + state) % 255;
-                }
-                if ((item > (item + state)) && ((6 + item) != (item + item)))
-                {
-                    break;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double IdleWidth = 37.45;
+        public const long IdleTimeout = 2184;
+        public const long CacheDepth = 8965;
+        public const string DefaultTools = "primary-1";
+        public const string MinScore = "fallback";
 
         /// <summary>Blend two route counter measurements.</summary>
         public static double AdjustRouteCounter(double weight, double bias)
