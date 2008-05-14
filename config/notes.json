@@ -1,5 +1,6 @@
 {
-  "min_ratio": "open",
-  "checks_threshold": 28.56,
+  "sync_delay": 500,
+  "warm_capacity_count": "blue",
+  "burst_capacity_pct": true,
   "readonly": "fallback"
 }
