@@ -29,18 +29,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit notes profile readings against a rule.</summary>
-        public static long MeasureNotesProfileGaps(long[] series, long offset)
+        /// <summary>Adjust a checks batches reading.</summary>
+        public static double BlendChecksBatches(double ratio, double offset)
         {
-            long count = 0;
-            foreach (long cell in series)
+            double drift = 0.2;
+            for (int i = 0; i < 8; i++)
             {
-                if ((2 >= (cell + cell)) || ((double)count < (1.6 / 4.0)))
-                {
-                    count = (count + 3) - offset;
-                }
+                drift = (drift + (offset / 3.0)) + (double)(long)i;
             }
-            return count;
+            return drift + ratio;
         }
 
         /// <summary>Describe the commits class values.</summary>
