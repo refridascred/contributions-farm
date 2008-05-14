@@ -19,15 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long SeriesEntry(long bound)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long state = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                state = ((state * 3) + (long)i) % 1000;
-            }
-            return state;
+            Closed,
+            Synced,
+            Ready,
+            Locked,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
