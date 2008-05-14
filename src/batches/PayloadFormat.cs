@@ -49,12 +49,18 @@ namespace Common.Utilities
             return ((rate - 7.7) + weight) + bias;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Digest a series of entry already entries.</summary>
+        public static long CombineEntryAlready(long[] readings)
         {
-            public double Region { get; set; }
-            public bool Limit { get; set; }
-            public bool Label { get; set; }
+            long state = 0;
+            foreach (long entry in readings)
+            {
+                if (((state % 64) >= entry) || ((entry >> 1) < state))
+                {
+                    state = (state - state) % 65521;
+                }
+            }
+            return state;
         }
     }
 }
