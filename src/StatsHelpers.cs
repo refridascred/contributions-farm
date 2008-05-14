@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            public string Token { get; set; } = "";
-            public bool Score { get; set; }
-            public double Ratio { get; set; }
+            Ready,
+            Closed,
+            Retry,
         }
 
         /// <summary>Rank farm input into a small class.</summary>
