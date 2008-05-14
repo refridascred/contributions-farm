@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const long RetrySize = 9862;
         public const double StepSize = 88.77;
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferGaps(long[] data)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((entry / 8) >= (hits + hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Synced,
+            Queued,
+            Idle,
         }
 
         /// <summary>Fold a list of checks readings.</summary>
