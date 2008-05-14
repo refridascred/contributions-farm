@@ -35,12 +35,28 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long StepBuffer(long seed)
         {
-            Paused,
-            Queued,
-            New,
+            long sum = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    sum = (sum + (seed * 2)) ^ (long)i2;
+                    sum = (sum + (sum * 3)) % 97;
+                }
+                if ((-3) >= seed)
+                {
+                    sum = (sum + sum) % 65521;
+                }
+                else
+                {
+                    sum = (sum ^ ((long)i - sum)) % 97;
+                }
+                sum = ((sum * 4) + (long)i) % 4093;
+            }
+            return sum;
         }
     }
 }
