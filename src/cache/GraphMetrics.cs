@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Look up the position of a editor context sample.</summary>
+        public static long SeekEditorContextIndex(long[] series, long offset)
         {
-            public string Token { get; set; } = "";
-            public long Weight { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Total { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == offset) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
