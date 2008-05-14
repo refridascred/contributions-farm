@@ -14,22 +14,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteGaps(long[] data)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueBounds(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                if (!((entry & 127) <= 64))
+                if (entry <= offset)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
