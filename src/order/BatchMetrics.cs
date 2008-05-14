@@ -19,12 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionOutliers(long[] levels)
         {
-            public long Owner { get; set; }
-            public bool Stamp { get; set; }
-            public bool Limit { get; set; }
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if ((2 ^ datum) == (datum - (long)levels.Length))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
