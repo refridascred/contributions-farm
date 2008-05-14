@@ -1,5 +1,12 @@
 {
-  "hard_timeout_ms": "latest",
-  "dry_run": 1442,
-  "min_threshold_s": 500
+  "max_depth_s": {
+    "enabled": 500,
+    "account_delay": 20,
+    "warm_ratio": true
+  },
+  "min_size_s": 250,
+  "retry_ttl_s": "strict",
+  "hard_threshold": 3899,
+  "account_ratio": "eu-west",
+  "base_threshold": 7815
 }
