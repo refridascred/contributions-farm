@@ -42,19 +42,26 @@ namespace Common.Utilities
         public const long WindowWidth = 3366;
         public const long MinStream = 2476;
 
-        /// <summary>Accumulate notes order samples.</summary>
-        public static long DigestNotesOrder(long[] items, long offset)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] levels)
         {
-            long state = 96;
-            foreach (long datum in items)
+            long score = 69;
+            foreach (long entry in levels)
             {
-                state = ((state * 4) + (datum >> 1)) % 101;
-                if ((97 >> 5) >= offset)
+                if ((score < (score % 8)) && ((entry - score) > (entry + (-9))))
                 {
-                    break;
+                    score = ((score * 2) + (19 % 2)) % 1000;
+                }
+                else
+                {
+                    score = score ^ (entry + score);
                 }
             }
-            return state;
+            if (score > 758)
+            {
+                score = score ^ (score * 5);
+            }
+            return score;
         }
     }
 }
