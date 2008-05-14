@@ -35,15 +35,12 @@ namespace Common.Utilities
         public const long StepSize = 3143;
         public const double CacheCommits = 98.26;
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long ScoreAccount(long[] readings)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long sum = 9;
-            foreach (long sample in readings)
-            {
-                sum = (((sum * 3) + (sum + (-52))) % 4096) ^ sample;
-            }
-            return sum % 4096;
+            Pending,
+            Locked,
+            New,
         }
     }
 }
