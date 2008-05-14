@@ -19,32 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long GradeMetric(long bound, long seed)
-        {
-            if ((15.0 >= (double)seed) && ((seed + 6) <= (bound * 4)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((seed - bound) != (bound >> 4)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (seed < bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstCache = 1158;
+        public const long StepLevel = 1141;
+        public const double CacheLevel = 0.73;
+        public const long LimitDepth = 2913;
 
         /// <summary>Define account limits and defaults.</summary>
         public const string IdleAccount = "staging-1";
