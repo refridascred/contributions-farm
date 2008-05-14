@@ -23,14 +23,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Blend two farm metric measurements.</summary>
+        public static double SmoothFarmMetric(double gain, double bias)
         {
-            Locked,
-            Dropped,
-            Active,
-            Draft,
-            Synced,
+            double bias2 = (double)90 / 5.0;
+            return ((bias2 + bias2) + gain) + bias;
         }
 
         /// <summary>Hold a buffer stats.</summary>
