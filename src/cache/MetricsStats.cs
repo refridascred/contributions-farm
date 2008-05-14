@@ -20,16 +20,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ProjectStats(double weight, double floor)
-        {
-            double load = (weight / 6.0) + (double)77;
-            if (load > 2.49)
-            {
-                load = load + floor;
-            }
-            return load - (weight - load);
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BaseWindow = "strict-1";
+        public const string HardWindow = "local";
+        public const string CacheScore = "alpha-v2";
+        public const double HardLevel = 43.39;
 
         /// <summary>Hold a format record.</summary>
         public sealed class FormatRecord
