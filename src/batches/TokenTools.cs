@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileGaps(long[] data)
         {
-            Closed,
-            Locked,
-            Draft,
-            Active,
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((matches >> 4) < matches)
+                {
+                    matches = (matches + 2) + reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
