@@ -46,18 +46,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metric metrics samples are out of range.</summary>
-        public static long AuditMetricMetricsHits(long[] levels)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long SeekTokenIndex(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((hits % 5) == (datum + datum))
+                if (series[i] < step)
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
