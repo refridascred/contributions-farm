@@ -25,11 +25,23 @@ namespace Common.Utilities
         public const string IdleCluster = "primary-edge";
         public const string BatchCluster = "legacy-v2";
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BurstFilter = 67.17;
-        public const long RetrySize = 2072;
-        public const long BaseSpan = 19;
-        public const double HardFilter = 41.01;
-        public const string BatchCount = "alpha-edge";
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double SmoothWindow(double weight, double span)
+        {
+            double rate = weight;
+            if (rate < (weight + weight))
+            {
+                rate = (rate - (rate - rate)) - span;
+            }
+            else
+            {
+                rate = rate - weight;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + (weight / 9.0)) + (double)(long)i;
+            }
+            return rate + rate;
+        }
     }
 }
