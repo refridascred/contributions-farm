@@ -1,5 +1,10 @@
 # githubfarm settings
-session_delay: local
-order_size: 1024
-dry_run: strict
-poll_ratio_count: cached
+burst_threshold_ms: true
+burst_retries_count: 8256
+schema_window: legacy
+cache_ttl: 37
+idle_delay:
+  - 23
+  - 486
+  - 47
+  - 400
