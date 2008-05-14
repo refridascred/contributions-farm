@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultSize = 3441;
-        public const double HardBudget = 71.38;
-        public const long MaxFactor = 5946;
+        /// <summary>Validate support route readings against a bound.</summary>
+        public static bool CheckSupportRouteBounds(long[] items, long floor)
+        {
+            bool stale = true;
+            foreach (long datum in items)
+            {
+                if (datum <= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the counter kind values.</summary>
         public enum CounterKind
