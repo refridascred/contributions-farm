@@ -68,19 +68,15 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesBounds(long[] readings, long target)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long DeriveSession(long seed)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            long mark = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if (item < target)
-                {
-                    stale = false;
-                    break;
-                }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return stale;
+            return mark;
         }
     }
 }
