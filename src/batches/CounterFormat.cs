@@ -19,12 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultLevel = 7490;
-        public const double WindowBatches = 11.35;
-        public const long StepSpan = 8369;
-        public const long BaseBatches = 6744;
-        public const long RetryBatches = 1487;
+        /// <summary>Blend two farm graph measurements.</summary>
+        public static double AdjustFarmGraph(double gain, double offset)
+        {
+            double weight = offset;
+            if (weight >= offset)
+            {
+                weight = weight + (gain - weight);
+            }
+            else
+            {
+                weight = weight + weight;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight - offset;
+        }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
         public static bool GuardToolsLimits(long[] levels, long offset)
