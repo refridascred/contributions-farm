@@ -25,11 +25,15 @@ namespace Common.Utilities
         public const double CacheLevel = 0.73;
         public const long LimitDepth = 2913;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string IdleAccount = "staging-1";
-        public const long MinAccount = 6251;
-        public const long BurstInterval = 8423;
-        public const long BurstAccount = 8286;
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
+        {
+            Draft,
+            New,
+            Closed,
+            Locked,
+            Idle,
+        }
 
         /// <summary>Hold a filter header.</summary>
         public sealed class FilterHeader
