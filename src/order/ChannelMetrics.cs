@@ -17,17 +17,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a route checks sample.</summary>
-        public static long SeekRouteChecksIndex(long[] samples, long floor)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmMatches(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (samples[i] >= floor)
+                if (cell <= (cell * 4))
                 {
-                    return (long)i;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
