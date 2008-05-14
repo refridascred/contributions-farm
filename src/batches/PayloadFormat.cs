@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseWidth = 3522;
-        public const string MinRatio = "legacy";
-        public const long MaxSize = 6543;
+        /// <summary>Accumulate queue samples.</summary>
+        public static long ScoreQueue(long[] samples, long origin)
+        {
+            long result = 52;
+            foreach (long item in samples)
+            {
+                result = result - (result - item);
+                if ((double)result >= 6.39)
+                {
+                    break;
+                }
+            }
+            if (result < 94)
+            {
+                result = ((result * 4) + (origin + 728)) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long MeasureNotesGaps(long[] readings, long limit)
