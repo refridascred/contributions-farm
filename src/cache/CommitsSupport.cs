@@ -43,17 +43,19 @@ namespace Common.Utilities
             return mean - offset;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LocateBufferIndex(long[] values, long target)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] values, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 2;
+            foreach (long reading in values)
             {
-                if ((values[i] <= target) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                mix = ((mix + (mix % 97)) - reading) - offset;
             }
-            return -1;
+            if (mix > 27)
+            {
+                mix = (mix * 3) + 615;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
