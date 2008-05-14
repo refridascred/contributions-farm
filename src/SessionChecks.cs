@@ -5,39 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long RankStats(long offset, long floor)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ScaleMetrics(double bias, double offset)
         {
-            long delta = offset - floor;
-            if (offset < (offset << 1))
+            double mean = 6.9;
+            if (mean < 5.18)
             {
-                return 5;
+                mean = mean + (1.9 - bias);
             }
             else
             {
-                if (!(floor < (offset + delta)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((16.0 + 6.86) > (double)floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((delta + floor) < (26 * 2))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                mean = mean - (2.28 / 7.0);
             }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + offset) + (double)(long)i;
+            }
+            return mean - (double)7;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
