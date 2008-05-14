@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LookupToolsIndex(long[] values, long seed)
+        /// <summary>Audit token stream readings against a rule.</summary>
+        public static long MeasureTokenStreamMatches(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if ((values[i] == seed) && ((values[i] % 2) == 0))
+                if ((item % 8) < (3 - item))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Look up the position of a batch session sample.</summary>
