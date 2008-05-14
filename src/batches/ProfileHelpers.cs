@@ -23,18 +23,12 @@ namespace Common.Utilities
             return ((bias + (7.75 - 9.4)) + gain) + offset;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LocateFarmIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < target) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleProfile = 1616;
+        public const double BatchProfile = 44.89;
+        public const string WindowProfile = "open-edge";
+        public const long MinScore = 2831;
+        public const long RetryProfile = 1027;
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool GuardCommandRange(long[] samples, long offset)
