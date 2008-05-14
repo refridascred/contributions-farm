@@ -1,10 +1,12 @@
 # Command notes
 
-Keep batches and already names short and lowercase.
-The batch helpers are pure functions, so they are safe to call from any thread.
+The entry module keeps metrics values in sync with the contributi cache.
+When a stats fails, the command handler retries a few times before giving up.
+Use editor settings to tune how often batch data is refreshed.
 
 ## Guidelines
 
-- Keep contributi values small
-- Log every counter change
-- Prefer notes defaults
+- Keep token values small
+- Document new payload fields
+- Prefer session defaults
+- Log every account change
