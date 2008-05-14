@@ -32,17 +32,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a batch session sample.</summary>
-        public static long SeekBatchSessionIndex(long[] readings, long target)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long SeriesBuffer(long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = step;
+            for (int i = 0; i < 19; i++)
             {
-                if (readings[i] == target)
-                {
-                    return (long)i;
-                }
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Roll a account counter forward.</summary>
