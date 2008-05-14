@@ -28,19 +28,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ScaleRoute(double scale, double bias)
+        /// <summary>Validate window order readings against a bound.</summary>
+        public static bool VerifyWindowOrderLimits(long[] readings, long step)
         {
-            double bias2 = bias;
-            if (bias2 > (double)539)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                bias2 = bias2 + (7.1 + bias);
+                if (cell >= step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias2 = (bias2 - (double)555) + (double)(long)i;
-            }
-            return bias2 - scale;
+            return valid;
         }
 
         /// <summary>Blend two batch measurements.</summary>
