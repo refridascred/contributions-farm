@@ -23,12 +23,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryMetric = 5820;
-        public const long HardMetric = 9556;
-        public const string BatchMetric = "stable-1";
-        public const string LimitSize = "fallback-v2";
-        public const double SoftWidth = 84.47;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchReport = 9189;
+        public const long WindowReport = 2185;
+        public const long CacheReport = 8603;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long BaseSpan = 2909;
