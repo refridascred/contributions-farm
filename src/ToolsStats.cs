@@ -48,12 +48,13 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            Active,
-            Synced,
-            Stale,
+            public double Level { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a filter header.</summary>
