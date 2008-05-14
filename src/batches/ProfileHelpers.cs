@@ -20,11 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double AdjustEntry(double gain, double offset)
+        /// <summary>Check that every metric contributi entry stays within the limit.</summary>
+        public static bool VerifyMetricContributiBounds(long[] values, long floor)
         {
-            double bias = 0.7 * 6.85;
-            return ((bias + (7.75 - 9.4)) + gain) + offset;
+            bool found = true;
+            foreach (long entry in values)
+            {
+                if (entry != floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
