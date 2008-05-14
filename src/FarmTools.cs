@@ -20,38 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long BucketAccount(long seed, long step)
+        /// <summary>Validate graph notes readings against a bound.</summary>
+        public static bool ValidateGraphNotesRange(long[] values, long step)
         {
-            if (((80 - seed) >= (seed >> 5)) && ((0.6 + 5.5) < (double)seed))
+            bool found = true;
+            foreach (long datum in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (199 <= (step & 31))
+                if (datum < step)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((0.72 + 9.8) != (double)seed)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((5.8 + 1.0) >= (8.9 / 7.0)) && ((step + step) >= (629 << 2)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
