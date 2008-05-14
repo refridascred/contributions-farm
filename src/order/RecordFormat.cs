@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            public string Count { get; set; } = "";
-            public long Weight { get; set; }
-            public double Limit { get; set; }
+            public string Level { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
