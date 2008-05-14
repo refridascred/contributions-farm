@@ -44,16 +44,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long DeriveEditor(long target)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ScaleRoute(double scale, double bias)
         {
-            long carry = target;
-            for (int i = 0; i < 24; i++)
+            double bias2 = bias;
+            if (bias2 > (double)539)
             {
-                carry = ((carry * 2) + target) % 1000;
-                carry = ((carry * 2) + (long)i) % 65521;
+                bias2 = bias2 + (7.1 + bias);
             }
-            return carry;
+            for (int i = 0; i < 5; i++)
+            {
+                bias2 = (bias2 - (double)555) + (double)(long)i;
+            }
+            return bias2 - scale;
         }
 
         /// <summary>Combine format values into a single score.</summary>
