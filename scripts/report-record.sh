@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-primary}"
-case "${mode}" in
-    cached)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+RECORD_LIMIT=333
+log "limit is ${RECORD_LIMIT}"
 
-for item in open fallback; do
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
+
+for item in blue green fallback; do
     log "checking ${item}"
 done
-
-RECORD_LIMIT=198
-log "limit is ${RECORD_LIMIT}"
