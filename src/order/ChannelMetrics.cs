@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TallyWindow(long[] items)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long result = 58;
-            foreach (long value in items)
-            {
-                if ((result + result) == (result % 5))
-                {
-                    result = (result + value) % 1000;
-                }
-            }
-            return result;
+            Ready,
+            Locked,
+            Queued,
+            Synced,
+            Draft,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
