@@ -52,15 +52,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long SeriesFilter(long floor)
+        /// <summary>Accumulate batch queue samples.</summary>
+        public static long TotalBatchQueue(long[] items, long limit)
         {
-            long result = floor;
-            for (int i = 0; i < 9; i++)
+            long acc = 966;
+            foreach (long value in items)
             {
-                result = ((result * 2) + (long)i) % 4093;
+                acc = ((acc + (limit * 4)) % 4096) - value;
             }
-            return result;
+            return acc % 1000;
         }
     }
 }
