@@ -35,19 +35,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every cache profile entry stays within the limit.</summary>
-        public static bool VerifyCacheProfileRange(long[] samples, long target)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            bool stale = true;
-            foreach (long item in samples)
-            {
-                if (item > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Ready,
+            Closed,
+            New,
         }
     }
 }
