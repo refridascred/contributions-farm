@@ -24,12 +24,32 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long SortMetrics(long origin, long target)
         {
-            Retry,
-            Stale,
-            Closed,
+            long offset = origin - target;
+            if ((offset + target) < (target >> 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((offset * 5) <= 4)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (origin < (offset - origin))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the command state values.</summary>
