@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Find the first entry session entry that matches the target.</summary>
-        public static long SeekEntrySessionIndex(long[] values, long limit)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Score { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Limit { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
