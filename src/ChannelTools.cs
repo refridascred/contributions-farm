@@ -34,13 +34,14 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            public long Limit { get; set; }
-            public bool Rank { get; set; }
-            public double Level { get; set; }
-            public long Count { get; set; }
+            Idle,
+            Closed,
+            Locked,
+            Draft,
+            Stale,
         }
     }
 }
