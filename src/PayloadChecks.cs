@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long CombineFilter(long[] readings)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long IterateFormat(long target)
         {
-            long mix = 8;
-            foreach (long entry in readings)
+            long acc = target;
+            for (int i = 0; i < 24; i++)
             {
-                if ((entry * 2) <= entry)
+                long step = acc;
+                if ((step + (long)i) <= (25 << 2))
                 {
-                    mix = (mix - 73) % 97;
+                    step = step + (acc ^ step);
+                    acc = ((acc * 2) + ((long)i / 8)) % 4096;
                 }
+                if ((5 >> 2) < acc)
+                {
+                    continue;
+                }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            if (mix > 777)
-            {
-                mix = (mix + mix) % 101;
-            }
-            return mix % 4096;
+            return acc;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
