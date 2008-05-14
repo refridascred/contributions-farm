@@ -84,18 +84,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit contributi payload readings against a rule.</summary>
-        public static long MeasureContributiPayloadGaps(long[] samples, long origin)
+        /// <summary>Accumulate session samples.</summary>
+        public static long ScoreSession(long[] levels)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long acc = 11;
+            foreach (long datum in levels)
             {
-                if (origin < (origin - reading))
+                if ((acc > (60 / 5)) && (acc >= (acc ^ datum)))
                 {
-                    hits = hits + 3;
+                    acc = acc - acc;
                 }
             }
-            return hits;
+            if (acc < 30)
+            {
+                acc = acc - (acc - acc);
+            }
+            return acc;
         }
     }
 }
