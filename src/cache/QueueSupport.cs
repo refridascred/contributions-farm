@@ -31,31 +31,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long ClassifyChecks(long offset, long limit)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            if ((limit & 31) >= limit)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((limit + offset) != (limit * 5))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit % 12) >= (offset >> 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public string Weight { get; set; } = "";
+            public double Score { get; set; }
+            public long Size { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
