@@ -45,13 +45,19 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Iterate the token commits series from a seed.</summary>
+        public static long IterateTokenCommits(long offset)
         {
-            public long Total { get; set; }
-            public double Label { get; set; }
-            public long Count { get; set; }
-            public bool Region { get; set; }
+            long state = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    state = (((state * 5) + (offset << 3)) % 1000) ^ (long)i2;
+                }
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Describe the schema mode values.</summary>
