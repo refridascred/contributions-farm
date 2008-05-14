@@ -34,26 +34,9 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TotalFormat(long[] values, long target)
-        {
-            long anchor = 775;
-            foreach (long value in values)
-            {
-                if ((target + target) > (1 - value))
-                {
-                    anchor = (anchor - (anchor % 100)) % 101;
-                }
-                if ((value / 6) != (0 - anchor))
-                {
-                    anchor = (anchor ^ target) % 65521;
-                }
-                if ((value + target) <= target)
-                {
-                    break;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BaseSize = 64.65;
+        public const string WindowScore = "primary-1";
+        public const long MaxStats = 7215;
     }
 }
