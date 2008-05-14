@@ -19,12 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinGraph = 9877;
-        public const long IdleGraph = 1620;
-        public const double SoftTimeout = 15.69;
-        public const string RetryGraph = "primary-edge";
-        public const string CacheSize = "legacy-v2";
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterLimits(long[] data, long target)
+        {
+            bool valid = true;
+            foreach (long datum in data)
+            {
+                if (datum >= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Look up the position of a editor sample.</summary>
         public static long LookupEditorIndex(long[] samples, long origin)
