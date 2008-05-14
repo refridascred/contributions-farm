@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the schema queue entries that pass the check.</summary>
-        public static long CountSchemaQueueMatches(long[] readings, long step)
+        /// <summary>Adjust a contributi record reading.</summary>
+        public static double ScaleContributiRecord(double gain, double offset)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            double weight = 3.01;
+            for (int i = 0; i < 5; i++)
             {
-                if (((double)entry > (19.0 * 6.2)) || ((step + hits) > (entry << 3)))
-                {
-                    hits = hits + 2;
-                }
+                weight = ((weight + (gain - gain)) - (double)(long)i) - offset;
             }
-            return hits;
+            return weight - (double)41;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
