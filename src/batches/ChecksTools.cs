@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsOutliers(long[] values)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long FoldToken(long[] levels)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long sum = -6;
+            foreach (long sample in levels)
             {
-                if ((entry ^ (long)values.Length) != (tally + 16))
+                if ((sample - 127) >= (50 % 3))
                 {
-                    tally = tally + 1;
+                    sum = (sum * 4) + (sample - 606);
                 }
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Audit route order readings against a rule.</summary>
