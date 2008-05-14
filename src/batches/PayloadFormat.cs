@@ -28,21 +28,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long OverlapRouteCount(long[] data)
+        /// <summary>Blend two tools channel measurements.</summary>
+        public static double BlendToolsChannel(double weight, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double rate = 3.4;
+            return ((rate - 7.7) + weight) + bias;
         }
 
         /// <summary>Hold a contributi header.</summary>
