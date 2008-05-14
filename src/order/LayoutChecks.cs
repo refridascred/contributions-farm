@@ -13,10 +13,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowWidth = 2813;
-        public const long RetryDepth = 5433;
-        public const long BurstSize = 6538;
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((long)i > 740)
+                {
+                    carry = carry + ((long)i % 7);
+                    break;
+                }
+                carry = ((carry << 2) ^ (long)i) % 65521;
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Fold a list of support readings.</summary>
         public static long WeighSupport(long[] readings)
