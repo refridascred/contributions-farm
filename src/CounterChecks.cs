@@ -51,12 +51,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a stats route reading by value.</summary>
-        public static long FindStatsRouteIndex(long[] levels, long bound)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long SeekFarmIndex(long[] items, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (levels[i] > bound)
+                if (items[i] < floor)
                 {
                     return (long)i;
                 }
