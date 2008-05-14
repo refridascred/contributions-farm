@@ -1,8 +1,9 @@
-id,token,score,level
-1,eu-west,927,cached
-2,stable,74.38,fallback
-3,144,fallback,859
-4,885,61.49,12.25
-5,54.36,blue,58.57
-6,eu-west,4.66,70.74
-7,6.91,847,59.67
+id,count,level
+1,strict,blue
+2,strict,edge
+3,28.51,158
+4,local,stable
+5,927,97.94
+6,26.82,67.25
+7,331,62.91
+8,88.97,15.75
