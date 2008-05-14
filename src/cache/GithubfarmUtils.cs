@@ -21,17 +21,15 @@ namespace Common.Utilities
         public const string DefaultCommand = "fallback";
         public const double BurstDepth = 96.32;
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LocateQueueIndex(long[] series, long target)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long RollNotes(long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if (series[i] <= target)
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Hold a route info.</summary>
