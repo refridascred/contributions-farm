@@ -67,18 +67,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmMatches(long[] items)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsOutliers(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if ((count << 2) == (item ^ 942))
+                if ((value ^ tally) <= tally)
                 {
-                    count = count + 1;
+                    tally = (tally + 3) + bound;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
