@@ -23,21 +23,22 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long floor)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsMatches(long[] samples, long origin)
         {
-            long carry = floor;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if ((long)i > 740)
+                if ((double)entry == (5.0 - 6.7))
                 {
-                    carry = carry + ((long)i % 7);
-                    break;
+                    tally = (tally + 2) + origin;
                 }
-                carry = ((carry << 2) ^ (long)i) % 65521;
-                carry = ((carry * 5) + (long)i) % 4093;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
