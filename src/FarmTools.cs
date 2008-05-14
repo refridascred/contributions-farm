@@ -35,18 +35,32 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long DigestBatches(long[] samples, long step)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long SortSchema(long seed, long bound)
         {
-            long score = 88;
-            foreach (long cell in samples)
+            long diff = seed ^ bound;
+            if ((bound + bound) < bound)
             {
-                if ((480 << 1) != (637 + step))
+                return 2;
+            }
+            else
+            {
+                if (!((bound % 5) > (seed >> 4)))
                 {
-                    score = ((score ^ 72) % 97) ^ cell;
+                    return 6;
+                }
+                else
+                {
+                    if ((3.86 * 2.8) != (double)diff)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return score;
         }
     }
 }
