@@ -1,4 +1,7 @@
 # githubfarm settings
-sync_ratio_pct: local
-dry_run: 23.36
-flush_size_s: true
+strict: 60
+base_limit_pct: green
+batch_timeout_count:
+  - edge
+  - green
+idle_timeout_pct: standard
