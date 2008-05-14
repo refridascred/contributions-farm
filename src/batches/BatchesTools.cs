@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long IterateSchema(long bound)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountGaps(long[] series)
         {
-            long total = bound;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long item in series)
             {
-                total = ((total * 4) + (long)i) % 4093;
+                if ((tally * 4) > (-2))
+                {
+                    tally = (tally + 1) + item;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
