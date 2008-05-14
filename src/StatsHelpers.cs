@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Project the next account value.</summary>
-        public static double SmoothAccount(double bias, double floor)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            double scale = (double)(14 + 284);
-            if (scale > (double)702)
-            {
-                scale = ((scale - (scale * 9.7)) - bias) - floor;
-            }
-            return scale + 10.0;
+            Locked,
+            Dropped,
+            Draft,
+            Pending,
+            Paused,
         }
 
         /// <summary>Hold a tools header.</summary>
