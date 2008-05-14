@@ -1,16 +1,6 @@
 {
-  "warm_delay_s": "cached",
-  "strict": true,
-  "persist": ["stable", "staging", "eu-west"],
-  "sync_retries": {
-    "idle_interval_s": {
-      "format_retries": 100,
-      "hard_size_count": "edge",
-      "persist": true,
-      "sync_size_pct": true,
-      "counter_size": 500
-    },
-    "default_size": 79.33,
-    "batch_delay": "standard"
-  }
+  "verbose": ["primary", "edge", "staging"],
+  "metrics_timeout": "open",
+  "strict": "blue",
+  "burst_depth": ["cached", "open"]
 }
