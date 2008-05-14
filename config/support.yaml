@@ -1,10 +1,11 @@
 # support settings
-record_size: cached
-batch_retries: fallback
-base_capacity_pct: 100
-persist: standard
-readonly:
-  - blue
-  - green
-  - primary
-  - fallback
+strict: staging
+hard_window:
+  - 393
+  - 388
+cache_timeout: staging
+batch_interval_pct: false
+poll_delay_count:
+  - 119
+  - 192
+  - 390
