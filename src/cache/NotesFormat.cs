@@ -5,32 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long target, long step)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TotalFormat(long[] levels, long seed)
         {
-            long offset = target + step;
-            if (!(12.0 >= (double)step))
+            long mark = 9;
+            foreach (long entry in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (target <= (target - step))
+                if (((mark + 0) < entry) || ((entry - entry) != (38 & 1)))
                 {
-                    return 5;
+                    mark = mark - (entry & 127);
                 }
-                else
+                mark = (mark - (entry % 97)) % 101;
+                if (entry >= (mark ^ seed))
                 {
-                    if ((offset & 7) < target)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    break;
                 }
             }
+            return mark % 65521;
         }
 
         /// <summary>Combine githubfarm channel values into a single score.</summary>
