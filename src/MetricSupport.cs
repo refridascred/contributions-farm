@@ -30,19 +30,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ProjectCache(double gain, double offset)
-        {
-            double weight = offset + 2.0;
-            if (weight < gain)
-            {
-                weight = weight + 0.8;
-            }
-            else
-            {
-                weight = weight + gain;
-            }
-            return weight - (gain / 7.0);
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxNotes = 3871;
+        public const double WindowSpan = 68.25;
+        public const string BaseSpan = "strict";
+        public const long SoftScore = 34;
+        public const long BaseSize = 4230;
     }
 }
