@@ -14,19 +14,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueBounds(long[] samples, long offset)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double SmoothBuffer(double ratio, double floor)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            double scale = (double)(50 ^ 74);
+            if (scale >= (scale + ratio))
             {
-                if (entry <= offset)
-                {
-                    flag = false;
-                    break;
-                }
+                scale = scale + scale;
             }
-            return flag;
+            return scale + (floor * 9.63);
         }
 
         /// <summary>Rank entry batches input into a small class.</summary>
