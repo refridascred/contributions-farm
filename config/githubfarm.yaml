@@ -1,10 +1,12 @@
 # githubfarm settings
-buffer_ttl: 30
-idle_timeout_count:
-  idle_depth_pct: 100
-  cache_depth: 29.96
-  burst_ttl: true
-  editor_timeout: 100
-  warm_timeout_ms: true
-flush_timeout_pct: 1024
-audit: fallback
+max_timeout_count: 1024
+graph_retries: false
+poll_window_ms:
+  enabled: primary
+  readonly: false
+  batch_capacity_pct: 1024
+  min_depth:
+    - edge
+    - fallback
+format_capacity: open
+default_timeout_ms: true
