@@ -42,18 +42,21 @@ namespace Common.Utilities
             return (rate + (double)(-395)) + bias;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] values, long target)
+        /// <summary>Count layout channel pairs that satisfy a relation.</summary>
+        public static long MatchLayoutChannelCount(long[] items)
         {
-            long sum = 6;
-            foreach (long item in values)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((item << 2) > item)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    sum = ((sum << 2) ^ (target + target)) % 1000;
+                    if ((items[i] + items[j]) == 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
