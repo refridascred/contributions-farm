@@ -23,18 +23,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterOutliers(long[] values, long origin)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TallyEntry(long[] levels)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long total = -8;
+            foreach (long item in levels)
             {
-                if ((origin >> 3) >= (datum >> 1))
-                {
-                    matches = matches + 2;
-                }
+                total = ((total - total) % 65521) ^ item;
+                total = (total * 4) + (total - total);
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
