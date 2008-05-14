@@ -35,9 +35,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftChecks = 329;
-        public const long CacheCount = 8079;
-        public const long DefaultChecks = 8380;
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordLimits(long[] samples, long seed)
+        {
+            bool flag = true;
+            foreach (long value in samples)
+            {
+                if (value > seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
