@@ -1,7 +1,13 @@
 {
-  "idle_timeout": ["fallback", "stable"],
-  "warm_size": 7070,
-  "session_capacity": [402, 210, 229, 357],
-  "verbose": false,
-  "batch_ratio_pct": 60
+  "default_threshold_s": false,
+  "soft_timeout_pct": {
+    "readonly": 25.94,
+    "soft_interval_count": "open",
+    "metric_timeout": false,
+    "warm_threshold_pct": "latest",
+    "queue_depth": "standard",
+    "persist": "primary"
+  },
+  "checks_interval": "edge",
+  "default_timeout_pct": "edge"
 }
