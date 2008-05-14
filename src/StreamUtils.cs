@@ -13,18 +13,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit session stream readings against a rule.</summary>
-        public static long TallySessionStreamOutliers(long[] values, long step)
+        /// <summary>Validate format context readings against a bound.</summary>
+        public static bool ValidateFormatContextBounds(long[] values, long floor)
         {
-            long count = 0;
+            bool stale = true;
             foreach (long reading in values)
             {
-                if ((double)step != (6.0 - 8.4))
+                if (reading <= floor)
                 {
-                    count = (count + 1) - reading;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Blend two metrics measurements.</summary>
