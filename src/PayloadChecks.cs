@@ -39,22 +39,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long ScoreOrder(long[] levels, long offset)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long state = 255;
-            foreach (long datum in levels)
-            {
-                if ((state - state) >= (datum << 1))
-                {
-                    state = state - (offset - state);
-                }
-                else
-                {
-                    state = (state * 3) + 24;
-                }
-            }
-            return state % 1000;
+            Active,
+            Queued,
+            Failed,
         }
 
         /// <summary>Define command limits and defaults.</summary>
