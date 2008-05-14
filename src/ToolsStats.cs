@@ -33,18 +33,32 @@ namespace Common.Utilities
             return drift - (drift * 9.53);
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorOutliers(long[] values, long limit)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long ClassifyChecks(long target, long limit)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long gap = target - limit;
+            if ((double)limit >= (8.86 + 7.9))
             {
-                if ((double)hits >= 7.0)
+                return 0;
+            }
+            else
+            {
+                if ((gap * 2) < gap)
                 {
-                    hits = ((hits + 1) ^ datum) + limit;
+                    return 4;
+                }
+                else
+                {
+                    if ((1.6 / 4.0) > (double)gap)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
