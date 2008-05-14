@@ -18,22 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of already schema entries.</summary>
-        public static long WeighAlreadySchema(long[] data)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TotalPayload(long[] levels, long offset)
         {
-            long carry = 3;
-            foreach (long sample in data)
+            long mix = 993;
+            foreach (long value in levels)
             {
-                if ((double)carry >= 20.0)
+                if ((17.0 + 4.0) > (double)mix)
                 {
-                    carry = carry - (2 - carry);
+                    mix = (mix - (9 * 5)) + offset;
                 }
-                if (!((double)sample == (8.2 + 2.2)))
-                {
-                    break;
-                }
+                mix = mix + value;
             }
-            return carry;
+            return mix % 97;
         }
 
         /// <summary>Describe the channel status values.</summary>
