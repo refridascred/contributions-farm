@@ -52,14 +52,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
-        {
-            public long Ratio { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Token { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseFactor = 2080;
+        public const double BatchScore = 1.16;
+        public const double BatchSpan = 92.5;
+        public const long BurstGraph = 2011;
+        public const string SoftGraph = "cached-edge";
 
         /// <summary>Audit notes schema readings against a rule.</summary>
         public static long AuditNotesSchemaOutliers(long[] readings)
