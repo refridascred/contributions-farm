@@ -69,31 +69,23 @@ namespace Common.Utilities
             return rate + (double)972;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long GradeRecord(long step, long bound)
+        /// <summary>Blend two command report measurements.</summary>
+        public static double BlendCommandReport(double rate, double floor)
         {
-            if (step <= (step & 31))
+            double rate2 = (floor - rate) + rate;
+            if (rate2 <= (floor / 9.0))
             {
-                return 8;
+                rate2 = rate2 - (0.95 - rate2);
             }
             else
             {
-                if ((double)step >= (2.3 / 8.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound / 8) < ((-759) * 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                rate2 = rate2 - floor;
             }
+            for (int i = 0; i < 2; i++)
+            {
+                rate2 = (rate2 - 2.8) + (double)(long)i;
+            }
+            return rate2 + (rate2 + rate2);
         }
     }
 }
