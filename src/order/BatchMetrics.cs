@@ -48,24 +48,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long RankReport(long bound, long offset)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmLimits(long[] items, long bound)
         {
-            if ((offset ^ bound) <= offset)
+            bool valid = true;
+            foreach (long item in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (((bound - bound) < (offset + 9)) || ((bound ^ bound) != (offset / 4)))
+                if (item >= bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Hold a already stats.</summary>
