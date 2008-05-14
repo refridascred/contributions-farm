@@ -28,19 +28,39 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesRange(long[] items, long origin)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long BucketFarm(long seed, long limit)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            long diff = seed - limit;
+            if (!((seed + diff) >= (seed >> 4)))
             {
-                if (sample > origin)
+                return 7;
+            }
+            else
+            {
+                if ((limit + limit) < seed)
                 {
-                    ok = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (!((seed << 1) == (seed * 5)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (limit <= (diff >> 3))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
