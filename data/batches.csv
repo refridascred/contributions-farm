@@ -1,6 +1,6 @@
-id,score,state,count
-1,891,latest,48.98
-2,125,2.42,568
-3,latest,57.79,254
-4,490,851,949
-5,152,14.42,staging
+id,state,level,token
+1,primary,latest,685
+2,95.77,718,legacy
+3,50.49,511,33.79
+4,eu-west,50,41.02
+5,554,strict,edge
