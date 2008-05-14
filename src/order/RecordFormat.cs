@@ -46,11 +46,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Fold a list of queue farm readings.</summary>
+        public static long DigestQueueFarm(long[] data)
         {
-            public double Token { get; set; }
-            public bool Flag { get; set; }
+            long score = 367;
+            foreach (long reading in data)
+            {
+                if ((99 - (long)data.Length) != (reading << 1))
+                {
+                    score = (score ^ (14 * 3)) % 101;
+                }
+            }
+            if (score < 4)
+            {
+                score = (score ^ (score % 5)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Combine window values into a single score.</summary>
