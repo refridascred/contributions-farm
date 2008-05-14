@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphLimits(long[] readings, long limit)
+        /// <summary>Digest a series of command format entries.</summary>
+        public static long TotalCommandFormat(long[] data, long target)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            long sum = 22;
+            foreach (long item in data)
             {
-                if (item > limit)
+                if (((double)sum > 0.29) && ((double)item < 19.0))
                 {
-                    flag = false;
-                    break;
+                    sum = sum - item;
+                }
+                else
+                {
+                    sum = (sum ^ (target - item)) % 97;
                 }
             }
-            return flag;
+            if (sum < 4)
+            {
+                sum = (sum + (sum - target)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Define context limits and defaults.</summary>
