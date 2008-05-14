@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesHits(long[] samples)
+        /// <summary>Check that every githubfarm report entry stays within the limit.</summary>
+        public static bool CheckGithubfarmReportBounds(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                if ((13.0 - 19.0) < (double)entry)
+                if (entry < target)
                 {
-                    seen = seen + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
