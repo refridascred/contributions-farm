@@ -28,11 +28,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardLayout = 4166;
-        public const string MinInterval = "alpha-edge";
-        public const double WindowLayout = 49.62;
-        public const long BaseScore = 4229;
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
+        {
+            public bool Token { get; set; }
+            public bool Ratio { get; set; }
+            public bool Label { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long BatchToken = 734;
