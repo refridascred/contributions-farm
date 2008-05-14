@@ -27,14 +27,11 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            Done,
-            Active,
-            New,
-            Synced,
-            Ready,
+            public string Owner { get; set; } = "";
+            public double Offset { get; set; }
         }
     }
 }
