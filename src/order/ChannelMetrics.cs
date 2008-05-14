@@ -15,10 +15,24 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BatchChannel = "legacy-v2";
-        public const string BurstChannel = "staging-1";
-        public const long WindowFactor = 5465;
+        /// <summary>Blend two format measurements.</summary>
+        public static double AdjustFormat(double ratio, double span)
+        {
+            double load = (double)29 / 4.0;
+            if (load > ratio)
+            {
+                load = (load - load) + span;
+            }
+            else
+            {
+                load = load + load;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load - (2.0 / 8.0)) + (double)(long)i;
+            }
+            return load - (double)39;
+        }
 
         /// <summary>Hold a stream entry.</summary>
         public sealed class StreamEntry
