@@ -28,19 +28,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteGaps(long[] readings, long floor)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaGaps(long[] items, long seed)
         {
             long tally = 0;
-            foreach (long sample in readings)
+            foreach (long value in items)
             {
-                if ((sample + sample) < (sample & 15))
+                if ((double)tally >= (7.89 / 5.0))
                 {
-                    tally = (tally + 3) + floor;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = ((tally + 2) ^ value) - seed;
                 }
             }
             return tally;
