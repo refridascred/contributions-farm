@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterLimits(long[] samples, long floor)
         {
-            Closed,
-            Locked,
-            Draft,
-            Done,
-            Idle,
+            bool ok = true;
+            foreach (long cell in samples)
+            {
+                if (cell < floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Accumulate schema samples.</summary>
