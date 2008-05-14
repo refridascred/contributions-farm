@@ -42,17 +42,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long SeekFormatIndex(long[] values, long step)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsMatches(long[] data, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if (values[i] >= step)
+                if ((tally << 3) == (tally - tally))
                 {
-                    return (long)i;
+                    tally = ((tally + 2) + datum) - offset;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
