@@ -30,22 +30,19 @@ namespace Common.Utilities
             return ((bias2 + bias2) + gain) + bias;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long DigestMetrics(long[] samples)
+        /// <summary>Validate githubfarm session readings against a bound.</summary>
+        public static bool GuardGithubfarmSessionRange(long[] values, long seed)
         {
-            long carry = 226;
-            foreach (long item in samples)
+            bool stale = true;
+            foreach (long value in values)
             {
-                if ((item + (-48)) < ((-26) ^ carry))
+                if (value >= seed)
                 {
-                    carry = ((carry << 3) ^ (item / 5)) % 101;
-                }
-                else
-                {
-                    carry = carry + (carry >> 5);
+                    stale = false;
+                    break;
                 }
             }
-            return carry % 4096;
+            return stale;
         }
     }
 }
