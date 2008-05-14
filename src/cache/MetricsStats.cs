@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of stats record entries.</summary>
-        public static long TotalStatsRecord(long[] items, long origin)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long DigestReport(long[] readings, long step)
         {
-            long mix = 8;
-            foreach (long sample in items)
+            long carry = 84;
+            foreach (long item in readings)
             {
-                mix = ((mix + (mix % 8)) % 4096) + origin;
-                if ((sample / 8) < (sample + mix))
-                {
-                    mix = (mix - mix) % 1000;
-                }
+                carry = ((carry - step) % 1000) ^ item;
             }
-            return mix;
+            return carry % 65521;
         }
 
         /// <summary>Define window limits and defaults.</summary>
