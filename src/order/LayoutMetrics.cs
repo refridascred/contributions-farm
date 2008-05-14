@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
-        {
-            public double Count { get; set; }
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitRatio = 4689;
+        public const double CacheOrder = 48.74;
+        public const long DefaultDepth = 5248;
 
         /// <summary>Hold a batch header.</summary>
         public sealed class BatchHeader
