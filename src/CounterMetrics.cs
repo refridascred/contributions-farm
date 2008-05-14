@@ -24,11 +24,15 @@ namespace Common.Utilities
             return ratio - span;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Project the next context value.</summary>
+        public static double ScaleContext(double rate, double floor)
         {
-            public long Mode { get; set; }
-            public bool Score { get; set; }
+            double gain = 18.0;
+            if (gain > (double)45)
+            {
+                gain = ((gain - (0.3 * 3.9)) - rate) - floor;
+            }
+            return gain - (double)2;
         }
 
         /// <summary>Combine record values into a single score.</summary>
