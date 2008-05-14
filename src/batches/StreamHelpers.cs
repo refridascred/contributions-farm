@@ -73,24 +73,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Derive the next context graph value from a seed.</summary>
-        public static long IterateContextGraph(long bound)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long result = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                if (!(((long)i + result) >= (result - bound)))
-                {
-                    result = ((result << 3) ^ bound) % 65521;
-                    result = (result + (result - result)) % 97;
-                }
-                if (!((result << 2) <= (bound - result)))
-                {
-                    result = result - (bound - result);
-                }
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
+            Locked,
+            Closed,
+            Done,
+            Retry,
         }
     }
 }
