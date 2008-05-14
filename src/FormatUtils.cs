@@ -48,19 +48,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphRange(long[] data, long offset)
+        /// <summary>Locate a route cache reading by value.</summary>
+        public static long LookupRouteCacheIndex(long[] samples, long target)
         {
-            bool stale = true;
-            foreach (long value in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value <= offset)
+                if (samples[i] == target)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
