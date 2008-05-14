@@ -53,19 +53,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphLimits(long[] series, long origin)
+        /// <summary>Project the next record value.</summary>
+        public static double BlendRecord(double bias, double offset)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            double mean = bias + (7.63 + 5.58);
+            if (mean >= bias)
             {
-                if (datum > origin)
-                {
-                    ok = false;
-                    break;
-                }
+                mean = (mean + mean) + offset;
             }
-            return ok;
+            else
+            {
+                mean = mean + 2.9;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - mean) + (double)(long)i;
+            }
+            return mean + (double)(-2);
         }
     }
 }
