@@ -27,15 +27,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long RollNotes(long offset)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long mix = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 101;
-            }
-            return mix;
+            public bool Score { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a route info.</summary>
