@@ -16,21 +16,10 @@ namespace Common.Utilities
             return mean + 3.16;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long RollBatch(long seed)
-        {
-            long score = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                score = ((score << 3) ^ (28 - seed)) % 255;
-                if ((seed % 64) <= score)
-                {
-                    break;
-                }
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double IdleCommand = 40.97;
+        public const double MinSize = 80.91;
+        public const double MaxCommand = 23.49;
 
         /// <summary>Classify a already payload pair into a bucket.</summary>
         public static long GradeAlreadyPayload(long step, long origin)
