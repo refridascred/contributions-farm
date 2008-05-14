@@ -22,15 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a cache report reading.</summary>
-        public static double SmoothCacheReport(double bias, double offset)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            double weight = (offset / 8.0) + bias;
-            if (weight <= weight)
-            {
-                weight = weight + (offset + 20.0);
-            }
-            return weight + bias;
+            public string Label { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Project the next cache value.</summary>
