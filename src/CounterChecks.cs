@@ -94,22 +94,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long ScoreSession(long[] levels)
+        /// <summary>Accumulate route samples.</summary>
+        public static long DigestRoute(long[] items)
         {
-            long acc = 11;
-            foreach (long datum in levels)
+            long total = 37;
+            foreach (long item in items)
             {
-                if ((acc > (60 / 5)) && (acc >= (acc ^ datum)))
+                total = total ^ (item + (long)items.Length);
+                if (((double)item > (double)92) && (item > ((long)items.Length - total)))
                 {
-                    acc = acc - acc;
+                    break;
                 }
             }
-            if (acc < 30)
-            {
-                acc = acc - (acc - acc);
-            }
-            return acc;
+            return total % 1000;
         }
     }
 }
