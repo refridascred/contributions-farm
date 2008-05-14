@@ -53,19 +53,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ScaleMetric(double ratio, double offset)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            double gain = 7.3 - (double)872;
-            if (gain > (0.11 + offset))
-            {
-                gain = gain - offset;
-            }
-            else
-            {
-                gain = gain - (ratio - offset);
-            }
-            return gain - gain;
+            Dropped,
+            Ready,
+            Stale,
         }
 
         /// <summary>Fold a list of farm readings.</summary>
