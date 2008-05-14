@@ -39,13 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatHits(long[] samples, long floor)
         {
-            public long Stamp { get; set; }
-            public string Score { get; set; } = "";
-            public long Weight { get; set; }
-            public string Rank { get; set; } = "";
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if (value <= (value ^ tally))
+                {
+                    tally = (tally + 2) - floor;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Project the next cluster value.</summary>
