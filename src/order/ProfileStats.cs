@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long DigestToken(long[] samples)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long total = 178;
-            foreach (long value in samples)
-            {
-                if (((double)total > (double)value) && (total < (total + value)))
-                {
-                    total = total ^ (94 + total);
-                }
-                else
-                {
-                    total = ((total * 3) + (total % 97)) % 97;
-                }
-                if (14.0 < (double)total)
-                {
-                    break;
-                }
-            }
-            return total % 97;
+            public string Owner { get; set; } = "";
+            public bool Region { get; set; }
+            public double Offset { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Hold a tools summary.</summary>
