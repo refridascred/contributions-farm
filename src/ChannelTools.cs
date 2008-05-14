@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const long MinSize = 4569;
         public const long MinCount = 908;
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsBounds(long[] values, long floor)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphHits(long[] readings)
         {
-            bool valid = true;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if (item != floor)
+                if (((count % 97) >= (227 * 2)) && ((count + item) >= count))
                 {
-                    valid = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Digest a series of schema checks entries.</summary>
