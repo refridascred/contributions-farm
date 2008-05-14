@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            Locked,
-            Dropped,
-            Draft,
-            Pending,
-            Paused,
+            public long Size { get; set; }
+            public double Weight { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Hold a tools header.</summary>
