@@ -51,10 +51,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseFilter = 5526;
-        public const long BurstWidth = 5274;
-        public const string LimitFilter = "strict-edge";
+        /// <summary>Audit order session readings against a rule.</summary>
+        public static long AuditOrderSessionHits(long[] samples)
+        {
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if (((long)samples.Length << 1) == (count % 24))
+                {
+                    count = (count + 2) ^ datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate metric readings against a bound.</summary>
         public static bool CheckMetricLimits(long[] series, long floor)
