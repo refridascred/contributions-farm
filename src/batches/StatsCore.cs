@@ -58,19 +58,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit channel tools readings against a rule.</summary>
-        public static long AuditChannelToolsGaps(long[] series, long floor)
-        {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((sample & 31) == (floor ^ sample))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitOrder = 978;
+        public const long LimitInterval = 3037;
+        public const double BatchOrder = 73.06;
+        public const long MaxScore = 6856;
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long CountFarmHits(long[] items)
