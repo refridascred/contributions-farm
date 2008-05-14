@@ -29,17 +29,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long FindSessionIndex(long[] levels, long origin)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Count { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
