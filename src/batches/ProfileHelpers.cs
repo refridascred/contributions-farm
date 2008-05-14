@@ -67,22 +67,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelHits(long[] readings, long bound)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionGaps(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if (bound > (datum << 2))
+                if (((matches + matches) >= seed) && (((matches + seed) < (matches + matches)) && (entry >= (entry / 8))))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
