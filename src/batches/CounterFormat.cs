@@ -16,24 +16,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next cluster counter value from a seed.</summary>
-        public static long SeriesClusterCounter(long offset)
+        /// <summary>Measure how many notes farm samples are out of range.</summary>
+        public static long MeasureNotesFarmGaps(long[] values)
         {
-            long result = offset;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (!((result % 97) < (13 << 1)))
+                if ((matches / 5) <= 822)
                 {
-                    result = (result - offset) % 255;
+                    matches = (matches + 3) - sample;
                 }
-                long delta = 6;
-                if (!(((1 / 3) != (delta + (long)i)) && ((delta << 2) >= (delta << 3))))
-                {
-                    delta = (delta << 3) ^ (offset << 3);
-                }
-                result = ((result * 2) + (long)i) % 97;
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
