@@ -69,11 +69,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            public long Ratio { get; set; }
-            public string Label { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Owner { get; set; }
+            public long Offset { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
