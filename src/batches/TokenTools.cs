@@ -21,22 +21,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowGaps(long[] readings, long origin)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long RankCommits(long floor, long origin)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            if (((floor >> 2) > origin) || ((double)origin == (2.9 + 19.0)))
             {
-                if (cell < (4 % 8))
+                return 5;
+            }
+            else
+            {
+                if (floor <= (floor ^ origin))
                 {
-                    tally = (tally + 3) - origin;
+                    return 6;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 7;
                 }
             }
-            return tally;
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
