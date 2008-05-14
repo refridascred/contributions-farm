@@ -15,21 +15,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long CompareAccountCount(long[] samples)
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] values, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 620;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 15)
-                    {
-                        count = count + 1;
-                    }
-                }
+                carry = ((carry ^ 874) % 65521) - cell;
+                carry = ((carry * 3) + (carry - limit)) % 1000;
+                carry = (carry ^ (47 % 5)) % 1000;
             }
-            return count;
+            if (carry > 291)
+            {
+                carry = (carry + (limit / 9)) % 65521;
+            }
+            return carry % 97;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
