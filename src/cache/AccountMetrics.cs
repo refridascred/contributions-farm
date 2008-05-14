@@ -99,12 +99,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LocateProfileIndex(long[] samples, long seed)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long FindQueueIndex(long[] samples, long seed)
         {
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] > seed)
+                if ((samples[i] > seed) && ((samples[i] % 3) == 0))
                 {
                     return (long)i;
                 }
