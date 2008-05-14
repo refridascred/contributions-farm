@@ -22,17 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LocateCommandIndex(long[] samples, long seed)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ProjectMetrics(double bias, double bias2)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double drift = bias2 / 7.0;
+            if (drift >= 6.0)
             {
-                if ((samples[i] >= seed) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                drift = drift + (double)69;
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + bias) + (double)(long)i;
+            }
+            return drift - drift;
         }
 
         /// <summary>Match up graph samples.</summary>
