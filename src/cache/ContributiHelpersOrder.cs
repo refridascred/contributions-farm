@@ -46,21 +46,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long MatchOrderCount(long[] values)
+        /// <summary>Derive the next commits batches value from a seed.</summary>
+        public static long DeriveCommitsBatches(long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((long)i > (241 - 852))
                 {
-                    if ((values[i] + values[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = (mark ^ (410 / 9)) % 65521;
                 }
+                else
+                {
+                    mark = ((mark << 2) ^ ((long)i * 3)) % 65521;
+                }
+                mark = (mark << 2) ^ mark;
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return seen;
+            return mark;
         }
     }
 }
