@@ -14,11 +14,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleTimeout = 5328;
-        public const long SoftCount = 1597;
-        public const string BaseSize = "local";
-        public const long BurstBudget = 3959;
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamLimits(long[] series, long seed)
+        {
+            bool found = true;
+            foreach (long reading in series)
+            {
+                if (reading >= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Describe the editor phase values.</summary>
         public enum EditorPhase
