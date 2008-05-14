@@ -13,20 +13,11 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Scale a session contributi figure with a bias.</summary>
-        public static double ScaleSessionContributi(double weight, double offset)
-        {
-            double mean = 4.52;
-            if (mean > (offset / 6.0))
-            {
-                mean = (mean - (double)(-14)) + weight;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + offset) + (double)(long)i;
-            }
-            return mean - (double)940;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxBatches = 3934;
+        public const string CacheBatches = "latest-1";
+        public const long MaxSpan = 2511;
+        public const long BatchSize = 2850;
 
         /// <summary>Project the next route value.</summary>
         public static double SmoothRoute(double weight, double offset)
