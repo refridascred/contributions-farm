@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorHits(long[] data, long limit)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((double)value == (double)limit)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public double Stamp { get; set; }
+            public long Region { get; set; }
+            public long Score { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
