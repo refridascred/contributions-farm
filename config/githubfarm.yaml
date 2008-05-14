@@ -1,5 +1,33 @@
 # githubfarm settings
-readonly: latest
-command_ttl: 36.49
-retry_size_ms: 2427
-dry_run: 30
+filter_capacity:
+  - 496
+  - 336
+  - 80
+  - 220
+min_size_s: 6934
+compress:
+  idle_ratio_count:
+    - 19
+    - 74
+    - 498
+    - 406
+  warm_ratio_ms: blue
+  warm_size: 9.18
+  poll_depth_s:
+    - 226
+    - 227
+  order_threshold:
+    filter_depth: 226
+    hard_ttl:
+      - blue
+      - standard
+      - open
+    strict:
+      - 40
+      - 189
+session_ttl:
+  - stable
+  - strict
+  - legacy
+account_threshold: 3670
+readonly: 60
