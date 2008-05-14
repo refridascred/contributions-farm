@@ -1,11 +1,10 @@
 # Command notes
 
-Defaults for stream live in the config folder and can be overridden per environment.
-Defaults for order live in the config folder and can be overridden per environment.
+Run the cluster check before changing any batch limits.
+Run the account check before changing any report limits.
 
 ## Guidelines
 
-- Log every schema change
-- Prefer schema defaults
-- Validate batch input early
-- Document new window fields
+- Log every context change
+- Validate cache input early
+- Document new already fields
