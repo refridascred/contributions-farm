@@ -1,12 +1,10 @@
 # support settings
-verbose:
-  - eu-west
-  - local
-  - edge
-metrics_ttl:
-  - strict
-  - strict
-base_retries_count: false
-batch_limit: green
-warm_size: 4106
-metrics_ratio: 30
+record_size: cached
+batch_retries: fallback
+base_capacity_pct: 100
+persist: standard
+readonly:
+  - blue
+  - green
+  - primary
+  - fallback
