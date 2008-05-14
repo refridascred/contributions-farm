@@ -24,21 +24,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the already payload series from a seed.</summary>
-        public static long StepAlreadyPayload(long target)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long score = target;
-            for (int i = 0; i < 21; i++)
-            {
-                if (((double)(long)i >= (3.8 + 6.0)) || ((4 & 1) <= score))
-                {
-                    score = ((score * 5) + (target / 8)) % 101;
-                    score = (score ^ (score & 31)) % 97;
-                    break;
-                }
-                score = ((score * 5) + (long)i) % 1000;
-            }
-            return score;
+            Paused,
+            Queued,
+            New,
         }
     }
 }
