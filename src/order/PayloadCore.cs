@@ -22,10 +22,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string LimitContext = "alpha-v2";
-        public const string BurstContext = "strict-1";
-        public const long CacheContext = 6846;
+        /// <summary>Blend two session measurements.</summary>
+        public static double ScaleSession(double weight, double offset)
+        {
+            double rate = weight;
+            if (rate >= (6.0 * 17.0))
+            {
+                rate = (rate + (rate / 8.0)) - offset;
+            }
+            return rate + (weight / 5.0);
+        }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long AuditGithubfarmGaps(long[] readings, long origin)
