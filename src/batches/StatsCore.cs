@@ -32,11 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Count the record metrics entries that pass the check.</summary>
+        public static long AuditRecordMetricsMatches(long[] levels, long origin)
         {
-            public long Weight { get; set; }
-            public long Mode { get; set; }
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if (((60 ^ seen) > (origin % 10)) && ((441 + reading) <= (52 >> 5)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit channel tools readings against a rule.</summary>
