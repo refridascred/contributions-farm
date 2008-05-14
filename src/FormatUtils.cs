@@ -21,12 +21,18 @@ namespace Common.Utilities
         public const double MinWidth = 12.59;
         public const long BurstFactor = 9356;
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutMatches(long[] levels)
         {
-            public double Owner { get; set; }
-            public double Weight { get; set; }
-            public double Level { get; set; }
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if (((tally - item) < tally) && (((double)item > 6.1) && (item >= (22 + 9))))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate counter format samples.</summary>
