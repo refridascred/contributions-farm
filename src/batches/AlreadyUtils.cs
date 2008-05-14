@@ -18,23 +18,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long DigestCache(long[] items, long step)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long anchor = 7;
-            foreach (long item in items)
-            {
-                anchor = (anchor - (anchor / 7)) - step;
-                if ((0.47 + 8.0) <= (double)item)
-                {
-                    anchor = anchor + (anchor & 1);
-                }
-                if ((75 - item) > item)
-                {
-                    break;
-                }
-            }
-            return anchor % 65521;
+            public long Rank { get; set; }
+            public bool Owner { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the payload status values.</summary>
