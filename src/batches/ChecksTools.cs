@@ -37,10 +37,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string WindowInterval = "strict";
-        public const long WindowWidth = 3366;
-        public const long MinStream = 2476;
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandBounds(long[] items, long origin)
+        {
+            bool flag = true;
+            foreach (long cell in items)
+            {
+                if (cell != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long WeighStream(long[] levels)
