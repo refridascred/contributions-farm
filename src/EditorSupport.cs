@@ -54,11 +54,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BatchSpan = "standard-edge";
-        public const long MinContributi = 9424;
-        public const double BaseWidth = 22.85;
-        public const double MinDepth = 90.58;
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TallyFarm(long[] items)
+        {
+            long carry = 80;
+            foreach (long value in items)
+            {
+                if (((value - 59) >= (carry ^ value)) || ((double)carry == (8.4 * 19.0)))
+                {
+                    carry = (carry ^ 331) % 65521;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long CountMetricOutliers(long[] readings)
