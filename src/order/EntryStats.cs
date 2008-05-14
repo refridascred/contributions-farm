@@ -26,17 +26,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LookupEditorIndex(long[] samples, long origin)
+        /// <summary>Measure how many payload contributi samples are out of range.</summary>
+        public static long CountPayloadContributiMatches(long[] items, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if (samples[i] >= origin)
+                if (seen > (982 + item))
                 {
-                    return (long)i;
+                    seen = (seen + 2) - origin;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Measure how many record checks samples are out of range.</summary>
