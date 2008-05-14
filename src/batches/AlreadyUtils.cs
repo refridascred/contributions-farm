@@ -31,16 +31,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long IterateProfile(long floor)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphBounds(long[] samples, long target)
         {
-            long mark = floor;
-            for (int i = 0; i < 14; i++)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                mark = (mark * 3) + mark;
-                mark = ((mark * 3) + (long)i) % 65521;
+                if (datum <= target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mark;
+            return ok;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
