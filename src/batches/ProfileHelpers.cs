@@ -27,15 +27,11 @@ namespace Common.Utilities
             return ratio + (double)95;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double SmoothFormat(double scale, double floor)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            double mean = (double)(31 + 2);
-            if (mean > scale)
-            {
-                mean = mean + (floor + floor);
-            }
-            return mean + (floor / 3.0);
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Digest a series of account entries.</summary>
