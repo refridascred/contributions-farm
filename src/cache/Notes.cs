@@ -32,15 +32,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double AdjustStream(double weight, double span)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long ClassifyLayout(long seed, long floor)
         {
-            double ratio = (double)((-7) & 127);
-            if (ratio < ratio)
+            if ((floor << 2) > (floor + 5))
             {
-                ratio = ((ratio + 8.0) + weight) + span;
+                return 3;
             }
-            return ratio - (double)(-2);
+            else
+            {
+                if ((seed * 2) > (seed >> 1))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)floor < (4.0 - 13.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Define report limits and defaults.</summary>
