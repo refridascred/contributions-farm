@@ -44,10 +44,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultInterval = 7247;
-        public const long BatchOrder = 9184;
-        public const long BurstOrder = 8916;
-        public const long StepOrder = 6489;
+        /// <summary>Adjust a stats reading.</summary>
+        public static double SmoothStats(double bias, double bias2)
+        {
+            double rate = bias2;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - (rate * 6.0)) - (double)(long)i;
+            }
+            return rate + bias;
+        }
     }
 }
