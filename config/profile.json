@@ -1,6 +1,7 @@
 {
-  "audit": "cached",
-  "batch_depth": 97.28,
-  "idle_size": "edge",
-  "idle_retries_count": 98.7
+  "min_threshold_pct": "open",
+  "token_ttl": "primary",
+  "min_ratio_s": 3411,
+  "window_ratio": ["green", "fallback", "stable"],
+  "default_retries_s": 7528
 }
