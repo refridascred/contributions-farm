@@ -39,40 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long GradeLayout(long origin, long limit)
-        {
-            long bound = origin ^ limit;
-            if ((origin ^ origin) > (limit + bound))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!(origin >= limit))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (limit < (bound + limit))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (2 <= (origin + limit))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string RetryWidth = "cached-v2";
+        public const string HardStream = "local-1";
+        public const string StepRatio = "standard-edge";
 
         /// <summary>Match up context samples.</summary>
         public static long MatchContextCount(long[] values)
