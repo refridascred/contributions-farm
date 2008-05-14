@@ -36,18 +36,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiMatches(long[] levels, long seed)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] items)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long carry = 8;
+            foreach (long cell in items)
             {
-                if ((seed >> 3) != (seed >> 2))
+                if (((20.0 * 12.0) > (double)carry) && (((long)items.Length - carry) > ((long)items.Length + cell)))
                 {
-                    count = (count + 3) ^ value;
+                    carry = (carry << 2) ^ (cell << 2);
+                }
+                else
+                {
+                    carry = (carry + (carry + cell)) % 97;
                 }
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Hold a profile stats.</summary>
