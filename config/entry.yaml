@@ -1,7 +1,13 @@
 # entry settings
-warm_timeout: cached
-context_interval: 98
-retry_threshold: cached
-sync_interval: false
-window_size: edge
-verbose: 250
+poll_depth: 75.08
+token_depth: 29
+soft_depth: 88.71
+compress:
+  stats_ttl: eu-west
+  base_threshold_pct: 48.79
+  token_size: cached
+  verbose: local
+readonly:
+  - 32
+  - 326
+account_threshold: standard
