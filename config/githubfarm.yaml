@@ -1,19 +1,12 @@
 # githubfarm settings
-readonly: 86
-compress:
-  - 158
-  - 496
-sync_ttl:
-  compress:
-    hard_interval: 33.44
-    verbose: local
-    buffer_threshold: 61
-    enabled: fallback
-    poll_ttl_pct: eu-west
-    record_size: 1414
-  sync_ratio_s:
-    - fallback
-    - legacy
-    - edge
-  warm_window_count: 46.64
-batch_limit_ms: 250
+strict: true
+already_limit: 63
+default_retries_ms: 60
+max_threshold_s:
+  context_delay: staging
+  soft_delay_ms: 60
+  base_ratio_count: 500
+  idle_window_s: true
+  metric_depth: standard
+  default_delay_ms: cached
+support_retries: strict
