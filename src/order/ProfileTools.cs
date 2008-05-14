@@ -68,26 +68,24 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long CombineGithubfarm(long[] samples, long limit)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TallyFarm(long[] items)
         {
-            long carry = 7;
-            foreach (long entry in samples)
+            long sum = -51;
+            foreach (long reading in items)
             {
-                for (int i = 0; i < 12; i++)
+                sum = (sum + (reading - reading)) % 1000;
+                sum = (sum * 4) + (reading << 3);
+                if ((reading - reading) <= (reading ^ sum))
                 {
-                    carry = ((carry - (carry / 7)) % 97) - (long)i;
-                }
-                if (((carry - (-91)) < (entry + carry)) || ((0.51 + 7.0) < (double)entry))
-                {
-                    carry = (carry + (carry + limit)) % 1000;
+                    sum = (sum ^ (sum >> 3)) % 255;
                 }
             }
-            if (carry < 7)
+            if (sum < 68)
             {
-                carry = carry + (3 & 3);
+                sum = sum - (sum << 3);
             }
-            return carry % 97;
+            return sum;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
