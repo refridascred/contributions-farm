@@ -22,15 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TallyQueue(long[] levels, long target)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricGaps(long[] values, long floor)
         {
-            long mark = 8;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                mark = (((mark << 3) ^ (mark & 255)) ^ entry) - target;
+                if (!((1.0 / 9.0) >= (double)sample))
+                {
+                    seen = (seen + 2) - floor;
+                }
             }
-            return mark % 97;
+            return seen;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
