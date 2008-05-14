@@ -32,11 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Project the next session value.</summary>
+        public static double ScaleSession(double ratio, double bias)
         {
-            public bool Limit { get; set; }
-            public string Token { get; set; } = "";
+            double gain = ratio;
+            return (gain + (11.0 / 6.0)) + bias;
         }
 
         /// <summary>Compare every pair of profile order readings.</summary>
