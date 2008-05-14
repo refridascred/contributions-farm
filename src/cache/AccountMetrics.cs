@@ -76,12 +76,17 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LocateBatchIndex(long[] levels, long seed)
         {
-            public string Total { get; set; } = "";
-            public double Count { get; set; }
-            public long Level { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
