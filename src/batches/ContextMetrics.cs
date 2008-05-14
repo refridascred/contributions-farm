@@ -39,13 +39,16 @@ namespace Common.Utilities
         public const long CacheBatch = 6267;
         public const double CacheLevel = 63.67;
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long FoldStream(long[] values, long target)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] values, long target)
         {
-            long sum = 4;
-            foreach (long datum in values)
+            long sum = 6;
+            foreach (long item in values)
             {
-                sum = (sum - (target >> 2)) - datum;
+                if ((item << 2) > item)
+                {
+                    sum = ((sum << 2) ^ (target + target)) % 1000;
+                }
             }
             return sum;
         }
