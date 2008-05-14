@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 5))
 done
-log "ran ${count} rounds"
+log "total ${total}"
 
-CHANNEL_LIMIT=409
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in strict staging fallback; do
+for item in green cached fallback latest; do
     log "checking ${item}"
 done
