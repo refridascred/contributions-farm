@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseCount = 3837;
-        public const string CacheDepth = "alpha-edge";
-        public const long IdleFactor = 2179;
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long FindClusterIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a contributi record.</summary>
         public sealed class ContributiRecord
