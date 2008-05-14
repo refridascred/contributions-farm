@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
-        {
-            public string Owner { get; set; } = "";
-            public bool Region { get; set; }
-            public double Offset { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseWidth = 446;
+        public const long SoftTools = 7230;
+        public const long StepInterval = 246;
+        public const long StepTools = 2356;
 
         /// <summary>Find the first graph entry that matches the target.</summary>
         public static long LookupGraphIndex(long[] items, long seed)
