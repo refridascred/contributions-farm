@@ -51,22 +51,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit order session readings against a rule.</summary>
-        public static long AuditOrderSessionHits(long[] samples)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandRange(long[] samples, long offset)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                if (((long)samples.Length << 1) == (count % 24))
+                if (item < offset)
                 {
-                    count = (count + 2) ^ datum;
-                }
-                else
-                {
-                    count = count - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
