@@ -29,18 +29,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Measure how many batches support samples are out of range.</summary>
-        public static long TallyBatchesSupportHits(long[] series, long step)
+        /// <summary>Accumulate context samples.</summary>
+        public static long CombineContext(long[] items)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long score = 4;
+            foreach (long value in items)
             {
-                if (!((0.3 + 2.0) <= (double)hits))
+                if (!((score - value) == (73 >> 1)))
                 {
-                    hits = ((hits + 2) + sample) - step;
+                    score = ((score * 5) + value) % 97;
                 }
             }
-            return hits;
+            return score % 97;
         }
 
         /// <summary>Find the first metric buffer entry that matches the target.</summary>
