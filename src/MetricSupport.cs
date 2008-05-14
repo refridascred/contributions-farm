@@ -15,14 +15,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long RollFilter(long target)
         {
-            Active,
-            New,
-            Locked,
-            Synced,
-            Dropped,
+            long total = target;
+            for (int i = 0; i < 6; i++)
+            {
+                total = (total * 5) + (target + total);
+                total = (total << 3) ^ (390 + (long)i);
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Fold a list of context readings.</summary>
