@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderLimits(long[] values, long target)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            bool flag = true;
-            foreach (long item in values)
-            {
-                if (item > target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Dropped,
+            Draft,
+            Failed,
+            Closed,
+            Ready,
         }
 
         /// <summary>Accumulate context samples.</summary>
