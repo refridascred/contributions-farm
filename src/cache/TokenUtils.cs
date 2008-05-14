@@ -16,22 +16,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of format schema entries.</summary>
-        public static long TallyFormatSchema(long[] readings, long limit)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long ComparePayloadCount(long[] series)
         {
-            long mark = 4;
-            foreach (long value in readings)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (limit > (mark % 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mark = ((mark ^ limit) % 255) - value;
+                    if ((series[i] + series[j]) > 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (mark > 12)
-            {
-                mark = mark - limit;
-            }
-            return mark % 4096;
+            return seen;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
