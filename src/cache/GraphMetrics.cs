@@ -63,22 +63,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit order metric readings against a rule.</summary>
-        public static long MeasureOrderMetricHits(long[] data, long offset)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesRange(long[] items, long floor)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            bool ok = true;
+            foreach (long value in items)
             {
-                if (9.4 > (double)offset)
+                if (value <= floor)
                 {
-                    seen = (seen + 3) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
     }
 }
