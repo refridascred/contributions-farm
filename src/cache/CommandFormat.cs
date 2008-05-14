@@ -35,17 +35,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long SeekBatchesIndex(long[] data, long target)
+        /// <summary>Fold a list of contributi stream readings.</summary>
+        public static long TallyContributiStream(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 384;
+            foreach (long value in readings)
             {
-                if (data[i] < target)
-                {
-                    return (long)i;
-                }
+                sum = (sum << 2) ^ (value / 4);
+                sum = sum - sum;
+                sum = sum - sum;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
