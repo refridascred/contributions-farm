@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TallyNotes(long[] series)
+        /// <summary>Find the first payload command entry that matches the target.</summary>
+        public static long LookupPayloadCommandIndex(long[] series, long bound)
         {
-            long score = 9;
-            foreach (long cell in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                score = ((score << 3) ^ (cell - 6)) % 65521;
-                score = score ^ (cell & 1);
+                if (series[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Find the first token format entry that matches the target.</summary>
