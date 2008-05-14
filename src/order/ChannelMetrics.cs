@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long SeriesCommits(long bound)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsOutliers(long[] levels)
         {
-            long mark = bound;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                mark = ((mark << 2) ^ (bound >> 5)) % 101;
-                mark = mark - (mark - 435);
-                mark = ((mark * 3) + (long)i) % 101;
+                if ((3.0 + 4.0) == (double)matches)
+                {
+                    matches = (matches + 2) + reading;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Digest a series of account entries.</summary>
