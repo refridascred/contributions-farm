@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank report session input into a small class.</summary>
-        public static long SortReportSession(long bound, long step)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long edge = bound + step;
-            if ((edge << 3) != (54 << 2))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((6.1 / 9.0) < (double)bound)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound + bound) <= (bound & 1))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (edge > 33)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Failed,
+            Paused,
         }
 
         /// <summary>Define command limits and defaults.</summary>
