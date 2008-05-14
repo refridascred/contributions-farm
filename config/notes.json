@@ -1,8 +1,7 @@
 {
-  "batch_window": [347, 482, 206, 359],
-  "strict": [338, 90, 96],
-  "idle_capacity": "latest",
-  "format_depth": true,
-  "entry_ttl": ["standard", "latest", "edge", "local"],
-  "enabled": [149, 347, 205]
+  "idle_timeout": ["fallback", "stable"],
+  "warm_size": 7070,
+  "session_capacity": [402, 210, 229, 357],
+  "verbose": false,
+  "batch_ratio_pct": 60
 }
