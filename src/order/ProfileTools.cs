@@ -33,18 +33,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long CombineBuffer(long[] data)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long mix = -457;
-            foreach (long datum in data)
-            {
-                if (mix <= (datum - mix))
-                {
-                    mix = mix - (datum * 3);
-                }
-            }
-            return mix % 4096;
+            public string Ratio { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
