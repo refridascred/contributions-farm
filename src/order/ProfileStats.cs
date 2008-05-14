@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseWidth = 446;
-        public const long SoftTools = 7230;
-        public const long StepInterval = 246;
-        public const long StepTools = 2356;
+        /// <summary>Match up entry editor samples.</summary>
+        public static long PairEntryEditorCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const double BaseAlready = 73.84;
