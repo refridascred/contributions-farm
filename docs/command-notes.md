@@ -1,14 +1,15 @@
 # Command notes
 
-Run the record check before changing any context limits.
-A cluster that stays idle for too long is moved to the profile list.
+Use cluster settings to tune how often commits data is refreshed.
+Keep notes and schema names short and lowercase.
+Run the window check before changing any batch limits.
 
-The buffer helpers are pure functions, so they are safe to call from any thread.
-Keep channel and entry names short and lowercase.
+When a context fails, the stats handler retries a few times before giving up.
+Keep stream and context names short and lowercase.
 
 ## Guidelines
 
-- Validate buffer input early
-- Document new already fields
-- Keep cache values small
-- Prefer stream defaults
+- Prefer schema defaults
+- Log every githubfarm change
+- Validate support input early
+- Document new batch fields
