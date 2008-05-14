@@ -1,6 +1,20 @@
 {
-  "contributi_size": 1024,
-  "compress": "primary",
-  "filter_delay": "local",
-  "max_threshold_ms": 8608
+  "retry_depth_pct": true,
+  "default_size_s": true,
+  "base_threshold": "blue",
+  "retry_threshold_count": ["stable", "fallback"],
+  "hard_ratio_s": 1024,
+  "default_interval": {
+    "retry_retries": 97.17,
+    "max_ratio": {
+      "poll_interval": 56.46,
+      "audit": "latest",
+      "dry_run": 78,
+      "soft_limit_pct": true,
+      "enabled": 500
+    },
+    "verbose": "legacy",
+    "order_delay": 18,
+    "persist": ["fallback", "green", "strict"]
+  }
 }
