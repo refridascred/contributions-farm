@@ -43,11 +43,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            public double Mode { get; set; }
-            public double Flag { get; set; }
+            Pending,
+            Stale,
+            Queued,
         }
     }
 }
