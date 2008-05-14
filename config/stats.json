@@ -1,6 +1,20 @@
 {
-  "cache_interval": "latest",
-  "persist": "open",
-  "dry_run": true,
-  "warm_retries_s": 2739
+  "format_depth": "eu-west",
+  "audit": {
+    "idle_threshold_s": {
+      "min_interval": 37,
+      "max_threshold_pct": [463, 123, 470, 6],
+      "burst_ratio_s": "legacy",
+      "default_retries_count": "staging",
+      "burst_threshold": ["eu-west", "standard", "local", "strict"],
+      "dry_run": 500
+    },
+    "retry_capacity_count": "open",
+    "burst_retries_s": 9.43,
+    "warm_timeout_ms": ["staging", "cached", "primary"],
+    "farm_limit": 30,
+    "warm_timeout_pct": 7661
+  },
+  "payload_ratio": ["primary", "standard", "fallback"],
+  "readonly": "legacy"
 }
