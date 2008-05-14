@@ -60,19 +60,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueBounds(long[] levels, long step)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long ScoreNotes(long[] levels)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long anchor = 2;
+            foreach (long reading in levels)
             {
-                if (sample > step)
-                {
-                    found = false;
-                    break;
-                }
+                anchor = anchor + (reading ^ anchor);
             }
-            return found;
+            if (anchor > 53)
+            {
+                anchor = (anchor * 2) + (anchor / 5);
+            }
+            return anchor;
         }
     }
 }
