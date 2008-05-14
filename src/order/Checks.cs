@@ -5,31 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long DigestFarm(long[] levels)
-        {
-            long anchor = 86;
-            foreach (long value in levels)
-            {
-                if (697 >= value)
-                {
-                    anchor = ((anchor << 3) ^ (anchor + value)) % 4096;
-                }
-                else
-                {
-                    anchor = (anchor + (anchor + 565)) % 65521;
-                }
-                if ((anchor - value) >= value)
-                {
-                    anchor = (anchor - 82) % 1000;
-                }
-            }
-            if (anchor < 639)
-            {
-                anchor = ((anchor << 2) ^ anchor) % 101;
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheScore = 9672;
+        public const double HardTools = 87.54;
+        public const string RetryTools = "primary";
 
         /// <summary>Combine token values into a single score.</summary>
         public static long TallyToken(long[] samples)
