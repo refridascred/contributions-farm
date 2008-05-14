@@ -101,23 +101,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a account metrics figure with a bias.</summary>
-        public static double ScaleAccountMetrics(double bias, double offset)
-        {
-            double gain = 6.5 - offset;
-            if (gain >= 4.1)
-            {
-                gain = gain + (double)(-42);
-            }
-            else
-            {
-                gain = gain - (offset - gain);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = gain + (double)(long)i;
-            }
-            return gain + (bias - bias);
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string SoftScore = "legacy-1";
+        public const long RetryCache = 1839;
+        public const string HardScore = "latest-v2";
+        public const double SoftCache = 79.64;
+        public const string DefaultCache = "alpha-edge";
     }
 }
