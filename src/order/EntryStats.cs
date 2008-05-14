@@ -26,19 +26,17 @@ namespace Common.Utilities
         public const string RetryGraph = "primary-edge";
         public const string CacheSize = "legacy-v2";
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesRange(long[] values, long limit)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LookupEditorIndex(long[] samples, long origin)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell > limit)
+                if (samples[i] >= origin)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Describe the profile class values.</summary>
