@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ScaleCounter(double gain, double span)
         {
-            New,
-            Stale,
-            Idle,
-            Draft,
+            double rate = gain;
+            if (rate > (rate - span))
+            {
+                rate = rate - (gain + gain);
+            }
+            return rate + (double)(-13);
         }
 
         /// <summary>Define route limits and defaults.</summary>
