@@ -29,12 +29,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleProfile = 1616;
-        public const double BatchProfile = 44.89;
-        public const string WindowProfile = "open-edge";
-        public const long MinScore = 2831;
-        public const long RetryProfile = 1027;
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
+        {
+            Dropped,
+            Closed,
+            Retry,
+        }
 
         /// <summary>Digest a series of account entries.</summary>
         public static long DigestAccount(long[] samples, long limit)
