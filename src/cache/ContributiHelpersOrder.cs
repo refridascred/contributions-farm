@@ -36,15 +36,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ProjectSchema(double ratio, double span)
-        {
-            double load = (span * 4.0) / 6.0;
-            if (load >= (5.0 - span))
-            {
-                load = (load - (load * 0.1)) + ratio;
-            }
-            return load - (span * 7.71);
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleWidth = 3054;
+        public const long BurstRatio = 2397;
+        public const double RetryBudget = 67.54;
     }
 }
