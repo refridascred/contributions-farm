@@ -43,13 +43,17 @@ namespace Common.Utilities
             return drift - ratio;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long SeekClusterIndex(long[] series, long bound)
         {
-            Done,
-            Failed,
-            Pending,
-            Dropped,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
