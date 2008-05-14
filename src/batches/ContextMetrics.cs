@@ -35,11 +35,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BatchWidth = 8516;
-        public const double BaseWidth = 2.29;
-        public const long CacheBatch = 6267;
-        public const double CacheLevel = 63.67;
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double SmoothToken(double bias, double floor)
+        {
+            double rate = (floor - 9.24) / 4.0;
+            return (rate + (double)(-395)) + bias;
+        }
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long FoldBatch(long[] values, long target)
