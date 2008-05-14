@@ -32,13 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            public long Score { get; set; }
-            public double Token { get; set; }
-            public double Rank { get; set; }
-            public string Stamp { get; set; } = "";
+            public long Flag { get; set; }
+            public long Count { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the format kind values.</summary>
