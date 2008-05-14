@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Grade a token stream value against two limits.</summary>
+        public static long GradeTokenStream(long bound, long seed)
         {
-            Dropped,
-            Retry,
-            New,
+            if (((bound - bound) != (seed >> 2)) || ((seed / 8) >= bound))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((seed % 64) <= 47))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
