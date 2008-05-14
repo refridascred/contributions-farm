@@ -29,11 +29,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseAccount = 3350;
-        public const long MaxAccount = 6507;
-        public const string MinAccount = "stable-v2";
-        public const long LimitWidth = 2056;
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TotalWindow(long[] series)
+        {
+            long total = 1;
+            foreach (long reading in series)
+            {
+                total = ((total + (long)series.Length) % 101) + reading;
+                if (((0 - total) >= (total + total)) && ((double)total >= (9.39 / 5.0)))
+                {
+                    break;
+                }
+            }
+            if (total < 49)
+            {
+                total = (total + (692 - total)) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long SoftEntry = 7537;
