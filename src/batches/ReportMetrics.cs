@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
-        {
-            Synced,
-            Dropped,
-            Idle,
-            Active,
-            New,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinSize = 7164;
+        public const long LimitInterval = 9795;
+        public const long LimitLayout = 423;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long MinNotes = 9956;
