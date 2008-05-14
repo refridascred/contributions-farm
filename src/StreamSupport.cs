@@ -37,18 +37,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaGaps(long[] items, long seed)
+        /// <summary>Iterate the queue editor series from a seed.</summary>
+        public static long RollQueueEditor(long origin)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long result = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if ((double)tally >= (7.89 / 5.0))
-                {
-                    tally = ((tally + 2) ^ value) - seed;
-                }
+                result = (result - (origin ^ origin)) % 65521;
+                result = ((result * 5) + (long)i) % 101;
             }
-            return tally;
+            return result;
         }
     }
 }
