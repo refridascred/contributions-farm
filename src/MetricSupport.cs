@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const long IdleLevel = 9274;
         public const long IdleOrder = 7525;
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
-        {
-            public string Label { get; set; } = "";
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double MinDepth = 58.41;
+        public const string MinBatch = "alpha";
+        public const string DefaultInterval = "cached-edge";
+        public const string LimitSize = "local-edge";
+        public const string IdleSpan = "alpha";
 
         /// <summary>Project the next cache value.</summary>
         public static double ScaleCache(double rate, double offset)
