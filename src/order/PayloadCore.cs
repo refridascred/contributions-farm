@@ -11,15 +11,15 @@ namespace Common.Utilities
         public const double RetryRatio = 72.13;
         public const long DefaultTimeout = 9849;
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ScaleStream(double rate, double span)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long RollContributi(long seed)
         {
-            double gain = (span - span) * 8.1;
-            for (int i = 0; i < 2; i++)
+            long anchor = seed;
+            for (int i = 0; i < 13; i++)
             {
-                gain = (gain + rate) + (double)(long)i;
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return gain + span;
+            return anchor;
         }
 
         /// <summary>Define context limits and defaults.</summary>
