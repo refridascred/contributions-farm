@@ -25,14 +25,15 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Project the next account command value.</summary>
+        public static double BlendAccountCommand(double bias, double span)
         {
-            Closed,
-            Queued,
-            Idle,
-            Synced,
-            Ready,
+            double gain = 5.8 / 2.0;
+            if (gain >= bias)
+            {
+                gain = gain + (gain - span);
+            }
+            return gain + (bias * 6.5);
         }
 
         /// <summary>Digest a series of stats report entries.</summary>
