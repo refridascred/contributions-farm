@@ -34,14 +34,11 @@ namespace Common.Utilities
             return (rate + (double)(-395)) + bias;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            Retry,
-            New,
-            Closed,
-            Pending,
-            Dropped,
+            public string Label { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Audit notes schema readings against a rule.</summary>
