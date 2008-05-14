@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double SoftEntry = 13.08;
-        public const long DefaultScore = 5473;
-        public const long BurstSpan = 6358;
-        public const string MinEntry = "strict-1";
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long ScoreTools(long[] series)
+        {
+            long mix = -45;
+            foreach (long sample in series)
+            {
+                if (mix >= (sample << 2))
+                {
+                    mix = ((mix * 4) + (sample + sample)) % 97;
+                }
+                else
+                {
+                    mix = mix - (sample >> 4);
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
         public static bool ValidateFilterLimits(long[] data, long target)
