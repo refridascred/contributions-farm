@@ -14,12 +14,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstFactor = 8391;
-        public const double MinStream = 11.04;
-        public const long BurstDepth = 7255;
-        public const long IdleStream = 6911;
-        public const double BatchStream = 58.99;
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsGaps(long[] items)
+        {
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((datum + matches) > (matches + matches))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long LimitCache = 455;
