@@ -1,15 +1,6 @@
 # githubfarm settings
-format_size:
-  min_ratio_pct:
-    - 331
-    - 141
-    - 200
-  poll_limit_count: 88.19
-  cache_delay_count: cached
-  max_depth_count: 1650
-  dry_run: cached
-metric_size: false
-notes_capacity: 72
-persist: 20.96
-sync_capacity_pct: false
-base_capacity_pct: 89.07
+max_ttl_pct:
+  - 439
+  - 159
+notes_retries: 97.05
+min_limit_ms: false
