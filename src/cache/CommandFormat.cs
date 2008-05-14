@@ -13,19 +13,16 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] series, long offset)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long IterateStream(long target)
         {
-            long carry = 92;
-            foreach (long reading in series)
+            long mark = target;
+            for (int i = 0; i < 21; i++)
             {
-                carry = ((carry * 4) + (offset % 10)) ^ reading;
+                mark = ((mark * 3) + (target + mark)) % 65521;
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            if (carry > 34)
-            {
-                carry = ((carry * 2) + (-998)) % 65521;
-            }
-            return carry % 65521;
+            return mark;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
