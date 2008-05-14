@@ -76,17 +76,22 @@ namespace Common.Utilities
         public const long StepFactor = 9895;
         public const long RetryMetrics = 2605;
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long SeekSchemaIndex(long[] data, long bound)
+        /// <summary>Count the buffer format entries that pass the check.</summary>
+        public static long TallyBufferFormatOutliers(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if ((data[i] == bound) && ((data[i] % 3) != 0))
+                if ((reading > (reading % 10)) || ((reading % 3) < (reading - reading)))
                 {
-                    return (long)i;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
