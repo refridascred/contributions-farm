@@ -1,19 +1,6 @@
 {
-  "warm_capacity": {
-    "poll_delay_s": 31,
-    "warm_capacity": "cached",
-    "enabled": "cached"
-  },
-  "retry_timeout_s": 1761,
-  "dry_run": 52.33,
-  "soft_timeout_count": 706,
-  "default_timeout_ms": false,
-  "strict": {
-    "audit": "strict",
-    "max_capacity_s": 15.54,
-    "persist": "stable",
-    "notes_threshold": "open",
-    "dry_run": true,
-    "verbose": 15.75
-  }
+  "soft_threshold_count": 81,
+  "cache_timeout": 37.62,
+  "verbose": "edge",
+  "warm_ratio": 75
 }
