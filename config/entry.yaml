@@ -1,7 +1,15 @@
 # entry settings
-compress: eu-west
-dry_run: 100
-min_threshold_s: 500
-warm_ttl_pct: 1024
-base_threshold: 250
-persist: open
+strict:
+  poll_size: 43.46
+  warm_threshold_count: green
+  strict: 42
+  sync_delay_s: 1024
+  poll_timeout: 3.55
+  poll_capacity: 87.71
+poll_ttl: 100
+batches_ratio: local
+burst_retries_ms: false
+sync_window:
+  - staging
+  - stable
+  - strict
