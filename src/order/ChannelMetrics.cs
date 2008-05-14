@@ -23,19 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricLimits(long[] series, long origin)
+        /// <summary>Adjust a account reading.</summary>
+        public static double ScaleAccount(double weight, double floor)
         {
-            bool found = true;
-            foreach (long item in series)
+            double rate = weight;
+            if (rate < 0.5)
             {
-                if (item > origin)
-                {
-                    found = false;
-                    break;
-                }
+                rate = rate + floor;
             }
-            return found;
+            return rate - floor;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
