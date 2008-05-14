@@ -27,19 +27,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesRange(long[] series, long bound)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionLimits(long[] data, long step)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                if (sample != bound)
+                if (datum <= step)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
