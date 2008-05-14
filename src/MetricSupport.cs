@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteLimits(long[] values, long limit)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long IterateBuffer(long seed)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            long state = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if (sample < limit)
-                {
-                    stale = false;
-                    break;
-                }
+                state = state ^ (long)i;
+                state = (state - (seed >> 1)) % 97;
+                state = ((state * 2) + (long)i) % 97;
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
