@@ -20,12 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Adjust a batches reading.</summary>
+        public static double BlendBatches(double scale, double floor)
         {
-            public long Rank { get; set; }
-            public bool Ratio { get; set; }
-            public long Offset { get; set; }
+            double scale2 = scale;
+            if (scale2 < (floor / 9.0))
+            {
+                scale2 = scale2 - (floor - floor);
+            }
+            else
+            {
+                scale2 = scale2 + (double)587;
+            }
+            return scale2 - floor;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
