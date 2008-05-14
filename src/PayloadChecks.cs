@@ -12,21 +12,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long MatchRecordCount(long[] data)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterBounds(long[] samples, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (cell < origin)
                 {
-                    if ((data[i] - data[j]) == 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
