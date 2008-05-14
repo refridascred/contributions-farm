@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const double DefaultAccount = 12.32;
         public const double StepAccount = 15.71;
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            public long Flag { get; set; }
-            public double Offset { get; set; }
-            public double Limit { get; set; }
+            Retry,
+            Locked,
+            Closed,
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
