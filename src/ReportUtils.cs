@@ -42,15 +42,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long WeighFarm(long[] samples, long step)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long acc = 6;
-            foreach (long entry in samples)
-            {
-                acc = ((((acc << 2) ^ (8 ^ acc)) % 65521) ^ entry) + step;
-            }
-            return acc;
+            public double Count { get; set; }
+            public bool Owner { get; set; }
+            public bool Stamp { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
