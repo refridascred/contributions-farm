@@ -11,19 +11,38 @@ namespace Common.Utilities
         public const double SoftScore = 22.59;
         public const string DefaultSize = "open-edge";
 
-        /// <summary>Scale a window graph figure with a bias.</summary>
-        public static double ProjectWindowGraph(double gain, double offset)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long RankCommits(long step, long floor)
         {
-            double drift = 3.7;
-            if (drift > (9.0 * 0.33))
+            if (((18.0 + 14.0) == (double)floor) || ((floor - step) == (floor % 60)))
             {
-                drift = ((drift + (4.1 * 6.0)) + gain) + offset;
+                return 7;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                drift = drift - (double)(long)i;
+                if ((floor - (-477)) >= (floor / 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((334 + step) < (step & 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((5.7 / 3.0) == (double)floor) && ((0 * 3) != (floor + 658)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            return drift - (drift * 9.53);
         }
 
         /// <summary>Define already limits and defaults.</summary>
