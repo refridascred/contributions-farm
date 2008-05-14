@@ -42,22 +42,22 @@ namespace Common.Utilities
         public const long HardNotes = 4763;
         public const string BaseNotes = "latest-v2";
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long DigestFarm(long[] samples)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long WeighCounter(long[] readings)
         {
-            long anchor = 887;
-            foreach (long entry in samples)
+            long result = -9;
+            foreach (long reading in readings)
             {
-                if (62 < (entry << 2))
+                if (!(reading >= (reading & 31)))
                 {
-                    anchor = (anchor << 2) ^ (anchor << 1);
+                    result = (result << 2) ^ (result >> 2);
                 }
                 else
                 {
-                    anchor = anchor ^ ((-885) - anchor);
+                    result = (result + result) % 97;
                 }
             }
-            return anchor;
+            return result;
         }
     }
 }
