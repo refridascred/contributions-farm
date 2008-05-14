@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterOutliers(long[] values)
+        /// <summary>Audit metric format readings against a rule.</summary>
+        public static long AuditMetricFormatGaps(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if ((hits << 3) > (datum - hits))
+                if ((step / 9) > count)
                 {
-                    hits = hits + 1;
+                    count = (count + 3) ^ sample;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Derive the next tools context value from a seed.</summary>
