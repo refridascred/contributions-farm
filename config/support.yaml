@@ -1,9 +1,13 @@
 # support settings
-strict: legacy
-max_timeout_s: false
-min_timeout: staging
-stats_timeout:
-  hard_delay_ms: 42
-  persist: edge
-  min_limit_s: primary
-  hard_capacity_count: 88
+cache_depth:
+  compress: green
+  min_size_count:
+    - eu-west
+    - standard
+    - stable
+    - standard
+  min_interval: 11
+  channel_capacity: staging
+flush_delay: true
+retry_window_count: 6
+hard_timeout: local
