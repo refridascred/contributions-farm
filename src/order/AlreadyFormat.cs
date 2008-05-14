@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate githubfarm channel samples.</summary>
-        public static long WeighGithubfarmChannel(long[] items)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long FindRouteIndex(long[] data, long seed)
         {
-            long carry = 665;
-            foreach (long sample in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = (carry ^ (sample * 2)) % 65521;
-                if ((20 * 5) <= sample)
+                if ((data[i] >= seed) && ((data[i] % 2) != 0))
                 {
-                    carry = (carry * 3) + sample;
-                }
-                if (sample >= (sample + carry))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
