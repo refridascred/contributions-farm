@@ -11,18 +11,23 @@ namespace Common.Utilities
         public const long DefaultInterval = 271;
         public const double CacheSize = 52.0;
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountGaps(long[] levels, long origin)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double BlendCommits(double ratio, double span)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            double gain = (double)(61 >> 3);
+            if (gain > (double)384)
             {
-                if ((((tally / 8) != (sample ^ origin)) && ((origin / 7) >= (origin ^ origin))) || (origin <= (tally ^ 7)))
-                {
-                    tally = tally + 1;
-                }
+                gain = gain + (double)(-8);
             }
-            return tally;
+            else
+            {
+                gain = gain + (span * 9.02);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain - ratio) + (double)(long)i;
+            }
+            return gain + (6.98 * 3.61);
         }
 
         /// <summary>Describe the payload state values.</summary>
