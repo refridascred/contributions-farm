@@ -1,10 +1,6 @@
-id,label,token,state,count
-1,459,84.8,95.58,711
-2,stable,43,14.86,cached
-3,63.2,197,76.59,785
-4,36.86,64.95,standard,96.29
-5,2.37,strict,572,open
-6,open,53.04,715,edge
-7,cached,232,909,standard
-8,630,8.25,31.76,89.11
-9,stable,46.83,744,746
+id,score,state,count
+1,891,latest,48.98
+2,125,2.42,568
+3,latest,57.79,254
+4,490,851,949
+5,152,14.42,staging
