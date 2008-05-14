@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            Synced,
-            Dropped,
-            Failed,
+            Closed,
+            Locked,
+            Draft,
             Active,
         }
 
