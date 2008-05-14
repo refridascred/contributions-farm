@@ -40,18 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the farm checks entries that pass the check.</summary>
-        public static long AuditFarmChecksGaps(long[] values, long limit)
+        /// <summary>Look up the position of a batch session sample.</summary>
+        public static long SeekBatchSessionIndex(long[] readings, long target)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)sample > (double)limit)
+                if (readings[i] == target)
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
