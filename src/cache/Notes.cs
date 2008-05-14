@@ -38,23 +38,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TotalWindow(long[] series)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long total = 1;
-            foreach (long reading in series)
-            {
-                total = ((total + (long)series.Length) % 101) + reading;
-                if (((0 - total) >= (total + total)) && ((double)total >= (9.39 / 5.0)))
-                {
-                    break;
-                }
-            }
-            if (total < 49)
-            {
-                total = (total + (692 - total)) % 97;
-            }
-            return total;
+            public long Limit { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
