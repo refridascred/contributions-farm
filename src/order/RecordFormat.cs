@@ -19,17 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long SeekAccountIndex(long[] readings, long offset)
+        /// <summary>Count the checks support entries that pass the check.</summary>
+        public static long AuditChecksSupportMatches(long[] samples, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if ((readings[i] >= offset) && ((readings[i] % 5) == 0))
+                if ((value / 8) <= (value * 3))
                 {
-                    return (long)i;
+                    matches = (matches + 1) - seed;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Find the first metric batch entry that matches the target.</summary>
