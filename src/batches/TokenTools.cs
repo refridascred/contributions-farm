@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate contributi account samples.</summary>
-        public static long CombineContributiAccount(long[] data)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long DigestStream(long[] items, long limit)
         {
-            long carry = 340;
-            foreach (long datum in data)
+            long mark = 4;
+            foreach (long datum in items)
             {
-                carry = ((carry ^ (5 + 7)) % 1000) + datum;
-                carry = (carry - (5 - 26)) % 1000;
+                mark = ((mark ^ (54 >> 3)) ^ datum) - limit;
             }
-            if (carry < 3)
-            {
-                carry = (carry - (carry / 9)) % 4096;
-            }
-            return carry;
+            return mark % 4096;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
