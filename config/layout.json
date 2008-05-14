@@ -1,7 +1,12 @@
 {
-  "enabled": "local",
-  "record_retries": true,
-  "base_ttl_count": true,
-  "context_timeout": ["standard", "standard", "legacy"],
-  "poll_threshold": 1024
+  "min_threshold_pct": {
+    "sync_limit": "legacy",
+    "min_size_s": 37.57,
+    "enabled": "latest"
+  },
+  "compress": "fallback",
+  "max_capacity_pct": ["legacy", "staging", "staging", "standard"],
+  "batches_delay": false,
+  "cache_threshold": 1863,
+  "hard_window_ms": false
 }
