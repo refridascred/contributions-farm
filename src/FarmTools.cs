@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextRange(long[] series, long target)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long FoldEditor(long[] readings, long step)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            long mix = 12;
+            foreach (long datum in readings)
             {
-                if (entry > target)
+                if (step >= 3)
                 {
-                    ready = false;
-                    break;
+                    mix = ((mix << 3) ^ (622 ^ datum)) % 4096;
+                }
+                else
+                {
+                    mix = mix ^ (step - datum);
                 }
             }
-            return ready;
+            if (mix < 8)
+            {
+                mix = (mix + (mix ^ mix)) % 97;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Describe the counter level values.</summary>
