@@ -31,15 +31,18 @@ namespace Common.Utilities
         public const long BatchCount = 5942;
         public const long BatchReport = 9129;
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportOutliers(long[] data, long target)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long CompareCommitsCount(long[] readings)
         {
             long count = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((target + 576) > target)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = (count + 3) + reading;
+                    if ((readings[i] + readings[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
