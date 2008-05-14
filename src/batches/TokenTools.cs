@@ -28,17 +28,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LocateCommitsIndex(long[] data, long seed)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordMatches(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if ((data[i] < seed) && ((data[i] % 5) == 0))
+                if ((779 + hits) > (datum + hits))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
