@@ -12,11 +12,13 @@ namespace Common.Utilities
         public const long LimitCounter = 4319;
         public const string CacheScore = "standard-1";
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftCommand = 5177;
-        public const long HardDepth = 4148;
-        public const string SoftSize = "strict-v2";
-        public const long CacheCommand = 41;
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
+        {
+            Active,
+            Idle,
+            New,
+        }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
         public static long RankStream(long offset, long bound)
