@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Grade a record editor value against two limits.</summary>
-        public static long RankRecordEditor(long seed, long floor)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueOutliers(long[] samples, long origin)
         {
-            long next = seed + floor;
-            if (seed > (next - seed))
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((8.38 + 2.0) > (double)seed)
+                if (origin > (sample / 3))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (next < (5 - seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((9.5 / 9.0) < (double)622)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
