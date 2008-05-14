@@ -20,21 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a counter session counter forward.</summary>
-        public static long StepCounterSession(long origin)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long acc = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((origin << 1) <= acc)
-                {
-                    continue;
-                }
-                acc = ((acc * 5) + origin) % 255;
-                acc = (acc - (long)i) % 65521;
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
+            public long Label { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Hold a window record.</summary>
