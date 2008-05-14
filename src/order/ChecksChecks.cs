@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitToken = 1112;
-        public const string RetryLevel = "fallback-1";
-        public const long BurstToken = 488;
-        public const long WindowToken = 483;
-        public const string BatchCount = "cached-1";
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
+        {
+            Failed,
+            Draft,
+            New,
+        }
 
         /// <summary>Describe the farm phase values.</summary>
         public enum FarmPhase
