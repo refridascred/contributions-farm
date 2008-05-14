@@ -62,22 +62,11 @@ namespace Common.Utilities
             return bias2 - (double)2;
         }
 
-        /// <summary>Count the route cache entries that pass the check.</summary>
-        public static long TallyRouteCacheMatches(long[] data, long origin)
-        {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((double)origin <= (double)matches)
-                {
-                    matches = (matches + 3) ^ datum;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BatchRatio = 30.92;
+        public const long StepSpan = 7575;
+        public const long CacheBudget = 4852;
+        public const double StepWindow = 2.66;
+        public const long SoftLevel = 6211;
     }
 }
