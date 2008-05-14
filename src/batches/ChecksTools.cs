@@ -52,26 +52,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] levels)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ProjectOrder(double gain, double offset)
         {
-            long score = 69;
-            foreach (long entry in levels)
+            double weight = offset / 7.0;
+            if (weight <= (double)2)
             {
-                if ((score < (score % 8)) && ((entry - score) > (entry + (-9))))
-                {
-                    score = ((score * 2) + (19 % 2)) % 1000;
-                }
-                else
-                {
-                    score = score ^ (entry + score);
-                }
+                weight = (weight + (double)8) - gain;
             }
-            if (score > 758)
+            else
             {
-                score = score ^ (score * 5);
+                weight = weight + 7.0;
             }
-            return score;
+            return weight + (double)48;
         }
     }
 }
