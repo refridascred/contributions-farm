@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
-        {
-            public long Token { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string DefaultFactor = "strict";
+        public const long RetryStats = 6773;
+        public const double BurstStats = 1.65;
+        public const long MaxStats = 1506;
+        public const long LimitStats = 7043;
 
         /// <summary>Grade a tools value against two limits.</summary>
         public static long BucketTools(long limit, long limit2)
