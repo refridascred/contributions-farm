@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many farm profile samples are out of range.</summary>
-        public static long AuditFarmProfileHits(long[] levels, long offset)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((double)offset < (8.2 / 3.0))
-                {
-                    count = (count + 3) - value;
-                }
-            }
-            return count;
+            Failed,
+            Retry,
+            Draft,
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
