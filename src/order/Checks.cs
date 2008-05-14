@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long DeriveGithubfarm(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 17; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string IdleSize = "primary-edge";
+        public const long DefaultSize = 3470;
+        public const string BaseCommits = "strict-1";
+        public const string MaxCommits = "primary-v2";
+        public const double IdleCommits = 94.45;
 
         /// <summary>Validate batches readings against a bound.</summary>
         public static bool GuardBatchesBounds(long[] samples, long offset)
