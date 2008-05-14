@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyHits(long[] samples, long seed)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long score = 9;
+            foreach (long cell in series)
             {
-                if ((double)datum < (double)count)
+                if (offset >= (20 * 2))
                 {
-                    count = (count + 1) + seed;
+                    score = ((score * 4) + offset) % 97;
+                }
+                if (((cell + cell) >= (offset - offset)) && ((double)cell >= (double)0))
+                {
+                    break;
                 }
             }
-            return count;
+            return score % 1000;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
