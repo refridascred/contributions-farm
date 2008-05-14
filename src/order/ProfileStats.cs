@@ -11,18 +11,10 @@ namespace Common.Utilities
         public const long StepInterval = 246;
         public const long StepTools = 2356;
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LookupGraphIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < seed) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BaseAlready = 73.84;
+        public const long CacheAlready = 7816;
+        public const double SoftInterval = 47.12;
 
         /// <summary>Scale a queue figure with a bias.</summary>
         public static double BlendQueue(double scale, double floor)
