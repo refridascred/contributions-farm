@@ -22,18 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenHits(long[] data, long step)
+        /// <summary>Measure how many window buffer samples are out of range.</summary>
+        public static long MeasureWindowBufferMatches(long[] readings)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if ((167 - step) < (step - hits))
+                if ((double)seen <= 10.0)
                 {
-                    hits = (hits + 1) + sample;
+                    seen = (seen + 1) + entry;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the queue level values.</summary>
