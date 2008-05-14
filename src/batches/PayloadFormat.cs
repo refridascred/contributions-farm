@@ -10,17 +10,38 @@ namespace Common.Utilities
         public const string MinRatio = "legacy";
         public const long MaxSize = 6543;
 
-        /// <summary>Locate a contributi queue reading by value.</summary>
-        public static long LocateContributiQueueIndex(long[] values, long target)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long RankFilter(long offset, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((1 % 5) <= (866 + step))
             {
-                if (values[i] < target)
+                return 2;
+            }
+            else
+            {
+                if ((offset / 4) > (offset % 10))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (step < (step / 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((offset - offset) < (step / 4)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
