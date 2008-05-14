@@ -22,13 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Adjust a support reading.</summary>
+        public static double ScaleSupport(double rate, double bias)
         {
-            public bool Token { get; set; }
-            public double Count { get; set; }
-            public bool Level { get; set; }
-            public bool Region { get; set; }
+            double rate2 = bias;
+            if (rate2 < (bias - rate2))
+            {
+                rate2 = rate2 - rate2;
+            }
+            else
+            {
+                rate2 = rate2 + (8.27 + rate);
+            }
+            return rate2 + 7.0;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
