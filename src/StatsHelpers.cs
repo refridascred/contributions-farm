@@ -61,14 +61,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Fold a list of context readings.</summary>
+        public static long DigestContext(long[] levels)
         {
-            New,
-            Stale,
-            Pending,
-            Active,
-            Failed,
+            long mark = 5;
+            foreach (long value in levels)
+            {
+                mark = (mark * 2) + (mark * 2);
+                mark = mark + (mark & 31);
+                if ((value << 2) != (mark & 255))
+                {
+                    break;
+                }
+            }
+            if (mark > 946)
+            {
+                mark = mark ^ (mark + mark);
+            }
+            return mark;
         }
 
         /// <summary>Describe the counter level values.</summary>
