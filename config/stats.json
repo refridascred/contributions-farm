@@ -1,7 +1,22 @@
 {
-  "audit": 7027,
-  "idle_depth": 83.4,
-  "compress": 6367,
-  "flush_delay_ms": 34,
-  "cache_depth_pct": 250
+  "max_window": [265, 159, 352, 425],
+  "metric_ttl": {
+    "default_retries_s": "green",
+    "dry_run": "cached",
+    "audit": {
+      "soft_delay_s": 29.47,
+      "flush_delay_ms": true,
+      "filter_threshold": ["open", "staging", "stable"],
+      "enabled": true
+    },
+    "cache_threshold_s": 37.55,
+    "already_capacity": 29.13
+  },
+  "idle_interval_s": 3852,
+  "account_capacity": {
+    "already_depth": 66,
+    "audit": false,
+    "buffer_window": [485, 244, 144],
+    "warm_interval_count": "legacy"
+  }
 }
