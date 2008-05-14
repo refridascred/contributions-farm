@@ -1,5 +1,18 @@
 {
-  "compress": "primary",
-  "warm_delay": "open",
-  "strict": ["cached", "staging", "latest"]
+  "warm_threshold_count": false,
+  "persist": false,
+  "githubfarm_ratio": 60,
+  "contributi_ratio": {
+    "retry_limit_ms": 30,
+    "poll_depth_s": {
+      "cache_depth_ms": "local",
+      "batch_limit_s": [311, 327],
+      "retry_capacity_s": ["eu-west", "fallback"],
+      "default_timeout_pct": ["standard", "cached", "edge"],
+      "burst_capacity_s": 67
+    },
+    "channel_ratio": false
+  },
+  "batch_limit_s": "open",
+  "max_window_pct": "fallback"
 }
