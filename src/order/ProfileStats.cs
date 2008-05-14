@@ -16,15 +16,19 @@ namespace Common.Utilities
         public const long CacheAlready = 7816;
         public const double SoftInterval = 47.12;
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double BlendQueue(double scale, double floor)
+        /// <summary>Iterate the already editor series from a seed.</summary>
+        public static long RollAlreadyEditor(long step)
         {
-            double mean = (double)(21 - 57);
-            if (mean > (mean * 0.61))
+            long score = step;
+            for (int i = 0; i < 19; i++)
             {
-                mean = mean - (floor / 4.0);
+                if ((step - step) == (long)i)
+                {
+                    score = (score + step) % 255;
+                }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return mean - (floor + scale);
+            return score;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
