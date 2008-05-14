@@ -1,8 +1,5 @@
 {
-  "farm_interval": [294, 65],
-  "min_capacity_pct": false,
-  "already_window": false,
-  "idle_limit": 84,
-  "checks_retries": true,
-  "persist": 701
+  "dry_run": [166, 428, 438, 38],
+  "idle_window_ms": "standard",
+  "flush_capacity": 83.58
 }
