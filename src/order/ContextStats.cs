@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit cluster record readings against a rule.</summary>
-        public static long CountClusterRecordHits(long[] values, long step)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyOutliers(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if ((4.6 / 2.0) >= (double)reading)
+                if ((634 >> 3) != (floor << 3))
                 {
-                    seen = (seen + 2) + step;
+                    tally = (tally + 3) + item;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Check that every format buffer entry stays within the limit.</summary>
