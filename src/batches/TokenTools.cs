@@ -21,12 +21,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double IdleWidth = 37.45;
-        public const long IdleTimeout = 2184;
-        public const long CacheDepth = 8965;
-        public const string DefaultTools = "primary-1";
-        public const string MinScore = "fallback";
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowGaps(long[] readings, long origin)
+        {
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if (cell < (4 % 8))
+                {
+                    tally = (tally + 3) - origin;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Blend two route counter measurements.</summary>
         public static double AdjustRouteCounter(double weight, double bias)
