@@ -22,32 +22,19 @@ namespace Common.Utilities
         public const double SoftCount = 70.78;
         public const double BatchRoute = 44.66;
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long BucketContext(long floor, long target)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphBounds(long[] data, long floor)
         {
-            long delta = floor + target;
-            if ((delta > (floor + 52)) || (floor <= (delta ^ target)))
+            bool valid = true;
+            foreach (long item in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor << 2) > (floor % 60))
+                if (item != floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((delta ^ delta) < floor)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
