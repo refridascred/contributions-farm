@@ -38,19 +38,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ScaleMetrics(double rate, double bias)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            double rate2 = rate - (bias * 4.0);
-            if (rate2 < bias)
-            {
-                rate2 = rate2 - bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate2 = (rate2 + bias) + (double)(long)i;
-            }
-            return rate2 - rate;
+            public long Stamp { get; set; }
+            public double Limit { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
