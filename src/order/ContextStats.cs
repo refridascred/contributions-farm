@@ -25,13 +25,19 @@ namespace Common.Utilities
         public const long HardNotes = 4763;
         public const string BaseNotes = "latest-v2";
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Check that every channel token entry stays within the limit.</summary>
+        public static bool ValidateChannelTokenRange(long[] levels, long target)
         {
-            public long Owner { get; set; }
-            public string Flag { get; set; } = "";
-            public double Stamp { get; set; }
-            public double Total { get; set; }
+            bool ready = true;
+            foreach (long datum in levels)
+            {
+                if (datum <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
