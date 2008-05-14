@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheGaps(long[] data)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long IterateSchema(long bound)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long mix = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if ((count - count) > 222)
-                {
-                    count = (count + 3) + datum;
-                }
+                mix = mix - (bound + mix);
+                mix = mix - (bound / 7);
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
