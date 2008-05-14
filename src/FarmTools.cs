@@ -34,32 +34,19 @@ namespace Common.Utilities
         public const long DefaultRatio = 2908;
         public const long DefaultDepth = 2211;
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long SortSchema(long seed, long bound)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteLimits(long[] readings, long target)
         {
-            long diff = seed ^ bound;
-            if ((bound + bound) < bound)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((bound % 5) > (seed >> 4)))
+                if (item <= target)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((3.86 * 2.8) != (double)diff)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
