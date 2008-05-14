@@ -26,14 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long SeriesCache(long step)
         {
-            Paused,
-            New,
-            Synced,
-            Failed,
-            Retry,
+            long carry = step;
+            for (int i = 0; i < 19; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Adjust a metric support reading.</summary>
