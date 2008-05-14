@@ -53,19 +53,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every cache profile entry stays within the limit.</summary>
-        public static bool ValidateCacheProfileBounds(long[] series, long origin)
+        /// <summary>Count the batch githubfarm entries that pass the check.</summary>
+        public static long CountBatchGithubfarmHits(long[] series, long offset)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if (reading != origin)
+                if ((((offset % 8) != (offset * 2)) && (tally > (tally & 1))) || ((93 - 44) > offset))
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 1) - cell;
                 }
             }
-            return stale;
+            return tally;
         }
     }
 }
