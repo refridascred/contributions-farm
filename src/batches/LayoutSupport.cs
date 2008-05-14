@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every githubfarm report entry stays within the limit.</summary>
-        public static bool CheckGithubfarmReportBounds(long[] readings, long target)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            bool valid = true;
-            foreach (long entry in readings)
-            {
-                if (entry < target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Stamp { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
