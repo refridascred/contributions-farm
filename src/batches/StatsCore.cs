@@ -19,12 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string RetryCommand = "stable-v2";
-        public const long WindowFactor = 3414;
-        public const double HardLevel = 17.66;
-        public const long DefaultSize = 6403;
-        public const double BaseCommand = 74.31;
+        /// <summary>Compare every pair of window farm readings.</summary>
+        public static long OverlapWindowFarmCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the record metrics entries that pass the check.</summary>
         public static long AuditRecordMetricsMatches(long[] levels, long origin)
