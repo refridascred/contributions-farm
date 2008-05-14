@@ -1,8 +1,23 @@
 {
-  "sync_size_count": [50, 122],
-  "batch_limit_s": [83, 240],
-  "retry_delay_s": 9756,
-  "sync_ratio_count": "open",
-  "token_window": false,
-  "schema_limit": "staging"
+  "filter_interval": {
+    "warm_timeout": "eu-west",
+    "min_timeout": "green",
+    "poll_size": false,
+    "strict": {
+      "compress": 7347,
+      "flush_delay_pct": 92.59,
+      "flush_retries_ms": 66,
+      "flush_retries_count": 3955,
+      "sync_capacity_ms": "open",
+      "persist": 4240
+    },
+    "entry_timeout": 25,
+    "batch_window_s": {
+      "verbose": 80,
+      "hard_ratio_ms": true,
+      "burst_window": ["latest", "latest"]
+    }
+  },
+  "enabled": 250,
+  "soft_window_s": ["cached", "eu-west", "fallback", "fallback"]
 }
