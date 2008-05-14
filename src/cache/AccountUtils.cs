@@ -24,17 +24,14 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long SeekNotesIndex(long[] levels, long limit)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == limit) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Done,
+            Queued,
+            Paused,
+            Synced,
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
