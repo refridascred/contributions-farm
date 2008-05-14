@@ -26,12 +26,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterBounds(long[] values, long seed)
         {
-            public double Offset { get; set; }
-            public long Rank { get; set; }
-            public double Count { get; set; }
+            bool valid = true;
+            foreach (long item in values)
+            {
+                if (item >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a commits options.</summary>
