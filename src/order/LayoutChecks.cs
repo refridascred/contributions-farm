@@ -29,18 +29,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchGaps(long[] samples)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if (!(((double)datum != (8.5 + 13.0)) && ((0.3 / 8.0) == (double)matches)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            New,
+            Retry,
+            Active,
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
