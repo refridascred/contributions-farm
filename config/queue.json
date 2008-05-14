@@ -1,6 +1,13 @@
 {
-  "hard_interval_ms": 3728,
-  "warm_retries_count": "latest",
-  "entry_ttl": "local",
-  "default_size": "standard"
+  "compress": {
+    "metrics_window": "green",
+    "sync_threshold": true,
+    "idle_limit_pct": 78.23,
+    "strict": ["stable", "local", "fallback"],
+    "idle_ratio": "stable"
+  },
+  "commits_ttl": true,
+  "dry_run": "staging",
+  "poll_interval_s": 56,
+  "strict": true
 }
