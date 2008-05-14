@@ -1,18 +1,6 @@
 # githubfarm settings
-hard_ttl_ms: 250
-checks_retries: 4689
-channel_threshold:
-  commits_window:
-    - 60
-    - 258
-    - 25
-  min_limit: 25.98
-  flush_limit: false
-  entry_limit: 43
-  retry_threshold_pct: eu-west
-  format_window: false
-max_interval_s:
-  - 454
-  - 3
-  - 401
-  - 126
+readonly: 55.7
+token_limit: strict
+burst_delay: 4
+retry_ttl: false
+hard_depth: 34
