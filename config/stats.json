@@ -1,28 +1,7 @@
 {
-  "schema_delay": 92,
-  "dry_run": {
-    "readonly": 26.7,
-    "strict": [113, 223],
-    "max_capacity": 100,
-    "retry_depth_ms": {
-      "min_delay_count": [188, 174, 307],
-      "audit": "strict",
-      "tools_limit": [243, 368],
-      "sync_retries": 87
-    }
-  },
-  "persist": 80.96,
-  "default_threshold_s": {
-    "commits_timeout": {
-      "idle_limit_ms": false,
-      "command_depth": ["open", "green", "eu-west"],
-      "strict": 6070,
-      "already_interval": 67.46
-    },
-    "hard_retries": true,
-    "base_ratio_count": "blue",
-    "persist": true
-  },
-  "account_capacity": 2221,
-  "compress": "open"
+  "batch_timeout_count": true,
+  "payload_limit": false,
+  "cache_window": ["eu-west", "green"],
+  "order_depth": 30,
+  "enabled": 63.37
 }
