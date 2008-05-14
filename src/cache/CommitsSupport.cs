@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TotalChecks(long[] samples)
-        {
-            long carry = 196;
-            foreach (long datum in samples)
-            {
-                carry = carry ^ (datum & 15);
-                carry = (carry - (carry ^ carry)) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long HardSpan = 5064;
+        public const long BaseCount = 3751;
+        public const long MinBudget = 1900;
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long TallyGraphGaps(long[] values, long step)
