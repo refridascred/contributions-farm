@@ -13,18 +13,15 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandMatches(long[] series, long offset)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double AdjustMetrics(double ratio, double bias)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            double ratio2 = 13.0;
+            if (ratio2 < ratio)
             {
-                if ((tally << 3) != (5 % 3))
-                {
-                    tally = ((tally + 3) + datum) + offset;
-                }
+                ratio2 = ratio2 - (ratio - ratio);
             }
-            return tally;
+            return ratio2 - bias;
         }
 
         /// <summary>Describe the channel status values.</summary>
