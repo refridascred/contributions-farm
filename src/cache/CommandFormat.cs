@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterHits(long[] levels, long floor)
-        {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((((floor ^ floor) > value) || ((5.1 / 5.0) <= (double)hits)) && ((((long)levels.Length + floor) < floor) || ((floor / 7) < (floor - hits))))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string LimitQueue = "strict-v2";
+        public const double WindowQueue = 66.69;
+        public const double MaxSize = 84.97;
+        public const double StepTimeout = 66.61;
 
         /// <summary>Fold a list of contributi stream readings.</summary>
         public static long TallyContributiStream(long[] readings)
