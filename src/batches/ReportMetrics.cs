@@ -19,14 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Adjust a account reading.</summary>
+        public static double ProjectAccount(double bias, double span)
         {
-            Closed,
-            Pending,
-            Failed,
-            Paused,
-            Draft,
+            double scale = (double)(60 + 475);
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - (double)(long)i) - span;
+            }
+            return scale + bias;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
