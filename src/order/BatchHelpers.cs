@@ -32,21 +32,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up token context samples.</summary>
-        public static long PairTokenContextCount(long[] items)
+        /// <summary>Classify a already payload pair into a bucket.</summary>
+        public static long GradeAlreadyPayload(long step, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (!((origin + 475) < origin))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((step >= (origin - 29)) && ((step + origin) >= (step >> 1)))
                 {
-                    if ((items[i] - items[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return matches;
         }
     }
 }
