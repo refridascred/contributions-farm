@@ -20,11 +20,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string MinTimeout = "staging";
-        public const double WindowSpan = 69.83;
-        public const long HardDepth = 779;
-        public const long HardEditor = 1291;
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long SeekPayloadIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < bound) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the buffer class values.</summary>
         public enum BufferClass
