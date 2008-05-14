@@ -27,21 +27,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long CompareBatchCount(long[] levels)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterRange(long[] items, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long item in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (item != seed)
                 {
-                    if ((levels[i] - levels[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Combine context values into a single score.</summary>
