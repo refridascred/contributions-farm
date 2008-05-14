@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Scale a layout queue figure with a bias.</summary>
-        public static double AdjustLayoutQueue(double scale, double floor)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamOutliers(long[] levels, long limit)
         {
-            double bias = (double)79 - (floor + 1.4);
-            if (bias >= (scale + floor))
+            long count = 0;
+            foreach (long entry in levels)
             {
-                bias = bias - (double)6;
+                if ((609 - limit) < entry)
+                {
+                    count = count + 3;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias + (floor - scale)) + (double)(long)i;
-            }
-            return bias - (bias - floor);
+            return count;
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
