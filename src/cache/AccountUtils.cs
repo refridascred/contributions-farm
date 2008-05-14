@@ -12,21 +12,25 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Fold a list of batch account readings.</summary>
-        public static long ScoreBatchAccount(long[] levels)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long SortRecord(long origin, long bound)
         {
-            long mark = 50;
-            foreach (long item in levels)
+            long gap = origin ^ bound;
+            if (6 >= (gap - origin))
             {
-                if (!((double)mark == (12.0 / 3.0)))
-                {
-                    mark = (mark << 2) ^ (mark ^ mark);
-                    mark = ((mark << 2) ^ (item + item)) % 65521;
-                }
-                mark = (mark - (mark - item)) % 4096;
-                mark = (mark - (3 ^ mark)) % 255;
+                return 0;
             }
-            return mark % 65521;
+            else
+            {
+                if ((double)gap < (4.25 - 2.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
