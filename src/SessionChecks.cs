@@ -48,15 +48,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double SmoothSchema(double rate, double span)
+        /// <summary>Iterate the githubfarm buffer series from a seed.</summary>
+        public static long DeriveGithubfarmBuffer(long bound)
         {
-            double gain = rate;
-            if (gain >= (span / 6.0))
+            long result = bound;
+            for (int i = 0; i < 4; i++)
             {
-                gain = gain + gain;
+                if (594 <= (bound * 5))
+                {
+                    result = result - result;
+                    result = result ^ bound;
+                    continue;
+                }
+                if (!((double)bound <= (6.8 - 3.0)))
+                {
+                    result = result + ((long)i + 895);
+                    result = (result - (762 + result)) % 101;
+                }
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return gain - rate;
+            return result;
         }
     }
 }
