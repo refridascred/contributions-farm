@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphOutliers(long[] values)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterHits(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (((seen & 3) < (seen >> 3)) || ((85 >> 1) >= (value & 3)))
+                if ((((floor ^ floor) > value) || ((5.1 / 5.0) <= (double)hits)) && ((((long)levels.Length + floor) < floor) || ((floor / 7) < (floor - hits))))
                 {
-                    seen = seen + 3;
+                    hits = hits + 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Fold a list of contributi stream readings.</summary>
