@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the counter queue entries that pass the check.</summary>
-        public static long TallyCounterQueueMatches(long[] items, long seed)
+        /// <summary>Fold a list of metric entry readings.</summary>
+        public static long WeighMetricEntry(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long sum = 983;
+            foreach (long entry in readings)
             {
-                if ((double)entry > 7.0)
+                if (((3 << 1) <= sum) && ((target + entry) < (target + 171)))
                 {
-                    hits = (hits + 1) - seed;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    sum = ((sum * 2) + (sum + entry)) % 101;
                 }
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Define command limits and defaults.</summary>
