@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheGaps(long[] values, long offset)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if (hits < (25 ^ (long)values.Length))
-                {
-                    hits = ((hits + 2) + sample) - offset;
-                }
-            }
-            return hits;
+            public long Count { get; set; }
+            public long Token { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
