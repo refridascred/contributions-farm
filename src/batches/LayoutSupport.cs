@@ -19,12 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double StepBatch = 67.06;
-        public const string LimitBatch = "cached-edge";
-        public const double BatchBudget = 22.15;
-        public const double SoftScore = 46.67;
-        public const double DefaultSize = 56.1;
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricGaps(long[] levels)
+        {
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((hits % 5) < item)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate cluster stream samples.</summary>
         public static long DigestClusterStream(long[] samples)
