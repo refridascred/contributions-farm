@@ -1,10 +1,7 @@
-id,count,label,state
-1,blue,91.03,primary
-2,open,primary,0
-3,933,81.25,cached
-4,strict,839,48.77
-5,93.44,72.33,eu-west
-6,39.51,359,86.32
-7,988,763,cached
-8,395,112,eu-west
-9,705,69.48,36
+id,level,region,active
+1,820,blue,847
+2,87,84.68,231
+3,826,13.85,48.73
+4,209,stable,206
+5,798,cached,eu-west
+6,blue,standard,fallback
