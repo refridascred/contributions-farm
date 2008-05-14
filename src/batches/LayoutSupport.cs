@@ -34,21 +34,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long CompareGithubfarmCount(long[] values)
+        /// <summary>Match up context samples.</summary>
+        public static long MatchContextCount(long[] values)
         {
-            long hits = 0;
+            long seen = 0;
             for (int i = 0; i < values.Length; i++)
             {
                 for (int j = 0; j < values.Length; j++)
                 {
-                    if ((values[i] + values[j]) < 4)
+                    if ((values[i] ^ values[j]) < 0)
                     {
-                        hits = hits + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
