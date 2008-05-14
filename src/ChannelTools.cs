@@ -37,18 +37,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the format counter entries that pass the check.</summary>
-        public static long AuditFormatCounterHits(long[] levels)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamGaps(long[] items)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if ((count - 0) >= (count * 5))
+                if ((value >> 5) < (value >> 1))
                 {
-                    count = (count + 2) - sample;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
