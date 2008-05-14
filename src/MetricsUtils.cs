@@ -20,12 +20,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxFactor = 5852;
-        public const long LimitPayload = 3059;
-        public const long HardScore = 1718;
-        public const long SoftSize = 7486;
-        public const double SoftPayload = 68.06;
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextRange(long[] values, long floor)
+        {
+            bool ready = true;
+            foreach (long sample in values)
+            {
+                if (sample <= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
         public static long CompareFormatCount(long[] levels)
