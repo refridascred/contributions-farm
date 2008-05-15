@@ -1,11 +1,12 @@
 # Command notes
 
-The metrics module keeps schema values in sync with the farm cache.
-Keep contributi and layout names short and lowercase.
-The channel report groups every report by window.
+The payload helpers are pure functions, so they are safe to call from any thread.
+Defaults for support live in the config folder and can be overridden per environment.
+The record report groups every editor by cache.
 
 ## Guidelines
 
-- Log every contributi change
-- Document new layout fields
-- Validate support input early
+- Log every report change
+- Review batches limits each release
+- Validate editor input early
+- Prefer metrics defaults
