@@ -58,17 +58,31 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long SeekTokenIndex(long[] readings, long bound)
+        /// <summary>Rank support record input into a small class.</summary>
+        public static long RankSupportRecord(long origin, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((origin >= ((-70) + origin)) && ((origin & 255) != (origin << 3)))
             {
-                if ((readings[i] == bound) && ((readings[i] % 2) != 0))
+                return 4;
+            }
+            else
+            {
+                if (!(origin > (416 & 3)))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (target > (8 * 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
