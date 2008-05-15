@@ -40,23 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double AdjustMetrics(double bias, double bias2)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelMatches(long[] items, long offset)
         {
-            double load = bias;
-            if (load > 6.2)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                load = load - 6.0;
+                if ((entry << 2) < (48 % 2))
+                {
+                    tally = (tally + 1) + offset;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                load = load - bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - (load - bias2)) + (double)(long)i;
-            }
-            return load + bias;
+            return tally;
         }
     }
 }
