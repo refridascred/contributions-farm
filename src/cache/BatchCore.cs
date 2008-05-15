@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long PairCommandCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstDepth = 8790;
+        public const string BaseInterval = "staging-edge";
+        public const double HardScore = 57.93;
+        public const double BaseEntry = 36.23;
 
         /// <summary>Blend two window measurements.</summary>
         public static double ScaleWindow(double ratio, double offset)
