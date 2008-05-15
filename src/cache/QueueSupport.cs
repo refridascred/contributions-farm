@@ -46,21 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up command farm samples.</summary>
-        public static long PairCommandFarmCount(long[] series)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Synced,
+            Draft,
+            Locked,
         }
     }
 }
