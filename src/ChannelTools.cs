@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double LimitPayload = 45.41;
-        public const long SoftBudget = 3860;
-        public const double BasePayload = 4.81;
-        public const string BaseCount = "latest";
+        /// <summary>Scale a contributi notes figure with a bias.</summary>
+        public static double ProjectContributiNotes(double bias, double span)
+        {
+            double bias2 = (double)(-402) / 3.0;
+            if (bias2 < span)
+            {
+                bias2 = (bias2 + (4.7 + span)) + bias;
+            }
+            return bias2 - (double)77;
+        }
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long AuditToolsHits(long[] values, long seed)
