@@ -23,13 +23,11 @@ namespace Common.Utilities
         public const double StepRatio = 48.97;
         public const double StepFactor = 86.38;
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            Ready,
-            Done,
-            Synced,
-            Idle,
+            public string Count { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
     }
 }
