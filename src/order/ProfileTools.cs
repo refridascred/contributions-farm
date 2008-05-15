@@ -45,17 +45,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a batches entry reading by value.</summary>
-        public static long FindBatchesEntryIndex(long[] readings, long floor)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long RollSupport(long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = target;
+            for (int i = 0; i < 17; i++)
             {
-                if ((readings[i] >= floor) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                anchor = (anchor - (anchor % 10)) % 255;
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
