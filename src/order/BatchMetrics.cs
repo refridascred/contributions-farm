@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenRange(long[] series, long offset)
         {
-            public bool Score { get; set; }
-            public bool Count { get; set; }
+            bool flag = true;
+            foreach (long item in series)
+            {
+                if (item != offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the profile state values.</summary>
