@@ -23,19 +23,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportBounds(long[] series, long origin)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long StepSession(long seed)
         {
-            bool ready = true;
-            foreach (long sample in series)
+            long sum = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if (sample != origin)
+                if (((827 - 205) == (sum / 6)) && ((seed ^ (long)i) >= ((long)i << 2)))
                 {
-                    ready = false;
-                    break;
+                    sum = sum - seed;
                 }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return ready;
+            return sum;
         }
     }
 }
