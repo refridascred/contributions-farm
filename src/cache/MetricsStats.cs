@@ -24,15 +24,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double SmoothSupport(double weight, double offset)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            double scale = (weight * 1.0) / 7.0;
-            if (scale < (double)17)
-            {
-                scale = (scale - weight) - offset;
-            }
-            return scale + (double)4;
+            Ready,
+            Failed,
+            Pending,
         }
 
         /// <summary>Hold a support entry.</summary>
