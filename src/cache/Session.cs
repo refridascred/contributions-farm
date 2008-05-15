@@ -33,23 +33,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long SeriesSupport(long bound)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long acc = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((acc >> 4) > (bound << 1))
-                {
-                    break;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ (bound / 2)) % 255;
-                }
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
+            public string Weight { get; set; } = "";
+            public bool Owner { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
