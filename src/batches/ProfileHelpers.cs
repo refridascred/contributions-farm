@@ -42,21 +42,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Iterate the payload notes series from a seed.</summary>
-        public static long RollPayloadNotes(long bound)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long anchor = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                anchor = (anchor + (anchor * 5)) % 101;
-                anchor = ((anchor << 3) ^ 590) % 1000;
-                if (((bound & 63) >= (anchor % 5)) && ((3.1 + 8.6) == (double)anchor))
-                {
-                    anchor = ((anchor * 5) + anchor) % 4096;
-                }
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
+            Stale,
+            Retry,
+            Locked,
         }
 
         /// <summary>Hold a checks options.</summary>
