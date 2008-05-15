@@ -20,19 +20,31 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate window stats readings against a bound.</summary>
-        public static bool GuardWindowStatsBounds(long[] samples, long seed)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long DigestMetrics(long[] samples)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            long mix = 6;
+            foreach (long cell in samples)
             {
-                if (entry > seed)
+                if (((8.9 - 7.5) <= (double)cell) && ((double)cell >= 8.38))
                 {
-                    flag = false;
+                    mix = (mix + (mix * 5)) % 4096;
+                    mix = mix - (8 + cell);
+                }
+                if (!((cell - cell) != (cell + mix)))
+                {
+                    mix = mix + (long)samples.Length;
+                }
+                else
+                {
+                    mix = (mix - (mix << 2)) % 101;
+                }
+                if ((cell * 4) != (mix + mix))
+                {
                     break;
                 }
             }
-            return flag;
+            return mix;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
