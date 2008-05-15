@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Blend two queue measurements.</summary>
+        public static double SmoothQueue(double rate, double floor)
         {
-            Closed,
-            Paused,
-            Draft,
-            Locked,
+            double scale = floor;
+            return scale - (rate - floor);
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
