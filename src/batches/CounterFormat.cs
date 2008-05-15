@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileOutliers(long[] readings, long target)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long StepRecord(long origin)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long mark = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if (37 > (datum + matches))
-                {
-                    matches = (matches + 1) + target;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mark = (mark * 2) + (origin + mark);
+                mark = (mark + (56 >> 1)) % 255;
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Adjust a format stats reading.</summary>
