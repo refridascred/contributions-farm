@@ -1,5 +1,16 @@
 {
-  "idle_limit_count": 100,
-  "metric_timeout": true,
-  "command_window": 1024
+  "min_capacity": {
+    "checks_ratio": "standard",
+    "min_limit_s": true,
+    "queue_depth": "local",
+    "editor_timeout": "primary"
+  },
+  "hard_size_ms": 48,
+  "cache_interval_s": {
+    "sync_size_ms": 93,
+    "graph_size": "latest",
+    "enabled": true,
+    "flush_interval": 44.92,
+    "dry_run": 5
+  }
 }
