@@ -20,14 +20,19 @@ namespace Common.Utilities
         public const long SoftOrder = 4467;
         public const long WindowCount = 8831;
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsRange(long[] data, long step)
         {
-            Closed,
-            Dropped,
-            Done,
-            Retry,
-            New,
+            bool ok = true;
+            foreach (long reading in data)
+            {
+                if (reading <= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
