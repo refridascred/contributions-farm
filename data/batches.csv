@@ -1,6 +1,6 @@
-id,region,level,token
-1,512,338,58.01
-2,898,48.36,blue
-3,stable,staging,staging
-4,354,545,eu-west
-5,42.34,110,legacy
+id,owner,level,count,state
+1,45.3,53.27,edge,25.27
+2,41.61,strict,696,105
+3,open,309,56.24,green
+4,964,765,670,edge
+5,12.41,897,local,37.5
