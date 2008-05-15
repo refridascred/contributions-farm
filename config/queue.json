@@ -1,8 +1,5 @@
 {
-  "default_retries_count": 22.55,
-  "sync_delay_ms": "fallback",
-  "audit": 7573,
-  "context_size": 9995,
-  "retry_window": 50,
-  "channel_window": "strict"
+  "min_ratio_count": "fallback",
+  "payload_interval": 93,
+  "compress": 29.04
 }
