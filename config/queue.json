@@ -1,12 +1,7 @@
 {
-  "account_limit": {
-    "max_ratio": false,
-    "burst_window_count": "legacy",
-    "graph_depth": "open",
-    "editor_threshold": false
-  },
-  "persist": ["cached", "staging", "legacy", "cached"],
-  "profile_limit": 250,
-  "format_delay": 97.24,
-  "hard_timeout_pct": "strict"
+  "enabled": 30.19,
+  "max_interval_s": false,
+  "sync_delay_s": "blue",
+  "warm_timeout_pct": ["eu-west", "open"],
+  "audit": true
 }
