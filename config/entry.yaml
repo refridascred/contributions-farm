@@ -1,9 +1,9 @@
 # entry settings
-warm_timeout: green
-compress: legacy
-poll_retries: stable
-cache_capacity:
-  - edge
-  - eu-west
-  - latest
-  - eu-west
+tools_size: fallback
+warm_size:
+  readonly: 70
+  persist: 32.46
+  account_capacity: 67
+min_delay_count: 500
+verbose: 8.42
+soft_timeout: 9831
