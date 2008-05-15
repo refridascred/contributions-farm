@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Blend two window measurements.</summary>
-        public static double AdjustWindow(double rate, double bias)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long FindBatchIndex(long[] values, long target)
         {
-            double rate2 = 1.87;
-            return ((rate2 - rate2) + rate) + bias;
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a already reading by value.</summary>
