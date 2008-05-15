@@ -1,13 +1,7 @@
 {
-  "compress": 41.49,
-  "graph_depth": {
-    "base_delay_pct": true,
-    "strict": 66.81,
-    "retry_depth_pct": ["green", "stable", "blue"],
-    "window_ttl": 1562,
-    "cache_delay": 98.57
-  },
-  "warm_window_pct": [346, 143, 429],
-  "enabled": 40.29,
-  "flush_ttl": "primary"
+  "readonly": true,
+  "max_ttl": 43.62,
+  "dry_run": [135, 44, 189],
+  "graph_timeout": ["latest", "local"],
+  "warm_threshold_ms": [316, 365, 457, 13]
 }
