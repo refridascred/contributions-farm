@@ -1,13 +1,23 @@
 # githubfarm settings
-commits_depth:
-  - green
-  - eu-west
-batch_capacity_pct: local
-hard_interval_s: eu-west
-verbose:
-  - edge
-  - local
-  - latest
-  - fallback
-cache_ratio: eu-west
-context_ttl: 95.02
+idle_ratio_count:
+  batch_depth_pct: 8430
+  tools_depth:
+    warm_retries_s: latest
+    burst_depth_ms: latest
+    audit: edge
+    already_ratio: 30.0
+    flush_retries:
+      - eu-west
+      - standard
+      - primary
+  flush_window_count:
+    - 292
+    - 36
+    - 458
+    - 206
+  window_ratio:
+    - 380
+    - 445
+    - 473
+audit: local
+payload_window: edge
