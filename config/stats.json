@@ -1,13 +1,6 @@
 {
-  "retry_ratio_count": {
-    "retry_depth": "latest",
-    "flush_limit": true,
-    "enabled": [5, 151, 63, 61],
-    "dry_run": "primary",
-    "sync_interval_pct": 100,
-    "max_threshold_ms": 60.21
-  },
-  "base_window_ms": "legacy",
-  "enabled": true,
-  "readonly": "cached"
+  "flush_timeout": 21,
+  "compress": 16,
+  "checks_limit": "latest",
+  "persist": false
 }
