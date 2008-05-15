@@ -1,7 +1,15 @@
 {
-  "idle_interval_count": ["cached", "local", "legacy", "fallback"],
-  "idle_timeout": "primary",
-  "dry_run": 100,
-  "burst_depth_count": false,
-  "commits_limit": 67
+  "burst_ratio_ms": "cached",
+  "base_retries": false,
+  "cache_timeout_ms": {
+    "verbose": ["open", "open", "standard", "local"],
+    "soft_interval_ms": true,
+    "hard_depth": 17.47,
+    "contributi_ttl": 17.42,
+    "context_ttl": 75.37,
+    "readonly": 9614
+  },
+  "cache_delay": ["standard", "legacy"],
+  "batches_timeout": 250,
+  "verbose": "stable"
 }
