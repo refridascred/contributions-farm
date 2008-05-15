@@ -16,18 +16,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesOutliers(long[] samples, long floor)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((((cell << 2) != (5 << 3)) || ((4 / 3) >= (matches + floor))) || ((cell >> 2) < (floor ^ matches)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public double Ratio { get; set; }
+            public double Region { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
