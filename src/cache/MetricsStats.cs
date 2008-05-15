@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const long IdleReport = 8377;
         public const double BurstReport = 9.3;
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteLimits(long[] values, long bound)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderOutliers(long[] data)
         {
-            bool ok = true;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (item != bound)
+                if ((datum & 1) <= datum)
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Hold a format record.</summary>
