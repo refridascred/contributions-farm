@@ -22,18 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the entry report entries that pass the check.</summary>
-        public static long MeasureEntryReportHits(long[] levels, long target)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell << 3) >= 3)
-                {
-                    count = (count + 3) + target;
-                }
-            }
-            return count;
+            Paused,
+            Closed,
+            Failed,
         }
 
         /// <summary>Describe the metric phase values.</summary>
