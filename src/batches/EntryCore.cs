@@ -50,14 +50,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
-        {
-            New,
-            Closed,
-            Queued,
-            Active,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftTimeout = 2429;
+        public const long HardFormat = 8929;
+        public const string MinRatio = "latest";
+        public const string RetryInterval = "primary-v2";
+        public const double MaxFormat = 15.71;
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long TallyChannel(long[] items, long limit)
