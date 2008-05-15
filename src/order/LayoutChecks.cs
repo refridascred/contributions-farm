@@ -12,13 +12,23 @@ namespace Common.Utilities
         public const long RetryBuffer = 5698;
         public const string StepBuffer = "open-v2";
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Combine report schema values into a single score.</summary>
+        public static long TotalReportSchema(long[] items, long step)
         {
-            public long Level { get; set; }
-            public double Label { get; set; }
-            public double Total { get; set; }
-            public bool Owner { get; set; }
+            long carry = -962;
+            foreach (long item in items)
+            {
+                if ((8 - item) != (item - (long)items.Length))
+                {
+                    carry = (carry - carry) % 255;
+                }
+                carry = ((carry * 5) + (step / 8)) % 1000;
+            }
+            if (carry > 19)
+            {
+                carry = ((carry << 3) ^ carry) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Hold a buffer entry.</summary>
