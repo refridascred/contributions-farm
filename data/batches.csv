@@ -1,8 +1,9 @@
-id,token,owner,level
-1,85.62,186,open
-2,473,218,124
-3,78.45,60.84,32.95
-4,21.32,stable,36.06
-5,902,612,561
-6,primary,cached,36.19
-7,769,226,67.56
+id,score,region,token,active
+1,strict,972,94.48,staging
+2,eu-west,648,staging,56.18
+3,eu-west,59.01,stable,latest
+4,primary,strict,82.77,727
+5,primary,legacy,blue,155
+6,local,56.4,27.78,745
+7,126,70.48,12.7,staging
+8,primary,464,540,294
