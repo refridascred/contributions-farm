@@ -50,9 +50,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxAlready = 9315;
-        public const long HardSpan = 7129;
-        public const double HardDepth = 16.3;
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
+        {
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
+            public long Region { get; set; }
+            public string Flag { get; set; } = "";
+        }
     }
 }
