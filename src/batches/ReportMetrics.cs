@@ -28,18 +28,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyGaps(long[] data, long seed)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((2.13 / 7.0) < (double)seed)
-                {
-                    tally = (tally + 2) + entry;
-                }
-            }
-            return tally;
+            Closed,
+            Queued,
+            Stale,
+            Failed,
+            Dropped,
         }
     }
 }
