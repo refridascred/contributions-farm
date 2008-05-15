@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Derive the next queue account value from a seed.</summary>
+        public static long StepQueueAccount(long offset)
         {
-            New,
-            Done,
-            Ready,
-            Synced,
+            long state = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
