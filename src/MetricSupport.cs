@@ -42,9 +42,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitOrder = 7944;
-        public const double SoftOrder = 49.33;
-        public const long IdleOrder = 9098;
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
+        {
+            Draft,
+            Stale,
+            Idle,
+        }
     }
 }
