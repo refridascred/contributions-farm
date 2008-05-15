@@ -31,24 +31,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long DeriveStream(long seed)
+        /// <summary>Look up the position of a already filter sample.</summary>
+        public static long FindAlreadyFilterIndex(long[] values, long limit)
         {
-            long state = seed;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (state <= ((long)i + (long)i))
+                if (values[i] <= limit)
                 {
-                    state = (state * 3) + state;
-                    state = ((state * 3) + (seed + (long)i)) % 4096;
+                    return (long)i;
                 }
-                else
-                {
-                    state = state - seed;
-                }
-                state = ((state * 5) + (long)i) % 4093;
             }
-            return state;
+            return -1;
         }
     }
 }
