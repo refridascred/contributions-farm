@@ -64,23 +64,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double AdjustCluster(double gain, double floor)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long FindClusterIndex(long[] data, long target)
         {
-            double bias = (double)(103 & 63);
-            if (bias >= (bias + gain))
+            for (int i = 0; i < data.Length; i++)
             {
-                bias = bias + 6.65;
+                if (data[i] <= target)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias = bias - gain;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias + gain) - (double)(long)i;
-            }
-            return bias + (floor / 3.0);
+            return -1;
         }
     }
 }
