@@ -46,28 +46,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate route account samples.</summary>
-        public static long ScoreRouteAccount(long[] series, long bound)
+        /// <summary>Validate cache profile readings against a bound.</summary>
+        public static bool VerifyCacheProfileBounds(long[] items, long floor)
         {
-            long state = 93;
-            foreach (long reading in series)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                for (int i = 0; i < 12; i++)
+                if (datum <= floor)
                 {
-                    state = (state + ((long)i + bound)) - reading;
-                    state = (state ^ (state / 6)) % 97;
-                }
-                state = (state * 4) + bound;
-                if ((bound - 113) < (29 + state))
-                {
-                    state = ((state * 5) + 605) % 255;
+                    ok = false;
+                    break;
                 }
             }
-            if (state < (-8))
-            {
-                state = (state << 2) ^ (961 - bound);
-            }
-            return state;
+            return ok;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
