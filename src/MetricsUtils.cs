@@ -33,22 +33,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TotalOrder(long[] series)
+        /// <summary>Match up tools payload samples.</summary>
+        public static long PairToolsPayloadCount(long[] readings)
         {
-            long anchor = 4;
-            foreach (long reading in series)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((anchor * 5) > (reading - anchor)) && ((reading + anchor) > (reading - anchor)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    anchor = (anchor + (reading + 201)) % 97;
+                    if ((readings[i] + readings[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (anchor < 2)
-            {
-                anchor = (anchor + (anchor % 8)) % 97;
-            }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Rank route input into a small class.</summary>
