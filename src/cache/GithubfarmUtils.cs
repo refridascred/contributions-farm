@@ -40,11 +40,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BurstMetric = "open-v2";
-        public const long MaxMetric = 6904;
-        public const long WindowMetric = 8892;
-        public const long BaseMetric = 6660;
+        /// <summary>Audit editor profile readings against a rule.</summary>
+        public static long AuditEditorProfileOutliers(long[] values, long bound)
+        {
+            long count = 0;
+            foreach (long value in values)
+            {
+                if (!(39 >= (count + value)))
+                {
+                    count = (count + 3) + bound;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the account context entries that pass the check.</summary>
         public static long AuditAccountContextGaps(long[] samples)
