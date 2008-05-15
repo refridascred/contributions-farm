@@ -32,17 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long FindPayloadIndex(long[] readings, long seed)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphOutliers(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if (readings[i] >= seed)
+                if ((double)datum >= (9.14 + 14.0))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Accumulate route account samples.</summary>
