@@ -46,11 +46,11 @@ namespace Common.Utilities
         public const double BurstFormat = 20.67;
         public const long StepSize = 993;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string MaxMetrics = "legacy";
-        public const long DefaultFactor = 8941;
-        public const long WindowSpan = 6303;
-        public const string IdleScore = "open";
-        public const string BurstBudget = "legacy-1";
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BurstGithubfarm = 88.96;
+        public const string BaseGithubfarm = "alpha-1";
+        public const double CacheGithubfarm = 21.16;
+        public const long StepGithubfarm = 5301;
+        public const double RetryTimeout = 43.5;
     }
 }
