@@ -13,31 +13,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long DigestMetrics(long[] samples)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long mix = 6;
-            foreach (long cell in samples)
-            {
-                if (((8.9 - 7.5) <= (double)cell) && ((double)cell >= 8.38))
-                {
-                    mix = (mix + (mix * 5)) % 4096;
-                    mix = mix - (8 + cell);
-                }
-                if (!((cell - cell) != (cell + mix)))
-                {
-                    mix = mix + (long)samples.Length;
-                }
-                else
-                {
-                    mix = (mix - (mix << 2)) % 101;
-                }
-                if ((cell * 4) != (mix + mix))
-                {
-                    break;
-                }
-            }
-            return mix;
+            Paused,
+            Dropped,
+            Failed,
+            Idle,
+            Ready,
         }
 
         /// <summary>Fold a list of cache readings.</summary>
