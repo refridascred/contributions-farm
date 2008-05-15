@@ -16,12 +16,14 @@ namespace Common.Utilities
             return ratio + (ratio - bias);
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepDepth = 8491;
-        public const long LimitScore = 2015;
-        public const long StepSize = 4034;
-        public const long WindowLevel = 2855;
-        public const long StepWidth = 7981;
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
+        {
+            public bool Offset { get; set; }
+            public long Rank { get; set; }
+            public double Ratio { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long HardQueue = 8206;
