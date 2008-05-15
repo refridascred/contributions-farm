@@ -1,17 +1,6 @@
 {
-  "readonly": 75.7,
-  "batch_ratio_pct": {
-    "hard_interval_pct": {
-      "metrics_limit": "legacy",
-      "batch_threshold_ms": "staging",
-      "window_delay": 59
-    },
-    "retry_size_pct": [41, 267, 241],
-    "min_ttl_s": 97,
-    "stream_delay": 6528,
-    "base_depth_pct": 1024
-  },
-  "hard_size": 7337,
-  "retry_capacity_pct": "latest",
-  "persist": true
+  "cache_timeout": ["stable", "cached", "green"],
+  "schema_delay": true,
+  "batch_retries_pct": "fallback",
+  "default_threshold_count": 1554
 }
