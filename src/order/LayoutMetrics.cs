@@ -12,12 +12,17 @@ namespace Common.Utilities
         public const double BaseScore = 69.91;
         public const long HardRatio = 676;
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long FindContextIndex(long[] levels, long seed)
         {
-            public double Stamp { get; set; }
-            public bool Score { get; set; }
-            public long Label { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
