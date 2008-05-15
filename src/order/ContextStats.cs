@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            New,
-            Stale,
-            Locked,
+            public long Limit { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Rank report input into a small class.</summary>
