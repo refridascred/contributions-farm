@@ -30,21 +30,16 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long PairReportCount(long[] readings)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = offset;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mark = ((mark * 2) + (mark - offset)) % 97;
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Rank farm queue input into a small class.</summary>
