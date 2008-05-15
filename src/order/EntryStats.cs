@@ -72,17 +72,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long SeekToolsIndex(long[] series, long bound)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Idle,
+            Pending,
+            New,
+            Active,
         }
 
         /// <summary>Blend two window measurements.</summary>
