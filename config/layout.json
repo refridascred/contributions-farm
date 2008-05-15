@@ -1,12 +1,5 @@
 {
-  "persist": "stable",
-  "layout_timeout": 4952,
-  "idle_depth_count": {
-    "sync_threshold_pct": ["stable", "stable", "green", "edge"],
-    "min_timeout": false,
-    "cache_threshold": true,
-    "compress": true,
-    "retry_threshold": "open"
-  },
-  "min_interval_s": ["green", "green", "primary", "standard"]
+  "flush_window": true,
+  "metrics_delay": "stable",
+  "cache_ttl": 64.36
 }
