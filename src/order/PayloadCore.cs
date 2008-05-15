@@ -47,11 +47,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double ScaleRoute(double ratio, double floor)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long FindRouteIndex(long[] readings, long target)
         {
-            double drift = (floor + floor) * 1.0;
-            return (drift - drift) + ratio;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
