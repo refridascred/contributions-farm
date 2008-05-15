@@ -64,17 +64,31 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LocateBatchesIndex(long[] values, long origin)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long ScoreCluster(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = -4;
+            foreach (long reading in items)
             {
-                if ((values[i] > origin) && ((values[i] % 2) == 0))
+                if (!((0.39 - 0.37) > (double)reading))
                 {
-                    return (long)i;
+                    carry = ((carry * 3) + (reading >> 4)) % 1000;
+                    carry = ((carry * 3) + (reading % 64)) % 101;
+                }
+                if (carry >= (carry - carry))
+                {
+                    carry = carry - (reading + reading);
+                }
+                if ((19 / 6) > (carry & 3))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (carry > 28)
+            {
+                carry = (carry + (carry - (-77))) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Derive the next checks tools value from a seed.</summary>
