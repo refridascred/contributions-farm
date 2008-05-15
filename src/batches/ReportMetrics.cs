@@ -24,32 +24,13 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long GradeCounter(long seed, long origin)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long cur = seed ^ origin;
-            if ((seed + seed) < (339 % 97))
-            {
-                return 4;
-            }
-            else
-            {
-                if (cur <= (659 + seed))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((5.7 * 9.41) != (double)seed)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public double Limit { get; set; }
+            public long Mode { get; set; }
+            public double Offset { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Describe the notes kind values.</summary>
