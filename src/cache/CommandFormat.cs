@@ -14,13 +14,32 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long BucketGraph(long origin, long offset)
         {
-            Idle,
-            Retry,
-            Paused,
-            New,
+            long prev = origin ^ offset;
+            if (908 < (prev & 3))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((760 ^ offset) < (prev / 5))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((offset % 8) >= 71))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Define window limits and defaults.</summary>
