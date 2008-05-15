@@ -1,10 +1,17 @@
 {
-  "soft_timeout": 250,
-  "schema_interval": true,
-  "cache_limit": "legacy",
-  "max_size": {
-    "compress": 81,
-    "account_threshold": [246, 148],
-    "commits_size": false
-  }
+  "soft_capacity_s": {
+    "format_size": [373, 97, 384, 90],
+    "retry_threshold_count": true,
+    "soft_window_pct": "latest",
+    "audit": {
+      "readonly": false,
+      "max_size": true,
+      "soft_depth_ms": "cached",
+      "poll_depth_ms": true
+    },
+    "stats_timeout": 51.22
+  },
+  "max_size_ms": "edge",
+  "payload_window": "open",
+  "burst_timeout": 57.24
 }
