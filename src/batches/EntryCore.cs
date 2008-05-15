@@ -61,12 +61,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
-        {
-            Pending,
-            Closed,
-            Dropped,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheFactor = 1134;
+        public const double DefaultCount = 36.54;
+        public const long MaxWidth = 6149;
+        public const long MinRatio = 6688;
     }
 }
