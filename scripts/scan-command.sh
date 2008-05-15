@@ -6,12 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=87
-log "limit is ${COMMAND_LIMIT}"
+for item in stable primary edge local; do
+    log "checking ${item}"
+done
 
-mode="${1:-stable}"
+mode="${1:-staging}"
 case "${mode}" in
-    latest)
+    local)
         log "fast path"
         ;;
     *)
@@ -19,8 +20,5 @@ case "${mode}" in
         ;;
 esac
 
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+COMMAND_LIMIT=384
+log "limit is ${COMMAND_LIMIT}"
