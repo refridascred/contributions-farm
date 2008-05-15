@@ -51,15 +51,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of batch githubfarm entries.</summary>
-        public static long FoldBatchGithubfarm(long[] items, long target)
-        {
-            long mark = 488;
-            foreach (long item in items)
-            {
-                mark = (mark + item) + target;
-            }
-            return mark;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string LimitAlready = "open";
+        public const long MinAlready = 1204;
+        public const double StepLevel = 57.92;
+        public const long RetryInterval = 4135;
+        public const long RetryAlready = 346;
     }
 }
