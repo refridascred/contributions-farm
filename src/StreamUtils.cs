@@ -44,19 +44,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long StepRoute(long bound)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double BlendCluster(double rate, double floor)
         {
-            long total = bound;
-            for (int i = 0; i < 10; i++)
+            double weight = floor;
+            if (weight >= floor)
             {
-                if (((-22) + total) == (long)i)
-                {
-                    total = ((total << 3) ^ (bound + bound)) % 255;
-                }
-                total = ((total * 2) + (long)i) % 101;
+                weight = weight + (weight * 7.32);
             }
-            return total;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - floor) + (double)(long)i;
+            }
+            return weight - rate;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
