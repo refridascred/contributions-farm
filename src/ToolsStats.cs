@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double AdjustCounter(double gain, double offset)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            double weight = 5.73;
-            if (weight <= 3.3)
-            {
-                weight = weight + (gain * 5.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - gain) + (double)(long)i;
-            }
-            return weight - (offset / 9.0);
+            Draft,
+            Closed,
+            Idle,
+            Failed,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
