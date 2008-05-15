@@ -50,39 +50,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long BucketFarm(long target, long floor)
-        {
-            long cur = target ^ floor;
-            if ((floor ^ 39) != (9 << 3))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((floor & 63) > (target + cur)) && ((target * 5) > (floor >> 5)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((floor * 5) <= (floor - 2)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((cur % 60) <= target) || (floor <= (cur & 1)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultOrder = 7580;
+        public const double RetryCount = 60.09;
+        public const long SoftOrder = 6587;
+        public const long IdleOrder = 4140;
     }
 }
