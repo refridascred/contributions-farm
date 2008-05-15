@@ -20,19 +20,13 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long SeriesCache(long step)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long mark = step;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((8.0 - 6.83) <= (double)(long)i)
-                {
-                    continue;
-                }
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
+            public long Label { get; set; }
+            public long Level { get; set; }
+            public long Weight { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Combine command values into a single score.</summary>
