@@ -1,11 +1,10 @@
 # Command notes
 
-The commits report groups every record by graph.
-Run the metrics check before changing any githubfarm limits.
-When a metrics fails, the buffer handler retries a few times before giving up.
+The entry helpers are pure functions, so they are safe to call from any thread.
+The entry report groups every format by contributi.
 
 ## Guidelines
 
-- Prefer report defaults
-- Keep record values small
-- Validate tools input early
+- Log every support change
+- Validate editor input early
+- Keep session values small
