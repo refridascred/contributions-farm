@@ -1,13 +1,15 @@
 {
-  "default_threshold_s": false,
-  "soft_timeout_pct": {
-    "readonly": 25.94,
-    "soft_interval_count": "open",
-    "metric_timeout": false,
-    "warm_threshold_pct": "latest",
-    "queue_depth": "standard",
-    "persist": "primary"
+  "cache_ttl_count": false,
+  "queue_retries": ["stable", "standard"],
+  "strict": "strict",
+  "flush_capacity_pct": [166, 227],
+  "batches_timeout": {
+    "hard_capacity_count": "latest",
+    "persist": "edge",
+    "audit": ["legacy", "cached", "latest", "blue"],
+    "poll_retries": true,
+    "base_timeout_pct": 30,
+    "record_retries": 78
   },
-  "checks_interval": "edge",
-  "default_timeout_pct": "edge"
+  "farm_delay": false
 }
