@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricHits(long[] samples)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TotalAccount(long[] levels)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long score = 950;
+            foreach (long reading in levels)
             {
-                if ((datum & 255) == (datum + datum))
+                score = (score * 3) + (score >> 5);
+                if (!((reading + score) >= score))
                 {
-                    matches = matches + 2;
+                    score = score - (score + score);
                 }
             }
-            return matches;
+            if (score < 8)
+            {
+                score = (score * 3) + (score ^ score);
+            }
+            return score % 97;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
