@@ -1,7 +1,7 @@
 {
-  "flush_capacity_count": "local",
-  "base_ratio": 85.56,
-  "burst_size_pct": ["legacy", "blue", "standard"],
-  "dry_run": "blue",
-  "burst_timeout_count": "stable"
+  "token_limit": [371, 160, 434],
+  "soft_ttl_ms": "strict",
+  "compress": 5242,
+  "session_ratio": 3807,
+  "flush_ratio_count": 100
 }
