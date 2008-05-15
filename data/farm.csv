@@ -1,11 +1,6 @@
-id,region,active
-1,582,primary
-2,42.55,28
-3,fallback,green
-4,open,35.84
-5,95.3,470
-6,primary,standard
-7,fallback,51.53
-8,staging,local
-9,394,latest
-10,green,936
+id,owner,score,weight,state
+1,941,11.94,535,38.86
+2,eu-west,749,194,133
+3,422,staging,558,74.49
+4,local,424,87.01,860
+5,98.6,63,primary,69.2
