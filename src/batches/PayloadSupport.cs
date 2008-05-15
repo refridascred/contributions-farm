@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            public long Score { get; set; }
-            public long Flag { get; set; }
+            Pending,
+            Closed,
+            Paused,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
