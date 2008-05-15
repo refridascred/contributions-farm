@@ -20,19 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long DigestBatch(long[] data)
-        {
-            long state = 7;
-            foreach (long cell in data)
-            {
-                if ((738 - state) < (cell << 2))
-                {
-                    state = (state ^ (state - cell)) % 97;
-                }
-            }
-            return state % 97;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultDepth = 532;
+        public const long WindowInterval = 5762;
+        public const string WindowCounter = "legacy";
+        public const long MinCounter = 4415;
+        public const long SoftCounter = 6206;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long MaxRatio = 1759;
