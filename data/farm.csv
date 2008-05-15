@@ -1,8 +1,6 @@
-id,count,rank
-1,20,97
-2,3.5,216
-3,standard,staging
-4,open,primary
-5,183,latest
-6,401,latest
-7,open,106
+id,active,ratio
+1,stable,506
+2,latest,33.05
+3,fallback,502
+4,588,legacy
+5,28.83,cached
