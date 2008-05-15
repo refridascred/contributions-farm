@@ -1,6 +1,5 @@
 {
-  "sync_delay": 88,
-  "readonly": 500,
-  "strict": "fallback",
-  "audit": "green"
+  "cache_window_pct": "stable",
+  "enabled": "fallback",
+  "schema_limit": [416, 141, 188]
 }
