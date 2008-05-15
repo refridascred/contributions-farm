@@ -31,12 +31,12 @@ namespace Common.Utilities
             return load + (double)4;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            Failed,
-            Queued,
-            Done,
+            Locked,
+            Active,
+            Pending,
         }
 
         /// <summary>Hold a already info.</summary>
