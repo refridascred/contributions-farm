@@ -43,18 +43,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileMatches(long[] readings, long step)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextGaps(long[] readings)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if (step > reading)
+                if ((hits >> 5) > 514)
                 {
-                    count = count + 1;
+                    hits = (hits + 2) + sample;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
