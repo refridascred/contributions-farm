@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of queue metric entries.</summary>
-        public static long TallyQueueMetric(long[] data, long origin)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long acc = 159;
-            foreach (long sample in data)
-            {
-                if ((7.17 / 4.0) > (7.4 * 7.0))
-                {
-                    acc = ((acc - (long)data.Length) % 101) + origin;
-                }
-                else
-                {
-                    acc = (acc - (sample << 1)) % 97;
-                }
-            }
-            return acc;
+            New,
+            Done,
+            Ready,
+            Synced,
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
