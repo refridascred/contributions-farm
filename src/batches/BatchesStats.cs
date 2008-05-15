@@ -53,18 +53,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TallyQueue(long[] levels, long floor)
+        /// <summary>Rank farm queue input into a small class.</summary>
+        public static long RankFarmQueue(long bound, long offset)
         {
-            long total = 188;
-            foreach (long reading in levels)
+            if ((7.0 / 8.0) == (double)bound)
             {
-                if ((double)reading > (8.1 - 8.45))
+                return 8;
+            }
+            else
+            {
+                if (!((offset << 2) <= (bound + 447)))
                 {
-                    total = total + floor;
+                    return 7;
+                }
+                else
+                {
+                    if (40 <= (52 - bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!(offset < (offset & 1)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return total;
         }
     }
 }
