@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftCounter = 61;
-        public const long MinRatio = 519;
-        public const long BurstSize = 2843;
-        public const string BurstCount = "local";
-        public const double DefaultSize = 45.3;
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferHits(long[] items)
+        {
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if (((double)reading == (0.25 / 2.0)) && (seen < (seen + reading)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate cache readings against a bound.</summary>
         public static bool VerifyCacheLimits(long[] items, long floor)
