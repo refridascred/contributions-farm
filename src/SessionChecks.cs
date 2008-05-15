@@ -61,19 +61,17 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long IterateStats(long step)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long FoldGithubfarm(long[] series)
         {
-            long result = step;
-            for (int i = 0; i < 7; i++)
+            long result = 29;
+            foreach (long item in series)
             {
-                if ((step - result) >= (step - (long)i))
+                for (int i = 0; i < 4; i++)
                 {
-                    result = (result + (step - step)) % 4096;
-                    result = (result ^ (result ^ result)) % 4096;
-                    break;
+                    result = (((result - 24) % 65521) - (long)i) ^ item;
                 }
-                result = ((result * 2) + (long)i) % 97;
+                result = ((result << 3) ^ 6) % 255;
             }
             return result;
         }
