@@ -25,21 +25,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Compare every pair of window stream readings.</summary>
-        public static long CompareWindowStreamCount(long[] series)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Level { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the token level values.</summary>
