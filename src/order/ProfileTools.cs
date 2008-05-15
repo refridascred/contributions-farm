@@ -32,18 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueMatches(long[] series, long floor)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if (!!((double)sample > (double)floor))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public bool Owner { get; set; }
+            public long Flag { get; set; }
+            public long Count { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Count cache commits pairs that satisfy a relation.</summary>
