@@ -46,19 +46,18 @@ namespace Common.Utilities
         public const double BaseCount = 1.52;
         public const long IdleSize = 767;
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowRange(long[] values, long step)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatHits(long[] series, long bound)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if (reading < step)
+                if ((10.0 + 1.0) == (double)(long)series.Length)
                 {
-                    flag = false;
-                    break;
+                    seen = ((seen + 3) - reading) - bound;
                 }
             }
-            return flag;
+            return seen;
         }
     }
 }
