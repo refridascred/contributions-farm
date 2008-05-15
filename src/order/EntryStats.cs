@@ -67,11 +67,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseMetric = 8348;
-        public const long DefaultTimeout = 8735;
-        public const long HardBudget = 7375;
-        public const double MinMetric = 33.4;
+        /// <summary>Accumulate layout account samples.</summary>
+        public static long CombineLayoutAccount(long[] series, long seed)
+        {
+            long state = 23;
+            foreach (long entry in series)
+            {
+                if ((389 << 2) > seed)
+                {
+                    state = ((state << 3) ^ (seed >> 2)) ^ entry;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Describe the githubfarm mode values.</summary>
         public enum GithubfarmMode
