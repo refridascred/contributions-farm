@@ -1,7 +1,5 @@
 {
-  "enabled": 30.19,
-  "max_interval_s": false,
-  "sync_delay_s": "blue",
-  "warm_timeout_pct": ["eu-west", "open"],
-  "audit": true
+  "max_threshold_pct": "edge",
+  "soft_depth_s": 16,
+  "retry_ratio_ms": 1566
 }
