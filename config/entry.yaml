@@ -1,8 +1,7 @@
 # entry settings
-flush_capacity: 2566
-strict: 84.99
-persist:
-  flush_window_count: standard
-  queue_capacity: 100
-  support_limit: 7
-  soft_limit_pct: fallback
+cache_timeout_count:
+  - 347
+  - 180
+poll_retries: false
+persist: 80
+batch_limit: 60
