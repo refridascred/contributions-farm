@@ -39,12 +39,16 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long SeriesAlready(long floor)
         {
-            public double Level { get; set; }
-            public double Ratio { get; set; }
-            public string Rank { get; set; } = "";
+            long result = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                result = ((result * 3) + (result - floor)) % 97;
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
         }
     }
 }
