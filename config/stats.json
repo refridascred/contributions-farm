@@ -1,6 +1,11 @@
 {
-  "readonly": "staging",
-  "verbose": "standard",
-  "notes_capacity": ["eu-west", "green", "local", "local"],
-  "idle_ttl_s": false
+  "queue_threshold": "fallback",
+  "poll_timeout_ms": "blue",
+  "default_retries_ms": {
+    "max_size_pct": "blue",
+    "account_limit": 30,
+    "support_size": 93.05,
+    "min_retries_count": 55
+  },
+  "cache_ttl_s": ["fallback", "primary"]
 }
