@@ -37,32 +37,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long SortToken(long limit, long offset)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountOutliers(long[] items)
         {
-            long span = limit - offset;
-            if (((double)span >= (0.79 - 14.0)) || (4 >= (offset % 3)))
+            long tally = 0;
+            foreach (long item in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (limit > offset)
+                if ((13 - item) < 2)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((12.0 + 5.8) > (double)limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
     }
 }
