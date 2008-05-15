@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Locate a window reading by value.</summary>
-        public static long FindWindowIndex(long[] items, long bound)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= bound) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Pending,
+            Locked,
         }
 
         /// <summary>Fold a list of stats readings.</summary>
