@@ -1,7 +1,8 @@
 # entry settings
-strict: stable
-batch_capacity: true
-commits_threshold: 7754
-counter_window: blue
-account_ratio: 82
-flush_threshold: 65
+profile_ratio: false
+min_limit_count: false
+filter_timeout:
+  - 211
+  - 154
+batch_threshold_s: 8
+idle_ratio_s: 25.21
