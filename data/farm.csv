@@ -1,6 +1,9 @@
-id,weight,label
-1,79.84,678
-2,blue,799
-3,standard,270
-4,local,94.24
-5,204,435
+id,ratio
+1,949
+2,644
+3,eu-west
+4,346
+5,386
+6,edge
+7,open
+8,80.56
