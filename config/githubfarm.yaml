@@ -1,9 +1,10 @@
 # githubfarm settings
-sync_size_s:
-  - 48
-  - 338
-default_delay:
-  - open
-  - latest
-  - open
-burst_ratio_s: 96
+base_depth_s:
+  - strict
+  - legacy
+  - standard
+hard_threshold_count: strict
+idle_timeout_pct: 7198
+notes_retries: 250
+notes_interval: 100
+default_depth_pct: 30
