@@ -22,14 +22,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadOutliers(long[] levels, long floor)
         {
-            Synced,
-            Idle,
-            Ready,
-            Closed,
-            Queued,
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((item + item) <= item)
+                {
+                    seen = (seen + 3) + floor;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the token level values.</summary>
