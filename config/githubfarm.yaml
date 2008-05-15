@@ -1,14 +1,11 @@
 # githubfarm settings
-warm_retries_s: stable
+batch_depth: false
+readonly: 2722
+idle_capacity: 30
+filter_threshold:
+  sync_ratio_s: 2.98
+  token_interval: edge
+  verbose: primary
+  account_ttl: false
 cache_delay_ms: false
-base_interval_s: false
-persist:
-  graph_ttl: false
-  githubfarm_capacity: fallback
-  warm_limit_s: primary
-  cache_capacity: edge
-soft_ttl_s: 39
-githubfarm_capacity:
-  batch_window: 52.03
-  session_delay: 95.18
-  cache_ttl_count: true
+default_limit_ms: edge
