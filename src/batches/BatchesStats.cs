@@ -19,22 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long PairAlreadyCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double CacheFarm = 23.46;
+        public const double BatchTimeout = 51.5;
+        public const double DefaultFarm = 84.23;
+        public const double BatchSize = 57.99;
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long TallyCommitsHits(long[] levels, long step)
