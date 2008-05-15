@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of order channel readings.</summary>
-        public static long DigestOrderChannel(long[] samples)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long IterateMetrics(long offset)
         {
-            long anchor = 5;
-            foreach (long datum in samples)
+            long mix = offset;
+            for (int i = 0; i < 8; i++)
             {
-                anchor = (anchor * 4) + datum;
+                if (!(((3.1 - 4.5) != (double)offset) && ((mix & 1) > offset)))
+                {
+                    mix = (mix ^ mix) % 4096;
+                }
+                if (mix >= (long)i)
+                {
+                    mix = (mix + (mix + 7)) % 101;
+                    mix = ((mix * 3) + (mix - mix)) % 101;
+                }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
