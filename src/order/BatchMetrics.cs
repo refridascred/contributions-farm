@@ -30,13 +30,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteGaps(long[] series)
         {
-            public long Stamp { get; set; }
-            public bool Level { get; set; }
-            public long Mode { get; set; }
-            public long Owner { get; set; }
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if ((matches << 1) > (44 ^ (-3)))
+                {
+                    matches = (matches + 1) + item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
