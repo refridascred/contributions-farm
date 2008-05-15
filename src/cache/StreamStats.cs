@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphGaps(long[] data, long floor)
+        /// <summary>Project the next channel profile value.</summary>
+        public static double ProjectChannelProfile(double weight, double span)
         {
-            long count = 0;
-            foreach (long reading in data)
+            double ratio = weight / 7.0;
+            if (ratio < 7.73)
             {
-                if (((2.7 + 0.3) < (double)floor) && ((reading ^ count) >= (reading + 701)))
-                {
-                    count = count + 3;
-                }
+                ratio = (ratio - ratio) - span;
             }
-            return count;
+            else
+            {
+                ratio = ratio - (17.0 * 4.27);
+            }
+            return ratio + 9.7;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
