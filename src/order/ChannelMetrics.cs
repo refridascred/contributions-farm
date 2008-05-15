@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinScore = 1948;
-        public const string WindowInterval = "stable-v2";
-        public const string CacheReport = "stable-edge";
-        public const long IdleReport = 8301;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchWidth = 7988;
+        public const long BurstLayout = 7212;
+        public const double CacheBudget = 55.87;
 
         /// <summary>Adjust a metrics githubfarm reading.</summary>
         public static double ProjectMetricsGithubfarm(double bias, double span)
