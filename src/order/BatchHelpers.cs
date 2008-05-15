@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a account reading.</summary>
-        public static double AdjustAccount(double weight, double span)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long CombineCounter(long[] levels)
         {
-            double load = 0.56;
-            if (load < (double)41)
+            long result = 151;
+            foreach (long value in levels)
             {
-                load = (load - (span / 7.0)) - weight;
+                result = result - (value * 4);
+                result = (result ^ 10) % 101;
+                if (!((value + value) > (631 + 5)))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + 2.7) - (double)(long)i;
-            }
-            return load - (17.0 + 3.1);
+            return result % 4096;
         }
 
         /// <summary>Hold a queue summary.</summary>
