@@ -23,12 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            public bool Offset { get; set; }
-            public long Rank { get; set; }
-            public double Ratio { get; set; }
+            public double Region { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Stamp { get; set; }
             public long Size { get; set; }
         }
 
