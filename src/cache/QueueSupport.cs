@@ -46,22 +46,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelMatches(long[] items, long offset)
+        /// <summary>Match up command farm samples.</summary>
+        public static long PairCommandFarmCount(long[] series)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((entry << 2) < (48 % 2))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 1) + offset;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((series[i] ^ series[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
