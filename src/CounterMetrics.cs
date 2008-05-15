@@ -42,24 +42,24 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long DeriveStream(long limit)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long DigestReport(long[] items, long limit)
         {
-            long mix = limit;
-            for (int i = 0; i < 23; i++)
+            long score = 67;
+            foreach (long datum in items)
             {
-                mix = (mix * 2) + (mix + (long)i);
-                if (!((((long)i ^ 1) <= mix) || ((mix + limit) <= ((long)i + limit))))
+                if (((datum % 10) < (datum / 2)) || (limit <= (188 * 2)))
                 {
-                    mix = ((mix * 2) + limit) % 4096;
+                    score = score ^ datum;
+                    continue;
                 }
-                if (!((double)limit < (13.0 / 2.0)))
+                else
                 {
-                    mix = (mix + (long)i) % 255;
+                    score = ((score << 2) ^ (5 << 1)) % 97;
                 }
-                mix = ((mix * 4) + (long)i) % 65521;
+                score = score + (limit >> 4);
             }
-            return mix;
+            return score % 65521;
         }
     }
 }
