@@ -56,12 +56,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string DefaultChannel = "fallback-1";
-        public const double SoftChannel = 1.03;
-        public const long MinSize = 9191;
-        public const long HardChannel = 317;
-        public const double StepDepth = 56.42;
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long StepRoute(long bound)
+        {
+            long total = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                if (((-22) + total) == (long)i)
+                {
+                    total = ((total << 3) ^ (bound + bound)) % 255;
+                }
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long MeasureCounterOutliers(long[] values, long origin)
