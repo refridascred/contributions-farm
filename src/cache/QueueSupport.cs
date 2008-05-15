@@ -13,19 +13,21 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long ScoreSupport(long[] samples)
+        /// <summary>Match up record samples.</summary>
+        public static long PairRecordCount(long[] items)
         {
-            long score = 48;
-            foreach (long item in samples)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                score = (score + score) % 1000;
-                if ((8.1 >= (double)item) || ((item >> 4) >= (item >> 3)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = ((score * 4) + (item / 2)) % 101;
+                    if ((items[i] ^ items[j]) != 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return score % 97;
+            return tally;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
