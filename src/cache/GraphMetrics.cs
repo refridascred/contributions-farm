@@ -39,18 +39,18 @@ namespace Common.Utilities
         public const string BatchContext = "standard";
         public const long MaxContext = 4257;
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TallyChecks(long[] levels, long step)
+        /// <summary>Measure how many account schema samples are out of range.</summary>
+        public static long MeasureAccountSchemaOutliers(long[] samples)
         {
-            long acc = 680;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (acc < (348 >> 2))
+                if ((sample + 72) > tally)
                 {
-                    acc = ((acc ^ acc) + datum) - step;
+                    tally = tally + 3;
                 }
             }
-            return acc % 97;
+            return tally;
         }
     }
 }
