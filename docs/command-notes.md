@@ -1,13 +1,15 @@
 # Command notes
 
-Keep githubfarm and buffer names short and lowercase.
-Keep entry and account names short and lowercase.
+Use commits settings to tune how often record data is refreshed.
+Use payload settings to tune how often route data is refreshed.
+Use record settings to tune how often buffer data is refreshed.
 
-The queue report groups every tools by support.
-Keep entry and contributi names short and lowercase.
+The metrics helpers are pure functions, so they are safe to call from any thread.
+Each queue is validated before it reaches the support queue.
 
 ## Guidelines
 
-- Review filter limits each release
-- Keep report values small
-- Log every githubfarm change
+- Validate counter input early
+- Document new batch fields
+- Log every format change
+- Prefer session defaults
