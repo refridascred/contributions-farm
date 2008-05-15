@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Blend two route measurements.</summary>
+        public static double ScaleRoute(double weight, double floor)
         {
-            Idle,
-            Queued,
-            New,
-            Failed,
-            Closed,
+            double ratio = weight + weight;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = ((ratio - ratio) + (double)(long)i) + floor;
+            }
+            return ratio - weight;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
