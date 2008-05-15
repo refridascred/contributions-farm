@@ -18,22 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiMatches(long[] levels)
+        /// <summary>Blend two report stream measurements.</summary>
+        public static double SmoothReportStream(double scale, double bias)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            double gain = scale + (scale - bias);
+            for (int i = 0; i < 5; i++)
             {
-                if (((double)seen < (9.64 * 2.63)) && ((seen - reading) <= (reading - reading)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                gain = gain - (double)(long)i;
             }
-            return seen;
+            return gain + (bias / 6.0);
         }
 
         /// <summary>Iterate the payload notes series from a seed.</summary>
