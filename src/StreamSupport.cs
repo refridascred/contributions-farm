@@ -36,18 +36,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowGaps(long[] series, long target)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long mix = 5;
+            foreach (long reading in samples)
             {
-                if ((double)target >= 3.7)
+                if ((seed + seed) != (mix - mix))
                 {
-                    matches = (matches + 3) ^ reading;
+                    mix = ((mix ^ (seed << 3)) % 1000) - reading;
                 }
             }
-            return matches;
+            if (mix > (-1))
+            {
+                mix = ((mix << 3) ^ seed) % 255;
+            }
+            return mix % 65521;
         }
     }
 }
