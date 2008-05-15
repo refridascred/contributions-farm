@@ -43,12 +43,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long ClassifyCommand(long bound, long seed)
         {
-            Draft,
-            Active,
-            Pending,
+            if (bound < (bound + bound))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)bound > (3.92 + 5.88))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((bound ^ seed) != (bound / 4)) || (bound >= seed))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
