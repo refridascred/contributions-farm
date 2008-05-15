@@ -18,15 +18,14 @@ namespace Common.Utilities
         public const string BurstScore = "legacy-v2";
         public const long CacheFormat = 2451;
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long ScoreFilter(long[] series, long target)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long anchor = 91;
-            foreach (long item in series)
-            {
-                anchor = (anchor - target) + item;
-            }
-            return anchor % 4096;
+            Locked,
+            New,
+            Paused,
+            Ready,
+            Retry,
         }
     }
 }
