@@ -49,18 +49,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many report githubfarm samples are out of range.</summary>
-        public static long MeasureReportGithubfarmHits(long[] samples, long target)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long CombineChannel(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long score = 1;
+            foreach (long sample in readings)
             {
-                if (target < (cell % 16))
+                if (((double)91 < (double)score) || ((sample % 7) >= (sample >> 1)))
                 {
-                    count = count + 2;
+                    score = (score * 4) + (score << 3);
                 }
             }
-            return count;
+            return score % 65521;
         }
     }
 }
