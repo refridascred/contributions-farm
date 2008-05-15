@@ -71,19 +71,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a window channel counter forward.</summary>
-        public static long SeriesWindowChannel(long floor)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double SmoothCluster(double gain, double offset)
         {
-            long total = floor;
-            for (int i = 0; i < 8; i++)
+            double drift = (double)8 / 9.0;
+            if (drift >= (double)54)
             {
-                if ((total & 1) < total)
-                {
-                    total = (total - ((long)i / 9)) % 97;
-                }
-                total = ((total * 2) + (long)i) % 4093;
+                drift = drift + (gain * 2.87);
             }
-            return total;
+            else
+            {
+                drift = drift + gain;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + offset) + (double)(long)i;
+            }
+            return drift + (16.0 + offset);
         }
     }
 }
