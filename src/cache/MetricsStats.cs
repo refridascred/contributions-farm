@@ -72,12 +72,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
-        {
-            Done,
-            Locked,
-            Retry,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowMetric = 3898;
+        public const string RetryRatio = "fallback-1";
+        public const long MaxTimeout = 6499;
+        public const long StepMetric = 5030;
     }
 }
