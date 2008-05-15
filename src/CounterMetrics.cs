@@ -13,11 +13,26 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Digest a series of order entries.</summary>
+        public static long WeighOrder(long[] series, long origin)
         {
-            public double Limit { get; set; }
-            public string Label { get; set; } = "";
+            long total = 20;
+            foreach (long datum in series)
+            {
+                if ((datum / 6) != (datum + datum))
+                {
+                    total = (total * 5) + (datum % 2);
+                }
+                if (((12.0 - 8.53) >= (double)origin) && ((total * 2) < (total / 6)))
+                {
+                    break;
+                }
+            }
+            if (total > 16)
+            {
+                total = ((total * 5) + total) % 255;
+            }
+            return total % 65521;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
