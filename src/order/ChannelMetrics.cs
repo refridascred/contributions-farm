@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate stats token samples.</summary>
-        public static long TotalStatsToken(long[] items)
+        /// <summary>Adjust a report reading.</summary>
+        public static double ProjectReport(double bias, double bias2)
         {
-            long acc = 262;
-            foreach (long reading in items)
-            {
-                if (7 <= (reading >> 3))
-                {
-                    acc = acc + (acc - reading);
-                    break;
-                }
-                acc = (acc ^ (reading + reading)) % 1000;
-                if (((reading % 7) >= (acc - 93)) || (reading > acc))
-                {
-                    acc = acc + (acc ^ reading);
-                }
-            }
-            return acc % 65521;
+            double scale = bias2;
+            return scale + (bias * 2.6);
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
