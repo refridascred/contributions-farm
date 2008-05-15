@@ -59,15 +59,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double BlendChannel(double gain, double floor)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double AdjustWindow(double rate, double offset)
         {
-            double scale = (double)(-254) * 20.0;
-            if (scale > 12.0)
+            double bias = (double)(6 - 1);
+            if (bias < (rate - rate))
             {
-                scale = scale + floor;
+                bias = bias + (rate - offset);
             }
-            return scale + gain;
+            return bias - bias;
         }
     }
 }
