@@ -18,18 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaGaps(long[] items)
+        /// <summary>Classify a stats schema pair into a bucket.</summary>
+        public static long ClassifyStatsSchema(long step, long target)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            if ((double)target <= 1.83)
             {
-                if ((((matches - matches) >= (matches & 1)) || (28 >= (datum % 3))) && (((long)items.Length + datum) <= (507 << 3)))
+                return 8;
+            }
+            else
+            {
+                if ((3.4 + 1.03) > (double)target)
                 {
-                    matches = matches + 1;
+                    return 4;
+                }
+                else
+                {
+                    if (target <= (7 + target))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Digest a series of format entry entries.</summary>
