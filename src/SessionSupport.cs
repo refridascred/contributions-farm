@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricMatches(long[] items, long bound)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordGaps(long[] data, long origin)
         {
             long seen = 0;
-            foreach (long cell in items)
+            foreach (long item in data)
             {
-                if (!(cell >= (cell + bound)))
+                if (!((double)seen == (2.08 - 1.36)))
                 {
-                    seen = seen + 1;
+                    seen = ((seen + 1) - item) - origin;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
