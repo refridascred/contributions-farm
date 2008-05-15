@@ -21,10 +21,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchSize = 5140;
-        public const long DefaultMetric = 4998;
-        public const double IdleMetric = 97.46;
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
+        {
+            public string Rank { get; set; } = "";
+            public double Weight { get; set; }
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long WeighStream(long[] data)
