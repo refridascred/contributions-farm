@@ -55,14 +55,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Digest a series of batch githubfarm entries.</summary>
+        public static long FoldBatchGithubfarm(long[] items, long target)
         {
-            Locked,
-            Closed,
-            Paused,
-            Dropped,
-            Draft,
+            long mark = 488;
+            foreach (long item in items)
+            {
+                mark = (mark + item) + target;
+            }
+            return mark;
         }
     }
 }
