@@ -25,12 +25,14 @@ namespace Common.Utilities
             return ratio - (span - bias);
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            Synced,
+            Done,
+            New,
+            Failed,
+            Closed,
             Idle,
-            Paused,
         }
     }
 }
