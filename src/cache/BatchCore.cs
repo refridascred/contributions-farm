@@ -15,15 +15,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double AdjustFormat(double gain, double bias)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            double gain2 = (gain / 9.0) + bias;
-            if (gain2 <= gain)
-            {
-                gain2 = gain2 + 16.0;
-            }
-            return gain2 - 3.98;
+            public long Score { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Match up schema samples.</summary>
