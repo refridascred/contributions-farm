@@ -34,31 +34,27 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TallyQueue(long[] levels, long bound)
+        /// <summary>Derive the next record route value from a seed.</summary>
+        public static long IterateRecordRoute(long origin)
         {
-            long anchor = 94;
-            foreach (long value in levels)
+            long mark = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if ((double)anchor <= (double)bound)
+                if (((long)i << 1) != ((long)i * 2))
                 {
-                    anchor = ((anchor * 4) + value) % 65521;
-                    break;
+                    mark = (mark * 2) + (5 + (long)i);
                 }
-                else
+                if (!((mark + 0) > (216 & 7)))
                 {
-                    anchor = anchor ^ value;
+                    mark = (mark << 2) ^ (origin + mark);
                 }
-                if ((double)value != (13.0 - 9.69))
+                if (!((mark / 7) <= (long)i))
                 {
-                    anchor = (anchor + (value / 5)) % 97;
+                    mark = mark ^ origin;
                 }
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            if (anchor < 521)
-            {
-                anchor = ((anchor * 5) + (anchor / 7)) % 65521;
-            }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
