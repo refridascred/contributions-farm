@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardTimeout = 5486;
-        public const string StepAccount = "latest-1";
-        public const double MaxAccount = 22.66;
-        public const long StepRatio = 9;
-        public const long WindowWidth = 4502;
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
+        {
+            public string Score { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Weight { get; set; }
+            public bool Token { get; set; }
+        }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
         public static long RankProfile(long floor, long step)
