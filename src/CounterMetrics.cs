@@ -43,10 +43,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string SoftFactor = "local";
-        public const long RetryEditor = 2288;
-        public const double BatchEditor = 59.43;
-        public const double LimitEditor = 33.3;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheSpan = 8111;
+        public const string WindowSchema = "standard-edge";
+        public const long IdleTimeout = 123;
+        public const double DefaultSchema = 62.65;
     }
 }
