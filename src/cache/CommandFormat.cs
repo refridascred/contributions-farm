@@ -39,10 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double IdleLevel = 10.19;
-        public const long SoftWindow = 8375;
-        public const string BatchDepth = "latest-edge";
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
+        {
+            Dropped,
+            Done,
+            Synced,
+            Active,
+        }
 
         /// <summary>Digest a series of record metrics entries.</summary>
         public static long ScoreRecordMetrics(long[] series)
