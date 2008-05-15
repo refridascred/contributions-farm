@@ -1,13 +1,8 @@
 # support settings
-audit:
-  burst_ratio_pct: 57
-  buffer_ttl:
-    cache_limit_s: 14.51
-    soft_size_s: open
-    sync_retries_pct: 14.24
-    sync_interval_count: 250
-    max_window_pct: 58
-  burst_delay_s: standard
-batch_ttl: 2.41
-sync_size_ms: 12.66
-batch_timeout: 31
+cache_retries_count: 47.24
+burst_limit_ms: 12.2
+poll_timeout_count:
+  readonly: legacy
+  min_threshold_ms: 39
+  burst_limit: true
+  retry_ttl_s: 87.83
