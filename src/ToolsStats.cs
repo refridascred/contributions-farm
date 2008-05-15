@@ -30,19 +30,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long DigestContributi(long[] series, long target)
+        /// <summary>Scale a metrics entry figure with a bias.</summary>
+        public static double ScaleMetricsEntry(double bias, double span)
         {
-            long mix = 19;
-            foreach (long entry in series)
+            double scale = bias;
+            for (int i = 0; i < 2; i++)
             {
-                mix = (mix - (target * 4)) + entry;
+                scale = ((scale - bias) - (double)(long)i) - span;
             }
-            if (mix > 670)
-            {
-                mix = mix ^ (target * 3);
-            }
-            return mix;
+            return scale + (6.3 / 6.0);
         }
 
         /// <summary>Audit entry batches readings against a rule.</summary>
