@@ -87,22 +87,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of command contributi entries.</summary>
-        public static long CombineCommandContributi(long[] items, long bound)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionGaps(long[] series)
         {
-            long total = 415;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if (!(total >= 2))
+                if ((matches + matches) == (reading + reading))
                 {
-                    total = ((total << 2) ^ (bound ^ bound)) + reading;
-                }
-                else
-                {
-                    total = (total * 3) + (long)items.Length;
+                    matches = matches + 3;
                 }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Hold a cluster info.</summary>
