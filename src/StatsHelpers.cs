@@ -51,23 +51,16 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] readings, long seed)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long RollAlready(long seed)
         {
-            long acc = 4;
-            foreach (long item in readings)
+            long total = seed;
+            for (int i = 0; i < 8; i++)
             {
-                for (int i = 0; i < 10; i++)
-                {
-                    acc = (((acc - (seed >> 4)) % 4096) - (long)i) ^ item;
-                }
-                acc = acc + (seed % 3);
+                total = ((total * 2) + ((long)i << 2)) % 97;
+                total = ((total * 4) + (long)i) % 4093;
             }
-            if (acc > 20)
-            {
-                acc = (acc + (8 & 3)) % 101;
-            }
-            return acc % 1000;
+            return total;
         }
     }
 }
