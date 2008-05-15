@@ -51,17 +51,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long SeekFilterIndex(long[] values, long target)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ProjectEntry(double bias, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double drift = bias;
+            if (drift > (span / 9.0))
             {
-                if ((values[i] >= target) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                drift = drift + drift;
             }
-            return -1;
+            return drift + (drift - 15.0);
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
