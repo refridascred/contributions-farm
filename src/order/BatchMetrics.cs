@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long ClassifyToken(long limit, long limit2)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            if (((4.7 / 3.0) > (double)limit) || ((0 / 2) > (limit2 + 3)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((limit + limit2) > (limit2 << 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public bool Score { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Describe the command kind values.</summary>
