@@ -29,15 +29,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long DigestCache(long[] items)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaOutliers(long[] values)
         {
-            long result = 95;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                result = ((result * 5) + (result * 3)) - sample;
+                if ((reading ^ tally) != (reading >> 5))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
