@@ -53,18 +53,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsGaps(long[] readings, long step)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if (((-436) / 2) == (item - step))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Pending,
+            Active,
+            Retry,
+            Done,
         }
     }
 }
