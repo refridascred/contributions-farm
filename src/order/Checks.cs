@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferHits(long[] items)
+        /// <summary>Count the account batches entries that pass the check.</summary>
+        public static long AuditAccountBatchesMatches(long[] series, long origin)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if (((double)reading == (0.25 / 2.0)) && (seen < (seen + reading)))
+                if ((origin * 4) >= (origin * 5))
                 {
-                    seen = seen + 2;
+                    matches = (matches + 3) + cell;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
