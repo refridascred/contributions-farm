@@ -1,8 +1,6 @@
 {
-  "max_ratio": true,
-  "burst_window": 100,
-  "batch_threshold": ["staging", "latest"],
-  "notes_depth": 63.79,
-  "entry_delay": 93.03,
-  "cache_window_count": 100
+  "cache_depth_pct": 8247,
+  "entry_window": 3405,
+  "strict": 6248,
+  "batch_size": false
 }
