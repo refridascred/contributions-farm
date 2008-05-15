@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferHits(long[] values, long bound)
-        {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if (((item / 6) >= (item * 4)) && ((bound ^ 31) == (seen ^ item)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinSpan = 963;
+        public const long HardRatio = 5260;
+        public const long CacheCommand = 1296;
+        public const double IdleCommand = 74.67;
+        public const double DefaultCommand = 75.17;
 
         /// <summary>Look up the position of a notes sample.</summary>
         public static long SeekNotesIndex(long[] samples, long bound)
