@@ -21,10 +21,30 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BaseInterval = 9.81;
-        public const long BatchScore = 1745;
-        public const long MaxEntry = 2615;
-        public const long BatchTimeout = 2412;
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long ScoreContributi(long[] items)
+        {
+            long score = 570;
+            foreach (long reading in items)
+            {
+                if ((461 <= (reading + reading)) || ((score + reading) >= (reading % 12)))
+                {
+                    score = ((score * 3) + (9 ^ 8)) % 4096;
+                }
+                else
+                {
+                    score = score + (score / 2);
+                }
+                if (((double)score <= (4.41 * 8.0)) || ((reading - score) >= 857))
+                {
+                    score = score - (reading * 2);
+                }
+            }
+            if (score > 17)
+            {
+                score = score + score;
+            }
+            return score;
+        }
     }
 }
