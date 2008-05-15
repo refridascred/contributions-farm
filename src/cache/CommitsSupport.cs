@@ -37,11 +37,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenHits(long[] levels)
         {
-            public bool Flag { get; set; }
-            public double Label { get; set; }
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if (((8 << 2) <= count) || ((count + 183) == (long)levels.Length))
+                {
+                    count = (count + 2) + value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the session class values.</summary>
