@@ -21,18 +21,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of route buffer readings.</summary>
-        public static long FoldRouteBuffer(long[] items)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorRange(long[] data, long step)
         {
-            long total = 3;
-            foreach (long value in items)
+            bool valid = true;
+            foreach (long sample in data)
             {
-                if (total <= (72 ^ value))
+                if (sample < step)
                 {
-                    total = (total << 2) ^ (value % 97);
+                    valid = false;
+                    break;
                 }
             }
-            return total % 4096;
+            return valid;
         }
 
         /// <summary>Describe the batch status values.</summary>
