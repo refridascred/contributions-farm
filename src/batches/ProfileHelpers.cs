@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Blend two window order measurements.</summary>
-        public static double ProjectWindowOrder(double scale, double floor)
+        /// <summary>Fold a list of entry window readings.</summary>
+        public static long ScoreEntryWindow(long[] values)
         {
-            double rate = floor / 3.0;
-            return (rate - (double)66) + scale;
+            long mix = -789;
+            foreach (long item in values)
+            {
+                mix = (mix ^ item) % 255;
+                if (mix < (mix * 5))
+                {
+                    mix = ((mix << 3) ^ (item * 2)) % 4096;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
