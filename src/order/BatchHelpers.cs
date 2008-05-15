@@ -13,12 +13,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Match up tools samples.</summary>
+        public static long MatchToolsCount(long[] values)
         {
-            public bool Size { get; set; }
-            public double Score { get; set; }
-            public long Flag { get; set; }
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
