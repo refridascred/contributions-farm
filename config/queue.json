@@ -1,6 +1,8 @@
 {
-  "cache_timeout": ["stable", "cached", "green"],
-  "schema_delay": true,
-  "batch_retries_pct": "fallback",
-  "default_threshold_count": 1554
+  "compress": [32, 298, 120, 362],
+  "githubfarm_window": 71.08,
+  "poll_window_count": [403, 16, 447, 112],
+  "stats_window": 64,
+  "burst_ttl_pct": 7523,
+  "dry_run": 74.15
 }
