@@ -48,19 +48,24 @@ namespace Common.Utilities
         public const string RetryInterval = "primary-v2";
         public const double MaxFormat = 15.71;
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TallyChannel(long[] items, long limit)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long GradeEntry(long bound, long floor)
         {
-            long acc = 478;
-            foreach (long cell in items)
+            if ((bound >> 4) > (floor ^ bound))
             {
-                acc = ((acc * 2) + (cell * 3)) % 4096;
-                if ((95 - acc) == (15 << 2))
+                return 5;
+            }
+            else
+            {
+                if ((bound + floor) != (floor ^ floor))
                 {
-                    acc = (acc + (limit % 3)) % 4096;
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return acc;
         }
     }
 }
