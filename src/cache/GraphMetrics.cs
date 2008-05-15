@@ -13,18 +13,11 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportMatches(long[] values, long step)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if (((step < seen) || ((sample - sample) >= (sample << 1))) && ((seen << 1) < sample))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public double Level { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a commits record.</summary>
