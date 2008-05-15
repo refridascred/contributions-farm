@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowBuffer = 323;
-        public const long WindowSpan = 249;
-        public const long StepBuffer = 8042;
-        public const long BatchBuffer = 8297;
-        public const long HardBuffer = 8290;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BatchBudget = "strict";
+        public const long DefaultChannel = 1452;
+        public const long LimitSize = 3502;
+        public const string BurstChannel = "open";
+        public const double DefaultScore = 51.51;
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool GuardEditorRange(long[] values, long seed)
