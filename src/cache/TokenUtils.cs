@@ -13,13 +13,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderGaps(long[] values)
         {
-            Active,
-            Closed,
-            Retry,
-            Pending,
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if (!((hits & 1) == (hits + entry)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
