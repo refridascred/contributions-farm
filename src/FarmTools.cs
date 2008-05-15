@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LocateMetricsIndex(long[] values, long limit)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long IterateStats(long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if ((values[i] <= limit) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                state = ((state * 5) + (long)i) % 97;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Hold a support record.</summary>
