@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandMatches(long[] data, long bound)
+        /// <summary>Match up payload counter samples.</summary>
+        public static long OverlapPayloadCounterCount(long[] data)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(((long)data.Length - count) <= (bound * 2)) && ((5 >> 5) >= count))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = (count + 1) + cell;
+                    if ((data[i] ^ data[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
