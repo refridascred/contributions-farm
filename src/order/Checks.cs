@@ -37,18 +37,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyHits(long[] series)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long StepBatch(long limit)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long mix = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if (12.0 < (double)seen)
-                {
-                    seen = (seen + 3) + item;
-                }
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Define already limits and defaults.</summary>
