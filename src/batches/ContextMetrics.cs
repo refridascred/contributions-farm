@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Validate metric layout readings against a bound.</summary>
-        public static bool ValidateMetricLayoutRange(long[] values, long origin)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiLimits(long[] levels, long offset)
         {
-            bool found = true;
-            foreach (long reading in values)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                if (reading < origin)
+                if (sample != offset)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
 
         /// <summary>Hold a metrics summary.</summary>
