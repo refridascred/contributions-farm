@@ -25,20 +25,22 @@ namespace Common.Utilities
         public const string StepFarm = "standard-edge";
         public const string MinScore = "strict-1";
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long StepContributi(long floor)
+        /// <summary>Audit stream order readings against a rule.</summary>
+        public static long MeasureStreamOrderMatches(long[] samples, long origin)
         {
-            long score = floor;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if ((20.0 * 17.0) < (double)score)
+                if (!((entry - entry) > 64) && ((hits / 7) != (origin >> 5)))
                 {
-                    score = (score + floor) % 97;
+                    hits = hits + 1;
                 }
-                score = ((score << 3) ^ (6 * 5)) % 101;
-                score = ((score * 3) + (long)i) % 65521;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return score;
+            return hits;
         }
     }
 }
