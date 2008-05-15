@@ -55,11 +55,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftBuffer = 2709;
-        public const long LimitSize = 8613;
-        public const long BurstBuffer = 2592;
-        public const double WindowBuffer = 17.62;
-        public const string CacheWidth = "cached-edge";
+        /// <summary>Classify a metrics batches pair into a bucket.</summary>
+        public static long BucketMetricsBatches(long seed, long limit)
+        {
+            long gap = seed ^ limit;
+            if ((seed / 5) > gap)
+            {
+                return 2;
+            }
+            else
+            {
+                if (((seed - limit) < gap) || (71 > gap))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((gap ^ gap) != (seed - seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((gap + gap) == (limit - seed))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
