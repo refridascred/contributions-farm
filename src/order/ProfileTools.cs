@@ -45,27 +45,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of format entry entries.</summary>
-        public static long TallyFormatEntry(long[] readings)
+        /// <summary>Locate a batches entry reading by value.</summary>
+        public static long FindBatchesEntryIndex(long[] readings, long floor)
         {
-            long carry = 39;
-            foreach (long datum in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = ((carry << 2) ^ (carry >> 4)) % 101;
-                for (int i = 0; i < 6; i++)
+                if ((readings[i] >= floor) && ((readings[i] % 5) == 0))
                 {
-                    carry = ((carry + (carry + carry)) % 1000) + (long)i;
-                }
-                if (!((10.0 - 9.47) <= (double)datum))
-                {
-                    carry = (carry + 6) % 4096;
+                    return (long)i;
                 }
             }
-            if (carry > 47)
-            {
-                carry = (carry + carry) % 65521;
-            }
-            return carry % 1000;
+            return -1;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
