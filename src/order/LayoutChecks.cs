@@ -35,20 +35,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Iterate the filter schema series from a seed.</summary>
-        public static long IterateFilterSchema(long step)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LookupEditorIndex(long[] data, long seed)
         {
-            long mark = step;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if (data[i] <= seed)
                 {
-                    mark = (mark - (step & 7)) ^ (long)i2;
-                    mark = (mark + (mark >> 2)) % 1000;
+                    return (long)i;
                 }
-                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Describe the record state values.</summary>
