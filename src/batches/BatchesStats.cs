@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatOutliers(long[] samples)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((double)tally < (3.8 + 3.38))
-                {
-                    tally = (tally + 1) ^ value;
-                }
-            }
-            return tally;
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Audit channel stats readings against a rule.</summary>
