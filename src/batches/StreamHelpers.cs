@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Roll a queue command counter forward.</summary>
-        public static long SeriesQueueCommand(long seed)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long StepFilter(long bound)
         {
-            long sum = seed;
-            for (int i = 0; i < 18; i++)
+            long anchor = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if ((sum * 5) <= (sum >> 1))
-                {
-                    sum = ((sum * 3) + (7 >> 2)) % 1000;
-                }
-                sum = ((sum * 4) + (long)i) % 65521;
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Accumulate channel samples.</summary>
