@@ -34,19 +34,32 @@ namespace Common.Utilities
         public const long DefaultRatio = 2908;
         public const long DefaultDepth = 2211;
 
-        /// <summary>Validate report channel readings against a bound.</summary>
-        public static bool CheckReportChannelLimits(long[] samples, long seed)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long SortToken(long limit, long offset)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            long span = limit - offset;
+            if (((double)span >= (0.79 - 14.0)) || (4 >= (offset % 3)))
             {
-                if (cell <= seed)
+                return 5;
+            }
+            else
+            {
+                if (limit > offset)
                 {
-                    found = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((12.0 + 5.8) > (double)limit)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return found;
         }
     }
 }
