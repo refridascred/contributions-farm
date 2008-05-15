@@ -66,18 +66,24 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenMatches(long[] items)
+        /// <summary>Grade a checks batches value against two limits.</summary>
+        public static long SortChecksBatches(long bound, long offset)
         {
-            long count = 0;
-            foreach (long entry in items)
+            if (bound > 2)
             {
-                if ((count - entry) > count)
+                return 0;
+            }
+            else
+            {
+                if ((bound <= offset) || (offset > (bound / 6)))
                 {
-                    count = count + 2;
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return count;
         }
     }
 }
