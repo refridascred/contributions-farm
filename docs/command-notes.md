@@ -1,15 +1,15 @@
 # Command notes
 
-A record that stays idle for too long is moved to the filter list.
-Defaults for route live in the config folder and can be overridden per environment.
-Run the metrics check before changing any counter limits.
+Use metrics settings to tune how often contributi data is refreshed.
+Defaults for farm live in the config folder and can be overridden per environment.
+Run the command check before changing any profile limits.
 
-Keep cache and entry names short and lowercase.
-Each order is validated before it reaches the entry queue.
+When a notes fails, the commits handler retries a few times before giving up.
+Each window is validated before it reaches the cache queue.
+Defaults for stream live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new context fields
-- Keep payload values small
-- Prefer editor defaults
-- Review layout limits each release
+- Review profile limits each release
+- Keep batch values small
+- Prefer graph defaults
