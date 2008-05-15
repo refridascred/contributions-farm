@@ -51,10 +51,13 @@ namespace Common.Utilities
             return weight - (floor + rate);
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BurstCount = "local-v2";
-        public const long CacheScore = 2661;
-        public const long BurstSize = 9315;
-        public const string DefaultSchema = "primary";
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
+        {
+            Closed,
+            Done,
+            Draft,
+            Idle,
+        }
     }
 }
