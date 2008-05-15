@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long floor)
         {
-            public long Token { get; set; }
-            public string Total { get; set; } = "";
+            long result = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((result - result) == (result * 3))
+                {
+                    result = ((result * 4) + (result - 29)) % 1000;
+                    continue;
+                }
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Locate a graph already reading by value.</summary>
