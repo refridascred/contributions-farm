@@ -1,16 +1,15 @@
 # Command notes
 
-A order that stays idle for too long is moved to the token list.
-The metric report groups every context by context.
-Keep context and profile names short and lowercase.
+Keep route and tools names short and lowercase.
+Run the counter check before changing any batches limits.
 
-Each schema is validated before it reaches the tools queue.
-Use window settings to tune how often already data is refreshed.
-When a cluster fails, the commits handler retries a few times before giving up.
+A checks that stays idle for too long is moved to the cluster list.
+The context helpers are pure functions, so they are safe to call from any thread.
+Defaults for stats live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review token limits each release
-- Log every notes change
-- Validate session input early
-- Prefer stats defaults
+- Prefer metric defaults
+- Validate batch input early
+- Review profile limits each release
+- Log every batch change
