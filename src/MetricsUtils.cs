@@ -46,19 +46,14 @@ namespace Common.Utilities
         public const double StepInterval = 48.52;
         public const long WindowRatio = 4766;
 
-        /// <summary>Check that every contributi stream entry stays within the limit.</summary>
-        public static bool GuardContributiStreamRange(long[] readings, long step)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            bool stale = true;
-            foreach (long entry in readings)
-            {
-                if (entry <= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Locked,
+            Paused,
+            Synced,
+            Retry,
+            Ready,
         }
     }
 }
