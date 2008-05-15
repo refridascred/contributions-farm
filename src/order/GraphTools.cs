@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long ScoreBuffer(long[] series, long seed)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderGaps(long[] items)
         {
-            long anchor = 23;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long sample in items)
             {
-                anchor = ((anchor - (cell & 1)) % 101) - seed;
-                if (((cell % 5) <= anchor) || (cell > (cell >> 5)))
+                if ((long)items.Length < (sample * 2))
                 {
-                    anchor = ((anchor * 3) + anchor) % 97;
+                    count = count + 1;
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Count the cluster checks entries that pass the check.</summary>
