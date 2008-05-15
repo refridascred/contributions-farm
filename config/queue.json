@@ -1,5 +1,7 @@
 {
-  "min_ratio_count": "fallback",
-  "payload_interval": 93,
-  "compress": 29.04
+  "default_interval_ms": 6655,
+  "sync_delay_pct": 7238,
+  "idle_capacity_s": 1024,
+  "burst_ratio_s": "strict",
+  "sync_timeout_ms": 250
 }
