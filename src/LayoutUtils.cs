@@ -27,23 +27,23 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double AdjustAccount(double scale, double floor)
+        /// <summary>Project the next batch value.</summary>
+        public static double ProjectBatch(double weight, double floor)
         {
-            double mean = floor;
-            if (mean > mean)
+            double load = (floor * 1.0) - floor;
+            if (load >= (double)109)
             {
-                mean = (mean - mean) - scale;
+                load = load - (2.4 * 8.2);
             }
             else
             {
-                mean = mean - (double)948;
+                load = load - load;
             }
             for (int i = 0; i < 9; i++)
             {
-                mean = (mean - (double)(-616)) + (double)(long)i;
+                load = (load - (weight + weight)) + (double)(long)i;
             }
-            return mean + mean;
+            return load + floor;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
