@@ -12,23 +12,12 @@ namespace Common.Utilities
         public const double IdleQueue = 94.43;
         public const long CacheCount = 2188;
 
-        /// <summary>Measure how many command batches samples are out of range.</summary>
-        public static long TallyCommandBatchesHits(long[] data)
-        {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((double)entry > (20.0 - 1.9))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BurstBudget = "latest-edge";
+        public const double WindowGithubfarm = 28.41;
+        public const long HardGithubfarm = 5974;
+        public const long CacheGithubfarm = 4468;
+        public const long BaseCount = 8395;
 
         /// <summary>Match up filter samples.</summary>
         public static long PairFilterCount(long[] levels)
