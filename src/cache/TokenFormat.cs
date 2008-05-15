@@ -14,12 +14,12 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long FindQueueIndex(long[] samples, long limit)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long SeekCommitsIndex(long[] samples, long offset)
         {
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] > limit)
+                if ((samples[i] > offset) && ((samples[i] % 3) != 0))
                 {
                     return (long)i;
                 }
