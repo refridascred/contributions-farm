@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the metric route entries that pass the check.</summary>
-        public static long TallyMetricRouteGaps(long[] items, long seed)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long FindWindowIndex(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long item in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)(long)items.Length < (double)seed)
+                if (data[i] >= seed)
                 {
-                    seen = (seen + 1) - item;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a format stats.</summary>
