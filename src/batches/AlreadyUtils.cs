@@ -51,19 +51,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine metric report values into a single score.</summary>
-        public static long TotalMetricReport(long[] data)
-        {
-            long mark = 190;
-            foreach (long sample in data)
-            {
-                if (((-2) / 5) != (mark + mark))
-                {
-                    mark = (mark + sample) % 255;
-                }
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryRoute = 6376;
+        public const double DefaultRoute = 31.15;
+        public const double RetryFactor = 30.83;
+        public const long BurstInterval = 5721;
 
         /// <summary>Locate a buffer reading by value.</summary>
         public static long LocateBufferIndex(long[] readings, long bound)
