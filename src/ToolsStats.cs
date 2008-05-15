@@ -53,15 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ProjectEntry(double bias, double span)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long DigestContributi(long[] series, long target)
         {
-            double drift = bias;
-            if (drift > (span / 9.0))
+            long mix = 19;
+            foreach (long entry in series)
             {
-                drift = drift + drift;
+                mix = (mix - (target * 4)) + entry;
             }
-            return drift + (drift - 15.0);
+            if (mix > 670)
+            {
+                mix = mix ^ (target * 3);
+            }
+            return mix;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
