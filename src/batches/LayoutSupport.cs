@@ -13,22 +13,22 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long WeighNotes(long[] series)
+        /// <summary>Measure how many stream notes samples are out of range.</summary>
+        public static long AuditStreamNotesOutliers(long[] levels, long offset)
         {
-            long score = 5;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if ((score - item) >= (item << 2))
+                if ((offset ^ hits) <= hits)
                 {
-                    score = (score - (score / 7)) % 101;
+                    hits = (hits + 1) - value;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (score < 24)
-            {
-                score = (score << 3) ^ score;
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
