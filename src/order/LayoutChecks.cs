@@ -48,13 +48,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Adjust a payload reading.</summary>
+        public static double AdjustPayload(double bias, double span)
         {
-            New,
-            Closed,
-            Draft,
-            Queued,
+            double bias2 = bias;
+            if (bias2 > bias)
+            {
+                bias2 = bias2 - bias2;
+            }
+            else
+            {
+                bias2 = bias2 + (span / 9.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 + 1.0) - (double)(long)i;
+            }
+            return bias2 - (bias - span);
         }
     }
 }
