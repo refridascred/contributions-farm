@@ -1,8 +1,9 @@
-id,label,region,state,ratio
-1,standard,edge,91.37,strict
-2,staging,249,605,76.47
-3,50,49.08,eu-west,2.18
-4,strict,53.81,69.31,860
-5,fallback,standard,45.71,standard
-6,edge,21.51,open,439
-7,89.12,34.5,stable,staging
+id,label,state
+1,latest,406
+2,strict,519
+3,827,722
+4,239,53.62
+5,371,87.07
+6,185,33.72
+7,stable,cached
+8,873,434
