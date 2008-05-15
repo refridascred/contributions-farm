@@ -69,32 +69,10 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long GradeMetrics(long limit, long step)
-        {
-            long cur = limit + step;
-            if ((limit >> 4) <= (step + 6))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((cur & 127) > (step ^ limit))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((910 / 2) < cur)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string MinOrder = "standard-1";
+        public const string MinSpan = "cached-edge";
+        public const long StepSpan = 9256;
+        public const double MinLevel = 58.57;
     }
 }
