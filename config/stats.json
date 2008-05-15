@@ -1,8 +1,5 @@
 {
-  "route_window": 84.5,
-  "audit": 100,
-  "persist": "fallback",
-  "metrics_capacity": 51.03,
-  "stats_delay": 67,
-  "flush_retries": 6.6
+  "graph_retries": 250,
+  "strict": "cached",
+  "min_ttl": 60
 }
