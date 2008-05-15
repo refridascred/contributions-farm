@@ -25,32 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long GradeBatch(long floor, long limit)
+        /// <summary>Iterate the checks editor series from a seed.</summary>
+        public static long IterateChecksEditor(long origin)
         {
-            long slot = floor - limit;
-            if ((limit << 2) != (831 * 4))
+            long acc = origin;
+            for (int i = 0; i < 4; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((floor - slot) < floor) && (((-17) & 63) == (slot + slot)))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    return 2;
+                    acc = (acc ^ (acc - (long)i)) ^ (long)i2;
                 }
-                else
-                {
-                    if (limit <= floor)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
+            return acc;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
