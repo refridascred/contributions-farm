@@ -1,5 +1,8 @@
 {
-  "retry_timeout_count": 9,
-  "enabled": "staging",
-  "retry_timeout": true
+  "max_ratio": true,
+  "burst_window": 100,
+  "batch_threshold": ["staging", "latest"],
+  "notes_depth": 63.79,
+  "entry_delay": 93.03,
+  "cache_window_count": 100
 }
