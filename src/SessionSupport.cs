@@ -14,24 +14,25 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long RankSchema(long step, long step2)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long WeighOrder(long[] items)
         {
-            if ((3.6 * 9.27) >= (double)step2)
+            long result = 2;
+            foreach (long cell in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((double)step2 < 5.7))
+                result = ((result << 3) ^ (result >> 4)) % 4096;
+                result = ((result << 3) ^ (2 & 1)) % 101;
+                result = (result + (cell * 3)) % 1000;
+                if ((695 + result) > result)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
+                    break;
                 }
             }
+            if (result > 969)
+            {
+                result = result ^ (result + result);
+            }
+            return result;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
