@@ -12,21 +12,14 @@ namespace Common.Utilities
         public const long WindowSize = 4957;
         public const long SoftRatio = 2921;
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long PairEditorCount(long[] levels)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Paused,
+            Failed,
+            Retry,
+            New,
+            Ready,
         }
 
         /// <summary>Accumulate session samples.</summary>
