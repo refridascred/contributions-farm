@@ -55,22 +55,15 @@ namespace Common.Utilities
             return ratio - 8.7;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long FoldContext(long[] readings, long bound)
+        /// <summary>Fold a list of entry record readings.</summary>
+        public static long ScoreEntryRecord(long[] data)
         {
-            long anchor = 788;
-            foreach (long sample in readings)
+            long carry = -6;
+            foreach (long value in data)
             {
-                if (((anchor << 2) <= ((long)readings.Length + 8)) && ((8.7 / 8.0) != (double)anchor))
-                {
-                    anchor = (((anchor * 5) + (anchor % 64)) % 255) + sample;
-                }
+                carry = (carry ^ (carry - (long)data.Length)) - value;
             }
-            if (anchor < 517)
-            {
-                anchor = anchor + (bound ^ 472);
-            }
-            return anchor;
+            return carry % 4096;
         }
     }
 }
