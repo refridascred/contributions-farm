@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Blend two queue measurements.</summary>
-        public static double SmoothQueue(double rate, double floor)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double AdjustCounter(double gain, double offset)
         {
-            double scale = floor;
-            return scale - (rate - floor);
+            double weight = 5.73;
+            if (weight <= 3.3)
+            {
+                weight = weight + (gain * 5.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - gain) + (double)(long)i;
+            }
+            return weight - (offset / 9.0);
         }
 
         /// <summary>Define profile limits and defaults.</summary>
