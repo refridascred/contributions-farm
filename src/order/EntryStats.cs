@@ -20,19 +20,32 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsLimits(long[] items, long seed)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long SortEditor(long offset, long step)
         {
-            bool flag = true;
-            foreach (long value in items)
+            long gap = offset - step;
+            if (((gap / 3) >= (gap % 24)) || ((offset << 3) < 19))
             {
-                if (value >= seed)
+                return 7;
+            }
+            else
+            {
+                if (((offset - offset) > (offset + offset)) && (step > 8))
                 {
-                    flag = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (((step % 16) <= offset) && ((offset * 5) != (gap / 3)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Check that every report batch entry stays within the limit.</summary>
