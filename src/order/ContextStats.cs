@@ -12,18 +12,17 @@ namespace Common.Utilities
         public const long IdleSize = 319;
         public const double LimitCount = 89.23;
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorOutliers(long[] data, long bound)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LocateClusterIndex(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (bound >= (bound & 31))
+                if (items[i] > target)
                 {
-                    seen = (seen + 2) ^ cell;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a metric header.</summary>
