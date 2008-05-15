@@ -59,12 +59,19 @@ namespace Common.Utilities
             return gain - 2.24;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenLimits(long[] values, long bound)
         {
-            Done,
-            Synced,
-            Stale,
+            bool found = true;
+            foreach (long value in values)
+            {
+                if (value > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
