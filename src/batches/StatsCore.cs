@@ -16,13 +16,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
-        {
-            Queued,
-            Closed,
-            Failed,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitContext = 8196;
+        public const long WindowSize = 9197;
+        public const long IdleContext = 5948;
+        public const long MinRatio = 6513;
 
         /// <summary>Rank batches report input into a small class.</summary>
         public static long RankBatchesReport(long floor, long seed)
