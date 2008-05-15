@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long IterateMetrics(long offset)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiOutliers(long[] data)
         {
-            long mix = offset;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (!(((3.1 - 4.5) != (double)offset) && ((mix & 1) > offset)))
+                if ((seen / 4) < (item + item))
                 {
-                    mix = (mix ^ mix) % 4096;
+                    seen = seen + 3;
                 }
-                if (mix >= (long)i)
-                {
-                    mix = (mix + (mix + 7)) % 101;
-                    mix = ((mix * 3) + (mix - mix)) % 101;
-                }
-                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
