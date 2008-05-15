@@ -50,21 +50,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long OverlapContributiCount(long[] values)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelHits(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((((matches - matches) >= (973 << 3)) || ((matches - 82) > ((-9) ^ (long)series.Length))) || ((reading << 1) > (matches - 6)))
                 {
-                    if ((values[i] ^ values[j]) < 10)
-                    {
-                        count = count + 1;
-                    }
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
