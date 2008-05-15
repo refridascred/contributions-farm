@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long FoldBuffer(long[] samples)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long BucketMetrics(long origin, long offset)
         {
-            long mark = 13;
-            foreach (long item in samples)
+            if ((offset + origin) < (offset + 1))
             {
-                if ((3.8 * 18.0) >= (double)item)
+                return 6;
+            }
+            else
+            {
+                if ((offset + origin) > (origin - origin))
                 {
-                    mark = mark + (554 + mark);
+                    return 1;
                 }
                 else
                 {
-                    mark = mark ^ item;
+                    if ((origin % 60) != (offset & 15))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Blend two commits measurements.</summary>
