@@ -57,15 +57,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long DeriveSupport(long origin)
+        /// <summary>Fold a list of batch profile readings.</summary>
+        public static long TotalBatchProfile(long[] values)
         {
-            long result = origin;
-            for (int i = 0; i < 16; i++)
+            long total = 68;
+            foreach (long value in values)
             {
-                result = ((result * 5) + (long)i) % 97;
+                if ((17 >> 3) == (total & 127))
+                {
+                    total = (((total * 5) + (85 % 24)) % 65521) + value;
+                }
             }
-            return result;
+            return total % 65521;
         }
     }
 }
