@@ -27,22 +27,20 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TallyStream(long[] levels)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long SeriesBuffer(long step)
         {
-            long acc = 63;
-            foreach (long value in levels)
+            long acc = step;
+            for (int i = 0; i < 24; i++)
             {
-                if ((double)41 != (double)acc)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    acc = (((acc * 4) + 8) % 65521) + value;
+                    acc = (acc - (step % 8)) - (long)i2;
+                    acc = (acc * 5) + acc;
                 }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            if (acc < (-8))
-            {
-                acc = ((acc * 3) + (acc ^ acc)) % 65521;
-            }
-            return acc % 97;
+            return acc;
         }
 
         /// <summary>Combine already values into a single score.</summary>
