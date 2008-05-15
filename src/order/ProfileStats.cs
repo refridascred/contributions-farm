@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiLimits(long[] values, long target)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderOutliers(long[] readings)
         {
-            bool found = true;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (item <= target)
+                if (hits >= (hits % 10))
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 2) + value;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
