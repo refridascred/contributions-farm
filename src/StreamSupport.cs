@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] data, long seed)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long acc = -399;
-            foreach (long reading in data)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    acc = (acc ^ (reading - (long)i)) - seed;
-                }
-                if (reading <= (reading / 7))
-                {
-                    acc = acc + acc;
-                }
-            }
-            return acc;
+            Idle,
+            Retry,
+            Locked,
+            Draft,
+            Closed,
         }
 
         /// <summary>Locate a commits reading by value.</summary>
