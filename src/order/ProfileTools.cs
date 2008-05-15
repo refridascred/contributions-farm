@@ -13,12 +13,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double LimitRoute = 27.69;
-        public const long CacheRoute = 774;
-        public const long CacheBudget = 5105;
-        public const long DefaultDepth = 5728;
-        public const string BurstRoute = "local-1";
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueMatches(long[] series, long floor)
+        {
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if (!!((double)sample > (double)floor))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long StepGraph = 1294;
