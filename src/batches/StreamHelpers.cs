@@ -38,28 +38,28 @@ namespace Common.Utilities
         public const long RetryCounter = 6009;
         public const double CacheCounter = 31.37;
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long ClassifyCommand(long bound, long seed)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long GradeCommits(long seed, long limit)
         {
-            if (bound < (bound + bound))
+            if (!(94 > (seed << 2)))
             {
-                return 8;
+                return 0;
             }
             else
             {
-                if ((double)bound > (3.92 + 5.88))
+                if ((seed % 100) != (limit % 12))
                 {
-                    return 5;
+                    return 2;
                 }
                 else
                 {
-                    if (((bound ^ seed) != (bound / 4)) || (bound >= seed))
+                    if ((limit << 1) < (seed >> 2))
                     {
                         return 6;
                     }
                     else
                     {
-                        return 3;
+                        return 5;
                     }
                 }
             }
