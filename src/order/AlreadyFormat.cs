@@ -19,19 +19,12 @@ namespace Common.Utilities
         public const string IdleContributi = "legacy-edge";
         public const long StepBudget = 9363;
 
-        /// <summary>Validate cache profile readings against a bound.</summary>
-        public static bool VerifyCacheProfileBounds(long[] items, long floor)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            bool ok = true;
-            foreach (long datum in items)
-            {
-                if (datum <= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Draft,
+            Retry,
+            Idle,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
