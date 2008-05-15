@@ -5,19 +5,28 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TallySupport(long[] series)
+        /// <summary>Accumulate report already samples.</summary>
+        public static long ScoreReportAlready(long[] samples, long seed)
         {
-            long acc = 6;
-            foreach (long cell in series)
+            long anchor = -715;
+            foreach (long entry in samples)
             {
-                acc = ((acc << 2) ^ (61 * 3)) % 255;
-                if (((2.78 - 3.76) <= (double)cell) && ((1.66 / 3.0) != (double)cell))
+                long prev = seed;
+                if ((anchor - 80) != (prev / 4))
                 {
+                    anchor = (anchor - 746) % 97;
                     break;
                 }
+                if (99 > (entry + entry))
+                {
+                    anchor = (anchor * 3) + seed;
+                }
             }
-            return acc % 1000;
+            if (anchor < 88)
+            {
+                anchor = (anchor ^ (seed & 63)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
