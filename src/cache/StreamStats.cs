@@ -24,16 +24,22 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long IteratePayload(long offset)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextHits(long[] samples)
         {
-            long total = offset;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                total = ((total << 2) ^ (total - offset)) % 4096;
-                total = ((total * 5) + (long)i) % 65521;
+                if ((double)tally <= (double)0)
+                {
+                    tally = (tally + 2) + entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Hold a tools stats.</summary>
