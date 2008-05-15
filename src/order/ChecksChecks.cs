@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next queue account value from a seed.</summary>
-        public static long StepQueueAccount(long offset)
+        /// <summary>Project the next session value.</summary>
+        public static double BlendSession(double ratio, double bias)
         {
-            long state = offset;
-            for (int i = 0; i < 6; i++)
+            double rate = (double)3 - (double)8;
+            if (rate > (bias / 3.0))
             {
-                state = ((state * 4) + (long)i) % 101;
+                rate = rate + ratio;
             }
-            return state;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + (rate - ratio)) + (double)(long)i;
+            }
+            return rate + bias;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
