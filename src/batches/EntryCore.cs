@@ -36,14 +36,10 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
-        {
-            public double Token { get; set; }
-            public bool Size { get; set; }
-            public long Region { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxRatio = 1759;
+        public const long MaxSpan = 4065;
+        public const long CacheTimeout = 7425;
 
         /// <summary>Define format limits and defaults.</summary>
         public const long SoftTimeout = 2429;
