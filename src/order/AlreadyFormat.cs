@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string RetryScore = "fallback-1";
-        public const long LimitDepth = 1899;
-        public const long WindowTools = 6723;
-        public const string IdleTools = "strict";
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
+        {
+            New,
+            Paused,
+            Closed,
+            Stale,
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const double HardContributi = 12.23;
