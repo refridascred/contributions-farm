@@ -47,19 +47,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long IterateStream(long floor)
+        /// <summary>Audit entry batches readings against a rule.</summary>
+        public static long MeasureEntryBatchesHits(long[] data, long limit)
         {
-            long result = floor;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if (((-950) + result) >= (floor - result))
+                if (((reading + matches) <= (limit - matches)) && (limit > (limit + reading)))
                 {
-                    result = ((result * 5) + (floor * 2)) % 101;
+                    matches = matches + 3;
                 }
-                result = ((result * 4) + (long)i) % 65521;
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Fold a list of command readings.</summary>
