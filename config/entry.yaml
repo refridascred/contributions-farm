@@ -1,9 +1,8 @@
 # entry settings
-graph_capacity: 6343
-queue_size: 76.61
-flush_interval_s:
-  - 66
-  - 97
-  - 94
-  - 182
-default_retries_ms: 500
+flush_capacity: 2566
+strict: 84.99
+persist:
+  flush_window_count: standard
+  queue_capacity: 100
+  support_limit: 7
+  soft_limit_pct: fallback
