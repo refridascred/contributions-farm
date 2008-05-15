@@ -13,13 +13,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long RollFarm(long target)
         {
-            public double Rank { get; set; }
-            public bool Owner { get; set; }
-            public string Score { get; set; } = "";
-            public long Level { get; set; }
+            long acc = target;
+            for (int i = 0; i < 12; i++)
+            {
+                acc = ((acc << 3) ^ ((long)i - target)) % 4096;
+                acc = (acc * 2) + target;
+                if (!((double)acc <= (0.13 - 2.96)))
+                {
+                    acc = (acc ^ (target * 2)) % 1000;
+                    acc = ((acc * 2) + (acc + acc)) % 101;
+                }
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Validate cache profile readings against a bound.</summary>
