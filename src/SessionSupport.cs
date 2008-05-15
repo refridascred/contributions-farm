@@ -19,22 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long FoldNotes(long[] series, long offset)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long state = -68;
-            foreach (long cell in series)
-            {
-                if (offset < 29)
-                {
-                    state = ((state - (offset & 127)) % 101) - cell;
-                }
-            }
-            if (state > 762)
-            {
-                state = (state * 3) + (offset % 97);
-            }
-            return state % 4096;
+            Closed,
+            Retry,
+            Queued,
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
