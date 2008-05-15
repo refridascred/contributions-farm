@@ -61,11 +61,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftAlready = 113;
-        public const long DefaultAlready = 3998;
-        public const double CacheScore = 58.09;
-        public const double StepAlready = 88.26;
-        public const string DefaultSpan = "local-edge";
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
+        {
+            Idle,
+            Active,
+            Ready,
+            Retry,
+            Closed,
+        }
     }
 }
