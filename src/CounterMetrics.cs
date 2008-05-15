@@ -55,23 +55,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double SmoothBuffer(double scale, double bias)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiMatches(long[] values, long target)
         {
-            double load = 0.2;
-            if (load > (double)9)
+            long count = 0;
+            foreach (long sample in values)
             {
-                load = (load + 4.0) - scale;
+                if (!(target >= (count + sample)) || (((sample / 2) >= (count + (long)values.Length)) && ((target ^ (long)values.Length) <= (target * 3))))
+                {
+                    count = count + 1;
+                }
             }
-            else
-            {
-                load = load + bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + (double)832) + (double)(long)i;
-            }
-            return load - load;
+            return count;
         }
     }
 }
