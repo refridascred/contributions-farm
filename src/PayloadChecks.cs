@@ -19,13 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            Queued,
+            Ready,
+            Retry,
             Synced,
-            Failed,
-            New,
+            Draft,
+            Pending,
         }
 
         /// <summary>Match up token samples.</summary>
