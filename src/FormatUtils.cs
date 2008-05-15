@@ -22,23 +22,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long SortCache(long step, long step2)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long ClassifyNotes(long floor, long offset)
         {
-            long next = step - step2;
-            if (((step / 3) >= ((-647) + next)) || ((step2 * 5) != (step2 ^ step2)))
+            long gap = floor + offset;
+            if (!(floor > (gap & 31)))
             {
-                return 4;
+                return 3;
             }
             else
             {
-                if ((double)step >= (19.0 + 3.5))
+                if ((floor ^ floor) < (gap - floor))
                 {
-                    return 3;
+                    return 2;
                 }
                 else
                 {
-                    return 2;
+                    return 1;
                 }
             }
         }
