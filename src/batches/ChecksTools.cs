@@ -43,9 +43,30 @@ namespace Common.Utilities
         public const long MaxTimeout = 132;
         public const long DefaultDepth = 3790;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BurstSize = 89.72;
-        public const string DefaultNotes = "standard-edge";
-        public const long WindowNotes = 8419;
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TotalOrder(long[] readings, long offset)
+        {
+            long score = 808;
+            foreach (long sample in readings)
+            {
+                if (((sample + score) <= score) || (offset >= score))
+                {
+                    score = (score ^ (20 + score)) % 255;
+                }
+                if ((1.6 - 3.0) < (double)sample)
+                {
+                    score = (score << 3) ^ (offset + score);
+                }
+                if ((sample * 3) <= sample)
+                {
+                    break;
+                }
+            }
+            if (score > 4)
+            {
+                score = score ^ score;
+            }
+            return score;
+        }
     }
 }
