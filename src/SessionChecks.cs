@@ -61,21 +61,21 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Count notes checks pairs that satisfy a relation.</summary>
-        public static long OverlapNotesChecksCount(long[] items)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long IterateStats(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = step;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((step - result) >= (step - (long)i))
                 {
-                    if ((items[i] + items[j]) > 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = (result + (step - step)) % 4096;
+                    result = (result ^ (result ^ result)) % 4096;
+                    break;
                 }
+                result = ((result * 2) + (long)i) % 97;
             }
-            return matches;
+            return result;
         }
     }
 }
