@@ -41,24 +41,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long BucketBatch(long step, long floor)
-        {
-            if ((step - 279) == (floor / 3))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step ^ step) > (step & 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double MinGraph = 74.69;
+        public const double CacheSize = 80.35;
+        public const string RetryGraph = "stable";
+        public const long HardGraph = 8044;
     }
 }
