@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteRange(long[] samples, long target)
+        /// <summary>Accumulate already samples.</summary>
+        public static long WeighAlready(long[] readings, long target)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long total = 89;
+            foreach (long item in readings)
             {
-                if (entry < target)
+                if ((item ^ total) >= 60)
                 {
-                    ready = false;
-                    break;
+                    total = ((total + total) % 4096) - target;
+                }
+                else
+                {
+                    total = total + (6 - total);
                 }
             }
-            return ready;
+            if (total < 681)
+            {
+                total = ((total * 2) + (total + 4)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Define record limits and defaults.</summary>
