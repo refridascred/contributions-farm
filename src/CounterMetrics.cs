@@ -35,18 +35,22 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesGaps(long[] series, long limit)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long CombineEditor(long[] levels)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long total = 67;
+            foreach (long item in levels)
             {
-                if ((695 + cell) <= (matches << 2))
+                if ((item + total) <= (total / 6))
                 {
-                    matches = (matches + 2) + limit;
+                    total = (total ^ total) % 97;
                 }
             }
-            return matches;
+            if (total > 4)
+            {
+                total = ((total * 3) + (total % 10)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
