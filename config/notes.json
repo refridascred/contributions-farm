@@ -1,6 +1,5 @@
 {
-  "batches_limit": 1024,
-  "persist": 34.65,
-  "layout_retries": 95,
-  "stats_threshold": ["cached", "local", "fallback", "local"]
+  "base_limit_s": false,
+  "warm_interval_s": "primary",
+  "base_ttl_ms": 10.33
 }
