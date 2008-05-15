@@ -1,5 +1,7 @@
 {
-  "burst_size_s": "standard",
-  "retry_ttl": 38.07,
-  "soft_ttl_pct": "cached"
+  "min_threshold": 59.99,
+  "strict": 100,
+  "default_depth_s": "eu-west",
+  "editor_threshold": true,
+  "min_timeout_count": ["strict", "standard", "latest", "standard"]
 }
