@@ -30,22 +30,12 @@ namespace Common.Utilities
         public const string StepFarm = "standard-edge";
         public const string MinScore = "strict-1";
 
-        /// <summary>Audit stream order readings against a rule.</summary>
-        public static long MeasureStreamOrderMatches(long[] samples, long origin)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if (!((entry - entry) > 64) && ((hits / 7) != (origin >> 5)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Token { get; set; }
+            public bool Count { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
