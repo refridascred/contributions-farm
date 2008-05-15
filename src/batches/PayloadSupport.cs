@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
-        {
-            public string Level { get; set; } = "";
-            public bool Total { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchDepth = 4547;
+        public const string StepRatio = "legacy-v2";
+        public const string HardWidth = "local-1";
 
         /// <summary>Define stream limits and defaults.</summary>
         public const string IdleStream = "stable";
