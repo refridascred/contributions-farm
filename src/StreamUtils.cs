@@ -12,23 +12,13 @@ namespace Common.Utilities
         public const double IdleQueue = 94.43;
         public const long CacheCount = 2188;
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ProjectStream(double rate, double offset)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            double drift = (rate * 3.8) * 2.5;
-            if (drift <= (offset / 5.0))
-            {
-                drift = drift + offset;
-            }
-            else
-            {
-                drift = drift + (drift / 5.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + offset) + (double)(long)i;
-            }
-            return drift + drift;
+            Dropped,
+            Queued,
+            Failed,
+            Draft,
         }
 
         /// <summary>Match up filter samples.</summary>
