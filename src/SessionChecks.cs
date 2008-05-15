@@ -54,13 +54,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            public bool Token { get; set; }
-            public bool Ratio { get; set; }
-            public bool Label { get; set; }
-            public long Count { get; set; }
+            public long Region { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Project the next farm value.</summary>
