@@ -13,22 +13,13 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordGaps(long[] series, long seed)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if (entry >= ((long)series.Length / 3))
-                {
-                    count = (count + 1) - seed;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Locked,
+            Ready,
+            Dropped,
+            Done,
         }
 
         /// <summary>Project the next order record value.</summary>
