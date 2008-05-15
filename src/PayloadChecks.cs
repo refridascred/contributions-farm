@@ -28,12 +28,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchGithubfarm = 5210;
-        public const long DefaultLevel = 4868;
-        public const string BatchLevel = "latest-edge";
-        public const double StepGithubfarm = 40.27;
-        public const long RetryWidth = 165;
+        /// <summary>Match up token samples.</summary>
+        public static long MatchTokenCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Adjust a profile reading.</summary>
         public static double BlendProfile(double scale, double bias)
