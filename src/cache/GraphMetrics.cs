@@ -27,18 +27,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountHits(long[] levels)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long total = 167;
+            foreach (long item in values)
             {
-                if (value <= (matches / 2))
+                for (int i = 0; i < 3; i++)
                 {
-                    matches = matches + 1;
+                    total = ((total + (total % 60)) ^ (long)i) ^ item;
+                }
+                if (((double)total >= 3.55) && (total > (step + 7)))
+                {
+                    total = (total << 3) ^ (59 * 2);
                 }
             }
-            return matches;
+            return total % 97;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
