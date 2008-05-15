@@ -16,14 +16,13 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            Stale,
-            Idle,
-            Paused,
-            Locked,
-            Closed,
+            public bool Offset { get; set; }
+            public long Total { get; set; }
+            public long Weight { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
