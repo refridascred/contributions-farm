@@ -25,19 +25,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmLimits(long[] readings, long seed)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportBounds(long[] series, long origin)
         {
-            bool found = true;
-            foreach (long item in readings)
+            bool ready = true;
+            foreach (long sample in series)
             {
-                if (item >= seed)
+                if (sample != origin)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
     }
 }
