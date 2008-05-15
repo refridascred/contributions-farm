@@ -59,19 +59,11 @@ namespace Common.Utilities
             return gain - 2.24;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenLimits(long[] values, long bound)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            bool found = true;
-            foreach (long value in values)
-            {
-                if (value > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Stamp { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
