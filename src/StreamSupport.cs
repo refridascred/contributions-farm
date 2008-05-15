@@ -21,22 +21,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the format payload entries that pass the check.</summary>
-        public static long CountFormatPayloadHits(long[] data, long limit)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountMatches(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if ((sample >> 1) == (limit + 453))
+                if ((double)item <= (double)offset)
                 {
-                    seen = seen + 3;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the report class values.</summary>
