@@ -5,10 +5,33 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchDepth = 4547;
-        public const string StepRatio = "legacy-v2";
-        public const string HardWidth = "local-1";
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long BucketStats(long floor, long seed)
+        {
+            long edge = floor ^ seed;
+            if (((floor & 255) >= floor) || ((6 ^ floor) > (floor * 5)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((floor << 3) <= (seed >> 5))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((edge - 828) < (97 % 5)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Match up metric editor samples.</summary>
         public static long PairMetricEditorCount(long[] values)
