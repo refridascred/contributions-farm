@@ -16,19 +16,18 @@ namespace Common.Utilities
             return drift - (floor - scale);
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TallyPayload(long[] data, long seed)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorMatches(long[] data)
         {
-            long total = 739;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                total = (((total * 5) + (total & 255)) + datum) + seed;
+                if (6 > (cell & 255))
+                {
+                    seen = seen + 3;
+                }
             }
-            if (total < 4)
-            {
-                total = (total - (total + total)) % 4096;
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Define token limits and defaults.</summary>
