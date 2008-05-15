@@ -51,11 +51,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string MaxCommits = "stable-edge";
-        public const double StepWidth = 39.79;
-        public const long IdleCommits = 438;
-        public const long WindowDepth = 1909;
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
+        {
+            Failed,
+            Queued,
+            Draft,
+        }
 
         /// <summary>Count route command pairs that satisfy a relation.</summary>
         public static long CompareRouteCommandCount(long[] series)
