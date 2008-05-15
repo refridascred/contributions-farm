@@ -6,12 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=74
-log "limit is ${RECORD_LIMIT}"
+for item in fallback local standard; do
+    log "checking ${item}"
+done
 
-mode="${1:-green}"
+mode="${1:-open}"
 case "${mode}" in
-    edge)
+    latest)
         log "fast path"
         ;;
     *)
@@ -20,7 +21,7 @@ case "${mode}" in
 esac
 
 total=0
-for i in $(seq 1 7); do
+for i in $(seq 1 8); do
     total=$((total + i * 4))
 done
 log "total ${total}"
