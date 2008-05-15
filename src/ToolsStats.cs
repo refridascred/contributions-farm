@@ -51,18 +51,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the stream farm entries that pass the check.</summary>
-        public static long AuditStreamFarmHits(long[] values)
+        /// <summary>Fold a list of metric session readings.</summary>
+        public static long CombineMetricSession(long[] values, long seed)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long anchor = 955;
+            foreach (long sample in values)
             {
-                if ((seen > (datum * 3)) && (((5 >> 5) < seen) && ((seen >> 5) > seen)))
+                if (sample <= (seed << 3))
                 {
-                    seen = seen + 3;
+                    anchor = anchor + (7 & 7);
+                }
+                else
+                {
+                    anchor = ((anchor * 3) + 75) % 101;
+                }
+                if ((sample + sample) < anchor)
+                {
+                    break;
                 }
             }
-            return seen;
+            if (anchor < 286)
+            {
+                anchor = (anchor ^ (anchor & 63)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
