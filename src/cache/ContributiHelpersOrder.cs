@@ -11,16 +11,17 @@ namespace Common.Utilities
         public const long CacheTimeout = 2171;
         public const string BatchRatio = "fallback-edge";
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long DeriveGithubfarm(long step)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long SeekBatchesIndex(long[] samples, long floor)
         {
-            long state = step;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = (state ^ state) % 65521;
-                state = ((state * 4) + (long)i) % 4093;
+                if (samples[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
