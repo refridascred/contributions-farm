@@ -36,19 +36,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryLimits(long[] values, long limit)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long BucketBatch(long step, long floor)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            if ((step - 279) == (floor / 3))
             {
-                if (datum > limit)
+                return 0;
+            }
+            else
+            {
+                if ((step ^ step) > (step & 3))
                 {
-                    flag = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return flag;
         }
     }
 }
