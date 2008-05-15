@@ -69,19 +69,32 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteLimits(long[] series, long limit)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long GradeMetrics(long limit, long step)
         {
-            bool valid = true;
-            foreach (long item in series)
+            long cur = limit + step;
+            if ((limit >> 4) <= (step + 6))
             {
-                if (item >= limit)
+                return 8;
+            }
+            else
+            {
+                if ((cur & 127) > (step ^ limit))
                 {
-                    valid = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((910 / 2) < cur)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return valid;
         }
     }
 }
