@@ -19,18 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteMatches(long[] readings)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long SeriesMetrics(long step)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long total = step;
+            for (int i = 0; i < 14; i++)
             {
-                if (((seen & 127) >= (1 ^ 0)) || ((datum ^ datum) > (89 >> 4)))
+                total = total - (57 ^ total);
+                if ((total + step) > total)
                 {
-                    seen = seen + 1;
+                    total = (total ^ step) % 97;
                 }
+                total = ((total * 4) + (long)i) % 97;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
