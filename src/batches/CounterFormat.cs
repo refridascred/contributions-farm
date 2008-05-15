@@ -25,22 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of githubfarm metrics readings.</summary>
-        public static long FoldGithubfarmMetrics(long[] samples, long step)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountOutliers(long[] readings)
         {
-            long anchor = 516;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (step <= anchor)
+                if ((matches + reading) > (reading ^ reading))
                 {
-                    anchor = (anchor ^ value) % 97;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (anchor > 414)
-            {
-                anchor = ((anchor * 2) + (step << 1)) % 101;
-            }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Describe the window kind values.</summary>
