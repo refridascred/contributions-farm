@@ -24,21 +24,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long DeriveCache(long origin)
-        {
-            long anchor = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                anchor = ((anchor << 2) ^ (origin + (long)i)) % 65521;
-                if ((13.0 - 4.0) >= (1.74 * 0.6))
-                {
-                    anchor = ((anchor << 2) ^ anchor) % 1000;
-                }
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepRatio = 2735;
+        public const long DefaultCommand = 7096;
+        public const string BatchCount = "fallback";
+        public const double BatchCommand = 17.74;
+        public const long BaseCommand = 4891;
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long TallyTokenHits(long[] levels)
