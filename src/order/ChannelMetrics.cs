@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Adjust a report reading.</summary>
-        public static double ProjectReport(double bias, double bias2)
-        {
-            double scale = bias2;
-            return scale + (bias * 2.6);
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinScore = 1948;
+        public const string WindowInterval = "stable-v2";
+        public const string CacheReport = "stable-edge";
+        public const long IdleReport = 8301;
 
         /// <summary>Define window limits and defaults.</summary>
         public const string RetryWidth = "cached-edge";
