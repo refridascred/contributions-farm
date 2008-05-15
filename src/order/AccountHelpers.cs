@@ -14,20 +14,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueLimits(long[] items, long seed)
-        {
-            bool ready = true;
-            foreach (long sample in items)
-            {
-                if (sample > seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleRatio = 4032;
+        public const long MaxCount = 3966;
+        public const long DefaultCount = 5372;
+        public const string SoftDepth = "open-1";
+        public const long SoftTimeout = 2497;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const string BaseBudget = "cached-edge";
