@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Project the next metric value.</summary>
-        public static double ProjectMetric(double scale, double offset)
+        /// <summary>Validate githubfarm report readings against a bound.</summary>
+        public static bool CheckGithubfarmReportBounds(long[] readings, long origin)
         {
-            double gain = (scale * 19.0) * 0.4;
-            if (gain > offset)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                gain = gain - scale;
+                if (reading > origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain - scale) + (double)(long)i;
-            }
-            return gain - scale;
+            return ready;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
