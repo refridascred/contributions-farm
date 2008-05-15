@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Scale a contributi notes figure with a bias.</summary>
-        public static double ProjectContributiNotes(double bias, double span)
+        /// <summary>Locate a metric graph reading by value.</summary>
+        public static long SeekMetricGraphIndex(long[] levels, long step)
         {
-            double bias2 = (double)(-402) / 3.0;
-            if (bias2 < span)
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias2 = (bias2 + (4.7 + span)) + bias;
+                if ((levels[i] < step) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return bias2 - (double)77;
+            return -1;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
