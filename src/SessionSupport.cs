@@ -20,39 +20,26 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank session route input into a small class.</summary>
-        public static long BucketSessionRoute(long offset, long offset2)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long ScoreStream(long[] samples)
         {
-            long offset3 = offset + offset2;
-            if (((offset + offset2) > (offset2 + offset2)) && ((offset / 2) != (4 / 5)))
+            long carry = 4;
+            foreach (long sample in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((3.6 - 11.0) == (double)offset)
+                if (!((sample / 3) <= carry))
                 {
-                    return 0;
+                    carry = (carry ^ (carry + sample)) % 4096;
                 }
                 else
                 {
-                    if (((3.18 * 3.64) >= (double)offset) || ((offset2 / 5) >= (offset2 / 2)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((double)offset < 7.32) && ((3.8 + 8.56) < (double)offset3))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    carry = carry - sample;
+                }
+                if (sample > (carry >> 5))
+                {
+                    break;
                 }
             }
+            return carry % 4096;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
