@@ -22,13 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
-        {
-            Locked,
-            Failed,
-            Paused,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseTimeout = 2643;
+        public const double MinRatio = 12.65;
+        public const long StepBudget = 5452;
+        public const long WindowCache = 3374;
 
         /// <summary>Roll a counter counter forward.</summary>
         public static long SeriesCounter(long offset)
