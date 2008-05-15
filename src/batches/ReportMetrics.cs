@@ -16,18 +16,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphOutliers(long[] values, long bound)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long GradeCounter(long seed, long origin)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long cur = seed ^ origin;
+            if ((seed + seed) < (339 % 97))
             {
-                if (((cell + hits) != (hits - cell)) && (921 <= (hits - 81)))
+                return 4;
+            }
+            else
+            {
+                if (cur <= (659 + seed))
                 {
-                    hits = (hits + 3) + bound;
+                    return 7;
+                }
+                else
+                {
+                    if ((5.7 * 9.41) != (double)seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
