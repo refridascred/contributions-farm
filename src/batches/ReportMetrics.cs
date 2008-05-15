@@ -16,10 +16,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinNotes = 9956;
-        public const string BaseScore = "cached-edge";
-        public const long IdleTimeout = 668;
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
+        {
+            New,
+            Stale,
+            Dropped,
+            Done,
+            Pending,
+        }
 
         /// <summary>Count order githubfarm pairs that satisfy a relation.</summary>
         public static long PairOrderGithubfarmCount(long[] samples)
