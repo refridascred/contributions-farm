@@ -12,19 +12,12 @@ namespace Common.Utilities
             return scale + (bias * 2.6);
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportOutliers(long[] samples, long seed)
-        {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if (entry <= seed)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string RetryWidth = "cached-edge";
+        public const string StepWindow = "legacy-1";
+        public const string SoftWindow = "strict-edge";
+        public const long CacheSpan = 8185;
+        public const long BaseWidth = 4931;
 
         /// <summary>Describe the batch status values.</summary>
         public enum BatchStatus
