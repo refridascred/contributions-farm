@@ -57,15 +57,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long CombineLayout(long[] series, long target)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long BucketChannel(long seed, long limit)
         {
-            long score = 10;
-            foreach (long datum in series)
+            if ((7.0 * 2.76) > (double)limit)
             {
-                score = (((score ^ (360 + 21)) % 1000) + datum) + target;
+                return 1;
             }
-            return score;
+            else
+            {
+                if ((seed << 1) == (57 & 15))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
