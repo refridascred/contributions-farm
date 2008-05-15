@@ -14,13 +14,32 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Rank order input into a small class.</summary>
+        public static long BucketOrder(long offset, long floor)
         {
-            Active,
-            Draft,
-            Pending,
-            Queued,
+            long offset2 = offset - floor;
+            if ((4 ^ offset2) > offset2)
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((double)offset == (double)floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((offset2 / 9) < (offset - offset2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a order snapshot.</summary>
