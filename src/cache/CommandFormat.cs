@@ -49,18 +49,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long CombineChannel(long[] readings)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long StepContributi(long floor)
         {
-            long score = 1;
-            foreach (long sample in readings)
+            long score = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if (((double)91 < (double)score) || ((sample % 7) >= (sample >> 1)))
+                if ((20.0 * 17.0) < (double)score)
                 {
-                    score = (score * 4) + (score << 3);
+                    score = (score + floor) % 97;
                 }
+                score = ((score << 3) ^ (6 * 5)) % 101;
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return score % 65521;
+            return score;
         }
     }
 }
