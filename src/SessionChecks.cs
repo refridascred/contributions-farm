@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Compare every pair of filter record readings.</summary>
-        public static long MatchFilterRecordCount(long[] levels)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long FindToolsIndex(long[] readings, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((readings[i] > target) && ((readings[i] % 2) != 0))
                 {
-                    if ((levels[i] ^ levels[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
