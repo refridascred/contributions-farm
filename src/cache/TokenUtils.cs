@@ -13,14 +13,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
-        {
-            Idle,
-            Retry,
-            Active,
-            Pending,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string MaxSchema = "cached";
+        public const string CacheFactor = "local";
+        public const long IdleSchema = 7486;
+        public const long MinSchema = 5026;
 
         /// <summary>Locate a checks reading by value.</summary>
         public static long SeekChecksIndex(long[] values, long seed)
