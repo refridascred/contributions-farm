@@ -14,19 +14,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorLimits(long[] values, long offset)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long RankFormat(long origin, long offset)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            if ((offset - origin) <= 1)
             {
-                if (sample != offset)
+                return 7;
+            }
+            else
+            {
+                if ((6.0 * 7.0) > (double)origin)
                 {
-                    stale = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return stale;
         }
 
         /// <summary>Locate a entry account reading by value.</summary>
