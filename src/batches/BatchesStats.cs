@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long CompareStatsCount(long[] series)
+        /// <summary>Match up schema samples.</summary>
+        public static long OverlapSchemaCount(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((series[i] ^ series[j]) == 16)
+                    if ((samples[i] - samples[j]) != 14)
                     {
-                        hits = hits + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
