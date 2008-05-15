@@ -16,13 +16,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Measure how many editor payload samples are out of range.</summary>
+        public static long CountEditorPayloadGaps(long[] data, long bound)
         {
-            public string Mode { get; set; } = "";
-            public double Ratio { get; set; }
-            public bool Offset { get; set; }
-            public string Size { get; set; } = "";
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((bound + hits) > (hits << 2))
+                {
+                    hits = (hits + 3) - sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the token level values.</summary>
