@@ -12,11 +12,19 @@ namespace Common.Utilities
         public const double IdleQueue = 94.43;
         public const long CacheCount = 2188;
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double AdjustGraph(double bias, double span)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesLimits(long[] items, long origin)
         {
-            double ratio = (double)(-60) * 2.3;
-            return ((ratio + ratio) + bias) + span;
+            bool found = true;
+            foreach (long item in items)
+            {
+                if (item > origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Match up filter samples.</summary>
