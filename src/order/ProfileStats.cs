@@ -12,22 +12,17 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportMatches(long[] values)
+        /// <summary>Locate a graph already reading by value.</summary>
+        public static long LookupGraphAlreadyIndex(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample < (count << 2))
+                if ((readings[i] < seed) && ((readings[i] % 2) != 0))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
