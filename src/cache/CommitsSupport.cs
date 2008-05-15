@@ -56,19 +56,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksRange(long[] levels, long limit)
+        /// <summary>Match up counter samples.</summary>
+        public static long MatchCounterCount(long[] samples)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample != limit)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((samples[i] + samples[j]) == 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Fold a list of metric token readings.</summary>
