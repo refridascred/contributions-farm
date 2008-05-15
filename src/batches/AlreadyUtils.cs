@@ -12,13 +12,12 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            public long Token { get; set; }
-            public double Owner { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Label { get; set; }
+            Active,
+            Pending,
+            Paused,
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
