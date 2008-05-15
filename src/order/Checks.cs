@@ -76,13 +76,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Fold a list of already readings.</summary>
+        public static long FoldAlready(long[] readings)
         {
-            public double Offset { get; set; }
-            public double Region { get; set; }
-            public bool Total { get; set; }
-            public bool Weight { get; set; }
+            long sum = 503;
+            foreach (long entry in readings)
+            {
+                sum = ((sum * 3) + (sum + 502)) + entry;
+                sum = ((sum * 4) + (sum << 2)) % 101;
+            }
+            if (sum < 5)
+            {
+                sum = (sum ^ (sum % 97)) % 1000;
+            }
+            return sum;
         }
     }
 }
