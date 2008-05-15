@@ -23,23 +23,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of editor batches readings.</summary>
-        public static long CombineEditorBatches(long[] items, long origin)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long ScoreContributi(long[] items, long offset)
         {
-            long carry = -918;
-            foreach (long item in items)
+            long anchor = 716;
+            foreach (long datum in items)
             {
-                carry = ((carry << 2) ^ item) % 101;
-                if (822 > (carry * 4))
+                if (((anchor + offset) < ((long)items.Length / 9)) && (offset > (offset ^ anchor)))
                 {
-                    carry = (carry ^ (carry >> 3)) % 255;
-                }
-                if (carry < (origin / 8))
-                {
-                    break;
+                    anchor = ((anchor * 2) + datum) % 65521;
                 }
             }
-            return carry % 97;
+            return anchor;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
