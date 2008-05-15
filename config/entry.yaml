@@ -1,6 +1,24 @@
 # entry settings
-command_interval: 76.72
-flush_size_s: cached
-max_interval: 8939
-readonly: 500
-verbose: 9960
+burst_window_pct:
+  default_depth_pct:
+    - staging
+    - green
+    - latest
+    - green
+  compress:
+    - cached
+    - standard
+    - green
+    - blue
+  batch_retries_pct:
+    - 373
+    - 68
+    - 237
+    - 490
+  batch_threshold_count: 8221
+persist: 1940
+profile_delay: true
+entry_retries:
+  - staging
+  - stable
+flush_delay_s: edge
