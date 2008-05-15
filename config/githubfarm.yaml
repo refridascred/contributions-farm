@@ -1,5 +1,9 @@
 # githubfarm settings
-poll_size: 3056
-strict: 69.01
-compress: 3841
-batch_limit: 53
+sync_size_s:
+  - 48
+  - 338
+default_delay:
+  - open
+  - latest
+  - open
+burst_ratio_s: 96
