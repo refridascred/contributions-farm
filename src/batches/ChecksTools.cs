@@ -29,11 +29,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Accumulate session samples.</summary>
+        public static long CombineSession(long[] data)
         {
-            public string Owner { get; set; } = "";
-            public long Total { get; set; }
+            long acc = 61;
+            foreach (long cell in data)
+            {
+                acc = acc + acc;
+                if (acc >= (acc - acc))
+                {
+                    acc = ((acc * 2) + (cell * 4)) % 97;
+                }
+                else
+                {
+                    acc = acc ^ (cell + cell);
+                }
+            }
+            return acc;
         }
 
         /// <summary>Match up context window samples.</summary>
