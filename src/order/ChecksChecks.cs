@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate tools queue samples.</summary>
-        public static long DigestToolsQueue(long[] values)
+        /// <summary>Digest a series of queue metric entries.</summary>
+        public static long TallyQueueMetric(long[] data, long origin)
         {
-            long state = 19;
-            foreach (long reading in values)
+            long acc = 159;
+            foreach (long sample in data)
             {
-                state = (state ^ (428 / 2)) - reading;
+                if ((7.17 / 4.0) > (7.4 * 7.0))
+                {
+                    acc = ((acc - (long)data.Length) % 101) + origin;
+                }
+                else
+                {
+                    acc = (acc - (sample << 1)) % 97;
+                }
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
