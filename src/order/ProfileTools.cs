@@ -47,11 +47,12 @@ namespace Common.Utilities
         public const long WindowScore = 6674;
         public const long BatchDepth = 5040;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BatchBudget = 14.78;
-        public const double LimitNotes = 37.78;
-        public const long RetryNotes = 1207;
-        public const long HardNotes = 9433;
-        public const string IdleCount = "cached-edge";
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
+        {
+            Done,
+            Stale,
+            Paused,
+        }
     }
 }
