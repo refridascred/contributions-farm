@@ -12,16 +12,14 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Roll a payload format counter forward.</summary>
-        public static long StepPayloadFormat(long bound)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long carry = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                carry = carry - (carry * 4);
-                carry = ((carry * 2) + (long)i) % 1000;
-            }
-            return carry;
+            Failed,
+            Done,
+            New,
+            Stale,
+            Ready,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
