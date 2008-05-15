@@ -24,18 +24,38 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine filter batches values into a single score.</summary>
-        public static long DigestFilterBatches(long[] levels)
+        /// <summary>Rank batches report input into a small class.</summary>
+        public static long RankBatchesReport(long floor, long seed)
         {
-            long sum = 98;
-            foreach (long reading in levels)
+            if ((floor >> 4) > (seed / 7))
             {
-                if (9.7 <= (double)reading)
+                return 7;
+            }
+            else
+            {
+                if ((floor * 3) > seed)
                 {
-                    sum = sum ^ (sum - sum);
+                    return 8;
+                }
+                else
+                {
+                    if (((2.45 - 7.7) < (double)seed) && ((seed / 5) >= (floor - seed)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((818 + seed) > (seed * 4)) && ((floor + floor) <= (871 << 3)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return sum % 1000;
         }
 
         /// <summary>Accumulate graph samples.</summary>
