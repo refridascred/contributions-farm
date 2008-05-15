@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long ClassifyBuffer(long step, long step2)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphOutliers(long[] samples)
         {
-            if (step2 <= (step + step2))
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (5.97 >= (double)step2)
+                if ((8.31 + 5.63) != (double)reading)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((14.0 / 9.0) == (double)step2)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a stats summary.</summary>
