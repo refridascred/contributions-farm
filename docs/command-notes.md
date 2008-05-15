@@ -1,15 +1,12 @@
 # Command notes
 
-A schema that stays idle for too long is moved to the editor list.
-The metric report groups every counter by editor.
-Keep token and support names short and lowercase.
-
-Defaults for entry live in the config folder and can be overridden per environment.
-Run the cache check before changing any profile limits.
+Use checks settings to tune how often notes data is refreshed.
+The order module keeps counter values in sync with the command cache.
+The queue report groups every token by command.
 
 ## Guidelines
 
-- Keep schema values small
-- Prefer cache defaults
-- Log every schema change
-- Review format limits each release
+- Prefer stream defaults
+- Log every route change
+- Validate contributi input early
+- Document new layout fields
