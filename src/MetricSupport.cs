@@ -38,19 +38,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of already profile readings.</summary>
-        public static long WeighAlreadyProfile(long[] readings, long step)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long ScoreMetrics(long[] levels, long offset)
         {
-            long score = 206;
-            foreach (long datum in readings)
+            long mix = 36;
+            foreach (long entry in levels)
             {
-                score = (score ^ datum) + step;
-                if (datum >= (479 + 976))
+                if ((offset - entry) <= offset)
                 {
+                    mix = mix ^ (offset * 2);
                     break;
                 }
+                if ((319 - (-2)) > (entry * 2))
+                {
+                    mix = (mix + (entry & 255)) % 65521;
+                }
             }
-            return score;
+            return mix;
         }
     }
 }
