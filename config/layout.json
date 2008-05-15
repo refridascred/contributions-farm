@@ -1,6 +1,17 @@
 {
-  "burst_capacity_ms": 85,
-  "warm_capacity_count": "stable",
-  "max_ratio_s": 1024,
-  "idle_threshold_ms": 2710
+  "account_size": {
+    "persist": 100,
+    "batch_limit": [69, 231],
+    "idle_size_s": {
+      "flush_window_count": "blue",
+      "stream_ttl": "blue",
+      "flush_interval_pct": "green",
+      "default_depth_pct": [375, 240, 462, 408]
+    },
+    "max_size_ms": 100,
+    "audit": 99
+  },
+  "persist": ["standard", "cached", "blue", "stable"],
+  "burst_timeout_ms": "stable",
+  "compress": 25
 }
