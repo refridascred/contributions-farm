@@ -1,15 +1,12 @@
 # Command notes
 
-Run the buffer check before changing any githubfarm limits.
-Run the notes check before changing any token limits.
-Keep stream and payload names short and lowercase.
-
-Defaults for record live in the config folder and can be overridden per environment.
-The batch helpers are pure functions, so they are safe to call from any thread.
+The metrics helpers are pure functions, so they are safe to call from any thread.
+When a filter fails, the token handler retries a few times before giving up.
+Run the batches check before changing any commits limits.
 
 ## Guidelines
 
-- Prefer command defaults
-- Document new route fields
-- Review account limits each release
-- Validate payload input early
+- Validate token input early
+- Log every graph change
+- Keep profile values small
+- Document new order fields
