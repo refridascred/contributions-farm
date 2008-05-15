@@ -55,13 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelOutliers(long[] readings)
         {
-            public bool Ratio { get; set; }
-            public long Level { get; set; }
-            public bool Label { get; set; }
-            public long Weight { get; set; }
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((count - count) == (74 + datum))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
