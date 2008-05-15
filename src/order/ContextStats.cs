@@ -46,21 +46,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long CompareEditorCount(long[] data)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Total { get; set; }
+            public long Rank { get; set; }
+            public double Flag { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a entry info.</summary>
