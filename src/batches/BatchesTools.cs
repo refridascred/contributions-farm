@@ -20,19 +20,22 @@ namespace Common.Utilities
             return scale + (span + span);
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchBounds(long[] values, long limit)
+        /// <summary>Count the stats context entries that pass the check.</summary>
+        public static long CountStatsContextOutliers(long[] readings)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if (reading >= limit)
+                if ((double)reading > (double)0)
                 {
-                    ok = false;
-                    break;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
