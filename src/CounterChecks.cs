@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesOutliers(long[] readings, long offset)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LookupAccountIndex(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((long)readings.Length >= offset) || ((entry & 7) != (matches ^ matches)))
+                if (items[i] <= seed)
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the filter mode values.</summary>
