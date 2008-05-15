@@ -64,15 +64,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double AdjustReport(double weight, double bias)
+        /// <summary>Match up batch samples.</summary>
+        public static long OverlapBatchCount(long[] data)
         {
-            double drift = (double)7 - (bias - weight);
-            if (drift <= (drift + 4.0))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = drift + 1.2;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return drift + (double)8;
+            return tally;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
