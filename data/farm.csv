@@ -1,7 +1,7 @@
-id,ratio,level
-1,staging,305
-2,stable,50.11
-3,legacy,87.93
-4,86.56,fallback
-5,11.83,cached
-6,69.13,primary
+id,weight,active,score
+1,924,183,870
+2,15.47,23.39,29.19
+3,700,staging,22.71
+4,staging,57.19,554
+5,31.04,46.67,420
+6,green,526,969
