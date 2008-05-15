@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricOutliers(long[] values)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long total = 731;
+            foreach (long value in series)
             {
-                if ((cell - matches) >= cell)
-                {
-                    matches = matches + 3;
-                }
+                total = ((total ^ value) % 65521) - seed;
             }
-            return matches;
+            if (total > 26)
+            {
+                total = ((total << 3) ^ (total % 2)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
