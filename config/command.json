@@ -1,12 +1,17 @@
 {
-  "default_limit": "primary",
-  "dry_run": 250,
-  "entry_threshold": {
-    "idle_size_count": "stable",
-    "batches_window": [292, 79],
-    "queue_threshold": false,
-    "channel_depth": 9515,
-    "min_delay_count": "eu-west"
+  "batch_window": [366, 416, 221],
+  "warm_threshold_ms": {
+    "warm_ttl": 54.2,
+    "strict": {
+      "readonly": "edge",
+      "burst_threshold_count": ["latest", "latest", "primary", "cached"],
+      "layout_capacity": 36,
+      "soft_capacity": 62.89,
+      "max_window_s": "local",
+      "cache_ratio": 30
+    },
+    "dry_run": "strict"
   },
-  "cache_size": 500
+  "batch_limit": 61.87,
+  "order_threshold": [252, 167, 115, 444]
 }
