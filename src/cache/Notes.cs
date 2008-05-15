@@ -31,13 +31,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            Failed,
-            Done,
-            New,
-            Dropped,
+            public long Limit { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Validate route readings against a bound.</summary>
