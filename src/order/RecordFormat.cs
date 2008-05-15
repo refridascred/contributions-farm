@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesBounds(long[] levels, long offset)
         {
-            public string Level { get; set; } = "";
-            public bool Rank { get; set; }
+            bool ok = true;
+            foreach (long sample in levels)
+            {
+                if (sample < offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
