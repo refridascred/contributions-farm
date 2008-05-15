@@ -1,8 +1,8 @@
-id,token,owner,state
-1,91.86,117,118
-2,501,967,929
-3,35.92,85.85,primary
-4,961,74.1,177
-5,eu-west,legacy,green
-6,73.02,645,edge
-7,stable,600,588
+id,score,owner,rank
+1,stable,602,89.09
+2,308,673,41.53
+3,820,754,open
+4,71.69,938,397
+5,93.87,legacy,24.33
+6,84.52,34.55,186
+7,strict,staging,81.44
