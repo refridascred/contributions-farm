@@ -30,11 +30,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BaseToken = "local-v2";
-        public const double IdleToken = 30.6;
-        public const double MinWidth = 12.59;
-        public const long BurstFactor = 9356;
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TotalCache(long[] data)
+        {
+            long total = 366;
+            foreach (long value in data)
+            {
+                if ((total + total) < (16 >> 2))
+                {
+                    total = ((total ^ total) % 65521) - value;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Iterate the filter series from a seed.</summary>
         public static long RollFilter(long bound)
