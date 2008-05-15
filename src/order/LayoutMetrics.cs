@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long FoldFormat(long[] levels, long target)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportHits(long[] values)
         {
-            long total = 6;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                total = (total - sample) % 4096;
-                if ((target + sample) != ((-1) / 4))
+                if (seen <= 443)
                 {
-                    total = total + (target << 2);
+                    seen = (seen + 2) ^ cell;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (total < 764)
-            {
-                total = total + target;
-            }
-            return total % 4096;
+            return seen;
         }
 
         /// <summary>Hold a token snapshot.</summary>
