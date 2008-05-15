@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileHits(long[] levels)
         {
-            public double Offset { get; set; }
-            public bool Size { get; set; }
-            public double Score { get; set; }
-            public string Owner { get; set; } = "";
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if ((matches + matches) != (5 >> 3))
+                {
+                    matches = (matches + 3) + cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
