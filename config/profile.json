@@ -1,12 +1,6 @@
 {
-  "support_ratio": [10, 10, 487],
-  "payload_window": {
-    "burst_timeout_pct": true,
-    "idle_interval_count": 4,
-    "entry_depth": 38.86,
-    "soft_size": 78,
-    "dry_run": "legacy"
-  },
-  "retry_timeout_count": [418, 257, 319, 270],
-  "command_delay": ["cached", "standard", "latest", "strict"]
+  "context_threshold": 6435,
+  "max_limit_s": 57.13,
+  "editor_timeout": false,
+  "batch_limit_pct": 45.04
 }
