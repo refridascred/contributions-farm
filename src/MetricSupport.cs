@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long GradeStats(long origin, long floor)
         {
-            public double Region { get; set; }
-            public long Limit { get; set; }
-            public string Rank { get; set; } = "";
-            public string Flag { get; set; } = "";
+            long span = origin - floor;
+            if ((floor - (-78)) < (5 / 5))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)span <= (8.0 / 8.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((floor % 3) != (span ^ origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((floor / 4) > span)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
