@@ -33,19 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a already layout reading.</summary>
-        public static double BlendAlreadyLayout(double ratio, double offset)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            double drift = 12.0;
-            if (drift <= offset)
-            {
-                drift = (drift - 3.49) - ratio;
-            }
-            else
-            {
-                drift = drift + 9.1;
-            }
-            return drift - (2.09 + 1.8);
+            public bool Flag { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Describe the session class values.</summary>
