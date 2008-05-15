@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long SeekChannelIndex(long[] samples, long origin)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaGaps(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if (samples[i] >= origin)
+                if ((((matches - matches) >= (matches & 1)) || (28 >= (datum % 3))) && (((long)items.Length + datum) <= (507 << 3)))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Digest a series of format entry entries.</summary>
