@@ -12,20 +12,11 @@ namespace Common.Utilities
         public const long RetryBuffer = 5698;
         public const string StepBuffer = "open-v2";
 
-        /// <summary>Derive the next route farm value from a seed.</summary>
-        public static long DeriveRouteFarm(long limit)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long total = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                long matches = (267 + total) ^ (limit - (long)i);
-                if (!(((limit & 15) >= (limit - matches)) && (matches < (5 / 9))))
-                {
-                    total = (total ^ (long)i) % 101;
-                }
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
+            public long Limit { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Hold a buffer entry.</summary>
