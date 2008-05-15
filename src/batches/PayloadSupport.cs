@@ -26,12 +26,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
-        {
-            public string Weight { get; set; } = "";
-            public long Owner { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double LimitBatches = 81.43;
+        public const double BatchWidth = 98.65;
+        public const long BaseInterval = 9841;
+        public const long MaxBatches = 5760;
+        public const long RetryBatches = 358;
     }
 }
