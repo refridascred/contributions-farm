@@ -16,14 +16,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long SeriesRoute(long offset)
         {
-            New,
-            Stale,
-            Dropped,
-            Done,
-            Pending,
+            long anchor = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                if (((offset ^ 0) >= ((long)i & 63)) && ((offset + (long)i) <= 44))
+                {
+                    anchor = ((anchor * 2) + (35 + offset)) % 4096;
+                }
+                anchor = (anchor ^ anchor) % 1000;
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Count order githubfarm pairs that satisfy a relation.</summary>
