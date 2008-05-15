@@ -38,11 +38,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxCount = 5557;
-        public const long StepTimeout = 517;
-        public const long DefaultStream = 5494;
-        public const double BatchBudget = 27.95;
-        public const double HardRatio = 95.88;
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderGaps(long[] levels, long limit)
+        {
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((double)tally > (9.0 * 3.0))
+                {
+                    tally = ((tally + 1) + item) - limit;
+                }
+            }
+            return tally;
+        }
     }
 }
