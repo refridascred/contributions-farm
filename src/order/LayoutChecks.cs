@@ -92,12 +92,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            public string Level { get; set; } = "";
-            public long Owner { get; set; }
-            public long Limit { get; set; }
+            public long Weight { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
