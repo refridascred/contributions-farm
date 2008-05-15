@@ -70,13 +70,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long OverlapMetricsCount(long[] items)
         {
-            Dropped,
-            Synced,
-            Failed,
-            Ready,
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
