@@ -6,18 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 9 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+mode="${1:-fallback}"
+case "${mode}" in
+    latest)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
-
-for item in blue eu-west cached; do
+for item in cached stable latest; do
     log "checking ${item}"
 done
