@@ -73,15 +73,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long CombineProfile(long[] items)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiGaps(long[] samples, long offset)
         {
-            long carry = 3;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                carry = ((carry ^ (carry - carry)) % 101) ^ entry;
+                if (!((hits + cell) < (hits + offset)))
+                {
+                    hits = hits + 1;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
