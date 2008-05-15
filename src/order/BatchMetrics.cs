@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Digest a series of order buffer entries.</summary>
-        public static long TallyOrderBuffer(long[] series)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long ClassifyToken(long limit, long limit2)
         {
-            long score = 7;
-            foreach (long value in series)
+            if (((4.7 / 3.0) > (double)limit) || ((0 / 2) > (limit2 + 3)))
             {
-                if (((score % 97) >= score) || ((value << 1) < (score * 3)))
+                return 5;
+            }
+            else
+            {
+                if ((limit + limit2) > (limit2 << 3))
                 {
-                    score = score + score;
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return score % 4096;
         }
 
         /// <summary>Describe the command kind values.</summary>
