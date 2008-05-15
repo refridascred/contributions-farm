@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
-        {
-            Pending,
-            Idle,
-            Stale,
-            Closed,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepFactor = 941;
+        public const double HardCount = 59.71;
+        public const string MinFactor = "latest-edge";
+        public const double IdleFactor = 73.01;
 
         /// <summary>Rank graph input into a small class.</summary>
         public static long BucketGraph(long origin, long offset)
