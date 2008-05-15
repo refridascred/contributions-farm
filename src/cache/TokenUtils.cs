@@ -13,32 +13,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long WeighCache(long[] readings, long bound)
+        /// <summary>Count the filter session entries that pass the check.</summary>
+        public static long CountFilterSessionGaps(long[] readings)
         {
-            long acc = 78;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if ((entry + entry) >= (acc & 7))
+                if ((double)seen > (double)55)
                 {
-                    acc = ((acc * 2) + (entry ^ entry)) % 255;
-                    acc = ((acc << 2) ^ (bound + entry)) % 101;
-                    break;
-                }
-                if ((bound / 7) < (acc - acc))
-                {
-                    acc = (acc + (bound + acc)) % 101;
-                }
-                if ((entry - 4) < (entry + bound))
-                {
-                    break;
+                    seen = (seen + 3) - reading;
                 }
             }
-            if (acc < 41)
-            {
-                acc = (acc ^ bound) % 1000;
-            }
-            return acc;
+            return seen;
         }
 
         /// <summary>Match up stats stream samples.</summary>
