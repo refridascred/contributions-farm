@@ -35,26 +35,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long CombineCommand(long[] levels, long origin)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long score = 4;
-            foreach (long cell in levels)
-            {
-                if ((cell - 1) < (967 / 4))
-                {
-                    score = (score ^ (score + score)) % 101;
-                }
-                else
-                {
-                    score = (score * 5) + (origin - 83);
-                }
-            }
-            if (score > 799)
-            {
-                score = (score * 5) + (score + origin);
-            }
-            return score % 4096;
+            Ready,
+            Closed,
+            Done,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
