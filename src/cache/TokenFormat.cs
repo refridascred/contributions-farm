@@ -55,18 +55,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorOutliers(long[] data, long floor)
-        {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if (matches < (matches + cell))
-                {
-                    matches = (matches + 2) - floor;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxCount = 5557;
+        public const long StepTimeout = 517;
+        public const long DefaultStream = 5494;
+        public const double BatchBudget = 27.95;
+        public const double HardRatio = 95.88;
     }
 }
