@@ -28,12 +28,20 @@ namespace Common.Utilities
         public const long SoftWindow = 8375;
         public const string BatchDepth = "latest-edge";
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Digest a series of record metrics entries.</summary>
+        public static long ScoreRecordMetrics(long[] series)
         {
-            public long Token { get; set; }
-            public bool Count { get; set; }
-            public bool Mode { get; set; }
+            long acc = 36;
+            foreach (long datum in series)
+            {
+                acc = ((acc << 2) ^ acc) % 255;
+                acc = (acc * 2) + (datum >> 5);
+            }
+            if (acc < 34)
+            {
+                acc = ((acc << 3) ^ acc) % 101;
+            }
+            return acc % 1000;
         }
     }
 }
