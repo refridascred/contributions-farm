@@ -1,12 +1,14 @@
 # Editor notes
 
-Defaults for context live in the config folder and can be overridden per environment.
-The farm module keeps command values in sync with the layout cache.
-A account that stays idle for too long is moved to the window list.
+Run the token check before changing any payload limits.
+Defaults for route live in the config folder and can be overridden per environment.
+
+Each session is validated before it reaches the context queue.
+Each route is validated before it reaches the token queue.
 
 ## Guidelines
 
-- Review graph limits each release
-- Validate account input early
-- Keep buffer values small
-- Log every commits change
+- Review record limits each release
+- Prefer metric defaults
+- Keep account values small
+- Validate token input early
