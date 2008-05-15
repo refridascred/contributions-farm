@@ -1,25 +1,12 @@
 # entry settings
-retry_delay: 627
-profile_depth: false
-default_limit:
-  max_limit:
-    already_interval: 80.62
-    cache_interval: 59
-    base_limit_count: false
-    schema_ratio: 64.39
-    soft_delay_s: 44.12
-    compress: 11.47
-  max_interval_s: 1092
-  soft_size: 665
-  compress: true
-compress: fallback
-batch_size_pct: legacy
-idle_ttl_pct:
-  hard_timeout: 77.28
-  compress: 45
-  warm_ratio:
-    - 455
-    - 413
-    - 267
-    - 43
-  persist: false
+audit: 60
+buffer_threshold: true
+batch_ratio:
+  compress: 33.52
+  report_interval: 7760
+  cache_window_s: cached
+min_delay_pct:
+  - standard
+  - edge
+  - blue
+  - primary
