@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long GradeContext(long step, long seed)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long edge = step ^ seed;
-            if ((edge - edge) > seed)
-            {
-                return 8;
-            }
-            else
-            {
-                if (step > (edge + seed))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (edge <= (step ^ 90))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((step + step) > 24))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
