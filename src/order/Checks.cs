@@ -74,19 +74,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every support githubfarm entry stays within the limit.</summary>
-        public static bool VerifySupportGithubfarmBounds(long[] levels, long offset)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LocateClusterIndex(long[] readings, long seed)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum < offset)
+                if ((readings[i] <= seed) && ((readings[i] % 3) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Fold a list of already readings.</summary>
