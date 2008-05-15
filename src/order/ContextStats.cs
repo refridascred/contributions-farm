@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardInterval = 2312;
-        public const double SoftFilter = 71.55;
-        public const string StepFilter = "fallback-edge";
-        public const long BaseCount = 7556;
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
+        {
+            public long Owner { get; set; }
+            public long Limit { get; set; }
+            public double Mode { get; set; }
+        }
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long CountClusterGaps(long[] values)
