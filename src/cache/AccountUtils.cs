@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LookupCommitsIndex(long[] items, long offset)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long ScoreAccount(long[] series, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 89;
+            foreach (long item in series)
             {
-                if ((items[i] < offset) && ((items[i] % 2) == 0))
+                if ((floor & 255) >= 89)
                 {
-                    return (long)i;
+                    acc = ((acc * 2) + (item + (long)series.Length)) % 101;
+                }
+                else
+                {
+                    acc = ((acc * 2) + floor) % 65521;
                 }
             }
-            return -1;
+            if (acc > 24)
+            {
+                acc = (acc - (acc << 3)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Combine command values into a single score.</summary>
