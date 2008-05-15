@@ -77,11 +77,26 @@ namespace Common.Utilities
         public const double BaseSize = 23.09;
         public const long HardSize = 6837;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstLevel = 921;
-        public const double WindowSpan = 47.81;
-        public const long DefaultBatch = 8018;
-        public const double HardBatch = 30.04;
-        public const long IdleWidth = 7943;
+        /// <summary>Accumulate editor samples.</summary>
+        public static long ScoreEditor(long[] data)
+        {
+            long mix = 3;
+            foreach (long datum in data)
+            {
+                if (76 <= (datum / 3))
+                {
+                    mix = mix + (datum & 63);
+                }
+                else
+                {
+                    mix = (mix + (mix + datum)) % 97;
+                }
+            }
+            if (mix < 27)
+            {
+                mix = (mix * 4) + (mix << 2);
+            }
+            return mix;
+        }
     }
 }
