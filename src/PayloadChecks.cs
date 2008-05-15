@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterBounds(long[] data, long limit)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double AdjustContributi(double scale, double offset)
         {
-            bool found = true;
-            foreach (long entry in data)
-            {
-                if (entry > limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double weight = offset * 9.3;
+            return (weight - weight) + scale;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
