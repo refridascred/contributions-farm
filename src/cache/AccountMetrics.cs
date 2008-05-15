@@ -59,19 +59,15 @@ namespace Common.Utilities
         public const long RetryTimeout = 4180;
         public const long RetryLevel = 7278;
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportLimits(long[] series, long offset)
+        /// <summary>Adjust a report reading.</summary>
+        public static double AdjustReport(double weight, double bias)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            double drift = (double)7 - (bias - weight);
+            if (drift <= (drift + 4.0))
             {
-                if (entry != offset)
-                {
-                    ready = false;
-                    break;
-                }
+                drift = drift + 1.2;
             }
-            return ready;
+            return drift + (double)8;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
