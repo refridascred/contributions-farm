@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Audit contributi counter readings against a rule.</summary>
+        public static long AuditContributiCounterOutliers(long[] readings, long origin)
         {
-            public long Label { get; set; }
-            public bool Ratio { get; set; }
-            public long Region { get; set; }
-            public long Mode { get; set; }
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((double)origin == (7.42 + 6.26))
+                {
+                    hits = (hits + 2) - reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a format editor value against two limits.</summary>
