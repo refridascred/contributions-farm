@@ -1,5 +1,5 @@
 # entry settings
-readonly: standard
-notes_window: 11.92
-strict: 86
-base_retries: 8338
+batch_window_pct: 60
+base_limit_ms: 97
+contributi_retries: false
+base_capacity: 250
