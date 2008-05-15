@@ -1,6 +1,7 @@
 {
-  "sync_ttl_ms": 736,
-  "layout_ttl": false,
-  "soft_threshold": [113, 205, 246],
-  "soft_ratio_count": 44
+  "schema_size": false,
+  "route_ttl": 30.78,
+  "dry_run": "cached",
+  "default_ttl_ms": ["standard", "staging", "eu-west"],
+  "hard_capacity_pct": [291, 19, 406, 336]
 }
