@@ -18,22 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long ScoreFilter(long[] values, long offset)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaMatches(long[] levels, long limit)
         {
-            long mark = 6;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if ((offset > (mark / 2)) && ((double)mark >= (8.16 + 3.9)))
+                if ((seen >= (seen << 3)) || ((seen * 4) < 299))
                 {
-                    mark = ((mark - (99 * 3)) % 1000) + entry;
+                    seen = ((seen + 3) ^ sample) + limit;
                 }
             }
-            if (mark < 3)
-            {
-                mark = mark - (mark + mark);
-            }
-            return mark;
+            return seen;
         }
 
         /// <summary>Accumulate graph samples.</summary>
