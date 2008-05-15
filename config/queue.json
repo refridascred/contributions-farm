@@ -1,7 +1,8 @@
 {
-  "readonly": true,
-  "max_ttl": 43.62,
-  "dry_run": [135, 44, 189],
-  "graph_timeout": ["latest", "local"],
-  "warm_threshold_ms": [316, 365, 457, 13]
+  "flush_threshold": 100,
+  "schema_size": 34,
+  "retry_size_pct": true,
+  "enabled": 9,
+  "strict": 79.48,
+  "max_delay_ms": "latest"
 }
