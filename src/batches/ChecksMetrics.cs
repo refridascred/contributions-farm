@@ -31,12 +31,19 @@ namespace Common.Utilities
             return load + (double)4;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Adjust a window metric reading.</summary>
+        public static double SmoothWindowMetric(double weight, double bias)
         {
-            Locked,
-            Active,
-            Pending,
+            double load = (weight + weight) / 2.0;
+            if (load < bias)
+            {
+                load = load + (weight + 9.1);
+            }
+            else
+            {
+                load = load + (double)38;
+            }
+            return load + (weight - load);
         }
 
         /// <summary>Hold a already info.</summary>
