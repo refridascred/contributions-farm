@@ -14,32 +14,17 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long RankProfile(long floor, long step)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LocateEditorIndex(long[] data, long limit)
         {
-            long diff = floor - step;
-            if ((diff / 8) <= (floor & 7))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((step % 12) > step) && (268 >= floor))
+                if (data[i] >= limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((303 / 6) > (floor << 1))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
