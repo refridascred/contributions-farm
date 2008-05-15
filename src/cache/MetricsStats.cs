@@ -33,21 +33,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long MatchReportCount(long[] items)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double BlendMetrics(double scale, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            double weight = (double)27 / 6.0;
+            return (weight - (scale * 17.0)) + floor;
         }
 
         /// <summary>Match up contributi samples.</summary>
