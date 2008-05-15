@@ -12,19 +12,12 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double SmoothAlready(double ratio, double offset)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            double weight = ratio;
-            if (weight < (weight - 3.0))
-            {
-                weight = weight - (6.95 + offset);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - (offset / 5.0)) + (double)(long)i;
-            }
-            return weight + (weight / 4.0);
+            public string Limit { get; set; } = "";
+            public long Label { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
