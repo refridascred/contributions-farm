@@ -16,12 +16,21 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long PairWindowCount(long[] values)
         {
-            public double Ratio { get; set; }
-            public double Region { get; set; }
-            public string Owner { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
