@@ -33,13 +33,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            public long Size { get; set; }
-            public bool Stamp { get; set; }
-            public long Limit { get; set; }
-            public bool Label { get; set; }
+            Draft,
+            Active,
+            Pending,
         }
 
         /// <summary>Describe the route level values.</summary>
