@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepCount = 3302;
-        public const long MaxBudget = 9545;
-        public const long CacheTimeout = 2171;
-        public const string BatchRatio = "fallback-edge";
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long FindGithubfarmIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == origin) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Look up the position of a batches sample.</summary>
         public static long SeekBatchesIndex(long[] samples, long floor)
