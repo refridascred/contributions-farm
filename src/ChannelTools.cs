@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long SeekMetricIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double LimitPayload = 45.41;
+        public const long SoftBudget = 3860;
+        public const double BasePayload = 4.81;
+        public const string BaseCount = "latest";
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long AuditToolsHits(long[] values, long seed)
