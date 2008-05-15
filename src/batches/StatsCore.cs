@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long SeriesFarm(long floor)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorOutliers(long[] readings)
         {
-            long anchor = floor;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                anchor = ((anchor * 2) + (long)i) % 101;
+                if (((matches > (6 + item)) || ((double)item >= (4.0 + 8.13))) || ((matches % 3) > (item % 5)))
+                {
+                    matches = matches + 3;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Audit contributi support readings against a rule.</summary>
