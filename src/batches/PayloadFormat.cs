@@ -14,15 +14,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long StepCommits(long origin)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchOutliers(long[] values)
         {
-            long acc = origin;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            foreach (long value in values)
             {
-                acc = ((acc * 5) + (long)i) % 101;
+                if ((seen + seen) >= 9)
+                {
+                    seen = (seen + 2) ^ value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Project the next order record value.</summary>
