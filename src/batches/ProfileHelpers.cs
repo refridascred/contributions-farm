@@ -14,20 +14,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] items, long offset)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long SeriesSchema(long floor)
         {
-            long anchor = 1;
-            foreach (long entry in items)
+            long mix = floor;
+            for (int i = 0; i < 12; i++)
             {
-                anchor = ((anchor << 3) ^ (anchor - anchor)) % 65521;
-                anchor = (anchor ^ (anchor >> 5)) % 97;
-                if ((entry + anchor) <= (offset * 4))
-                {
-                    anchor = (anchor * 3) + (anchor - entry);
-                }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
