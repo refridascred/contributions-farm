@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long SortEditor(long offset, long seed)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            if ((seed + offset) >= 5)
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((double)offset != (0.56 + 9.5)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public string Rank { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
