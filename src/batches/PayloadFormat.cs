@@ -37,10 +37,15 @@ namespace Common.Utilities
             return ratio - 8.7;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowEditor = 4456;
-        public const double BaseEditor = 96.54;
-        public const string RetryEditor = "staging-edge";
-        public const double RetryTimeout = 73.62;
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double SmoothCluster(double rate, double offset)
+        {
+            double gain = rate;
+            if (gain < (double)3)
+            {
+                gain = gain - offset;
+            }
+            return gain + (double)2;
+        }
     }
 }
