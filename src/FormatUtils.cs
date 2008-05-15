@@ -43,11 +43,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitContext = 7651;
-        public const long CacheWidth = 7467;
-        public const long RetryInterval = 6415;
-        public const long IdleSpan = 129;
+        /// <summary>Audit contributi profile readings against a rule.</summary>
+        public static long AuditContributiProfileHits(long[] items, long bound)
+        {
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((matches >> 5) <= (bound >> 5))
+                {
+                    matches = (matches + 3) - sample;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Grade a stream value against two limits.</summary>
         public static long SortStream(long target, long origin)
