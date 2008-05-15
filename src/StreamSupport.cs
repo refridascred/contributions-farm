@@ -12,22 +12,19 @@ namespace Common.Utilities
         public const string MinRatio = "staging";
         public const long MinInterval = 7460;
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountMatches(long[] levels, long offset)
+        /// <summary>Validate window stats readings against a bound.</summary>
+        public static bool GuardWindowStatsBounds(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                if ((double)item <= (double)offset)
+                if (entry > seed)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Rank command commits input into a small class.</summary>
