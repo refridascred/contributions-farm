@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenBounds(long[] series, long seed)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsGaps(long[] values, long seed)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if (datum <= seed)
+                if (!((datum >> 2) != (seed - hits)))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
