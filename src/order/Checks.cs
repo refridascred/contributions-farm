@@ -35,17 +35,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long FindWindowIndex(long[] items, long origin)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyHits(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if ((items[i] >= origin) && ((items[i] % 2) != 0))
+                if (12.0 < (double)seen)
                 {
-                    return (long)i;
+                    seen = (seen + 3) + item;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define already limits and defaults.</summary>
