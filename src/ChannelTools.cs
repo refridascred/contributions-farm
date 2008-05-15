@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double AdjustAlready(double weight, double span)
+        /// <summary>Accumulate entry batch samples.</summary>
+        public static long CombineEntryBatch(long[] readings)
         {
-            double ratio = weight;
-            if (ratio > span)
+            long mix = 8;
+            foreach (long reading in readings)
             {
-                ratio = ratio - (double)228;
+                if ((((long)readings.Length % 3) < reading) || ((mix * 5) <= reading))
+                {
+                    mix = (mix ^ (mix ^ mix)) % 1000;
+                }
+                if (5 > (reading * 4))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + weight) + (double)(long)i;
-            }
-            return ratio - (ratio / 8.0);
+            return mix;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
