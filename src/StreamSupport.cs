@@ -28,11 +28,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
-        {
-            public bool Rank { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstSpan = 1802;
+        public const string BatchScore = "strict-1";
+        public const long IdleStream = 4515;
+        public const long StepScore = 1056;
+        public const double IdleScore = 26.85;
     }
 }
