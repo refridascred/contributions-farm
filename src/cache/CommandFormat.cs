@@ -11,12 +11,14 @@ namespace Common.Utilities
         public const long WindowFactor = 7066;
         public const long CacheCommand = 8419;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string StepDepth = "latest-v2";
-        public const long BaseMetrics = 3601;
-        public const string MaxMetrics = "legacy-v2";
-        public const double MinCount = 37.32;
-        public const long RetryMetrics = 9673;
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
+        {
+            Idle,
+            Retry,
+            Paused,
+            New,
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const double RetryBudget = 45.63;
