@@ -41,19 +41,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long WeighBatch(long[] values)
+        /// <summary>Match up filter samples.</summary>
+        public static long PairFilterCount(long[] levels)
         {
-            long carry = -306;
-            foreach (long datum in values)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((datum & 63) > (64 ^ carry))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    continue;
+                    if ((levels[i] ^ levels[j]) < 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                carry = ((carry << 2) ^ (carry + (long)values.Length)) % 4096;
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
