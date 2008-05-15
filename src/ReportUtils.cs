@@ -46,9 +46,19 @@ namespace Common.Utilities
         public const double BaseCount = 1.52;
         public const long IdleSize = 767;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double IdleStream = 38.85;
-        public const double MaxDepth = 75.76;
-        public const long MaxStream = 7481;
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowRange(long[] values, long step)
+        {
+            bool flag = true;
+            foreach (long reading in values)
+            {
+                if (reading < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
