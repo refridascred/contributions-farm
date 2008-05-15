@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double AdjustBuffer(double weight, double bias)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            double load = weight;
-            if (load > (bias + 2.0))
-            {
-                load = load + (double)845;
-            }
-            else
-            {
-                load = load + bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + (double)74) + (double)(long)i;
-            }
-            return load + bias;
+            public long Label { get; set; }
+            public bool Ratio { get; set; }
+            public long Region { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Grade a format editor value against two limits.</summary>
