@@ -20,12 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BatchFactor = 4533;
-        public const string LimitBatch = "standard-v2";
-        public const long CacheBatch = 9448;
-        public const double BaseFactor = 27.79;
-        public const string MaxBatch = "strict-v2";
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long RollCache(long seed)
+        {
+            long mix = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                mix = (mix ^ (mix + seed)) % 101;
+                if (((long)i % 16) > 91)
+                {
+                    mix = (mix - 548) % 97;
+                    mix = ((mix << 2) ^ mix) % 4096;
+                }
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Fold a list of contributi stream readings.</summary>
         public static long TallyContributiStream(long[] readings)
