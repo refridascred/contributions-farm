@@ -10,24 +10,19 @@ namespace Common.Utilities
         public const long IdleReport = 8377;
         public const double BurstReport = 9.3;
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TallyToken(long[] samples, long step)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteLimits(long[] values, long bound)
         {
-            long state = 784;
-            foreach (long cell in samples)
+            bool ok = true;
+            foreach (long item in values)
             {
-                state = ((state * 4) + (988 - state)) ^ cell;
-                state = state ^ (state ^ step);
-                if ((step * 4) <= (step ^ state))
+                if (item != bound)
                 {
-                    state = (state + (4 - 555)) % 4096;
+                    ok = false;
+                    break;
                 }
             }
-            if (state < 4)
-            {
-                state = ((state << 3) ^ (step + state)) % 4096;
-            }
-            return state % 97;
+            return ok;
         }
 
         /// <summary>Hold a format record.</summary>
