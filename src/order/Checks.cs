@@ -35,13 +35,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long FindWindowIndex(long[] items, long origin)
         {
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
-            public bool Mode { get; set; }
-            public long Stamp { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= origin) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define already limits and defaults.</summary>
