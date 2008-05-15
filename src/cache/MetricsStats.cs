@@ -31,12 +31,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            Active,
-            New,
-            Paused,
+            public double Owner { get; set; }
+            public long Mode { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Hold a queue header.</summary>
