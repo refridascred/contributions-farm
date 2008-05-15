@@ -47,18 +47,13 @@ namespace Common.Utilities
         public const long HardCommand = 9904;
         public const string StepTimeout = "primary-1";
 
-        /// <summary>Digest a series of context token entries.</summary>
-        public static long TotalContextToken(long[] values)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long acc = 92;
-            foreach (long item in values)
-            {
-                if ((acc >> 2) >= (-82))
-                {
-                    acc = (acc + ((long)values.Length + acc)) - item;
-                }
-            }
-            return acc;
+            public string Size { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Total { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Audit contributi window readings against a rule.</summary>
