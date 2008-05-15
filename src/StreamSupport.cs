@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine profile filter values into a single score.</summary>
-        public static long ScoreProfileFilter(long[] readings)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            long carry = 17;
-            foreach (long sample in readings)
-            {
-                if (((10.0 / 3.0) == (double)sample) && ((double)carry == (1.6 - 2.1)))
-                {
-                    carry = ((carry << 2) ^ (carry ^ 1)) % 97;
-                }
-                else
-                {
-                    carry = (carry ^ (carry + 242)) % 101;
-                }
-            }
-            return carry;
+            public string Size { get; set; } = "";
+            public bool Offset { get; set; }
+            public string Label { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Fold a list of window readings.</summary>
