@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long CombineTools(long[] series, long bound)
+        /// <summary>Measure how many notes checks samples are out of range.</summary>
+        public static long TallyNotesChecksGaps(long[] series, long origin)
         {
-            long state = 39;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                state = ((state - cell) % 255) - bound;
-                state = state + state;
+                if ((origin - reading) >= (732 - reading))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
