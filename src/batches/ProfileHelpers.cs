@@ -20,10 +20,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheStream = 8605;
-        public const long BatchInterval = 9768;
-        public const double IdleStream = 9.76;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepFilter = 4808;
+        public const double BurstFactor = 9.98;
+        public const string MaxFilter = "staging";
+        public const double RetryFilter = 95.57;
 
         /// <summary>Hold a tools record.</summary>
         public sealed class ToolsRecord
