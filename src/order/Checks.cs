@@ -53,13 +53,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ScaleGraph(double ratio, double bias)
         {
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
-            public long Region { get; set; }
-            public string Flag { get; set; } = "";
+            double drift = 18.0 + bias;
+            if (drift <= ratio)
+            {
+                drift = drift + (bias + 2.81);
+            }
+            return drift - (double)501;
         }
     }
 }
