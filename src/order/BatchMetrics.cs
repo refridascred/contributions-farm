@@ -51,38 +51,11 @@ namespace Common.Utilities
         public const double LimitProfile = 65.79;
         public const long StepFactor = 3348;
 
-        /// <summary>Rank githubfarm editor input into a small class.</summary>
-        public static long SortGithubfarmEditor(long step, long step2)
-        {
-            if ((step >> 2) < (step2 * 4))
-            {
-                return 6;
-            }
-            else
-            {
-                if (step > (step2 + step))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((step2 / 5) != (73 - step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((step + step2) <= (7 / 8))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowInterval = 1732;
+        public const long BatchInterval = 8048;
+        public const string BaseCommand = "local-v2";
+        public const long HardWidth = 6666;
+        public const double WindowCommand = 78.83;
     }
 }
