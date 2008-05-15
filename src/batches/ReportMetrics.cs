@@ -16,11 +16,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string BatchWidth = "staging-edge";
-        public const double LimitPayload = 75.93;
-        public const long WindowLevel = 8619;
-        public const long CachePayload = 4994;
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterHits(long[] series)
+        {
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if (((entry - tally) < (tally & 63)) || (7.2 < 6.96))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool CheckBatchBounds(long[] series, long limit)
