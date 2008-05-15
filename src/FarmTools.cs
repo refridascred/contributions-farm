@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long BucketCounter(long step, long limit)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            if ((double)step > (19.0 + 3.19))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((-64) ^ (-6)) < (step * 2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Weight { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a support record.</summary>
