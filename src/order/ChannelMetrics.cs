@@ -26,29 +26,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long StepStats(long offset)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long sum = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((2 <= (sum ^ (long)i)) || ((long)i < (sum + sum)))
-                {
-                    sum = sum + (sum >> 1);
-                    break;
-                }
-                else
-                {
-                    sum = sum ^ (offset - sum);
-                }
-                sum = (sum - (offset % 10)) % 97;
-                if (((long)i * 5) == (sum >> 4))
-                {
-                    sum = (sum - (sum - (long)i)) % 97;
-                }
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
+            Synced,
+            Idle,
+            Paused,
         }
     }
 }
