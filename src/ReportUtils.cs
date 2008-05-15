@@ -19,12 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            Idle,
-            Dropped,
-            New,
+            public double Count { get; set; }
+            public long Level { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Digest a series of cache entries.</summary>
