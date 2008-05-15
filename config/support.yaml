@@ -1,4 +1,17 @@
 # support settings
-default_retries_count: 60.87
-cache_size_s: eu-west
-account_interval: fallback
+persist: blue
+dry_run:
+  - stable
+  - standard
+  - local
+warm_capacity: 84.3
+default_timeout_count:
+  order_timeout: 3346
+  poll_threshold: false
+  poll_size_count: primary
+  farm_delay:
+    - 24
+    - 236
+    - 495
+    - 500
+compress: true
