@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long RankSupport(long offset, long origin)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesOutliers(long[] items)
         {
-            long cur = offset ^ origin;
-            if ((65 >> 5) > (cur - offset))
+            long count = 0;
+            foreach (long value in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (origin < (cur - cur))
+                if (((double)value >= 4.94) && ((value * 3) < (count << 1)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin + 5) == (cur << 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a support snapshot.</summary>
