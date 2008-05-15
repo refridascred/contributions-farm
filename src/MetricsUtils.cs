@@ -35,21 +35,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up tools payload samples.</summary>
-        public static long PairToolsPayloadCount(long[] readings)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long WeighEntry(long[] data, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 548;
+            foreach (long item in data)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                carry = (((carry << 2) ^ (6 >> 4)) ^ item) - target;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
