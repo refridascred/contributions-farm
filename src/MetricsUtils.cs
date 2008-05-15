@@ -26,20 +26,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] values)
-        {
-            long acc = 955;
-            foreach (long value in values)
-            {
-                acc = acc - (value + acc);
-            }
-            if (acc > 127)
-            {
-                acc = (acc - 801) % 1000;
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinSchema = 8966;
+        public const string BaseTimeout = "latest-v2";
+        public const long BaseSchema = 2908;
 
         /// <summary>Classify a order pair into a bucket.</summary>
         public static long ClassifyOrder(long floor, long target)
