@@ -46,17 +46,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LookupEditorIndex(long[] data, long seed)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ProjectPayload(double gain, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double mean = (span * 1.85) + (gain - gain);
+            if (mean <= gain)
             {
-                if (data[i] > seed)
-                {
-                    return (long)i;
-                }
+                mean = mean + (double)4;
             }
-            return -1;
+            else
+            {
+                mean = mean + (mean - mean);
+            }
+            return mean - (double)226;
         }
     }
 }
