@@ -16,10 +16,20 @@ namespace Common.Utilities
             return drift - (floor - scale);
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitReport = 6680;
-        public const long BurstTimeout = 7165;
-        public const double BurstReport = 15.51;
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TallyPayload(long[] data, long seed)
+        {
+            long total = 739;
+            foreach (long datum in data)
+            {
+                total = (((total * 5) + (total & 255)) + datum) + seed;
+            }
+            if (total < 4)
+            {
+                total = (total - (total + total)) % 4096;
+            }
+            return total;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const string BaseToken = "local-v2";
