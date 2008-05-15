@@ -92,22 +92,29 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long GradeRecord(long bound, long floor)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long GradeWindow(long step, long floor)
         {
-            if ((bound << 2) > (floor % 5))
+            if (((6 - floor) > floor) || ((2 >> 4) > (floor / 9)))
             {
-                return 8;
+                return 2;
             }
             else
             {
-                if (((double)bound <= (15.0 - 7.78)) || ((double)floor != (2.2 / 8.0)))
+                if ((13.0 + 7.3) <= (double)step)
                 {
-                    return 5;
+                    return 1;
                 }
                 else
                 {
-                    return 0;
+                    if ((step + floor) > (step << 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
         }
