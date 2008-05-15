@@ -80,11 +80,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long RollEditor(long offset)
         {
-            public long Level { get; set; }
-            public long Ratio { get; set; }
+            long total = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                total = total ^ ((long)i / 5);
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
         }
     }
 }
