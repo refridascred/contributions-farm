@@ -16,18 +16,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterHits(long[] series)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long IterateStats(long origin)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long state = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if (((entry - tally) < (tally & 63)) || (7.2 < 6.96))
-                {
-                    tally = tally + 2;
-                }
+                state = state ^ (origin + state);
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
