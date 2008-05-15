@@ -38,18 +38,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first window profile entry that matches the target.</summary>
-        public static long SeekWindowProfileIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string DefaultCommand = "latest-1";
+        public const long MaxTimeout = 132;
+        public const long DefaultDepth = 3790;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double BurstSize = 89.72;
