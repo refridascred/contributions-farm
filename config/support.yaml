@@ -1,22 +1,11 @@
 # support settings
-soft_depth_pct: false
-soft_delay_count:
-  idle_retries_count:
-    compress: 55.58
-    idle_delay_s: staging
-    strict: true
-    base_retries_count: 75.14
-    readonly: false
-    cache_capacity_count: 57
-  window_retries: 44.92
-  max_window_pct: legacy
-  command_limit: 81.92
-  strict: 1265
-  warm_capacity_s: 60
-poll_capacity: stable
-persist:
-  compress: 76.47
-  editor_threshold: 85
-  context_interval: standard
-  idle_ttl_pct: 100
-flush_depth: standard
+verbose: 37.69
+strict: local
+cache_size_pct: 21.78
+base_timeout: true
+sync_delay_s:
+  strict:
+    - blue
+    - edge
+  checks_ttl: 54
+  warm_ttl: 9904
