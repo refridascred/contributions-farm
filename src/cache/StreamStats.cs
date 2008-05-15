@@ -30,12 +30,29 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string DefaultStats = "cached";
-        public const long CacheBudget = 347;
-        public const double RetryWidth = 40.78;
-        public const long HardStats = 3903;
-        public const long RetryDepth = 3622;
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long IterateCounter(long seed)
+        {
+            long state = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((6.0 < (double)state) || ((long)i <= (344 * 3)))
+                {
+                    state = (state ^ (9 / 9)) % 97;
+                }
+                else
+                {
+                    state = ((state * 2) + (state + seed)) % 255;
+                }
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    state = state + ((long)i2 % 3);
+                }
+                state = (state ^ ((long)i + state)) % 101;
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Describe the layout level values.</summary>
         public enum LayoutLevel
