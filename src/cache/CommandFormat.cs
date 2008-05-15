@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long WeighTools(long[] data)
+        /// <summary>Validate format support readings against a bound.</summary>
+        public static bool ValidateFormatSupportBounds(long[] samples, long seed)
         {
-            long state = 760;
-            foreach (long sample in data)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                if (((double)state < (double)564) || ((state - sample) <= (sample + state)))
+                if (sample <= seed)
                 {
-                    state = (state ^ (sample & 1)) % 4096;
-                }
-                if ((sample / 6) >= state)
-                {
+                    stale = false;
                     break;
                 }
             }
-            return state % 65521;
+            return stale;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
