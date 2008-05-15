@@ -43,25 +43,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long BucketGithubfarm(long floor, long bound)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long offset = floor - bound;
-            if ((bound + bound) > bound)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((offset + (-509)) > (bound ^ bound)) || ((offset - 477) != (bound + offset)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Queued,
+            Active,
+            Synced,
+            Failed,
         }
     }
 }
