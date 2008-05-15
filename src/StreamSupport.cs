@@ -29,18 +29,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesMatches(long[] series, long seed)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if (tally > (datum + seed))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Token { get; set; }
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
