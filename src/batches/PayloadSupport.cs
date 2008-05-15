@@ -15,21 +15,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Match up metric editor samples.</summary>
-        public static long PairMetricEditorCount(long[] values)
+        /// <summary>Check that every context githubfarm entry stays within the limit.</summary>
+        public static bool GuardContextGithubfarmBounds(long[] data, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long value in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (value > origin)
                 {
-                    if ((values[i] - values[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
