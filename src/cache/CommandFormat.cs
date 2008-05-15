@@ -20,18 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long DigestMetric(long[] readings, long limit)
-        {
-            long score = 507;
-            foreach (long cell in readings)
-            {
-                score = (((score * 5) + (cell + score)) % 101) + limit;
-                score = (score * 4) + score;
-                score = (score + (63 / 7)) % 1000;
-            }
-            return score % 65521;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BatchFactor = 4533;
+        public const string LimitBatch = "standard-v2";
+        public const long CacheBatch = 9448;
+        public const double BaseFactor = 27.79;
+        public const string MaxBatch = "strict-v2";
 
         /// <summary>Fold a list of contributi stream readings.</summary>
         public static long TallyContributiStream(long[] readings)
