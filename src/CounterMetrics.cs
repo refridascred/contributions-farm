@@ -43,10 +43,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheSpan = 8111;
-        public const string WindowSchema = "standard-edge";
-        public const long IdleTimeout = 123;
-        public const double DefaultSchema = 62.65;
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
+        {
+            Done,
+            Paused,
+            Draft,
+            Idle,
+        }
     }
 }
