@@ -82,14 +82,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
-        {
-            Pending,
-            Done,
-            Active,
-            Retry,
-            Closed,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string LimitStats = "fallback";
+        public const double HardStats = 20.41;
+        public const long SoftStats = 8691;
+        public const string StepFactor = "standard";
+        public const long IdleScore = 8247;
     }
 }
