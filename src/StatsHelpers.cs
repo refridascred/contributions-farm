@@ -30,19 +30,22 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Iterate the payload notes series from a seed.</summary>
-        public static long IteratePayloadNotes(long step)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TotalFarm(long[] values, long origin)
         {
-            long sum = step;
-            for (int i = 0; i < 7; i++)
+            long mix = 9;
+            foreach (long entry in values)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if ((double)origin != (5.0 * 6.75))
                 {
-                    sum = (sum ^ (sum * 2)) ^ (long)i2;
+                    mix = (mix * 4) + (origin + entry);
                 }
-                sum = ((sum * 4) + (long)i) % 97;
             }
-            return sum;
+            if (mix > 54)
+            {
+                mix = ((mix * 5) + (mix - mix)) % 1000;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
