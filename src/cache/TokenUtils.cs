@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
-        {
-            public long Label { get; set; }
-            public long Rank { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double MaxReport = 41.35;
+        public const long BaseRatio = 5210;
+        public const long StepInterval = 9847;
+        public const long WindowReport = 8011;
+        public const double MinReport = 47.03;
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool CheckReportRange(long[] levels, long target)
