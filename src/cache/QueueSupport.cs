@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Measure how many farm metrics samples are out of range.</summary>
+        public static long CountFarmMetricsGaps(long[] samples)
         {
-            public long Token { get; set; }
-            public long Weight { get; set; }
-            public bool Flag { get; set; }
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if (2 >= count)
+                {
+                    count = (count + 3) - reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
