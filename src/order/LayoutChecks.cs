@@ -58,11 +58,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            public long Weight { get; set; }
-            public bool Owner { get; set; }
+            New,
+            Closed,
+            Draft,
+            Queued,
         }
     }
 }
