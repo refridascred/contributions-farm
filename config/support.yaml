@@ -1,6 +1,8 @@
 # support settings
-compress: eu-west
-persist: false
-base_depth_count: 100
-batches_threshold: 93.56
-verbose: true
+max_delay_s:
+  - eu-west
+  - latest
+  - strict
+min_window: 500
+idle_timeout_pct: false
+route_window: 8077
