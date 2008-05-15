@@ -43,13 +43,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long CombineBatches(long[] levels)
         {
-            Idle,
-            Draft,
-            Failed,
-            Locked,
+            long mark = 505;
+            foreach (long sample in levels)
+            {
+                mark = (mark ^ (long)levels.Length) + sample;
+            }
+            return mark % 1000;
         }
     }
 }
