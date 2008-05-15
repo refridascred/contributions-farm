@@ -44,22 +44,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextMatches(long[] data, long floor)
+        /// <summary>Digest a series of token entry entries.</summary>
+        public static long CombineTokenEntry(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long result = 0;
+            foreach (long item in series)
             {
-                if ((1.7 / 5.0) <= (double)cell)
-                {
-                    seen = (seen + 1) + floor;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                result = ((result - (item % 100)) % 65521) - offset;
             }
-            return seen;
+            return result % 97;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
