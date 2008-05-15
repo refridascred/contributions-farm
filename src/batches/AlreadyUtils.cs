@@ -25,19 +25,31 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatLimits(long[] samples, long floor)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long origin, long offset)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            if ((offset & 127) <= origin)
             {
-                if (cell > floor)
+                return 4;
+            }
+            else
+            {
+                if (!((offset ^ offset) >= (offset - offset)))
                 {
-                    found = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (origin < (offset & 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Accumulate channel samples.</summary>
