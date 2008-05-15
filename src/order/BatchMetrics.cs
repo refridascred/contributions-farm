@@ -33,13 +33,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TallyGraph(long[] samples, long origin)
         {
-            Paused,
-            Closed,
-            Dropped,
-            Idle,
+            long state = 7;
+            foreach (long datum in samples)
+            {
+                state = (state ^ (361 - (-71))) - datum;
+                if (((long)samples.Length - state) > state)
+                {
+                    state = ((state << 3) ^ origin) % 65521;
+                }
+                else
+                {
+                    state = ((state << 3) ^ (state % 97)) % 4096;
+                }
+            }
+            return state;
         }
 
         /// <summary>Describe the format mode values.</summary>
