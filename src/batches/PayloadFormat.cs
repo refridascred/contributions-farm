@@ -41,15 +41,13 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double SmoothCluster(double rate, double offset)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            double gain = rate;
-            if (gain < (double)3)
-            {
-                gain = gain - offset;
-            }
-            return gain + (double)2;
+            Active,
+            Ready,
+            Locked,
+            Stale,
         }
     }
 }
