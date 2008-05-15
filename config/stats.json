@@ -1,5 +1,8 @@
 {
-  "retry_timeout_ms": "latest",
-  "filter_ratio": 74.84,
-  "editor_timeout": "open"
+  "route_window": 84.5,
+  "audit": 100,
+  "persist": "fallback",
+  "metrics_capacity": 51.03,
+  "stats_delay": 67,
+  "flush_retries": 6.6
 }
