@@ -1,6 +1,8 @@
-id,region,active,label
-1,stable,local,34.31
-2,green,141,strict
-3,33,stable,334
-4,914,427,409
-5,592,legacy,open
+id,region,active
+1,24,55
+2,16.7,83.97
+3,168,82.94
+4,80.08,green
+5,592,367
+6,72.1,73.38
+7,72.15,600
