@@ -53,11 +53,11 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Adjust a editor contributi reading.</summary>
-        public static double AdjustEditorContributi(double ratio, double span)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            double bias = (double)(739 * 4);
-            return (bias - span) + ratio;
+            public bool Count { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
