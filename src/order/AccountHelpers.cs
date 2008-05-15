@@ -66,19 +66,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamRange(long[] items, long offset)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenMatches(long[] items)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if (datum >= offset)
+                if ((count - entry) > count)
                 {
-                    found = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return found;
+            return count;
         }
     }
 }
