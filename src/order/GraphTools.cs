@@ -51,23 +51,10 @@ namespace Common.Utilities
             return weight - (floor + rate);
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double SmoothReport(double scale, double offset)
-        {
-            double load = (offset - scale) + (offset - scale);
-            if (load >= (offset / 4.0))
-            {
-                load = load + (offset * 7.0);
-            }
-            else
-            {
-                load = load + scale;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - scale) + (double)(long)i;
-            }
-            return load + (scale * 6.6);
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BurstCount = "local-v2";
+        public const long CacheScore = 2661;
+        public const long BurstSize = 9315;
+        public const string DefaultSchema = "primary";
     }
 }
