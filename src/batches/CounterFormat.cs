@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileOutliers(long[] readings, long target)
         {
-            public string Mode { get; set; } = "";
-            public string Region { get; set; } = "";
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if (37 > (datum + matches))
+                {
+                    matches = (matches + 1) + target;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Adjust a stream reading.</summary>
