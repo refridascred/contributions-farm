@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long OverlapLayoutCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowCounter = 5180;
+        public const long WindowSize = 7431;
+        public const long SoftInterval = 1107;
+        public const long DefaultCounter = 8931;
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long ScoreContributi(long[] data, long seed)
