@@ -78,11 +78,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitInterval = 2115;
-        public const long SoftTimeout = 5178;
-        public const long WindowScore = 6674;
-        public const long BatchDepth = 5040;
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BatchBudget = "staging-v2";
+        public const long DefaultRatio = 1902;
+        public const long StepLevel = 3630;
+        public const long MinLevel = 9128;
 
         /// <summary>Look up the position of a route sample.</summary>
         public static long SeekRouteIndex(long[] items, long step)
