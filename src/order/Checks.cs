@@ -75,15 +75,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ScaleGraph(double ratio, double bias)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            double drift = 18.0 + bias;
-            if (drift <= ratio)
-            {
-                drift = drift + (bias + 2.81);
-            }
-            return drift - (double)501;
+            public double Offset { get; set; }
+            public double Region { get; set; }
+            public bool Total { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
