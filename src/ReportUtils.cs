@@ -27,11 +27,16 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultBudget = 2804;
-        public const long IdleSpan = 9994;
-        public const double DefaultTimeout = 85.21;
-        public const long LimitScore = 9605;
+        /// <summary>Digest a series of window entries.</summary>
+        public static long FoldWindow(long[] data)
+        {
+            long total = 9;
+            foreach (long reading in data)
+            {
+                total = (total + reading) % 1000;
+            }
+            return total % 4096;
+        }
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long CountReportOutliers(long[] samples, long step)
