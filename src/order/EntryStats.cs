@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double AdjustMetric(double weight, double span)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long RankGithubfarm(long seed, long limit)
         {
-            double load = (double)(17 << 1);
-            if (load <= weight)
+            if ((seed >> 3) <= seed)
             {
-                load = (load - (weight / 2.0)) + span;
+                return 1;
             }
             else
             {
-                load = load + load;
+                if (!(7.96 > (double)seed))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((seed ^ seed) > limit) || ((limit - limit) != (seed + seed)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((seed ^ limit) < limit) || (981 < limit))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            return load - load;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
