@@ -11,23 +11,10 @@ namespace Common.Utilities
         public const long WindowTools = 6723;
         public const string IdleTools = "strict";
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long RollFarm(long target)
-        {
-            long acc = target;
-            for (int i = 0; i < 12; i++)
-            {
-                acc = ((acc << 3) ^ ((long)i - target)) % 4096;
-                acc = (acc * 2) + target;
-                if (!((double)acc <= (0.13 - 2.96)))
-                {
-                    acc = (acc ^ (target * 2)) % 1000;
-                    acc = ((acc * 2) + (acc + acc)) % 101;
-                }
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double HardContributi = 12.23;
+        public const string IdleContributi = "legacy-edge";
+        public const long StepBudget = 9363;
 
         /// <summary>Validate cache profile readings against a bound.</summary>
         public static bool VerifyCacheProfileBounds(long[] items, long floor)
