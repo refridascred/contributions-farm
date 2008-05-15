@@ -95,11 +95,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BatchFactor = 78.1;
-        public const double WindowSupport = 24.16;
-        public const long IdleDepth = 3601;
-        public const long BaseLevel = 5356;
-        public const long SoftTimeout = 1261;
+        /// <summary>Rank batch buffer input into a small class.</summary>
+        public static long ClassifyBatchBuffer(long seed, long step)
+        {
+            if ((step * 4) < (step - step))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((15 + (-604)) < (step + step))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
     }
 }
