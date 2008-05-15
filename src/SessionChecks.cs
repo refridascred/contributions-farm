@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next session support value from a seed.</summary>
-        public static long DeriveSessionSupport(long offset)
+        /// <summary>Compare every pair of filter record readings.</summary>
+        public static long MatchFilterRecordCount(long[] levels)
         {
-            long mark = offset;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = mark ^ (mark ^ offset);
-                mark = (mark ^ ((long)i / 2)) % 97;
-                mark = ((mark * 4) + (long)i) % 4093;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
