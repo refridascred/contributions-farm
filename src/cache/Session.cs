@@ -33,18 +33,23 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelOutliers(long[] readings)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long SeriesSupport(long bound)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long acc = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if ((count - count) == (74 + datum))
+                if ((acc >> 4) > (bound << 1))
                 {
-                    count = count + 3;
+                    break;
                 }
+                else
+                {
+                    acc = ((acc << 2) ^ (bound / 2)) % 255;
+                }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return count;
+            return acc;
         }
     }
 }
