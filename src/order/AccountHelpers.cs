@@ -27,10 +27,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string CacheMetric = "alpha-v2";
-        public const double MaxFactor = 60.13;
-        public const long BaseFactor = 1671;
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadOutliers(long[] series)
+        {
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if ((double)tally < 5.74)
+                {
+                    tally = (tally + 3) + reading;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const string WindowScore = "strict-1";
