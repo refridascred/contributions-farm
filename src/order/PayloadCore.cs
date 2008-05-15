@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LocateBufferIndex(long[] levels, long limit)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > limit) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Offset { get; set; }
+            public bool Level { get; set; }
+            public string Weight { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Roll a payload format counter forward.</summary>
