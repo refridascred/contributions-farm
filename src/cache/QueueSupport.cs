@@ -28,18 +28,26 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long CombineCommand(long[] items, long offset)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long FoldCommand(long[] data, long floor)
         {
-            long score = -429;
-            foreach (long entry in items)
+            long mix = 890;
+            foreach (long entry in data)
             {
-                if ((double)score < (7.5 / 2.0))
+                if ((entry < (floor / 9)) && (962 > (mix + entry)))
                 {
-                    score = (((score + (3 * 5)) % 255) + entry) + offset;
+                    mix = (mix ^ entry) % 255;
+                }
+                else
+                {
+                    mix = (mix << 2) ^ (mix % 100);
+                }
+                if ((6.5 * 3.0) <= (double)entry)
+                {
+                    break;
                 }
             }
-            return score % 65521;
+            return mix;
         }
     }
 }
