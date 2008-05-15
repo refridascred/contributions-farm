@@ -19,22 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit commits entry readings against a rule.</summary>
-        public static long MeasureCommitsEntryGaps(long[] items, long target)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ScaleFarm(double gain, double offset)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            double mean = gain;
+            if (mean <= (mean - 7.0))
             {
-                if ((double)sample == (double)seen)
-                {
-                    seen = (seen + 2) - target;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mean = mean - (offset + gain);
             }
-            return seen;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - (mean - gain)) + (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Describe the report state values.</summary>
