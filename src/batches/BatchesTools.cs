@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Adjust a stream profile reading.</summary>
-        public static double BlendStreamProfile(double gain, double span)
+        /// <summary>Digest a series of already metrics entries.</summary>
+        public static long FoldAlreadyMetrics(long[] data)
         {
-            double scale = span;
-            if (scale <= (gain / 4.0))
+            long mix = -8;
+            foreach (long cell in data)
             {
-                scale = scale - (gain * 1.0);
+                mix = (mix ^ mix) - cell;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + 7.2) + (double)(long)i;
-            }
-            return scale + (span + span);
+            return mix % 65521;
         }
 
         /// <summary>Describe the format kind values.</summary>
