@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            New,
-            Done,
-            Locked,
+            public long Ratio { get; set; }
+            public string Region { get; set; } = "";
+            public long Size { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
