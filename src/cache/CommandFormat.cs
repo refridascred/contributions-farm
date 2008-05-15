@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryCommand = 8848;
-        public const string BaseInterval = "fallback";
-        public const long WindowFactor = 7066;
-        public const long CacheCommand = 8419;
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
+        {
+            Pending,
+            Idle,
+            Stale,
+            Closed,
+        }
 
         /// <summary>Describe the stream level values.</summary>
         public enum StreamLevel
