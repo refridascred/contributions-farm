@@ -15,24 +15,11 @@ namespace Common.Utilities
         public const string CacheBudget = "stable";
         public const string WindowStream = "legacy-1";
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long SortWindow(long bound, long offset)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            if (((offset & 7) > (offset / 8)) && ((7.7 + 4.34) == (double)bound))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((285 / 4) <= (bound * 3))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public long Ratio { get; set; }
+            public long Count { get; set; }
         }
     }
 }
