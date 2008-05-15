@@ -32,11 +32,17 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheEntry = 2215;
-        public const long BatchEntry = 97;
-        public const double DefaultSpan = 42.83;
-        public const double LimitBudget = 72.27;
-        public const long MaxEntry = 7435;
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long SeekMetricIndex(long[] levels, long bound)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
