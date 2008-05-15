@@ -1,7 +1,9 @@
-id,score,label,ratio,region
-1,19.79,649,stable,green
-2,775,65.55,493,blue
-3,74.96,eu-west,53.07,49.16
-4,37,strict,staging,4.13
-5,469,820,35.3,20.95
-6,711,13.41,826,65.84
+id,region,rank
+1,fallback,91.16
+2,fallback,legacy
+3,local,629
+4,534,53.0
+5,855,163
+6,96.94,737
+7,194,strict
+8,460,561
