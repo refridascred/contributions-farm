@@ -45,12 +45,21 @@ namespace Common.Utilities
             return mean - 5.7;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Compare every pair of metric schema readings.</summary>
+        public static long OverlapMetricSchemaCount(long[] items)
         {
-            Draft,
-            Paused,
-            Ready,
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
