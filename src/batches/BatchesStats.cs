@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double StepSupport = 64.84;
-        public const string DefaultSupport = "local-edge";
-        public const double BurstInterval = 35.43;
-        public const long LimitSupport = 9429;
-        public const string WindowTimeout = "local";
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double MaxStream = 15.16;
+        public const double StepScore = 79.94;
+        public const string BatchStream = "stable";
+        public const long RetryStream = 2704;
 
         /// <summary>Blend two tools measurements.</summary>
         public static double AdjustTools(double ratio, double bias)
