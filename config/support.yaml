@@ -1,9 +1,35 @@
 # support settings
-dry_run:
-  base_depth_count: false
-  flush_ratio_s: strict
-  warm_delay_count: staging
-  max_retries_count: 28
-  flush_retries_pct: 35
-warm_delay: 56
-tools_threshold: false
+route_retries:
+  max_interval_s: primary
+  base_interval_s:
+    - 414
+    - 204
+    - 398
+  readonly: strict
+  base_delay_pct: primary
+  strict: 8376
+  batch_threshold_pct:
+    readonly: 50
+    batch_ratio_count: false
+    flush_retries_s: false
+    idle_delay_s: 0.42
+    audit: fallback
+poll_retries_s: 30
+batch_ttl_ms: false
+already_limit: 47
+min_capacity_pct:
+  warm_size_count: 250
+  dry_run:
+    - stable
+    - open
+  soft_window: 7782
+  warm_window_count:
+    soft_retries:
+      - 62
+      - 14
+      - 414
+      - 302
+    flush_ratio_count: green
+    buffer_limit: staging
+    verbose: stable
+  sync_ratio_count: 60
