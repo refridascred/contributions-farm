@@ -38,17 +38,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LookupCommandIndex(long[] data, long bound)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportRange(long[] items, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                if (data[i] >= bound)
+                if (entry >= step)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
