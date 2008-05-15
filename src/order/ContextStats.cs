@@ -31,11 +31,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportOutliers(long[] items)
         {
-            public double Mode { get; set; }
-            public bool Rank { get; set; }
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((value + hits) > (hits / 9))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
