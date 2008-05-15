@@ -34,12 +34,12 @@ namespace Common.Utilities
         public const long DefaultRatio = 2908;
         public const long DefaultDepth = 2211;
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            Failed,
-            Queued,
-            Closed,
+            public string Region { get; set; } = "";
+            public long Limit { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
