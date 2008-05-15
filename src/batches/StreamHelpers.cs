@@ -51,31 +51,16 @@ namespace Common.Utilities
         public const long RetryCounter = 6009;
         public const double CacheCounter = 31.37;
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long GradeCommits(long seed, long limit)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long DeriveCache(long limit)
         {
-            if (!(94 > (seed << 2)))
+            long result = limit;
+            for (int i = 0; i < 14; i++)
             {
-                return 0;
+                result = (result ^ (result / 8)) % 65521;
+                result = ((result * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if ((seed % 100) != (limit % 12))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit << 1) < (seed >> 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Match up channel samples.</summary>
