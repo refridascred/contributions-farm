@@ -48,22 +48,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of queue farm readings.</summary>
-        public static long DigestQueueFarm(long[] data)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long score = 367;
-            foreach (long reading in data)
-            {
-                if ((99 - (long)data.Length) != (reading << 1))
-                {
-                    score = (score ^ (14 * 3)) % 101;
-                }
-            }
-            if (score < 4)
-            {
-                score = (score ^ (score % 5)) % 101;
-            }
-            return score;
+            public long Flag { get; set; }
+            public string Token { get; set; } = "";
+            public string Size { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Combine window values into a single score.</summary>
