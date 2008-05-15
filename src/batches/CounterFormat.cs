@@ -38,10 +38,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleTimeout = 6954;
-        public const double BatchReport = 50.6;
-        public const long DefaultReport = 2863;
-        public const long RetryTimeout = 3464;
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LookupCommandIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
