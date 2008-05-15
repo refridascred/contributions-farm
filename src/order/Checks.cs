@@ -24,15 +24,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long SeriesCluster(long origin)
+        /// <summary>Audit stats checks readings against a rule.</summary>
+        public static long AuditStatsChecksGaps(long[] items)
         {
-            long anchor = origin;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                if (((-7) & 1) >= (matches - matches))
+                {
+                    matches = (matches + 2) + cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
