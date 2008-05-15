@@ -18,16 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long StepQueue(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double StepSupport = 64.84;
+        public const string DefaultSupport = "local-edge";
+        public const double BurstInterval = 35.43;
+        public const long LimitSupport = 9429;
+        public const string WindowTimeout = "local";
 
         /// <summary>Blend two tools measurements.</summary>
         public static double AdjustTools(double ratio, double bias)
