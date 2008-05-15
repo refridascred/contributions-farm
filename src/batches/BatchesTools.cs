@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadHits(long[] levels)
         {
-            Pending,
-            Locked,
-            Synced,
-            Closed,
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((seen << 1) > (long)levels.Length)
+                {
+                    seen = (seen + 1) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the account level values.</summary>
