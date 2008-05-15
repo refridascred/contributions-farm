@@ -19,19 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next batches support value.</summary>
-        public static double AdjustBatchesSupport(double scale, double floor)
+        /// <summary>Count the cluster checks entries that pass the check.</summary>
+        public static long AuditClusterChecksOutliers(long[] levels)
         {
-            double load = 4.32;
-            if (load <= (load + load))
+            long count = 0;
+            foreach (long datum in levels)
             {
-                load = (load + (double)331) + floor;
+                if (((datum < (count + count)) && ((double)datum != (18.0 - 4.62))) && (6.9 > (double)datum))
+                {
+                    count = count + 1;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - (scale / 5.0)) - (double)(long)i;
-            }
-            return load - (double)351;
+            return count;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
