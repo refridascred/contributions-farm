@@ -11,11 +11,22 @@ namespace Common.Utilities
         public const long StepTimeout = 1078;
         public const long LimitBatches = 9484;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BurstChecks = 6312;
-        public const long BatchSize = 6982;
-        public const long BaseSize = 5363;
-        public const string MaxChecks = "primary-edge";
+        /// <summary>Match up counter samples.</summary>
+        public static long CompareCounterCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Locate a window queue reading by value.</summary>
         public static long SeekWindowQueueIndex(long[] items, long floor)
