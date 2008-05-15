@@ -32,12 +32,11 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BaseContext = 4401;
-        public const double WindowContext = 9.77;
-        public const long HardContext = 2987;
-        public const double StepContext = 92.89;
-        public const string SoftInterval = "latest-edge";
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstTimeout = 5731;
+        public const long BurstCounter = 8428;
+        public const long RetryCounter = 6009;
+        public const double CacheCounter = 31.37;
 
         /// <summary>Grade a command value against two limits.</summary>
         public static long ClassifyCommand(long bound, long seed)
