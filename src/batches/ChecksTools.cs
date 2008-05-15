@@ -12,22 +12,23 @@ namespace Common.Utilities
         public const long WindowSize = 4957;
         public const long SoftRatio = 2921;
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextHits(long[] readings, long bound)
+        /// <summary>Roll a record graph counter forward.</summary>
+        public static long RollRecordGraph(long origin)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long anchor = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if ((6.36 / 7.0) <= (double)value)
+                if (!((origin + origin) != (origin - origin)))
                 {
-                    seen = (seen + 2) + bound;
+                    anchor = (anchor - (1 ^ anchor)) % 255;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    anchor = anchor - ((long)i >> 2);
                 }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Hold a account snapshot.</summary>
