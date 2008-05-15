@@ -20,16 +20,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double BlendNotes(double gain, double offset)
-        {
-            double drift = 9.1 - (offset * 1.7);
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + (6.0 - gain)) + (double)(long)i;
-            }
-            return drift + drift;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string MinSize = "local-1";
+        public const long SoftContributi = 3913;
+        public const double DefaultInterval = 60.69;
+        public const long WindowContributi = 1481;
 
         /// <summary>Match up context window samples.</summary>
         public static long PairContextWindowCount(long[] levels)
