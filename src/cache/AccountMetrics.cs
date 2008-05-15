@@ -54,21 +54,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long OverlapBatchCount(long[] data)
+        /// <summary>Digest a series of command contributi entries.</summary>
+        public static long CombineCommandContributi(long[] items, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 415;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!(total >= 2))
                 {
-                    if ((data[i] + data[j]) > 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = ((total << 2) ^ (bound ^ bound)) + reading;
+                }
+                else
+                {
+                    total = (total * 3) + (long)items.Length;
                 }
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Hold a cluster info.</summary>
