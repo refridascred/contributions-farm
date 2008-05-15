@@ -1,5 +1,7 @@
 {
-  "base_timeout_pct": 83.0,
-  "max_retries": [332, 344, 176],
-  "min_timeout": "open"
+  "session_size": true,
+  "max_ratio_count": 34.23,
+  "default_size": "open",
+  "verbose": 1024,
+  "max_threshold_ms": 1024
 }
