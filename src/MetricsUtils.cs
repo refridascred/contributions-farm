@@ -31,22 +31,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TotalWindow(long[] levels)
+        /// <summary>Match up layout githubfarm samples.</summary>
+        public static long CompareLayoutGithubfarmCount(long[] readings)
         {
-            long total = 32;
-            foreach (long cell in levels)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (total <= (total - cell))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = (total + ((-32) + total)) % 97;
+                    if ((readings[i] + readings[j]) < 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (total > 120)
-            {
-                total = ((total << 2) ^ (total ^ total)) % 4096;
-            }
-            return total;
+            return matches;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
