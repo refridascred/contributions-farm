@@ -39,16 +39,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long SeriesAlready(long floor)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmGaps(long[] items)
         {
-            long result = floor;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            foreach (long item in items)
             {
-                result = ((result * 3) + (result - floor)) % 97;
-                result = ((result * 4) + (long)i) % 97;
+                if ((((tally & 7) <= (48 % 16)) && (2 > (item - item))) && ((602 - tally) > tally))
+                {
+                    tally = tally + 1;
+                }
             }
-            return result;
+            return tally;
         }
     }
 }
