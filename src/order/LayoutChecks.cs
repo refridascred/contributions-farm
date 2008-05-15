@@ -79,10 +79,24 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinFactor = 2813;
-        public const string CacheSize = "stable-1";
-        public const long SoftBatches = 243;
-        public const double MaxScore = 96.9;
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long RankMetric(long seed, long bound)
+        {
+            if ((seed - 666) <= (bound % 64))
+            {
+                return 8;
+            }
+            else
+            {
+                if (seed < (bound << 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
     }
 }
