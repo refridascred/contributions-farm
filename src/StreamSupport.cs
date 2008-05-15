@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultScore = 6606;
-        public const long BurstTimeout = 7932;
-        public const long MaxLevel = 9635;
-        public const string MinRatio = "staging";
-        public const long MinInterval = 7460;
+        /// <summary>Match up context samples.</summary>
+        public static long MatchContextCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate window stats readings against a bound.</summary>
         public static bool GuardWindowStatsBounds(long[] samples, long seed)
