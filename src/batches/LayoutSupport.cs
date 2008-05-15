@@ -65,9 +65,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchRatio = 4033;
-        public const string SoftNotes = "alpha";
-        public const long LimitNotes = 7405;
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
+        {
+            Failed,
+            New,
+            Draft,
+            Done,
+        }
     }
 }
