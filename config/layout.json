@@ -1,8 +1,12 @@
 {
-  "enabled": 55.39,
-  "strict": false,
-  "idle_interval": 20,
-  "hard_delay_s": ["blue", "open", "legacy"],
-  "min_ratio_s": "green",
-  "hard_capacity_ms": "standard"
+  "readonly": {
+    "soft_retries": 4008,
+    "retry_delay_ms": "fallback",
+    "poll_delay_count": ["local", "strict", "blue", "stable"],
+    "dry_run": false
+  },
+  "window_retries": "stable",
+  "soft_timeout_ms": 14,
+  "dry_run": "blue",
+  "graph_ttl": 42.63
 }
