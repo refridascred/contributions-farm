@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            public long Ratio { get; set; }
-            public long Token { get; set; }
-            public double Region { get; set; }
-            public string Score { get; set; } = "";
+            Ready,
+            Failed,
+            Pending,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Validate account readings against a bound.</summary>
