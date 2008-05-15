@@ -49,11 +49,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] data, long bound)
         {
-            public string Label { get; set; } = "";
-            public long Token { get; set; }
+            long sum = 52;
+            foreach (long value in data)
+            {
+                if (sum < (14 << 3))
+                {
+                    sum = (((sum * 5) + (bound ^ sum)) % 4096) ^ value;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
