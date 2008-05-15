@@ -11,29 +11,23 @@ namespace Common.Utilities
         public const double RetrySession = 18.34;
         public const long StepSize = 9718;
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long SortCommand(long target, long target2)
+        /// <summary>Grade a filter window value against two limits.</summary>
+        public static long BucketFilterWindow(long step, long offset)
         {
-            if ((target << 3) == (target % 7))
+            long prev = step - offset;
+            if (55 >= offset)
             {
-                return 2;
+                return 8;
             }
             else
             {
-                if ((double)target != (1.87 * 9.12))
+                if ((offset << 1) >= prev)
                 {
-                    return 5;
+                    return 1;
                 }
                 else
                 {
-                    if (!((target2 - 48) == (target2 - 41)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return 0;
                 }
             }
         }
