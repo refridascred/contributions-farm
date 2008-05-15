@@ -1,8 +1,7 @@
-id,weight,token,score
-1,613,853,72.21
-2,23.28,strict,65.49
-3,fallback,strict,green
-4,93.76,629,344
-5,47,40,standard
-6,797,337,11.45
-7,4.9,open,39.61
+id,ratio,level
+1,staging,305
+2,stable,50.11
+3,legacy,87.93
+4,86.56,fallback
+5,11.83,cached
+6,69.13,primary
