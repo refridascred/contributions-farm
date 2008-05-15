@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            Active,
-            Draft,
-            Stale,
+            public double Level { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Hold a notes record.</summary>
