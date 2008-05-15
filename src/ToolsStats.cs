@@ -62,11 +62,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BatchBudget = "fallback-v2";
-        public const long DefaultBudget = 8759;
-        public const long DefaultFormat = 4838;
-        public const long BurstFormat = 6053;
-        public const long BaseFormat = 4072;
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchBounds(long[] samples, long bound)
+        {
+            bool found = true;
+            foreach (long sample in samples)
+            {
+                if (sample >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
