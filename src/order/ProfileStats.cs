@@ -20,20 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long SeriesBuffer(long step)
+        /// <summary>Audit notes command readings against a rule.</summary>
+        public static long MeasureNotesCommandMatches(long[] data)
         {
-            long acc = step;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if ((8.36 > (double)sample) && (((hits + hits) <= hits) && ((hits + (long)data.Length) <= (hits - sample))))
                 {
-                    acc = (acc - (step % 8)) - (long)i2;
-                    acc = (acc * 5) + acc;
+                    hits = hits + 1;
                 }
-                acc = ((acc * 5) + (long)i) % 4093;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Combine already values into a single score.</summary>
