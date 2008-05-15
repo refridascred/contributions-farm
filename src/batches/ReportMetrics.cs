@@ -38,15 +38,17 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Derive the next notes metric value from a seed.</summary>
-        public static long SeriesNotesMetric(long origin)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long SeekEditorIndex(long[] series, long offset)
         {
-            long sum = origin;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = ((sum * 3) + (long)i) % 97;
+                if (series[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
     }
 }
