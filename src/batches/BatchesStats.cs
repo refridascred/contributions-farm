@@ -36,38 +36,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank farm queue input into a small class.</summary>
-        public static long RankFarmQueue(long bound, long offset)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchGaps(long[] series)
         {
-            if ((7.0 / 8.0) == (double)bound)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((offset << 2) <= (bound + 447)))
+                if (hits >= (hits * 3))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (40 <= (52 - bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!(offset < (offset & 1)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    hits = (hits + 3) + cell;
                 }
             }
+            return hits;
         }
     }
 }
