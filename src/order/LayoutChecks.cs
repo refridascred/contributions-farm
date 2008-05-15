@@ -74,27 +74,22 @@ namespace Common.Utilities
             return weight + (2.0 / 9.0);
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long ScoreContributi(long[] readings)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long ScoreEditor(long[] values, long seed)
         {
-            long anchor = 7;
-            foreach (long value in readings)
+            long state = 161;
+            foreach (long sample in values)
             {
-                anchor = ((anchor * 2) + (981 * 2)) % 4096;
-                if (!((value ^ anchor) < 6))
+                if ((15.0 / 8.0) == (double)state)
                 {
-                    anchor = ((anchor * 3) + (value + anchor)) % 1000;
+                    state = ((state - seed) % 1000) + sample;
                 }
                 else
                 {
-                    anchor = anchor + (anchor >> 2);
+                    state = state ^ (state + 537);
                 }
             }
-            if (anchor < (-58))
-            {
-                anchor = ((anchor << 3) ^ (anchor + anchor)) % 97;
-            }
-            return anchor % 1000;
+            return state;
         }
 
         /// <summary>Hold a channel record.</summary>
