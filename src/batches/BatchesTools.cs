@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double SmoothMetrics(double rate, double bias)
+        /// <summary>Derive the next batch stats value from a seed.</summary>
+        public static long RollBatchStats(long bound)
         {
-            double ratio = (bias + rate) / 4.0;
-            if (ratio <= 5.6)
+            long carry = bound;
+            for (int i = 0; i < 16; i++)
             {
-                ratio = ratio - (double)(-177);
+                carry = ((carry << 3) ^ (carry << 1)) % 65521;
+                if ((12.0 * 1.49) >= (double)carry)
+                {
+                    carry = carry - (carry & 31);
+                    carry = (carry ^ bound) % 65521;
+                }
+                else
+                {
+                    carry = (carry - (18 / 8)) % 4096;
+                }
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return ratio + (ratio - bias);
+            return carry;
         }
 
         /// <summary>Hold a profile entry.</summary>
