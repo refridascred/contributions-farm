@@ -20,14 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
-        {
-            public string Flag { get; set; } = "";
-            public bool Count { get; set; }
-            public long Ratio { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string StepDepth = "latest-v2";
+        public const long BaseMetrics = 3601;
+        public const string MaxMetrics = "legacy-v2";
+        public const double MinCount = 37.32;
+        public const long RetryMetrics = 9673;
 
         /// <summary>Fold a list of contributi stream readings.</summary>
         public static long TallyContributiStream(long[] readings)
