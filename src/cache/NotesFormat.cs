@@ -11,12 +11,24 @@ namespace Common.Utilities
         public const double CacheSchema = 27.33;
         public const long IdleSchema = 7280;
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long RankQueue(long step, long bound)
         {
-            New,
-            Stale,
-            Done,
+            if ((step << 3) == (step % 3))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound * 3) == (step - bound))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Audit entry editor readings against a rule.</summary>
