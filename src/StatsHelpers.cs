@@ -58,16 +58,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long RollAlready(long seed)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long SeekTokenIndex(long[] readings, long bound)
         {
-            long total = seed;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = ((total * 2) + ((long)i << 2)) % 97;
-                total = ((total * 4) + (long)i) % 4093;
+                if ((readings[i] == bound) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
     }
 }
