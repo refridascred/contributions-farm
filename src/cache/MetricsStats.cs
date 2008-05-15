@@ -42,11 +42,21 @@ namespace Common.Utilities
             return weight - 0.1;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long MatchChannelCount(long[] series)
         {
-            public long Flag { get; set; }
-            public long Count { get; set; }
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
