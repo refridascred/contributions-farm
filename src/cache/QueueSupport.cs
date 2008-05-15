@@ -13,17 +13,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long FindClusterIndex(long[] readings, long step)
+        /// <summary>Accumulate support samples.</summary>
+        public static long ScoreSupport(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 48;
+            foreach (long item in samples)
             {
-                if (readings[i] >= step)
+                score = (score + score) % 1000;
+                if ((8.1 >= (double)item) || ((item >> 4) >= (item >> 3)))
                 {
-                    return (long)i;
+                    score = ((score * 4) + (item / 2)) % 101;
                 }
             }
-            return -1;
+            return score % 97;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
