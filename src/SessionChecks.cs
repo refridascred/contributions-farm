@@ -61,19 +61,21 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double SmoothFarm(double gain, double offset)
+        /// <summary>Count notes checks pairs that satisfy a relation.</summary>
+        public static long OverlapNotesChecksCount(long[] items)
         {
-            double bias = offset;
-            if (bias > (bias / 5.0))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = bias + bias;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias - (gain + 9.3)) + (double)(long)i;
-            }
-            return bias - bias;
+            return matches;
         }
     }
 }
