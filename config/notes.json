@@ -1,7 +1,8 @@
 {
-  "session_size": true,
-  "max_ratio_count": 34.23,
-  "default_size": "open",
-  "verbose": 1024,
-  "max_threshold_ms": 1024
+  "poll_delay_count": 25.46,
+  "compress": 2562,
+  "soft_interval_s": "open",
+  "graph_size": 100,
+  "min_size_s": "open",
+  "soft_retries_s": 59
 }
