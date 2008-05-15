@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Locate a account reading by value.</summary>
-        public static long SeekAccountIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double MinReport = 84.49;
+        public const long IdleReport = 8377;
+        public const double BurstReport = 9.3;
 
         /// <summary>Digest a series of token entries.</summary>
         public static long TallyToken(long[] samples, long step)
