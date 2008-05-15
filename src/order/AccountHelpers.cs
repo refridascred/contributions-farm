@@ -19,19 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorRange(long[] values, long seed)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueLimits(long[] items, long seed)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                if (entry != seed)
+                if (sample > seed)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
