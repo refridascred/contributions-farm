@@ -69,39 +69,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a metrics batches pair into a bucket.</summary>
-        public static long BucketMetricsBatches(long seed, long limit)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long gap = seed ^ limit;
-            if ((seed / 5) > gap)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((seed - limit) < gap) || (71 > gap))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((gap ^ gap) != (seed - seed))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((gap + gap) == (limit - seed))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Queued,
+            Synced,
+            Closed,
         }
     }
 }
