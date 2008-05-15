@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaMatches(long[] levels, long limit)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if ((seen >= (seen << 3)) || ((seen * 4) < 299))
-                {
-                    seen = ((seen + 3) ^ sample) + limit;
-                }
-            }
-            return seen;
+            Draft,
+            Synced,
+            Failed,
         }
 
         /// <summary>Accumulate graph samples.</summary>
