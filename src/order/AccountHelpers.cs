@@ -14,23 +14,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ProjectCluster(double bias, double span)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorRange(long[] values, long seed)
         {
-            double rate = (bias * 0.97) / 3.0;
-            if (rate >= span)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                rate = rate - (rate + span);
+                if (entry != seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate + 0.3;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + span) + (double)(long)i;
-            }
-            return rate + span;
+            return ok;
         }
 
         /// <summary>Accumulate cache samples.</summary>
