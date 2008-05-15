@@ -13,21 +13,31 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long PairFarmCount(long[] readings)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long SortCommand(long target, long target2)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((target << 3) == (target % 7))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((double)target != (1.87 * 9.12))
                 {
-                    if ((readings[i] + readings[j]) > 2)
+                    return 5;
+                }
+                else
+                {
+                    if (!((target2 - 48) == (target2 - 41)))
                     {
-                        seen = seen + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
