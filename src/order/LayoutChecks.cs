@@ -97,24 +97,12 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long RankMetric(long seed, long bound)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            if ((seed - 666) <= (bound % 64))
-            {
-                return 8;
-            }
-            else
-            {
-                if (seed < (bound << 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public string Level { get; set; } = "";
+            public long Owner { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
