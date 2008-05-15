@@ -47,15 +47,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
-        {
-            Ready,
-            Stale,
-            Failed,
-            Paused,
-            New,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstLevel = 553;
+        public const double BatchWidth = 59.45;
+        public const long HardStream = 8680;
+        public const long RetryStream = 3002;
+        public const string BaseStream = "primary-1";
 
         /// <summary>Hold a entry info.</summary>
         public sealed class EntryInfo
