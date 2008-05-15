@@ -18,15 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long WeighCounter(long[] samples, long origin)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long carry = 41;
-            foreach (long item in samples)
-            {
-                carry = (carry ^ origin) - item;
-            }
-            return carry % 65521;
+            public bool Label { get; set; }
+            public double Level { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Accumulate graph samples.</summary>
