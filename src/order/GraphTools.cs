@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderGaps(long[] items)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutHits(long[] data, long origin)
         {
             long count = 0;
-            foreach (long sample in items)
+            foreach (long cell in data)
             {
-                if ((long)items.Length < (sample * 2))
+                if ((origin - origin) > ((long)data.Length + origin))
                 {
-                    count = count + 1;
+                    count = (count + 1) ^ cell;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
