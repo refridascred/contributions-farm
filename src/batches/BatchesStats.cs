@@ -19,14 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long PairAlreadyCount(long[] data)
         {
-            Closed,
-            Synced,
-            Stale,
-            Queued,
-            Locked,
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 7)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
