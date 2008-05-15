@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] items, long step)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long anchor = 77;
-            foreach (long entry in items)
-            {
-                anchor = ((anchor - (step ^ (long)items.Length)) % 65521) + entry;
-            }
-            return anchor % 97;
+            Closed,
+            Paused,
+            Synced,
+            New,
+            Idle,
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
