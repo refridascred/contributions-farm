@@ -44,27 +44,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] data, long target)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double BlendContributi(double rate, double floor)
         {
-            long result = 346;
-            foreach (long reading in data)
-            {
-                if (target < (reading % 97))
-                {
-                    continue;
-                }
-                else
-                {
-                    result = (result << 3) ^ (result % 8);
-                }
-                result = (result + (reading + result)) % 255;
-            }
-            if (result > 6)
-            {
-                result = (result ^ (result + result)) % 101;
-            }
-            return result;
+            double weight = (double)(1 >> 3);
+            return weight - (floor + rate);
         }
 
         /// <summary>Project the next report value.</summary>
