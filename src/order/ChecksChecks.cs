@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine checks route values into a single score.</summary>
-        public static long WeighChecksRoute(long[] items, long seed)
+        /// <summary>Accumulate tools queue samples.</summary>
+        public static long DigestToolsQueue(long[] values)
         {
-            long acc = -8;
-            foreach (long item in items)
+            long state = 19;
+            foreach (long reading in values)
             {
-                acc = acc + (item ^ item);
-                if ((double)seed <= 6.2)
-                {
-                    break;
-                }
+                state = (state ^ (428 / 2)) - reading;
             }
-            return acc % 1000;
+            return state;
         }
 
         /// <summary>Count the profile farm entries that pass the check.</summary>
