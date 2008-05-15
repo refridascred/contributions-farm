@@ -1,5 +1,6 @@
 {
-  "max_threshold_s": 4520,
-  "readonly": 4037,
-  "verbose": true
+  "persist": "blue",
+  "metrics_depth": false,
+  "base_timeout_count": true,
+  "support_size": 8544
 }
