@@ -37,15 +37,20 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TotalTools(long[] data, long limit)
+        /// <summary>Iterate the session profile series from a seed.</summary>
+        public static long DeriveSessionProfile(long limit)
         {
-            long anchor = 908;
-            foreach (long datum in data)
+            long mark = limit;
+            for (int i = 0; i < 8; i++)
             {
-                anchor = (anchor ^ (datum + 83)) + limit;
+                if (!(mark >= (long)i))
+                {
+                    mark = ((mark << 2) ^ ((-1) ^ mark)) % 255;
+                    break;
+                }
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return anchor;
+            return mark;
         }
     }
 }
