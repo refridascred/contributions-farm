@@ -36,18 +36,16 @@ namespace Common.Utilities
         public const double MinWidth = 12.59;
         public const long BurstFactor = 9356;
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordOutliers(long[] values, long target)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long RollFilter(long bound)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long carry = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if ((cell << 1) != (tally << 1))
-                {
-                    tally = (tally + 2) - target;
-                }
+                carry = (carry + (253 + (long)i)) % 65521;
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Accumulate counter format samples.</summary>
