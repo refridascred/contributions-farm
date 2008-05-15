@@ -14,16 +14,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long SeriesSchema(long floor)
-        {
-            long mix = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string HardWidth = "local";
+        public const string HardCommand = "staging-1";
+        public const long DefaultCommand = 5185;
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long AuditWindowHits(long[] readings, long offset)
