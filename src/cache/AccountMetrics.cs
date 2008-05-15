@@ -53,12 +53,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountMatches(long[] series, long floor)
         {
-            Paused,
-            Done,
-            Locked,
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if (matches < (floor / 3))
+                {
+                    matches = (matches + 2) + datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of command contributi entries.</summary>
