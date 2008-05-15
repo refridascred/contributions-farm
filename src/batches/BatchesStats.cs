@@ -39,18 +39,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsHits(long[] levels, long step)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long PairReportCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((double)hits <= (double)0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = ((hits + 2) + cell) + step;
+                    if ((readings[i] - readings[j]) == 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
