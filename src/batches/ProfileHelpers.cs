@@ -40,10 +40,23 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseScore = 7828;
-        public const long WindowBuffer = 5425;
-        public const long LimitBuffer = 2343;
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] levels)
+        {
+            long total = 0;
+            foreach (long reading in levels)
+            {
+                if ((4 + (-4)) != (reading - reading))
+                {
+                    total = ((total * 4) + (reading >> 2)) % 1000;
+                }
+            }
+            if (total < 0)
+            {
+                total = total + total;
+            }
+            return total;
+        }
 
         /// <summary>Combine checks values into a single score.</summary>
         public static long DigestChecks(long[] levels, long offset)
