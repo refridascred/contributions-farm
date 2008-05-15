@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Compare every pair of filter account readings.</summary>
+        public static long MatchFilterAccountCount(long[] levels)
         {
-            public double Offset { get; set; }
-            public long Size { get; set; }
-            public long Score { get; set; }
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many stream notes samples are out of range.</summary>
