@@ -24,13 +24,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double SmoothSupport(double weight, double offset)
         {
-            Queued,
-            Pending,
-            Synced,
-            Active,
+            double scale = (weight * 1.0) / 7.0;
+            if (scale < (double)17)
+            {
+                scale = (scale - weight) - offset;
+            }
+            return scale + (double)4;
         }
 
         /// <summary>Hold a support entry.</summary>
