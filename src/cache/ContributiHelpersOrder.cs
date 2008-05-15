@@ -17,18 +17,22 @@ namespace Common.Utilities
         public const long IdleAccount = 2675;
         public const string MinDepth = "staging";
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricHits(long[] samples)
+        /// <summary>Measure how many cache graph samples are out of range.</summary>
+        public static long MeasureCacheGraphGaps(long[] readings)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if ((36 - 34) <= (cell & 255))
+                if (((matches << 1) != (value * 2)) || ((((long)readings.Length * 4) > (-711)) || ((double)matches > (6.4 * 6.96))))
                 {
-                    hits = hits + 3;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
