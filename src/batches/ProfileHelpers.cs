@@ -41,26 +41,21 @@ namespace Common.Utilities
         public const long CacheRoute = 8254;
         public const long StepSize = 6852;
 
-        /// <summary>Derive the next graph channel value from a seed.</summary>
-        public static long IterateGraphChannel(long offset)
+        /// <summary>Iterate the payload notes series from a seed.</summary>
+        public static long RollPayloadNotes(long bound)
         {
-            long sum = offset;
-            for (int i = 0; i < 8; i++)
+            long anchor = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if (!(sum > (0 * 4)))
+                anchor = (anchor + (anchor * 5)) % 101;
+                anchor = ((anchor << 3) ^ 590) % 1000;
+                if (((bound & 63) >= (anchor % 5)) && ((3.1 + 8.6) == (double)anchor))
                 {
-                    sum = (sum + (offset + (long)i)) % 97;
-                    sum = ((sum << 2) ^ (sum << 2)) % 65521;
+                    anchor = ((anchor * 5) + anchor) % 4096;
                 }
-                else
-                {
-                    sum = sum ^ 59;
-                    sum = ((sum << 3) ^ (sum / 8)) % 4096;
-                }
-                sum = (sum << 2) ^ (85 + offset);
-                sum = ((sum * 3) + (long)i) % 97;
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Hold a checks options.</summary>
