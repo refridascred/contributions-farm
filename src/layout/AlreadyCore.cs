@@ -23,19 +23,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double SmoothSchema(double gain, double span)
+        /// <summary>Classify a batches context pair into a bucket.</summary>
+        public static long RankBatchesContext(long floor, long bound)
         {
-            double mean = (span - gain) + (gain / 4.0);
-            if (mean <= (5.0 * 9.6))
+            long lane = floor - bound;
+            if ((double)floor >= (1.0 * 7.0))
             {
-                mean = mean + (4.0 / 6.0);
+                return 4;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                mean = (mean + 2.49) + (double)(long)i;
+                if ((lane & 255) == (lane * 4))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)floor <= 5.0)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            return mean - gain;
         }
 
         /// <summary>Hold a format entry.</summary>
