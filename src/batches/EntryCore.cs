@@ -50,11 +50,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string MinFactor = "legacy-edge";
-        public const long RetryNotes = 7961;
-        public const double BurstNotes = 40.92;
-        public const long SoftNotes = 6895;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstSize = 9122;
+        public const long BurstEditor = 2338;
+        public const string LimitDepth = "cached";
+        public const double BatchBudget = 40.5;
+        public const string HardSize = "open";
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long LimitBatches = 9627;
