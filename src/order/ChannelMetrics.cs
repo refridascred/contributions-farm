@@ -31,19 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterLimits(long[] readings, long step)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterMatches(long[] values, long offset)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if (reading > step)
+                if (!(reading < (3 << 2)) || (((matches - 4) == (offset - matches)) || ((double)reading > 0.2)))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
