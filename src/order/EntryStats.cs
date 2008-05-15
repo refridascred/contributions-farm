@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long ScoreTools(long[] series)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double AdjustMetric(double weight, double span)
         {
-            long mix = -45;
-            foreach (long sample in series)
+            double load = (double)(17 << 1);
+            if (load <= weight)
             {
-                if (mix >= (sample << 2))
-                {
-                    mix = ((mix * 4) + (sample + sample)) % 97;
-                }
-                else
-                {
-                    mix = mix - (sample >> 4);
-                }
+                load = (load - (weight / 2.0)) + span;
             }
-            return mix;
+            else
+            {
+                load = load + load;
+            }
+            return load - load;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
