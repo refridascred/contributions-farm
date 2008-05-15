@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LookupFormatIndex(long[] values, long step)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < step) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Limit { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
