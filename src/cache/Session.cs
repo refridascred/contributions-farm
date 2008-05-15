@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferHits(long[] values, long bound)
         {
-            public long Label { get; set; }
-            public bool Rank { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Owner { get; set; }
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if (((item / 6) >= (item * 4)) && ((bound ^ 31) == (seen ^ item)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
