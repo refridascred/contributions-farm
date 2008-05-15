@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Grade a batch checks value against two limits.</summary>
-        public static long GradeBatchChecks(long bound, long bound2)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long SeriesBuffer(long origin)
         {
-            long offset = bound + bound2;
-            if ((bound2 + bound2) > (bound2 & 63))
+            long state = origin;
+            for (int i = 0; i < 18; i++)
             {
-                return 5;
+                state = (state - (69 % 2)) % 101;
+                state = (state << 2) ^ 3;
+                state = ((state * 2) + (long)i) % 97;
             }
-            else
-            {
-                if (((bound & 63) > offset) && ((double)bound < (double)75))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return state;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
