@@ -1,6 +1,8 @@
-id,level,owner,active
-1,fallback,edge,82.52
-2,95.99,287,346
-3,83.85,4.31,610
-4,31.63,64.02,37.88
-5,26.57,latest,cached
+id,token,owner,state
+1,91.86,117,118
+2,501,967,929
+3,35.92,85.85,primary
+4,961,74.1,177
+5,eu-west,legacy,green
+6,73.02,645,edge
+7,stable,600,588
