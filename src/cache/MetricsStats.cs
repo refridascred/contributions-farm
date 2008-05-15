@@ -45,31 +45,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Grade a account stats value against two limits.</summary>
-        public static long BucketAccountStats(long limit, long seed)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double SmoothCluster(double bias, double floor)
         {
-            if ((15 >= limit) && ((seed >> 5) == ((-66) + limit)))
+            double weight = (double)(23 / 3);
+            if (weight < bias)
             {
-                return 5;
+                weight = (weight - bias) - floor;
             }
-            else
-            {
-                if ((limit * 2) == ((-115) / 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((9 & 1) != (limit % 100))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return weight - 0.1;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
