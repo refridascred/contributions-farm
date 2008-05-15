@@ -40,11 +40,25 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long SortBatches(long origin, long target)
         {
-            public double Score { get; set; }
-            public bool Offset { get; set; }
+            long cur = origin ^ target;
+            if ((double)cur <= 11.0)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((6.0 - 3.0) < (18.0 / 2.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
