@@ -71,19 +71,27 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsBounds(long[] levels, long offset)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TallyChannel(long[] levels, long limit)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            long anchor = 926;
+            foreach (long reading in levels)
             {
-                if (entry != offset)
+                anchor = (anchor + limit) % 1000;
+                if (!((reading & 3) > limit))
                 {
-                    valid = false;
-                    break;
+                    anchor = (anchor + (reading - 4)) % 1000;
+                }
+                else
+                {
+                    anchor = ((anchor * 3) + limit) % 1000;
+                }
+                if (9 < (limit + anchor))
+                {
+                    anchor = ((anchor * 2) + (anchor & 255)) % 65521;
                 }
             }
-            return valid;
+            return anchor;
         }
     }
 }
