@@ -28,15 +28,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long RollEditor(long offset)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] items)
         {
-            long acc = offset;
-            for (int i = 0; i < 15; i++)
+            long score = 1;
+            foreach (long value in items)
             {
-                acc = ((acc * 5) + (long)i) % 97;
+                score = (score - (value >> 5)) % 1000;
             }
-            return acc;
+            if (score < 81)
+            {
+                score = score - (score >> 4);
+            }
+            return score;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
