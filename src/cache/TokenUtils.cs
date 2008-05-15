@@ -20,13 +20,14 @@ namespace Common.Utilities
         public const long SoftOrder = 4467;
         public const long WindowCount = 8831;
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            public bool Level { get; set; }
-            public string Score { get; set; } = "";
-            public double Weight { get; set; }
-            public long Token { get; set; }
+            Stale,
+            Active,
+            Retry,
+            Synced,
+            Locked,
         }
     }
 }
