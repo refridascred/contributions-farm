@@ -35,26 +35,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long ScoreEntry(long[] series, long target)
+        /// <summary>Count order already pairs that satisfy a relation.</summary>
+        public static long PairOrderAlreadyCount(long[] data)
         {
-            long score = -593;
-            foreach (long entry in series)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((target >> 1) >= (score >> 3)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = (score - (target * 2)) ^ entry;
-                }
-                else
-                {
-                    score = (score * 4) + (target * 4);
+                    if ((data[i] ^ data[j]) < 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (score < 746)
-            {
-                score = (score ^ (target / 7)) % 101;
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
