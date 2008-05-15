@@ -34,12 +34,19 @@ namespace Common.Utilities
         public const long DefaultRatio = 2908;
         public const long DefaultDepth = 2211;
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Validate report channel readings against a bound.</summary>
+        public static bool CheckReportChannelLimits(long[] samples, long seed)
         {
-            public string Region { get; set; } = "";
-            public long Limit { get; set; }
-            public string Ratio { get; set; } = "";
+            bool found = true;
+            foreach (long cell in samples)
+            {
+                if (cell <= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
