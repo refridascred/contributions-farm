@@ -52,17 +52,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LocateBufferIndex(long[] items, long floor)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long BucketQueue(long limit, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((limit >> 1) > (floor % 16))
             {
-                if (items[i] < floor)
+                return 0;
+            }
+            else
+            {
+                if ((14.0 + 3.22) < (double)floor)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
