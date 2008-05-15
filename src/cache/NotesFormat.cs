@@ -13,12 +13,11 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
-        {
-            public bool Weight { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string MinSpan = "open";
+        public const long WindowFarm = 7824;
+        public const double StepRatio = 48.97;
+        public const double StepFactor = 86.38;
 
         /// <summary>Describe the metric kind values.</summary>
         public enum MetricKind
