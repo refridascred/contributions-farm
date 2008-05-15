@@ -20,13 +20,39 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long RankLayout(long origin, long seed)
         {
-            Done,
-            Synced,
-            Failed,
-            Queued,
+            long diff = origin + seed;
+            if ((9.82 - 2.8) <= (double)diff)
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((90 >> 2) >= seed))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((double)seed != (1.1 - 3.99)) || (diff <= (seed >> 4)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((6.0 * 4.47) == (double)seed)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
