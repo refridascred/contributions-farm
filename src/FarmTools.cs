@@ -22,20 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamRange(long[] items, long bound)
-        {
-            bool flag = true;
-            foreach (long sample in items)
-            {
-                if (sample > bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double IdleChecks = 29.61;
+        public const long CacheSize = 8050;
+        public const string BaseTimeout = "primary-v2";
+        public const double HardChecks = 45.51;
+        public const double DefaultScore = 47.44;
 
         /// <summary>Hold a githubfarm stats.</summary>
         public sealed class GithubfarmStats
