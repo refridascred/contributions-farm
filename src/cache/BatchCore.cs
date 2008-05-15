@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstDepth = 8790;
-        public const string BaseInterval = "staging-edge";
-        public const double HardScore = 57.93;
-        public const double BaseEntry = 36.23;
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long DeriveGraph(long seed)
+        {
+            long sum = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    sum = (sum ^ (seed << 3)) ^ (long)i2;
+                }
+                for (int i3 = 0; i3 < 9; i3++)
+                {
+                    sum = ((sum ^ ((-35) << 3)) % 97) - (long)i3;
+                }
+                sum = ((sum * 2) + (long)i) % 4093;
+            }
+            return sum;
+        }
 
         /// <summary>Blend two window measurements.</summary>
         public static double ScaleWindow(double ratio, double offset)
