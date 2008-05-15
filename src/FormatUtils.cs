@@ -16,21 +16,25 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long CompareSchemaCount(long[] data)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long SortCache(long step, long step2)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long next = step - step2;
+            if (((step / 3) >= ((-647) + next)) || ((step2 * 5) != (step2 ^ step2)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((double)step >= (19.0 + 3.5))
                 {
-                    if ((data[i] - data[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return hits;
         }
 
         /// <summary>Define context limits and defaults.</summary>
