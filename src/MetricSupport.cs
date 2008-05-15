@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            New,
-            Queued,
-            Done,
+            public long Rank { get; set; }
+            public double Limit { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Rank cluster layout input into a small class.</summary>
