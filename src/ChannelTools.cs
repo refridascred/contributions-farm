@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate entry batch samples.</summary>
-        public static long CombineEntryBatch(long[] readings)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LookupFormatIndex(long[] values, long step)
         {
-            long mix = 8;
-            foreach (long reading in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((((long)readings.Length % 3) < reading) || ((mix * 5) <= reading))
+                if ((values[i] < step) && ((values[i] % 2) != 0))
                 {
-                    mix = (mix ^ (mix ^ mix)) % 1000;
-                }
-                if (5 > (reading * 4))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
