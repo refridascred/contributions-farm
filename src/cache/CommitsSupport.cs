@@ -34,18 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenHits(long[] levels)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmGaps(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if (((8 << 2) <= count) || ((count + 183) == (long)levels.Length))
+                if (((double)seen != (double)floor) && (seen > (floor + 380)))
                 {
-                    count = (count + 2) + value;
+                    seen = (seen + 2) - item;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the session class values.</summary>
