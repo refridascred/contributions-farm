@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Validate batches stream readings against a bound.</summary>
-        public static bool GuardBatchesStreamLimits(long[] series, long origin)
+        /// <summary>Iterate the token metrics series from a seed.</summary>
+        public static long DeriveTokenMetrics(long seed)
         {
-            bool found = true;
-            foreach (long item in series)
+            long sum = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if (item != origin)
+                if ((double)sum == (double)1)
                 {
-                    found = false;
-                    break;
+                    continue;
                 }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Accumulate filter samples.</summary>
