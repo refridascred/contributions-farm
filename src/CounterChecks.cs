@@ -83,18 +83,22 @@ namespace Common.Utilities
             return weight - (1.94 + offset);
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorGaps(long[] items)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterGaps(long[] samples)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if ((tally - tally) > (tally % 97))
+                if ((datum + hits) > (-45))
                 {
-                    tally = (tally + 1) ^ reading;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
