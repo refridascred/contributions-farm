@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Adjust a graph reading.</summary>
-        public static double AdjustGraph(double ratio, double floor)
+        /// <summary>Match up batch samples.</summary>
+        public static long CompareBatchCount(long[] series)
         {
-            double ratio2 = (ratio - ratio) / 2.0;
-            if (ratio2 >= ratio)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio2 = ratio2 + (double)579;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio2 = (ratio2 - (floor + 5.1)) - (double)(long)i;
-            }
-            return ratio2 - (floor / 8.0);
+            return tally;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
