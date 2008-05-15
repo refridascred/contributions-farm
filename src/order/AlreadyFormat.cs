@@ -70,25 +70,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long BucketQueue(long limit, long floor)
-        {
-            if ((limit >> 1) > (floor % 16))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((14.0 + 3.22) < (double)floor)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string WindowLevel = "strict-edge";
+        public const long MinSize = 1382;
+        public const long BatchGithubfarm = 9727;
+        public const double BaseSize = 23.09;
+        public const long HardSize = 6837;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long BurstLevel = 921;
