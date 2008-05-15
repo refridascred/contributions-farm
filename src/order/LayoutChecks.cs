@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BatchBuffer = "strict";
-        public const double LimitDepth = 66.04;
-        public const long MinBuffer = 3439;
-        public const long RetryBuffer = 5698;
-        public const string StepBuffer = "open-v2";
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TallyCounter(long[] readings, long step)
+        {
+            long score = 2;
+            foreach (long datum in readings)
+            {
+                score = (score - 50) ^ datum;
+                if (!((step ^ score) >= (score * 4)))
+                {
+                    score = score + (score << 1);
+                }
+                if ((double)(long)readings.Length > (11.0 / 9.0))
+                {
+                    score = (score ^ (score % 8)) % 65521;
+                }
+            }
+            return score % 1000;
+        }
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long TotalCache(long[] levels, long floor)
