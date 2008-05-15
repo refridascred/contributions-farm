@@ -14,11 +14,24 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long StepDepth = 4958;
-        public const double WindowFactor = 34.42;
-        public const long BaseFarm = 9965;
-        public const long LimitFarm = 9034;
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ProjectCluster(double bias, double span)
+        {
+            double rate = (bias * 0.97) / 3.0;
+            if (rate >= span)
+            {
+                rate = rate - (rate + span);
+            }
+            else
+            {
+                rate = rate + 0.3;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + span) + (double)(long)i;
+            }
+            return rate + span;
+        }
 
         /// <summary>Accumulate cache samples.</summary>
         public static long DigestCache(long[] items)
