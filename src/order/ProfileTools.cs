@@ -55,15 +55,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a schema payload figure with a bias.</summary>
-        public static double ProjectSchemaPayload(double ratio, double span)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            double weight = ratio - ratio;
-            if (weight <= (span - 9.0))
-            {
-                weight = weight + (double)4;
-            }
-            return weight + ratio;
+            Ready,
+            Synced,
+            Active,
+            Locked,
         }
     }
 }
