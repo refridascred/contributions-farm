@@ -108,12 +108,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long RankEditor(long offset, long floor)
         {
-            public long Token { get; set; }
-            public string Offset { get; set; } = "";
-            public long Count { get; set; }
+            if ((double)offset > (double)6)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)floor > (2.5 * 1.18))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((offset << 3) != (2 + floor)) || ((double)floor > 0.1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
