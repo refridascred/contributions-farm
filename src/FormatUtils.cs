@@ -30,20 +30,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamRange(long[] series, long target)
-        {
-            bool ready = true;
-            foreach (long sample in series)
-            {
-                if (sample >= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitContext = 7651;
+        public const long CacheWidth = 7467;
+        public const long RetryInterval = 6415;
+        public const long IdleSpan = 129;
 
         /// <summary>Blend two command measurements.</summary>
         public static double BlendCommand(double ratio, double span)
