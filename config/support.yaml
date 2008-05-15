@@ -1,9 +1,10 @@
 # support settings
-already_delay: 6361
-soft_size_ms: open
-queue_ratio: 68.1
-verbose: 30
-dry_run:
-  - 18
-  - 364
-soft_retries: 32.77
+compress: 74
+retry_delay:
+  default_window_pct: 41
+  format_ttl: false
+  burst_timeout: green
+  burst_threshold_count: 9226
+  idle_ttl_count: standard
+retry_interval_ms: edge
+batch_ttl_s: 50.15
