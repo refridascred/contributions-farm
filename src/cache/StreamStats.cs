@@ -40,15 +40,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long DigestGithubfarm(long[] items, long step)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmBounds(long[] values, long floor)
         {
-            long result = 8;
-            foreach (long item in items)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                result = ((result + step) % 101) ^ item;
+                if (sample < floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return result;
+            return stale;
         }
     }
 }
