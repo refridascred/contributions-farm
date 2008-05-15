@@ -11,13 +11,16 @@ namespace Common.Utilities
         public const long CacheTimeout = 2171;
         public const string BatchRatio = "fallback-edge";
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long step)
         {
-            public bool Offset { get; set; }
-            public long Total { get; set; }
-            public long Weight { get; set; }
-            public bool Count { get; set; }
+            long state = step;
+            for (int i = 0; i < 23; i++)
+            {
+                state = (state ^ state) % 65521;
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
