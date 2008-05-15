@@ -36,10 +36,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double LimitPayload = 28.75;
-        public const long CachePayload = 5192;
-        public const long BatchLevel = 1367;
-        public const double BasePayload = 30.44;
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
+        {
+            Retry,
+            Stale,
+            Failed,
+        }
     }
 }
