@@ -1,12 +1,7 @@
 {
-  "compress": 30,
-  "enabled": [94, 230],
-  "session_interval": {
-    "burst_size": "eu-west",
-    "filter_capacity": true,
-    "burst_capacity": ["local", "staging", "open", "open"]
-  },
-  "default_timeout": [209, 390, 351],
-  "farm_window": "cached",
-  "soft_retries": 62.65
+  "sync_depth_s": 54.86,
+  "support_interval": 3676,
+  "cache_limit": 30,
+  "min_ttl_count": 28.91,
+  "batch_timeout_ms": 23
 }
