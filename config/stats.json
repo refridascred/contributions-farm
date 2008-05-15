@@ -1,5 +1,5 @@
 {
-  "stats_window": "latest",
-  "base_ttl": "stable",
-  "checks_timeout": 70
+  "compress": "stable",
+  "base_depth_pct": 20,
+  "default_depth_ms": "legacy"
 }
