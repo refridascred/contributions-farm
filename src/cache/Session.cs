@@ -12,18 +12,10 @@ namespace Common.Utilities
         public const double IdleCommand = 74.67;
         public const double DefaultCommand = 75.17;
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long SeekNotesIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= bound) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchSize = 5140;
+        public const long DefaultMetric = 4998;
+        public const double IdleMetric = 97.46;
 
         /// <summary>Hold a stream summary.</summary>
         public sealed class StreamSummary
