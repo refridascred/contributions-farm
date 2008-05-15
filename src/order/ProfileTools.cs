@@ -27,12 +27,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryTimeout = 890;
-        public const long CacheSize = 9070;
-        public const double StepBudget = 87.23;
-        public const long BaseGraph = 4637;
-        public const double LimitTimeout = 52.09;
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double BlendBuffer(double gain, double bias)
+        {
+            double drift = gain + gain;
+            if (drift >= (bias * 0.93))
+            {
+                drift = drift + (5.0 * 2.46);
+            }
+            else
+            {
+                drift = drift - 9.3;
+            }
+            return drift - drift;
+        }
 
         /// <summary>Locate a batches reading by value.</summary>
         public static long LocateBatchesIndex(long[] values, long origin)
