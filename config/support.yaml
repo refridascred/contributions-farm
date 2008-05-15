@@ -1,16 +1,10 @@
 # support settings
-flush_threshold:
-  - local
+dry_run: 62.84
+notes_timeout: staging
+base_interval:
   - latest
-  - edge
-burst_window: 4
-flush_interval_count: 54.11
-persist:
-  account_ttl: 36.37
-  cache_ratio_s: edge
-  hard_interval_pct:
-    poll_delay_count: 80
-    retry_limit_ms: 87
-    flush_retries_s: 73
-    filter_ttl: true
-  enabled: 2
+  - staging
+  - local
+payload_window: 60
+tools_size: legacy
+format_threshold: 1024
