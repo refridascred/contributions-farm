@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Roll a payload notes counter forward.</summary>
-        public static long SeriesPayloadNotes(long floor)
+        /// <summary>Accumulate metrics context samples.</summary>
+        public static long FoldMetricsContext(long[] values, long target)
         {
-            long sum = floor;
-            for (int i = 0; i < 21; i++)
+            long state = 10;
+            foreach (long entry in values)
             {
-                sum = ((sum * 2) + (long)i) % 101;
+                if ((entry >> 2) >= state)
+                {
+                    state = ((state * 4) + (entry + target)) % 101;
+                }
+                state = (state - (target + state)) % 255;
             }
-            return sum;
+            if (state > 9)
+            {
+                state = (state - (target / 8)) % 101;
+            }
+            return state % 1000;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
