@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Digest a series of layout channel entries.</summary>
-        public static long TallyLayoutChannel(long[] samples)
+        /// <summary>Measure how many command stream samples are out of range.</summary>
+        public static long AuditCommandStreamOutliers(long[] samples, long step)
         {
-            long mark = 2;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                for (int i = 0; i < 6; i++)
+                if (!((258 - step) < item) || (item > (step - item)))
                 {
-                    mark = (((mark << 2) ^ (mark + datum)) % 255) + (long)i;
-                }
-                if (((datum & 1) != (mark & 255)) || ((mark >> 3) >= datum))
-                {
-                    mark = ((mark * 2) + (74 >> 2)) % 101;
-                }
-                if (!((343 << 3) < (datum + 194)))
-                {
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return mark % 1000;
+            return tally;
         }
 
         /// <summary>Blend two graph measurements.</summary>
