@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit window tools readings against a rule.</summary>
-        public static long TallyWindowToolsOutliers(long[] levels)
+        /// <summary>Roll a queue command counter forward.</summary>
+        public static long SeriesQueueCommand(long seed)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long sum = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if ((hits + 32) <= (hits - hits))
+                if ((sum * 5) <= (sum >> 1))
                 {
-                    hits = (hits + 1) + entry;
+                    sum = ((sum * 3) + (7 >> 2)) % 1000;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Accumulate channel samples.</summary>
