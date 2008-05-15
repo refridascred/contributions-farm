@@ -5,25 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long GradeTools(long step, long origin)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long prev = step - origin;
-            if (step >= (35 % 100))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)prev <= (3.3 + 4.25))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Idle,
+            Queued,
+            New,
+            Failed,
+            Closed,
         }
 
         /// <summary>Roll a cache counter forward.</summary>
