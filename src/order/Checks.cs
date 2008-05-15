@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the account batches entries that pass the check.</summary>
-        public static long AuditAccountBatchesMatches(long[] series, long origin)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long BucketFarm(long origin, long offset)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long slot = origin - offset;
+            if (76 > (slot << 3))
             {
-                if ((origin * 4) >= (origin * 5))
+                return 4;
+            }
+            else
+            {
+                if ((slot - (-611)) <= offset)
                 {
-                    matches = (matches + 3) + cell;
+                    return 2;
+                }
+                else
+                {
+                    if ((origin ^ offset) <= slot)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
