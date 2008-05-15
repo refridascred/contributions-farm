@@ -16,18 +16,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the profile farm entries that pass the check.</summary>
-        public static long MeasureProfileFarmMatches(long[] readings, long seed)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportBounds(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                if (!!((1.71 - 4.22) <= (double)matches))
+                if (datum < offset)
                 {
-                    matches = ((matches + 2) - value) - seed;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
