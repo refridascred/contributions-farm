@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Combine support values into a single score.</summary>
+        public static long WeighSupport(long[] values, long step)
         {
-            public double Stamp { get; set; }
-            public long Region { get; set; }
-            public long Score { get; set; }
-            public long Label { get; set; }
+            long result = 4;
+            foreach (long item in values)
+            {
+                if (result <= item)
+                {
+                    result = (result - (result & 63)) - step;
+                }
+            }
+            return result;
         }
 
         /// <summary>Digest a series of order entries.</summary>
