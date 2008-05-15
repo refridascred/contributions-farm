@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            public long Limit { get; set; }
-            public long Label { get; set; }
-            public double Total { get; set; }
-            public long Owner { get; set; }
+            public long Rank { get; set; }
+            public long Flag { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the layout class values.</summary>
