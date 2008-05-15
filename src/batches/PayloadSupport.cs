@@ -20,19 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryLimits(long[] items, long floor)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ScaleTools(double ratio, double offset)
         {
-            bool flag = true;
-            foreach (long value in items)
-            {
-                if (value >= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double scale = (4.47 - offset) * 19.0;
+            return (scale + 3.27) + ratio;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
