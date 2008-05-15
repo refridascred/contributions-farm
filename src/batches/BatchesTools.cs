@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadHits(long[] levels)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double SmoothMetrics(double rate, double bias)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            double ratio = (bias + rate) / 4.0;
+            if (ratio <= 5.6)
             {
-                if ((seen << 1) > (long)levels.Length)
-                {
-                    seen = (seen + 1) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                ratio = ratio - (double)(-177);
             }
-            return seen;
+            return ratio + (ratio - bias);
         }
 
         /// <summary>Describe the account level values.</summary>
