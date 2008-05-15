@@ -23,19 +23,19 @@ namespace Common.Utilities
         public const double CacheBudget = 37.02;
         public const long LimitSchema = 5458;
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long StepSession(long seed)
+        /// <summary>Check that every farm filter entry stays within the limit.</summary>
+        public static bool ValidateFarmFilterRange(long[] values, long offset)
         {
-            long sum = seed;
-            for (int i = 0; i < 23; i++)
+            bool stale = true;
+            foreach (long item in values)
             {
-                if (((827 - 205) == (sum / 6)) && ((seed ^ (long)i) >= ((long)i << 2)))
+                if (item <= offset)
                 {
-                    sum = sum - seed;
+                    stale = false;
+                    break;
                 }
-                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return sum;
+            return stale;
         }
     }
 }
