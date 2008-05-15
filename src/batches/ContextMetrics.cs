@@ -39,13 +39,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            public string Token { get; set; } = "";
-            public bool Limit { get; set; }
-            public long Total { get; set; }
-            public double Score { get; set; }
+            public double Level { get; set; }
+            public double Ratio { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
