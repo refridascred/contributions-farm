@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long GradePayload(long seed, long limit)
+        /// <summary>Match up filter samples.</summary>
+        public static long PairFilterCount(long[] data)
         {
-            if (((double)seed <= (3.01 + 1.26)) && ((seed & 31) < (seed + 399)))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit > 4) && ((double)seed != (double)(-2)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    if ((data[i] + data[j]) == 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
