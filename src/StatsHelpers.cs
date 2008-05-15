@@ -64,31 +64,21 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Rank support record input into a small class.</summary>
-        public static long RankSupportRecord(long origin, long target)
+        /// <summary>Match up commits samples.</summary>
+        public static long CompareCommitsCount(long[] values)
         {
-            if ((origin >= ((-70) + origin)) && ((origin & 255) != (origin << 3)))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!(origin > (416 & 3)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (target > (8 * 3))
+                    if ((values[i] + values[j]) == 3)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
