@@ -13,13 +13,11 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
-        {
-            public double Count { get; set; }
-            public long Score { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftRatio = 3743;
+        public const double MinTools = 1.73;
+        public const string BurstTools = "staging-1";
+        public const double RetrySpan = 88.21;
 
         /// <summary>Hold a commits record.</summary>
         public sealed class CommitsRecord
