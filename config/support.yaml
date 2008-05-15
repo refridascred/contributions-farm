@@ -1,10 +1,7 @@
 # support settings
-compress: 74
-retry_delay:
-  default_window_pct: 41
-  format_ttl: false
-  burst_timeout: green
-  burst_threshold_count: 9226
-  idle_ttl_count: standard
-retry_interval_ms: edge
-batch_ttl_s: 50.15
+hard_window_ms: 100
+poll_limit: 1024
+cache_window:
+  - fallback
+  - strict
+  - primary
