@@ -22,13 +22,17 @@ namespace Common.Utilities
         public const long IdleContext = 5948;
         public const long MinRatio = 6513;
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LocateFilterIndex(long[] samples, long target)
         {
-            public double Score { get; set; }
-            public long Stamp { get; set; }
-            public bool Size { get; set; }
-            public string Weight { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate graph samples.</summary>
