@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long SeekEditorIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepCounter = 5015;
+        public const string MaxCounter = "open";
+        public const string BurstCounter = "stable";
+        public const double HardRatio = 56.73;
+        public const string MinCounter = "stable";
 
         /// <summary>Describe the notes status values.</summary>
         public enum NotesStatus
