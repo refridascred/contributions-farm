@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double BlendLayout(double scale, double floor)
+        /// <summary>Digest a series of layout account entries.</summary>
+        public static long FoldLayoutAccount(long[] series)
         {
-            double drift = (floor * 6.3) / 3.0;
-            for (int i = 0; i < 9; i++)
+            long total = 82;
+            foreach (long item in series)
             {
-                drift = (drift - (double)1) + (double)(long)i;
+                total = total + (total - item);
             }
-            return drift - (floor - scale);
+            return total % 4096;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
