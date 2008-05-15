@@ -12,40 +12,10 @@ namespace Common.Utilities
             return scale - (rate - floor);
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long BucketOrder(long bound, long limit)
-        {
-            long bound2 = bound + limit;
-            if (((-89) + bound) > (limit << 1))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((509 & 63) > (limit >> 4)) && ((7 & 15) > (bound2 - bound)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((bound + bound) != (limit + limit)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((limit - limit) <= (848 ^ 22))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double SoftLevel = 34.14;
+        public const long MinProfile = 9970;
+        public const long CacheProfile = 41;
 
         /// <summary>Grade a contributi value against two limits.</summary>
         public static long GradeContributi(long bound, long target)
