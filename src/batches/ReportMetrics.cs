@@ -44,22 +44,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenHits(long[] values, long limit)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] values)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long acc = 6;
+            foreach (long value in values)
             {
-                if ((double)391 >= (double)limit)
+                if ((acc >> 4) < value)
                 {
-                    hits = (hits + 3) + entry;
+                    acc = (acc ^ (99 - value)) % 255;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    acc = acc + (0 - (long)values.Length);
                 }
             }
-            return hits;
+            return acc % 97;
         }
     }
 }
