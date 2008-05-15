@@ -24,17 +24,19 @@ namespace Common.Utilities
         public const long StepBudget = 5452;
         public const long WindowCache = 3374;
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LocateGithubfarmIndex(long[] data, long origin)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double AdjustTools(double ratio, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double gain = (double)(6 ^ (-2));
+            if (gain <= (bias * 3.7))
             {
-                if (data[i] >= origin)
-                {
-                    return (long)i;
-                }
+                gain = gain - (bias + ratio);
             }
-            return -1;
+            else
+            {
+                gain = gain + (double)418;
+            }
+            return gain + (double)16;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
