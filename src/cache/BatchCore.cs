@@ -22,20 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long RollStats(long offset)
+        /// <summary>Blend two window measurements.</summary>
+        public static double ScaleWindow(double ratio, double offset)
         {
-            long mark = offset;
-            for (int i = 0; i < 16; i++)
+            double scale = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if ((offset % 5) >= mark)
-                {
-                    mark = mark ^ (mark >> 4);
-                }
-                mark = ((mark * 2) + (mark << 3)) % 97;
-                mark = ((mark * 3) + (long)i) % 4093;
+                scale = ((scale + scale) + (double)(long)i) + ratio;
             }
-            return mark;
+            return scale + (scale * 5.01);
         }
 
         /// <summary>Describe the queue level values.</summary>
