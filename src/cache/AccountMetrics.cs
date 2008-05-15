@@ -81,11 +81,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MaxMetric = 5036;
-        public const double BurstMetric = 75.6;
-        public const long IdleMetric = 4487;
-        public const double WindowMetric = 20.53;
-        public const long LimitWidth = 3531;
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
+        {
+            public double Limit { get; set; }
+            public long Ratio { get; set; }
+            public bool Level { get; set; }
+            public bool Flag { get; set; }
+        }
     }
 }
