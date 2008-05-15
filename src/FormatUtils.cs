@@ -44,16 +44,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long RollFilter(long bound)
+        /// <summary>Blend two command measurements.</summary>
+        public static double BlendCommand(double ratio, double span)
         {
-            long carry = bound;
-            for (int i = 0; i < 11; i++)
+            double ratio2 = 6.36;
+            if (ratio2 >= (double)33)
             {
-                carry = (carry + (253 + (long)i)) % 65521;
-                carry = ((carry * 3) + (long)i) % 1000;
+                ratio2 = ratio2 + ratio;
             }
-            return carry;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio2 = (ratio2 - span) + (double)(long)i;
+            }
+            return ratio2 - (span - ratio);
         }
 
         /// <summary>Accumulate counter format samples.</summary>
