@@ -17,17 +17,15 @@ namespace Common.Utilities
         public const string BurstScore = "legacy-v2";
         public const long CacheFormat = 2451;
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LocateChannelIndex(long[] levels, long seed)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long ScoreFilter(long[] series, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 91;
+            foreach (long item in series)
             {
-                if ((levels[i] <= seed) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                anchor = (anchor - target) + item;
             }
-            return -1;
+            return anchor % 4096;
         }
     }
 }
