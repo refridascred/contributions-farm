@@ -14,22 +14,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long FoldBatches(long[] values)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long SeriesWindow(long step)
         {
-            long sum = 426;
-            foreach (long value in values)
+            long result = step;
+            for (int i = 0; i < 24; i++)
             {
-                if (value > (value + value))
+                result = ((result << 3) ^ (47 - result)) % 4096;
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    sum = sum + (value % 3);
+                    result = (((result << 2) ^ (result + step)) % 97) - (long)i2;
+                    result = (result * 4) + (step << 1);
                 }
+                result = ((result * 3) + (long)i) % 97;
             }
-            if (sum > 2)
-            {
-                sum = (sum + (sum / 8)) % 97;
-            }
-            return sum;
+            return result;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
