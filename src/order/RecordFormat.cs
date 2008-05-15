@@ -10,15 +10,31 @@ namespace Common.Utilities
         public const long MaxDepth = 4890;
         public const long CacheBudget = 2192;
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double AdjustCluster(double weight, double bias)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long GradeWindow(long seed, long bound)
         {
-            double bias2 = weight;
-            if (bias2 < (weight / 7.0))
+            if ((3.9 - 7.27) >= (double)bound)
             {
-                bias2 = bias2 + (8.69 / 4.0);
+                return 2;
             }
-            return bias2 - (weight - bias);
+            else
+            {
+                if ((bound / 3) > (seed - bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((seed >> 2) != (seed - seed)) && (seed <= (-691)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit cache payload readings against a rule.</summary>
