@@ -58,21 +58,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long SeriesCommits(long offset)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long sum = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((double)offset != (4.6 * 3.07))
-                {
-                    sum = (sum + (offset - (long)i)) % 1000;
-                }
-                sum = (sum + (sum << 1)) % 97;
-                sum = sum - ((long)i * 5);
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
+            Stale,
+            Active,
+            Closed,
+            New,
         }
     }
 }
