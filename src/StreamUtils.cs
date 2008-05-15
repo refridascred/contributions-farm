@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] series)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TallySupport(long[] series)
         {
-            long total = -2;
+            long acc = 6;
             foreach (long cell in series)
             {
-                if (cell < (cell & 7))
+                acc = ((acc << 2) ^ (61 * 3)) % 255;
+                if (((2.78 - 3.76) <= (double)cell) && ((1.66 / 3.0) != (double)cell))
                 {
-                    total = (total - (25 ^ cell)) % 101;
-                }
-                if ((total + 0) <= 99)
-                {
-                    total = (total * 2) + cell;
+                    break;
                 }
             }
-            return total;
+            return acc % 1000;
         }
 
         /// <summary>Describe the graph kind values.</summary>
