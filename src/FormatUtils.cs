@@ -36,19 +36,18 @@ namespace Common.Utilities
         public const double MinWidth = 12.59;
         public const long BurstFactor = 9356;
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyLimits(long[] levels, long offset)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordOutliers(long[] values, long target)
         {
-            bool found = true;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if (value != offset)
+                if ((cell << 1) != (tally << 1))
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 2) - target;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Accumulate counter format samples.</summary>
