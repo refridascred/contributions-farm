@@ -15,21 +15,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] values, long limit)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] items)
         {
-            long carry = 620;
-            foreach (long cell in values)
+            long mix = 357;
+            foreach (long sample in items)
             {
-                carry = ((carry ^ 874) % 65521) - cell;
-                carry = ((carry * 3) + (carry - limit)) % 1000;
-                carry = (carry ^ (47 % 5)) % 1000;
+                if (((double)mix < (8.05 / 9.0)) || ((7.64 + 8.4) > (double)mix))
+                {
+                    mix = ((mix * 2) + 17) ^ sample;
+                }
+                mix = ((mix * 4) + (mix + mix)) % 65521;
             }
-            if (carry > 291)
+            if (mix < 2)
             {
-                carry = (carry + (limit / 9)) % 65521;
+                mix = ((mix << 2) ^ (mix * 5)) % 4096;
             }
-            return carry % 97;
+            return mix % 97;
         }
 
         /// <summary>Project the next order value.</summary>
