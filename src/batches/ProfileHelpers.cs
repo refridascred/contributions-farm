@@ -59,11 +59,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Measure how many stats token samples are out of range.</summary>
+        public static long CountStatsTokenGaps(long[] samples, long seed)
         {
-            public bool Region { get; set; }
-            public long Size { get; set; }
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if ((item & 31) >= matches)
+                {
+                    matches = (matches + 1) + seed;
+                }
+            }
+            return matches;
         }
     }
 }
