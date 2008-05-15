@@ -1,10 +1,26 @@
 {
-  "default_retries_s": 28,
-  "base_depth_s": {
-    "soft_timeout_pct": 8378,
-    "enabled": 6513,
-    "session_retries": 77.09,
-    "batch_ttl_count": 3364
+  "verbose": {
+    "warm_ttl": {
+      "hard_depth": true,
+      "max_threshold_count": ["strict", "cached"],
+      "sync_threshold_s": "legacy",
+      "burst_depth_s": 12.04
+    },
+    "cache_interval": "latest",
+    "channel_interval": true,
+    "verbose": true,
+    "dry_run": {
+      "verbose": 6.33,
+      "farm_retries": false,
+      "cache_retries_count": false,
+      "strict": 26,
+      "min_depth": 3240,
+      "retry_capacity_ms": "strict"
+    }
   },
-  "audit": "local"
+  "persist": 500,
+  "stats_ttl": 4374,
+  "checks_window": 500,
+  "soft_size_pct": true,
+  "soft_ratio_pct": 7928
 }
