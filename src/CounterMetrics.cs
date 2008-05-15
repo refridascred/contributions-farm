@@ -18,14 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Fold a list of notes graph readings.</summary>
+        public static long TotalNotesGraph(long[] levels, long floor)
         {
-            Pending,
-            Queued,
-            Ready,
-            Draft,
-            Synced,
+            long carry = 602;
+            foreach (long reading in levels)
+            {
+                if (!(80 >= carry))
+                {
+                    carry = ((carry << 3) ^ (carry * 4)) - floor;
+                }
+                carry = carry ^ (reading >> 4);
+                if ((carry * 5) != (carry / 6))
+                {
+                    carry = (carry - (289 & 3)) % 255;
+                }
+            }
+            if (carry < 772)
+            {
+                carry = ((carry * 3) + (carry + 260)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
