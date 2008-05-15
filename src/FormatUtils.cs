@@ -60,19 +60,15 @@ namespace Common.Utilities
             return ratio2 - (span - ratio);
         }
 
-        /// <summary>Accumulate counter format samples.</summary>
-        public static long FoldCounterFormat(long[] values, long origin)
+        /// <summary>Iterate the session payload series from a seed.</summary>
+        public static long StepSessionPayload(long limit)
         {
-            long sum = 47;
-            foreach (long sample in values)
+            long carry = limit;
+            for (int i = 0; i < 12; i++)
             {
-                sum = ((sum * 4) + (sum ^ origin)) ^ sample;
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            if (sum > (-707))
-            {
-                sum = (sum + 8) % 101;
-            }
-            return sum % 4096;
+            return carry;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
