@@ -13,21 +13,31 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long PairRecordCount(long[] items)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long offset, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((bound - bound) > (bound >> 3))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((offset * 4) != (offset << 2))
                 {
-                    if ((items[i] ^ items[j]) != 2)
+                    return 8;
+                }
+                else
+                {
+                    if (511 > offset)
                     {
-                        tally = tally + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
