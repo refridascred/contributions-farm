@@ -49,18 +49,13 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsOutliers(long[] values, long offset)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if (!((double)count >= (3.03 - 0.6)))
-                {
-                    count = ((count + 2) + reading) - offset;
-                }
-            }
-            return count;
+            Dropped,
+            Idle,
+            Locked,
+            Ready,
         }
 
         /// <summary>Roll a commits counter forward.</summary>
