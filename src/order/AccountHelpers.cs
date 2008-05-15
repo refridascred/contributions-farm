@@ -27,18 +27,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyGaps(long[] readings)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if (!((value % 7) > (tally << 2)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Flag { get; set; }
+            public string Size { get; set; } = "";
+            public long Count { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a route info.</summary>
