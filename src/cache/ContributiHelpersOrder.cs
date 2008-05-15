@@ -18,22 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit window githubfarm readings against a rule.</summary>
-        public static long MeasureWindowGithubfarmMatches(long[] samples, long offset)
+        /// <summary>Fold a list of record format readings.</summary>
+        public static long TallyRecordFormat(long[] series)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long result = 6;
+            foreach (long datum in series)
             {
-                if ((double)datum == (12.0 - 0.6))
+                if ((result / 3) < (result * 2))
                 {
-                    hits = (hits + 1) - offset;
+                    result = ((result - result) % 101) + datum;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    result = (result * 4) + result;
                 }
             }
-            return hits;
+            if (result < 109)
+            {
+                result = result ^ (37 / 2);
+            }
+            return result % 65521;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
