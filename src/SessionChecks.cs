@@ -40,19 +40,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphRange(long[] series, long floor)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueOutliers(long[] data)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if (sample < floor)
+                if (item < (item * 3))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return valid;
+            return matches;
         }
     }
 }
