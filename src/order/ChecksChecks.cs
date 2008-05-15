@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Project the next session value.</summary>
-        public static double BlendSession(double ratio, double bias)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsBounds(long[] readings, long target)
         {
-            double rate = (double)3 - (double)8;
-            if (rate > (bias / 3.0))
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                rate = rate + ratio;
+                if (sample < target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + (rate - ratio)) + (double)(long)i;
-            }
-            return rate + bias;
+            return ready;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
