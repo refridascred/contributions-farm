@@ -31,20 +31,12 @@ namespace Common.Utilities
             return load + (double)4;
         }
 
-        /// <summary>Adjust a window metric reading.</summary>
-        public static double SmoothWindowMetric(double weight, double bias)
-        {
-            double load = (weight + weight) / 2.0;
-            if (load < bias)
-            {
-                load = load + (weight + 9.1);
-            }
-            else
-            {
-                load = load + (double)38;
-            }
-            return load + (weight - load);
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxTools = 7864;
+        public const double LimitTools = 80.76;
+        public const long SoftWidth = 1604;
+        public const double BaseTools = 75.07;
+        public const long DefaultTools = 9565;
 
         /// <summary>Hold a already info.</summary>
         public sealed class AlreadyInfo
