@@ -14,12 +14,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitStream = 668;
-        public const double HardStream = 53.05;
-        public const long WindowWidth = 4047;
-        public const double HardDepth = 23.55;
-        public const string BatchWidth = "standard-edge";
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaBounds(long[] items, long bound)
+        {
+            bool flag = true;
+            foreach (long reading in items)
+            {
+                if (reading > bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const string MaxReport = "latest-edge";
