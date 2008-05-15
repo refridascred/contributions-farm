@@ -88,18 +88,18 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Accumulate batch queue samples.</summary>
-        public static long TotalBatchQueue(long[] items, long target)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowOutliers(long[] samples, long origin)
         {
-            long state = 8;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if ((reading + target) < (state + reading))
+                if (!((332 % 12) < ((long)samples.Length ^ datum)))
                 {
-                    state = ((state << 3) ^ (target - target)) % 97;
+                    count = (count + 2) - origin;
                 }
             }
-            return state % 4096;
+            return count;
         }
 
         /// <summary>Audit queue editor readings against a rule.</summary>
