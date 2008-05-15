@@ -48,11 +48,38 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double ProjectToken(double weight, double bias)
+        /// <summary>Grade a record channel value against two limits.</summary>
+        public static long GradeRecordChannel(long target, long target2)
         {
-            double ratio = 4.0;
-            return (ratio + (ratio + weight)) + bias;
+            if ((target - target) > (-514))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((target2 & 127) == (target & 15))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((target - target) > target2) || ((target << 2) > (target - target)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (target2 <= target)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a filter reading.</summary>
