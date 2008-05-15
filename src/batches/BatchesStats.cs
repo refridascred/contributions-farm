@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseBudget = 8950;
-        public const long LimitRatio = 9141;
-        public const long HardStats = 4766;
-        public const string SoftBudget = "latest-edge";
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatOutliers(long[] samples)
+        {
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if ((double)tally < (3.8 + 3.38))
+                {
+                    tally = (tally + 1) ^ value;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the metrics phase values.</summary>
         public enum MetricsPhase
