@@ -14,24 +14,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long RankFormat(long origin, long offset)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long IterateCommits(long seed)
         {
-            if ((offset - origin) <= 1)
+            long anchor = seed;
+            for (int i = 0; i < 12; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((6.0 * 7.0) > (double)origin)
+                if ((double)seed > (double)anchor)
                 {
-                    return 2;
+                    break;
                 }
-                else
-                {
-                    return 0;
-                }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
+            return anchor;
         }
 
         /// <summary>Describe the contributi state values.</summary>
