@@ -1,6 +1,5 @@
 # githubfarm settings
-strict: stable
-retry_threshold_ms: 6.76
-idle_timeout: eu-west
-min_interval: 4027
-default_delay_pct: edge
+cache_timeout: primary
+cache_size_ms: 67
+poll_window: true
+soft_size_s: staging
