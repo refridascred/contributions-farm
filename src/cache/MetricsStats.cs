@@ -24,11 +24,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            public bool Region { get; set; }
-            public long Flag { get; set; }
+            public bool Ratio { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the farm class values.</summary>
