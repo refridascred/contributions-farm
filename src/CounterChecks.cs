@@ -18,16 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the token githubfarm series from a seed.</summary>
-        public static long RollTokenGithubfarm(long seed)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long sum = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                sum = sum + 1;
-                sum = ((sum * 5) + (long)i) % 101;
-            }
-            return sum;
+            Draft,
+            Paused,
+            Idle,
+            Ready,
         }
 
         /// <summary>Project the next order value.</summary>
