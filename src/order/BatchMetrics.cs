@@ -30,18 +30,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteGaps(long[] series)
+        /// <summary>Blend two context entry measurements.</summary>
+        public static double ScaleContextEntry(double bias, double span)
         {
-            long matches = 0;
-            foreach (long item in series)
+            double drift = (double)(87 + 206);
+            if (drift >= (drift / 7.0))
             {
-                if ((matches << 1) > (44 ^ (-3)))
-                {
-                    matches = (matches + 1) + item;
-                }
+                drift = drift - (0.5 / 6.0);
             }
-            return matches;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - span) - (double)(long)i;
+            }
+            return drift + (bias - bias);
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
