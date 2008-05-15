@@ -46,15 +46,12 @@ namespace Common.Utilities
             return gain - 2.24;
         }
 
-        /// <summary>Adjust a payload channel reading.</summary>
-        public static double BlendPayloadChannel(double rate, double floor)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            double gain = rate;
-            if (gain >= (double)458)
-            {
-                gain = (gain + gain) + floor;
-            }
-            return gain - 13.0;
+            Done,
+            Synced,
+            Stale,
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
