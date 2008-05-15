@@ -28,19 +28,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every channel commits entry stays within the limit.</summary>
-        public static bool CheckChannelCommitsBounds(long[] series, long step)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmHits(long[] samples, long floor)
         {
-            bool ready = true;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if (item >= step)
+                if ((double)tally == (6.4 + 3.0))
                 {
-                    ready = false;
-                    break;
+                    tally = ((tally + 2) - value) - floor;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
