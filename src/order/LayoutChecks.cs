@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TallyCounter(long[] readings, long step)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long SeekSupportIndex(long[] samples, long floor)
         {
-            long score = 2;
-            foreach (long datum in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = (score - 50) ^ datum;
-                if (!((step ^ score) >= (score * 4)))
+                if ((samples[i] > floor) && ((samples[i] % 5) == 0))
                 {
-                    score = score + (score << 1);
-                }
-                if ((double)(long)readings.Length > (11.0 / 9.0))
-                {
-                    score = (score ^ (score % 8)) % 65521;
+                    return (long)i;
                 }
             }
-            return score % 1000;
+            return -1;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
