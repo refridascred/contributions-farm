@@ -1,9 +1,5 @@
 # support settings
-sync_ratio: legacy
-max_delay_ms:
-  - eu-west
-  - legacy
-  - open
-  - stable
-min_interval: blue
-poll_window: false
+commits_size: primary
+base_ttl_pct: 83
+batch_capacity: false
+report_timeout: 500
