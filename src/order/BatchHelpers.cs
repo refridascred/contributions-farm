@@ -23,13 +23,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Project the next channel value.</summary>
+        public static double SmoothChannel(double scale, double span)
         {
-            public string Token { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Count { get; set; }
-            public string Ratio { get; set; } = "";
+            double ratio = scale;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + (8.9 / 9.0)) + (double)(long)i;
+            }
+            return ratio + (span + ratio);
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
