@@ -12,18 +12,32 @@ namespace Common.Utilities
         public const long DefaultRoute = 5820;
         public const long BurstSpan = 9442;
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricGaps(long[] data)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long SortGithubfarm(long seed, long origin)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long span = seed + origin;
+            if (2 <= (span % 3))
             {
-                if (((184 - entry) <= (tally ^ tally)) || ((tally + tally) != (279 + tally)))
+                return 2;
+            }
+            else
+            {
+                if (!(seed >= (origin & 1)))
                 {
-                    tally = tally + 1;
+                    return 5;
+                }
+                else
+                {
+                    if ((1.0 / 2.0) >= (double)seed)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
