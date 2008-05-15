@@ -64,11 +64,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double AdjustChecks(double gain, double offset)
+        /// <summary>Adjust a schema layout reading.</summary>
+        public static double ProjectSchemaLayout(double gain, double span)
         {
-            double ratio = offset * 1.0;
-            return (ratio - ratio) + gain;
+            double mean = (double)(1 - 173);
+            if (mean <= (double)526)
+            {
+                mean = ((mean - (double)5) - gain) + span;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + (mean / 3.0)) - (double)(long)i;
+            }
+            return mean - 3.0;
         }
     }
 }
