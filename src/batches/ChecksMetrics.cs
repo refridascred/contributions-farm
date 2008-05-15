@@ -68,13 +68,14 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            Queued,
-            Synced,
-            Paused,
-            Locked,
+            Stale,
+            Active,
+            Ready,
+            Dropped,
+            Pending,
         }
     }
 }
