@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftEntry = 288;
-        public const long RetryBudget = 4285;
-        public const double BurstDepth = 27.53;
-        public const long LimitScore = 1765;
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long FindSupportIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
         public static bool ValidateToolsBounds(long[] values, long origin)
