@@ -82,22 +82,22 @@ namespace Common.Utilities
             return weight - (1.94 + offset);
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterGaps(long[] samples)
+        /// <summary>Audit metrics batches readings against a rule.</summary>
+        public static long TallyMetricsBatchesMatches(long[] series)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if ((datum + hits) > (-45))
+                if (((5.0 / 6.0) <= (double)entry) && ((8.86 - 3.0) == (double)seen))
                 {
-                    hits = hits + 2;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
