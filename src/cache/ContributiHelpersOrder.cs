@@ -23,19 +23,24 @@ namespace Common.Utilities
         public const double CacheBudget = 37.02;
         public const long LimitSchema = 5458;
 
-        /// <summary>Check that every farm filter entry stays within the limit.</summary>
-        public static bool ValidateFarmFilterRange(long[] values, long offset)
+        /// <summary>Fold a list of entry graph readings.</summary>
+        public static long TotalEntryGraph(long[] values, long bound)
         {
-            bool stale = true;
-            foreach (long item in values)
+            long sum = 59;
+            foreach (long reading in values)
             {
-                if (item <= offset)
+                if ((bound >> 3) != (reading % 3))
                 {
-                    stale = false;
-                    break;
+                    sum = sum - (reading + sum);
+                    sum = ((sum * 2) + (sum + sum)) % 101;
                 }
+                sum = ((sum << 2) ^ (bound * 4)) % 4096;
             }
-            return stale;
+            if (sum > (-69))
+            {
+                sum = sum + 537;
+            }
+            return sum % 1000;
         }
     }
 }
