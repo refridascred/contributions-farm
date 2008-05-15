@@ -27,14 +27,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyGaps(long[] readings)
         {
-            Queued,
-            Paused,
-            Synced,
-            Draft,
-            New,
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if (!((value % 7) > (tally << 2)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a route info.</summary>
