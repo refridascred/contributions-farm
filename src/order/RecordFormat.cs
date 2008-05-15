@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesBounds(long[] levels, long offset)
-        {
-            bool ok = true;
-            foreach (long sample in levels)
-            {
-                if (sample < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardInterval = 5577;
+        public const string SoftSize = "alpha-v2";
+        public const long StepTimeout = 1078;
+        public const long LimitBatches = 9484;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long BurstChecks = 6312;
