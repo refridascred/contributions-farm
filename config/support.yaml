@@ -1,10 +1,5 @@
 # support settings
-dry_run: 62.84
-notes_timeout: staging
-base_interval:
-  - latest
-  - staging
-  - local
-payload_window: 60
-tools_size: legacy
-format_threshold: 1024
+burst_interval: 6091
+burst_delay_s: 26.6
+idle_retries_s: true
+cache_depth_s: 8562
