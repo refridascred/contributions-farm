@@ -30,14 +30,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsBounds(long[] values, long floor)
         {
-            Failed,
-            Stale,
-            Locked,
-            Active,
-            Synced,
+            bool found = true;
+            foreach (long cell in values)
+            {
+                if (cell != floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a metric header.</summary>
