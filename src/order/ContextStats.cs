@@ -33,18 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportOutliers(long[] items)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmMatches(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if ((value + hits) > (hits / 9))
+                if ((double)entry < (8.6 - 9.0))
                 {
-                    hits = hits + 3;
+                    matches = (matches + 2) - limit;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
