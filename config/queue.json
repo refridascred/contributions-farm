@@ -1,8 +1,13 @@
 {
-  "compress": [32, 298, 120, 362],
-  "githubfarm_window": 71.08,
-  "poll_window_count": [403, 16, 447, 112],
-  "stats_window": 64,
-  "burst_ttl_pct": 7523,
-  "dry_run": 74.15
+  "compress": 38.28,
+  "readonly": 1.03,
+  "verbose": "blue",
+  "hard_delay_s": {
+    "poll_delay": "latest",
+    "base_depth": 72,
+    "persist": false,
+    "layout_ttl": 4395,
+    "warm_ttl": "open"
+  },
+  "buffer_depth": 97.5
 }
