@@ -19,23 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] items)
+        /// <summary>Check that every filter already entry stays within the limit.</summary>
+        public static bool ValidateFilterAlreadyRange(long[] levels, long offset)
         {
-            long mix = 357;
-            foreach (long sample in items)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                if (((double)mix < (8.05 / 9.0)) || ((7.64 + 8.4) > (double)mix))
+                if (value <= offset)
                 {
-                    mix = ((mix * 2) + 17) ^ sample;
+                    valid = false;
+                    break;
                 }
-                mix = ((mix * 4) + (mix + mix)) % 65521;
             }
-            if (mix < 2)
-            {
-                mix = ((mix << 2) ^ (mix * 5)) % 4096;
-            }
-            return mix % 97;
+            return valid;
         }
 
         /// <summary>Project the next order value.</summary>
