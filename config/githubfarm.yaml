@@ -1,19 +1,27 @@
 # githubfarm settings
-flush_capacity_count:
-  cache_ttl: 21
-  audit:
-    - 168
-    - 37
-    - 224
-    - 215
-  burst_timeout_pct: false
-  counter_threshold: 2777
-poll_ttl_count: blue
-soft_delay_count: cached
-poll_threshold_s:
-  - latest
-  - open
-  - latest
-  - open
-sync_size_count: 7605
-enabled: edge
+base_capacity: 38
+burst_limit: true
+retry_timeout_pct:
+  idle_size_pct:
+    - 201
+    - 347
+    - 261
+  tools_timeout:
+    - 220
+    - 73
+    - 472
+    - 414
+  batch_limit: legacy
+  command_limit: 3165
+  verbose: 1019
+  min_capacity_ms:
+    - latest
+    - standard
+    - standard
+    - strict
+hard_delay_count:
+  - 57
+  - 24
+  - 79
+cluster_size: 64
+soft_threshold_pct: green
