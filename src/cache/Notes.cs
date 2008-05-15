@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportMatches(long[] readings)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long GradeEntry(long seed, long limit)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            if ((seed >= (seed + (-7))) && (limit > (limit % 7)))
             {
-                if (4.37 <= (double)hits)
+                return 1;
+            }
+            else
+            {
+                if ((seed & 63) >= limit)
                 {
-                    hits = (hits + 3) ^ reading;
+                    return 8;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((limit + limit) <= (limit % 100))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((seed + limit) < (seed & 15))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define record limits and defaults.</summary>
