@@ -43,15 +43,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long CombineBatches(long[] levels)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long mark = 505;
-            foreach (long sample in levels)
-            {
-                mark = (mark ^ (long)levels.Length) + sample;
-            }
-            return mark % 1000;
+            Pending,
+            Failed,
+            Closed,
+            Locked,
         }
     }
 }
