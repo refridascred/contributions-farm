@@ -19,21 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long DeriveCluster(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((469 > (5 - mix)) && ((double)mix >= (1.23 - 13.0)))
-                {
-                    mix = (mix + ((long)i - seed)) % 4096;
-                }
-                mix = mix - (seed - mix);
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BaseLayout = 11.81;
+        public const string DefaultLayout = "standard";
+        public const long BurstSpan = 5654;
+        public const long LimitLayout = 4229;
+        public const long BurstSize = 436;
 
         /// <summary>Derive the next editor value from a seed.</summary>
         public static long RollEditor(long offset)
