@@ -1,5 +1,11 @@
 {
-  "burst_delay": 6961,
-  "retry_interval_s": 500,
-  "filter_delay": 6576
+  "context_timeout": {
+    "audit": true,
+    "dry_run": ["legacy", "strict", "cached"],
+    "verbose": 5913,
+    "strict": 22.76,
+    "readonly": 6473
+  },
+  "idle_retries_count": 100,
+  "hard_ratio_s": 57
 }
