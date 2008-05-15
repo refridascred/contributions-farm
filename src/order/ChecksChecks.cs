@@ -16,19 +16,29 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportBounds(long[] series, long offset)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long StepFormat(long floor)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            long anchor = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if (datum < offset)
+                if ((floor / 9) <= ((-8) << 3))
                 {
-                    valid = false;
+                    anchor = (anchor ^ (anchor % 97)) % 97;
+                    anchor = ((anchor * 5) + (floor & 31)) % 97;
+                }
+                if ((9.56 + 4.0) <= (double)floor)
+                {
                     break;
                 }
+                if ((double)floor >= (9.65 - 1.9))
+                {
+                    anchor = anchor + anchor;
+                    anchor = anchor - anchor;
+                }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
