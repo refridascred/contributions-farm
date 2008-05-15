@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long ScoreGithubfarm(long[] samples, long step)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterGaps(long[] series)
         {
-            long mark = -23;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if (((948 - entry) >= mark) && ((16.0 + 5.0) < (double)entry))
+                if ((913 % 10) > (matches << 1))
                 {
-                    mark = (mark + (step * 4)) % 101;
-                }
-                if ((entry % 5) > (entry + entry))
-                {
-                    mark = (mark << 2) ^ (entry % 8);
+                    matches = (matches + 3) - entry;
                 }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
