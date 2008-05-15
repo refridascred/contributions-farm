@@ -56,13 +56,17 @@ namespace Common.Utilities
             return weight - (floor + rate);
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LocateCommandIndex(long[] levels, long bound)
         {
-            Closed,
-            Done,
-            Draft,
-            Idle,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
