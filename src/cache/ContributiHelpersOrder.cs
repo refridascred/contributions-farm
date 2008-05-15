@@ -16,19 +16,22 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long CombinePayload(long[] samples)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileHits(long[] values)
         {
-            long mark = 4;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                mark = ((mark << 3) ^ (mark << 1)) - value;
+                if ((cell + tally) >= cell)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (mark < 709)
-            {
-                mark = mark + (mark - mark);
-            }
-            return mark % 1000;
+            return tally;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
