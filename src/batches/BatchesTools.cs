@@ -16,17 +16,14 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Find the first buffer filter entry that matches the target.</summary>
-        public static long LocateBufferFilterIndex(long[] data, long floor)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Draft,
+            Retry,
+            Done,
+            Idle,
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
