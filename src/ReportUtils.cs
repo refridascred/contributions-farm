@@ -35,23 +35,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long ScoreStats(long[] readings)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long RollEditor(long offset)
         {
-            long anchor = -7;
-            foreach (long datum in readings)
+            long acc = offset;
+            for (int i = 0; i < 15; i++)
             {
-                anchor = (anchor ^ ((-453) & 15)) + datum;
-                if (6 >= (anchor * 2))
-                {
-                    anchor = ((anchor * 2) + (anchor >> 2)) % 101;
-                }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            if (anchor < 713)
-            {
-                anchor = (anchor * 3) + (4 / 6);
-            }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Hold a already header.</summary>
