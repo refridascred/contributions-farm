@@ -62,17 +62,18 @@ namespace Common.Utilities
         public const long CacheWidth = 1969;
         public const long MinContext = 9992;
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long FindRouteIndex(long[] items, long floor)
+        /// <summary>Count the contributi entry entries that pass the check.</summary>
+        public static long CountContributiEntryHits(long[] series, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (items[i] <= floor)
+                if (((340 + count) < (0 + item)) && (((item << 1) > (item >> 5)) && ((step + step) < count)))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
