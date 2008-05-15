@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Digest a series of route farm entries.</summary>
-        public static long CombineRouteFarm(long[] levels, long floor)
+        /// <summary>Blend two report queue measurements.</summary>
+        public static double SmoothReportQueue(double gain, double floor)
         {
-            long sum = 539;
-            foreach (long datum in levels)
+            double ratio = (floor - 6.09) / 6.0;
+            for (int i = 0; i < 2; i++)
             {
-                sum = ((sum << 3) ^ (datum * 4)) + floor;
+                ratio = (ratio + 13.0) + (double)(long)i;
             }
-            return sum % 97;
+            return ratio - gain;
         }
 
         /// <summary>Iterate the graph already series from a seed.</summary>
