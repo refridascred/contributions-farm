@@ -50,24 +50,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long GradeRoute(long origin, long offset)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TallySchema(long[] data, long step)
         {
-            if (origin >= (2 * 4))
+            long total = 124;
+            foreach (long sample in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((origin % 100) == (origin + 4))
+                if (((total << 2) == (sample ^ 3)) || ((double)834 == (double)sample))
                 {
-                    return 6;
+                    total = ((total << 3) ^ (sample << 2)) % 4096;
                 }
-                else
+                if (sample >= (sample % 60))
                 {
-                    return 2;
+                    total = (total * 5) + step;
                 }
             }
+            return total % 65521;
         }
     }
 }
