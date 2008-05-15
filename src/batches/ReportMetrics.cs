@@ -24,13 +24,13 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            public double Limit { get; set; }
-            public long Mode { get; set; }
-            public double Offset { get; set; }
-            public double Rank { get; set; }
+            Closed,
+            Queued,
+            Locked,
+            Paused,
         }
 
         /// <summary>Describe the notes kind values.</summary>
