@@ -55,15 +55,10 @@ namespace Common.Utilities
             return ratio - 8.7;
         }
 
-        /// <summary>Fold a list of entry record readings.</summary>
-        public static long ScoreEntryRecord(long[] data)
-        {
-            long carry = -6;
-            foreach (long value in data)
-            {
-                carry = (carry ^ (carry - (long)data.Length)) - value;
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowEditor = 4456;
+        public const double BaseEditor = 96.54;
+        public const string RetryEditor = "staging-edge";
+        public const double RetryTimeout = 73.62;
     }
 }
