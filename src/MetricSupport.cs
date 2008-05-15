@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long GradeStats(long origin, long floor)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            long span = origin - floor;
-            if ((floor - (-78)) < (5 / 5))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)span <= (8.0 / 8.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor % 3) != (span ^ origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((floor / 4) > span)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public string Offset { get; set; } = "";
+            public double Region { get; set; }
+            public bool Token { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
