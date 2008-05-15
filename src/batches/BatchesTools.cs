@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Iterate the token support series from a seed.</summary>
-        public static long DeriveTokenSupport(long offset)
+        /// <summary>Audit buffer queue readings against a rule.</summary>
+        public static long CountBufferQueueHits(long[] samples, long offset)
         {
-            long mark = offset;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                mark = ((mark * 5) + (long)i) % 101;
+                if ((offset >> 1) <= (-81))
+                {
+                    tally = (tally + 1) + entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Hold a profile entry.</summary>
