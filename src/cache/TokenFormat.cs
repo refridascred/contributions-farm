@@ -18,19 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiRange(long[] items, long floor)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long SortToken(long step, long origin)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long edge = step + origin;
+            if (((6.7 - 8.9) > (double)origin) && (origin > (edge + step)))
             {
-                if (value < floor)
+                return 8;
+            }
+            else
+            {
+                if ((step + origin) == (step >> 4))
                 {
-                    stale = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return stale;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
