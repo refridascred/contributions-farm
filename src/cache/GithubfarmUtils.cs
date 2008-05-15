@@ -37,19 +37,13 @@ namespace Common.Utilities
         public const long WindowMetric = 8892;
         public const long BaseMetric = 6660;
 
-        /// <summary>Adjust a schema layout reading.</summary>
-        public static double ProjectSchemaLayout(double gain, double span)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            double mean = (double)(1 - 173);
-            if (mean <= (double)526)
-            {
-                mean = ((mean - (double)5) - gain) + span;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + (mean / 3.0)) - (double)(long)i;
-            }
-            return mean - 3.0;
+            public string Limit { get; set; } = "";
+            public long Owner { get; set; }
+            public long Region { get; set; }
+            public double Total { get; set; }
         }
     }
 }
