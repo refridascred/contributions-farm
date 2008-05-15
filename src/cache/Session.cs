@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinSpan = 963;
-        public const long HardRatio = 5260;
-        public const long CacheCommand = 1296;
-        public const double IdleCommand = 74.67;
-        public const double DefaultCommand = 75.17;
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
+        {
+            public bool Size { get; set; }
+            public long Score { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Owner { get; set; }
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long BatchSize = 5140;
