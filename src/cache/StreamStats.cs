@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsMatches(long[] readings)
         {
-            public string Flag { get; set; } = "";
-            public long Mode { get; set; }
-            public long Weight { get; set; }
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if (((value << 3) == (242 ^ hits)) && ((hits / 3) >= (hits + hits)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the window phase values.</summary>
