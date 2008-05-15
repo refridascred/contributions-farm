@@ -1,5 +1,29 @@
 {
-  "record_window": 36.51,
-  "audit": 9017,
-  "soft_capacity": true
+  "editor_limit": {
+    "hard_delay_count": {
+      "verbose": 12.33,
+      "max_depth_ms": 3893,
+      "flush_delay": "fallback",
+      "token_ratio": false,
+      "max_threshold": 5302,
+      "batch_window_s": ["standard", "fallback", "stable"]
+    },
+    "poll_threshold_s": 656,
+    "default_ratio_ms": true,
+    "retry_depth": {
+      "enabled": "blue",
+      "stream_timeout": 47.23,
+      "record_threshold": false,
+      "soft_capacity_count": "fallback"
+    },
+    "burst_ratio": {
+      "notes_ratio": 50.53,
+      "compress": "latest",
+      "strict": ["standard", "legacy", "open"]
+    },
+    "strict": 100
+  },
+  "base_limit_s": true,
+  "payload_limit": ["legacy", "strict", "stable", "legacy"],
+  "cache_window_pct": 62.68
 }
