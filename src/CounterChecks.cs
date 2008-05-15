@@ -42,13 +42,21 @@ namespace Common.Utilities
             return rate + (double)1;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Match up stream graph samples.</summary>
+        public static long PairStreamGraphCount(long[] values)
         {
-            Draft,
-            Pending,
-            Active,
-            Synced,
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the metric kind values.</summary>
