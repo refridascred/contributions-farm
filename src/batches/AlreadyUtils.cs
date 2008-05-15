@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long SeekNotesIndex(long[] series, long target)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < target) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Score { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Hold a record summary.</summary>
