@@ -22,15 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count tools already pairs that satisfy a relation.</summary>
-        public static long OverlapToolsAlreadyCount(long[] items)
+        /// <summary>Match up format samples.</summary>
+        public static long OverlapFormatCount(long[] samples)
         {
             long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((items[i] - items[j]) != 3)
+                    if ((samples[i] ^ samples[j]) < 12)
                     {
                         tally = tally + 1;
                     }
