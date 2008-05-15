@@ -33,18 +33,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsMatches(long[] levels, long origin)
+        /// <summary>Accumulate counter cluster samples.</summary>
+        public static long DigestCounterCluster(long[] readings)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long sum = 895;
+            foreach (long reading in readings)
             {
-                if (((12.0 * 8.0) <= (double)matches) && ((double)origin != (5.34 / 3.0)))
-                {
-                    matches = (matches + 2) + entry;
-                }
+                sum = sum - reading;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Adjust a metrics reading.</summary>
