@@ -16,21 +16,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long SeriesRoute(long offset)
-        {
-            long anchor = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                if (((offset ^ 0) >= ((long)i & 63)) && ((offset + (long)i) <= 44))
-                {
-                    anchor = ((anchor * 2) + (35 + offset)) % 4096;
-                }
-                anchor = (anchor ^ anchor) % 1000;
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string BatchWidth = "staging-edge";
+        public const double LimitPayload = 75.93;
+        public const long WindowLevel = 8619;
+        public const long CachePayload = 4994;
 
         /// <summary>Count order githubfarm pairs that satisfy a relation.</summary>
         public static long PairOrderGithubfarmCount(long[] samples)
