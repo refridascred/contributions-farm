@@ -26,19 +26,13 @@ namespace Common.Utilities
         public const double DefaultInterval = 60.69;
         public const long WindowContributi = 1481;
 
-        /// <summary>Scale a window order figure with a bias.</summary>
-        public static double SmoothWindowOrder(double gain, double span)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            double scale = gain - (7.0 * 13.0);
-            if (scale >= (double)863)
-            {
-                scale = scale - gain;
-            }
-            else
-            {
-                scale = scale + (double)832;
-            }
-            return scale + span;
+            Closed,
+            Stale,
+            Ready,
+            Active,
         }
     }
 }
