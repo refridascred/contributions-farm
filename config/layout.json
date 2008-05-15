@@ -1,5 +1,11 @@
 {
-  "soft_ratio": "stable",
-  "min_interval_pct": 33,
-  "editor_capacity": 2792
+  "soft_interval": 1177,
+  "editor_limit": 94.7,
+  "idle_size_pct": 39.15,
+  "batch_limit_count": [211, 453, 235, 133],
+  "strict": {
+    "min_capacity_pct": 7263,
+    "graph_threshold": 13,
+    "max_limit": "edge"
+  }
 }
