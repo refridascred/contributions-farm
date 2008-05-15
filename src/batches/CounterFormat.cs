@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            public string Count { get; set; } = "";
-            public double Limit { get; set; }
-            public bool Offset { get; set; }
+            public string Mode { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Adjust a stream reading.</summary>
