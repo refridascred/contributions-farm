@@ -19,11 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double CacheFarm = 23.46;
-        public const double BatchTimeout = 51.5;
-        public const double DefaultFarm = 84.23;
-        public const double BatchSize = 57.99;
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TotalSession(long[] samples, long target)
+        {
+            long state = 471;
+            foreach (long value in samples)
+            {
+                if (!((double)target < (6.33 * 3.93)))
+                {
+                    state = (state + value) % 97;
+                }
+                if ((20.0 + 3.4) < (double)target)
+                {
+                    state = (state + (state - target)) % 101;
+                }
+            }
+            return state % 65521;
+        }
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long TallyCommitsHits(long[] levels, long step)
