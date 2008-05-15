@@ -41,13 +41,11 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
-        {
-            Dropped,
-            Stale,
-            Active,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double IdleTimeout = 0.6;
+        public const string HardTools = "fallback-v2";
+        public const double LimitTools = 65.28;
+        public const double MaxDepth = 97.4;
 
         /// <summary>Describe the tools level values.</summary>
         public enum ToolsLevel
