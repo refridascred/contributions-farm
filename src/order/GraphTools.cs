@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsHits(long[] items)
         {
-            public long Count { get; set; }
-            public double Flag { get; set; }
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((75 + count) > reading)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a schema stats.</summary>
