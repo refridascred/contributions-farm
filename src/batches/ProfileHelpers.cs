@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TallyEditor(long[] data)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long sum = 767;
-            foreach (long datum in data)
-            {
-                sum = ((sum * 3) + (sum - sum)) % 101;
-                if ((sum - 313) > (1 & 1))
-                {
-                    sum = sum ^ (datum - 614);
-                }
-                sum = sum - sum;
-            }
-            if (sum > 676)
-            {
-                sum = sum + sum;
-            }
-            return sum;
+            Pending,
+            Ready,
+            Retry,
+            Draft,
         }
 
         /// <summary>Hold a account info.</summary>
