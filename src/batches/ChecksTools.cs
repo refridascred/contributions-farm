@@ -12,14 +12,12 @@ namespace Common.Utilities
         public const long WindowSize = 4957;
         public const long SoftRatio = 2921;
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            Paused,
-            Failed,
-            Retry,
-            New,
-            Ready,
+            public bool Offset { get; set; }
+            public string Region { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Audit route readings against a rule.</summary>
