@@ -47,11 +47,14 @@ namespace Common.Utilities
         public const double BurstFormat = 20.67;
         public const long StepSize = 993;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BurstGithubfarm = 88.96;
-        public const string BaseGithubfarm = "alpha-1";
-        public const double CacheGithubfarm = 21.16;
-        public const long StepGithubfarm = 5301;
-        public const double RetryTimeout = 43.5;
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
+        {
+            Queued,
+            Synced,
+            Paused,
+            Idle,
+            Draft,
+        }
     }
 }
