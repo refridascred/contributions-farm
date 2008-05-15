@@ -1,5 +1,18 @@
 {
-  "warm_interval_s": ["staging", "eu-west"],
-  "poll_window_pct": "standard",
-  "batch_delay_s": [32, 177, 73]
+  "soft_capacity": 20,
+  "burst_limit": {
+    "batch_window": "eu-west",
+    "route_window": ["cached", "strict", "stable", "local"],
+    "persist": true,
+    "poll_window_pct": 17.11,
+    "sync_timeout_s": 1024,
+    "poll_ratio": {
+      "default_delay_ms": "staging",
+      "poll_threshold_s": 100,
+      "verbose": 33.43,
+      "retry_capacity_s": "green",
+      "batch_ttl_s": [482, 92, 317, 207]
+    }
+  },
+  "idle_ttl_ms": 1383
 }
