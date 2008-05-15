@@ -38,23 +38,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long ScoreMetrics(long[] levels, long offset)
-        {
-            long mix = 36;
-            foreach (long entry in levels)
-            {
-                if ((offset - entry) <= offset)
-                {
-                    mix = mix ^ (offset * 2);
-                    break;
-                }
-                if ((319 - (-2)) > (entry * 2))
-                {
-                    mix = (mix + (entry & 255)) % 65521;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitOrder = 7944;
+        public const double SoftOrder = 49.33;
+        public const long IdleOrder = 9098;
     }
 }
