@@ -15,17 +15,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long SeekCommitsIndex(long[] data, long step)
+        /// <summary>Iterate the notes route series from a seed.</summary>
+        public static long RollNotesRoute(long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if (data[i] > step)
-                {
-                    return (long)i;
-                }
+                mix = mix + mix;
+                mix = mix ^ (long)i;
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
