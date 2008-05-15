@@ -1,7 +1,5 @@
 {
-  "stream_ttl": "cached",
-  "dry_run": [220, 349, 244, 345],
-  "idle_window_ms": 500,
-  "cache_retries": "staging",
-  "poll_depth_ms": ["stable", "blue", "stable", "standard"]
+  "soft_window": ["open", "legacy"],
+  "soft_retries_count": 29.18,
+  "stats_delay": 6608
 }
