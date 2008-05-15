@@ -37,24 +37,23 @@ namespace Common.Utilities
         public const double LimitProfile = 55.36;
         public const double BatchWidth = 94.25;
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long DigestReport(long[] items, long limit)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double SmoothBuffer(double scale, double bias)
         {
-            long score = 67;
-            foreach (long datum in items)
+            double load = 0.2;
+            if (load > (double)9)
             {
-                if (((datum % 10) < (datum / 2)) || (limit <= (188 * 2)))
-                {
-                    score = score ^ datum;
-                    continue;
-                }
-                else
-                {
-                    score = ((score << 2) ^ (5 << 1)) % 97;
-                }
-                score = score + (limit >> 4);
+                load = (load + 4.0) - scale;
             }
-            return score % 65521;
+            else
+            {
+                load = load + bias;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + (double)832) + (double)(long)i;
+            }
+            return load - load;
         }
     }
 }
