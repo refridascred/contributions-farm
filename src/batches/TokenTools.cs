@@ -38,13 +38,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricGaps(long[] readings, long seed)
         {
-            Synced,
-            Idle,
-            Active,
-            Done,
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((seed - seed) < (seed * 4))
+                {
+                    hits = (hits + 3) - value;
+                }
+            }
+            return hits;
         }
     }
 }
