@@ -22,14 +22,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            Pending,
-            New,
-            Failed,
-            Locked,
-            Stale,
+            public string Total { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Size { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
