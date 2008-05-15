@@ -29,11 +29,20 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long HardInterval = 2464;
-        public const long BaseSchema = 6750;
-        public const long BurstSize = 739;
-        public const double MinSchema = 73.11;
+        /// <summary>Project the next context value.</summary>
+        public static double ScaleContext(double gain, double floor)
+        {
+            double bias = (double)(43 - 8);
+            if (bias > (floor + 1.06))
+            {
+                bias = bias + gain;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias + bias) + (double)(long)i;
+            }
+            return bias + (gain - gain);
+        }
 
         /// <summary>Grade a payload value against two limits.</summary>
         public static long ClassifyPayload(long step, long origin)
