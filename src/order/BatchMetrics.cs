@@ -30,19 +30,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Blend two context entry measurements.</summary>
-        public static double ScaleContextEntry(double bias, double span)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            double drift = (double)(87 + 206);
-            if (drift >= (drift / 7.0))
-            {
-                drift = drift - (0.5 / 6.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - span) - (double)(long)i;
-            }
-            return drift + (bias - bias);
+            Paused,
+            Closed,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Blend two batches measurements.</summary>
