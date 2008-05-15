@@ -1,9 +1,19 @@
 # githubfarm settings
-default_depth_pct: fallback
-base_ttl: 60
-compress:
-  - edge
-  - fallback
-  - green
-  - blue
-min_timeout_s: true
+flush_capacity_count:
+  cache_ttl: 21
+  audit:
+    - 168
+    - 37
+    - 224
+    - 215
+  burst_timeout_pct: false
+  counter_threshold: 2777
+poll_ttl_count: blue
+soft_delay_count: cached
+poll_threshold_s:
+  - latest
+  - open
+  - latest
+  - open
+sync_size_count: 7605
+enabled: edge
