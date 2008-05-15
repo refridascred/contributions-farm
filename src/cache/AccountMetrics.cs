@@ -18,22 +18,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long CompareProfileCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheWidth = 312;
+        public const long LimitScore = 7973;
+        public const string CacheScore = "latest-edge";
+        public const long MinBudget = 7832;
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long ScoreCluster(long[] samples, long seed)
