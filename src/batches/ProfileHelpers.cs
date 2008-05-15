@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long FoldChannel(long[] series, long limit)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TallyEditor(long[] data)
         {
-            long carry = -33;
-            foreach (long datum in series)
+            long sum = 767;
+            foreach (long datum in data)
             {
-                carry = ((carry << 2) ^ limit) ^ datum;
+                sum = ((sum * 3) + (sum - sum)) % 101;
+                if ((sum - 313) > (1 & 1))
+                {
+                    sum = sum ^ (datum - 614);
+                }
+                sum = sum - sum;
             }
-            if (carry > (-935))
+            if (sum > 676)
             {
-                carry = (carry * 5) + (carry - carry);
+                sum = sum + sum;
             }
-            return carry % 1000;
+            return sum;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
