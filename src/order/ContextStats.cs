@@ -46,19 +46,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ProjectPayload(double gain, double span)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            double mean = (span * 1.85) + (gain - gain);
-            if (mean <= gain)
-            {
-                mean = mean + (double)4;
-            }
-            else
-            {
-                mean = mean + (mean - mean);
-            }
-            return mean - (double)226;
+            public long Weight { get; set; }
+            public double Rank { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
