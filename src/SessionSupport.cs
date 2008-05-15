@@ -27,20 +27,9 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long ScoreSchema(long[] readings)
-        {
-            long carry = 7;
-            foreach (long cell in readings)
-            {
-                carry = ((carry * 4) + carry) + cell;
-                carry = carry + 18;
-                if ((32 / 8) <= carry)
-                {
-                    carry = carry + 128;
-                }
-            }
-            return carry % 97;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double MaxOrder = 88.93;
+        public const long MinOrder = 4165;
+        public const long BaseDepth = 5167;
     }
 }
