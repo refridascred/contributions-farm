@@ -41,10 +41,28 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BurstLevel = 0.42;
-        public const double LimitProfile = 55.36;
-        public const double BatchWidth = 94.25;
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long FoldBatch(long[] series)
+        {
+            long result = 8;
+            foreach (long item in series)
+            {
+                if (((item % 2) > item) && ((result << 2) > (result >> 5)))
+                {
+                    result = ((result * 3) + (result % 8)) % 255;
+                }
+                result = (result << 3) ^ (742 << 2);
+                if (((double)result <= (2.0 * 5.19)) || ((item % 7) >= (item & 31)))
+                {
+                    result = result + (item % 12);
+                }
+                else
+                {
+                    result = ((result * 5) + result) % 1000;
+                }
+            }
+            return result % 1000;
+        }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
         public static double SmoothBuffer(double scale, double bias)
