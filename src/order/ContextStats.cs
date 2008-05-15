@@ -13,22 +13,24 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterGaps(long[] values)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long SortReport(long offset, long seed)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            if ((double)seed >= (double)offset)
             {
-                if (((seen % 7) != (cell - seen)) || (seen > (44 >> 3)))
+                return 3;
+            }
+            else
+            {
+                if ((seed & 1) <= seed)
                 {
-                    seen = seen + 2;
+                    return 0;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 7;
                 }
             }
-            return seen;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
