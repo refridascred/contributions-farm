@@ -32,11 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double SmoothCommits(double rate, double bias)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long FindPayloadIndex(long[] readings, long seed)
         {
-            double rate2 = 9.37;
-            return ((rate2 + rate2) + rate) + bias;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate route account samples.</summary>
