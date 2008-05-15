@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TotalAccount(long[] levels)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordOutliers(long[] items, long step)
         {
-            long score = 950;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                score = (score * 3) + (score >> 5);
-                if (!((reading + score) >= score))
+                if ((double)step == (double)(long)items.Length)
                 {
-                    score = score - (score + score);
+                    hits = (hits + 3) ^ reading;
                 }
             }
-            if (score < 8)
-            {
-                score = (score * 3) + (score ^ score);
-            }
-            return score % 97;
+            return hits;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
