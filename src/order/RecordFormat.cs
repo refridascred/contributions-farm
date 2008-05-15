@@ -28,17 +28,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a window queue reading by value.</summary>
-        public static long SeekWindowQueueIndex(long[] items, long floor)
+        /// <summary>Check that every channel commits entry stays within the limit.</summary>
+        public static bool CheckChannelCommitsBounds(long[] series, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long item in series)
             {
-                if (items[i] >= floor)
+                if (item >= step)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
