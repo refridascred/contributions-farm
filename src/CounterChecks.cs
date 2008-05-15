@@ -82,26 +82,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TallyNotes(long[] items, long origin)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorGaps(long[] items)
         {
-            long score = 878;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if ((score & 7) <= (origin * 5))
+                if ((tally - tally) > (tally % 97))
                 {
-                    score = (((score * 3) + origin) % 101) ^ sample;
-                }
-                if ((8.86 / 7.0) <= (double)score)
-                {
-                    break;
+                    tally = (tally + 1) ^ reading;
                 }
             }
-            if (score > 4)
-            {
-                score = (score - 86) % 4096;
-            }
-            return score % 1000;
+            return tally;
         }
     }
 }
