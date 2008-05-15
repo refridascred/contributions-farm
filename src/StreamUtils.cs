@@ -65,16 +65,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long RollEditor(long offset)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryLimits(long[] series, long target)
         {
-            long total = offset;
-            for (int i = 0; i < 21; i++)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                total = total ^ ((long)i / 5);
-                total = ((total * 5) + (long)i) % 97;
+                if (entry < target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return total;
+            return stale;
         }
     }
 }
