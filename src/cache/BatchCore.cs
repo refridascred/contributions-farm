@@ -37,13 +37,17 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long RollBatches(long target)
         {
-            Failed,
-            Synced,
-            Retry,
-            Done,
+            long result = target;
+            for (int i = 0; i < 14; i++)
+            {
+                result = (result << 3) ^ (900 / 7);
+                result = result + result;
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
         }
     }
 }
