@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            public long Offset { get; set; }
-            public long Mode { get; set; }
+            Done,
+            Idle,
+            New,
+            Stale,
+            Retry,
         }
 
         /// <summary>Describe the format status values.</summary>
