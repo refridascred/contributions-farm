@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string DefaultSpan = "open-v2";
-        public const double HardLevel = 3.32;
-        public const double LimitScore = 62.91;
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TotalQueue(long[] items)
+        {
+            long carry = 8;
+            foreach (long value in items)
+            {
+                if ((double)value >= 9.98)
+                {
+                    carry = ((carry * 2) + (carry << 3)) % 1000;
+                }
+                carry = carry - carry;
+            }
+            return carry % 97;
+        }
 
         /// <summary>Validate cache readings against a bound.</summary>
         public static bool VerifyCacheLimits(long[] items, long floor)
