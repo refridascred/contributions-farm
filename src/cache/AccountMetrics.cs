@@ -53,18 +53,38 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountMatches(long[] series, long floor)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long BucketQueue(long step, long offset)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            if (((offset << 1) <= (step + step)) && (step >= offset))
             {
-                if (matches < (floor / 3))
+                return 6;
+            }
+            else
+            {
+                if ((offset & 127) == (offset - 765))
                 {
-                    matches = (matches + 2) + datum;
+                    return 2;
+                }
+                else
+                {
+                    if (((4.8 / 4.0) != (double)offset) && ((step % 12) != (step / 9)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!(2.0 >= (double)step))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Digest a series of command contributi entries.</summary>
