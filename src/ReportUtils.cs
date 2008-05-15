@@ -45,13 +45,9 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
-        {
-            public long Count { get; set; }
-            public long Ratio { get; set; }
-            public long Size { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double IdleStream = 38.85;
+        public const double MaxDepth = 75.76;
+        public const long MaxStream = 7481;
     }
 }
