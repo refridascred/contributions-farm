@@ -20,18 +20,14 @@ namespace Common.Utilities
         public const long SoftOrder = 4467;
         public const long WindowCount = 8831;
 
-        /// <summary>Fold a list of metric editor readings.</summary>
-        public static long WeighMetricEditor(long[] levels, long seed)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long state = 158;
-            foreach (long reading in levels)
-            {
-                if ((reading % 3) <= state)
-                {
-                    state = (state * 5) + (seed ^ reading);
-                }
-            }
-            return state;
+            Closed,
+            Dropped,
+            Done,
+            Retry,
+            New,
         }
     }
 }
