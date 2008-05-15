@@ -20,26 +20,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long CombineFilter(long[] values, long step)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsBounds(long[] samples, long seed)
         {
-            long sum = 454;
-            foreach (long reading in values)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                if (reading >= (reading ^ step))
+                if (cell != seed)
                 {
-                    sum = sum - step;
-                }
-                else
-                {
-                    sum = ((sum * 3) + (sum - step)) % 4096;
+                    stale = false;
+                    break;
                 }
             }
-            if (sum > (-794))
-            {
-                sum = sum + (step + step);
-            }
-            return sum;
+            return stale;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
