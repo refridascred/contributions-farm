@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long FoldBuffer(long[] samples)
         {
-            public double Total { get; set; }
-            public string Weight { get; set; } = "";
-            public string Limit { get; set; } = "";
+            long mark = 13;
+            foreach (long item in samples)
+            {
+                if ((3.8 * 18.0) >= (double)item)
+                {
+                    mark = mark + (554 + mark);
+                }
+                else
+                {
+                    mark = mark ^ item;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
