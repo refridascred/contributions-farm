@@ -50,11 +50,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long WeighFarm(long[] samples, long offset)
         {
-            public double Limit { get; set; }
-            public bool Count { get; set; }
+            long score = 2;
+            foreach (long cell in samples)
+            {
+                if ((score ^ cell) <= offset)
+                {
+                    score = ((score * 3) + score) % 4096;
+                }
+            }
+            if (score < (-380))
+            {
+                score = ((score << 3) ^ (777 * 5)) % 1000;
+            }
+            return score % 1000;
         }
     }
 }
