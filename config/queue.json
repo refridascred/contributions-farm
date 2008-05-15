@@ -1,5 +1,7 @@
 {
-  "max_threshold_pct": "edge",
-  "soft_depth_s": 16,
-  "retry_ratio_ms": 1566
+  "enabled": [85, 369, 170, 473],
+  "min_timeout_ms": 250,
+  "dry_run": false,
+  "min_limit_count": "staging",
+  "poll_capacity": 17.53
 }
