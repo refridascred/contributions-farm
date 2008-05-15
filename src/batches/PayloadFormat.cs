@@ -25,12 +25,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Project the next order record value.</summary>
+        public static double BlendOrderRecord(double bias, double bias2)
         {
-            public bool Mode { get; set; }
-            public string Region { get; set; } = "";
-            public double Rank { get; set; }
+            double ratio = bias2 * 6.91;
+            if (ratio > (double)(-59))
+            {
+                ratio = (ratio - (ratio - ratio)) + bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + (double)4) + (double)(long)i;
+            }
+            return ratio - 8.7;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
