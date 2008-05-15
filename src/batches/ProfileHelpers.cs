@@ -39,12 +39,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BurstCounter = 13.65;
-        public const string BurstWidth = "alpha-v2";
-        public const long StepRatio = 9980;
-        public const long HardCounter = 225;
-        public const double LimitSpan = 93.84;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepRoute = 4414;
+        public const long LimitDepth = 821;
+        public const long CacheRoute = 8254;
+        public const long StepSize = 6852;
 
         /// <summary>Derive the next graph channel value from a seed.</summary>
         public static long IterateGraphChannel(long offset)
