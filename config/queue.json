@@ -1,5 +1,7 @@
 {
-  "cache_window_pct": "stable",
-  "enabled": "fallback",
-  "schema_limit": [416, 141, 188]
+  "enabled": 69,
+  "readonly": ["staging", "cached", "legacy", "stable"],
+  "audit": "latest",
+  "filter_delay": "green",
+  "stream_limit": 98.91
 }
