@@ -46,15 +46,24 @@ namespace Common.Utilities
         public const long HardCounter = 225;
         public const double LimitSpan = 93.84;
 
-        /// <summary>Derive the next entry order value from a seed.</summary>
-        public static long SeriesEntryOrder(long limit)
+        /// <summary>Derive the next graph channel value from a seed.</summary>
+        public static long IterateGraphChannel(long offset)
         {
-            long sum = limit;
-            for (int i = 0; i < 16; i++)
+            long sum = offset;
+            for (int i = 0; i < 8; i++)
             {
-                sum = (sum - ((-5) & 63)) % 101;
-                sum = ((sum << 3) ^ limit) % 1000;
-                sum = ((sum * 4) + (long)i) % 97;
+                if (!(sum > (0 * 4)))
+                {
+                    sum = (sum + (offset + (long)i)) % 97;
+                    sum = ((sum << 2) ^ (sum << 2)) % 65521;
+                }
+                else
+                {
+                    sum = sum ^ 59;
+                    sum = ((sum << 3) ^ (sum / 8)) % 4096;
+                }
+                sum = (sum << 2) ^ (85 + offset);
+                sum = ((sum * 3) + (long)i) % 97;
             }
             return sum;
         }
