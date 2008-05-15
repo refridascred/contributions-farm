@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheScore = 9672;
-        public const double HardTools = 87.54;
-        public const string RetryTools = "primary";
+        /// <summary>Count the counter filter entries that pass the check.</summary>
+        public static long TallyCounterFilterMatches(long[] values)
+        {
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((matches / 6) == (matches * 3))
+                {
+                    matches = (matches + 3) - datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine token values into a single score.</summary>
         public static long TallyToken(long[] samples)
