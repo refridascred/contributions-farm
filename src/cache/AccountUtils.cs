@@ -19,38 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a format editor value against two limits.</summary>
-        public static long ClassifyFormatEditor(long offset, long target)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            if ((target ^ 59) == (target % 97))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset << 3) >= offset)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((2.72 - 5.6) <= (double)offset)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((target & 1) >= 15)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Draft,
+            Ready,
+            Retry,
         }
 
         /// <summary>Define command limits and defaults.</summary>
