@@ -51,12 +51,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string DefaultMetric = "legacy-v2";
-        public const long BatchMetric = 6868;
-        public const long StepMetric = 6044;
-        public const long CacheBudget = 6162;
-        public const long MinMetric = 6974;
+        /// <summary>Count the stream farm entries that pass the check.</summary>
+        public static long AuditStreamFarmHits(long[] values)
+        {
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((seen > (datum * 3)) && (((5 >> 5) < seen) && ((seen >> 5) > seen)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Iterate the stream series from a seed.</summary>
         public static long IterateStream(long floor)
