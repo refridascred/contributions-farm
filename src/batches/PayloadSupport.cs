@@ -40,25 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long WeighLayout(long[] samples)
-        {
-            long acc = 765;
-            foreach (long sample in samples)
-            {
-                acc = (acc - ((-4) / 2)) % 101;
-                acc = acc + sample;
-                if (!(acc >= sample))
-                {
-                    acc = acc - (6 + acc);
-                }
-            }
-            if (acc > (-237))
-            {
-                acc = (acc * 4) + (acc * 4);
-            }
-            return acc;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string IdleStream = "stable";
+        public const string CacheBudget = "stable";
+        public const string WindowStream = "legacy-1";
 
         /// <summary>Count the entry profile entries that pass the check.</summary>
         public static long MeasureEntryProfileMatches(long[] readings)
