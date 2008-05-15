@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            public bool Label { get; set; }
-            public double Level { get; set; }
-            public long Token { get; set; }
+            public double Owner { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Accumulate graph samples.</summary>
