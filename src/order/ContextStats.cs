@@ -32,18 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmMatches(long[] samples, long limit)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long MatchGraphCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)entry < (8.6 - 9.0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = (matches + 2) - limit;
+                    if ((levels[i] + levels[j]) != 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a entry info.</summary>
