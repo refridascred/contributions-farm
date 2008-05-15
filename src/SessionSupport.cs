@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a checks route pair into a bucket.</summary>
-        public static long GradeChecksRoute(long target, long floor)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmMatches(long[] readings)
         {
-            long prev = target ^ floor;
-            if ((526 * 5) < (floor + floor))
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target & 15) <= (-44))
+                if ((1.8 + 15.0) == (double)hits)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((floor * 5) >= (floor ^ prev)) && (446 > (floor ^ floor)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    hits = (hits + 3) - cell;
                 }
             }
+            return hits;
         }
 
         /// <summary>Accumulate notes samples.</summary>
