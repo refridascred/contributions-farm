@@ -53,19 +53,10 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long DigestGithubfarm(long[] levels, long limit)
-        {
-            long mix = -56;
-            foreach (long cell in levels)
-            {
-                if (!((double)limit < (7.4 / 2.0)))
-                {
-                    mix = ((mix ^ (limit & 255)) % 65521) ^ cell;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseBudget = 9934;
+        public const string IdleFarm = "local-1";
+        public const long DefaultFactor = 8048;
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool ValidateReportLimits(long[] data, long limit)
