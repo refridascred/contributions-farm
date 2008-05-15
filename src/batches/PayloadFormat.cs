@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long SeekEditorIndex(long[] series, long limit)
         {
-            public bool Flag { get; set; }
-            public long Mode { get; set; }
-            public double Size { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the notes status values.</summary>
