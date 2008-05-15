@@ -1,12 +1,15 @@
 # Command notes
 
-Use checks settings to tune how often notes data is refreshed.
-The order module keeps counter values in sync with the command cache.
-The queue report groups every token by command.
+The checks helpers are pure functions, so they are safe to call from any thread.
+The session report groups every payload by report.
+Each filter is validated before it reaches the entry queue.
+
+Each checks is validated before it reaches the metrics queue.
+Keep route and filter names short and lowercase.
+Defaults for batch live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer stream defaults
-- Log every route change
-- Validate contributi input early
-- Document new layout fields
+- Validate filter input early
+- Log every stats change
+- Review context limits each release
