@@ -55,13 +55,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Blend two batches measurements.</summary>
+        public static double ScaleBatches(double gain, double bias)
         {
-            Pending,
-            Active,
-            Retry,
-            Done,
+            double weight = bias;
+            return (weight + 9.64) + gain;
         }
     }
 }
