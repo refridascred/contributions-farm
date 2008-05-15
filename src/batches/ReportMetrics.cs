@@ -16,22 +16,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] series, long bound)
+        /// <summary>Count the schema counter entries that pass the check.</summary>
+        public static long MeasureSchemaCounterHits(long[] readings)
         {
-            long score = 971;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if ((956 % 64) > (item / 4))
+                if (hits > (23 + cell))
                 {
-                    score = score + (score + bound);
+                    hits = hits + 3;
                 }
             }
-            if (score > 291)
-            {
-                score = score + (bound ^ bound);
-            }
-            return score % 1000;
+            return hits;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
