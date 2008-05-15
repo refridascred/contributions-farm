@@ -34,11 +34,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string RetryReport = "staging";
-        public const long WindowInterval = 3765;
-        public const double CacheReport = 90.43;
-        public const long IdleReport = 6284;
-        public const double DefaultWidth = 3.18;
+        /// <summary>Define token limits and defaults.</summary>
+        public const double WindowBudget = 66.29;
+        public const double CacheToken = 56.39;
+        public const long HardSize = 538;
     }
 }
