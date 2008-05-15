@@ -28,11 +28,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstSpan = 1802;
-        public const string BatchScore = "strict-1";
-        public const long IdleStream = 4515;
-        public const long StepScore = 1056;
-        public const double IdleScore = 26.85;
+        /// <summary>Classify a already account pair into a bucket.</summary>
+        public static long RankAlreadyAccount(long floor, long floor2)
+        {
+            long bound = floor - floor2;
+            if ((floor ^ floor) == (bound + floor2))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)floor > (12.0 + 15.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (floor >= (14 << 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
     }
 }
