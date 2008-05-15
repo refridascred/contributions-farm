@@ -28,32 +28,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a already account pair into a bucket.</summary>
-        public static long RankAlreadyAccount(long floor, long floor2)
+        /// <summary>Project the next metrics value.</summary>
+        public static double AdjustMetrics(double scale, double bias)
         {
-            long bound = floor - floor2;
-            if ((floor ^ floor) == (bound + floor2))
+            double mean = scale;
+            for (int i = 0; i < 6; i++)
             {
-                return 3;
+                mean = ((mean - (double)(-12)) + (double)(long)i) - bias;
             }
-            else
-            {
-                if ((double)floor > (12.0 + 15.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (floor >= (14 << 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return mean - mean;
         }
     }
 }
