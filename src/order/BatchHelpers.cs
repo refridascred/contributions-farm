@@ -13,12 +13,13 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            Ready,
-            Idle,
-            New,
+            public bool Region { get; set; }
+            public double Level { get; set; }
+            public string Offset { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
