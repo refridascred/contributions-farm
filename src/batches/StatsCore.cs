@@ -34,22 +34,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long SeriesGraph(long seed)
-        {
-            long result = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((seed ^ (long)i) == (seed - seed))
-                {
-                    long edge = result / 3;
-                    result = (result - (edge + 24)) % 65521;
-                }
-                result = (result ^ (seed % 12)) % 101;
-                result = ((result * 3) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleOrder = 960;
+        public const double SoftOrder = 64.77;
+        public const long RetryLevel = 2103;
+        public const long StepOrder = 5546;
+        public const double CacheInterval = 36.61;
 
         /// <summary>Accumulate graph samples.</summary>
         public static long FoldGraph(long[] samples)
