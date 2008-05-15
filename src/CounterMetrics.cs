@@ -53,32 +53,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long SortCommand(long floor, long limit)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesRange(long[] values, long seed)
         {
-            long step = floor + limit;
-            if ((double)step >= (double)limit)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor / 8) > (step + 8))
+                if (cell >= seed)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((57 + step) != (limit - limit))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
