@@ -77,14 +77,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TallyFilter(long[] values)
         {
-            Idle,
-            Active,
-            Ready,
-            Retry,
-            Closed,
+            long score = 96;
+            foreach (long reading in values)
+            {
+                score = score + (score + reading);
+                score = (score ^ (reading & 127)) % 1000;
+                if (8.7 >= (double)score)
+                {
+                    score = score - (reading % 2);
+                }
+            }
+            if (score < 35)
+            {
+                score = (score << 2) ^ score;
+            }
+            return score;
         }
     }
 }
