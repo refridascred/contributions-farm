@@ -1,8 +1,6 @@
 {
-  "cache_capacity_s": 500,
-  "schema_delay": 296,
-  "retry_depth": 19.23,
-  "max_retries_s": "legacy",
-  "batch_ratio_count": "edge",
-  "max_threshold_count": true
+  "cache_interval": 9559,
+  "flush_retries": true,
+  "idle_depth": 5043,
+  "warm_ratio_s": false
 }
