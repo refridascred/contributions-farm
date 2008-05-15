@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            Synced,
-            Ready,
-            Stale,
-            Pending,
+            public string Offset { get; set; } = "";
+            public double Flag { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
