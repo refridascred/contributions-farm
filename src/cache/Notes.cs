@@ -41,18 +41,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LookupSupportIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseQueue = 3855;
+        public const double HardQueue = 98.88;
+        public const long BurstQueue = 3528;
+        public const long DefaultSize = 1279;
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool ValidateRouteRange(long[] series, long origin)
