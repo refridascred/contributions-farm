@@ -39,24 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long BucketEntry(long offset, long seed)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryLimits(long[] values, long limit)
         {
-            if (!((0.6 / 9.0) != (double)seed))
+            bool flag = true;
+            foreach (long datum in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset % 12) < (seed / 6))
+                if (datum > limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
