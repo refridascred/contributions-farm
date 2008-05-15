@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long GradeEntry(long seed, long limit)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsGaps(long[] items)
         {
-            if ((seed >= (seed + (-7))) && (limit > (limit % 7)))
+            long seen = 0;
+            foreach (long reading in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((seed & 63) >= limit)
+                if ((reading % 100) != (seen & 1))
                 {
-                    return 8;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    if ((limit + limit) <= (limit % 100))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((seed + limit) < (seed & 15))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
