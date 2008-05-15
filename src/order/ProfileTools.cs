@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            Failed,
-            Locked,
-            Closed,
+            Paused,
             Dropped,
+            Locked,
         }
 
         /// <summary>Define route limits and defaults.</summary>
