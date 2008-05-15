@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long SortCluster(long step, long step2)
+        /// <summary>Derive the next session support value from a seed.</summary>
+        public static long DeriveSessionSupport(long offset)
         {
-            long delta = step + step2;
-            if ((step * 3) >= (step2 ^ step))
+            long mark = offset;
+            for (int i = 0; i < 5; i++)
             {
-                return 1;
+                mark = mark ^ (mark ^ offset);
+                mark = (mark ^ ((long)i / 2)) % 97;
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if ((delta + 646) <= (delta + 8))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((step << 2) > step2)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
