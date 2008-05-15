@@ -71,18 +71,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderHits(long[] items)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionMatches(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if ((5 + datum) <= datum)
+                if ((value ^ floor) <= (floor / 6))
                 {
-                    count = count + 1;
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
