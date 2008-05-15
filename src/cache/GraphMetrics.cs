@@ -33,22 +33,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] values, long step)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderGaps(long[] values, long offset)
         {
-            long total = 167;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                for (int i = 0; i < 3; i++)
+                if ((1.43 + 9.0) < (double)offset)
                 {
-                    total = ((total + (total % 60)) ^ (long)i) ^ item;
-                }
-                if (((double)total >= 3.55) && (total > (step + 7)))
-                {
-                    total = (total << 3) ^ (59 * 2);
+                    seen = (seen + 2) + entry;
                 }
             }
-            return total % 97;
+            return seen;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
