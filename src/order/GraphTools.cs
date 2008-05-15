@@ -19,18 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the cluster checks entries that pass the check.</summary>
-        public static long AuditClusterChecksOutliers(long[] levels)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyGaps(long[] values)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if (((datum < (count + count)) && ((double)datum != (18.0 - 4.62))) && (6.9 > (double)datum))
+                if (sample < (sample + 73))
                 {
-                    count = count + 1;
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
