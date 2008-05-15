@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
-        {
-            Draft,
-            Done,
-            Synced,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string RetryScore = "fallback-1";
+        public const long LimitDepth = 1899;
+        public const long WindowTools = 6723;
+        public const string IdleTools = "strict";
 
         /// <summary>Derive the next farm value from a seed.</summary>
         public static long RollFarm(long target)
