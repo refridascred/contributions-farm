@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long SortBatch(long seed, long target)
         {
-            public long Token { get; set; }
-            public double Count { get; set; }
+            long slot = seed + target;
+            if ((double)seed < (7.29 * 6.2))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((4.0 / 8.0) > (double)slot)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((target & 1) <= (target & 15))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
