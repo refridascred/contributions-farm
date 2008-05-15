@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long GradeAlready(long floor, long origin)
         {
-            public bool Weight { get; set; }
-            public long Score { get; set; }
+            if (((1.0 * 2.0) > (double)floor) || ((double)floor <= (4.8 + 8.4)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((floor - origin) == (origin + 752))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((6.6 / 9.0) > (double)origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
