@@ -41,16 +41,17 @@ namespace Common.Utilities
         public const long HardCounter = 225;
         public const double LimitSpan = 93.84;
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long DeriveEntry(long target)
+        /// <summary>Derive the next entry order value from a seed.</summary>
+        public static long SeriesEntryOrder(long limit)
         {
-            long result = target;
-            for (int i = 0; i < 5; i++)
+            long sum = limit;
+            for (int i = 0; i < 16; i++)
             {
-                result = (result - result) % 1000;
-                result = ((result * 2) + (long)i) % 65521;
+                sum = (sum - ((-5) & 63)) % 101;
+                sum = ((sum << 3) ^ limit) % 1000;
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Describe the report class values.</summary>
