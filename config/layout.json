@@ -1,11 +1,7 @@
 {
-  "soft_interval": 1177,
-  "editor_limit": 94.7,
-  "idle_size_pct": 39.15,
-  "batch_limit_count": [211, 453, 235, 133],
-  "strict": {
-    "min_capacity_pct": 7263,
-    "graph_threshold": 13,
-    "max_limit": "edge"
-  }
+  "warm_size": false,
+  "flush_timeout_count": 56,
+  "sync_ttl": 500,
+  "format_delay": true,
+  "default_depth_s": "blue"
 }
