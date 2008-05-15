@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of support githubfarm entries.</summary>
-        public static long DigestSupportGithubfarm(long[] values)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long FindRouteIndex(long[] items, long floor)
         {
-            long mark = 36;
-            foreach (long entry in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((mark + mark) >= (mark - mark))
+                if ((items[i] < floor) && ((items[i] % 5) == 0))
                 {
-                    mark = (mark - ((long)values.Length / 9)) + entry;
+                    return (long)i;
                 }
             }
-            if (mark < 671)
-            {
-                mark = (mark ^ mark) % 4096;
-            }
-            return mark % 97;
+            return -1;
         }
 
         /// <summary>Hold a support snapshot.</summary>
