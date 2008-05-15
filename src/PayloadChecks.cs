@@ -55,10 +55,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double MaxFactor = 80.55;
-        public const string LimitDepth = "standard-1";
-        public const long LimitBuffer = 1025;
-        public const string CacheBuffer = "latest-v2";
+        /// <summary>Adjust a session reading.</summary>
+        public static double SmoothSession(double gain, double span)
+        {
+            double bias = (double)(85 >> 5);
+            if (bias <= 11.0)
+            {
+                bias = bias - span;
+            }
+            else
+            {
+                bias = bias + 19.0;
+            }
+            return bias + (bias + gain);
+        }
     }
 }
