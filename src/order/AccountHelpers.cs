@@ -59,11 +59,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            public long Stamp { get; set; }
-            public long Token { get; set; }
+            Dropped,
+            Stale,
+            Active,
         }
 
         /// <summary>Grade a checks batches value against two limits.</summary>
