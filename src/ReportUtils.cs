@@ -19,12 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BaseLayout = 11.81;
-        public const string DefaultLayout = "standard";
-        public const long BurstSpan = 5654;
-        public const long LimitLayout = 4229;
-        public const long BurstSize = 436;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double WindowLevel = 23.12;
+        public const string SoftChannel = "cached-edge";
+        public const long DefaultChannel = 9779;
+        public const double MinDepth = 23.64;
 
         /// <summary>Derive the next editor value from a seed.</summary>
         public static long RollEditor(long offset)
