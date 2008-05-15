@@ -50,12 +50,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            Queued,
+            Paused,
             Done,
-            Stale,
+            Locked,
         }
 
         /// <summary>Digest a series of command contributi entries.</summary>
