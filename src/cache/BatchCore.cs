@@ -22,15 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double ScaleWindow(double ratio, double offset)
+        /// <summary>Match up editor samples.</summary>
+        public static long OverlapEditorCount(long[] data)
         {
-            double scale = offset;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = ((scale + scale) + (double)(long)i) + ratio;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return scale + (scale * 5.01);
+            return hits;
         }
 
         /// <summary>Look up the position of a commits farm sample.</summary>
