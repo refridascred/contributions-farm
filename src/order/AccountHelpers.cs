@@ -57,24 +57,19 @@ namespace Common.Utilities
             return gain - 13.0;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long BucketGithubfarm(long offset, long target)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamRange(long[] items, long offset)
         {
-            if ((18.0 * 9.0) == (double)offset)
+            bool found = true;
+            foreach (long datum in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)offset != (19.0 - 3.0))
+                if (datum >= offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
