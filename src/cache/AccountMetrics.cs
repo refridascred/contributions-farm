@@ -18,11 +18,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheWidth = 312;
-        public const long LimitScore = 7973;
-        public const string CacheScore = "latest-edge";
-        public const long MinBudget = 7832;
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long CompareSessionCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long ScoreCluster(long[] samples, long seed)
