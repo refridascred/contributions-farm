@@ -16,19 +16,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportBounds(long[] values, long limit)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesOutliers(long[] samples, long floor)
         {
-            bool valid = true;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if (item >= limit)
+                if ((((cell << 2) != (5 << 3)) || ((4 / 3) >= (matches + floor))) || ((cell >> 2) < (floor ^ matches)))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
