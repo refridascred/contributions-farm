@@ -18,13 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Iterate the token githubfarm series from a seed.</summary>
+        public static long RollTokenGithubfarm(long seed)
         {
-            Failed,
-            Dropped,
-            Pending,
-            Paused,
+            long sum = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                sum = sum + 1;
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Project the next order value.</summary>
