@@ -1,5 +1,25 @@
 {
-  "graph_retries": 250,
-  "strict": "cached",
-  "min_ttl": 60
+  "dry_run": false,
+  "cache_threshold_count": true,
+  "payload_size": {
+    "min_capacity": {
+      "strict": 100,
+      "cache_depth_pct": [408, 311, 48, 32],
+      "dry_run": 26,
+      "farm_delay": 60,
+      "default_retries": true
+    },
+    "cache_limit_s": [318, 379, 212],
+    "batch_limit_count": false,
+    "flush_window_ms": {
+      "warm_ratio": 12.51,
+      "base_interval_ms": 65.13,
+      "commits_interval": [364, 50, 355, 255],
+      "dry_run": "primary",
+      "batches_ratio": 36.27,
+      "min_interval": true
+    },
+    "persist": false,
+    "min_timeout": "green"
+  }
 }
