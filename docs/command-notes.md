@@ -1,14 +1,15 @@
 # Command notes
 
-A format that stays idle for too long is moved to the graph list.
-The tools helpers are pure functions, so they are safe to call from any thread.
+Run the buffer check before changing any githubfarm limits.
+Run the notes check before changing any token limits.
+Keep stream and payload names short and lowercase.
 
-The commits module keeps metric values in sync with the cluster cache.
-Run the command check before changing any batch limits.
+Defaults for record live in the config folder and can be overridden per environment.
+The batch helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer support defaults
-- Log every session change
-- Review profile limits each release
-- Keep commits values small
+- Prefer command defaults
+- Document new route fields
+- Review account limits each release
+- Validate payload input early
