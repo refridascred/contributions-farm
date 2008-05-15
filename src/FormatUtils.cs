@@ -47,19 +47,39 @@ namespace Common.Utilities
         public const long RetryInterval = 6415;
         public const long IdleSpan = 129;
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double BlendCommand(double ratio, double span)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long SortStream(long target, long origin)
         {
-            double ratio2 = 6.36;
-            if (ratio2 >= (double)33)
+            long edge = target - origin;
+            if ((origin < target) && (target <= (edge + target)))
             {
-                ratio2 = ratio2 + ratio;
+                return 2;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                ratio2 = (ratio2 - span) + (double)(long)i;
+                if (((edge % 64) < target) || ((1 + 7) < (target - edge)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((edge + edge) <= (target + target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((edge - 10) == (target * 2))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            return ratio2 - (span - ratio);
         }
 
         /// <summary>Digest a series of graph batch entries.</summary>
