@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long CombineAccount(long[] data, long origin)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferOutliers(long[] items)
         {
-            long mark = 50;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                mark = ((mark - 37) % 97) ^ sample;
-                if ((764 >> 5) > origin)
+                if ((datum + datum) > (datum * 5))
                 {
-                    break;
+                    seen = seen + 3;
                 }
             }
-            if (mark > 3)
-            {
-                mark = (mark * 4) + (origin >> 1);
-            }
-            return mark % 4096;
+            return seen;
         }
 
         /// <summary>Define record limits and defaults.</summary>
