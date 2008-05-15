@@ -1,17 +1,17 @@
 # support settings
-persist: blue
-dry_run:
-  - stable
-  - standard
-  - local
-warm_capacity: 84.3
-default_timeout_count:
-  order_timeout: 3346
-  poll_threshold: false
-  poll_size_count: primary
-  farm_delay:
-    - 24
-    - 236
-    - 495
-    - 500
-compress: true
+verbose: 30
+base_size: 77.75
+burst_window_s: 60
+cache_window:
+  account_limit:
+    persist: 68
+    counter_window: true
+    format_window: 250
+    strict: false
+  burst_timeout: 50.77
+  verbose:
+    - 96
+    - 357
+    - 372
+    - 308
+  burst_timeout_pct: 60
