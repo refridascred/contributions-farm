@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Rank commits route input into a small class.</summary>
+        public static long BucketCommitsRoute(long floor, long seed)
         {
-            Paused,
-            Dropped,
-            Locked,
+            if ((446 + 10) <= (seed << 2))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((floor >> 2) < (seed / 4))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!(floor < (floor - seed)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
