@@ -13,11 +13,14 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftRatio = 3743;
-        public const double MinTools = 1.73;
-        public const string BurstTools = "staging-1";
-        public const double RetrySpan = 88.21;
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
+        {
+            Ready,
+            Failed,
+            Draft,
+            Closed,
+        }
 
         /// <summary>Hold a commits record.</summary>
         public sealed class CommitsRecord
