@@ -19,13 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            public double Limit { get; set; }
-            public double Total { get; set; }
-            public string Level { get; set; } = "";
-            public bool Token { get; set; }
+            Idle,
+            Dropped,
+            New,
         }
 
         /// <summary>Digest a series of cache entries.</summary>
