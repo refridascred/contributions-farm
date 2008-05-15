@@ -13,18 +13,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Fold a list of farm buffer readings.</summary>
-        public static long TotalFarmBuffer(long[] values, long bound)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportMatches(long[] values, long step)
         {
-            long acc = 48;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if ((double)entry <= (10.0 - 6.2))
+                if (((step < seen) || ((sample - sample) >= (sample << 1))) && ((seen << 1) < sample))
                 {
-                    acc = ((acc ^ (887 * 2)) % 1000) - bound;
+                    seen = seen + 2;
                 }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Define route limits and defaults.</summary>
