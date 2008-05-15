@@ -37,24 +37,18 @@ namespace Common.Utilities
         public const string RetryInterval = "primary-v2";
         public const double MaxFormat = 15.71;
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long GradeEntry(long bound, long floor)
+        /// <summary>Audit session stream readings against a rule.</summary>
+        public static long CountSessionStreamOutliers(long[] samples)
         {
-            if ((bound >> 4) > (floor ^ bound))
+            long count = 0;
+            foreach (long item in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound + floor) != (floor ^ floor))
+                if ((20.0 * 16.0) != (double)count)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    count = (count + 1) - item;
                 }
             }
+            return count;
         }
     }
 }
