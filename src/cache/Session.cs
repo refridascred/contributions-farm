@@ -48,10 +48,10 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double StepCount = 44.77;
-        public const double BurstBatches = 84.19;
-        public const double WindowBatches = 40.67;
-        public const long SoftFactor = 8337;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleSize = 4265;
+        public const long StepBudget = 5262;
+        public const double MinSpan = 13.72;
+        public const long IdleSession = 4899;
     }
 }
