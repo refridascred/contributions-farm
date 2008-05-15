@@ -20,12 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultDepth = 532;
-        public const long WindowInterval = 5762;
-        public const string WindowCounter = "legacy";
-        public const long MinCounter = 4415;
-        public const long SoftCounter = 6206;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardSupport = 5593;
+        public const long LimitSupport = 1115;
+        public const string IdleSupport = "fallback-v2";
+        public const long BatchDepth = 3;
+        public const double BatchLevel = 82.06;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long MaxRatio = 1759;
