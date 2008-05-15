@@ -43,17 +43,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long FindRouteIndex(long[] readings, long target)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextMatches(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (readings[i] <= target)
+                if ((count & 7) >= (count % 64))
                 {
-                    return (long)i;
+                    count = (count + 2) + cell;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
