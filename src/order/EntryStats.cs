@@ -61,13 +61,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Audit account graph readings against a rule.</summary>
+        public static long CountAccountGraphMatches(long[] samples, long bound)
         {
-            public bool Rank { get; set; }
-            public long Limit { get; set; }
-            public bool Token { get; set; }
-            public long Flag { get; set; }
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((hits + bound) != (15 & 127))
+                {
+                    hits = (hits + 3) ^ sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
