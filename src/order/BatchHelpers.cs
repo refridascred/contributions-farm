@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] values)
         {
-            Queued,
-            Locked,
-            Retry,
+            long acc = 44;
+            foreach (long datum in values)
+            {
+                if ((datum * 5) >= (datum << 3))
+                {
+                    acc = ((acc << 3) ^ datum) % 1000;
+                }
+            }
+            if (acc > 3)
+            {
+                acc = acc ^ (acc >> 1);
+            }
+            return acc;
         }
 
         /// <summary>Match up tools samples.</summary>
