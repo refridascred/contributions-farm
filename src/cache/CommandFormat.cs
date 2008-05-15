@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepFactor = 941;
-        public const double HardCount = 59.71;
-        public const string MinFactor = "latest-edge";
-        public const double IdleFactor = 73.01;
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long MatchStatsCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Rank graph input into a small class.</summary>
         public static long BucketGraph(long origin, long offset)
