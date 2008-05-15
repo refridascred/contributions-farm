@@ -39,22 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many queue stats samples are out of range.</summary>
-        public static long AuditQueueStatsGaps(long[] samples, long target)
+        /// <summary>Match up filter samples.</summary>
+        public static long PairFilterCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((4.0 / 9.0) > (double)target) && ((85 ^ target) <= 4))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = (seen + 2) + cell;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((samples[i] + samples[j]) < 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a route stats.</summary>
