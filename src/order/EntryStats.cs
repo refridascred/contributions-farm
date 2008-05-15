@@ -23,19 +23,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterLimits(long[] data, long target)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaGaps(long[] levels)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if (datum >= target)
+                if (!((matches & 255) < (-2)))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 3) - reading;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Check that every report batch entry stays within the limit.</summary>
