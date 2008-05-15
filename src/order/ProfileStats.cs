@@ -36,11 +36,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double BurstFarm = 90.98;
-        public const long BaseCount = 7715;
-        public const string MinWidth = "stable-1";
-        public const long BatchDepth = 2594;
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long BucketOrder(long seed, long target)
+        {
+            if (((target + target) <= (seed & 63)) && ((35 - target) <= (seed ^ target)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((5 & 255) < target)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Hold a commits entry.</summary>
         public sealed class CommitsEntry
