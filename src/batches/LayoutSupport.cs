@@ -31,21 +31,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long PairCacheCount(long[] levels)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = 126;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((item + item) != (item & 1))
                 {
-                    if ((levels[i] - levels[j]) < 20)
-                    {
-                        count = count + 1;
-                    }
+                    state = (state + (state & 255)) % 97;
                 }
             }
-            return count;
+            if (state > (-8))
+            {
+                state = state ^ (state >> 4);
+            }
+            return state;
         }
 
         /// <summary>Fold a list of session readings.</summary>
