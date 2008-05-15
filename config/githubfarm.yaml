@@ -1,30 +1,12 @@
 # githubfarm settings
-tools_retries:
-  entry_limit: strict
-  sync_ratio_pct: standard
-  notes_retries:
-    - 84
-    - 248
-  strict: 1964
-  account_limit: green
-farm_size: 3303
-dry_run: 73
-enabled: 500
-format_window:
-  editor_ttl: 26.1
-  audit: 60
-  cache_delay_count: blue
-  persist:
-    - 16
-    - 21
-metrics_size:
-  min_timeout_ms: cached
-  record_ttl:
-    persist: 83
-    strict: 9
-    payload_size: 100
-    farm_capacity: 79
-  commits_delay: 61.35
-  dry_run: 60
-  queue_retries: 1024
-  min_delay_count: eu-west
+burst_interval_pct:
+  cluster_interval: 500
+  readonly: primary
+  max_timeout_ms:
+    - 88
+    - 135
+  sync_retries: latest
+  flush_retries_count: 100
+persist: 2940
+hard_timeout: 1089
+base_size: stable
