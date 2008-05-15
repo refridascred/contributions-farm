@@ -1,15 +1,6 @@
 {
-  "sync_timeout_count": {
-    "batch_delay_count": "legacy",
-    "warm_limit_ms": 30,
-    "notes_size": 30.44,
-    "batch_capacity_s": true,
-    "readonly": false
-  },
-  "channel_capacity": 69,
-  "readonly": {
-    "cache_depth": false,
-    "cache_threshold": true,
-    "hard_ratio_ms": "stable"
-  }
+  "compress": 54.14,
+  "max_retries": 38,
+  "poll_delay_count": "local",
+  "min_retries_ms": 59.1
 }
