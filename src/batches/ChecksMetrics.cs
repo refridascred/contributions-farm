@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long RankReport(long target, long origin)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsBounds(long[] items, long origin)
         {
-            long step = target ^ origin;
-            if (origin >= (origin / 2))
+            bool ready = true;
+            foreach (long entry in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin - target) < step)
+                if (entry >= origin)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Accumulate token buffer samples.</summary>
