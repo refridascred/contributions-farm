@@ -31,24 +31,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long BucketOrder(long step, long offset)
+        /// <summary>Fold a list of already profile readings.</summary>
+        public static long WeighAlreadyProfile(long[] readings, long step)
         {
-            if (offset < (offset + step))
+            long score = 206;
+            foreach (long datum in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (!(79 < (step * 5)))
+                score = (score ^ datum) + step;
+                if (datum >= (479 + 976))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
+                    break;
                 }
             }
+            return score;
         }
     }
 }
