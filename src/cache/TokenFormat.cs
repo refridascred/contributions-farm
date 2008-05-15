@@ -29,10 +29,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double MinGraph = 74.69;
-        public const double CacheSize = 80.35;
-        public const string RetryGraph = "stable";
-        public const long HardGraph = 8044;
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorOutliers(long[] data, long floor)
+        {
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if (matches < (matches + cell))
+                {
+                    matches = (matches + 2) - floor;
+                }
+            }
+            return matches;
+        }
     }
 }
