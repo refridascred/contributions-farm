@@ -36,14 +36,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            Done,
-            Locked,
-            Pending,
-            Closed,
-            Retry,
+            public string Count { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Mode { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Combine queue contributi values into a single score.</summary>
