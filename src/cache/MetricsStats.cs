@@ -25,12 +25,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ScaleCounter(double rate, double span)
         {
-            Ready,
-            Failed,
-            Pending,
+            double scale = rate;
+            if (scale < rate)
+            {
+                scale = (scale + scale) - span;
+            }
+            return scale - 5.0;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
