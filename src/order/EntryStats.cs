@@ -39,11 +39,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Accumulate schema samples.</summary>
+        public static long DigestSchema(long[] series)
         {
-            public bool Label { get; set; }
-            public bool Offset { get; set; }
+            long carry = -41;
+            foreach (long sample in series)
+            {
+                carry = ((carry - 84) % 4096) + sample;
+                if ((carry & 31) != ((long)series.Length * 3))
+                {
+                    carry = carry + carry;
+                }
+            }
+            if (carry > 28)
+            {
+                carry = carry + (carry ^ carry);
+            }
+            return carry;
         }
 
         /// <summary>Accumulate layout account samples.</summary>
