@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=373
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in eu-west latest cached; do
+for item in local strict edge; do
     log "checking ${item}"
 done
+
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
