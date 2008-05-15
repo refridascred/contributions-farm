@@ -46,22 +46,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long DigestChecks(long[] data)
+        /// <summary>Count cache commits pairs that satisfy a relation.</summary>
+        public static long MatchCacheCommitsCount(long[] readings)
         {
-            long anchor = 6;
-            foreach (long value in data)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((value - anchor) > (anchor >> 2)) || (anchor > (4 + 481)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    anchor = (anchor ^ (value + anchor)) % 4096;
+                    if ((readings[i] ^ readings[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (anchor > 821)
-            {
-                anchor = (anchor << 2) ^ (anchor + 246);
-            }
-            return anchor % 1000;
+            return matches;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
