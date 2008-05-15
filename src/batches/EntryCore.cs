@@ -61,10 +61,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheFactor = 1134;
-        public const double DefaultCount = 36.54;
-        public const long MaxWidth = 6149;
-        public const long MinRatio = 6688;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxScore = 7596;
+        public const double RetryGithubfarm = 78.65;
+        public const long SoftGithubfarm = 9789;
     }
 }
