@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long DeriveChannel(long offset)
         {
-            Ready,
-            Failed,
-            Pending,
-            Retry,
-            Dropped,
+            long sum = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    sum = ((sum + offset) % 97) ^ (long)i2;
+                }
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
