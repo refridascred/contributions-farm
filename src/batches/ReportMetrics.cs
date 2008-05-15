@@ -22,21 +22,11 @@ namespace Common.Utilities
         public const long WindowLevel = 8619;
         public const long CachePayload = 4994;
 
-        /// <summary>Count order githubfarm pairs that satisfy a relation.</summary>
-        public static long PairOrderGithubfarmCount(long[] samples)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Total { get; set; }
+            public long Token { get; set; }
         }
     }
 }
