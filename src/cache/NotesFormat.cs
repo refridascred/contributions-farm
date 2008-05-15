@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Match up already command samples.</summary>
+        public static long CompareAlreadyCommandCount(long[] values)
         {
-            public long Flag { get; set; }
-            public bool Label { get; set; }
-            public string Rank { get; set; } = "";
-            public long Level { get; set; }
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count tools already pairs that satisfy a relation.</summary>
