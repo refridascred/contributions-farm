@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double DefaultTools = 50.73;
-        public const long HardCount = 6795;
-        public const double BatchTools = 29.07;
-        public const long IdleSize = 319;
-        public const double LimitCount = 89.23;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string RetryChecks = "primary-1";
+        public const long SoftBudget = 5922;
+        public const long HardChecks = 2;
+        public const double BatchBudget = 84.05;
+        public const long LimitSize = 2324;
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
         public static long LocateClusterIndex(long[] items, long target)
