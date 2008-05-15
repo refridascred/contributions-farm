@@ -52,10 +52,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BatchSpan = "staging";
-        public const long BurstSchema = 267;
-        public const long DefaultWidth = 7463;
-        public const long MinSchema = 7394;
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long FoldPayload(long[] data, long target)
+        {
+            long result = 629;
+            foreach (long datum in data)
+            {
+                result = ((result * 3) + datum) % 255;
+            }
+            if (result < 64)
+            {
+                result = (result + (2 - target)) % 4096;
+            }
+            return result;
+        }
     }
 }
