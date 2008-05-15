@@ -12,18 +12,39 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteOutliers(long[] levels, long origin)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long ClassifyOrder(long floor, long bound)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long edge = floor - bound;
+            if (((bound >> 3) <= (edge % 12)) && ((floor + bound) < (974 + floor)))
             {
-                if (!((matches + origin) >= (origin + item)) && ((origin * 4) <= (matches + matches)))
+                return 8;
+            }
+            else
+            {
+                if ((bound / 9) < (edge - floor))
                 {
-                    matches = matches + 1;
+                    return 3;
+                }
+                else
+                {
+                    if (((-51) * 5) >= (floor + edge))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((edge << 2) != (edge & 127)) || ((floor - bound) > (-75)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
