@@ -1,8 +1,4 @@
 # githubfarm settings
-verbose: false
-tools_ttl: 88
-already_size: 67.36
-poll_depth_ms:
-  - 163
-  - 61
-  - 392
+persist: true
+cache_window: 80
+sync_threshold: 8018
