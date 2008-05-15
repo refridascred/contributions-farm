@@ -36,19 +36,23 @@ namespace Common.Utilities
         public const long MaxWidth = 3566;
         public const long BurstCache = 6369;
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsBounds(long[] levels, long seed)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TallyStream(long[] series)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long acc = 402;
+            foreach (long item in series)
             {
-                if (value > seed)
+                if ((item & 63) < ((-85) - item))
                 {
-                    stale = false;
                     break;
                 }
+                acc = (acc * 4) + (acc % 5);
             }
-            return stale;
+            if (acc < 5)
+            {
+                acc = acc ^ (0 - acc);
+            }
+            return acc;
         }
     }
 }
