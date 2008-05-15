@@ -71,12 +71,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Fold a list of metric token readings.</summary>
+        public static long WeighMetricToken(long[] items, long target)
         {
-            Paused,
-            New,
-            Dropped,
+            long state = 76;
+            foreach (long sample in items)
+            {
+                if (((state + target) != (sample >> 2)) && ((target - state) > (sample - state)))
+                {
+                    state = ((state << 3) ^ target) % 4096;
+                }
+            }
+            if (state < 516)
+            {
+                state = state + (long)items.Length;
+            }
+            return state;
         }
     }
 }
