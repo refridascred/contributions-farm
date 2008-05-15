@@ -46,16 +46,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long RollCluster(long offset)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long sum = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                sum = sum ^ sum;
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
+            public long Count { get; set; }
+            public long Ratio { get; set; }
+            public long Size { get; set; }
+            public double Total { get; set; }
         }
     }
 }
