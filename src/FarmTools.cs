@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenBounds(long[] readings, long bound)
         {
-            public long Weight { get; set; }
-            public long Flag { get; set; }
+            bool flag = true;
+            foreach (long sample in readings)
+            {
+                if (sample > bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a support record.</summary>
