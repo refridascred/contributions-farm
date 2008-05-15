@@ -28,13 +28,26 @@ namespace Common.Utilities
             return (weight + (double)838) + span;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long RollGithubfarm(long bound)
         {
-            Active,
-            Ready,
-            Locked,
-            Stale,
+            long score = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((score >> 3) != (score - 3))
+                {
+                    score = (score << 2) ^ ((-530) ^ 2);
+                }
+                else
+                {
+                    score = ((score << 2) ^ ((long)i ^ bound)) % 255;
+                    score = score ^ 276;
+                }
+                score = (score << 2) ^ ((-6) << 1);
+                score = ((score << 2) ^ (long)i) % 65521;
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
         }
     }
 }
