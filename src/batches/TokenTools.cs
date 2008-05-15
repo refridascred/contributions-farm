@@ -12,32 +12,18 @@ namespace Common.Utilities
         public const long DefaultRoute = 5820;
         public const long BurstSpan = 9442;
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long SortGithubfarm(long seed, long origin)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteOutliers(long[] levels, long origin)
         {
-            long span = seed + origin;
-            if (2 <= (span % 3))
+            long matches = 0;
+            foreach (long item in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (!(seed >= (origin & 1)))
+                if (!((matches + origin) >= (origin + item)) && ((origin * 4) <= (matches + matches)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((1.0 / 2.0) >= (double)seed)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
