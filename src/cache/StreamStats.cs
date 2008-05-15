@@ -48,19 +48,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long DigestBatch(long[] levels)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long RollAlready(long target)
         {
-            long score = 155;
-            foreach (long sample in levels)
+            long state = target;
+            for (int i = 0; i < 19; i++)
             {
-                score = (score - (score << 1)) ^ sample;
+                state = (state - ((long)i + target)) % 4096;
+                state = ((state * 4) + (long)i) % 1000;
             }
-            if (score < 1)
-            {
-                score = ((score << 3) ^ score) % 1000;
-            }
-            return score;
+            return state;
         }
     }
 }
