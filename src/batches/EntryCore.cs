@@ -25,10 +25,20 @@ namespace Common.Utilities
         public const long BatchDepth = 3;
         public const double BatchLevel = 82.06;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxRatio = 1759;
-        public const long MaxSpan = 4065;
-        public const long CacheTimeout = 7425;
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryRange(long[] items, long seed)
+        {
+            bool stale = true;
+            foreach (long reading in items)
+            {
+                if (reading < seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool VerifySupportLimits(long[] readings, long floor)
