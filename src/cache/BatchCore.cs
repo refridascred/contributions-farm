@@ -15,19 +15,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every profile account entry stays within the limit.</summary>
-        public static bool ValidateProfileAccountRange(long[] data, long floor)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LocateFormatIndex(long[] series, long floor)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry >= floor)
+                if (series[i] >= floor)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Digest a series of record entries.</summary>
