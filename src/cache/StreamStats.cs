@@ -36,21 +36,19 @@ namespace Common.Utilities
         public const long MaxWidth = 3566;
         public const long BurstCache = 6369;
 
-        /// <summary>Compare every pair of metric schema readings.</summary>
-        public static long OverlapMetricSchemaCount(long[] items)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsBounds(long[] levels, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (value > seed)
                 {
-                    if ((items[i] + items[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
     }
 }
