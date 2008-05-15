@@ -41,26 +41,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long FoldCommand(long[] data, long floor)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextLimits(long[] levels, long limit)
         {
-            long mix = 890;
-            foreach (long entry in data)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                if ((entry < (floor / 9)) && (962 > (mix + entry)))
+                if (reading <= limit)
                 {
-                    mix = (mix ^ entry) % 255;
-                }
-                else
-                {
-                    mix = (mix << 2) ^ (mix % 100);
-                }
-                if ((6.5 * 3.0) <= (double)entry)
-                {
+                    ok = false;
                     break;
                 }
             }
-            return mix;
+            return ok;
         }
     }
 }
