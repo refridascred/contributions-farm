@@ -23,31 +23,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long SortCommand(long offset, long bound)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long FindClusterIndex(long[] readings, long step)
         {
-            if ((bound ^ bound) == (59 ^ 17))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound << 2) >= (offset + offset))
+                if (readings[i] >= step)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((420 / 7) >= offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
