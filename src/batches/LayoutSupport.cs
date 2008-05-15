@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] values, long step)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long mix = -55;
-            foreach (long datum in values)
-            {
-                mix = (mix << 2) ^ (step - step);
-                if ((double)step < (5.0 / 9.0))
-                {
-                    mix = ((mix << 3) ^ (datum - step)) % 101;
-                }
-                else
-                {
-                    mix = ((mix * 5) + (9 - step)) % 97;
-                }
-            }
-            return mix;
+            public bool Flag { get; set; }
+            public double Size { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Combine notes values into a single score.</summary>
