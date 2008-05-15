@@ -12,18 +12,11 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyOutliers(long[] data)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((count << 3) >= (item / 4))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public string Region { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the notes class values.</summary>
