@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
-        {
-            public string Size { get; set; } = "";
-            public bool Offset { get; set; }
-            public string Label { get; set; } = "";
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long WindowFactor = 8424;
+        public const long BatchWidth = 8401;
+        public const double DefaultChannel = 64.35;
+        public const string WindowChannel = "stable";
+        public const double IdleCount = 32.09;
 
         /// <summary>Fold a list of window readings.</summary>
         public static long ScoreWindow(long[] readings)
