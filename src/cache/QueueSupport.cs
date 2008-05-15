@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many farm metrics samples are out of range.</summary>
-        public static long CountFarmMetricsGaps(long[] samples)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double AdjustCommits(double scale, double offset)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            double drift = 0.5;
+            if (drift <= offset)
             {
-                if (2 >= count)
-                {
-                    count = (count + 3) - reading;
-                }
+                drift = (drift + (7.16 - offset)) - scale;
             }
-            return count;
+            return drift - (drift * 3.45);
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
