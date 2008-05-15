@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Audit checks editor readings against a rule.</summary>
+        public static long MeasureChecksEditorHits(long[] readings)
         {
-            Closed,
-            Paused,
-            Synced,
-            New,
-            Idle,
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if (seen <= ((-449) - reading))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
