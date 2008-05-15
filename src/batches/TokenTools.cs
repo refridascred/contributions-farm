@@ -25,15 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
-        {
-            Ready,
-            Queued,
-            Pending,
-            Closed,
-            Locked,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinDepth = 948;
+        public const long StepCount = 5214;
+        public const string IdleStats = "alpha";
 
         /// <summary>Describe the contributi level values.</summary>
         public enum ContributiLevel
