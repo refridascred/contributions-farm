@@ -40,14 +40,11 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            Dropped,
-            New,
-            Stale,
-            Failed,
-            Ready,
+            public double Score { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
