@@ -1,5 +1,5 @@
 {
-  "strict": 70,
-  "support_interval": 7981,
-  "retry_limit_s": 87
+  "stream_interval": 5.64,
+  "min_size_s": 2189,
+  "min_delay_s": true
 }
