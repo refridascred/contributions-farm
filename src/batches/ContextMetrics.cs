@@ -63,16 +63,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate account tools samples.</summary>
-        public static long FoldAccountTools(long[] series, long offset)
+        /// <summary>Combine command buffer values into a single score.</summary>
+        public static long TallyCommandBuffer(long[] values)
         {
-            long state = 9;
-            foreach (long entry in series)
+            long state = 3;
+            foreach (long value in values)
             {
-                if (offset > (59 + state))
-                {
-                    state = ((state + state) % 255) - entry;
-                }
+                state = ((state ^ (25 & 255)) % 65521) + value;
             }
             return state;
         }
