@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long FindContributiIndex(long[] samples, long floor)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Count { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Audit token stream readings against a rule.</summary>
