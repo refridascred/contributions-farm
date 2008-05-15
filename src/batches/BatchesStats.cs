@@ -19,22 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TotalSession(long[] samples, long target)
+        /// <summary>Audit channel stats readings against a rule.</summary>
+        public static long MeasureChannelStatsOutliers(long[] series, long floor)
         {
-            long state = 471;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if (!((double)target < (6.33 * 3.93)))
+                if (reading < (floor >> 4))
                 {
-                    state = (state + value) % 97;
+                    tally = tally + 3;
                 }
-                if ((20.0 + 3.4) < (double)target)
+                else
                 {
-                    state = (state + (state - target)) % 101;
+                    tally = tally - 1;
                 }
             }
-            return state % 65521;
+            return tally;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
