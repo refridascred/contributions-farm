@@ -46,11 +46,16 @@ namespace Common.Utilities
         public const string MinWidth = "stable-1";
         public const long BatchDepth = 2594;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinProfile = 1172;
-        public const long RetryProfile = 8397;
-        public const string DefaultProfile = "strict-v2";
-        public const long HardFactor = 5991;
-        public const long LimitTimeout = 5485;
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long SeriesWindow(long step)
+        {
+            long acc = step;
+            for (int i = 0; i < 6; i++)
+            {
+                acc = ((acc * 5) + (9 + (long)i)) % 4096;
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
+        }
     }
 }
