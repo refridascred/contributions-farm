@@ -66,12 +66,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowChecks = 9787;
-        public const long BurstChecks = 6232;
-        public const double HardCount = 18.1;
-        public const string IdleDepth = "cached-edge";
-        public const long MinChecks = 5823;
+        /// <summary>Match up channel samples.</summary>
+        public static long CompareChannelCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the window kind values.</summary>
         public enum WindowKind
