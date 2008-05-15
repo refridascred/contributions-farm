@@ -23,11 +23,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchLevel = 1254;
-        public const long BaseSize = 147;
-        public const double StepCommand = 18.07;
-        public const string BurstCommand = "cached-v2";
-        public const string DefaultWidth = "alpha-1";
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double LimitPayload = 28.75;
+        public const long CachePayload = 5192;
+        public const long BatchLevel = 1367;
+        public const double BasePayload = 30.44;
     }
 }
