@@ -34,19 +34,17 @@ namespace Common.Utilities
         public const long DefaultRatio = 2908;
         public const long DefaultDepth = 2211;
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteLimits(long[] readings, long target)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LookupCacheIndex(long[] levels, long step)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item <= target)
+                if ((levels[i] < step) && ((levels[i] % 3) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
