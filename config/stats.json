@@ -1,12 +1,15 @@
 {
-  "sync_capacity": {
-    "idle_size": 9408,
-    "max_threshold_ms": ["staging", "latest", "standard"],
-    "min_capacity_pct": 49.68,
-    "enabled": [382, 35],
-    "batch_capacity": 31.5,
-    "queue_delay": 7957
+  "sync_timeout_count": {
+    "batch_delay_count": "legacy",
+    "warm_limit_ms": 30,
+    "notes_size": 30.44,
+    "batch_capacity_s": true,
+    "readonly": false
   },
-  "filter_size": 10,
-  "contributi_threshold": ["primary", "standard"]
+  "channel_capacity": 69,
+  "readonly": {
+    "cache_depth": false,
+    "cache_threshold": true,
+    "hard_ratio_ms": "stable"
+  }
 }
