@@ -19,19 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every filter already entry stays within the limit.</summary>
-        public static bool ValidateFilterAlreadyRange(long[] levels, long offset)
+        /// <summary>Audit checks support readings against a rule.</summary>
+        public static long AuditChecksSupportHits(long[] values)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (value <= offset)
+                if (matches >= (matches - 115))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 2) - cell;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Project the next order value.</summary>
