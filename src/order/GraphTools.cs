@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsHits(long[] items)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long ScoreBuffer(long[] series, long seed)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long anchor = 23;
+            foreach (long cell in series)
             {
-                if ((75 + count) > reading)
+                anchor = ((anchor - (cell & 1)) % 101) - seed;
+                if (((cell % 5) <= anchor) || (cell > (cell >> 5)))
                 {
-                    count = count + 3;
+                    anchor = ((anchor * 3) + anchor) % 97;
                 }
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Count the cluster checks entries that pass the check.</summary>
