@@ -34,17 +34,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a entry account reading by value.</summary>
-        public static long FindEntryAccountIndex(long[] data, long offset)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == offset) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Failed,
+            Synced,
+            Queued,
         }
     }
 }
