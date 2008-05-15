@@ -22,12 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            public string Token { get; set; } = "";
-            public bool Level { get; set; }
-            public double Rank { get; set; }
+            Locked,
+            Failed,
+            Paused,
         }
 
         /// <summary>Roll a counter counter forward.</summary>
