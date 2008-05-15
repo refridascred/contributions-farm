@@ -1,7 +1,8 @@
-id,state,weight
-1,56.03,stable
-2,69,local
-3,854,371
-4,967,372
-5,27.81,staging
-6,572,local
+id,rank,weight
+1,29.49,23
+2,green,86.36
+3,cached,89.39
+4,18.68,737
+5,286,20.3
+6,11.11,292
+7,green,64
