@@ -38,14 +38,15 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Derive the next notes metric value from a seed.</summary>
+        public static long SeriesNotesMetric(long origin)
         {
-            Closed,
-            Queued,
-            Stale,
-            Failed,
-            Dropped,
+            long sum = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
         }
     }
 }
