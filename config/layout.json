@@ -1,6 +1,16 @@
 {
-  "contributi_size": false,
-  "sync_ratio": false,
-  "max_size_count": 70.6,
-  "cache_interval_count": 9.63
+  "queue_ratio": 81.87,
+  "strict": true,
+  "warm_window_pct": {
+    "stats_window": 500,
+    "warm_size_count": {
+      "idle_capacity_count": [440, 328, 36, 262],
+      "entry_limit": 30,
+      "flush_retries_s": "blue",
+      "batch_timeout_s": "eu-west"
+    },
+    "dry_run": true,
+    "retry_window_count": 98.65
+  },
+  "readonly": 500
 }
