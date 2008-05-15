@@ -54,11 +54,21 @@ namespace Common.Utilities
         public const double LimitTools = 65.28;
         public const double MaxDepth = 97.4;
 
-        /// <summary>Adjust a checks stream reading.</summary>
-        public static double BlendChecksStream(double ratio, double span)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long MatchLayoutCount(long[] data)
         {
-            double rate = span;
-            return rate - ratio;
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
