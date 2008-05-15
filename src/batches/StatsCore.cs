@@ -54,13 +54,17 @@ namespace Common.Utilities
         public const long CacheWidth = 1969;
         public const long MinContext = 9992;
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long FindRouteIndex(long[] items, long floor)
         {
-            Stale,
-            Active,
-            Closed,
-            New,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
