@@ -33,15 +33,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long FoldWindow(long[] data)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long total = 9;
-            foreach (long reading in data)
-            {
-                total = (total + reading) % 1000;
-            }
-            return total % 4096;
+            public string Label { get; set; } = "";
+            public bool Size { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Derive the next batch support value from a seed.</summary>
