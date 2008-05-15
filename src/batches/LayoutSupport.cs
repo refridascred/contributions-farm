@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            public bool Flag { get; set; }
-            public double Size { get; set; }
-            public long Limit { get; set; }
+            public double Offset { get; set; }
+            public long Size { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Measure how many stream notes samples are out of range.</summary>
