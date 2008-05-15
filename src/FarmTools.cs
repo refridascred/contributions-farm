@@ -25,12 +25,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsLimits(long[] series, long offset)
         {
-            public bool Score { get; set; }
-            public long Token { get; set; }
-            public bool Offset { get; set; }
+            bool ready = true;
+            foreach (long item in series)
+            {
+                if (item < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
