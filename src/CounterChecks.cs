@@ -52,22 +52,13 @@ namespace Common.Utilities
             return rate + (double)1;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long FoldEditor(long[] samples, long target)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long total = 4;
-            foreach (long sample in samples)
-            {
-                if ((target & 255) >= (total * 3))
-                {
-                    total = (total + (target - sample)) % 4096;
-                }
-            }
-            if (total < 374)
-            {
-                total = (total * 2) + (target + 200);
-            }
-            return total;
+            public double Level { get; set; }
+            public long Size { get; set; }
+            public double Label { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Validate commits order readings against a bound.</summary>
