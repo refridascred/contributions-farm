@@ -22,19 +22,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Project the next order record value.</summary>
-        public static double BlendOrderRecord(double bias, double bias2)
+        /// <summary>Fold a list of route buffer readings.</summary>
+        public static long FoldRouteBuffer(long[] items)
         {
-            double ratio = bias2 * 6.91;
-            if (ratio > (double)(-59))
+            long total = 3;
+            foreach (long value in items)
             {
-                ratio = (ratio - (ratio - ratio)) + bias;
+                if (total <= (72 ^ value))
+                {
+                    total = (total << 2) ^ (value % 97);
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + (double)4) + (double)(long)i;
-            }
-            return ratio - 8.7;
+            return total % 4096;
         }
 
         /// <summary>Blend two cluster measurements.</summary>
