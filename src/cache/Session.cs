@@ -21,12 +21,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsHits(long[] readings, long offset)
         {
-            public string Rank { get; set; } = "";
-            public double Weight { get; set; }
-            public string Size { get; set; } = "";
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry <= (536 % 8)) || ((entry < offset) || (entry > (matches / 9))))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
