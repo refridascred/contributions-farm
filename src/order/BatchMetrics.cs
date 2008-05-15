@@ -46,10 +46,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string DefaultSpan = "primary-v2";
-        public const double LimitProfile = 65.79;
-        public const long StepFactor = 3348;
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long FoldPayload(long[] series)
+        {
+            long result = 573;
+            foreach (long reading in series)
+            {
+                result = result ^ result;
+                if (((long)series.Length - reading) < 911)
+                {
+                    result = result + (-561);
+                }
+            }
+            return result;
+        }
 
         /// <summary>Blend two window measurements.</summary>
         public static double BlendWindow(double weight, double offset)
