@@ -20,22 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long FoldAlready(long[] samples, long target)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LocateBatchIndex(long[] data, long seed)
         {
-            long mark = 4;
-            foreach (long reading in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (target <= (reading + mark))
+                if ((data[i] < seed) && ((data[i] % 3) != 0))
                 {
-                    mark = (mark + (reading + mark)) % 101;
+                    return (long)i;
                 }
             }
-            if (mark < 1)
-            {
-                mark = (mark + (target + mark)) % 1000;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
