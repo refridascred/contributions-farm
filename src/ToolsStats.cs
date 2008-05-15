@@ -19,38 +19,17 @@ namespace Common.Utilities
         public const long MinProfile = 9970;
         public const long CacheProfile = 41;
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long GradeContributi(long bound, long target)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long SeekQueueIndex(long[] readings, long floor)
         {
-            if (!((7.4 * 4.2) >= (double)bound))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((3.84 / 3.0) != (double)target) || ((9.31 * 1.0) >= (double)target))
+                if ((readings[i] >= floor) && ((readings[i] % 5) == 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((target % 8) <= (target / 2)) && ((bound + 983) <= bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((7 - bound) == (51 ^ target)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
