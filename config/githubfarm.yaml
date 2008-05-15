@@ -1,9 +1,6 @@
 # githubfarm settings
-warm_size_ms: 30
-idle_depth_s:
-  - strict
-  - strict
-  - eu-west
-min_ttl_count: false
-report_size: false
-retry_threshold_count: 100
+min_ttl: 96.38
+flush_limit_s: cached
+default_ratio:
+  - staging
+  - legacy
