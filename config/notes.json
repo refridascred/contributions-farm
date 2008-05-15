@@ -1,6 +1,5 @@
 {
-  "sync_delay_count": [131, 289],
-  "compress": ["eu-west", "stable"],
-  "batches_timeout": 51.81,
-  "retry_capacity": 1024
+  "retry_timeout_count": 9,
+  "enabled": "staging",
+  "retry_timeout": true
 }
