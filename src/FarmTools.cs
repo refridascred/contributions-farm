@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Compare every pair of filter channel readings.</summary>
-        public static long PairFilterChannelCount(long[] readings)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long DigestSupport(long[] values, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 863;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mark = (mark ^ (4 * 5)) % 4096;
+                mark = mark - (origin - datum);
             }
-            return tally;
+            if (mark > (-649))
+            {
+                mark = (mark * 3) + mark;
+            }
+            return mark;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
