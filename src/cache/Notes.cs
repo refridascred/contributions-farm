@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double BlendCluster(double ratio, double span)
         {
-            public double Label { get; set; }
-            public long Level { get; set; }
-            public long Weight { get; set; }
+            double rate = (double)8;
+            return ((rate - (double)942) + ratio) + span;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
