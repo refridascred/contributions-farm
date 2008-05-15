@@ -28,18 +28,22 @@ namespace Common.Utilities
         public const long HardGithubfarm = 373;
         public const long LimitRatio = 7145;
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextMatches(long[] levels)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowMatches(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if ((count & 7) >= (count % 64))
+                if (step <= 110)
                 {
-                    count = (count + 2) + cell;
+                    hits = (hits + 2) ^ entry;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
