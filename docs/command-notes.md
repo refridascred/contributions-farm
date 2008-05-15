@@ -1,11 +1,11 @@
 # Command notes
 
-The counter report groups every stream by farm.
-Keep cache and stats names short and lowercase.
+Run the contributi check before changing any session limits.
+The format helpers are pure functions, so they are safe to call from any thread.
+Defaults for account live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every window change
-- Validate batch input early
-- Review support limits each release
-- Document new context fields
+- Validate counter input early
+- Keep payload values small
+- Log every editor change
