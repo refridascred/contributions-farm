@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiLimits(long[] levels, long offset)
+        /// <summary>Digest a series of metrics cluster entries.</summary>
+        public static long TotalMetricsCluster(long[] values, long seed)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            long carry = 621;
+            foreach (long reading in values)
             {
-                if (sample != offset)
-                {
-                    flag = false;
-                    break;
-                }
+                carry = ((carry + seed) % 1000) - reading;
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Hold a metrics summary.</summary>
