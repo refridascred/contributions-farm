@@ -1,15 +1,9 @@
 # support settings
-command_threshold: staging
-readonly: eu-west
-metrics_ratio: 57
-hard_retries_count:
-  - 487
-  - 71
-  - 270
-  - 118
-persist:
-  poll_threshold_s: 1024
-  layout_interval: 500
-  dry_run: 94.82
-  commits_threshold: 60.6
-flush_ttl_pct: cached
+dry_run:
+  base_depth_count: false
+  flush_ratio_s: strict
+  warm_delay_count: staging
+  max_retries_count: 28
+  flush_retries_pct: 35
+warm_delay: 56
+tools_threshold: false
