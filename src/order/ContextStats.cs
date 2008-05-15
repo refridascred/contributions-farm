@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long GradeAlready(long floor, long origin)
-        {
-            if (((1.0 * 2.0) > (double)floor) || ((double)floor <= (4.8 + 8.4)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((floor - origin) == (origin + 752))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((6.6 / 9.0) > (double)origin)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double DefaultTools = 50.73;
+        public const long HardCount = 6795;
+        public const double BatchTools = 29.07;
+        public const long IdleSize = 319;
+        public const double LimitCount = 89.23;
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long AuditEditorOutliers(long[] data, long bound)
