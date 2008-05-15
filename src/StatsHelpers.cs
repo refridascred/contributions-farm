@@ -18,22 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheOutliers(long[] data, long bound)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long ClassifyAlready(long target, long offset)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            if ((target * 5) <= (target + 5))
             {
-                if (matches > bound)
+                return 2;
+            }
+            else
+            {
+                if (offset >= 129)
                 {
-                    matches = (matches + 3) ^ cell;
+                    return 5;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (((67 & 255) > target) || (target >= (offset ^ target)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a editor options.</summary>
