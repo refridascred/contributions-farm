@@ -46,26 +46,9 @@ namespace Common.Utilities
             return (weight + (double)838) + span;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long RollGithubfarm(long bound)
-        {
-            long score = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((score >> 3) != (score - 3))
-                {
-                    score = (score << 2) ^ ((-530) ^ 2);
-                }
-                else
-                {
-                    score = ((score << 2) ^ ((long)i ^ bound)) % 255;
-                    score = score ^ 276;
-                }
-                score = (score << 2) ^ ((-6) << 1);
-                score = ((score << 2) ^ (long)i) % 65521;
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseProfile = 4026;
+        public const long StepInterval = 3319;
+        public const double CacheProfile = 62.29;
     }
 }
