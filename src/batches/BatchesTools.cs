@@ -16,11 +16,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepAccount = 550;
-        public const long BatchAccount = 524;
-        public const string IdleAccount = "standard-edge";
-        public const string WindowAccount = "latest-edge";
+        /// <summary>Find the first buffer filter entry that matches the target.</summary>
+        public static long LocateBufferFilterIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long AuditChecksGaps(long[] values)
