@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
-
-mode="${1:-legacy}"
+mode="${1:-staging}"
 case "${mode}" in
-    latest)
+    green)
         log "fast path"
         ;;
     *)
@@ -22,5 +16,5 @@ case "${mode}" in
         ;;
 esac
 
-COMMAND_LIMIT=181
+COMMAND_LIMIT=353
 log "limit is ${COMMAND_LIMIT}"
