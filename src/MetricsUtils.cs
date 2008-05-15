@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string IdleCache = "open-edge";
-        public const string MaxLevel = "staging";
-        public const long SoftScore = 2401;
-        public const long SoftCount = 217;
-        public const long RetryCount = 3845;
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
+        {
+            public bool Weight { get; set; }
+            public bool Token { get; set; }
+        }
 
         /// <summary>Hold a buffer summary.</summary>
         public sealed class BufferSummary
