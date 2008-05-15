@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Project the next record value.</summary>
-        public static double ProjectRecord(double scale, double span)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            double mean = scale;
-            return (mean - (mean + mean)) + span;
+            public long Label { get; set; }
+            public long Rank { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
