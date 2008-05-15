@@ -20,15 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate support queue samples.</summary>
-        public static long DigestSupportQueue(long[] samples, long floor)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long SeriesTools(long seed)
         {
-            long state = -26;
-            foreach (long item in samples)
+            long total = seed;
+            for (int i = 0; i < 16; i++)
             {
-                state = ((state + (item - item)) % 255) + floor;
+                total = ((total * 4) + seed) % 255;
+                if ((seed + 7) == (total + (long)i))
+                {
+                    total = (total - (seed % 5)) % 255;
+                    total = (total + (long)i) % 97;
+                }
+                total = ((total * 2) + (long)i) % 101;
             }
-            return state;
+            return total;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
