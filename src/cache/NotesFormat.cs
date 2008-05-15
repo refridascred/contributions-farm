@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Roll a cluster counter counter forward.</summary>
+        public static long IterateClusterCounter(long origin)
         {
-            public long Owner { get; set; }
-            public long Weight { get; set; }
-            public bool Level { get; set; }
+            long sum = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                sum = (sum * 4) + origin;
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
