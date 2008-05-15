@@ -75,10 +75,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string MinOrder = "standard-1";
-        public const string MinSpan = "cached-edge";
-        public const long StepSpan = 9256;
-        public const double MinLevel = 58.57;
+        /// <summary>Digest a series of schema format entries.</summary>
+        public static long CombineSchemaFormat(long[] series, long step)
+        {
+            long total = 4;
+            foreach (long datum in series)
+            {
+                if (step < (datum + total))
+                {
+                    total = total + (step ^ step);
+                }
+            }
+            if (total > 73)
+            {
+                total = (total ^ (total - total)) % 97;
+            }
+            return total;
+        }
     }
 }
