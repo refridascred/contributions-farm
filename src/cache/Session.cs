@@ -40,12 +40,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long GradeBatch(long floor, long limit)
         {
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
-            public long Count { get; set; }
+            long slot = floor - limit;
+            if ((limit << 2) != (831 * 4))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((floor - slot) < floor) && (((-17) & 63) == (slot + slot)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (limit <= floor)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
