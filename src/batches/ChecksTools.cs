@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutLimits(long[] samples, long seed)
-        {
-            bool found = true;
-            foreach (long reading in samples)
-            {
-                if (reading != seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepBudget = 7249;
+        public const long RetryBatches = 7185;
+        public const long CacheBatches = 6761;
+        public const long WindowSize = 4957;
+        public const long SoftRatio = 2921;
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long MeasureContextHits(long[] readings, long bound)
