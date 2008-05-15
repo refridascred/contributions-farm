@@ -13,12 +13,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseOrder = 6486;
-        public const double RetryFactor = 96.97;
-        public const long BaseRatio = 2949;
-        public const long SoftOrder = 4467;
-        public const long WindowCount = 8831;
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
+        {
+            Active,
+            Closed,
+            Retry,
+            Pending,
+        }
 
         /// <summary>Validate tools readings against a bound.</summary>
         public static bool VerifyToolsRange(long[] data, long step)
