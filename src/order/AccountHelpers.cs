@@ -29,19 +29,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadOutliers(long[] series)
-        {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if ((double)tally < 5.74)
-                {
-                    tally = (tally + 3) + reading;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BaseBudget = "cached-edge";
+        public const long MinNotes = 1359;
+        public const double IdleWidth = 80.47;
 
         /// <summary>Define record limits and defaults.</summary>
         public const string WindowScore = "strict-1";
