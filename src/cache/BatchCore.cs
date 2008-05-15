@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long DeriveGraph(long seed)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long MatchBatchCount(long[] levels)
         {
-            long sum = seed;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = (sum ^ (seed << 3)) ^ (long)i2;
+                    if ((levels[i] + levels[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                for (int i3 = 0; i3 < 9; i3++)
-                {
-                    sum = ((sum ^ ((-35) << 3)) % 97) - (long)i3;
-                }
-                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Blend two window measurements.</summary>
