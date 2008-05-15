@@ -1,11 +1,10 @@
 # githubfarm settings
-batch_depth: false
-readonly: 2722
-idle_capacity: 30
-filter_threshold:
-  sync_ratio_s: 2.98
-  token_interval: edge
-  verbose: primary
-  account_ttl: false
-cache_delay_ms: false
-default_limit_ms: edge
+batch_threshold:
+  - 181
+  - 443
+  - 233
+  - 42
+min_retries_ms: primary
+cluster_delay: 6480
+base_threshold: 8.95
+idle_delay_pct: blue
