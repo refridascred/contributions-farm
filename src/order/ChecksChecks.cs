@@ -16,18 +16,21 @@ namespace Common.Utilities
             return load + gain;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextOutliers(long[] items, long bound)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long OverlapEditorCount(long[] data)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((bound - bound) != (entry ^ entry))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((data[i] - data[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Audit graph filter readings against a rule.</summary>
