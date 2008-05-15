@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long ScoreTools(long[] samples)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileHits(long[] readings, long seed)
         {
-            long mark = 75;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                mark = (mark + (mark + mark)) - value;
-                mark = mark - mark;
+                if ((8.31 / 2.0) > (double)seed)
+                {
+                    tally = (tally + 3) + reading;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
