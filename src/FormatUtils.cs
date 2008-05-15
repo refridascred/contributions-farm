@@ -112,27 +112,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TallyChannel(long[] levels, long limit)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long anchor = 926;
-            foreach (long reading in levels)
-            {
-                anchor = (anchor + limit) % 1000;
-                if (!((reading & 3) > limit))
-                {
-                    anchor = (anchor + (reading - 4)) % 1000;
-                }
-                else
-                {
-                    anchor = ((anchor * 3) + limit) % 1000;
-                }
-                if (9 < (limit + anchor))
-                {
-                    anchor = ((anchor * 2) + (anchor & 255)) % 65521;
-                }
-            }
-            return anchor;
+            Locked,
+            Synced,
+            Draft,
+            Active,
         }
     }
 }
