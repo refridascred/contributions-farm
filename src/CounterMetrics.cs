@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterGaps(long[] values)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((2 + entry) >= entry)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Ready,
+            Queued,
+            Locked,
         }
 
         /// <summary>Hold a notes snapshot.</summary>
