@@ -32,12 +32,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            public long Token { get; set; }
-            public long Ratio { get; set; }
-            public long Offset { get; set; }
+            Active,
+            Failed,
+            Stale,
+            Locked,
+            Done,
         }
     }
 }
