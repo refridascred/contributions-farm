@@ -15,19 +15,30 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Scale a stats graph figure with a bias.</summary>
-        public static double AdjustStatsGraph(double gain, double span)
+        /// <summary>Digest a series of token entry entries.</summary>
+        public static long CombineTokenEntry(long[] levels, long limit)
         {
-            double bias = (double)(57 * 4);
-            if (bias <= (bias / 3.0))
+            long anchor = 663;
+            foreach (long entry in levels)
             {
-                bias = bias + (gain + bias);
+                if ((limit - entry) > entry)
+                {
+                    anchor = (anchor ^ 2) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor ^ (entry + (-928))) % 97;
+                }
+                if ((anchor & 63) >= limit)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
+            if (anchor < 95)
             {
-                bias = (bias - span) - (double)(long)i;
+                anchor = ((anchor << 2) ^ (anchor - anchor)) % 65521;
             }
-            return bias + 20.0;
+            return anchor % 1000;
         }
 
         /// <summary>Count cache tools pairs that satisfy a relation.</summary>
