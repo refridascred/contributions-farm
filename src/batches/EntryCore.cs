@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Match up payload counter samples.</summary>
-        public static long OverlapPayloadCounterCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultFormat = 9566;
+        public const double RetryFormat = 0.31;
+        public const string BurstFormat = "open-1";
+        public const double SoftWidth = 83.8;
+        public const string MaxFormat = "primary-1";
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long DigestBatch(long[] data)
