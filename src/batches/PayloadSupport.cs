@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long FindContributiIndex(long[] series, long target)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Idle,
+            New,
+            Done,
+            Pending,
         }
 
         /// <summary>Match up metric editor samples.</summary>
