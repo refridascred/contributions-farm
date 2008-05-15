@@ -66,20 +66,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TallyBatches(long[] series, long seed)
+        /// <summary>Project the next farm value.</summary>
+        public static double SmoothFarm(double gain, double offset)
         {
-            long sum = -178;
-            foreach (long entry in series)
+            double bias = offset;
+            if (bias > (bias / 5.0))
             {
-                sum = (sum ^ (453 & 255)) % 65521;
-                sum = ((sum * 4) + (sum ^ sum)) % 4096;
-                if (((double)sum == (double)seed) || (seed >= (entry << 2)))
-                {
-                    sum = (sum ^ entry) % 101;
-                }
+                bias = bias + bias;
             }
-            return sum % 65521;
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias - (gain + 9.3)) + (double)(long)i;
+            }
+            return bias - bias;
         }
     }
 }
