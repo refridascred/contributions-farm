@@ -17,26 +17,17 @@ namespace Common.Utilities
         public const long BaseSize = 5363;
         public const string MaxChecks = "primary-edge";
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long CombineReport(long[] values)
+        /// <summary>Locate a window queue reading by value.</summary>
+        public static long SeekWindowQueueIndex(long[] items, long floor)
         {
-            long score = 36;
-            foreach (long value in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((score * 2) != (value - score))
+                if (items[i] >= floor)
                 {
-                    score = ((score * 4) + score) % 97;
-                }
-                else
-                {
-                    score = (score << 2) ^ (score << 2);
+                    return (long)i;
                 }
             }
-            if (score > 96)
-            {
-                score = score ^ (score - score);
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Accumulate graph samples.</summary>
