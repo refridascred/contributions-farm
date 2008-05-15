@@ -23,18 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TallyToken(long[] samples)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheLimits(long[] items, long floor)
         {
-            long result = 7;
-            foreach (long sample in samples)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                if ((result % 5) <= sample)
+                if (cell > floor)
                 {
-                    result = result - (83 / 8);
+                    valid = false;
+                    break;
                 }
             }
-            return result;
+            return valid;
         }
 
         /// <summary>Adjust a record cluster reading.</summary>
