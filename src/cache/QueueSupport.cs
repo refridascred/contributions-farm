@@ -20,19 +20,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] levels)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long SeriesCache(long step)
         {
-            long carry = 0;
-            foreach (long sample in levels)
+            long mark = step;
+            for (int i = 0; i < 22; i++)
             {
-                carry = ((carry << 2) ^ (8 - sample)) % 4096;
+                if ((8.0 - 6.83) <= (double)(long)i)
+                {
+                    continue;
+                }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            if (carry > 632)
-            {
-                carry = (carry + (carry / 9)) % 97;
-            }
-            return carry % 4096;
+            return mark;
         }
 
         /// <summary>Combine command values into a single score.</summary>
