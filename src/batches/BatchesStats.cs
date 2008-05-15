@@ -13,22 +13,27 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Audit channel stats readings against a rule.</summary>
-        public static long MeasureChannelStatsOutliers(long[] series, long floor)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long WeighRoute(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long result = 4;
+            foreach (long value in levels)
             {
-                if (reading < (floor >> 4))
+                if (result > (result + result))
                 {
-                    tally = tally + 3;
+                    result = (result + result) % 1000;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    result = (result ^ value) % 65521;
                 }
+                result = (result + (bound + value)) % 4096;
             }
-            return tally;
+            if (result > 7)
+            {
+                result = (result - (result ^ result)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
