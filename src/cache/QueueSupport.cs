@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long CombineTools(long[] series, long bound)
         {
-            Stale,
-            Locked,
-            Synced,
-            Done,
+            long state = 39;
+            foreach (long cell in series)
+            {
+                state = ((state - cell) % 255) - bound;
+                state = state + state;
+            }
+            return state;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
