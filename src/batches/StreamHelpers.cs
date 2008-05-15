@@ -71,26 +71,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long FoldCommits(long[] levels)
+        /// <summary>Roll a window channel counter forward.</summary>
+        public static long SeriesWindowChannel(long floor)
         {
-            long score = 410;
-            foreach (long datum in levels)
+            long total = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if ((score << 2) != (23 & 1))
+                if ((total & 1) < total)
                 {
-                    score = ((score * 2) + (646 - datum)) % 255;
+                    total = (total - ((long)i / 9)) % 97;
                 }
-                else
-                {
-                    score = ((score * 4) + (-766)) % 255;
-                }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            if (score > 70)
-            {
-                score = (score + score) % 65521;
-            }
-            return score;
+            return total;
         }
     }
 }
