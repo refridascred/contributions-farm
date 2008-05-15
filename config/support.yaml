@@ -1,8 +1,9 @@
 # support settings
-cache_retries_count: 47.24
-burst_limit_ms: 12.2
-poll_timeout_count:
-  readonly: legacy
-  min_threshold_ms: 39
-  burst_limit: true
-  retry_ttl_s: 87.83
+already_delay: 6361
+soft_size_ms: open
+queue_ratio: 68.1
+verbose: 30
+dry_run:
+  - 18
+  - 364
+soft_retries: 32.77
