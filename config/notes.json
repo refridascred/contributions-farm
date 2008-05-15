@@ -1,7 +1,6 @@
 {
-  "burst_size_count": 26,
-  "readonly": "staging",
-  "min_capacity_pct": "latest",
-  "strict": "strict",
-  "verbose": 76.32
+  "batches_limit": 1024,
+  "persist": 34.65,
+  "layout_retries": 95,
+  "stats_threshold": ["cached", "local", "fallback", "local"]
 }
