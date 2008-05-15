@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            public long Owner { get; set; }
-            public long Limit { get; set; }
-            public double Mode { get; set; }
+            New,
+            Stale,
+            Locked,
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
