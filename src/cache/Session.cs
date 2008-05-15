@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphOutliers(long[] samples)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((8.31 + 5.63) != (double)reading)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Ratio { get; set; }
+            public double Stamp { get; set; }
+            public string Limit { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Describe the tools level values.</summary>
