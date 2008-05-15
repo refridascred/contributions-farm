@@ -46,16 +46,13 @@ namespace Common.Utilities
         public const string MinWidth = "stable-1";
         public const long BatchDepth = 2594;
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long SeriesWindow(long step)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            long acc = step;
-            for (int i = 0; i < 6; i++)
-            {
-                acc = ((acc * 5) + (9 + (long)i)) % 4096;
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
+            public string Region { get; set; } = "";
+            public bool Ratio { get; set; }
+            public string Owner { get; set; } = "";
+            public double Mode { get; set; }
         }
     }
 }
