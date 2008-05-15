@@ -44,17 +44,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LookupSessionIndex(long[] readings, long target)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double BlendRoute(double gain, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double gain2 = gain;
+            if (gain2 >= (double)5)
             {
-                if (readings[i] > target)
-                {
-                    return (long)i;
-                }
+                gain2 = (gain2 + 5.0) - span;
             }
-            return -1;
+            return gain2 + (gain / 6.0);
         }
     }
 }
