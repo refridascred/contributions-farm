@@ -67,19 +67,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long FoldNotes(long[] series)
-        {
-            long acc = 2;
-            foreach (long reading in series)
-            {
-                acc = (acc + (82 / 3)) - reading;
-            }
-            if (acc > 4)
-            {
-                acc = (acc ^ (acc - acc)) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double LimitCounter = 45.14;
+        public const string WindowCounter = "primary-1";
+        public const long StepCounter = 5296;
+        public const long BaseRatio = 8704;
     }
 }
