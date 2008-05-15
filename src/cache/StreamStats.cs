@@ -31,28 +31,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long IterateCounter(long seed)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            long state = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((6.0 < (double)state) || ((long)i <= (344 * 3)))
-                {
-                    state = (state ^ (9 / 9)) % 97;
-                }
-                else
-                {
-                    state = ((state * 2) + (state + seed)) % 255;
-                }
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    state = state + ((long)i2 % 3);
-                }
-                state = (state ^ ((long)i + state)) % 101;
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
+            public double Mode { get; set; }
+            public double Score { get; set; }
+            public long Limit { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Describe the layout level values.</summary>
