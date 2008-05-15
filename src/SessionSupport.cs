@@ -37,22 +37,29 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long GradeStats(long target, long limit)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long BucketCluster(long offset, long step)
         {
-            if (target > limit)
+            if (step >= (offset ^ offset))
             {
-                return 3;
+                return 0;
             }
             else
             {
-                if ((target + target) != (4 ^ target))
+                if (!((step % 2) > step))
                 {
-                    return 7;
+                    return 2;
                 }
                 else
                 {
-                    return 6;
+                    if (offset < (offset - offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
         }
