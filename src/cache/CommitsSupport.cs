@@ -77,19 +77,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextLimits(long[] readings, long target)
+        /// <summary>Project the next record value.</summary>
+        public static double AdjustRecord(double bias, double span)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            double scale = span;
+            if (scale <= (scale + span))
             {
-                if (reading >= target)
-                {
-                    found = false;
-                    break;
-                }
+                scale = scale + bias;
             }
-            return found;
+            else
+            {
+                scale = scale - scale;
+            }
+            return scale + (span + bias);
         }
     }
 }
