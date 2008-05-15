@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long FindWindowIndex(long[] data, long seed)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long ScoreAlready(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 3;
+            foreach (long cell in readings)
             {
-                if (data[i] >= seed)
-                {
-                    return (long)i;
-                }
+                result = result + (cell & 3);
+                result = result ^ cell;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Classify a stats schema pair into a bucket.</summary>
