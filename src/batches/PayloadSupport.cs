@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const long SoftInterval = 1107;
         public const long DefaultCounter = 8931;
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long ScoreContributi(long[] data, long seed)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryLimits(long[] items, long floor)
         {
-            long sum = -68;
-            foreach (long datum in data)
+            bool flag = true;
+            foreach (long value in items)
             {
-                sum = (sum + seed) - datum;
-                if ((long)data.Length < (seed % 100))
+                if (value >= floor)
                 {
-                    sum = (sum * 5) + (sum ^ 839);
+                    flag = false;
+                    break;
                 }
             }
-            return sum % 97;
+            return flag;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
