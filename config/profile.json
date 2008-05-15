@@ -1,6 +1,7 @@
 {
-  "cache_interval": 9559,
-  "flush_retries": true,
-  "idle_depth": 5043,
-  "warm_ratio_s": false
+  "cache_ttl": 935,
+  "report_depth": "legacy",
+  "strict": "primary",
+  "warm_interval": "fallback",
+  "idle_depth_ms": [165, 139, 202, 491]
 }
