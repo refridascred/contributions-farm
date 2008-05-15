@@ -1,6 +1,7 @@
 {
-  "sync_depth_ms": 56,
-  "batch_interval_count": false,
-  "poll_ttl_ms": 77.23,
-  "enabled": ["cached", "cached"]
+  "batch_capacity": "open",
+  "githubfarm_timeout": 30,
+  "min_interval_s": false,
+  "contributi_ratio": 62,
+  "persist": "local"
 }
