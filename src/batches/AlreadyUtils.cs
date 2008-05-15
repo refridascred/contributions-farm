@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Blend two report queue measurements.</summary>
-        public static double SmoothReportQueue(double gain, double floor)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long SeekNotesIndex(long[] series, long target)
         {
-            double ratio = (floor - 6.09) / 6.0;
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio = (ratio + 13.0) + (double)(long)i;
+                if ((series[i] < target) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return ratio - gain;
+            return -1;
         }
 
         /// <summary>Hold a record summary.</summary>
