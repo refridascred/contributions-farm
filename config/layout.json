@@ -1,12 +1,6 @@
 {
-  "min_capacity_ms": false,
-  "flush_limit_s": 14,
-  "compress": {
-    "base_retries": [426, 316, 430],
-    "sync_delay_ms": [341, 251, 476, 425],
-    "max_ratio": 2697,
-    "hard_capacity": "latest",
-    "compress": 28.1
-  },
-  "audit": true
+  "contributi_size": false,
+  "sync_ratio": false,
+  "max_size_count": 70.6,
+  "cache_interval_count": 9.63
 }
