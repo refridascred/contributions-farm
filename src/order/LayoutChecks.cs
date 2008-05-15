@@ -18,22 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TotalCache(long[] levels, long floor)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long SeriesRecord(long offset)
         {
-            long total = 0;
-            foreach (long cell in levels)
+            long acc = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if ((1.99 + 1.17) <= (double)cell)
-                {
-                    total = ((total << 3) ^ (cell ^ total)) - floor;
-                }
-                else
-                {
-                    total = total - (5 + 0);
-                }
+                acc = ((acc << 3) ^ (979 - acc)) % 65521;
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return total;
+            return acc;
         }
 
         /// <summary>Describe the cache state values.</summary>
