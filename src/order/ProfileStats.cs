@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long floor)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiLimits(long[] values, long target)
         {
-            long result = floor;
-            for (int i = 0; i < 5; i++)
+            bool found = true;
+            foreach (long item in values)
             {
-                if ((result - result) == (result * 3))
+                if (item <= target)
                 {
-                    result = ((result * 4) + (result - 29)) % 1000;
-                    continue;
+                    found = false;
+                    break;
                 }
-                result = ((result * 5) + (long)i) % 4093;
             }
-            return result;
+            return found;
         }
 
         /// <summary>Locate a graph already reading by value.</summary>
