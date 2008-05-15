@@ -1,5 +1,16 @@
 # support settings
-burst_interval: 6091
-burst_delay_s: 26.6
-idle_retries_s: true
-cache_depth_s: 8562
+order_size: 70
+base_limit_ms: legacy
+dry_run:
+  sync_limit: fallback
+  poll_timeout_ms: 5826
+  payload_timeout: 14.99
+  max_delay:
+    cluster_ratio: 77.55
+    sync_timeout: 4
+    compress: true
+    burst_timeout_pct: green
+    burst_limit_s: strict
+    sync_ttl:
+      - primary
+      - strict
