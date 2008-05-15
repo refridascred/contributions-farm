@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsOutliers(long[] data, long step)
-        {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if (!((double)seen >= (5.28 - 20.0)))
-                {
-                    seen = ((seen + 2) + cell) - step;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepCount = 3302;
+        public const long MaxBudget = 9545;
+        public const long CacheTimeout = 2171;
+        public const string BatchRatio = "fallback-edge";
 
         /// <summary>Hold a commits record.</summary>
         public sealed class CommitsRecord
