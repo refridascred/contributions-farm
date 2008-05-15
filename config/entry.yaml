@@ -1,24 +1,25 @@
 # entry settings
-burst_window_pct:
-  default_depth_pct:
-    - staging
-    - green
-    - latest
-    - green
-  compress:
-    - cached
-    - standard
-    - green
-    - blue
-  batch_retries_pct:
-    - 373
-    - 68
-    - 237
-    - 490
-  batch_threshold_count: 8221
-persist: 1940
-profile_delay: true
-entry_retries:
-  - staging
-  - stable
-flush_delay_s: edge
+retry_delay: 627
+profile_depth: false
+default_limit:
+  max_limit:
+    already_interval: 80.62
+    cache_interval: 59
+    base_limit_count: false
+    schema_ratio: 64.39
+    soft_delay_s: 44.12
+    compress: 11.47
+  max_interval_s: 1092
+  soft_size: 665
+  compress: true
+compress: fallback
+batch_size_pct: legacy
+idle_ttl_pct:
+  hard_timeout: 77.28
+  compress: 45
+  warm_ratio:
+    - 455
+    - 413
+    - 267
+    - 43
+  persist: false
