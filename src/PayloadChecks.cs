@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long IterateFormat(long target)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterBounds(long[] data, long limit)
         {
-            long acc = target;
-            for (int i = 0; i < 24; i++)
+            bool found = true;
+            foreach (long entry in data)
             {
-                long step = acc;
-                if ((step + (long)i) <= (25 << 2))
+                if (entry > limit)
                 {
-                    step = step + (acc ^ step);
-                    acc = ((acc * 2) + ((long)i / 8)) % 4096;
+                    found = false;
+                    break;
                 }
-                if ((5 >> 2) < acc)
-                {
-                    continue;
-                }
-                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return acc;
+            return found;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
