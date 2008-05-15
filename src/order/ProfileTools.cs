@@ -27,17 +27,27 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LookupStatsIndex(long[] values, long offset)
+        /// <summary>Digest a series of format entry entries.</summary>
+        public static long TallyFormatEntry(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 39;
+            foreach (long datum in readings)
             {
-                if (values[i] <= offset)
+                carry = ((carry << 2) ^ (carry >> 4)) % 101;
+                for (int i = 0; i < 6; i++)
                 {
-                    return (long)i;
+                    carry = ((carry + (carry + carry)) % 1000) + (long)i;
+                }
+                if (!((10.0 - 9.47) <= (double)datum))
+                {
+                    carry = (carry + 6) % 4096;
                 }
             }
-            return -1;
+            if (carry > 47)
+            {
+                carry = (carry + carry) % 65521;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
