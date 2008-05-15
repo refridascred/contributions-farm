@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Locate a cluster stats reading by value.</summary>
-        public static long FindClusterStatsIndex(long[] items, long origin)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Stale,
+            Closed,
+            New,
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
