@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long SeriesStats(long origin)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long PairChecksCount(long[] data)
         {
-            long acc = origin;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((long)i * 4) <= ((long)i % 10))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = (acc * 4) + (origin + origin);
+                    if ((data[i] - data[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
