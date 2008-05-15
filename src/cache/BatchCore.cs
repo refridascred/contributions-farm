@@ -15,20 +15,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double BlendCounter(double ratio, double bias)
-        {
-            double drift = (12.0 / 9.0) / 2.0;
-            if (drift < (double)74)
-            {
-                drift = drift - drift;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - (ratio - 18.0)) + (double)(long)i;
-            }
-            return drift + bias;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultSession = 7488;
+        public const double BatchTimeout = 94.28;
+        public const long MinSpan = 1401;
+        public const long DefaultRatio = 4086;
 
         /// <summary>Digest a series of record entries.</summary>
         public static long CombineRecord(long[] readings, long origin)
