@@ -56,20 +56,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the filter order series from a seed.</summary>
-        public static long DeriveFilterOrder(long target)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long acc = target;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((long)i <= target)
-                {
-                    acc = (acc + target) % 97;
-                    continue;
-                }
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
+            Locked,
+            Closed,
+            Paused,
+            Dropped,
+            Draft,
         }
     }
 }
