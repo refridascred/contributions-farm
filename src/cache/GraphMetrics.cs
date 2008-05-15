@@ -13,11 +13,12 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            public double Level { get; set; }
-            public long Region { get; set; }
+            public double Count { get; set; }
+            public long Score { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Hold a commits record.</summary>
