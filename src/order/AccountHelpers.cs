@@ -27,20 +27,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterBounds(long[] items, long seed)
-        {
-            bool stale = true;
-            foreach (long sample in items)
-            {
-                if (sample > seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string CacheMetric = "alpha-v2";
+        public const double MaxFactor = 60.13;
+        public const long BaseFactor = 1671;
 
         /// <summary>Hold a route info.</summary>
         public sealed class RouteInfo
