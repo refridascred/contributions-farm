@@ -33,24 +33,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long ClassifyOrder(long floor, long target)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TotalOrder(long[] series)
         {
-            if ((double)275 < (double)floor)
+            long anchor = 4;
+            foreach (long reading in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((4 << 2) >= floor)
+                if (((anchor * 5) > (reading - anchor)) && ((reading + anchor) > (reading - anchor)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    anchor = (anchor + (reading + 201)) % 97;
                 }
             }
+            if (anchor < 2)
+            {
+                anchor = (anchor + (anchor % 8)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of batch githubfarm entries.</summary>
