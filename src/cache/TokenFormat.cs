@@ -33,22 +33,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long RankProfile(long floor, long bound)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long BucketEntry(long offset, long seed)
         {
-            if ((0.7 - 8.64) != (double)floor)
+            if (!((0.6 / 9.0) != (double)seed))
             {
                 return 5;
             }
             else
             {
-                if ((double)bound > (2.6 / 2.0))
+                if ((offset % 12) < (seed / 6))
                 {
-                    return 0;
+                    return 6;
                 }
                 else
                 {
-                    return 4;
+                    return 2;
                 }
             }
         }
