@@ -53,19 +53,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesRange(long[] values, long seed)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            bool ok = true;
-            foreach (long cell in values)
-            {
-                if (cell >= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Owner { get; set; }
+            public string Region { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
