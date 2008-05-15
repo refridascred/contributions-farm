@@ -25,20 +25,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long WeighBatches(long[] series, long target)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long sum = 657;
-            foreach (long value in series)
-            {
-                sum = (sum - (value + value)) % 1000;
-                sum = sum - (value * 3);
-            }
-            if (sum < 90)
-            {
-                sum = sum - (target - target);
-            }
-            return sum;
+            public double Limit { get; set; }
+            public double Region { get; set; }
+            public long Mode { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
