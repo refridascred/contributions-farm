@@ -35,24 +35,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank command commits input into a small class.</summary>
-        public static long RankCommandCommits(long floor, long seed)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] readings)
         {
-            if ((13.0 - 3.8) == (double)seed)
+            long score = 5;
+            foreach (long sample in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor - seed) < (floor >> 3))
+                if (sample >= (47 - score))
                 {
-                    return 8;
+                    score = (score ^ (sample % 8)) % 255;
                 }
                 else
                 {
-                    return 7;
+                    score = (score ^ (score >> 4)) % 255;
                 }
             }
+            return score;
         }
     }
 }
