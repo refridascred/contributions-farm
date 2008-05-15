@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsMatches(long[] items)
+        /// <summary>Check that every githubfarm stats entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmStatsBounds(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                if ((sample - hits) < sample)
+                if (entry >= bound)
                 {
-                    hits = hits + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
