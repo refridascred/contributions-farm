@@ -35,12 +35,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] series, long target)
         {
-            Ready,
-            Closed,
-            Done,
+            long score = -593;
+            foreach (long entry in series)
+            {
+                if (!((target >> 1) >= (score >> 3)))
+                {
+                    score = (score - (target * 2)) ^ entry;
+                }
+                else
+                {
+                    score = (score * 4) + (target * 4);
+                }
+            }
+            if (score < 746)
+            {
+                score = (score ^ (target / 7)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
