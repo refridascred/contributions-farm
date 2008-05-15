@@ -1,19 +1,37 @@
 # entry settings
-entry_threshold:
-  readonly:
-    readonly: 5
-    soft_delay_count: edge
-    cache_capacity_ms: 76
-    min_interval_ms:
-      - latest
+warm_ttl: open
+counter_interval:
+  batch_ttl_count: 9570
+  default_threshold_count: stable
+  poll_threshold_ms: 60
+max_limit_pct: 18.57
+min_ttl_ms: 64.76
+batch_timeout_ms:
+  enabled: 45
+  soft_interval_count:
+    batch_ratio: stable
+    max_window_s:
+      - 222
+      - 343
+      - 110
+      - 142
+    strict: 5572
+    burst_capacity: 227
+    max_size: 1506
+    hard_window_ms:
+      - green
       - local
-    min_ratio_s: 61.21
-  warm_capacity: green
-  support_window:
-    - 500
-    - 292
-    - 262
-  flush_timeout_count: blue
-cache_delay_ms: 1088
-hard_interval: eu-west
-sync_depth_count: true
+      - eu-west
+      - eu-west
+  cache_ttl_s:
+    cache_size_ms: latest
+    max_capacity_ms: green
+    persist: true
+    filter_ttl: 250
+    base_timeout_pct: 78.6
+  contributi_limit: staging
+persist:
+  - 349
+  - 17
+  - 204
+  - 185
