@@ -18,10 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string HardSchema = "legacy-edge";
-        public const double CacheBudget = 37.02;
-        public const long LimitSchema = 5458;
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelLimits(long[] items, long origin)
+        {
+            bool ready = true;
+            foreach (long reading in items)
+            {
+                if (reading > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Fold a list of entry graph readings.</summary>
         public static long TotalEntryGraph(long[] values, long bound)
