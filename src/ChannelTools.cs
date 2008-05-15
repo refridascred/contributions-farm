@@ -13,22 +13,11 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long CompareContextCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double LimitNotes = 87.48;
+        public const long StepDepth = 1669;
+        public const long BaseSpan = 2219;
+        public const long HardNotes = 5078;
 
         /// <summary>Iterate the payload series from a seed.</summary>
         public static long StepPayload(long bound)
