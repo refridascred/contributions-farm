@@ -41,27 +41,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long FoldBatch(long[] series)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesGaps(long[] series, long limit)
         {
-            long result = 8;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if (((item % 2) > item) && ((result << 2) > (result >> 5)))
+                if ((695 + cell) <= (matches << 2))
                 {
-                    result = ((result * 3) + (result % 8)) % 255;
-                }
-                result = (result << 3) ^ (742 << 2);
-                if (((double)result <= (2.0 * 5.19)) || ((item % 7) >= (item & 31)))
-                {
-                    result = result + (item % 12);
-                }
-                else
-                {
-                    result = ((result * 5) + result) % 1000;
+                    matches = (matches + 2) + limit;
                 }
             }
-            return result % 1000;
+            return matches;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
