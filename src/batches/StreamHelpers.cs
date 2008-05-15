@@ -39,14 +39,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            Draft,
-            Pending,
-            Stale,
-            Closed,
-            Ready,
+            public long Size { get; set; }
+            public bool Stamp { get; set; }
+            public long Limit { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Describe the route level values.</summary>
