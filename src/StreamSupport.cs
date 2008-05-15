@@ -28,22 +28,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] samples, long seed)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long mix = 5;
-            foreach (long reading in samples)
-            {
-                if ((seed + seed) != (mix - mix))
-                {
-                    mix = ((mix ^ (seed << 3)) % 1000) - reading;
-                }
-            }
-            if (mix > (-1))
-            {
-                mix = ((mix << 3) ^ seed) % 255;
-            }
-            return mix % 65521;
+            public bool Rank { get; set; }
+            public long Total { get; set; }
         }
     }
 }
