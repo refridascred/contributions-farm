@@ -63,12 +63,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsBounds(long[] levels, long offset)
         {
-            public string Rank { get; set; } = "";
-            public long Score { get; set; }
-            public string Total { get; set; } = "";
+            bool valid = true;
+            foreach (long entry in levels)
+            {
+                if (entry != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
