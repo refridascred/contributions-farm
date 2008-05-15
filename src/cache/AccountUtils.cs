@@ -30,18 +30,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long DigestGraph(long[] readings, long target)
+        /// <summary>Combine stream channel values into a single score.</summary>
+        public static long TallyStreamChannel(long[] samples)
         {
-            long state = 3;
-            foreach (long item in readings)
+            long state = 1;
+            foreach (long cell in samples)
             {
-                for (int i = 0; i < 4; i++)
-                {
-                    state = (state + (item & 3)) + (long)i;
-                }
-                state = (state * 2) + (item - state);
-                state = (state * 4) + (target >> 4);
+                state = state + (cell >> 5);
             }
             return state % 97;
         }
