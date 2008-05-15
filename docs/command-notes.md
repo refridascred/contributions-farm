@@ -1,13 +1,11 @@
 # Command notes
 
-Use cache settings to tune how often stats data is refreshed.
-Run the record check before changing any format limits.
-
-The checks report groups every window by session.
-The buffer module keeps profile values in sync with the schema cache.
+The layout report groups every record by counter.
+Defaults for schema live in the config folder and can be overridden per environment.
+Keep farm and schema names short and lowercase.
 
 ## Guidelines
 
-- Review stats limits each release
-- Keep window values small
-- Document new cluster fields
+- Log every buffer change
+- Keep githubfarm values small
+- Document new batches fields
