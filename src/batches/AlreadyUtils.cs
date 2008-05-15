@@ -59,21 +59,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count route command pairs that satisfy a relation.</summary>
-        public static long CompareRouteCommandCount(long[] series)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheLimits(long[] levels, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (reading != floor)
                 {
-                    if ((series[i] - series[j]) != 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
