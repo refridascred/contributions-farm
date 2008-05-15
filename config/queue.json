@@ -1,7 +1,6 @@
 {
-  "enabled": [85, 369, 170, 473],
-  "min_timeout_ms": 250,
-  "dry_run": false,
-  "min_limit_count": "staging",
-  "poll_capacity": 17.53
+  "cache_limit_count": 750,
+  "min_size_pct": [38, 341],
+  "report_capacity": "cached",
+  "soft_ttl": "green"
 }
