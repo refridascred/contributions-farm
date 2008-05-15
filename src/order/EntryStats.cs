@@ -61,19 +61,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double AdjustBatches(double weight, double span)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long OverlapAccountCount(long[] levels)
         {
-            double gain = (double)(49 + 678);
-            if (gain <= span)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                gain = gain - 5.7;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 7)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain + gain;
-            }
-            return gain + (weight / 5.0);
+            return count;
         }
     }
 }
