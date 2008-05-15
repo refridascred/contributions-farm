@@ -24,15 +24,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double AdjustQueue(double gain, double floor)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long WeighNotes(long[] series)
         {
-            double bias = 8.9;
-            for (int i = 0; i < 4; i++)
+            long score = 5;
+            foreach (long item in series)
             {
-                bias = ((bias + gain) + (double)(long)i) + floor;
+                if ((score - item) >= (item << 2))
+                {
+                    score = (score - (score / 7)) % 101;
+                }
             }
-            return bias - bias;
+            if (score < 24)
+            {
+                score = (score << 3) ^ score;
+            }
+            return score;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
