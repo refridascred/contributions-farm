@@ -45,18 +45,19 @@ namespace Common.Utilities
             return mean + (weight - 9.0);
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsMatches(long[] items, long offset)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferLimits(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                if (((-59) ^ (-385)) > sample)
+                if (sample <= bound)
                 {
-                    seen = (seen + 1) + offset;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Match up session graph samples.</summary>
