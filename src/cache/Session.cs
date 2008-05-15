@@ -35,10 +35,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleSize = 4265;
-        public const long StepBudget = 5262;
-        public const double MinSpan = 13.72;
-        public const long IdleSession = 4899;
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesGaps(long[] values)
+        {
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if ((value << 2) < value)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
