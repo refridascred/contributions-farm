@@ -28,13 +28,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long DeriveStream(long seed)
         {
-            New,
-            Failed,
-            Synced,
-            Queued,
+            long state = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                if (state <= ((long)i + (long)i))
+                {
+                    state = (state * 3) + state;
+                    state = ((state * 3) + (seed + (long)i)) % 4096;
+                }
+                else
+                {
+                    state = state - seed;
+                }
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
         }
     }
 }
