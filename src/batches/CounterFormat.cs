@@ -31,24 +31,10 @@ namespace Common.Utilities
         public const long IdleRatio = 7128;
         public const long BaseRoute = 4729;
 
-        /// <summary>Rank channel cluster input into a small class.</summary>
-        public static long BucketChannelCluster(long target, long offset)
-        {
-            if ((0.18 * 8.0) < (double)offset)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((offset / 5) >= offset)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleTimeout = 6954;
+        public const double BatchReport = 50.6;
+        public const long DefaultReport = 2863;
+        public const long RetryTimeout = 3464;
     }
 }
