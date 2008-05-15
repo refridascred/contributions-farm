@@ -28,18 +28,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterGaps(long[] items, long target)
+        /// <summary>Audit cache payload readings against a rule.</summary>
+        public static long MeasureCachePayloadGaps(long[] series)
         {
-            long count = 0;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if (5.2 < (double)target)
+                if ((tally * 4) > (datum + (long)series.Length))
                 {
-                    count = (count + 2) + item;
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
