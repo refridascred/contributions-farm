@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstSession = 6505;
-        public const long IdleLevel = 2354;
-        public const double RetrySession = 18.34;
-        public const long StepSize = 9718;
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LookupCommitsIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < offset) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a filter window value against two limits.</summary>
         public static long BucketFilterWindow(long step, long offset)
