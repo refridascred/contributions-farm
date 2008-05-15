@@ -50,12 +50,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstSize = 9122;
-        public const long BurstEditor = 2338;
-        public const string LimitDepth = "cached";
-        public const double BatchBudget = 40.5;
-        public const string HardSize = "open";
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
+        {
+            New,
+            Closed,
+            Queued,
+            Active,
+        }
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long TallyChannel(long[] items, long limit)
