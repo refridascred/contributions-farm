@@ -77,22 +77,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of schema format entries.</summary>
-        public static long CombineSchemaFormat(long[] series, long step)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextLimits(long[] readings, long target)
         {
-            long total = 4;
-            foreach (long datum in series)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                if (step < (datum + total))
+                if (reading >= target)
                 {
-                    total = total + (step ^ step);
+                    found = false;
+                    break;
                 }
             }
-            if (total > 73)
-            {
-                total = (total ^ (total - total)) % 97;
-            }
-            return total;
+            return found;
         }
     }
 }
