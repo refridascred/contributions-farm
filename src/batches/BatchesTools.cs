@@ -22,13 +22,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Rank commits stream input into a small class.</summary>
+        public static long RankCommitsStream(long target, long offset)
         {
-            public double Region { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Stamp { get; set; }
-            public long Size { get; set; }
+            long span = target ^ offset;
+            if ((span - target) != (span << 1))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((offset * 4) >= (span >> 1)) || ((double)span < (double)offset))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)span > (7.0 * 2.87))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((span + 940) > (span % 7))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate layout samples.</summary>
