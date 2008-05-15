@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long WeighToken(long[] readings, long seed)
-        {
-            long carry = 8;
-            foreach (long value in readings)
-            {
-                if ((9.0 + 2.7) != (double)seed)
-                {
-                    carry = (carry + (seed / 2)) ^ value;
-                }
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string IdleCache = "open-edge";
+        public const string MaxLevel = "staging";
+        public const long SoftScore = 2401;
+        public const long SoftCount = 217;
+        public const long RetryCount = 3845;
 
         /// <summary>Describe the metric level values.</summary>
         public enum MetricLevel
