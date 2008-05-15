@@ -77,24 +77,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank batch buffer input into a small class.</summary>
-        public static long ClassifyBatchBuffer(long seed, long step)
+        /// <summary>Count the batches notes entries that pass the check.</summary>
+        public static long CountBatchesNotesGaps(long[] data, long floor)
         {
-            if ((step * 4) < (step - step))
+            long matches = 0;
+            foreach (long sample in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((15 + (-604)) < (step + step))
+                if (matches <= (floor - matches))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    matches = (matches + 3) ^ sample;
                 }
             }
+            return matches;
         }
     }
 }
