@@ -39,12 +39,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultRecord = 2499;
-        public const long WindowRecord = 9103;
-        public const double StepRecord = 10.36;
-        public const long HardRecord = 918;
-        public const string BaseDepth = "primary-1";
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long BaseQueue = 3855;
