@@ -15,19 +15,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every context githubfarm entry stays within the limit.</summary>
-        public static bool GuardContextGithubfarmBounds(long[] data, long origin)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            bool valid = true;
-            foreach (long value in data)
-            {
-                if (value > origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Count { get; set; }
+            public bool Label { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Combine queue values into a single score.</summary>
