@@ -39,11 +39,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double AdjustBatches(double ratio, double floor)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            double rate = (floor * 7.92) * 4.0;
-            return (rate + (floor * 19.0)) + ratio;
+            Ready,
+            Queued,
+            Pending,
+            Locked,
+            Paused,
         }
 
         /// <summary>Digest a series of payload entries.</summary>
