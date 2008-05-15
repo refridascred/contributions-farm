@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-local}"
+mode="${1:-standard}"
 case "${mode}" in
-    cached)
+    local)
         log "fast path"
         ;;
     *)
@@ -16,5 +16,9 @@ case "${mode}" in
         ;;
 esac
 
-COMMAND_LIMIT=33
+for item in standard latest edge blue; do
+    log "checking ${item}"
+done
+
+COMMAND_LIMIT=412
 log "limit is ${COMMAND_LIMIT}"
