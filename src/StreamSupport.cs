@@ -39,14 +39,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Rank command commits input into a small class.</summary>
+        public static long RankCommandCommits(long floor, long seed)
         {
-            Active,
-            Dropped,
-            Locked,
-            Closed,
-            Retry,
+            if ((13.0 - 3.8) == (double)seed)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((floor - seed) < (floor >> 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
