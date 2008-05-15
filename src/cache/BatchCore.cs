@@ -15,17 +15,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LocateFormatIndex(long[] series, long floor)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double BlendCounter(double ratio, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double drift = (12.0 / 9.0) / 2.0;
+            if (drift < (double)74)
             {
-                if (series[i] >= floor)
-                {
-                    return (long)i;
-                }
+                drift = drift - drift;
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - (ratio - 18.0)) + (double)(long)i;
+            }
+            return drift + bias;
         }
 
         /// <summary>Digest a series of record entries.</summary>
