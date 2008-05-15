@@ -51,22 +51,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] data)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmMatches(long[] values)
         {
-            long mark = 7;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if (!((sample * 3) != (sample + mark)))
+                if ((tally + tally) > value)
                 {
-                    mark = ((mark * 4) + mark) % 255;
+                    tally = tally + 2;
                 }
             }
-            if (mark < 8)
-            {
-                mark = (mark ^ mark) % 97;
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
