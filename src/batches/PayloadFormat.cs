@@ -21,19 +21,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorRange(long[] data, long step)
+        /// <summary>Project the next batch value.</summary>
+        public static double ProjectBatch(double ratio, double span)
         {
-            bool valid = true;
-            foreach (long sample in data)
-            {
-                if (sample < step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double weight = ratio;
+            return (weight + (double)838) + span;
         }
 
         /// <summary>Describe the batch status values.</summary>
