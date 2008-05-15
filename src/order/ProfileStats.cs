@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileHits(long[] readings, long step)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchBounds(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                if (((15.0 / 6.0) == (double)hits) || !((datum ^ hits) < datum))
+                if (datum <= target)
                 {
-                    hits = (hits + 2) + step;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
