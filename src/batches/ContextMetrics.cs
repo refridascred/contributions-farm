@@ -14,12 +14,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            Idle,
-            Failed,
-            Pending,
+            Synced,
+            Draft,
+            New,
         }
 
         /// <summary>Describe the notes class values.</summary>
