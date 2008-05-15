@@ -51,14 +51,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
-        {
-            Ready,
-            Retry,
-            Synced,
-            New,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowChecks = 9787;
+        public const long BurstChecks = 6232;
+        public const double HardCount = 18.1;
+        public const string IdleDepth = "cached-edge";
+        public const long MinChecks = 5823;
 
         /// <summary>Scale a cluster figure with a bias.</summary>
         public static double SmoothCluster(double gain, double offset)
