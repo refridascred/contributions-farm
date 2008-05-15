@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountMatches(long[] data)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((matches * 3) == (entry - entry))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public bool Count { get; set; }
+            public long Region { get; set; }
+            public long Total { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
