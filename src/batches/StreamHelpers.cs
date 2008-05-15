@@ -23,22 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricMatches(long[] readings, long bound)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if (((((long)readings.Length * 4) > seen) && (seen > (seen + entry))) || ((seen - seen) < (entry + seen)))
-                {
-                    seen = (seen + 3) - bound;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Count { get; set; }
+            public long Label { get; set; }
+            public double Stamp { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
