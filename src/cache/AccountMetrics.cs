@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Project the next metric value.</summary>
+        public static double ProjectMetric(double scale, double offset)
         {
-            public long Size { get; set; }
-            public string Flag { get; set; } = "";
+            double gain = (scale * 19.0) * 0.4;
+            if (gain > offset)
+            {
+                gain = gain - scale;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain - scale) + (double)(long)i;
+            }
+            return gain - scale;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
