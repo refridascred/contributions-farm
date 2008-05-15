@@ -1,15 +1,19 @@
 # githubfarm settings
-entry_retries: green
-strict:
-  - open
+sync_ttl:
+  - green
   - staging
-cluster_interval: blue
-token_size:
-  - 255
-  - 55
-poll_window_count: false
+  - latest
+  - cached
+hard_limit: legacy
+batches_window:
+  idle_limit_s: standard
+  route_limit: strict
+  payload_ttl: eu-west
+  payload_limit: fallback
+  poll_retries_ms: 100
+compress: 75.28
 readonly:
-  - 282
-  - 168
-  - 3
-  - 182
+  - 128
+  - 106
+  - 372
+  - 37
