@@ -71,10 +71,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double LimitCounter = 45.14;
-        public const string WindowCounter = "primary-1";
-        public const long StepCounter = 5296;
-        public const long BaseRatio = 8704;
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksMatches(long[] values, long seed)
+        {
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((datum - seed) >= (seed * 5))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
     }
 }
