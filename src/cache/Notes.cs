@@ -23,24 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long BucketTools(long limit, long limit2)
+        /// <summary>Measure how many entry channel samples are out of range.</summary>
+        public static long MeasureEntryChannelGaps(long[] data)
         {
-            if ((limit2 << 3) < (limit2 + limit))
+            long count = 0;
+            foreach (long item in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit2 - limit2) > limit2)
+                if ((3.0 + 6.0) <= (double)item)
                 {
-                    return 2;
+                    count = count + 3;
                 }
                 else
                 {
-                    return 0;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
