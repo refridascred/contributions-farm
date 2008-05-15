@@ -1,18 +1,5 @@
 {
-  "retry_window": 58.8,
-  "compress": "legacy",
-  "max_timeout": {
-    "entry_threshold": {
-      "poll_timeout_count": 96.61,
-      "tools_depth": 37,
-      "burst_interval": 2368,
-      "dry_run": 92
-    },
-    "soft_window_s": "legacy",
-    "context_retries": 95.79,
-    "warm_timeout": "stable",
-    "retry_window_ms": "stable"
-  },
-  "base_ratio_ms": 79.64,
-  "soft_retries_pct": [309, 178]
+  "channel_interval": "cached",
+  "base_ttl_count": true,
+  "entry_threshold": 3676
 }
