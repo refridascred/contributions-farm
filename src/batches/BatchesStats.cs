@@ -13,23 +13,12 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Accumulate order schema samples.</summary>
-        public static long CombineOrderSchema(long[] values)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long carry = 501;
-            foreach (long reading in values)
-            {
-                carry = carry ^ carry;
-                if ((((long)values.Length - reading) > (826 ^ carry)) && ((double)carry <= (3.0 / 8.0)))
-                {
-                    carry = (carry ^ carry) % 4096;
-                }
-            }
-            if (carry < 1)
-            {
-                carry = (carry - (carry % 7)) % 255;
-            }
-            return carry % 97;
+            public string Token { get; set; } = "";
+            public bool Level { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
