@@ -30,14 +30,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
-        {
-            Pending,
-            Draft,
-            Queued,
-            Active,
-            Paused,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheEntry = 2215;
+        public const long BatchEntry = 97;
+        public const double DefaultSpan = 42.83;
+        public const double LimitBudget = 72.27;
+        public const long MaxEntry = 7435;
     }
 }
