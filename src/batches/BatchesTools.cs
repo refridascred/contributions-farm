@@ -26,18 +26,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksGaps(long[] values)
+        /// <summary>Match up support samples.</summary>
+        public static long PairSupportCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((datum * 4) >= (datum - hits))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((samples[i] - samples[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
