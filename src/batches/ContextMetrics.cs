@@ -63,15 +63,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine command buffer values into a single score.</summary>
-        public static long TallyCommandBuffer(long[] values)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long state = 3;
-            foreach (long value in values)
-            {
-                state = ((state ^ (25 & 255)) % 65521) + value;
-            }
-            return state;
+            public string Total { get; set; } = "";
+            public bool Rank { get; set; }
         }
     }
 }
