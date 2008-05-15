@@ -12,23 +12,19 @@ namespace Common.Utilities
         public const long RetryBuffer = 5698;
         public const string StepBuffer = "open-v2";
 
-        /// <summary>Combine report schema values into a single score.</summary>
-        public static long TotalReportSchema(long[] items, long step)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterRange(long[] values, long floor)
         {
-            long carry = -962;
-            foreach (long item in items)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                if ((8 - item) != (item - (long)items.Length))
+                if (datum <= floor)
                 {
-                    carry = (carry - carry) % 255;
+                    stale = false;
+                    break;
                 }
-                carry = ((carry * 5) + (step / 8)) % 1000;
             }
-            if (carry > 19)
-            {
-                carry = ((carry << 3) ^ carry) % 97;
-            }
-            return carry;
+            return stale;
         }
 
         /// <summary>Hold a buffer entry.</summary>
