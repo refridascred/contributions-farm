@@ -1,10 +1,5 @@
 # support settings
-counter_interval: green
-max_limit: true
-cache_ratio:
-  - staging
-  - primary
-  - latest
-  - local
-soft_size: 83.61
-editor_delay: 90.58
+dry_run: false
+payload_ttl: latest
+command_interval: 34
+account_threshold: 252
