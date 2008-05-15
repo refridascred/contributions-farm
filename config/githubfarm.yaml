@@ -1,12 +1,15 @@
 # githubfarm settings
-burst_interval_pct:
-  cluster_interval: 500
-  readonly: primary
-  max_timeout_ms:
-    - 88
-    - 135
-  sync_retries: latest
-  flush_retries_count: 100
-persist: 2940
-hard_timeout: 1089
-base_size: stable
+entry_retries: green
+strict:
+  - open
+  - staging
+cluster_interval: blue
+token_size:
+  - 255
+  - 55
+poll_window_count: false
+readonly:
+  - 282
+  - 168
+  - 3
+  - 182
