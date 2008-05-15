@@ -44,17 +44,13 @@ namespace Common.Utilities
         public const long StepOrder = 5546;
         public const double CacheInterval = 36.61;
 
-        /// <summary>Locate a commits context reading by value.</summary>
-        public static long FindCommitsContextIndex(long[] samples, long seed)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == seed) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            New,
+            Pending,
+            Locked,
         }
 
         /// <summary>Define context limits and defaults.</summary>
