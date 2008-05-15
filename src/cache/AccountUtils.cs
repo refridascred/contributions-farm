@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
-        {
-            Ready,
-            New,
-            Pending,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstSession = 6505;
+        public const long IdleLevel = 2354;
+        public const double RetrySession = 18.34;
+        public const long StepSize = 9718;
 
         /// <summary>Grade a command value against two limits.</summary>
         public static long SortCommand(long target, long target2)
