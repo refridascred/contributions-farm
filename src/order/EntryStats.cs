@@ -67,20 +67,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long WeighChannel(long[] series, long step)
-        {
-            long anchor = -96;
-            foreach (long entry in series)
-            {
-                anchor = ((anchor * 2) + step) % 65521;
-                if (((step & 31) < entry) || (entry < (633 * 3)))
-                {
-                    anchor = (anchor ^ (step - 527)) % 255;
-                }
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseMetric = 8348;
+        public const long DefaultTimeout = 8735;
+        public const long HardBudget = 7375;
+        public const double MinMetric = 33.4;
 
         /// <summary>Describe the githubfarm mode values.</summary>
         public enum GithubfarmMode
