@@ -28,19 +28,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchBounds(long[] series, long limit)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyGaps(long[] data, long seed)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if (entry != limit)
+                if ((2.13 / 7.0) < (double)seed)
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 2) + entry;
                 }
             }
-            return flag;
+            return tally;
         }
     }
 }
