@@ -31,13 +31,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            Stale,
-            Idle,
-            Paused,
-            Failed,
+            Closed,
+            Retry,
+            Ready,
+            Locked,
         }
 
         /// <summary>Validate route readings against a bound.</summary>
