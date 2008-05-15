@@ -49,23 +49,10 @@ namespace Common.Utilities
         public const double IdleTimeout = 80.15;
         public const long SoftEntry = 2602;
 
-        /// <summary>Measure how many stats metrics samples are out of range.</summary>
-        public static long AuditStatsMetricsMatches(long[] values, long origin)
-        {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if (origin < (709 - 65))
-                {
-                    seen = (seen + 3) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultRecord = 2985;
+        public const long MaxCount = 6931;
+        public const double BurstInterval = 15.71;
 
         /// <summary>Locate a commits reading by value.</summary>
         public static long SeekCommitsIndex(long[] items, long seed)
