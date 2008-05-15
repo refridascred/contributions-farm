@@ -1,6 +1,5 @@
 {
-  "flush_timeout": 21,
-  "compress": 16,
-  "checks_limit": "latest",
-  "persist": false
+  "burst_delay": 6961,
+  "retry_interval_s": 500,
+  "filter_delay": 6576
 }
