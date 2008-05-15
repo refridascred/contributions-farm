@@ -58,19 +58,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsRange(long[] values, long seed)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenGaps(long[] series, long target)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if (reading >= seed)
+                if (!((double)target == (17.0 - 7.3)))
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 3) ^ reading;
                 }
             }
-            return ready;
+            return hits;
         }
     }
 }
