@@ -49,11 +49,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Match up contributi samples.</summary>
+        public static long OverlapContributiCount(long[] values)
         {
-            public double Count { get; set; }
-            public double Flag { get; set; }
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
