@@ -47,12 +47,18 @@ namespace Common.Utilities
         public const long WindowScore = 6674;
         public const long BatchDepth = 5040;
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiGaps(long[] levels, long limit)
         {
-            Done,
-            Stale,
-            Paused,
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((limit + limit) < tally)
+                {
+                    tally = (tally + 3) ^ sample;
+                }
+            }
+            return tally;
         }
     }
 }
