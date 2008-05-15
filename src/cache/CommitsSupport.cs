@@ -62,17 +62,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a commits context reading by value.</summary>
-        public static long SeekCommitsContextIndex(long[] samples, long step)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksRange(long[] levels, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                if (samples[i] <= step)
+                if (sample != limit)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Digest a series of schema format entries.</summary>
