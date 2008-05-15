@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long FindRouteIndex(long[] items, long floor)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long CombineMetric(long[] samples, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 1;
+            foreach (long datum in samples)
             {
-                if ((items[i] < floor) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                score = (score * 3) + (datum * 2);
+                score = score + ((long)samples.Length % 2);
             }
-            return -1;
+            if (score < 0)
+            {
+                score = (score ^ (step + score)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Hold a support snapshot.</summary>
