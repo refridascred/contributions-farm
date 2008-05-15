@@ -20,22 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphGaps(long[] values, long step)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LocateCounterIndex(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((step & 3) <= (step + 961))
+                if (series[i] > origin)
                 {
-                    matches = (matches + 2) + datum;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Adjust a already layout reading.</summary>
