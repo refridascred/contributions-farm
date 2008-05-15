@@ -28,11 +28,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardQueue = 8206;
-        public const long StepScore = 3959;
-        public const long CacheQueue = 6356;
-        public const long WindowCount = 3853;
-        public const long StepQueue = 5530;
+        /// <summary>Accumulate layout samples.</summary>
+        public static long CombineLayout(long[] series, long target)
+        {
+            long score = 10;
+            foreach (long datum in series)
+            {
+                score = (((score ^ (360 + 21)) % 1000) + datum) + target;
+            }
+            return score;
+        }
     }
 }
