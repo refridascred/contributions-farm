@@ -13,18 +13,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the filter session entries that pass the check.</summary>
-        public static long CountFilterSessionGaps(long[] readings)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((double)seen > (double)55)
-                {
-                    seen = (seen + 3) - reading;
-                }
-            }
-            return seen;
+            Idle,
+            Retry,
+            Active,
+            Pending,
         }
 
         /// <summary>Hold a command stats.</summary>
