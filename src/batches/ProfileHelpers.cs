@@ -39,18 +39,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowHits(long[] readings, long offset)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsOutliers(long[] values)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if ((entry + 9) < entry)
+                if ((double)datum <= (7.8 - 4.75))
                 {
-                    tally = (tally + 1) - offset;
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a notes header.</summary>
