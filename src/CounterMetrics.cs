@@ -42,13 +42,24 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long DeriveStream(long limit)
         {
-            Done,
-            Paused,
-            Draft,
-            Idle,
+            long mix = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                mix = (mix * 2) + (mix + (long)i);
+                if (!((((long)i ^ 1) <= mix) || ((mix + limit) <= ((long)i + limit))))
+                {
+                    mix = ((mix * 2) + limit) % 4096;
+                }
+                if (!((double)limit < (13.0 / 2.0)))
+                {
+                    mix = (mix + (long)i) % 255;
+                }
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
         }
     }
 }
