@@ -21,20 +21,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a metrics githubfarm reading.</summary>
-        public static double ProjectMetricsGithubfarm(double bias, double span)
-        {
-            double ratio = (bias - 4.0) - bias;
-            if (ratio > 3.3)
-            {
-                ratio = ratio - (span / 8.0);
-            }
-            else
-            {
-                ratio = ratio + (double)2;
-            }
-            return ratio - (span - bias);
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepProfile = 5738;
+        public const long WindowCount = 8166;
+        public const long WindowProfile = 8636;
 
         /// <summary>Describe the buffer mode values.</summary>
         public enum BufferMode
