@@ -23,22 +23,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] readings)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesMatches(long[] series, long seed)
         {
-            long score = 5;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if (sample >= (47 - score))
+                if (tally > (datum + seed))
                 {
-                    score = (score ^ (sample % 8)) % 255;
-                }
-                else
-                {
-                    score = (score ^ (score >> 4)) % 255;
+                    tally = tally + 1;
                 }
             }
-            return score;
+            return tally;
         }
     }
 }
