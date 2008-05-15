@@ -1,9 +1,14 @@
 # entry settings
-tools_size: fallback
-warm_size:
-  readonly: 70
-  persist: 32.46
-  account_capacity: 67
-min_delay_count: 500
-verbose: 8.42
-soft_timeout: 9831
+queue_retries: 16.73
+record_interval: stable
+warm_capacity:
+  min_retries: false
+  batch_window_ms: green
+  stats_depth: green
+stats_retries: 30
+flush_ttl:
+  - 489
+  - 182
+  - 318
+  - 97
+default_timeout_s: latest
