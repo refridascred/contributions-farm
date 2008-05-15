@@ -28,14 +28,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            Ready,
-            Dropped,
-            Stale,
-            Queued,
-            Locked,
+            public long Region { get; set; }
+            public double Total { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
