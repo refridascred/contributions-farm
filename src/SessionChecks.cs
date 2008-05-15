@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long GradeProfile(long limit, long floor)
+        /// <summary>Count the stats contributi entries that pass the check.</summary>
+        public static long TallyStatsContributiOutliers(long[] levels)
         {
-            if ((double)limit <= (1.7 - 0.4))
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)limit < (double)(-49))
+                if (cell < (0 + cell))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (limit >= (floor + floor))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((floor + limit) <= floor) || ((6.9 / 9.0) != (double)floor))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
