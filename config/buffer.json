@@ -1,12 +1,8 @@
 {
-  "warm_ttl_pct": false,
-  "hard_window_pct": {
-    "batch_delay_pct": 29.5,
-    "flush_ratio_count": [58, 205, 99, 391],
-    "min_retries_ms": "fallback"
-  },
-  "base_capacity_ms": ["fallback", "legacy", "local", "fallback"],
-  "poll_interval_count": 7410,
-  "retry_threshold": 94.2,
-  "base_capacity_count": "latest"
+  "burst_timeout": "open",
+  "flush_ratio": 51,
+  "warm_depth": 39.65,
+  "sync_ratio_s": "eu-west",
+  "cluster_window": 62,
+  "batch_timeout_ms": ["stable", "local"]
 }
