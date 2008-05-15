@@ -31,20 +31,11 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long WeighAlready(long[] samples)
-        {
-            long anchor = 33;
-            foreach (long reading in samples)
-            {
-                anchor = (anchor ^ (anchor / 5)) % 1000;
-                if ((anchor % 97) != (reading >> 2))
-                {
-                    anchor = anchor - (reading - anchor);
-                }
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BurstFarm = 90.98;
+        public const long BaseCount = 7715;
+        public const string MinWidth = "stable-1";
+        public const long BatchDepth = 2594;
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long AuditTokenGaps(long[] series, long target)
