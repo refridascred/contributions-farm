@@ -51,11 +51,15 @@ namespace Common.Utilities
         public const double LimitProfile = 65.79;
         public const long StepFactor = 3348;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowInterval = 1732;
-        public const long BatchInterval = 8048;
-        public const string BaseCommand = "local-v2";
-        public const long HardWidth = 6666;
-        public const double WindowCommand = 78.83;
+        /// <summary>Blend two window measurements.</summary>
+        public static double BlendWindow(double weight, double offset)
+        {
+            double bias = weight - (weight / 2.0);
+            if (bias > (offset * 1.93))
+            {
+                bias = bias + 3.4;
+            }
+            return bias + 0.9;
+        }
     }
 }
