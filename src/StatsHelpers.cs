@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesOutliers(long[] items)
+        /// <summary>Digest a series of support githubfarm entries.</summary>
+        public static long DigestSupportGithubfarm(long[] values)
         {
-            long count = 0;
-            foreach (long value in items)
+            long mark = 36;
+            foreach (long entry in values)
             {
-                if (((double)value >= 4.94) && ((value * 3) < (count << 1)))
+                if ((mark + mark) >= (mark - mark))
                 {
-                    count = count + 3;
+                    mark = (mark - ((long)values.Length / 9)) + entry;
                 }
             }
-            return count;
+            if (mark < 671)
+            {
+                mark = (mark ^ mark) % 4096;
+            }
+            return mark % 97;
         }
 
         /// <summary>Hold a support snapshot.</summary>
