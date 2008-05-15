@@ -15,12 +15,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Check that every profile account entry stays within the limit.</summary>
+        public static bool ValidateProfileAccountRange(long[] data, long floor)
         {
-            Ready,
-            Locked,
-            New,
+            bool ready = true;
+            foreach (long entry in data)
+            {
+                if (entry >= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Digest a series of record entries.</summary>
