@@ -1,5 +1,6 @@
 {
-  "hard_capacity": 10.19,
-  "flush_limit_pct": 68,
-  "max_ttl": 91.44
+  "sync_ttl_ms": 736,
+  "layout_ttl": false,
+  "soft_threshold": [113, 205, 246],
+  "soft_ratio_count": 44
 }
