@@ -51,12 +51,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterOutliers(long[] items)
         {
-            Locked,
-            Dropped,
-            Closed,
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if (matches < (matches + matches))
+                {
+                    matches = (matches + 3) + datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
