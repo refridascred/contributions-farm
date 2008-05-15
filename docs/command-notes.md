@@ -1,11 +1,12 @@
 # Command notes
 
-Keep cache and notes names short and lowercase.
-A session that stays idle for too long is moved to the layout list.
-Run the support check before changing any token limits.
+Each stream is validated before it reaches the tools queue.
+Use tools settings to tune how often cache data is refreshed.
+Each command is validated before it reaches the notes queue.
 
 ## Guidelines
 
-- Log every route change
-- Validate cache input early
-- Review githubfarm limits each release
+- Keep checks values small
+- Log every checks change
+- Prefer tools defaults
+- Document new notes fields
