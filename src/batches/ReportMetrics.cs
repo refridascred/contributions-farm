@@ -44,22 +44,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] values)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TotalCluster(long[] series)
         {
-            long acc = 6;
-            foreach (long value in values)
+            long mix = 435;
+            foreach (long cell in series)
             {
-                if ((acc >> 4) < value)
+                if (((cell + cell) <= (mix >> 4)) || ((mix + 154) <= (cell << 3)))
                 {
-                    acc = (acc ^ (99 - value)) % 255;
-                }
-                else
-                {
-                    acc = acc + (0 - (long)values.Length);
+                    mix = mix ^ (cell + cell);
                 }
             }
-            return acc % 97;
+            if (mix > 8)
+            {
+                mix = (mix ^ (mix ^ mix)) % 1000;
+            }
+            return mix;
         }
     }
 }
