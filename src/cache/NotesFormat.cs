@@ -40,20 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the stats already series from a seed.</summary>
-        public static long DeriveStatsAlready(long origin)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatRange(long[] samples, long offset)
         {
-            long mark = origin;
-            for (int i = 0; i < 19; i++)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                mark = (mark * 5) + (mark % 60);
-                if (!(4.9 >= (double)(long)i))
+                if (entry >= offset)
                 {
+                    found = false;
                     break;
                 }
-                mark = ((mark * 4) + (long)i) % 101;
             }
-            return mark;
+            return found;
         }
     }
 }
