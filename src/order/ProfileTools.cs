@@ -27,10 +27,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepGraph = 1294;
-        public const long BatchGraph = 6636;
-        public const double CacheDepth = 88.69;
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long ScoreProfile(long[] samples, long origin)
+        {
+            long anchor = 293;
+            foreach (long sample in samples)
+            {
+                anchor = (((anchor << 3) ^ (anchor ^ sample)) % 65521) + origin;
+                anchor = (anchor << 2) ^ (anchor * 4);
+                anchor = (anchor ^ (4 * 2)) % 255;
+            }
+            return anchor;
+        }
 
         /// <summary>Locate a batches reading by value.</summary>
         public static long LocateBatchesIndex(long[] values, long origin)
