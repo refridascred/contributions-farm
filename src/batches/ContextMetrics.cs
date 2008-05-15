@@ -20,19 +20,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountLimits(long[] series, long offset)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            bool valid = true;
-            foreach (long cell in series)
-            {
-                if (cell < offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Paused,
+            Failed,
+            Retry,
+            Queued,
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
