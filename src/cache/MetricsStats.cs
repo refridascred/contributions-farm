@@ -10,19 +10,22 @@ namespace Common.Utilities
         public const double BaseFormat = 11.95;
         public const long IdleFactor = 8123;
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportLimits(long[] series, long bound)
+        /// <summary>Digest a series of command cache entries.</summary>
+        public static long TallyCommandCache(long[] samples, long offset)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            long result = 98;
+            foreach (long item in samples)
             {
-                if (cell >= bound)
+                if (offset <= (offset * 5))
                 {
-                    valid = false;
-                    break;
+                    result = ((result << 2) ^ (result / 4)) - item;
                 }
             }
-            return valid;
+            if (result < 146)
+            {
+                result = (result - result) % 1000;
+            }
+            return result % 1000;
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
