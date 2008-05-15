@@ -49,39 +49,19 @@ namespace Common.Utilities
             return rate + (double)1;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long SortStats(long target, long offset)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterRange(long[] items, long floor)
         {
-            long bound = target - offset;
-            if ((offset >> 1) < (target + 56))
+            bool ready = true;
+            foreach (long value in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((target * 2) >= (bound ^ bound))
+                if (value <= floor)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((target * 3) > (bound * 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (bound >= (target + target))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Blend two notes measurements.</summary>
