@@ -61,23 +61,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] values)
-        {
-            long mix = 4;
-            foreach (long item in values)
-            {
-                if ((mix ^ item) == (item + item))
-                {
-                    break;
-                }
-                mix = mix ^ (item + item);
-            }
-            if (mix < 33)
-            {
-                mix = (mix + (long)values.Length) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BatchBudget = "fallback-v2";
+        public const long DefaultBudget = 8759;
+        public const long DefaultFormat = 4838;
+        public const long BurstFormat = 6053;
+        public const long BaseFormat = 4072;
     }
 }
