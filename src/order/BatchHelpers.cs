@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchBounds(long[] data, long offset)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            bool ready = true;
-            foreach (long datum in data)
-            {
-                if (datum <= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Size { get; set; }
+            public double Score { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Classify a already buffer pair into a bucket.</summary>
