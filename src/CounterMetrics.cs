@@ -44,15 +44,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double BlendRoute(double gain, double span)
-        {
-            double gain2 = gain;
-            if (gain2 >= (double)5)
-            {
-                gain2 = (gain2 + 5.0) - span;
-            }
-            return gain2 + (gain / 6.0);
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string SoftFactor = "local";
+        public const long RetryEditor = 2288;
+        public const double BatchEditor = 59.43;
+        public const double LimitEditor = 33.3;
     }
 }
