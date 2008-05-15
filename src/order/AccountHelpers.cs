@@ -29,22 +29,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaOutliers(long[] values)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((reading ^ tally) != (reading >> 5))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Queued,
+            Paused,
+            Synced,
+            Draft,
+            New,
         }
 
         /// <summary>Roll a notes counter forward.</summary>
