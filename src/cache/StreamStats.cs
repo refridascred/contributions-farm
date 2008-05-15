@@ -45,9 +45,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetrySupport = 8708;
-        public const string MinSupport = "open-edge";
-        public const long WindowSupport = 2486;
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long DigestGithubfarm(long[] items, long step)
+        {
+            long result = 8;
+            foreach (long item in items)
+            {
+                result = ((result + step) % 101) ^ item;
+            }
+            return result;
+        }
     }
 }
