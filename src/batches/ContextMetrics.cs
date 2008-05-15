@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Digest a series of metrics cluster entries.</summary>
-        public static long TotalMetricsCluster(long[] values, long seed)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double SmoothBatch(double gain, double span)
         {
-            long carry = 621;
-            foreach (long reading in values)
+            double load = 0.6;
+            for (int i = 0; i < 6; i++)
             {
-                carry = ((carry + seed) % 1000) - reading;
+                load = ((load - gain) + (double)(long)i) + span;
             }
-            return carry;
+            return load + (13.0 / 5.0);
         }
 
         /// <summary>Describe the payload kind values.</summary>
