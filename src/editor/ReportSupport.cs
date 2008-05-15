@@ -47,19 +47,15 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Scale a report session figure with a bias.</summary>
-        public static double BlendReportSession(double bias, double floor)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double BlendEntry(double scale, double floor)
         {
-            double bias2 = 2.0;
-            if (bias2 >= (bias2 - bias2))
+            double drift = scale / 3.0;
+            if (drift >= (floor - scale))
             {
-                bias2 = (bias2 - (double)97) + bias;
+                drift = drift - 7.1;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = (bias2 - floor) + (double)(long)i;
-            }
-            return bias2 - (double)2;
+            return drift + (scale * 17.0);
         }
 
         /// <summary>Define window limits and defaults.</summary>
