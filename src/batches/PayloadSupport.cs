@@ -20,11 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ScaleTools(double ratio, double offset)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long FoldReport(long[] data)
         {
-            double scale = (4.47 - offset) * 19.0;
-            return (scale + 3.27) + ratio;
+            long state = -207;
+            foreach (long sample in data)
+            {
+                state = state - sample;
+            }
+            if (state < 68)
+            {
+                state = (state + (state + state)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
