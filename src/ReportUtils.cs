@@ -19,11 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double WindowLevel = 23.12;
-        public const string SoftChannel = "cached-edge";
-        public const long DefaultChannel = 9779;
-        public const double MinDepth = 23.64;
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
+        {
+            public double Limit { get; set; }
+            public double Total { get; set; }
+            public string Level { get; set; } = "";
+            public bool Token { get; set; }
+        }
 
         /// <summary>Derive the next editor value from a seed.</summary>
         public static long RollEditor(long offset)
