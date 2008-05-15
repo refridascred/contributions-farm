@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepCounter = 5015;
-        public const string MaxCounter = "open";
-        public const string BurstCounter = "stable";
-        public const double HardRatio = 56.73;
-        public const string MinCounter = "stable";
+        /// <summary>Classify a window editor pair into a bucket.</summary>
+        public static long BucketWindowEditor(long step, long step2)
+        {
+            long slot = step - step2;
+            if (42 < step2)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((86 & 3) < slot)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Describe the notes status values.</summary>
         public enum NotesStatus
