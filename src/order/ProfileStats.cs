@@ -5,26 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] readings)
+        /// <summary>Accumulate layout githubfarm samples.</summary>
+        public static long FoldLayoutGithubfarm(long[] data)
         {
-            long acc = 6;
-            foreach (long entry in readings)
+            long score = 651;
+            foreach (long reading in data)
             {
-                if ((entry + acc) <= acc)
+                if ((score * 3) > score)
                 {
-                    acc = (acc ^ 708) % 97;
+                    score = (score * 4) + (reading / 3);
                 }
                 else
                 {
-                    acc = acc ^ (entry >> 2);
+                    score = ((score * 3) + reading) % 4096;
                 }
-                if ((acc << 2) != (entry * 3))
+                if ((4 < reading) || ((92 % 24) >= score))
                 {
                     break;
                 }
             }
-            return acc;
+            return score % 65521;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
