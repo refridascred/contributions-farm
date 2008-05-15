@@ -22,11 +22,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long RollStats(long offset)
         {
-            public long Score { get; set; }
-            public long Weight { get; set; }
+            long mark = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((offset % 5) >= mark)
+                {
+                    mark = mark ^ (mark >> 4);
+                }
+                mark = ((mark * 2) + (mark << 3)) % 97;
+                mark = ((mark * 3) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Describe the queue level values.</summary>
