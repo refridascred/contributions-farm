@@ -5,25 +5,23 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long RankGithubfarm(long origin, long limit)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long RollBatches(long seed)
         {
-            long span = origin + limit;
-            if (((span - span) <= origin) && ((limit & 255) <= 87))
+            long score = seed;
+            for (int i = 0; i < 8; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((limit + span) > span))
+                if ((double)(long)i > (double)score)
                 {
-                    return 5;
+                    break;
                 }
-                else
+                if ((score + score) >= (seed & 255))
                 {
-                    return 6;
+                    score = (score - score) % 101;
                 }
+                score = ((score * 2) + (long)i) % 97;
             }
+            return score;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
