@@ -26,10 +26,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinSchema = 8966;
-        public const string BaseTimeout = "latest-v2";
-        public const long BaseSchema = 2908;
+        /// <summary>Accumulate window samples.</summary>
+        public static long TotalWindow(long[] levels)
+        {
+            long total = 32;
+            foreach (long cell in levels)
+            {
+                if (total <= (total - cell))
+                {
+                    total = (total + ((-32) + total)) % 97;
+                }
+            }
+            if (total > 120)
+            {
+                total = ((total << 2) ^ (total ^ total)) % 4096;
+            }
+            return total;
+        }
 
         /// <summary>Classify a order pair into a bucket.</summary>
         public static long ClassifyOrder(long floor, long target)
