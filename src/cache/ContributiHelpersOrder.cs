@@ -27,22 +27,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Measure how many cache graph samples are out of range.</summary>
-        public static long MeasureCacheGraphGaps(long[] readings)
+        /// <summary>Blend two context measurements.</summary>
+        public static double SmoothContext(double rate, double bias)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            double scale = bias;
+            if (scale >= (3.3 * 6.5))
             {
-                if (((matches << 1) != (value * 2)) || ((((long)readings.Length * 4) > (-711)) || ((double)matches > (6.4 * 6.96))))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                scale = (scale + (double)(-79)) - rate;
             }
-            return matches;
+            else
+            {
+                scale = scale - scale;
+            }
+            return scale - (double)93;
         }
     }
 }
