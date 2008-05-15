@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            Pending,
-            Ready,
-            Retry,
-            Draft,
+            public long Count { get; set; }
+            public long Owner { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
