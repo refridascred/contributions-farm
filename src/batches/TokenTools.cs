@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
-        {
-            Locked,
-            Idle,
-            Queued,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double LimitRoute = 39.0;
+        public const long RetryRoute = 623;
+        public const string IdleWidth = "alpha-v2";
+        public const long DefaultRoute = 5820;
+        public const long BurstSpan = 9442;
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long CountMetricGaps(long[] data)
