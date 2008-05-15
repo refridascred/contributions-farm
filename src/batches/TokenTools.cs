@@ -24,10 +24,18 @@ namespace Common.Utilities
             return drift - (rate / 8.0);
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinDepth = 948;
-        public const long StepCount = 5214;
-        public const string IdleStats = "alpha";
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LocateClusterIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > target) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the contributi level values.</summary>
         public enum ContributiLevel
