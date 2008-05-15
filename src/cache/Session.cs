@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long WeighBatches(long[] values, long limit)
         {
-            public bool Size { get; set; }
-            public long Score { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Owner { get; set; }
+            long score = 924;
+            foreach (long reading in values)
+            {
+                score = (score - (reading - reading)) - limit;
+                score = (score + score) % 4096;
+                if ((reading - reading) != (reading - (long)values.Length))
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
