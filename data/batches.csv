@@ -1,6 +1,6 @@
-id,weight,owner,rank,count
-1,69.7,12.02,574,26.21
-2,staging,stable,staging,826
-3,latest,blue,legacy,76.6
-4,50.79,31.99,blue,136
-5,fallback,eu-west,eu-west,982
+id,region,level,token
+1,512,338,58.01
+2,898,48.36,blue
+3,stable,staging,staging
+4,354,545,eu-west
+5,42.34,110,legacy
