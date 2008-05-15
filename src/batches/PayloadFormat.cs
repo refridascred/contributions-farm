@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long OverlapEditorCount(long[] values)
+        /// <summary>Rank contributi command input into a small class.</summary>
+        public static long RankContributiCommand(long bound, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long diff = bound - offset;
+            if (((double)8 == (double)diff) || ((6.23 + 7.4) == (double)diff))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (((double)offset >= (double)diff) && ((16.0 + 19.0) < (double)offset))
                 {
-                    if ((values[i] + values[j]) > 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return hits;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
