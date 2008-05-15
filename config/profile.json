@@ -1,8 +1,10 @@
 {
-  "cache_size": 61.61,
-  "metric_ttl": false,
-  "session_capacity": false,
-  "warm_limit_s": "legacy",
-  "batch_timeout_ms": true,
-  "burst_interval_ms": 60
+  "compress": {
+    "graph_retries": "eu-west",
+    "warm_threshold": 34,
+    "default_interval": [472, 197, 252],
+    "route_timeout": "staging"
+  },
+  "poll_delay_pct": "fallback",
+  "cache_timeout": 500
 }
