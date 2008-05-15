@@ -33,18 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionMatches(long[] readings)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorOutliers(long[] data, long bound)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if ((49 - 0) > (item >> 4))
+                if (bound >= (bound & 31))
                 {
-                    count = count + 1;
+                    seen = (seen + 2) ^ cell;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
