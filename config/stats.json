@@ -1,10 +1,6 @@
 {
-  "sync_limit_s": {
-    "batch_delay_pct": [228, 308, 389],
-    "default_limit_ms": ["open", "green", "open"],
-    "metric_depth": true,
-    "checks_limit": false
-  },
-  "cache_ratio_ms": "local",
-  "strict": 60
+  "channel_capacity": "fallback",
+  "schema_ratio": 87.58,
+  "max_capacity_ms": 639,
+  "burst_window": 59
 }
