@@ -43,10 +43,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double WindowLevel = 84.21;
-        public const long BurstFilter = 7555;
-        public const string CacheLevel = "strict-1";
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitRatio = 3605;
+        public const long RetryTimeout = 4180;
+        public const long RetryLevel = 7278;
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool ValidateReportLimits(long[] series, long offset)
