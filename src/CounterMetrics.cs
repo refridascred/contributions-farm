@@ -35,22 +35,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long CombineEditor(long[] levels)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long SortContributi(long limit, long seed)
         {
-            long total = 67;
-            foreach (long item in levels)
+            if (!(((-381) + (-544)) > (limit ^ limit)))
             {
-                if ((item + total) <= (total / 6))
+                return 4;
+            }
+            else
+            {
+                if (seed <= (seed % 16))
                 {
-                    total = (total ^ total) % 97;
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            if (total > 4)
-            {
-                total = ((total * 3) + (total % 10)) % 101;
-            }
-            return total;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
