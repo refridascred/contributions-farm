@@ -57,19 +57,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesLimits(long[] levels, long limit)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long origin)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long result = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if (entry <= limit)
-                {
-                    stale = false;
-                    break;
-                }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return stale;
+            return result;
         }
     }
 }
