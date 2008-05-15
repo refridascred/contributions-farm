@@ -24,13 +24,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterMatches(long[] data)
         {
-            Closed,
-            Retry,
-            Ready,
-            Locked,
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if (seen <= (seen * 3))
+                {
+                    seen = (seen + 3) + reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
