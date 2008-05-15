@@ -14,19 +14,39 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportRange(long[] levels, long target)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long GradeCommand(long step, long target)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long offset = step + target;
+            if (((7.18 - 19.0) < (double)offset) && (step >= (target + target)))
             {
-                if (value > target)
+                return 5;
+            }
+            else
+            {
+                if ((double)target == (double)step)
                 {
-                    stale = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((11.0 - 5.33) <= (double)offset)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((step + target) < (449 % 12)) || ((double)offset >= (0.28 / 8.0)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Describe the format status values.</summary>
