@@ -13,23 +13,12 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Adjust a report metric reading.</summary>
-        public static double ProjectReportMetric(double scale, double floor)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            double mean = scale + scale;
-            if (mean > floor)
-            {
-                mean = mean + scale;
-            }
-            else
-            {
-                mean = mean + mean;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - (mean - mean)) - (double)(long)i;
-            }
-            return mean - (double)644;
+            Ready,
+            Idle,
+            New,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
