@@ -35,11 +35,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepRoute = 4414;
-        public const long LimitDepth = 821;
-        public const long CacheRoute = 8254;
-        public const long StepSize = 6852;
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
+        {
+            public bool Flag { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Iterate the payload notes series from a seed.</summary>
         public static long RollPayloadNotes(long bound)
