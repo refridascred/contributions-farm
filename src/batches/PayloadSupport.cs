@@ -35,15 +35,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TotalQueue(long[] series, long bound)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long RankMetric(long seed, long step)
         {
-            long state = 60;
-            foreach (long sample in series)
+            if (((16.0 * 20.0) == (double)seed) && ((seed + step) >= seed))
             {
-                state = ((((state << 2) ^ (40 << 1)) % 101) ^ sample) - bound;
+                return 6;
             }
-            return state % 97;
+            else
+            {
+                if ((double)seed <= (double)567)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((seed >> 5) == (step + step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((step - 82) > 9)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
