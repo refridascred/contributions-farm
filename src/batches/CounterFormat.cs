@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            Locked,
-            Ready,
-            Retry,
-            Closed,
+            public string Count { get; set; } = "";
+            public double Limit { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
