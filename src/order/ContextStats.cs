@@ -33,24 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long SortReport(long offset, long seed)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionMatches(long[] readings)
         {
-            if ((double)seed >= (double)offset)
+            long count = 0;
+            foreach (long item in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed & 1) <= seed)
+                if ((49 - 0) > (item >> 4))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
