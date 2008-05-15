@@ -1,22 +1,12 @@
 {
-  "cache_depth": [270, 90, 258],
-  "persist": true,
-  "cache_ttl": {
-    "dry_run": {
-      "hard_timeout": 6464,
-      "dry_run": "local",
-      "flush_limit": [434, 438, 205, 421],
-      "stats_depth": false,
-      "strict": 47.27
-    },
-    "route_capacity": 26,
-    "soft_ratio_count": 6188,
-    "warm_depth": ["edge", "strict", "standard"],
-    "default_delay_pct": [492, 153],
-    "cache_threshold": {
-      "base_retries": 40,
-      "retry_retries_s": 88,
-      "warm_threshold": 1024
-    }
-  }
+  "readonly": {
+    "commits_depth": 81.09,
+    "idle_depth_pct": [238, 441, 494],
+    "poll_depth": 63.34,
+    "idle_window": "stable"
+  },
+  "poll_window": 4809,
+  "burst_ratio_pct": 30,
+  "profile_timeout": 100,
+  "retry_window_pct": 500
 }
