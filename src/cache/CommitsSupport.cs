@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyLimits(long[] readings, long origin)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long RankGithubfarm(long origin, long limit)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            long span = origin + limit;
+            if (((span - span) <= origin) && ((limit & 255) <= 87))
             {
-                if (entry > origin)
+                return 2;
+            }
+            else
+            {
+                if (!((limit + span) > span))
                 {
-                    flag = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return flag;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
