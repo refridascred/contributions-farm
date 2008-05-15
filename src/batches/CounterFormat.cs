@@ -25,11 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BatchRoute = "primary";
-        public const long SoftRoute = 8327;
-        public const long IdleRatio = 7128;
-        public const long BaseRoute = 4729;
+        /// <summary>Check that every stats payload entry stays within the limit.</summary>
+        public static bool CheckStatsPayloadLimits(long[] items, long offset)
+        {
+            bool ok = true;
+            foreach (long entry in items)
+            {
+                if (entry > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long IdleTimeout = 6954;
