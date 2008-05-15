@@ -14,21 +14,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long PairRecordCount(long[] values)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterOutliers(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)tally >= (7.07 * 3.38))
                 {
-                    if ((values[i] - values[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + 1) + cell;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
