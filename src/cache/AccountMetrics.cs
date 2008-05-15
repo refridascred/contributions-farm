@@ -89,21 +89,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next command entry value from a seed.</summary>
-        public static long IterateCommandEntry(long limit)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long SeekCommitsIndex(long[] items, long seed)
         {
-            long state = limit;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                state = ((state << 3) ^ ((long)i / 8)) % 101;
-                for (int i2 = 0; i2 < 3; i2++)
+                if ((items[i] <= seed) && ((items[i] % 2) != 0))
                 {
-                    state = (((state << 2) ^ limit) % 255) + (long)i2;
+                    return (long)i;
                 }
-                state = (state - limit) % 97;
-                state = ((state * 5) + (long)i) % 65521;
             }
-            return state;
+            return -1;
         }
     }
 }
