@@ -16,16 +16,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long IterateStats(long origin)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long state = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                state = state ^ (origin + state);
-                state = ((state * 3) + (long)i) % 1000;
-            }
-            return state;
+            public string Mode { get; set; } = "";
+            public double Ratio { get; set; }
+            public bool Offset { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Describe the token level values.</summary>
