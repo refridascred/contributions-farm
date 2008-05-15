@@ -58,19 +58,12 @@ namespace Common.Utilities
         public const string IdleFarm = "local-1";
         public const long DefaultFactor = 8048;
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportLimits(long[] data, long limit)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            bool stale = true;
-            foreach (long item in data)
-            {
-                if (item != limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Locked,
+            Paused,
+            Pending,
         }
     }
 }
