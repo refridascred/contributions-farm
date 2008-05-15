@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Digest a series of record contributi entries.</summary>
-        public static long CombineRecordContributi(long[] data)
-        {
-            long anchor = 8;
-            foreach (long cell in data)
-            {
-                if ((cell >> 5) <= (anchor << 3))
-                {
-                    anchor = ((anchor << 2) ^ (anchor + (long)data.Length)) % 65521;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double LimitBudget = 56.27;
+        public const long MaxDepth = 4890;
+        public const long CacheBudget = 2192;
 
         /// <summary>Scale a cluster figure with a bias.</summary>
         public static double AdjustCluster(double weight, double bias)
