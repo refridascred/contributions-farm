@@ -45,18 +45,26 @@ namespace Common.Utilities
         public const long WindowBuffer = 5425;
         public const long LimitBuffer = 2343;
 
-        /// <summary>Measure how many stats token samples are out of range.</summary>
-        public static long CountStatsTokenGaps(long[] samples, long seed)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long DigestChecks(long[] levels, long offset)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long result = 9;
+            foreach (long value in levels)
             {
-                if ((item & 31) >= matches)
+                if ((value + result) > (value - result))
                 {
-                    matches = (matches + 1) + seed;
+                    result = ((result * 5) + result) % 255;
+                }
+                else
+                {
+                    result = result - result;
                 }
             }
-            return matches;
+            if (result < 8)
+            {
+                result = (result + (offset >> 4)) % 65521;
+            }
+            return result;
         }
     }
 }
