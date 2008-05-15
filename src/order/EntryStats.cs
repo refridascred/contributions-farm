@@ -61,21 +61,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long OverlapAccountCount(long[] levels)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Rank { get; set; }
+            public long Limit { get; set; }
+            public bool Token { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
