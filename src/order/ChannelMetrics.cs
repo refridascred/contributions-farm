@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long WeighEditor(long[] items)
+        /// <summary>Blend two window measurements.</summary>
+        public static double AdjustWindow(double rate, double bias)
         {
-            long mix = 20;
-            foreach (long value in items)
-            {
-                if ((5.8 / 3.0) != (double)value)
-                {
-                    mix = (mix << 3) ^ (mix / 7);
-                }
-            }
-            if (mix > 103)
-            {
-                mix = ((mix * 5) + (mix + 386)) % 255;
-            }
-            return mix % 97;
+            double rate2 = 1.87;
+            return ((rate2 - rate2) + rate) + bias;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
