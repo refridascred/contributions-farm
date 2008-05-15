@@ -27,18 +27,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long ScoreProfile(long[] samples, long origin)
-        {
-            long anchor = 293;
-            foreach (long sample in samples)
-            {
-                anchor = (((anchor << 3) ^ (anchor ^ sample)) % 65521) + origin;
-                anchor = (anchor << 2) ^ (anchor * 4);
-                anchor = (anchor ^ (4 * 2)) % 255;
-            }
-            return anchor;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetryTimeout = 890;
+        public const long CacheSize = 9070;
+        public const double StepBudget = 87.23;
+        public const long BaseGraph = 4637;
+        public const double LimitTimeout = 52.09;
 
         /// <summary>Locate a batches reading by value.</summary>
         public static long LocateBatchesIndex(long[] values, long origin)
