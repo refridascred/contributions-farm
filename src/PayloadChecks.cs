@@ -63,13 +63,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountOutliers(long[] readings)
         {
-            public long Flag { get; set; }
-            public string Total { get; set; } = "";
-            public long Offset { get; set; }
-            public long Limit { get; set; }
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if ((5.3 + 3.0) < (double)sample)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
