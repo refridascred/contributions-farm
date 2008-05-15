@@ -1,5 +1,18 @@
 {
-  "batch_size_pct": 9691,
-  "burst_retries_ms": "cached",
-  "hard_window_ms": ["green", "green", "green"]
+  "enabled": {
+    "route_threshold": ["open", "standard", "edge", "edge"],
+    "max_interval_ms": 44,
+    "compress": 73,
+    "schema_retries": [79, 58, 351, 286],
+    "command_depth": {
+      "strict": [483, 71, 25, 377],
+      "metrics_window": ["strict", "edge"],
+      "verbose": true,
+      "persist": "stable",
+      "counter_interval": "legacy"
+    },
+    "session_size": true
+  },
+  "hard_capacity_ms": ["local", "primary", "standard"],
+  "layout_depth": "primary"
 }
