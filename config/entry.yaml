@@ -1,9 +1,15 @@
 # entry settings
-hard_window_count: 7.12
-verbose: true
-audit:
-  - 273
-  - 488
-  - 13
-farm_depth: 56
-max_interval_ms: 63
+checks_delay:
+  soft_interval_s: 1024
+  hard_interval_count: false
+  counter_retries: 2155
+  dry_run: cached
+  batch_window: 100
+  strict:
+    - open
+    - strict
+    - standard
+default_delay_ms: legacy
+cache_delay_count: 70.91
+audit: open
+burst_delay: 11.38
