@@ -30,18 +30,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TotalCache(long[] data)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamRange(long[] series, long target)
         {
-            long total = 366;
-            foreach (long value in data)
+            bool ready = true;
+            foreach (long sample in series)
             {
-                if ((total + total) < (16 >> 2))
+                if (sample >= target)
                 {
-                    total = ((total ^ total) % 65521) - value;
+                    ready = false;
+                    break;
                 }
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Blend two command measurements.</summary>
