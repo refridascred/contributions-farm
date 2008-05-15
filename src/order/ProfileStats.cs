@@ -20,17 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a graph already reading by value.</summary>
-        public static long LookupGraphAlreadyIndex(long[] readings, long seed)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < seed) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Synced,
+            Failed,
+            Queued,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
