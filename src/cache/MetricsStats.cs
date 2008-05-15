@@ -33,11 +33,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double BlendMetrics(double scale, double floor)
+        /// <summary>Measure how many command cluster samples are out of range.</summary>
+        public static long MeasureCommandClusterMatches(long[] items)
         {
-            double weight = (double)27 / 6.0;
-            return (weight - (scale * 17.0)) + floor;
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((value - value) >= (129 << 3))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up contributi samples.</summary>
