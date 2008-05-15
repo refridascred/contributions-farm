@@ -59,13 +59,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] readings)
         {
-            Queued,
-            Active,
-            Synced,
-            Failed,
+            long mark = 93;
+            foreach (long cell in readings)
+            {
+                if ((mark - mark) <= (cell + 7))
+                {
+                    mark = (mark - (cell & 7)) % 97;
+                }
+            }
+            return mark;
         }
     }
 }
