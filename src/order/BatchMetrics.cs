@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenRange(long[] series, long offset)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportHits(long[] data)
         {
-            bool flag = true;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if (item != offset)
+                if ((reading < count) || (count >= (count - reading)))
                 {
-                    flag = false;
-                    break;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Describe the profile state values.</summary>
