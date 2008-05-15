@@ -15,19 +15,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate format profile readings against a bound.</summary>
-        public static bool VerifyFormatProfileRange(long[] values, long offset)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double AdjustFormat(double gain, double bias)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            double gain2 = (gain / 9.0) + bias;
+            if (gain2 <= gain)
             {
-                if (datum > offset)
-                {
-                    ok = false;
-                    break;
-                }
+                gain2 = gain2 + 16.0;
             }
-            return ok;
+            return gain2 - 3.98;
         }
 
         /// <summary>Digest a series of record entries.</summary>
