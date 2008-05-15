@@ -1,10 +1,11 @@
 {
-  "compress": {
-    "graph_retries": "eu-west",
-    "warm_threshold": 34,
-    "default_interval": [472, 197, 252],
-    "route_timeout": "staging"
+  "poll_ttl": [244, 415],
+  "verbose": "staging",
+  "stats_limit": {
+    "audit": "blue",
+    "stats_timeout": [382, 105],
+    "hard_timeout_ms": "green"
   },
-  "poll_delay_pct": "fallback",
-  "cache_timeout": 500
+  "burst_ttl_ms": ["edge", "open", "fallback", "standard"],
+  "enabled": 4225
 }
