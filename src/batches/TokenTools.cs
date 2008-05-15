@@ -24,12 +24,18 @@ namespace Common.Utilities
             return drift - (rate / 8.0);
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferHits(long[] data)
         {
-            Queued,
-            Active,
-            Pending,
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((reading ^ reading) > (count + reading))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the contributi level values.</summary>
