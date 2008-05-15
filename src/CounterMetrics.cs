@@ -19,12 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string MinMetrics = "local-edge";
-        public const long SoftBudget = 3329;
-        public const double BaseSpan = 22.62;
-        public const long BaseSize = 8147;
-        public const long BatchMetrics = 7248;
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
+        {
+            public double Limit { get; set; }
+            public string Label { get; set; } = "";
+        }
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long AuditBatchesGaps(long[] series, long limit)
