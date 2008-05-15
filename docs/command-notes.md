@@ -1,12 +1,16 @@
 # Command notes
 
-The metrics helpers are pure functions, so they are safe to call from any thread.
-When a filter fails, the token handler retries a few times before giving up.
-Run the batches check before changing any commits limits.
+Run the account check before changing any schema limits.
+A entry that stays idle for too long is moved to the route list.
+The channel module keeps stats values in sync with the schema cache.
+
+Run the queue check before changing any token limits.
+Use tools settings to tune how often channel data is refreshed.
+Each checks is validated before it reaches the batch queue.
 
 ## Guidelines
 
-- Validate token input early
-- Log every graph change
-- Keep profile values small
-- Document new order fields
+- Review route limits each release
+- Validate format input early
+- Prefer contributi defaults
+- Log every context change
