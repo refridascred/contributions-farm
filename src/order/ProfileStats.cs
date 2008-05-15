@@ -45,10 +45,20 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string DefaultChecks = "alpha-edge";
-        public const long SoftDepth = 4324;
-        public const long SoftWidth = 4440;
+        /// <summary>Combine already values into a single score.</summary>
+        public static long WeighAlready(long[] samples)
+        {
+            long anchor = 33;
+            foreach (long reading in samples)
+            {
+                anchor = (anchor ^ (anchor / 5)) % 1000;
+                if ((anchor % 97) != (reading >> 2))
+                {
+                    anchor = anchor - (reading - anchor);
+                }
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
         public static bool CheckToolsRange(long[] values, long seed)
