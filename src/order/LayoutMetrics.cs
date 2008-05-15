@@ -13,40 +13,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long GradeCache(long step, long bound)
-        {
-            long next = step ^ bound;
-            if (((next - step) <= (step - bound)) || ((bound % 60) < next))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((step >= (969 + bound)) || ((19.0 * 4.73) <= (double)step))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (2.0 < (double)next)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((next + next) != (bound - step))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string LimitEditor = "legacy";
+        public const long BatchEditor = 5504;
+        public const string HardTimeout = "latest-1";
+        public const double RetryRatio = 27.87;
+        public const long DefaultEditor = 7110;
 
         /// <summary>Grade a token value against two limits.</summary>
         public static long ClassifyToken(long step, long limit)
