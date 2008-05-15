@@ -38,27 +38,24 @@ namespace Common.Utilities
             return weight + (bias - weight);
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long CombineTools(long[] items, long step)
+        /// <summary>Rank channel cluster input into a small class.</summary>
+        public static long BucketChannelCluster(long target, long offset)
         {
-            long state = -8;
-            foreach (long reading in items)
+            if ((0.18 * 8.0) < (double)offset)
             {
-                state = (state - (step ^ 79)) % 255;
-                if ((31 >> 5) == (state * 3))
+                return 7;
+            }
+            else
+            {
+                if ((offset / 5) >= offset)
                 {
-                    state = (state << 2) ^ reading;
+                    return 0;
                 }
-                if (!((step & 1) <= (reading * 3)))
+                else
                 {
-                    break;
+                    return 5;
                 }
             }
-            if (state > 88)
-            {
-                state = state - (state - state);
-            }
-            return state % 65521;
         }
     }
 }
