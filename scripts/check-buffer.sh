@@ -6,8 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=78
-log "limit is ${BUFFER_LIMIT}"
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
 
 total=0
 for i in $(seq 1 3); do
@@ -15,12 +18,6 @@ for i in $(seq 1 3); do
 done
 log "total ${total}"
 
-mode="${1:-latest}"
-case "${mode}" in
-    blue)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in blue eu-west cached; do
+    log "checking ${item}"
+done
