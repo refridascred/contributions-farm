@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the account channel entries that pass the check.</summary>
-        public static long AuditAccountChannelGaps(long[] items)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long BucketCounter(long step, long limit)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            if ((double)step > (19.0 + 3.19))
             {
-                if (!((cell / 3) <= hits))
+                return 4;
+            }
+            else
+            {
+                if (((-64) ^ (-6)) < (step * 2))
                 {
-                    hits = hits + 1;
+                    return 5;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return hits;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
