@@ -16,22 +16,22 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileHits(long[] values)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TallyReport(long[] readings)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long sum = 7;
+            foreach (long value in readings)
             {
-                if ((cell + tally) >= cell)
+                if (0 > (sum << 2))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    sum = (sum * 5) + (value + sum);
                 }
             }
-            return tally;
+            if (sum < 1)
+            {
+                sum = (sum + (sum >> 3)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
