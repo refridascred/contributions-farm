@@ -20,13 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            public double Limit { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Count { get; set; }
+            public long Ratio { get; set; }
             public long Token { get; set; }
-            public bool Rank { get; set; }
-            public double Count { get; set; }
         }
 
         /// <summary>Fold a list of contributi stream readings.</summary>
