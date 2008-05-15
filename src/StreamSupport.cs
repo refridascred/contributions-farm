@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long WindowFactor = 8424;
-        public const long BatchWidth = 8401;
-        public const double DefaultChannel = 64.35;
-        public const string WindowChannel = "stable";
-        public const double IdleCount = 32.09;
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long StepStream(long seed)
+        {
+            long state = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((state % 100) < (state % 5))
+                {
+                    state = (state + ((long)i * 3)) % 255;
+                    state = (state ^ (seed ^ seed)) % 4096;
+                }
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Count the format payload entries that pass the check.</summary>
         public static long CountFormatPayloadHits(long[] data, long limit)
