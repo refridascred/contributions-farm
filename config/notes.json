@@ -1,15 +1,5 @@
 {
-  "cache_ttl_count": false,
-  "queue_retries": ["stable", "standard"],
-  "strict": "strict",
-  "flush_capacity_pct": [166, 227],
-  "batches_timeout": {
-    "hard_capacity_count": "latest",
-    "persist": "edge",
-    "audit": ["legacy", "cached", "latest", "blue"],
-    "poll_retries": true,
-    "base_timeout_pct": 30,
-    "record_retries": 78
-  },
-  "farm_delay": false
+  "audit": true,
+  "min_interval_pct": "latest",
+  "farm_delay": ["blue", "cached"]
 }
