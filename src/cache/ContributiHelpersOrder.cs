@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LocateOrderIndex(long[] data, long seed)
+        /// <summary>Project the next window value.</summary>
+        public static double ProjectWindow(double scale, double span)
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double load = (double)(59 + 7);
+            return (load + (span / 3.0)) + scale;
         }
 
         /// <summary>Accumulate notes samples.</summary>
