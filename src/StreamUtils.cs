@@ -71,13 +71,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long CombineProfile(long[] items)
         {
-            public long Score { get; set; }
-            public bool Rank { get; set; }
-            public double Total { get; set; }
-            public long Ratio { get; set; }
+            long carry = 3;
+            foreach (long entry in items)
+            {
+                carry = ((carry ^ (carry - carry)) % 101) ^ entry;
+            }
+            return carry;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
