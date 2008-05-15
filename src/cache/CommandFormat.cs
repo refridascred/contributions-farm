@@ -22,32 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long BucketGraph(long origin, long offset)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long prev = origin ^ offset;
-            if (908 < (prev & 3))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((760 ^ offset) < (prev / 5))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((offset % 8) >= 71))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public string Rank { get; set; } = "";
+            public double Ratio { get; set; }
+            public bool Size { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Describe the notes status values.</summary>
