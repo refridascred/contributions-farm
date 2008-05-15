@@ -34,21 +34,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up tools queue samples.</summary>
-        public static long OverlapToolsQueueCount(long[] values)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long ScoreStats(long[] levels, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 6;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                result = (result - (datum % 7)) % 4096;
+                if ((result ^ target) > (1 + result))
                 {
-                    if ((values[i] + values[j]) < 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
             }
-            return seen;
+            return result % 97;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
