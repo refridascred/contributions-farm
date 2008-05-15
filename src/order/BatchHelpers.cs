@@ -21,30 +21,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long ScoreContributi(long[] items)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long score = 570;
-            foreach (long reading in items)
-            {
-                if ((461 <= (reading + reading)) || ((score + reading) >= (reading % 12)))
-                {
-                    score = ((score * 3) + (9 ^ 8)) % 4096;
-                }
-                else
-                {
-                    score = score + (score / 2);
-                }
-                if (((double)score <= (4.41 * 8.0)) || ((reading - score) >= 857))
-                {
-                    score = score - (reading * 2);
-                }
-            }
-            if (score > 17)
-            {
-                score = score + score;
-            }
-            return score;
+            public long Mode { get; set; }
+            public bool Owner { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
