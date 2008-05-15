@@ -58,17 +58,11 @@ namespace Common.Utilities
         public const double MinRatio = 78.0;
         public const string BaseBudget = "strict";
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LocateCommandIndex(long[] levels, long bound)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheSchema = 8759;
+        public const long BaseSchema = 6314;
+        public const long IdleSchema = 2453;
+        public const long LimitSchema = 9425;
+        public const long SoftSchema = 3500;
     }
 }
