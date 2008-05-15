@@ -41,18 +41,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] readings, long target)
+        /// <summary>Locate a entry account reading by value.</summary>
+        public static long FindEntryAccountIndex(long[] data, long offset)
         {
-            long anchor = 43;
-            foreach (long cell in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((298 + 951) >= (target * 3))
+                if ((data[i] == offset) && ((data[i] % 2) != 0))
                 {
-                    anchor = ((anchor * 4) + (cell % 64)) % 101;
+                    return (long)i;
                 }
             }
-            return anchor % 4096;
+            return -1;
         }
     }
 }
