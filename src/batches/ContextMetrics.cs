@@ -25,11 +25,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            public double Level { get; set; }
-            public long Owner { get; set; }
+            Synced,
+            Idle,
+            Ready,
+            Closed,
+            Queued,
         }
 
         /// <summary>Describe the token level values.</summary>
