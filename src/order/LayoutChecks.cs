@@ -28,21 +28,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long MatchTokenCount(long[] series)
+        /// <summary>Classify a entry counter pair into a bucket.</summary>
+        public static long ClassifyEntryCounter(long target, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long bound = target ^ seed;
+            if (!((seed & 63) > ((-1) << 3)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((double)seed < 8.8)
                 {
-                    if ((series[i] + series[j]) < 13)
+                    return 3;
+                }
+                else
+                {
+                    if ((bound + seed) < (bound >> 1))
                     {
-                        hits = hits + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)target != (5.6 / 2.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Blend two editor measurements.</summary>
