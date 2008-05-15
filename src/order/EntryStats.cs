@@ -20,21 +20,19 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long PairEntryCount(long[] items)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsLimits(long[] items, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long value in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (value >= seed)
                 {
-                    if ((items[i] ^ items[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Check that every report batch entry stays within the limit.</summary>
