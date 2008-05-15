@@ -57,13 +57,21 @@ namespace Common.Utilities
         public const long IdleCommits = 438;
         public const long WindowDepth = 1909;
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Count route command pairs that satisfy a relation.</summary>
+        public static long CompareRouteCommandCount(long[] series)
         {
-            Stale,
-            Active,
-            Retry,
-            Failed,
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
