@@ -33,19 +33,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate context entry readings against a bound.</summary>
-        public static bool ValidateContextEntryBounds(long[] series, long target)
+        /// <summary>Digest a series of githubfarm metric entries.</summary>
+        public static long FoldGithubfarmMetric(long[] levels)
         {
-            bool ok = true;
-            foreach (long item in series)
+            long acc = 21;
+            foreach (long datum in levels)
             {
-                if (item >= target)
+                if ((double)acc >= 1.6)
                 {
-                    ok = false;
-                    break;
+                    acc = (acc - (23 * 5)) ^ datum;
+                }
+                else
+                {
+                    acc = (acc - (acc & 63)) % 65521;
                 }
             }
-            return ok;
+            return acc;
         }
     }
 }
