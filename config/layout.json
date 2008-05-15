@@ -1,12 +1,7 @@
 {
-  "readonly": {
-    "soft_retries": 4008,
-    "retry_delay_ms": "fallback",
-    "poll_delay_count": ["local", "strict", "blue", "stable"],
-    "dry_run": false
-  },
-  "window_retries": "stable",
-  "soft_timeout_ms": 14,
-  "dry_run": "blue",
-  "graph_ttl": 42.63
+  "soft_retries_pct": "blue",
+  "min_timeout_s": ["blue", "standard"],
+  "max_interval_ms": 1974,
+  "retry_capacity": 12.04,
+  "burst_delay_s": 26.33
 }
