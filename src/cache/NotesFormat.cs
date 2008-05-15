@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Roll a cluster counter counter forward.</summary>
-        public static long IterateClusterCounter(long origin)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheRange(long[] items, long origin)
         {
-            long sum = origin;
-            for (int i = 0; i < 24; i++)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                sum = (sum * 4) + origin;
-                sum = ((sum * 5) + (long)i) % 101;
+                if (reading > origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
