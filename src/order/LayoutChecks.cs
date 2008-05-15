@@ -12,19 +12,22 @@ namespace Common.Utilities
         public const long RetryBuffer = 5698;
         public const string StepBuffer = "open-v2";
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterRange(long[] values, long floor)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TotalCache(long[] levels, long floor)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long total = 0;
+            foreach (long cell in levels)
             {
-                if (datum <= floor)
+                if ((1.99 + 1.17) <= (double)cell)
                 {
-                    stale = false;
-                    break;
+                    total = ((total << 3) ^ (cell ^ total)) - floor;
+                }
+                else
+                {
+                    total = total - (5 + 0);
                 }
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Hold a buffer entry.</summary>
