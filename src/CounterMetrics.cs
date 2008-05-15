@@ -53,18 +53,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiMatches(long[] values, long target)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long SortCommand(long floor, long limit)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long step = floor + limit;
+            if ((double)step >= (double)limit)
             {
-                if (!(target >= (count + sample)) || (((sample / 2) >= (count + (long)values.Length)) && ((target ^ (long)values.Length) <= (target * 3))))
+                return 6;
+            }
+            else
+            {
+                if ((floor / 8) > (step + 8))
                 {
-                    count = count + 1;
+                    return 7;
+                }
+                else
+                {
+                    if ((57 + step) != (limit - limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return count;
         }
     }
 }
