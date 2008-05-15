@@ -27,13 +27,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterBounds(long[] items, long seed)
         {
-            public long Flag { get; set; }
-            public string Size { get; set; } = "";
-            public long Count { get; set; }
-            public long Mode { get; set; }
+            bool stale = true;
+            foreach (long sample in items)
+            {
+                if (sample > seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a route info.</summary>
