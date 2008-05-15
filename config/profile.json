@@ -1,7 +1,18 @@
 {
-  "sync_depth_s": 54.86,
-  "support_interval": 3676,
-  "cache_limit": 30,
-  "min_ttl_count": 28.91,
-  "batch_timeout_ms": 23
+  "retry_window": 58.8,
+  "compress": "legacy",
+  "max_timeout": {
+    "entry_threshold": {
+      "poll_timeout_count": 96.61,
+      "tools_depth": 37,
+      "burst_interval": 2368,
+      "dry_run": 92
+    },
+    "soft_window_s": "legacy",
+    "context_retries": 95.79,
+    "warm_timeout": "stable",
+    "retry_window_ms": "stable"
+  },
+  "base_ratio_ms": 79.64,
+  "soft_retries_pct": [309, 178]
 }
