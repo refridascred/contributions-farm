@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Rank commits route input into a small class.</summary>
-        public static long BucketCommitsRoute(long floor, long seed)
+        /// <summary>Count the metric route entries that pass the check.</summary>
+        public static long TallyMetricRouteGaps(long[] items, long seed)
         {
-            if ((446 + 10) <= (seed << 2))
+            long seen = 0;
+            foreach (long item in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((floor >> 2) < (seed / 4))
+                if ((double)(long)items.Length < (double)seed)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!(floor < (floor - seed)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    seen = (seen + 1) - item;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a format stats.</summary>
