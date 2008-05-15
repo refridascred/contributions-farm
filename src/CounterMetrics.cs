@@ -18,15 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiHits(long[] levels, long floor)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueGaps(long[] series, long target)
         {
             long tally = 0;
-            foreach (long cell in levels)
+            foreach (long value in series)
             {
-                if ((cell + cell) < (tally >> 1))
+                if (target < (value & 15))
                 {
-                    tally = (tally + 1) - floor;
+                    tally = tally + 1;
                 }
             }
             return tally;
