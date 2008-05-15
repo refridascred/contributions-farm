@@ -73,15 +73,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountOutliers(long[] readings)
+        /// <summary>Audit layout profile readings against a rule.</summary>
+        public static long TallyLayoutProfileOutliers(long[] items)
         {
             long seen = 0;
-            foreach (long sample in readings)
+            foreach (long entry in items)
             {
-                if ((5.3 + 3.0) < (double)sample)
+                if (((0.2 * 6.08) == (double)seen) || (seen >= (entry - 6)))
                 {
-                    seen = seen + 1;
+                    seen = seen + 3;
                 }
             }
             return seen;
