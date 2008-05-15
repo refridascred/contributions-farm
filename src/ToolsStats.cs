@@ -19,17 +19,15 @@ namespace Common.Utilities
         public const long MinProfile = 9970;
         public const long CacheProfile = 41;
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long SeekQueueIndex(long[] readings, long floor)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long SeriesNotes(long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = step;
+            for (int i = 0; i < 15; i++)
             {
-                if ((readings[i] >= floor) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
