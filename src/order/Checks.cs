@@ -24,22 +24,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit stats checks readings against a rule.</summary>
-        public static long AuditStatsChecksGaps(long[] items)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LocateBufferIndex(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((-7) & 1) >= (matches - matches))
+                if (items[i] <= target)
                 {
-                    matches = (matches + 2) + cell;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
