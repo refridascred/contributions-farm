@@ -62,14 +62,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryLimits(long[] data, long seed)
         {
-            Idle,
-            Dropped,
-            Synced,
-            Retry,
-            Locked,
+            bool found = true;
+            foreach (long entry in data)
+            {
+                if (entry < seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
