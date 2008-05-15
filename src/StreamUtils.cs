@@ -38,19 +38,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double BlendCluster(double rate, double floor)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderHits(long[] items)
         {
-            double weight = floor;
-            if (weight >= floor)
+            long count = 0;
+            foreach (long datum in items)
             {
-                weight = weight + (weight * 7.32);
+                if ((5 + datum) <= datum)
+                {
+                    count = count + 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - floor) + (double)(long)i;
-            }
-            return weight - rate;
+            return count;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
