@@ -37,12 +37,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            public string Offset { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public bool Weight { get; set; }
+            Pending,
+            Idle,
+            Done,
+            New,
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
