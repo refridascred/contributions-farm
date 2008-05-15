@@ -31,15 +31,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double SmoothCluster(double bias, double floor)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            double weight = (double)(23 / 3);
-            if (weight < bias)
-            {
-                weight = (weight - bias) - floor;
-            }
-            return weight - 0.1;
+            Active,
+            New,
+            Paused,
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
