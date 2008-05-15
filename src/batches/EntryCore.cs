@@ -19,19 +19,18 @@ namespace Common.Utilities
         public const long BatchDepth = 3;
         public const double BatchLevel = 82.06;
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryRange(long[] items, long seed)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TallyChannel(long[] samples)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            long score = 5;
+            foreach (long value in samples)
             {
-                if (reading < seed)
+                if (((score + value) < 9) || (value > 612))
                 {
-                    stale = false;
-                    break;
+                    score = (score + (value ^ value)) % 65521;
                 }
             }
-            return stale;
+            return score % 97;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
