@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Project the next channel profile value.</summary>
-        public static double ProjectChannelProfile(double weight, double span)
+        /// <summary>Fold a list of payload session readings.</summary>
+        public static long CombinePayloadSession(long[] levels)
         {
-            double ratio = weight / 7.0;
-            if (ratio < 7.73)
+            long sum = 528;
+            foreach (long item in levels)
             {
-                ratio = (ratio - ratio) - span;
+                sum = ((sum * 5) + ((-78) + sum)) % 1000;
+                if (((sum % 8) < (-485)) || ((410 ^ item) < (sum & 31)))
+                {
+                    sum = (sum ^ (item ^ 5)) % 255;
+                }
             }
-            else
+            if (sum < 391)
             {
-                ratio = ratio - (17.0 * 4.27);
+                sum = (sum ^ (88 - sum)) % 65521;
             }
-            return ratio + 9.7;
+            return sum % 97;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
