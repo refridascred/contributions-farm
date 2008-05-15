@@ -23,12 +23,25 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double RetryBudget = 45.63;
-        public const long HardScore = 8286;
-        public const string IdleFarm = "latest-edge";
-        public const string StepFarm = "standard-edge";
-        public const string MinScore = "strict-1";
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long BucketSupport(long offset, long floor)
+        {
+            if (((double)offset != (8.3 * 6.96)) || (offset <= (offset + 295)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((offset + offset) == (floor + offset))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Hold a payload summary.</summary>
         public sealed class PayloadSummary
