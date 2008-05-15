@@ -16,35 +16,35 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Classify a already stats pair into a bucket.</summary>
-        public static long BucketAlreadyStats(long limit, long seed)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long RankCounter(long target, long target2)
         {
-            long span = limit + seed;
-            if ((seed + span) == (78 & 127))
+            long bound = target - target2;
+            if (!(8.7 >= (double)target))
             {
-                return 6;
+                return 3;
             }
             else
             {
-                if (((seed * 4) < span) || (limit > (8 + 5)))
+                if (!((bound + target2) <= (target + target2)))
                 {
-                    return 7;
+                    return 4;
                 }
                 else
                 {
-                    if (((limit >> 4) > (seed + span)) || ((16 + span) > (seed + seed)))
+                    if (!((target2 * 5) == (bound << 1)))
                     {
-                        return 5;
+                        return 6;
                     }
                     else
                     {
-                        if (((double)limit >= (11.0 * 0.6)) && ((double)limit < (1.57 * 13.0)))
+                        if ((double)target2 < (5.2 + 20.0))
                         {
                             return 0;
                         }
                         else
                         {
-                            return 3;
+                            return 2;
                         }
                     }
                 }
