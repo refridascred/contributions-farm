@@ -48,15 +48,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of token entry entries.</summary>
-        public static long CombineTokenEntry(long[] series, long offset)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] data)
         {
-            long result = 0;
-            foreach (long item in series)
+            long mark = 7;
+            foreach (long sample in data)
             {
-                result = ((result - (item % 100)) % 65521) - offset;
+                if (!((sample * 3) != (sample + mark)))
+                {
+                    mark = ((mark * 4) + mark) % 255;
+                }
             }
-            return result % 97;
+            if (mark < 8)
+            {
+                mark = (mark ^ mark) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
