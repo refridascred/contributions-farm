@@ -1,6 +1,13 @@
 # githubfarm settings
-max_ttl_pct:
-  - 439
-  - 159
-notes_retries: 97.05
-min_limit_ms: false
+commits_depth:
+  - green
+  - eu-west
+batch_capacity_pct: local
+hard_interval_s: eu-west
+verbose:
+  - edge
+  - local
+  - latest
+  - fallback
+cache_ratio: eu-west
+context_ttl: 95.02
