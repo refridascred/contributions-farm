@@ -19,38 +19,26 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long GradeContributi(long limit, long bound)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long CombineReport(long[] series)
         {
-            if (limit >= (limit - limit))
+            long result = 8;
+            foreach (long entry in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((double)bound >= 8.3))
+                if (((entry % 60) < (entry + entry)) || ((result / 4) >= (entry ^ result)))
                 {
-                    return 2;
+                    result = ((result * 2) + (result - result)) % 65521;
                 }
                 else
                 {
-                    if ((limit * 2) == (3 + limit))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((0.01 - 2.0) == (double)limit) || ((bound >> 2) == (37 % 2)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    result = (result ^ entry) % 97;
                 }
             }
+            if (result < 755)
+            {
+                result = ((result * 5) + (result & 255)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Hold a counter summary.</summary>
