@@ -14,12 +14,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountLimits(long[] series, long offset)
         {
-            Synced,
-            Draft,
-            New,
+            bool valid = true;
+            foreach (long cell in series)
+            {
+                if (cell < offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
