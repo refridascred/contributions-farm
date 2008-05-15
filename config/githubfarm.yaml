@@ -1,8 +1,16 @@
 # githubfarm settings
-retry_retries_s: false
-min_limit_s: primary
-default_limit: 15
-counter_window:
-  - green
-  - standard
-persist: 1024
+command_window: strict
+strict: 30
+cache_delay_s: 70.93
+compress:
+  context_delay:
+    command_retries:
+      - 456
+      - 255
+      - 10
+      - 332
+    batch_size_count: green
+    verbose: 12
+  default_window_s: green
+  retry_depth_ms: primary
+  audit: 24
