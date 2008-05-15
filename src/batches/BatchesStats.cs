@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ScaleStats(double gain, double span)
         {
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
-            public bool Mode { get; set; }
+            double scale = span;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - (double)78) - (double)(long)i;
+            }
+            return scale + (gain - scale);
         }
 
         /// <summary>Fold a list of route readings.</summary>
