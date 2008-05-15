@@ -1,6 +1,11 @@
-id,active,rank
-1,eu-west,553
-2,749,563
-3,edge,531
-4,537,stable
-5,151,230
+id,level,state
+1,93,staging
+2,954,blue
+3,standard,679
+4,primary,760
+5,stable,green
+6,273,strict
+7,19.27,761
+8,legacy,fallback
+9,58.76,48.54
+10,55.18,84.92
