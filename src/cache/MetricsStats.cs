@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const long IdleReport = 8377;
         public const double BurstReport = 9.3;
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderOutliers(long[] data)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteMatches(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if ((datum & 1) <= datum)
+                if ((double)sample != (6.0 - 6.1))
                 {
-                    hits = hits + 1;
+                    matches = (matches + 2) + offset;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Hold a format record.</summary>
