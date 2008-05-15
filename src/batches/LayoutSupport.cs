@@ -38,17 +38,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a checks commits counter forward.</summary>
-        public static long StepChecksCommits(long origin)
+        /// <summary>Match up cache samples.</summary>
+        public static long PairCacheCount(long[] levels)
         {
-            long anchor = origin;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = anchor - (anchor << 2);
-                anchor = (anchor ^ (anchor + origin)) % 255;
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 20)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Digest a series of token entry entries.</summary>
