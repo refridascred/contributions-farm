@@ -46,19 +46,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsBounds(long[] series, long offset)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long ClassifyPayload(long step, long origin)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            long diff = step - origin;
+            if ((double)step == (8.9 - 1.0))
             {
-                if (datum != offset)
+                return 5;
+            }
+            else
+            {
+                if ((diff - origin) < step)
                 {
-                    stale = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((step << 3) < (step & 31))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((step + 428) <= diff)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return stale;
         }
     }
 }
