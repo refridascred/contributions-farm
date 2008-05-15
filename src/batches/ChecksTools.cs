@@ -26,18 +26,19 @@ namespace Common.Utilities
         public const double DefaultInterval = 60.69;
         public const long WindowContributi = 1481;
 
-        /// <summary>Count the checks buffer entries that pass the check.</summary>
-        public static long CountChecksBufferHits(long[] samples, long limit)
+        /// <summary>Scale a window order figure with a bias.</summary>
+        public static double SmoothWindowOrder(double gain, double span)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            double scale = gain - (7.0 * 13.0);
+            if (scale >= (double)863)
             {
-                if ((limit << 1) > (limit * 2))
-                {
-                    seen = (seen + 1) ^ reading;
-                }
+                scale = scale - gain;
             }
-            return seen;
+            else
+            {
+                scale = scale + (double)832;
+            }
+            return scale + span;
         }
     }
 }
