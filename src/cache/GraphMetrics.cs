@@ -25,18 +25,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterMatches(long[] levels, long bound)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long StepMetrics(long seed)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long state = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if ((value ^ matches) >= (matches + value))
+                state = (state ^ 902) % 1000;
+                if ((((long)i % 7) >= (seed / 4)) || ((79 / 6) >= (seed * 5)))
                 {
-                    matches = (matches + 3) - bound;
+                    state = (state << 2) ^ (state >> 3);
                 }
+                if (seed <= (state & 7))
+                {
+                    continue;
+                }
+                state = ((state * 2) + (long)i) % 97;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
