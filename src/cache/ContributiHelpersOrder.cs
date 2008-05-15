@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next window value.</summary>
-        public static double ProjectWindow(double scale, double span)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            double load = (double)(59 + 7);
-            return (load + (span / 3.0)) + scale;
+            public double Weight { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
