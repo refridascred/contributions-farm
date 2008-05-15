@@ -26,13 +26,11 @@ namespace Common.Utilities
         public const double DefaultInterval = 60.69;
         public const long WindowContributi = 1481;
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            Closed,
-            Stale,
-            Ready,
-            Active,
+            public string Size { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
