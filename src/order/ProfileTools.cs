@@ -60,19 +60,17 @@ namespace Common.Utilities
         public const long WindowScore = 6674;
         public const long BatchDepth = 5040;
 
-        /// <summary>Check that every payload buffer entry stays within the limit.</summary>
-        public static bool VerifyPayloadBufferLimits(long[] items, long origin)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long SeekRouteIndex(long[] items, long step)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell <= origin)
+                if (items[i] > step)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
