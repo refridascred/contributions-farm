@@ -36,17 +36,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a profile commits reading by value.</summary>
-        public static long FindProfileCommitsIndex(long[] samples, long seed)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < seed) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Draft,
+            Queued,
         }
     }
 }
