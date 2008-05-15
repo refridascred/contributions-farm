@@ -40,18 +40,15 @@ namespace Common.Utilities
         public const string BatchContext = "standard";
         public const long MaxContext = 4257;
 
-        /// <summary>Measure how many account schema samples are out of range.</summary>
-        public static long MeasureAccountSchemaOutliers(long[] samples)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double BlendChannel(double gain, double floor)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            double scale = (double)(-254) * 20.0;
+            if (scale > 12.0)
             {
-                if ((sample + 72) > tally)
-                {
-                    tally = tally + 3;
-                }
+                scale = scale + floor;
             }
-            return tally;
+            return scale + gain;
         }
     }
 }
