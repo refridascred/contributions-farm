@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            public double Rank { get; set; }
-            public bool Offset { get; set; }
-            public long Region { get; set; }
+            public double Offset { get; set; }
+            public bool Size { get; set; }
+            public double Score { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
