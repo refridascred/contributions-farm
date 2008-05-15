@@ -1,5 +1,10 @@
 {
-  "stream_interval": 5.64,
-  "min_size_s": 2189,
-  "min_delay_s": true
+  "sync_limit_s": {
+    "batch_delay_pct": [228, 308, 389],
+    "default_limit_ms": ["open", "green", "open"],
+    "metric_depth": true,
+    "checks_limit": false
+  },
+  "cache_ratio_ms": "local",
+  "strict": 60
 }
