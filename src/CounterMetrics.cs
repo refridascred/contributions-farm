@@ -32,20 +32,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every session buffer entry stays within the limit.</summary>
-        public static bool CheckSessionBufferBounds(long[] data, long floor)
-        {
-            bool ok = true;
-            foreach (long value in data)
-            {
-                if (value >= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BurstLevel = 0.42;
+        public const double LimitProfile = 55.36;
+        public const double BatchWidth = 94.25;
 
         /// <summary>Combine report values into a single score.</summary>
         public static long DigestReport(long[] items, long limit)
