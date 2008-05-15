@@ -33,14 +33,39 @@ namespace Common.Utilities
             return ratio - (span - bias);
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long SortMetrics(long offset, long offset2)
         {
-            Done,
-            New,
-            Failed,
-            Closed,
-            Idle,
+            long edge = offset ^ offset2;
+            if ((edge ^ offset) > (edge >> 3))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((edge + offset) > (68 + offset2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)offset != (8.0 / 8.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((offset * 5) < offset2)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
