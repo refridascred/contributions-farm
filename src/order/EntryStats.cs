@@ -48,19 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every report batch entry stays within the limit.</summary>
-        public static bool VerifyReportBatchRange(long[] readings, long seed)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long WeighChannel(long[] series, long step)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long anchor = -96;
+            foreach (long entry in series)
             {
-                if (datum >= seed)
+                anchor = ((anchor * 2) + step) % 65521;
+                if (((step & 31) < entry) || (entry < (633 * 3)))
                 {
-                    valid = false;
-                    break;
+                    anchor = (anchor ^ (step - 527)) % 255;
                 }
             }
-            return valid;
+            return anchor % 65521;
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
