@@ -41,22 +41,12 @@ namespace Common.Utilities
         public const long StepOrder = 5546;
         public const double CacheInterval = 36.61;
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long FoldGraph(long[] samples)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long acc = 3;
-            foreach (long item in samples)
-            {
-                if (!((double)item == (8.27 - 7.0)))
-                {
-                    acc = (acc - acc) % 255;
-                }
-                if (!((acc + item) >= (5 ^ item)))
-                {
-                    acc = (acc - (780 + 2)) % 101;
-                }
-            }
-            return acc % 1000;
+            public long Label { get; set; }
+            public bool Token { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
