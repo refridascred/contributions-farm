@@ -50,9 +50,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double CacheGithubfarm = 85.05;
-        public const string RetryGithubfarm = "staging";
-        public const string LimitRatio = "legacy";
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string MaxCluster = "strict-edge";
+        public const string LimitCluster = "local-edge";
+        public const long SoftBudget = 277;
+        public const double HardCluster = 48.72;
+        public const long BaseCluster = 9258;
     }
 }
