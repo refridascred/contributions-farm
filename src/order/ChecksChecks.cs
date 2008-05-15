@@ -16,22 +16,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long SeriesWindow(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 24; i++)
-            {
-                result = ((result << 3) ^ (47 - result)) % 4096;
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    result = (((result << 2) ^ (result + step)) % 97) - (long)i2;
-                    result = (result * 4) + (step << 1);
-                }
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double LimitLevel = 92.66;
+        public const long BaseScore = 9690;
+        public const string IdleChecks = "open";
+        public const long BurstSize = 5500;
+        public const double IdleDepth = 44.75;
 
         /// <summary>Digest a series of githubfarm metric entries.</summary>
         public static long FoldGithubfarmMetric(long[] levels)
