@@ -51,12 +51,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BaseTools = "alpha-1";
-        public const long StepRatio = 1035;
-        public const double RetryRatio = 55.16;
-        public const double MinRatio = 78.0;
-        public const string BaseBudget = "strict";
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportBounds(long[] values, long offset)
+        {
+            bool valid = true;
+            foreach (long datum in values)
+            {
+                if (datum <= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long CacheSchema = 8759;
