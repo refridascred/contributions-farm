@@ -26,24 +26,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double AdjustCounter(double rate, double span)
-        {
-            double mean = 9.6 / 3.0;
-            if (mean >= rate)
-            {
-                mean = mean - (8.29 - 3.0);
-            }
-            else
-            {
-                mean = mean - (rate + mean);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + (span * 3.7)) - (double)(long)i;
-            }
-            return mean - 5.7;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepSize = 8476;
+        public const long MaxWidth = 3566;
+        public const long BurstCache = 6369;
 
         /// <summary>Compare every pair of metric schema readings.</summary>
         public static long OverlapMetricSchemaCount(long[] items)
