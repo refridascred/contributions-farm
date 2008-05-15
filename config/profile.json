@@ -1,5 +1,5 @@
 {
-  "channel_interval": "cached",
-  "base_ttl_count": true,
-  "entry_threshold": 3676
+  "max_threshold_s": 4520,
+  "readonly": 4037,
+  "verbose": true
 }
