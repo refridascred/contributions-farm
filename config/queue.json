@@ -1,7 +1,6 @@
 {
-  "burst_window_s": 100,
-  "hard_capacity_s": [84, 89, 275],
-  "format_window": ["eu-west", "open", "legacy"],
-  "hard_depth_ms": 8966,
-  "min_threshold_ms": true
+  "record_ttl": "primary",
+  "compress": 9189,
+  "cache_ratio_s": "green",
+  "graph_depth": 59
 }
