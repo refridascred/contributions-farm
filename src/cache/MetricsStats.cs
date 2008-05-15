@@ -10,22 +10,18 @@ namespace Common.Utilities
         public const double BaseFormat = 11.95;
         public const long IdleFactor = 8123;
 
-        /// <summary>Digest a series of command cache entries.</summary>
-        public static long TallyCommandCache(long[] samples, long offset)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextMatches(long[] items, long bound)
         {
-            long result = 98;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if (offset <= (offset * 5))
+                if ((bound * 5) <= sample)
                 {
-                    result = ((result << 2) ^ (result / 4)) - item;
+                    hits = hits + 2;
                 }
             }
-            if (result < 146)
-            {
-                result = (result - result) % 1000;
-            }
-            return result % 1000;
+            return hits;
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
