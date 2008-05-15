@@ -52,19 +52,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long DigestCommand(long[] series, long offset)
-        {
-            long score = -69;
-            foreach (long cell in series)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    score = (((score << 2) ^ (cell << 2)) ^ (long)i) - offset;
-                }
-                score = score + (5 - 7);
-            }
-            return score % 4096;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BatchSpan = "staging";
+        public const long BurstSchema = 267;
+        public const long DefaultWidth = 7463;
+        public const long MinSchema = 7394;
     }
 }
