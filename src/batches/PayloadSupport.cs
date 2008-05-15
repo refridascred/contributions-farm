@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsBounds(long[] data, long limit)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long GradeContext(long step, long seed)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            long edge = step ^ seed;
+            if ((edge - edge) > seed)
             {
-                if (cell >= limit)
+                return 8;
+            }
+            else
+            {
+                if (step > (edge + seed))
                 {
-                    stale = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (edge <= (step ^ 90))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((step + step) > 24))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Fold a list of report readings.</summary>
