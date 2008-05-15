@@ -35,18 +35,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LookupEditorIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdlePayload = 4831;
+        public const long MaxPayload = 9651;
+        public const long BasePayload = 7868;
+        public const long CachePayload = 1810;
+        public const string StepFactor = "alpha-edge";
 
         /// <summary>Adjust a payload reading.</summary>
         public static double AdjustPayload(double bias, double span)
