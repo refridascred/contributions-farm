@@ -13,15 +13,39 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate account payload samples.</summary>
-        public static long ScoreAccountPayload(long[] samples)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long GradeCache(long step, long bound)
         {
-            long score = 21;
-            foreach (long value in samples)
+            long next = step ^ bound;
+            if (((next - step) <= (step - bound)) || ((bound % 60) < next))
             {
-                score = ((score + (45 + score)) % 4096) - value;
+                return 7;
             }
-            return score;
+            else
+            {
+                if ((step >= (969 + bound)) || ((19.0 * 4.73) <= (double)step))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (2.0 < (double)next)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((next + next) != (bound - step))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a token value against two limits.</summary>
