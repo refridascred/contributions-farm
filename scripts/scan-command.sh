@@ -6,15 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=252
-log "limit is ${COMMAND_LIMIT}"
-
-for item in standard edge; do
-    log "checking ${item}"
-done
+mode="${1:-blue}"
+case "${mode}" in
+    primary)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
 total=0
 for i in $(seq 1 12); do
-    total=$((total + i * 3))
+    total=$((total + i * 4))
 done
 log "total ${total}"
