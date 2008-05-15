@@ -1,15 +1,9 @@
 # entry settings
-checks_delay:
-  soft_interval_s: 1024
-  hard_interval_count: false
-  counter_retries: 2155
-  dry_run: cached
-  batch_window: 100
-  strict:
-    - open
-    - strict
-    - standard
-default_delay_ms: legacy
-cache_delay_count: 70.91
-audit: open
-burst_delay: 11.38
+graph_capacity: 6343
+queue_size: 76.61
+flush_interval_s:
+  - 66
+  - 97
+  - 94
+  - 182
+default_retries_ms: 500
