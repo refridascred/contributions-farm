@@ -48,21 +48,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long MatchGraphCount(long[] values)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] levels, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = -42;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (value >= (carry >> 4))
                 {
-                    if ((values[i] + values[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
+                    carry = ((carry << 2) ^ offset) % 65521;
                 }
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
