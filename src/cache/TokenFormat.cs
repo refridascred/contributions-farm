@@ -19,18 +19,24 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteMatches(long[] readings, long offset)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long GradeEntry(long seed, long floor)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            if (seed <= (floor << 1))
             {
-                if (sample < (offset ^ count))
+                return 7;
+            }
+            else
+            {
+                if ((13 * 5) >= (seed + floor))
                 {
-                    count = count + 1;
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return count;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
