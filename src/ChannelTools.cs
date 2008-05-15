@@ -30,10 +30,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardBuffer = 6257;
-        public const long BaseLevel = 9150;
-        public const long SoftSize = 6490;
-        public const long MinScore = 9264;
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long StepPayload(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                carry = carry - ((long)i + carry);
+                carry = carry - carry;
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
+        }
     }
 }
