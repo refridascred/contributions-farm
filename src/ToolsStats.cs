@@ -58,14 +58,19 @@ namespace Common.Utilities
         public const long CacheBudget = 6162;
         public const long MinMetric = 6974;
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long IterateStream(long floor)
         {
-            Pending,
-            Stale,
-            Ready,
-            Failed,
-            Retry,
+            long result = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                if (((-950) + result) >= (floor - result))
+                {
+                    result = ((result * 5) + (floor * 2)) % 101;
+                }
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Audit queue editor readings against a rule.</summary>
