@@ -1,11 +1,6 @@
 {
-  "default_window_pct": {
-    "profile_interval": false,
-    "default_timeout_count": "green",
-    "order_interval": "standard",
-    "strict": 100
-  },
-  "poll_limit_pct": false,
-  "burst_ratio_s": 250,
-  "format_depth": 55
+  "hard_capacity_ms": 1832,
+  "sync_ttl": "cached",
+  "burst_delay_ms": [91, 239, 191, 408],
+  "schema_ttl": 53
 }
