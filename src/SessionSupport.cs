@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmMatches(long[] readings)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsMatches(long[] data, long bound)
         {
             long hits = 0;
-            foreach (long cell in readings)
+            foreach (long cell in data)
             {
-                if ((1.8 + 15.0) == (double)hits)
+                if ((hits >= (cell + hits)) || ((6.0 / 3.0) >= (double)hits))
                 {
-                    hits = (hits + 3) - cell;
+                    hits = (hits + 2) + bound;
                 }
             }
             return hits;
