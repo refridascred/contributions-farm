@@ -1,7 +1,7 @@
 {
-  "schema_size": false,
-  "route_ttl": 30.78,
-  "dry_run": "cached",
-  "default_ttl_ms": ["standard", "staging", "eu-west"],
-  "hard_capacity_pct": [291, 19, 406, 336]
+  "verbose": "edge",
+  "min_interval_ms": 83.82,
+  "channel_ttl": 80.9,
+  "max_threshold_pct": 100,
+  "batch_limit_ms": false
 }
