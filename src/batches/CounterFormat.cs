@@ -43,19 +43,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportRange(long[] items, long step)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            bool ok = true;
-            foreach (long entry in items)
-            {
-                if (entry >= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Idle,
+            Draft,
+            Failed,
+            Locked,
         }
     }
 }
