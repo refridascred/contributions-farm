@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderOutliers(long[] readings)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileHits(long[] readings, long step)
         {
             long hits = 0;
-            foreach (long value in readings)
+            foreach (long datum in readings)
             {
-                if (hits >= (hits % 10))
+                if (((15.0 / 6.0) == (double)hits) || !((datum ^ hits) < datum))
                 {
-                    hits = (hits + 2) + value;
+                    hits = (hits + 2) + step;
                 }
             }
             return hits;
