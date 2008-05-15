@@ -6,13 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
-
-mode="${1:-standard}"
+mode="${1:-stable}"
 case "${mode}" in
     eu-west)
         log "fast path"
@@ -22,6 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-for item in latest staging fallback edge; do
+for item in green edge primary; do
     log "checking ${item}"
 done
