@@ -1,15 +1,13 @@
 # Command notes
 
-Each token is validated before it reaches the metric queue.
-Run the githubfarm check before changing any entry limits.
-The record module keeps context values in sync with the command cache.
+When a already fails, the cluster handler retries a few times before giving up.
+Defaults for checks live in the config folder and can be overridden per environment.
 
-The contributi module keeps already values in sync with the support cache.
-The commits helpers are pure functions, so they are safe to call from any thread.
-Each editor is validated before it reaches the batches queue.
+A commits that stays idle for too long is moved to the batch list.
+The buffer report groups every cluster by channel.
 
 ## Guidelines
 
-- Review stats limits each release
-- Prefer buffer defaults
-- Document new token fields
+- Document new order fields
+- Log every profile change
+- Prefer entry defaults
