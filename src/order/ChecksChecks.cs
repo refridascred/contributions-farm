@@ -16,22 +16,11 @@ namespace Common.Utilities
             return load + gain;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long OverlapEditorCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleEntry = 2658;
+        public const long RetryCount = 776;
+        public const string MinEntry = "legacy-v2";
+        public const string WindowScore = "fallback";
 
         /// <summary>Audit graph filter readings against a rule.</summary>
         public static long MeasureGraphFilterMatches(long[] items)
