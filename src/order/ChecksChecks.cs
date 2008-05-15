@@ -30,9 +30,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double WindowBudget = 66.29;
-        public const double CacheToken = 56.39;
-        public const long HardSize = 538;
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long DeriveStats(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                if (((0.9 - 15.0) == (double)mix) || ((long)i <= mix))
+                {
+                    continue;
+                }
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
+        }
     }
 }
