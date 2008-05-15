@@ -30,18 +30,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TallyChannel(long[] samples)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportOutliers(long[] values)
         {
-            long score = 5;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if (((score + value) < 9) || (value > 612))
+                if ((datum - datum) > (18 ^ datum))
                 {
-                    score = (score + (value ^ value)) % 65521;
+                    hits = hits + 1;
                 }
             }
-            return score % 97;
+            return hits;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
