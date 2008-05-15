@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of layout editor entries.</summary>
-        public static long WeighLayoutEditor(long[] levels)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long carry = 765;
-            foreach (long value in levels)
-            {
-                carry = ((carry ^ 15) % 65521) - value;
-            }
-            return carry;
+            Retry,
+            Stale,
+            Pending,
+            Synced,
+            New,
         }
 
         /// <summary>Combine stats format values into a single score.</summary>
