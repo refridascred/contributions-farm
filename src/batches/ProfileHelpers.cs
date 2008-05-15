@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterGaps(long[] series)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long carry = -33;
+            foreach (long datum in series)
             {
-                if ((913 % 10) > (matches << 1))
-                {
-                    matches = (matches + 3) - entry;
-                }
+                carry = ((carry << 2) ^ limit) ^ datum;
             }
-            return matches;
+            if (carry > (-935))
+            {
+                carry = (carry * 5) + (carry - carry);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
