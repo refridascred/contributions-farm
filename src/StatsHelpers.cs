@@ -18,31 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long ClassifyAlready(long target, long offset)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiMatches(long[] levels)
         {
-            if ((target * 5) <= (target + 5))
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (offset >= 129)
+                if (((double)seen < (9.64 * 2.63)) && ((seen - reading) <= (reading - reading)))
                 {
-                    return 5;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    if (((67 & 255) > target) || (target >= (offset ^ target)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a editor options.</summary>
