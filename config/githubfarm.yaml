@@ -1,28 +1,30 @@
 # githubfarm settings
-sync_size:
-  - staging
-  - legacy
-  - edge
-poll_interval: stable
-entry_timeout: 77.68
-warm_size_ms: legacy
-command_retries:
-  idle_capacity_pct: 58.17
-  max_retries: eu-west
-  batch_limit: latest
-  filter_capacity: 663
-  stream_window:
-    - 267
-    - 421
-    - 12
-    - 36
-  idle_capacity:
-    max_timeout: true
-    idle_capacity: staging
-    readonly:
-      - local
-      - blue
-      - eu-west
-      - cached
-    enabled: 57.31
-hard_ratio_pct: 3581
+tools_retries:
+  entry_limit: strict
+  sync_ratio_pct: standard
+  notes_retries:
+    - 84
+    - 248
+  strict: 1964
+  account_limit: green
+farm_size: 3303
+dry_run: 73
+enabled: 500
+format_window:
+  editor_ttl: 26.1
+  audit: 60
+  cache_delay_count: blue
+  persist:
+    - 16
+    - 21
+metrics_size:
+  min_timeout_ms: cached
+  record_ttl:
+    persist: 83
+    strict: 9
+    payload_size: 100
+    farm_capacity: 79
+  commits_delay: 61.35
+  dry_run: 60
+  queue_retries: 1024
+  min_delay_count: eu-west
