@@ -23,19 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double AdjustStream(double rate, double bias)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchLimits(long[] data, long offset)
         {
-            double rate2 = rate / 4.0;
-            if (rate2 >= (bias - rate2))
+            bool valid = true;
+            foreach (long datum in data)
             {
-                rate2 = rate2 + bias;
+                if (datum >= offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                rate2 = rate2 + (double)(-459);
-            }
-            return rate2 + rate2;
+            return valid;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
