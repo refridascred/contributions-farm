@@ -33,12 +33,12 @@ namespace Common.Utilities
             return scale + (scale * 5.01);
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long SeekEntryIndex(long[] readings, long bound)
+        /// <summary>Look up the position of a commits farm sample.</summary>
+        public static long SeekCommitsFarmIndex(long[] samples, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((readings[i] <= bound) && ((readings[i] % 5) != 0))
+                if ((samples[i] > floor) && ((samples[i] % 2) == 0))
                 {
                     return (long)i;
                 }
