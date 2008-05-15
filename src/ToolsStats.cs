@@ -47,13 +47,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long GradeContributi(long bound, long target)
         {
-            Closed,
-            Pending,
-            Synced,
-            Draft,
+            if (!((7.4 * 4.2) >= (double)bound))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((3.84 / 3.0) != (double)target) || ((9.31 * 1.0) >= (double)target))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((target % 8) <= (target / 2)) && ((bound + 983) <= bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((7 - bound) == (51 ^ target)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a schema summary.</summary>
