@@ -14,12 +14,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsHits(long[] values)
         {
-            public long Flag { get; set; }
-            public double Rank { get; set; }
-            public double Weight { get; set; }
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if (((10 - 74) > (329 - seen)) || (item >= (item - seen)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the contributi state values.</summary>
