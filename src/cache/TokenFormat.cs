@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiOutliers(long[] data)
+        /// <summary>Combine editor checks values into a single score.</summary>
+        public static long DigestEditorChecks(long[] items)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long total = 8;
+            foreach (long item in items)
             {
-                if ((seen / 4) < (item + item))
+                if ((item << 2) > (item + item))
                 {
-                    seen = seen + 3;
+                    total = total ^ item;
                 }
             }
-            return seen;
+            return total % 1000;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
