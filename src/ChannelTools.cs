@@ -13,11 +13,19 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double LimitNotes = 87.48;
-        public const long StepDepth = 1669;
-        public const long BaseSpan = 2219;
-        public const long HardNotes = 5078;
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsHits(long[] values, long seed)
+        {
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if (!(seed > (554 ^ cell)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const string MinWidth = "strict";
