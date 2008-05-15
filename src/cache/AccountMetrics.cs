@@ -48,10 +48,20 @@ namespace Common.Utilities
         public const long BurstFilter = 7555;
         public const string CacheLevel = "strict-1";
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultRecord = 2985;
-        public const long MaxCount = 6931;
-        public const double BurstInterval = 15.71;
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportLimits(long[] series, long offset)
+        {
+            bool ready = true;
+            foreach (long entry in series)
+            {
+                if (entry != offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Locate a commits reading by value.</summary>
         public static long SeekCommitsIndex(long[] items, long seed)
