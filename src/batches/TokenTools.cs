@@ -12,14 +12,14 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
+            Ready,
             Queued,
+            Pending,
+            Closed,
             Locked,
-            Active,
-            Failed,
-            Draft,
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
