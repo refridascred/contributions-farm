@@ -1,17 +1,5 @@
 {
-  "soft_capacity_s": {
-    "format_size": [373, 97, 384, 90],
-    "retry_threshold_count": true,
-    "soft_window_pct": "latest",
-    "audit": {
-      "readonly": false,
-      "max_size": true,
-      "soft_depth_ms": "cached",
-      "poll_depth_ms": true
-    },
-    "stats_timeout": 51.22
-  },
-  "max_size_ms": "edge",
-  "payload_window": "open",
-  "burst_timeout": 57.24
+  "record_window": 36.51,
+  "audit": 9017,
+  "soft_capacity": true
 }
