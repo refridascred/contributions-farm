@@ -39,18 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of notes schema entries.</summary>
-        public static long DigestNotesSchema(long[] samples, long origin)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long mix = 4;
-            foreach (long item in samples)
-            {
-                if ((item - (long)samples.Length) >= (item >> 2))
-                {
-                    mix = ((mix << 2) ^ origin) % 65521;
-                }
-            }
-            return mix;
+            public long Ratio { get; set; }
+            public bool Offset { get; set; }
+            public double Label { get; set; }
         }
     }
 }
