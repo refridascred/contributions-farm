@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] items, long step)
         {
-            Paused,
-            Done,
-            Synced,
-            Dropped,
+            long anchor = 77;
+            foreach (long entry in items)
+            {
+                anchor = ((anchor - (step ^ (long)items.Length)) % 65521) + entry;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
