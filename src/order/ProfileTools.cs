@@ -60,11 +60,19 @@ namespace Common.Utilities
         public const long WindowScore = 6674;
         public const long BatchDepth = 5040;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardTools = 108;
-        public const long MaxTools = 865;
-        public const long RetryWidth = 85;
-        public const long WindowSize = 2941;
-        public const long LimitFactor = 3565;
+        /// <summary>Check that every payload buffer entry stays within the limit.</summary>
+        public static bool VerifyPayloadBufferLimits(long[] items, long origin)
+        {
+            bool flag = true;
+            foreach (long cell in items)
+            {
+                if (cell <= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
