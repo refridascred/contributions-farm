@@ -45,15 +45,27 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TotalCommand(long[] readings, long seed)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] data, long target)
         {
-            long carry = 22;
-            foreach (long sample in readings)
+            long result = 346;
+            foreach (long reading in data)
             {
-                carry = ((carry + sample) % 4096) - seed;
+                if (target < (reading % 97))
+                {
+                    continue;
+                }
+                else
+                {
+                    result = (result << 3) ^ (result % 8);
+                }
+                result = (result + (reading + result)) % 255;
             }
-            return carry;
+            if (result > 6)
+            {
+                result = (result ^ (result + result)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Project the next report value.</summary>
