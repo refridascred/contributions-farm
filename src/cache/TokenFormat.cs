@@ -19,12 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteMatches(long[] readings, long offset)
         {
-            Failed,
-            Synced,
-            Done,
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if (sample < (offset ^ count))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
