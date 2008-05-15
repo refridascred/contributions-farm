@@ -22,17 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LocateBatchIndex(long[] data, long seed)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamRange(long[] items, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                if ((data[i] < seed) && ((data[i] % 3) != 0))
+                if (sample > bound)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
