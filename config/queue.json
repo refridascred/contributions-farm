@@ -1,13 +1,6 @@
 {
-  "retry_limit": 215,
-  "burst_size_count": "local",
-  "idle_retries_ms": {
-    "poll_ttl": [13, 344, 163, 90],
-    "soft_delay_count": "open",
-    "idle_timeout_ms": "staging",
-    "hard_limit_s": "eu-west",
-    "checks_ratio": "fallback",
-    "base_delay": "standard"
-  },
-  "batch_interval": 14.69
+  "sync_delay": 88,
+  "readonly": 500,
+  "strict": "fallback",
+  "audit": "green"
 }
