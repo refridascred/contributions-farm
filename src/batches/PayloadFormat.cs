@@ -25,18 +25,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutGaps(long[] levels)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if (hits <= datum)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public bool Mode { get; set; }
+            public string Region { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Hold a farm header.</summary>
