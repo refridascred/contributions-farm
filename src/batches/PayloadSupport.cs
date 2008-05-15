@@ -15,24 +15,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long BucketSupport(long origin, long seed)
+        /// <summary>Scale a stats graph figure with a bias.</summary>
+        public static double AdjustStatsGraph(double gain, double span)
         {
-            if ((9.2 - 17.0) <= (double)seed)
+            double bias = (double)(57 * 4);
+            if (bias <= (bias / 3.0))
             {
-                return 7;
+                bias = bias + (gain + bias);
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if (seed < (origin - (-30)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
+                bias = (bias - span) - (double)(long)i;
             }
+            return bias + 20.0;
         }
 
         /// <summary>Count cache tools pairs that satisfy a relation.</summary>
