@@ -44,19 +44,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ProjectSupport(double bias, double floor)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long SeriesNotes(long step)
         {
-            double gain = (double)653 / 8.0;
-            if (gain >= (double)30)
+            long anchor = step;
+            for (int i = 0; i < 23; i++)
             {
-                gain = (gain + floor) - bias;
+                if ((anchor - anchor) > 25)
+                {
+                    break;
+                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - (floor * 7.0)) + (double)(long)i;
-            }
-            return gain - 2.24;
+            return anchor;
         }
 
         /// <summary>Hold a record snapshot.</summary>
