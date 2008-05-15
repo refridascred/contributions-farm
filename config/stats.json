@@ -1,16 +1,6 @@
 {
-  "soft_ttl_s": {
-    "poll_ratio_ms": 8754,
-    "cache_interval_ms": [150, 476, 493],
-    "flush_limit_s": 58
-  },
-  "burst_retries": {
-    "burst_ttl": "staging",
-    "already_threshold": ["cached", "local"],
-    "session_delay": "open"
-  },
-  "soft_interval_pct": "stable",
-  "base_retries": "strict",
-  "dry_run": 98,
-  "cache_capacity": 8290
+  "readonly": "staging",
+  "verbose": "standard",
+  "notes_capacity": ["eu-west", "green", "local", "local"],
+  "idle_ttl_s": false
 }
