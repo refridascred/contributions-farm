@@ -20,25 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long SortToken(long step, long origin)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long edge = step + origin;
-            if (((6.7 - 8.9) > (double)origin) && (origin > (edge + step)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((step + origin) == (step >> 4))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public string Ratio { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Token { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
