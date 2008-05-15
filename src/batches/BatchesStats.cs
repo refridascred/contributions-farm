@@ -18,11 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseTimeout = 2643;
-        public const double MinRatio = 12.65;
-        public const long StepBudget = 5452;
-        public const long WindowCache = 3374;
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long StepQueue(long limit)
+        {
+            long anchor = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Blend two tools measurements.</summary>
         public static double AdjustTools(double ratio, double bias)
