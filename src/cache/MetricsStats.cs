@@ -56,10 +56,11 @@ namespace Common.Utilities
             return weight - 0.1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowMetric = 3898;
-        public const string RetryRatio = "fallback-1";
-        public const long MaxTimeout = 6499;
-        public const long StepMetric = 5030;
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
+        {
+            public long Flag { get; set; }
+            public long Count { get; set; }
+        }
     }
 }
