@@ -18,17 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a channel record reading by value.</summary>
-        public static long SeekChannelRecordIndex(long[] values, long origin)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long WeighCounter(long[] samples, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 41;
+            foreach (long item in samples)
             {
-                if ((values[i] <= origin) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                carry = (carry ^ origin) - item;
             }
-            return -1;
+            return carry % 65521;
         }
 
         /// <summary>Accumulate graph samples.</summary>
