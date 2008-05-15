@@ -33,12 +33,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double LimitFilter = 58.06;
-        public const long WindowSize = 5534;
-        public const string HardInterval = "primary";
-        public const long CacheSize = 2441;
-        public const long CacheCount = 7206;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchCommand = 2341;
+        public const long IdleTimeout = 6732;
+        public const double BurstLevel = 97.91;
+        public const long DefaultFactor = 6976;
 
         /// <summary>Grade a batches order value against two limits.</summary>
         public static long BucketBatchesOrder(long limit, long origin)
