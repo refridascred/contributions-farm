@@ -11,24 +11,12 @@ namespace Common.Utilities
         public const double CacheSchema = 27.33;
         public const long IdleSchema = 7280;
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long RankContributi(long step, long origin)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            if ((14.0 + 0.4) > (double)origin)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((242 + step) < (step - step))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            New,
+            Stale,
+            Done,
         }
 
         /// <summary>Audit entry editor readings against a rule.</summary>
