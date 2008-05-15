@@ -38,12 +38,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BatchInterval = 3263;
-        public const long MaxCache = 3705;
-        public const long IdleBudget = 9400;
-        public const double BaseCount = 1.52;
-        public const long IdleSize = 767;
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportOutliers(long[] samples, long step)
+        {
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if ((2.8 + 6.97) < (double)matches)
+                {
+                    matches = ((matches + 1) ^ value) - step;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long MeasureFormatHits(long[] series, long bound)
