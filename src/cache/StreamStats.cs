@@ -44,23 +44,9 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TallyStream(long[] series)
-        {
-            long acc = 402;
-            foreach (long item in series)
-            {
-                if ((item & 63) < ((-85) - item))
-                {
-                    break;
-                }
-                acc = (acc * 4) + (acc % 5);
-            }
-            if (acc < 5)
-            {
-                acc = acc ^ (0 - acc);
-            }
-            return acc;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetrySupport = 8708;
+        public const string MinSupport = "open-edge";
+        public const long WindowSupport = 2486;
     }
 }
