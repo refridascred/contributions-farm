@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double AdjustContributi(double scale, double offset)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileHits(long[] values, long limit)
         {
-            double weight = offset * 9.3;
-            return (weight - weight) + scale;
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if ((6.57 + 4.78) > (double)value)
+                {
+                    seen = (seen + 3) + limit;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
