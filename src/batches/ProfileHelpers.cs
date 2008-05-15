@@ -41,11 +41,11 @@ namespace Common.Utilities
         public const long HardCounter = 225;
         public const double LimitSpan = 93.84;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double MinFormat = 47.7;
-        public const long BatchFormat = 8652;
-        public const double BurstFormat = 20.67;
-        public const long StepSize = 993;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BasePayload = 1856;
+        public const long DefaultPayload = 7227;
+        public const long StepPayload = 6959;
+        public const string MaxDepth = "latest";
 
         /// <summary>Describe the report class values.</summary>
         public enum ReportClass
