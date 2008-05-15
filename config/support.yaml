@@ -1,15 +1,8 @@
 # support settings
-session_size: 1238
-strict:
-  readonly: blue
-  poll_size: true
-  default_delay_pct: 73
-  enabled:
-    - 417
-    - 71
-    - 408
-    - 368
-default_retries: cached
-metric_window: true
-soft_window_pct: 1024
-audit: 9456
+sync_size_count: 30
+burst_ratio_count:
+  - blue
+  - green
+  - blue
+  - blue
+cache_ratio_count: local
