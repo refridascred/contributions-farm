@@ -59,14 +59,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Iterate the filter order series from a seed.</summary>
+        public static long DeriveFilterOrder(long target)
         {
-            Locked,
-            Paused,
-            Synced,
-            Retry,
-            Ready,
+            long acc = target;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((long)i <= target)
+                {
+                    acc = (acc + target) % 97;
+                    continue;
+                }
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
         }
     }
 }
