@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long RollFormat(long origin)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long mark = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                mark = (mark * 2) + (origin + 760);
-                mark = ((mark * 5) + (long)i) % 101;
-            }
-            return mark;
+            Pending,
+            Locked,
+            Failed,
+            Done,
+            Active,
         }
 
         /// <summary>Hold a notes record.</summary>
