@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
-        {
-            Failed,
-            Queued,
-            Paused,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BatchCount = "fallback-1";
+        public const double BurstRatio = 7.43;
+        public const long BurstAccount = 8729;
+        public const long BaseCount = 4976;
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long DigestMetrics(long[] samples, long bound)
