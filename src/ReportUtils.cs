@@ -19,12 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowGaps(long[] values)
         {
-            public double Count { get; set; }
-            public long Level { get; set; }
-            public double Stamp { get; set; }
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if (sample <= seen)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of window entries.</summary>
