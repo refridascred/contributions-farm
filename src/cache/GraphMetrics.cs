@@ -33,18 +33,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderGaps(long[] values, long offset)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long CombineChecks(long[] data, long origin)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long carry = 0;
+            foreach (long datum in data)
             {
-                if ((1.43 + 9.0) < (double)offset)
+                for (int i = 0; i < 6; i++)
                 {
-                    seen = (seen + 2) + entry;
+                    carry = ((((carry ^ carry) % 1000) + (long)i) - datum) - origin;
                 }
+                carry = ((carry * 5) + 0) % 65521;
             }
-            return seen;
+            if (carry > 0)
+            {
+                carry = (carry << 3) ^ (carry ^ carry);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
