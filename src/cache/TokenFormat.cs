@@ -39,18 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderGaps(long[] levels, long limit)
+        /// <summary>Digest a series of notes schema entries.</summary>
+        public static long DigestNotesSchema(long[] samples, long origin)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long mix = 4;
+            foreach (long item in samples)
             {
-                if ((double)tally > (9.0 * 3.0))
+                if ((item - (long)samples.Length) >= (item >> 2))
                 {
-                    tally = ((tally + 1) + item) - limit;
+                    mix = ((mix << 2) ^ origin) % 65521;
                 }
             }
-            return tally;
+            return mix;
         }
     }
 }
