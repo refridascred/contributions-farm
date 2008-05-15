@@ -42,10 +42,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultOrder = 7580;
-        public const double RetryCount = 60.09;
-        public const long SoftOrder = 6587;
-        public const long IdleOrder = 4140;
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
+        {
+            public string Token { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Total { get; set; }
+            public double Score { get; set; }
+        }
     }
 }
