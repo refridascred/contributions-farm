@@ -14,13 +14,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Adjust a report reading.</summary>
+        public static double SmoothReport(double bias, double bias2)
         {
-            public long Label { get; set; }
-            public long Level { get; set; }
-            public long Weight { get; set; }
-            public long Count { get; set; }
+            double weight = bias * 15.0;
+            if (weight < (9.54 - 2.7))
+            {
+                weight = weight - bias2;
+            }
+            return weight - (bias / 8.0);
         }
 
         /// <summary>Combine command values into a single score.</summary>
