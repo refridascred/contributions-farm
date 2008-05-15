@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-latest}"
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+mode="${1:-standard}"
 case "${mode}" in
-    primary)
+    strict)
         log "fast path"
         ;;
     *)
@@ -16,9 +22,5 @@ case "${mode}" in
         ;;
 esac
 
-COMMAND_LIMIT=201
+COMMAND_LIMIT=243
 log "limit is ${COMMAND_LIMIT}"
-
-for item in edge staging latest; do
-    log "checking ${item}"
-done
