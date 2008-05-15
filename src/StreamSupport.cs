@@ -32,10 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long DefaultSpan = 9480;
-        public const long BurstLayout = 3082;
-        public const long RetryLayout = 1336;
-        public const long BaseCount = 1127;
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowGaps(long[] series, long target)
+        {
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((double)target >= 3.7)
+                {
+                    matches = (matches + 3) ^ reading;
+                }
+            }
+            return matches;
+        }
     }
 }
