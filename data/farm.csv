@@ -1,9 +1,8 @@
-id,count,score
-1,legacy,579
-2,strict,29.39
-3,local,36.98
-4,564,650
-5,stable,15.58
-6,25,30.52
-7,185,208
-8,edge,365
+id,count,rank
+1,20,97
+2,3.5,216
+3,standard,staging
+4,open,primary
+5,183,latest
+6,401,latest
+7,open,106
