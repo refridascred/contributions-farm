@@ -62,26 +62,9 @@ namespace Common.Utilities
         public const string StepCount = "staging-1";
         public const string MaxWidth = "standard-v2";
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long ScoreEditor(long[] data)
-        {
-            long mix = 3;
-            foreach (long datum in data)
-            {
-                if (76 <= (datum / 3))
-                {
-                    mix = mix + (datum & 63);
-                }
-                else
-                {
-                    mix = (mix + (mix + datum)) % 97;
-                }
-            }
-            if (mix < 27)
-            {
-                mix = (mix * 4) + (mix << 2);
-            }
-            return mix;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double IdleStats = 29.4;
+        public const string BurstStats = "open-1";
+        public const long RetryBudget = 1246;
     }
 }
