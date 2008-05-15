@@ -18,32 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long SortSchema(long floor, long origin)
+        /// <summary>Roll a payload format counter forward.</summary>
+        public static long StepPayloadFormat(long bound)
         {
-            long edge = floor ^ origin;
-            if ((double)edge <= (double)(-27))
+            long carry = bound;
+            for (int i = 0; i < 20; i++)
             {
-                return 3;
+                carry = carry - (carry * 4);
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if (1.5 >= (double)origin)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((floor ^ origin) < (origin * 4)) || ((66 >> 2) < floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
