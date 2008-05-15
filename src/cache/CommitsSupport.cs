@@ -24,18 +24,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LocateCounterIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheCount = 1614;
+        public const double BaseRatio = 63.83;
+        public const long StepEntry = 5225;
+        public const string MinFactor = "cached";
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long TallyTokenHits(long[] levels)
