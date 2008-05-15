@@ -15,17 +15,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the notes route series from a seed.</summary>
-        public static long RollNotesRoute(long floor)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsBounds(long[] series, long origin)
         {
-            long mix = floor;
-            for (int i = 0; i < 6; i++)
+            bool found = true;
+            foreach (long datum in series)
             {
-                mix = mix + mix;
-                mix = mix ^ (long)i;
-                mix = ((mix * 3) + (long)i) % 1000;
+                if (datum < origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Project the next metrics value.</summary>
