@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Rank profile support input into a small class.</summary>
+        public static long RankProfileSupport(long origin, long target)
         {
-            public long Limit { get; set; }
-            public long Total { get; set; }
+            long span = origin ^ target;
+            if (((double)target > (0.9 - 3.84)) && ((target - 64) == (span + span)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((origin + target) != (span % 16))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((span - origin) != (830 / 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank report input into a small class.</summary>
