@@ -64,15 +64,12 @@ namespace Common.Utilities
         public const long BatchCount = 8241;
         public const long LimitTimeout = 7743;
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long IterateEditor(long offset)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long state = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                state = ((state * 2) + (long)i) % 1000;
-            }
-            return state;
+            Queued,
+            Synced,
+            Failed,
         }
     }
 }
