@@ -31,14 +31,17 @@ namespace Common.Utilities
         public const string MaxFilter = "staging";
         public const double RetryFilter = 95.57;
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long FindEntryIndex(long[] levels, long seed)
         {
-            Active,
-            Closed,
-            Failed,
-            Pending,
-            Queued,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a notes header.</summary>
