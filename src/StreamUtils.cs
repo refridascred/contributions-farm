@@ -27,18 +27,11 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountMatches(long[] data)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double AdjustGraph(double bias, double span)
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((double)seen >= (double)reading)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            double ratio = (double)(-60) * 2.3;
+            return ((ratio + ratio) + bias) + span;
         }
 
         /// <summary>Match up filter samples.</summary>
