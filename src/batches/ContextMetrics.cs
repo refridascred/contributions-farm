@@ -60,11 +60,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long WeighBatch(long[] values, long target)
         {
-            public string Total { get; set; } = "";
-            public bool Rank { get; set; }
+            long anchor = 4;
+            foreach (long cell in values)
+            {
+                if (cell < (target << 3))
+                {
+                    anchor = (anchor + (target - target)) % 97;
+                }
+            }
+            if (anchor > 214)
+            {
+                anchor = anchor - (anchor << 1);
+            }
+            return anchor;
         }
     }
 }
