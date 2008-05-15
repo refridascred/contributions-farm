@@ -59,18 +59,22 @@ namespace Common.Utilities
             return ratio - 8.7;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaHits(long[] readings, long origin)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long FoldContext(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long anchor = 788;
+            foreach (long sample in readings)
             {
-                if ((matches % 60) > 7)
+                if (((anchor << 2) <= ((long)readings.Length + 8)) && ((8.7 / 8.0) != (double)anchor))
                 {
-                    matches = ((matches + 3) ^ datum) + origin;
+                    anchor = (((anchor * 5) + (anchor % 64)) % 255) + sample;
                 }
             }
-            return matches;
+            if (anchor < 517)
+            {
+                anchor = anchor + (bound ^ 472);
+            }
+            return anchor;
         }
     }
 }
