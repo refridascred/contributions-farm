@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the counter filter entries that pass the check.</summary>
-        public static long TallyCounterFilterMatches(long[] values)
-        {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if ((matches / 6) == (matches * 3))
-                {
-                    matches = (matches + 3) - datum;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string DefaultSpan = "open-v2";
+        public const double HardLevel = 3.32;
+        public const double LimitScore = 62.91;
 
         /// <summary>Validate cache readings against a bound.</summary>
         public static bool VerifyCacheLimits(long[] items, long floor)
