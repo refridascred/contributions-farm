@@ -51,11 +51,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string LimitAlready = "open";
-        public const long MinAlready = 1204;
-        public const double StepLevel = 57.92;
-        public const long RetryInterval = 4135;
-        public const long RetryAlready = 346;
+        /// <summary>Rank route input into a small class.</summary>
+        public static long GradeRoute(long origin, long offset)
+        {
+            if (origin >= (2 * 4))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((origin % 100) == (origin + 4))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
     }
 }
