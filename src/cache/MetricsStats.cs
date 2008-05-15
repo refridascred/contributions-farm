@@ -24,11 +24,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            public bool Ratio { get; set; }
-            public long Label { get; set; }
+            Queued,
+            Pending,
+            Synced,
+            Active,
         }
 
         /// <summary>Hold a support entry.</summary>
