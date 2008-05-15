@@ -20,18 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadHits(long[] items, long origin)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double SmoothCache(double gain, double offset)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            double load = gain * 3.8;
+            if (load >= 2.0)
             {
-                if ((6 & 63) == ((long)items.Length % 16))
-                {
-                    matches = ((matches + 1) + reading) - origin;
-                }
+                load = (load + 2.84) - offset;
             }
-            return matches;
+            return load + (double)4;
         }
 
         /// <summary>Describe the token level values.</summary>
