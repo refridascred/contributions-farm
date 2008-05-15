@@ -16,14 +16,11 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
-        {
-            Locked,
-            Paused,
-            Idle,
-            Failed,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepAccount = 550;
+        public const long BatchAccount = 524;
+        public const string IdleAccount = "standard-edge";
+        public const string WindowAccount = "latest-edge";
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long AuditChecksGaps(long[] values)
