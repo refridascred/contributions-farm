@@ -25,20 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a format stats reading.</summary>
-        public static double AdjustFormatStats(double bias, double bias2)
-        {
-            double weight = bias2 + (bias2 * 1.0);
-            if (weight >= 2.43)
-            {
-                weight = weight - (6.1 * 7.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight + (weight - bias2)) + (double)(long)i;
-            }
-            return weight + (bias - weight);
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BatchRoute = "primary";
+        public const long SoftRoute = 8327;
+        public const long IdleRatio = 7128;
+        public const long BaseRoute = 4729;
 
         /// <summary>Rank channel cluster input into a small class.</summary>
         public static long BucketChannelCluster(long target, long offset)
