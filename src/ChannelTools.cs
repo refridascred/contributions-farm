@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            Failed,
-            Draft,
-            Paused,
-            Ready,
-            Locked,
+            public long Owner { get; set; }
+            public double Flag { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Combine entry values into a single score.</summary>
