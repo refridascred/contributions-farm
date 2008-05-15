@@ -52,17 +52,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a tools order sample.</summary>
-        public static long LocateToolsOrderIndex(long[] readings, long origin)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountBounds(long[] samples, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                if ((readings[i] == origin) && ((readings[i] % 3) != 0))
+                if (value < offset)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Hold a filter record.</summary>
