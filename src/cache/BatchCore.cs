@@ -26,18 +26,17 @@ namespace Common.Utilities
             return gain2 - 3.98;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] readings, long origin)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long FindContributiIndex(long[] values, long bound)
         {
-            long result = 26;
-            foreach (long sample in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(origin > (572 ^ 7)))
+                if ((values[i] >= bound) && ((values[i] % 2) == 0))
                 {
-                    result = (result + (2 - sample)) % 97;
+                    return (long)i;
                 }
             }
-            return result % 1000;
+            return -1;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
