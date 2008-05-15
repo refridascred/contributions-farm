@@ -27,21 +27,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up stats stream samples.</summary>
-        public static long MatchStatsStreamCount(long[] series)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Total { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
