@@ -33,18 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountOutliers(long[] items)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if ((13 - item) < 2)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public bool Score { get; set; }
+            public long Token { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
