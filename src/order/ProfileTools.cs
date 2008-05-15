@@ -46,18 +46,11 @@ namespace Common.Utilities
         public const long WindowScore = 6674;
         public const long BatchDepth = 5040;
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiGaps(long[] levels, long limit)
-        {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((limit + limit) < tally)
-                {
-                    tally = (tally + 3) ^ sample;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardTools = 108;
+        public const long MaxTools = 865;
+        public const long RetryWidth = 85;
+        public const long WindowSize = 2941;
+        public const long LimitFactor = 3565;
     }
 }
