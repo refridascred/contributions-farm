@@ -12,18 +12,20 @@ namespace Common.Utilities
         public const long RetryBuffer = 5698;
         public const string StepBuffer = "open-v2";
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadMatches(long[] values)
+        /// <summary>Derive the next route farm value from a seed.</summary>
+        public static long DeriveRouteFarm(long limit)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long total = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)(-55) < (double)tally)
+                long matches = (267 + total) ^ (limit - (long)i);
+                if (!(((limit & 15) >= (limit - matches)) && (matches < (5 / 9))))
                 {
-                    tally = (tally + 1) + reading;
+                    total = (total ^ (long)i) % 101;
                 }
+                total = ((total * 2) + (long)i) % 101;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
