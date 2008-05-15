@@ -30,21 +30,15 @@ namespace Common.Utilities
             return ratio + (span + ratio);
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long OverlapContributiCount(long[] readings)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long StepBatch(long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return seen;
+            return mark;
         }
     }
 }
