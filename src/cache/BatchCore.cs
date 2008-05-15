@@ -52,19 +52,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long FoldPayload(long[] data, long target)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteOutliers(long[] items)
         {
-            long result = 629;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                result = ((result * 3) + datum) % 255;
+                if ((3.83 / 3.0) > (4.03 - 1.89))
+                {
+                    matches = (matches + 1) + sample;
+                }
             }
-            if (result < 64)
-            {
-                result = (result + (2 - target)) % 4096;
-            }
-            return result;
+            return matches;
         }
     }
 }
