@@ -22,13 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Accumulate notes samples.</summary>
+        public static long FoldNotes(long[] series, long offset)
         {
-            Dropped,
-            Failed,
-            New,
-            Paused,
+            long state = -68;
+            foreach (long cell in series)
+            {
+                if (offset < 29)
+                {
+                    state = ((state - (offset & 127)) % 101) - cell;
+                }
+            }
+            if (state > 762)
+            {
+                state = (state * 3) + (offset % 97);
+            }
+            return state % 4096;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
