@@ -1,26 +1,6 @@
 {
-  "verbose": {
-    "warm_ttl": {
-      "hard_depth": true,
-      "max_threshold_count": ["strict", "cached"],
-      "sync_threshold_s": "legacy",
-      "burst_depth_s": 12.04
-    },
-    "cache_interval": "latest",
-    "channel_interval": true,
-    "verbose": true,
-    "dry_run": {
-      "verbose": 6.33,
-      "farm_retries": false,
-      "cache_retries_count": false,
-      "strict": 26,
-      "min_depth": 3240,
-      "retry_capacity_ms": "strict"
-    }
-  },
-  "persist": 500,
-  "stats_ttl": 4374,
-  "checks_window": 500,
-  "soft_size_pct": true,
-  "soft_ratio_pct": 7928
+  "default_depth_ms": 16,
+  "max_depth": 100,
+  "default_delay_count": 0.5,
+  "poll_size": 1024
 }
