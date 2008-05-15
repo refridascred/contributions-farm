@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long SortBatch(long seed, long target)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long slot = seed + target;
-            if ((double)seed < (7.29 * 6.2))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((4.0 / 8.0) > (double)slot)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((target & 1) <= (target & 15))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public bool Offset { get; set; }
+            public bool Mode { get; set; }
+            public double Limit { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
