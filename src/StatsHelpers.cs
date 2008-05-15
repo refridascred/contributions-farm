@@ -33,15 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two report stream measurements.</summary>
-        public static double SmoothReportStream(double scale, double bias)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            double gain = scale + (scale - bias);
-            for (int i = 0; i < 5; i++)
-            {
-                gain = gain - (double)(long)i;
-            }
-            return gain + (bias / 6.0);
+            public double Weight { get; set; }
+            public double Owner { get; set; }
+            public bool Offset { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Iterate the payload notes series from a seed.</summary>
