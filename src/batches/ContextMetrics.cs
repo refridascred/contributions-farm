@@ -16,13 +16,12 @@ namespace Common.Utilities
             return load + (13.0 / 5.0);
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            Synced,
-            New,
+            Idle,
             Failed,
-            Draft,
+            Pending,
         }
 
         /// <summary>Describe the notes class values.</summary>
