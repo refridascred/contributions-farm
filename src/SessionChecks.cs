@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksMatches(long[] levels, long offset)
         {
-            Active,
-            Stale,
-            Closed,
-            New,
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((((entry + entry) > (offset >> 3)) || ((9.9 + 4.4) < (double)offset)) && ((5 + 2) == (entry * 3)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
