@@ -13,19 +13,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowRange(long[] items, long seed)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double AdjustStream(double rate, double bias)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            double rate2 = rate / 4.0;
+            if (rate2 >= (bias - rate2))
             {
-                if (sample >= seed)
-                {
-                    valid = false;
-                    break;
-                }
+                rate2 = rate2 + bias;
             }
-            return valid;
+            else
+            {
+                rate2 = rate2 + (double)(-459);
+            }
+            return rate2 + rate2;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
