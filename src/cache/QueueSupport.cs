@@ -14,15 +14,31 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double SmoothReport(double bias, double bias2)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long SortCommand(long offset, long bound)
         {
-            double weight = bias * 15.0;
-            if (weight < (9.54 - 2.7))
+            if ((bound ^ bound) == (59 ^ 17))
             {
-                weight = weight - bias2;
+                return 7;
             }
-            return weight - (bias / 8.0);
+            else
+            {
+                if ((bound << 2) >= (offset + offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((420 / 7) >= offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine command values into a single score.</summary>
