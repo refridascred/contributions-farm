@@ -1,11 +1,8 @@
 # support settings
-verbose: 37.69
-strict: local
-cache_size_pct: 21.78
-base_timeout: true
-sync_delay_s:
-  strict:
-    - blue
-    - edge
-  checks_ttl: 54
-  warm_ttl: 9904
+channel_depth: green
+hard_capacity_s: 48.62
+payload_capacity:
+  - 301
+  - 13
+  - 42
+  - 385
