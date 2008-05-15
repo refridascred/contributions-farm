@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long RollFormat(long origin)
         {
-            public double Level { get; set; }
-            public double Flag { get; set; }
+            long mark = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                mark = (mark * 2) + (origin + 760);
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Hold a notes record.</summary>
