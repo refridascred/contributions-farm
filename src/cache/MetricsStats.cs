@@ -39,18 +39,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiOutliers(long[] items, long bound)
+        /// <summary>Locate a editor queue reading by value.</summary>
+        public static long LocateEditorQueueIndex(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long item in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((tally / 9) >= 640)
+                if (samples[i] > bound)
                 {
-                    tally = ((tally + 2) ^ item) + bound;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
