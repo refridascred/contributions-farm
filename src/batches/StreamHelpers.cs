@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Audit window tools readings against a rule.</summary>
+        public static long TallyWindowToolsOutliers(long[] levels)
         {
-            Idle,
-            Failed,
-            Retry,
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((hits + 32) <= (hits - hits))
+                {
+                    hits = (hits + 1) + entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
