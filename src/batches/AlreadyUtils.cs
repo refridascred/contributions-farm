@@ -16,24 +16,12 @@ namespace Common.Utilities
             return ratio - gain;
         }
 
-        /// <summary>Iterate the graph already series from a seed.</summary>
-        public static long RollGraphAlready(long step)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long mark = step;
-            for (int i = 0; i < 6; i++)
-            {
-                long edge = mark ^ ((long)i - mark);
-                if ((step - edge) <= (mark + step))
-                {
-                    mark = ((mark << 2) ^ (step + 887)) % 1000;
-                }
-                else
-                {
-                    edge = edge - (edge & 3);
-                }
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            Synced,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Validate format readings against a bound.</summary>
