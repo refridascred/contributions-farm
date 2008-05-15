@@ -30,22 +30,19 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TotalFarm(long[] values, long origin)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ProjectContributi(double scale, double offset)
         {
-            long mix = 9;
-            foreach (long entry in values)
+            double weight = offset;
+            if (weight < (scale / 6.0))
             {
-                if ((double)origin != (5.0 * 6.75))
-                {
-                    mix = (mix * 4) + (origin + entry);
-                }
+                weight = weight - (2.3 + scale);
             }
-            if (mix > 54)
+            else
             {
-                mix = ((mix * 5) + (mix - mix)) % 1000;
+                weight = weight + (offset * 16.0);
             }
-            return mix % 4096;
+            return weight + (double)73;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
