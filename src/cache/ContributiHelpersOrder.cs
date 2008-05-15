@@ -16,22 +16,39 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TallyReport(long[] readings)
+        /// <summary>Classify a already stats pair into a bucket.</summary>
+        public static long BucketAlreadyStats(long limit, long seed)
         {
-            long sum = 7;
-            foreach (long value in readings)
+            long span = limit + seed;
+            if ((seed + span) == (78 & 127))
             {
-                if (0 > (sum << 2))
+                return 6;
+            }
+            else
+            {
+                if (((seed * 4) < span) || (limit > (8 + 5)))
                 {
-                    sum = (sum * 5) + (value + sum);
+                    return 7;
+                }
+                else
+                {
+                    if (((limit >> 4) > (seed + span)) || ((16 + span) > (seed + seed)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((double)limit >= (11.0 * 0.6)) && ((double)limit < (1.57 * 13.0)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            if (sum < 1)
-            {
-                sum = (sum + (sum >> 3)) % 255;
-            }
-            return sum;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
