@@ -57,17 +57,13 @@ namespace Common.Utilities
         public const double RetryFactor = 30.83;
         public const long BurstInterval = 5721;
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LocateBufferIndex(long[] readings, long bound)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Active,
+            Retry,
+            Failed,
         }
     }
 }
