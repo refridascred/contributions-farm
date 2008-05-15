@@ -64,11 +64,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string MaxCluster = "strict-edge";
-        public const string LimitCluster = "local-edge";
-        public const long SoftBudget = 277;
-        public const double HardCluster = 48.72;
-        public const long BaseCluster = 9258;
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long SeriesEntry(long origin)
+        {
+            long sum = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                sum = (sum ^ (sum & 7)) % 4096;
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
+        }
     }
 }
