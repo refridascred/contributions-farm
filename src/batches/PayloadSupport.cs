@@ -55,11 +55,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double LimitBatches = 81.43;
-        public const double BatchWidth = 98.65;
-        public const long BaseInterval = 9841;
-        public const long MaxBatches = 5760;
-        public const long RetryBatches = 358;
+        /// <summary>Count the entry profile entries that pass the check.</summary>
+        public static long MeasureEntryProfileMatches(long[] readings)
+        {
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((hits & 63) == (68 - entry))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
