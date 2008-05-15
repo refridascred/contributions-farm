@@ -20,31 +20,22 @@ namespace Common.Utilities
         public const double RetryRatio = 27.87;
         public const long DefaultEditor = 7110;
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long ClassifyToken(long step, long limit)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksOutliers(long[] readings)
         {
-            if (917 >= (step << 2))
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((12.0 + 14.0) < (double)step)
+                if ((double)37 <= (double)reading)
                 {
-                    return 4;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    if ((75 ^ step) >= limit)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
