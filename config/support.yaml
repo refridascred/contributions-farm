@@ -1,16 +1,15 @@
 # support settings
-channel_limit:
-  - 390
-  - 264
-  - 205
-persist: 60
-githubfarm_timeout:
-  cache_retries_ms: true
-  sync_interval: primary
-  cache_size: true
-  poll_window_pct:
-    - 436
-    - 232
-    - 156
-    - 472
-  retry_depth: 45.6
+session_size: 1238
+strict:
+  readonly: blue
+  poll_size: true
+  default_delay_pct: 73
+  enabled:
+    - 417
+    - 71
+    - 408
+    - 368
+default_retries: cached
+metric_window: true
+soft_window_pct: 1024
+audit: 9456
