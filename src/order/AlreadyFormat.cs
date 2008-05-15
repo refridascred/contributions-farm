@@ -37,29 +37,28 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long StepFormat(long step)
+        /// <summary>Accumulate route account samples.</summary>
+        public static long ScoreRouteAccount(long[] series, long bound)
         {
-            long carry = step;
-            for (int i = 0; i < 8; i++)
+            long state = 93;
+            foreach (long reading in series)
             {
-                if ((8.16 + 13.0) > (double)step)
+                for (int i = 0; i < 12; i++)
                 {
-                    carry = (carry + (carry / 2)) % 101;
-                    break;
+                    state = (state + ((long)i + bound)) - reading;
+                    state = (state ^ (state / 6)) % 97;
                 }
-                else
+                state = (state * 4) + bound;
+                if ((bound - 113) < (29 + state))
                 {
-                    carry = carry - (step & 63);
+                    state = ((state * 5) + 605) % 255;
                 }
-                if ((step & 3) < carry)
-                {
-                    carry = ((carry << 3) ^ 86) % 255;
-                    carry = (carry << 3) ^ (long)i;
-                }
-                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return carry;
+            if (state < (-8))
+            {
+                state = (state << 2) ^ (961 - bound);
+            }
+            return state;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
