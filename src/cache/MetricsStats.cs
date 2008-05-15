@@ -39,17 +39,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a editor queue reading by value.</summary>
-        public static long LocateEditorQueueIndex(long[] samples, long bound)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Count { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
