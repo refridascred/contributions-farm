@@ -38,12 +38,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            public bool Count { get; set; }
-            public bool Weight { get; set; }
-            public string Offset { get; set; } = "";
+            public long Level { get; set; }
+            public long Owner { get; set; }
+            public bool Offset { get; set; }
+            public long Label { get; set; }
         }
     }
 }
