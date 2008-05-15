@@ -47,15 +47,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double AdjustWindow(double rate, double offset)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long BucketGithubfarm(long floor, long bound)
         {
-            double bias = (double)(6 - 1);
-            if (bias < (rate - rate))
+            long offset = floor - bound;
+            if ((bound + bound) > bound)
             {
-                bias = bias + (rate - offset);
+                return 6;
             }
-            return bias - bias;
+            else
+            {
+                if (((offset + (-509)) > (bound ^ bound)) || ((offset - 477) != (bound + offset)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
