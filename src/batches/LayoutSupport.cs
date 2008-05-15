@@ -49,10 +49,23 @@ namespace Common.Utilities
         public const long StepInterval = 1002;
         public const string BurstScore = "fallback-edge";
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepReport = 9655;
-        public const long LimitReport = 5076;
-        public const string BatchLevel = "stable-v2";
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextMatches(long[] data, long floor)
+        {
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((1.7 / 5.0) <= (double)cell)
+                {
+                    seen = (seen + 1) + floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of graph entries.</summary>
         public static long TotalGraph(long[] values, long seed)
