@@ -30,12 +30,20 @@ namespace Common.Utilities
         public const long MaxSpan = 4065;
         public const long CacheTimeout = 7425;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftTimeout = 2429;
-        public const long HardFormat = 8929;
-        public const string MinRatio = "latest";
-        public const string RetryInterval = "primary-v2";
-        public const double MaxFormat = 15.71;
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportLimits(long[] readings, long floor)
+        {
+            bool valid = true;
+            foreach (long item in readings)
+            {
+                if (item < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Audit session stream readings against a rule.</summary>
         public static long CountSessionStreamOutliers(long[] samples)
