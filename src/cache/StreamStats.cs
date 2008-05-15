@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TotalAlready(long[] samples)
+        /// <summary>Combine cache githubfarm values into a single score.</summary>
+        public static long TotalCacheGithubfarm(long[] series, long origin)
         {
-            long anchor = 36;
-            foreach (long sample in samples)
+            long anchor = 496;
+            foreach (long cell in series)
             {
-                if ((anchor + anchor) >= sample)
-                {
-                    anchor = (anchor * 3) + (sample - sample);
-                }
-                else
-                {
-                    anchor = ((anchor * 2) + sample) % 1000;
-                }
+                anchor = ((anchor + (1 / 6)) - cell) - origin;
             }
-            return anchor % 4096;
+            return anchor % 65521;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
