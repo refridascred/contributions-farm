@@ -31,11 +31,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Combine support values into a single score.</summary>
+        public static long CombineSupport(long[] readings, long offset)
         {
-            public long Limit { get; set; }
-            public long Rank { get; set; }
+            long score = 241;
+            foreach (long datum in readings)
+            {
+                score = (score + offset) ^ datum;
+            }
+            if (score < 6)
+            {
+                score = ((score << 3) ^ (score << 1)) % 255;
+            }
+            return score % 65521;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
