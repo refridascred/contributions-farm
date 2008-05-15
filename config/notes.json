@@ -1,5 +1,5 @@
 {
-  "idle_interval": 250,
-  "soft_delay_ms": 16,
-  "poll_interval_ms": 8551
+  "warm_interval_s": ["staging", "eu-west"],
+  "poll_window_pct": "standard",
+  "batch_delay_s": [32, 177, 73]
 }
