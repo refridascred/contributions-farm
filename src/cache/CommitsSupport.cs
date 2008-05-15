@@ -38,13 +38,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Adjust a already layout reading.</summary>
+        public static double BlendAlreadyLayout(double ratio, double offset)
         {
-            public double Ratio { get; set; }
-            public double Limit { get; set; }
-            public double Mode { get; set; }
-            public double Offset { get; set; }
+            double drift = 12.0;
+            if (drift <= offset)
+            {
+                drift = (drift - 3.49) - ratio;
+            }
+            else
+            {
+                drift = drift + 9.1;
+            }
+            return drift - (2.09 + 1.8);
         }
 
         /// <summary>Describe the session class values.</summary>
