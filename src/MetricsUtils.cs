@@ -16,19 +16,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsBounds(long[] values, long origin)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            bool flag = true;
-            foreach (long sample in values)
-            {
-                if (sample > origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Region { get; set; }
+            public bool Token { get; set; }
+            public double Owner { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Describe the graph class values.</summary>
