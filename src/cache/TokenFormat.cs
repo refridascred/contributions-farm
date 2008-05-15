@@ -20,13 +20,39 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long SortRoute(long origin, long target)
         {
-            public string Ratio { get; set; } = "";
-            public string Count { get; set; } = "";
-            public long Token { get; set; }
-            public long Label { get; set; }
+            long gap = origin + target;
+            if ((target << 3) >= (origin - origin))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((double)gap < 6.9))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)gap != (2.4 + 10.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (gap <= (81 + target))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
