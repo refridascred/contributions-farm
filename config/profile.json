@@ -1,5 +1,8 @@
 {
-  "retry_limit_count": 20.57,
-  "editor_delay": ["green", "primary", "primary", "stable"],
-  "base_retries_s": ["green", "stable", "open"]
+  "stream_ratio": [303, 255],
+  "batch_delay": "legacy",
+  "tools_retries": "local",
+  "min_interval_s": "latest",
+  "contributi_ttl": "staging",
+  "soft_capacity": 100
 }
