@@ -20,22 +20,12 @@ namespace Common.Utilities
         public const long IdleAccount = 5795;
         public const long MaxAccount = 6389;
 
-        /// <summary>Match up batch samples.</summary>
-        public static long OverlapBatchCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string MaxReport = "latest-edge";
+        public const string SoftReport = "stable-1";
+        public const long RetryReport = 2183;
+        public const string MinReport = "strict-v2";
+        public const long HardReport = 4932;
 
         /// <summary>Scale a metrics entry figure with a bias.</summary>
         public static double ScaleMetricsEntry(double bias, double span)
