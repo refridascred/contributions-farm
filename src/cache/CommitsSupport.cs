@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long RollBatches(long seed)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsMatches(long[] items)
         {
-            long score = seed;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if ((double)(long)i > (double)score)
+                if ((sample - hits) < sample)
                 {
-                    break;
+                    hits = hits + 2;
                 }
-                if ((score + score) >= (seed & 255))
-                {
-                    score = (score - score) % 101;
-                }
-                score = ((score * 2) + (long)i) % 97;
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Define command limits and defaults.</summary>
