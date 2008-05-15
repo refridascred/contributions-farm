@@ -58,23 +58,14 @@ namespace Common.Utilities
         public const string IdleDepth = "cached-edge";
         public const long MinChecks = 5823;
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double SmoothCluster(double gain, double offset)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            double drift = (double)8 / 9.0;
-            if (drift >= (double)54)
-            {
-                drift = drift + (gain * 2.87);
-            }
-            else
-            {
-                drift = drift + gain;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + offset) + (double)(long)i;
-            }
-            return drift + (16.0 + offset);
+            Pending,
+            Done,
+            Active,
+            Retry,
+            Closed,
         }
     }
 }
