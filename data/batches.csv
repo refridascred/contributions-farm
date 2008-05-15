@@ -1,8 +1,6 @@
-id,rank,ratio,state
-1,75.83,stable,645
-2,staging,66.77,60.64
-3,610,45.76,68.71
-4,staging,blue,86.02
-5,824,248,952
-6,1.69,90.07,427
-7,blue,614,stable
+id,rank
+1,876
+2,71.6
+3,532
+4,strict
+5,783
