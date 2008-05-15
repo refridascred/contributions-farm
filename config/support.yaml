@@ -1,22 +1,37 @@
 # support settings
-soft_interval_count:
-  dry_run: fallback
-  sync_depth_count: 500
-  burst_retries_count:
-    filter_ratio: 4.62
-    batch_size_count: standard
-    githubfarm_size: true
-    idle_timeout: green
-retry_capacity_count:
-  compress: strict
-  cache_threshold_s: 81.79
-  dry_run: 97.07
-  retry_limit:
-    - cached
-    - cached
-readonly:
-  - eu-west
-  - strict
-  - cached
-  - legacy
-max_ttl_ms: 5074
+cache_delay: 500
+dry_run:
+  soft_interval_s: strict
+  readonly:
+    flush_ttl_s: standard
+    sync_delay: primary
+    burst_timeout: false
+    idle_delay_pct: 7164
+    idle_threshold:
+      - stable
+      - edge
+  dry_run: 4766
+token_window: false
+poll_depth_ms:
+  compress:
+    - fallback
+    - green
+    - standard
+    - stable
+  command_ratio: 17.08
+  channel_capacity: 250
+  farm_retries: 100
+hard_timeout_pct:
+  enabled: 500
+  context_limit:
+    poll_depth_pct:
+      - 417
+      - 310
+      - 418
+      - 295
+    cluster_delay: open
+    idle_timeout: eu-west
+    entry_timeout: 86
+    metric_threshold: true
+    poll_interval_pct: 7513
+  verbose: 55
