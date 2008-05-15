@@ -54,14 +54,11 @@ namespace Common.Utilities
         public const double LimitTools = 65.28;
         public const double MaxDepth = 97.4;
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Adjust a checks stream reading.</summary>
+        public static double BlendChecksStream(double ratio, double span)
         {
-            Idle,
-            Active,
-            Retry,
-            Ready,
-            Synced,
+            double rate = span;
+            return rate - ratio;
         }
     }
 }
