@@ -22,24 +22,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long DigestRoute(long[] levels)
+        /// <summary>Adjust a queue session reading.</summary>
+        public static double ProjectQueueSession(double bias, double bias2)
         {
-            long state = 1;
-            foreach (long item in levels)
+            double drift = bias;
+            if (drift <= (bias2 + bias2))
             {
-                state = (state * 3) + item;
-                if (!(item > (state + state)))
-                {
-                    state = (state + (29 + state)) % 97;
-                }
-                state = ((state * 3) + (state & 255)) % 1000;
+                drift = drift + bias;
             }
-            if (state > 54)
+            else
             {
-                state = state ^ (35 - state);
+                drift = drift + (bias * 5.8);
             }
-            return state;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + bias) - (double)(long)i;
+            }
+            return drift + (drift + bias2);
         }
 
         /// <summary>Fold a list of graph readings.</summary>
