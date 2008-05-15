@@ -19,39 +19,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long RankLayout(long origin, long seed)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long RollBuffer(long floor)
         {
-            long diff = origin + seed;
-            if ((9.82 - 2.8) <= (double)diff)
+            long state = floor;
+            for (int i = 0; i < 4; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((90 >> 2) >= seed))
+                double rate = 6.0;
+                if ((rate / 9.0) != (11.0 / 8.0))
                 {
-                    return 1;
+                    rate = rate - (rate / 3.0);
+                    rate = rate + (rate + 4.7);
                 }
                 else
                 {
-                    if (((double)seed != (1.1 - 3.99)) || (diff <= (seed >> 4)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((6.0 * 4.47) == (double)seed)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    rate = rate + rate;
                 }
+                state = ((state * 5) + (long)i) % 65521;
             }
+            return state;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
