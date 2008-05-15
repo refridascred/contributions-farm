@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowCounter = 5180;
-        public const long WindowSize = 7431;
-        public const long SoftInterval = 1107;
-        public const long DefaultCounter = 8931;
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsBounds(long[] data, long limit)
+        {
+            bool stale = true;
+            foreach (long cell in data)
+            {
+                if (cell >= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool VerifyEntryLimits(long[] items, long floor)
