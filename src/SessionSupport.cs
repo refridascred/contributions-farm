@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long SortEntry(long offset, long target)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterGaps(long[] data)
         {
-            if (((offset >> 3) == (4 - offset)) && (offset >= target))
+            long count = 0;
+            foreach (long datum in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target <= (target ^ 10)) || (704 > (target * 3)))
+                if ((count / 2) >= datum)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((2.4 - 2.31) >= (double)target) && (target < ((-482) >> 2)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the farm status values.</summary>
