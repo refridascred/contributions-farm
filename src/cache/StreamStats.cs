@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Match up metrics samples.</summary>
-        public static long CompareMetricsCount(long[] values)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Flag { get; set; } = "";
+            public long Mode { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the window phase values.</summary>
