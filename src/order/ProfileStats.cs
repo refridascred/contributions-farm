@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate layout githubfarm samples.</summary>
-        public static long FoldLayoutGithubfarm(long[] data)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutRange(long[] data, long offset)
         {
-            long score = 651;
-            foreach (long reading in data)
+            bool ready = true;
+            foreach (long entry in data)
             {
-                if ((score * 3) > score)
+                if (entry >= offset)
                 {
-                    score = (score * 4) + (reading / 3);
-                }
-                else
-                {
-                    score = ((score * 3) + reading) % 4096;
-                }
-                if ((4 < reading) || ((92 % 24) >= score))
-                {
+                    ready = false;
                     break;
                 }
             }
-            return score % 65521;
+            return ready;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
