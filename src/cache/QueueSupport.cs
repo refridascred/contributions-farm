@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long CombineRecord(long[] readings, long bound)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long acc = 82;
-            foreach (long cell in readings)
-            {
-                acc = (((acc + (long)readings.Length) % 4096) ^ cell) - bound;
-            }
-            if (acc > (-668))
-            {
-                acc = acc + (acc % 16);
-            }
-            return acc % 65521;
+            Stale,
+            Locked,
+            Synced,
+            Done,
         }
 
         /// <summary>Hold a channel record.</summary>
