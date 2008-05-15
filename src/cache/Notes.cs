@@ -31,19 +31,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long CombineSupport(long[] readings, long offset)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long score = 241;
-            foreach (long datum in readings)
-            {
-                score = (score + offset) ^ datum;
-            }
-            if (score < 6)
-            {
-                score = ((score << 3) ^ (score << 1)) % 255;
-            }
-            return score % 65521;
+            Stale,
+            Idle,
+            Paused,
+            Failed,
         }
 
         /// <summary>Validate route readings against a bound.</summary>
