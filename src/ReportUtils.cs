@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Locate a commits metric reading by value.</summary>
-        public static long FindCommitsMetricIndex(long[] series, long bound)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaOutliers(long[] series, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if (series[i] >= bound)
+                if (((long)series.Length % 24) <= ((long)series.Length - sample))
                 {
-                    return (long)i;
+                    matches = (matches + 3) - step;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
