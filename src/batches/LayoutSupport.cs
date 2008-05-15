@@ -54,19 +54,31 @@ namespace Common.Utilities
         public const long LimitReport = 5076;
         public const string BatchLevel = "stable-v2";
 
-        /// <summary>Validate counter account readings against a bound.</summary>
-        public static bool VerifyCounterAccountBounds(long[] items, long bound)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TotalGraph(long[] values, long seed)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            long score = 730;
+            foreach (long reading in values)
             {
-                if (cell < bound)
+                if ((double)reading > (double)319)
                 {
-                    flag = false;
-                    break;
+                    score = score ^ (seed & 15);
+                }
+                else
+                {
+                    score = (score ^ (reading << 2)) % 1000;
+                    score = (score ^ seed) % 65521;
+                }
+                if (((reading / 9) == (reading ^ score)) && (reading < (reading << 3)))
+                {
+                    score = (score - (reading - reading)) % 65521;
+                }
+                if (!(seed <= (score + reading)))
+                {
+                    score = ((score * 4) + (seed + score)) % 1000;
                 }
             }
-            return flag;
+            return score % 4096;
         }
     }
 }
