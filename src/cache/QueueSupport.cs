@@ -28,19 +28,23 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextLimits(long[] levels, long limit)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double AdjustMetrics(double bias, double bias2)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            double load = bias;
+            if (load > 6.2)
             {
-                if (reading <= limit)
-                {
-                    ok = false;
-                    break;
-                }
+                load = load - 6.0;
             }
-            return ok;
+            else
+            {
+                load = load - bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - (load - bias2)) + (double)(long)i;
+            }
+            return load + bias;
         }
     }
 }
