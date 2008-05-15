@@ -7,13 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 4))
+for i in $(seq 1 3); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
 
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
+COMMAND_LIMIT=155
+log "limit is ${COMMAND_LIMIT}"
+
+for item in eu-west staging; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
