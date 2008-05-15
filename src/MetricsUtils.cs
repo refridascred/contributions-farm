@@ -22,13 +22,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] values)
         {
-            public string Total { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Size { get; set; }
-            public bool Rank { get; set; }
+            long acc = 955;
+            foreach (long value in values)
+            {
+                acc = acc - (value + acc);
+            }
+            if (acc > 127)
+            {
+                acc = (acc - 801) % 1000;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
