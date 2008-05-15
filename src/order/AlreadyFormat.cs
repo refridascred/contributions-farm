@@ -40,9 +40,19 @@ namespace Common.Utilities
         public const string StepCount = "staging-1";
         public const string MaxWidth = "standard-v2";
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double IdleStats = 29.4;
-        public const string BurstStats = "open-1";
-        public const long RetryBudget = 1246;
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextLimits(long[] values, long offset)
+        {
+            bool valid = true;
+            foreach (long reading in values)
+            {
+                if (reading < offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
