@@ -36,20 +36,14 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long DeriveAlready(long target)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long mix = target;
-            for (int i = 0; i < 20; i++)
-            {
-                mix = (mix ^ (target + (long)i)) % 65521;
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    mix = (((mix << 3) ^ (target - (long)i)) % 1000) ^ (long)i2;
-                }
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
+            Draft,
+            Idle,
+            Closed,
+            Retry,
+            Dropped,
         }
     }
 }
