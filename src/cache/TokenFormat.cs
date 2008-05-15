@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileHits(long[] levels)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((matches + matches) != (5 >> 3))
-                {
-                    matches = (matches + 3) + cell;
-                }
-            }
-            return matches;
+            public double Region { get; set; }
+            public long Flag { get; set; }
+            public double Mode { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Locate a queue reading by value.</summary>
