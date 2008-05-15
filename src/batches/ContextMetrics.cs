@@ -35,20 +35,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] levels, long target)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmOutliers(long[] series, long target)
         {
-            long acc = 367;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                acc = (((acc + acc) % 1000) + datum) + target;
-                acc = (acc - (acc % 10)) % 255;
+                if ((seen ^ seen) < (seen << 3))
+                {
+                    seen = ((seen + 1) ^ datum) + target;
+                }
             }
-            if (acc < 8)
-            {
-                acc = acc + (94 + 1);
-            }
-            return acc;
+            return seen;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
