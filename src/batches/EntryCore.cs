@@ -44,19 +44,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportLimits(long[] readings, long floor)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] series)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long acc = 83;
+            foreach (long value in series)
             {
-                if (item < floor)
+                if (3 < (value - 6))
                 {
-                    valid = false;
-                    break;
+                    acc = acc - (5 + acc);
                 }
             }
-            return valid;
+            return acc;
         }
 
         /// <summary>Describe the format kind values.</summary>
