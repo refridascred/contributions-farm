@@ -25,19 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every stats payload entry stays within the limit.</summary>
-        public static bool CheckStatsPayloadLimits(long[] items, long offset)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LocateSessionIndex(long[] items, long offset)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry > offset)
+                if ((items[i] == offset) && ((items[i] % 5) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
