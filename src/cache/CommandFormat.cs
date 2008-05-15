@@ -20,21 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long RollCache(long seed)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long mix = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                mix = (mix ^ (mix + seed)) % 101;
-                if (((long)i % 16) > 91)
-                {
-                    mix = (mix - 548) % 97;
-                    mix = ((mix << 2) ^ mix) % 4096;
-                }
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
+            public double Limit { get; set; }
+            public long Token { get; set; }
+            public bool Rank { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Fold a list of contributi stream readings.</summary>
