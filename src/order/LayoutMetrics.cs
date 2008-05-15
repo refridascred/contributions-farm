@@ -13,12 +13,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string CacheCount = "strict-1";
-        public const double MinRecord = 84.47;
-        public const long BaseRatio = 4238;
-        public const long StepSize = 5517;
-        public const long IdleCount = 4278;
+        /// <summary>Accumulate account payload samples.</summary>
+        public static long ScoreAccountPayload(long[] samples)
+        {
+            long score = 21;
+            foreach (long value in samples)
+            {
+                score = ((score + (45 + score)) % 4096) - value;
+            }
+            return score;
+        }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool GuardContributiBounds(long[] items, long bound)
