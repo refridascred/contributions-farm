@@ -1,6 +1,6 @@
-id,active,ratio
-1,stable,506
-2,latest,33.05
-3,fallback,502
-4,588,legacy
-5,28.83,cached
+id,level,owner,active
+1,blue,strict,85.13
+2,edge,cached,legacy
+3,528,92.79,301
+4,open,65.53,734
+5,459,159,981
