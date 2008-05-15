@@ -47,19 +47,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaLimits(long[] samples, long floor)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsGaps(long[] readings, long step)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if (cell != floor)
+                if (((-436) / 2) == (item - step))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return flag;
+            return tally;
         }
     }
 }
