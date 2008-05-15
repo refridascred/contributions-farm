@@ -30,15 +30,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine stream channel values into a single score.</summary>
-        public static long TallyStreamChannel(long[] samples)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long state = 1;
-            foreach (long cell in samples)
-            {
-                state = state + (cell >> 5);
-            }
-            return state % 97;
+            public bool Count { get; set; }
+            public bool Weight { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
