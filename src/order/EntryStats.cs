@@ -72,15 +72,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
-        {
-            Synced,
-            Idle,
-            Pending,
-            New,
-            Active,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinLevel = 7997;
+        public const string DefaultEditor = "staging";
+        public const double CacheEditor = 38.52;
+        public const long StepEditor = 5982;
+        public const long HardDepth = 7981;
 
         /// <summary>Blend two window measurements.</summary>
         public static double SmoothWindow(double rate, double offset)
