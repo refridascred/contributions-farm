@@ -1,7 +1,9 @@
 # githubfarm settings
-min_ttl_ms: 96
-compress: 30
-retry_size: 63.52
-retry_delay_ms: cached
-strict: 100
-retry_timeout: 7084
+default_depth_pct: fallback
+base_ttl: 60
+compress:
+  - edge
+  - fallback
+  - green
+  - blue
+min_timeout_s: true
