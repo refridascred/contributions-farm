@@ -88,18 +88,14 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowOutliers(long[] samples, long origin)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if (!((332 % 12) < ((long)samples.Length ^ datum)))
-                {
-                    count = (count + 2) - origin;
-                }
-            }
-            return count;
+            Pending,
+            Stale,
+            Ready,
+            Failed,
+            Retry,
         }
 
         /// <summary>Audit queue editor readings against a rule.</summary>
