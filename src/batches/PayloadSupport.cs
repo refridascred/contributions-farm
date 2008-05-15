@@ -35,11 +35,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TotalQueue(long[] series, long bound)
         {
-            public long Ratio { get; set; }
-            public long Count { get; set; }
+            long state = 60;
+            foreach (long sample in series)
+            {
+                state = ((((state << 2) ^ (40 << 1)) % 101) ^ sample) - bound;
+            }
+            return state % 97;
         }
     }
 }
