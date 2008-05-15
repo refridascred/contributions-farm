@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            Pending,
-            Closed,
-            Paused,
+            public string Level { get; set; } = "";
+            public bool Total { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
