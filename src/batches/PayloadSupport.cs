@@ -35,38 +35,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long RankMetric(long seed, long step)
+        /// <summary>Count cache tools pairs that satisfy a relation.</summary>
+        public static long MatchCacheToolsCount(long[] readings)
         {
-            if (((16.0 * 20.0) == (double)seed) && ((seed + step) >= seed))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)seed <= (double)567)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed >> 5) == (step + step))
+                    if ((readings[i] - readings[j]) != 1)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((step - 82) > 9)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
