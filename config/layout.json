@@ -1,5 +1,11 @@
 {
-  "flush_window": true,
-  "metrics_delay": "stable",
-  "cache_ttl": 64.36
+  "commits_timeout": {
+    "metrics_window": "edge",
+    "poll_depth": 30,
+    "readonly": "standard",
+    "dry_run": true
+  },
+  "idle_threshold_count": 1522,
+  "entry_threshold": "fallback",
+  "default_ttl": "green"
 }
