@@ -31,31 +31,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long ClassifyGithubfarm(long bound, long limit)
+        /// <summary>Audit entry editor readings against a rule.</summary>
+        public static long TallyEntryEditorOutliers(long[] series, long limit)
         {
-            if (((-74) >> 5) == (bound + limit))
+            long tally = 0;
+            foreach (long reading in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)bound <= 7.0)
+                if (!(reading <= limit) || (((5.9 + 6.44) <= (double)tally) && (tally <= 6)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit + bound) <= (bound & 127))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
     }
 }
