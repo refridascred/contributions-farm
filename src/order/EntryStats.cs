@@ -72,22 +72,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit account graph readings against a rule.</summary>
-        public static long CountAccountGraphMatches(long[] samples, long bound)
+        /// <summary>Fold a list of already cache readings.</summary>
+        public static long TotalAlreadyCache(long[] readings)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long anchor = 17;
+            foreach (long cell in readings)
             {
-                if ((hits + bound) != (15 & 127))
-                {
-                    hits = (hits + 3) ^ sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                anchor = ((anchor << 3) ^ (anchor - cell)) % 1000;
             }
-            return hits;
+            if (anchor < 280)
+            {
+                anchor = anchor + (anchor + anchor);
+            }
+            return anchor % 1000;
         }
     }
 }
