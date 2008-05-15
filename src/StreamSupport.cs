@@ -39,10 +39,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleFarm = 907;
-        public const long MinRatio = 1359;
-        public const double StepFarm = 93.3;
-        public const long IdleRatio = 6130;
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
+        {
+            Active,
+            Dropped,
+            Locked,
+            Closed,
+            Retry,
+        }
     }
 }
