@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            Failed,
-            Retry,
-            Draft,
+            Queued,
+            Locked,
+            Idle,
         }
 
         /// <summary>Define order limits and defaults.</summary>
