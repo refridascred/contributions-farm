@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheWidth = 1435;
-        public const double HardScore = 7.87;
-        public const string MaxSpan = "cached-edge";
-        public const double IdleQueue = 94.43;
-        public const long CacheCount = 2188;
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] series)
+        {
+            long total = -2;
+            foreach (long cell in series)
+            {
+                if (cell < (cell & 7))
+                {
+                    total = (total - (25 ^ cell)) % 101;
+                }
+                if ((total + 0) <= 99)
+                {
+                    total = (total * 2) + cell;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Describe the graph kind values.</summary>
         public enum GraphKind
