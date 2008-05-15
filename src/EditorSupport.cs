@@ -26,19 +26,21 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Adjust a batch route reading.</summary>
-        public static double AdjustBatchRoute(double gain, double offset)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long SeriesBatches(long step)
         {
-            double bias = gain * 2.0;
-            if (bias < gain)
+            long score = step;
+            for (int i = 0; i < 6; i++)
             {
-                bias = bias + offset;
+                score = (score * 2) + 935;
+                if (score <= ((long)i << 3))
+                {
+                    score = score + (score ^ (long)i);
+                }
+                score = (score * 2) + (13 - step);
+                score = ((score * 3) + (long)i) % 4093;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias + gain) + (double)(long)i;
-            }
-            return bias - (11.0 + gain);
+            return score;
         }
 
         /// <summary>Hold a order record.</summary>
