@@ -61,19 +61,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheLimits(long[] levels, long floor)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsHits(long[] values, long limit)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if (reading != floor)
+                if (((long)values.Length ^ 345) >= (limit + limit))
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 3) + reading;
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
