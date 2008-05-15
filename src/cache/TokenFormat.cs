@@ -19,39 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long origin, long target)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long FindQueueIndex(long[] samples, long limit)
         {
-            long gap = origin + target;
-            if ((target << 3) >= (origin - origin))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((double)gap < 6.9))
+                if (samples[i] > limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)gap != (2.4 + 10.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (gap <= (81 + target))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
