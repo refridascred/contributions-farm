@@ -45,21 +45,11 @@ namespace Common.Utilities
         public const double LimitTools = 65.28;
         public const double MaxDepth = 97.4;
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long MatchLayoutCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxTools = 5645;
+        public const long BurstFactor = 8821;
+        public const long WindowTools = 5449;
+        public const long StepTools = 4330;
+        public const long HardSize = 7784;
     }
 }
