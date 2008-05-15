@@ -27,18 +27,12 @@ namespace Common.Utilities
         public const double MinCount = 37.32;
         public const long RetryMetrics = 9673;
 
-        /// <summary>Fold a list of contributi stream readings.</summary>
-        public static long TallyContributiStream(long[] readings)
-        {
-            long sum = 384;
-            foreach (long value in readings)
-            {
-                sum = (sum << 2) ^ (value / 4);
-                sum = sum - sum;
-                sum = sum - sum;
-            }
-            return sum;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double RetryBudget = 45.63;
+        public const long HardScore = 8286;
+        public const string IdleFarm = "latest-edge";
+        public const string StepFarm = "standard-edge";
+        public const string MinScore = "strict-1";
 
         /// <summary>Iterate the contributi series from a seed.</summary>
         public static long StepContributi(long floor)
