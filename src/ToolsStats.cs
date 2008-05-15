@@ -51,30 +51,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of metric session readings.</summary>
-        public static long CombineMetricSession(long[] values, long seed)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long SeekFilterIndex(long[] values, long target)
         {
-            long anchor = 955;
-            foreach (long sample in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample <= (seed << 3))
+                if ((values[i] >= target) && ((values[i] % 3) != 0))
                 {
-                    anchor = anchor + (7 & 7);
-                }
-                else
-                {
-                    anchor = ((anchor * 3) + 75) % 101;
-                }
-                if ((sample + sample) < anchor)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (anchor < 286)
-            {
-                anchor = (anchor ^ (anchor & 63)) % 101;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
