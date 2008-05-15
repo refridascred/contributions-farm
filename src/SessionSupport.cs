@@ -27,9 +27,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double MaxOrder = 88.93;
-        public const long MinOrder = 4165;
-        public const long BaseDepth = 5167;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BurstRatio = 1945;
+        public const long BaseChannel = 541;
+        public const long WindowLevel = 1496;
+        public const long CacheInterval = 9505;
     }
 }
