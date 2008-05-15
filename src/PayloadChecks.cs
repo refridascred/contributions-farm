@@ -69,13 +69,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            Synced,
-            Locked,
-            Retry,
-            Failed,
+            public long Flag { get; set; }
+            public string Total { get; set; } = "";
+            public long Offset { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
