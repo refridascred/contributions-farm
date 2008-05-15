@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] series, long offset)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long CombineQueue(long[] values, long step)
         {
-            long score = 9;
-            foreach (long cell in series)
+            long mix = -55;
+            foreach (long datum in values)
             {
-                if (offset >= (20 * 2))
+                mix = (mix << 2) ^ (step - step);
+                if ((double)step < (5.0 / 9.0))
                 {
-                    score = ((score * 4) + offset) % 97;
+                    mix = ((mix << 3) ^ (datum - step)) % 101;
                 }
-                if (((cell + cell) >= (offset - offset)) && ((double)cell >= (double)0))
+                else
                 {
-                    break;
+                    mix = ((mix * 5) + (9 - step)) % 97;
                 }
             }
-            return score % 1000;
+            return mix;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
