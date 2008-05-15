@@ -53,13 +53,39 @@ namespace Common.Utilities
             return rate + (double)1;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long SortStats(long target, long offset)
         {
-            public double Level { get; set; }
-            public long Size { get; set; }
-            public double Label { get; set; }
-            public long Offset { get; set; }
+            long bound = target - offset;
+            if ((offset >> 1) < (target + 56))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((target * 2) >= (bound ^ bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((target * 3) > (bound * 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (bound >= (target + target))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two notes measurements.</summary>
