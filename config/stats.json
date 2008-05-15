@@ -1,13 +1,5 @@
 {
-  "batch_size": [272, 238],
-  "warm_window_s": 1112,
-  "readonly": {
-    "session_ttl": ["local", "edge", "legacy"],
-    "idle_interval_ms": "cached",
-    "audit": [21, 259, 373, 210],
-    "metrics_retries": 47.39,
-    "command_size": 35.02,
-    "batch_ratio_ms": false
-  },
-  "enabled": 18.9
+  "retry_timeout_ms": "latest",
+  "filter_ratio": 74.84,
+  "editor_timeout": "open"
 }
