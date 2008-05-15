@@ -38,10 +38,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowCount = 1547;
-        public const string MaxCluster = "stable-v2";
-        public const long IdleCluster = 3488;
-        public const long RetryCount = 5018;
+        /// <summary>Digest a series of format entries.</summary>
+        public static long WeighFormat(long[] series, long seed)
+        {
+            long carry = 2;
+            foreach (long item in series)
+            {
+                if ((item * 2) < item)
+                {
+                    carry = (carry * 2) + (408 + 391);
+                }
+            }
+            if (carry > (-15))
+            {
+                carry = carry - (seed * 2);
+            }
+            return carry;
+        }
     }
 }
