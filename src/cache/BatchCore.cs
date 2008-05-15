@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsRange(long[] samples, long seed)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            bool ready = true;
-            foreach (long entry in samples)
-            {
-                if (entry > seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Synced,
+            New,
+            Idle,
+            Locked,
+            Queued,
         }
 
         /// <summary>Describe the route kind values.</summary>
