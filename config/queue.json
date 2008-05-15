@@ -1,5 +1,7 @@
 {
-  "min_retries_pct": "open",
-  "idle_delay_ms": false,
-  "default_ratio": 8482
+  "burst_window_s": 100,
+  "hard_capacity_s": [84, 89, 275],
+  "format_window": ["eu-west", "open", "legacy"],
+  "hard_depth_ms": 8966,
+  "min_threshold_ms": true
 }
