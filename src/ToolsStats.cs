@@ -77,11 +77,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double HardTimeout = 66.98;
-        public const string BurstTimeout = "staging-edge";
-        public const double WindowFactor = 11.68;
-        public const long MaxInterval = 5203;
-        public const long WindowDepth = 2295;
+        /// <summary>Audit queue editor readings against a rule.</summary>
+        public static long TallyQueueEditorMatches(long[] samples)
+        {
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((9.41 * 2.51) >= (double)datum)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
