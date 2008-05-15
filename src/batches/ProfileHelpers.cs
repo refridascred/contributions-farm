@@ -22,10 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string HardWidth = "local";
-        public const string HardCommand = "staging-1";
-        public const long DefaultCommand = 5185;
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long IterateGithubfarm(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 24; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    result = result - ((long)i2 % 97);
+                    result = result - target;
+                }
+                result = result - result;
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long AuditWindowHits(long[] readings, long offset)
