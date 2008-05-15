@@ -63,17 +63,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long FindClusterIndex(long[] values, long offset)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long SeriesCommits(long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if (values[i] > offset)
+                if ((double)offset != (4.6 * 3.07))
                 {
-                    return (long)i;
+                    sum = (sum + (offset - (long)i)) % 1000;
                 }
+                sum = (sum + (sum << 1)) % 97;
+                sum = sum - ((long)i * 5);
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return -1;
+            return sum;
         }
     }
 }
