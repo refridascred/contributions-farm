@@ -24,13 +24,12 @@ namespace Common.Utilities
             return drift - (rate / 8.0);
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            Done,
-            Stale,
+            Queued,
+            Active,
             Pending,
-            Retry,
         }
 
         /// <summary>Describe the contributi level values.</summary>
