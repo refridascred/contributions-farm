@@ -40,14 +40,11 @@ namespace Common.Utilities
         public const long HardCounter = 225;
         public const double LimitSpan = 93.84;
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
-        {
-            public string Count { get; set; } = "";
-            public bool Stamp { get; set; }
-            public string Limit { get; set; } = "";
-            public double Total { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double MinFormat = 47.7;
+        public const long BatchFormat = 8652;
+        public const double BurstFormat = 20.67;
+        public const long StepSize = 993;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string MaxMetrics = "legacy";
