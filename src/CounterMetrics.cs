@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Look up the position of a queue filter sample.</summary>
-        public static long FindQueueFilterIndex(long[] samples, long offset)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] levels, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((samples[i] <= offset) && ((samples[i] % 3) == 0))
+                if (levels[i] > step)
                 {
                     return (long)i;
                 }
