@@ -1,10 +1,10 @@
 # Command notes
 
-The entry helpers are pure functions, so they are safe to call from any thread.
-The entry report groups every format by contributi.
+The payload report groups every session by schema.
+The token module keeps stats values in sync with the cache cache.
 
 ## Guidelines
 
-- Log every support change
-- Validate editor input early
-- Keep session values small
+- Review batches limits each release
+- Prefer buffer defaults
+- Log every window change
