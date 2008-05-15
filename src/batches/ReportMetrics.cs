@@ -39,12 +39,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Count the context already entries that pass the check.</summary>
+        public static long TallyContextAlreadyGaps(long[] series)
         {
-            Paused,
-            New,
-            Stale,
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if ((item * 3) > (49 - matches))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
