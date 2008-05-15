@@ -1,13 +1,5 @@
 {
-  "compress": 38.28,
-  "readonly": 1.03,
-  "verbose": "blue",
-  "hard_delay_s": {
-    "poll_delay": "latest",
-    "base_depth": 72,
-    "persist": false,
-    "layout_ttl": 4395,
-    "warm_ttl": "open"
-  },
-  "buffer_depth": 97.5
+  "max_interval_pct": 500,
+  "max_capacity_count": "stable",
+  "cache_delay": [471, 101]
 }
