@@ -43,30 +43,21 @@ namespace Common.Utilities
         public const long MaxTimeout = 132;
         public const long DefaultDepth = 3790;
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TotalOrder(long[] readings, long offset)
+        /// <summary>Match up context window samples.</summary>
+        public static long PairContextWindowCount(long[] levels)
         {
-            long score = 808;
-            foreach (long sample in readings)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((sample + score) <= score) || (offset >= score))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = (score ^ (20 + score)) % 255;
-                }
-                if ((1.6 - 3.0) < (double)sample)
-                {
-                    score = (score << 3) ^ (offset + score);
-                }
-                if ((sample * 3) <= sample)
-                {
-                    break;
+                    if ((levels[i] ^ levels[j]) > 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (score > 4)
-            {
-                score = score ^ score;
-            }
-            return score;
+            return tally;
         }
     }
 }
