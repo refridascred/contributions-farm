@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinTimeout = 2149;
-        public const long HardTimeout = 9629;
-        public const long StepTimeout = 9879;
-        public const long WindowLevel = 8481;
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
+        {
+            public double Region { get; set; }
+            public long Label { get; set; }
+            public string Rank { get; set; } = "";
+        }
 
         /// <summary>Fold a list of farm buffer readings.</summary>
         public static long TotalFarmBuffer(long[] values, long bound)
