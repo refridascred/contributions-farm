@@ -27,28 +27,35 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long BucketCluster(long offset, long step)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long GradeAlready(long target, long target2)
         {
-            if (step >= (offset ^ offset))
+            if ((target - target2) <= (target ^ target2))
             {
-                return 0;
+                return 4;
             }
             else
             {
-                if (!((step % 2) > step))
+                if (((target ^ target2) < target) && ((11.0 * 8.66) <= (double)target2))
                 {
-                    return 2;
+                    return 6;
                 }
                 else
                 {
-                    if (offset < (offset - offset))
+                    if ((33 + 4) > target)
                     {
-                        return 3;
+                        return 2;
                     }
                     else
                     {
-                        return 4;
+                        if ((target2 * 3) > (target % 5))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
