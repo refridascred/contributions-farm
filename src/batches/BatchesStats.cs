@@ -24,16 +24,17 @@ namespace Common.Utilities
         public const long StepBudget = 5452;
         public const long WindowCache = 3374;
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long offset)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LocateGithubfarmIndex(long[] data, long origin)
         {
-            long mark = offset;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = ((mark * 2) + (mark - offset)) % 97;
-                mark = ((mark * 4) + (long)i) % 97;
+                if (data[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
