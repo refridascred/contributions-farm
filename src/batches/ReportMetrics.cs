@@ -16,26 +16,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TotalStats(long[] items, long floor)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] series, long bound)
         {
-            long state = 52;
-            foreach (long entry in items)
+            long score = 971;
+            foreach (long item in series)
             {
-                if ((floor <= (44 - state)) && ((entry << 3) <= state))
+                if ((956 % 64) > (item / 4))
                 {
-                    state = (state ^ 0) % 1000;
-                }
-                if ((state - entry) >= (entry << 1))
-                {
-                    state = state - (0 + entry);
-                }
-                else
-                {
-                    state = (state - (floor % 97)) % 4096;
+                    score = score + (score + bound);
                 }
             }
-            return state % 4096;
+            if (score > 291)
+            {
+                score = score + (bound ^ bound);
+            }
+            return score % 1000;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
