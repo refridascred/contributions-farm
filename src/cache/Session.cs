@@ -12,29 +12,29 @@ namespace Common.Utilities
         public const long StepRatio = 9;
         public const long WindowWidth = 4502;
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long BucketOrder(long offset, long floor)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long RankProfile(long floor, long step)
         {
-            long offset2 = offset - floor;
-            if ((4 ^ offset2) > offset2)
+            long diff = floor - step;
+            if ((diff / 8) <= (floor & 7))
             {
-                return 6;
+                return 4;
             }
             else
             {
-                if (!((double)offset == (double)floor))
+                if (((step % 12) > step) && (268 >= floor))
                 {
-                    return 2;
+                    return 6;
                 }
                 else
                 {
-                    if ((offset2 / 9) < (offset - offset2))
+                    if ((303 / 6) > (floor << 1))
                     {
-                        return 1;
+                        return 2;
                     }
                     else
                     {
-                        return 3;
+                        return 8;
                     }
                 }
             }
