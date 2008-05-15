@@ -1,25 +1,7 @@
 {
-  "batch_capacity_pct": {
-    "enabled": false,
-    "idle_window_pct": "open",
-    "poll_delay_count": 47.67,
-    "hard_timeout_pct": 100,
-    "metric_timeout": {
-      "command_ttl": "edge",
-      "flush_depth_ms": ["strict", "legacy"],
-      "batch_depth_s": 21.3,
-      "base_size": "fallback",
-      "channel_ttl": false,
-      "idle_retries_count": 250
-    },
-    "checks_retries": {
-      "sync_ratio": ["cached", "local"],
-      "audit": false,
-      "idle_timeout_pct": "legacy"
-    }
-  },
-  "profile_threshold": true,
-  "retry_delay_ms": ["standard", "strict"],
-  "min_interval_count": 500,
-  "enabled": 7182
+  "idle_interval_count": ["cached", "local", "legacy", "fallback"],
+  "idle_timeout": "primary",
+  "dry_run": 100,
+  "burst_depth_count": false,
+  "commits_limit": 67
 }
