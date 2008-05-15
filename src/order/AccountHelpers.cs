@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Project the next report value.</summary>
-        public static double BlendReport(double weight, double floor)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountMatches(long[] data)
         {
-            double bias = weight;
-            return (bias + (bias - weight)) + floor;
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((matches * 3) == (entry - entry))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
