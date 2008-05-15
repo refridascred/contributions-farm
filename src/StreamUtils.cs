@@ -20,13 +20,38 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long ClassifyLayout(long seed, long floor)
         {
-            Dropped,
-            Queued,
-            Failed,
-            Draft,
+            if ((8 + floor) != (726 + 5))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((3 - seed) >= (floor - floor))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((4.3 - 1.0) > (double)floor)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((floor ^ 7) > 317)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up filter samples.</summary>
