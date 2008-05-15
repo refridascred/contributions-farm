@@ -13,19 +13,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountBounds(long[] readings, long bound)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            bool found = true;
-            foreach (long entry in readings)
-            {
-                if (entry >= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Offset { get; set; }
+            public double Token { get; set; }
+            public double Owner { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Accumulate counter cluster samples.</summary>
