@@ -24,19 +24,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiBounds(long[] items, long bound)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long ClassifyToken(long step, long limit)
         {
-            bool stale = true;
-            foreach (long item in items)
+            if (917 >= (step << 2))
             {
-                if (item > bound)
+                return 0;
+            }
+            else
+            {
+                if ((12.0 + 14.0) < (double)step)
                 {
-                    stale = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((75 ^ step) >= limit)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return stale;
         }
     }
 }
