@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            public double Offset { get; set; }
-            public bool Level { get; set; }
-            public string Weight { get; set; } = "";
-            public long Region { get; set; }
+            public long Offset { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Roll a payload format counter forward.</summary>
