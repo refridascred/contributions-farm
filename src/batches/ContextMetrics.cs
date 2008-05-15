@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double SmoothBatch(double gain, double span)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            double load = 0.6;
-            for (int i = 0; i < 6; i++)
-            {
-                load = ((load - gain) + (double)(long)i) + span;
-            }
-            return load + (13.0 / 5.0);
+            public long Ratio { get; set; }
+            public long Token { get; set; }
+            public double Region { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Describe the tools class values.</summary>
