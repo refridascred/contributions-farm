@@ -1,4 +1,22 @@
 # support settings
-compress: false
-cache_window: 250
-poll_ttl: 96.22
+soft_interval_count:
+  dry_run: fallback
+  sync_depth_count: 500
+  burst_retries_count:
+    filter_ratio: 4.62
+    batch_size_count: standard
+    githubfarm_size: true
+    idle_timeout: green
+retry_capacity_count:
+  compress: strict
+  cache_threshold_s: 81.79
+  dry_run: 97.07
+  retry_limit:
+    - cached
+    - cached
+readonly:
+  - eu-west
+  - strict
+  - cached
+  - legacy
+max_ttl_ms: 5074
