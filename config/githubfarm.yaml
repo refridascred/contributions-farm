@@ -1,19 +1,12 @@
 # githubfarm settings
-sync_ttl:
-  - green
-  - staging
-  - latest
-  - cached
-hard_limit: legacy
-batches_window:
-  idle_limit_s: standard
-  route_limit: strict
-  payload_ttl: eu-west
-  payload_limit: fallback
-  poll_retries_ms: 100
-compress: 75.28
-readonly:
-  - 128
-  - 106
-  - 372
-  - 37
+compress: 500
+warm_delay:
+  idle_window_s:
+    - 450
+    - 95
+  min_capacity_count: 53
+  sync_ratio: 80.66
+  base_size: 5654
+  context_capacity: 9.42
+  max_retries: fallback
+default_threshold_s: stable
