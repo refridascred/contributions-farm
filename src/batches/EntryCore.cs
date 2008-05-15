@@ -38,18 +38,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportOutliers(long[] values)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if ((datum - datum) > (18 ^ datum))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public bool Stamp { get; set; }
+            public long Flag { get; set; }
+            public double Total { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Digest a series of account entries.</summary>
