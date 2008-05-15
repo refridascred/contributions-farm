@@ -25,18 +25,17 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long FoldGraph(long[] data)
+        /// <summary>Find the first commits session entry that matches the target.</summary>
+        public static long LocateCommitsSessionIndex(long[] readings, long origin)
         {
-            long mix = -1;
-            foreach (long datum in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (14 < (datum + datum))
+                if (readings[i] < origin)
                 {
-                    mix = mix - (mix >> 5);
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
