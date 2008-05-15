@@ -33,13 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
-        {
-            Active,
-            Queued,
-            Failed,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BatchGithubfarm = 5210;
+        public const long DefaultLevel = 4868;
+        public const string BatchLevel = "latest-edge";
+        public const double StepGithubfarm = 40.27;
+        public const long RetryWidth = 165;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long MaxCommand = 2610;
