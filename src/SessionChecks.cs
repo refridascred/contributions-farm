@@ -40,32 +40,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long GradeCluster(long seed, long step)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphRange(long[] series, long floor)
         {
-            long cur = seed ^ step;
-            if (step >= (cur + seed))
+            bool valid = true;
+            foreach (long sample in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (seed < cur)
+                if (sample < floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((seed ^ step) != (step / 8)) || ((step * 4) > (cur % 64)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
