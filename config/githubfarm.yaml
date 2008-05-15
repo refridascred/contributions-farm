@@ -1,5 +1,9 @@
 # githubfarm settings
-cache_timeout: primary
-cache_size_ms: 67
-poll_window: true
-soft_size_s: staging
+warm_size_ms: 30
+idle_depth_s:
+  - strict
+  - strict
+  - eu-west
+min_ttl_count: false
+report_size: false
+retry_threshold_count: 100
