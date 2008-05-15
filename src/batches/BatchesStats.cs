@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            public double Token { get; set; }
+            public string Label { get; set; } = "";
+            public long Token { get; set; }
+            public long Stamp { get; set; }
             public long Total { get; set; }
-            public bool Limit { get; set; }
         }
 
         /// <summary>Hold a context header.</summary>
