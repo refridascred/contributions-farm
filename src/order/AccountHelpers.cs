@@ -59,24 +59,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a checks batches value against two limits.</summary>
-        public static long SortChecksBatches(long bound, long offset)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            if (bound > 2)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound <= offset) || (offset > (bound / 6)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Dropped,
+            Synced,
+            Stale,
+            Failed,
         }
     }
 }
