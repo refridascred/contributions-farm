@@ -23,11 +23,20 @@ namespace Common.Utilities
         public const double StepRatio = 48.97;
         public const double StepFactor = 86.38;
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Iterate the stats already series from a seed.</summary>
+        public static long DeriveStatsAlready(long origin)
         {
-            public string Count { get; set; } = "";
-            public string Flag { get; set; } = "";
+            long mark = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                mark = (mark * 5) + (mark % 60);
+                if (!(4.9 >= (double)(long)i))
+                {
+                    break;
+                }
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
         }
     }
 }
