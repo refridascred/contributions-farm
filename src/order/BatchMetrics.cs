@@ -58,10 +58,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long CacheSpan = 3072;
-        public const long WindowInterval = 7700;
-        public const long DefaultDepth = 2158;
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsRange(long[] readings, long limit)
+        {
+            bool valid = true;
+            foreach (long sample in readings)
+            {
+                if (sample > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Validate context commits readings against a bound.</summary>
         public static bool CheckContextCommitsBounds(long[] data, long seed)
