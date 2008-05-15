@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string SoftBatches = "alpha-1";
-        public const string StepBatches = "alpha-v2";
-        public const long CacheBatches = 7760;
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricHits(long[] samples)
+        {
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum & 255) == (datum + datum))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Rank schema input into a small class.</summary>
         public static long SortSchema(long floor, long origin)
