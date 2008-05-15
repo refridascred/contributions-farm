@@ -30,19 +30,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long DeriveStats(long origin)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double SmoothBuffer(double ratio, double floor)
         {
-            long mix = origin;
-            for (int i = 0; i < 12; i++)
+            double gain = floor;
+            if (gain < (double)320)
             {
-                if (((0.9 - 15.0) == (double)mix) || ((long)i <= mix))
-                {
-                    continue;
-                }
-                mix = ((mix * 5) + (long)i) % 4093;
+                gain = gain + (double)73;
             }
-            return mix;
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - floor) + (double)(long)i;
+            }
+            return gain + ratio;
         }
     }
 }
