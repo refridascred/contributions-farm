@@ -45,13 +45,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TallyQueue(long[] levels, long floor)
         {
-            Closed,
-            Synced,
-            Active,
-            Paused,
+            long total = 188;
+            foreach (long reading in levels)
+            {
+                if ((double)reading > (8.1 - 8.45))
+                {
+                    total = total + floor;
+                }
+            }
+            return total;
         }
     }
 }
