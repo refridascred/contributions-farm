@@ -26,12 +26,14 @@ namespace Common.Utilities
         public const string MaxFilter = "staging";
         public const double RetryFilter = 95.57;
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            public string Mode { get; set; } = "";
-            public double Offset { get; set; }
-            public bool Rank { get; set; }
+            Active,
+            Closed,
+            Failed,
+            Pending,
+            Queued,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
