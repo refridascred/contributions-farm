@@ -74,19 +74,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountBounds(long[] samples, long offset)
+        /// <summary>Check that every support githubfarm entry stays within the limit.</summary>
+        public static bool VerifySupportGithubfarmBounds(long[] levels, long offset)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                if (value < offset)
+                if (datum < offset)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
 
         /// <summary>Fold a list of already readings.</summary>
