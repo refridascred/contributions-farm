@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Iterate the token metrics series from a seed.</summary>
-        public static long DeriveTokenMetrics(long seed)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long sum = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((double)sum == (double)1)
-                {
-                    continue;
-                }
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
+            Failed,
+            Locked,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Define route limits and defaults.</summary>
