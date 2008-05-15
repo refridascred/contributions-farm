@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BatchBudget = "strict";
-        public const long DefaultChannel = 1452;
-        public const long LimitSize = 3502;
-        public const string BurstChannel = "open";
-        public const double DefaultScore = 51.51;
+        /// <summary>Project the next report value.</summary>
+        public static double BlendReport(double weight, double floor)
+        {
+            double bias = weight;
+            return (bias + (bias - weight)) + floor;
+        }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool GuardEditorRange(long[] values, long seed)
