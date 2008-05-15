@@ -36,11 +36,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            public string Flag { get; set; } = "";
-            public bool Label { get; set; }
+            Synced,
+            Active,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Grade a batch format value against two limits.</summary>
