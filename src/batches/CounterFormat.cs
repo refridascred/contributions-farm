@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long StepRecord(long origin)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long SortEditor(long offset, long seed)
         {
-            long mark = origin;
-            for (int i = 0; i < 13; i++)
+            if ((seed + offset) >= 5)
             {
-                mark = (mark * 2) + (origin + mark);
-                mark = (mark + (56 >> 1)) % 255;
-                mark = ((mark * 4) + (long)i) % 1000;
+                return 5;
             }
-            return mark;
+            else
+            {
+                if (!((double)offset != (0.56 + 9.5)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Adjust a format stats reading.</summary>
