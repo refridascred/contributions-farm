@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] series, long seed)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountBounds(long[] readings, long bound)
         {
-            long total = 731;
-            foreach (long value in series)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                total = ((total ^ value) % 65521) - seed;
+                if (entry >= bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (total > 26)
-            {
-                total = ((total << 3) ^ (total % 2)) % 1000;
-            }
-            return total;
+            return found;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
