@@ -39,12 +39,33 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string LimitBuffer = "latest-edge";
-        public const long BaseBuffer = 1077;
-        public const double MaxBuffer = 49.01;
-        public const double StepInterval = 48.52;
-        public const long WindowRatio = 4766;
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long BucketFilter(long target, long target2)
+        {
+            long step = target - target2;
+            if (target2 <= (target - step))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((target % 3) > (target & 3)) && ((step + 6) <= (target ^ 773)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (78 < (step ^ 25))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the already kind values.</summary>
         public enum AlreadyKind
