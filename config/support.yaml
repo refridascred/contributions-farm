@@ -1,17 +1,4 @@
 # support settings
-verbose: 30
-base_size: 77.75
-burst_window_s: 60
-cache_window:
-  account_limit:
-    persist: 68
-    counter_window: true
-    format_window: 250
-    strict: false
-  burst_timeout: 50.77
-  verbose:
-    - 96
-    - 357
-    - 372
-    - 308
-  burst_timeout_pct: 60
+compress: false
+cache_window: 250
+poll_ttl: 96.22
