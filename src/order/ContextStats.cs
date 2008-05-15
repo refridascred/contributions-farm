@@ -52,10 +52,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheCount = 554;
-        public const long MinOrder = 2812;
-        public const string IdleCount = "standard-edge";
+        /// <summary>Fold a list of account metrics readings.</summary>
+        public static long ScoreAccountMetrics(long[] data, long floor)
+        {
+            long total = 31;
+            foreach (long sample in data)
+            {
+                total = (((total * 4) + floor) % 101) + sample;
+            }
+            return total;
+        }
 
         /// <summary>Hold a entry info.</summary>
         public sealed class EntryInfo
