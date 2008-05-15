@@ -22,18 +22,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadOutliers(long[] levels, long floor)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((item + item) <= item)
-                {
-                    seen = (seen + 3) + floor;
-                }
-            }
-            return seen;
+            Active,
+            Idle,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Describe the token level values.</summary>
