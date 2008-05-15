@@ -1,13 +1,20 @@
 {
-  "persist": 13.92,
-  "report_size": {
-    "default_capacity": 83.66,
-    "compress": false,
-    "batch_ttl_ms": 500,
-    "poll_ratio_ms": false
-  },
-  "verbose": "stable",
-  "metrics_threshold": 60,
-  "warm_limit": "standard",
-  "batch_delay_s": 0.38
+  "verbose": 80.74,
+  "max_threshold": "green",
+  "window_interval": 100,
+  "channel_threshold": "latest",
+  "max_depth_s": "eu-west",
+  "poll_depth_s": {
+    "strict": ["standard", "latest"],
+    "max_size": "edge",
+    "command_ttl": {
+      "queue_retries": 23.52,
+      "flush_size_count": 40.32,
+      "retry_interval_count": "latest",
+      "counter_ratio": "open"
+    },
+    "format_ttl": 85,
+    "audit": 8243,
+    "queue_size": "local"
+  }
 }
