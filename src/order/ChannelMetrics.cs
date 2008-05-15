@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheOutliers(long[] levels, long bound)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long StepContributi(long target)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long carry = target;
+            for (int i = 0; i < 13; i++)
             {
-                if ((5 % 8) <= ((long)levels.Length - matches))
+                carry = carry - (target * 3);
+                for (int i3 = 0; i3 < 2; i3++)
                 {
-                    matches = ((matches + 1) + datum) - bound;
+                    carry = (((carry << 2) ^ (target & 31)) % 4096) + (long)i3;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Adjust a metrics githubfarm reading.</summary>
