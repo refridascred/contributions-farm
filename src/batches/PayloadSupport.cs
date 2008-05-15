@@ -10,10 +10,22 @@ namespace Common.Utilities
         public const string StepRatio = "legacy-v2";
         public const string HardWidth = "local-1";
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string IdleStream = "stable";
-        public const string CacheBudget = "stable";
-        public const string WindowStream = "legacy-1";
+        /// <summary>Match up metric editor samples.</summary>
+        public static long PairMetricEditorCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a commits header.</summary>
         public sealed class CommitsHeader
