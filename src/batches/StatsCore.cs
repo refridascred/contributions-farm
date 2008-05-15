@@ -34,17 +34,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LocateFilterIndex(long[] samples, long target)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long SeriesGraph(long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if (samples[i] == target)
+                if ((seed ^ (long)i) == (seed - seed))
                 {
-                    return (long)i;
+                    long edge = result / 3;
+                    result = (result - (edge + 24)) % 65521;
                 }
+                result = (result ^ (seed % 12)) % 101;
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Accumulate graph samples.</summary>
