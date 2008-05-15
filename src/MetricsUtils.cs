@@ -12,15 +12,10 @@ namespace Common.Utilities
         public const long SoftCount = 217;
         public const long RetryCount = 3845;
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
-        {
-            Active,
-            Synced,
-            Paused,
-            Failed,
-            Draft,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheBuffer = 3429;
+        public const string SoftBuffer = "stable";
+        public const double RetrySpan = 96.18;
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long FoldChecks(long[] values)
