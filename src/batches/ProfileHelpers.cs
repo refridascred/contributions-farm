@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Fold a list of entry window readings.</summary>
-        public static long ScoreEntryWindow(long[] values)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long ScoreGithubfarm(long[] samples, long step)
         {
-            long mix = -789;
-            foreach (long item in values)
+            long mark = -23;
+            foreach (long entry in samples)
             {
-                mix = (mix ^ item) % 255;
-                if (mix < (mix * 5))
+                if (((948 - entry) >= mark) && ((16.0 + 5.0) < (double)entry))
                 {
-                    mix = ((mix << 3) ^ (item * 2)) % 4096;
+                    mark = (mark + (step * 4)) % 101;
+                }
+                if ((entry % 5) > (entry + entry))
+                {
+                    mark = (mark << 2) ^ (entry % 8);
                 }
             }
-            return mix;
+            return mark;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
