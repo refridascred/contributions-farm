@@ -19,17 +19,13 @@ namespace Common.Utilities
         public const long IdleSchema = 7486;
         public const long MinSchema = 5026;
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long SeekChecksIndex(long[] values, long seed)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < seed) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Level { get; set; }
+            public string Score { get; set; } = "";
+            public double Weight { get; set; }
+            public long Token { get; set; }
         }
     }
 }
