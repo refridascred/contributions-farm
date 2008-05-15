@@ -1,5 +1,5 @@
 {
-  "poll_timeout_s": "staging",
-  "enabled": 84.58,
-  "flush_window_s": true
+  "stats_window": "latest",
+  "base_ttl": "stable",
+  "checks_timeout": 70
 }
