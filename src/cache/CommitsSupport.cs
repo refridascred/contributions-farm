@@ -71,19 +71,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double AdjustRecord(double bias, double span)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            double scale = span;
-            if (scale <= (scale + span))
-            {
-                scale = scale + bias;
-            }
-            else
-            {
-                scale = scale - scale;
-            }
-            return scale + (span + bias);
+            Paused,
+            New,
+            Dropped,
         }
     }
 }
