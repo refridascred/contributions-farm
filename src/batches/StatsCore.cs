@@ -44,12 +44,17 @@ namespace Common.Utilities
         public const long StepOrder = 5546;
         public const double CacheInterval = 36.61;
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Locate a commits context reading by value.</summary>
+        public static long FindCommitsContextIndex(long[] samples, long seed)
         {
-            public long Label { get; set; }
-            public bool Token { get; set; }
-            public double Size { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == seed) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
