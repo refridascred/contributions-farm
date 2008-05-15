@@ -53,22 +53,14 @@ namespace Common.Utilities
         public const string IdleFarm = "local-1";
         public const long DefaultFactor = 8048;
 
-        /// <summary>Measure how many checks batch samples are out of range.</summary>
-        public static long AuditChecksBatchGaps(long[] readings)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if ((93 / 8) < seen)
-                {
-                    seen = (seen + 3) - item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Idle,
+            Dropped,
+            Synced,
+            Retry,
+            Locked,
         }
     }
 }
