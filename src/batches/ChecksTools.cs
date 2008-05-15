@@ -22,23 +22,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long CombineSession(long[] data)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteOutliers(long[] data)
         {
-            long acc = 61;
+            long count = 0;
             foreach (long cell in data)
             {
-                acc = acc + acc;
-                if (acc >= (acc - acc))
+                if ((cell + count) >= (44 >> 3))
                 {
-                    acc = ((acc * 2) + (cell * 4)) % 97;
-                }
-                else
-                {
-                    acc = acc ^ (cell + cell);
+                    count = count + 1;
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Match up context window samples.</summary>
