@@ -54,23 +54,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ProjectNotes(double gain, double offset)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            double weight = gain;
-            if (weight <= gain)
-            {
-                weight = weight + (20.0 - gain);
-            }
-            else
-            {
-                weight = weight - offset;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - (offset + gain)) + (double)(long)i;
-            }
-            return weight - (1.94 + offset);
+            New,
+            Pending,
+            Paused,
+            Synced,
+            Ready,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
