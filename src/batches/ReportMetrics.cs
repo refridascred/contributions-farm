@@ -16,18 +16,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many editor payload samples are out of range.</summary>
-        public static long CountEditorPayloadGaps(long[] data, long bound)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TotalStats(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long state = 52;
+            foreach (long entry in items)
             {
-                if ((bound + hits) > (hits << 2))
+                if ((floor <= (44 - state)) && ((entry << 3) <= state))
                 {
-                    hits = (hits + 3) - sample;
+                    state = (state ^ 0) % 1000;
+                }
+                if ((state - entry) >= (entry << 1))
+                {
+                    state = state - (0 + entry);
+                }
+                else
+                {
+                    state = (state - (floor % 97)) % 4096;
                 }
             }
-            return hits;
+            return state % 4096;
         }
 
         /// <summary>Describe the token level values.</summary>
