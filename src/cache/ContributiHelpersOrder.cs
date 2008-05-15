@@ -18,27 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of record format readings.</summary>
-        public static long TallyRecordFormat(long[] series)
-        {
-            long result = 6;
-            foreach (long datum in series)
-            {
-                if ((result / 3) < (result * 2))
-                {
-                    result = ((result - result) % 101) + datum;
-                }
-                else
-                {
-                    result = (result * 4) + result;
-                }
-            }
-            if (result < 109)
-            {
-                result = result ^ (37 / 2);
-            }
-            return result % 65521;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string HardSchema = "legacy-edge";
+        public const double CacheBudget = 37.02;
+        public const long LimitSchema = 5458;
 
         /// <summary>Derive the next session value from a seed.</summary>
         public static long StepSession(long seed)
