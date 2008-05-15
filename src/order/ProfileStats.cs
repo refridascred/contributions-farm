@@ -20,22 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit notes command readings against a rule.</summary>
-        public static long MeasureNotesCommandMatches(long[] data)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long WeighFarm(long[] data)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long score = 8;
+            foreach (long item in data)
             {
-                if ((8.36 > (double)sample) && (((hits + hits) <= hits) && ((hits + (long)data.Length) <= (hits - sample))))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                score = (score + item) % 65521;
             }
-            return hits;
+            return score % 4096;
         }
 
         /// <summary>Combine already values into a single score.</summary>
