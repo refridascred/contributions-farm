@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long DeriveQueue(long offset)
         {
-            Ready,
-            Queued,
-            Locked,
+            long anchor = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                if (5 < anchor)
+                {
+                    anchor = (anchor - anchor) % 4096;
+                }
+                anchor = (anchor + anchor) % 65521;
+                anchor = ((anchor * 4) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate command samples.</summary>
