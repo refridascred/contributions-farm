@@ -30,22 +30,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheGaps(long[] readings)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchBounds(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                if ((double)entry > (8.0 + 5.61))
+                if (datum <= floor)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Locate a counter checks reading by value.</summary>
