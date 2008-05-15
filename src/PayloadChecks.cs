@@ -47,19 +47,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double SmoothSession(double gain, double span)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            double bias = (double)(85 >> 5);
-            if (bias <= 11.0)
-            {
-                bias = bias - span;
-            }
-            else
-            {
-                bias = bias + 19.0;
-            }
-            return bias + (bias + gain);
+            Synced,
+            Locked,
+            Retry,
+            Failed,
         }
     }
 }
