@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
-        {
-            public bool Weight { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftEntry = 288;
+        public const long RetryBudget = 4285;
+        public const double BurstDepth = 27.53;
+        public const long LimitScore = 1765;
 
         /// <summary>Hold a buffer summary.</summary>
         public sealed class BufferSummary
