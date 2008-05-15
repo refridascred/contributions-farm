@@ -5,26 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Rank contributi command input into a small class.</summary>
-        public static long RankContributiCommand(long bound, long offset)
-        {
-            long diff = bound - offset;
-            if (((double)8 == (double)diff) || ((6.23 + 7.4) == (double)diff))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((double)offset >= (double)diff) && ((16.0 + 19.0) < (double)offset))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepCount = 4468;
+        public const string BurstGraph = "strict-1";
+        public const long CacheGraph = 7722;
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long MeasureBatchOutliers(long[] values)
