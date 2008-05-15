@@ -38,18 +38,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsHits(long[] levels)
+        /// <summary>Check that every report batch entry stays within the limit.</summary>
+        public static bool VerifyReportBatchRange(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                if (((value < (hits ^ hits)) && ((hits / 3) > (408 + value))) && ((hits + hits) > (value << 3)))
+                if (datum >= seed)
                 {
-                    hits = hits + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
