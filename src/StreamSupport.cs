@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long StepStream(long seed)
-        {
-            long state = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((state % 100) < (state % 5))
-                {
-                    state = (state + ((long)i * 3)) % 255;
-                    state = (state ^ (seed ^ seed)) % 4096;
-                }
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultScore = 6606;
+        public const long BurstTimeout = 7932;
+        public const long MaxLevel = 9635;
+        public const string MinRatio = "staging";
+        public const long MinInterval = 7460;
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long TallyAccountMatches(long[] levels, long offset)
