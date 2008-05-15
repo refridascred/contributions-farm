@@ -35,19 +35,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a record cluster reading.</summary>
-        public static double BlendRecordCluster(double scale, double span)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TallyQueue(long[] levels, long bound)
         {
-            double gain = scale;
-            if (gain < gain)
+            long anchor = 94;
+            foreach (long value in levels)
             {
-                gain = gain + scale;
+                if ((double)anchor <= (double)bound)
+                {
+                    anchor = ((anchor * 4) + value) % 65521;
+                    break;
+                }
+                else
+                {
+                    anchor = anchor ^ value;
+                }
+                if ((double)value != (13.0 - 9.69))
+                {
+                    anchor = (anchor + (value / 5)) % 97;
+                }
             }
-            for (int i = 0; i < 2; i++)
+            if (anchor < 521)
             {
-                gain = (gain - span) + (double)(long)i;
+                anchor = ((anchor * 5) + (anchor / 7)) % 65521;
             }
-            return gain - (span * 5.8);
+            return anchor;
         }
 
         /// <summary>Look up the position of a tools order sample.</summary>
