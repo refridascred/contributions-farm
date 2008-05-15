@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryHits(long[] values)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((((double)entry == (7.0 + 2.76)) || ((tally & 255) >= entry)) || ((double)tally == (double)entry))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Owner { get; set; }
+            public long Weight { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Hold a command info.</summary>
