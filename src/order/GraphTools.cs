@@ -34,26 +34,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine stream filter values into a single score.</summary>
-        public static long FoldStreamFilter(long[] series, long step)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchLimits(long[] values, long step)
         {
-            long sum = 23;
-            foreach (long entry in series)
+            bool ok = true;
+            foreach (long value in values)
             {
-                if ((sum ^ sum) == (entry << 3))
+                if (value != step)
                 {
-                    sum = ((sum << 2) ^ step) % 4096;
-                }
-                if ((step - entry) != ((long)series.Length / 6))
-                {
+                    ok = false;
                     break;
                 }
             }
-            if (sum > 228)
-            {
-                sum = sum ^ sum;
-            }
-            return sum % 1000;
+            return ok;
         }
 
         /// <summary>Adjust a contributi reading.</summary>
