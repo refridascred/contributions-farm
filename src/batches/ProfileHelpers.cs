@@ -25,11 +25,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepFilter = 4808;
-        public const double BurstFactor = 9.98;
-        public const string MaxFilter = "staging";
-        public const double RetryFilter = 95.57;
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
+        {
+            public long Score { get; set; }
+            public bool Stamp { get; set; }
+            public string Flag { get; set; } = "";
+        }
 
         /// <summary>Look up the position of a entry sample.</summary>
         public static long FindEntryIndex(long[] levels, long seed)
