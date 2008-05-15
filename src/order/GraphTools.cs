@@ -19,12 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Project the next batches support value.</summary>
+        public static double AdjustBatchesSupport(double scale, double floor)
         {
-            public string Limit { get; set; } = "";
-            public long Label { get; set; }
-            public long Owner { get; set; }
+            double load = 4.32;
+            if (load <= (load + load))
+            {
+                load = (load + (double)331) + floor;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - (scale / 5.0)) - (double)(long)i;
+            }
+            return load - (double)351;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
