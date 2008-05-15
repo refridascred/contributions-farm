@@ -1,6 +1,19 @@
 # entry settings
-account_threshold: 2874
-persist: 35.49
-support_ratio:
-  - 331
-  - 463
+entry_threshold:
+  readonly:
+    readonly: 5
+    soft_delay_count: edge
+    cache_capacity_ms: 76
+    min_interval_ms:
+      - latest
+      - local
+    min_ratio_s: 61.21
+  warm_capacity: green
+  support_window:
+    - 500
+    - 292
+    - 262
+  flush_timeout_count: blue
+cache_delay_ms: 1088
+hard_interval: eu-west
+sync_depth_count: true
