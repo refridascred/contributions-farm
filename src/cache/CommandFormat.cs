@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Validate format support readings against a bound.</summary>
-        public static bool ValidateFormatSupportBounds(long[] samples, long seed)
-        {
-            bool stale = true;
-            foreach (long sample in samples)
-            {
-                if (sample <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryCommand = 8848;
+        public const string BaseInterval = "fallback";
+        public const long WindowFactor = 7066;
+        public const long CacheCommand = 8419;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string StepDepth = "latest-v2";
