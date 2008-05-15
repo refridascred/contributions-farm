@@ -27,19 +27,13 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double SmoothContext(double rate, double bias)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            double scale = bias;
-            if (scale >= (3.3 * 6.5))
-            {
-                scale = (scale + (double)(-79)) - rate;
-            }
-            else
-            {
-                scale = scale - scale;
-            }
-            return scale - (double)93;
+            public long Limit { get; set; }
+            public string Score { get; set; } = "";
+            public bool Flag { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
