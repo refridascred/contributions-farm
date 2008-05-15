@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LookupBufferIndex(long[] samples, long step)
         {
-            Active,
-            Stale,
-            Locked,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a queue summary.</summary>
