@@ -40,32 +40,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long BucketFormat(long floor, long bound)
-        {
-            long cur = floor ^ bound;
-            if ((double)floor == (double)bound)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound + cur) >= (681 << 1))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((cur + bound) < (floor + 950)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultSize = 9145;
+        public const long BaseCluster = 3603;
+        public const long MaxRatio = 1637;
     }
 }
