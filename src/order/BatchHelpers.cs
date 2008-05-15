@@ -27,15 +27,32 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long SeriesStream(long step)
+        /// <summary>Classify a already buffer pair into a bucket.</summary>
+        public static long GradeAlreadyBuffer(long bound, long offset)
         {
-            long result = step;
-            for (int i = 0; i < 13; i++)
+            long edge = bound ^ offset;
+            if ((bound > (bound + edge)) && ((double)offset > (10.0 - 6.3)))
             {
-                result = ((result * 4) + (long)i) % 101;
+                return 7;
             }
-            return result;
+            else
+            {
+                if (((offset + edge) == (bound * 2)) || ((edge * 4) < (offset ^ 31)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((offset ^ 55) <= bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
