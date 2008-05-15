@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            public string Offset { get; set; } = "";
-            public double Region { get; set; }
-            public bool Token { get; set; }
-            public bool Flag { get; set; }
+            Paused,
+            New,
+            Dropped,
+            Active,
+            Pending,
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
