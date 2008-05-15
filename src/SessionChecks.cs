@@ -33,19 +33,32 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long FoldGithubfarm(long[] series)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long GradeCluster(long seed, long step)
         {
-            long result = 29;
-            foreach (long item in series)
+            long cur = seed ^ step;
+            if (step >= (cur + seed))
             {
-                for (int i = 0; i < 4; i++)
-                {
-                    result = (((result - 24) % 65521) - (long)i) ^ item;
-                }
-                result = ((result << 3) ^ 6) % 255;
+                return 5;
             }
-            return result;
+            else
+            {
+                if (seed < cur)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((seed ^ step) != (step / 8)) || ((step * 4) > (cur % 64)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
