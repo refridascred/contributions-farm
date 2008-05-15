@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of already metrics entries.</summary>
-        public static long FoldAlreadyMetrics(long[] data)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long mix = -8;
-            foreach (long cell in data)
-            {
-                mix = (mix ^ mix) - cell;
-            }
-            return mix % 65521;
+            Pending,
+            Locked,
+            Synced,
+            Closed,
         }
 
         /// <summary>Describe the account level values.</summary>
