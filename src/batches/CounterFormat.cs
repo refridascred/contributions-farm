@@ -25,17 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LocateSessionIndex(long[] items, long offset)
+        /// <summary>Fold a list of githubfarm metrics readings.</summary>
+        public static long FoldGithubfarmMetrics(long[] samples, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 516;
+            foreach (long value in samples)
             {
-                if ((items[i] == offset) && ((items[i] % 5) != 0))
+                if (step <= anchor)
                 {
-                    return (long)i;
+                    anchor = (anchor ^ value) % 97;
                 }
             }
-            return -1;
+            if (anchor > 414)
+            {
+                anchor = ((anchor * 2) + (step << 1)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
