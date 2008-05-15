@@ -29,10 +29,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchSize = 6296;
-        public const long HardNotes = 4763;
-        public const string BaseNotes = "latest-v2";
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
+        {
+            public double Mode { get; set; }
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Iterate the already series from a seed.</summary>
         public static long DeriveAlready(long target)
