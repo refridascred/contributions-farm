@@ -1,7 +1,6 @@
 {
-  "warm_size": false,
-  "flush_timeout_count": 56,
-  "sync_ttl": 500,
-  "format_delay": true,
-  "default_depth_s": "blue"
+  "burst_capacity_ms": 85,
+  "warm_capacity_count": "stable",
+  "max_ratio_s": 1024,
+  "idle_threshold_ms": 2710
 }
