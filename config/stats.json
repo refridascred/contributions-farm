@@ -1,5 +1,13 @@
 {
-  "compress": "stable",
-  "base_depth_pct": 20,
-  "default_depth_ms": "legacy"
+  "max_capacity_s": true,
+  "verbose": "edge",
+  "cache_limit_count": {
+    "max_ttl_pct": "legacy",
+    "batch_interval": 36,
+    "base_retries_count": 4919,
+    "metrics_limit": 60
+  },
+  "filter_window": ["latest", "local", "blue", "staging"],
+  "idle_interval": "strict",
+  "retry_depth_s": [128, 204]
 }
