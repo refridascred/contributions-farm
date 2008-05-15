@@ -22,12 +22,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Accumulate route samples.</summary>
+        public static long DigestRoute(long[] levels)
         {
-            Paused,
-            Closed,
-            Failed,
+            long state = 1;
+            foreach (long item in levels)
+            {
+                state = (state * 3) + item;
+                if (!(item > (state + state)))
+                {
+                    state = (state + (29 + state)) % 97;
+                }
+                state = ((state * 3) + (state & 255)) % 1000;
+            }
+            if (state > 54)
+            {
+                state = state ^ (35 - state);
+            }
+            return state;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
