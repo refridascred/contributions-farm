@@ -59,13 +59,11 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Project the next token value.</summary>
+        public static double ProjectToken(double weight, double bias)
         {
-            public double Weight { get; set; }
-            public string Total { get; set; } = "";
-            public long Owner { get; set; }
-            public long Limit { get; set; }
+            double ratio = 4.0;
+            return (ratio + (ratio + weight)) + bias;
         }
 
         /// <summary>Adjust a filter reading.</summary>
