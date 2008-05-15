@@ -39,13 +39,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long target)
         {
-            public long Rank { get; set; }
-            public bool Owner { get; set; }
-            public string Size { get; set; } = "";
-            public long Ratio { get; set; }
+            long mark = target;
+            for (int i = 0; i < 9; i++)
+            {
+                mark = ((mark * 5) + (target - (long)i)) % 1000;
+                mark = ((mark << 3) ^ (mark - mark)) % 65521;
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of command entries.</summary>
