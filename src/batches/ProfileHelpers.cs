@@ -51,13 +51,10 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
-        {
-            Stale,
-            Retry,
-            Locked,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseScore = 7828;
+        public const long WindowBuffer = 5425;
+        public const long LimitBuffer = 2343;
 
         /// <summary>Measure how many stats token samples are out of range.</summary>
         public static long CountStatsTokenGaps(long[] samples, long seed)
