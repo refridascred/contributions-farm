@@ -26,24 +26,17 @@ namespace Common.Utilities
         public const long BatchGraph = 6636;
         public const double CacheDepth = 88.69;
 
-        /// <summary>Classify a channel token pair into a bucket.</summary>
-        public static long SortChannelToken(long target, long floor)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LocateBatchesIndex(long[] values, long origin)
         {
-            if ((double)floor <= 1.4)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)floor == (13.0 + 8.6)) || ((target + target) == (target * 5)))
+                if ((values[i] > origin) && ((values[i] % 2) == 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Scale a schema payload figure with a bias.</summary>
