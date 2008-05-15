@@ -19,14 +19,14 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            Retry,
-            Closed,
-            Locked,
-            Dropped,
+            Active,
+            Synced,
+            Paused,
             Failed,
+            Draft,
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
