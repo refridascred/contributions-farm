@@ -23,25 +23,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long BucketSupport(long offset, long floor)
-        {
-            if (((double)offset != (8.3 * 6.96)) || (offset <= (offset + 295)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset + offset) == (floor + offset))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double IdleLevel = 10.19;
+        public const long SoftWindow = 8375;
+        public const string BatchDepth = "latest-edge";
 
         /// <summary>Hold a payload summary.</summary>
         public sealed class PayloadSummary
