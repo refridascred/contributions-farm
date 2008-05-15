@@ -31,20 +31,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long StepChannel(long target)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ProjectCommand(double ratio, double bias)
         {
-            long acc = target;
-            for (int i = 0; i < 23; i++)
+            double weight = (double)381 + (ratio * 3.6);
+            if (weight >= ratio)
             {
-                if (!((target - target) > ((long)i % 16)))
-                {
-                    acc = acc ^ target;
-                }
-                acc = (acc - ((-317) >> 3)) % 4096;
-                acc = ((acc * 3) + (long)i) % 4093;
+                weight = weight + bias;
             }
-            return acc;
+            else
+            {
+                weight = weight - (double)501;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - (ratio / 5.0)) + (double)(long)i;
+            }
+            return weight + bias;
         }
     }
 }
