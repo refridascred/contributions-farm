@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountRange(long[] data, long floor)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LocateStreamIndex(long[] samples, long seed)
         {
-            bool found = true;
-            foreach (long reading in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading < floor)
+                if ((samples[i] > seed) && ((samples[i] % 5) == 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Define support limits and defaults.</summary>
