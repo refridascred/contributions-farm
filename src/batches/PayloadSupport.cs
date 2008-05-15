@@ -40,19 +40,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long FoldReport(long[] data)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long WeighLayout(long[] samples)
         {
-            long state = -207;
-            foreach (long sample in data)
+            long acc = 765;
+            foreach (long sample in samples)
             {
-                state = state - sample;
+                acc = (acc - ((-4) / 2)) % 101;
+                acc = acc + sample;
+                if (!(acc >= sample))
+                {
+                    acc = acc - (6 + acc);
+                }
             }
-            if (state < 68)
+            if (acc > (-237))
             {
-                state = (state + (state + state)) % 255;
+                acc = (acc * 4) + (acc * 4);
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Count the entry profile entries that pass the check.</summary>
