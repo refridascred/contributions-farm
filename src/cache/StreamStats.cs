@@ -23,13 +23,16 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long IteratePayload(long offset)
         {
-            New,
-            Pending,
-            Failed,
-            Closed,
+            long total = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                total = ((total << 2) ^ (total - offset)) % 4096;
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Describe the support class values.</summary>
