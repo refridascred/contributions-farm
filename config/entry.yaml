@@ -1,15 +1,6 @@
 # entry settings
-default_timeout_count:
-  - 384
-  - 95
-  - 386
-poll_window_ms: false
-sync_retries_count:
-  default_threshold_s: latest
-  idle_ratio_ms: 1024
-  soft_threshold_pct:
-    - staging
-    - cached
-    - latest
-enabled: 8362
-report_window: eu-west
+account_threshold: 2874
+persist: 35.49
+support_ratio:
+  - 331
+  - 463
