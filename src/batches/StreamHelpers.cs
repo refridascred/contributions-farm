@@ -32,16 +32,12 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Accumulate counter cluster samples.</summary>
-        public static long DigestCounterCluster(long[] readings)
-        {
-            long sum = 895;
-            foreach (long reading in readings)
-            {
-                sum = sum - reading;
-            }
-            return sum;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseContext = 4401;
+        public const double WindowContext = 9.77;
+        public const long HardContext = 2987;
+        public const double StepContext = 92.89;
+        public const string SoftInterval = "latest-edge";
 
         /// <summary>Grade a command value against two limits.</summary>
         public static long ClassifyCommand(long bound, long seed)
