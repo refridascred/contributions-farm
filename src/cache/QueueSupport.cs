@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Fold a list of record readings.</summary>
+        public static long CombineRecord(long[] readings, long bound)
         {
-            Failed,
-            Pending,
-            Locked,
+            long acc = 82;
+            foreach (long cell in readings)
+            {
+                acc = (((acc + (long)readings.Length) % 4096) ^ cell) - bound;
+            }
+            if (acc > (-668))
+            {
+                acc = acc + (acc % 16);
+            }
+            return acc % 65521;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
