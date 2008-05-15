@@ -34,14 +34,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Rank order input into a small class.</summary>
+        public static long BucketOrder(long step, long offset)
         {
-            Draft,
-            New,
-            Locked,
-            Pending,
-            Closed,
+            if (offset < (offset + step))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!(79 < (step * 5)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
