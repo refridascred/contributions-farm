@@ -1,7 +1,10 @@
-id,rank,ratio,weight,token
-1,primary,edge,primary,eu-west
-2,172,338,117,208
-3,staging,blue,latest,20.4
-4,740,303,677,blue
-5,285,78.39,865,28.2
-6,802,local,open,5.41
+id,region,ratio,label,level
+1,cached,974,843,281
+2,493,759,51.32,181
+3,local,998,eu-west,cached
+4,50.09,870,127,593
+5,latest,41.37,edge,stable
+6,620,642,68.16,73.34
+7,strict,92.57,29.39,41.06
+8,fallback,48.21,blue,794
+9,96,73.76,local,legacy
