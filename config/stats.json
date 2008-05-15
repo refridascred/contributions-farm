@@ -1,25 +1,22 @@
 {
-  "dry_run": false,
-  "cache_threshold_count": true,
-  "payload_size": {
-    "min_capacity": {
-      "strict": 100,
-      "cache_depth_pct": [408, 311, 48, 32],
-      "dry_run": 26,
-      "farm_delay": 60,
-      "default_retries": true
+  "cache_depth": [270, 90, 258],
+  "persist": true,
+  "cache_ttl": {
+    "dry_run": {
+      "hard_timeout": 6464,
+      "dry_run": "local",
+      "flush_limit": [434, 438, 205, 421],
+      "stats_depth": false,
+      "strict": 47.27
     },
-    "cache_limit_s": [318, 379, 212],
-    "batch_limit_count": false,
-    "flush_window_ms": {
-      "warm_ratio": 12.51,
-      "base_interval_ms": 65.13,
-      "commits_interval": [364, 50, 355, 255],
-      "dry_run": "primary",
-      "batches_ratio": 36.27,
-      "min_interval": true
-    },
-    "persist": false,
-    "min_timeout": "green"
+    "route_capacity": 26,
+    "soft_ratio_count": 6188,
+    "warm_depth": ["edge", "strict", "standard"],
+    "default_delay_pct": [492, 153],
+    "cache_threshold": {
+      "base_retries": 40,
+      "retry_retries_s": 88,
+      "warm_threshold": 1024
+    }
   }
 }
