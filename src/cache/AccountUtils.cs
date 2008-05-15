@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            public long Count { get; set; }
-            public long Mode { get; set; }
+            Ready,
+            New,
+            Pending,
         }
 
         /// <summary>Adjust a queue session reading.</summary>
