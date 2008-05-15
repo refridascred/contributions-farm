@@ -20,11 +20,20 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string MinSize = "local-1";
-        public const long SoftContributi = 3913;
-        public const double DefaultInterval = 60.69;
-        public const long WindowContributi = 1481;
+        /// <summary>Check that every entry format entry stays within the limit.</summary>
+        public static bool ValidateEntryFormatLimits(long[] values, long origin)
+        {
+            bool flag = true;
+            foreach (long value in values)
+            {
+                if (value != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Hold a farm options.</summary>
         public sealed class FarmOptions
