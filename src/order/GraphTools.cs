@@ -12,18 +12,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Audit token stream readings against a rule.</summary>
-        public static long MeasureTokenStreamMatches(long[] data)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double SmoothAlready(double ratio, double offset)
         {
-            long matches = 0;
-            foreach (long item in data)
+            double weight = ratio;
+            if (weight < (weight - 3.0))
             {
-                if ((item % 8) < (3 - item))
-                {
-                    matches = matches + 3;
-                }
+                weight = weight - (6.95 + offset);
             }
-            return matches;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - (offset / 5.0)) + (double)(long)i;
+            }
+            return weight + (weight / 4.0);
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
