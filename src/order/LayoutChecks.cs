@@ -12,11 +12,13 @@ namespace Common.Utilities
         public const long RetryBuffer = 5698;
         public const string StepBuffer = "open-v2";
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            public long Limit { get; set; }
-            public string Offset { get; set; } = "";
+            public long Level { get; set; }
+            public double Label { get; set; }
+            public double Total { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Hold a buffer entry.</summary>
