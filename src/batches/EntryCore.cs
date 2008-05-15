@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksLimits(long[] readings, long seed)
         {
-            public double Offset { get; set; }
-            public long Weight { get; set; }
+            bool ok = true;
+            foreach (long datum in readings)
+            {
+                if (datum != seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
