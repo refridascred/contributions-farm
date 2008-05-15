@@ -36,21 +36,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long SeriesBatches(long step)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long FoldGraph(long[] data)
         {
-            long score = step;
-            for (int i = 0; i < 6; i++)
+            long mix = -1;
+            foreach (long datum in data)
             {
-                score = (score * 2) + 935;
-                if (score <= ((long)i << 3))
+                if (14 < (datum + datum))
                 {
-                    score = score + (score ^ (long)i);
+                    mix = mix - (mix >> 5);
                 }
-                score = (score * 2) + (13 - step);
-                score = ((score * 3) + (long)i) % 4093;
             }
-            return score;
+            return mix;
         }
 
         /// <summary>Hold a order record.</summary>
