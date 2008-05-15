@@ -59,20 +59,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of record metrics entries.</summary>
-        public static long ScoreRecordMetrics(long[] series)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long acc = 36;
-            foreach (long datum in series)
-            {
-                acc = ((acc << 2) ^ acc) % 255;
-                acc = (acc * 2) + (datum >> 5);
-            }
-            if (acc < 34)
-            {
-                acc = ((acc << 3) ^ acc) % 101;
-            }
-            return acc % 1000;
+            Ready,
+            Queued,
+            New,
+            Idle,
         }
     }
 }
