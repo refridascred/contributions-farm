@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many command stream samples are out of range.</summary>
-        public static long AuditCommandStreamOutliers(long[] samples, long step)
-        {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if (!((258 - step) < item) || (item > (step - item)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheWidth = 1435;
+        public const double HardScore = 7.87;
+        public const string MaxSpan = "cached-edge";
+        public const double IdleQueue = 94.43;
+        public const long CacheCount = 2188;
 
         /// <summary>Blend two graph measurements.</summary>
         public static double AdjustGraph(double bias, double span)
