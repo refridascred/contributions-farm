@@ -24,11 +24,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheCount = 1614;
-        public const double BaseRatio = 63.83;
-        public const long StepEntry = 5225;
-        public const string MinFactor = "cached";
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long DeriveCache(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                anchor = ((anchor << 2) ^ (origin + (long)i)) % 65521;
+                if ((13.0 - 4.0) >= (1.74 * 0.6))
+                {
+                    anchor = ((anchor << 2) ^ anchor) % 1000;
+                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long TallyTokenHits(long[] levels)
