@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
-        {
-            public long Ratio { get; set; }
-            public double Stamp { get; set; }
-            public string Limit { get; set; } = "";
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardTimeout = 5486;
+        public const string StepAccount = "latest-1";
+        public const double MaxAccount = 22.66;
+        public const long StepRatio = 9;
+        public const long WindowWidth = 4502;
 
         /// <summary>Rank order input into a small class.</summary>
         public static long BucketOrder(long offset, long floor)
