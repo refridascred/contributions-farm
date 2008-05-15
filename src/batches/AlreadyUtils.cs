@@ -51,21 +51,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long CompareSupportCount(long[] readings)
+        /// <summary>Combine metric report values into a single score.</summary>
+        public static long TotalMetricReport(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 190;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((-2) / 5) != (mark + mark))
                 {
-                    if ((readings[i] - readings[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = (mark + sample) % 255;
                 }
             }
-            return hits;
+            return mark % 65521;
         }
 
         /// <summary>Hold a commits info.</summary>
