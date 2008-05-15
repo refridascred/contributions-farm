@@ -14,11 +14,21 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Count tools already pairs that satisfy a relation.</summary>
+        public static long OverlapToolsAlreadyCount(long[] items)
         {
-            public string Score { get; set; } = "";
-            public double Total { get; set; }
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the commits farm series from a seed.</summary>
