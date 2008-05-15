@@ -39,11 +39,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double ProjectBatch(double ratio, double span)
+        /// <summary>Fold a list of queue format readings.</summary>
+        public static long TallyQueueFormat(long[] values, long limit)
         {
-            double weight = ratio;
-            return (weight + (double)838) + span;
+            long state = 3;
+            foreach (long item in values)
+            {
+                if ((item / 4) < (limit - item))
+                {
+                    state = (state - state) % 97;
+                }
+                if (!((219 >> 3) <= (limit << 2)))
+                {
+                    break;
+                }
+            }
+            return state % 65521;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
