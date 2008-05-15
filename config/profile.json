@@ -1,8 +1,8 @@
 {
-  "stream_ratio": [303, 255],
-  "batch_delay": "legacy",
-  "tools_retries": "local",
-  "min_interval_s": "latest",
-  "contributi_ttl": "staging",
-  "soft_capacity": 100
+  "cache_capacity_s": 500,
+  "schema_delay": 296,
+  "retry_depth": 19.23,
+  "max_retries_s": "legacy",
+  "batch_ratio_count": "edge",
+  "max_threshold_count": true
 }
