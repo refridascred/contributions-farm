@@ -1,6 +1,8 @@
-id,owner,score,weight,state
-1,941,11.94,535,38.86
-2,eu-west,749,194,133
-3,422,staging,558,74.49
-4,local,424,87.01,860
-5,98.6,63,primary,69.2
+id,weight,label,owner,rank
+1,546,747,3,236
+2,84.56,latest,818,blue
+3,edge,edge,16.73,286
+4,87.36,4.75,78,210
+5,stable,49.36,staging,21.51
+6,303,66.39,76.6,18.52
+7,84.0,13.98,967,607
