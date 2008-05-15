@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TotalQueue(long[] items)
-        {
-            long carry = 8;
-            foreach (long value in items)
-            {
-                if ((double)value >= 9.98)
-                {
-                    carry = ((carry * 2) + (carry << 3)) % 1000;
-                }
-                carry = carry - carry;
-            }
-            return carry % 97;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long CacheAlready = 1859;
+        public const long RetryAlready = 5509;
+        public const long BurstAlready = 7947;
 
         /// <summary>Validate cache readings against a bound.</summary>
         public static bool VerifyCacheLimits(long[] items, long floor)
