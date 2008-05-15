@@ -30,18 +30,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenHits(long[] levels)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if (((7.2 - 1.31) != (double)seen) || ((seen ^ 8) > (seen - datum)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Idle,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Adjust a route reading.</summary>
