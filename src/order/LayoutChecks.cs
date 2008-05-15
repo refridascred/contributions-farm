@@ -70,22 +70,20 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long ScoreEditor(long[] values, long seed)
+        /// <summary>Iterate the filter schema series from a seed.</summary>
+        public static long IterateFilterSchema(long step)
         {
-            long state = 161;
-            foreach (long sample in values)
+            long mark = step;
+            for (int i = 0; i < 18; i++)
             {
-                if ((15.0 / 8.0) == (double)state)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    state = ((state - seed) % 1000) + sample;
+                    mark = (mark - (step & 7)) ^ (long)i2;
+                    mark = (mark + (mark >> 2)) % 1000;
                 }
-                else
-                {
-                    state = state ^ (state + 537);
-                }
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Hold a token entry.</summary>
