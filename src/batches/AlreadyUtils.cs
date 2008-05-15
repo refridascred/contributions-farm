@@ -12,19 +12,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricRange(long[] series, long bound)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TallyWindow(long[] readings, long target)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            long anchor = 8;
+            foreach (long value in readings)
             {
-                if (cell < bound)
+                anchor = ((anchor + 96) % 97) - target;
+                if ((value * 2) > value)
                 {
-                    stale = false;
-                    break;
+                    anchor = (anchor + value) % 255;
                 }
             }
-            return stale;
+            return anchor;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
