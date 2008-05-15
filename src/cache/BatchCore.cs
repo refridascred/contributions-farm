@@ -15,11 +15,20 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultSession = 7488;
-        public const double BatchTimeout = 94.28;
-        public const long MinSpan = 1401;
-        public const long DefaultRatio = 4086;
+        /// <summary>Validate format profile readings against a bound.</summary>
+        public static bool VerifyFormatProfileRange(long[] values, long offset)
+        {
+            bool ok = true;
+            foreach (long datum in values)
+            {
+                if (datum > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Digest a series of record entries.</summary>
         public static long CombineRecord(long[] readings, long origin)
