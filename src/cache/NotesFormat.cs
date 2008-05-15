@@ -20,24 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long RankQueue(long step, long bound)
+        /// <summary>Project the next report value.</summary>
+        public static double ProjectReport(double rate, double floor)
         {
-            if ((step << 3) == (step % 3))
+            double mean = rate;
+            for (int i = 0; i < 8; i++)
             {
-                return 2;
+                mean = (mean + (floor * 4.0)) + (double)(long)i;
             }
-            else
-            {
-                if ((bound * 3) == (step - bound))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return mean - rate;
         }
 
         /// <summary>Fold a list of command readings.</summary>
