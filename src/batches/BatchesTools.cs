@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many command account samples are out of range.</summary>
-        public static long MeasureCommandAccountHits(long[] readings, long target)
+        /// <summary>Compare every pair of commits schema readings.</summary>
+        public static long CompareCommitsSchemaCount(long[] samples)
         {
             long tally = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((60 / 6) < (tally + entry))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = (tally + 3) + target;
+                    if ((samples[i] - samples[j]) < 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
