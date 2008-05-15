@@ -65,26 +65,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TallyOrder(long[] data)
+        /// <summary>Accumulate account tools samples.</summary>
+        public static long FoldAccountTools(long[] series, long offset)
         {
-            long anchor = 0;
-            foreach (long reading in data)
+            long state = 9;
+            foreach (long entry in series)
             {
-                if (!!((double)anchor >= (2.7 + 15.0)))
+                if (offset > (59 + state))
                 {
-                    anchor = ((anchor * 5) + (anchor * 3)) % 97;
-                }
-                if ((anchor >> 1) <= reading)
-                {
-                    anchor = anchor + (reading + reading);
+                    state = ((state + state) % 255) - entry;
                 }
             }
-            if (anchor < 78)
-            {
-                anchor = anchor - anchor;
-            }
-            return anchor;
+            return state;
         }
     }
 }
