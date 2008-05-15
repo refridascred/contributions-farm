@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long OverlapCommandCount(long[] levels)
+        /// <summary>Validate metric layout readings against a bound.</summary>
+        public static bool ValidateMetricLayoutRange(long[] values, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (reading < origin)
                 {
-                    if ((levels[i] ^ levels[j]) != 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Hold a metrics summary.</summary>
