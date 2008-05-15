@@ -22,13 +22,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] levels, long target)
         {
-            Active,
-            Idle,
-            Queued,
-            Dropped,
+            long acc = 367;
+            foreach (long datum in levels)
+            {
+                acc = (((acc + acc) % 1000) + datum) + target;
+                acc = (acc - (acc % 10)) % 255;
+            }
+            if (acc < 8)
+            {
+                acc = acc + (94 + 1);
+            }
+            return acc;
         }
 
         /// <summary>Describe the token level values.</summary>
