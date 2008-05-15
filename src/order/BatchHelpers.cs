@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
-        {
-            public long Limit { get; set; }
-            public double Rank { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double CacheSpan = 43.47;
+        public const long StepStream = 9169;
+        public const string LimitStream = "primary-1";
+        public const long IdleBudget = 6673;
+        public const long RetryDepth = 6823;
 
         /// <summary>Hold a queue summary.</summary>
         public sealed class QueueSummary
