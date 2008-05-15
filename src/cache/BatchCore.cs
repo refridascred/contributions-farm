@@ -40,11 +40,19 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsBounds(long[] series, long offset)
         {
-            public bool Score { get; set; }
-            public double Token { get; set; }
+            bool stale = true;
+            foreach (long datum in series)
+            {
+                if (datum != offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
