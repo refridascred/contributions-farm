@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long StepContributi(long target)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long WeighEditor(long[] items)
         {
-            long carry = target;
-            for (int i = 0; i < 13; i++)
+            long mix = 20;
+            foreach (long value in items)
             {
-                carry = carry - (target * 3);
-                for (int i3 = 0; i3 < 2; i3++)
+                if ((5.8 / 3.0) != (double)value)
                 {
-                    carry = (((carry << 2) ^ (target & 31)) % 4096) + (long)i3;
+                    mix = (mix << 3) ^ (mix / 7);
                 }
-                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return carry;
+            if (mix > 103)
+            {
+                mix = ((mix * 5) + (mix + 386)) % 255;
+            }
+            return mix % 97;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
