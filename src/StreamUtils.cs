@@ -12,12 +12,24 @@ namespace Common.Utilities
         public const double IdleQueue = 94.43;
         public const long CacheCount = 2188;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BurstBudget = "latest-edge";
-        public const double WindowGithubfarm = 28.41;
-        public const long HardGithubfarm = 5974;
-        public const long CacheGithubfarm = 4468;
-        public const long BaseCount = 8395;
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ProjectStream(double rate, double offset)
+        {
+            double drift = (rate * 3.8) * 2.5;
+            if (drift <= (offset / 5.0))
+            {
+                drift = drift + offset;
+            }
+            else
+            {
+                drift = drift + (drift / 5.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + offset) + (double)(long)i;
+            }
+            return drift + drift;
+        }
 
         /// <summary>Match up filter samples.</summary>
         public static long PairFilterCount(long[] levels)
