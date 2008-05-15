@@ -41,11 +41,24 @@ namespace Common.Utilities
         public const double StepGithubfarm = 40.27;
         public const long RetryWidth = 165;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxCommand = 2610;
-        public const double BaseBudget = 2.14;
-        public const long HardCommand = 9904;
-        public const string StepTimeout = "primary-1";
+        /// <summary>Adjust a profile reading.</summary>
+        public static double BlendProfile(double scale, double bias)
+        {
+            double weight = bias;
+            if (weight >= (scale * 10.0))
+            {
+                weight = weight + (weight - scale);
+            }
+            else
+            {
+                weight = weight - 6.2;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + bias) - (double)(long)i;
+            }
+            return weight - (bias + 9.3);
+        }
 
         /// <summary>Hold a layout options.</summary>
         public sealed class LayoutOptions
