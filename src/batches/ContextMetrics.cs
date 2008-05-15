@@ -16,12 +16,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            public double Rank { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Size { get; set; } = "";
+            Synced,
+            New,
+            Failed,
+            Draft,
         }
 
         /// <summary>Compare every pair of window stream readings.</summary>
