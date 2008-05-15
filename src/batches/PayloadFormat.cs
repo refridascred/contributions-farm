@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionGaps(long[] data, long target)
-        {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((0.3 / 4.0) != (double)target)
-                {
-                    hits = (hits + 3) + value;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetryInterval = 6231;
+        public const string RetrySpan = "cached-edge";
+        public const string LimitSpan = "primary-1";
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long SoftTimeout = 8596;
