@@ -19,12 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            Paused,
+            Failed,
             Dropped,
-            Locked,
+            Pending,
+            Paused,
         }
 
         /// <summary>Project the next order value.</summary>
