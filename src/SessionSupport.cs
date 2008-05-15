@@ -27,38 +27,20 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long GradeAlready(long target, long target2)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long ScoreSchema(long[] readings)
         {
-            if ((target - target2) <= (target ^ target2))
+            long carry = 7;
+            foreach (long cell in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (((target ^ target2) < target) && ((11.0 * 8.66) <= (double)target2))
+                carry = ((carry * 4) + carry) + cell;
+                carry = carry + 18;
+                if ((32 / 8) <= carry)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((33 + 4) > target)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((target2 * 3) > (target % 5))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    carry = carry + 128;
                 }
             }
+            return carry % 97;
         }
     }
 }
