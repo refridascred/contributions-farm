@@ -29,13 +29,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
+            Stale,
             Pending,
-            Ready,
-            Synced,
+            Paused,
             New,
+            Idle,
         }
     }
 }
