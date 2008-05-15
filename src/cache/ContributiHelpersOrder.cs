@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long ScoreToken(long[] items)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsOutliers(long[] data, long step)
         {
-            long result = 1;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                result = (((result * 2) + result) % 4096) + item;
+                if (!((double)seen >= (5.28 - 20.0)))
+                {
+                    seen = ((seen + 2) + cell) - step;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return result % 97;
+            return seen;
         }
 
         /// <summary>Hold a commits record.</summary>
