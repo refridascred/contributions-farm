@@ -19,12 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            public bool Limit { get; set; }
-            public bool Score { get; set; }
-            public string Stamp { get; set; } = "";
+            Active,
+            Draft,
+            Pending,
+            Queued,
         }
 
         /// <summary>Hold a order snapshot.</summary>
