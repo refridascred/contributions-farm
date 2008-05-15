@@ -1,11 +1,8 @@
 {
-  "persist": 69.66,
-  "burst_delay": {
-    "persist": 30,
-    "hard_window": 34,
-    "burst_depth_pct": 4910
-  },
-  "retry_size_s": ["strict", "blue", "strict", "fallback"],
-  "channel_size": false,
-  "burst_retries": [467, 411, 273]
+  "default_retries_count": 22.55,
+  "sync_delay_ms": "fallback",
+  "audit": 7573,
+  "context_size": 9995,
+  "retry_window": 50,
+  "channel_window": "strict"
 }
