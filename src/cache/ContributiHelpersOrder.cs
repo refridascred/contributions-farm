@@ -18,17 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long SeekBatchesIndex(long[] samples, long floor)
+        /// <summary>Audit window githubfarm readings against a rule.</summary>
+        public static long MeasureWindowGithubfarmMatches(long[] samples, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if (samples[i] >= floor)
+                if ((double)datum == (12.0 - 0.6))
                 {
-                    return (long)i;
+                    hits = (hits + 1) - offset;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
