@@ -1,21 +1,5 @@
 {
-  "enabled": {
-    "farm_limit": true,
-    "persist": false,
-    "hard_size_pct": 5377,
-    "retry_ratio": false,
-    "flush_threshold": {
-      "audit": [190, 269],
-      "stats_ratio": false,
-      "enabled": true,
-      "batch_threshold_s": 61.89,
-      "entry_limit": [247, 269, 455, 358]
-    },
-    "strict": ["staging", "edge", "local"]
-  },
-  "audit": 31.29,
-  "batch_depth": 76.11,
-  "strict": 3459,
-  "warm_delay_ms": 95,
-  "batch_ratio": ["fallback", "local", "blue"]
+  "retry_limit_count": 20.57,
+  "editor_delay": ["green", "primary", "primary", "stable"],
+  "base_retries_s": ["green", "stable", "open"]
 }
