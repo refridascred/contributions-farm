@@ -22,13 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Count the entry report entries that pass the check.</summary>
+        public static long MeasureEntryReportHits(long[] levels, long target)
         {
-            Pending,
-            Draft,
-            Ready,
-            Retry,
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell << 3) >= 3)
+                {
+                    count = (count + 3) + target;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
