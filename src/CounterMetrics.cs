@@ -18,21 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long PairMetricsCount(long[] levels)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Pending,
+            Queued,
+            Ready,
+            Draft,
+            Synced,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
