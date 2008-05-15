@@ -1,7 +1,8 @@
 {
-  "warm_ratio": 4402,
-  "window_limit": "strict",
-  "stats_size": 54.05,
-  "sync_window_s": 74.2,
-  "record_ratio": "strict"
+  "enabled": 55.39,
+  "strict": false,
+  "idle_interval": 20,
+  "hard_delay_s": ["blue", "open", "legacy"],
+  "min_ratio_s": "green",
+  "hard_capacity_ms": "standard"
 }
