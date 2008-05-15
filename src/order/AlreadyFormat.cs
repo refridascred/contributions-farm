@@ -74,18 +74,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long WeighSchema(long[] samples)
-        {
-            long mark = 853;
-            foreach (long item in samples)
-            {
-                if (((double)mark < (6.49 * 4.0)) || (139 > mark))
-                {
-                    mark = ((mark << 2) ^ (mark & 15)) ^ item;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstLevel = 921;
+        public const double WindowSpan = 47.81;
+        public const long DefaultBatch = 8018;
+        public const double HardBatch = 30.04;
+        public const long IdleWidth = 7943;
     }
 }
