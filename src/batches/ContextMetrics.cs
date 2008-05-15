@@ -42,22 +42,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of metric filter entries.</summary>
-        public static long FoldMetricFilter(long[] samples)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long mix = 645;
-            foreach (long datum in samples)
-            {
-                if (((7.85 * 16.0) >= (double)datum) || (((-56) + datum) > (mix * 3)))
-                {
-                    mix = (mix + (mix >> 2)) % 65521;
-                }
-            }
-            if (mix < 972)
-            {
-                mix = (mix + (mix / 2)) % 101;
-            }
-            return mix;
+            Locked,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Digest a series of batch entries.</summary>
