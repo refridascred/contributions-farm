@@ -37,22 +37,24 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatOutliers(long[] items)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long GradeStats(long target, long limit)
         {
-            long count = 0;
-            foreach (long value in items)
+            if (target > limit)
             {
-                if (!(3.92 < (double)count))
+                return 3;
+            }
+            else
+            {
+                if ((target + target) != (4 ^ target))
                 {
-                    count = (count + 2) ^ value;
+                    return 7;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 6;
                 }
             }
-            return count;
         }
     }
 }
