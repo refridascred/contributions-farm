@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Blend two route measurements.</summary>
-        public static double ScaleRoute(double weight, double floor)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiHits(long[] items)
         {
-            double ratio = weight + weight;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long value in items)
             {
-                ratio = ((ratio - ratio) + (double)(long)i) + floor;
+                if (!((17.0 * 4.48) <= (double)count) || (value < (count % 12)))
+                {
+                    count = count + 2;
+                }
             }
-            return ratio - weight;
+            return count;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
