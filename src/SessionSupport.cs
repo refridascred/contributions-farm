@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long WeighSupport(long[] values, long step)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricMatches(long[] items, long bound)
         {
-            long result = 4;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if (result <= item)
+                if (!(cell >= (cell + bound)))
                 {
-                    result = (result - (result & 63)) - step;
+                    seen = seen + 1;
                 }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Digest a series of order entries.</summary>
