@@ -65,22 +65,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaGaps(long[] readings, long target)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long WeighChecks(long[] readings, long offset)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long result = 76;
+            foreach (long item in readings)
             {
-                if ((double)entry > (9.0 * 5.4))
-                {
-                    matches = (matches + 3) - target;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                result = (((result + (result % 12)) % 255) ^ item) - offset;
             }
-            return matches;
+            return result % 1000;
         }
     }
 }
