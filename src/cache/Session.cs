@@ -25,12 +25,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyBounds(long[] readings, long offset)
         {
-            public string Weight { get; set; } = "";
-            public bool Owner { get; set; }
-            public string Stamp { get; set; } = "";
+            bool ready = true;
+            foreach (long value in readings)
+            {
+                if (value <= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
