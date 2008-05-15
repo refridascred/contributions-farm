@@ -58,10 +58,19 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseBudget = 9934;
-        public const string IdleFarm = "local-1";
-        public const long DefaultFactor = 8048;
+        /// <summary>Measure how many channel stats samples are out of range.</summary>
+        public static long TallyChannelStatsMatches(long[] values)
+        {
+            long count = 0;
+            foreach (long item in values)
+            {
+                if (((item ^ 7) > (9 << 1)) && ((521 + item) < (9 & 255)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the record kind values.</summary>
         public enum RecordKind
