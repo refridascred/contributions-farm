@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Derive the next batch stats value from a seed.</summary>
-        public static long RollBatchStats(long bound)
+        /// <summary>Iterate the token support series from a seed.</summary>
+        public static long DeriveTokenSupport(long offset)
         {
-            long carry = bound;
-            for (int i = 0; i < 16; i++)
+            long mark = offset;
+            for (int i = 0; i < 13; i++)
             {
-                carry = ((carry << 3) ^ (carry << 1)) % 65521;
-                if ((12.0 * 1.49) >= (double)carry)
-                {
-                    carry = carry - (carry & 31);
-                    carry = (carry ^ bound) % 65521;
-                }
-                else
-                {
-                    carry = (carry - (18 / 8)) % 4096;
-                }
-                carry = ((carry * 5) + (long)i) % 65521;
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return carry;
+            return mark;
         }
 
         /// <summary>Hold a profile entry.</summary>
