@@ -6,12 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=326
+BUFFER_LIMIT=78
 log "limit is ${BUFFER_LIMIT}"
 
-mode="${1:-cached}"
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
+mode="${1:-latest}"
 case "${mode}" in
-    fallback)
+    blue)
         log "fast path"
         ;;
     *)
