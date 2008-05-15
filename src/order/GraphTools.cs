@@ -56,11 +56,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BatchFormat = "staging-edge";
-        public const string MaxFormat = "cached-edge";
-        public const long MaxTimeout = 7498;
-        public const double WindowSpan = 80.36;
-        public const long HardRatio = 2795;
+        /// <summary>Project the next report value.</summary>
+        public static double SmoothReport(double scale, double offset)
+        {
+            double load = (offset - scale) + (offset - scale);
+            if (load >= (offset / 4.0))
+            {
+                load = load + (offset * 7.0);
+            }
+            else
+            {
+                load = load + scale;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - scale) + (double)(long)i;
+            }
+            return load + (scale * 6.6);
+        }
     }
 }
