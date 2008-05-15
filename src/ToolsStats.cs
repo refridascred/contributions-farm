@@ -19,15 +19,21 @@ namespace Common.Utilities
         public const long MinProfile = 9970;
         public const long CacheProfile = 41;
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long SeriesNotes(long step)
+        /// <summary>Match up batch samples.</summary>
+        public static long OverlapBatchCount(long[] readings)
         {
-            long state = step;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = ((state * 3) + (long)i) % 1000;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 14)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Scale a metrics entry figure with a bias.</summary>
