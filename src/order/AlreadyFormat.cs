@@ -23,18 +23,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterOutliers(long[] levels)
+        /// <summary>Fold a list of editor batches readings.</summary>
+        public static long CombineEditorBatches(long[] items, long origin)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long carry = -918;
+            foreach (long item in items)
             {
-                if ((double)tally >= (7.07 * 3.38))
+                carry = ((carry << 2) ^ item) % 101;
+                if (822 > (carry * 4))
                 {
-                    tally = (tally + 1) + cell;
+                    carry = (carry ^ (carry >> 3)) % 255;
+                }
+                if (carry < (origin / 8))
+                {
+                    break;
                 }
             }
-            return tally;
+            return carry % 97;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
