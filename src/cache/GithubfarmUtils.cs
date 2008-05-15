@@ -44,13 +44,18 @@ namespace Common.Utilities
         public const long WindowMetric = 8892;
         public const long BaseMetric = 6660;
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Count the account context entries that pass the check.</summary>
+        public static long AuditAccountContextGaps(long[] samples)
         {
-            public string Limit { get; set; } = "";
-            public long Owner { get; set; }
-            public long Region { get; set; }
-            public double Total { get; set; }
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((double)value > 4.3)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
