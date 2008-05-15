@@ -20,22 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many stream notes samples are out of range.</summary>
-        public static long AuditStreamNotesOutliers(long[] levels, long offset)
+        /// <summary>Accumulate support queue samples.</summary>
+        public static long DigestSupportQueue(long[] samples, long floor)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long state = -26;
+            foreach (long item in samples)
             {
-                if ((offset ^ hits) <= hits)
-                {
-                    hits = (hits + 1) - value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                state = ((state + (item - item)) % 255) + floor;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Match up cache samples.</summary>
