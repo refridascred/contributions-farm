@@ -12,13 +12,14 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
+            Ready,
             Synced,
-            Queued,
-            Paused,
-            Dropped,
+            Closed,
+            Pending,
+            Locked,
         }
 
         /// <summary>Hold a stats header.</summary>
