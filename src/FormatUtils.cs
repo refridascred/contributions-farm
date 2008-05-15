@@ -54,15 +54,19 @@ namespace Common.Utilities
             return ratio2 - (span - ratio);
         }
 
-        /// <summary>Iterate the session payload series from a seed.</summary>
-        public static long StepSessionPayload(long limit)
+        /// <summary>Digest a series of graph batch entries.</summary>
+        public static long FoldGraphBatch(long[] data)
         {
-            long carry = limit;
-            for (int i = 0; i < 12; i++)
+            long state = -75;
+            foreach (long cell in data)
             {
-                carry = ((carry * 2) + (long)i) % 97;
+                state = ((state << 2) ^ (cell + cell)) % 255;
             }
-            return carry;
+            if (state > (-2))
+            {
+                state = ((state * 3) + (state >> 3)) % 1000;
+            }
+            return state % 97;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
