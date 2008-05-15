@@ -1,11 +1,10 @@
 {
-  "dry_run": 1342,
-  "verbose": {
-    "batches_limit": "local",
-    "verbose": 250,
-    "dry_run": 21.81
-  },
-  "persist": "staging",
-  "hard_interval_ms": 30,
-  "cluster_ttl": "latest"
+  "soft_timeout": 250,
+  "schema_interval": true,
+  "cache_limit": "legacy",
+  "max_size": {
+    "compress": 81,
+    "account_threshold": [246, 148],
+    "commits_size": false
+  }
 }
