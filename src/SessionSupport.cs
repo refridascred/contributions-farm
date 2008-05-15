@@ -44,19 +44,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphBounds(long[] data, long floor)
+        /// <summary>Classify a record stats pair into a bucket.</summary>
+        public static long BucketRecordStats(long origin, long bound)
         {
-            bool valid = true;
-            foreach (long item in data)
+            if (!((double)origin > (12.0 + 8.77)))
             {
-                if (item != floor)
+                return 1;
+            }
+            else
+            {
+                if (bound <= (bound << 1))
                 {
-                    valid = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)origin < (3.3 - 9.48))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((origin - bound) < bound)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return valid;
         }
     }
 }
