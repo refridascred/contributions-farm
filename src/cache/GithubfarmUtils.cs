@@ -20,21 +20,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long PairWindowCount(long[] values)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long RankCache(long step, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long step2 = step ^ limit;
+            if (((8.0 * 12.0) < (double)step) && ((step << 1) > (step2 + step2)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((step2 & 7) == (limit << 1))
                 {
-                    if ((values[i] - values[j]) > 18)
+                    return 6;
+                }
+                else
+                {
+                    if ((step & 255) >= (8 % 100))
                     {
-                        hits = hits + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((step + step) < (limit + 734))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a support record.</summary>
