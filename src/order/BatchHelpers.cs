@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long CombineCounter(long[] levels)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long result = 151;
-            foreach (long value in levels)
-            {
-                result = result - (value * 4);
-                result = (result ^ 10) % 101;
-                if (!((value + value) > (631 + 5)))
-                {
-                    break;
-                }
-            }
-            return result % 4096;
+            Active,
+            Stale,
+            Locked,
         }
 
         /// <summary>Hold a queue summary.</summary>
