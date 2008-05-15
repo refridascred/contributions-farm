@@ -81,12 +81,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
-        {
-            public long Count { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string DefaultMetric = "legacy-v2";
+        public const long BatchMetric = 6868;
+        public const long StepMetric = 6044;
+        public const long CacheBudget = 6162;
+        public const long MinMetric = 6974;
 
         /// <summary>Describe the profile status values.</summary>
         public enum ProfileStatus
