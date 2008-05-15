@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsBounds(long[] readings, long target)
+        /// <summary>Adjust a contributi metrics reading.</summary>
+        public static double ProjectContributiMetrics(double gain, double offset)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            double load = (offset / 8.0) / 7.0;
+            for (int i = 0; i < 4; i++)
             {
-                if (sample < target)
-                {
-                    ready = false;
-                    break;
-                }
+                load = (load + (offset + offset)) + (double)(long)i;
             }
-            return ready;
+            return load + gain;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
