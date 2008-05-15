@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit buffer queue readings against a rule.</summary>
-        public static long CountBufferQueueHits(long[] samples, long offset)
+        /// <summary>Measure how many command account samples are out of range.</summary>
+        public static long MeasureCommandAccountHits(long[] readings, long target)
         {
             long tally = 0;
-            foreach (long entry in samples)
+            foreach (long entry in readings)
             {
-                if ((offset >> 1) <= (-81))
+                if ((60 / 6) < (tally + entry))
                 {
-                    tally = (tally + 1) + entry;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = (tally + 3) + target;
                 }
             }
             return tally;
