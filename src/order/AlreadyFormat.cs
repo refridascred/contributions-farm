@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            public string Offset { get; set; } = "";
-            public double Flag { get; set; }
             public double Total { get; set; }
+            public string Weight { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
