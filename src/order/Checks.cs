@@ -74,18 +74,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LocateClusterIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= seed) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string IdleAlready = "open-v2";
+        public const long WindowTimeout = 1689;
+        public const double CacheAlready = 80.87;
+        public const string BaseAlready = "open";
 
         /// <summary>Fold a list of already readings.</summary>
         public static long FoldAlready(long[] readings)
