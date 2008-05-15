@@ -23,14 +23,19 @@ namespace Common.Utilities
         public const long WindowLevel = 2855;
         public const long StepWidth = 7981;
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueBounds(long[] items, long seed)
         {
-            Closed,
-            Synced,
-            New,
-            Draft,
-            Idle,
+            bool valid = true;
+            foreach (long entry in items)
+            {
+                if (entry < seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
