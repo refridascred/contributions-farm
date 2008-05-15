@@ -1,9 +1,8 @@
-id,level,state,token
-1,edge,181,90
-2,21.6,833,fallback
-3,411,220,49.77
-4,green,edge,445
-5,eu-west,40.05,60.36
-6,green,blue,887
-7,560,latest,edge
-8,98.97,edge,811
+id,state,score
+1,9.39,924
+2,231,350
+3,82.71,eu-west
+4,32.09,662
+5,green,294
+6,95.39,63.27
+7,52.2,64.48
