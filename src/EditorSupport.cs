@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Accumulate filter samples.</summary>
+        public static long ScoreFilter(long[] values, long offset)
         {
-            public bool Count { get; set; }
-            public double Weight { get; set; }
-            public double Total { get; set; }
+            long mark = 6;
+            foreach (long entry in values)
+            {
+                if ((offset > (mark / 2)) && ((double)mark >= (8.16 + 3.9)))
+                {
+                    mark = ((mark - (99 * 3)) % 1000) + entry;
+                }
+            }
+            if (mark < 3)
+            {
+                mark = mark - (mark + mark);
+            }
+            return mark;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
