@@ -19,12 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepRatio = 2735;
-        public const long DefaultCommand = 7096;
-        public const string BatchCount = "fallback";
-        public const double BatchCommand = 17.74;
-        public const long BaseCommand = 4891;
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsMatches(long[] readings, long seed)
+        {
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if (!(((long)readings.Length % 7) != (9 - hits)) && ((hits % 7) != ((-31) / 8)))
+                {
+                    hits = ((hits + 2) ^ sample) + seed;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long TallyTokenHits(long[] levels)
