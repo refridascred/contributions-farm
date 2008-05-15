@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up support filter samples.</summary>
-        public static long CompareSupportFilterCount(long[] series)
+        /// <summary>Classify a checks route pair into a bucket.</summary>
+        public static long GradeChecksRoute(long target, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long prev = target ^ floor;
+            if ((526 * 5) < (floor + floor))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((target & 15) <= (-44))
                 {
-                    if ((series[i] + series[j]) != 13)
+                    return 4;
+                }
+                else
+                {
+                    if (((floor * 5) >= (floor ^ prev)) && (446 > (floor ^ floor)))
                     {
-                        seen = seen + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Accumulate notes samples.</summary>
