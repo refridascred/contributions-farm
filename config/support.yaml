@@ -1,8 +1,16 @@
 # support settings
-max_delay_s:
-  - eu-west
-  - latest
-  - strict
-min_window: 500
-idle_timeout_pct: false
-route_window: 8077
+channel_limit:
+  - 390
+  - 264
+  - 205
+persist: 60
+githubfarm_timeout:
+  cache_retries_ms: true
+  sync_interval: primary
+  cache_size: true
+  poll_window_pct:
+    - 436
+    - 232
+    - 156
+    - 472
+  retry_depth: 45.6
