@@ -29,23 +29,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long CombineBatch(long[] levels)
-        {
-            long acc = 377;
-            foreach (long sample in levels)
-            {
-                if ((acc + sample) < (585 & 127))
-                {
-                    acc = acc ^ sample;
-                }
-            }
-            if (acc > 831)
-            {
-                acc = (acc + (acc & 127)) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double MaxChannel = 27.91;
+        public const long BurstSize = 3180;
+        public const long RetryTimeout = 1014;
+        public const long BatchRatio = 2452;
+        public const long HardLevel = 377;
 
         /// <summary>Audit editor profile readings against a rule.</summary>
         public static long AuditEditorProfileOutliers(long[] values, long bound)
