@@ -1,7 +1,22 @@
 {
-  "soft_retries_pct": "blue",
-  "min_timeout_s": ["blue", "standard"],
-  "max_interval_ms": 1974,
-  "retry_capacity": 12.04,
-  "burst_delay_s": 26.33
+  "base_capacity": "edge",
+  "buffer_ratio": {
+    "max_timeout_count": "legacy",
+    "cache_retries": {
+      "default_window_ms": 88.25,
+      "tools_window": 70.27,
+      "burst_limit_s": 500,
+      "default_depth_s": ["eu-west", "open"]
+    },
+    "dry_run": {
+      "batch_size": ["latest", "fallback", "eu-west"],
+      "compress": [229, 136, 265],
+      "entry_interval": ["green", "fallback"],
+      "retry_ttl": 75.46
+    },
+    "max_threshold": 4.03,
+    "compress": "fallback"
+  },
+  "entry_delay": 25,
+  "strict": 5.43
 }
