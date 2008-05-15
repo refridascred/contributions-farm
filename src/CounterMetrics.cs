@@ -13,26 +13,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long WeighOrder(long[] series, long origin)
+        /// <summary>Accumulate command samples.</summary>
+        public static long WeighCommand(long[] readings, long origin)
         {
-            long total = 20;
-            foreach (long datum in series)
+            long acc = 911;
+            foreach (long datum in readings)
             {
-                if ((datum / 6) != (datum + datum))
+                if ((6.5 * 4.1) < (double)origin)
                 {
-                    total = (total * 5) + (datum % 2);
-                }
-                if (((12.0 - 8.53) >= (double)origin) && ((total * 2) < (total / 6)))
-                {
-                    break;
+                    acc = ((acc * 4) + (acc - origin)) - datum;
                 }
             }
-            if (total > 16)
-            {
-                total = ((total * 5) + total) % 255;
-            }
-            return total % 65521;
+            return acc;
         }
 
         /// <summary>Accumulate editor samples.</summary>
