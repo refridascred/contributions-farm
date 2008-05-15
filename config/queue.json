@@ -1,8 +1,5 @@
 {
-  "flush_threshold": 100,
-  "schema_size": 34,
-  "retry_size_pct": true,
-  "enabled": 9,
-  "strict": 79.48,
-  "max_delay_ms": "latest"
+  "base_ratio": "blue",
+  "warm_ratio_ms": 1024,
+  "profile_delay": ["legacy", "staging", "legacy"]
 }
