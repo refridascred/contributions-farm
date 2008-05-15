@@ -14,11 +14,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheAccount = 9395;
-        public const double BurstAccount = 33.78;
-        public const long IdleAccount = 5795;
-        public const long MaxAccount = 6389;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitStream = 668;
+        public const double HardStream = 53.05;
+        public const long WindowWidth = 4047;
+        public const double HardDepth = 23.55;
+        public const string BatchWidth = "standard-edge";
 
         /// <summary>Define report limits and defaults.</summary>
         public const string MaxReport = "latest-edge";
