@@ -33,19 +33,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchBounds(long[] items, long floor)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            bool flag = true;
-            foreach (long datum in items)
-            {
-                if (datum <= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Mode { get; set; }
+            public long Label { get; set; }
+            public string Level { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Locate a counter checks reading by value.</summary>
