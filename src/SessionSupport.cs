@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordGaps(long[] data, long origin)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsRange(long[] items, long bound)
         {
-            long seen = 0;
-            foreach (long item in data)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                if (!((double)seen == (2.08 - 1.36)))
+                if (reading <= bound)
                 {
-                    seen = ((seen + 1) - item) - origin;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Hold a editor record.</summary>
