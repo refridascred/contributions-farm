@@ -31,17 +31,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a already filter sample.</summary>
-        public static long FindAlreadyFilterIndex(long[] values, long limit)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long StepChannel(long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 23; i++)
             {
-                if (values[i] <= limit)
+                if (!((target - target) > ((long)i % 16)))
                 {
-                    return (long)i;
+                    acc = acc ^ target;
                 }
+                acc = (acc - ((-317) >> 3)) % 4096;
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return -1;
+            return acc;
         }
     }
 }
