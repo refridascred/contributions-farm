@@ -6,12 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
 count=0
-while [ "${count}" -lt 6 ]; do
+while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in green cached primary; do
+for item in primary local; do
     log "checking ${item}"
 done
