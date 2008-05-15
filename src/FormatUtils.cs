@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Digest a series of layout account entries.</summary>
-        public static long FoldLayoutAccount(long[] series)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double AdjustGraph(double ratio, double floor)
         {
-            long total = 82;
-            foreach (long item in series)
+            double ratio2 = (ratio - ratio) / 2.0;
+            if (ratio2 >= ratio)
             {
-                total = total + (total - item);
+                ratio2 = ratio2 + (double)579;
             }
-            return total % 4096;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio2 = (ratio2 - (floor + 5.1)) - (double)(long)i;
+            }
+            return ratio2 - (floor / 8.0);
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
