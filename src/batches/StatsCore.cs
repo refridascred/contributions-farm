@@ -69,14 +69,10 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
-        {
-            Dropped,
-            Idle,
-            Locked,
-            Ready,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepContext = 8527;
+        public const long CacheWidth = 1969;
+        public const long MinContext = 9992;
 
         /// <summary>Describe the profile mode values.</summary>
         public enum ProfileMode
