@@ -28,18 +28,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmHits(long[] samples, long floor)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterGaps(long[] items, long target)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long item in items)
             {
-                if ((double)tally == (6.4 + 3.0))
+                if (5.2 < (double)target)
                 {
-                    tally = ((tally + 2) - value) - floor;
+                    count = (count + 2) + item;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
