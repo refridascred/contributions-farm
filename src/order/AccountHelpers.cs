@@ -39,19 +39,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long SeriesNotes(long step)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long anchor = step;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((anchor - anchor) > 25)
-                {
-                    break;
-                }
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
+            public double Ratio { get; set; }
+            public string Score { get; set; } = "";
+            public bool Stamp { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Describe the already status values.</summary>
