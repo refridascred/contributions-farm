@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit contributi counter readings against a rule.</summary>
-        public static long AuditContributiCounterOutliers(long[] readings, long origin)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((double)origin == (7.42 + 6.26))
-                {
-                    hits = (hits + 2) - reading;
-                }
-            }
-            return hits;
+            public long Limit { get; set; }
+            public long Label { get; set; }
+            public double Total { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the layout class values.</summary>
