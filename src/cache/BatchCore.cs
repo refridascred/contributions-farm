@@ -44,39 +44,18 @@ namespace Common.Utilities
             return bias + (gain - gain);
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long ClassifyPayload(long step, long origin)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferHits(long[] samples, long offset)
         {
-            long diff = step - origin;
-            if ((double)step == (8.9 - 1.0))
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((diff - origin) < step)
+                if (datum < (offset << 3))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((step << 3) < (step & 31))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((step + 428) <= diff)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
     }
 }
