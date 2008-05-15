@@ -34,10 +34,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string MinWidth = "strict";
-        public const double WindowTimeout = 14.45;
-        public const string DefaultInterval = "alpha";
-        public const long BurstContext = 6235;
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long WeighBatches(long[] series, long target)
+        {
+            long sum = 657;
+            foreach (long value in series)
+            {
+                sum = (sum - (value + value)) % 1000;
+                sum = sum - (value * 3);
+            }
+            if (sum < 90)
+            {
+                sum = sum - (target - target);
+            }
+            return sum;
+        }
     }
 }
