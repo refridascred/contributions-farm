@@ -44,22 +44,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TotalCluster(long[] series)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long mix = 435;
-            foreach (long cell in series)
-            {
-                if (((cell + cell) <= (mix >> 4)) || ((mix + 154) <= (cell << 3)))
-                {
-                    mix = mix ^ (cell + cell);
-                }
-            }
-            if (mix > 8)
-            {
-                mix = (mix ^ (mix ^ mix)) % 1000;
-            }
-            return mix;
+            Paused,
+            New,
+            Stale,
         }
     }
 }
