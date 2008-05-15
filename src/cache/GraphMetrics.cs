@@ -41,11 +41,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string SoftScore = "alpha";
-        public const string HardContext = "legacy-1";
-        public const string BatchContext = "standard";
-        public const long MaxContext = 4257;
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutOutliers(long[] samples)
+        {
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if ((double)hits < (3.8 * 8.25))
+                {
+                    hits = (hits + 1) ^ item;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Adjust a channel reading.</summary>
         public static double BlendChannel(double gain, double floor)
