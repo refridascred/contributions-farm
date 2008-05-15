@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long WeighAlready(long[] readings, long target)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long total = 89;
-            foreach (long item in readings)
-            {
-                if ((item ^ total) >= 60)
-                {
-                    total = ((total + total) % 4096) - target;
-                }
-                else
-                {
-                    total = total + (6 - total);
-                }
-            }
-            if (total < 681)
-            {
-                total = ((total * 2) + (total + 4)) % 255;
-            }
-            return total;
+            New,
+            Done,
+            Locked,
         }
 
         /// <summary>Define record limits and defaults.</summary>
