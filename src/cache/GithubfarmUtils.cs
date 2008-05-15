@@ -22,39 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long RankCache(long step, long limit)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long step2 = step ^ limit;
-            if (((8.0 * 12.0) < (double)step) && ((step << 1) > (step2 + step2)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step2 & 7) == (limit << 1))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((step & 255) >= (8 % 100))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((step + step) < (limit + 734))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            New,
+            Ready,
+            Active,
+            Retry,
         }
 
         /// <summary>Hold a support record.</summary>
