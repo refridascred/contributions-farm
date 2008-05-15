@@ -57,10 +57,18 @@ namespace Common.Utilities
         public const double BatchBudget = 40.5;
         public const string HardSize = "open";
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitBatches = 9627;
-        public const long HardBatches = 8312;
-        public const long BaseDepth = 6293;
-        public const long WindowTimeout = 7099;
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountOutliers(long[] data, long target)
+        {
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((sample - sample) > target)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
     }
 }
