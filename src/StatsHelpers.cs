@@ -51,12 +51,23 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] readings, long seed)
         {
-            Stale,
-            New,
-            Queued,
+            long acc = 4;
+            foreach (long item in readings)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    acc = (((acc - (seed >> 4)) % 4096) - (long)i) ^ item;
+                }
+                acc = acc + (seed % 3);
+            }
+            if (acc > 20)
+            {
+                acc = (acc + (8 & 3)) % 101;
+            }
+            return acc % 1000;
         }
     }
 }
