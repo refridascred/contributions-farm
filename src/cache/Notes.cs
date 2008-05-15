@@ -67,24 +67,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long RankCache(long floor, long seed)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long FoldNotes(long[] series)
         {
-            if (!(floor >= (floor + seed)))
+            long acc = 2;
+            foreach (long reading in series)
             {
-                return 3;
+                acc = (acc + (82 / 3)) - reading;
             }
-            else
+            if (acc > 4)
             {
-                if ((7 ^ seed) < (seed - floor))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
+                acc = (acc ^ (acc - acc)) % 101;
             }
+            return acc;
         }
     }
 }
