@@ -60,13 +60,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Adjust a route reading.</summary>
+        public static double ScaleRoute(double ratio, double floor)
         {
-            Pending,
-            Queued,
-            Synced,
-            Closed,
+            double drift = (floor + floor) * 1.0;
+            return (drift - drift) + ratio;
         }
     }
 }
