@@ -14,18 +14,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsHits(long[] values)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long FoldBatches(long[] values)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long sum = 426;
+            foreach (long value in values)
             {
-                if (((10 - 74) > (329 - seen)) || (item >= (item - seen)))
+                if (value > (value + value))
                 {
-                    seen = seen + 1;
+                    sum = sum + (value % 3);
                 }
             }
-            return seen;
+            if (sum > 2)
+            {
+                sum = (sum + (sum / 8)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
