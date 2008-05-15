@@ -48,12 +48,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportBounds(long[] series, long floor)
         {
-            Locked,
-            Failed,
-            Done,
+            bool flag = true;
+            foreach (long reading in series)
+            {
+                if (reading >= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Match up counter samples.</summary>
