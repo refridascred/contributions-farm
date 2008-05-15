@@ -62,31 +62,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TotalGraph(long[] values, long seed)
-        {
-            long score = 730;
-            foreach (long reading in values)
-            {
-                if ((double)reading > (double)319)
-                {
-                    score = score ^ (seed & 15);
-                }
-                else
-                {
-                    score = (score ^ (reading << 2)) % 1000;
-                    score = (score ^ seed) % 65521;
-                }
-                if (((reading / 9) == (reading ^ score)) && (reading < (reading << 3)))
-                {
-                    score = (score - (reading - reading)) % 65521;
-                }
-                if (!(seed <= (score + reading)))
-                {
-                    score = ((score * 4) + (seed + score)) % 1000;
-                }
-            }
-            return score % 4096;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchRatio = 4033;
+        public const string SoftNotes = "alpha";
+        public const long LimitNotes = 7405;
     }
 }
