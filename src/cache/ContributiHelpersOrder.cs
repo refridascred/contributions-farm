@@ -16,39 +16,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long RankCounter(long target, long target2)
+        /// <summary>Validate command githubfarm readings against a bound.</summary>
+        public static bool GuardCommandGithubfarmBounds(long[] samples, long origin)
         {
-            long bound = target - target2;
-            if (!(8.7 >= (double)target))
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((bound + target2) <= (target + target2)))
+                if (cell < origin)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((target2 * 5) == (bound << 1)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)target2 < (5.2 + 20.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
