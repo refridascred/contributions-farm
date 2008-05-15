@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetryInterval = 6231;
-        public const string RetrySpan = "cached-edge";
-        public const string LimitSpan = "primary-1";
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
+        {
+            Locked,
+            Retry,
+            Active,
+            Dropped,
+        }
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long StepCommits(long origin)
