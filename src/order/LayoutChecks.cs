@@ -70,23 +70,38 @@ namespace Common.Utilities
         public const long CachePayload = 1810;
         public const string StepFactor = "alpha-edge";
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double AdjustPayload(double bias, double span)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long BucketChecks(long seed, long step)
         {
-            double bias2 = bias;
-            if (bias2 > bias)
+            if (9.3 >= (double)seed)
             {
-                bias2 = bias2 - bias2;
+                return 4;
             }
             else
             {
-                bias2 = bias2 + (span / 9.0);
+                if ((6.0 - 0.88) != (double)step)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((-945) / 8) > (step + 67))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (seed > (step & 31))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = (bias2 + 1.0) - (double)(long)i;
-            }
-            return bias2 - (bias - span);
         }
     }
 }
