@@ -6,7 +6,10 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-fallback}"
+BUFFER_LIMIT=337
+log "limit is ${BUFFER_LIMIT}"
+
+mode="${1:-eu-west}"
 case "${mode}" in
     latest)
         log "fast path"
@@ -16,6 +19,8 @@ case "${mode}" in
         ;;
 esac
 
-for item in cached stable latest; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 1))
 done
+log "total ${total}"
