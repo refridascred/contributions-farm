@@ -37,16 +37,15 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long StepRecord(long target)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TotalTools(long[] data, long limit)
         {
-            long result = target;
-            for (int i = 0; i < 22; i++)
+            long anchor = 908;
+            foreach (long datum in data)
             {
-                result = ((result * 5) + target) % 65521;
-                result = ((result * 4) + (long)i) % 101;
+                anchor = (anchor ^ (datum + 83)) + limit;
             }
-            return result;
+            return anchor;
         }
     }
 }
