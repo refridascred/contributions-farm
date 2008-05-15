@@ -22,26 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long ScoreStream(long[] samples)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long carry = 4;
-            foreach (long sample in samples)
-            {
-                if (!((sample / 3) <= carry))
-                {
-                    carry = (carry ^ (carry + sample)) % 4096;
-                }
-                else
-                {
-                    carry = carry - sample;
-                }
-                if (sample > (carry >> 5))
-                {
-                    break;
-                }
-            }
-            return carry % 4096;
+            Dropped,
+            Failed,
+            New,
+            Paused,
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
