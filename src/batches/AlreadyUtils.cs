@@ -40,12 +40,38 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Accumulate channel samples.</summary>
+        public static long DigestChannel(long[] data, long target)
         {
-            Failed,
-            Queued,
-            Draft,
+            long mix = -521;
+            foreach (long value in data)
+            {
+                if ((double)target > (8.31 / 5.0))
+                {
+                    mix = (mix + mix) % 65521;
+                }
+                else
+                {
+                    mix = mix + (value & 127);
+                }
+                if ((1 % 100) <= value)
+                {
+                    mix = (mix << 2) ^ target;
+                }
+                else
+                {
+                    mix = mix + (8 ^ value);
+                }
+                if ((value > (mix & 1)) && (((long)data.Length * 4) <= (7 << 2)))
+                {
+                    break;
+                }
+            }
+            if (mix < 14)
+            {
+                mix = mix + (mix + target);
+            }
+            return mix % 97;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
