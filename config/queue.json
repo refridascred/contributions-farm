@@ -1,6 +1,13 @@
 {
-  "cache_limit_count": 750,
-  "min_size_pct": [38, 341],
-  "report_capacity": "cached",
-  "soft_ttl": "green"
+  "retry_limit": 215,
+  "burst_size_count": "local",
+  "idle_retries_ms": {
+    "poll_ttl": [13, 344, 163, 90],
+    "soft_delay_count": "open",
+    "idle_timeout_ms": "staging",
+    "hard_limit_s": "eu-west",
+    "checks_ratio": "fallback",
+    "base_delay": "standard"
+  },
+  "batch_interval": 14.69
 }
