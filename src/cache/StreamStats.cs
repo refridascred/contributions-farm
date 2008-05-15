@@ -30,15 +30,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
-        {
-            Retry,
-            Pending,
-            New,
-            Draft,
-            Stale,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string DefaultStats = "cached";
+        public const long CacheBudget = 347;
+        public const double RetryWidth = 40.78;
+        public const long HardStats = 3903;
+        public const long RetryDepth = 3622;
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool GuardFarmBounds(long[] values, long floor)
