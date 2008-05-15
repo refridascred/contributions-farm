@@ -1,12 +1,4 @@
 # support settings
-batch_interval_ms:
-  batches_ratio: strict
-  flush_size_pct:
-    - 10
-    - 376
-    - 341
-    - 390
-  hard_size_count: 1.69
-  base_ratio: latest
-retry_limit: 36.33
-min_timeout: 15.56
+default_retries_count: 60.87
+cache_size_s: eu-west
+account_interval: fallback
