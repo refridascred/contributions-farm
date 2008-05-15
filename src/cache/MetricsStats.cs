@@ -49,22 +49,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelHits(long[] series)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long SeekAlreadyIndex(long[] data, long floor)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((((matches - matches) >= (973 << 3)) || ((matches - 82) > ((-9) ^ (long)series.Length))) || ((reading << 1) > (matches - 6)))
+                if (data[i] >= floor)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
