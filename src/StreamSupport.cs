@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorRange(long[] values, long floor)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            bool ok = true;
-            foreach (long reading in values)
-            {
-                if (reading != floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Locked,
+            Done,
+            Idle,
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
