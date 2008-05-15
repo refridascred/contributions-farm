@@ -56,12 +56,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string WindowLevel = "strict-edge";
-        public const long MinSize = 1382;
-        public const long BatchGithubfarm = 9727;
-        public const double BaseSize = 23.09;
-        public const long HardSize = 6837;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseNotes = 732;
+        public const long BurstLevel = 9240;
+        public const string StepCount = "staging-1";
+        public const string MaxWidth = "standard-v2";
 
         /// <summary>Accumulate editor samples.</summary>
         public static long ScoreEditor(long[] data)
