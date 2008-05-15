@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
-        {
-            New,
-            Locked,
-            Closed,
-            Dropped,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowBuffer = 323;
+        public const long WindowSpan = 249;
+        public const long StepBuffer = 8042;
+        public const long BatchBuffer = 8297;
+        public const long HardBuffer = 8290;
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool GuardEditorRange(long[] values, long seed)
