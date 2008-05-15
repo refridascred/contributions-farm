@@ -55,18 +55,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferGaps(long[] series)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long StepRecord(long target)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long result = target;
+            for (int i = 0; i < 22; i++)
             {
-                if (seen < (value >> 3))
-                {
-                    seen = seen + 1;
-                }
+                result = ((result * 5) + target) % 65521;
+                result = ((result * 4) + (long)i) % 101;
             }
-            return seen;
+            return result;
         }
     }
 }
