@@ -39,32 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long SortEditor(long offset, long step)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long gap = offset - step;
-            if (((gap / 3) >= (gap % 24)) || ((offset << 3) < 19))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((offset - offset) > (offset + offset)) && (step > 8))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((step % 16) <= offset) && ((offset * 5) != (gap / 3)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public bool Label { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Accumulate layout account samples.</summary>
