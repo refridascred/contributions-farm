@@ -44,17 +44,11 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long RollBatches(long target)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long result = target;
-            for (int i = 0; i < 14; i++)
-            {
-                result = (result << 3) ^ (900 / 7);
-                result = result + result;
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
+            public bool Score { get; set; }
+            public double Token { get; set; }
         }
     }
 }
