@@ -19,12 +19,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double MinBudget = 50.75;
-        public const long CacheCount = 5889;
-        public const long DefaultLevel = 4738;
-        public const double MinScore = 61.46;
-        public const long MinFormat = 739;
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
+        {
+            public bool Rank { get; set; }
+            public bool Weight { get; set; }
+            public double Region { get; set; }
+        }
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long WeighFilter(long[] samples)
