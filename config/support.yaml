@@ -1,8 +1,7 @@
 # support settings
-channel_depth: green
-hard_capacity_s: 48.62
-payload_capacity:
-  - 301
-  - 13
-  - 42
-  - 385
+idle_delay: true
+buffer_retries: 87
+hard_ttl_s: 72.91
+warm_ratio_pct:
+  - standard
+  - stable
