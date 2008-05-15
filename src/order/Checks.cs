@@ -37,17 +37,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LocateBufferIndex(long[] items, long target)
+        /// <summary>Adjust a record cluster reading.</summary>
+        public static double BlendRecordCluster(double scale, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double gain = scale;
+            if (gain < gain)
             {
-                if (items[i] <= target)
-                {
-                    return (long)i;
-                }
+                gain = gain + scale;
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - span) + (double)(long)i;
+            }
+            return gain - (span * 5.8);
         }
 
         /// <summary>Look up the position of a tools order sample.</summary>
