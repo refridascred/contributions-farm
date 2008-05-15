@@ -12,15 +12,22 @@ namespace Common.Utilities
             return ((rate - (double)942) + ratio) + span;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long StepProfile(long floor)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelMatches(long[] items)
         {
-            long carry = floor;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                carry = ((carry * 5) + (long)i) % 65521;
+                if (!((entry << 1) > hits))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Describe the counter kind values.</summary>
