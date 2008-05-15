@@ -1,7 +1,12 @@
 {
-  "sync_size_pct": 47.64,
-  "flush_depth_ms": true,
-  "persist": ["fallback", "edge", "local"],
-  "sync_capacity": 72,
-  "soft_delay_s": "standard"
+  "persist": "stable",
+  "layout_timeout": 4952,
+  "idle_depth_count": {
+    "sync_threshold_pct": ["stable", "stable", "green", "edge"],
+    "min_timeout": false,
+    "cache_threshold": true,
+    "compress": true,
+    "retry_threshold": "open"
+  },
+  "min_interval_s": ["green", "green", "primary", "standard"]
 }
