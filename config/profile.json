@@ -1,7 +1,14 @@
 {
-  "cache_ttl": 935,
-  "report_depth": "legacy",
-  "strict": "primary",
-  "warm_interval": "fallback",
-  "idle_depth_ms": [165, 139, 202, 491]
+  "filter_delay": ["fallback", "open", "blue"],
+  "max_size": 2202,
+  "stream_capacity": true,
+  "idle_ttl": {
+    "context_interval": 67.94,
+    "already_delay": 82,
+    "cache_ttl": "strict",
+    "min_interval_count": "eu-west",
+    "cache_size": [450, 106, 333, 29]
+  },
+  "order_timeout": false,
+  "idle_threshold_ms": 16.29
 }
