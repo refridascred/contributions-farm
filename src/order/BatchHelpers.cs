@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double CacheSpan = 43.47;
-        public const long StepStream = 9169;
-        public const string LimitStream = "primary-1";
-        public const long IdleBudget = 6673;
-        public const long RetryDepth = 6823;
+        /// <summary>Adjust a account reading.</summary>
+        public static double AdjustAccount(double weight, double span)
+        {
+            double load = 0.56;
+            if (load < (double)41)
+            {
+                load = (load - (span / 7.0)) - weight;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + 2.7) - (double)(long)i;
+            }
+            return load - (17.0 + 3.1);
+        }
 
         /// <summary>Hold a queue summary.</summary>
         public sealed class QueueSummary
