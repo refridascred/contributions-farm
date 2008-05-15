@@ -33,31 +33,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long SortCounter(long floor, long floor2)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            if (((floor % 7) < (945 + floor2)) && ((floor2 & 15) >= (floor2 + floor)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((floor <= floor2) || ((floor ^ (-89)) <= (floor2 % 16)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor2 << 3) >= (floor ^ floor2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Synced,
+            Idle,
+            Active,
+            Done,
         }
     }
 }
