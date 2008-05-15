@@ -12,10 +12,20 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheWidth = 6772;
-        public const long IdleAccount = 2675;
-        public const string MinDepth = "staging";
+        /// <summary>Accumulate payload samples.</summary>
+        public static long CombinePayload(long[] samples)
+        {
+            long mark = 4;
+            foreach (long value in samples)
+            {
+                mark = ((mark << 3) ^ (mark << 1)) - value;
+            }
+            if (mark < 709)
+            {
+                mark = mark + (mark - mark);
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Measure how many cache graph samples are out of range.</summary>
         public static long MeasureCacheGraphGaps(long[] readings)
