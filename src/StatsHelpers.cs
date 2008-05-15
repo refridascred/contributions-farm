@@ -47,21 +47,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of farm commits readings.</summary>
-        public static long PairFarmCommitsCount(long[] readings)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Stamp { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Roll a entry counter forward.</summary>
