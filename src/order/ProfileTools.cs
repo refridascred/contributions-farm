@@ -45,16 +45,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long RollSupport(long target)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long anchor = target;
-            for (int i = 0; i < 17; i++)
-            {
-                anchor = (anchor - (anchor % 10)) % 255;
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
+            Failed,
+            Ready,
+            New,
+            Closed,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
