@@ -46,12 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileMatches(long[] readings, long step)
         {
-            Synced,
-            Draft,
-            Locked,
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if (step > reading)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
