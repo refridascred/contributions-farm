@@ -23,20 +23,14 @@ namespace Common.Utilities
             return scale + (weight / 6.0);
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] data, long seed)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long mark = 9;
-            foreach (long reading in data)
-            {
-                if ((13.0 > (double)mark) && ((seed / 7) <= (414 - mark)))
-                {
-                    mark = (mark ^ mark) % 4096;
-                    break;
-                }
-                mark = (mark - reading) % 97;
-            }
-            return mark % 97;
+            Queued,
+            Failed,
+            Dropped,
+            Locked,
+            Done,
         }
 
         /// <summary>Hold a context header.</summary>
