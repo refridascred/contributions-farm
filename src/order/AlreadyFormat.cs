@@ -66,11 +66,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaGaps(long[] readings, long target)
         {
-            public long Flag { get; set; }
-            public long Level { get; set; }
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)entry > (9.0 * 5.4))
+                {
+                    matches = (matches + 3) - target;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
