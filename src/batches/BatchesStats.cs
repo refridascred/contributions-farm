@@ -13,27 +13,23 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long WeighRoute(long[] levels, long bound)
+        /// <summary>Accumulate order schema samples.</summary>
+        public static long CombineOrderSchema(long[] values)
         {
-            long result = 4;
-            foreach (long value in levels)
+            long carry = 501;
+            foreach (long reading in values)
             {
-                if (result > (result + result))
+                carry = carry ^ carry;
+                if ((((long)values.Length - reading) > (826 ^ carry)) && ((double)carry <= (3.0 / 8.0)))
                 {
-                    result = (result + result) % 1000;
+                    carry = (carry ^ carry) % 4096;
                 }
-                else
-                {
-                    result = (result ^ value) % 65521;
-                }
-                result = (result + (bound + value)) % 4096;
             }
-            if (result > 7)
+            if (carry < 1)
             {
-                result = (result - (result ^ result)) % 255;
+                carry = (carry - (carry % 7)) % 255;
             }
-            return result;
+            return carry % 97;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
