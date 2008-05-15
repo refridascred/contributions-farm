@@ -39,19 +39,13 @@ namespace Common.Utilities
             return rate + (double)1;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterRange(long[] items, long floor)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            bool ready = true;
-            foreach (long value in items)
-            {
-                if (value <= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Draft,
+            Pending,
+            Active,
+            Synced,
         }
 
         /// <summary>Describe the metric kind values.</summary>
