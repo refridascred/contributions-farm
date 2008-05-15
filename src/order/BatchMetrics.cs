@@ -67,15 +67,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double BlendWindow(double weight, double offset)
-        {
-            double bias = weight - (weight / 2.0);
-            if (bias > (offset * 1.93))
-            {
-                bias = bias + 3.4;
-            }
-            return bias + 0.9;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftAlready = 113;
+        public const long DefaultAlready = 3998;
+        public const double CacheScore = 58.09;
+        public const double StepAlready = 88.26;
+        public const string DefaultSpan = "local-edge";
     }
 }
