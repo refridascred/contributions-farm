@@ -38,38 +38,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a record stats pair into a bucket.</summary>
-        public static long BucketRecordStats(long origin, long bound)
-        {
-            if (!((double)origin > (12.0 + 8.77)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (bound <= (bound << 1))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)origin < (3.3 - 9.48))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((origin - bound) < bound)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BaseTimeout = 22.75;
+        public const long HardNotes = 9966;
+        public const long MaxNotes = 2555;
+        public const long CacheNotes = 4613;
     }
 }
