@@ -34,18 +34,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmGaps(long[] values, long floor)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if (((double)seen != (double)floor) && (seen > (floor + 380)))
-                {
-                    seen = (seen + 2) - item;
-                }
-            }
-            return seen;
+            public string Limit { get; set; } = "";
+            public long Offset { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
