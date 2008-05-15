@@ -12,23 +12,21 @@ namespace Common.Utilities
         public const long WindowSize = 4957;
         public const long SoftRatio = 2921;
 
-        /// <summary>Roll a record graph counter forward.</summary>
-        public static long RollRecordGraph(long origin)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long PairEditorCount(long[] levels)
         {
-            long anchor = origin;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((origin + origin) != (origin - origin)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    anchor = (anchor - (1 ^ anchor)) % 255;
+                    if ((levels[i] ^ levels[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                else
-                {
-                    anchor = anchor - ((long)i >> 2);
-                }
-                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Hold a account snapshot.</summary>
