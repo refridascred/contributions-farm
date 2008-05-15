@@ -52,12 +52,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenHits(long[] levels)
         {
-            Queued,
-            Locked,
-            Active,
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if (((7.2 - 1.31) != (double)seen) || ((seen ^ 8) > (seen - datum)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the route level values.</summary>
