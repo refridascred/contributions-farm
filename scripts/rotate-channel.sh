@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=429
+CHANNEL_LIMIT=126
 log "limit is ${CHANNEL_LIMIT}"
 
-for item in primary strict; do
+for item in edge stable; do
     log "checking ${item}"
 done
