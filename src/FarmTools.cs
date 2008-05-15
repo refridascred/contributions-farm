@@ -27,12 +27,23 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double CacheWidth = 95.06;
-        public const string DefaultSize = "primary-edge";
-        public const long RetryCache = 1736;
-        public const long DefaultRatio = 2908;
-        public const long DefaultDepth = 2211;
+        /// <summary>Fold a list of already readings.</summary>
+        public static long FoldAlready(long[] samples, long target)
+        {
+            long mark = 4;
+            foreach (long reading in samples)
+            {
+                if (target <= (reading + mark))
+                {
+                    mark = (mark + (reading + mark)) % 101;
+                }
+            }
+            if (mark < 1)
+            {
+                mark = (mark + (target + mark)) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Rank token input into a small class.</summary>
         public static long SortToken(long limit, long offset)
