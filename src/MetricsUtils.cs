@@ -39,30 +39,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long BucketFilter(long target, long target2)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long ClassifyOrder(long floor, long target)
         {
-            long step = target - target2;
-            if (target2 <= (target - step))
+            if ((double)275 < (double)floor)
             {
                 return 7;
             }
             else
             {
-                if (((target % 3) > (target & 3)) && ((step + 6) <= (target ^ 773)))
+                if ((4 << 2) >= floor)
                 {
-                    return 2;
+                    return 5;
                 }
                 else
                 {
-                    if (78 < (step ^ 25))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return 3;
                 }
             }
         }
