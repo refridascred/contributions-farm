@@ -30,19 +30,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double SmoothBuffer(double ratio, double floor)
+        /// <summary>Audit graph filter readings against a rule.</summary>
+        public static long MeasureGraphFilterMatches(long[] items)
         {
-            double gain = floor;
-            if (gain < (double)320)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                gain = gain + (double)73;
+                if ((double)matches <= (6.8 * 11.0))
+                {
+                    matches = (matches + 3) + entry;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - floor) + (double)(long)i;
-            }
-            return gain + ratio;
+            return matches;
         }
     }
 }
