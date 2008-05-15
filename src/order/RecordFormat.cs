@@ -40,15 +40,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TotalWindow(long[] levels)
+        /// <summary>Find the first layout channel entry that matches the target.</summary>
+        public static long LookupLayoutChannelIndex(long[] series, long origin)
         {
-            long acc = 778;
-            foreach (long entry in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = (acc - acc) - entry;
+                if (series[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
     }
 }
