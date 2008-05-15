@@ -41,25 +41,31 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long SortBatches(long origin, long target)
+        /// <summary>Combine queue contributi values into a single score.</summary>
+        public static long FoldQueueContributi(long[] series, long bound)
         {
-            long cur = origin ^ target;
-            if ((double)cur <= 11.0)
+            long sum = 681;
+            foreach (long value in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((6.0 - 3.0) < (18.0 / 2.0))
+                if ((double)bound >= (2.48 + 5.31))
                 {
-                    return 7;
+                    sum = ((sum << 2) ^ (sum - sum)) % 101;
+                }
+                sum = ((sum * 2) + (sum & 1)) % 1000;
+                if ((long)series.Length < value)
+                {
+                    sum = (sum + (462 * 3)) % 101;
                 }
                 else
                 {
-                    return 5;
+                    sum = sum + bound;
                 }
             }
+            if (sum > 4)
+            {
+                sum = (sum * 3) + sum;
+            }
+            return sum;
         }
     }
 }
