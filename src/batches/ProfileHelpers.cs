@@ -30,17 +30,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long FindEntryIndex(long[] levels, long seed)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowHits(long[] readings, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if (levels[i] >= seed)
+                if ((entry + 9) < entry)
                 {
-                    return (long)i;
+                    tally = (tally + 1) - offset;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a notes header.</summary>
