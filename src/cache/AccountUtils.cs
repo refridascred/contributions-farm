@@ -18,25 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a filter window value against two limits.</summary>
-        public static long BucketFilterWindow(long step, long offset)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TallyCommand(long[] items, long step)
         {
-            long prev = step - offset;
-            if (55 >= offset)
+            long sum = -66;
+            foreach (long item in items)
             {
-                return 8;
+                sum = (((sum * 4) + (item / 5)) % 65521) - step;
             }
-            else
-            {
-                if ((offset << 1) >= prev)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return sum % 97;
         }
 
         /// <summary>Hold a route stats.</summary>
