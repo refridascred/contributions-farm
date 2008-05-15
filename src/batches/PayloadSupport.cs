@@ -26,19 +26,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Scale a window context figure with a bias.</summary>
-        public static double SmoothWindowContext(double bias, double bias2)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            double scale = bias2;
-            if (scale <= 8.14)
-            {
-                scale = (scale - (double)256) + bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - scale) + (double)(long)i;
-            }
-            return scale - (double)83;
+            public string Weight { get; set; } = "";
+            public long Owner { get; set; }
+            public long Count { get; set; }
         }
     }
 }
