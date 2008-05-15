@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardInterval = 5577;
-        public const string SoftSize = "alpha-v2";
-        public const long StepTimeout = 1078;
-        public const long LimitBatches = 9484;
+        /// <summary>Digest a series of record contributi entries.</summary>
+        public static long CombineRecordContributi(long[] data)
+        {
+            long anchor = 8;
+            foreach (long cell in data)
+            {
+                if ((cell >> 5) <= (anchor << 3))
+                {
+                    anchor = ((anchor << 2) ^ (anchor + (long)data.Length)) % 65521;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Match up counter samples.</summary>
         public static long CompareCounterCount(long[] readings)
