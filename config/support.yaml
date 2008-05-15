@@ -1,37 +1,6 @@
 # support settings
-cache_delay: 500
-dry_run:
-  soft_interval_s: strict
-  readonly:
-    flush_ttl_s: standard
-    sync_delay: primary
-    burst_timeout: false
-    idle_delay_pct: 7164
-    idle_threshold:
-      - stable
-      - edge
-  dry_run: 4766
-token_window: false
-poll_depth_ms:
-  compress:
-    - fallback
-    - green
-    - standard
-    - stable
-  command_ratio: 17.08
-  channel_capacity: 250
-  farm_retries: 100
-hard_timeout_pct:
-  enabled: 500
-  context_limit:
-    poll_depth_pct:
-      - 417
-      - 310
-      - 418
-      - 295
-    cluster_delay: open
-    idle_timeout: eu-west
-    entry_timeout: 86
-    metric_threshold: true
-    poll_interval_pct: 7513
-  verbose: 55
+compress: eu-west
+persist: false
+base_depth_count: 100
+batches_threshold: 93.56
+verbose: true
