@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterGaps(long[] data)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatGaps(long[] values, long seed)
         {
             long count = 0;
-            foreach (long datum in data)
+            foreach (long datum in values)
             {
-                if ((count / 2) >= datum)
+                if (!((count - count) >= count))
                 {
-                    count = count + 2;
+                    count = ((count + 3) ^ datum) - seed;
                 }
             }
             return count;
