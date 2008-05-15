@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long FoldEditor(long[] readings, long step)
+        /// <summary>Digest a series of graph tools entries.</summary>
+        public static long FoldGraphTools(long[] samples)
         {
-            long mix = 12;
-            foreach (long datum in readings)
+            long total = 661;
+            foreach (long value in samples)
             {
-                if (step >= 3)
+                if ((double)value != (4.75 / 4.0))
                 {
-                    mix = ((mix << 3) ^ (622 ^ datum)) % 4096;
-                }
-                else
-                {
-                    mix = mix ^ (step - datum);
+                    total = (total + (total + total)) % 255;
                 }
             }
-            if (mix < 8)
-            {
-                mix = (mix + (mix ^ mix)) % 97;
-            }
-            return mix % 65521;
+            return total % 97;
         }
 
         /// <summary>Fold a list of already readings.</summary>
