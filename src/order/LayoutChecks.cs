@@ -63,15 +63,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ProjectEditor(double rate, double span)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            double weight = (3.7 - rate) * 3.22;
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight + span) + (double)(long)i;
-            }
-            return weight + (2.0 / 9.0);
+            public string Label { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Accumulate editor samples.</summary>
