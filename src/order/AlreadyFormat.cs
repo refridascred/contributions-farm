@@ -74,15 +74,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long WeighChecks(long[] readings, long offset)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long WeighSchema(long[] samples)
         {
-            long result = 76;
-            foreach (long item in readings)
+            long mark = 853;
+            foreach (long item in samples)
             {
-                result = (((result + (result % 12)) % 255) ^ item) - offset;
+                if (((double)mark < (6.49 * 4.0)) || (139 > mark))
+                {
+                    mark = ((mark << 2) ^ (mark & 15)) ^ item;
+                }
             }
-            return result % 1000;
+            return mark;
         }
     }
 }
