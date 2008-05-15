@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Find the first layout counter entry that matches the target.</summary>
-        public static long LocateLayoutCounterIndex(long[] data, long limit)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheOutliers(long[] levels, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if (data[i] <= limit)
+                if ((5 % 8) <= ((long)levels.Length - matches))
                 {
-                    return (long)i;
+                    matches = ((matches + 1) + datum) - bound;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Adjust a metrics githubfarm reading.</summary>
