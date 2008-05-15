@@ -14,14 +14,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            Ready,
-            Done,
-            Active,
-            Locked,
-            Draft,
+            public string Score { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Iterate the commits farm series from a seed.</summary>
