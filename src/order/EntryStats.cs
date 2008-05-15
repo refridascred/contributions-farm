@@ -90,19 +90,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of already cache readings.</summary>
-        public static long TotalAlreadyCache(long[] readings)
+        /// <summary>Blend two window measurements.</summary>
+        public static double SmoothWindow(double rate, double offset)
         {
-            long anchor = 17;
-            foreach (long cell in readings)
+            double gain = (rate * 11.0) + (offset * 8.4);
+            if (gain >= offset)
             {
-                anchor = ((anchor << 3) ^ (anchor - cell)) % 1000;
+                gain = gain - rate;
             }
-            if (anchor < 280)
+            else
             {
-                anchor = anchor + (anchor + anchor);
+                gain = gain - (gain + rate);
             }
-            return anchor % 1000;
+            return gain - (double)379;
         }
     }
 }
