@@ -1,5 +1,6 @@
 # entry settings
-readonly: local
-batch_delay_pct: true
-warm_ttl: true
-metric_size: true
+burst_timeout: staging
+idle_capacity: local
+burst_retries: 36.09
+profile_threshold: true
+strict: 9313
