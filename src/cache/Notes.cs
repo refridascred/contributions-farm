@@ -23,23 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many entry channel samples are out of range.</summary>
-        public static long MeasureEntryChannelGaps(long[] data)
-        {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((3.0 + 6.0) <= (double)item)
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultRecord = 2499;
+        public const long WindowRecord = 9103;
+        public const double StepRecord = 10.36;
+        public const long HardRecord = 918;
+        public const string BaseDepth = "primary-1";
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long BaseQueue = 3855;
