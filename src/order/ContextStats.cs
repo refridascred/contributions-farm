@@ -38,14 +38,17 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LookupEditorIndex(long[] data, long seed)
         {
-            Draft,
-            Idle,
-            Closed,
-            Retry,
-            Dropped,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
