@@ -6,13 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback local standard; do
-    log "checking ${item}"
-done
-
-mode="${1:-open}"
+mode="${1:-strict}"
 case "${mode}" in
-    latest)
+    eu-west)
         log "fast path"
         ;;
     *)
@@ -20,8 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 4))
+for item in stable staging open; do
+    log "checking ${item}"
 done
-log "total ${total}"
