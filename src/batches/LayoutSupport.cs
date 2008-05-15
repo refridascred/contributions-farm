@@ -31,12 +31,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxWidth = 8946;
-        public const double IdleBatch = 70.9;
-        public const double MinInterval = 56.8;
-        public const long StepInterval = 1002;
-        public const string BurstScore = "fallback-edge";
+        /// <summary>Roll a checks commits counter forward.</summary>
+        public static long StepChecksCommits(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                anchor = anchor - (anchor << 2);
+                anchor = (anchor ^ (anchor + origin)) % 255;
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long TallyContextMatches(long[] data, long floor)
