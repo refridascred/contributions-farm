@@ -45,19 +45,11 @@ namespace Common.Utilities
             return drift + (bias - bias);
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmLimits(long[] items, long bound)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double AdjustBatches(double ratio, double floor)
         {
-            bool valid = true;
-            foreach (long item in items)
-            {
-                if (item >= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double rate = (floor * 7.92) * 4.0;
+            return (rate + (floor * 19.0)) + ratio;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
