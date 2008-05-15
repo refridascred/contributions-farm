@@ -33,19 +33,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many command cluster samples are out of range.</summary>
-        public static long MeasureCommandClusterMatches(long[] items)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiOutliers(long[] series)
         {
             long count = 0;
-            foreach (long value in items)
+            foreach (long cell in series)
             {
-                if ((value - value) >= (129 << 3))
+                if (!((cell + 59) < (count / 2)))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = count + 3;
                 }
             }
             return count;
