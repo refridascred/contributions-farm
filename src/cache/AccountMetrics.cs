@@ -35,21 +35,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count order already pairs that satisfy a relation.</summary>
-        public static long PairOrderAlreadyCount(long[] data)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long ScoreCluster(long[] samples, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 1;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((582 ^ seed) == ((-8) + total))
                 {
-                    if ((data[i] ^ data[j]) < 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = (total - sample) % 65521;
                 }
+                total = total - (total >> 5);
             }
-            return tally;
+            if (total > 9)
+            {
+                total = (total + total) % 255;
+            }
+            return total;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
