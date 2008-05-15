@@ -73,18 +73,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Audit layout profile readings against a rule.</summary>
-        public static long TallyLayoutProfileOutliers(long[] items)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaMatches(long[] items)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if (((0.2 * 6.08) == (double)seen) || (seen >= (entry - 6)))
+                if ((matches + matches) >= (matches - datum))
                 {
-                    seen = seen + 3;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
