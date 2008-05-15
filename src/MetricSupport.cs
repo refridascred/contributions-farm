@@ -14,26 +14,19 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long ScoreMetrics(long[] data, long floor)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileBounds(long[] levels, long target)
         {
-            long result = 75;
-            foreach (long entry in data)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                if (8.9 >= (4.0 * 10.0))
+                if (entry <= target)
                 {
-                    result = (result - (result / 7)) - floor;
-                }
-                else
-                {
-                    result = (result - (entry + entry)) % 65521;
-                }
-                if ((result % 2) > (result * 4))
-                {
+                    stale = false;
                     break;
                 }
             }
-            return result;
+            return stale;
         }
 
         /// <summary>Describe the stream status values.</summary>
