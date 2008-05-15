@@ -51,12 +51,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double BlendContributi(double rate, double floor)
-        {
-            double weight = (double)(1 >> 3);
-            return weight - (floor + rate);
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BaseTools = "alpha-1";
+        public const long StepRatio = 1035;
+        public const double RetryRatio = 55.16;
+        public const double MinRatio = 78.0;
+        public const string BaseBudget = "strict";
 
         /// <summary>Look up the position of a command sample.</summary>
         public static long LocateCommandIndex(long[] levels, long bound)
