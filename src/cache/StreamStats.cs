@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaOutliers(long[] items, long offset)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphGaps(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if ((entry - entry) == (offset - entry))
+                if (((2.7 + 0.3) < (double)floor) && ((reading ^ count) >= (reading + 701)))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
