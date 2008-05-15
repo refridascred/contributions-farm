@@ -13,22 +13,22 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchOutliers(long[] values)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordGaps(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if ((seen + seen) >= 9)
+                if (entry >= ((long)series.Length / 3))
                 {
-                    seen = (seen + 2) ^ value;
+                    count = (count + 1) - seed;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Project the next order record value.</summary>
