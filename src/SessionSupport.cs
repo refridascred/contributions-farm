@@ -20,11 +20,39 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Rank session route input into a small class.</summary>
+        public static long BucketSessionRoute(long offset, long offset2)
         {
-            public bool Offset { get; set; }
-            public string Label { get; set; } = "";
+            long offset3 = offset + offset2;
+            if (((offset + offset2) > (offset2 + offset2)) && ((offset / 2) != (4 / 5)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((3.6 - 11.0) == (double)offset)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((3.18 * 3.64) >= (double)offset) || ((offset2 / 5) >= (offset2 / 2)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((double)offset < 7.32) && ((3.8 + 8.56) < (double)offset3))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
