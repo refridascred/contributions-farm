@@ -95,11 +95,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string LimitStats = "fallback";
-        public const double HardStats = 20.41;
-        public const long SoftStats = 8691;
-        public const string StepFactor = "standard";
-        public const long IdleScore = 8247;
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BatchFactor = 78.1;
+        public const double WindowSupport = 24.16;
+        public const long IdleDepth = 3601;
+        public const long BaseLevel = 5356;
+        public const long SoftTimeout = 1261;
     }
 }
