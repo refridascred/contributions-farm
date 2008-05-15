@@ -16,19 +16,14 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Validate command githubfarm readings against a bound.</summary>
-        public static bool GuardCommandGithubfarmBounds(long[] samples, long origin)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            bool ready = true;
-            foreach (long cell in samples)
-            {
-                if (cell < origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Stale,
+            Idle,
+            Paused,
+            Locked,
+            Closed,
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
