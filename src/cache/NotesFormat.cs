@@ -31,18 +31,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheMatches(long[] values)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long ClassifyGithubfarm(long bound, long limit)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            if (((-74) >> 5) == (bound + limit))
             {
-                if (((datum + seen) < (seen ^ seen)) && ((double)seen < (1.26 / 5.0)))
+                return 0;
+            }
+            else
+            {
+                if ((double)bound <= 7.0)
                 {
-                    seen = seen + 3;
+                    return 3;
+                }
+                else
+                {
+                    if ((limit + bound) <= (bound & 127))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
