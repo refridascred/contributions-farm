@@ -32,18 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphOutliers(long[] items)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((double)datum >= (9.14 + 14.0))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public double Rank { get; set; }
+            public bool Owner { get; set; }
+            public string Score { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Validate cache profile readings against a bound.</summary>
