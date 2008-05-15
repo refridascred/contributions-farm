@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many queue profile samples are out of range.</summary>
-        public static long TallyQueueProfileHits(long[] levels)
+        /// <summary>Look up the position of a queue filter sample.</summary>
+        public static long FindQueueFilterIndex(long[] samples, long offset)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((count / 8) == (count ^ reading))
+                if ((samples[i] <= offset) && ((samples[i] % 3) == 0))
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
