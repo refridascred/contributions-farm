@@ -26,12 +26,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstLevel = 553;
-        public const double BatchWidth = 59.45;
-        public const long HardStream = 8680;
-        public const long RetryStream = 3002;
-        public const string BaseStream = "primary-1";
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long CompareEditorCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a entry info.</summary>
         public sealed class EntryInfo
