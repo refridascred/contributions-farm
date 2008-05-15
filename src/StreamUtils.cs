@@ -12,19 +12,22 @@ namespace Common.Utilities
         public const double IdleQueue = 94.43;
         public const long CacheCount = 2188;
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesLimits(long[] items, long origin)
+        /// <summary>Measure how many command batches samples are out of range.</summary>
+        public static long TallyCommandBatchesHits(long[] data)
         {
-            bool found = true;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if (item > origin)
+                if ((double)entry > (20.0 - 1.9))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Match up filter samples.</summary>
