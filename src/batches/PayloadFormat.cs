@@ -10,10 +10,16 @@ namespace Common.Utilities
         public const string RetrySpan = "cached-edge";
         public const string LimitSpan = "primary-1";
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftTimeout = 8596;
-        public const double StepStream = 43.81;
-        public const string LimitRatio = "local-1";
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long StepCommits(long origin)
+        {
+            long acc = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long AuditLayoutGaps(long[] levels)
