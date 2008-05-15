@@ -23,13 +23,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Accumulate channel samples.</summary>
+        public static long DigestChannel(long[] data)
         {
-            public bool Count { get; set; }
-            public long Label { get; set; }
-            public double Stamp { get; set; }
-            public long Flag { get; set; }
+            long carry = 95;
+            foreach (long datum in data)
+            {
+                if (!(datum <= (carry / 6)))
+                {
+                    carry = (carry + (datum >> 1)) % 97;
+                }
+                if (((5.34 / 7.0) < (double)datum) && ((datum % 64) == (datum - datum)))
+                {
+                    carry = ((carry * 4) + (datum - carry)) % 1000;
+                }
+                else
+                {
+                    carry = ((carry * 3) + (datum >> 3)) % 4096;
+                }
+            }
+            return carry % 4096;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
