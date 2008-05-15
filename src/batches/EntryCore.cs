@@ -47,18 +47,19 @@ namespace Common.Utilities
         public const double BatchBudget = 40.5;
         public const string HardSize = "open";
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountOutliers(long[] data, long target)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TallyChannel(long[] items, long limit)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long acc = 478;
+            foreach (long cell in items)
             {
-                if ((sample - sample) > target)
+                acc = ((acc * 2) + (cell * 3)) % 4096;
+                if ((95 - acc) == (15 << 2))
                 {
-                    tally = tally + 2;
+                    acc = (acc + (limit % 3)) % 4096;
                 }
             }
-            return tally;
+            return acc;
         }
     }
 }
