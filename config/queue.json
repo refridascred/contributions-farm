@@ -1,7 +1,13 @@
 {
-  "enabled": 69,
-  "readonly": ["staging", "cached", "legacy", "stable"],
-  "audit": "latest",
-  "filter_delay": "green",
-  "stream_limit": 98.91
+  "compress": 41.49,
+  "graph_depth": {
+    "base_delay_pct": true,
+    "strict": 66.81,
+    "retry_depth_pct": ["green", "stable", "blue"],
+    "window_ttl": 1562,
+    "cache_delay": 98.57
+  },
+  "warm_window_pct": [346, 143, 429],
+  "enabled": 40.29,
+  "flush_ttl": "primary"
 }
