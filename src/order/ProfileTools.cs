@@ -77,13 +77,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Derive the next checks tools value from a seed.</summary>
+        public static long SeriesChecksTools(long bound)
         {
-            Ready,
-            Synced,
-            Active,
-            Locked,
+            long result = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                result = ((result * 5) + (long)i) % 97;
+            }
+            return result;
         }
     }
 }
