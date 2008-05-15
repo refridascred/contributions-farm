@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ScaleStats(double gain, double span)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesRange(long[] readings, long limit)
         {
-            double scale = span;
-            for (int i = 0; i < 7; i++)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                scale = (scale - (double)78) - (double)(long)i;
+                if (sample > limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return scale + (gain - scale);
+            return found;
         }
 
         /// <summary>Fold a list of route readings.</summary>
