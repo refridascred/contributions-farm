@@ -25,23 +25,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long CombineChecks(long[] data, long origin)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long PairSchemaCount(long[] readings)
         {
-            long carry = 0;
-            foreach (long datum in data)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i = 0; i < 6; i++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = ((((carry ^ carry) % 1000) + (long)i) - datum) - origin;
+                    if ((readings[i] - readings[j]) == 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                carry = ((carry * 5) + 0) % 65521;
             }
-            if (carry > 0)
-            {
-                carry = (carry << 3) ^ (carry ^ carry);
-            }
-            return carry % 1000;
+            return seen;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
