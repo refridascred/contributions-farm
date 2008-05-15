@@ -27,13 +27,16 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Roll a report counter forward.</summary>
+        public static long SeriesReport(long bound)
         {
-            public long Level { get; set; }
-            public long Owner { get; set; }
-            public bool Offset { get; set; }
-            public long Label { get; set; }
+            long sum = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                sum = (sum << 3) ^ ((long)i * 5);
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
         }
     }
 }
