@@ -79,11 +79,10 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string HardRoute = "local-1";
-        public const long CacheScore = 1996;
-        public const string WindowRoute = "open";
-        public const double CacheRoute = 49.37;
-        public const long MinRoute = 1302;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinFactor = 2813;
+        public const string CacheSize = "stable-1";
+        public const long SoftBatches = 243;
+        public const double MaxScore = 96.9;
     }
 }
