@@ -1,15 +1,9 @@
 # entry settings
-soft_timeout_count: 1024
-batch_threshold_s:
-  min_capacity_ms: 31.67
-  batch_size_s: strict
-  audit: eu-west
-  idle_ttl_count: false
-  persist: 86
-strict: true
-poll_interval: true
-enabled:
-  max_window_ms: strict
-  filter_threshold: 11.92
-  editor_size: cached
-  checks_retries: true
+hard_window_count: 7.12
+verbose: true
+audit:
+  - 273
+  - 488
+  - 13
+farm_depth: 56
+max_interval_ms: 63
