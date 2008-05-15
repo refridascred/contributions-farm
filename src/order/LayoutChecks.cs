@@ -43,18 +43,39 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] data, long bound)
+        /// <summary>Grade a batch format value against two limits.</summary>
+        public static long RankBatchFormat(long origin, long origin2)
         {
-            long sum = 52;
-            foreach (long value in data)
+            long offset = origin + origin2;
+            if ((origin > (76 - origin)) && ((origin2 - origin) >= (offset * 4)))
             {
-                if (sum < (14 << 3))
+                return 8;
+            }
+            else
+            {
+                if (((offset / 6) < 594) || ((8.77 * 6.06) != (double)offset))
                 {
-                    sum = (((sum * 5) + (bound ^ sum)) % 4096) ^ value;
+                    return 7;
+                }
+                else
+                {
+                    if (((origin + origin2) > offset) || ((offset / 3) != (origin + origin)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((origin2 >= (55 & 1)) || ((double)offset >= (17.0 - 7.9)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
