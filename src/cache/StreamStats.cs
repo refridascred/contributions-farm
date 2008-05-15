@@ -22,10 +22,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepSize = 8476;
-        public const long MaxWidth = 3566;
-        public const long BurstCache = 6369;
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
+        {
+            Synced,
+            Locked,
+            Failed,
+            Queued,
+        }
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long TallyStream(long[] series)
