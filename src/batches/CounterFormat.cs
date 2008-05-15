@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long RankStream(long step, long step2)
         {
-            public string Rank { get; set; } = "";
-            public double Size { get; set; }
+            long next = step + step2;
+            if (((0 >> 3) > step2) && (next > step2))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step2 - next) >= (step2 + step2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Hold a cluster options.</summary>
