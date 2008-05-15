@@ -1,14 +1,5 @@
 # entry settings
-queue_retries: 16.73
-record_interval: stable
-warm_capacity:
-  min_retries: false
-  batch_window_ms: green
-  stats_depth: green
-stats_retries: 30
-flush_ttl:
-  - 489
-  - 182
-  - 318
-  - 97
-default_timeout_s: latest
+flush_threshold_pct: 100
+soft_interval: 500
+metric_timeout: true
+readonly: 30
