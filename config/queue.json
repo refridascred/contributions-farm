@@ -1,7 +1,21 @@
 {
-  "default_interval_ms": 6655,
-  "sync_delay_pct": 7238,
-  "idle_capacity_s": 1024,
-  "burst_ratio_s": "strict",
-  "sync_timeout_ms": 250
+  "entry_timeout": {
+    "poll_delay_ms": "stable",
+    "sync_depth_count": 100,
+    "profile_ratio": "staging",
+    "cache_retries_count": "latest",
+    "sync_ttl_ms": true
+  },
+  "verbose": 60,
+  "burst_depth": {
+    "profile_limit": "staging",
+    "min_timeout_ms": 56,
+    "compress": 14,
+    "commits_retries": {
+      "strict": ["eu-west", "latest", "fallback"],
+      "max_threshold_count": 26,
+      "retry_threshold_ms": true,
+      "compress": "cached"
+    }
+  }
 }
