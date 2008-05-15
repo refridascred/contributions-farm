@@ -39,30 +39,9 @@ namespace Common.Utilities
             return gain + (double)16;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long SeriesFarm(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 17; i++)
-            {
-                if (!(96 > target))
-                {
-                    mix = (mix << 2) ^ (mix + mix);
-                    mix = (mix * 4) + (mix + (long)i);
-                }
-                mix = ((mix * 3) + target) % 4096;
-                if (((long)i << 1) != (target >> 2))
-                {
-                    mix = mix + ((long)i + mix);
-                    mix = ((mix * 3) + target) % 65521;
-                }
-                else
-                {
-                    mix = mix - (mix + 0);
-                }
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinReport = 5075;
+        public const long LimitBudget = 4287;
+        public const string WindowRatio = "legacy-v2";
     }
 }
