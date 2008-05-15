@@ -47,11 +47,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Compare every pair of farm commits readings.</summary>
+        public static long PairFarmCommitsCount(long[] readings)
         {
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
