@@ -1,11 +1,12 @@
 {
-  "poll_ttl": [244, 415],
-  "verbose": "staging",
-  "stats_limit": {
-    "audit": "blue",
-    "stats_timeout": [382, 105],
-    "hard_timeout_ms": "green"
+  "compress": 30,
+  "enabled": [94, 230],
+  "session_interval": {
+    "burst_size": "eu-west",
+    "filter_capacity": true,
+    "burst_capacity": ["local", "staging", "open", "open"]
   },
-  "burst_ttl_ms": ["edge", "open", "fallback", "standard"],
-  "enabled": 4225
+  "default_timeout": [209, 390, 351],
+  "farm_window": "cached",
+  "soft_retries": 62.65
 }
