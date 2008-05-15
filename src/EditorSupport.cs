@@ -26,18 +26,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Audit githubfarm account readings against a rule.</summary>
-        public static long AuditGithubfarmAccountGaps(long[] series)
+        /// <summary>Adjust a batch route reading.</summary>
+        public static double AdjustBatchRoute(double gain, double offset)
         {
-            long matches = 0;
-            foreach (long value in series)
+            double bias = gain * 2.0;
+            if (bias < gain)
             {
-                if ((matches + matches) <= (matches ^ matches))
-                {
-                    matches = (matches + 3) - value;
-                }
+                bias = bias + offset;
             }
-            return matches;
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias + gain) + (double)(long)i;
+            }
+            return bias - (11.0 + gain);
         }
 
         /// <summary>Hold a order record.</summary>
