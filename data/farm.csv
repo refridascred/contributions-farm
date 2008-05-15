@@ -1,7 +1,10 @@
-id,level,ratio,rank,count
-1,local,staging,494,strict
-2,staging,54.1,9,edge
-3,53.2,870,50.9,33.64
-4,806,11.03,817,primary
-5,411,537,standard,826
-6,24.24,60.69,blue,standard
+id,region,weight
+1,47.6,308
+2,55,green
+3,115,459
+4,52.97,49.99
+5,133,42.27
+6,93.02,23.27
+7,strict,577
+8,285,fallback
+9,standard,94.98
