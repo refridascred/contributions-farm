@@ -1,7 +1,9 @@
-id,ratio,owner,rank,score
-1,3,edge,legacy,latest
-2,547,931,28.53,standard
-3,309,663,90.42,866
-4,2.63,844,standard,70.76
-5,22.82,26.92,805,3.54
-6,81.45,open,97.54,90.55
+id,count,score
+1,legacy,579
+2,strict,29.39
+3,local,36.98
+4,564,650
+5,stable,15.58
+6,25,30.52
+7,185,208
+8,edge,365
