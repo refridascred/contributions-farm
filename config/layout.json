@@ -1,7 +1,5 @@
 {
-  "batch_capacity": "open",
-  "githubfarm_timeout": 30,
-  "min_interval_s": false,
-  "contributi_ratio": 62,
-  "persist": "local"
+  "idle_limit_count": 100,
+  "metric_timeout": true,
+  "command_window": 1024
 }
