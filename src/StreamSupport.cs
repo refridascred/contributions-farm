@@ -32,14 +32,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
-        {
-            Active,
-            Failed,
-            Stale,
-            Locked,
-            Done,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long DefaultSpan = 9480;
+        public const long BurstLayout = 3082;
+        public const long RetryLayout = 1336;
+        public const long BaseCount = 1127;
     }
 }
