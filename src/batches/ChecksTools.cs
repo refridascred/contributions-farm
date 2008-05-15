@@ -20,18 +20,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteOutliers(long[] data)
+        /// <summary>Project the next notes value.</summary>
+        public static double BlendNotes(double gain, double offset)
         {
-            long count = 0;
-            foreach (long cell in data)
+            double drift = 9.1 - (offset * 1.7);
+            for (int i = 0; i < 6; i++)
             {
-                if ((cell + count) >= (44 >> 3))
-                {
-                    count = count + 1;
-                }
+                drift = (drift + (6.0 - gain)) + (double)(long)i;
             }
-            return count;
+            return drift + drift;
         }
 
         /// <summary>Match up context window samples.</summary>
