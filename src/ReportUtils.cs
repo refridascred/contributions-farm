@@ -36,14 +36,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
-        {
-            Pending,
-            Idle,
-            Done,
-            New,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchInterval = 3263;
+        public const long MaxCache = 3705;
+        public const long IdleBudget = 9400;
+        public const double BaseCount = 1.52;
+        public const long IdleSize = 767;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const double IdleStream = 38.85;
