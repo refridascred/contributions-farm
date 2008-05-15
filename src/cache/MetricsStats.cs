@@ -49,17 +49,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long SeekAlreadyIndex(long[] data, long floor)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ScaleStream(double gain, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double weight = (gain / 3.0) * 6.9;
+            return (weight - gain) + bias;
         }
     }
 }
