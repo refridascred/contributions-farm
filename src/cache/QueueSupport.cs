@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Blend two commits measurements.</summary>
-        public static double AdjustCommits(double scale, double offset)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            double drift = 0.5;
-            if (drift <= offset)
-            {
-                drift = (drift + (7.16 - offset)) - scale;
-            }
-            return drift - (drift * 3.45);
+            Done,
+            Active,
+            Queued,
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
