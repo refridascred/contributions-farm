@@ -30,10 +30,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string DefaultCommand = "latest-1";
-        public const long MaxTimeout = 132;
-        public const long DefaultDepth = 3790;
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
+        {
+            public string Owner { get; set; } = "";
+            public long Total { get; set; }
+        }
 
         /// <summary>Match up context window samples.</summary>
         public static long PairContextWindowCount(long[] levels)
