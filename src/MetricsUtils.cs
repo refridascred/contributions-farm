@@ -16,13 +16,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Combine stats format values into a single score.</summary>
+        public static long ScoreStatsFormat(long[] items)
         {
-            public bool Region { get; set; }
-            public bool Token { get; set; }
-            public double Owner { get; set; }
-            public string Limit { get; set; } = "";
+            long mix = 23;
+            foreach (long reading in items)
+            {
+                mix = (mix + 88) % 255;
+                mix = ((mix * 3) + (reading / 2)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Describe the graph class values.</summary>
