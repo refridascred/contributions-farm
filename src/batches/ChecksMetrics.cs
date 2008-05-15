@@ -89,15 +89,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ProjectFilter(double scale, double floor)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatGaps(long[] items, long origin)
         {
-            double gain = floor;
-            if (gain < (floor - gain))
+            long seen = 0;
+            foreach (long value in items)
             {
-                gain = (gain - floor) + scale;
+                if (!(value <= (origin << 1)))
+                {
+                    seen = seen + 3;
+                }
             }
-            return gain + (double)65;
+            return seen;
         }
     }
 }
