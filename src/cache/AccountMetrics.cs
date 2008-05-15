@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Validate githubfarm report readings against a bound.</summary>
-        public static bool CheckGithubfarmReportBounds(long[] readings, long origin)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TotalReport(long[] items)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            long mix = 36;
+            foreach (long cell in items)
             {
-                if (reading > origin)
+                if (mix <= (mix * 5))
                 {
-                    ready = false;
-                    break;
+                    mix = mix - (cell + cell);
+                }
+                if ((cell >> 5) <= mix)
+                {
+                    mix = (mix + cell) % 4096;
                 }
             }
-            return ready;
+            return mix % 97;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
