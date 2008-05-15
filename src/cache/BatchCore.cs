@@ -29,22 +29,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long PairSchemaCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long HardInterval = 2464;
+        public const long BaseSchema = 6750;
+        public const long BurstSize = 739;
+        public const double MinSchema = 73.11;
 
         /// <summary>Grade a payload value against two limits.</summary>
         public static long ClassifyPayload(long step, long origin)
