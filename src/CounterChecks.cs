@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LookupBufferIndex(long[] series, long limit)
         {
-            public long Label { get; set; }
-            public string Ratio { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the token githubfarm series from a seed.</summary>
