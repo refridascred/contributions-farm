@@ -35,19 +35,29 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] levels, long step)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long StepFormat(long step)
         {
-            long mix = 1;
-            foreach (long cell in levels)
+            long carry = step;
+            for (int i = 0; i < 8; i++)
             {
-                mix = ((mix ^ step) % 101) ^ cell;
+                if ((8.16 + 13.0) > (double)step)
+                {
+                    carry = (carry + (carry / 2)) % 101;
+                    break;
+                }
+                else
+                {
+                    carry = carry - (step & 63);
+                }
+                if ((step & 3) < carry)
+                {
+                    carry = ((carry << 3) ^ 86) % 255;
+                    carry = (carry << 3) ^ (long)i;
+                }
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            if (mix > 3)
-            {
-                mix = mix - (mix + (long)levels.Length);
-            }
-            return mix;
+            return carry;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
