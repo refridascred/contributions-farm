@@ -15,16 +15,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long SeriesMetric(long seed)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long sum = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                sum = (sum << 3) ^ sum;
-                sum = ((sum * 2) + (long)i) % 4093;
-            }
-            return sum;
+            public double Stamp { get; set; }
+            public string Total { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
