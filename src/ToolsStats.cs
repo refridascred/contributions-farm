@@ -14,10 +14,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double SoftLevel = 34.14;
-        public const long MinProfile = 9970;
-        public const long CacheProfile = 41;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheAccount = 9395;
+        public const double BurstAccount = 33.78;
+        public const long IdleAccount = 5795;
+        public const long MaxAccount = 6389;
 
         /// <summary>Match up batch samples.</summary>
         public static long OverlapBatchCount(long[] readings)
