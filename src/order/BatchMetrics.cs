@@ -51,19 +51,38 @@ namespace Common.Utilities
         public const double LimitProfile = 65.79;
         public const long StepFactor = 3348;
 
-        /// <summary>Validate context commits readings against a bound.</summary>
-        public static bool CheckContextCommitsBounds(long[] data, long seed)
+        /// <summary>Rank githubfarm editor input into a small class.</summary>
+        public static long SortGithubfarmEditor(long step, long step2)
         {
-            bool flag = true;
-            foreach (long item in data)
+            if ((step >> 2) < (step2 * 4))
             {
-                if (item <= seed)
+                return 6;
+            }
+            else
+            {
+                if (step > (step2 + step))
                 {
-                    flag = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((step2 / 5) != (73 - step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((step + step2) <= (7 / 8))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return flag;
         }
     }
 }
