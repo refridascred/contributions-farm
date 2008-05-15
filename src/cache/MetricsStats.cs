@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const double BaseFormat = 11.95;
         public const long IdleFactor = 8123;
 
-        /// <summary>Measure how many counter metric samples are out of range.</summary>
-        public static long AuditCounterMetricMatches(long[] items)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportLimits(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long value in items)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                if (hits >= (98 % 24))
+                if (cell >= bound)
                 {
-                    hits = (hits + 1) - value;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Describe the tools level values.</summary>
