@@ -33,22 +33,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] samples)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long state = 126;
-            foreach (long item in samples)
-            {
-                if ((item + item) != (item & 1))
-                {
-                    state = (state + (state & 255)) % 97;
-                }
-            }
-            if (state > (-8))
-            {
-                state = state ^ (state >> 4);
-            }
-            return state;
+            Queued,
+            Locked,
+            Retry,
+            Idle,
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
