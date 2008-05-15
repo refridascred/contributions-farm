@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long DigestPayload(long[] items, long origin)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long mix = -957;
-            foreach (long cell in items)
-            {
-                mix = mix ^ cell;
-            }
-            if (mix > 7)
-            {
-                mix = (mix ^ (origin >> 1)) % 101;
-            }
-            return mix % 97;
+            Draft,
+            Failed,
+            Stale,
+            Locked,
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
