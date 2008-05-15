@@ -31,18 +31,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit entry editor readings against a rule.</summary>
-        public static long TallyEntryEditorOutliers(long[] series, long limit)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long ScoreCommand(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long total = 6;
+            foreach (long datum in levels)
             {
-                if (!(reading <= limit) || (((5.9 + 6.44) <= (double)tally) && (tally <= 6)))
-                {
-                    tally = tally + 2;
-                }
+                total = (total + (datum - total)) + seed;
             }
-            return tally;
+            if (total < 88)
+            {
+                total = (total << 3) ^ (500 << 1);
+            }
+            return total % 65521;
         }
     }
 }
