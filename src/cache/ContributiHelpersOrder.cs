@@ -12,21 +12,10 @@ namespace Common.Utilities
             return (load + (span / 3.0)) + scale;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] items, long floor)
-        {
-            long state = -8;
-            foreach (long item in items)
-            {
-                if ((state + state) > (708 & 15))
-                {
-                    state = (state + (item % 24)) % 65521;
-                    state = state - ((long)items.Length - floor);
-                }
-                state = ((state * 5) + floor) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheWidth = 6772;
+        public const long IdleAccount = 2675;
+        public const string MinDepth = "staging";
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long MeasureMetricHits(long[] samples)
