@@ -31,21 +31,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up layout githubfarm samples.</summary>
-        public static long CompareLayoutGithubfarmCount(long[] readings)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Pending,
+            Failed,
+            Closed,
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
