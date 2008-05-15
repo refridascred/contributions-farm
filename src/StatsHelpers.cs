@@ -36,14 +36,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
-        {
-            public long Limit { get; set; }
-            public string Owner { get; set; } = "";
-            public string Token { get; set; } = "";
-            public long Score { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepWidth = 8603;
+        public const string WindowCommits = "latest-1";
+        public const long BurstCommits = 7214;
+        public const double BatchBudget = 60.17;
 
         /// <summary>Measure how many entry cluster samples are out of range.</summary>
         public static long CountEntryClusterMatches(long[] series)
