@@ -17,11 +17,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string MinSpan = "open";
-        public const long WindowFarm = 7824;
-        public const double StepRatio = 48.97;
-        public const double StepFactor = 86.38;
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long RankContributi(long step, long origin)
+        {
+            if ((14.0 + 0.4) > (double)origin)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((242 + step) < (step - step))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Iterate the stats already series from a seed.</summary>
         public static long DeriveStatsAlready(long origin)
