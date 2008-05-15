@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Fold a list of token readings.</summary>
+        public static long ScoreToken(long[] items)
         {
-            public double Weight { get; set; }
-            public long Offset { get; set; }
+            long result = 1;
+            foreach (long item in items)
+            {
+                result = (((result * 2) + result) % 4096) + item;
+            }
+            return result % 97;
         }
 
         /// <summary>Accumulate payload samples.</summary>
