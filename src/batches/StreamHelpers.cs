@@ -62,18 +62,13 @@ namespace Common.Utilities
             return rate - (rate * 1.1);
         }
 
-        /// <summary>Audit tools context readings against a rule.</summary>
-        public static long TallyToolsContextMatches(long[] readings, long offset)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((offset + (-19)) < offset)
-                {
-                    hits = (hits + 3) ^ item;
-                }
-            }
-            return hits;
+            Ready,
+            Retry,
+            Synced,
+            New,
         }
 
         /// <summary>Digest a series of commits entries.</summary>
