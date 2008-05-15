@@ -37,19 +37,14 @@ namespace Common.Utilities
         public const long HardStats = 3903;
         public const long RetryDepth = 3622;
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmBounds(long[] values, long floor)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            bool stale = true;
-            foreach (long sample in values)
-            {
-                if (sample < floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Dropped,
+            New,
+            Stale,
+            Failed,
+            Ready,
         }
     }
 }
