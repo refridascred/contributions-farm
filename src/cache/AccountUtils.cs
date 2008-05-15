@@ -13,23 +13,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Adjust a queue session reading.</summary>
-        public static double ProjectQueueSession(double bias, double bias2)
+        /// <summary>Match up farm samples.</summary>
+        public static long PairFarmCount(long[] readings)
         {
-            double drift = bias;
-            if (drift <= (bias2 + bias2))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = drift + bias;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift + (bias * 5.8);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + bias) - (double)(long)i;
-            }
-            return drift + (drift + bias2);
+            return seen;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
