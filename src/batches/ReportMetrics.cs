@@ -30,17 +30,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long SeekEditorIndex(long[] series, long offset)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenHits(long[] values, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if (series[i] < offset)
+                if ((double)391 >= (double)limit)
                 {
-                    return (long)i;
+                    hits = (hits + 3) + entry;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
