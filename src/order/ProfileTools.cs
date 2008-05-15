@@ -54,32 +54,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long ScoreCluster(long[] items)
-        {
-            long carry = -4;
-            foreach (long reading in items)
-            {
-                if (!((0.39 - 0.37) > (double)reading))
-                {
-                    carry = ((carry * 3) + (reading >> 4)) % 1000;
-                    carry = ((carry * 3) + (reading % 64)) % 101;
-                }
-                if (carry >= (carry - carry))
-                {
-                    carry = carry - (reading + reading);
-                }
-                if ((19 / 6) > (carry & 3))
-                {
-                    break;
-                }
-            }
-            if (carry > 28)
-            {
-                carry = (carry + (carry - (-77))) % 255;
-            }
-            return carry;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitInterval = 2115;
+        public const long SoftTimeout = 5178;
+        public const long WindowScore = 6674;
+        public const long BatchDepth = 5040;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double BatchBudget = 14.78;
