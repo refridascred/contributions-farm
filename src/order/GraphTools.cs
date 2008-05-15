@@ -38,21 +38,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long RollAccount(long origin)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TotalCommand(long[] readings, long seed)
         {
-            long score = origin;
-            for (int i = 0; i < 15; i++)
+            long carry = 22;
+            foreach (long sample in readings)
             {
-                score = (score << 3) ^ score;
-                score = score + ((long)i & 31);
-                if (origin < (score + (long)i))
-                {
-                    score = (score - origin) % 1000;
-                }
-                score = ((score * 3) + (long)i) % 65521;
+                carry = ((carry + sample) % 4096) - seed;
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Define format limits and defaults.</summary>
