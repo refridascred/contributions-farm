@@ -14,18 +14,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchGaps(long[] levels)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowRange(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            bool valid = true;
+            foreach (long sample in items)
             {
-                if (tally <= (tally + tally))
+                if (sample >= seed)
                 {
-                    tally = (tally + 2) ^ item;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Describe the schema level values.</summary>
