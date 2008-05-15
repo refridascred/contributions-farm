@@ -13,22 +13,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelMatches(long[] items)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long state = 1;
+            foreach (long datum in samples)
             {
-                if (!((entry << 1) > hits))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                state = (((state << 2) ^ bound) % 65521) - datum;
+                state = ((state << 3) ^ ((-2) + 885)) % 97;
+                state = ((state * 5) + (bound + (long)samples.Length)) % 4096;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Describe the format status values.</summary>
