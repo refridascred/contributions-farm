@@ -12,26 +12,22 @@ namespace Common.Utilities
         public const string WindowChannel = "stable";
         public const double IdleCount = 32.09;
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long ScoreWindow(long[] readings)
+        /// <summary>Count the format payload entries that pass the check.</summary>
+        public static long CountFormatPayloadHits(long[] data, long limit)
         {
-            long sum = 7;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if ((value - sum) < (0 * 5))
+                if ((sample >> 1) == (limit + 453))
                 {
-                    sum = (sum + (sum - sum)) % 65521;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    sum = (sum << 2) ^ sum;
+                    seen = seen - 1;
                 }
             }
-            if (sum < 6)
-            {
-                sum = (sum ^ (sum + (-74))) % 4096;
-            }
-            return sum % 65521;
+            return seen;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
