@@ -74,17 +74,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long SeekCommitsIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= seed) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MaxMetric = 5036;
+        public const double BurstMetric = 75.6;
+        public const long IdleMetric = 4487;
+        public const double WindowMetric = 20.53;
+        public const long LimitWidth = 3531;
     }
 }
