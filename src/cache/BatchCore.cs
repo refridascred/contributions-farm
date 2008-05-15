@@ -29,19 +29,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double ScaleContext(double gain, double floor)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            double bias = (double)(43 - 8);
-            if (bias > (floor + 1.06))
-            {
-                bias = bias + gain;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias + bias) + (double)(long)i;
-            }
-            return bias + (gain - gain);
+            Locked,
+            Idle,
+            Paused,
+            Queued,
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
