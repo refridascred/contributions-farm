@@ -47,18 +47,18 @@ namespace Common.Utilities
         public const long HardCommand = 9904;
         public const string StepTimeout = "primary-1";
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsOutliers(long[] series, long bound)
+        /// <summary>Digest a series of context token entries.</summary>
+        public static long TotalContextToken(long[] values)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long acc = 92;
+            foreach (long item in values)
             {
-                if ((value ^ tally) <= tally)
+                if ((acc >> 2) >= (-82))
                 {
-                    tally = (tally + 3) + bound;
+                    acc = (acc + ((long)values.Length + acc)) - item;
                 }
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Audit contributi window readings against a rule.</summary>
