@@ -20,18 +20,21 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaGaps(long[] levels)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long PairEntryCount(long[] items)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((matches & 255) < (-2)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = (matches + 3) - reading;
+                    if ((items[i] ^ items[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Check that every report batch entry stays within the limit.</summary>
