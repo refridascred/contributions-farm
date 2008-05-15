@@ -37,20 +37,22 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Iterate the session profile series from a seed.</summary>
-        public static long DeriveSessionProfile(long limit)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatOutliers(long[] items)
         {
-            long mark = limit;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (!(mark >= (long)i))
+                if (!(3.92 < (double)count))
                 {
-                    mark = ((mark << 2) ^ ((-1) ^ mark)) % 255;
-                    break;
+                    count = (count + 2) ^ value;
                 }
-                mark = ((mark * 2) + (long)i) % 97;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mark;
+            return count;
         }
     }
 }
