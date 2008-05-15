@@ -92,19 +92,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of graph batch entries.</summary>
-        public static long FoldGraphBatch(long[] data)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long GradeRecord(long bound, long floor)
         {
-            long state = -75;
-            foreach (long cell in data)
+            if ((bound << 2) > (floor % 5))
             {
-                state = ((state << 2) ^ (cell + cell)) % 255;
+                return 8;
             }
-            if (state > (-2))
+            else
             {
-                state = ((state * 3) + (state >> 3)) % 1000;
+                if (((double)bound <= (15.0 - 7.78)) || ((double)floor != (2.2 / 8.0)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            return state % 97;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
