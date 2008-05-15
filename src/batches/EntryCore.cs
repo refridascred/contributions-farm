@@ -12,12 +12,23 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardSupport = 5593;
-        public const long LimitSupport = 1115;
-        public const string IdleSupport = "fallback-v2";
-        public const long BatchDepth = 3;
-        public const double BatchLevel = 82.06;
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsOutliers(long[] readings)
+        {
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((((long)readings.Length ^ tally) >= value) && !((value / 5) > (118 ^ value)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine channel values into a single score.</summary>
         public static long TallyChannel(long[] samples)
