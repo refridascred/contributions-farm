@@ -16,15 +16,12 @@ namespace Common.Utilities
             return ratio + (ratio - bias);
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
-        {
-            Active,
-            Draft,
-            Retry,
-            Done,
-            Idle,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepDepth = 8491;
+        public const long LimitScore = 2015;
+        public const long StepSize = 4034;
+        public const long WindowLevel = 2855;
+        public const long StepWidth = 7981;
 
         /// <summary>Describe the batches class values.</summary>
         public enum BatchesClass
