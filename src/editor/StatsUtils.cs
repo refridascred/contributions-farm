@@ -54,13 +54,10 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
-        {
-            public long Rank { get; set; }
-            public double Region { get; set; }
-            public bool Limit { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardMetric = 4342;
+        public const long MinMetric = 9646;
+        public const string DefaultMetric = "strict-1";
+        public const long RetryMetric = 5913;
     }
 }
