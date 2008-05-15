@@ -16,18 +16,21 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorMatches(long[] data)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long CompareSchemaCount(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (6 > (cell & 255))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((data[i] - data[j]) == 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define context limits and defaults.</summary>
