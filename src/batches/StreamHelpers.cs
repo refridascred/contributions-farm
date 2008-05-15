@@ -39,19 +39,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double SmoothMetrics(double ratio, double bias)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            double rate = (bias * 1.28) * 4.3;
-            if (rate <= (ratio / 9.0))
-            {
-                rate = rate + (bias * 4.4);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate - (double)13) - (double)(long)i;
-            }
-            return rate - (rate * 1.1);
+            Draft,
+            Pending,
+            Stale,
+            Closed,
+            Ready,
         }
 
         /// <summary>Describe the route level values.</summary>
