@@ -1,6 +1,9 @@
 # githubfarm settings
-compress: 8124
-soft_size_count: 7789
-retry_size: 3252
-batch_ttl_ms: 46
-flush_capacity_s: stable
+base_depth:
+  - legacy
+  - stable
+retry_threshold_ms: false
+base_delay: 9405
+support_size: true
+soft_size_pct: 55.11
+stream_threshold: fallback
