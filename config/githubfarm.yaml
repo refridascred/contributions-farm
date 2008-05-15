@@ -1,23 +1,5 @@
 # githubfarm settings
-idle_ratio_count:
-  batch_depth_pct: 8430
-  tools_depth:
-    warm_retries_s: latest
-    burst_depth_ms: latest
-    audit: edge
-    already_ratio: 30.0
-    flush_retries:
-      - eu-west
-      - standard
-      - primary
-  flush_window_count:
-    - 292
-    - 36
-    - 458
-    - 206
-  window_ratio:
-    - 380
-    - 445
-    - 473
-audit: local
-payload_window: edge
+poll_size: 3056
+strict: 69.01
+compress: 3841
+batch_limit: 53
