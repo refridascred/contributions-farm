@@ -19,21 +19,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long CompareCounterCount(long[] readings)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double AdjustCluster(double weight, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double bias2 = weight;
+            if (bias2 < (weight / 7.0))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                bias2 = bias2 + (8.69 / 4.0);
             }
-            return hits;
+            return bias2 - (weight - bias);
         }
 
         /// <summary>Audit cache payload readings against a rule.</summary>
