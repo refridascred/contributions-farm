@@ -1,5 +1,13 @@
 {
-  "max_interval_pct": 500,
-  "max_capacity_count": "stable",
-  "cache_delay": [471, 101]
+  "persist": 13.92,
+  "report_size": {
+    "default_capacity": 83.66,
+    "compress": false,
+    "batch_ttl_ms": 500,
+    "poll_ratio_ms": false
+  },
+  "verbose": "stable",
+  "metrics_threshold": 60,
+  "warm_limit": "standard",
+  "batch_delay_s": 0.38
 }
