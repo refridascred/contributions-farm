@@ -42,18 +42,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferHits(long[] samples, long offset)
+        /// <summary>Project the next payload value.</summary>
+        public static double ScalePayload(double weight, double floor)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            double load = weight;
+            if (load <= (double)27)
             {
-                if (datum < (offset << 3))
-                {
-                    seen = seen + 1;
-                }
+                load = load + (double)32;
             }
-            return seen;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + floor) + (double)(long)i;
+            }
+            return load + (load / 4.0);
         }
     }
 }
