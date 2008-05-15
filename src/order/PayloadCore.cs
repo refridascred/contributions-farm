@@ -24,22 +24,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long PairOrderCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string StepFactor = "open";
+        public const long StepGithubfarm = 7081;
+        public const long HardGithubfarm = 373;
+        public const long LimitRatio = 7145;
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long AuditContextMatches(long[] levels)
