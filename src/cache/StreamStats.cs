@@ -26,26 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] data)
+        /// <summary>Adjust a format reading.</summary>
+        public static double SmoothFormat(double gain, double span)
         {
-            long sum = 1;
-            foreach (long cell in data)
+            double drift = gain + gain;
+            if (drift < span)
             {
-                if ((double)cell != (2.03 + 3.0))
-                {
-                    sum = sum ^ (sum << 2);
-                }
-                else
-                {
-                    sum = (sum * 4) + (sum & 255);
-                }
+                drift = drift + (drift * 9.5);
             }
-            if (sum > (-2))
+            else
             {
-                sum = (sum - (33 >> 2)) % 101;
+                drift = drift - (drift * 0.5);
             }
-            return sum;
+            return drift - (span + drift);
         }
 
         /// <summary>Describe the route class values.</summary>
