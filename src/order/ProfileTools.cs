@@ -91,15 +91,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next checks tools value from a seed.</summary>
-        public static long SeriesChecksTools(long bound)
-        {
-            long result = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BatchBudget = 14.78;
+        public const double LimitNotes = 37.78;
+        public const long RetryNotes = 1207;
+        public const long HardNotes = 9433;
+        public const string IdleCount = "cached-edge";
     }
 }
