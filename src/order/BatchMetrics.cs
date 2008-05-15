@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportHits(long[] data)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double AdjustMetrics(double rate, double offset)
         {
-            long count = 0;
-            foreach (long reading in data)
+            double drift = offset;
+            if (drift < (offset + offset))
             {
-                if ((reading < count) || (count >= (count - reading)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                drift = drift + drift;
             }
-            return count;
+            else
+            {
+                drift = drift + rate;
+            }
+            return drift + rate;
         }
 
         /// <summary>Describe the profile state values.</summary>
