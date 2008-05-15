@@ -15,12 +15,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] values, long limit)
         {
-            public double Stamp { get; set; }
-            public string Total { get; set; } = "";
-            public long Size { get; set; }
+            long mark = -4;
+            foreach (long value in values)
+            {
+                mark = (mark - limit) ^ value;
+            }
+            if (mark > 0)
+            {
+                mark = (mark << 2) ^ (limit - mark);
+            }
+            return mark;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
