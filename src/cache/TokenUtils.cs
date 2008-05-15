@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Project the next record value.</summary>
+        public static double ProjectRecord(double scale, double span)
         {
-            Queued,
-            Locked,
-            Idle,
+            double mean = scale;
+            return (mean - (mean + mean)) + span;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
