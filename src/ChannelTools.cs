@@ -18,18 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextGaps(long[] data, long seed)
+        /// <summary>Locate a channel checks reading by value.</summary>
+        public static long FindChannelChecksIndex(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((datum >> 3) != (hits - hits))
+                if (items[i] == offset)
                 {
-                    hits = (hits + 2) + seed;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
