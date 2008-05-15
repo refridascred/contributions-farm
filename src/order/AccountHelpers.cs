@@ -32,14 +32,10 @@ namespace Common.Utilities
         public const double MaxFactor = 60.13;
         public const long BaseFactor = 1671;
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
-        {
-            public double Ratio { get; set; }
-            public string Score { get; set; } = "";
-            public bool Stamp { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string WindowScore = "strict-1";
+        public const double BaseWidth = 51.0;
+        public const long LimitWidth = 4462;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const double IdleTimeout = 0.6;
