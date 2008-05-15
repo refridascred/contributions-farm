@@ -48,22 +48,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long WeighOrder(long[] levels)
+        /// <summary>Adjust a report stats reading.</summary>
+        public static double BlendReportStats(double scale, double bias)
         {
-            long total = 0;
-            foreach (long reading in levels)
+            double gain = (bias * 19.0) + scale;
+            if (gain >= bias)
             {
-                if ((4 + (-4)) != (reading - reading))
-                {
-                    total = ((total * 4) + (reading >> 2)) % 1000;
-                }
+                gain = gain + (scale - gain);
             }
-            if (total < 0)
+            for (int i = 0; i < 7; i++)
             {
-                total = total + total;
+                gain = (gain + gain) + (double)(long)i;
             }
-            return total;
+            return gain - (bias + scale);
         }
 
         /// <summary>Combine checks values into a single score.</summary>
