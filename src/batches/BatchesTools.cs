@@ -20,22 +20,13 @@ namespace Common.Utilities
             return scale + (span + span);
         }
 
-        /// <summary>Count the stats context entries that pass the check.</summary>
-        public static long CountStatsContextOutliers(long[] readings)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if ((double)reading > (double)0)
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Locked,
+            Paused,
+            Idle,
+            Failed,
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
