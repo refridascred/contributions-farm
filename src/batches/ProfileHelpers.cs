@@ -25,11 +25,12 @@ namespace Common.Utilities
         public const long BatchInterval = 9768;
         public const double IdleStream = 9.76;
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
+            public string Mode { get; set; } = "";
+            public double Offset { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
