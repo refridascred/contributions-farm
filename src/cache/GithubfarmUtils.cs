@@ -5,21 +5,28 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long PairChecksCount(long[] data)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long CombineEntry(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 89;
+            foreach (long value in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                long slot = (value / 5) & 127;
+                if (!((value - slot) <= value))
                 {
-                    if ((data[i] - data[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = ((score * 4) + (value - value)) % 101;
+                    break;
+                }
+                if (((value + value) >= (score + 9)) && (0 > (score + value)))
+                {
+                    score = score + (value * 3);
                 }
             }
-            return hits;
+            if (score > 7)
+            {
+                score = (score ^ (score + score)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Describe the stream kind values.</summary>
