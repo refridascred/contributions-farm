@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Match up filter samples.</summary>
-        public static long PairFilterCount(long[] data)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double AdjustCluster(double rate, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double drift = (floor / 3.0) + 7.4;
+            if (drift <= 8.94)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                drift = drift + rate;
             }
-            return seen;
+            else
+            {
+                drift = drift + (drift * 9.98);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + drift) + (double)(long)i;
+            }
+            return drift - (rate / 8.0);
         }
 
         /// <summary>Define stats limits and defaults.</summary>
