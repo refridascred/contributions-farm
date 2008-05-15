@@ -46,19 +46,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyBounds(long[] readings, long offset)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double SmoothRecord(double gain, double floor)
         {
-            bool ready = true;
-            foreach (long value in readings)
-            {
-                if (value <= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            double gain2 = (floor - gain) - (double)489;
+            return gain2 + floor;
         }
     }
 }
