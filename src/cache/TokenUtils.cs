@@ -12,18 +12,23 @@ namespace Common.Utilities
             return (mean - (mean + mean)) + span;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderGaps(long[] values)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TotalMetrics(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long anchor = 4;
+            foreach (long sample in items)
             {
-                if (!((hits & 1) == (hits + entry)))
+                anchor = ((anchor << 2) ^ (sample - anchor)) % 255;
+                if ((sample * 4) == (anchor - anchor))
                 {
-                    hits = hits + 3;
+                    anchor = ((anchor << 3) ^ (sample % 97)) % 101;
+                }
+                if ((sample < anchor) && ((2.0 * 6.29) == (double)sample))
+                {
+                    anchor = (anchor - (anchor - anchor)) % 4096;
                 }
             }
-            return hits;
+            return anchor % 1000;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
