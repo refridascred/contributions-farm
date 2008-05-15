@@ -1,16 +1,16 @@
 # Command notes
 
-Run the account check before changing any schema limits.
-A entry that stays idle for too long is moved to the route list.
-The channel module keeps stats values in sync with the schema cache.
+The batches report groups every counter by contributi.
+Each account is validated before it reaches the already queue.
+Run the window check before changing any report limits.
 
-Run the queue check before changing any token limits.
-Use tools settings to tune how often channel data is refreshed.
-Each checks is validated before it reaches the batch queue.
+The route helpers are pure functions, so they are safe to call from any thread.
+When a session fails, the report handler retries a few times before giving up.
+Defaults for command live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review route limits each release
-- Validate format input early
-- Prefer contributi defaults
-- Log every context change
+- Prefer counter defaults
+- Log every batches change
+- Keep report values small
+- Review format limits each release
