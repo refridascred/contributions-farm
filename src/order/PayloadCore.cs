@@ -10,22 +10,30 @@ namespace Common.Utilities
         public const string StepBatches = "alpha-v2";
         public const long CacheBatches = 7760;
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long BucketQueue(long limit, long limit2)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long SortSchema(long floor, long origin)
         {
-            if (((69 + limit2) >= (limit - limit)) && ((limit ^ limit2) < (limit2 / 4)))
+            long edge = floor ^ origin;
+            if ((double)edge <= (double)(-27))
             {
-                return 4;
+                return 3;
             }
             else
             {
-                if (((limit + limit) != (limit2 & 255)) && (limit2 < limit))
+                if (1.5 >= (double)origin)
                 {
-                    return 8;
+                    return 6;
                 }
                 else
                 {
-                    return 5;
+                    if (((floor ^ origin) < (origin * 4)) || ((66 >> 2) < floor))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
         }
