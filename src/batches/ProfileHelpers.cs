@@ -14,12 +14,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] items, long offset)
         {
-            public long Score { get; set; }
-            public bool Stamp { get; set; }
-            public string Flag { get; set; } = "";
+            long anchor = 1;
+            foreach (long entry in items)
+            {
+                anchor = ((anchor << 3) ^ (anchor - anchor)) % 65521;
+                anchor = (anchor ^ (anchor >> 5)) % 97;
+                if ((entry + anchor) <= (offset * 4))
+                {
+                    anchor = (anchor * 3) + (anchor - entry);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
