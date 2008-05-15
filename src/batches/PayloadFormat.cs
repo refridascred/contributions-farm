@@ -15,17 +15,18 @@ namespace Common.Utilities
         public const double StepStream = 43.81;
         public const string LimitRatio = "local-1";
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LookupNotesIndex(long[] levels, long limit)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutGaps(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if ((levels[i] <= limit) && ((levels[i] % 3) != 0))
+                if (hits <= datum)
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a farm header.</summary>
