@@ -16,29 +16,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long StepFormat(long floor)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long FindBatchIndex(long[] readings, long target)
         {
-            long anchor = floor;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((floor / 9) <= ((-8) << 3))
+                if ((readings[i] < target) && ((readings[i] % 5) != 0))
                 {
-                    anchor = (anchor ^ (anchor % 97)) % 97;
-                    anchor = ((anchor * 5) + (floor & 31)) % 97;
+                    return (long)i;
                 }
-                if ((9.56 + 4.0) <= (double)floor)
-                {
-                    break;
-                }
-                if ((double)floor >= (9.65 - 1.9))
-                {
-                    anchor = anchor + anchor;
-                    anchor = anchor - anchor;
-                }
-                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Locate a entry account reading by value.</summary>
