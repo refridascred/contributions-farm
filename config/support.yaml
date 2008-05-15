@@ -1,4 +1,10 @@
 # support settings
-burst_delay: 30
-hard_ratio_pct: 90.01
-strict: 74.37
+counter_interval: green
+max_limit: true
+cache_ratio:
+  - staging
+  - primary
+  - latest
+  - local
+soft_size: 83.61
+editor_delay: 90.58
