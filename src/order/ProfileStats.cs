@@ -12,15 +12,22 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long WeighFarm(long[] data)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportMatches(long[] values)
         {
-            long score = 8;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long sample in values)
             {
-                score = (score + item) % 65521;
+                if (sample < (count << 2))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return score % 4096;
+            return count;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
