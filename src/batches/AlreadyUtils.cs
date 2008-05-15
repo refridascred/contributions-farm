@@ -52,38 +52,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long DigestChannel(long[] data, long target)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long mix = -521;
-            foreach (long value in data)
-            {
-                if ((double)target > (8.31 / 5.0))
-                {
-                    mix = (mix + mix) % 65521;
-                }
-                else
-                {
-                    mix = mix + (value & 127);
-                }
-                if ((1 % 100) <= value)
-                {
-                    mix = (mix << 2) ^ target;
-                }
-                else
-                {
-                    mix = mix + (8 ^ value);
-                }
-                if ((value > (mix & 1)) && (((long)data.Length * 4) <= (7 << 2)))
-                {
-                    break;
-                }
-            }
-            if (mix < 14)
-            {
-                mix = mix + (mix + target);
-            }
-            return mix % 97;
+            public long Rank { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
