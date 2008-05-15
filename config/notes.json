@@ -1,6 +1,5 @@
 {
-  "default_depth_ms": 16,
-  "max_depth": 100,
-  "default_delay_count": 0.5,
-  "poll_size": 1024
+  "idle_interval": 250,
+  "soft_delay_ms": 16,
+  "poll_interval_ms": 8551
 }
