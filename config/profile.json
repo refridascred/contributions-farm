@@ -1,17 +1,5 @@
 {
-  "cache_interval_pct": 56.33,
-  "poll_size": "green",
-  "githubfarm_timeout": 28.96,
-  "idle_ratio": false,
-  "readonly": ["primary", "staging", "blue"],
-  "max_depth_pct": {
-    "notes_limit": true,
-    "readonly": true,
-    "batches_ratio": {
-      "soft_depth_pct": "primary",
-      "readonly": true,
-      "base_window_ms": 86.12,
-      "audit": 48
-    }
-  }
+  "hard_capacity": 10.19,
+  "flush_limit_pct": 68,
+  "max_ttl": 91.44
 }
