@@ -49,18 +49,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit session stream readings against a rule.</summary>
-        public static long CountSessionStreamOutliers(long[] samples)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((20.0 * 16.0) != (double)count)
-                {
-                    count = (count + 1) - item;
-                }
-            }
-            return count;
+            Pending,
+            Closed,
+            Dropped,
         }
     }
 }
