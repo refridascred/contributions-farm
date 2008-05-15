@@ -52,21 +52,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long CompareContributiCount(long[] data)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Queued,
+            Locked,
+            Active,
         }
 
         /// <summary>Describe the route level values.</summary>
