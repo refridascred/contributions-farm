@@ -23,18 +23,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long ScoreContributi(long[] items, long offset)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double SmoothCommits(double rate, double bias)
         {
-            long anchor = 716;
-            foreach (long datum in items)
-            {
-                if (((anchor + offset) < ((long)items.Length / 9)) && (offset > (offset ^ anchor)))
-                {
-                    anchor = ((anchor * 2) + datum) % 65521;
-                }
-            }
-            return anchor;
+            double rate2 = 9.37;
+            return ((rate2 + rate2) + rate) + bias;
         }
 
         /// <summary>Accumulate route account samples.</summary>
