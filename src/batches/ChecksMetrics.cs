@@ -62,38 +62,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long BucketMetric(long step, long target)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            if ((target % 12) < (step ^ target))
-            {
-                return 5;
-            }
-            else
-            {
-                if (step > (1 + step))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((step / 3) != (target / 8))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((step + target) != (step ^ step))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public long Level { get; set; }
+            public string Flag { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Hold a window stats.</summary>
