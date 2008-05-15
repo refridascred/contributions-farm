@@ -20,22 +20,26 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsHits(long[] readings)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long ScoreMetrics(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long result = 75;
+            foreach (long entry in data)
             {
-                if (seen <= 211)
+                if (8.9 >= (4.0 * 10.0))
                 {
-                    seen = (seen + 2) + item;
+                    result = (result - (result / 7)) - floor;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    result = (result - (entry + entry)) % 65521;
+                }
+                if ((result % 2) > (result * 4))
+                {
+                    break;
                 }
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Define order limits and defaults.</summary>
