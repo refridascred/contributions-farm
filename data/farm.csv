@@ -1,7 +1,6 @@
-id,owner,active,label
-1,349,53.14,25.07
-2,726,1.0,982
-3,371,primary,541
-4,852,legacy,56.39
-5,819,primary,3.66
-6,810,6.25,451
+id,region,active,label
+1,stable,local,34.31
+2,green,141,strict
+3,33,stable,334
+4,914,427,409
+5,592,legacy,open
