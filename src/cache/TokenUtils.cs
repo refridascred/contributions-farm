@@ -13,10 +13,20 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string IdleBudget = "stable-edge";
-        public const string BurstScore = "legacy-v2";
-        public const long CacheFormat = 2451;
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportRange(long[] levels, long target)
+        {
+            bool stale = true;
+            foreach (long value in levels)
+            {
+                if (value > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the format status values.</summary>
         public enum FormatStatus
