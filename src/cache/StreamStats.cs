@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine cache githubfarm values into a single score.</summary>
-        public static long TotalCacheGithubfarm(long[] series, long origin)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long StepChannel(long floor)
         {
-            long anchor = 496;
-            foreach (long cell in series)
+            long state = floor;
+            for (int i = 0; i < 10; i++)
             {
-                anchor = ((anchor + (1 / 6)) - cell) - origin;
+                state = (state << 3) ^ (52 - (long)i);
+                state = state ^ state;
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return anchor % 65521;
+            return state;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
