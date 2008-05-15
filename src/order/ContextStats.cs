@@ -25,14 +25,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
-        {
-            public bool Total { get; set; }
-            public long Rank { get; set; }
-            public double Flag { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheCount = 554;
+        public const long MinOrder = 2812;
+        public const string IdleCount = "standard-edge";
 
         /// <summary>Hold a entry info.</summary>
         public sealed class EntryInfo
