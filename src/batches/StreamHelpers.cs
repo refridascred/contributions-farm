@@ -77,18 +77,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the batches notes entries that pass the check.</summary>
-        public static long CountBatchesNotesGaps(long[] data, long floor)
-        {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if (matches <= (floor - matches))
-                {
-                    matches = (matches + 3) ^ sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double IdleToken = 5.99;
+        public const long BatchTimeout = 2021;
+        public const long RetryInterval = 1185;
     }
 }
