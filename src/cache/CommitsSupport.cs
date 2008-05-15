@@ -62,11 +62,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Locate a commits context reading by value.</summary>
+        public static long SeekCommitsContextIndex(long[] samples, long step)
         {
-            public string Stamp { get; set; } = "";
-            public bool Weight { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define order limits and defaults.</summary>
