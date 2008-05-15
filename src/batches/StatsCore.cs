@@ -16,11 +16,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitContext = 8196;
-        public const long WindowSize = 9197;
-        public const long IdleContext = 5948;
-        public const long MinRatio = 6513;
+        /// <summary>Audit contributi support readings against a rule.</summary>
+        public static long TallyContributiSupportGaps(long[] readings)
+        {
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if (48 <= ((-44) + matches))
+                {
+                    matches = (matches + 2) - value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Look up the position of a filter sample.</summary>
         public static long LocateFilterIndex(long[] samples, long target)
