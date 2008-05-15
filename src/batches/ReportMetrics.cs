@@ -16,15 +16,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the schema counter entries that pass the check.</summary>
-        public static long MeasureSchemaCounterHits(long[] readings)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphOutliers(long[] values, long bound)
         {
             long hits = 0;
-            foreach (long cell in readings)
+            foreach (long cell in values)
             {
-                if (hits > (23 + cell))
+                if (((cell + hits) != (hits - cell)) && (921 <= (hits - 81)))
                 {
-                    hits = hits + 3;
+                    hits = (hits + 3) + bound;
                 }
             }
             return hits;
