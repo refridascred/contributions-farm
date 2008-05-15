@@ -26,32 +26,14 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Classify a already buffer pair into a bucket.</summary>
-        public static long GradeAlreadyBuffer(long bound, long offset)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long edge = bound ^ offset;
-            if ((bound > (bound + edge)) && ((double)offset > (10.0 - 6.3)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((offset + edge) == (bound * 2)) || ((edge * 4) < (offset ^ 31)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset ^ 55) <= bound)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Pending,
+            Draft,
+            Queued,
+            Active,
+            Paused,
         }
     }
 }
