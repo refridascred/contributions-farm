@@ -25,19 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the checks editor series from a seed.</summary>
-        public static long IterateChecksEditor(long origin)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long acc = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    acc = (acc ^ (acc - (long)i)) ^ (long)i2;
-                }
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
+            public long Mode { get; set; }
+            public double Count { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
