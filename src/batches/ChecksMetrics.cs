@@ -81,18 +81,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatGaps(long[] items, long origin)
-        {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if (!(value <= (origin << 1)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseBudget = 7097;
+        public const long BurstReport = 4293;
+        public const string StepTimeout = "open-1";
+        public const long LimitReport = 4407;
     }
 }
