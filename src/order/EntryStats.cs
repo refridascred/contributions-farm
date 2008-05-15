@@ -52,18 +52,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many record checks samples are out of range.</summary>
-        public static long CountRecordChecksOutliers(long[] series)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((datum - count) > (count >> 4))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Failed,
+            Ready,
+            Locked,
+            Queued,
         }
 
         /// <summary>Adjust a batches reading.</summary>
