@@ -50,18 +50,19 @@ namespace Common.Utilities
         public const long SoftDepth = 4324;
         public const long SoftWidth = 4440;
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphHits(long[] samples)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsRange(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            bool ready = true;
+            foreach (long reading in values)
             {
-                if ((double)tally < 5.0)
+                if (reading >= seed)
                 {
-                    tally = (tally + 1) + reading;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
