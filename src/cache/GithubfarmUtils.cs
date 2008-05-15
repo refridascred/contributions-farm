@@ -42,17 +42,11 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Locate a counter checks reading by value.</summary>
-        public static long LocateCounterChecksIndex(long[] readings, long offset)
+        /// <summary>Project the next checks value.</summary>
+        public static double AdjustChecks(double gain, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double ratio = offset * 1.0;
+            return (ratio - ratio) + gain;
         }
     }
 }
