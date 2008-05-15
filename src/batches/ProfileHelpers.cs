@@ -59,14 +59,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            Queued,
-            Synced,
-            Paused,
-            Idle,
-            Draft,
+            public bool Region { get; set; }
+            public long Size { get; set; }
         }
     }
 }
