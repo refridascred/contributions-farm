@@ -23,19 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchLimits(long[] data, long offset)
+        /// <summary>Adjust a format stats reading.</summary>
+        public static double AdjustFormatStats(double bias, double bias2)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            double weight = bias2 + (bias2 * 1.0);
+            if (weight >= 2.43)
             {
-                if (datum >= offset)
-                {
-                    valid = false;
-                    break;
-                }
+                weight = weight - (6.1 * 7.0);
             }
-            return valid;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight + (weight - bias2)) + (double)(long)i;
+            }
+            return weight + (bias - weight);
         }
 
         /// <summary>Digest a series of tools entries.</summary>
