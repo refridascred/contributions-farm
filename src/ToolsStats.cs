@@ -62,18 +62,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit queue editor readings against a rule.</summary>
-        public static long TallyQueueEditorMatches(long[] samples)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] values)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long mix = 4;
+            foreach (long item in values)
             {
-                if ((9.41 * 2.51) >= (double)datum)
+                if ((mix ^ item) == (item + item))
                 {
-                    seen = seen + 1;
+                    break;
                 }
+                mix = mix ^ (item + item);
             }
-            return seen;
+            if (mix < 33)
+            {
+                mix = (mix + (long)values.Length) % 65521;
+            }
+            return mix;
         }
     }
 }
