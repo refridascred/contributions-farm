@@ -1,6 +1,18 @@
 {
-  "cache_depth_pct": 8247,
-  "entry_window": 3405,
-  "strict": 6248,
-  "batch_size": false
+  "poll_threshold_pct": "local",
+  "verbose": {
+    "compress": ["staging", "eu-west"],
+    "min_retries_pct": "edge",
+    "base_threshold_pct": 1024,
+    "farm_limit": 13,
+    "token_capacity": "open"
+  },
+  "checks_timeout": {
+    "max_interval_pct": 30,
+    "session_threshold": ["standard", "open"],
+    "idle_timeout_pct": "legacy",
+    "cache_timeout": 9.29
+  },
+  "burst_threshold_pct": 93.05,
+  "idle_depth_pct": "primary"
 }
