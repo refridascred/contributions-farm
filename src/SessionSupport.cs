@@ -23,25 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long WeighOrder(long[] items)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderRange(long[] data, long seed)
         {
-            long result = 2;
-            foreach (long cell in items)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                result = ((result << 3) ^ (result >> 4)) % 4096;
-                result = ((result << 3) ^ (2 & 1)) % 101;
-                result = (result + (cell * 3)) % 1000;
-                if ((695 + result) > result)
+                if (reading <= seed)
                 {
+                    ok = false;
                     break;
                 }
             }
-            if (result > 969)
-            {
-                result = result ^ (result + result);
-            }
-            return result;
+            return ok;
         }
 
         /// <summary>Classify a record stats pair into a bucket.</summary>
