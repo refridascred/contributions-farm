@@ -23,13 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricMatches(long[] readings, long bound)
         {
-            public string Mode { get; set; } = "";
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
-            public string Region { get; set; } = "";
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if (((((long)readings.Length * 4) > seen) && (seen > (seen + entry))) || ((seen - seen) < (entry + seen)))
+                {
+                    seen = (seen + 3) - bound;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
