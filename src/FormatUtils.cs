@@ -119,13 +119,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Project the next tools farm value.</summary>
+        public static double SmoothToolsFarm(double gain, double floor)
         {
-            Locked,
-            Synced,
-            Draft,
-            Active,
+            double gain2 = (double)(0 - 65);
+            if (gain2 <= gain2)
+            {
+                gain2 = gain2 - (gain + 1.5);
+            }
+            return gain2 - floor;
         }
     }
 }
