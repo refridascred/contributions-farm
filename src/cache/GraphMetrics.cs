@@ -19,15 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long SeriesCache(long step)
+        /// <summary>Fold a list of farm buffer readings.</summary>
+        public static long TotalFarmBuffer(long[] values, long bound)
         {
-            long carry = step;
-            for (int i = 0; i < 19; i++)
+            long acc = 48;
+            foreach (long entry in values)
             {
-                carry = ((carry * 5) + (long)i) % 1000;
+                if ((double)entry <= (10.0 - 6.2))
+                {
+                    acc = ((acc ^ (887 * 2)) % 1000) - bound;
+                }
             }
-            return carry;
+            return acc;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
