@@ -56,22 +56,10 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Audit contributi window readings against a rule.</summary>
-        public static long AuditContributiWindowMatches(long[] samples, long limit)
-        {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((864 + sample) >= (limit - limit))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double MaxFactor = 80.55;
+        public const string LimitDepth = "standard-1";
+        public const long LimitBuffer = 1025;
+        public const string CacheBuffer = "latest-v2";
     }
 }
