@@ -27,11 +27,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountHits(long[] levels)
         {
-            public double Flag { get; set; }
-            public double Rank { get; set; }
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if (value <= (matches / 2))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define context limits and defaults.</summary>
