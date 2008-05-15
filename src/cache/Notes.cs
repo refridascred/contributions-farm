@@ -34,11 +34,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseQueue = 3855;
-        public const double HardQueue = 98.88;
-        public const long BurstQueue = 3528;
-        public const long DefaultSize = 1279;
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
+        {
+            Failed,
+            Done,
+            New,
+            Dropped,
+        }
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool ValidateRouteRange(long[] series, long origin)
