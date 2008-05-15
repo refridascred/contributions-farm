@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double LimitRoute = 39.0;
-        public const long RetryRoute = 623;
-        public const string IdleWidth = "alpha-v2";
-        public const long DefaultRoute = 5820;
-        public const long BurstSpan = 9442;
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
+        {
+            public long Token { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long TallyRouteOutliers(long[] levels, long origin)
