@@ -20,22 +20,11 @@ namespace Common.Utilities
         public const double RetryRatio = 27.87;
         public const long DefaultEditor = 7110;
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksOutliers(long[] readings)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if ((double)37 <= (double)reading)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Rank { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
