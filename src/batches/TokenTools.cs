@@ -12,39 +12,21 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long ClassifyOrder(long floor, long bound)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long PairContextCount(long[] values)
         {
-            long edge = floor - bound;
-            if (((bound >> 3) <= (edge % 12)) && ((floor + bound) < (974 + floor)))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound / 9) < (edge - floor))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((-51) * 5) >= (floor + edge))
+                    if ((values[i] + values[j]) > 1)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((edge << 2) != (edge & 127)) || ((floor - bound) > (-75)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
