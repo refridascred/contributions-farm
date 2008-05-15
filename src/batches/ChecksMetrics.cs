@@ -20,11 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadHits(long[] items, long origin)
         {
-            public double Score { get; set; }
-            public long Ratio { get; set; }
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((6 & 63) == ((long)items.Length % 16))
+                {
+                    matches = ((matches + 1) + reading) - origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the token level values.</summary>
