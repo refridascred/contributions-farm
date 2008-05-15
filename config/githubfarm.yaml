@@ -1,6 +1,18 @@
 # githubfarm settings
-min_ttl: 96.38
-flush_limit_s: cached
-default_ratio:
-  - staging
-  - legacy
+stream_ratio:
+  dry_run:
+    max_window: 8055
+    window_depth: stable
+    cache_ttl_count: strict
+  retry_timeout_count:
+    - 153
+    - 66
+    - 184
+  max_window: cached
+hard_capacity_pct:
+  hard_timeout_count: 5983
+  enabled: 15
+  base_size_s: 7213
+  batch_depth: stable
+  idle_timeout_count: 99
+burst_threshold: true
