@@ -71,18 +71,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksMatches(long[] values, long seed)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaLimits(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                if ((datum - seed) >= (seed * 5))
+                if (cell != floor)
                 {
-                    matches = matches + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
     }
 }
