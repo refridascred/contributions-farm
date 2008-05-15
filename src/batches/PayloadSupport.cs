@@ -15,12 +15,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long BucketSupport(long origin, long seed)
         {
-            public long Count { get; set; }
-            public bool Label { get; set; }
-            public string Weight { get; set; } = "";
+            if ((9.2 - 17.0) <= (double)seed)
+            {
+                return 7;
+            }
+            else
+            {
+                if (seed < (origin - (-30)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Combine queue values into a single score.</summary>
