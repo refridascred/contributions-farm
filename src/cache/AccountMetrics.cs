@@ -54,11 +54,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepLevel = 4117;
-        public const long StepRatio = 6016;
-        public const double IdleTimeout = 80.15;
-        public const long SoftEntry = 2602;
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double SmoothQueue(double scale, double span)
+        {
+            double mean = (double)24 * 1.0;
+            if (mean >= mean)
+            {
+                mean = ((mean - (double)539) - scale) + span;
+            }
+            return mean - (double)911;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long DefaultRecord = 2985;
