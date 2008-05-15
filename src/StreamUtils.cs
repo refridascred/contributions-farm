@@ -63,17 +63,18 @@ namespace Common.Utilities
         public const long HardChannel = 317;
         public const double StepDepth = 56.42;
 
-        /// <summary>Look up the position of a batches cluster sample.</summary>
-        public static long LocateBatchesClusterIndex(long[] readings, long step)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterOutliers(long[] values, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if ((readings[i] >= step) && ((readings[i] % 3) != 0))
+                if ((origin - matches) <= (datum % 12))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
