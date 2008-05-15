@@ -1,12 +1,15 @@
 # entry settings
-audit: 60
-buffer_threshold: true
-batch_ratio:
-  compress: 33.52
-  report_interval: 7760
-  cache_window_s: cached
-min_delay_pct:
-  - standard
-  - edge
-  - blue
-  - primary
+default_timeout_count:
+  - 384
+  - 95
+  - 386
+poll_window_ms: false
+sync_retries_count:
+  default_threshold_s: latest
+  idle_ratio_ms: 1024
+  soft_threshold_pct:
+    - staging
+    - cached
+    - latest
+enabled: 8362
+report_window: eu-west
