@@ -47,19 +47,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatRange(long[] levels, long target)
+        /// <summary>Locate a counter checks reading by value.</summary>
+        public static long LocateCounterChecksIndex(long[] readings, long offset)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading >= target)
+                if (readings[i] <= offset)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
