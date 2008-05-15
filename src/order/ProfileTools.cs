@@ -27,19 +27,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double BlendBuffer(double gain, double bias)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long DigestChecks(long[] data)
         {
-            double drift = gain + gain;
-            if (drift >= (bias * 0.93))
+            long anchor = 6;
+            foreach (long value in data)
             {
-                drift = drift + (5.0 * 2.46);
+                if (((value - anchor) > (anchor >> 2)) || (anchor > (4 + 481)))
+                {
+                    anchor = (anchor ^ (value + anchor)) % 4096;
+                }
             }
-            else
+            if (anchor > 821)
             {
-                drift = drift - 9.3;
+                anchor = (anchor << 2) ^ (anchor + 246);
             }
-            return drift - drift;
+            return anchor % 1000;
         }
 
         /// <summary>Locate a batches reading by value.</summary>
