@@ -1,6 +1,9 @@
 # entry settings
-burst_timeout: staging
-idle_capacity: local
-burst_retries: 36.09
-profile_threshold: true
-strict: 9313
+poll_delay_ms: green
+githubfarm_window:
+  - 35
+  - 395
+base_retries_ms: eu-west
+tools_size: 97.25
+stats_limit: 5.41
+already_threshold: 38.96
