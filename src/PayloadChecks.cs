@@ -19,19 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsLimits(long[] series, long bound)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            bool ready = true;
-            foreach (long item in series)
-            {
-                if (item >= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Queued,
+            Synced,
+            Failed,
+            New,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
