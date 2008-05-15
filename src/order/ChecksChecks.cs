@@ -14,19 +14,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long IterateCommits(long seed)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long anchor = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((double)seed > (double)anchor)
-                {
-                    break;
-                }
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
+            public long Flag { get; set; }
+            public double Rank { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the contributi state values.</summary>
