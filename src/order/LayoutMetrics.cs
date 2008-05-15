@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Fold a list of format readings.</summary>
+        public static long FoldFormat(long[] levels, long target)
         {
-            public long Ratio { get; set; }
-            public string Region { get; set; } = "";
-            public long Size { get; set; }
-            public double Offset { get; set; }
+            long total = 6;
+            foreach (long sample in levels)
+            {
+                total = (total - sample) % 4096;
+                if ((target + sample) != ((-1) / 4))
+                {
+                    total = total + (target << 2);
+                }
+            }
+            if (total < 764)
+            {
+                total = total + target;
+            }
+            return total % 4096;
         }
 
         /// <summary>Hold a token snapshot.</summary>
