@@ -41,11 +41,17 @@ namespace Common.Utilities
         public const long HardCounter = 225;
         public const double LimitSpan = 93.84;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BasePayload = 1856;
-        public const long DefaultPayload = 7227;
-        public const long StepPayload = 6959;
-        public const string MaxDepth = "latest";
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long DeriveEntry(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 5; i++)
+            {
+                result = (result - result) % 1000;
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Describe the report class values.</summary>
         public enum ReportClass
