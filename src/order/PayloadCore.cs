@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] levels)
         {
-            Done,
-            Idle,
-            New,
-            Stale,
-            Retry,
+            long state = 695;
+            foreach (long entry in levels)
+            {
+                if (228 <= (entry / 9))
+                {
+                    state = (state - state) % 97;
+                }
+            }
+            return state;
         }
 
         /// <summary>Describe the format status values.</summary>
