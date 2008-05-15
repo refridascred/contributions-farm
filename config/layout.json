@@ -1,12 +1,6 @@
 {
-  "poll_retries_pct": {
-    "burst_ttl_count": 10,
-    "idle_timeout": 7.61,
-    "order_capacity": 100,
-    "strict": 500,
-    "warm_window": [58, 351, 78],
-    "base_threshold_count": 1024
-  },
-  "audit": 84,
-  "command_ratio": 3858
+  "sync_depth_ms": 56,
+  "batch_interval_count": false,
+  "poll_ttl_ms": 77.23,
+  "enabled": ["cached", "cached"]
 }
