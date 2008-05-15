@@ -1,20 +1,5 @@
 # entry settings
-base_size_count: false
-flush_capacity:
-  - open
-  - blue
-base_delay: 70.23
-payload_window:
-  buffer_interval: 56.44
-  profile_capacity: eu-west
-  persist:
-    - eu-west
-    - legacy
-    - cached
-  profile_threshold: false
-  githubfarm_timeout:
-    - 164
-    - 286
-    - 122
-    - 478
-  strict: 6038
+readonly: standard
+notes_window: 11.92
+strict: 86
+base_retries: 8338
