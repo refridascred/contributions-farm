@@ -1,10 +1,14 @@
 # githubfarm settings
-base_depth_s:
-  - strict
-  - legacy
-  - standard
-hard_threshold_count: strict
-idle_timeout_pct: 7198
-notes_retries: 250
-notes_interval: 100
-default_depth_pct: 30
+warm_retries_s: stable
+cache_delay_ms: false
+base_interval_s: false
+persist:
+  graph_ttl: false
+  githubfarm_capacity: fallback
+  warm_limit_s: primary
+  cache_capacity: edge
+soft_ttl_s: 39
+githubfarm_capacity:
+  batch_window: 52.03
+  session_delay: 95.18
+  cache_ttl_count: true
