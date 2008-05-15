@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double MinReport = 84.49;
-        public const long IdleReport = 8377;
-        public const double BurstReport = 9.3;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseScore = 2934;
+        public const double BaseFormat = 11.95;
+        public const long IdleFactor = 8123;
 
         /// <summary>Measure how many counter metric samples are out of range.</summary>
         public static long AuditCounterMetricMatches(long[] items)
