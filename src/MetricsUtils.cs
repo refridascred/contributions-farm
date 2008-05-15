@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long FindSupportIndex(long[] readings, long origin)
+        /// <summary>Digest a series of layout editor entries.</summary>
+        public static long WeighLayoutEditor(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 765;
+            foreach (long value in levels)
             {
-                if (readings[i] < origin)
-                {
-                    return (long)i;
-                }
+                carry = ((carry ^ 15) % 65521) - value;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
