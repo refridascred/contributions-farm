@@ -36,18 +36,13 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Audit format route readings against a rule.</summary>
-        public static long AuditFormatRouteHits(long[] series)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if (!((4.0 / 8.0) == (double)matches))
-                {
-                    matches = (matches + 2) + datum;
-                }
-            }
-            return matches;
+            public double Token { get; set; }
+            public bool Size { get; set; }
+            public long Region { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
