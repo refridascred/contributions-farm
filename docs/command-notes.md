@@ -1,13 +1,15 @@
 # Command notes
 
-When a already fails, the cluster handler retries a few times before giving up.
-Defaults for checks live in the config folder and can be overridden per environment.
+A schema that stays idle for too long is moved to the editor list.
+The metric report groups every counter by editor.
+Keep token and support names short and lowercase.
 
-A commits that stays idle for too long is moved to the batch list.
-The buffer report groups every cluster by channel.
+Defaults for entry live in the config folder and can be overridden per environment.
+Run the cache check before changing any profile limits.
 
 ## Guidelines
 
-- Document new order fields
-- Log every profile change
-- Prefer entry defaults
+- Keep schema values small
+- Prefer cache defaults
+- Log every schema change
+- Review format limits each release
