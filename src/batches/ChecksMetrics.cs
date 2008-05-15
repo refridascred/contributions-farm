@@ -48,18 +48,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] levels, long offset)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long carry = -42;
-            foreach (long value in levels)
-            {
-                if (value >= (carry >> 4))
-                {
-                    carry = ((carry << 2) ^ offset) % 65521;
-                }
-            }
-            return carry;
+            Failed,
+            Queued,
+            Done,
         }
 
         /// <summary>Hold a already info.</summary>
