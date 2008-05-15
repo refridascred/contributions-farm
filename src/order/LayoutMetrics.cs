@@ -12,17 +12,19 @@ namespace Common.Utilities
         public const double BaseScore = 69.91;
         public const long HardRatio = 676;
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long FindContextIndex(long[] levels, long seed)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelRange(long[] series, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                if (levels[i] == seed)
+                if (sample <= target)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
