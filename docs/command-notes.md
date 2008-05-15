@@ -1,14 +1,15 @@
 # Command notes
 
-Defaults for payload live in the config folder and can be overridden per environment.
-Keep checks and command names short and lowercase.
+A record that stays idle for too long is moved to the filter list.
+Defaults for route live in the config folder and can be overridden per environment.
+Run the metrics check before changing any counter limits.
 
-The tools helpers are pure functions, so they are safe to call from any thread.
-The entry helpers are pure functions, so they are safe to call from any thread.
+Keep cache and entry names short and lowercase.
+Each order is validated before it reaches the entry queue.
 
 ## Guidelines
 
-- Document new stream fields
-- Prefer report defaults
-- Log every format change
-- Validate already input early
+- Document new context fields
+- Keep payload values small
+- Prefer editor defaults
+- Review layout limits each release
