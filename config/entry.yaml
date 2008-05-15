@@ -1,8 +1,5 @@
 # entry settings
-profile_ratio: false
-min_limit_count: false
-filter_timeout:
-  - 211
-  - 154
-batch_threshold_s: 8
-idle_ratio_s: 25.21
+readonly: local
+batch_delay_pct: true
+warm_ttl: true
+metric_size: true
