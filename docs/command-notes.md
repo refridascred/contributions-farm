@@ -1,14 +1,15 @@
 # Command notes
 
-The command module keeps entry values in sync with the batches cache.
-The command module keeps command values in sync with the window cache.
-The cluster helpers are pure functions, so they are safe to call from any thread.
+The entry report groups every payload by metric.
+A layout that stays idle for too long is moved to the record list.
 
-Each record is validated before it reaches the notes queue.
-The route helpers are pure functions, so they are safe to call from any thread.
+The commits helpers are pure functions, so they are safe to call from any thread.
+The batch report groups every order by commits.
+The cluster module keeps buffer values in sync with the context cache.
 
 ## Guidelines
 
-- Keep editor values small
-- Document new support fields
-- Review command limits each release
+- Prefer githubfarm defaults
+- Validate session input early
+- Review session limits each release
+- Log every cluster change
