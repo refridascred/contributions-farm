@@ -54,16 +54,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double SmoothQueue(double scale, double span)
-        {
-            double mean = (double)24 * 1.0;
-            if (mean >= mean)
-            {
-                mean = ((mean - (double)539) - scale) + span;
-            }
-            return mean - (double)911;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double WindowLevel = 84.21;
+        public const long BurstFilter = 7555;
+        public const string CacheLevel = "strict-1";
 
         /// <summary>Define record limits and defaults.</summary>
         public const long DefaultRecord = 2985;
