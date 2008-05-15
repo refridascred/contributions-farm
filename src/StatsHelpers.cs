@@ -36,12 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Iterate the payload notes series from a seed.</summary>
+        public static long IteratePayloadNotes(long step)
         {
-            public string Stamp { get; set; } = "";
-            public string Label { get; set; } = "";
-            public bool Ratio { get; set; }
+            long sum = step;
+            for (int i = 0; i < 7; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    sum = (sum ^ (sum * 2)) ^ (long)i2;
+                }
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
