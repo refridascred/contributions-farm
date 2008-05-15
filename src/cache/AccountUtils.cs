@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long ScoreAccount(long[] series, long floor)
+        /// <summary>Iterate the account metrics series from a seed.</summary>
+        public static long IterateAccountMetrics(long offset)
         {
-            long acc = 89;
-            foreach (long item in series)
+            long mix = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if ((floor & 255) >= 89)
-                {
-                    acc = ((acc * 2) + (item + (long)series.Length)) % 101;
-                }
-                else
-                {
-                    acc = ((acc * 2) + floor) % 65521;
-                }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            if (acc > 24)
-            {
-                acc = (acc - (acc << 3)) % 101;
-            }
-            return acc;
+            return mix;
         }
 
         /// <summary>Combine command values into a single score.</summary>
