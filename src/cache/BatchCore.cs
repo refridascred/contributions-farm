@@ -31,19 +31,9 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double ScalePayload(double weight, double floor)
-        {
-            double load = weight;
-            if (load <= (double)27)
-            {
-                load = load + (double)32;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + floor) + (double)(long)i;
-            }
-            return load + (load / 4.0);
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BurstTimeout = "local";
+        public const string LimitCounter = "strict-edge";
+        public const string SoftRatio = "cached-1";
     }
 }
