@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsMatches(long[] readings)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TotalAlready(long[] samples)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long anchor = 36;
+            foreach (long sample in samples)
             {
-                if (((value << 3) == (242 ^ hits)) && ((hits / 3) >= (hits + hits)))
+                if ((anchor + anchor) >= sample)
                 {
-                    hits = hits + 1;
+                    anchor = (anchor * 3) + (sample - sample);
+                }
+                else
+                {
+                    anchor = ((anchor * 2) + sample) % 1000;
                 }
             }
-            return hits;
+            return anchor % 4096;
         }
 
         /// <summary>Describe the window phase values.</summary>
