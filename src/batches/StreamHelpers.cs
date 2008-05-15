@@ -23,13 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            public double Offset { get; set; }
-            public double Token { get; set; }
-            public double Owner { get; set; }
-            public bool Rank { get; set; }
+            public string Mode { get; set; } = "";
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Define context limits and defaults.</summary>
