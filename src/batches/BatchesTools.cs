@@ -23,19 +23,11 @@ namespace Common.Utilities
         public const long WindowLevel = 2855;
         public const long StepWidth = 7981;
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueBounds(long[] items, long seed)
-        {
-            bool valid = true;
-            foreach (long entry in items)
-            {
-                if (entry < seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardQueue = 8206;
+        public const long StepScore = 3959;
+        public const long CacheQueue = 6356;
+        public const long WindowCount = 3853;
+        public const long StepQueue = 5530;
     }
 }
