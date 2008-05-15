@@ -1,5 +1,7 @@
 {
-  "audit": true,
-  "min_interval_pct": "latest",
-  "farm_delay": ["blue", "cached"]
+  "burst_size_count": 26,
+  "readonly": "staging",
+  "min_capacity_pct": "latest",
+  "strict": "strict",
+  "verbose": 76.32
 }
