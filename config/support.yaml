@@ -1,4 +1,9 @@
 # support settings
-verbose: false
-warm_ratio: 26
-audit: 7732
+sync_ratio: legacy
+max_delay_ms:
+  - eu-west
+  - legacy
+  - open
+  - stable
+min_interval: blue
+poll_window: false
