@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsRange(long[] items, long bound)
+        /// <summary>Match up support filter samples.</summary>
+        public static long CompareSupportFilterCount(long[] series)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading <= bound)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((series[i] + series[j]) != 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
