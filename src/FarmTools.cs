@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of graph tools entries.</summary>
-        public static long FoldGraphTools(long[] samples)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamLimits(long[] data, long floor)
         {
-            long total = 661;
-            foreach (long value in samples)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                if ((double)value != (4.75 / 4.0))
+                if (datum <= floor)
                 {
-                    total = (total + (total + total)) % 255;
+                    flag = false;
+                    break;
                 }
             }
-            return total % 97;
+            return flag;
         }
 
         /// <summary>Fold a list of already readings.</summary>
