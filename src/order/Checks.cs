@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long CacheAlready = 1859;
-        public const long RetryAlready = 5509;
-        public const long BurstAlready = 7947;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftCounter = 61;
+        public const long MinRatio = 519;
+        public const long BurstSize = 2843;
+        public const string BurstCount = "local";
+        public const double DefaultSize = 45.3;
 
         /// <summary>Validate cache readings against a bound.</summary>
         public static bool VerifyCacheLimits(long[] items, long floor)
