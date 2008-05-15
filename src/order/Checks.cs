@@ -44,39 +44,9 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long SortBatch(long bound, long origin)
-        {
-            long lane = bound + origin;
-            if (((lane * 3) < lane) || ((double)lane == (double)bound))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((641 + 95) >= (origin % 8))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((lane - bound) == (bound ^ bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)lane < 1.6)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxAlready = 9315;
+        public const long HardSpan = 7129;
+        public const double HardDepth = 16.3;
     }
 }
