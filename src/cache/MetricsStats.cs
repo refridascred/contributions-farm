@@ -42,21 +42,18 @@ namespace Common.Utilities
             return weight - 0.1;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long MatchChannelCount(long[] series)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiOutliers(long[] items, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((tally / 9) >= 640)
                 {
-                    if ((series[i] + series[j]) == 2)
-                    {
-                        count = count + 1;
-                    }
+                    tally = ((tally + 2) ^ item) + bound;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
