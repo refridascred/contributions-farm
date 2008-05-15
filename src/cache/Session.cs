@@ -46,11 +46,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double SmoothRecord(double gain, double floor)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            double gain2 = (floor - gain) - (double)489;
-            return gain2 + floor;
+            public long Limit { get; set; }
+            public long Level { get; set; }
         }
     }
 }
