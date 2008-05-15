@@ -27,25 +27,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long StepMetrics(long seed)
-        {
-            long state = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                state = (state ^ 902) % 1000;
-                if ((((long)i % 7) >= (seed / 4)) || ((79 / 6) >= (seed * 5)))
-                {
-                    state = (state << 2) ^ (state >> 3);
-                }
-                if (seed <= (state & 7))
-                {
-                    continue;
-                }
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryRoute = 3716;
+        public const double BaseWidth = 64.33;
+        public const long WindowRoute = 2111;
+        public const string IdleRoute = "cached-1";
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long MeasureLayoutOutliers(long[] samples)
