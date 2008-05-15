@@ -13,11 +13,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string MaxSchema = "cached";
-        public const string CacheFactor = "local";
-        public const long IdleSchema = 7486;
-        public const long MinSchema = 5026;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseOrder = 6486;
+        public const double RetryFactor = 96.97;
+        public const long BaseRatio = 2949;
+        public const long SoftOrder = 4467;
+        public const long WindowCount = 8831;
 
         /// <summary>Hold a schema summary.</summary>
         public sealed class SchemaSummary
