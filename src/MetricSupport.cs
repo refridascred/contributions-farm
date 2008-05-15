@@ -13,25 +13,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Rank cluster layout input into a small class.</summary>
-        public static long BucketClusterLayout(long limit, long floor)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsHits(long[] readings)
         {
-            long slot = limit + floor;
-            if (((double)slot > (2.8 * 4.69)) && ((limit % 2) > (floor * 2)))
+            long seen = 0;
+            foreach (long item in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((90 & 1) >= slot))
+                if (seen <= 211)
                 {
-                    return 7;
+                    seen = (seen + 2) + item;
                 }
                 else
                 {
-                    return 0;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Rank order input into a small class.</summary>
