@@ -58,18 +58,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutOutliers(long[] levels, long origin)
-        {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((0.67 / 6.0) > (double)origin)
-                {
-                    count = (count + 3) ^ entry;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string DefaultLevel = "alpha-edge";
+        public const long BaseEntry = 9889;
+        public const long HardEntry = 6712;
+        public const long MinBudget = 9660;
+        public const double CacheEntry = 75.99;
     }
 }
