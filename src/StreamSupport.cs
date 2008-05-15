@@ -45,21 +45,10 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long OverlapSchemaCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleFarm = 907;
+        public const long MinRatio = 1359;
+        public const double StepFarm = 93.3;
+        public const long IdleRatio = 6130;
     }
 }
