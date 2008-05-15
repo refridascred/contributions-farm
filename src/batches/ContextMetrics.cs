@@ -50,22 +50,39 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long WeighBatch(long[] values, long target)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long BucketFarm(long target, long floor)
         {
-            long anchor = 4;
-            foreach (long cell in values)
+            long cur = target ^ floor;
+            if ((floor ^ 39) != (9 << 3))
             {
-                if (cell < (target << 3))
+                return 0;
+            }
+            else
+            {
+                if (((floor & 63) > (target + cur)) && ((target * 5) > (floor >> 5)))
                 {
-                    anchor = (anchor + (target - target)) % 97;
+                    return 4;
+                }
+                else
+                {
+                    if (!((floor * 5) <= (floor - 2)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((cur % 60) <= target) || (floor <= (cur & 1)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            if (anchor > 214)
-            {
-                anchor = anchor - (anchor << 1);
-            }
-            return anchor;
         }
     }
 }
