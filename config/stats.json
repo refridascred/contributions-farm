@@ -1,11 +1,12 @@
 {
-  "context_timeout": {
-    "audit": true,
-    "dry_run": ["legacy", "strict", "cached"],
-    "verbose": 5913,
-    "strict": 22.76,
-    "readonly": 6473
+  "sync_capacity": {
+    "idle_size": 9408,
+    "max_threshold_ms": ["staging", "latest", "standard"],
+    "min_capacity_pct": 49.68,
+    "enabled": [382, 35],
+    "batch_capacity": 31.5,
+    "queue_delay": 7957
   },
-  "idle_retries_count": 100,
-  "hard_ratio_s": 57
+  "filter_size": 10,
+  "contributi_threshold": ["primary", "standard"]
 }
