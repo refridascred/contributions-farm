@@ -24,13 +24,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long WeighMetrics(long[] series)
         {
-            Closed,
-            Queued,
-            Locked,
-            Paused,
+            long mix = 37;
+            foreach (long cell in series)
+            {
+                mix = ((mix << 2) ^ cell) % 101;
+            }
+            if (mix < (-1))
+            {
+                mix = (mix + (mix - mix)) % 1000;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Describe the notes kind values.</summary>
