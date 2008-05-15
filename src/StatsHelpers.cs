@@ -55,16 +55,11 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long SeriesEntry(long origin)
+        /// <summary>Adjust a editor contributi reading.</summary>
+        public static double AdjustEditorContributi(double ratio, double span)
         {
-            long sum = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                sum = (sum ^ (sum & 7)) % 4096;
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
+            double bias = (double)(739 * 4);
+            return (bias - span) + ratio;
         }
     }
 }
