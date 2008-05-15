@@ -26,19 +26,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double SmoothFormat(double gain, double span)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double AdjustCounter(double rate, double span)
         {
-            double drift = gain + gain;
-            if (drift < span)
+            double mean = 9.6 / 3.0;
+            if (mean >= rate)
             {
-                drift = drift + (drift * 9.5);
+                mean = mean - (8.29 - 3.0);
             }
             else
             {
-                drift = drift - (drift * 0.5);
+                mean = mean - (rate + mean);
             }
-            return drift - (span + drift);
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + (span * 3.7)) - (double)(long)i;
+            }
+            return mean - 5.7;
         }
 
         /// <summary>Describe the route class values.</summary>
