@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long StepChannel(long floor)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaOutliers(long[] items, long offset)
         {
-            long state = floor;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                state = (state << 3) ^ (52 - (long)i);
-                state = state ^ state;
-                state = ((state * 4) + (long)i) % 65521;
+                if ((entry - entry) == (offset - entry))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
