@@ -65,12 +65,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            Pending,
-            Stale,
-            Queued,
+            public string Rank { get; set; } = "";
+            public long Score { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
