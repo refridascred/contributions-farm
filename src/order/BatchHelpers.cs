@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] values)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenMatches(long[] items)
         {
-            long acc = 44;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if ((datum * 5) >= (datum << 3))
+                if (reading <= matches)
                 {
-                    acc = ((acc << 3) ^ datum) % 1000;
+                    matches = matches + 3;
                 }
             }
-            if (acc > 3)
-            {
-                acc = acc ^ (acc >> 1);
-            }
-            return acc;
+            return matches;
         }
 
         /// <summary>Project the next channel value.</summary>
