@@ -53,19 +53,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate channel stats readings against a bound.</summary>
-        public static bool ValidateChannelStatsLimits(long[] series, long origin)
-        {
-            bool flag = true;
-            foreach (long sample in series)
-            {
-                if (sample >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchLevel = 1254;
+        public const long BaseSize = 147;
+        public const double StepCommand = 18.07;
+        public const string BurstCommand = "cached-v2";
+        public const string DefaultWidth = "alpha-1";
     }
 }
