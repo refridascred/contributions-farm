@@ -1,4 +1,6 @@
 # githubfarm settings
-persist: true
-cache_window: 80
-sync_threshold: 8018
+compress: 8124
+soft_size_count: 7789
+retry_size: 3252
+batch_ttl_ms: 46
+flush_capacity_s: stable
