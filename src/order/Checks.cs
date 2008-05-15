@@ -37,21 +37,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long PairContextCount(long[] readings)
+        /// <summary>Look up the position of a tools order sample.</summary>
+        public static long LocateToolsOrderIndex(long[] readings, long origin)
         {
-            long count = 0;
             for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((readings[i] == origin) && ((readings[i] % 3) != 0))
                 {
-                    if ((readings[i] - readings[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define already limits and defaults.</summary>
