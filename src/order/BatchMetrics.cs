@@ -46,20 +46,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsRange(long[] readings, long limit)
-        {
-            bool valid = true;
-            foreach (long sample in readings)
-            {
-                if (sample > limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string DefaultSpan = "primary-v2";
+        public const double LimitProfile = 65.79;
+        public const long StepFactor = 3348;
 
         /// <summary>Validate context commits readings against a bound.</summary>
         public static bool CheckContextCommitsBounds(long[] data, long seed)
