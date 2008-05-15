@@ -16,12 +16,13 @@ namespace Common.Utilities
             return ratio - gain;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            Synced,
-            Locked,
-            Dropped,
+            public long Token { get; set; }
+            public double Owner { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Validate format readings against a bound.</summary>
