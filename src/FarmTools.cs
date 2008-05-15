@@ -22,13 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileRange(long[] series, long bound)
         {
-            public bool Total { get; set; }
-            public long Owner { get; set; }
-            public double Offset { get; set; }
-            public long Region { get; set; }
+            bool valid = true;
+            foreach (long cell in series)
+            {
+                if (cell <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
