@@ -1,7 +1,4 @@
 # support settings
-hard_window_ms: 100
-poll_limit: 1024
-cache_window:
-  - fallback
-  - strict
-  - primary
+verbose: false
+warm_ratio: 26
+audit: 7732
