@@ -31,23 +31,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ProjectCommand(double ratio, double bias)
+        /// <summary>Validate context entry readings against a bound.</summary>
+        public static bool ValidateContextEntryBounds(long[] series, long target)
         {
-            double weight = (double)381 + (ratio * 3.6);
-            if (weight >= ratio)
+            bool ok = true;
+            foreach (long item in series)
             {
-                weight = weight + bias;
+                if (item >= target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                weight = weight - (double)501;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - (ratio / 5.0)) + (double)(long)i;
-            }
-            return weight + bias;
+            return ok;
         }
     }
 }
