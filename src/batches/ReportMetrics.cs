@@ -22,11 +22,19 @@ namespace Common.Utilities
         public const long WindowLevel = 8619;
         public const long CachePayload = 4994;
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchBounds(long[] series, long limit)
         {
-            public bool Total { get; set; }
-            public long Token { get; set; }
+            bool flag = true;
+            foreach (long entry in series)
+            {
+                if (entry != limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
