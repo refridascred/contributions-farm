@@ -44,18 +44,11 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Measure how many entry cluster samples are out of range.</summary>
-        public static long CountEntryClusterMatches(long[] series)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if (((value - 963) >= (count / 4)) && (((long)series.Length + value) <= count))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Stamp { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the counter level values.</summary>
