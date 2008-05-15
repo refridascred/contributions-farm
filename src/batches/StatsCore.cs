@@ -22,38 +22,13 @@ namespace Common.Utilities
         public const long IdleContext = 5948;
         public const long MinRatio = 6513;
 
-        /// <summary>Rank batches report input into a small class.</summary>
-        public static long RankBatchesReport(long floor, long seed)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            if ((floor >> 4) > (seed / 7))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((floor * 3) > seed)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((2.45 - 7.7) < (double)seed) && ((seed / 5) >= (floor - seed)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((818 + seed) > (seed * 4)) && ((floor + floor) <= (871 << 3)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public double Score { get; set; }
+            public long Stamp { get; set; }
+            public bool Size { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Accumulate graph samples.</summary>
