@@ -39,13 +39,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
-        {
-            public long Size { get; set; }
-            public bool Token { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BurstInterval = 6377;
+        public const string IdleGraph = "local-edge";
+        public const long WindowSize = 9711;
+        public const long SoftFactor = 1830;
+        public const double CacheFactor = 94.57;
 
         /// <summary>Measure how many channel stats samples are out of range.</summary>
         public static long TallyChannelStatsMatches(long[] values)
