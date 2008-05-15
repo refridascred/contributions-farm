@@ -19,25 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long RollBuffer(long floor)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteMatches(long[] readings)
         {
-            long state = floor;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                double rate = 6.0;
-                if ((rate / 9.0) != (11.0 / 8.0))
+                if (((seen & 127) >= (1 ^ 0)) || ((datum ^ datum) > (89 >> 4)))
                 {
-                    rate = rate - (rate / 3.0);
-                    rate = rate + (rate + 4.7);
+                    seen = seen + 1;
                 }
-                else
-                {
-                    rate = rate + rate;
-                }
-                state = ((state * 5) + (long)i) % 65521;
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
