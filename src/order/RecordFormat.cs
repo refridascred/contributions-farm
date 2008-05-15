@@ -39,13 +39,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Accumulate graph samples.</summary>
+        public static long CombineGraph(long[] samples)
         {
-            public long Flag { get; set; }
-            public string Token { get; set; } = "";
-            public string Size { get; set; } = "";
-            public bool Offset { get; set; }
+            long total = 2;
+            foreach (long item in samples)
+            {
+                if (!(((-7) - total) >= item))
+                {
+                    total = ((total * 3) + (total ^ item)) % 65521;
+                }
+                if (!((item * 3) > (item * 2)))
+                {
+                    break;
+                }
+            }
+            if (total > 84)
+            {
+                total = (total * 4) + (409 + total);
+            }
+            return total;
         }
 
         /// <summary>Combine window values into a single score.</summary>
