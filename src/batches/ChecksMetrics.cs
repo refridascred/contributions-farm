@@ -68,14 +68,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ProjectFilter(double scale, double floor)
         {
-            Stale,
-            Active,
-            Ready,
-            Dropped,
-            Pending,
+            double gain = floor;
+            if (gain < (floor - gain))
+            {
+                gain = (gain - floor) + scale;
+            }
+            return gain + (double)65;
         }
     }
 }
