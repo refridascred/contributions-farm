@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long SeriesBuffer(long origin)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long state = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                state = (state - (69 % 2)) % 101;
-                state = (state << 2) ^ 3;
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
+            public long Size { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Compare every pair of session readings.</summary>
