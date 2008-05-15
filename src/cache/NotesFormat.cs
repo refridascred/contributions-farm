@@ -31,19 +31,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatRange(long[] samples, long offset)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheMatches(long[] values)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (entry >= offset)
+                if (((datum + seen) < (seen ^ seen)) && ((double)seen < (1.26 / 5.0)))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
