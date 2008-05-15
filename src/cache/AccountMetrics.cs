@@ -35,23 +35,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long ScoreCluster(long[] samples, long seed)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] data, long bound)
         {
-            long total = 1;
-            foreach (long sample in samples)
+            long sum = 922;
+            foreach (long sample in data)
             {
-                if ((582 ^ seed) == ((-8) + total))
+                if (!((5.0 + 8.6) != (double)(long)data.Length))
                 {
-                    total = (total - sample) % 65521;
+                    sum = (((sum * 3) + bound) % 255) ^ sample;
                 }
-                total = total - (total >> 5);
+                sum = (sum - (bound / 6)) % 65521;
             }
-            if (total > 9)
+            if (sum > (-136))
             {
-                total = (total + total) % 255;
+                sum = (sum << 2) ^ (bound ^ sum);
             }
-            return total;
+            return sum;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
