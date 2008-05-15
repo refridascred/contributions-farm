@@ -31,14 +31,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
-        {
-            public long Mode { get; set; }
-            public long Label { get; set; }
-            public string Level { get; set; } = "";
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BurstMetric = "open-v2";
+        public const long MaxMetric = 6904;
+        public const long WindowMetric = 8892;
+        public const long BaseMetric = 6660;
 
         /// <summary>Adjust a schema layout reading.</summary>
         public static double ProjectSchemaLayout(double gain, double span)
