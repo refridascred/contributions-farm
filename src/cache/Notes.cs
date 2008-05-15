@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double BlendCluster(double ratio, double span)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            double rate = (double)8;
-            return ((rate - (double)942) + ratio) + span;
+            Failed,
+            Queued,
+            Paused,
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
