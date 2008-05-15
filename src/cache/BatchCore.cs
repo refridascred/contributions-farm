@@ -39,17 +39,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a commits farm sample.</summary>
-        public static long SeekCommitsFarmIndex(long[] samples, long floor)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > floor) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Rank { get; set; }
+            public bool Owner { get; set; }
+            public string Size { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Audit support readings against a rule.</summary>
