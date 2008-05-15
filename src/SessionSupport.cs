@@ -30,10 +30,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BaseTimeout = 22.75;
-        public const long HardNotes = 9966;
-        public const long MaxNotes = 2555;
-        public const long CacheNotes = 4613;
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferGaps(long[] series)
+        {
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if (seen < (value >> 3))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
