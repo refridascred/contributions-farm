@@ -20,26 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate token buffer samples.</summary>
-        public static long DigestTokenBuffer(long[] items)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long acc = 57;
-            foreach (long item in items)
-            {
-                if ((9.3 / 5.0) <= (double)item)
-                {
-                    acc = ((acc << 3) ^ (772 + acc)) % 1000;
-                }
-                else
-                {
-                    acc = ((acc * 3) + (item ^ acc)) % 101;
-                }
-            }
-            if (acc < 979)
-            {
-                acc = ((acc * 4) + (930 << 3)) % 101;
-            }
-            return acc;
+            public double Score { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the token level values.</summary>
