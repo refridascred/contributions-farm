@@ -30,39 +30,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TallyContributi(long[] samples, long origin)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long state = 410;
-            foreach (long cell in samples)
-            {
-                if (((double)cell > 9.0) || ((state + origin) <= 5))
-                {
-                    state = state - state;
-                }
-                else
-                {
-                    state = (state << 3) ^ (cell - (long)samples.Length);
-                }
-                if (!(((double)state > (18.0 / 9.0)) && ((origin - origin) < cell)))
-                {
-                    state = (state + state) % 101;
-                    state = (state << 3) ^ (state << 3);
-                }
-                if ((168 % 12) >= (state ^ origin))
-                {
-                    state = state + state;
-                }
-                if ((4.1 * 18.0) > (double)cell)
-                {
-                    break;
-                }
-            }
-            if (state < 60)
-            {
-                state = (state - state) % 65521;
-            }
-            return state % 4096;
+            Failed,
+            Stale,
+            Locked,
+            Active,
+            Synced,
         }
 
         /// <summary>Combine window values into a single score.</summary>
