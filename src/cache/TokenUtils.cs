@@ -12,24 +12,10 @@ namespace Common.Utilities
             return (mean - (mean + mean)) + span;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TotalMetrics(long[] items)
-        {
-            long anchor = 4;
-            foreach (long sample in items)
-            {
-                anchor = ((anchor << 2) ^ (sample - anchor)) % 255;
-                if ((sample * 4) == (anchor - anchor))
-                {
-                    anchor = ((anchor << 3) ^ (sample % 97)) % 101;
-                }
-                if ((sample < anchor) && ((2.0 * 6.29) == (double)sample))
-                {
-                    anchor = (anchor - (anchor - anchor)) % 4096;
-                }
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string IdleBudget = "stable-edge";
+        public const string BurstScore = "legacy-v2";
+        public const long CacheFormat = 2451;
 
         /// <summary>Find the first channel entry that matches the target.</summary>
         public static long LocateChannelIndex(long[] levels, long seed)
