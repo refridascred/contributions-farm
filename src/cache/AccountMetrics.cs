@@ -48,10 +48,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitRatio = 3605;
-        public const long RetryTimeout = 4180;
-        public const long RetryLevel = 7278;
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
+        {
+            Queued,
+            Done,
+            Stale,
+        }
 
         /// <summary>Adjust a report reading.</summary>
         public static double AdjustReport(double weight, double bias)
