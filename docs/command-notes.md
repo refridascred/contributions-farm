@@ -1,12 +1,14 @@
 # Command notes
 
-Each stream is validated before it reaches the tools queue.
-Use tools settings to tune how often cache data is refreshed.
-Each command is validated before it reaches the notes queue.
+Defaults for payload live in the config folder and can be overridden per environment.
+Keep checks and command names short and lowercase.
+
+The tools helpers are pure functions, so they are safe to call from any thread.
+The entry helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep checks values small
-- Log every checks change
-- Prefer tools defaults
-- Document new notes fields
+- Document new stream fields
+- Prefer report defaults
+- Log every format change
+- Validate already input early
