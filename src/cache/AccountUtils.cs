@@ -48,11 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string DefaultLevel = "alpha-edge";
-        public const long BaseEntry = 9889;
-        public const long HardEntry = 6712;
-        public const long MinBudget = 9660;
-        public const double CacheEntry = 75.99;
+        /// <summary>Validate channel stats readings against a bound.</summary>
+        public static bool ValidateChannelStatsLimits(long[] series, long origin)
+        {
+            bool flag = true;
+            foreach (long sample in series)
+            {
+                if (sample >= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
