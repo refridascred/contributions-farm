@@ -51,11 +51,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryRoute = 6376;
-        public const double DefaultRoute = 31.15;
-        public const double RetryFactor = 30.83;
-        public const long BurstInterval = 5721;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string MaxCommits = "stable-edge";
+        public const double StepWidth = 39.79;
+        public const long IdleCommits = 438;
+        public const long WindowDepth = 1909;
 
         /// <summary>Describe the layout state values.</summary>
         public enum LayoutState
