@@ -5,14 +5,32 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long RankSupport(long offset, long origin)
         {
-            Paused,
-            Failed,
-            Synced,
-            New,
-            Draft,
+            long cur = offset ^ origin;
+            if ((65 >> 5) > (cur - offset))
+            {
+                return 5;
+            }
+            else
+            {
+                if (origin < (cur - cur))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((origin + 5) == (cur << 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two report stream measurements.</summary>
