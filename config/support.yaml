@@ -1,5 +1,16 @@
 # support settings
-commits_size: primary
-base_ttl_pct: 83
-batch_capacity: false
-report_timeout: 500
+flush_threshold:
+  - local
+  - latest
+  - edge
+burst_window: 4
+flush_interval_count: 54.11
+persist:
+  account_ttl: 36.37
+  cache_ratio_s: edge
+  hard_interval_pct:
+    poll_delay_count: 80
+    retry_limit_ms: 87
+    flush_retries_s: 73
+    filter_ttl: true
+  enabled: 2
