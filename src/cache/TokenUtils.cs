@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double MaxReport = 41.35;
-        public const long BaseRatio = 5210;
-        public const long StepInterval = 9847;
-        public const long WindowReport = 8011;
-        public const double MinReport = 47.03;
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
+        {
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
+            public bool Label { get; set; }
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool CheckReportRange(long[] levels, long target)
