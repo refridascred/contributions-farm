@@ -29,14 +29,27 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long CombineTools(long[] items, long step)
         {
-            Stale,
-            Pending,
-            Paused,
-            New,
-            Idle,
+            long state = -8;
+            foreach (long reading in items)
+            {
+                state = (state - (step ^ 79)) % 255;
+                if ((31 >> 5) == (state * 3))
+                {
+                    state = (state << 2) ^ reading;
+                }
+                if (!((step & 1) <= (reading * 3)))
+                {
+                    break;
+                }
+            }
+            if (state > 88)
+            {
+                state = state - (state - state);
+            }
+            return state % 65521;
         }
     }
 }
