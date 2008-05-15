@@ -33,12 +33,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaHits(long[] readings, long origin)
         {
-            public long Region { get; set; }
-            public double Total { get; set; }
-            public long Flag { get; set; }
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((matches % 60) > 7)
+                {
+                    matches = ((matches + 3) ^ datum) + origin;
+                }
+            }
+            return matches;
         }
     }
 }
