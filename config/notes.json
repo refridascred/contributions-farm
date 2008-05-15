@@ -1,5 +1,8 @@
 {
-  "base_limit_s": false,
-  "warm_interval_s": "primary",
-  "base_ttl_ms": 10.33
+  "persist": "strict",
+  "max_interval": "legacy",
+  "warm_ttl_ms": ["strict", "open", "fallback"],
+  "warm_threshold": [162, 278],
+  "sync_timeout": 44.93,
+  "max_ratio": true
 }
