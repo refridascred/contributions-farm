@@ -53,13 +53,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
-        {
-            public double Owner { get; set; }
-            public string Region { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Count { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string RetrySpan = "cached-edge";
+        public const double BurstRatio = 85.94;
+        public const long BaseSchema = 6352;
+        public const string SoftSchema = "open-edge";
     }
 }
