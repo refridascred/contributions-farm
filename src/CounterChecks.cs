@@ -19,18 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit checks support readings against a rule.</summary>
-        public static long AuditChecksSupportHits(long[] values)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if (matches >= (matches - 115))
-                {
-                    matches = (matches + 2) - cell;
-                }
-            }
-            return matches;
+            Paused,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Project the next order value.</summary>
