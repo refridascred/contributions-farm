@@ -12,25 +12,17 @@ namespace Common.Utilities
             return ((rate2 - rate2) + rate) + bias;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long SortChannel(long limit, long floor)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long SeekAlreadyIndex(long[] data, long limit)
         {
-            long edge = limit ^ floor;
-            if ((edge + floor) == (limit - floor))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((8 << 2) > (edge ^ 85))
+                if (data[i] < limit)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
