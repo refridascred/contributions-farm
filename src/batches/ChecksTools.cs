@@ -26,21 +26,18 @@ namespace Common.Utilities
         public const double DefaultInterval = 60.69;
         public const long WindowContributi = 1481;
 
-        /// <summary>Match up context window samples.</summary>
-        public static long PairContextWindowCount(long[] levels)
+        /// <summary>Count the checks buffer entries that pass the check.</summary>
+        public static long CountChecksBufferHits(long[] samples, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((limit << 1) > (limit * 2))
                 {
-                    if ((levels[i] ^ levels[j]) > 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 1) ^ reading;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
