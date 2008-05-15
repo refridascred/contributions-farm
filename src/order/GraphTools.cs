@@ -34,19 +34,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchLimits(long[] values, long step)
+        /// <summary>Match up tools queue samples.</summary>
+        public static long OverlapToolsQueueCount(long[] values)
         {
-            bool ok = true;
-            foreach (long value in values)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value != step)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((values[i] + values[j]) < 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Adjust a contributi reading.</summary>
