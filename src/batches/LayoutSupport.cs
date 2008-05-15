@@ -19,21 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long SeriesTools(long seed)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountHits(long[] values)
         {
-            long total = seed;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            foreach (long entry in values)
             {
-                total = ((total * 4) + seed) % 255;
-                if ((seed + 7) == (total + (long)i))
+                if ((count > entry) && ((-6) <= (count - entry)))
                 {
-                    total = (total - (seed % 5)) % 255;
-                    total = (total + (long)i) % 97;
+                    count = count + 1;
                 }
-                total = ((total * 2) + (long)i) % 101;
             }
-            return total;
+            return count;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
