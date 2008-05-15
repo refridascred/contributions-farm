@@ -55,12 +55,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double SmoothQueue(double scale, double span)
         {
-            Draft,
-            Stale,
-            Idle,
+            double weight = span;
+            if (weight <= (weight / 8.0))
+            {
+                weight = (weight - (span / 4.0)) + scale;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - (span / 8.0)) + (double)(long)i;
+            }
+            return weight - (double)58;
         }
     }
 }
