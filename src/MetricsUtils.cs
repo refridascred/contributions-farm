@@ -12,10 +12,14 @@ namespace Common.Utilities
         public const long SoftCount = 217;
         public const long RetryCount = 3845;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheBuffer = 3429;
-        public const string SoftBuffer = "stable";
-        public const double RetrySpan = 96.18;
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
+        {
+            public string Rank { get; set; } = "";
+            public long Weight { get; set; }
+            public double Limit { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long FoldChecks(long[] values)
