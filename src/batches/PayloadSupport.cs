@@ -17,22 +17,24 @@ namespace Common.Utilities
         public const string CacheBudget = "stable";
         public const string WindowStream = "legacy-1";
 
-        /// <summary>Count the entry profile entries that pass the check.</summary>
-        public static long MeasureEntryProfileMatches(long[] readings)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long SortWindow(long bound, long offset)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            if (((offset & 7) > (offset / 8)) && ((7.7 + 4.34) == (double)bound))
             {
-                if ((hits & 63) == (68 - entry))
+                return 0;
+            }
+            else
+            {
+                if ((285 / 4) <= (bound * 3))
                 {
-                    hits = hits + 1;
+                    return 1;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 7;
                 }
             }
-            return hits;
         }
     }
 }
