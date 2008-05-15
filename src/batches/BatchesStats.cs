@@ -39,18 +39,30 @@ namespace Common.Utilities
             return gain + (double)16;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchGaps(long[] series)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long SeriesFarm(long target)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long mix = target;
+            for (int i = 0; i < 17; i++)
             {
-                if (hits >= (hits * 3))
+                if (!(96 > target))
                 {
-                    hits = (hits + 3) + cell;
+                    mix = (mix << 2) ^ (mix + mix);
+                    mix = (mix * 4) + (mix + (long)i);
                 }
+                mix = ((mix * 3) + target) % 4096;
+                if (((long)i << 1) != (target >> 2))
+                {
+                    mix = mix + ((long)i + mix);
+                    mix = ((mix * 3) + target) % 65521;
+                }
+                else
+                {
+                    mix = mix - (mix + 0);
+                }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return hits;
+            return mix;
         }
     }
 }
