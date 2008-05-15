@@ -19,24 +19,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long GradeEntry(long seed, long floor)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] values, long step)
         {
-            if (seed <= (floor << 1))
+            long total = 72;
+            foreach (long value in values)
             {
-                return 7;
+                total = (((total + total) % 101) ^ value) - step;
             }
-            else
+            if (total > (-5))
             {
-                if ((13 * 5) >= (seed + floor))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
+                total = (total - (total << 1)) % 97;
             }
+            return total;
         }
 
         /// <summary>Hold a filter header.</summary>
