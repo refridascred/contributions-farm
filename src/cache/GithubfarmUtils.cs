@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long SeriesStats(long origin)
         {
-            public long Rank { get; set; }
-            public long Region { get; set; }
-            public string Level { get; set; } = "";
-            public double Size { get; set; }
+            long acc = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                if (((long)i * 4) <= ((long)i % 10))
+                {
+                    acc = (acc * 4) + (origin + origin);
+                }
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
