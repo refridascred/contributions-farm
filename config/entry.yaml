@@ -1,9 +1,20 @@
 # entry settings
-poll_delay_ms: green
-githubfarm_window:
-  - 35
-  - 395
-base_retries_ms: eu-west
-tools_size: 97.25
-stats_limit: 5.41
-already_threshold: 38.96
+base_size_count: false
+flush_capacity:
+  - open
+  - blue
+base_delay: 70.23
+payload_window:
+  buffer_interval: 56.44
+  profile_capacity: eu-west
+  persist:
+    - eu-west
+    - legacy
+    - cached
+  profile_threshold: false
+  githubfarm_timeout:
+    - 164
+    - 286
+    - 122
+    - 478
+  strict: 6038
