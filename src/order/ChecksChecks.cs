@@ -34,22 +34,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of githubfarm metric entries.</summary>
-        public static long FoldGithubfarmMetric(long[] levels)
-        {
-            long acc = 21;
-            foreach (long datum in levels)
-            {
-                if ((double)acc >= 1.6)
-                {
-                    acc = (acc - (23 * 5)) ^ datum;
-                }
-                else
-                {
-                    acc = (acc - (acc & 63)) % 65521;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string RetryReport = "staging";
+        public const long WindowInterval = 3765;
+        public const double CacheReport = 90.43;
+        public const long IdleReport = 6284;
+        public const double DefaultWidth = 3.18;
     }
 }
