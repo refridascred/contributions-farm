@@ -1,7 +1,6 @@
 # entry settings
-cache_timeout_count:
-  - 347
-  - 180
-poll_retries: false
-persist: 80
-batch_limit: 60
+command_interval: 76.72
+flush_size_s: cached
+max_interval: 8939
+readonly: 500
+verbose: 9960
