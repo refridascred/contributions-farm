@@ -13,19 +13,21 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long ScoreEntry(long[] values, long limit)
+        /// <summary>Match up context samples.</summary>
+        public static long CompareContextCount(long[] levels)
         {
-            long mark = -4;
-            foreach (long value in values)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = (mark - limit) ^ value;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 0)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (mark > 0)
-            {
-                mark = (mark << 2) ^ (limit - mark);
-            }
-            return mark;
+            return count;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
