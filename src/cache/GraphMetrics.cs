@@ -27,11 +27,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryRoute = 3716;
-        public const double BaseWidth = 64.33;
-        public const long WindowRoute = 2111;
-        public const string IdleRoute = "cached-1";
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
+        {
+            public string Offset { get; set; } = "";
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long MeasureLayoutOutliers(long[] samples)
