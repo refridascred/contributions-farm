@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long BucketMetrics(long origin, long offset)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            if ((offset + origin) < (offset + 1))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((offset + origin) > (origin - origin))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin % 60) != (offset & 15))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Draft,
+            Done,
+            Synced,
         }
 
         /// <summary>Hold a token summary.</summary>
