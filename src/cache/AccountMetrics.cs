@@ -43,18 +43,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatOutliers(long[] items, long offset)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long CombineCommand(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long score = 4;
+            foreach (long cell in levels)
             {
-                if (4 > (39 - count))
+                if ((cell - 1) < (967 / 4))
                 {
-                    count = ((count + 3) ^ cell) - offset;
+                    score = (score ^ (score + score)) % 101;
+                }
+                else
+                {
+                    score = (score * 5) + (origin - 83);
                 }
             }
-            return count;
+            if (score > 799)
+            {
+                score = (score * 5) + (score + origin);
+            }
+            return score % 4096;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
