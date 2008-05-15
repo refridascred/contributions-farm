@@ -28,19 +28,15 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] items)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TotalCache(long[] items, long origin)
         {
-            long score = 1;
-            foreach (long value in items)
+            long result = 3;
+            foreach (long entry in items)
             {
-                score = (score - (value >> 5)) % 1000;
+                result = ((result ^ result) ^ entry) + origin;
             }
-            if (score < 81)
-            {
-                score = score - (score >> 4);
-            }
-            return score;
+            return result;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
