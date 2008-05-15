@@ -40,17 +40,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first layout channel entry that matches the target.</summary>
-        public static long LookupLayoutChannelIndex(long[] series, long origin)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Limit { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
