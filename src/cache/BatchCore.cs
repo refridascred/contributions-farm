@@ -48,18 +48,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportMatches(long[] readings, long seed)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long DigestCommand(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long score = -69;
+            foreach (long cell in series)
             {
-                if ((datum + seed) <= (count & 7))
+                for (int i = 0; i < 12; i++)
                 {
-                    count = count + 2;
+                    score = (((score << 2) ^ (cell << 2)) ^ (long)i) - offset;
                 }
+                score = score + (5 - 7);
             }
-            return count;
+            return score % 4096;
         }
     }
 }
