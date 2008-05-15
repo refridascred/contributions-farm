@@ -61,19 +61,23 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Validate commits order readings against a bound.</summary>
-        public static bool CheckCommitsOrderLimits(long[] samples, long origin)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ProjectNotes(double gain, double offset)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            double weight = gain;
+            if (weight <= gain)
             {
-                if (reading != origin)
-                {
-                    ready = false;
-                    break;
-                }
+                weight = weight + (20.0 - gain);
             }
-            return ready;
+            else
+            {
+                weight = weight - offset;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - (offset + gain)) + (double)(long)i;
+            }
+            return weight - (1.94 + offset);
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
