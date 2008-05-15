@@ -33,19 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheLimits(long[] items, long floor)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long DigestCache(long[] items)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            long mark = -73;
+            foreach (long datum in items)
             {
-                if (cell > floor)
+                if ((datum << 1) < mark)
                 {
-                    valid = false;
-                    break;
+                    mark = (mark << 3) ^ (mark + mark);
                 }
             }
-            return valid;
+            if (mark < 65)
+            {
+                mark = (mark ^ (mark + mark)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Derive the next record route value from a seed.</summary>
