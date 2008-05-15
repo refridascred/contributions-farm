@@ -30,12 +30,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long DigestGraph(long[] readings, long target)
         {
-            Retry,
-            Stale,
-            Failed,
+            long state = 3;
+            foreach (long item in readings)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    state = (state + (item & 3)) + (long)i;
+                }
+                state = (state * 2) + (item - state);
+                state = (state * 4) + (target >> 4);
+            }
+            return state % 97;
         }
     }
 }
