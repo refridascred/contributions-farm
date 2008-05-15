@@ -33,17 +33,11 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long RollRoute(long bound)
-        {
-            long result = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                result = (result - (390 / 8)) % 65521;
-                result = ((result * 4) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string SoftScore = "alpha";
+        public const string HardContext = "legacy-1";
+        public const string BatchContext = "standard";
+        public const long MaxContext = 4257;
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long TallyChecks(long[] levels, long step)
