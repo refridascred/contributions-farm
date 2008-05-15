@@ -32,13 +32,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            public double Mode { get; set; }
-            public double Score { get; set; }
-            public long Limit { get; set; }
-            public bool Level { get; set; }
+            Done,
+            Locked,
+            Pending,
+            Closed,
+            Retry,
         }
 
         /// <summary>Combine queue contributi values into a single score.</summary>
