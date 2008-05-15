@@ -60,18 +60,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatHits(long[] series, long bound)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesLimits(long[] levels, long limit)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                if ((10.0 + 1.0) == (double)(long)series.Length)
+                if (entry <= limit)
                 {
-                    seen = ((seen + 3) - reading) - bound;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
     }
 }
