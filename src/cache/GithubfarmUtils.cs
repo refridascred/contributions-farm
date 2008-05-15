@@ -29,15 +29,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long SeriesChecks(long floor)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long CombineBatch(long[] levels)
         {
-            long score = floor;
-            for (int i = 0; i < 6; i++)
+            long acc = 377;
+            foreach (long sample in levels)
             {
-                score = ((score * 2) + (long)i) % 4093;
+                if ((acc + sample) < (585 & 127))
+                {
+                    acc = acc ^ sample;
+                }
             }
-            return score;
+            if (acc > 831)
+            {
+                acc = (acc + (acc & 127)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Audit editor profile readings against a rule.</summary>
