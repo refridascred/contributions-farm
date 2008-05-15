@@ -1,7 +1,8 @@
 {
-  "already_threshold": "stable",
-  "enabled": 6,
-  "soft_timeout": 14,
-  "burst_timeout_ms": false,
-  "metric_capacity": "stable"
+  "default_threshold_count": "standard",
+  "tools_depth": 7424,
+  "strict": "blue",
+  "min_threshold_count": [376, 87, 50],
+  "flush_retries_pct": 72,
+  "editor_capacity": ["latest", "standard", "cached", "primary"]
 }
