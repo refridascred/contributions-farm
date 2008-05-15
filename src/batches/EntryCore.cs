@@ -36,13 +36,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Audit format route readings against a rule.</summary>
+        public static long AuditFormatRouteHits(long[] series)
         {
-            Pending,
-            Failed,
-            Closed,
-            Done,
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if (!((4.0 / 8.0) == (double)matches))
+                {
+                    matches = (matches + 2) + datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
