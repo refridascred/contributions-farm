@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long OverlapBufferCount(long[] data)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextGaps(long[] data, long seed)
         {
             long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long datum in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((datum >> 3) != (hits - hits))
                 {
-                    if ((data[i] ^ data[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 2) + seed;
                 }
             }
             return hits;
