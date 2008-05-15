@@ -40,18 +40,25 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueOutliers(long[] data)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long GradeBuffer(long bound, long target)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long next = bound - target;
+            if ((bound << 2) < (target & 7))
             {
-                if (item < (item * 3))
+                return 7;
+            }
+            else
+            {
+                if (!((11 & 1) <= (next + bound)))
                 {
-                    matches = matches + 1;
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return matches;
         }
     }
 }
