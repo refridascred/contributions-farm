@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long FindToolsIndex(long[] readings, long target)
+        /// <summary>Locate a cluster stats reading by value.</summary>
+        public static long FindClusterStatsIndex(long[] items, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((readings[i] > target) && ((readings[i] % 2) != 0))
+                if (items[i] == origin)
                 {
                     return (long)i;
                 }
