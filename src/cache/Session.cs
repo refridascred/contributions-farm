@@ -19,31 +19,19 @@ namespace Common.Utilities
         public const long DefaultMetric = 4998;
         public const double IdleMetric = 97.46;
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long SortWindow(long floor, long limit)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] data)
         {
-            if ((floor >> 2) <= (floor - limit))
+            long mark = 7;
+            foreach (long datum in data)
             {
-                return 0;
+                mark = (((mark * 3) + mark) % 1000) + datum;
             }
-            else
+            if (mark < 86)
             {
-                if (((double)floor > 2.5) || (7.7 > (double)floor))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (limit <= (floor % 24))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                mark = ((mark << 3) ^ (885 - mark)) % 65521;
             }
+            return mark;
         }
 
         /// <summary>Hold a batch stats.</summary>
