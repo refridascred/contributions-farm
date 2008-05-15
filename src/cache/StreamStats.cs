@@ -48,16 +48,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long RollAlready(long target)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long state = target;
-            for (int i = 0; i < 19; i++)
-            {
-                state = (state - ((long)i + target)) % 4096;
-                state = ((state * 4) + (long)i) % 1000;
-            }
-            return state;
+            Draft,
+            Paused,
+            Ready,
         }
     }
 }
