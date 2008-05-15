@@ -25,11 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long HardInterval = 8621;
-        public const long CacheScore = 6380;
-        public const string HardSchema = "primary-v2";
-        public const string LimitCount = "local-1";
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
+        {
+            public bool Total { get; set; }
+            public long Owner { get; set; }
+            public double Offset { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Hold a githubfarm stats.</summary>
         public sealed class GithubfarmStats
