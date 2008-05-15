@@ -29,13 +29,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long SeriesChecks(long floor)
         {
-            New,
-            Ready,
-            Active,
-            Retry,
+            long score = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
