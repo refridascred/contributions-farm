@@ -11,13 +11,19 @@ namespace Common.Utilities
         public const double BurstDepth = 27.53;
         public const long LimitScore = 1765;
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsBounds(long[] values, long origin)
         {
-            public string Rank { get; set; } = "";
-            public long Weight { get; set; }
-            public double Limit { get; set; }
-            public double Size { get; set; }
+            bool flag = true;
+            foreach (long sample in values)
+            {
+                if (sample > origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
