@@ -28,39 +28,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a entry counter pair into a bucket.</summary>
-        public static long ClassifyEntryCounter(long target, long seed)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long bound = target ^ seed;
-            if (!((seed & 63) > ((-1) << 3)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)seed < 8.8)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound + seed) < (bound >> 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)target != (5.6 / 2.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public string Flag { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Hold a account summary.</summary>
