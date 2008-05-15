@@ -25,14 +25,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterMatches(long[] levels, long bound)
         {
-            Failed,
-            Closed,
-            Active,
-            New,
-            Locked,
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((value ^ matches) >= (matches + value))
+                {
+                    matches = (matches + 3) - bound;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
