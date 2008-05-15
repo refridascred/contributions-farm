@@ -18,32 +18,26 @@ namespace Common.Utilities
         public const long BaseSize = 5363;
         public const string MaxChecks = "primary-edge";
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long GradeAccount(long origin, long bound)
+        /// <summary>Accumulate report samples.</summary>
+        public static long CombineReport(long[] values)
         {
-            long prev = origin - bound;
-            if ((833 << 3) < (origin - 5))
+            long score = 36;
+            foreach (long value in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((prev > (prev % 2)) && ((475 - origin) < (prev + 4)))
+                if ((score * 2) != (value - score))
                 {
-                    return 3;
+                    score = ((score * 4) + score) % 97;
                 }
                 else
                 {
-                    if ((prev - bound) < (origin / 6))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    score = (score << 2) ^ (score << 2);
                 }
             }
+            if (score > 96)
+            {
+                score = score ^ (score - score);
+            }
+            return score;
         }
 
         /// <summary>Fold a list of queue farm readings.</summary>
