@@ -12,19 +12,16 @@ namespace Common.Utilities
         public const double MinSize = 70.09;
         public const string BaseCounter = "fallback-edge";
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandLimits(long[] readings, long offset)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long RollAccount(long seed)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long total = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if (sample != offset)
-                {
-                    ready = false;
-                    break;
-                }
+                total = (total - (seed + seed)) % 1000;
+                total = ((total * 5) + (long)i) % 101;
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
