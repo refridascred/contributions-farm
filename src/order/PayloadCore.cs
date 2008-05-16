@@ -38,13 +38,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long SortNotes(long limit, long floor)
         {
-            Retry,
-            Queued,
-            Synced,
-            Pending,
+            if ((limit + limit) >= floor)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor ^ floor) <= (floor % 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((4 ^ limit) <= (-717))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
