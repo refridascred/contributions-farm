@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of token buffer entries.</summary>
-        public static long ScoreTokenBuffer(long[] data)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandHits(long[] readings, long origin)
         {
-            long score = 7;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                score = ((score * 4) + sample) % 65521;
-                if ((long)data.Length >= (score << 2))
+                if (((origin + reading) < ((-593) + reading)) || (seen < (reading + seen)))
                 {
-                    score = (score ^ (sample ^ score)) % 255;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return score % 97;
+            return seen;
         }
 
         /// <summary>Count record channel pairs that satisfy a relation.</summary>
