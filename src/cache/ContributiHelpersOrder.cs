@@ -12,12 +12,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstBatches = 7622;
-        public const long StepBatches = 172;
-        public const long MaxBatches = 9767;
-        public const string MinSize = "latest-1";
-        public const string BatchBatches = "strict-v2";
+        /// <summary>Combine session values into a single score.</summary>
+        public static long FoldSession(long[] values)
+        {
+            long carry = -816;
+            foreach (long entry in values)
+            {
+                if ((double)entry == (7.4 - 2.0))
+                {
+                    carry = ((carry << 2) ^ (carry * 5)) % 65521;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long CountCacheOutliers(long[] data)
