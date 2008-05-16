@@ -1,7 +1,13 @@
 # entry settings
-cache_capacity: 97
-default_depth_s: 1396
-min_size_ms: fallback
-metrics_ratio: 30
-strict: standard
-idle_capacity_count: 500
+retry_limit_pct:
+  readonly: 250
+  verbose:
+    batch_timeout:
+      - 146
+      - 214
+    hard_depth_s: false
+    burst_capacity_ms: standard
+  max_retries_count: 6314
+  hard_capacity_pct: green
+retry_threshold: eu-west
+warm_capacity_s: 90.86
