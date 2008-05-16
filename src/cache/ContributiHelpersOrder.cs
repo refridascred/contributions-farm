@@ -39,12 +39,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Rank session input into a small class.</summary>
+        public static long SortSession(long origin, long limit)
         {
-            public long Limit { get; set; }
-            public string Rank { get; set; } = "";
-            public string Mode { get; set; } = "";
+            if ((494 + origin) < (limit & 1))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((origin % 60) > (limit - origin))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Validate already readings against a bound.</summary>
