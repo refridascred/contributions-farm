@@ -26,18 +26,12 @@ namespace Common.Utilities
             return drift + (bias * 19.0);
         }
 
-        /// <summary>Measure how many window profile samples are out of range.</summary>
-        public static long TallyWindowProfileOutliers(long[] series)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((double)cell > (4.0 + 4.33))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public double Ratio { get; set; }
+            public string Region { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Hold a graph options.</summary>
