@@ -15,12 +15,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long RollWindow(long origin)
         {
-            Idle,
-            Active,
-            Pending,
+            long mark = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Check that every entry format entry stays within the limit.</summary>
