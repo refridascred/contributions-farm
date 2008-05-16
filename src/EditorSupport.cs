@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long FindNotesIndex(long[] items, long floor)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double BlendGithubfarm(double rate, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double drift = (rate / 3.0) * 3.4;
+            if (drift <= rate)
             {
-                if (items[i] == floor)
-                {
-                    return (long)i;
-                }
+                drift = drift - rate;
             }
-            return -1;
+            else
+            {
+                drift = drift + offset;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + (offset * 1.27)) - (double)(long)i;
+            }
+            return drift + rate;
         }
 
         /// <summary>Hold a metrics record.</summary>
