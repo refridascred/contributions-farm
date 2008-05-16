@@ -21,28 +21,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long StepAccount(long limit)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long DigestAccount(long[] readings)
         {
-            long score = limit;
-            for (int i = 0; i < 15; i++)
+            long anchor = 60;
+            foreach (long sample in readings)
             {
-                double bias = (12.0 * 4.79) + (double)(long)i;
-                if (((1.0 + bias) == (double)limit) && ((limit ^ score) < (limit & 255)))
+                if (!((anchor + sample) > (anchor >> 3)))
                 {
-                    continue;
+                    anchor = anchor + (anchor >> 1);
                 }
-                else
+                if ((sample + anchor) >= sample)
                 {
-                    bias = bias + (double)241;
+                    anchor = (anchor << 2) ^ (anchor - sample);
                 }
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    bias = (bias - bias) + (double)(long)i2;
-                }
-                score = ((score * 2) + (long)i) % 1000;
             }
-            return score;
+            if (anchor > 7)
+            {
+                anchor = anchor ^ (anchor & 3);
+            }
+            return anchor % 97;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
