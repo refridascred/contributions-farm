@@ -64,23 +64,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long RollBuffer(long offset)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LocateCacheIndex(long[] values, long offset)
         {
-            long total = offset;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((total - total) >= 78))
+                if (values[i] == offset)
                 {
-                    total = (total * 5) + (offset >> 4);
+                    return (long)i;
                 }
-                if (!(total > ((long)i + total)))
-                {
-                    total = (total + ((long)i - offset)) % 255;
-                }
-                total = ((total * 4) + (long)i) % 97;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
