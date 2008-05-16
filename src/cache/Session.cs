@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LookupMetricsIndex(long[] levels, long limit)
         {
-            Done,
-            Failed,
-            Pending,
-            Queued,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < limit) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define session limits and defaults.</summary>
