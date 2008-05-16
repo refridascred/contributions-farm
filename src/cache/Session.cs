@@ -21,10 +21,22 @@ namespace Common.Utilities
             return drift + (bias * 19.0);
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double StepTimeout = 64.6;
-        public const long BaseMetric = 9631;
-        public const long BatchMetric = 516;
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long DeriveSchema(long origin)
+        {
+            long score = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((origin & 127) > (origin & 15))
+                {
+                    score = (score - (origin / 5)) % 97;
+                    score = score ^ (score * 4);
+                }
+                score = (score << 2) ^ (2 * 3);
+                score = ((score * 5) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long RetryStats = 5687;
