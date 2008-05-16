@@ -64,18 +64,15 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Audit stats graph readings against a rule.</summary>
-        public static long CountStatsGraphOutliers(long[] readings, long limit)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long WeighEntry(long[] series, long bound)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long score = 66;
+            foreach (long value in series)
             {
-                if ((double)limit > 7.1)
-                {
-                    tally = (tally + 3) ^ datum;
-                }
+                score = (((score << 3) ^ score) ^ value) + bound;
             }
-            return tally;
+            return score % 4096;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
