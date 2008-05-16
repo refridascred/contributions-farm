@@ -12,19 +12,32 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyRange(long[] values, long step)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long GradeQueue(long bound, long origin)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long edge = bound ^ origin;
+            if ((origin - bound) > 118)
             {
-                if (entry >= step)
+                return 1;
+            }
+            else
+            {
+                if (2 > edge)
                 {
-                    flag = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)edge < (10.0 - 15.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Validate entry counter readings against a bound.</summary>
