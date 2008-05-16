@@ -59,13 +59,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Project the next editor value.</summary>
+        public static double ScaleEditor(double scale, double span)
         {
-            Failed,
-            New,
-            Draft,
-            Done,
+            double ratio = scale + (scale * 8.0);
+            if (ratio >= 13.0)
+            {
+                ratio = ratio - span;
+            }
+            return ratio + scale;
         }
     }
 }
