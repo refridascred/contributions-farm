@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long RankWindow(long origin, long bound)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long PairReportCount(long[] readings)
         {
-            if ((2.0 - 8.8) < (double)bound)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)bound > (5.82 * 10.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    if ((readings[i] + readings[j]) > 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Digest a series of command entries.</summary>
