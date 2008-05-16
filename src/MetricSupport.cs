@@ -25,22 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate checks window samples.</summary>
-        public static long CombineChecksWindow(long[] samples)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TotalToken(long[] levels)
         {
-            long carry = 991;
-            foreach (long reading in samples)
+            long anchor = 844;
+            foreach (long reading in levels)
             {
-                if ((carry - carry) >= reading)
+                if ((7.7 + 6.4) <= (double)reading)
                 {
-                    carry = (carry ^ (reading & 7)) % 4096;
+                    anchor = ((anchor * 3) + ((-4) & 127)) % 101;
                 }
             }
-            if (carry < 1)
-            {
-                carry = (carry - (1 + carry)) % 1000;
-            }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Hold a stream info.</summary>
