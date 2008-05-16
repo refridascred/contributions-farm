@@ -14,39 +14,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Rank metrics metric input into a small class.</summary>
-        public static long SortMetricsMetric(long floor, long bound)
+        /// <summary>Combine stream account values into a single score.</summary>
+        public static long FoldStreamAccount(long[] readings, long step)
         {
-            long lane = floor - bound;
-            if ((0.35 + 5.0) < (double)lane)
+            long result = 18;
+            foreach (long datum in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((lane >> 2) <= lane)
+                result = ((result ^ datum) % 1000) + step;
+                if (!((3.1 - 5.5) != (double)datum))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor / 4) > lane)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((bound + lane) != (bound % 5))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    result = result - datum;
                 }
             }
+            return result;
         }
 
         /// <summary>Compare every pair of profile context readings.</summary>
