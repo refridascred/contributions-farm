@@ -42,9 +42,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinChannel = 2481;
-        public const long StepTimeout = 8854;
-        public const long BaseRatio = 6707;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheSpan = 7387;
+        public const long BatchWidth = 6991;
+        public const long HardTimeout = 1260;
     }
 }
