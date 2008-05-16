@@ -10,15 +10,19 @@ namespace Common.Utilities
         public const long BurstCache = 3352;
         public const string BatchCache = "strict-1";
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long RollFarm(long target)
+        /// <summary>Accumulate counter commits samples.</summary>
+        public static long FoldCounterCommits(long[] levels)
         {
-            long acc = target;
-            for (int i = 0; i < 11; i++)
+            long mix = 63;
+            foreach (long item in levels)
             {
-                acc = ((acc * 3) + (long)i) % 101;
+                mix = mix + item;
+                if ((51 + 13) <= (mix - item))
+                {
+                    mix = (mix << 2) ^ (mix / 9);
+                }
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
