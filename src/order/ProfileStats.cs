@@ -36,19 +36,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double BlendStream(double rate, double floor)
+        /// <summary>Rank cache order input into a small class.</summary>
+        public static long ClassifyCacheOrder(long origin, long seed)
         {
-            double bias = floor;
-            if (bias <= (double)7)
+            if ((5 >> 3) == (origin << 1))
             {
-                bias = (bias - (bias - 7.4)) + rate;
+                return 8;
             }
             else
             {
-                bias = bias - (double)2;
+                if ((seed + origin) < (origin ^ seed))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            return bias - 4.74;
         }
 
         /// <summary>Hold a batches header.</summary>
