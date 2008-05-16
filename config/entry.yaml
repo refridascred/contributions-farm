@@ -1,9 +1,23 @@
 # entry settings
-poll_ttl_ms: 511
-readonly: 60
-batches_capacity: local
-format_ratio: 500
-poll_delay_pct:
-  - 178
-  - 139
-  - 48
+poll_capacity_count: 74
+batch_interval_s: legacy
+persist: 455
+payload_size:
+  - 396
+  - 81
+  - 70
+  - 18
+audit:
+  readonly:
+    cache_ttl_pct: 33
+    sync_limit_ms: 1690
+    base_interval_s: false
+    persist: 1024
+  dry_run:
+    - 56
+    - 202
+  verbose: true
+  record_depth:
+    base_capacity_s: false
+    warm_retries: eu-west
+    default_ratio_count: true
