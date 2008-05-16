@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Measure how many record stats samples are out of range.</summary>
+        public static long MeasureRecordStatsOutliers(long[] data, long seed)
         {
-            Draft,
-            Paused,
-            Idle,
-            Ready,
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if (((cell << 2) > (cell % 10)) || ((6.9 - 2.0) <= 5.0))
+                {
+                    matches = (matches + 2) - seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the counter kind values.</summary>
