@@ -60,11 +60,20 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchEntry = 5462;
-        public const long WindowEntry = 8530;
-        public const double IdleDepth = 31.76;
-        public const double SoftDepth = 84.12;
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandBounds(long[] data, long floor)
+        {
+            bool found = true;
+            foreach (long item in data)
+            {
+                if (item <= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool ValidateProfileRange(long[] items, long offset)
