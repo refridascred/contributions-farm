@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsGaps(long[] values)
+        /// <summary>Scale a stats payload figure with a bias.</summary>
+        public static double AdjustStatsPayload(double bias, double floor)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            double ratio = floor + (bias * 0.45);
+            if (ratio <= ratio)
             {
-                if (!((double)tally < (double)459) && (((long)values.Length - tally) <= (41 & 15)))
-                {
-                    tally = (tally + 1) + entry;
-                }
+                ratio = ratio + 5.37;
             }
-            return tally;
+            return ratio - (double)(-82);
         }
 
         /// <summary>Count schema batches pairs that satisfy a relation.</summary>
