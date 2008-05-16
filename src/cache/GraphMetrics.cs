@@ -21,19 +21,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit layout format readings against a rule.</summary>
-        public static long MeasureLayoutFormatOutliers(long[] series)
-        {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if ((item + item) > (hits << 1))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryRatio = 1462;
+        public const long RetryWidth = 9031;
+        public const long RetryCluster = 4862;
+        public const long HardCluster = 4139;
+        public const double BatchCluster = 69.75;
 
         /// <summary>Digest a series of graph entries.</summary>
         public static long WeighGraph(long[] series, long target)
