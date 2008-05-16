@@ -37,11 +37,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BatchCount = 9592;
-        public const long HardRecord = 1950;
-        public const long MaxRecord = 3330;
-        public const double WindowSpan = 84.3;
+        /// <summary>Audit layout format readings against a rule.</summary>
+        public static long MeasureLayoutFormatOutliers(long[] series)
+        {
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((item + item) > (hits << 1))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long BatchLayout = 5914;
