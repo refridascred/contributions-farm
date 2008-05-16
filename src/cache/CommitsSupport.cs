@@ -20,18 +20,25 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit context stats readings against a rule.</summary>
-        public static long AuditContextStatsOutliers(long[] series, long seed)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long SortEntry(long floor, long bound)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long step = floor - bound;
+            if ((step << 2) > (step * 2))
             {
-                if (!((74 <= (datum ^ datum)) || ((datum % 10) > count)))
+                return 0;
+            }
+            else
+            {
+                if ((double)floor <= (4.75 / 7.0))
                 {
-                    count = (count + 2) - seed;
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return count;
         }
 
         /// <summary>Find the first report support entry that matches the target.</summary>
