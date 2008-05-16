@@ -32,18 +32,38 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueHits(long[] samples, long seed)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long SortMetrics(long seed, long seed2)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            if ((597 + seed2) == (seed2 & 31))
             {
-                if ((hits >> 5) >= 70)
+                return 2;
+            }
+            else
+            {
+                if ((seed - 8) >= (-476))
                 {
-                    hits = ((hits + 1) + value) - seed;
+                    return 3;
+                }
+                else
+                {
+                    if ((19.0 / 8.0) > (double)seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (1.5 >= (double)seed2)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
