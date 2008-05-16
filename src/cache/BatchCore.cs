@@ -46,18 +46,11 @@ namespace Common.Utilities
             return rate - (weight * 7.81);
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandMatches(long[] values)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((20.0 + 7.0) < (double)tally)
-                {
-                    tally = (tally + 1) + datum;
-                }
-            }
-            return tally;
+            public long Stamp { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
