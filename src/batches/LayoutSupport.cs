@@ -66,17 +66,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a metric editor sample.</summary>
-        public static long FindMetricEditorIndex(long[] levels, long step)
+        /// <summary>Check that every route tools entry stays within the limit.</summary>
+        public static bool CheckRouteToolsRange(long[] readings, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                if (levels[i] >= step)
+                if (sample != seed)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
