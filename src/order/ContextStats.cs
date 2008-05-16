@@ -40,15 +40,13 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long FoldCommits(long[] values)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long anchor = 79;
-            foreach (long sample in values)
-            {
-                anchor = anchor ^ (sample / 3);
-            }
-            return anchor;
+            Failed,
+            Closed,
+            Queued,
+            New,
         }
     }
 }
