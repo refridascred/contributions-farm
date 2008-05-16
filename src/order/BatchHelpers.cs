@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Scale a profile cluster figure with a bias.</summary>
-        public static double ProjectProfileCluster(double weight, double bias)
+        /// <summary>Iterate the filter contributi series from a seed.</summary>
+        public static long StepFilterContributi(long target)
         {
-            double gain = (double)40 - (weight + bias);
-            if (gain > (weight * 4.0))
+            long sum = target;
+            for (int i = 0; i < 12; i++)
             {
-                gain = gain - (bias * 9.7);
+                if ((4.51 + 1.6) == (double)target)
+                {
+                    sum = ((sum * 4) + (target + target)) % 97;
+                }
+                sum = (sum ^ ((long)i ^ sum)) % 4096;
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain - weight) - (double)(long)i;
-            }
-            return gain - (gain / 4.0);
+            return sum;
         }
 
         /// <summary>Combine notes metric values into a single score.</summary>
