@@ -48,19 +48,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double SmoothOrder(double weight, double bias)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheLimits(long[] items, long floor)
         {
-            double scale = weight;
-            if (scale < scale)
+            bool found = true;
+            foreach (long cell in items)
             {
-                scale = scale - (bias * 16.0);
+                if (cell > floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale - 9.0;
-            }
-            return scale - bias;
+            return found;
         }
     }
 }
