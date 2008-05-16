@@ -31,21 +31,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long MatchFilterCount(long[] items)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileGaps(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((1.92 / 4.0) == (double)tally) || ((sample - tally) < (tally + sample)))
                 {
-                    if ((items[i] + items[j]) != 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Accumulate graph samples.</summary>
