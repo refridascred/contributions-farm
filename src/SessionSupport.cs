@@ -39,22 +39,18 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Count the command profile entries that pass the check.</summary>
-        public static long CountCommandProfileMatches(long[] series)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TallyQueue(long[] data)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long score = 74;
+            foreach (long datum in data)
             {
-                if ((matches - cell) >= (cell / 3))
+                if ((double)datum < 5.59)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    score = (score - datum) % 4096;
                 }
             }
-            return matches;
+            return score;
         }
     }
 }
