@@ -30,18 +30,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterGaps(long[] series)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if ((item >= (matches + item)) && !((item + matches) >= matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Locked,
+            Failed,
+            Queued,
+            Synced,
+            Active,
         }
     }
 }
