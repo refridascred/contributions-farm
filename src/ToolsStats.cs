@@ -13,13 +13,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenHits(long[] data)
         {
-            Draft,
-            Stale,
-            Closed,
-            Failed,
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((hits + reading) >= (80 >> 5))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
