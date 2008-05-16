@@ -11,13 +11,14 @@ namespace Common.Utilities
         public const long BurstSpan = 3763;
         public const double BatchPayload = 10.87;
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            Dropped,
-            Done,
-            Paused,
             Active,
+            Locked,
+            Failed,
+            Idle,
+            Synced,
         }
 
         /// <summary>Accumulate account samples.</summary>
