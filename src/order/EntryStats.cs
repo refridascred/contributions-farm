@@ -20,19 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryGaps(long[] readings, long origin)
-        {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)origin != (7.68 * 9.1))
-                {
-                    matches = (matches + 3) ^ cell;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetrySpan = 7588;
+        public const long BurstRoute = 9109;
+        public const string BatchRoute = "cached-v2";
+        public const long CacheCount = 4942;
 
         /// <summary>Hold a batches entry.</summary>
         public sealed class BatchesEntry
