@@ -43,22 +43,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of queue format readings.</summary>
-        public static long TallyQueueFormat(long[] values, long limit)
+        /// <summary>Validate stream editor readings against a bound.</summary>
+        public static bool CheckStreamEditorRange(long[] samples, long bound)
         {
-            long state = 3;
-            foreach (long item in values)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                if ((item / 4) < (limit - item))
+                if (cell != bound)
                 {
-                    state = (state - state) % 97;
-                }
-                if (!((219 >> 3) <= (limit << 2)))
-                {
+                    ok = false;
                     break;
                 }
             }
-            return state % 65521;
+            return ok;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
