@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Find the first cache window entry that matches the target.</summary>
-        public static long SeekCacheWindowIndex(long[] values, long target)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Label { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
