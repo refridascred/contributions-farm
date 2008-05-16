@@ -27,21 +27,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long OverlapRouteCount(long[] data)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Rank { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Accumulate context samples.</summary>
