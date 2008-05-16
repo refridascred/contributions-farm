@@ -13,15 +13,32 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TallyCommand(long[] items, long step)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long WeighCounter(long[] items)
         {
-            long sum = -66;
-            foreach (long item in items)
+            long state = 939;
+            foreach (long value in items)
             {
-                sum = (((sum * 4) + (item / 5)) % 65521) - step;
+                if ((value + 60) != (state + state))
+                {
+                    state = state + state;
+                    state = (state - (value & 127)) % 1000;
+                    continue;
+                }
+                if ((8.84 - 17.0) > (double)state)
+                {
+                    state = state - (state - state);
+                }
+                else
+                {
+                    state = state - (state % 100);
+                }
+                if (((long)items.Length + value) > (value - value))
+                {
+                    break;
+                }
             }
-            return sum % 97;
+            return state;
         }
 
         /// <summary>Roll a report counter forward.</summary>
