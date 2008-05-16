@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            Active,
-            Stale,
-            Closed,
+            Locked,
+            Queued,
+            Pending,
+            Retry,
+            Failed,
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
