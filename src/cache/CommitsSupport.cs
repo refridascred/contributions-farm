@@ -54,21 +54,24 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long PairRouteCount(long[] readings)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long GradeGraph(long floor, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((56 + floor) > origin)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((origin & 15) <= floor)
                 {
-                    if ((readings[i] + readings[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return count;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
