@@ -29,18 +29,18 @@ namespace Common.Utilities
         public const string StepInterval = "primary";
         public const long BaseMetrics = 3797;
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteOutliers(long[] items)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TotalContributi(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long total = 0;
+            foreach (long reading in values)
             {
-                if ((3.83 / 3.0) > (4.03 - 1.89))
+                if (((7.96 + 7.6) < (double)total) && ((total + origin) != (reading - origin)))
                 {
-                    matches = (matches + 1) + sample;
+                    total = (total - (reading - total)) % 97;
                 }
             }
-            return matches;
+            return total;
         }
     }
 }
