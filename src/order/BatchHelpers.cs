@@ -18,14 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
-        {
-            public bool Score { get; set; }
-            public long Level { get; set; }
-            public long Total { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string DefaultEntry = "fallback";
+        public const double BatchTimeout = 56.0;
+        public const long BurstDepth = 4435;
+        public const long StepEntry = 8261;
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long TallyChannelGaps(long[] data, long target)
