@@ -29,19 +29,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double ProjectQueue(double weight, double bias)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            double load = (double)63;
-            if (load <= load)
-            {
-                load = (load + (5.22 + weight)) - bias;
-            }
-            else
-            {
-                load = load - (double)919;
-            }
-            return load + weight;
+            Failed,
+            Done,
+            Locked,
+            Pending,
         }
     }
 }
