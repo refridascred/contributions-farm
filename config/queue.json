@@ -1,8 +1,12 @@
 {
-  "dry_run": 29.79,
-  "account_retries": "local",
-  "persist": [38, 111, 61, 128],
-  "sync_ratio_ms": ["eu-west", "stable", "primary"],
-  "idle_ratio_ms": true,
-  "channel_limit": true
+  "readonly": "fallback",
+  "dry_run": 66,
+  "strict": {
+    "dry_run": "green",
+    "flush_timeout_s": 5537,
+    "cache_retries_ms": 80,
+    "enabled": "primary",
+    "compress": "stable"
+  },
+  "max_depth": 3230
 }
