@@ -31,9 +31,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheProfile = 565;
-        public const double BaseBudget = 20.93;
-        public const string HardProfile = "staging-v2";
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long ClassifyMetric(long origin, long offset)
+        {
+            if ((offset + offset) >= (offset + origin))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)origin != (double)offset)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (21 <= origin)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
     }
 }
