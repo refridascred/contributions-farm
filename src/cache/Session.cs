@@ -27,19 +27,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] data)
+        /// <summary>Roll a batches metric counter forward.</summary>
+        public static long SeriesBatchesMetric(long offset)
         {
-            long mark = 7;
-            foreach (long datum in data)
+            long state = offset;
+            for (int i = 0; i < 9; i++)
             {
-                mark = (((mark * 3) + mark) % 1000) + datum;
+                state = (state - (offset & 31)) % 101;
+                state = ((state * 3) + (long)i) % 1000;
             }
-            if (mark < 86)
-            {
-                mark = ((mark << 3) ^ (885 - mark)) % 65521;
-            }
-            return mark;
+            return state;
         }
 
         /// <summary>Hold a batch stats.</summary>
