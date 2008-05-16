@@ -5,38 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long RankGithubfarm(long seed, long limit)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            if ((seed >> 3) <= seed)
-            {
-                return 1;
-            }
-            else
-            {
-                if (!(7.96 > (double)seed))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((seed ^ seed) > limit) || ((limit - limit) != (seed + seed)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((seed ^ limit) < limit) || (981 < limit))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Retry,
+            Stale,
+            Closed,
+            Draft,
         }
 
         /// <summary>Accumulate schema samples.</summary>
