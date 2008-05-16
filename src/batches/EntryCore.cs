@@ -47,12 +47,11 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetryScore = 8245;
-        public const long RetryAlready = 2770;
-        public const long SoftAlready = 3690;
-        public const long CacheAlready = 2939;
-        public const double StepInterval = 97.74;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string DefaultWidth = "legacy-v2";
+        public const string BatchSize = "open-1";
+        public const long BurstSpan = 2629;
+        public const long LimitGithubfarm = 1557;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long MaxScore = 7596;
