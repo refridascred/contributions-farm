@@ -26,22 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long DeriveAlready(long step)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long state = step;
-            for (int i = 0; i < 7; i++)
-            {
-                long step2 = (state << 1) & 1;
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    state = (((state * 4) + step) % 65521) ^ (long)i2;
-                    state = ((state * 3) + (step2 + 0)) % 65521;
-                }
-                step2 = step2 - (step % 24);
-                state = ((state * 2) + (long)i) % 4093;
-            }
-            return state;
+            public double Region { get; set; }
+            public string Total { get; set; } = "";
+            public double Mode { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Fold a list of queue format readings.</summary>
