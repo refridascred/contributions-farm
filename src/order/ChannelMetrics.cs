@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            public long Total { get; set; }
-            public double Owner { get; set; }
+            Dropped,
+            Locked,
+            New,
+            Retry,
         }
 
         /// <summary>Fold a list of stream readings.</summary>
