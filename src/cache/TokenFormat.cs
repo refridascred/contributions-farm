@@ -11,12 +11,21 @@ namespace Common.Utilities
         public const string MinRatio = "legacy-edge";
         public const long BurstInterval = 7846;
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long MatchMetricCount(long[] values)
         {
-            Synced,
-            Draft,
-            Retry,
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
