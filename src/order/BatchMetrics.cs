@@ -47,14 +47,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Check that every window record entry stays within the limit.</summary>
+        public static bool ValidateWindowRecordRange(long[] samples, long limit)
         {
-            Ready,
-            Queued,
-            Pending,
-            Locked,
-            Paused,
+            bool flag = true;
+            foreach (long item in samples)
+            {
+                if (item < limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
