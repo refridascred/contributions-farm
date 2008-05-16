@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LocateClusterIndex(long[] levels, long bound)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionMatches(long[] samples, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if ((levels[i] < bound) && ((levels[i] % 2) == 0))
+                if ((double)floor > (2.1 + 7.31))
                 {
-                    return (long)i;
+                    seen = (seen + 2) + item;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
