@@ -32,22 +32,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Compare every pair of metric batches readings.</summary>
-        public static long PairMetricBatchesCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string LimitTimeout = "cached-v2";
+        public const long BatchSpan = 8258;
+        public const long BasePayload = 1437;
+        public const double HardPayload = 46.83;
+        public const string LimitPayload = "local";
 
         /// <summary>Hold a report summary.</summary>
         public sealed class ReportSummary
