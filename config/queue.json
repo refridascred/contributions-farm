@@ -1,5 +1,18 @@
 {
-  "min_interval_s": ["local", "eu-west"],
-  "warm_interval_s": "stable",
-  "soft_window": [197, 464, 455, 254]
+  "batch_ratio_pct": 69,
+  "burst_capacity_pct": {
+    "soft_ttl_ms": ["blue", "fallback"],
+    "sync_size": {
+      "batch_ratio_count": "strict",
+      "min_depth_ms": "cached",
+      "stream_limit": "blue",
+      "audit": "fallback",
+      "warm_window_ms": "local",
+      "checks_capacity": false
+    },
+    "sync_retries": 30,
+    "poll_depth": 100,
+    "flush_capacity_ms": 3496
+  },
+  "soft_window_ms": "open"
 }
