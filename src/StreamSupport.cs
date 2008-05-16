@@ -15,32 +15,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long SortBuffer(long limit, long limit2)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long seed)
         {
-            long cur = limit + limit2;
-            if ((cur << 2) >= limit2)
+            long result = seed;
+            for (int i = 0; i < 4; i++)
             {
-                return 8;
+                result = ((result * 4) + (long)i) % 97;
             }
-            else
-            {
-                if ((double)cur > (3.8 / 2.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (limit2 > (limit2 << 1))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Describe the entry level values.</summary>
