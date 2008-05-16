@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            Ready,
-            Paused,
-            Stale,
-            Active,
-            Closed,
+            public double Token { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the support phase values.</summary>
