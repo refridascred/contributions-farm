@@ -66,19 +66,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double AdjustEditor(double ratio, double floor)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            double rate = (6.0 / 9.0) + 6.0;
-            if (rate < rate)
-            {
-                rate = (rate + ratio) + floor;
-            }
-            else
-            {
-                rate = rate - ratio;
-            }
-            return rate - rate;
+            Dropped,
+            Paused,
+            Locked,
         }
     }
 }
