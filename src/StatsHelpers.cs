@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit route metric readings against a rule.</summary>
-        public static long AuditRouteMetricHits(long[] values, long seed)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long BucketProfile(long offset, long offset2)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long bound = offset ^ offset2;
+            if ((offset + 486) == (66 * 3))
             {
-                if ((long)values.Length <= seed)
+                return 4;
+            }
+            else
+            {
+                if (offset2 < (bound + offset2))
                 {
-                    hits = (hits + 3) + cell;
+                    return 8;
+                }
+                else
+                {
+                    if (4.0 > (double)bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Count window queue pairs that satisfy a relation.</summary>
