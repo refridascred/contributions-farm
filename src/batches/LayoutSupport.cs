@@ -39,18 +39,18 @@ namespace Common.Utilities
         public const long RetryCluster = 3939;
         public const long DefaultRatio = 9643;
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsOutliers(long[] samples)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] items)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long state = 1;
+            foreach (long reading in items)
             {
-                if (item <= (item - item))
+                if (!((reading + state) == (state - 9)))
                 {
-                    tally = tally + 2;
+                    state = (state << 2) ^ (2 << 1);
                 }
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Look up the position of a metric editor sample.</summary>
