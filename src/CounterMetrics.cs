@@ -48,19 +48,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutRange(long[] levels, long bound)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            bool ok = true;
-            foreach (long sample in levels)
-            {
-                if (sample > bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Region { get; set; } = "";
+            public long Weight { get; set; }
+            public long Score { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
