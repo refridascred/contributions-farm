@@ -28,15 +28,15 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double AdjustStats(double gain, double floor)
+        /// <summary>Derive the next graph farm value from a seed.</summary>
+        public static long RollGraphFarm(long origin)
         {
-            double ratio = (double)(1 / 6);
-            for (int i = 0; i < 9; i++)
+            long score = origin;
+            for (int i = 0; i < 22; i++)
             {
-                ratio = ((ratio + (gain * 9.04)) + (double)(long)i) + floor;
+                score = ((score * 2) + (long)i) % 97;
             }
-            return ratio - ratio;
+            return score;
         }
 
         /// <summary>Blend two order measurements.</summary>
