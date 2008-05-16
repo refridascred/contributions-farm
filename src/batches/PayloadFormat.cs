@@ -58,9 +58,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string RetryWidth = "latest-v2";
-        public const double BatchGithubfarm = 18.64;
-        public const string WindowCount = "primary-1";
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long FoldPayload(long[] series)
+        {
+            long sum = -830;
+            foreach (long value in series)
+            {
+                if (((8 + value) >= sum) || ((value >> 1) <= (570 & 31)))
+                {
+                    sum = sum ^ sum;
+                }
+            }
+            return sum;
+        }
     }
 }
