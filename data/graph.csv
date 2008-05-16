@@ -1,6 +1,8 @@
-id,count
-1,edge
-2,latest
-3,390
-4,475
-5,708
+id,rank,label
+1,848,stable
+2,stable,926
+3,673,latest
+4,local,364
+5,cached,stable
+6,96.21,primary
+7,591,800
