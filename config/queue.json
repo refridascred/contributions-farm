@@ -1,7 +1,22 @@
 {
-  "channel_size": [40, 389, 134],
-  "window_depth": "stable",
-  "warm_window": 500,
-  "readonly": 86.96,
-  "enabled": 1024
+  "sync_retries_pct": {
+    "batches_delay": false,
+    "warm_depth": [210, 465],
+    "readonly": 9.36,
+    "cache_interval": 3858
+  },
+  "soft_interval_count": "eu-west",
+  "enabled": "latest",
+  "poll_ttl": {
+    "flush_window_s": "blue",
+    "persist": 62.79,
+    "enabled": {
+      "soft_interval_ms": 59.99,
+      "persist": [190, 177],
+      "notes_delay": 22
+    },
+    "compress": false
+  },
+  "poll_size_count": true,
+  "layout_ttl": 6049
 }
