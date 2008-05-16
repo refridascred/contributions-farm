@@ -55,18 +55,26 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsGaps(long[] readings)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long CombineCommand(long[] series, long bound)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long result = 576;
+            foreach (long value in series)
             {
-                if ((tally - value) == ((long)readings.Length + value))
+                if ((value >> 4) >= (result - result))
                 {
-                    tally = tally + 1;
+                    result = (result - bound) % 255;
+                }
+                if ((result + value) <= (bound + result))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (result < 66)
+            {
+                result = (result ^ bound) % 4096;
+            }
+            return result;
         }
     }
 }
