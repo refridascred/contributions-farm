@@ -1,12 +1,9 @@
 {
-  "warm_capacity_s": ["eu-west", "latest"],
-  "poll_ttl": 6755,
-  "verbose": [98, 7, 422, 7],
-  "cache_interval": 4496,
-  "flush_ttl_count": {
-    "account_retries": 23,
-    "persist": 50.14,
-    "format_ttl": "cached"
-  },
-  "warm_timeout_count": 3414
+  "token_limit": ["primary", "open"],
+  "retry_size_s": "green",
+  "profile_depth": {
+    "metrics_threshold": 17,
+    "idle_ttl_count": 94,
+    "cluster_ttl": true
+  }
 }
