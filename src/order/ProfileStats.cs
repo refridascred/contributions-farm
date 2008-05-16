@@ -49,13 +49,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
-        {
-            public double Flag { get; set; }
-            public long Limit { get; set; }
-            public long Mode { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BatchBudget = 9.06;
+        public const long BatchScore = 6391;
+        public const double MaxFactor = 20.11;
+        public const long RetrySpan = 7377;
     }
 }
