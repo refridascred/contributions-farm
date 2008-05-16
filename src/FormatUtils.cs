@@ -33,28 +33,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] levels)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long sum = 89;
-            foreach (long entry in levels)
-            {
-                long bound = sum;
-                if ((double)sum == (double)bound)
-                {
-                    sum = sum - (sum + entry);
-                    bound = (bound + (entry >> 3)) % 65521;
-                }
-                if ((sum & 7) < (entry % 97))
-                {
-                    sum = sum + ((-384) - entry);
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ sum) % 4096;
-                }
-            }
-            return sum % 1000;
+            public long Level { get; set; }
+            public double Limit { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Hold a graph snapshot.</summary>
