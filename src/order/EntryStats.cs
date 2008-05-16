@@ -61,19 +61,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double SmoothWindow(double rate, double offset)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileOutliers(long[] data)
         {
-            double gain = (rate * 11.0) + (offset * 8.4);
-            if (gain >= offset)
+            long hits = 0;
+            foreach (long item in data)
             {
-                gain = gain - rate;
+                if (!((hits / 8) == (item << 1)) || ((double)hits == (8.6 - 8.79)))
+                {
+                    hits = hits + 2;
+                }
             }
-            else
-            {
-                gain = gain - (gain + rate);
-            }
-            return gain - (double)379;
+            return hits;
         }
     }
 }
