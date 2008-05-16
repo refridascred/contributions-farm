@@ -40,21 +40,30 @@ namespace Common.Utilities
         public const long MaxNotes = 9581;
         public const string HardLevel = "primary-v2";
 
-        /// <summary>Match up window payload samples.</summary>
-        public static long OverlapWindowPayloadCount(long[] samples)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long DigestChannel(long[] levels, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 40;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((seed - anchor) < (sample << 1))
                 {
-                    if ((samples[i] - samples[j]) > 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = ((anchor << 3) ^ (sample >> 3)) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor - anchor) % 97;
+                }
+                if (((double)anchor <= (3.59 - 18.0)) || (8.93 > (double)(long)levels.Length))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (anchor > 3)
+            {
+                anchor = (anchor ^ seed) % 255;
+            }
+            return anchor % 4096;
         }
     }
 }
