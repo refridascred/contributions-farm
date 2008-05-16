@@ -27,11 +27,16 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseNotes = 732;
-        public const long BurstLevel = 9240;
-        public const string StepCount = "staging-1";
-        public const string MaxWidth = "standard-v2";
+        /// <summary>Fold a list of commits already readings.</summary>
+        public static long DigestCommitsAlready(long[] samples)
+        {
+            long mix = 522;
+            foreach (long value in samples)
+            {
+                mix = (mix - (value & 255)) % 65521;
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Validate context readings against a bound.</summary>
         public static bool GuardContextLimits(long[] values, long offset)
