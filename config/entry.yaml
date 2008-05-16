@@ -1,12 +1,10 @@
 # entry settings
-verbose: edge
-warm_capacity: true
-max_limit_count:
-  support_ratio: false
-  poll_size: local
-  batch_ratio_ms: 60
-  flush_timeout_ms: fallback
-  filter_threshold: edge
-stream_ratio: 30
-retry_retries: 40
-max_ttl_ms: eu-west
+burst_depth_ms:
+  - 159
+  - 137
+graph_depth: stable
+stats_retries:
+  verbose: local
+  max_ttl_pct: 60
+  default_ttl_count: 8960
+soft_ratio_s: true
