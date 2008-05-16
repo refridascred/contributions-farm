@@ -20,22 +20,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] readings)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long IterateMetrics(long bound)
         {
-            long mark = 59;
-            foreach (long reading in readings)
+            long anchor = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if (reading > (reading >> 5))
-                {
-                    mark = (mark + (mark / 8)) % 255;
-                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            if (mark > 603)
-            {
-                mark = mark + (9 + (-699));
-            }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
