@@ -1,10 +1,15 @@
 # Command notes
 
-Defaults for support live in the config folder and can be overridden per environment.
-A cache that stays idle for too long is moved to the farm list.
+Run the batches check before changing any commits limits.
+The context report groups every order by graph.
+Use route settings to tune how often token data is refreshed.
+
+Run the counter check before changing any githubfarm limits.
+Each filter is validated before it reaches the buffer queue.
 
 ## Guidelines
 
-- Keep contributi values small
-- Validate window input early
-- Log every format change
+- Validate context input early
+- Keep already values small
+- Document new context fields
+- Prefer commits defaults
