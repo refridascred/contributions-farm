@@ -31,15 +31,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatMatches(long[] items)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextGaps(long[] samples, long seed)
         {
             long hits = 0;
-            foreach (long reading in items)
+            foreach (long item in samples)
             {
-                if (((reading % 12) >= 21) || ((reading + reading) < ((-3) & 15)))
+                if ((seed + (-220)) > hits)
                 {
-                    hits = hits + 1;
+                    hits = (hits + 3) + item;
                 }
             }
             return hits;
