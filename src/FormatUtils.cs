@@ -13,25 +13,19 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long ClassifyNotes(long floor, long offset)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphBounds(long[] series, long target)
         {
-            long gap = floor + offset;
-            if (!(floor > (gap & 31)))
+            bool valid = true;
+            foreach (long datum in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor ^ floor) < (gap - floor))
+                if (datum < target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Combine token values into a single score.</summary>
