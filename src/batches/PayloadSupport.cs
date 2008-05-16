@@ -31,19 +31,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteLimits(long[] levels, long step)
+        /// <summary>Match up account samples.</summary>
+        public static long CompareAccountCount(long[] items)
         {
-            bool found = true;
-            foreach (long value in levels)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value <= step)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((items[i] + items[j]) == 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
