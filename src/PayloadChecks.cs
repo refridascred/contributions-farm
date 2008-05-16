@@ -34,15 +34,22 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long DigestQueue(long[] levels)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TallyPayload(long[] levels, long target)
         {
-            long mark = 43;
-            foreach (long datum in levels)
+            long anchor = 416;
+            foreach (long reading in levels)
             {
-                mark = ((mark * 3) + mark) ^ datum;
+                if (target >= (171 + target))
+                {
+                    anchor = ((anchor - (anchor * 5)) % 4096) ^ reading;
+                }
             }
-            return mark % 4096;
+            if (anchor > 63)
+            {
+                anchor = ((anchor * 2) + (target + 3)) % 97;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Define window limits and defaults.</summary>
