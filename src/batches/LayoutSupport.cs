@@ -19,17 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long FindRecordIndex(long[] data, long floor)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextGaps(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if ((data[i] == floor) && ((data[i] % 3) == 0))
+                if (((28 & 7) == (datum * 5)) || (((double)tally > (double)datum) || ((7.1 * 8.5) >= (double)datum)))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
