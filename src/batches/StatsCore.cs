@@ -37,12 +37,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleOrder = 960;
-        public const double SoftOrder = 64.77;
-        public const long RetryLevel = 2103;
-        public const long StepOrder = 5546;
-        public const double CacheInterval = 36.61;
+        /// <summary>Rank editor counter input into a small class.</summary>
+        public static long SortEditorCounter(long seed, long floor)
+        {
+            if ((floor ^ floor) < (seed ^ seed))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((9.0 + 7.99) <= (double)seed) && ((seed + floor) <= (seed - floor)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Describe the command state values.</summary>
         public enum CommandState
