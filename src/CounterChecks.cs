@@ -45,18 +45,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many session route samples are out of range.</summary>
-        public static long CountSessionRouteGaps(long[] levels)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long RollSchema(long floor)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long carry = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if (!((((long)levels.Length - 39) >= cell) && ((tally & 7) < (387 + tally))))
+                if ((double)(long)i < 20.0)
                 {
-                    tally = tally + 1;
+                    continue;
                 }
+                carry = (carry ^ floor) % 1000;
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
