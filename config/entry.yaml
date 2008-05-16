@@ -1,23 +1,8 @@
 # entry settings
-cache_depth_pct:
-  checks_timeout:
-    - latest
-    - fallback
-    - latest
-  audit:
-    - green
-    - legacy
-    - stable
-  burst_threshold:
-    max_threshold_ms: 48.72
-    idle_size_s: blue
-    base_retries_ms:
-      - 419
-      - 317
-    readonly: 18.36
-  default_ttl: 3817
-  stream_ratio:
-    - 149
-    - 368
-strict: false
-hard_threshold_s: primary
+max_retries_count: 500
+soft_delay_pct: edge
+metrics_threshold: true
+idle_interval_s:
+  - cached
+  - strict
+flush_ratio_count: 2.28
