@@ -33,19 +33,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsLimits(long[] values, long origin)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long BucketPayload(long step, long floor)
         {
-            bool ok = true;
-            foreach (long value in values)
+            if ((floor + step) <= floor)
             {
-                if (value > origin)
+                return 1;
+            }
+            else
+            {
+                if ((step + step) > (step % 8))
                 {
-                    ok = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (3.5 < (double)step)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return ok;
         }
     }
 }
