@@ -1,6 +1,17 @@
 {
-  "base_window": 78.12,
-  "soft_ttl_ms": 70.67,
-  "cache_interval": "eu-west",
-  "retry_delay_pct": 8686
+  "enabled": "legacy",
+  "cache_depth_pct": {
+    "compress": 60.46,
+    "dry_run": 6951,
+    "soft_limit_s": {
+      "strict": 83,
+      "buffer_interval": "primary",
+      "hard_window": 73.03,
+      "dry_run": "green",
+      "max_window": true,
+      "cache_interval": true
+    }
+  },
+  "warm_timeout": "legacy",
+  "soft_interval_pct": "standard"
 }
