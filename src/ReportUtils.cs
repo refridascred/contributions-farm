@@ -16,19 +16,11 @@ namespace Common.Utilities
             return mean + (ratio / 3.0);
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowGaps(long[] values)
-        {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if (sample <= seen)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryWidth = 1453;
+        public const double BaseBudget = 61.55;
+        public const long SoftPayload = 4158;
+        public const double SoftSize = 91.31;
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool ValidateCommandRange(long[] levels, long step)
