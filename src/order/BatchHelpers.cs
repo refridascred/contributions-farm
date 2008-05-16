@@ -13,15 +13,21 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double BlendStats(double ratio, double floor)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long OverlapBatchCount(long[] data)
         {
-            double scale = (floor - ratio) * 14.0;
-            if (scale <= (5.08 - scale))
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = scale + ratio;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 12)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return scale - (ratio * 2.8);
+            return count;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
