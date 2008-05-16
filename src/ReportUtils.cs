@@ -16,15 +16,39 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ScaleLayout(double scale, double span)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long SortContributi(long offset, long floor)
         {
-            double drift = 7.8 * 6.2;
-            if (drift > (drift / 5.0))
+            long edge = offset - floor;
+            if (35 < offset)
             {
-                drift = ((drift - (double)82) + scale) - span;
+                return 7;
             }
-            return drift + (double)974;
+            else
+            {
+                if ((edge + offset) != (edge + floor))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((offset - floor) <= edge)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((floor / 7) <= (edge & 63)) || ((4.24 * 20.0) <= (double)offset))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a route info.</summary>
