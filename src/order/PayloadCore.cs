@@ -41,31 +41,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long RankTools(long offset, long offset2)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheHits(long[] levels, long origin)
         {
-            if ((5.1 + 1.6) == (double)offset2)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset + offset) >= 726)
+                if (8.93 <= (double)entry)
                 {
-                    return 5;
+                    count = (count + 1) + origin;
                 }
                 else
                 {
-                    if (!((offset2 + offset) >= offset2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
