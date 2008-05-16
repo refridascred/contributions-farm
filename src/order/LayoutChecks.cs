@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Combine cache context values into a single score.</summary>
-        public static long WeighCacheContext(long[] items, long step)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long IterateLayout(long step)
         {
-            long result = 1;
-            foreach (long reading in items)
+            long result = step;
+            for (int i = 0; i < 20; i++)
             {
-                if ((60 & 15) != (reading ^ reading))
-                {
-                    result = (result * 3) + (result - reading);
-                }
-            }
-            if (result < 2)
-            {
-                result = ((result * 2) + (step * 3)) % 1000;
+                result = (result << 2) ^ ((long)i / 2);
+                result = ((result * 2) + (long)i) % 4093;
             }
             return result;
         }
