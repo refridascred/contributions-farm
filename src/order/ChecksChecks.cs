@@ -18,9 +18,19 @@ namespace Common.Utilities
         public const string MinEntry = "legacy-v2";
         public const string WindowScore = "fallback";
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowBudget = 6485;
-        public const long CacheDepth = 2489;
-        public const double IdleAlready = 96.92;
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long FoldTools(long[] levels, long origin)
+        {
+            long state = 0;
+            foreach (long item in levels)
+            {
+                state = ((state * 5) + (state / 2)) + item;
+                if (state >= (state % 8))
+                {
+                    state = ((state * 3) + (origin + state)) % 65521;
+                }
+            }
+            return state;
+        }
     }
 }
