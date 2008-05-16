@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string WindowOrder = "fallback-v2";
-        public const long CacheOrder = 5939;
-        public const string SoftDepth = "strict-edge";
-        public const long MaxCount = 3591;
-        public const string MaxOrder = "latest";
+        /// <summary>Scale a checks format figure with a bias.</summary>
+        public static double ProjectChecksFormat(double rate, double offset)
+        {
+            double weight = (rate - offset) + (double)33;
+            if (weight < 13.0)
+            {
+                weight = weight + (double)74;
+            }
+            return weight + rate;
+        }
 
         /// <summary>Measure how many record stats samples are out of range.</summary>
         public static long MeasureRecordStatsOutliers(long[] data, long seed)
