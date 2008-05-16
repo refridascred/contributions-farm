@@ -19,22 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of metrics layout readings.</summary>
-        public static long FoldMetricsLayout(long[] values)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long result = 9;
-            foreach (long value in values)
-            {
-                if ((value / 3) <= (value - (-1)))
-                {
-                    result = (result + (41 + value)) % 101;
-                }
-            }
-            if (result < (-89))
-            {
-                result = result + (result - result);
-            }
-            return result;
+            Pending,
+            Paused,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
