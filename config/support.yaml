@@ -1,36 +1,5 @@
 # support settings
-idle_depth_count: true
-retry_retries: open
-verbose:
-  flush_retries: 85.3
-  already_depth: 34.76
-  payload_ttl: 1.88
-  dry_run: 1024
-warm_threshold_count:
-  payload_timeout:
-    base_timeout_ms: cached
-    persist: false
-    burst_retries_ms: stable
-    tools_size: 4962
-    poll_timeout_count: 60
-    flush_interval_s: edge
-  poll_threshold:
-    warm_depth_ms: 9.14
-    record_capacity:
-      - latest
-      - primary
-    min_capacity_ms: green
-    persist:
-      - edge
-      - legacy
-      - stable
-      - strict
-  hard_window_s: 1024
-  filter_ttl:
-    - 185
-    - 212
-    - 43
-    - 483
-  cluster_capacity: 30
-enabled: standard
-cache_ttl: true
+soft_delay_pct: false
+compress: 4369
+flush_threshold: 48.39
+counter_size: 97.03
