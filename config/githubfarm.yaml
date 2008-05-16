@@ -1,5 +1,11 @@
 # githubfarm settings
-record_depth: 560
-sync_depth_ms: 6535
-hard_threshold_s: 73.31
-max_ttl: blue
+entry_capacity: false
+max_retries_ms: 51.32
+dry_run: green
+flush_capacity:
+  stats_ratio: false
+  audit: primary
+  burst_timeout: true
+  burst_size_ms: 9945
+  batch_window: legacy
+verbose: 96.13
