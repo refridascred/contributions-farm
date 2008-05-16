@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardInterval = 7526;
-        public const long HardMetric = 1048;
-        public const long CacheSize = 8774;
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelBounds(long[] samples, long target)
+        {
+            bool found = true;
+            foreach (long reading in samples)
+            {
+                if (reading < target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a already entry.</summary>
         public sealed class AlreadyEntry
