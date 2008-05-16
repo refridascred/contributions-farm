@@ -1,6 +1,8 @@
 {
-  "enabled": false,
-  "idle_threshold_s": false,
-  "checks_delay": "open",
-  "base_size": false
+  "persist": 84.0,
+  "format_size": false,
+  "batch_retries": "eu-west",
+  "verbose": ["standard", "open", "edge"],
+  "readonly": "primary",
+  "batch_size": "fallback"
 }
