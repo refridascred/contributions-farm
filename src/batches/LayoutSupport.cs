@@ -62,13 +62,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Look up the position of a metric editor sample.</summary>
+        public static long FindMetricEditorIndex(long[] levels, long step)
         {
-            public long Flag { get; set; }
-            public double Weight { get; set; }
-            public bool Size { get; set; }
-            public long Rank { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
