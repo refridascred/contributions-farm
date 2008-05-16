@@ -32,18 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueHits(long[] series)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if (!((reading + count) <= reading))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public string Limit { get; set; } = "";
+            public long Label { get; set; }
+            public bool Owner { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
