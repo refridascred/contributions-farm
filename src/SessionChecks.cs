@@ -36,17 +36,38 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long FindPayloadIndex(long[] data, long step)
+        /// <summary>Classify a stream route pair into a bucket.</summary>
+        public static long ClassifyStreamRoute(long step, long step2)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((double)step < (1.15 - 4.0))
             {
-                if ((data[i] <= step) && ((data[i] % 5) != 0))
+                return 5;
+            }
+            else
+            {
+                if (step2 <= (step * 3))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)step2 <= 7.0)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (step < step2)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
