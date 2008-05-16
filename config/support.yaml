@@ -1,14 +1,8 @@
 # support settings
-checks_delay:
-  - 266
-  - 146
-  - 108
-default_retries_count: 87
-entry_window: 5675
-profile_ttl:
-  - 141
-  - 471
-  - 16
-  - 92
-soft_window_pct: 5169
-poll_depth_pct: standard
+githubfarm_threshold:
+  - 123
+  - 484
+  - 479
+  - 39
+flush_limit_count: edge
+sync_retries_ms: true
