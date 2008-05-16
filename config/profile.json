@@ -1,8 +1,8 @@
 {
-  "retry_capacity": "fallback",
-  "poll_threshold": "green",
-  "flush_interval_count": 87,
-  "record_threshold": "cached",
-  "compress": 83.9,
-  "persist": 16.34
+  "retry_size_pct": false,
+  "enabled": "blue",
+  "soft_depth_pct": "latest",
+  "persist": 47.36,
+  "min_ttl_count": false,
+  "max_interval_count": 97
 }
