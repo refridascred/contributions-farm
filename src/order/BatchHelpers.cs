@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Match up report samples.</summary>
-        public static long MatchReportCount(long[] samples)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long SeekStatsIndex(long[] values, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (values[i] < target)
                 {
-                    if ((samples[i] + samples[j]) > 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
