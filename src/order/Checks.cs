@@ -63,23 +63,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ProjectNotes(double ratio, double offset)
-        {
-            double drift = offset;
-            if (drift > (drift / 6.0))
-            {
-                drift = drift + 7.3;
-            }
-            else
-            {
-                drift = drift - (double)5;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = drift + (double)(long)i;
-            }
-            return drift - (ratio / 9.0);
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string MinInterval = "standard-edge";
+        public const long CacheNotes = 1490;
+        public const string MinNotes = "staging-edge";
+        public const string DefaultInterval = "staging";
     }
 }
