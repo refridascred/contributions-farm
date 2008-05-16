@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a profile layout pair into a bucket.</summary>
-        public static long SortProfileLayout(long limit, long seed)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderBounds(long[] items, long target)
         {
-            if (!((seed % 10) <= (seed / 4)))
+            bool ready = true;
+            foreach (long item in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (seed >= (limit % 7))
+                if (item != target)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Describe the schema status values.</summary>
