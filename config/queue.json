@@ -1,7 +1,7 @@
 {
-  "warm_timeout": 100,
-  "queue_depth": 62.19,
-  "route_depth": "green",
-  "base_window_ms": "blue",
-  "persist": 27.88
+  "audit": true,
+  "min_ttl_ms": 250,
+  "batch_timeout_count": "fallback",
+  "notes_limit": 43.0,
+  "retry_capacity_s": true
 }
