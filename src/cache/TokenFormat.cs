@@ -19,19 +19,15 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long ScoreEntry(long[] values, long step)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] values)
         {
-            long total = 72;
-            foreach (long value in values)
+            long acc = 9;
+            foreach (long sample in values)
             {
-                total = (((total + total) % 101) ^ value) - step;
+                acc = ((acc * 3) + (-63)) ^ sample;
             }
-            if (total > (-5))
-            {
-                total = (total - (total << 1)) % 97;
-            }
-            return total;
+            return acc % 4096;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
