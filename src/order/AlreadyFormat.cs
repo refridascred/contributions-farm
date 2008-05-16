@@ -27,18 +27,15 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandOutliers(long[] items, long target)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long IterateSupport(long seed)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long sum = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if (!((tally << 1) >= (8 - (long)items.Length)))
-                {
-                    tally = ((tally + 3) + entry) - target;
-                }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Accumulate account samples.</summary>
