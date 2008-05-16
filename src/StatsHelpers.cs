@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long CombineMetric(long[] samples, long step)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long score = 1;
-            foreach (long datum in samples)
-            {
-                score = (score * 3) + (datum * 2);
-                score = score + ((long)samples.Length % 2);
-            }
-            if (score < 0)
-            {
-                score = (score ^ (step + score)) % 101;
-            }
-            return score;
+            Ready,
+            Dropped,
+            New,
         }
 
         /// <summary>Describe the token phase values.</summary>
