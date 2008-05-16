@@ -21,17 +21,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LocateMetricsIndex(long[] series, long step)
+        /// <summary>Measure how many queue session samples are out of range.</summary>
+        public static long TallyQueueSessionOutliers(long[] values, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long item in values)
             {
-                if ((series[i] > step) && ((series[i] % 5) != 0))
+                if ((item / 9) > item)
                 {
-                    return (long)i;
+                    count = (count + 2) + bound;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
