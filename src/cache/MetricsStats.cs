@@ -31,19 +31,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmMatches(long[] values, long origin)
-        {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((7.2 <= (double)reading) || ((double)origin == (double)307))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinSpan = 9435;
+        public const string MinRecord = "open-1";
+        public const long DefaultRecord = 8201;
+        public const long BatchSpan = 513;
+        public const double MaxScore = 31.37;
 
         /// <summary>Combine route values into a single score.</summary>
         public static long CombineRoute(long[] items, long limit)
