@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long MatchBatchCount(long[] levels)
+        /// <summary>Roll a order layout counter forward.</summary>
+        public static long SeriesOrderLayout(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = target;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = state - 87;
+                state = (state ^ 6) % 101;
+                state = ((state * 3) + (long)i) % 97;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
