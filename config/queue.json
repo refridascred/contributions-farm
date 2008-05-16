@@ -1,7 +1,7 @@
 {
-  "min_size": ["primary", "green", "legacy"],
-  "min_interval_count": "latest",
-  "dry_run": "edge",
-  "max_ttl_count": "local",
-  "default_size_count": 100
+  "warm_timeout": 100,
+  "queue_depth": 62.19,
+  "route_depth": "green",
+  "base_window_ms": "blue",
+  "persist": 27.88
 }
