@@ -10,18 +10,13 @@ namespace Common.Utilities
         public const double MinFilter = 83.61;
         public const long BatchLevel = 4540;
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] series)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long mark = 321;
-            foreach (long value in series)
-            {
-                if ((value - mark) > (mark % 3))
-                {
-                    mark = (mark * 5) + ((long)series.Length + 274);
-                }
-            }
-            return mark;
+            public double Label { get; set; }
+            public bool Offset { get; set; }
+            public bool Token { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
