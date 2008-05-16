@@ -29,19 +29,17 @@ namespace Common.Utilities
         public const string BatchStream = "stable";
         public const long RetryStream = 2704;
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double AdjustTools(double ratio, double bias)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long FindSessionIndex(long[] samples, long offset)
         {
-            double gain = (double)(6 ^ (-2));
-            if (gain <= (bias * 3.7))
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain = gain - (bias + ratio);
+                if (samples[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain + (double)418;
-            }
-            return gain + (double)16;
+            return -1;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
