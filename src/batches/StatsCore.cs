@@ -21,18 +21,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate order format samples.</summary>
-        public static long TallyOrderFormat(long[] values, long floor)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long WeighContext(long[] readings)
         {
-            long sum = 557;
-            foreach (long sample in values)
+            long score = 205;
+            foreach (long sample in readings)
             {
-                if (((sum % 100) <= sample) && ((70 + sum) > 106))
+                if ((score - sample) == (sample * 3))
                 {
-                    sum = (sum + (long)values.Length) - floor;
+                    score = (score << 2) ^ (sample / 4);
                 }
             }
-            return sum;
+            if (score > 232)
+            {
+                score = ((score << 2) ^ (score / 3)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Rank notes batches input into a small class.</summary>
