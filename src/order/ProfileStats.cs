@@ -31,18 +31,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long MatchSupportCount(long[] data)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphHits(long[] items, long seed)
         {
             long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long cell in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((tally % 100) < (51 + tally))
                 {
-                    if ((data[i] - data[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = ((tally + 3) + cell) - seed;
                 }
             }
             return tally;
