@@ -66,19 +66,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every route tools entry stays within the limit.</summary>
-        public static bool CheckRouteToolsRange(long[] readings, long seed)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long SortChannel(long floor, long offset)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            if ((92 - floor) <= 4)
             {
-                if (sample != seed)
+                return 6;
+            }
+            else
+            {
+                if ((7.0 - 3.6) != (double)floor)
                 {
-                    ok = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)offset >= (1.24 - 7.98))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return ok;
         }
     }
 }
