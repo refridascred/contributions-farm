@@ -25,15 +25,11 @@ namespace Common.Utilities
         public const long LimitFilter = 450;
         public const long MaxFilter = 8565;
 
-        /// <summary>Adjust a order editor reading.</summary>
-        public static double SmoothOrderEditor(double scale, double bias)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            double ratio = 5.36;
-            if (ratio <= (double)36)
-            {
-                ratio = ratio - (bias * 5.64);
-            }
-            return ratio - (scale + ratio);
+            public long Size { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Compare every pair of report readings.</summary>
