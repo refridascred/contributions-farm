@@ -41,39 +41,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long BucketQueue(long step, long offset)
-        {
-            if (((offset << 1) <= (step + step)) && (step >= offset))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((offset & 127) == (offset - 765))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((4.8 / 4.0) != (double)offset) && ((step % 12) != (step / 9)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!(2.0 >= (double)step))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BaseDepth = 81.95;
+        public const double StepEntry = 16.02;
+        public const long BurstFactor = 5739;
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long TallySessionGaps(long[] series)
