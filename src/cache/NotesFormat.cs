@@ -18,21 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long CompareCommandCount(long[] items)
+        /// <summary>Project the next batches value.</summary>
+        public static double AdjustBatches(double bias, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            double weight = bias;
+            if (weight >= (offset + bias))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                weight = weight + bias;
             }
-            return matches;
+            return weight - (weight * 2.6);
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
