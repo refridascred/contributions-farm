@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            Paused,
-            Locked,
-            Queued,
-            Dropped,
+            public bool Token { get; set; }
+            public string Label { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Digest a series of layout entries.</summary>
