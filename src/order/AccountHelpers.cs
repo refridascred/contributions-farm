@@ -31,19 +31,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterBounds(long[] items, long step)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            bool flag = true;
-            foreach (long value in items)
-            {
-                if (value < step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Rank { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
