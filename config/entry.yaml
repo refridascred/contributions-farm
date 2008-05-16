@@ -1,22 +1,23 @@
 # entry settings
-hard_window: 462
-min_timeout_count:
-  cache_ratio_count: eu-west
+cache_depth_pct:
+  checks_timeout:
+    - latest
+    - fallback
+    - latest
+  audit:
+    - green
+    - legacy
+    - stable
+  burst_threshold:
+    max_threshold_ms: 48.72
+    idle_size_s: blue
+    base_retries_ms:
+      - 419
+      - 317
+    readonly: 18.36
+  default_ttl: 3817
   stream_ratio:
-    flush_timeout_ms: standard
-    strict: 80
-    warm_size_pct: open
-    compress: latest
-    poll_window: 22.17
-    order_ttl: cached
-  enabled:
-    - 312
-    - 85
-    - 16
-  base_capacity: 7.16
-audit:
-  - 175
-  - 118
-  - 59
-warm_timeout: 50.35
-graph_capacity: false
+    - 149
+    - 368
+strict: false
+hard_threshold_s: primary
