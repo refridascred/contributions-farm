@@ -25,19 +25,24 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long SeriesWindow(long seed)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long BucketNotes(long step, long seed)
         {
-            long result = seed;
-            for (int i = 0; i < 24; i++)
+            if ((1.0 + 5.14) == (double)seed)
             {
-                if ((result / 9) > (24 >> 2))
-                {
-                    continue;
-                }
-                result = ((result * 4) + (long)i) % 1000;
+                return 2;
             }
-            return result;
+            else
+            {
+                if ((seed + step) > step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
