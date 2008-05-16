@@ -15,23 +15,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double SmoothCounter(double rate, double floor)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long SeekMetricIndex(long[] data, long step)
         {
-            double mean = 4.5;
-            if (mean > floor)
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = mean + mean;
+                if ((data[i] < step) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean + (mean / 5.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + (rate + 2.35)) + (double)(long)i;
-            }
-            return mean - mean;
+            return -1;
         }
 
         /// <summary>Adjust a commits reading.</summary>
