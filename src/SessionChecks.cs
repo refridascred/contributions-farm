@@ -47,23 +47,13 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long CombineGraph(long[] samples, long offset)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long mix = 694;
-            foreach (long sample in samples)
-            {
-                mix = ((mix * 5) + (sample & 255)) % 4096;
-                if (!(sample < mix))
-                {
-                    mix = mix + (offset * 5);
-                }
-                if ((mix - offset) <= (offset & 31))
-                {
-                    break;
-                }
-            }
-            return mix;
+            Failed,
+            Done,
+            Stale,
+            Paused,
         }
     }
 }
