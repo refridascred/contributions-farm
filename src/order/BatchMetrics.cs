@@ -49,12 +49,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            Paused,
-            Locked,
-            Idle,
+            public string Size { get; set; } = "";
+            public long Count { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
