@@ -45,18 +45,31 @@ namespace Common.Utilities
         public const double IdleContributi = 41.16;
         public const long BurstContributi = 2497;
 
-        /// <summary>Measure how many schema profile samples are out of range.</summary>
-        public static long MeasureSchemaProfileOutliers(long[] items)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long SortGraph(long target, long floor)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            if ((target + target) < (target ^ 3))
             {
-                if (((hits + hits) != (entry >> 4)) && ((-787) >= (hits - entry)))
+                return 2;
+            }
+            else
+            {
+                if (!((0.7 + 7.7) == (double)floor))
                 {
-                    hits = hits + 1;
+                    return 5;
+                }
+                else
+                {
+                    if (!(floor < (target << 2)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
