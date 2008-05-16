@@ -77,18 +77,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelHits(long[] series)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionGaps(long[] samples)
         {
-            long count = 0;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if ((count * 4) >= (45 % 60))
+                if ((double)(long)samples.Length <= (double)seen)
                 {
-                    count = (count + 2) + value;
+                    seen = (seen + 1) + reading;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
