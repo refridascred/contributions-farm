@@ -38,10 +38,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryStats = 5687;
-        public const long RetryTimeout = 2567;
-        public const long SoftStats = 4326;
-        public const double BatchStats = 86.46;
+        /// <summary>Measure how many notes filter samples are out of range.</summary>
+        public static long TallyNotesFilterOutliers(long[] levels)
+        {
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((count >> 4) >= (sample >> 4))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
     }
 }
