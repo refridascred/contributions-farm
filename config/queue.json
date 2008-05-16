@@ -1,6 +1,8 @@
 {
-  "idle_threshold": [480, 302],
-  "batch_capacity": [400, 363],
-  "hard_ttl_pct": false,
-  "flush_threshold": "cached"
+  "editor_window": 8000,
+  "min_retries": "stable",
+  "max_capacity_ms": "legacy",
+  "dry_run": ["latest", "cached", "latest", "open"],
+  "base_interval_count": "latest",
+  "strict": 43
 }
