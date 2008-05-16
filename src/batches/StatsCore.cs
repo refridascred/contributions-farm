@@ -14,22 +14,24 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit contributi support readings against a rule.</summary>
-        public static long TallyContributiSupportGaps(long[] readings)
+        /// <summary>Classify a metrics entry pair into a bucket.</summary>
+        public static long RankMetricsEntry(long offset, long target)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            if (offset >= (target % 97))
             {
-                if (48 <= ((-44) + matches))
+                return 4;
+            }
+            else
+            {
+                if ((target + 4) > (-45))
                 {
-                    matches = (matches + 2) - value;
+                    return 2;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 6;
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the payload kind values.</summary>
