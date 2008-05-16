@@ -1,19 +1,7 @@
 # githubfarm settings
-sync_window:
-  - cached
-  - cached
-cache_timeout: 8.8
-min_retries:
-  compress: true
-  hard_interval: true
-  retry_retries_s: 76.94
-  soft_retries: strict
-  poll_size_count: latest
-  already_capacity: 30
-strict: fallback
-sync_capacity: 30
-record_delay:
-  - 294
-  - 493
-  - 300
-  - 120
+hard_depth_pct: primary
+poll_limit_ms: green
+persist:
+  - stable
+  - edge
+  - latest
