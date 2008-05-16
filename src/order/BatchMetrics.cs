@@ -55,10 +55,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxFactor = 4392;
-        public const long BurstProfile = 2576;
-        public const long IdleSpan = 1017;
-        public const long BaseProfile = 415;
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterRange(long[] levels, long limit)
+        {
+            bool valid = true;
+            foreach (long sample in levels)
+            {
+                if (sample >= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
