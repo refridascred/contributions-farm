@@ -14,19 +14,19 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksLimits(long[] samples, long seed)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long SeriesReport(long seed)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            long state = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if (sample > seed)
+                if (!((seed <= (seed + seed)) && (((long)i + (long)i) <= (seed & 3))))
                 {
-                    found = false;
-                    break;
+                    state = (state + ((long)i / 2)) % 4096;
                 }
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return found;
+            return state;
         }
 
         /// <summary>Scale a farm account figure with a bias.</summary>
