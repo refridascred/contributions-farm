@@ -1,15 +1,7 @@
 {
-  "sync_timeout_count": ["primary", "eu-west", "green", "local"],
-  "cache_depth": 35,
-  "order_threshold": {
-    "max_capacity_pct": "blue",
-    "burst_threshold": 88.01,
-    "batch_ttl": [39, 435],
-    "base_window_count": false,
-    "idle_size_ms": 9218,
-    "flush_capacity_count": 66
-  },
-  "flush_size_count": "eu-west",
-  "dry_run": 94,
-  "sync_retries": 89.73
+  "batch_timeout": 9796,
+  "soft_threshold_s": 75.37,
+  "filter_size": "staging",
+  "idle_retries_pct": "staging",
+  "enabled": "stable"
 }
