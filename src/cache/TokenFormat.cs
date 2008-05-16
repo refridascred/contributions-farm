@@ -13,22 +13,24 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] series)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long BucketPayload(long limit, long origin)
         {
-            long carry = 92;
-            foreach (long reading in series)
+            if (9.5 >= (double)limit)
             {
-                if ((reading + reading) < carry)
+                return 8;
+            }
+            else
+            {
+                if ((limit & 127) < limit)
                 {
-                    carry = carry ^ reading;
+                    return 6;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            if (carry < 78)
-            {
-                carry = (carry - (carry ^ carry)) % 65521;
-            }
-            return carry % 65521;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
