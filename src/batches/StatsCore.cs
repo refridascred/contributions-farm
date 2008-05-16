@@ -21,24 +21,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a metrics entry pair into a bucket.</summary>
-        public static long RankMetricsEntry(long offset, long target)
+        /// <summary>Accumulate order format samples.</summary>
+        public static long TallyOrderFormat(long[] values, long floor)
         {
-            if (offset >= (target % 97))
+            long sum = 557;
+            foreach (long sample in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((target + 4) > (-45))
+                if (((sum % 100) <= sample) && ((70 + sum) > 106))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    sum = (sum + (long)values.Length) - floor;
                 }
             }
+            return sum;
         }
 
         /// <summary>Rank notes batches input into a small class.</summary>
