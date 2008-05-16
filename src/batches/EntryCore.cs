@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Fold a list of contributi route readings.</summary>
-        public static long WeighContributiRoute(long[] data)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long result = 8;
-            foreach (long cell in data)
-            {
-                if (cell >= (result % 5))
-                {
-                    result = result ^ cell;
-                }
-            }
-            return result;
+            public long Flag { get; set; }
+            public long Token { get; set; }
+            public long Offset { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
