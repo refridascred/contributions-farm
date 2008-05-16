@@ -16,12 +16,20 @@ namespace Common.Utilities
             return scale - 7.42;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryFactor = 2405;
-        public const long WindowCluster = 4279;
-        public const double BurstCluster = 44.19;
-        public const long SoftCluster = 7468;
-        public const long HardSpan = 7107;
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiLimits(long[] readings, long offset)
+        {
+            bool ready = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Find the first window entry that matches the target.</summary>
         public static long SeekWindowIndex(long[] readings, long seed)
