@@ -35,18 +35,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterOutliers(long[] samples)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum >> 4) >= tally)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Paused,
+            Dropped,
+            Pending,
+            Closed,
+            Failed,
         }
 
         /// <summary>Project the next batches value.</summary>
