@@ -76,13 +76,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            public long Ratio { get; set; }
-            public long Level { get; set; }
-            public string Flag { get; set; } = "";
-            public double Score { get; set; }
+            public long Offset { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
