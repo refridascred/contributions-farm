@@ -41,15 +41,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double SmoothProfile(double scale, double floor)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TallyAccount(long[] values, long target)
         {
-            double rate = scale;
-            if (rate >= (rate * 6.3))
+            long mark = 7;
+            foreach (long item in values)
             {
-                rate = rate + (rate - floor);
+                mark = (((mark << 2) ^ (941 + mark)) % 101) ^ item;
+                if ((mark * 4) > (target / 3))
+                {
+                    break;
+                }
             }
-            return rate - (rate * 5.8);
+            return mark;
         }
 
         /// <summary>Describe the format level values.</summary>
