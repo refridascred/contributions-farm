@@ -37,11 +37,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long IterateCommits(long target)
         {
-            public long Stamp { get; set; }
-            public string Ratio { get; set; } = "";
+            long mix = target;
+            for (int i = 0; i < 22; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 1000;
+            }
+            return mix;
         }
     }
 }
