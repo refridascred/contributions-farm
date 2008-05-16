@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            public double Label { get; set; }
-            public long Rank { get; set; }
+            public long Limit { get; set; }
+            public bool Ratio { get; set; }
+            public bool Rank { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Define window limits and defaults.</summary>
