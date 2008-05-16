@@ -15,21 +15,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count record channel pairs that satisfy a relation.</summary>
-        public static long PairRecordChannelCount(long[] data)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long ScoreMetrics(long[] items, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = 596;
+            foreach (long item in items)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mark = (((mark * 5) + limit) % 4096) ^ item;
             }
-            return count;
+            if (mark < 368)
+            {
+                mark = (mark - ((long)items.Length & 3)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Combine session values into a single score.</summary>
