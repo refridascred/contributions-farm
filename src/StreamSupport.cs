@@ -29,23 +29,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ScaleCommits(double bias, double bias2)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowBounds(long[] items, long offset)
         {
-            double mean = bias / 6.0;
-            if (mean < bias2)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                mean = mean - (double)36;
+                if (reading >= offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean + (bias2 - mean);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - (bias + bias2)) - (double)(long)i;
-            }
-            return mean + bias2;
+            return ok;
         }
     }
 }
