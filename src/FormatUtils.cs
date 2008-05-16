@@ -51,19 +51,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandBounds(long[] samples, long bound)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            bool flag = true;
-            foreach (long value in samples)
-            {
-                if (value < bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Label { get; set; }
+            public bool Score { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Hold a stream stats.</summary>
