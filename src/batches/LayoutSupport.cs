@@ -27,12 +27,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            Idle,
-            Stale,
-            Paused,
+            public long Owner { get; set; }
+            public double Score { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Accumulate context samples.</summary>
