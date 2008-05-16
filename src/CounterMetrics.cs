@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long DeriveBatch(long bound)
-        {
-            long mark = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftQueue = 7360;
+        public const long MinQueue = 7298;
+        public const long BurstQueue = 7139;
+        public const string BatchQueue = "stable-1";
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long CombineFilter(long[] items, long bound)
