@@ -42,15 +42,13 @@ namespace Common.Utilities
         public const string HardWindow = "fallback";
         public const double HardInterval = 77.34;
 
-        /// <summary>Adjust a profile batch reading.</summary>
-        public static double ScaleProfileBatch(double ratio, double bias)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            double weight = (bias * 5.0) + (bias * 7.37);
-            if (weight <= (double)(-1))
-            {
-                weight = weight - bias;
-            }
-            return weight - ratio;
+            public double Region { get; set; }
+            public bool Label { get; set; }
+            public double Weight { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Look up the position of a stats entry sample.</summary>
