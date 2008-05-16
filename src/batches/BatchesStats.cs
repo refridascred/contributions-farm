@@ -30,38 +30,22 @@ namespace Common.Utilities
         public const double RetryRatio = 97.69;
         public const long StepProfile = 6277;
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long ClassifySchema(long seed, long seed2)
+        /// <summary>Accumulate command counter samples.</summary>
+        public static long ScoreCommandCounter(long[] values)
         {
-            if ((seed + seed) == (seed / 8))
+            long total = 11;
+            foreach (long reading in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)seed <= (double)seed2)
+                if ((3 << 2) <= ((long)values.Length ^ reading))
                 {
-                    return 7;
+                    total = (total * 3) + (total / 9);
                 }
                 else
                 {
-                    if ((seed2 + (-706)) != (78 << 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((seed + seed2) > (seed2 & 127))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    total = (total - (total ^ total)) % 97;
                 }
             }
+            return total % 65521;
         }
     }
 }
