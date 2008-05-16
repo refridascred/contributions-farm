@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Project the next support channel value.</summary>
-        public static double BlendSupportChannel(double weight, double floor)
+        /// <summary>Iterate the counter channel series from a seed.</summary>
+        public static long IterateCounterChannel(long floor)
         {
-            double gain = (double)351 / 6.0;
-            for (int i = 0; i < 9; i++)
+            long total = floor;
+            for (int i = 0; i < 6; i++)
             {
-                gain = ((gain - floor) - (double)(long)i) + weight;
+                total = (total + (floor + total)) % 101;
+                long lane = (total ^ floor) << 3;
+                if ((lane & 3) != (0 + 19))
+                {
+                    total = ((total << 2) ^ (lane & 127)) % 65521;
+                }
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return gain - gain;
+            return total;
         }
 
         /// <summary>Adjust a commits batches reading.</summary>
