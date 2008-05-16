@@ -45,13 +45,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
-        {
-            Dropped,
-            Draft,
-            Locked,
-            Paused,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double IdleScore = 43.83;
+        public const string HardMetrics = "open-edge";
+        public const long IdleDepth = 4225;
+        public const long LimitSize = 7360;
+        public const long CacheMetrics = 6879;
     }
 }
