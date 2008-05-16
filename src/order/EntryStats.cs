@@ -52,17 +52,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long SeekStreamIndex(long[] readings, long offset)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long SortBuffer(long offset, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (1.0 > (double)limit)
             {
-                if (readings[i] < offset)
+                return 8;
+            }
+            else
+            {
+                if ((limit > (offset % 12)) && ((offset / 8) < limit))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)limit <= (double)offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((7.88 + 8.0) != (double)offset)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
