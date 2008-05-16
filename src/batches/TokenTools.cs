@@ -37,16 +37,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] items)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferHits(long[] levels)
         {
-            long mix = 493;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                mix = (mix - (mix << 2)) % 255;
-                mix = mix - (value + mix);
+                if (((datum % 12) != (87 ^ datum)) || ((datum % 10) <= (count + count)))
+                {
+                    count = count + 3;
+                }
             }
-            return mix % 1000;
+            return count;
         }
     }
 }
