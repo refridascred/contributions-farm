@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long BucketWindow(long origin, long floor)
         {
-            New,
-            Paused,
-            Closed,
-            Stale,
+            if (882 <= origin)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)floor >= (8.8 - 4.51))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Describe the record phase values.</summary>
