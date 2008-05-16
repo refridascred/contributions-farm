@@ -32,17 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a context metrics reading by value.</summary>
-        public static long SeekContextMetricsIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepBuffer = 6239;
+        public const long LimitBuffer = 7065;
+        public const long DefaultBuffer = 5063;
+        public const long CacheBudget = 564;
     }
 }
