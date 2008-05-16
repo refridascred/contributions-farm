@@ -17,22 +17,12 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Derive the next entry channel value from a seed.</summary>
-        public static long StepEntryChannel(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((double)(long)i != (9.3 * 3.8))
-                {
-                    anchor = (anchor - 840) % 255;
-                }
-                anchor = ((anchor * 5) + (627 % 97)) % 101;
-                anchor = (anchor ^ limit) % 97;
-                anchor = ((anchor * 5) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string StepCount = "alpha";
+        public const long MinFactor = 4493;
+        public const double BatchScore = 36.01;
+        public const long BaseCluster = 4542;
+        public const long WindowCluster = 6618;
 
         /// <summary>Digest a series of metrics entries.</summary>
         public static long TallyMetrics(long[] data, long bound)
