@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricHits(long[] samples)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsOutliers(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if (6.4 > (double)hits)
+                if (((5 - seen) <= (origin - origin)) && ((origin + seen) > entry))
                 {
-                    hits = (hits + 1) ^ item;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Fold a list of profile stats readings.</summary>
