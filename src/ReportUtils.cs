@@ -41,16 +41,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Roll a cache farm counter forward.</summary>
-        public static long RollCacheFarm(long bound)
-        {
-            long anchor = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string BatchSpan = "standard-edge";
+        public const string SoftRecord = "local-1";
+        public const double RetryInterval = 28.14;
+        public const long BaseRecord = 2314;
+        public const string StepRecord = "latest-edge";
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long RetryDepth = 7405;
