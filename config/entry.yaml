@@ -1,4 +1,15 @@
 # entry settings
-commits_size: 43.55
-poll_ratio_count: cached
-filter_retries: 43
+hard_size: 62.78
+sync_threshold_pct:
+  burst_timeout_ms:
+    strict:
+      - eu-west
+      - stable
+      - standard
+    window_ttl: latest
+    token_timeout: true
+  dry_run: 60
+  flush_threshold_ms: true
+audit: true
+batch_interval: open
+burst_threshold: latest
