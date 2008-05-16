@@ -35,18 +35,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueMatches(long[] data, long origin)
+        /// <summary>Measure how many session route samples are out of range.</summary>
+        public static long CountSessionRouteGaps(long[] levels)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if (!(matches <= (42 / 3)))
+                if (!((((long)levels.Length - 39) >= cell) && ((tally & 7) < (387 + tally))))
                 {
-                    matches = ((matches + 1) ^ item) + origin;
+                    tally = tally + 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the metric kind values.</summary>
