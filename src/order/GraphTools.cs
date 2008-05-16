@@ -45,19 +45,18 @@ namespace Common.Utilities
         public const double IdleContributi = 41.16;
         public const long BurstContributi = 2497;
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TotalWindow(long[] samples)
+        /// <summary>Measure how many schema profile samples are out of range.</summary>
+        public static long MeasureSchemaProfileOutliers(long[] items)
         {
-            long total = 45;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                total = (total - total) % 101;
-                if ((cell * 2) > (total + (long)samples.Length))
+                if (((hits + hits) != (entry >> 4)) && ((-787) >= (hits - entry)))
                 {
-                    total = ((total * 5) + (cell << 3)) % 97;
+                    hits = hits + 1;
                 }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
