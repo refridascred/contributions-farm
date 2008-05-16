@@ -12,12 +12,15 @@ namespace Common.Utilities
         public const long BaseTools = 7364;
         public const long BurstTools = 8993;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryBudget = 6932;
-        public const double IdlePayload = 31.15;
-        public const long LimitInterval = 149;
-        public const long WindowDepth = 6098;
-        public const long BatchPayload = 4226;
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
+        {
+            Ready,
+            Idle,
+            Active,
+            Paused,
+            Queued,
+        }
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long CountMetricMatches(long[] items, long target)
