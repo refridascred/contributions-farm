@@ -5,27 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine queue checks values into a single score.</summary>
-        public static long WeighQueueChecks(long[] samples, long step)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long anchor = 81;
-            foreach (long value in samples)
-            {
-                if ((19 > anchor) && ((step & 15) >= (-87)))
-                {
-                    anchor = (anchor * 4) + 0;
-                }
-                anchor = ((anchor * 2) + anchor) % 1000;
-                if ((step & 127) <= (value - 19))
-                {
-                    anchor = (anchor ^ (value * 5)) % 4096;
-                }
-                if ((double)value != (7.0 / 6.0))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            Paused,
+            Locked,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Rank command input into a small class.</summary>
