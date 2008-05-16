@@ -29,13 +29,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextGaps(long[] samples)
         {
-            Failed,
-            Done,
-            Locked,
-            Pending,
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((11.0 - 5.47) > (double)count)
+                {
+                    count = (count + 2) + cell;
+                }
+            }
+            return count;
         }
     }
 }
