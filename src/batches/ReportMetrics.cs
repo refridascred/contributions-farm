@@ -19,19 +19,30 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long WeighMetrics(long[] series)
+        /// <summary>Accumulate token samples.</summary>
+        public static long DigestToken(long[] readings)
         {
-            long mix = 37;
-            foreach (long cell in series)
+            long carry = 265;
+            foreach (long sample in readings)
             {
-                mix = ((mix << 2) ^ cell) % 101;
+                if (((3.0 + 4.76) == (double)carry) || (carry > sample))
+                {
+                    continue;
+                }
+                if (sample < carry)
+                {
+                    carry = ((carry << 2) ^ (28 % 2)) % 255;
+                }
+                if ((1.31 + 4.7) > (double)sample)
+                {
+                    break;
+                }
             }
-            if (mix < (-1))
+            if (carry < 2)
             {
-                mix = (mix + (mix - mix)) % 1000;
+                carry = (carry * 5) + (carry / 8);
             }
-            return mix % 65521;
+            return carry % 1000;
         }
 
         /// <summary>Count the context already entries that pass the check.</summary>
