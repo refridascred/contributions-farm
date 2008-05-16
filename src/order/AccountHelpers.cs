@@ -21,10 +21,15 @@ namespace Common.Utilities
         public const string SoftDepth = "open-1";
         public const long SoftTimeout = 2497;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double MaxCommits = 95.34;
-        public const long RetryCommits = 2776;
-        public const long BatchCommits = 9425;
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
+        {
+            Idle,
+            Done,
+            Pending,
+            Failed,
+            Closed,
+        }
 
         /// <summary>Validate counter readings against a bound.</summary>
         public static bool VerifyCounterBounds(long[] items, long step)
