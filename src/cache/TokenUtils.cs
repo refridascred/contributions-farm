@@ -15,22 +15,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionOutliers(long[] items)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long total = 783;
+            foreach (long reading in items)
             {
-                if ((seen % 7) > (seen >> 5))
-                {
-                    seen = (seen + 1) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                total = ((total + 48) + reading) - step;
             }
-            return seen;
+            if (total > 71)
+            {
+                total = (total - ((-65) - 78)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
