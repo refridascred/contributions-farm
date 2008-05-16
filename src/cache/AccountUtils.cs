@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the graph token entries that pass the check.</summary>
-        public static long AuditGraphTokenHits(long[] readings, long bound)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long RankWindow(long origin, long bound)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            if ((2.0 - 8.8) < (double)bound)
             {
-                if (matches < (reading % 3))
+                return 4;
+            }
+            else
+            {
+                if ((double)bound > (5.82 * 10.0))
                 {
-                    matches = (matches + 1) - bound;
+                    return 1;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 3;
                 }
             }
-            return matches;
         }
 
         /// <summary>Digest a series of command entries.</summary>
