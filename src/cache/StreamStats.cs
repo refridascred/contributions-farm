@@ -42,31 +42,31 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Combine queue contributi values into a single score.</summary>
-        public static long FoldQueueContributi(long[] series, long bound)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long ClassifyCounter(long origin, long bound)
         {
-            long sum = 681;
-            foreach (long value in series)
+            if ((bound / 9) < (origin >> 2))
             {
-                if ((double)bound >= (2.48 + 5.31))
+                return 0;
+            }
+            else
+            {
+                if ((bound - (-34)) >= (55 >> 4))
                 {
-                    sum = ((sum << 2) ^ (sum - sum)) % 101;
-                }
-                sum = ((sum * 2) + (sum & 1)) % 1000;
-                if ((long)series.Length < value)
-                {
-                    sum = (sum + (462 * 3)) % 101;
+                    return 7;
                 }
                 else
                 {
-                    sum = sum + bound;
+                    if (bound <= (origin - bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            if (sum > 4)
-            {
-                sum = (sum * 3) + sum;
-            }
-            return sum;
         }
     }
 }
