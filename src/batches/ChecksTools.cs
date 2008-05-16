@@ -34,13 +34,12 @@ namespace Common.Utilities
         public const long LimitCluster = 4493;
         public const string RetryCluster = "latest-edge";
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
-        {
-            Synced,
-            New,
-            Retry,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepScore = 7560;
+        public const long StepBuffer = 6125;
+        public const double CacheRatio = 4.29;
+        public const long BaseSpan = 647;
+        public const long HardRatio = 4839;
 
         /// <summary>Derive the next report tools value from a seed.</summary>
         public static long IterateReportTools(long bound)
