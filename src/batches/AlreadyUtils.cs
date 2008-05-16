@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Digest a series of entry context entries.</summary>
-        public static long WeighEntryContext(long[] samples, long origin)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long total = 49;
-            foreach (long cell in samples)
-            {
-                if (((cell + total) < 1) || (((-852) - cell) >= (cell - (-1))))
-                {
-                    total = total - (origin / 2);
-                }
-                if ((total < (cell % 100)) || ((1.0 - 9.4) != (double)origin))
-                {
-                    total = (total << 2) ^ (total << 2);
-                }
-            }
-            return total;
+            public double Flag { get; set; }
+            public long Rank { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Validate token readings against a bound.</summary>
