@@ -31,13 +31,32 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Rank account input into a small class.</summary>
+        public static long ClassifyAccount(long origin, long step)
         {
-            public bool Rank { get; set; }
-            public long Size { get; set; }
-            public long Score { get; set; }
-            public string Mode { get; set; } = "";
+            long slot = origin - step;
+            if (((step - slot) <= (step + slot)) || ((slot << 3) <= (origin + slot)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((slot + (-437)) != (slot - (-952)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (step <= (step + slot))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
