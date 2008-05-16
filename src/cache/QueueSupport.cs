@@ -16,15 +16,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportHits(long[] readings)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long MatchOrderCount(long[] series)
         {
             long hits = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry > hits)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((series[i] + series[j]) > 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
