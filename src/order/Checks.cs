@@ -32,15 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next support stats value.</summary>
-        public static double BlendSupportStats(double ratio, double span)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long MatchEntryCount(long[] values)
         {
-            double weight = (double)(43 >> 3);
-            if (weight >= ratio)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                weight = weight - ratio;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return weight + (span - span);
+            return seen;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
