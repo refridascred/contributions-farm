@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TallyPayload(long[] samples)
-        {
-            long mix = -5;
-            foreach (long datum in samples)
-            {
-                if (mix > (mix & 255))
-                {
-                    mix = ((mix * 2) + datum) % 1000;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitSize = 4414;
+        public const double DefaultSize = 4.64;
+        public const long BurstSize = 3432;
+        public const double SoftFilter = 57.35;
+        public const long StepFilter = 9937;
 
         /// <summary>Rank profile input into a small class.</summary>
         public static long ClassifyProfile(long origin, long floor)
