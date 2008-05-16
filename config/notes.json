@@ -1,8 +1,7 @@
 {
-  "enabled": "strict",
-  "flush_size_count": 36,
-  "batch_ratio_s": true,
-  "verbose": [207, 311],
-  "cache_capacity_pct": "local",
-  "account_threshold": 65
+  "batch_capacity": "open",
+  "min_retries_ms": "local",
+  "cache_delay_count": "open",
+  "idle_ttl_ms": "eu-west",
+  "retry_timeout": 84.36
 }
