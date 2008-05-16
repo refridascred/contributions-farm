@@ -45,12 +45,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Measure how many stream cache samples are out of range.</summary>
+        public static long MeasureStreamCacheGaps(long[] samples, long bound)
         {
-            public long Weight { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Ratio { get; set; }
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((((bound + matches) == (sample + bound)) || ((matches * 2) >= sample)) && ((double)sample < (11.0 * 4.0)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
