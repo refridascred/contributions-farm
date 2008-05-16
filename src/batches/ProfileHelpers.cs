@@ -16,21 +16,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long IterateGithubfarm(long target)
+        /// <summary>Classify a support report pair into a bucket.</summary>
+        public static long RankSupportReport(long origin, long floor)
         {
-            long result = target;
-            for (int i = 0; i < 24; i++)
+            if ((origin + origin) >= floor)
             {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    result = result - ((long)i2 % 97);
-                    result = result - target;
-                }
-                result = result - result;
-                result = ((result * 5) + (long)i) % 4093;
+                return 0;
             }
-            return result;
+            else
+            {
+                if ((74 & 3) != (origin % 12))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((floor ^ origin) > (floor << 3)) || ((double)floor <= (7.0 + 3.0)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)origin <= (8.1 - 8.0))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
