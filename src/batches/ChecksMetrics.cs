@@ -17,12 +17,22 @@ namespace Common.Utilities
         public const long SoftWindow = 7757;
         public const long MaxWindow = 310;
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueHits(long[] data)
         {
-            Pending,
-            Dropped,
-            Locked,
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (cell >= (cell - cell))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a window record.</summary>
