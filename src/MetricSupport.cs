@@ -11,11 +11,16 @@ namespace Common.Utilities
         public const double BaseFactor = 42.14;
         public const double IdleEditor = 63.74;
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long SeriesFormat(long limit)
         {
-            public string Level { get; set; } = "";
-            public double Score { get; set; }
+            long anchor = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                anchor = (anchor - (anchor >> 1)) % 101;
+                anchor = ((anchor * 2) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the account kind values.</summary>
