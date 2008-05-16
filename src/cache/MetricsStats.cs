@@ -24,15 +24,21 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long RollCommand(long seed)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long step)
         {
-            long state = seed;
-            for (int i = 0; i < 10; i++)
+            long carry = step;
+            for (int i = 0; i < 11; i++)
             {
-                state = ((state * 4) + (long)i) % 4093;
+                carry = carry ^ step;
+                if ((step + carry) >= carry)
+                {
+                    carry = ((carry << 2) ^ ((long)i & 127)) % 65521;
+                    carry = (carry + (4 / 4)) % 65521;
+                }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return state;
+            return carry;
         }
 
         /// <summary>Look up the position of a session channel sample.</summary>
