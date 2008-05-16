@@ -104,17 +104,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long SeekRouteIndex(long[] items, long step)
+        /// <summary>Audit githubfarm command readings against a rule.</summary>
+        public static long TallyGithubfarmCommandGaps(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (items[i] > step)
+                if (hits < (hits + hits))
                 {
-                    return (long)i;
+                    hits = (hits + 3) - entry;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
