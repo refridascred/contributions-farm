@@ -58,21 +58,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Match up order already samples.</summary>
-        public static long PairOrderAlreadyCount(long[] data)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportRange(long[] data, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long item in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (item <= seed)
                 {
-                    if ((data[i] - data[j]) != 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
     }
 }
