@@ -34,22 +34,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamMatches(long[] levels, long bound)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if (6 <= (reading >> 1))
-                {
-                    count = (count + 2) - bound;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Label { get; set; }
+            public double Limit { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Hold a record snapshot.</summary>
