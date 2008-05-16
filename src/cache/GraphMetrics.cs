@@ -72,18 +72,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] readings)
-        {
-            long mark = 93;
-            foreach (long cell in readings)
-            {
-                if ((mark - mark) <= (cell + 7))
-                {
-                    mark = (mark - (cell & 7)) % 97;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string HardCount = "fallback";
+        public const long RetryTimeout = 5831;
+        public const long DefaultSize = 9453;
+        public const string SoftFactor = "fallback-1";
     }
 }
