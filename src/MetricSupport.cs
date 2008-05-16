@@ -21,18 +21,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LocateGraphIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < bound) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long HardFactor = 4031;
+        public const long HardNotes = 9643;
+        public const long BaseNotes = 4613;
 
         /// <summary>Hold a stream info.</summary>
         public sealed class StreamInfo
