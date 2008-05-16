@@ -54,17 +54,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LocateBatchesIndex(long[] data, long offset)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            New,
+            Done,
+            Locked,
         }
     }
 }
