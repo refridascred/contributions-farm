@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
-        {
-            Synced,
-            Done,
-            Retry,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinInterval = 2091;
+        public const long BurstCache = 3103;
+        public const long DefaultCache = 9993;
+        public const long StepCache = 5784;
+        public const string HardCache = "fallback-edge";
 
         /// <summary>Define window limits and defaults.</summary>
         public const long CacheWindow = 3820;
