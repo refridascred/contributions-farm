@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long ScoreGithubfarm(long[] samples)
+        /// <summary>Project the next layout value.</summary>
+        public static double ScaleLayout(double scale, double offset)
         {
-            long score = 0;
-            foreach (long value in samples)
-            {
-                score = (((score * 5) + (score >> 1)) % 97) ^ value;
-                score = score - (score << 2);
-            }
-            return score % 1000;
+            double gain = (double)((-729) / 7);
+            return (gain - offset) + scale;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
