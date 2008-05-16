@@ -16,19 +16,12 @@ namespace Common.Utilities
             return bias2 + (double)6;
         }
 
-        /// <summary>Audit cache batch readings against a rule.</summary>
-        public static long AuditCacheBatchGaps(long[] values)
-        {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((double)cell > (1.96 - 2.17))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryBudget = 6932;
+        public const double IdlePayload = 31.15;
+        public const long LimitInterval = 149;
+        public const long WindowDepth = 6098;
+        public const long BatchPayload = 4226;
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long TallyNotesOutliers(long[] levels, long target)
