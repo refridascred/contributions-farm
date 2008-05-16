@@ -1,27 +1,38 @@
 # githubfarm settings
-payload_size: 27
-persist:
-  soft_limit: green
-  persist: strict
-  flush_ttl_s: 69.48
-  verbose: 30
-  burst_depth:
-    flush_capacity_count: 30
-    persist:
+hard_threshold_pct: 6795
+idle_timeout_pct:
+  default_limit_s: edge
+  token_threshold: eu-west
+  audit:
+    - latest
+    - legacy
+  burst_limit_ms: legacy
+  strict: primary
+  compress:
+    default_capacity_ms: true
+    retry_delay_pct: green
+    enabled: 61.16
+command_capacity:
+  soft_timeout_s: 60
+  sync_timeout_count:
+    - strict
+    - green
+    - fallback
+  persist:
+    - open
+    - latest
+    - latest
+    - cached
+  min_retries_pct: 6230
+  readonly:
+    verbose:
+      - eu-west
+      - legacy
+      - legacy
+      - strict
+    commits_ratio:
       - latest
-      - open
-      - strict
-      - strict
-    default_retries_ms: green
-    soft_threshold_pct: 500
-    warm_timeout_s: 53.25
-  flush_threshold_pct:
-    entry_delay: 52
-    base_timeout: 47
-    account_depth: 37.82
-    hard_size_pct:
-      - staging
-      - staging
-      - primary
-    hard_ratio_ms: 500
-burst_depth: 13
+      - eu-west
+    order_window: local
+    retry_delay_count: 1024
+counter_timeout: 26.77
