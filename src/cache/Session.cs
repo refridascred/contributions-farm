@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            public string Total { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Level { get; set; }
+            Active,
+            Dropped,
+            Done,
+            Closed,
+            Ready,
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
