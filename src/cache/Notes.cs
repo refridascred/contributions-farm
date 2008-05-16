@@ -38,19 +38,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteRange(long[] series, long origin)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long SeriesOrder(long floor)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long total = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if (value >= origin)
-                {
-                    stale = false;
-                    break;
-                }
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Blend two batches measurements.</summary>
