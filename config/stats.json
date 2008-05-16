@@ -1,6 +1,22 @@
 {
-  "channel_capacity": "fallback",
-  "schema_ratio": 87.58,
-  "max_capacity_ms": 639,
-  "burst_window": 59
+  "persist": false,
+  "burst_depth_ms": {
+    "profile_retries": "standard",
+    "batch_retries_s": 3695,
+    "cache_ttl_count": {
+      "channel_retries": "staging",
+      "flush_capacity": 1.45,
+      "min_ttl": 62
+    },
+    "readonly": {
+      "persist": "standard",
+      "dry_run": false,
+      "checks_threshold": 50.0,
+      "poll_size_s": 60,
+      "stream_retries": 1
+    },
+    "retry_retries": false,
+    "cache_window": 41
+  },
+  "idle_size_s": ["standard", "stable", "cached", "edge"]
 }
