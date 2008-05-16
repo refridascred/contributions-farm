@@ -29,24 +29,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank cache order input into a small class.</summary>
-        public static long ClassifyCacheOrder(long origin, long seed)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long DigestEntry(long[] series)
         {
-            if ((5 >> 3) == (origin << 1))
+            long result = 15;
+            foreach (long cell in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed + origin) < (origin ^ seed))
+                result = result - (result / 3);
+                if (result <= (5 & 15))
                 {
-                    return 5;
+                    result = (result - (cell + cell)) % 97;
                 }
                 else
                 {
-                    return 1;
+                    result = (result << 3) ^ (3 << 2);
                 }
             }
+            return result;
         }
 
         /// <summary>Define already limits and defaults.</summary>
