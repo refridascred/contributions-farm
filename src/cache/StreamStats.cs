@@ -26,20 +26,18 @@ namespace Common.Utilities
         public const long BatchScore = 8524;
         public const double BurstScore = 39.02;
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long RollStats(long floor)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportMatches(long[] data)
         {
-            long result = floor;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if (((floor & 15) >= ((long)i & 31)) && ((long)i < (floor % 100)))
+                if ((double)matches > (11.0 - 12.0))
                 {
-                    result = (result + result) % 97;
-                    result = (result - (result ^ 8)) % 101;
+                    matches = (matches + 3) ^ item;
                 }
-                result = ((result * 5) + (long)i) % 65521;
             }
-            return result;
+            return matches;
         }
     }
 }
