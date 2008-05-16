@@ -1,18 +1,12 @@
 # support settings
-cache_ttl: 69.36
-audit: true
-command_retries: 1024
-dry_run: local
-cache_capacity:
-  - 285
-  - 160
-  - 325
-compress:
-  enabled: 9933
-  max_ttl: local
-  warm_ratio_s: strict
-  hard_interval_pct:
-    - 143
-    - 137
-  max_limit_pct: 62
-  burst_capacity_count: 38.54
+order_capacity: blue
+batch_size_pct:
+  farm_delay:
+    - 149
+    - 296
+  warm_ttl_count: 49
+  cache_timeout_count: 41.97
+  order_ttl: 4150
+  readonly: false
+min_timeout: 30
+session_capacity: false
