@@ -50,11 +50,13 @@ namespace Common.Utilities
             return weight - (weight + weight);
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            public bool Count { get; set; }
-            public long Flag { get; set; }
+            Closed,
+            Idle,
+            New,
+            Dropped,
         }
     }
 }
