@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Locate a githubfarm counter reading by value.</summary>
-        public static long LookupGithubfarmCounterIndex(long[] readings, long floor)
+        /// <summary>Audit route metric readings against a rule.</summary>
+        public static long AuditRouteMetricHits(long[] values, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if (readings[i] <= floor)
+                if ((long)values.Length <= seed)
                 {
-                    return (long)i;
+                    hits = (hits + 3) + cell;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
