@@ -32,13 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
+            public double Region { get; set; }
+            public string Flag { get; set; } = "";
             public bool Ratio { get; set; }
-            public double Score { get; set; }
-            public long Level { get; set; }
-            public bool Owner { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
