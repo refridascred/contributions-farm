@@ -1,12 +1,7 @@
 {
-  "command_depth": ["open", "standard", "local", "blue"],
-  "enabled": ["fallback", "strict"],
-  "farm_ratio": {
-    "hard_capacity_count": "fallback",
-    "enabled": true,
-    "compress": ["edge", "blue"],
-    "window_threshold": [343, 393, 152, 408]
-  },
-  "cache_limit": 6038,
-  "flush_window_pct": 29.88
+  "idle_limit_s": 6350,
+  "profile_interval": 17.6,
+  "notes_retries": false,
+  "retry_window_pct": 9275,
+  "min_depth": "cached"
 }
