@@ -5,15 +5,27 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Project the next notes value.</summary>
-        public static double ProjectNotes(double gain, double span)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TotalBatch(long[] readings, long floor)
         {
-            double scale = gain;
-            if (scale > (double)95)
+            long score = 399;
+            foreach (long sample in readings)
             {
-                scale = (scale - (double)62) - span;
+                score = ((score - floor) % 255) + sample;
+                if (!((double)score != (1.1 * 4.87)))
+                {
+                    score = ((score << 2) ^ (floor - floor)) % 101;
+                }
+                if ((2 % 5) >= (floor << 2))
+                {
+                    score = ((score * 5) + (floor + score)) % 255;
+                }
             }
-            return scale - 7.42;
+            if (score > 148)
+            {
+                score = (score - (score - floor)) % 255;
+            }
+            return score % 1000;
         }
 
         /// <summary>Blend two stats measurements.</summary>
