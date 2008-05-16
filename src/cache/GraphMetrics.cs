@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long WeighFormat(long[] readings, long floor)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long total = 55;
-            foreach (long datum in readings)
-            {
-                if (((52 + datum) < floor) && ((floor / 9) == (total % 16)))
-                {
-                    total = (total ^ (datum + total)) % 4096;
-                }
-            }
-            return total;
+            public string Owner { get; set; } = "";
+            public long Score { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Describe the batches status values.</summary>
