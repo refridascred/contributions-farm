@@ -36,14 +36,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            Synced,
-            Pending,
-            Failed,
-            Dropped,
-            Idle,
+            public long Owner { get; set; }
+            public long Size { get; set; }
         }
     }
 }
