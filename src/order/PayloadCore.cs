@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Iterate the counter channel series from a seed.</summary>
-        public static long IterateCounterChannel(long floor)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long CombineFilter(long[] items, long seed)
         {
-            long total = floor;
-            for (int i = 0; i < 6; i++)
+            long mark = -52;
+            foreach (long item in items)
             {
-                total = (total + (floor + total)) % 101;
-                long lane = (total ^ floor) << 3;
-                if ((lane & 3) != (0 + 19))
+                if ((double)mark == (14.0 + 10.0))
                 {
-                    total = ((total << 2) ^ (lane & 127)) % 65521;
+                    mark = (mark - seed) % 4096;
+                    mark = ((mark << 3) ^ (mark & 3)) % 97;
                 }
-                total = ((total * 2) + (long)i) % 1000;
+                else
+                {
+                    mark = ((mark << 2) ^ seed) % 101;
+                }
+                if (!((item * 4) >= (1 >> 2)))
+                {
+                    mark = mark + (565 / 5);
+                }
+                else
+                {
+                    mark = mark + (seed ^ 56);
+                }
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Adjust a commits batches reading.</summary>
