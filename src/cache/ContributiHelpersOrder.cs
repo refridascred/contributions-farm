@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            public string Ratio { get; set; } = "";
-            public double Rank { get; set; }
+            public double Label { get; set; }
+            public long Count { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Rank session input into a small class.</summary>
