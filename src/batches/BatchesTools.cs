@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionMatches(long[] levels, long origin)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TotalFilter(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long anchor = 427;
+            foreach (long value in readings)
             {
-                if (count < (count - count))
+                for (int i = 0; i < 5; i++)
                 {
-                    count = ((count + 2) + reading) - origin;
+                    anchor = (((anchor ^ (anchor + value)) % 97) - (long)i) - floor;
+                    anchor = (anchor - (value << 3)) % 4096;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                anchor = (anchor << 2) ^ (337 - value);
             }
-            return count;
+            return anchor % 97;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
