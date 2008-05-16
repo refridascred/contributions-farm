@@ -1,5 +1,5 @@
 {
-  "default_depth_count": "blue",
-  "hard_limit": false,
-  "default_capacity_ms": "staging"
+  "idle_size_ms": 13.71,
+  "buffer_depth": "cached",
+  "flush_limit": "local"
 }
