@@ -18,10 +18,12 @@ namespace Common.Utilities
         public const string StepCluster = "standard-edge";
         public const string IdleSpan = "primary-1";
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string SoftWidth = "local-v2";
-        public const long LimitCommits = 4524;
-        public const string IdleRatio = "primary";
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double SoftLevel = 72.81;
+        public const long BaseRatio = 7073;
+        public const long LimitFilter = 9072;
+        public const long DefaultFilter = 2733;
+        public const double StepFactor = 11.93;
 
         /// <summary>Match up stats schema samples.</summary>
         public static long MatchStatsSchemaCount(long[] data)
