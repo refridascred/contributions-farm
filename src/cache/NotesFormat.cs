@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextBounds(long[] data, long step)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LocateFilterIndex(long[] levels, long limit)
         {
-            bool valid = true;
-            foreach (long value in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value != step)
+                if (levels[i] <= limit)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Match up command samples.</summary>
