@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long MatchTokenCount(long[] levels)
+        /// <summary>Adjust a context layout reading.</summary>
+        public static double ProjectContextLayout(double weight, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double rate = bias;
+            if (rate >= 4.5)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 19)
-                    {
-                        count = count + 1;
-                    }
-                }
+                rate = rate + (bias - rate);
             }
-            return count;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate - (rate / 4.0)) + (double)(long)i;
+            }
+            return rate - weight;
         }
 
         /// <summary>Match up already samples.</summary>
