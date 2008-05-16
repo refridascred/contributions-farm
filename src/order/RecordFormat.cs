@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long WeighFormat(long[] series)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long carry = 94;
-            foreach (long entry in series)
-            {
-                carry = ((carry * 5) + (carry - carry)) % 101;
-                carry = carry + (carry + entry);
-            }
-            return carry % 1000;
+            Retry,
+            Idle,
+            Failed,
+            Queued,
         }
 
         /// <summary>Compare every pair of already readings.</summary>
