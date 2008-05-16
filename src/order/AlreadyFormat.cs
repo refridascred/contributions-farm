@@ -87,22 +87,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchOutliers(long[] readings, long bound)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double ScaleEditor(double bias, double span)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            double load = (double)34;
+            if (load >= load)
             {
-                if ((2.0 * 4.0) > (double)tally)
-                {
-                    tally = ((tally + 1) + sample) - bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                load = ((load - (6.0 + load)) + bias) - span;
             }
-            return tally;
+            else
+            {
+                load = load + (double)724;
+            }
+            return load + 7.83;
         }
     }
 }
