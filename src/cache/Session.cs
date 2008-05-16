@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long WeighBatches(long[] values, long limit)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long score = 924;
-            foreach (long reading in values)
-            {
-                score = (score - (reading - reading)) - limit;
-                score = (score + score) % 4096;
-                if ((reading - reading) != (reading - (long)values.Length))
-                {
-                    break;
-                }
-            }
-            return score;
+            public string Total { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
