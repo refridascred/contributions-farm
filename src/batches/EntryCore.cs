@@ -14,18 +14,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmHits(long[] items, long origin)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((double)origin <= (1.7 + 12.0))
-                {
-                    count = (count + 3) - value;
-                }
-            }
-            return count;
+            public long Total { get; set; }
+            public long Stamp { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Fold a list of format readings.</summary>
