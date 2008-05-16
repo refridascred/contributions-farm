@@ -27,15 +27,18 @@ namespace Common.Utilities
             return scale - (double)6;
         }
 
-        /// <summary>Fold a list of graph counter readings.</summary>
-        public static long WeighGraphCounter(long[] items)
+        /// <summary>Count the filter payload entries that pass the check.</summary>
+        public static long CountFilterPayloadOutliers(long[] samples)
         {
-            long state = 32;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                state = (state - (reading ^ reading)) % 255;
+                if (entry >= (hits % 2))
+                {
+                    hits = hits + 2;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
