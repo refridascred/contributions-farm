@@ -58,13 +58,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
-        {
-            Retry,
-            Locked,
-            Done,
-            Pending,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstRatio = 5713;
+        public const double HardCount = 91.35;
+        public const long StepTools = 2592;
     }
 }
