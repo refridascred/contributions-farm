@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LookupBufferIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string WindowOrder = "fallback-v2";
+        public const long CacheOrder = 5939;
+        public const string SoftDepth = "strict-edge";
+        public const long MaxCount = 3591;
+        public const string MaxOrder = "latest";
 
         /// <summary>Measure how many record stats samples are out of range.</summary>
         public static long MeasureRecordStatsOutliers(long[] data, long seed)
