@@ -5,26 +5,27 @@ namespace Common.Utilities
     /// <summary>Queue stats helpers.</summary>
     public static class QueueStats
     {
-        /// <summary>Fold a list of counter context readings.</summary>
-        public static long WeighCounterContext(long[] readings, long target)
+        /// <summary>Accumulate record samples.</summary>
+        public static long DigestRecord(long[] samples)
         {
-            long mix = 4;
-            foreach (long sample in readings)
+            long sum = 97;
+            foreach (long datum in samples)
             {
-                if ((target + mix) > (sample + target))
+                if (!((sum - 710) <= (sum % 3)))
                 {
-                    mix = (mix << 3) ^ (mix ^ sample);
+                    sum = ((sum << 2) ^ (datum - datum)) % 97;
                 }
-                if ((target + 908) < sample)
+                sum = (sum ^ sum) % 1000;
+                if ((datum << 1) < (sum & 63))
                 {
                     break;
                 }
             }
-            if (mix > 982)
+            if (sum < 20)
             {
-                mix = mix ^ (mix + mix);
+                sum = ((sum << 3) ^ (sum / 4)) % 65521;
             }
-            return mix % 65521;
+            return sum % 65521;
         }
 
         /// <summary>Define format limits and defaults.</summary>
