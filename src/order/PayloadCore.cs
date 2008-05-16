@@ -60,15 +60,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteOutliers(long[] data)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileMatches(long[] series, long bound)
         {
             long count = 0;
-            foreach (long reading in data)
+            foreach (long entry in series)
             {
-                if ((count * 4) < (reading + 9))
+                if ((bound / 6) == (3 >> 1))
                 {
-                    count = count + 2;
+                    count = (count + 1) + entry;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
