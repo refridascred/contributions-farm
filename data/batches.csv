@@ -1,6 +1,6 @@
-id,score,rank
-1,965,6.02
-2,96.04,53.72
-3,17,88
-4,44.55,97.47
-5,18.22,618
+id,count,level
+1,stable,latest
+2,stable,fallback
+3,300,53.16
+4,557,staging
+5,eu-west,39.96
