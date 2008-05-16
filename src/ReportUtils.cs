@@ -27,19 +27,13 @@ namespace Common.Utilities
             return drift + (double)974;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaBounds(long[] values, long seed)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            bool found = true;
-            foreach (long value in values)
-            {
-                if (value > seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Stamp { get; set; }
+            public long Total { get; set; }
+            public bool Region { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
