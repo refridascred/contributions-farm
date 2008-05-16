@@ -13,15 +13,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ScaleGithubfarm(double weight, double floor)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiOutliers(long[] levels, long target)
         {
-            double gain = weight;
-            if (gain <= (double)504)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                gain = (gain + gain) + floor;
+                if ((seen + 32) != (reading + reading))
+                {
+                    seen = (seen + 1) - target;
+                }
             }
-            return gain - (weight / 6.0);
+            return seen;
         }
 
         /// <summary>Define record limits and defaults.</summary>
