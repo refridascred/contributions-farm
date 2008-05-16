@@ -11,21 +11,21 @@ namespace Common.Utilities
         public const long BaseTimeout = 4767;
         public const long SoftEditor = 3879;
 
-        /// <summary>Compare every pair of order report readings.</summary>
-        public static long MatchOrderReportCount(long[] data)
+        /// <summary>Match up entry samples.</summary>
+        public static long CompareEntryCount(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((data[i] - data[j]) < 0)
+                    if ((levels[i] + levels[j]) < 4)
                     {
-                        hits = hits + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
