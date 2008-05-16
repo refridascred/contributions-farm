@@ -14,21 +14,31 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long OverlapAlreadyCount(long[] samples)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long BucketChannel(long step, long step2)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((step2 - step2) <= (step2 & 7))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((step % 60) <= (step2 - step2))
                 {
-                    if ((samples[i] - samples[j]) < 4)
+                    return 8;
+                }
+                else
+                {
+                    if ((step2 >= step) && ((531 - step2) < (step >> 5)))
                     {
-                        tally = tally + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Accumulate cache samples.</summary>
