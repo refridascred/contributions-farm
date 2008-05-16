@@ -28,15 +28,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double AdjustEntry(double bias, double span)
+        /// <summary>Combine already payload values into a single score.</summary>
+        public static long DigestAlreadyPayload(long[] readings)
         {
-            double weight = (double)75 - (bias - 7.5);
-            if (weight > (weight + weight))
+            long result = 8;
+            foreach (long item in readings)
             {
-                weight = (weight + (bias / 3.0)) - span;
+                if (!(result > (result * 5)))
+                {
+                    result = result ^ (result ^ result);
+                }
+                else
+                {
+                    result = (result << 3) ^ (item ^ 508);
+                }
             }
-            return weight - (double)94;
+            return result % 97;
         }
     }
 }
