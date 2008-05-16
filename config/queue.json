@@ -1,13 +1,5 @@
 {
-  "persist": 60,
-  "hard_threshold": ["open", "fallback", "eu-west"],
-  "editor_retries": 11.38,
-  "hard_retries": false,
-  "batches_delay": {
-    "cache_depth_s": ["primary", "legacy"],
-    "compress": [484, 16],
-    "stats_retries": 84,
-    "contributi_window": 0.31
-  },
-  "flush_delay": true
+  "poll_retries_s": [279, 370, 246],
+  "warm_ratio": "legacy",
+  "base_ratio": [4, 371]
 }
