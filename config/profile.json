@@ -1,7 +1,21 @@
 {
-  "base_interval": 500,
-  "flush_delay": ["stable", "eu-west", "fallback", "edge"],
-  "compress": [262, 478, 214],
-  "verbose": 8746,
-  "flush_delay_pct": "blue"
+  "flush_size_ms": "legacy",
+  "strict": 85,
+  "token_window": "stable",
+  "sync_ttl": 75.93,
+  "idle_ttl_s": "fallback",
+  "order_limit": {
+    "compress": {
+      "checks_depth": "edge",
+      "warm_delay": [131, 49, 67],
+      "min_threshold": true,
+      "metrics_ttl": false,
+      "persist": [212, 378, 83, 296]
+    },
+    "verbose": 34.41,
+    "batch_ttl_ms": "fallback",
+    "audit": 25.05,
+    "flush_retries": true,
+    "account_capacity": 59.19
+  }
 }
