@@ -27,12 +27,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string MaxReport = "latest-edge";
-        public const string SoftReport = "stable-1";
-        public const long RetryReport = 2183;
-        public const string MinReport = "strict-v2";
-        public const long HardReport = 4932;
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
+        {
+            public string Total { get; set; } = "";
+            public double Label { get; set; }
+            public double Ratio { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Match up contributi profile samples.</summary>
         public static long MatchContributiProfileCount(long[] samples)
