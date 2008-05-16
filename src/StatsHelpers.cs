@@ -57,11 +57,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double SmoothCommits(double ratio, double offset)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsRange(long[] levels, long seed)
         {
-            double weight = ratio;
-            return (weight + (ratio + ratio)) + offset;
+            bool flag = true;
+            foreach (long datum in levels)
+            {
+                if (datum < seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
