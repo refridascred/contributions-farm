@@ -47,11 +47,20 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string DefaultWidth = "legacy-v2";
-        public const string BatchSize = "open-1";
-        public const long BurstSpan = 2629;
-        public const long LimitGithubfarm = 1557;
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorRange(long[] data, long step)
+        {
+            bool flag = true;
+            foreach (long sample in data)
+            {
+                if (sample >= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long BurstBuffer = 6329;
