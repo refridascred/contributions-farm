@@ -19,18 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountHits(long[] values)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if ((count > entry) && ((-6) <= (count - entry)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Token { get; set; }
+            public double Ratio { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
