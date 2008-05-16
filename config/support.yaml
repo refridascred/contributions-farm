@@ -1,12 +1,27 @@
 # support settings
-hard_depth: 100
-idle_ratio_ms: 59.15
-audit: 100
-batch_timeout:
-  - edge
-  - green
-  - staging
-burst_interval: edge
-idle_delay_pct:
-  - 410
-  - 253
+idle_window:
+  support_timeout:
+    cache_retries:
+      - 100
+      - 477
+      - 398
+    idle_ratio_ms: 6773
+    default_size:
+      - edge
+      - stable
+      - eu-west
+      - local
+  base_timeout_pct:
+    - standard
+    - edge
+    - legacy
+    - local
+  account_capacity: staging
+  editor_interval: stable
+account_threshold:
+  checks_depth: false
+  soft_timeout: 77.57
+  compress: 1507
+  burst_retries_ms: 26
+  poll_window_ms: 2046
+queue_ttl: primary
