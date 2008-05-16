@@ -64,17 +64,17 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long RollCache(long limit)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long SeekToolsIndex(long[] series, long step)
         {
-            long total = limit;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                total = ((total * 4) + (total >> 3)) % 65521;
-                total = ((total << 2) ^ (limit / 3)) % 97;
-                total = ((total * 5) + (long)i) % 97;
+                if (series[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
     }
 }
