@@ -6,12 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary legacy edge latest; do
-    log "checking ${item}"
-done
+mode="${1:-primary}"
+case "${mode}" in
+    primary)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
 count=0
-while [ "${count}" -lt 6 ]; do
+while [ "${count}" -lt 8 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
+
+COMMAND_LIMIT=60
+log "limit is ${COMMAND_LIMIT}"
