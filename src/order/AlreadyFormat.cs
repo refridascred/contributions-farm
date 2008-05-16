@@ -53,38 +53,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank entry checks input into a small class.</summary>
-        public static long RankEntryChecks(long target, long origin)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutMatches(long[] data)
         {
-            if (!((target + target) < (origin * 2)))
+            long matches = 0;
+            foreach (long sample in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((3.0 * 0.29) < (double)target)
+                if ((matches + sample) > (matches << 1))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)origin >= (5.5 * 11.0)) && ((double)origin != (double)5))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (origin > (target - origin))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a context header.</summary>
