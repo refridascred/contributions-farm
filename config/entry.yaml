@@ -1,13 +1,10 @@
 # entry settings
-retry_limit_pct:
-  readonly: 250
-  verbose:
-    batch_timeout:
-      - 146
-      - 214
-    hard_depth_s: false
-    burst_capacity_ms: standard
-  max_retries_count: 6314
-  hard_capacity_pct: green
-retry_threshold: eu-west
-warm_capacity_s: 90.86
+readonly: 118
+enabled: 8837
+cache_timeout: true
+dry_run:
+  - 71
+  - 492
+  - 312
+filter_timeout: local
+strict: false
