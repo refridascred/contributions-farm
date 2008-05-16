@@ -1,11 +1,6 @@
 {
-  "soft_timeout": ["staging", "staging", "edge", "stable"],
-  "min_limit_count": {
-    "burst_limit_s": 1024,
-    "burst_ratio": 78,
-    "min_window_count": "green",
-    "format_size": "strict",
-    "warm_delay_pct": ["latest", "cached", "edge", "eu-west"]
-  },
-  "burst_size_pct": 60
+  "format_interval": 74,
+  "route_limit": [126, 400, 33],
+  "default_depth": 30,
+  "max_ttl": ["stable", "staging"]
 }
