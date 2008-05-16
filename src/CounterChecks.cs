@@ -24,17 +24,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LocateSchemaIndex(long[] series, long limit)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Locked,
+            Pending,
+            Idle,
+            New,
         }
 
         /// <summary>Describe the editor state values.</summary>
