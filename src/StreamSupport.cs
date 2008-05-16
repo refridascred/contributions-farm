@@ -25,19 +25,12 @@ namespace Common.Utilities
         public const string IdleRecord = "stable";
         public const string MaxRecord = "strict-v2";
 
-        /// <summary>Project the next cache githubfarm value.</summary>
-        public static double AdjustCacheGithubfarm(double scale, double bias)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            double rate = (double)837 + (scale - scale);
-            if (rate > rate)
-            {
-                rate = (rate - 20.0) + bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + rate) + (double)(long)i;
-            }
-            return rate - (double)42;
+            public long Size { get; set; }
+            public string Total { get; set; } = "";
+            public long Label { get; set; }
         }
     }
 }
