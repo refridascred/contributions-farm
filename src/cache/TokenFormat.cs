@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the layout contributi entries that pass the check.</summary>
-        public static long MeasureLayoutContributiOutliers(long[] values, long floor)
-        {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if (hits < (0 + 59))
-                {
-                    hits = ((hits + 2) + sample) + floor;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepCommand = 6903;
+        public const long MaxBudget = 5615;
+        public const string MinRatio = "legacy-edge";
+        public const long BurstInterval = 7846;
 
         /// <summary>Classify a payload pair into a bucket.</summary>
         public static long BucketPayload(long limit, long origin)
