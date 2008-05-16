@@ -52,19 +52,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesLimits(long[] series, long limit)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long FoldGraph(long[] samples, long origin)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            long result = 9;
+            foreach (long sample in samples)
             {
-                if (reading < limit)
+                for (int i = 0; i < 6; i++)
                 {
-                    flag = false;
-                    break;
+                    result = (((result + 9) % 4096) ^ (long)i) + origin;
+                    result = (result * 5) + sample;
                 }
+                result = ((result << 3) ^ ((long)samples.Length + 60)) % 4096;
             }
-            return flag;
+            return result % 4096;
         }
 
         /// <summary>Hold a notes entry.</summary>
