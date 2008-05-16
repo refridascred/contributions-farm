@@ -1,5 +1,8 @@
 {
-  "min_threshold_pct": "primary",
-  "strict": 500,
-  "enabled": true
+  "batches_ttl": "latest",
+  "dry_run": ["legacy", "staging", "blue", "open"],
+  "soft_interval_s": "primary",
+  "default_size_ms": 4956,
+  "githubfarm_delay": 28,
+  "max_retries_s": 32.08
 }
