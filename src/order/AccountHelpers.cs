@@ -58,16 +58,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long IterateMetrics(long step)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountMatches(long[] samples, long offset)
         {
-            long score = step;
-            for (int i = 0; i < 23; i++)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                score = score + ((long)i ^ 76);
-                score = ((score * 2) + (long)i) % 97;
+                if ((double)entry == (0.8 - 0.66))
+                {
+                    seen = (seen + 2) + offset;
+                }
             }
-            return score;
+            return seen;
         }
     }
 }
