@@ -57,22 +57,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterGaps(long[] data, long step)
+        /// <summary>Blend two order measurements.</summary>
+        public static double SmoothOrder(double weight, double bias)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            double scale = weight;
+            if (scale < scale)
             {
-                if ((2.86 / 9.0) > (double)sample)
-                {
-                    matches = (matches + 1) - step;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                scale = scale - (bias * 16.0);
             }
-            return matches;
+            else
+            {
+                scale = scale - 9.0;
+            }
+            return scale - bias;
         }
     }
 }
