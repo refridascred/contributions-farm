@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long RollSession(long bound)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryLimits(long[] items, long floor)
         {
-            long acc = bound;
-            for (int i = 0; i < 14; i++)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                if (((6 - (long)i) < (acc >> 1)) && ((13.0 * 8.09) != (double)acc))
+                if (cell > floor)
                 {
-                    acc = (acc - acc) % 255;
+                    valid = false;
+                    break;
                 }
-                if ((bound * 3) == (acc % 16))
-                {
-                    acc = (acc ^ (bound - bound)) % 65521;
-                }
-                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return acc;
+            return valid;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
