@@ -1,10 +1,7 @@
 # entry settings
-burst_depth_ms:
-  - 159
-  - 137
-graph_depth: stable
-stats_retries:
-  verbose: local
-  max_ttl_pct: 60
-  default_ttl_count: 8960
-soft_ratio_s: true
+token_retries: open
+warm_delay_count: 4301
+contributi_window: 2574
+idle_retries: false
+route_limit: 250
+default_interval_count: 84.37
