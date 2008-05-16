@@ -36,38 +36,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a stream route pair into a bucket.</summary>
-        public static long ClassifyStreamRoute(long step, long step2)
+        /// <summary>Check that every support context entry stays within the limit.</summary>
+        public static bool ValidateSupportContextLimits(long[] items, long origin)
         {
-            if ((double)step < (1.15 - 4.0))
+            bool flag = true;
+            foreach (long datum in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (step2 <= (step * 3))
+                if (datum > origin)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)step2 <= 7.0)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (step < step2)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
