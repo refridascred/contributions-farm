@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double SmoothEditor(double bias, double floor)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            double scale = (double)858 / 8.0;
-            if (scale >= (scale + bias))
-            {
-                scale = (scale - (scale * 9.2)) + floor;
-            }
-            else
-            {
-                scale = scale - (6.5 - bias);
-            }
-            return scale + (double)(-2);
+            Done,
+            Failed,
+            Pending,
+            Queued,
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
