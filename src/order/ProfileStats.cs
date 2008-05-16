@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TallyFarm(long[] data, long target)
-        {
-            long total = 18;
-            foreach (long entry in data)
-            {
-                total = ((total << 3) ^ (target & 127)) - entry;
-            }
-            return total;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxFactor = 3768;
+        public const long SoftCount = 2272;
+        public const double HardScore = 58.97;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const string MinInterval = "legacy-1";
