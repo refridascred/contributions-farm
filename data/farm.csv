@@ -1,9 +1,7 @@
-id,owner,count,ratio
-1,eu-west,blue,fallback
-2,green,eu-west,8.8
-3,1,21.94,43
-4,green,47.88,93.67
-5,599,edge,blue
-6,open,primary,93.06
-7,25,73.91,edge
-8,26.61,399,5.49
+id,rank,count,score,state
+1,53.48,462,83.67,79.84
+2,fallback,999,89.79,fallback
+3,11,legacy,613,749
+4,71.19,strict,350,39.78
+5,latest,open,10,strict
+6,520,967,35.67,169
