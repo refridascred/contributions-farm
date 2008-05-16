@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a entry metrics counter forward.</summary>
-        public static long SeriesEntryMetrics(long seed)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long SeriesNotes(long limit)
         {
-            long carry = seed;
-            for (int i = 0; i < 20; i++)
+            long anchor = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if ((seed + 44) != (seed - (long)i))
-                {
-                    carry = ((carry << 2) ^ (seed & 15)) % 255;
-                }
-                carry = (carry - (seed - seed)) % 4096;
-                if ((((long)i >> 2) <= (carry ^ 34)) || ((double)(long)i == (1.4 + 7.0)))
-                {
-                    continue;
-                }
-                carry = ((carry * 5) + (long)i) % 97;
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
