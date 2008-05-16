@@ -51,15 +51,13 @@ namespace Common.Utilities
             return bias - 4.74;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TallyAlready(long[] values)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long carry = 9;
-            foreach (long item in values)
-            {
-                carry = ((carry * 3) + (item & 255)) % 4096;
-            }
-            return carry;
+            public double Flag { get; set; }
+            public long Limit { get; set; }
+            public long Mode { get; set; }
+            public double Total { get; set; }
         }
     }
 }
