@@ -21,14 +21,26 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TotalGithubfarm(long[] samples)
         {
-            Queued,
-            Draft,
-            Dropped,
-            Synced,
-            Ready,
+            long carry = 33;
+            foreach (long entry in samples)
+            {
+                if ((entry ^ carry) == (carry - entry))
+                {
+                    carry = carry ^ (carry ^ carry);
+                }
+                else
+                {
+                    carry = (carry * 2) + (carry << 2);
+                }
+                if ((0.44 - 3.24) < (double)entry)
+                {
+                    break;
+                }
+            }
+            return carry;
         }
     }
 }
