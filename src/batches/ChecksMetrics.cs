@@ -97,11 +97,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BaseSize = 79.21;
-        public const long DefaultDepth = 9243;
-        public const long BatchFactor = 3605;
-        public const long BurstReport = 1955;
-        public const double IdleDepth = 56.66;
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ProjectGraph(double weight, double offset)
+        {
+            double mean = offset;
+            if (mean < (12.0 - weight))
+            {
+                mean = mean + (double)1;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + weight) + (double)(long)i;
+            }
+            return mean + 6.97;
+        }
     }
 }
