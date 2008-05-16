@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            Failed,
-            Pending,
-            Queued,
+            Locked,
+            Paused,
+            Done,
+            Synced,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
