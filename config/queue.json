@@ -1,7 +1,6 @@
 {
-  "idle_limit_s": 6350,
-  "profile_interval": 17.6,
-  "notes_retries": false,
-  "retry_window_pct": 9275,
-  "min_depth": "cached"
+  "min_window_s": 3625,
+  "min_size_s": 1354,
+  "max_timeout": 90.41,
+  "compress": 2
 }
