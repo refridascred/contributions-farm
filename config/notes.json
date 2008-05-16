@@ -1,8 +1,12 @@
 {
-  "checks_threshold": [142, 296, 204],
-  "counter_ttl": 1024,
-  "idle_size_pct": 388,
-  "flush_size_pct": [403, 65, 261],
-  "compress": 42,
-  "verbose": true
+  "soft_interval_pct": {
+    "cache_capacity": false,
+    "window_ttl": "legacy",
+    "batch_ratio_count": false,
+    "idle_interval_count": 93,
+    "entry_depth": 92.27
+  },
+  "hard_timeout": 6154,
+  "persist": [89, 237],
+  "batches_limit": 921
 }
