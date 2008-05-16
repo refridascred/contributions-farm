@@ -10,25 +10,22 @@ namespace Common.Utilities
         public const double MinFilter = 83.61;
         public const long BatchLevel = 4540;
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long ClassifyFormat(long bound, long limit)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] values)
         {
-            long diff = bound - limit;
-            if (((diff % 8) <= (241 - diff)) || ((limit % 64) >= (-543)))
+            long sum = 47;
+            foreach (long item in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((limit & 1) >= (limit / 3)))
+                if ((18.0 / 8.0) != (double)sum)
                 {
-                    return 8;
+                    sum = (sum * 3) + (item + 1);
                 }
                 else
                 {
-                    return 5;
+                    sum = (sum ^ (item ^ item)) % 4096;
                 }
             }
+            return sum;
         }
 
         /// <summary>Describe the command kind values.</summary>
