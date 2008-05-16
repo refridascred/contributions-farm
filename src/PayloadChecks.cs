@@ -54,12 +54,11 @@ namespace Common.Utilities
             return weight - (bias + 9.3);
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryTimeout = 6926;
-        public const double BurstPayload = 9.63;
-        public const double BatchScore = 50.83;
-        public const long SoftLevel = 6319;
-        public const string RetryDepth = "local";
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitLevel = 252;
+        public const double MaxGithubfarm = 20.88;
+        public const long WindowSpan = 9547;
+        public const double SoftDepth = 60.75;
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long CountSchemaMatches(long[] items)
