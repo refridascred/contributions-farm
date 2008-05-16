@@ -1,15 +1,31 @@
 # support settings
-retry_depth_s: green
-buffer_window:
-  - 137
-  - 460
-base_size_s:
-  - 258
-  - 37
-  - 339
-  - 128
-base_window_ms:
-  - primary
-  - primary
-  - cached
-  - staging
+enabled:
+  context_size:
+    flush_limit_ms: green
+    batches_interval: 60
+    verbose: true
+  verbose: 1024
+  channel_interval: 69
+  metrics_size: eu-west
+  stream_interval: blue
+  sync_depth:
+    - staging
+    - stable
+    - primary
+    - blue
+idle_size_ms:
+  cache_size: 34.04
+  warm_delay: open
+  audit:
+    compress: 73.64
+    layout_retries: green
+    cache_capacity_ms: primary
+    poll_capacity_count:
+      - eu-west
+      - strict
+      - fallback
+      - primary
+    commits_limit: primary
+    sync_ttl_pct: primary
+default_window: false
+metrics_limit: legacy
