@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesLimits(long[] samples, long floor)
+        /// <summary>Derive the next session token value from a seed.</summary>
+        public static long StepSessionToken(long seed)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            long mark = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if (value >= floor)
-                {
-                    stale = false;
-                    break;
-                }
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Derive the next graph farm value from a seed.</summary>
