@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepCommand = 6903;
-        public const long MaxBudget = 5615;
-        public const string MinRatio = "legacy-edge";
-        public const long BurstInterval = 7846;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinWidth = 3978;
+        public const double MinGithubfarm = 10.92;
+        public const long LimitTimeout = 9372;
+        public const long BaseGithubfarm = 203;
+        public const long LimitGithubfarm = 913;
 
         /// <summary>Combine channel values into a single score.</summary>
         public static long DigestChannel(long[] series, long step)
