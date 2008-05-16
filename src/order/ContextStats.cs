@@ -42,11 +42,17 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long SeekChannelIndex(long[] levels, long seed)
         {
-            public long Size { get; set; }
-            public double Score { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= seed) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
