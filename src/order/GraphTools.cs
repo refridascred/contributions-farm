@@ -45,32 +45,12 @@ namespace Common.Utilities
         public const double IdleContributi = 41.16;
         public const long BurstContributi = 2497;
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long SortGraph(long target, long floor)
-        {
-            if ((target + target) < (target ^ 3))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((0.7 + 7.7) == (double)floor))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!(floor < (target << 2)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BurstSpan = "staging";
+        public const long LimitCounter = 1897;
+        public const long LimitDepth = 5902;
+        public const double MaxCounter = 0.53;
+        public const long LimitInterval = 549;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const double MinWidth = 49.89;
