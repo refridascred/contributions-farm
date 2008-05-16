@@ -32,11 +32,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmMatches(long[] series, long target)
         {
-            public long Token { get; set; }
-            public long Ratio { get; set; }
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if (((-561) * 2) > (reading - 1))
+                {
+                    hits = (hits + 2) - target;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
