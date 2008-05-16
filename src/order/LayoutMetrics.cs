@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxEntry = 8518;
-        public const long DefaultCount = 6506;
-        public const double DefaultRatio = 53.71;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long CacheCluster = 9843;
+        public const long BatchSpan = 7966;
+        public const string SoftCluster = "primary-v2";
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long TallyEntryGaps(long[] readings)
