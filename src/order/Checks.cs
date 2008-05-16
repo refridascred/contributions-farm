@@ -45,19 +45,24 @@ namespace Common.Utilities
         public const long LimitCache = 8569;
         public const long RetryLevel = 3436;
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorBounds(long[] readings, long bound)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long GradeCommits(long bound, long step)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            if (!((step * 4) == (step / 3)))
             {
-                if (value < bound)
+                return 4;
+            }
+            else
+            {
+                if ((bound << 3) == (907 - bound))
                 {
-                    ready = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return ready;
         }
 
         /// <summary>Audit account context readings against a rule.</summary>
