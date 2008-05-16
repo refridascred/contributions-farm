@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long SeekEntryIndex(long[] levels, long origin)
+        /// <summary>Classify a session cache pair into a bucket.</summary>
+        public static long ClassifySessionCache(long origin, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (seed > ((-3) * 2))
             {
-                if (levels[i] <= origin)
+                return 8;
+            }
+            else
+            {
+                if ((seed - origin) < (seed + origin))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (!(seed >= origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((6.9 - 1.3) > (3.9 + 5.32))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
