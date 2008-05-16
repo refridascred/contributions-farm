@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long ClassifyEntry(long offset, long step)
-        {
-            if ((2.5 < (double)offset) && ((double)8 <= (double)step))
-            {
-                return 1;
-            }
-            else
-            {
-                if (step > offset)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinRatio = 8593;
+        public const long MinEntry = 4826;
+        public const double StepLevel = 59.7;
+        public const long IdleDepth = 6261;
+        public const string IdleRatio = "strict-v2";
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
         public static long PairRecordCount(long[] readings)
