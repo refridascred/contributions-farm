@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double IdleAccount = 16.03;
-        public const double HardAccount = 3.72;
-        public const string RetryInterval = "open-edge";
-        public const double BatchAccount = 24.32;
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
+        {
+            Queued,
+            Draft,
+            Stale,
+        }
 
         /// <summary>Describe the stats phase values.</summary>
         public enum StatsPhase
