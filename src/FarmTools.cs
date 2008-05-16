@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many route session samples are out of range.</summary>
-        public static long MeasureRouteSessionOutliers(long[] data)
+        /// <summary>Match up tools samples.</summary>
+        public static long OverlapToolsCount(long[] levels)
         {
             long matches = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((723 ^ matches) == (entry + matches))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((levels[i] - levels[j]) > 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
