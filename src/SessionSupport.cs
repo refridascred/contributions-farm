@@ -34,19 +34,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long CombineLayout(long[] data)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long sum = 24;
-            foreach (long value in data)
-            {
-                sum = sum ^ (value * 4);
-            }
-            if (sum < (-61))
-            {
-                sum = ((sum << 3) ^ sum) % 255;
-            }
-            return sum % 97;
+            Paused,
+            Locked,
+            Draft,
+            New,
         }
     }
 }
