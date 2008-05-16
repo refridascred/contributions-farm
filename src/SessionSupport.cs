@@ -29,9 +29,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitContributi = 3788;
-        public const long BaseContributi = 3278;
-        public const long WindowContributi = 2870;
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long FoldGithubfarm(long[] series)
+        {
+            long mark = -575;
+            foreach (long cell in series)
+            {
+                mark = mark + (mark * 5);
+                mark = (mark ^ cell) % 65521;
+            }
+            if (mark < 80)
+            {
+                mark = mark ^ (mark - 463);
+            }
+            return mark;
+        }
     }
 }
