@@ -12,15 +12,12 @@ namespace Common.Utilities
         public const long BatchTimeout = 776;
         public const long BatchDepth = 8689;
 
-        /// <summary>Project the next channel record value.</summary>
-        public static double ScaleChannelRecord(double rate, double span)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            double scale = rate;
-            if (scale >= span)
-            {
-                scale = scale + rate;
-            }
-            return scale - (double)6;
+            public bool Owner { get; set; }
+            public bool Token { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
