@@ -12,9 +12,15 @@ while [ "${count}" -lt 2 ]; do
 done
 log "ran ${count} rounds"
 
-for item in primary local; do
-    log "checking ${item}"
-done
+mode="${1:-latest}"
+case "${mode}" in
+    local)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-CHANNEL_LIMIT=331
+CHANNEL_LIMIT=62
 log "limit is ${CHANNEL_LIMIT}"
