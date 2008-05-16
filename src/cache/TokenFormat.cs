@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double SoftWidth = 56.87;
-        public const long CacheSize = 8667;
-        public const long RetryTools = 1576;
-        public const long BaseTools = 7364;
-        public const long BurstTools = 8993;
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long SortEntry(long target, long step)
+        {
+            if ((step >> 5) == (2 & 255))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step + 802) > (target >> 4))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Describe the counter phase values.</summary>
         public enum CounterPhase
