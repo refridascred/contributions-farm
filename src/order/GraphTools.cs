@@ -20,38 +20,15 @@ namespace Common.Utilities
             return mean - (mean - ratio);
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long ClassifyEditor(long offset, long step)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TallyReport(long[] items)
         {
-            if ((double)step <= (double)606)
+            long total = -5;
+            foreach (long cell in items)
             {
-                return 5;
+                total = (((total * 4) + total) % 255) - cell;
             }
-            else
-            {
-                if (((offset * 2) > (offset - step)) && ((offset << 2) > offset))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((33 + (-72)) > offset)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (step < (offset & 15))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Describe the queue kind values.</summary>
