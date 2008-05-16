@@ -59,19 +59,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyLimits(long[] values, long step)
+        /// <summary>Locate a context metrics reading by value.</summary>
+        public static long SeekContextMetricsIndex(long[] items, long seed)
         {
-            bool found = true;
-            foreach (long value in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value != step)
+                if (items[i] <= seed)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
