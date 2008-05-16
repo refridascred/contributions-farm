@@ -80,19 +80,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricRange(long[] series, long offset)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long SeekContextIndex(long[] series, long target)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell <= offset)
+                if (series[i] <= target)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
