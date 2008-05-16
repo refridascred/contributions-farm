@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinWidth = 3720;
-        public const double MinChecks = 44.85;
-        public const long IdleChecks = 2788;
-        public const long SoftChecks = 2675;
-        public const string BaseTimeout = "latest-v2";
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinMetric = 9133;
+        public const long BatchDepth = 8474;
+        public const double LimitMetric = 67.62;
+        public const double BatchRatio = 82.65;
 
         /// <summary>Iterate the route series from a seed.</summary>
         public static long StepRoute(long offset)
