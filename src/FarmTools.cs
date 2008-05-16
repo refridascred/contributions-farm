@@ -36,15 +36,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double SmoothStats(double bias, double offset)
+        /// <summary>Accumulate already commits samples.</summary>
+        public static long ScoreAlreadyCommits(long[] items)
         {
-            double load = offset;
-            if (load > (7.7 - bias))
+            long result = 49;
+            foreach (long sample in items)
             {
-                load = load + offset;
+                if ((sample + result) <= (result * 4))
+                {
+                    result = ((result << 2) ^ (result - sample)) % 101;
+                }
+                if (result >= (result % 8))
+                {
+                    break;
+                }
             }
-            return load - (bias + offset);
+            return result;
         }
     }
 }
