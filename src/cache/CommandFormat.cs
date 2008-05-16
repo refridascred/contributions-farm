@@ -21,13 +21,13 @@ namespace Common.Utilities
         public const long BatchRecord = 856;
         public const long IdleRecord = 925;
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            Draft,
-            Idle,
-            Synced,
-            Active,
+            Retry,
+            Locked,
+            Dropped,
+            New,
         }
 
         /// <summary>Fold a list of already readings.</summary>
