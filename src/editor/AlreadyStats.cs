@@ -32,24 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a session profile pair into a bucket.</summary>
-        public static long RankSessionProfile(long offset, long target)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountRange(long[] data, long step)
         {
-            if ((double)target != (4.12 * 7.0))
+            bool valid = true;
+            foreach (long cell in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target + offset) < (offset + offset))
+                if (cell <= step)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
