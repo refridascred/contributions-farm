@@ -72,12 +72,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinLevel = 7997;
-        public const string DefaultEditor = "staging";
-        public const double CacheEditor = 38.52;
-        public const long StepEditor = 5982;
-        public const long HardDepth = 7981;
+        /// <summary>Find the first context commits entry that matches the target.</summary>
+        public static long FindContextCommitsIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == floor) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two window measurements.</summary>
         public static double SmoothWindow(double rate, double offset)
