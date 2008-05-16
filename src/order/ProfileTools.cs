@@ -10,12 +10,39 @@ namespace Common.Utilities
         public const long RetryWidth = 4746;
         public const long BaseSize = 8883;
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long RankBatch(long origin, long limit)
         {
-            Stale,
-            Pending,
-            Synced,
+            long bound = origin - limit;
+            if ((double)origin >= (double)bound)
+            {
+                return 2;
+            }
+            else
+            {
+                if (limit <= (bound % 7))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((4.1 * 4.53) > (double)bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!(origin <= ((-803) + origin)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a graph header.</summary>
