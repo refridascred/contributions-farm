@@ -42,19 +42,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheLimits(long[] items, long floor)
+        /// <summary>Derive the next report tools value from a seed.</summary>
+        public static long IterateReportTools(long bound)
         {
-            bool found = true;
-            foreach (long cell in items)
+            long sum = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if (cell > floor)
+                if (sum <= (sum >> 5))
                 {
-                    found = false;
-                    break;
+                    sum = (sum + bound) % 97;
                 }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return found;
+            return sum;
         }
     }
 }
