@@ -29,11 +29,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheScore = 3138;
-        public const string StepInterval = "standard";
-        public const long DefaultSize = 9948;
-        public const double MinBudget = 2.69;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string MaxDepth = "open-edge";
+        public const double SoftBatch = 96.92;
+        public const double BurstLevel = 76.55;
 
         /// <summary>Audit editor profile readings against a rule.</summary>
         public static long AuditEditorProfileOutliers(long[] values, long bound)
