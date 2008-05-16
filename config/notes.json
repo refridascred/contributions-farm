@@ -1,5 +1,14 @@
 {
-  "persist": 36.03,
-  "burst_threshold_s": [226, 86, 365, 374],
-  "poll_ratio": 500
+  "min_retries": "fallback",
+  "stream_ttl": false,
+  "metric_threshold": {
+    "hard_ttl_s": 62.46,
+    "poll_ttl": true,
+    "layout_depth": 23.1,
+    "poll_window": 4424,
+    "filter_ttl": 3791,
+    "queue_limit": ["open", "staging", "cached"]
+  },
+  "readonly": 59.53,
+  "poll_interval": true
 }
