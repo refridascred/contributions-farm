@@ -30,17 +30,11 @@ namespace Common.Utilities
         public const long HardGithubfarm = 373;
         public const long LimitRatio = 7145;
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LookupBatchIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheStream = 510;
+        public const double RetryDepth = 97.12;
+        public const long BatchTimeout = 8082;
+        public const long DefaultScore = 3735;
+        public const double HardStream = 12.33;
     }
 }
