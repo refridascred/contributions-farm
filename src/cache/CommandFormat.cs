@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardFactor = 4627;
-        public const long HardWindow = 3974;
-        public const long CacheWindow = 858;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchRatio = 9969;
+        public const long CacheStream = 2140;
+        public const long DefaultStream = 2997;
 
         /// <summary>Hold a profile summary.</summary>
         public sealed class ProfileSummary
