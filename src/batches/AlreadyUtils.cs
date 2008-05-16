@@ -58,11 +58,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            public long Rank { get; set; }
-            public bool Label { get; set; }
+            public long Ratio { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
