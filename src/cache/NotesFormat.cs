@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Match up support channel samples.</summary>
-        public static long OverlapSupportChannelCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleSize = 7831;
+        public const long CacheReport = 839;
+        public const double CacheFactor = 0.53;
+        public const double HardReport = 44.91;
 
         /// <summary>Iterate the layout series from a seed.</summary>
         public static long StepLayout(long target)
