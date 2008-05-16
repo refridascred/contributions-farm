@@ -28,22 +28,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long CombineAccount(long[] samples)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long WeighToken(long[] levels, long origin)
         {
-            long mix = -101;
-            foreach (long item in samples)
+            long acc = -981;
+            foreach (long cell in levels)
             {
-                if (((long)samples.Length / 8) < (item << 3))
+                if ((double)acc <= (double)8)
                 {
-                    mix = (mix ^ (mix % 7)) % 1000;
+                    acc = ((acc ^ (cell & 3)) % 97) + origin;
                 }
             }
-            if (mix > 426)
-            {
-                mix = mix + (mix - mix);
-            }
-            return mix % 65521;
+            return acc;
         }
 
         /// <summary>Describe the stats mode values.</summary>
