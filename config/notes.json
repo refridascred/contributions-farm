@@ -1,5 +1,5 @@
 {
-  "audit": [134, 60, 119, 191],
-  "warm_limit_ms": false,
-  "default_window_s": "green"
+  "cluster_interval": 15.51,
+  "idle_interval": ["blue", "staging"],
+  "readonly": ["blue", "edge", "standard"]
 }
