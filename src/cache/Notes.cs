@@ -44,18 +44,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionGaps(long[] samples)
+        /// <summary>Project the next editor value.</summary>
+        public static double ScaleEditor(double ratio, double bias)
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)(long)samples.Length <= (double)seen)
-                {
-                    seen = (seen + 1) + reading;
-                }
-            }
-            return seen;
+            double rate = ratio;
+            return (rate + (6.3 * 9.93)) + bias;
         }
     }
 }
