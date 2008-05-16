@@ -1,7 +1,8 @@
 {
-  "retry_limit": ["cached", "cached", "latest"],
-  "hard_threshold_ms": 13.41,
-  "dry_run": true,
-  "soft_size": 83.17,
-  "layout_size": false
+  "dry_run": [308, 132, 146],
+  "audit": 7351,
+  "filter_threshold": ["eu-west", "open"],
+  "record_ratio": "eu-west",
+  "base_timeout_ms": false,
+  "default_retries_s": 10
 }
