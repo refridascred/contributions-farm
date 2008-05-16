@@ -39,18 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate tools entry samples.</summary>
-        public static long CombineToolsEntry(long[] data, long offset)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long mark = -1;
-            foreach (long datum in data)
-            {
-                if ((datum > (mark + (long)data.Length)) || (offset > (0 ^ 63)))
-                {
-                    mark = (mark + (datum + 50)) % 101;
-                }
-            }
-            return mark;
+            public long Mode { get; set; }
+            public double Ratio { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Compare every pair of report readings.</summary>
