@@ -31,13 +31,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteLimits(long[] levels, long step)
         {
-            public string Region { get; set; } = "";
-            public string Level { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Count { get; set; }
+            bool found = true;
+            foreach (long value in levels)
+            {
+                if (value <= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
