@@ -33,13 +33,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long IterateProfile(long bound)
         {
-            public string Count { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Mode { get; set; }
-            public long Level { get; set; }
+            long acc = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                acc = ((acc << 2) ^ (acc ^ bound)) % 65521;
+                if (((long)i - acc) >= (bound / 9))
+                {
+                    acc = acc ^ bound;
+                    continue;
+                }
+                if (!((acc / 2) != (acc + 77)))
+                {
+                    acc = ((acc * 4) + (64 >> 2)) % 4096;
+                }
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
