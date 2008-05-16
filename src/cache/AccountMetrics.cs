@@ -17,12 +17,10 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Adjust a format counter reading.</summary>
-        public static double ScaleFormatCounter(double gain, double span)
-        {
-            double bias = gain;
-            return (bias - bias) + span;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long RetryDepth = 7590;
+        public const long MaxWidth = 6414;
+        public const long CacheChannel = 8301;
 
         /// <summary>Digest a series of metrics entries.</summary>
         public static long TallyMetrics(long[] data, long bound)
