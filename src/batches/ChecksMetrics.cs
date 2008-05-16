@@ -99,10 +99,28 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseBudget = 7097;
-        public const long BurstReport = 4293;
-        public const string StepTimeout = "open-1";
-        public const long LimitReport = 4407;
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long ScoreContributi(long[] samples)
+        {
+            long carry = 899;
+            foreach (long sample in samples)
+            {
+                carry = (carry * 4) + (carry & 127);
+                carry = ((carry * 2) + (sample * 3)) % 101;
+                if ((double)carry >= (9.37 / 9.0))
+                {
+                    carry = carry - (carry * 4);
+                }
+                if ((double)carry != (8.79 / 4.0))
+                {
+                    break;
+                }
+            }
+            if (carry > 679)
+            {
+                carry = ((carry << 2) ^ (carry - (long)samples.Length)) % 255;
+            }
+            return carry;
+        }
     }
 }
