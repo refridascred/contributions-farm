@@ -1,5 +1,9 @@
 # support settings
-retry_retries_count: 5934
-max_threshold: false
-command_window: open
-default_interval: staging
+soft_interval: stable
+verbose:
+  - 159
+  - 464
+  - 447
+  - 301
+already_ratio: 5467
+default_size_pct: blue
