@@ -26,18 +26,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheOutliers(long[] data)
-        {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((entry % 16) != (3 / 7))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string DefaultFarm = "legacy-1";
+        public const long MaxFarm = 1553;
+        public const long MaxScore = 3450;
+        public const long DefaultFactor = 7902;
+        public const string MaxDepth = "legacy";
     }
 }
