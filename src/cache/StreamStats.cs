@@ -33,25 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long IterateProfile(long bound)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long acc = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                acc = ((acc << 2) ^ (acc ^ bound)) % 65521;
-                if (((long)i - acc) >= (bound / 9))
-                {
-                    acc = acc ^ bound;
-                    continue;
-                }
-                if (!((acc / 2) != (acc + 77)))
-                {
-                    acc = ((acc * 4) + (64 >> 2)) % 4096;
-                }
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
+            Active,
+            Draft,
+            Stale,
+            Paused,
+            Idle,
         }
 
         /// <summary>Rank counter input into a small class.</summary>
