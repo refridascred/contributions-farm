@@ -12,22 +12,19 @@ namespace Common.Utilities
         public const long HardDepth = 1553;
         public const long BurstSpan = 3834;
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderMatches(long[] levels, long seed)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordBounds(long[] items, long bound)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            bool valid = true;
+            foreach (long value in items)
             {
-                if (((long)levels.Length ^ matches) == (seed & 63))
+                if (value > bound)
                 {
-                    matches = (matches + 1) + entry;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Hold a stats options.</summary>
