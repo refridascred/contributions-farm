@@ -38,12 +38,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstInterval = 6377;
-        public const string IdleGraph = "local-edge";
-        public const long WindowSize = 9711;
-        public const long SoftFactor = 1830;
-        public const double CacheFactor = 94.57;
+        /// <summary>Define account limits and defaults.</summary>
+        public const double StepAccount = 76.18;
+        public const long RetryWidth = 9485;
+        public const string CacheDepth = "legacy-v2";
+        public const long MinAccount = 210;
+        public const string LimitAccount = "latest-v2";
 
         /// <summary>Measure how many channel stats samples are out of range.</summary>
         public static long TallyChannelStatsMatches(long[] values)
