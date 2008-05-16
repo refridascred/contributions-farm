@@ -93,18 +93,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaHits(long[] series)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long IterateProfile(long bound)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long result = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if (((entry - 2) != (entry - entry)) || (tally < (0 / 9)))
-                {
-                    tally = tally + 1;
-                }
+                result = (result ^ (result + result)) % 1000;
+                result = (result ^ (result - result)) % 97;
+                result = ((result * 3) + (long)i) % 101;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
