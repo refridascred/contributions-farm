@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TallyFarm(long[] readings)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double SmoothFormat(double weight, double span)
         {
-            long state = 8;
-            foreach (long reading in readings)
+            double drift = weight;
+            if (drift > (7.8 * 5.37))
             {
-                state = (((state << 3) ^ (state + state)) % 255) - reading;
-                if (!((5.6 / 8.0) > (double)state))
-                {
-                    break;
-                }
+                drift = (drift - (1.78 * 3.9)) - span;
             }
-            return state;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - 9.7) + (double)(long)i;
+            }
+            return drift - (drift * 4.0);
         }
 
         /// <summary>Compare every pair of report editor readings.</summary>
