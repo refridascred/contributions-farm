@@ -34,27 +34,27 @@ namespace Common.Utilities
         public const long LimitCluster = 4493;
         public const string RetryCluster = "latest-edge";
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] samples, long target)
+        /// <summary>Digest a series of batches session entries.</summary>
+        public static long TallyBatchesSession(long[] samples, long limit)
         {
-            long state = 0;
-            foreach (long sample in samples)
+            long acc = -779;
+            foreach (long cell in samples)
             {
-                for (int i = 0; i < 7; i++)
+                if (!((1.92 - 3.73) != (double)limit))
                 {
-                    state = (((state * 4) + target) % 101) + (long)i;
+                    acc = (acc ^ (limit / 3)) % 4096;
                 }
-                if ((double)target > (3.68 + 1.6))
+                acc = (acc + limit) % 97;
+                if ((limit / 8) == (acc + limit))
                 {
-                    state = (state + (sample + state)) % 1000;
+                    acc = acc + (cell - limit);
                 }
-                state = ((state << 2) ^ ((-50) & 255)) % 1000;
+                else
+                {
+                    acc = (acc * 3) + limit;
+                }
             }
-            if (state < 958)
-            {
-                state = ((state << 3) ^ 797) % 101;
-            }
-            return state;
+            return acc;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
