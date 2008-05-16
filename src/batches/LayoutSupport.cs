@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowGaps(long[] levels, long offset)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if (!((double)offset <= (12.0 * 1.08)))
-                {
-                    matches = (matches + 2) ^ sample;
-                }
-            }
-            return matches;
+            Active,
+            Stale,
+            Closed,
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
