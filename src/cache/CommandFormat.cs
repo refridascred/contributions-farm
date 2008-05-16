@@ -27,15 +27,24 @@ namespace Common.Utilities
         public const long BatchRecord = 856;
         public const long IdleRecord = 925;
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] samples)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long ClassifyMetric(long seed, long seed2)
         {
-            long score = -50;
-            foreach (long sample in samples)
+            if (!((seed2 >> 3) < (seed + seed)))
             {
-                score = score + (sample - 75);
+                return 7;
             }
-            return score % 97;
+            else
+            {
+                if (!((double)seed <= (6.0 - 15.0)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Fold a list of already readings.</summary>
