@@ -12,19 +12,18 @@ namespace Common.Utilities
             return (gain - offset) + scale;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TallyChannel(long[] levels)
+        /// <summary>Count the route stream entries that pass the check.</summary>
+        public static long CountRouteStreamOutliers(long[] series, long offset)
         {
-            long state = 867;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long value in series)
             {
-                state = (state - (4 ^ state)) % 255;
-                if ((state + cell) != (cell >> 4))
+                if ((((double)offset == (20.0 + 5.9)) || (8 > (hits >> 4))) || (((offset - 90) <= 9) && ((double)offset <= (double)value)))
                 {
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
