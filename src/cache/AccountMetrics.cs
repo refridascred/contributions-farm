@@ -32,12 +32,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterMatches(long[] samples)
         {
-            public string Token { get; set; } = "";
-            public long Owner { get; set; }
-            public string Count { get; set; } = "";
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if ((((-109) << 3) == (599 + reading)) && (reading <= (count % 5)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
