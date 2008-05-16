@@ -33,13 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
-        {
-            public bool Level { get; set; }
-            public long Limit { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string HardWindow = "legacy-v2";
+        public const long SoftWindow = 7757;
+        public const long MaxWindow = 310;
 
         /// <summary>Grade a batches cache value against two limits.</summary>
         public static long BucketBatchesCache(long bound, long seed)
