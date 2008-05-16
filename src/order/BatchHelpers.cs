@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long SeriesChecks(long bound)
+        /// <summary>Locate a stats checks reading by value.</summary>
+        public static long LocateStatsChecksIndex(long[] samples, long step)
         {
-            long score = bound;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = ((score * 5) + (long)i) % 65521;
+                if (samples[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Hold a metrics stats.</summary>
