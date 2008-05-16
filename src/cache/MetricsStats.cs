@@ -24,21 +24,28 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long step)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long IterateBatch(long step)
         {
-            long carry = step;
-            for (int i = 0; i < 11; i++)
+            long anchor = step;
+            for (int i = 0; i < 9; i++)
             {
-                carry = carry ^ step;
-                if ((step + carry) >= carry)
+                if ((long)i > step)
                 {
-                    carry = ((carry << 2) ^ ((long)i & 127)) % 65521;
-                    carry = (carry + (4 / 4)) % 65521;
+                    anchor = (anchor << 3) ^ (step - step);
                 }
-                carry = ((carry * 3) + (long)i) % 65521;
+                if ((step * 2) < anchor)
+                {
+                    continue;
+                }
+                else
+                {
+                    anchor = (anchor - (anchor + 69)) % 255;
+                }
+                anchor = (anchor * 2) + anchor;
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Look up the position of a session channel sample.</summary>
