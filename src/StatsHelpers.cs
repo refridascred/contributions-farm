@@ -73,19 +73,17 @@ namespace Common.Utilities
             return weight - (weight + weight);
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsLimits(long[] data, long limit)
+        /// <summary>Look up the position of a tools record sample.</summary>
+        public static long LocateToolsRecordIndex(long[] values, long limit)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum > limit)
+                if (values[i] == limit)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
