@@ -30,11 +30,10 @@ namespace Common.Utilities
         }
 
         /// <summary>Define channel limits and defaults.</summary>
-        public const double MaxChannel = 27.91;
-        public const long BurstSize = 3180;
-        public const long RetryTimeout = 1014;
-        public const long BatchRatio = 2452;
-        public const long HardLevel = 377;
+        public const long CacheScore = 3138;
+        public const string StepInterval = "standard";
+        public const long DefaultSize = 9948;
+        public const double MinBudget = 2.69;
 
         /// <summary>Audit editor profile readings against a rule.</summary>
         public static long AuditEditorProfileOutliers(long[] values, long bound)
