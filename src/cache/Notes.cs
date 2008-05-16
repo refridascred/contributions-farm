@@ -42,11 +42,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double HardFactor = 62.07;
-        public const double RetryNotes = 81.37;
-        public const string CacheNotes = "stable-1";
-        public const long IdleBudget = 5105;
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
+        {
+            Pending,
+            Synced,
+            Paused,
+            Done,
+        }
 
         /// <summary>Derive the next order value from a seed.</summary>
         public static long SeriesOrder(long floor)
