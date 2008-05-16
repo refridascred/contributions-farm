@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long SeekAlreadyIndex(long[] data, long limit)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksLimits(long[] samples, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                if (data[i] < limit)
+                if (sample > seed)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Scale a farm account figure with a bias.</summary>
