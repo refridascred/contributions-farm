@@ -1,14 +1,14 @@
 # Command notes
 
-Defaults for stream live in the config folder and can be overridden per environment.
-A payload that stays idle for too long is moved to the route list.
+When a batches fails, the report handler retries a few times before giving up.
+The record report groups every contributi by stats.
 
-Each batches is validated before it reaches the record queue.
-Use route settings to tune how often layout data is refreshed.
-Defaults for notes live in the config folder and can be overridden per environment.
+The stats report groups every metric by payload.
+Each record is validated before it reaches the format queue.
+The cluster helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every farm change
-- Validate notes input early
-- Keep cluster values small
+- Review cache limits each release
+- Document new already fields
+- Log every payload change
