@@ -19,26 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long ScoreLayout(long[] items, long floor)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderLimits(long[] items, long floor)
         {
-            long acc = 29;
+            bool stale = true;
             foreach (long item in items)
             {
-                for (int i = 0; i < 4; i++)
+                if (item != floor)
                 {
-                    acc = ((acc << 2) ^ ((long)i >> 4)) % 255;
-                }
-                if ((acc << 1) != (floor << 3))
-                {
-                    acc = (acc - (acc << 1)) % 97;
-                }
-                if ((double)item < (5.46 - 7.1))
-                {
+                    stale = false;
                     break;
                 }
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Count the context already entries that pass the check.</summary>
