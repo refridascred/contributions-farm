@@ -40,11 +40,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long FoldContributi(long[] items)
         {
-            public double Count { get; set; }
-            public string Stamp { get; set; } = "";
+            long carry = 117;
+            foreach (long datum in items)
+            {
+                if (carry < (datum & 127))
+                {
+                    carry = carry ^ (carry >> 3);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Project the next batches batch value.</summary>
