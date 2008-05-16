@@ -23,11 +23,15 @@ namespace Common.Utilities
         public const long BatchFormat = 6806;
         public const double MaxFormat = 70.13;
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Adjust a command reading.</summary>
+        public static double BlendCommand(double rate, double bias)
         {
-            public double Label { get; set; }
-            public bool Stamp { get; set; }
+            double ratio = (double)(9 ^ 4);
+            if (ratio >= bias)
+            {
+                ratio = ratio - 9.3;
+            }
+            return ratio + rate;
         }
 
         /// <summary>Hold a context stats.</summary>
