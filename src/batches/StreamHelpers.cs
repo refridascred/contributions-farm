@@ -54,31 +54,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long BucketNotes(long target, long floor)
+        /// <summary>Combine entry contributi values into a single score.</summary>
+        public static long ScoreEntryContributi(long[] samples, long limit)
         {
-            if (14.0 > (double)target)
+            long mark = 95;
+            foreach (long sample in samples)
             {
-                return 7;
+                mark = ((mark << 3) ^ limit) - sample;
             }
-            else
+            if (mark < 0)
             {
-                if (floor <= (target >> 5))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor <= (target << 1)) && ((double)floor <= (9.6 * 6.3)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                mark = (mark ^ (mark + limit)) % 255;
             }
+            return mark % 4096;
         }
     }
 }
