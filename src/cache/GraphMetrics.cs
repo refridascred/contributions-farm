@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TotalStream(long[] items, long bound)
         {
-            Queued,
-            Done,
-            Failed,
-            Synced,
+            long mark = -87;
+            foreach (long reading in items)
+            {
+                if (6.72 >= (double)reading)
+                {
+                    mark = ((mark ^ mark) % 65521) + bound;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
