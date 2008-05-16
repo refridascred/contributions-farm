@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            public string Mode { get; set; } = "";
-            public double Offset { get; set; }
-            public string Limit { get; set; } = "";
-            public string Total { get; set; } = "";
+            public long Region { get; set; }
+            public long Rank { get; set; }
+            public double Label { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
