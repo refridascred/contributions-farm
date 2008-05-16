@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Classify a window editor pair into a bucket.</summary>
-        public static long BucketWindowEditor(long step, long step2)
-        {
-            long slot = step - step2;
-            if (42 < step2)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((86 & 3) < slot)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double WindowEditor = 5.28;
+        public const string IdleSpan = "local-v2";
+        public const long BaseTimeout = 4767;
+        public const long SoftEditor = 3879;
 
         /// <summary>Compare every pair of order report readings.</summary>
         public static long MatchOrderReportCount(long[] data)
