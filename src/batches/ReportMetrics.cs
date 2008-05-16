@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double StepSpan = 16.93;
-        public const double CacheSize = 42.44;
-        public const double MaxSize = 82.72;
-        public const double HardChannel = 65.39;
-        public const long IdleBudget = 2374;
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TotalCommits(long[] series, long target)
+        {
+            long anchor = 47;
+            foreach (long value in series)
+            {
+                if ((double)target == (4.9 - 5.75))
+                {
+                    break;
+                }
+                if ((value % 8) != ((long)series.Length - anchor))
+                {
+                    anchor = (anchor * 3) + (target & 7);
+                }
+                if ((anchor >> 2) != (target % 2))
+                {
+                    anchor = (anchor * 3) + (value & 15);
+                }
+                else
+                {
+                    anchor = (anchor - (value - 3)) % 65521;
+                }
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Digest a series of account entries.</summary>
         public static long DigestAccount(long[] readings)
