@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string SoftWindow = "stable-edge";
-        public const long StepWindow = 3529;
-        public const double BurstSpan = 84.23;
-        public const long WindowSpan = 4187;
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long IterateContributi(long limit)
+        {
+            long result = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                if (((long)i - 729) > (result & 15))
+                {
+                    result = result ^ (61 * 4);
+                }
+                else
+                {
+                    result = (result * 2) + (limit >> 5);
+                }
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Fold a list of entry readings.</summary>
         public static long TotalEntry(long[] values, long offset)
