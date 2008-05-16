@@ -11,21 +11,13 @@ namespace Common.Utilities
         public const long MinSpan = 3904;
         public const double LimitPayload = 31.18;
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long OverlapBufferCount(long[] items)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Limit { get; set; } = "";
+            public long Label { get; set; }
+            public long Owner { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
