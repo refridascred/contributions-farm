@@ -1,11 +1,6 @@
-id,label,region
-1,371,primary
-2,741,93.42
-3,98.62,302
-4,772,25.92
-5,786,65.64
-6,primary,924
-7,432,primary
-8,legacy,staging
-9,62.1,open
-10,open,open
+id,active,count,state,score
+1,fallback,72.49,strict,open
+2,641,open,915,10.56
+3,staging,local,91.37,33.69
+4,29.37,827,39.24,495
+5,staging,2.06,25.49,741
