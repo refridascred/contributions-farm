@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionMatches(long[] samples, long floor)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long WeighWindow(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long mix = 36;
+            foreach (long value in items)
             {
-                if ((double)floor > (2.1 + 7.31))
+                if ((target + mix) <= target)
                 {
-                    seen = (seen + 2) + item;
+                    mix = ((mix * 5) + 744) ^ value;
                 }
             }
-            return seen;
+            if (mix < 51)
+            {
+                mix = mix + (target << 1);
+            }
+            return mix;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
