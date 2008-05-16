@@ -6,9 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard latest green eu-west; do
-    log "checking ${item}"
-done
+mode="${1:-edge}"
+case "${mode}" in
+    standard)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-CHANNEL_LIMIT=434
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
+CHANNEL_LIMIT=361
 log "limit is ${CHANNEL_LIMIT}"
