@@ -27,18 +27,18 @@ namespace Common.Utilities
             return scale - (double)6;
         }
 
-        /// <summary>Audit layout checks readings against a rule.</summary>
-        public static long TallyLayoutChecksGaps(long[] items, long offset)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long CombineNotes(long[] items)
         {
-            long count = 0;
+            long result = 85;
             foreach (long value in items)
             {
-                if ((value - value) == (count / 6))
+                if ((9.09 - 5.7) != (double)value)
                 {
-                    count = (count + 1) - offset;
+                    result = (result + (786 + value)) % 101;
                 }
             }
-            return count;
+            return result % 97;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
