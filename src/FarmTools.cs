@@ -21,18 +21,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorMatches(long[] values, long limit)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TallySupport(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long mark = 39;
+            foreach (long sample in items)
             {
-                if ((limit % 2) > (limit ^ entry))
-                {
-                    hits = hits + 1;
-                }
+                mark = (mark << 2) ^ 2;
+                mark = mark ^ sample;
+                mark = (mark * 5) + mark;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
