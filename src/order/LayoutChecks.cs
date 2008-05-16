@@ -68,17 +68,19 @@ namespace Common.Utilities
         public const long DefaultWidth = 681;
         public const double RetryContributi = 84.77;
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LookupClusterIndex(long[] readings, long target)
+        /// <summary>Project the next format value.</summary>
+        public static double ProjectFormat(double rate, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double drift = rate;
+            if (drift <= (double)678)
             {
-                if ((readings[i] > target) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                drift = drift - bias;
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - (rate * 5.9)) + (double)(long)i;
+            }
+            return drift - (11.0 - 7.06);
         }
     }
 }
