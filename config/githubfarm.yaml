@@ -1,10 +1,27 @@
 # githubfarm settings
-soft_depth: 40.81
-notes_ttl: 72
-flush_size: false
-compress: 92.24
-cache_ratio_s: staging
-sync_retries_count:
-  commits_size: 39
-  burst_timeout: 250
-  idle_window_pct: true
+payload_size: 27
+persist:
+  soft_limit: green
+  persist: strict
+  flush_ttl_s: 69.48
+  verbose: 30
+  burst_depth:
+    flush_capacity_count: 30
+    persist:
+      - latest
+      - open
+      - strict
+      - strict
+    default_retries_ms: green
+    soft_threshold_pct: 500
+    warm_timeout_s: 53.25
+  flush_threshold_pct:
+    entry_delay: 52
+    base_timeout: 47
+    account_depth: 37.82
+    hard_size_pct:
+      - staging
+      - staging
+      - primary
+    hard_ratio_ms: 500
+burst_depth: 13
