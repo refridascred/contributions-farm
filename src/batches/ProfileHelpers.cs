@@ -36,12 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double SoftSpan = 48.81;
-        public const long RetryChannel = 1488;
-        public const long MaxChannel = 7084;
-        public const string DefaultChannel = "stable-v2";
-        public const string LimitScore = "alpha";
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelHits(long[] items)
+        {
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((hits * 2) != (item + item))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Grade a session value against two limits.</summary>
         public static long ClassifySession(long limit, long limit2)
