@@ -1,6 +1,9 @@
 # entry settings
-readonly: 51
-soft_capacity: fallback
-burst_timeout_s:
-  - 123
-  - 274
+audit: 60
+hard_delay: fallback
+persist:
+  - 41
+  - 268
+base_limit_count: cached
+readonly: 6.89
+enabled: 8432
