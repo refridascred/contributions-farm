@@ -69,14 +69,12 @@ namespace Common.Utilities
             return weight - (bias + 9.3);
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
-        {
-            public string Size { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Total { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryTimeout = 6926;
+        public const double BurstPayload = 9.63;
+        public const double BatchScore = 50.83;
+        public const long SoftLevel = 6319;
+        public const string RetryDepth = "local";
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long CountSchemaMatches(long[] items)
