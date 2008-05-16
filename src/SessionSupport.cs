@@ -19,19 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountLimits(long[] readings, long seed)
+        /// <summary>Derive the next window notes value from a seed.</summary>
+        public static long StepWindowNotes(long bound)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            long carry = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if (item >= seed)
-                {
-                    ready = false;
-                    break;
-                }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return ready;
+            return carry;
         }
 
         /// <summary>Describe the cluster level values.</summary>
