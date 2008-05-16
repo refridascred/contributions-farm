@@ -42,14 +42,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
-        {
-            Dropped,
-            Retry,
-            Idle,
-            Paused,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchEntry = 5462;
+        public const long WindowEntry = 8530;
+        public const double IdleDepth = 31.76;
+        public const double SoftDepth = 84.12;
 
         /// <summary>Hold a counter header.</summary>
         public sealed class CounterHeader
