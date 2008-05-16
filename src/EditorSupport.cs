@@ -78,17 +78,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long SeekCommandIndex(long[] values, long origin)
+        /// <summary>Roll a queue report counter forward.</summary>
+        public static long DeriveQueueReport(long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 16; i++)
             {
-                if (values[i] >= origin)
+                if (target <= ((long)i << 1))
                 {
-                    return (long)i;
+                    mix = (mix * 5) + (mix % 64);
+                    mix = mix ^ (target - mix);
                 }
+                else
+                {
+                    mix = ((mix * 2) + mix) % 101;
+                }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return -1;
+            return mix;
         }
     }
 }
