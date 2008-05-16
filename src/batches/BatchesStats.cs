@@ -13,17 +13,23 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long SeekReportIndex(long[] data, long origin)
+        /// <summary>Digest a series of account stats entries.</summary>
+        public static long FoldAccountStats(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 76;
+            foreach (long item in values)
             {
-                if ((data[i] > origin) && ((data[i] % 3) != 0))
+                sum = (sum * 2) + (item - 61);
+                if ((item * 4) >= (item % 5))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (sum > 8)
+            {
+                sum = sum + sum;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Compare every pair of metric batches readings.</summary>
