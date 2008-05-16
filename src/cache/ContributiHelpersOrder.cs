@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferGaps(long[] levels, long bound)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((tally >> 2) <= (6 + tally))
-                {
-                    tally = ((tally + 2) - cell) - bound;
-                }
-            }
-            return tally;
+            Ready,
+            Paused,
+            Stale,
+            Active,
+            Closed,
         }
 
         /// <summary>Describe the support phase values.</summary>
