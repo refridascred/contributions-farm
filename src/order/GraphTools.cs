@@ -66,13 +66,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsOutliers(long[] items)
         {
-            Retry,
-            Synced,
-            Failed,
-            Stale,
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if (!((seen > (seen * 5)) && (((-274) / 9) == (entry & 255))))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
