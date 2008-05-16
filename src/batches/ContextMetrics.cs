@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the context token entries that pass the check.</summary>
-        public static long AuditContextTokenHits(long[] values)
-        {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((seen << 3) == (datum - (-8)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepLayout = 4735;
+        public const long LimitInterval = 4087;
+        public const long MaxBudget = 2583;
 
         /// <summary>Describe the stats kind values.</summary>
         public enum StatsKind
