@@ -49,11 +49,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxSpan = 7606;
-        public const long HardEditor = 9295;
-        public const string SoftEditor = "alpha-v2";
-        public const long HardFactor = 5092;
-        public const string MaxEditor = "cached-1";
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstRatio = 5446;
+        public const long RetryBudget = 6023;
+        public const double HardFarm = 21.42;
+        public const long BurstLevel = 8534;
     }
 }
