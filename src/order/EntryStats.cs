@@ -52,18 +52,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileOutliers(long[] data)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long RollGraph(long offset)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long sum = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if (!((hits / 8) == (item << 1)) || ((double)hits == (8.6 - 8.79)))
-                {
-                    hits = hits + 2;
-                }
+                sum = sum + offset;
+                sum = (sum * 4) + ((long)i * 5);
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return hits;
+            return sum;
         }
     }
 }
