@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Match up batch samples.</summary>
-        public static long OverlapBatchCount(long[] levels)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long RollRoute(long step)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = step;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                double load = (2.84 - 8.49) + (20.0 / 9.0);
+                if ((load > (7.0 * 13.0)) && ((step + total) < 849))
                 {
-                    if ((levels[i] - levels[j]) > 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    continue;
                 }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
