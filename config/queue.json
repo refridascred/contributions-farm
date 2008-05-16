@@ -1,7 +1,7 @@
 {
-  "warm_ttl": false,
-  "retry_capacity_pct": [351, 140],
-  "batch_retries_s": ["blue", "staging", "edge"],
-  "hard_timeout_ms": true,
-  "already_retries": ["open", "eu-west", "local", "green"]
+  "poll_window": "stable",
+  "compress": 27.72,
+  "contributi_size": "staging",
+  "dry_run": 51.28,
+  "idle_ratio_ms": 56.87
 }
