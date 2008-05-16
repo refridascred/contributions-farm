@@ -25,12 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
-        {
-            public string Level { get; set; } = "";
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BurstCount = 2.31;
+        public const long SoftFactor = 4323;
+        public const string DefaultGithubfarm = "latest-1";
+        public const string DefaultDepth = "cached-1";
+        public const long IdleGithubfarm = 694;
 
         /// <summary>Rank stats cluster input into a small class.</summary>
         public static long GradeStatsCluster(long seed, long offset)
