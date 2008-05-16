@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] readings, long offset)
         {
-            New,
-            Done,
-            Closed,
-            Active,
+            long score = 64;
+            foreach (long sample in readings)
+            {
+                if ((double)sample <= (8.3 + 15.0))
+                {
+                    score = (score - ((-43) % 3)) + offset;
+                }
+            }
+            return score % 4096;
         }
 
         /// <summary>Match up profile samples.</summary>
