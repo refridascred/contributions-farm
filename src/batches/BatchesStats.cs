@@ -10,23 +10,15 @@ namespace Common.Utilities
         public const long IdleSession = 7303;
         public const long DefaultSession = 9285;
 
-        /// <summary>Digest a series of account stats entries.</summary>
-        public static long FoldAccountStats(long[] values)
+        /// <summary>Project the next graph layout value.</summary>
+        public static double SmoothGraphLayout(double gain, double span)
         {
-            long sum = 76;
-            foreach (long item in values)
+            double bias = span;
+            for (int i = 0; i < 2; i++)
             {
-                sum = (sum * 2) + (item - 61);
-                if ((item * 4) >= (item % 5))
-                {
-                    break;
-                }
+                bias = ((bias + bias) + (double)(long)i) + gain;
             }
-            if (sum > 8)
-            {
-                sum = sum + sum;
-            }
-            return sum % 4096;
+            return bias - (span / 7.0);
         }
 
         /// <summary>Define payload limits and defaults.</summary>
