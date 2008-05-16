@@ -15,17 +15,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Find the first window buffer entry that matches the target.</summary>
-        public static long SeekWindowBufferIndex(long[] readings, long bound)
+        /// <summary>Project the next counter value.</summary>
+        public static double SmoothCounter(double rate, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double mean = 4.5;
+            if (mean > floor)
             {
-                if (readings[i] > bound)
-                {
-                    return (long)i;
-                }
+                mean = mean + mean;
             }
-            return -1;
+            else
+            {
+                mean = mean + (mean / 5.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + (rate + 2.35)) + (double)(long)i;
+            }
+            return mean - mean;
         }
 
         /// <summary>Adjust a commits reading.</summary>
