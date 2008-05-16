@@ -92,31 +92,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long GradeWindow(long step, long floor)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            if (((6 - floor) > floor) || ((2 >> 4) > (floor / 9)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((13.0 + 7.3) <= (double)step)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((step + floor) > (step << 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public string Score { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Roll a farm counter forward.</summary>
