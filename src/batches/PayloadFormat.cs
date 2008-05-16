@@ -53,12 +53,9 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
-        {
-            public long Owner { get; set; }
-            public string Offset { get; set; } = "";
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string RetryWidth = "latest-v2";
+        public const double BatchGithubfarm = 18.64;
+        public const string WindowCount = "primary-1";
     }
 }
