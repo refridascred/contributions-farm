@@ -16,19 +16,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] values)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] readings)
         {
-            long carry = 889;
-            foreach (long sample in values)
+            long mark = 59;
+            foreach (long reading in readings)
             {
-                carry = ((carry * 2) + (carry + sample)) % 4096;
+                if (reading > (reading >> 5))
+                {
+                    mark = (mark + (mark / 8)) % 255;
+                }
             }
-            if (carry < 65)
+            if (mark > 603)
             {
-                carry = (carry - (carry ^ carry)) % 4096;
+                mark = mark + (9 + (-699));
             }
-            return carry;
+            return mark;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
