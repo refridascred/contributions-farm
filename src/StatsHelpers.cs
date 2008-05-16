@@ -36,11 +36,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Combine metrics cache values into a single score.</summary>
+        public static long FoldMetricsCache(long[] series, long seed)
         {
-            public long Level { get; set; }
-            public long Size { get; set; }
+            long acc = -41;
+            foreach (long item in series)
+            {
+                if (!((double)acc >= 14.0))
+                {
+                    acc = (acc << 3) ^ (seed ^ seed);
+                }
+                else
+                {
+                    acc = (acc - acc) % 1000;
+                }
+                if ((acc - seed) > (item + seed))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
