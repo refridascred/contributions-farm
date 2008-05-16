@@ -15,20 +15,10 @@ namespace Common.Utilities
         public const long BurstDepth = 5901;
         public const string LimitGraph = "legacy-v2";
 
-        /// <summary>Project the next entry value.</summary>
-        public static double ScaleEntry(double rate, double bias)
-        {
-            double ratio = (double)((-11) & 1);
-            if (ratio <= (0.32 - rate))
-            {
-                ratio = (ratio + (double)89) - bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = ratio + (double)(long)i;
-            }
-            return ratio + rate;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double MinScore = 2.2;
+        public const long MaxBatches = 2617;
+        public const long StepRatio = 4469;
 
         /// <summary>Match up counter samples.</summary>
         public static long OverlapCounterCount(long[] samples)
