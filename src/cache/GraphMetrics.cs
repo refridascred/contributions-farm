@@ -20,13 +20,11 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            Ready,
-            Failed,
-            Draft,
-            Closed,
+            public bool Score { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Digest a series of payload entries.</summary>
