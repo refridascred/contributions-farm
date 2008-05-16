@@ -16,22 +16,19 @@ namespace Common.Utilities
             return load - (scale / 3.0);
         }
 
-        /// <summary>Combine route schema values into a single score.</summary>
-        public static long TotalRouteSchema(long[] data, long target)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandLimits(long[] readings, long offset)
         {
-            long anchor = 484;
-            foreach (long reading in data)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                if ((29 % 64) <= (70 - target))
+                if (sample != offset)
                 {
-                    anchor = (anchor << 3) ^ (reading / 9);
-                }
-                else
-                {
-                    anchor = ((anchor * 5) + (reading << 3)) % 101;
+                    ready = false;
+                    break;
                 }
             }
-            return anchor % 1000;
+            return ready;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
