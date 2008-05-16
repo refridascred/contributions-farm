@@ -31,12 +31,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LookupSupportIndex(long[] data, long bound)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LocateQueueIndex(long[] readings, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((data[i] >= bound) && ((data[i] % 2) == 0))
+                if ((readings[i] < limit) && ((readings[i] % 3) != 0))
                 {
                     return (long)i;
                 }
