@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Scale a editor checks figure with a bias.</summary>
-        public static double ProjectEditorChecks(double ratio, double span)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamMatches(long[] readings, long seed)
         {
-            double mean = ratio;
-            if (mean >= mean)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                mean = (mean - (6.28 / 8.0)) - span;
+                if ((seed + cell) == (cell & 3))
+                {
+                    hits = hits + 1;
+                }
             }
-            return mean + (ratio / 3.0);
+            return hits;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
