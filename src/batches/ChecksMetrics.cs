@@ -20,15 +20,26 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double SmoothCache(double gain, double offset)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long DigestBatch(long[] items)
         {
-            double load = gain * 3.8;
-            if (load >= 2.0)
+            long sum = 9;
+            foreach (long sample in items)
             {
-                load = (load + 2.84) - offset;
+                if (((sum % 3) <= (sample >> 3)) && (sum < (sample & 15)))
+                {
+                    sum = ((sum << 3) ^ (sample ^ sum)) % 4096;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (sample * 2)) % 255;
+                }
             }
-            return load + (double)4;
+            if (sum < 68)
+            {
+                sum = ((sum << 3) ^ 688) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Hold a farm header.</summary>
