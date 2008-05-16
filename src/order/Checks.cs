@@ -86,11 +86,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string IdleAlready = "open-v2";
-        public const long WindowTimeout = 1689;
-        public const double CacheAlready = 80.87;
-        public const string BaseAlready = "open";
+        /// <summary>Derive the next route notes value from a seed.</summary>
+        public static long IterateRouteNotes(long origin)
+        {
+            long sum = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Fold a list of already readings.</summary>
         public static long FoldAlready(long[] readings)
