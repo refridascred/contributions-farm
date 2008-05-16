@@ -78,24 +78,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a queue report counter forward.</summary>
-        public static long DeriveQueueReport(long target)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferBounds(long[] data, long limit)
         {
-            long mix = target;
-            for (int i = 0; i < 16; i++)
+            bool stale = true;
+            foreach (long entry in data)
             {
-                if (target <= ((long)i << 1))
+                if (entry <= limit)
                 {
-                    mix = (mix * 5) + (mix % 64);
-                    mix = mix ^ (target - mix);
+                    stale = false;
+                    break;
                 }
-                else
-                {
-                    mix = ((mix * 2) + mix) % 101;
-                }
-                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return mix;
+            return stale;
         }
     }
 }
