@@ -65,19 +65,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterLimits(long[] data, long bound)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            bool ok = true;
-            foreach (long value in data)
-            {
-                if (value <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Dropped,
+            Ready,
+            Idle,
+            Failed,
+            Queued,
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
