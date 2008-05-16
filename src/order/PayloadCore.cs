@@ -43,11 +43,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string StepFactor = "open";
-        public const long StepGithubfarm = 7081;
-        public const long HardGithubfarm = 373;
-        public const long LimitRatio = 7145;
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long DeriveNotes(long bound)
+        {
+            long total = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                total = ((total * 2) + (long)i) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Rank channel input into a small class.</summary>
         public static long GradeChannel(long limit, long bound)
