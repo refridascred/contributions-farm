@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
-        {
-            Paused,
-            New,
-            Idle,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double HardBatch = 90.31;
+        public const string IdleSpan = "local-v2";
+        public const long SoftBatch = 9182;
 
         /// <summary>Classify a channel pair into a bucket.</summary>
         public static long ClassifyChannel(long bound, long target)
