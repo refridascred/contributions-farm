@@ -38,15 +38,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Roll a filter token counter forward.</summary>
-        public static long IterateFilterToken(long step)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long ScoreFilter(long[] items, long limit)
         {
-            long anchor = step;
-            for (int i = 0; i < 14; i++)
+            long sum = 247;
+            foreach (long sample in items)
             {
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                sum = ((sum ^ sum) - sample) - limit;
+                if ((sum - 350) >= (27 + sum))
+                {
+                    break;
+                }
             }
-            return anchor;
+            return sum % 1000;
         }
     }
 }
