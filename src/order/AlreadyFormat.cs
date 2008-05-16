@@ -38,13 +38,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutBounds(long[] data, long limit)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsLimits(long[] levels, long offset)
         {
             bool flag = true;
-            foreach (long cell in data)
+            foreach (long datum in levels)
             {
-                if (cell >= limit)
+                if (datum <= offset)
                 {
                     flag = false;
                     break;
