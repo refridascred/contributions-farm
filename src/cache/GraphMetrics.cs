@@ -53,17 +53,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long FindRouteIndex(long[] data, long step)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TallyQueue(long[] values, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 79;
+            foreach (long entry in values)
             {
-                if (data[i] == step)
+                mark = ((mark * 4) + (entry << 3)) - origin;
+                mark = mark ^ (6 ^ mark);
+                if (entry >= (mark % 24))
                 {
-                    return (long)i;
+                    mark = mark + (9 * 5);
                 }
             }
-            return -1;
+            return mark % 97;
         }
     }
 }
