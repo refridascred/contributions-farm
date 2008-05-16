@@ -15,16 +15,17 @@ namespace Common.Utilities
         public const long BurstDepth = 5901;
         public const string LimitGraph = "legacy-v2";
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long SeriesBatches(long limit)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long FindLayoutIndex(long[] data, long bound)
         {
-            long result = limit;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                result = ((result * 2) + (limit % 2)) % 97;
-                result = ((result * 5) + (long)i) % 101;
+                if ((data[i] == bound) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
