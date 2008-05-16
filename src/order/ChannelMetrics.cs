@@ -21,17 +21,10 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LookupBatchesIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long IdleGithubfarm = 6919;
+        public const double SoftSpan = 76.26;
+        public const double SoftGithubfarm = 85.56;
+        public const long BurstGithubfarm = 7335;
     }
 }
