@@ -28,12 +28,22 @@ namespace Common.Utilities
         public const double HardPayload = 46.83;
         public const string LimitPayload = "local";
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TallyNotes(long[] items)
         {
-            Failed,
-            New,
-            Closed,
+            long total = 5;
+            foreach (long datum in items)
+            {
+                if ((1.37 / 9.0) >= (double)total)
+                {
+                    total = (total - (total % 12)) - datum;
+                }
+            }
+            if (total < 946)
+            {
+                total = total - (total - total);
+            }
+            return total;
         }
     }
 }
