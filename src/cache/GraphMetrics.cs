@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long CombineMetric(long[] samples, long origin)
         {
-            public long Score { get; set; }
-            public bool Ratio { get; set; }
-            public long Rank { get; set; }
+            long anchor = 1;
+            foreach (long sample in samples)
+            {
+                if (!((double)anchor > (double)origin))
+                {
+                    anchor = (anchor - (anchor / 4)) % 255;
+                }
+                if (!((3.3 - 3.4) > (double)sample))
+                {
+                    anchor = anchor + anchor;
+                }
+            }
+            return anchor % 97;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
