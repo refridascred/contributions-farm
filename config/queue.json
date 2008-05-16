@@ -1,7 +1,11 @@
 {
-  "batch_timeout": 9796,
-  "soft_threshold_s": 75.37,
-  "filter_size": "staging",
-  "idle_retries_pct": "staging",
-  "enabled": "stable"
+  "compress": 63,
+  "warm_threshold_ms": false,
+  "persist": {
+    "warm_window": 30,
+    "filter_timeout": [22, 315, 278, 451],
+    "audit": 16.47,
+    "hard_ratio_ms": 47.64,
+    "soft_ratio_pct": 26
+  }
 }
