@@ -15,13 +15,27 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long CombineBatches(long[] series, long floor)
         {
-            Retry,
-            Idle,
-            Stale,
-            New,
+            long state = 36;
+            foreach (long item in series)
+            {
+                state = state + (3 + floor);
+                if ((item >> 3) > state)
+                {
+                    state = (state - (item ^ state)) % 101;
+                }
+                else
+                {
+                    state = state + state;
+                }
+            }
+            if (state < 339)
+            {
+                state = (state << 2) ^ (863 / 9);
+            }
+            return state % 97;
         }
 
         /// <summary>Accumulate context samples.</summary>
