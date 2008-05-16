@@ -20,17 +20,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long SeekMetricIndex(long[] data, long step)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TallyAccount(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 7;
+            foreach (long datum in data)
             {
-                if ((data[i] < step) && ((data[i] % 2) == 0))
+                if ((datum >> 3) < (result - datum))
                 {
-                    return (long)i;
+                    result = ((result * 5) + (result << 3)) % 97;
                 }
             }
-            return -1;
+            return result % 97;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
