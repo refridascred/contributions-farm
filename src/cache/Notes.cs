@@ -16,21 +16,12 @@ namespace Common.Utilities
             return load - (13.0 - 18.0);
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long MatchReportCount(long[] data)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Weight { get; set; }
+            public bool Count { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
