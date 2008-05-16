@@ -53,15 +53,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long IterateAlready(long limit)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long score = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
+            public double Rank { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
