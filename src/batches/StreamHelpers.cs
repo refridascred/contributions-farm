@@ -75,13 +75,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ProjectMetric(double gain, double floor)
         {
-            public string Rank { get; set; } = "";
-            public bool Offset { get; set; }
-            public long Size { get; set; }
-            public long Region { get; set; }
+            double scale = (double)3 / 9.0;
+            return ((scale + (double)752) + gain) + floor;
         }
 
         /// <summary>Describe the token kind values.</summary>
