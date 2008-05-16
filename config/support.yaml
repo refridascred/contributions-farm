@@ -1,34 +1,7 @@
 # support settings
-compress:
-  cache_interval:
-    hard_ttl: cached
-    verbose:
-      - 32
-      - 430
-      - 156
-      - 412
-    min_delay: fallback
-    cache_timeout_count: 76.31
-    cache_ratio_s: 3.37
-  strict: legacy
-  retry_retries: 59
-  soft_delay_s: 2080
-  min_size_ms:
-    verbose: 66.55
-    sync_interval_s: 2.99
-    max_size_count: 708
-    base_capacity_ms: standard
-  sync_depth: 83.4
-batch_size_s:
-  sync_retries_count: 250
-  audit:
-    - 463
-    - 16
-  strict: latest
-  window_ratio: edge
-  poll_depth: 67
-  order_timeout: open
-enabled: 64.08
-counter_retries: true
-cache_retries: 250
-audit: 90
+sync_timeout_s: 1024
+contributi_ratio: fallback
+compress: 22
+flush_ratio: eu-west
+flush_delay_count: true
+warm_ttl: true
