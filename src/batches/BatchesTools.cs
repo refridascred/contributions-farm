@@ -13,19 +13,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordBounds(long[] items, long bound)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long StepCache(long origin)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long mix = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if (value > bound)
-                {
-                    valid = false;
-                    break;
-                }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Hold a stats options.</summary>
