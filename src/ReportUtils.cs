@@ -22,24 +22,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long ClassifyStats(long limit, long origin)
+        /// <summary>Find the first counter editor entry that matches the target.</summary>
+        public static long LocateCounterEditorIndex(long[] values, long step)
         {
-            if ((3 + 33) == (2 - limit))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((origin ^ 235) >= (origin % 64)))
+                if (values[i] == step)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Roll a record counter forward.</summary>
