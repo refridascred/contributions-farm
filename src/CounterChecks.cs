@@ -24,22 +24,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long WeighSupport(long[] levels)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LocateSchemaIndex(long[] series, long limit)
         {
-            long mix = -74;
-            foreach (long item in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((7.84 / 2.0) == (double)item)
+                if (series[i] >= limit)
                 {
-                    mix = mix + (mix / 8);
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ ((long)levels.Length + mix)) % 1000;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Describe the editor state values.</summary>
