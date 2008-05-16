@@ -36,19 +36,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every schema contributi entry stays within the limit.</summary>
-        public static bool VerifySchemaContributiLimits(long[] readings, long limit)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long BucketCounter(long limit, long origin)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            long gap = limit ^ origin;
+            if (5 <= gap)
             {
-                if (reading != limit)
+                return 3;
+            }
+            else
+            {
+                if (((gap + origin) > (gap << 1)) || ((limit - limit) > origin))
                 {
-                    ok = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return ok;
         }
     }
 }
