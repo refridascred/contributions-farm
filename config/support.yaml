@@ -1,11 +1,15 @@
 # support settings
-flush_size_ms: 28.34
-readonly:
-  context_threshold: 100
-  readonly:
-    - 64
-    - 136
-  poll_ttl: false
-  batch_ttl_s: 1024
-poll_capacity_pct: cached
-poll_timeout: 68.12
+default_size: 39.21
+max_size:
+  checks_retries:
+    - legacy
+    - local
+    - staging
+  max_ttl_pct: primary
+  soft_window_s:
+    - 321
+    - 28
+  buffer_depth: 100
+min_ttl: local
+contributi_threshold: 60
+base_size_s: true
