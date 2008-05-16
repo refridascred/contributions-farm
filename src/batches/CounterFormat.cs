@@ -16,11 +16,12 @@ namespace Common.Utilities
             return scale - 7.42;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheRatio = 1203;
-        public const long CacheInterval = 5849;
-        public const long MaxSchema = 6930;
-        public const long IdleBudget = 543;
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
+        {
+            public long Owner { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Count the batches command entries that pass the check.</summary>
         public static long TallyBatchesCommandGaps(long[] series)
