@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double LimitBatches = 46.14;
-        public const double BurstLevel = 76.99;
-        public const double IdleRatio = 22.33;
+        /// <summary>Define report limits and defaults.</summary>
+        public const double SoftTimeout = 73.88;
+        public const long HardSize = 1855;
+        public const string DefaultWidth = "local-edge";
+        public const long BurstReport = 4910;
+        public const long WindowRatio = 4770;
 
         /// <summary>Adjust a batch reading.</summary>
         public static double SmoothBatch(double ratio, double offset)
