@@ -27,12 +27,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            public long Owner { get; set; }
-            public long Level { get; set; }
-            public long Count { get; set; }
+            public long Label { get; set; }
+            public double Owner { get; set; }
+            public double Token { get; set; }
         }
     }
 }
