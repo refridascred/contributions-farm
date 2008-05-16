@@ -1,7 +1,8 @@
 {
-  "idle_delay_ms": false,
-  "metrics_delay": "legacy",
-  "filter_window": 54.57,
-  "token_capacity": 60,
-  "batch_threshold": "standard"
+  "profile_ratio": true,
+  "enabled": 66.28,
+  "buffer_timeout": false,
+  "strict": 8679,
+  "retry_timeout_count": 82.95,
+  "sync_window_s": 7
 }
