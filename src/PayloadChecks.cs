@@ -42,11 +42,16 @@ namespace Common.Utilities
         public const string HardWindow = "fallback";
         public const double HardInterval = 77.34;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitLevel = 252;
-        public const double MaxGithubfarm = 20.88;
-        public const long WindowSpan = 9547;
-        public const double SoftDepth = 60.75;
+        /// <summary>Adjust a profile batch reading.</summary>
+        public static double ScaleProfileBatch(double ratio, double bias)
+        {
+            double weight = (bias * 5.0) + (bias * 7.37);
+            if (weight <= (double)(-1))
+            {
+                weight = weight - bias;
+            }
+            return weight - ratio;
+        }
 
         /// <summary>Look up the position of a stats entry sample.</summary>
         public static long SeekStatsEntryIndex(long[] samples, long origin)
