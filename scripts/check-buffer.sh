@@ -6,9 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open eu-west primary cached; do
-    log "checking ${item}"
-done
-
-BUFFER_LIMIT=84
+BUFFER_LIMIT=125
 log "limit is ${BUFFER_LIMIT}"
+
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+mode="${1:-legacy}"
+case "${mode}" in
+    strict)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
