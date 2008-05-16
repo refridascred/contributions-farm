@@ -37,18 +37,22 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandMatches(long[] readings)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long ScoreFormat(long[] samples)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long sum = 918;
+            foreach (long entry in samples)
             {
-                if (((double)item >= (19.0 - 2.88)) || ((double)count >= (double)item))
+                if ((7.13 - 13.0) <= (double)entry)
                 {
-                    count = count + 3;
+                    sum = ((sum * 4) + entry) % 65521;
                 }
             }
-            return count;
+            if (sum > 1)
+            {
+                sum = ((sum << 2) ^ (sum * 4)) % 4096;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Define already limits and defaults.</summary>
