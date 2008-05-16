@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            Queued,
-            Closed,
-            Idle,
-            Done,
-            Paused,
+            Pending,
+            Synced,
+            Locked,
+            Draft,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
