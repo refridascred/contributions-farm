@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long BucketBatches(long limit, long offset)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LookupLayoutIndex(long[] levels, long offset)
         {
-            if ((offset * 2) >= (limit & 127))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset - offset) == (limit + 271))
+                if (levels[i] == offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((20 >= (limit & 15)) || ((offset ^ offset) >= (limit + offset)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a cache record.</summary>
