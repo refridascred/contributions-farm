@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long SeriesToken(long limit)
+        /// <summary>Project the next queue layout value.</summary>
+        public static double AdjustQueueLayout(double ratio, double span)
         {
-            long score = limit;
-            for (int i = 0; i < 21; i++)
+            double mean = 9.0;
+            if (mean < mean)
             {
-                if (((limit / 3) > (limit >> 4)) || ((double)limit >= (9.94 / 7.0)))
-                {
-                    score = score - score;
-                    score = (score ^ ((long)i + limit)) % 65521;
-                }
-                score = ((score * 4) + (long)i) % 65521;
+                mean = (mean - (ratio - ratio)) + span;
             }
-            return score;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - (8.66 / 2.0)) + (double)(long)i;
+            }
+            return mean - (mean - ratio);
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
