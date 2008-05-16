@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetrySize = 9940;
-        public const double WindowTimeout = 49.95;
-        public const string SoftFormat = "staging-v2";
-        public const long RetryTimeout = 6156;
-        public const long BatchFormat = 6312;
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
+        {
+            Paused,
+            Locked,
+            Queued,
+            Dropped,
+        }
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long DigestLayout(long[] readings, long step)
