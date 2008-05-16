@@ -22,14 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Find the first cluster window entry that matches the target.</summary>
+        public static long FindClusterWindowIndex(long[] values, long seed)
         {
-            Idle,
-            Done,
-            Ready,
-            Queued,
-            Retry,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < seed) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate cluster token readings against a bound.</summary>
