@@ -26,11 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double SmoothChannel(double scale, double bias)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            double load = scale - 7.3;
-            return (load + (scale + scale)) + bias;
+            public bool Owner { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Validate order stream readings against a bound.</summary>
