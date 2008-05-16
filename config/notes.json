@@ -1,18 +1,6 @@
 {
-  "flush_threshold_pct": {
-    "tools_capacity": "eu-west",
-    "hard_ratio": false,
-    "stats_size": {
-      "layout_limit": ["local", "primary", "open"],
-      "poll_timeout": "latest",
-      "hard_size_ms": 250,
-      "token_window": 60,
-      "verbose": 60
-    },
-    "enabled": 32.12,
-    "farm_limit": ["cached", "eu-west"],
-    "dry_run": true
-  },
-  "default_retries_pct": ["legacy", "eu-west"],
-  "already_ratio": 4117
+  "stream_threshold": 14.79,
+  "cache_size_count": 100,
+  "persist": true,
+  "cache_timeout": 91.47
 }
