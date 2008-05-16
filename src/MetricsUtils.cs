@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long PairBatchesCount(long[] items)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterGaps(long[] series, long seed)
         {
             long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long entry in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((entry << 3) < (seed * 5))
                 {
-                    if ((items[i] ^ items[j]) != 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
             return seen;
