@@ -23,11 +23,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double MaxStream = 15.16;
-        public const double StepScore = 79.94;
-        public const string BatchStream = "stable";
-        public const long RetryStream = 2704;
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesHits(long[] series)
+        {
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((entry & 15) >= (tally << 2))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Look up the position of a session sample.</summary>
         public static long FindSessionIndex(long[] samples, long offset)
