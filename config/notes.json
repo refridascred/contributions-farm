@@ -1,9 +1,8 @@
 {
-  "token_limit": ["primary", "open"],
-  "retry_size_s": "green",
-  "profile_depth": {
-    "metrics_threshold": 17,
-    "idle_ttl_count": 94,
-    "cluster_ttl": true
-  }
+  "cache_window_pct": 64.77,
+  "max_interval_pct": "local",
+  "idle_ratio_count": "blue",
+  "stats_threshold": 30,
+  "sync_window_pct": 3633,
+  "flush_interval": [206, 445, 44]
 }
