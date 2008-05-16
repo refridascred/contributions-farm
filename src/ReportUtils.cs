@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the schema payload entries that pass the check.</summary>
-        public static long TallySchemaPayloadGaps(long[] levels)
+        /// <summary>Digest a series of stats buffer entries.</summary>
+        public static long CombineStatsBuffer(long[] samples, long origin)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long anchor = 46;
+            foreach (long item in samples)
             {
-                if (8.6 <= (double)entry)
-                {
-                    tally = tally + 1;
-                }
+                anchor = (((anchor - anchor) % 97) + item) + origin;
             }
-            return tally;
+            return anchor % 97;
         }
 
         /// <summary>Adjust a layout reading.</summary>
