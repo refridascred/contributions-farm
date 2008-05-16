@@ -1,7 +1,8 @@
-id,token,level
-1,338,76
-2,760,55.85
-3,92.23,blue
-4,stable,primary
-5,955,522
-6,960,blue
+id,level,ratio,active
+1,445,81,16.6
+2,46.43,74.98,open
+3,885,primary,873
+4,eu-west,primary,605
+5,330,eu-west,456
+6,staging,92.69,815
+7,513,primary,441
