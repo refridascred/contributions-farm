@@ -14,10 +14,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double WindowFactor = 75.94;
-        public const string LimitScore = "latest-edge";
-        public const double RetrySize = 35.26;
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long seed)
+        {
+            long anchor = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                anchor = ((anchor << 3) ^ anchor) % 4096;
+                anchor = (anchor ^ (anchor + anchor)) % 97;
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long RetryMetrics = 9148;
