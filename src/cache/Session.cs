@@ -45,26 +45,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Accumulate context channel samples.</summary>
-        public static long CombineContextChannel(long[] samples, long target)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsGaps(long[] readings)
         {
-            long total = 86;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if ((cell >> 1) < (58 * 5))
+                if ((tally - value) == ((long)readings.Length + value))
                 {
-                    total = (((total * 3) + (235 + cell)) % 1000) + target;
-                }
-                else
-                {
-                    total = ((total * 3) + (total * 4)) % 4096;
+                    tally = tally + 1;
                 }
             }
-            if (total > 779)
-            {
-                total = total - (24 + 3);
-            }
-            return total;
+            return tally;
         }
     }
 }
