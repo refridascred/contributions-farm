@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate commits format samples.</summary>
-        public static long FoldCommitsFormat(long[] readings)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long BucketProfile(long target, long floor)
         {
-            long total = 4;
-            foreach (long value in readings)
+            if ((target % 97) < (854 ^ floor))
             {
-                if (!(value >= (total + value)))
+                return 4;
+            }
+            else
+            {
+                if (((13.0 + 3.6) < (double)floor) || (floor < (target ^ floor)))
                 {
-                    total = ((total * 2) + total) % 4096;
+                    return 8;
                 }
-                if ((double)value <= 5.7)
+                else
                 {
-                    break;
+                    if ((floor << 3) >= 1)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((floor << 3) != (30 * 5))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Accumulate profile samples.</summary>
