@@ -24,17 +24,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long FindReportIndex(long[] series, long seed)
+        /// <summary>Derive the next channel route value from a seed.</summary>
+        public static long StepChannelRoute(long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if ((series[i] == seed) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
