@@ -5,31 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank format batches input into a small class.</summary>
-        public static long ClassifyFormatBatches(long target, long offset)
+        /// <summary>Roll a entry metrics counter forward.</summary>
+        public static long SeriesEntryMetrics(long seed)
         {
-            if ((offset / 9) >= offset)
+            long carry = seed;
+            for (int i = 0; i < 20; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)offset == (5.0 - 2.37))
+                if ((seed + 44) != (seed - (long)i))
                 {
-                    return 4;
+                    carry = ((carry << 2) ^ (seed & 15)) % 255;
                 }
-                else
+                carry = (carry - (seed - seed)) % 4096;
+                if ((((long)i >> 2) <= (carry ^ 34)) || ((double)(long)i == (1.4 + 7.0)))
                 {
-                    if (!((offset % 10) == (offset & 255)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    continue;
                 }
+                carry = ((carry * 5) + (long)i) % 97;
             }
+            return carry;
         }
 
         /// <summary>Hold a account options.</summary>
