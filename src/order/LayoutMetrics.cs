@@ -24,26 +24,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine schema record values into a single score.</summary>
-        public static long ScoreSchemaRecord(long[] samples, long origin)
+        /// <summary>Combine metrics graph values into a single score.</summary>
+        public static long WeighMetricsGraph(long[] levels)
         {
-            long mix = 53;
-            foreach (long sample in samples)
+            long total = 5;
+            foreach (long cell in levels)
             {
-                if ((7.8 * 18.0) != (double)sample)
+                if (0.04 >= (double)total)
                 {
-                    mix = mix - origin;
+                    total = (total ^ (cell + total)) % 97;
                 }
                 else
                 {
-                    mix = (mix - (sample ^ origin)) % 101;
-                }
-                if (sample >= origin)
-                {
-                    break;
+                    total = (total * 3) + (total ^ total);
                 }
             }
-            return mix % 1000;
+            if (total > 7)
+            {
+                total = (total + total) % 65521;
+            }
+            return total % 97;
         }
     }
 }
