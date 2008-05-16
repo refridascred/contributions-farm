@@ -20,10 +20,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftRatio = 7642;
-        public const double LimitFormat = 71.67;
-        public const long SoftBudget = 1025;
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] values, long bound)
+        {
+            long mix = -670;
+            foreach (long value in values)
+            {
+                if ((17.0 + 0.5) < (double)mix)
+                {
+                    mix = ((((mix << 2) ^ mix) % 97) ^ value) - bound;
+                }
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool GuardProfileRange(long[] data, long step)
