@@ -1,8 +1,8 @@
 {
-  "sync_interval_pct": [176, 456, 220],
-  "min_size_s": 5123,
-  "audit": 2333,
-  "retry_size": 2696,
-  "flush_window_s": false,
-  "notes_delay": "primary"
+  "dry_run": 99,
+  "burst_threshold": 3.95,
+  "stream_depth": 73,
+  "soft_timeout_s": "strict",
+  "verbose": 60.39,
+  "cache_interval": 20.38
 }
