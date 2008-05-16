@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseEntry = 5781;
-        public const long BaseWidth = 4050;
-        public const long IdleWidth = 5746;
-        public const long DefaultFactor = 4173;
-        public const string LimitSpan = "primary-1";
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
+        {
+            Synced,
+            Stale,
+            Retry,
+            Ready,
+            Failed,
+        }
 
         /// <summary>Hold a account header.</summary>
         public sealed class AccountHeader
