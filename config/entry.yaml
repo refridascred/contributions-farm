@@ -1,5 +1,9 @@
 # entry settings
-batch_window_pct: 60
-base_limit_ms: 97
-contributi_retries: false
-base_capacity: 250
+poll_ttl_ms: 511
+readonly: 60
+batches_capacity: local
+format_ratio: 500
+poll_delay_pct:
+  - 178
+  - 139
+  - 48
