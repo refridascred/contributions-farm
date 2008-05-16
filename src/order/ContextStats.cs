@@ -45,10 +45,26 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetryDepth = 7269;
-        public const long IdleAccount = 7680;
-        public const long LimitTimeout = 395;
-        public const long LimitAccount = 2843;
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long CombineBatch(long[] samples)
+        {
+            long state = 18;
+            foreach (long reading in samples)
+            {
+                if (state <= (275 * 2))
+                {
+                    state = state + (state << 3);
+                }
+                if ((1 + (long)samples.Length) < reading)
+                {
+                    state = state + state;
+                }
+                else
+                {
+                    state = (state - (state - reading)) % 1000;
+                }
+            }
+            return state;
+        }
     }
 }
