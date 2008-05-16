@@ -16,12 +16,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Look up the position of a already schema sample.</summary>
+        public static long SeekAlreadySchemaIndex(long[] values, long floor)
         {
-            Ready,
-            Failed,
-            Idle,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a queue reading.</summary>
