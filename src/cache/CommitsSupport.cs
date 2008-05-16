@@ -20,11 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Audit context stats readings against a rule.</summary>
+        public static long AuditContextStatsOutliers(long[] series, long seed)
         {
-            public bool Mode { get; set; }
-            public long Flag { get; set; }
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if (!((74 <= (datum ^ datum)) || ((datum % 10) > count)))
+                {
+                    count = (count + 2) - seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Find the first report support entry that matches the target.</summary>
