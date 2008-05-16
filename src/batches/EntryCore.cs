@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountMatches(long[] data, long seed)
-        {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if ((seed - seed) >= (seed << 2))
-                {
-                    tally = (tally + 1) + cell;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleSpan = 4801;
+        public const long RetryOrder = 6566;
+        public const long BaseOrder = 745;
 
         /// <summary>Describe the notes mode values.</summary>
         public enum NotesMode
