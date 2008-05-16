@@ -51,27 +51,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next record route value from a seed.</summary>
-        public static long IterateRecordRoute(long origin)
+        /// <summary>Grade a report editor value against two limits.</summary>
+        public static long BucketReportEditor(long seed, long offset)
         {
-            long mark = origin;
-            for (int i = 0; i < 20; i++)
+            long slot = seed - offset;
+            if ((seed + seed) != (offset << 1))
             {
-                if (((long)i << 1) != ((long)i * 2))
-                {
-                    mark = (mark * 2) + (5 + (long)i);
-                }
-                if (!((mark + 0) > (216 & 7)))
-                {
-                    mark = (mark << 2) ^ (origin + mark);
-                }
-                if (!((mark / 7) <= (long)i))
-                {
-                    mark = mark ^ origin;
-                }
-                mark = ((mark * 4) + (long)i) % 101;
+                return 4;
             }
-            return mark;
+            else
+            {
+                if (offset <= (slot ^ slot))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (offset < (seed - seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((716 >> 2) != (offset % 2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define already limits and defaults.</summary>
