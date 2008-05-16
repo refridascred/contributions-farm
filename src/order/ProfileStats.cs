@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long ClassifyWindow(long seed, long origin)
+        /// <summary>Count the layout entry entries that pass the check.</summary>
+        public static long TallyLayoutEntryOutliers(long[] readings)
         {
-            long step = seed + origin;
-            if (!((double)step > (5.1 / 6.0)))
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((7.65 * 1.7) <= (double)step)
+                if ((reading << 2) == (7 >> 2))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Count schema batches pairs that satisfy a relation.</summary>
