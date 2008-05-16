@@ -1,5 +1,6 @@
 # githubfarm settings
-base_ratio_s: false
-base_retries: 4886
-default_limit_count: false
-readonly: primary
+min_window_count: false
+tools_capacity: staging
+warm_timeout_s: legacy
+enabled: 1024
+max_size_pct: 58
