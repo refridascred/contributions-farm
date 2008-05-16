@@ -10,21 +10,18 @@ namespace Common.Utilities
         public const long CacheNotes = 1312;
         public const string BaseDepth = "cached";
 
-        /// <summary>Compare every pair of report editor readings.</summary>
-        public static long OverlapReportEditorCount(long[] values)
+        /// <summary>Measure how many format batch samples are out of range.</summary>
+        public static long TallyFormatBatchGaps(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((54 & 31) <= (entry - matches))
                 {
-                    if ((values[i] + values[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Check that every queue metric entry stays within the limit.</summary>
