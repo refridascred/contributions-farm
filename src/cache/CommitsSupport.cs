@@ -47,12 +47,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitSession = 7625;
-        public const double BurstScore = 45.3;
-        public const double SoftSession = 0.16;
-        public const string HardFactor = "primary-v2";
-        public const string HardSession = "standard-1";
+        /// <summary>Derive the next format support value from a seed.</summary>
+        public static long DeriveFormatSupport(long offset)
+        {
+            long mark = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Describe the schema kind values.</summary>
         public enum SchemaKind
