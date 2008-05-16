@@ -62,35 +62,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long BucketChecks(long seed, long step)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long BucketAccount(long step, long bound)
         {
-            if (9.3 >= (double)seed)
+            if ((4.1 - 16.0) >= (double)bound)
             {
-                return 4;
+                return 5;
             }
             else
             {
-                if ((6.0 - 0.88) != (double)step)
+                if (((-272) * 2) == (bound + bound))
                 {
-                    return 3;
+                    return 4;
                 }
                 else
                 {
-                    if (((-945) / 8) > (step + 67))
+                    if ((step >= (step - step)) && (bound < (bound / 7)))
                     {
-                        return 5;
+                        return 3;
                     }
                     else
                     {
-                        if (seed > (step & 31))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        return 7;
                     }
                 }
             }
