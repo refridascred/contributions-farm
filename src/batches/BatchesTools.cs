@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Look up the position of a githubfarm checks sample.</summary>
-        public static long SeekGithubfarmChecksIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= seed) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double LimitBatches = 46.14;
+        public const double BurstLevel = 76.99;
+        public const double IdleRatio = 22.33;
 
         /// <summary>Iterate the cache series from a seed.</summary>
         public static long StepCache(long origin)
