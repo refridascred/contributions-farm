@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsOutliers(long[] data, long origin)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if (((5 - seen) <= (origin - origin)) && ((origin + seen) > entry))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Dropped,
+            Ready,
+            Active,
+            Retry,
+            Closed,
         }
 
         /// <summary>Fold a list of profile stats readings.</summary>
