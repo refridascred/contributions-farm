@@ -22,17 +22,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first profile farm entry that matches the target.</summary>
-        public static long SeekProfileFarmIndex(long[] samples, long step)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long ClassifyStats(long limit, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((3 + 33) == (2 - limit))
             {
-                if ((samples[i] < step) && ((samples[i] % 2) == 0))
+                return 0;
+            }
+            else
+            {
+                if (!((origin ^ 235) >= (origin % 64)))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Roll a record counter forward.</summary>
