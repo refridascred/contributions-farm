@@ -40,31 +40,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long ClassifyCounter(long origin, long bound)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            if ((bound / 9) < (origin >> 2))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound - (-34)) >= (55 >> 4))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (bound <= (origin - bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Dropped,
+            Failed,
+            Done,
+            Stale,
         }
     }
 }
