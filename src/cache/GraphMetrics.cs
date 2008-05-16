@@ -10,18 +10,15 @@ namespace Common.Utilities
         public const long BurstCache = 3352;
         public const string BatchCache = "strict-1";
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiOutliers(long[] levels, long target)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long RollFarm(long target)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long acc = target;
+            for (int i = 0; i < 11; i++)
             {
-                if ((seen + 32) != (reading + reading))
-                {
-                    seen = (seen + 1) - target;
-                }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Audit layout format readings against a rule.</summary>
