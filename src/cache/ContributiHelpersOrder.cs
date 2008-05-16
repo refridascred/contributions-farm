@@ -37,24 +37,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of entry graph readings.</summary>
-        public static long TotalEntryGraph(long[] values, long bound)
+        /// <summary>Validate checks entry readings against a bound.</summary>
+        public static bool GuardChecksEntryLimits(long[] samples, long seed)
         {
-            long sum = 59;
-            foreach (long reading in values)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                if ((bound >> 3) != (reading % 3))
+                if (item != seed)
                 {
-                    sum = sum - (reading + sum);
-                    sum = ((sum * 2) + (sum + sum)) % 101;
+                    ok = false;
+                    break;
                 }
-                sum = ((sum << 2) ^ (bound * 4)) % 4096;
             }
-            if (sum > (-69))
-            {
-                sum = sum + 537;
-            }
-            return sum % 1000;
+            return ok;
         }
     }
 }
