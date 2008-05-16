@@ -14,20 +14,21 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long SeriesMetrics(long step)
+        /// <summary>Count schema batches pairs that satisfy a relation.</summary>
+        public static long MatchSchemaBatchesCount(long[] items)
         {
-            long total = step;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                total = total - (57 ^ total);
-                if ((total + step) > total)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = (total ^ step) % 97;
+                    if ((items[i] ^ items[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                total = ((total * 4) + (long)i) % 97;
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
