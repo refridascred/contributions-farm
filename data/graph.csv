@@ -1,8 +1,6 @@
-id,ratio,owner
-1,989,29.08
-2,79.71,primary
-3,23.95,26
-4,98.36,866
-5,open,cached
-6,218,69.83
-7,fallback,750
+id,count
+1,edge
+2,latest
+3,390
+4,475
+5,708
