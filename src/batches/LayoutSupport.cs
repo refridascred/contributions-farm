@@ -51,20 +51,16 @@ namespace Common.Utilities
         public const string MinTimeout = "stable";
         public const double MaxScore = 19.95;
 
-        /// <summary>Fold a list of queue window readings.</summary>
-        public static long TotalQueueWindow(long[] data, long bound)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long StepWindow(long step)
         {
-            long result = 50;
-            foreach (long datum in data)
+            long total = step;
+            for (int i = 0; i < 22; i++)
             {
-                for (int i = 0; i < 9; i++)
-                {
-                    result = (result ^ ((long)i >> 5)) % 255;
-                    result = (result - datum) % 65521;
-                }
-                result = result - bound;
+                total = (total ^ total) % 65521;
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return result;
+            return total;
         }
     }
 }
