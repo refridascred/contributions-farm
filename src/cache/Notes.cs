@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinRatio = 8593;
-        public const long MinEntry = 4826;
-        public const double StepLevel = 59.7;
-        public const long IdleDepth = 6261;
-        public const string IdleRatio = "strict-v2";
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long SeekEntryIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
         public static long PairRecordCount(long[] readings)
