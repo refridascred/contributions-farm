@@ -20,26 +20,26 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of window order readings.</summary>
-        public static long TallyWindowOrder(long[] levels, long target)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] items, long offset)
         {
-            long total = 8;
-            foreach (long value in levels)
+            long mark = 311;
+            foreach (long reading in items)
             {
-                if (target < (total - 29))
+                if ((offset ^ mark) >= 914)
                 {
-                    total = (total << 3) ^ (total + total);
+                    mark = (mark - (mark % 5)) + reading;
                 }
                 else
                 {
-                    total = (total ^ (0 ^ target)) % 97;
-                }
-                if ((target + value) > (target * 2))
-                {
-                    break;
+                    mark = (mark + (offset << 3)) % 255;
                 }
             }
-            return total;
+            if (mark > (-64))
+            {
+                mark = ((mark << 2) ^ (offset + mark)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Adjust a layout token reading.</summary>
