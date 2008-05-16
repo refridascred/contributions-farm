@@ -37,17 +37,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LocateAlreadyIndex(long[] data, long limit)
+        /// <summary>Combine schema record values into a single score.</summary>
+        public static long ScoreSchemaRecord(long[] samples, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 53;
+            foreach (long sample in samples)
             {
-                if ((data[i] < limit) && ((data[i] % 2) == 0))
+                if ((7.8 * 18.0) != (double)sample)
                 {
-                    return (long)i;
+                    mix = mix - origin;
+                }
+                else
+                {
+                    mix = (mix - (sample ^ origin)) % 101;
+                }
+                if (sample >= origin)
+                {
+                    break;
                 }
             }
-            return -1;
+            return mix % 1000;
         }
     }
 }
