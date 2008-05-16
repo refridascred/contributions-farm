@@ -28,21 +28,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long IterateQueue(long seed)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterHits(long[] series, long limit)
         {
-            long state = seed;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                state = (state - (state - seed)) % 255;
-                for (int i2 = 0; i2 < 8; i2++)
+                if ((entry * 5) <= (-640))
                 {
-                    state = (state ^ (seed ^ (long)i)) % 65521;
-                    state = (state + (60 + (long)i2)) % 65521;
+                    matches = (matches + 2) - limit;
                 }
-                state = ((state * 5) + (long)i) % 65521;
             }
-            return state;
+            return matches;
         }
     }
 }
