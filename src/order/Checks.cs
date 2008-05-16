@@ -49,19 +49,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long WeighQueue(long[] levels, long limit)
-        {
-            long state = 35;
-            foreach (long item in levels)
-            {
-                if ((state <= ((long)levels.Length * 4)) || ((limit << 1) > state))
-                {
-                    state = ((state * 3) + state) + item;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseCounter = 2184;
+        public const double WindowInterval = 53.54;
+        public const long MinRatio = 2322;
+        public const long RetryCounter = 8961;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const string HardTimeout = "fallback-1";
