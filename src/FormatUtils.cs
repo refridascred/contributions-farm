@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultBatch = 203;
-        public const double RetryBatch = 98.1;
-        public const double MaxLevel = 45.39;
-        public const long BurstBatch = 3479;
-        public const long MaxBatch = 5860;
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long ScoreNotes(long[] readings, long floor)
+        {
+            long mark = 797;
+            foreach (long item in readings)
+            {
+                mark = ((mark << 2) ^ (item >> 4)) + floor;
+            }
+            return mark;
+        }
 
         /// <summary>Grade a notes value against two limits.</summary>
         public static long ClassifyNotes(long floor, long offset)
