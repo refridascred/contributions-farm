@@ -1,17 +1,12 @@
 {
-  "retry_timeout_count": {
-    "audit": 90,
-    "default_threshold": 67.7,
-    "base_limit_pct": "stable"
+  "idle_limit_s": ["legacy", "strict", "open", "green"],
+  "warm_size": {
+    "metric_delay": true,
+    "hard_threshold_count": "fallback",
+    "verbose": false,
+    "entry_ttl": true,
+    "metric_size": "fallback"
   },
-  "retry_capacity": "legacy",
-  "readonly": "staging",
-  "batch_interval_pct": {
-    "readonly": 1110,
-    "persist": [37, 347, 96],
-    "min_delay_count": "primary",
-    "verbose": [223, 200, 166],
-    "warm_size_count": true,
-    "dry_run": 4322
-  }
+  "audit": 6575,
+  "retry_retries_ms": 4.54
 }
