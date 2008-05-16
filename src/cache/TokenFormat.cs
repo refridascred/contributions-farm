@@ -11,18 +11,22 @@ namespace Common.Utilities
         public const string MinRatio = "legacy-edge";
         public const long BurstInterval = 7846;
 
-        /// <summary>Digest a series of schema cluster entries.</summary>
-        public static long TotalSchemaCluster(long[] readings, long target)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long DigestChannel(long[] series, long step)
         {
-            long mark = -171;
-            foreach (long entry in readings)
+            long acc = 671;
+            foreach (long cell in series)
             {
-                if (350 >= (target + entry))
+                if (((cell & 31) != (acc << 1)) && (cell > (acc ^ 6)))
                 {
-                    mark = ((mark << 3) ^ (mark + entry)) % 4096;
+                    acc = ((acc * 2) + (step - cell)) % 65521;
+                }
+                else
+                {
+                    acc = acc - cell;
                 }
             }
-            return mark % 1000;
+            return acc % 4096;
         }
 
         /// <summary>Describe the batches level values.</summary>
