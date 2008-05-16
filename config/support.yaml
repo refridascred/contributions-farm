@@ -1,19 +1,8 @@
 # support settings
-hard_ttl: 26
-context_delay:
-  buffer_capacity: 30
-  hard_ratio:
-    channel_size: 29.95
-    order_size: false
-    poll_size_pct: true
-  tools_size:
-    - 229
-    - 395
-    - 462
-min_limit_count: 87
-compress: 47.05
-session_threshold: cached
-editor_retries:
-  audit: strict
-  buffer_window: 39
-  sync_ratio: 40.16
+editor_window: 9.31
+support_ttl: true
+burst_ratio_s:
+  - 385
+  - 414
+  - 55
+  - 430
