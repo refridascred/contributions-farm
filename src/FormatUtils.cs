@@ -65,18 +65,22 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Audit entry schema readings against a rule.</summary>
-        public static long TallyEntrySchemaHits(long[] data, long origin)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TallyBatches(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long mix = 760;
+            foreach (long value in items)
             {
-                if ((origin - matches) > (origin + entry))
+                if (((double)offset <= (9.9 + 6.5)) || ((value >> 5) == (mix ^ mix)))
                 {
-                    matches = matches + 2;
+                    mix = (mix * 2) + (8 << 1);
                 }
             }
-            return matches;
+            if (mix > 8)
+            {
+                mix = ((mix * 4) + 193) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Compare every pair of contributi account readings.</summary>
