@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleWidth = 8800;
-        public const long BatchLayout = 3835;
-        public const string BurstLevel = "fallback-edge";
-        public const long StepCount = 762;
+        /// <summary>Count the schema graph entries that pass the check.</summary>
+        public static long TallySchemaGraphOutliers(long[] series)
+        {
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if (((reading >> 1) < (reading ^ reading)) && (hits < reading))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long AuditCommitsMatches(long[] samples, long bound)
