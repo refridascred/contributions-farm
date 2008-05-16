@@ -32,18 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long FoldSession(long[] values)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueHits(long[] series)
         {
-            long carry = -816;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if ((double)entry == (7.4 - 2.0))
+                if (!((reading + count) <= reading))
                 {
-                    carry = ((carry << 2) ^ (carry * 5)) % 65521;
+                    count = count + 3;
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
