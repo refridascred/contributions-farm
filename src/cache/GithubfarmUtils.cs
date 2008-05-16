@@ -62,14 +62,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Audit payload command readings against a rule.</summary>
+        public static long MeasurePayloadCommandHits(long[] values, long offset)
         {
-            Queued,
-            Ready,
-            Stale,
-            Draft,
-            Paused,
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((offset + hits) >= value)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
