@@ -51,19 +51,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteLimits(long[] levels, long origin)
+        /// <summary>Rank queue layout input into a small class.</summary>
+        public static long ClassifyQueueLayout(long origin, long offset)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            if (!((double)origin < (9.3 - 8.68)))
             {
-                if (datum <= origin)
+                return 2;
+            }
+            else
+            {
+                if ((9 & 3) <= origin)
                 {
-                    flag = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)95 == (double)origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((-1) - 8) < (offset % 12))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return flag;
         }
     }
 }
