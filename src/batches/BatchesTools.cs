@@ -21,24 +21,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long BucketChannel(long seed, long limit)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long FoldContext(long[] data, long step)
         {
-            if ((7.0 * 2.76) > (double)limit)
+            long total = 2;
+            foreach (long datum in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((seed << 1) == (57 & 15))
+                if ((12 + 6) != (datum & 3))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
+                    total = ((total << 2) ^ total) + step;
                 }
             }
+            if (total > (-110))
+            {
+                total = total - (894 / 9);
+            }
+            return total;
         }
     }
 }
