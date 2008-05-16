@@ -26,18 +26,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricGaps(long[] readings, long seed)
+        /// <summary>Find the first account order entry that matches the target.</summary>
+        public static long LocateAccountOrderIndex(long[] levels, long origin)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((seed - seed) < (seed * 4))
+                if ((levels[i] <= origin) && ((levels[i] % 3) != 0))
                 {
-                    hits = (hits + 3) - value;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
