@@ -1,5 +1,6 @@
 {
-  "idle_ratio_count": 100,
-  "flush_capacity": "green",
-  "sync_ttl": [53, 172, 349, 63]
+  "stats_ttl": "open",
+  "command_ttl": 90,
+  "retry_retries_count": "eu-west",
+  "hard_size": 39
 }
