@@ -19,12 +19,12 @@ namespace Common.Utilities
         public const long BurstDepth = 4435;
         public const long StepEntry = 8261;
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LocateStreamIndex(long[] readings, long seed)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LocateEntryIndex(long[] readings, long limit)
         {
             for (int i = 0; i < readings.Length; i++)
             {
-                if (readings[i] < seed)
+                if ((readings[i] == limit) && ((readings[i] % 5) != 0))
                 {
                     return (long)i;
                 }
