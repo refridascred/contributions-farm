@@ -25,18 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TotalToken(long[] levels)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double BlendWindow(double bias, double offset)
         {
-            long anchor = 844;
-            foreach (long reading in levels)
+            double load = 8.07;
+            if (load > offset)
             {
-                if ((7.7 + 6.4) <= (double)reading)
-                {
-                    anchor = ((anchor * 3) + ((-4) & 127)) % 101;
-                }
+                load = (load - offset) + bias;
             }
-            return anchor;
+            else
+            {
+                load = load + load;
+            }
+            return load - (double)71;
         }
 
         /// <summary>Hold a stream info.</summary>
