@@ -44,17 +44,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a commits cache sample.</summary>
-        public static long LookupCommitsCacheIndex(long[] readings, long limit)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportGaps(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (readings[i] >= limit)
+                if (((seen & 31) == (seen * 3)) && (((reading + seen) > seen) && ((seen + reading) <= reading)))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
