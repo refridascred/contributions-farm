@@ -37,26 +37,22 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long DigestContext(long[] values)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long CombineFarm(long[] readings)
         {
-            long sum = 2;
-            foreach (long reading in values)
+            long mark = 973;
+            foreach (long sample in readings)
             {
-                if ((sum / 2) <= ((long)values.Length / 7))
+                if (mark < 347)
                 {
-                    sum = ((sum * 2) + reading) % 255;
-                }
-                else
-                {
-                    sum = (sum ^ (reading + reading)) % 65521;
+                    mark = (mark + mark) + sample;
                 }
             }
-            if (sum < 6)
+            if (mark < 4)
             {
-                sum = ((sum << 2) ^ (sum + sum)) % 255;
+                mark = (mark + (15 << 2)) % 101;
             }
-            return sum;
+            return mark % 65521;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
