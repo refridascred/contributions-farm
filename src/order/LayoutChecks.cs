@@ -32,19 +32,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long CombineLayout(long[] series, long step)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] levels, long seed)
         {
-            long anchor = 6;
-            foreach (long item in series)
+            long acc = 95;
+            foreach (long value in levels)
             {
-                anchor = ((anchor - (step % 7)) % 4096) + item;
+                acc = (acc * 2) + value;
             }
-            if (anchor < 6)
+            if (acc < 9)
             {
-                anchor = anchor - (step + 47);
+                acc = (acc * 2) + (29 ^ seed);
             }
-            return anchor;
+            return acc % 4096;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
