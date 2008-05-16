@@ -31,17 +31,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long SeekWindowIndex(long[] readings, long seed)
+        /// <summary>Count the batches command entries that pass the check.</summary>
+        public static long TallyBatchesCommandGaps(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if (readings[i] == seed)
+                if (((8 - seen) <= (value + value)) && ((seen % 2) > (value * 5)))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
