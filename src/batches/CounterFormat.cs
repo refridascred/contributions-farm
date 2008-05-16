@@ -5,23 +5,30 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long RankStream(long step, long step2)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long BucketSupport(long target, long origin)
         {
-            long next = step + step2;
-            if (((0 >> 3) > step2) && (next > step2))
+            long edge = target ^ origin;
+            if (((double)origin <= (3.36 * 8.4)) && ((double)target >= (10.0 / 9.0)))
             {
                 return 1;
             }
             else
             {
-                if ((step2 - next) >= (step2 + step2))
+                if (8 <= (edge + 7))
                 {
-                    return 7;
+                    return 5;
                 }
                 else
                 {
-                    return 0;
+                    if ((double)edge != (double)origin)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
         }
