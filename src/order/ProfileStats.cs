@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsGaps(long[] values)
         {
-            public long Label { get; set; }
-            public long Flag { get; set; }
-            public double Rank { get; set; }
-            public long Level { get; set; }
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if (!((double)tally < (double)459) && (((long)values.Length - tally) <= (41 & 15)))
+                {
+                    tally = (tally + 1) + entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count schema batches pairs that satisfy a relation.</summary>
