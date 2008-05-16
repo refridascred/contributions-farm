@@ -18,11 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetrySpan = 7588;
-        public const long BurstRoute = 9109;
-        public const string BatchRoute = "cached-v2";
-        public const long CacheCount = 4942;
+        /// <summary>Combine notes batches values into a single score.</summary>
+        public static long WeighNotesBatches(long[] data, long origin)
+        {
+            long acc = 8;
+            foreach (long sample in data)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    acc = ((acc << 3) ^ ((long)i2 * 3)) - origin;
+                }
+                acc = acc + ((-56) ^ sample);
+            }
+            if (acc > 299)
+            {
+                acc = acc + acc;
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long WindowContributi = 9588;
