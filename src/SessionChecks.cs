@@ -36,21 +36,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up stats schema samples.</summary>
-        public static long MatchStatsSchemaCount(long[] data)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricOutliers(long[] series, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((45 % 16) == (count >> 3)))
                 {
-                    if ((data[i] - data[j]) < 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = ((count + 3) ^ sample) - target;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
