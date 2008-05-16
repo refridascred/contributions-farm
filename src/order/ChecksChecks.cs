@@ -19,22 +19,21 @@ namespace Common.Utilities
         public const long WindowCounter = 5481;
         public const string SoftCounter = "standard";
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long FoldProfile(long[] data)
+        /// <summary>Match up metrics samples.</summary>
+        public static long MatchMetricsCount(long[] data)
         {
-            long state = 9;
-            foreach (long entry in data)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((5.7 * 5.9) != (double)entry)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = ((state * 3) + (state % 16)) % 1000;
-                }
-                else
-                {
-                    state = ((state * 4) + ((long)data.Length / 6)) % 255;
+                    if ((data[i] ^ data[j]) == 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return state;
+            return tally;
         }
     }
 }
