@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            Ready,
-            Paused,
-            Stale,
+            public long Weight { get; set; }
+            public double Stamp { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
