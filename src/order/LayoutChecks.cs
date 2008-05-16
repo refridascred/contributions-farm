@@ -46,21 +46,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long OverlapAlreadyCount(long[] samples)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double BlendStream(double weight, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double weight2 = (double)73 * 3.0;
+            if (weight2 > (weight2 * 18.0))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                weight2 = (weight2 + 6.0) + offset;
             }
-            return seen;
+            return weight2 + (weight2 - weight);
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
