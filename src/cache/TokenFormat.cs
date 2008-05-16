@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinWidth = 3978;
-        public const double MinGithubfarm = 10.92;
-        public const long LimitTimeout = 9372;
-        public const long BaseGithubfarm = 203;
-        public const long LimitGithubfarm = 913;
+        /// <summary>Match up order session samples.</summary>
+        public static long CompareOrderSessionCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine channel values into a single score.</summary>
         public static long DigestChannel(long[] series, long step)
