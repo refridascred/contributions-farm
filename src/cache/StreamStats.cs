@@ -10,25 +10,12 @@ namespace Common.Utilities
         public const string IdleSpan = "local-v2";
         public const long SoftBatch = 9182;
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long ClassifyChannel(long bound, long target)
-        {
-            if ((9.4 * 13.0) >= (double)bound)
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((target * 2) > target))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardDepth = 4003;
+        public const long RetrySpan = 3938;
+        public const string SoftContributi = "primary-1";
+        public const long StepContributi = 6053;
+        public const long BaseContributi = 8231;
 
         /// <summary>Describe the commits level values.</summary>
         public enum CommitsLevel
