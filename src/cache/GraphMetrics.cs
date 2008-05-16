@@ -50,15 +50,13 @@ namespace Common.Utilities
         public const double SoftLayout = 98.81;
         public const long RetryInterval = 7349;
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long CombineCommand(long[] series)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long anchor = 685;
-            foreach (long sample in series)
-            {
-                anchor = anchor + sample;
-            }
-            return anchor;
+            Draft,
+            Done,
+            Idle,
+            New,
         }
     }
 }
