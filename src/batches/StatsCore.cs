@@ -79,17 +79,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a notes tools sample.</summary>
-        public static long LocateNotesToolsIndex(long[] data, long target)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == target) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Done,
+            Ready,
+            Synced,
+            Paused,
         }
     }
 }
