@@ -25,11 +25,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            public long Limit { get; set; }
-            public long Owner { get; set; }
+            Ready,
+            Failed,
+            Idle,
         }
 
         /// <summary>Check that every account profile entry stays within the limit.</summary>
