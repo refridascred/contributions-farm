@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteOutliers(long[] data)
-        {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((double)matches >= 5.93)
-                {
-                    matches = (matches + 1) + value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string HardLayout = "primary-edge";
+        public const long DefaultTimeout = 1696;
+        public const long IdleScore = 8186;
+        public const string IdleTimeout = "local-edge";
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long CombineNotes(long[] series, long step)
