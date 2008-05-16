@@ -79,19 +79,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenBounds(long[] readings, long offset)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double SmoothBuffer(double scale, double span)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            double load = span + scale;
+            for (int i = 0; i < 9; i++)
             {
-                if (datum <= offset)
-                {
-                    stale = false;
-                    break;
-                }
+                load = (load - load) + (double)(long)i;
             }
-            return stale;
+            return load + scale;
         }
 
         /// <summary>Look up the position of a stats entry sample.</summary>
