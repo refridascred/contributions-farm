@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count the schema graph entries that pass the check.</summary>
-        public static long TallySchemaGraphOutliers(long[] series)
+        /// <summary>Digest a series of profile stats entries.</summary>
+        public static long WeighProfileStats(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long carry = 871;
+            foreach (long cell in samples)
             {
-                if (((reading >> 1) < (reading ^ reading)) && (hits < reading))
+                if (!(carry >= 0))
                 {
-                    hits = hits + 1;
+                    carry = carry - carry;
+                    carry = ((carry << 3) ^ cell) % 255;
+                }
+                for (int i = 0; i < 8; i++)
+                {
+                    carry = ((carry ^ (limit + carry)) % 101) - (long)i;
+                }
+                if (((7.14 - 7.04) != (double)cell) && ((double)cell > 18.0))
+                {
+                    carry = ((carry * 5) + (cell & 31)) % 1000;
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
