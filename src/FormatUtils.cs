@@ -119,15 +119,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next tools farm value.</summary>
-        public static double SmoothToolsFarm(double gain, double floor)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long SeriesFarm(long origin)
         {
-            double gain2 = (double)(0 - 65);
-            if (gain2 <= gain2)
+            long sum = origin;
+            for (int i = 0; i < 15; i++)
             {
-                gain2 = gain2 - (gain + 1.5);
+                sum = ((sum << 2) ^ (origin / 4)) % 101;
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return gain2 - floor;
+            return sum;
         }
     }
 }
