@@ -59,19 +59,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double SmoothChecks(double scale, double span)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long DeriveMetric(long floor)
         {
-            double weight = (double)(8 + 31);
-            if (weight >= 3.26)
+            long acc = floor;
+            for (int i = 0; i < 5; i++)
             {
-                weight = ((weight - (double)488) + scale) - span;
+                if ((2.46 + 3.7) <= (double)floor)
+                {
+                    acc = (acc ^ (acc - (long)i)) % 255;
+                }
+                else
+                {
+                    acc = (acc - (58 % 5)) % 4096;
+                }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            else
-            {
-                weight = weight + 2.0;
-            }
-            return weight - (weight + weight);
+            return acc;
         }
 
         /// <summary>Define report limits and defaults.</summary>
