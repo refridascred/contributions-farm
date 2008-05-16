@@ -1,6 +1,7 @@
-id,active,count,state,score
-1,fallback,72.49,strict,open
-2,641,open,915,10.56
-3,staging,local,91.37,33.69
-4,29.37,827,39.24,495
-5,staging,2.06,25.49,741
+id,token,level
+1,338,76
+2,760,55.85
+3,92.23,blue
+4,stable,primary
+5,955,522
+6,960,blue
