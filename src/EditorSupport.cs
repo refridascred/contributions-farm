@@ -67,25 +67,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long BucketContributi(long target, long origin)
-        {
-            long bound = target ^ origin;
-            if ((794 - origin) < (target ^ 724))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((189 - bound) <= (target << 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BurstNotes = 71.9;
+        public const long StepNotes = 5328;
+        public const long LimitLevel = 4542;
+        public const long RetryNotes = 8926;
+        public const string SoftCount = "cached";
     }
 }
