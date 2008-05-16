@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
-        {
-            public long Region { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string MinWidth = "open-1";
+        public const double MaxQueue = 7.62;
+        public const long RetryBudget = 4046;
 
         /// <summary>Describe the payload state values.</summary>
         public enum PayloadState
