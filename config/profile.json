@@ -1,11 +1,6 @@
 {
-  "min_limit_pct": ["primary", "stable"],
-  "persist": "blue",
-  "counter_delay": {
-    "commits_timeout": "eu-west",
-    "account_ttl": false,
-    "farm_window": 85
-  },
-  "poll_retries_ms": "green",
-  "warm_threshold": [332, 101, 13, 470]
+  "dry_run": 30,
+  "batch_depth_ms": [440, 301],
+  "default_delay_s": 89.61,
+  "default_ttl": "eu-west"
 }
