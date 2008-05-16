@@ -19,19 +19,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Validate entry counter readings against a bound.</summary>
-        public static bool VerifyEntryCounterLimits(long[] samples, long floor)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            bool ready = true;
-            foreach (long cell in samples)
-            {
-                if (cell > floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Queued,
+            Idle,
+            Draft,
+            Synced,
         }
     }
 }
