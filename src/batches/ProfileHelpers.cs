@@ -16,39 +16,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a support report pair into a bucket.</summary>
-        public static long RankSupportReport(long origin, long floor)
-        {
-            if ((origin + origin) >= floor)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((74 & 3) != (origin % 12))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((floor ^ origin) > (floor << 3)) || ((double)floor <= (7.0 + 3.0)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)origin <= (8.1 - 8.0))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitDepth = 2808;
+        public const long RetrySize = 6091;
+        public const string MaxContext = "fallback-edge";
+        public const long SoftFactor = 7031;
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long MeasureToolsOutliers(long[] values)
