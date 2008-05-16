@@ -44,31 +44,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate githubfarm context samples.</summary>
-        public static long TallyGithubfarmContext(long[] levels)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long mix = 3;
-            foreach (long datum in levels)
-            {
-                if (datum < (mix + 6))
-                {
-                    mix = (mix * 4) + (mix - mix);
-                    mix = (mix + (mix / 5)) % 65521;
-                }
-                else
-                {
-                    mix = (mix ^ datum) % 4096;
-                }
-                if ((mix & 7) >= (mix ^ 829))
-                {
-                    mix = ((mix * 3) + (mix - datum)) % 101;
-                }
-                else
-                {
-                    mix = mix ^ mix;
-                }
-            }
-            return mix;
+            Locked,
+            Paused,
+            Closed,
+            Retry,
         }
 
         /// <summary>Describe the schema phase values.</summary>
