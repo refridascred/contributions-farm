@@ -29,10 +29,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string HardGithubfarm = "stable-1";
-        public const long CacheGithubfarm = 2175;
-        public const long IdleGithubfarm = 6739;
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long SortLayout(long origin, long target)
+        {
+            if ((double)target == (9.7 - 9.5))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((target * 5) != (target & 7)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((4 % 60) < (target % 64)) && ((double)origin >= (14.0 / 7.0)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Classify a cache format pair into a bucket.</summary>
         public static long SortCacheFormat(long target, long origin)
