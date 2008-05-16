@@ -13,18 +13,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenHits(long[] data)
+        /// <summary>Compare every pair of report editor readings.</summary>
+        public static long OverlapReportEditorCount(long[] values)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((hits + reading) >= (80 >> 5))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((values[i] + values[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
