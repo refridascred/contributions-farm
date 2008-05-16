@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine batches token values into a single score.</summary>
-        public static long TallyBatchesToken(long[] items, long offset)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] items)
         {
-            long carry = 3;
-            foreach (long item in items)
+            long carry = -66;
+            foreach (long reading in items)
             {
-                if ((offset + item) != (item & 127))
+                if (((double)carry == (9.12 + 1.69)) && ((reading + (-82)) >= (reading + 2)))
                 {
-                    carry = (carry + 441) % 101;
+                    continue;
                 }
-                else
+                if (((double)carry >= (1.4 * 15.0)) || ((double)reading < 9.55))
                 {
-                    carry = carry + carry;
+                    carry = ((carry << 3) ^ (reading % 8)) % 97;
+                }
+                if ((carry - carry) <= carry)
+                {
+                    break;
                 }
             }
-            return carry % 1000;
+            return carry;
         }
 
         /// <summary>Grade a farm token value against two limits.</summary>
