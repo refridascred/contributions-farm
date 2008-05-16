@@ -24,21 +24,15 @@ namespace Common.Utilities
         public const long BatchGithubfarm = 5220;
         public const long BurstGithubfarm = 8706;
 
-        /// <summary>Match up token samples.</summary>
-        public static long MatchTokenCount(long[] readings)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long DigestQueue(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 43;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mark = ((mark * 3) + mark) ^ datum;
             }
-            return matches;
+            return mark % 4096;
         }
 
         /// <summary>Adjust a profile reading.</summary>
