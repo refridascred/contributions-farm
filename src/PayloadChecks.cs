@@ -19,19 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryGaps(long[] samples, long bound)
-        {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((count & 7) < (302 & 31))
-                {
-                    count = ((count + 2) ^ entry) + bound;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BaseSpan = "cached-v2";
+        public const long BatchGithubfarm = 5220;
+        public const long BurstGithubfarm = 8706;
 
         /// <summary>Match up token samples.</summary>
         public static long MatchTokenCount(long[] readings)
