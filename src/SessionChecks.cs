@@ -18,12 +18,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long FindRouteIndex(long[] readings, long floor)
         {
-            public double Region { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Score { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a cluster record.</summary>
