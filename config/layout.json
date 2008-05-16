@@ -1,8 +1,6 @@
 {
-  "profile_ratio": true,
-  "enabled": 66.28,
-  "buffer_timeout": false,
-  "strict": 8679,
-  "retry_timeout_count": 82.95,
-  "sync_window_s": 7
+  "readonly": [129, 414],
+  "min_delay_s": 500,
+  "route_window": "local",
+  "hard_limit_ms": 1165
 }
