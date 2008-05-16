@@ -49,17 +49,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first commits session entry that matches the target.</summary>
-        public static long LocateCommitsSessionIndex(long[] readings, long origin)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long StepNotes(long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if (readings[i] < origin)
-                {
-                    return (long)i;
-                }
+                mark = (mark * 2) + (mark / 9);
+                mark = (mark - (mark + (long)i)) % 255;
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Hold a profile entry.</summary>
