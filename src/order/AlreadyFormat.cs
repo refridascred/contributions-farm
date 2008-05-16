@@ -22,21 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up report context samples.</summary>
-        public static long MatchReportContextCount(long[] items)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long WeighContributi(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 585;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 17)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mark = ((mark * 5) + (mark + datum)) % 255;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Roll a support counter forward.</summary>
