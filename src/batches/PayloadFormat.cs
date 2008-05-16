@@ -26,13 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            public double Region { get; set; }
-            public string Total { get; set; } = "";
-            public double Mode { get; set; }
-            public long Token { get; set; }
+            public double Owner { get; set; }
+            public bool Stamp { get; set; }
+            public double Ratio { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Fold a list of queue format readings.</summary>
