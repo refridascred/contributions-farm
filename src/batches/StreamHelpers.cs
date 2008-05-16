@@ -60,15 +60,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long WeighLayout(long[] items, long seed)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileRange(long[] data, long step)
         {
-            long result = 4;
-            foreach (long datum in items)
+            bool found = true;
+            foreach (long item in data)
             {
-                result = (((result ^ (result % 2)) % 97) ^ datum) - seed;
+                if (item < step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return result;
+            return found;
         }
 
         /// <summary>Hold a support entry.</summary>
