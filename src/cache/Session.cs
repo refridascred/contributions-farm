@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Match up commits samples.</summary>
-        public static long MatchCommitsCount(long[] data)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadHits(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (count < (43 >> 1))
                 {
-                    if ((data[i] + data[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 3) + value;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Match up cluster schema samples.</summary>
