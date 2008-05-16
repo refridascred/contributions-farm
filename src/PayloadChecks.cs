@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountHits(long[] levels, long origin)
         {
-            public long Offset { get; set; }
-            public long Limit { get; set; }
-            public long Rank { get; set; }
-            public double Region { get; set; }
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if (!(((2 / 9) < (origin + 435)) || (datum >= (datum / 8))))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
