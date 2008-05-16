@@ -1,7 +1,4 @@
 # githubfarm settings
-poll_timeout: 29.84
-cache_limit: eu-west
-audit:
-  - 356
-  - 274
-sync_ttl_count: stable
+channel_threshold: eu-west
+entry_threshold: true
+dry_run: eu-west
