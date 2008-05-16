@@ -1,14 +1,8 @@
 # support settings
-cache_capacity: true
+verbose: green
+readonly: 56.71
+dry_run: 40
+cache_interval_pct: true
 enabled:
-  graph_ttl:
-    persist: edge
-    strict:
-      - legacy
-      - strict
-    verbose: 27.79
-  poll_timeout: latest
-  retry_interval: 700
-  sync_size_s: stable
-commits_retries: open
-idle_size_pct: green
+  - 129
+  - 387
