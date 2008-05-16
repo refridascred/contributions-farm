@@ -20,20 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long StepRoute(long offset)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long mark = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    long next = (mark ^ 4) - mark;
-                    mark = ((mark << 2) ^ next) ^ (long)i2;
-                }
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
+            public double Rank { get; set; }
+            public string Token { get; set; } = "";
+            public double Level { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Accumulate account samples.</summary>
