@@ -19,19 +19,18 @@ namespace Common.Utilities
         public const string MinSize = "latest-1";
         public const string BatchBatches = "strict-v2";
 
-        /// <summary>Validate checks entry readings against a bound.</summary>
-        public static bool GuardChecksEntryLimits(long[] samples, long seed)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheOutliers(long[] data)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (item != seed)
+                if ((entry % 16) != (3 / 7))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
