@@ -25,32 +25,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long ClassifyAccount(long origin, long step)
-        {
-            long slot = origin - step;
-            if (((step - slot) <= (step + slot)) || ((slot << 3) <= (origin + slot)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((slot + (-437)) != (slot - (-952)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (step <= (step + slot))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstTimeout = 8340;
+        public const long MinContributi = 1925;
+        public const string MaxContributi = "strict-v2";
+        public const long StepContributi = 2619;
     }
 }
