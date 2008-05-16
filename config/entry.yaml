@@ -1,4 +1,12 @@
 # entry settings
-enabled: 47.08
-base_size_ms: edge
-verbose: 2425
+cluster_timeout:
+  - 344
+  - 404
+  - 152
+batch_interval_s: 91.81
+burst_timeout_pct: 39.56
+min_capacity_ms:
+  - 421
+  - 317
+  - 423
+githubfarm_size: 250
