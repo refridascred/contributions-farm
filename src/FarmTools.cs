@@ -23,19 +23,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long CombineContext(long[] items)
-        {
-            long mark = 21;
-            foreach (long item in items)
-            {
-                if (((item - mark) != (mark / 5)) || ((double)item > (8.1 * 8.8)))
-                {
-                    mark = (mark << 3) ^ ((long)items.Length + mark);
-                }
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheTimeout = 2821;
+        public const double DefaultFactor = 73.83;
+        public const long MaxBuffer = 8302;
+        public const double BurstRatio = 16.9;
+        public const long SoftFactor = 2786;
 
         /// <summary>Locate a stream reading by value.</summary>
         public static long FindStreamIndex(long[] items, long step)
