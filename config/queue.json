@@ -1,5 +1,12 @@
 {
-  "poll_threshold": 1024,
-  "githubfarm_ratio": 84,
-  "warm_delay": [434, 412, 313]
+  "command_depth": ["open", "standard", "local", "blue"],
+  "enabled": ["fallback", "strict"],
+  "farm_ratio": {
+    "hard_capacity_count": "fallback",
+    "enabled": true,
+    "compress": ["edge", "blue"],
+    "window_threshold": [343, 393, 152, 408]
+  },
+  "cache_limit": 6038,
+  "flush_window_pct": 29.88
 }
