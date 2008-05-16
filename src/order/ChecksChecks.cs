@@ -27,19 +27,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderRange(long[] readings, long floor)
+        /// <summary>Adjust a counter account reading.</summary>
+        public static double BlendCounterAccount(double weight, double span)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            double weight2 = (span + 8.0) + (weight - span);
+            if (weight2 < (weight2 / 2.0))
             {
-                if (value != floor)
-                {
-                    valid = false;
-                    break;
-                }
+                weight2 = weight2 - (double)552;
             }
-            return valid;
+            for (int i = 0; i < 3; i++)
+            {
+                weight2 = (weight2 + (weight2 / 5.0)) - (double)(long)i;
+            }
+            return weight2 - weight2;
         }
     }
 }
