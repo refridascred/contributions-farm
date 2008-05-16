@@ -1,11 +1,10 @@
 # Command notes
 
-Each checks is validated before it reaches the contributi queue.
-Keep window and route names short and lowercase.
-Run the format check before changing any report limits.
+Use filter settings to tune how often contributi data is refreshed.
+A metric that stays idle for too long is moved to the buffer list.
 
 ## Guidelines
 
-- Keep queue values small
-- Prefer layout defaults
-- Log every cache change
+- Keep token values small
+- Prefer route defaults
+- Validate notes input early
