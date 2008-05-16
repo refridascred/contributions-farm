@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long CompareCommitsCount(long[] series)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long WeighFormat(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 94;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                carry = ((carry * 5) + (carry - carry)) % 101;
+                carry = carry + (carry + entry);
             }
-            return tally;
+            return carry % 1000;
         }
 
         /// <summary>Rank window input into a small class.</summary>
