@@ -27,12 +27,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            public long Flag { get; set; }
-            public long Mode { get; set; }
-            public string Ratio { get; set; } = "";
+            public long Owner { get; set; }
+            public long Level { get; set; }
+            public long Count { get; set; }
         }
     }
 }
