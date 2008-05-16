@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            Synced,
-            Retry,
-            Active,
-            Pending,
+            public bool Level { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
