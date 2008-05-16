@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Match up profile contributi samples.</summary>
-        public static long PairProfileContributiCount(long[] data)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long GradeContext(long seed, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((seed & 31) != (floor - floor))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (!((floor * 4) == (floor << 1)))
                 {
-                    if ((data[i] + data[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return count;
         }
 
         /// <summary>Find the first cluster window entry that matches the target.</summary>
