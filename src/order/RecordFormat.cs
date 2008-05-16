@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double LimitBudget = 56.27;
-        public const long MaxDepth = 4890;
-        public const long CacheBudget = 2192;
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long IterateBuffer(long limit)
+        {
+            long acc = limit;
+            for (int i = 0; i < 8; i++)
+            {
+                acc = (acc + (2 ^ acc)) % 65521;
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Rank window input into a small class.</summary>
         public static long GradeWindow(long seed, long bound)
