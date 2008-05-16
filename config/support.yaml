@@ -1,43 +1,14 @@
 # support settings
-poll_ttl:
-  warm_limit_count: 90.66
-  notes_retries: legacy
-  report_interval:
-    - 487
-    - 440
-    - 105
-    - 321
-  cache_ratio:
-    burst_timeout_pct: green
-    batches_retries:
-      - staging
-      - fallback
-      - stable
-    command_ratio: 500
-    cache_window_count: legacy
-    editor_interval: 1024
-    burst_depth_ms: 92.62
-  warm_ttl:
-    - 334
-    - 309
-    - 252
-strict: 2765
-min_retries:
-  enabled:
-    - legacy
-    - strict
-    - green
-    - eu-west
-  burst_retries_pct:
-    - standard
-    - cached
-  dry_run:
-    batch_window_count: 2330
-    cache_limit_ms:
-      - blue
-      - cached
-      - edge
-      - standard
-    commits_delay: 19
-    flush_threshold: 100
-    min_size_pct: 78.57
+min_size_ms:
+  payload_threshold: 30
+  retry_size:
+    - 386
+    - 107
+    - 228
+    - 282
+  max_ttl: stable
+  default_limit_ms: 60
+  cache_ttl: stable
+report_interval: true
+cache_window: false
+checks_capacity: legacy
