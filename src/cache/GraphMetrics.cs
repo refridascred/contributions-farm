@@ -36,15 +36,18 @@ namespace Common.Utilities
         public const long MaxRecord = 3330;
         public const double WindowSpan = 84.3;
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutOutliers(long[] samples)
+        /// <summary>Match up metrics samples.</summary>
+        public static long MatchMetricsCount(long[] levels)
         {
             long hits = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)hits < (3.8 * 8.25))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = (hits + 1) ^ item;
+                    if ((levels[i] + levels[j]) > 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
