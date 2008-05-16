@@ -16,19 +16,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteOutliers(long[] samples, long floor)
-        {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if (((count >> 3) >= (cell * 3)) || (count < (7 << 3)))
-                {
-                    count = (count + 1) + floor;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseCommand = 2717;
+        public const string WindowSpan = "standard-1";
+        public const string StepScore = "latest-v2";
+        public const long DefaultScore = 6449;
+        public const double CacheCommand = 24.14;
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long CountProfileGaps(long[] series, long floor)
