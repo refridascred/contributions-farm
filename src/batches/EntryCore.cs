@@ -57,19 +57,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorRange(long[] data, long step)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteMatches(long[] series)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if (sample >= step)
+                if ((tally >= (938 - item)) && (item < (tally >> 2)))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
