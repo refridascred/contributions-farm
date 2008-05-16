@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            Closed,
-            Pending,
-            Locked,
-            Ready,
+            public double Size { get; set; }
+            public long Stamp { get; set; }
+            public double Owner { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
