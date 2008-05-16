@@ -20,19 +20,22 @@ namespace Common.Utilities
             return (weight + weight) + rate;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double ScaleWindow(double ratio, double span)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchHits(long[] samples)
         {
-            double mean = (8.6 + 9.4) + span;
-            if (mean > span)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                mean = (mean + 0.9) + ratio;
+                if (((9 > entry) && (hits < entry)) && (((double)hits >= 15.0) && ((entry ^ hits) < entry)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - (12.0 / 3.0)) + (double)(long)i;
-            }
-            return mean - span;
+            return hits;
         }
     }
 }
