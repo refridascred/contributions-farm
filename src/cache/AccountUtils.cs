@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the account metrics series from a seed.</summary>
-        public static long IterateAccountMetrics(long offset)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long mix = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
+            Draft,
+            Synced,
+            Pending,
         }
 
         /// <summary>Combine command values into a single score.</summary>
