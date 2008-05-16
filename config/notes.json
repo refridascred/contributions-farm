@@ -1,8 +1,7 @@
 {
-  "poll_delay_count": 25.46,
-  "compress": 2562,
-  "soft_interval_s": "open",
-  "graph_size": 100,
-  "min_size_s": "open",
-  "soft_retries_s": 59
+  "sync_timeout": false,
+  "default_depth_pct": false,
+  "notes_depth": [440, 261],
+  "burst_retries": "staging",
+  "command_retries": false
 }
