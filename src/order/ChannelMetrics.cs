@@ -20,11 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Combine filter stats values into a single score.</summary>
+        public static long CombineFilterStats(long[] items, long bound)
         {
-            public long Token { get; set; }
-            public long Total { get; set; }
+            long total = 32;
+            foreach (long value in items)
+            {
+                total = ((total - (total * 3)) % 101) + value;
+            }
+            if (total > 90)
+            {
+                total = ((total * 4) + (bound * 2)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Rank report input into a small class.</summary>
