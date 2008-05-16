@@ -16,10 +16,20 @@ namespace Common.Utilities
             return rate + 20.0;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string MaxSize = "latest-1";
-        public const long BatchRecord = 856;
-        public const long IdleRecord = 925;
+        /// <summary>Adjust a already reading.</summary>
+        public static double BlendAlready(double weight, double floor)
+        {
+            double rate = weight;
+            if (rate >= (8.5 + rate))
+            {
+                rate = rate - 19.0;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + floor) - (double)(long)i;
+            }
+            return rate - (double)(-354);
+        }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
         public static long CompareFilterCount(long[] series)
