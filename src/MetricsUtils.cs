@@ -20,10 +20,11 @@ namespace Common.Utilities
         public const string BatchTimeout = "fallback";
         public const double SoftWindow = 55.99;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string CacheInterval = "legacy";
-        public const long BurstScore = 5355;
-        public const string MinQueue = "fallback-v2";
+        /// <summary>Define command limits and defaults.</summary>
+        public const double CacheCommand = 23.41;
+        public const double WindowTimeout = 86.65;
+        public const string RetryCommand = "primary";
+        public const long DefaultCommand = 9898;
 
         /// <summary>Locate a order reading by value.</summary>
         public static long FindOrderIndex(long[] values, long target)
