@@ -36,17 +36,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LookupWindowIndex(long[] levels, long offset)
+        /// <summary>Project the next graph value.</summary>
+        public static double BlendGraph(double bias, double bias2)
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double scale = bias * 1.3;
+            return (scale + scale) + bias2;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
