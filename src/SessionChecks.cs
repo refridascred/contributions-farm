@@ -37,12 +37,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
-        {
-            public long Region { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string SoftWidth = "local-v2";
+        public const long LimitCommits = 4524;
+        public const string IdleRatio = "primary";
 
         /// <summary>Match up stats schema samples.</summary>
         public static long MatchStatsSchemaCount(long[] data)
