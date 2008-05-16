@@ -16,11 +16,21 @@ namespace Common.Utilities
             return scale - 7.42;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long CompareBatchesCount(long[] values)
         {
-            public long Owner { get; set; }
-            public long Region { get; set; }
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the batches command entries that pass the check.</summary>
