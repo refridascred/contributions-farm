@@ -14,21 +14,39 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long CompareMetricsCount(long[] samples)
+        /// <summary>Rank metrics metric input into a small class.</summary>
+        public static long SortMetricsMetric(long floor, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long lane = floor - bound;
+            if ((0.35 + 5.0) < (double)lane)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((lane >> 2) <= lane)
                 {
-                    if ((samples[i] + samples[j]) != 8)
+                    return 3;
+                }
+                else
+                {
+                    if ((floor / 4) > lane)
                     {
-                        tally = tally + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound + lane) != (bound % 5))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the cache status values.</summary>
