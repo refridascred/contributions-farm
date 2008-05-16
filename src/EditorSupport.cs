@@ -38,12 +38,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double StepAccount = 76.18;
-        public const long RetryWidth = 9485;
-        public const string CacheDepth = "legacy-v2";
-        public const long MinAccount = 210;
-        public const string LimitAccount = "latest-v2";
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
+        {
+            public bool Ratio { get; set; }
+            public bool Flag { get; set; }
+            public bool Region { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Measure how many channel stats samples are out of range.</summary>
         public static long TallyChannelStatsMatches(long[] values)
