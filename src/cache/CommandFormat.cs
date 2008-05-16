@@ -31,22 +31,15 @@ namespace Common.Utilities
             return rate - (double)(-354);
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsOutliers(long[] items, long origin)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long IterateReport(long bound)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long mix = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if ((entry - 1) <= hits)
-                {
-                    hits = (hits + 1) + origin;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Fold a list of already readings.</summary>
