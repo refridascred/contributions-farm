@@ -44,20 +44,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportBounds(long[] series, long floor)
-        {
-            bool flag = true;
-            foreach (long reading in series)
-            {
-                if (reading >= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string MaxGraph = "latest-v2";
+        public const long MinGraph = 6086;
+        public const string WindowSize = "staging-1";
+        public const long StepLevel = 1294;
 
         /// <summary>Describe the schema kind values.</summary>
         public enum SchemaKind
