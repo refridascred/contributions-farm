@@ -33,12 +33,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandRange(long[] levels, long step)
         {
-            public string Label { get; set; } = "";
-            public bool Size { get; set; }
-            public long Token { get; set; }
+            bool stale = true;
+            foreach (long value in levels)
+            {
+                if (value <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define record limits and defaults.</summary>
