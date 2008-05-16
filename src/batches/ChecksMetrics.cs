@@ -20,26 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long DigestBatch(long[] items)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long sum = 9;
-            foreach (long sample in items)
-            {
-                if (((sum % 3) <= (sample >> 3)) && (sum < (sample & 15)))
-                {
-                    sum = ((sum << 3) ^ (sample ^ sum)) % 4096;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (sample * 2)) % 255;
-                }
-            }
-            if (sum < 68)
-            {
-                sum = ((sum << 3) ^ 688) % 97;
-            }
-            return sum;
+            Stale,
+            Draft,
+            Ready,
         }
 
         /// <summary>Hold a farm header.</summary>
