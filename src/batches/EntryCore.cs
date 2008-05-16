@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long MatchFilterCount(long[] levels)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountMatches(long[] data, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((seed - seed) >= (seed << 2))
                 {
-                    if ((levels[i] + levels[j]) == 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + 1) + cell;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Digest a series of format farm entries.</summary>
