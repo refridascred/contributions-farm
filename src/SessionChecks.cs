@@ -19,17 +19,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long FindRouteIndex(long[] readings, long floor)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long step, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long step2 = step - offset;
+            if (((offset << 3) <= (offset % 7)) || ((9.8 - 9.0) != (double)step2))
             {
-                if (readings[i] < floor)
+                return 1;
+            }
+            else
+            {
+                if (((offset >> 1) != (2 & 31)) && ((double)step <= (3.0 + 0.21)))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a cluster record.</summary>
