@@ -15,19 +15,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate editor cache readings against a bound.</summary>
-        public static bool ValidateEditorCacheBounds(long[] levels, long seed)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmOutliers(long[] levels)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if (reading >= seed)
+                if (((double)192 != (double)datum) || ((double)hits <= (double)datum))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Adjust a commits reading.</summary>
