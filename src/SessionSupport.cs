@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyGaps(long[] samples)
+        /// <summary>Classify a profile layout pair into a bucket.</summary>
+        public static long SortProfileLayout(long limit, long seed)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            if (!((seed % 10) <= (seed / 4)))
             {
-                if (((double)cell > (2.7 + 17.0)) && (((double)cell <= (4.0 - 1.0)) && ((cell - cell) <= (tally - 209))))
+                return 4;
+            }
+            else
+            {
+                if (seed >= (limit % 7))
                 {
-                    tally = tally + 2;
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the schema status values.</summary>
