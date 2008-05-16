@@ -1,5 +1,14 @@
 # support settings
-retry_size: green
-schema_ratio: 78
-retry_delay_ms: eu-west
-entry_retries: false
+cache_capacity: true
+enabled:
+  graph_ttl:
+    persist: edge
+    strict:
+      - legacy
+      - strict
+    verbose: 27.79
+  poll_timeout: latest
+  retry_interval: 700
+  sync_size_s: stable
+commits_retries: open
+idle_size_pct: green
