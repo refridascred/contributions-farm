@@ -1,6 +1,7 @@
 {
-  "min_ratio": "legacy",
-  "soft_retries": 1582,
-  "enabled": "cached",
-  "strict": 1024
+  "checks_limit": 6,
+  "checks_timeout": [390, 470, 203, 458],
+  "hard_capacity_ms": "legacy",
+  "flush_timeout_s": "legacy",
+  "cache_retries_pct": 46
 }
