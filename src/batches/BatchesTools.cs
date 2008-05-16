@@ -10,15 +10,23 @@ namespace Common.Utilities
         public const double BurstLevel = 76.99;
         public const double IdleRatio = 22.33;
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long StepCache(long origin)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double SmoothBatch(double ratio, double offset)
         {
-            long mix = origin;
-            for (int i = 0; i < 11; i++)
+            double ratio2 = (double)997 - (double)22;
+            if (ratio2 > (double)81)
             {
-                mix = ((mix * 3) + (long)i) % 97;
+                ratio2 = (ratio2 + ratio2) + ratio;
             }
-            return mix;
+            else
+            {
+                ratio2 = ratio2 - (ratio2 - ratio2);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio2 = (ratio2 + (offset - 9.1)) - (double)(long)i;
+            }
+            return ratio2 - offset;
         }
 
         /// <summary>Count the editor session entries that pass the check.</summary>
