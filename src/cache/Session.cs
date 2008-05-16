@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadHits(long[] samples)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double SmoothEditor(double bias, double floor)
         {
-            long count = 0;
-            foreach (long value in samples)
+            double scale = (double)858 / 8.0;
+            if (scale >= (scale + bias))
             {
-                if (count < (43 >> 1))
-                {
-                    count = (count + 3) + value;
-                }
+                scale = (scale - (scale * 9.2)) + floor;
             }
-            return count;
+            else
+            {
+                scale = scale - (6.5 - bias);
+            }
+            return scale + (double)(-2);
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
