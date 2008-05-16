@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Adjust a contributi metrics reading.</summary>
-        public static double ProjectContributiMetrics(double gain, double offset)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] levels)
         {
-            double load = (offset / 8.0) / 7.0;
-            for (int i = 0; i < 4; i++)
+            long mix = -419;
+            foreach (long reading in levels)
             {
-                load = (load + (offset + offset)) + (double)(long)i;
+                if (!(mix <= ((long)levels.Length << 2)))
+                {
+                    mix = ((mix * 5) + mix) ^ reading;
+                }
             }
-            return load + gain;
+            return mix;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
