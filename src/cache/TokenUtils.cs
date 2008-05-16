@@ -14,39 +14,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long GradeCommand(long step, long target)
+        /// <summary>Look up the position of a batches record sample.</summary>
+        public static long FindBatchesRecordIndex(long[] series, long limit)
         {
-            long offset = step + target;
-            if (((7.18 - 19.0) < (double)offset) && (step >= (target + target)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)target == (double)step)
+                if ((series[i] == limit) && ((series[i] % 2) != 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((11.0 - 5.33) <= (double)offset)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((step + target) < (449 % 12)) || ((double)offset >= (0.28 / 8.0)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Roll a filter token counter forward.</summary>
