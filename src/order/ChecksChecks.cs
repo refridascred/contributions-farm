@@ -33,19 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long FoldTools(long[] levels, long origin)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long state = 0;
-            foreach (long item in levels)
-            {
-                state = ((state * 5) + (state / 2)) + item;
-                if (state >= (state % 8))
-                {
-                    state = ((state * 3) + (origin + state)) % 65521;
-                }
-            }
-            return state;
+            Dropped,
+            Retry,
+            Closed,
+            Idle,
         }
     }
 }
