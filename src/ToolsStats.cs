@@ -40,12 +40,21 @@ namespace Common.Utilities
         public const string MinReport = "strict-v2";
         public const long HardReport = 4932;
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Match up contributi profile samples.</summary>
+        public static long MatchContributiProfileCount(long[] samples)
         {
-            Draft,
-            Pending,
-            Stale,
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit entry batches readings against a rule.</summary>
