@@ -18,19 +18,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryLimits(long[] series, long target)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long RollCache(long seed)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            long total = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if (cell != target)
-                {
-                    ok = false;
-                    break;
-                }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Iterate the queue command series from a seed.</summary>
