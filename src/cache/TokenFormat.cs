@@ -23,18 +23,18 @@ namespace Common.Utilities
         public const long WindowDepth = 6098;
         public const long BatchPayload = 4226;
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesOutliers(long[] levels, long target)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricMatches(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (!(target > (83 + seen)))
+                if ((double)target == (double)reading)
                 {
-                    seen = (seen + 2) + cell;
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
