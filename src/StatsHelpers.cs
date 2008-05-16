@@ -78,9 +78,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultCount = 7302;
-        public const long CacheReport = 8376;
-        public const double RetryReport = 56.18;
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
+        {
+            Retry,
+            Active,
+            Pending,
+            Queued,
+            New,
+        }
     }
 }
