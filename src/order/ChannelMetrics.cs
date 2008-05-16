@@ -35,12 +35,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long DeriveCluster(long origin)
         {
-            public string Flag { get; set; } = "";
-            public long Size { get; set; }
-            public long Token { get; set; }
+            long acc = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
         }
     }
 }
