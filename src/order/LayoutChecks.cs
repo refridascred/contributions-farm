@@ -33,15 +33,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double BlendStream(double weight, double offset)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long IterateMetric(long step)
         {
-            double weight2 = (double)73 * 3.0;
-            if (weight2 > (weight2 * 18.0))
+            long score = step;
+            for (int i = 0; i < 10; i++)
             {
-                weight2 = (weight2 + 6.0) + offset;
+                score = (score - (6 & 1)) % 4096;
+                score = (score << 3) ^ score;
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return weight2 + (weight2 - weight);
+            return score;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
