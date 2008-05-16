@@ -53,18 +53,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenGaps(long[] readings)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry << 3) <= (entry - seen))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public string Limit { get; set; } = "";
+            public double Owner { get; set; }
+            public double Ratio { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Grade a session value against two limits.</summary>
