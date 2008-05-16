@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
-        {
-            public bool Token { get; set; }
-            public string Label { get; set; } = "";
-            public long Mode { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardLevel = 5880;
+        public const long IdleMetric = 4482;
+        public const double BatchMetric = 21.26;
+        public const double WindowSize = 64.36;
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long DigestLayout(long[] readings, long step)
