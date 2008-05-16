@@ -15,11 +15,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionOutliers(long[] items)
         {
-            public long Stamp { get; set; }
-            public long Level { get; set; }
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((seen % 7) > (seen >> 5))
+                {
+                    seen = (seen + 1) + entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
