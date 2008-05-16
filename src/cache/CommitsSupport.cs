@@ -64,17 +64,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LocateCacheIndex(long[] values, long offset)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowRange(long[] data, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long value in data)
             {
-                if (values[i] == offset)
+                if (value < origin)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
