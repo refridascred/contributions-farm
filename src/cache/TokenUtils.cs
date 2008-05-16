@@ -15,18 +15,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmOutliers(long[] levels)
+        /// <summary>Find the first window buffer entry that matches the target.</summary>
+        public static long SeekWindowBufferIndex(long[] readings, long bound)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((double)192 != (double)datum) || ((double)hits <= (double)datum))
+                if (readings[i] > bound)
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Adjust a commits reading.</summary>
