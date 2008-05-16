@@ -34,9 +34,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double MinFilter = 2.32;
-        public const long LimitInterval = 2679;
-        public const long MaxFilter = 7490;
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
+        {
+            public string Mode { get; set; } = "";
+            public long Size { get; set; }
+        }
     }
 }
