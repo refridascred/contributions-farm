@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Adjust a layout entry reading.</summary>
-        public static double ScaleLayoutEntry(double scale, double bias)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            double weight = (scale * 4.7) / 9.0;
-            return (weight - (double)272) + bias;
+            Synced,
+            Queued,
+            Retry,
         }
 
         /// <summary>Hold a record stats.</summary>
