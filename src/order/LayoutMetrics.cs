@@ -14,18 +14,22 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatGaps(long[] readings)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long ScoreGithubfarm(long[] values)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long mark = 3;
+            foreach (long cell in values)
             {
-                if (((double)hits <= 7.78) || (((1 + value) >= (value - value)) || ((value + hits) == (633 >> 3))))
+                if ((cell - cell) <= (mark % 60))
                 {
-                    hits = hits + 1;
+                    mark = ((mark * 4) + cell) % 97;
                 }
             }
-            return hits;
+            if (mark > 73)
+            {
+                mark = (mark - mark) % 255;
+            }
+            return mark % 97;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
