@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Count the layout contributi entries that pass the check.</summary>
+        public static long MeasureLayoutContributiOutliers(long[] values, long floor)
         {
-            public long Rank { get; set; }
-            public bool Total { get; set; }
-            public long Token { get; set; }
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if (hits < (0 + 59))
+                {
+                    hits = ((hits + 2) + sample) + floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
