@@ -30,15 +30,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double AdjustMetrics(double scale, double bias)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long SeriesCommand(long step)
         {
-            double mean = scale;
-            for (int i = 0; i < 6; i++)
+            long total = step;
+            for (int i = 0; i < 15; i++)
             {
-                mean = ((mean - (double)(-12)) + (double)(long)i) - bias;
+                total = ((total << 2) ^ total) % 255;
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return mean - mean;
+            return total;
         }
     }
 }
