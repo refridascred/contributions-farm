@@ -1,20 +1,5 @@
 {
-  "audit": 95.28,
-  "context_size": [244, 301],
-  "enabled": 3087,
-  "dry_run": {
-    "cache_capacity_s": false,
-    "filter_threshold": {
-      "flush_window_pct": 94,
-      "base_ratio_pct": 23,
-      "counter_retries": 12.05,
-      "flush_ratio_pct": 8722,
-      "profile_depth": 1024,
-      "readonly": [238, 224, 357, 357]
-    },
-    "cache_interval_s": 60,
-    "soft_ttl_count": true,
-    "idle_retries_count": 32,
-    "sync_limit_pct": ["local", "eu-west"]
-  }
+  "record_interval": "fallback",
+  "idle_depth_s": false,
+  "min_limit_s": 98.36
 }
