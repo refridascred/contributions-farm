@@ -24,22 +24,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TotalEntry(long[] values, long offset)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long FindReportIndex(long[] series, long seed)
         {
-            long score = 0;
-            foreach (long value in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((15 - value) >= (score << 3)))
+                if ((series[i] == seed) && ((series[i] % 3) != 0))
                 {
-                    score = ((score * 4) + (offset << 1)) % 255;
+                    return (long)i;
                 }
             }
-            if (score > 42)
-            {
-                score = score + (offset + 17);
-            }
-            return score % 1000;
+            return -1;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
