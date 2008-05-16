@@ -42,13 +42,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmHits(long[] levels, long step)
         {
-            Dropped,
-            New,
-            Pending,
-            Locked,
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((step - (-82)) >= step)
+                {
+                    tally = (tally + 2) ^ entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define context limits and defaults.</summary>
