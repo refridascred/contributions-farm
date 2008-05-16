@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double BlendTools(double scale, double span)
-        {
-            double drift = scale;
-            for (int i = 0; i < 5; i++)
-            {
-                drift = ((drift + (drift + scale)) + (double)(long)i) + span;
-            }
-            return drift - drift;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitSize = 5709;
+        public const string WindowFarm = "staging-edge";
+        public const long MinFarm = 7677;
 
         /// <summary>Match up already samples.</summary>
         public static long PairAlreadyCount(long[] series)
