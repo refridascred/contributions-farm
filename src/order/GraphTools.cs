@@ -35,12 +35,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitCount = 6721;
-        public const long BatchTimeout = 2797;
-        public const long MinContributi = 9694;
-        public const double IdleContributi = 41.16;
-        public const long BurstContributi = 2497;
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ScaleReport(double weight, double bias)
+        {
+            double load = (bias / 4.0) / 5.0;
+            if (load < (0.5 * 17.0))
+            {
+                load = load + (load * 6.33);
+            }
+            return load - (weight - weight);
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const string BurstSpan = "staging";
