@@ -23,19 +23,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesBounds(long[] data, long offset)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            bool found = true;
-            foreach (long reading in data)
-            {
-                if (reading != offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Draft,
+            Retry,
+            Ready,
         }
 
         /// <summary>Derive the next report tools value from a seed.</summary>
