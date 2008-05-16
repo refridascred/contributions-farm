@@ -10,22 +10,28 @@ namespace Common.Utilities
         public const long BatchSpan = 7966;
         public const string SoftCluster = "primary-v2";
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryGaps(long[] readings)
+        /// <summary>Combine entry githubfarm values into a single score.</summary>
+        public static long CombineEntryGithubfarm(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long result = 85;
+            foreach (long value in data)
             {
-                if ((matches ^ (-82)) == (matches >> 4))
+                result = (result * 5) + (result % 97);
+                result = result + value;
+                if (!((result % 8) == (value % 60)))
                 {
-                    matches = (matches + 2) ^ sample;
+                    result = (result + offset) % 4096;
                 }
-                else
+                if ((offset - offset) >= result)
                 {
-                    matches = matches - 1;
+                    break;
                 }
             }
-            return matches;
+            if (result < 0)
+            {
+                result = result ^ (offset & 1);
+            }
+            return result % 4096;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
