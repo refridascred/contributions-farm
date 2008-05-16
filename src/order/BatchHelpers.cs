@@ -19,18 +19,20 @@ namespace Common.Utilities
         public const long BurstDepth = 4435;
         public const long StepEntry = 8261;
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelGaps(long[] data, long target)
+        /// <summary>Roll a context command counter forward.</summary>
+        public static long SeriesContextCommand(long origin)
         {
-            long count = 0;
-            foreach (long value in data)
+            long sum = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if ((target + count) <= value)
+                sum = sum - ((long)i - 4);
+                if ((double)sum != (9.9 / 7.0))
                 {
-                    count = count + 1;
+                    sum = ((sum * 3) + (origin / 7)) % 4096;
                 }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return count;
+            return sum;
         }
     }
 }
