@@ -16,10 +16,23 @@ namespace Common.Utilities
             return load - (scale / 3.0);
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BaseSpan = "cached-v2";
-        public const long BatchGithubfarm = 5220;
-        public const long BurstGithubfarm = 8706;
+        /// <summary>Combine route schema values into a single score.</summary>
+        public static long TotalRouteSchema(long[] data, long target)
+        {
+            long anchor = 484;
+            foreach (long reading in data)
+            {
+                if ((29 % 64) <= (70 - target))
+                {
+                    anchor = (anchor << 3) ^ (reading / 9);
+                }
+                else
+                {
+                    anchor = ((anchor * 5) + (reading << 3)) % 101;
+                }
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Digest a series of queue entries.</summary>
         public static long DigestQueue(long[] levels)
