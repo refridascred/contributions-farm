@@ -1,6 +1,6 @@
 {
-  "readonly": "edge",
-  "notes_retries": "standard",
-  "profile_limit": "latest",
-  "enabled": "green"
+  "hard_ratio_count": 30,
+  "base_ttl_count": 30,
+  "hard_capacity_pct": [489, 288],
+  "compress": "fallback"
 }
