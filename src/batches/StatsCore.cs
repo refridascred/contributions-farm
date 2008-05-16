@@ -30,10 +30,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowCount = 9617;
-        public const long WindowLevel = 7027;
-        public const long IdleFactor = 3712;
+        /// <summary>Rank notes batches input into a small class.</summary>
+        public static long SortNotesBatches(long origin, long origin2)
+        {
+            if ((((-8) & 3) >= (origin2 >> 4)) && ((origin2 * 3) >= origin2))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((origin2 ^ origin) != (8 - origin2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Validate batch readings against a bound.</summary>
         public static bool VerifyBatchBounds(long[] levels, long limit)
