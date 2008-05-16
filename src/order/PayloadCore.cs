@@ -41,28 +41,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long SortNotes(long limit, long floor)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long RankTools(long offset, long offset2)
         {
-            if ((limit + limit) >= floor)
+            if ((5.1 + 1.6) == (double)offset2)
             {
-                return 2;
+                return 6;
             }
             else
             {
-                if ((floor ^ floor) <= (floor % 2))
+                if ((offset + offset) >= 726)
                 {
-                    return 6;
+                    return 5;
                 }
                 else
                 {
-                    if ((4 ^ limit) <= (-717))
+                    if (!((offset2 + offset) >= offset2))
                     {
-                        return 1;
+                        return 4;
                     }
                     else
                     {
-                        return 4;
+                        return 7;
                     }
                 }
             }
