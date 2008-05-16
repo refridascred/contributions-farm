@@ -1,24 +1,15 @@
 # support settings
-stats_capacity:
-  checks_depth: 63.85
-  verbose: 84.08
-  record_size: false
-  batch_timeout: stable
-idle_interval_pct:
-  hard_delay_s: 4023
-  dry_run:
-    buffer_window: legacy
-    default_ratio_s: false
-    warm_ratio: 21.84
-    soft_window_pct: true
-    hard_depth: open
-    cache_ttl: 52.18
-  warm_threshold_count:
-    max_limit: 81
-    stream_timeout: 82
-    payload_limit: 2374
-  verbose: false
-  compress: true
-  idle_size_pct: 34.59
-readonly: primary
-compress: 67.11
+batch_limit_count:
+  - green
+  - latest
+retry_limit: 59.74
+soft_retries_count: 250
+max_depth_ms: staging
+already_ttl:
+  poll_interval: cached
+  burst_window_pct: 1024
+  command_delay: strict
+  retry_threshold: false
+  burst_limit_count: 5
+  cache_limit_count: local
+flush_ratio_pct: eu-west
