@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double WindowEditor = 5.28;
-        public const string IdleSpan = "local-v2";
-        public const long BaseTimeout = 4767;
-        public const long SoftEditor = 3879;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderOutliers(long[] series)
+        {
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((sample - sample) <= (matches + 601))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Match up entry samples.</summary>
         public static long CompareEntryCount(long[] levels)
