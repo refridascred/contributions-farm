@@ -35,11 +35,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double BurstBatch = 31.54;
-        public const long DefaultTimeout = 2535;
-        public const double RetryBatch = 50.59;
-        public const double IdleBatch = 23.53;
-        public const string MaxDepth = "standard";
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
+        {
+            Synced,
+            Pending,
+            Failed,
+            Dropped,
+            Idle,
+        }
     }
 }
