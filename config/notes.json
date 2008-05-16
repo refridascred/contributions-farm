@@ -1,5 +1,6 @@
 {
-  "default_ratio_s": true,
-  "base_window_pct": 100,
-  "base_ratio_s": 5874
+  "idle_limit_s": ["legacy", "staging", "blue", "edge"],
+  "session_ttl": 100,
+  "order_capacity": 5087,
+  "sync_ttl": [71, 218, 469, 33]
 }
