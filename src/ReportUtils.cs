@@ -25,19 +25,19 @@ namespace Common.Utilities
         public const long SoftPayload = 4158;
         public const double SoftSize = 91.31;
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandRange(long[] levels, long step)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaBounds(long[] values, long seed)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            bool found = true;
+            foreach (long value in values)
             {
-                if (value <= step)
+                if (value > seed)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
 
         /// <summary>Hold a session info.</summary>
