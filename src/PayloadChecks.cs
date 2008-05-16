@@ -48,21 +48,17 @@ namespace Common.Utilities
         public const long WindowSpan = 9547;
         public const double SoftDepth = 60.75;
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long MatchAlreadyCount(long[] samples)
+        /// <summary>Look up the position of a stats entry sample.</summary>
+        public static long SeekStatsEntryIndex(long[] samples, long origin)
         {
-            long matches = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((samples[i] == origin) && ((samples[i] % 5) != 0))
                 {
-                    if ((samples[i] + samples[j]) != 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
