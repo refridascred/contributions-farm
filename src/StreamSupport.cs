@@ -15,19 +15,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsBounds(long[] series, long origin)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatMatches(long[] levels, long offset)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if (datum < origin)
+                if ((35 > cell) && ((double)hits <= 9.75))
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 1) - offset;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
