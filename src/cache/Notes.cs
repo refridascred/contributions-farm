@@ -18,31 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long ClassifyAccount(long bound, long offset)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            if (4.0 <= (double)bound)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)offset < (double)bound)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((bound << 3) != (offset ^ 8)) && ((6.0 * 8.01) < (double)bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public bool Region { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Roll a window counter forward.</summary>
