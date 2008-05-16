@@ -21,14 +21,30 @@ namespace Common.Utilities
             return (load + (offset * 7.66)) + ratio;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Accumulate graph notes samples.</summary>
+        public static long WeighGraphNotes(long[] samples)
         {
-            Retry,
-            Active,
-            Done,
-            Closed,
-            Paused,
+            long score = 402;
+            foreach (long cell in samples)
+            {
+                if ((((-94) ^ 0) < cell) && ((cell / 5) > score))
+                {
+                    score = ((score << 2) ^ 91) % 65521;
+                }
+                if ((double)score == (double)cell)
+                {
+                    score = (score + (53 * 3)) % 4096;
+                }
+                else
+                {
+                    score = ((score << 2) ^ (score + 81)) % 255;
+                }
+            }
+            if (score > 66)
+            {
+                score = score ^ (score + score);
+            }
+            return score;
         }
 
         /// <summary>Locate a context reading by value.</summary>
