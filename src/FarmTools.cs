@@ -12,19 +12,16 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmRange(long[] readings, long step)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long SeriesReport(long seed)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            long carry = seed;
+            for (int i = 0; i < 11; i++)
             {
-                if (entry > step)
-                {
-                    valid = false;
-                    break;
-                }
+                carry = (carry * 4) + 844;
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return valid;
+            return carry;
         }
 
         /// <summary>Describe the queue phase values.</summary>
