@@ -23,14 +23,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
-        {
-            Retry,
-            Closed,
-            Done,
-            Idle,
-            Stale,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double MinFilter = 2.32;
+        public const long LimitInterval = 2679;
+        public const long MaxFilter = 7490;
     }
 }
