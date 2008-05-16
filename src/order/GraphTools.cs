@@ -51,19 +51,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenLimits(long[] values, long limit)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TotalWindow(long[] samples)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            long total = 45;
+            foreach (long cell in samples)
             {
-                if (cell > limit)
+                total = (total - total) % 101;
+                if ((cell * 2) > (total + (long)samples.Length))
                 {
-                    stale = false;
-                    break;
+                    total = ((total * 5) + (cell << 3)) % 97;
                 }
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
