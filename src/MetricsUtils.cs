@@ -34,24 +34,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long BucketSupport(long bound, long limit)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long IterateGraph(long seed)
         {
-            if ((limit << 2) != (7 - bound))
+            long carry = seed;
+            for (int i = 0; i < 15; i++)
             {
-                return 5;
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if ((bound <= (bound + bound)) && ((double)limit != (0.7 + 5.9)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return carry;
         }
     }
 }
