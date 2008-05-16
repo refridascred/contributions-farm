@@ -39,24 +39,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank notes batches input into a small class.</summary>
-        public static long SortNotesBatches(long origin, long origin2)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long SeekSchemaIndex(long[] levels, long origin)
         {
-            if ((((-8) & 3) >= (origin2 >> 4)) && ((origin2 * 3) >= origin2))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin2 ^ origin) != (8 - origin2))
+                if (levels[i] > origin)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
