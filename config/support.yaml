@@ -1,9 +1,12 @@
 # support settings
-context_delay: true
-hard_limit: edge
-burst_timeout: 80.3
-readonly: true
-record_ttl:
-  - 339
-  - 478
-enabled: stable
+hard_depth: 100
+idle_ratio_ms: 59.15
+audit: 100
+batch_timeout:
+  - edge
+  - green
+  - staging
+burst_interval: edge
+idle_delay_pct:
+  - 410
+  - 253
