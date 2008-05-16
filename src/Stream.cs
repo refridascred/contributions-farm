@@ -51,11 +51,28 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] series, long offset)
         {
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
+            long carry = 474;
+            foreach (long entry in series)
+            {
+                if ((double)offset != (5.8 * 0.8))
+                {
+                    carry = (carry + (2 + carry)) % 65521;
+                    carry = carry + (entry * 5);
+                    continue;
+                }
+                if (offset <= entry)
+                {
+                    carry = ((carry << 2) ^ ((-98) ^ entry)) % 101;
+                }
+            }
+            if (carry > 918)
+            {
+                carry = carry - (offset + offset);
+            }
+            return carry;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
