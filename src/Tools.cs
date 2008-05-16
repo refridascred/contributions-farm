@@ -27,22 +27,21 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] samples)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long MatchCommandCount(long[] samples)
         {
-            long score = 9;
-            foreach (long reading in samples)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i = 0; i < 2; i++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    score = (score + (reading ^ score)) + (long)i;
-                }
-                if ((reading / 6) >= 376)
-                {
-                    score = score + (reading << 3);
+                    if ((samples[i] ^ samples[j]) != 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return score % 65521;
+            return seen;
         }
 
         /// <summary>Locate a counter token reading by value.</summary>
