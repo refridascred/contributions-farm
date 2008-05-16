@@ -33,12 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            Stale,
-            Draft,
-            Ready,
+            public bool Level { get; set; }
+            public long Limit { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Grade a batches cache value against two limits.</summary>
