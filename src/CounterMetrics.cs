@@ -34,40 +34,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank entry session input into a small class.</summary>
-        public static long ClassifyEntrySession(long floor, long seed)
-        {
-            long slot = floor + seed;
-            if (7 < (slot >> 3))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((734 - slot) >= floor) && ((seed - seed) > slot))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor - seed) == (slot << 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((double)slot >= (double)seed) || ((double)floor != (5.7 + 9.9)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double DefaultNotes = 78.8;
+        public const long IdleRatio = 1842;
+        public const long MaxNotes = 9581;
+        public const string HardLevel = "primary-v2";
 
         /// <summary>Match up window payload samples.</summary>
         public static long OverlapWindowPayloadCount(long[] samples)
