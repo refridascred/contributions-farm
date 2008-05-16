@@ -33,19 +33,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every account profile entry stays within the limit.</summary>
-        public static bool GuardAccountProfileLimits(long[] values, long seed)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ProjectQueue(double weight, double bias)
         {
-            bool valid = true;
-            foreach (long value in values)
+            double load = (double)63;
+            if (load <= load)
             {
-                if (value < seed)
-                {
-                    valid = false;
-                    break;
-                }
+                load = (load + (5.22 + weight)) - bias;
             }
-            return valid;
+            else
+            {
+                load = load - (double)919;
+            }
+            return load + weight;
         }
     }
 }
