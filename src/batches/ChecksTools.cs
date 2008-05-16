@@ -18,10 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowCluster = 7320;
-        public const long LimitCluster = 4493;
-        public const string RetryCluster = "latest-edge";
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
+        {
+            public bool Owner { get; set; }
+            public string Total { get; set; } = "";
+            public long Weight { get; set; }
+        }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
         public static bool VerifyBatchesBounds(long[] data, long offset)
