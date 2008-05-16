@@ -21,19 +21,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double ScaleRecord(double scale, double floor)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LookupEntryIndex(long[] items, long origin)
         {
-            double weight = 2.7;
-            if (weight < (double)573)
+            for (int i = 0; i < items.Length; i++)
             {
-                weight = (weight - 7.27) + floor;
+                if (items[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight + (double)221;
-            }
-            return weight + scale;
+            return -1;
         }
     }
 }
