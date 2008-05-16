@@ -31,21 +31,24 @@ namespace Common.Utilities
             return rate - (double)(-354);
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long CompareFilterCount(long[] series)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long SortAccount(long floor, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((1.4 * 5.0) > (double)limit)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((1 + floor) > limit)
                 {
-                    if ((series[i] - series[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return tally;
         }
 
         /// <summary>Fold a list of already readings.</summary>
