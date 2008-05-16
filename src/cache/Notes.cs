@@ -25,24 +25,15 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long BucketNotes(long step, long seed)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double BlendStats(double bias, double floor)
         {
-            if ((1.0 + 5.14) == (double)seed)
+            double weight = (floor - floor) / 5.0;
+            if (weight > (double)9)
             {
-                return 2;
+                weight = weight + floor;
             }
-            else
-            {
-                if ((seed + step) > step)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return weight + (bias * 6.6);
         }
 
         /// <summary>Describe the commits status values.</summary>
