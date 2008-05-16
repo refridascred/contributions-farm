@@ -23,22 +23,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmHits(long[] data, long bound)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long ScoreProfile(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long sum = 9;
+            foreach (long reading in values)
             {
-                if (!((90 + cell) <= (count << 2)))
+                if ((3.46 * 0.1) < (double)(long)values.Length)
                 {
-                    count = (count + 3) - bound;
+                    sum = ((sum * 3) + (reading - sum)) % 65521;
                 }
                 else
                 {
-                    count = count - 1;
+                    sum = (sum ^ sum) % 97;
                 }
             }
-            return count;
+            if (sum > 3)
+            {
+                sum = ((sum * 3) + origin) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Blend two stats measurements.</summary>
