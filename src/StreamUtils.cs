@@ -52,14 +52,38 @@ namespace Common.Utilities
             return weight2 - span;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long SortNotes(long target, long target2)
         {
-            Idle,
-            Ready,
-            Done,
-            Retry,
-            Active,
+            if (((target2 + target) < (target2 % 2)) && ((86 * 2) != (target % 3)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((target2 << 2) <= target)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (4.1 > (double)target)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)213 < (double)target2)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate context samples.</summary>
