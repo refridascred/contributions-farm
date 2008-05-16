@@ -24,22 +24,24 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextHits(long[] samples)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long ClassifyChannel(long bound, long target)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            if ((9.4 * 13.0) >= (double)bound)
             {
-                if ((double)tally <= (double)0)
+                return 7;
+            }
+            else
+            {
+                if (!((target * 2) > target))
                 {
-                    tally = (tally + 2) + entry;
+                    return 2;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 1;
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a tools stats.</summary>
