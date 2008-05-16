@@ -21,12 +21,12 @@ namespace Common.Utilities
             return bias - (span / 7.0);
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string LimitTimeout = "cached-v2";
-        public const long BatchSpan = 8258;
-        public const long BasePayload = 1437;
-        public const double HardPayload = 46.83;
-        public const string LimitPayload = "local";
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
+        {
+            public string Size { get; set; } = "";
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Accumulate notes samples.</summary>
         public static long TallyNotes(long[] items)
