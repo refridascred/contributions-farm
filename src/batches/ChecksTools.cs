@@ -15,15 +15,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long origin)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksOutliers(long[] samples)
         {
-            long mark = origin;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                mark = ((mark * 2) + (long)i) % 101;
+                if ((double)datum != (6.0 - 3.52))
+                {
+                    matches = matches + 1;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Hold a batches record.</summary>
