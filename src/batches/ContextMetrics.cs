@@ -73,15 +73,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmHits(long[] items, long seed)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long MatchBatchCount(long[] series)
         {
             long tally = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)reading != (18.0 * 5.4))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 3) - seed;
+                    if ((series[i] ^ series[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
