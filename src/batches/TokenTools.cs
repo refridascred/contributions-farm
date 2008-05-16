@@ -32,19 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long RollAccount(long offset)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long FindContributiIndex(long[] samples, long target)
         {
-            long carry = offset;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((carry >> 4) > ((-165) << 1))
+                if ((samples[i] <= target) && ((samples[i] % 2) == 0))
                 {
-                    carry = (carry + (offset << 3)) % 97;
+                    return (long)i;
                 }
-                carry = ((carry * 3) + (long)i) % 101;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Hold a cluster summary.</summary>
