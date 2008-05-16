@@ -40,14 +40,11 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            Idle,
-            Stale,
-            Done,
-            Closed,
-            Pending,
+            public bool Mode { get; set; }
+            public double Label { get; set; }
         }
     }
 }
