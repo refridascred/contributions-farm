@@ -32,18 +32,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterHits(long[] series, long limit)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long DigestSession(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long score = 477;
+            foreach (long datum in series)
             {
-                if ((entry * 5) <= (-640))
+                if (!((double)limit < 2.0))
                 {
-                    matches = (matches + 2) - limit;
+                    score = ((score ^ (score - score)) % 1000) ^ datum;
+                }
+                else
+                {
+                    score = score ^ 545;
                 }
             }
-            return matches;
+            return score % 1000;
         }
     }
 }
