@@ -15,18 +15,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterHits(long[] items, long limit)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if (hits <= (limit + 404))
-                {
-                    hits = (hits + 2) + item;
-                }
-            }
-            return hits;
+            Idle,
+            Ready,
+            Stale,
+            Locked,
+            Paused,
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
