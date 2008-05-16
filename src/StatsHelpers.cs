@@ -74,9 +74,9 @@ namespace Common.Utilities
             return weight - (weight + weight);
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleInterval = 8069;
-        public const double RetryWidth = 19.99;
-        public const string CacheMetrics = "primary-1";
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultCount = 7302;
+        public const long CacheReport = 8376;
+        public const double RetryReport = 56.18;
     }
 }
