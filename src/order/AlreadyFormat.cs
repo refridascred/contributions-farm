@@ -20,15 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long WeighContributi(long[] series)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmMatches(long[] readings)
         {
-            long mark = 585;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                mark = ((mark * 5) + (mark + datum)) % 255;
+                if ((datum - tally) == (datum << 3))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
