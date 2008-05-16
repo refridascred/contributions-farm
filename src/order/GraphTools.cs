@@ -60,11 +60,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheSchema = 8759;
-        public const long BaseSchema = 6314;
-        public const long IdleSchema = 2453;
-        public const long LimitSchema = 9425;
-        public const long SoftSchema = 3500;
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryMatches(long[] items)
+        {
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if (reading <= (count & 3))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
     }
 }
