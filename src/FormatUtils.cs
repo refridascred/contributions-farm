@@ -60,23 +60,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long ScoreAlready(long[] samples, long target)
+        /// <summary>Audit entry schema readings against a rule.</summary>
+        public static long TallyEntrySchemaHits(long[] data, long origin)
         {
-            long acc = 120;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                acc = ((acc << 2) ^ (datum + datum)) % 4096;
-                if (datum > (target >> 4))
+                if ((origin - matches) > (origin + entry))
                 {
-                    acc = acc + (acc << 2);
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (datum * 3)) % 4096;
+                    matches = matches + 2;
                 }
             }
-            return acc % 4096;
+            return matches;
         }
 
         /// <summary>Compare every pair of contributi account readings.</summary>
