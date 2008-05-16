@@ -82,18 +82,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit githubfarm command readings against a rule.</summary>
-        public static long TallyGithubfarmCommandGaps(long[] items)
-        {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if (hits < (hits + hits))
-                {
-                    hits = (hits + 3) - entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double BurstBatch = 31.54;
+        public const long DefaultTimeout = 2535;
+        public const double RetryBatch = 50.59;
+        public const double IdleBatch = 23.53;
+        public const string MaxDepth = "standard";
     }
 }
