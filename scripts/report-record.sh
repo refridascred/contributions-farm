@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge open; do
+for item in blue strict primary; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 2))
+RECORD_LIMIT=70
+log "limit is ${RECORD_LIMIT}"
+
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
