@@ -49,18 +49,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchHits(long[] values)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((5.59 / 8.0) <= (double)matches)
-                {
-                    matches = (matches + 1) ^ sample;
-                }
-            }
-            return matches;
+            Queued,
+            Ready,
+            Stale,
+            Draft,
+            Paused,
         }
     }
 }
