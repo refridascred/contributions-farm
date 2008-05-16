@@ -59,18 +59,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsOutliers(long[] items)
-        {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if (!((seen > (seen * 5)) && (((-274) / 9) == (entry & 255))))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double MinWidth = 49.89;
+        public const long MaxLevel = 8655;
+        public const long LimitRatio = 9051;
+        public const long IdleInterval = 852;
     }
 }
