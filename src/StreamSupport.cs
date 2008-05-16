@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long StepProfile(long limit)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long acc = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                acc = ((acc * 3) + limit) % 255;
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
+            Synced,
+            Active,
+            Locked,
         }
 
         /// <summary>Scale a report tools figure with a bias.</summary>
