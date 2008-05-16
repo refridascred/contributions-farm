@@ -28,19 +28,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a commits batches reading.</summary>
-        public static double SmoothCommitsBatches(double gain, double offset)
+        /// <summary>Validate farm batch readings against a bound.</summary>
+        public static bool VerifyFarmBatchBounds(long[] samples, long target)
         {
-            double scale = gain + (offset - gain);
-            if (scale >= (6.58 - gain))
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                scale = scale - (gain - gain);
+                if (entry >= target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + 4.0) - (double)(long)i;
-            }
-            return scale + (double)54;
+            return stale;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
