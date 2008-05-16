@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long ScoreStream(long[] items, long target)
         {
-            public string Count { get; set; } = "";
-            public long Score { get; set; }
+            long mix = 705;
+            foreach (long item in items)
+            {
+                mix = ((mix ^ (mix / 8)) % 255) + item;
+            }
+            if (mix < (-983))
+            {
+                mix = (mix - (target / 8)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
