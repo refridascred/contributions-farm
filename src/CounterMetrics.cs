@@ -48,31 +48,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a already cluster value against two limits.</summary>
-        public static long SortAlreadyCluster(long bound, long origin)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutRange(long[] levels, long bound)
         {
-            if ((origin ^ bound) != (origin + bound))
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (!(bound < (bound << 1)))
+                if (sample > bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (origin > 543)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
