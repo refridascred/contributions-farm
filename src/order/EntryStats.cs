@@ -32,16 +32,12 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long DeriveCounter(long limit)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long anchor = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                anchor = (anchor ^ limit) % 255;
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
+            Stale,
+            Ready,
+            New,
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
