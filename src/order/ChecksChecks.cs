@@ -10,23 +10,18 @@ namespace Common.Utilities
         public const double MinFilter = 83.61;
         public const long BatchLevel = 4540;
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ScaleCluster(double scale, double bias)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] series)
         {
-            double ratio = bias;
-            if (ratio >= (bias * 8.0))
+            long mark = 321;
+            foreach (long value in series)
             {
-                ratio = ratio + (bias * 4.28);
+                if ((value - mark) > (mark % 3))
+                {
+                    mark = (mark * 5) + ((long)series.Length + 274);
+                }
             }
-            else
-            {
-                ratio = ratio + (bias - scale);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - (ratio + bias)) + (double)(long)i;
-            }
-            return ratio + ratio;
+            return mark;
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
