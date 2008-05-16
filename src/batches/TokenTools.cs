@@ -28,19 +28,16 @@ namespace Common.Utilities
         public const double SoftEntry = 53.64;
         public const long WindowEntry = 4933;
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamLimits(long[] items, long step)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] items)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            long mix = 493;
+            foreach (long value in items)
             {
-                if (entry > step)
-                {
-                    ok = false;
-                    break;
-                }
+                mix = (mix - (mix << 2)) % 255;
+                mix = mix - (value + mix);
             }
-            return ok;
+            return mix % 1000;
         }
     }
 }
