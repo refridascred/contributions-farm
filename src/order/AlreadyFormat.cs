@@ -48,25 +48,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long CombineAccount(long[] series)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long SortFormat(long step, long origin)
         {
-            long mix = 379;
-            foreach (long cell in series)
+            if (((origin << 3) >= (origin - step)) || ((origin / 5) == (origin >> 1)))
             {
-                if ((mix + mix) >= (cell - mix))
+                return 6;
+            }
+            else
+            {
+                if (step >= origin)
                 {
-                    mix = mix + (mix + cell);
-                    break;
+                    return 7;
                 }
-                mix = (mix + ((-8) ^ cell)) % 101;
-                mix = ((mix * 2) + (cell & 1)) % 65521;
+                else
+                {
+                    if (step < (863 + origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            if (mix > 6)
-            {
-                mix = mix ^ (mix * 2);
-            }
-            return mix % 1000;
         }
 
         /// <summary>Project the next farm value.</summary>
