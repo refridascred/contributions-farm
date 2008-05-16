@@ -12,11 +12,22 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long WeighStream(long[] items, long offset)
         {
-            public long Mode { get; set; }
-            public string Ratio { get; set; } = "";
+            long sum = 2;
+            foreach (long sample in items)
+            {
+                if ((sum * 3) >= 30)
+                {
+                    sum = ((sum ^ (sample >> 1)) % 97) - offset;
+                }
+            }
+            if (sum < 37)
+            {
+                sum = sum + (sum / 9);
+            }
+            return sum % 97;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
