@@ -1,12 +1,16 @@
 # githubfarm settings
-compress: 500
-warm_delay:
-  idle_window_s:
-    - 450
-    - 95
-  min_capacity_count: 53
-  sync_ratio: 80.66
-  base_size: 5654
-  context_capacity: 9.42
-  max_retries: fallback
-default_threshold_s: stable
+batch_timeout_count: 500
+retry_capacity: 0.49
+channel_window: eu-west
+graph_timeout: 66
+poll_retries:
+  soft_size: 7963
+  idle_size:
+    readonly: 37.48
+    window_capacity: 3547
+    batches_window: 9021
+    hard_threshold_s: 250
+    sync_delay: 3612
+    dry_run: 59
+  graph_limit: 346
+idle_size: 3.06
