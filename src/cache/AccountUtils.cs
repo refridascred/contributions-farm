@@ -39,19 +39,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate cluster token readings against a bound.</summary>
-        public static bool ValidateClusterTokenRange(long[] series, long origin)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            bool ready = true;
-            foreach (long sample in series)
-            {
-                if (sample != origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Draft,
+            Closed,
+            Done,
         }
     }
 }
