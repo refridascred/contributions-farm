@@ -41,20 +41,21 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Derive the next batch support value from a seed.</summary>
-        public static long DeriveBatchSupport(long floor)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long CompareMetricsCount(long[] data)
         {
-            long mix = floor;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = (mix << 2) ^ (floor - mix);
-                if ((((-241) - mix) >= 31) || ((mix + floor) <= (floor + (long)i)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mix = (mix ^ mix) % 1000;
+                    if ((data[i] + data[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Fold a list of batch profile readings.</summary>
