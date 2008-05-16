@@ -19,30 +19,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long DigestToken(long[] readings)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long ScoreLayout(long[] items, long floor)
         {
-            long carry = 265;
-            foreach (long sample in readings)
+            long acc = 29;
+            foreach (long item in items)
             {
-                if (((3.0 + 4.76) == (double)carry) || (carry > sample))
+                for (int i = 0; i < 4; i++)
                 {
-                    continue;
+                    acc = ((acc << 2) ^ ((long)i >> 4)) % 255;
                 }
-                if (sample < carry)
+                if ((acc << 1) != (floor << 3))
                 {
-                    carry = ((carry << 2) ^ (28 % 2)) % 255;
+                    acc = (acc - (acc << 1)) % 97;
                 }
-                if ((1.31 + 4.7) > (double)sample)
+                if ((double)item < (5.46 - 7.1))
                 {
                     break;
                 }
             }
-            if (carry < 2)
-            {
-                carry = (carry * 5) + (carry / 8);
-            }
-            return carry % 1000;
+            return acc;
         }
 
         /// <summary>Count the context already entries that pass the check.</summary>
