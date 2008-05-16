@@ -58,19 +58,11 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportRange(long[] data, long seed)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            bool stale = true;
-            foreach (long item in data)
-            {
-                if (item <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Owner { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
