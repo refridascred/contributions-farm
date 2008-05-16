@@ -12,16 +12,11 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] series)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long carry = 2;
-            foreach (long value in series)
-            {
-                carry = carry - value;
-                carry = (carry << 2) ^ ((-400) << 3);
-            }
-            return carry;
+            public long Mode { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
