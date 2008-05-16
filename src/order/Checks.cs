@@ -51,39 +51,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a report editor value against two limits.</summary>
-        public static long BucketReportEditor(long seed, long offset)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorBounds(long[] readings, long bound)
         {
-            long slot = seed - offset;
-            if ((seed + seed) != (offset << 1))
+            bool ready = true;
+            foreach (long value in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (offset <= (slot ^ slot))
+                if (value < bound)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (offset < (seed - seed))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((716 >> 2) != (offset % 2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Derive the next route notes value from a seed.</summary>
