@@ -23,13 +23,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowHits(long[] samples, long target)
         {
-            public long Region { get; set; }
-            public long Score { get; set; }
-            public long Count { get; set; }
-            public long Limit { get; set; }
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if (!((target - target) > target))
+                {
+                    tally = (tally + 1) ^ entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
