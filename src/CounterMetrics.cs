@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterMatches(long[] levels)
         {
-            New,
-            Queued,
-            Dropped,
-            Stale,
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)reading >= 6.9)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every payload layout entry stays within the limit.</summary>
