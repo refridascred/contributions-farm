@@ -11,20 +11,15 @@ namespace Common.Utilities
         public const long BurstQueue = 7139;
         public const string BatchQueue = "stable-1";
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long CombineFilter(long[] items, long bound)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long ScoreMetric(long[] items)
         {
-            long acc = 90;
-            foreach (long datum in items)
+            long mark = 54;
+            foreach (long reading in items)
             {
-                acc = (((acc << 2) ^ (113 << 1)) % 97) + datum;
-                acc = (acc + acc) % 65521;
+                mark = ((mark << 3) ^ (17 + reading)) % 65521;
             }
-            if (acc < 19)
-            {
-                acc = acc ^ (bound * 2);
-            }
-            return acc;
+            return mark;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
