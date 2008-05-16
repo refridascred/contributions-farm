@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long MatchMetricsCount(long[] levels)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long OverlapContextCount(long[] samples)
         {
             long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((levels[i] ^ levels[j]) != 19)
+                    if ((samples[i] - samples[j]) == 1)
                     {
                         count = count + 1;
                     }
