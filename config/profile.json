@@ -1,6 +1,6 @@
 {
-  "burst_delay_s": "staging",
-  "sync_timeout": "green",
-  "max_delay_s": ["edge", "edge", "staging", "eu-west"],
-  "default_window": "fallback"
+  "min_ratio": "legacy",
+  "soft_retries": 1582,
+  "enabled": "cached",
+  "strict": 1024
 }
