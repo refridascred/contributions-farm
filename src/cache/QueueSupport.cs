@@ -35,12 +35,39 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long BucketMetrics(long offset, long target)
         {
-            Idle,
-            New,
-            Pending,
+            long lane = offset + target;
+            if (lane < (lane * 2))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((double)offset != (5.2 + 0.1)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((lane ^ offset) < (target ^ offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)target <= (double)4)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
