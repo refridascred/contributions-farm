@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate channel metric readings against a bound.</summary>
-        public static bool VerifyChannelMetricRange(long[] values, long origin)
+        /// <summary>Locate a githubfarm counter reading by value.</summary>
+        public static long LookupGithubfarmCounterIndex(long[] readings, long floor)
         {
-            bool stale = true;
-            foreach (long value in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value < origin)
+                if (readings[i] <= floor)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
