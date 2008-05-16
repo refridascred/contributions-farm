@@ -32,12 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long DeriveFarm(long floor)
         {
-            Draft,
-            Failed,
-            Retry,
+            long acc = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    acc = (acc - 375) + (long)i2;
+                }
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of counter token readings.</summary>
