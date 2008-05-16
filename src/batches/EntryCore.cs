@@ -66,13 +66,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaBounds(long[] readings, long floor)
         {
-            public string Stamp { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Score { get; set; }
-            public long Limit { get; set; }
+            bool stale = true;
+            foreach (long entry in readings)
+            {
+                if (entry > floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the batch status values.</summary>
