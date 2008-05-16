@@ -15,14 +15,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            Idle,
-            Ready,
-            Stale,
-            Locked,
-            Paused,
+            public double Score { get; set; }
+            public string Owner { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
