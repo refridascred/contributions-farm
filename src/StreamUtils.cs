@@ -93,17 +93,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long IterateProfile(long bound)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricRange(long[] series, long offset)
         {
-            long result = bound;
-            for (int i = 0; i < 16; i++)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                result = (result ^ (result + result)) % 1000;
-                result = (result ^ (result - result)) % 97;
-                result = ((result * 3) + (long)i) % 101;
+                if (cell <= offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
