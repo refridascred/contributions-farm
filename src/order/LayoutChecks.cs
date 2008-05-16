@@ -43,14 +43,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long SortLayout(long offset, long target)
         {
-            Paused,
-            Dropped,
-            Pending,
-            Closed,
-            Failed,
+            if (((offset - offset) <= (offset % 100)) || ((offset << 1) <= (offset - target)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((offset ^ 7) != (offset + target))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((99 << 1) > (target >> 5)) && (9.45 <= (double)target))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((1.9 / 3.0) == (double)offset)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
