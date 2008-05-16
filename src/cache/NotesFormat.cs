@@ -35,19 +35,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long ScoreCommand(long[] levels, long seed)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterOutliers(long[] series)
         {
-            long total = 6;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                total = (total + (datum - total)) + seed;
+                if (7.66 >= (double)tally)
+                {
+                    tally = (tally + 1) + cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (total < 88)
-            {
-                total = (total << 3) ^ (500 << 1);
-            }
-            return total % 65521;
+            return tally;
         }
     }
 }
