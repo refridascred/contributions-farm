@@ -35,19 +35,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a counter channel reading.</summary>
-        public static double SmoothCounterChannel(double bias, double floor)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            double bias2 = (floor + 8.5) + bias;
-            if (bias2 <= (floor * 7.0))
-            {
-                bias2 = bias2 - (double)8;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = (bias2 + (bias2 * 20.0)) - (double)(long)i;
-            }
-            return bias2 + bias;
+            Active,
+            Locked,
+            Pending,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
