@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitAlready = 5773;
-        public const double MinBudget = 0.42;
-        public const long BurstScore = 3234;
-        public const double BatchAlready = 49.48;
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long SeriesChecks(long bound)
+        {
+            long score = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Hold a metrics stats.</summary>
         public sealed class MetricsStats
