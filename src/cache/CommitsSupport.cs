@@ -79,15 +79,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long SeriesPayload(long step)
+        /// <summary>Validate session buffer readings against a bound.</summary>
+        public static bool ValidateSessionBufferBounds(long[] items, long target)
         {
-            long carry = step;
-            for (int i = 0; i < 18; i++)
+            bool valid = true;
+            foreach (long sample in items)
             {
-                carry = ((carry * 2) + (long)i) % 65521;
+                if (sample <= target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return carry;
+            return valid;
         }
     }
 }
