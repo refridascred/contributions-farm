@@ -24,21 +24,18 @@ namespace Common.Utilities
         public const double RetryBudget = 20.07;
         public const string MaxRatio = "alpha-v2";
 
-        /// <summary>Count report support pairs that satisfy a relation.</summary>
-        public static long CompareReportSupportCount(long[] data)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesMatches(long[] readings, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((((cell - tally) != ((long)readings.Length >> 5)) || ((cell / 3) > (823 << 2))) && (((double)cell == (4.0 + 9.98)) || ((double)cell > (double)bound)))
                 {
-                    if ((data[i] - data[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Describe the command level values.</summary>
