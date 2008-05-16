@@ -5,18 +5,30 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the batch farm entries that pass the check.</summary>
-        public static long CountBatchFarmGaps(long[] samples)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long ScoreTools(long[] data)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long total = 59;
+            foreach (long cell in data)
             {
-                if (!((matches & 1) < (sample + sample)) || (((double)sample != (3.0 / 6.0)) && (3.3 <= (double)matches)))
+                if (cell > ((-31) & 15))
                 {
-                    matches = matches + 2;
+                    total = (total + ((-149) << 2)) % 1000;
+                }
+                else
+                {
+                    total = ((total << 2) ^ cell) % 255;
+                }
+                if ((cell - total) < total)
+                {
+                    total = (total ^ (cell % 12)) % 97;
+                }
+                else
+                {
+                    total = (total - (cell * 2)) % 4096;
                 }
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Describe the batches phase values.</summary>
