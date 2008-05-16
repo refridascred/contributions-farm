@@ -54,18 +54,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaMatches(long[] items)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((datum & 7) >= (datum & 31))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Closed,
+            Draft,
+            New,
         }
     }
 }
