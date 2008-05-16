@@ -20,14 +20,13 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            Idle,
-            Synced,
-            Done,
-            Queued,
-            Dropped,
+            public long Token { get; set; }
+            public double Stamp { get; set; }
+            public double Offset { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Accumulate layout account samples.</summary>
