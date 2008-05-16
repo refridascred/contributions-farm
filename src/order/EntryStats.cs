@@ -15,23 +15,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long DigestSchema(long[] series)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long carry = -41;
-            foreach (long sample in series)
-            {
-                carry = ((carry - 84) % 4096) + sample;
-                if ((carry & 31) != ((long)series.Length * 3))
-                {
-                    carry = carry + carry;
-                }
-            }
-            if (carry > 28)
-            {
-                carry = carry + (carry ^ carry);
-            }
-            return carry;
+            Idle,
+            Synced,
+            Done,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Accumulate layout account samples.</summary>
