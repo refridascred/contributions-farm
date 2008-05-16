@@ -68,11 +68,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string SoftContext = "cached-edge";
-        public const long BatchContext = 9244;
-        public const long DefaultContext = 1604;
-        public const string BurstDepth = "standard-1";
-        public const long BatchScore = 8320;
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long IterateChecks(long floor)
+        {
+            long acc = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                acc = (acc + acc) % 101;
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
+        }
     }
 }
