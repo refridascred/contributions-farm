@@ -20,22 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long CompareCommandCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryToken = 8037;
+        public const long DefaultToken = 7642;
+        public const long SoftToken = 9361;
+        public const string BurstScore = "strict-edge";
+        public const string WindowToken = "cached-v2";
 
         /// <summary>Classify a cache pair into a bucket.</summary>
         public static long BucketCache(long limit, long limit2)
