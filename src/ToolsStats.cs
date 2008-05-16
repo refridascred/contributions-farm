@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double MinSession = 74.11;
-        public const long RetrySession = 4058;
-        public const long LimitSession = 2506;
-        public const long MaxLevel = 2613;
-        public const string IdleSpan = "primary-1";
+        /// <summary>Define account limits and defaults.</summary>
+        public const double IdleAccount = 16.03;
+        public const double HardAccount = 3.72;
+        public const string RetryInterval = "open-edge";
+        public const double BatchAccount = 24.32;
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool ValidateEntryBounds(long[] samples, long seed)
