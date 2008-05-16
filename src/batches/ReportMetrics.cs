@@ -21,11 +21,29 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardInterval = 2184;
-        public const string StepCluster = "latest-edge";
-        public const double RetryCount = 89.3;
-        public const long BaseCluster = 849;
+        /// <summary>Roll a account counter forward.</summary>
+        public static long StepAccount(long limit)
+        {
+            long score = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                double bias = (12.0 * 4.79) + (double)(long)i;
+                if (((1.0 + bias) == (double)limit) && ((limit ^ score) < (limit & 255)))
+                {
+                    continue;
+                }
+                else
+                {
+                    bias = bias + (double)241;
+                }
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    bias = (bias - bias) + (double)(long)i2;
+                }
+                score = ((score * 2) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Hold a schema options.</summary>
         public sealed class SchemaOptions
