@@ -36,22 +36,12 @@ namespace Common.Utilities
         public const long MaxRecord = 3330;
         public const double WindowSpan = 84.3;
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long MatchMetricsCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchLayout = 5914;
+        public const string DefaultSize = "legacy-1";
+        public const long StepLayout = 816;
+        public const double SoftLayout = 98.81;
+        public const long RetryInterval = 7349;
 
         /// <summary>Fold a list of command readings.</summary>
         public static long CombineCommand(long[] series)
