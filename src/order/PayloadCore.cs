@@ -47,38 +47,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long GradeChannel(long limit, long bound)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long PairMetricCount(long[] series)
         {
-            if ((double)limit == (double)bound)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)bound < (double)limit)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (limit >= (limit >> 5))
+                    if ((series[i] - series[j]) != 8)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((bound + limit) == (bound << 2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
