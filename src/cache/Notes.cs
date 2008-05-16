@@ -24,13 +24,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double SmoothSchema(double weight, double offset)
         {
-            Pending,
-            Synced,
-            Paused,
-            Done,
+            double weight2 = (weight / 9.0) / 2.0;
+            if (weight2 <= weight)
+            {
+                weight2 = weight2 - weight2;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight2 = (weight2 + offset) + (double)(long)i;
+            }
+            return weight2 - (2.9 + weight);
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
