@@ -37,18 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long FindSessionIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheProfile = 5223;
+        public const long DefaultProfile = 6934;
+        public const long HardProfile = 867;
+        public const double RetryRatio = 97.69;
+        public const long StepProfile = 6277;
 
         /// <summary>Rank schema input into a small class.</summary>
         public static long ClassifySchema(long seed, long seed2)
