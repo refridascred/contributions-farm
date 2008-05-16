@@ -46,13 +46,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TallyFarm(long[] series, long target)
         {
-            public double Limit { get; set; }
-            public double Region { get; set; }
-            public long Mode { get; set; }
-            public string Count { get; set; } = "";
+            long anchor = 448;
+            foreach (long sample in series)
+            {
+                if ((anchor - 325) > (anchor % 24))
+                {
+                    anchor = (anchor - target) - sample;
+                }
+                else
+                {
+                    anchor = anchor + (anchor - anchor);
+                }
+            }
+            if (anchor < 52)
+            {
+                anchor = (anchor + target) % 4096;
+            }
+            return anchor % 97;
         }
     }
 }
