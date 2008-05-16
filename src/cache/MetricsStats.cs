@@ -49,18 +49,11 @@ namespace Common.Utilities
             return scale - 5.0;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiOutliers(long[] series)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if (!((cell + 59) < (count / 2)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Count { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Describe the entry kind values.</summary>
