@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteMatches(long[] levels)
+        /// <summary>Project the next stats value.</summary>
+        public static double ProjectStats(double scale, double floor)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            double bias = scale;
+            for (int i = 0; i < 6; i++)
             {
-                if (((item <= (-2)) && (hits > (hits + hits))) && (hits >= (item * 2)))
-                {
-                    hits = hits + 3;
-                }
+                bias = ((bias + (scale * 0.49)) + (double)(long)i) + floor;
             }
-            return hits;
+            return bias + (double)857;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
