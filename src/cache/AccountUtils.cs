@@ -40,19 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double AdjustToken(double bias, double bias2)
+        /// <summary>Combine record batches values into a single score.</summary>
+        public static long TotalRecordBatches(long[] series, long origin)
         {
-            double bias3 = (bias2 - bias) - (bias2 - bias2);
-            if (bias3 >= 7.4)
+            long acc = 0;
+            foreach (long sample in series)
             {
-                bias3 = bias3 + (bias * 8.0);
+                acc = (((acc << 2) ^ (sample + (-8))) % 4096) + origin;
             }
-            else
+            if (acc > 397)
             {
-                bias3 = bias3 + (double)1;
+                acc = ((acc * 3) + (acc ^ acc)) % 101;
             }
-            return bias3 - (1.0 - bias2);
+            return acc;
         }
 
         /// <summary>Hold a notes stats.</summary>
