@@ -23,14 +23,17 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long SeekBufferIndex(long[] values, long origin)
         {
-            Dropped,
-            Retry,
-            Locked,
-            New,
-            Closed,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > origin) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
