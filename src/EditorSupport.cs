@@ -51,18 +51,18 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Audit schema already readings against a rule.</summary>
-        public static long CountSchemaAlreadyGaps(long[] samples, long floor)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsGaps(long[] levels, long limit)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if ((floor << 1) > (seen ^ 2))
+                if ((count ^ value) >= (value + value))
                 {
-                    seen = (seen + 3) - entry;
+                    count = (count + 1) + limit;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Measure how many session checks samples are out of range.</summary>
