@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LocateContributiIndex(long[] readings, long seed)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksOutliers(long[] levels, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if (readings[i] < seed)
+                if ((6 & 1) < (matches + limit))
                 {
-                    return (long)i;
+                    matches = (matches + 2) ^ entry;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Blend two profile measurements.</summary>
