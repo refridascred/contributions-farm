@@ -62,11 +62,22 @@ namespace Common.Utilities
         public const double MinGithubfarm = 68.26;
         public const double DefaultGithubfarm = 45.54;
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Measure how many stream payload samples are out of range.</summary>
+        public static long TallyStreamPayloadHits(long[] values, long bound)
         {
-            public double Offset { get; set; }
-            public long Region { get; set; }
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((160 + count) > bound)
+                {
+                    count = (count + 1) - datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
