@@ -1,8 +1,17 @@
 {
-  "batch_retries_pct": "open",
-  "default_threshold_s": "legacy",
-  "max_size": "staging",
-  "idle_size_s": ["legacy", "green", "cached", "cached"],
-  "burst_window": "standard",
-  "editor_threshold": 5192
+  "retry_timeout_count": {
+    "audit": 90,
+    "default_threshold": 67.7,
+    "base_limit_pct": "stable"
+  },
+  "retry_capacity": "legacy",
+  "readonly": "staging",
+  "batch_interval_pct": {
+    "readonly": 1110,
+    "persist": [37, 347, 96],
+    "min_delay_count": "primary",
+    "verbose": [223, 200, 166],
+    "warm_size_count": true,
+    "dry_run": 4322
+  }
 }
