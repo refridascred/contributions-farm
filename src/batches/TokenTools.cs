@@ -49,13 +49,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            Active,
-            Idle,
-            Closed,
-            Paused,
+            public long Flag { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
