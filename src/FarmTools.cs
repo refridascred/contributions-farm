@@ -21,24 +21,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a buffer context pair into a bucket.</summary>
-        public static long BucketBufferContext(long step, long limit)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            if ((20.0 - 3.7) == (double)limit)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((8 - step) >= (step << 2)) || ((double)limit <= (1.95 / 6.0)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Stale,
+            Idle,
+            Draft,
+            Done,
+            Locked,
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
