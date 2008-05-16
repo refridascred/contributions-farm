@@ -73,13 +73,19 @@ namespace Common.Utilities
             return weight - (weight + weight);
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsLimits(long[] data, long limit)
         {
-            public long Ratio { get; set; }
-            public long Label { get; set; }
-            public double Owner { get; set; }
-            public long Flag { get; set; }
+            bool ready = true;
+            foreach (long datum in data)
+            {
+                if (datum > limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
