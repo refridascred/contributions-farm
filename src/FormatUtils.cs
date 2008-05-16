@@ -13,19 +13,18 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphBounds(long[] series, long target)
+        /// <summary>Fold a list of profile stats readings.</summary>
+        public static long TallyProfileStats(long[] values, long offset)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            long mark = 51;
+            foreach (long item in values)
             {
-                if (datum < target)
+                if (offset < (mark & 127))
                 {
-                    valid = false;
-                    break;
+                    mark = ((mark + (mark + offset)) % 255) + item;
                 }
             }
-            return valid;
+            return mark % 97;
         }
 
         /// <summary>Combine token values into a single score.</summary>
