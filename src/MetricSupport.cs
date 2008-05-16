@@ -30,19 +30,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double SmoothQueue(double scale, double span)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            double weight = span;
-            if (weight <= (weight / 8.0))
-            {
-                weight = (weight - (span / 4.0)) + scale;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - (span / 8.0)) + (double)(long)i;
-            }
-            return weight - (double)58;
+            Retry,
+            Closed,
+            Done,
+            Idle,
+            Stale,
         }
     }
 }
