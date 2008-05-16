@@ -52,17 +52,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long RollGraph(long offset)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long SeekStreamIndex(long[] readings, long offset)
         {
-            long sum = offset;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = sum + offset;
-                sum = (sum * 4) + ((long)i * 5);
-                sum = ((sum * 3) + (long)i) % 101;
+                if (readings[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
     }
 }
