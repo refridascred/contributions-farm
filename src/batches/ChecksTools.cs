@@ -15,12 +15,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            public bool Offset { get; set; }
-            public string Region { get; set; } = "";
-            public long Score { get; set; }
+            Idle,
+            Active,
+            Pending,
         }
 
         /// <summary>Check that every entry format entry stays within the limit.</summary>
