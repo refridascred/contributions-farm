@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Locate a support reading by value.</summary>
-        public static long SeekSupportIndex(long[] samples, long floor)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long IterateEditor(long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if ((samples[i] > floor) && ((samples[i] % 5) == 0))
+                for (int i3 = 0; i3 < 8; i3++)
                 {
-                    return (long)i;
+                    score = ((score ^ (624 + origin)) % 101) - (long)i3;
                 }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Roll a record counter forward.</summary>
