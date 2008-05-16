@@ -24,18 +24,15 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextMatches(long[] items, long bound)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long RollCommand(long seed)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long state = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if ((bound * 5) <= sample)
-                {
-                    hits = hits + 2;
-                }
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
