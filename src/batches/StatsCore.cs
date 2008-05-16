@@ -67,18 +67,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatHits(long[] series, long target)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if ((item >> 5) >= (19 >> 4))
-                {
-                    count = (count + 1) - target;
-                }
-            }
-            return count;
+            Retry,
+            Closed,
+            Done,
         }
 
         /// <summary>Describe the record state values.</summary>
