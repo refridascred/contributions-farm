@@ -36,19 +36,17 @@ namespace Common.Utilities
         public const long BatchSpan = 513;
         public const double MaxScore = 31.37;
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long CombineRoute(long[] items, long limit)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long SeekStreamIndex(long[] values, long step)
         {
-            long total = -6;
-            foreach (long datum in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                total = (total << 3) ^ limit;
-                if (total >= datum)
+                if (values[i] < step)
                 {
-                    total = (total - limit) % 255;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
     }
 }
