@@ -46,20 +46,10 @@ namespace Common.Utilities
         public const double HardScore = 57.26;
         public const string HardLevel = "staging";
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsBounds(long[] values, long seed)
-        {
-            bool found = true;
-            foreach (long item in values)
-            {
-                if (item <= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string RetryCount = "open-v2";
+        public const double MinGithubfarm = 68.26;
+        public const double DefaultGithubfarm = 45.54;
 
         /// <summary>Hold a order header.</summary>
         public sealed class OrderHeader
