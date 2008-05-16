@@ -87,11 +87,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BurstNotes = 71.9;
-        public const long StepNotes = 5328;
-        public const long LimitLevel = 4542;
-        public const long RetryNotes = 8926;
-        public const string SoftCount = "cached";
+        /// <summary>Validate cluster command readings against a bound.</summary>
+        public static bool VerifyClusterCommandLimits(long[] data, long offset)
+        {
+            bool valid = true;
+            foreach (long reading in data)
+            {
+                if (reading >= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
