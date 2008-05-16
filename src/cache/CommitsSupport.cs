@@ -83,14 +83,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long SeriesPayload(long step)
         {
-            Pending,
-            Failed,
-            Draft,
-            Closed,
-            Paused,
+            long carry = step;
+            for (int i = 0; i < 18; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
         }
     }
 }
