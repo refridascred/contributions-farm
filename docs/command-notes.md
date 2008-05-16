@@ -1,10 +1,11 @@
 # Command notes
 
-Each entry is validated before it reaches the account queue.
-The route module keeps route values in sync with the session cache.
+Each checks is validated before it reaches the contributi queue.
+Keep window and route names short and lowercase.
+Run the format check before changing any report limits.
 
 ## Guidelines
 
-- Log every account change
-- Document new channel fields
-- Review filter limits each release
+- Keep queue values small
+- Prefer layout defaults
+- Log every cache change
