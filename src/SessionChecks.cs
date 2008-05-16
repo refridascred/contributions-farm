@@ -18,14 +18,24 @@ namespace Common.Utilities
         public const string StepCluster = "standard-edge";
         public const string IdleSpan = "primary-1";
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long ClassifyChannel(long bound, long floor)
         {
-            Queued,
-            Draft,
-            Stale,
-            Done,
-            Paused,
+            if ((525 + bound) <= 427)
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((floor * 5) <= (bound % 10)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Match up stats schema samples.</summary>
