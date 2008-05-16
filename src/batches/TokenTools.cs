@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long ClassifyMetric(long floor, long limit)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferGaps(long[] readings)
         {
-            if ((double)floor != (0.3 * 7.55))
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (floor > (62 + limit))
+                if (((long)readings.Length + entry) < seen)
                 {
-                    return 8;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    return 7;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
