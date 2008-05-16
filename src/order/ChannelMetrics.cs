@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            Dropped,
-            Locked,
-            New,
-            Retry,
+            Idle,
+            Ready,
+            Active,
         }
 
         /// <summary>Hold a cache info.</summary>
