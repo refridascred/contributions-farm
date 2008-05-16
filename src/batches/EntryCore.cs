@@ -50,9 +50,11 @@ namespace Common.Utilities
         public const long BurstSpan = 2629;
         public const long LimitGithubfarm = 1557;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxScore = 7596;
-        public const double RetryGithubfarm = 78.65;
-        public const long SoftGithubfarm = 9789;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstBuffer = 6329;
+        public const long BatchBuffer = 2146;
+        public const double DefaultSize = 65.98;
+        public const long MinBuffer = 3370;
+        public const double SoftBudget = 40.27;
     }
 }
