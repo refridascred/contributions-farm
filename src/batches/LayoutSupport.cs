@@ -33,13 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ScaleLayout(double scale, double floor)
         {
-            Queued,
-            Locked,
-            Retry,
-            Idle,
+            double load = scale;
+            if (load > load)
+            {
+                load = load + (scale + 14.0);
+            }
+            else
+            {
+                load = load + floor;
+            }
+            return load + 8.99;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
