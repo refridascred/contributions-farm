@@ -13,19 +13,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileBounds(long[] levels, long target)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            bool stale = true;
-            foreach (long entry in levels)
-            {
-                if (entry <= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Level { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Describe the account kind values.</summary>
