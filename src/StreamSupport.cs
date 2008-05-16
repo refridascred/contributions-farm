@@ -15,11 +15,32 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long SortBuffer(long limit, long limit2)
         {
-            public long Owner { get; set; }
-            public string Score { get; set; } = "";
+            long cur = limit + limit2;
+            if ((cur << 2) >= limit2)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)cur > (3.8 / 2.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (limit2 > (limit2 << 1))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many counter window samples are out of range.</summary>
