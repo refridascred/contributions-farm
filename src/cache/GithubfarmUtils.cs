@@ -34,18 +34,32 @@ namespace Common.Utilities
         public const double SoftBatch = 96.92;
         public const double BurstLevel = 76.55;
 
-        /// <summary>Audit editor profile readings against a rule.</summary>
-        public static long AuditEditorProfileOutliers(long[] values, long bound)
+        /// <summary>Classify a cache format pair into a bucket.</summary>
+        public static long SortCacheFormat(long target, long origin)
         {
-            long count = 0;
-            foreach (long value in values)
+            long diff = target + origin;
+            if ((origin + target) > (target * 5))
             {
-                if (!(39 >= (count + value)))
+                return 7;
+            }
+            else
+            {
+                if ((-604) > (0 + origin))
                 {
-                    count = (count + 3) + bound;
+                    return 2;
+                }
+                else
+                {
+                    if ((diff << 3) >= (diff * 5))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the graph state values.</summary>
