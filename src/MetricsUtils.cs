@@ -14,11 +14,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheWindow = 3820;
-        public const string MaxDepth = "latest-edge";
-        public const string BatchTimeout = "fallback";
-        public const double SoftWindow = 55.99;
+        /// <summary>Blend two profile measurements.</summary>
+        public static double SmoothProfile(double ratio, double offset)
+        {
+            double load = offset;
+            return (load + (offset * 7.66)) + ratio;
+        }
 
         /// <summary>Roll a commits metrics counter forward.</summary>
         public static long SeriesCommitsMetrics(long offset)
