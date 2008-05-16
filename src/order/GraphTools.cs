@@ -37,18 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many metrics token samples are out of range.</summary>
-        public static long CountMetricsTokenOutliers(long[] levels, long origin)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if ((item & 7) >= (origin + item))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public bool Score { get; set; }
+            public long Owner { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Accumulate window samples.</summary>
