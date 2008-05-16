@@ -20,21 +20,23 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long MatchEntryCount(long[] values)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TotalRecord(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 59;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((mix - 988) < (mix % 2))
                 {
-                    if ((values[i] + values[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = mix + (mix * 4);
                 }
+                mix = mix ^ value;
             }
-            return seen;
+            if (mix > 246)
+            {
+                mix = (mix ^ (85 - 640)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
