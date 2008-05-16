@@ -18,19 +18,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyBounds(long[] levels, long origin)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            bool flag = true;
-            foreach (long cell in levels)
-            {
-                if (cell != origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Region { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Hold a cluster record.</summary>
