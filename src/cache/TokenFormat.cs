@@ -38,13 +38,22 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsOutliers(long[] items, long seed)
         {
-            public string Level { get; set; } = "";
-            public string Total { get; set; } = "";
-            public bool Weight { get; set; }
-            public double Size { get; set; }
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((((double)count >= (6.3 / 5.0)) && ((double)count < (15.0 / 8.0))) && ((value ^ 230) == ((-67) >> 1)))
+                {
+                    count = (count + 3) - seed;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
