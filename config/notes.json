@@ -1,6 +1,20 @@
 {
-  "compress": [389, 326, 356],
-  "cache_interval_ms": 40,
-  "batch_ttl_pct": 87.54,
-  "default_retries_ms": "standard"
+  "poll_delay_count": true,
+  "notes_timeout": 29.98,
+  "poll_window": 7001,
+  "buffer_timeout": 3628,
+  "strict": {
+    "cache_window_count": {
+      "audit": 23.42,
+      "counter_capacity": 56.15,
+      "enabled": "eu-west",
+      "max_capacity_pct": "fallback",
+      "graph_interval": 45.77
+    },
+    "min_delay": 60,
+    "cache_size": true,
+    "sync_capacity": "strict",
+    "entry_capacity": "strict"
+  },
+  "hard_ttl_ms": "primary"
 }
