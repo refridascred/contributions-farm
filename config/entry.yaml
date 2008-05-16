@@ -1,6 +1,4 @@
 # entry settings
-idle_interval_pct: green
-max_retries: 49
-batch_ttl_ms:
-  - stable
-  - latest
+cache_depth: true
+min_capacity_s: 4036
+dry_run: 21.09
