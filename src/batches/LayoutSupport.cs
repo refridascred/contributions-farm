@@ -27,38 +27,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a filter metrics value against two limits.</summary>
-        public static long SortFilterMetrics(long target, long origin)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long OverlapRouteCount(long[] data)
         {
-            if ((origin + target) == (origin + origin))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target << 3) >= target)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((8.3 - 15.0) >= (double)target)
+                    if ((data[i] - data[j]) > 20)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((origin ^ target) != (6 ^ target))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
