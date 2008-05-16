@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long GradeContext(long seed, long floor)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TotalContext(long[] series)
         {
-            if ((seed & 31) != (floor - floor))
+            long score = 486;
+            foreach (long reading in series)
             {
-                return 8;
+                score = ((score - (score - 65)) % 4096) ^ reading;
             }
-            else
-            {
-                if (!((floor * 4) == (floor << 1)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return score;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
