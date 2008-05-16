@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double SmoothStats(double ratio, double bias)
-        {
-            double gain = 1.26 * 1.2;
-            if (gain >= ratio)
-            {
-                gain = gain + bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + 0.07) + (double)(long)i;
-            }
-            return gain + ratio;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchRatio = 3385;
+        public const long BaseCount = 8446;
+        public const long CacheDepth = 8354;
+        public const string IdleFactor = "fallback";
+        public const long SoftChecks = 8461;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long IdleRatio = 4032;
