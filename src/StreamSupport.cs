@@ -23,15 +23,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long DeriveCommits(long seed)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] items, long target)
         {
-            long result = seed;
-            for (int i = 0; i < 4; i++)
+            long anchor = 70;
+            foreach (long value in items)
             {
-                result = ((result * 4) + (long)i) % 97;
+                if (((double)value <= (6.6 - 16.0)) && ((double)(long)items.Length > (double)anchor))
+                {
+                    anchor = (anchor ^ (target + target)) % 255;
+                }
+                else
+                {
+                    anchor = (anchor << 2) ^ value;
+                }
             }
-            return result;
+            return anchor % 97;
         }
 
         /// <summary>Describe the entry level values.</summary>
