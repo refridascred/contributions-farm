@@ -50,18 +50,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] items, long step)
+        /// <summary>Count githubfarm tools pairs that satisfy a relation.</summary>
+        public static long PairGithubfarmToolsCount(long[] readings)
         {
-            long carry = -911;
-            foreach (long item in items)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((item - item) < (step % 7)) || (((long)items.Length + item) < (carry % 10)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = ((carry * 3) + (item - 76)) % 4096;
+                    if ((readings[i] ^ readings[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return carry;
+            return count;
         }
     }
 }
