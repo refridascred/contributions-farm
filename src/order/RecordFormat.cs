@@ -72,19 +72,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheRange(long[] levels, long target)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            bool ready = true;
-            foreach (long value in levels)
-            {
-                if (value < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Total { get; set; }
+            public long Limit { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
