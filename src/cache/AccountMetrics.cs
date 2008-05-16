@@ -32,23 +32,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] data, long bound)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long sum = 922;
-            foreach (long sample in data)
-            {
-                if (!((5.0 + 8.6) != (double)(long)data.Length))
-                {
-                    sum = (((sum * 3) + bound) % 255) ^ sample;
-                }
-                sum = (sum - (bound / 6)) % 65521;
-            }
-            if (sum > (-136))
-            {
-                sum = (sum << 2) ^ (bound ^ sum);
-            }
-            return sum;
+            public double Region { get; set; }
+            public double Size { get; set; }
+            public double Weight { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
