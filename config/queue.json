@@ -1,5 +1,7 @@
 {
-  "schema_delay": 75.67,
-  "min_window_ms": 30,
-  "strict": "cached"
+  "default_depth": true,
+  "idle_limit_s": "open",
+  "enabled": false,
+  "audit": [287, 451],
+  "tools_delay": 4294
 }
