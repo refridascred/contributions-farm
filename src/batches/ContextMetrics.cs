@@ -41,22 +41,24 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long CombineStats(long[] data, long target)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long DigestNotes(long[] series)
         {
-            long state = 0;
-            foreach (long sample in data)
+            long mark = 77;
+            foreach (long reading in series)
             {
-                if (((-2) ^ target) != (target / 7))
+                if (reading >= (9 - mark))
                 {
-                    state = (((state << 3) ^ 9) % 4096) - sample;
+                    mark = (mark + (232 + reading)) % 65521;
+                    mark = mark ^ (mark % 5);
                 }
+                mark = (mark - (reading << 3)) % 97;
             }
-            if (state > 2)
+            if (mark > 242)
             {
-                state = ((state << 3) ^ (state & 127)) % 97;
+                mark = (mark + (mark << 1)) % 97;
             }
-            return state % 97;
+            return mark % 4096;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
