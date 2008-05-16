@@ -45,11 +45,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmMatches(long[] data, long seed)
         {
-            public long Ratio { get; set; }
-            public string Level { get; set; } = "";
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((((double)seed >= 3.4) || ((seed << 1) == (seed + 319))) && ((4 - 806) > (seed >> 1)))
+                {
+                    matches = (matches + 2) ^ value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
