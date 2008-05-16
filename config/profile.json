@@ -1,8 +1,14 @@
 {
-  "default_threshold_count": "standard",
-  "tools_depth": 7424,
-  "strict": "blue",
-  "min_threshold_count": [376, 87, 50],
-  "flush_retries_pct": 72,
-  "editor_capacity": ["latest", "standard", "cached", "primary"]
+  "persist": 25.83,
+  "poll_threshold_s": "open",
+  "soft_retries_s": "edge",
+  "cache_timeout_count": "blue",
+  "flush_delay_s": {
+    "default_retries_pct": 84.57,
+    "cache_size_ms": ["eu-west", "legacy", "blue"],
+    "warm_depth_pct": "green",
+    "compress": 5,
+    "dry_run": false,
+    "commits_threshold": 4638
+  }
 }
