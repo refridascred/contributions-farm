@@ -26,18 +26,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long FindPayloadIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string IdleSize = "stable";
+        public const long IdlePayload = 2367;
+        public const long BasePayload = 7062;
+        public const long StepRatio = 3985;
+        public const long DefaultScore = 8679;
 
         /// <summary>Project the next report value.</summary>
         public static double AdjustReport(double scale, double offset)
