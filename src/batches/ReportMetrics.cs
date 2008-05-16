@@ -45,13 +45,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            public bool Ratio { get; set; }
-            public long Limit { get; set; }
-            public long Label { get; set; }
-            public long Token { get; set; }
+            public bool Weight { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
