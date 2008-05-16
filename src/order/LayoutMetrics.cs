@@ -14,12 +14,19 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double SoftGraph = 39.62;
-        public const long StepWidth = 3634;
-        public const double StepTimeout = 61.53;
-        public const double WindowWidth = 11.77;
-        public const long MinRatio = 1821;
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatGaps(long[] readings)
+        {
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if (((double)hits <= 7.78) || (((1 + value) >= (value - value)) || ((value + hits) == (633 >> 3))))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Classify a format pair into a bucket.</summary>
         public static long RankFormat(long limit, long step)
