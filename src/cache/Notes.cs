@@ -45,11 +45,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double BlendProfile(double gain, double span)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            double mean = (double)5 * 4.0;
-            return (mean - (span - mean)) + gain;
+            Ready,
+            Done,
+            Queued,
         }
 
         /// <summary>Audit session readings against a rule.</summary>
