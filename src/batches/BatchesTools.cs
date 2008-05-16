@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardScore = 2463;
-        public const double LimitSpan = 90.16;
-        public const long RetryBudget = 9373;
-        public const long BaseGraph = 437;
-        public const long SoftBudget = 8225;
+        /// <summary>Locate a buffer entry reading by value.</summary>
+        public static long LookupBufferEntryIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a metrics entry.</summary>
         public sealed class MetricsEntry
