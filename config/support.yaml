@@ -1,34 +1,18 @@
 # support settings
-burst_capacity: 1195
-retry_threshold: green
-cluster_interval:
-  idle_capacity_pct: stable
-  strict: 50.2
-  context_threshold: 72.46
-  readonly: eu-west
-  persist:
-    editor_ttl: true
-    warm_ttl: 98
-    sync_depth_count: 8393
-    hard_depth_pct: 500
-    min_window_ms: 78.22
-poll_window_pct:
-  cache_limit:
-    batch_limit_s: local
-    audit: 83
-    idle_limit_s: true
-    flush_ratio_s:
-      - 210
-      - 443
-      - 402
-      - 497
-    already_window: stable
-    dry_run: open
-  soft_ratio:
-    - 166
-    - 378
-    - 298
-    - 158
-  hard_retries_pct: fallback
-batch_window_s: 250
-audit: false
+cache_ttl: 69.36
+audit: true
+command_retries: 1024
+dry_run: local
+cache_capacity:
+  - 285
+  - 160
+  - 325
+compress:
+  enabled: 9933
+  max_ttl: local
+  warm_ratio_s: strict
+  hard_interval_pct:
+    - 143
+    - 137
+  max_limit_pct: 62
+  burst_capacity_count: 38.54
