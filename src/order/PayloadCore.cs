@@ -38,9 +38,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryInterval = 6891;
-        public const long RetryMetrics = 2980;
-        public const string MaxLevel = "standard-v2";
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
+        {
+            Retry,
+            Queued,
+            Synced,
+            Pending,
+        }
     }
 }
