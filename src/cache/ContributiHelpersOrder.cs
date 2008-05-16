@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long BucketBatches(long limit, long offset)
         {
-            public double Token { get; set; }
-            public long Region { get; set; }
+            if ((offset * 2) >= (limit & 127))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset - offset) == (limit + 271))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((20 >= (limit & 15)) || ((offset ^ offset) >= (limit + offset)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine session values into a single score.</summary>
