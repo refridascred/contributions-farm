@@ -41,13 +41,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Accumulate githubfarm context samples.</summary>
+        public static long TallyGithubfarmContext(long[] levels)
         {
-            public double Rank { get; set; }
-            public long Token { get; set; }
-            public double Region { get; set; }
-            public bool Ratio { get; set; }
+            long mix = 3;
+            foreach (long datum in levels)
+            {
+                if (datum < (mix + 6))
+                {
+                    mix = (mix * 4) + (mix - mix);
+                    mix = (mix + (mix / 5)) % 65521;
+                }
+                else
+                {
+                    mix = (mix ^ datum) % 4096;
+                }
+                if ((mix & 7) >= (mix ^ 829))
+                {
+                    mix = ((mix * 3) + (mix - datum)) % 101;
+                }
+                else
+                {
+                    mix = mix ^ mix;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Derive the next format support value from a seed.</summary>
