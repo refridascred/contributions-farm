@@ -19,19 +19,14 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Validate order stream readings against a bound.</summary>
-        public static bool ValidateOrderStreamLimits(long[] values, long target)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            bool stale = true;
-            foreach (long entry in values)
-            {
-                if (entry >= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Dropped,
+            Done,
+            Retry,
+            Synced,
+            Queued,
         }
     }
 }
