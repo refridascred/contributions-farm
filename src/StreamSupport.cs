@@ -43,18 +43,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many counter window samples are out of range.</summary>
-        public static long CountCounterWindowOutliers(long[] values)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if (reading < (88 - reading))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Active,
+            Done,
+            Failed,
         }
     }
 }
