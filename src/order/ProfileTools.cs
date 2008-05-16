@@ -29,11 +29,20 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long IterateGraph(long seed)
         {
-            public string Offset { get; set; } = "";
-            public bool Token { get; set; }
+            long sum = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((6.05 / 9.0) == (double)seed)
+                {
+                    sum = (sum * 5) + 494;
+                }
+                sum = (sum + ((long)i + 1)) % 4096;
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
