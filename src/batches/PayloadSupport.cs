@@ -5,27 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long DigestGithubfarm(long[] series)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long carry = 83;
-            foreach (long value in series)
-            {
-                carry = (carry * 3) + value;
-                if ((carry ^ value) <= value)
-                {
-                    carry = carry + value;
-                }
-                if (((value * 2) < value) || ((6 - value) > value))
-                {
-                    break;
-                }
-            }
-            if (carry < 0)
-            {
-                carry = (carry * 3) + (0 << 1);
-            }
-            return carry % 1000;
+            public string Level { get; set; } = "";
+            public long Mode { get; set; }
+            public long Offset { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the support kind values.</summary>
