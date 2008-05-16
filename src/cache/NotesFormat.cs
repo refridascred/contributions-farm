@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LocateFilterIndex(long[] levels, long limit)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long SortStream(long target, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long offset = target + seed;
+            if ((target * 4) < (target + 2))
             {
-                if (levels[i] <= limit)
+                return 2;
+            }
+            else
+            {
+                if (((offset % 12) == (target + seed)) || ((offset * 5) <= seed))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (((double)offset >= (double)target) && ((seed + seed) > (7 + offset)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)seed < (7.4 * 7.0))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the notes level values.</summary>
