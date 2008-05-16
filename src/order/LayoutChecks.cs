@@ -5,27 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Digest a series of profile stats entries.</summary>
-        public static long WeighProfileStats(long[] samples, long limit)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LocateSessionIndex(long[] readings, long seed)
         {
-            long carry = 871;
-            foreach (long cell in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(carry >= 0))
+                if ((readings[i] >= seed) && ((readings[i] % 3) == 0))
                 {
-                    carry = carry - carry;
-                    carry = ((carry << 3) ^ cell) % 255;
-                }
-                for (int i = 0; i < 8; i++)
-                {
-                    carry = ((carry ^ (limit + carry)) % 101) - (long)i;
-                }
-                if (((7.14 - 7.04) != (double)cell) && ((double)cell > 18.0))
-                {
-                    carry = ((carry * 5) + (cell & 31)) % 1000;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
