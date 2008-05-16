@@ -16,29 +16,22 @@ namespace Common.Utilities
             return gain + (double)1;
         }
 
-        /// <summary>Classify a filter format pair into a bucket.</summary>
-        public static long RankFilterFormat(long limit, long limit2)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long ClassifyTools(long origin, long floor)
         {
-            if ((double)limit != (5.4 * 3.9))
+            if ((7.75 - 0.5) > (double)floor)
             {
-                return 0;
+                return 4;
             }
             else
             {
-                if (1 > limit)
+                if ((4.95 * 9.97) < (double)origin)
                 {
-                    return 7;
+                    return 8;
                 }
                 else
                 {
-                    if ((1.14 / 7.0) > (double)limit2)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return 6;
                 }
             }
         }
