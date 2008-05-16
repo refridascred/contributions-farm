@@ -19,20 +19,17 @@ namespace Common.Utilities
         public const long BurstDepth = 4435;
         public const long StepEntry = 8261;
 
-        /// <summary>Roll a context command counter forward.</summary>
-        public static long SeriesContextCommand(long origin)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LocateStreamIndex(long[] readings, long seed)
         {
-            long sum = origin;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = sum - ((long)i - 4);
-                if ((double)sum != (9.9 / 7.0))
+                if (readings[i] < seed)
                 {
-                    sum = ((sum * 3) + (origin / 7)) % 4096;
+                    return (long)i;
                 }
-                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return sum;
+            return -1;
         }
     }
 }
