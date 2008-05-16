@@ -54,17 +54,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long FindProfileIndex(long[] items, long offset)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmMatches(long[] values, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if ((items[i] <= offset) && ((items[i] % 3) != 0))
+                if ((7.2 <= (double)reading) || ((double)origin == (double)307))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
