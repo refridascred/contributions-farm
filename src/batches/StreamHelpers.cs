@@ -54,19 +54,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine entry contributi values into a single score.</summary>
-        public static long ScoreEntryContributi(long[] samples, long limit)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LookupCounterIndex(long[] values, long step)
         {
-            long mark = 95;
-            foreach (long sample in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = ((mark << 3) ^ limit) - sample;
+                if (values[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            if (mark < 0)
-            {
-                mark = (mark ^ (mark + limit)) % 255;
-            }
-            return mark % 4096;
+            return -1;
         }
     }
 }
