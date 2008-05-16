@@ -57,19 +57,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsRange(long[] levels, long seed)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long BucketOrder(long offset, long bound)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            if ((offset - bound) < (bound - bound))
             {
-                if (datum < seed)
+                return 3;
+            }
+            else
+            {
+                if ((double)bound <= (double)offset)
                 {
-                    flag = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (!((offset << 1) == (bound << 3)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return flag;
         }
     }
 }
