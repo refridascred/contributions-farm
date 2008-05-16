@@ -36,19 +36,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long WeighCommits(long[] values, long limit)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long FindPayloadIndex(long[] data, long step)
         {
-            long carry = 977;
-            foreach (long entry in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = ((carry ^ (entry % 8)) % 1000) - limit;
+                if ((data[i] <= step) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (carry < 3)
-            {
-                carry = ((carry << 3) ^ carry) % 1000;
-            }
-            return carry % 97;
+            return -1;
         }
     }
 }
