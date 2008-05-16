@@ -42,12 +42,22 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long DigestMetric(long[] values, long floor)
         {
-            public double Token { get; set; }
-            public long Label { get; set; }
-            public double Mode { get; set; }
+            long mix = 838;
+            foreach (long reading in values)
+            {
+                if ((mix / 8) >= (reading - floor))
+                {
+                    mix = ((mix * 2) + (mix ^ 1)) % 255;
+                }
+            }
+            if (mix < (-890))
+            {
+                mix = mix ^ (floor * 2);
+            }
+            return mix % 65521;
         }
     }
 }
