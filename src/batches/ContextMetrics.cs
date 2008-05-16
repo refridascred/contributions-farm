@@ -67,15 +67,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long SeriesLayout(long offset)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TotalToken(long[] levels)
         {
-            long mark = offset;
-            for (int i = 0; i < 23; i++)
+            long total = 0;
+            foreach (long sample in levels)
             {
-                mark = ((mark * 5) + (long)i) % 1000;
+                total = (total + sample) % 255;
             }
-            return mark;
+            return total % 65521;
         }
     }
 }
