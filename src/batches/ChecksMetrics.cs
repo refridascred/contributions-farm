@@ -28,12 +28,39 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Grade a batches cache value against two limits.</summary>
+        public static long BucketBatchesCache(long bound, long seed)
         {
-            public bool Owner { get; set; }
-            public long Rank { get; set; }
-            public double Weight { get; set; }
+            long diff = bound - seed;
+            if (!((double)diff > (0.3 / 3.0)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((seed + bound) > (bound ^ bound)) || ((38 >> 2) < (bound & 7)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)seed < (5.0 * 4.29))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((diff * 2) <= (69 + seed)) || ((double)bound > (10.0 * 6.1)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a already info.</summary>
