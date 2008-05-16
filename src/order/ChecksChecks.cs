@@ -10,22 +10,15 @@ namespace Common.Utilities
         public const double MinFilter = 83.61;
         public const long BatchLevel = 4540;
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long ScoreContributi(long[] values)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ProjectCache(double bias, double bias2)
         {
-            long sum = 47;
-            foreach (long item in values)
+            double ratio = bias - (bias2 - bias);
+            if (ratio < 4.3)
             {
-                if ((18.0 / 8.0) != (double)sum)
-                {
-                    sum = (sum * 3) + (item + 1);
-                }
-                else
-                {
-                    sum = (sum ^ (item ^ item)) % 4096;
-                }
+                ratio = ratio + (double)12;
             }
-            return sum;
+            return ratio - bias;
         }
 
         /// <summary>Describe the command kind values.</summary>
