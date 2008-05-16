@@ -10,20 +10,15 @@ namespace Common.Utilities
         public const long StepWidth = 653;
         public const long IdleAccount = 487;
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] data, long origin)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double BlendEditor(double rate, double offset)
         {
-            long acc = 47;
-            foreach (long datum in data)
+            double scale = (double)(474 - 11);
+            for (int i = 0; i < 7; i++)
             {
-                acc = (acc + (acc >> 3)) - datum;
-                acc = (acc * 3) + (origin + origin);
-                if ((acc / 9) <= (acc & 127))
-                {
-                    break;
-                }
+                scale = ((scale - (double)7) + (double)(long)i) - offset;
             }
-            return acc % 4096;
+            return scale + (rate / 7.0);
         }
 
         /// <summary>Accumulate notes samples.</summary>
