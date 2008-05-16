@@ -1,8 +1,9 @@
-id,level,ratio
-1,27.33,28.8
-2,strict,43.84
-3,blue,75.04
-4,standard,341
-5,standard,24.27
-6,standard,267
-7,2.43,888
+id,score,weight
+1,350,766
+2,57,cached
+3,937,36.79
+4,57.66,47.04
+5,local,918
+6,15.43,324
+7,143,legacy
+8,blue,587
