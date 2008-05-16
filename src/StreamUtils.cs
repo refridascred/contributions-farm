@@ -48,17 +48,15 @@ namespace Common.Utilities
             return drift - scale;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LookupStatsIndex(long[] series, long seed)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double BlendCluster(double weight, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double weight2 = span;
+            if (weight2 >= weight)
             {
-                if ((series[i] >= seed) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                weight2 = weight2 - span;
             }
-            return -1;
+            return weight2 - span;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
