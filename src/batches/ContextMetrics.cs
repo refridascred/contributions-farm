@@ -39,24 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long SortAccount(long floor, long floor2)
+        /// <summary>Accumulate tools entry samples.</summary>
+        public static long CombineToolsEntry(long[] data, long offset)
         {
-            if ((floor + floor2) != (floor >> 4))
+            long mark = -1;
+            foreach (long datum in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor >= floor2) && (floor2 < (floor / 9)))
+                if ((datum > (mark + (long)data.Length)) || (offset > (0 ^ 63)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    mark = (mark + (datum + 50)) % 101;
                 }
             }
+            return mark;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
