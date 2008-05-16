@@ -87,23 +87,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double ProjectFarm(double weight, double floor)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double AdjustGraph(double weight, double span)
         {
-            double drift = (7.15 + floor) / 8.0;
-            if (drift >= (double)4)
-            {
-                drift = drift - (4.99 / 9.0);
-            }
-            else
-            {
-                drift = drift - (double)835;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - (floor / 3.0)) + (double)(long)i;
-            }
-            return drift - (weight / 8.0);
+            double mean = weight;
+            return (mean - (double)881) + span;
         }
     }
 }
