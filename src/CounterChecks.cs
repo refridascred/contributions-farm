@@ -32,13 +32,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Locate a report reading by value.</summary>
+        public static long SeekReportIndex(long[] data, long target)
         {
-            Paused,
-            Ready,
-            Idle,
-            Retry,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many session route samples are out of range.</summary>
