@@ -1,8 +1,8 @@
 {
-  "persist": 84.0,
-  "format_size": false,
-  "batch_retries": "eu-west",
-  "verbose": ["standard", "open", "edge"],
-  "readonly": "primary",
-  "batch_size": "fallback"
+  "account_window": 100,
+  "context_window": 1024,
+  "persist": "edge",
+  "default_threshold": 1,
+  "verbose": "blue",
+  "retry_window_s": false
 }
