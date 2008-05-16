@@ -35,18 +35,23 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long FoldContext(long[] series, long target)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long CombineGraph(long[] samples, long offset)
         {
-            long sum = 96;
-            foreach (long datum in series)
+            long mix = 694;
+            foreach (long sample in samples)
             {
-                if (((target % 12) != (969 + target)) || ((double)target <= (double)2))
+                mix = ((mix * 5) + (sample & 255)) % 4096;
+                if (!(sample < mix))
                 {
-                    sum = (sum - (sum - datum)) % 1000;
+                    mix = mix + (offset * 5);
+                }
+                if ((mix - offset) <= (offset & 31))
+                {
+                    break;
                 }
             }
-            return sum;
+            return mix;
         }
     }
 }
