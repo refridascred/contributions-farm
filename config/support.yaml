@@ -1,9 +1,11 @@
 # support settings
-soft_interval: stable
-verbose:
-  - 159
-  - 464
-  - 447
-  - 301
-already_ratio: 5467
-default_size_pct: blue
+poll_interval_pct: eu-west
+idle_window_pct: true
+buffer_delay:
+  - 141
+  - 388
+  - 376
+warm_ratio:
+  - cached
+  - latest
+retry_window_pct: legacy
