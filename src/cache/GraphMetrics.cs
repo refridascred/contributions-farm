@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long WeighMetric(long[] samples)
-        {
-            long mark = 1;
-            foreach (long reading in samples)
-            {
-                if ((double)reading < (double)293)
-                {
-                    mark = (mark + ((long)samples.Length - 284)) % 1000;
-                }
-                else
-                {
-                    mark = (mark ^ reading) % 65521;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long LimitCache = 364;
+        public const long BurstCache = 3352;
+        public const string BatchCache = "strict-1";
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long AuditContributiOutliers(long[] levels, long target)
