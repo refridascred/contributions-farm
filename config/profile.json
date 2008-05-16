@@ -1,8 +1,5 @@
 {
-  "layout_interval": true,
-  "cluster_limit": [2, 229],
-  "route_timeout": 100,
-  "readonly": false,
-  "idle_retries": "strict",
-  "schema_ratio": 1424
+  "min_threshold_pct": "primary",
+  "strict": 500,
+  "enabled": true
 }
