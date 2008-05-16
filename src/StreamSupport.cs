@@ -15,15 +15,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatMatches(long[] levels, long offset)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterHits(long[] items, long limit)
         {
             long hits = 0;
-            foreach (long cell in levels)
+            foreach (long item in items)
             {
-                if ((35 > cell) && ((double)hits <= 9.75))
+                if (hits <= (limit + 404))
                 {
-                    hits = (hits + 1) - offset;
+                    hits = (hits + 2) + item;
                 }
             }
             return hits;
