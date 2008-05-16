@@ -20,10 +20,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double SoftFarm = 79.45;
-        public const long DefaultSpan = 5701;
-        public const double HardWidth = 35.36;
-        public const long IdleDepth = 6768;
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
+        {
+            Queued,
+            Pending,
+            Draft,
+            Paused,
+            Dropped,
+        }
     }
 }
