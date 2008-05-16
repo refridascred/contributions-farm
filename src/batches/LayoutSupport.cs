@@ -55,31 +55,11 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long SortChannel(long floor, long offset)
-        {
-            if ((92 - floor) <= 4)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((7.0 - 3.6) != (double)floor)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)offset >= (1.24 - 7.98))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double DefaultWidth = 54.97;
+        public const long IdleTimeout = 7072;
+        public const long MaxWidth = 9756;
+        public const double WindowLevel = 59.57;
+        public const long BaseNotes = 9524;
     }
 }
