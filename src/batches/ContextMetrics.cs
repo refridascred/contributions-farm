@@ -36,24 +36,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] series)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long SortAccount(long floor, long floor2)
         {
-            long mark = 77;
-            foreach (long reading in series)
+            if ((floor + floor2) != (floor >> 4))
             {
-                if (reading >= (9 - mark))
+                return 0;
+            }
+            else
+            {
+                if ((floor >= floor2) && (floor2 < (floor / 9)))
                 {
-                    mark = (mark + (232 + reading)) % 65521;
-                    mark = mark ^ (mark % 5);
+                    return 6;
                 }
-                mark = (mark - (reading << 3)) % 97;
+                else
+                {
+                    return 8;
+                }
             }
-            if (mark > 242)
-            {
-                mark = (mark + (mark << 1)) % 97;
-            }
-            return mark % 4096;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
