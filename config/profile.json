@@ -1,8 +1,15 @@
 {
-  "batches_ttl": "latest",
-  "dry_run": ["legacy", "staging", "blue", "open"],
-  "soft_interval_s": "primary",
-  "default_size_ms": 4956,
-  "githubfarm_delay": 28,
-  "max_retries_s": 32.08
+  "flush_limit_s": 2926,
+  "schema_ratio": 250,
+  "readonly": {
+    "hard_window_count": {
+      "sync_timeout_ms": 1024,
+      "min_size_s": false,
+      "batch_interval_pct": 60
+    },
+    "cache_timeout": true,
+    "default_delay_pct": "fallback",
+    "burst_ttl": "edge",
+    "account_size": "strict"
+  }
 }
