@@ -30,15 +30,14 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] series)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long mark = 172;
-            foreach (long datum in series)
-            {
-                mark = (mark * 5) + (datum * 4);
-            }
-            return mark;
+            Done,
+            New,
+            Stale,
+            Draft,
+            Closed,
         }
 
         /// <summary>Describe the payload mode values.</summary>
