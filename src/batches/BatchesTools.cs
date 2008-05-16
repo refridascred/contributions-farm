@@ -21,12 +21,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Count the editor session entries that pass the check.</summary>
+        public static long CountEditorSessionOutliers(long[] levels)
         {
-            public long Mode { get; set; }
-            public long Level { get; set; }
-            public string Rank { get; set; } = "";
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if (matches <= (matches + item))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
