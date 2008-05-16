@@ -27,13 +27,20 @@ namespace Common.Utilities
         public const long BatchScore = 8524;
         public const double BurstScore = 39.02;
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long RollStats(long floor)
         {
-            Dropped,
-            Failed,
-            Done,
-            Stale,
+            long result = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                if (((floor & 15) >= ((long)i & 31)) && ((long)i < (floor % 100)))
+                {
+                    result = (result + result) % 97;
+                    result = (result - (result ^ 8)) % 101;
+                }
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
         }
     }
 }
