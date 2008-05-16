@@ -28,22 +28,21 @@ namespace Common.Utilities
         public const long HardCluster = 4139;
         public const double BatchCluster = 69.75;
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long WeighGraph(long[] series, long target)
+        /// <summary>Match up batches samples.</summary>
+        public static long PairBatchesCount(long[] values)
         {
-            long anchor = 573;
-            foreach (long entry in series)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)entry >= (9.11 + 17.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = ((anchor * 4) + anchor) - target;
+                    if ((values[i] - values[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (anchor < 699)
-            {
-                anchor = anchor - (anchor / 9);
-            }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
