@@ -82,16 +82,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long DigestNotes(long[] series, long offset)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long mix = 570;
-            foreach (long item in series)
-            {
-                mix = ((mix * 2) + (mix + 918)) ^ item;
-                mix = ((mix << 3) ^ (offset + 70)) % 97;
-            }
-            return mix % 1000;
+            Pending,
+            Failed,
+            Draft,
+            Closed,
+            Paused,
         }
     }
 }
