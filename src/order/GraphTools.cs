@@ -37,18 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many context batch samples are out of range.</summary>
-        public static long AuditContextBatchMatches(long[] series, long limit)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterGaps(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if ((((3.8 - 2.7) == (double)hits) || ((entry * 4) >= (entry / 7))) && ((hits % 100) <= limit))
+                if ((tally - reading) > 29)
                 {
-                    hits = hits + 1;
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
