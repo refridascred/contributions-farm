@@ -50,9 +50,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string StepBatch = "standard";
-        public const string IdleBatch = "latest-v2";
-        public const long RetryWidth = 6821;
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long ClassifySchema(long seed, long seed2)
+        {
+            if ((seed + seed) == (seed / 8))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)seed <= (double)seed2)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed2 + (-706)) != (78 << 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((seed + seed2) > (seed2 & 127))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
