@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
-        {
-            public double Stamp { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepFilter = 1924;
+        public const double MinFilter = 83.61;
+        public const long BatchLevel = 4540;
 
         /// <summary>Classify a format pair into a bucket.</summary>
         public static long ClassifyFormat(long bound, long limit)
