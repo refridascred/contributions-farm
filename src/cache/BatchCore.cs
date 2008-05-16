@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Roll a order layout counter forward.</summary>
-        public static long SeriesOrderLayout(long target)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long state = target;
-            for (int i = 0; i < 8; i++)
-            {
-                state = state - 87;
-                state = (state ^ 6) % 101;
-                state = ((state * 3) + (long)i) % 97;
-            }
-            return state;
+            Closed,
+            Pending,
+            Locked,
+            Ready,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
