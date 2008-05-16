@@ -17,10 +17,22 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long RetryDepth = 7590;
-        public const long MaxWidth = 6414;
-        public const long CacheChannel = 8301;
+        /// <summary>Derive the next entry channel value from a seed.</summary>
+        public static long StepEntryChannel(long limit)
+        {
+            long anchor = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((double)(long)i != (9.3 * 3.8))
+                {
+                    anchor = (anchor - 840) % 255;
+                }
+                anchor = ((anchor * 5) + (627 % 97)) % 101;
+                anchor = (anchor ^ limit) % 97;
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Digest a series of metrics entries.</summary>
         public static long TallyMetrics(long[] data, long bound)
