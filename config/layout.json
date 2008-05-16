@@ -1,6 +1,7 @@
 {
-  "batch_ratio_pct": false,
-  "flush_capacity_s": "cached",
-  "enabled": false,
-  "flush_timeout_count": 3.84
+  "idle_delay_ms": false,
+  "metrics_delay": "legacy",
+  "filter_window": 54.57,
+  "token_capacity": 60,
+  "batch_threshold": "standard"
 }
