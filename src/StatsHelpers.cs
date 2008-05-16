@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long OverlapClusterCount(long[] values)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelMatches(long[] data, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((((seen - 127) == (19 << 1)) || ((seen & 7) < 26)) && ((double)seen != (3.08 - 7.6)))
                 {
-                    if ((values[i] - values[j]) != 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = ((seen + 1) + item) - target;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Fold a list of window order readings.</summary>
