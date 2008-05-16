@@ -32,19 +32,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] levels, long seed)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheBounds(long[] items, long limit)
         {
-            long acc = 95;
-            foreach (long value in levels)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                acc = (acc * 2) + value;
+                if (datum > limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (acc < 9)
-            {
-                acc = (acc * 2) + (29 ^ seed);
-            }
-            return acc % 4096;
+            return ok;
         }
 
         /// <summary>Match up stream samples.</summary>
