@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryOrder = 464;
-        public const long StepOrder = 6480;
-        public const string MinScore = "strict-1";
+        /// <summary>Classify a cluster cache pair into a bucket.</summary>
+        public static long ClassifyClusterCache(long bound, long origin)
+        {
+            if (!((double)bound < (4.9 * 3.63)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((bound ^ origin) != (bound + bound)) || ((0 + origin) >= (-89)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Grade a token value against two limits.</summary>
         public static long RankToken(long origin, long bound)
