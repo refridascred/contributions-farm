@@ -27,21 +27,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long PairSupportCount(long[] items)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Locked,
+            Ready,
+            Synced,
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
