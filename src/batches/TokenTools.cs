@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double AdjustCluster(double rate, double floor)
+        /// <summary>Find the first cache window entry that matches the target.</summary>
+        public static long SeekCacheWindowIndex(long[] values, long target)
         {
-            double drift = (floor / 3.0) + 7.4;
-            if (drift <= 8.94)
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = drift + rate;
+                if (values[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift + (drift * 9.98);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift - (rate / 8.0);
+            return -1;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
