@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsGaps(long[] levels, long seed)
         {
-            public long Weight { get; set; }
-            public long Limit { get; set; }
-            public string Flag { get; set; } = "";
-            public double Total { get; set; }
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((item / 8) != (19 + seed))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
