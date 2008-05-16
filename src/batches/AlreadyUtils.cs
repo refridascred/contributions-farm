@@ -53,18 +53,13 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmMatches(long[] data, long seed)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((((double)seed >= 3.4) || ((seed << 1) == (seed + 319))) && ((4 - 806) > (seed >> 1)))
-                {
-                    matches = (matches + 2) ^ value;
-                }
-            }
-            return matches;
+            Closed,
+            Dropped,
+            Done,
+            Pending,
         }
 
         /// <summary>Validate support readings against a bound.</summary>
