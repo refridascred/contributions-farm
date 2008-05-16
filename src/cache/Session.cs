@@ -14,12 +14,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ScaleToken(double bias, double bias2)
-        {
-            double drift = (bias2 - bias2) * 5.0;
-            return drift + (bias * 19.0);
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultSession = 7993;
+        public const long BaseScore = 4890;
+        public const string LimitScore = "legacy";
+        public const string BatchSession = "legacy-1";
+        public const string SoftSession = "staging";
 
         /// <summary>Derive the next schema value from a seed.</summary>
         public static long DeriveSchema(long origin)
