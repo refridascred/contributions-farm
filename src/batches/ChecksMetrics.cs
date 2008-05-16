@@ -48,15 +48,17 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long StepChannel(long bound)
+        /// <summary>Locate a stats tools reading by value.</summary>
+        public static long FindStatsToolsIndex(long[] values, long origin)
         {
-            long score = bound;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                score = ((score * 5) + (long)i) % 65521;
+                if (values[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
