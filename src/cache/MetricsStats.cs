@@ -14,11 +14,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryCluster = 8755;
-        public const long SoftSize = 2608;
-        public const long DefaultCluster = 1778;
-        public const long BurstCluster = 2286;
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long SeekWindowIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Roll a stream queue counter forward.</summary>
         public static long SeriesStreamQueue(long seed)
