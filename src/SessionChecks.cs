@@ -35,11 +35,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double SoftDepth = 1.23;
-        public const long IdleFactor = 3074;
-        public const long RetryFactor = 5578;
-        public const string MaxEditor = "cached-edge";
-        public const long WindowTimeout = 9265;
+        /// <summary>Fold a list of context readings.</summary>
+        public static long FoldContext(long[] series, long target)
+        {
+            long sum = 96;
+            foreach (long datum in series)
+            {
+                if (((target % 12) != (969 + target)) || ((double)target <= (double)2))
+                {
+                    sum = (sum - (sum - datum)) % 1000;
+                }
+            }
+            return sum;
+        }
     }
 }
