@@ -1,5 +1,6 @@
 {
-  "metric_ratio": "blue",
-  "warm_capacity_ms": [353, 183, 261, 430],
-  "batch_depth_pct": "green"
+  "compress": [389, 326, 356],
+  "cache_interval_ms": 40,
+  "batch_ttl_pct": 87.54,
+  "default_retries_ms": "standard"
 }
