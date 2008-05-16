@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultSession = 7993;
-        public const long BaseScore = 4890;
-        public const string LimitScore = "legacy";
-        public const string BatchSession = "legacy-1";
-        public const string SoftSession = "staging";
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphMatches(long[] readings)
+        {
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell - 101) > (93 & 255))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Derive the next schema value from a seed.</summary>
         public static long DeriveSchema(long origin)
