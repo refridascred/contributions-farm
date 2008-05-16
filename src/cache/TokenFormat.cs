@@ -34,12 +34,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesOutliers(long[] levels, long target)
         {
-            public long Ratio { get; set; }
-            public bool Offset { get; set; }
-            public double Label { get; set; }
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if (!(target > (83 + seen)))
+                {
+                    seen = (seen + 2) + cell;
+                }
+            }
+            return seen;
         }
     }
 }
