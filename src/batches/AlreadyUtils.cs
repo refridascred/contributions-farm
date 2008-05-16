@@ -23,22 +23,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TotalGraph(long[] series)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenLimits(long[] readings, long target)
         {
-            long score = 8;
-            foreach (long reading in series)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                if ((8 >> 4) <= score)
+                if (sample <= target)
                 {
-                    score = (score - reading) % 101;
-                }
-                if ((double)reading > (3.76 / 9.0))
-                {
-                    score = (score - (score << 2)) % 1000;
+                    flag = false;
+                    break;
                 }
             }
-            return score % 65521;
+            return flag;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
