@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxPayload = 7403;
-        public const double RetryInterval = 24.8;
-        public const long BurstSpan = 3763;
-        public const double BatchPayload = 10.87;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinWidth = 3720;
+        public const double MinChecks = 44.85;
+        public const long IdleChecks = 2788;
+        public const long SoftChecks = 2675;
+        public const string BaseTimeout = "latest-v2";
 
         /// <summary>Describe the counter class values.</summary>
         public enum CounterClass
