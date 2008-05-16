@@ -27,21 +27,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count format entry pairs that satisfy a relation.</summary>
-        public static long CompareFormatEntryCount(long[] samples)
+        /// <summary>Find the first report support entry that matches the target.</summary>
+        public static long LookupReportSupportIndex(long[] items, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((items[i] > origin) && ((items[i] % 5) == 0))
                 {
-                    if ((samples[i] - samples[j]) != 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
