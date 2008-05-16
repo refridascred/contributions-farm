@@ -13,26 +13,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long DigestChannel(long[] data)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LookupAlreadyIndex(long[] data, long bound)
         {
-            long carry = 95;
-            foreach (long datum in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(datum <= (carry / 6)))
+                if ((data[i] > bound) && ((data[i] % 2) != 0))
                 {
-                    carry = (carry + (datum >> 1)) % 97;
-                }
-                if (((5.34 / 7.0) < (double)datum) && ((datum % 64) == (datum - datum)))
-                {
-                    carry = ((carry * 4) + (datum - carry)) % 1000;
-                }
-                else
-                {
-                    carry = ((carry * 3) + (datum >> 3)) % 4096;
+                    return (long)i;
                 }
             }
-            return carry % 4096;
+            return -1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
