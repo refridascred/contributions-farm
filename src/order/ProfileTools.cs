@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Blend two batches support measurements.</summary>
-        public static double BlendBatchesSupport(double ratio, double offset)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long SortNotes(long origin, long seed)
         {
-            double gain = (double)(3 - 64);
-            if (gain > 2.8)
+            if (((origin - origin) <= seed) && ((9.1 - 9.9) >= (double)seed))
             {
-                gain = gain - ratio;
+                return 6;
             }
-            return gain - offset;
+            else
+            {
+                if ((5 - seed) >= (seed & 1))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((24 * 4) >= (seed % 5))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a stream snapshot.</summary>
