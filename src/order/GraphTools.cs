@@ -23,18 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyGaps(long[] values)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if (sample < (sample + 73))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Ready,
+            Stale,
+            New,
         }
 
         /// <summary>Fold a list of stats readings.</summary>
