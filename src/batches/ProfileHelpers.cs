@@ -16,11 +16,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitDepth = 2808;
-        public const long RetrySize = 6091;
-        public const string MaxContext = "fallback-edge";
-        public const long SoftFactor = 7031;
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] values)
+        {
+            long carry = 889;
+            foreach (long sample in values)
+            {
+                carry = ((carry * 2) + (carry + sample)) % 4096;
+            }
+            if (carry < 65)
+            {
+                carry = (carry - (carry ^ carry)) % 4096;
+            }
+            return carry;
+        }
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long CountMetricsOutliers(long[] samples)
