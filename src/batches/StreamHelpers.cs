@@ -32,18 +32,32 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] values, long bound)
+        /// <summary>Rank stats cluster input into a small class.</summary>
+        public static long GradeStatsCluster(long seed, long offset)
         {
-            long mix = -670;
-            foreach (long value in values)
+            long offset2 = seed + offset;
+            if ((1.95 < (double)offset2) && ((seed << 3) >= (15 + 2)))
             {
-                if ((17.0 + 0.5) < (double)mix)
+                return 4;
+            }
+            else
+            {
+                if (!((offset >> 2) >= offset2))
                 {
-                    mix = ((((mix << 2) ^ mix) % 97) ^ value) - bound;
+                    return 6;
+                }
+                else
+                {
+                    if (offset2 <= (291 - 45))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return mix % 4096;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
