@@ -50,12 +50,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TallyAlready(long[] values)
         {
-            Queued,
-            Idle,
-            Stale,
+            long carry = 9;
+            foreach (long item in values)
+            {
+                carry = ((carry * 3) + (item & 255)) % 4096;
+            }
+            return carry;
         }
     }
 }
