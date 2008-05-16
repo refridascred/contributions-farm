@@ -43,14 +43,13 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            Queued,
-            Pending,
-            Draft,
-            Paused,
-            Dropped,
+            public string Offset { get; set; } = "";
+            public long Limit { get; set; }
+            public long Region { get; set; }
+            public double Total { get; set; }
         }
     }
 }
