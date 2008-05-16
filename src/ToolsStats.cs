@@ -11,19 +11,13 @@ namespace Common.Utilities
         public const string RetryInterval = "open-edge";
         public const double BatchAccount = 24.32;
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryBounds(long[] samples, long seed)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            bool ready = true;
-            foreach (long reading in samples)
-            {
-                if (reading < seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Draft,
+            Stale,
+            Closed,
+            Failed,
         }
 
         /// <summary>Hold a order entry.</summary>
