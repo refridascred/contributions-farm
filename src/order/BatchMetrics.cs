@@ -30,23 +30,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TallyGraph(long[] samples, long origin)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long MatchAlreadyCount(long[] series)
         {
-            long state = 7;
-            foreach (long datum in samples)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                state = (state ^ (361 - (-71))) - datum;
-                if (((long)samples.Length - state) > state)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    state = ((state << 3) ^ origin) % 65521;
-                }
-                else
-                {
-                    state = ((state << 3) ^ (state % 97)) % 4096;
+                    if ((series[i] - series[j]) == 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Describe the format mode values.</summary>
