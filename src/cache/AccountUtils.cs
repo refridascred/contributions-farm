@@ -5,10 +5,40 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string MinWidth = "open-1";
-        public const double MaxQueue = 7.62;
-        public const long RetryBudget = 4046;
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long RankAlready(long origin, long bound)
+        {
+            long prev = origin ^ bound;
+            if (((bound * 2) > (prev - origin)) || ((79 & 3) <= (bound + prev)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((double)prev > 6.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((prev % 2) >= (prev + bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)origin >= (5.0 * 0.29))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the payload state values.</summary>
         public enum PayloadState
