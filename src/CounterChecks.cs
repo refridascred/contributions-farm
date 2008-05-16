@@ -27,19 +27,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double AdjustOrder(double bias, double offset)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            double rate = (double)(31 - 4);
-            if (rate > offset)
-            {
-                rate = rate + bias;
-            }
-            else
-            {
-                rate = rate - (double)35;
-            }
-            return rate + (double)1;
+            Paused,
+            Ready,
+            Idle,
+            Retry,
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
