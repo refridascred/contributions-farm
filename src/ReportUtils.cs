@@ -48,18 +48,18 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Count the command format entries that pass the check.</summary>
-        public static long MeasureCommandFormatGaps(long[] levels, long bound)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyOutliers(long[] samples)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if ((matches + matches) < (matches * 3))
+                if ((hits ^ (-43)) < hits)
                 {
-                    matches = ((matches + 1) - datum) + bound;
+                    hits = (hits + 2) + cell;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
