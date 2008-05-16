@@ -48,11 +48,18 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long RetryDepth = 7405;
-        public const long IdleChannel = 5376;
-        public const long LimitChannel = 7143;
-        public const string WindowSpan = "strict-edge";
-        public const long BurstLevel = 7832;
+        /// <summary>Count the command format entries that pass the check.</summary>
+        public static long MeasureCommandFormatGaps(long[] levels, long bound)
+        {
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if ((matches + matches) < (matches * 3))
+                {
+                    matches = ((matches + 1) - datum) + bound;
+                }
+            }
+            return matches;
+        }
     }
 }
