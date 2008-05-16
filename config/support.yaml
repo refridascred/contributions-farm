@@ -1,25 +1,13 @@
 # support settings
-soft_depth_ms:
-  - 18
-  - 482
-  - 446
-  - 269
-flush_ratio_count: latest
-audit:
-  soft_timeout: true
-  audit: false
-  support_interval:
-    format_timeout: true
-    flush_ratio_s:
-      - legacy
-      - edge
-      - fallback
-    cache_ratio_count: primary
-    min_interval_pct: 5865
-    base_depth_s: fallback
-  dry_run: staging
-  base_ttl_count: false
-  buffer_depth: standard
-burst_limit: 100
-poll_ttl_ms: fallback
-sync_depth: edge
+min_interval: 9.7
+route_window:
+  cache_window_count:
+    sync_depth: 25
+    channel_ratio: 7444
+    hard_capacity_s: 86.5
+    account_depth: 5736
+    sync_threshold_s: 60
+  flush_threshold: 1024
+  farm_size: cached
+  readonly: 250
+base_ttl: 8574
