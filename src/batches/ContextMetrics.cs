@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterHits(long[] values, long seed)
+        /// <summary>Count the context token entries that pass the check.</summary>
+        public static long AuditContextTokenHits(long[] values)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (((entry >= (entry - matches)) && (seed > 338)) || ((matches <= seed) || ((6 << 1) < (seed * 3))))
+                if ((seen << 3) == (datum - (-8)))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Describe the stats kind values.</summary>
