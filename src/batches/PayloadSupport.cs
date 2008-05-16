@@ -28,22 +28,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine already payload values into a single score.</summary>
-        public static long DigestAlreadyPayload(long[] readings)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long result = 8;
-            foreach (long item in readings)
-            {
-                if (!(result > (result * 5)))
-                {
-                    result = result ^ (result ^ result);
-                }
-                else
-                {
-                    result = (result << 3) ^ (item ^ 508);
-                }
-            }
-            return result % 97;
+            public long Flag { get; set; }
+            public long Mode { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
