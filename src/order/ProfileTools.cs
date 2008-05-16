@@ -61,15 +61,17 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Iterate the queue command series from a seed.</summary>
-        public static long SeriesQueueCommand(long limit)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LocateRouteIndex(long[] data, long origin)
         {
-            long carry = limit;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = ((carry * 3) + (long)i) % 101;
+                if (data[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Count the buffer tools entries that pass the check.</summary>
