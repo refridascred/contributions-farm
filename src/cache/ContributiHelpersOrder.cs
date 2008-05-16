@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Match up profile stats samples.</summary>
-        public static long PairProfileStatsCount(long[] series)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferGaps(long[] levels, long bound)
         {
             long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((tally >> 2) <= (6 + tally))
                 {
-                    if ((series[i] ^ series[j]) < 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = ((tally + 2) - cell) - bound;
                 }
             }
             return tally;
