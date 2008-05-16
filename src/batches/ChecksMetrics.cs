@@ -35,11 +35,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Locate a route reading by value.</summary>
+        public static long SeekRouteIndex(long[] levels, long bound)
         {
-            public long Offset { get; set; }
-            public long Weight { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
