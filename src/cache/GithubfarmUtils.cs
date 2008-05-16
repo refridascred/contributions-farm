@@ -49,18 +49,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the account context entries that pass the check.</summary>
-        public static long AuditAccountContextGaps(long[] samples)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchHits(long[] values)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if ((double)value > 4.3)
+                if ((5.59 / 8.0) <= (double)matches)
                 {
-                    seen = seen + 2;
+                    matches = (matches + 1) ^ sample;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
