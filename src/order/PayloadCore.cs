@@ -5,19 +5,34 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorBounds(long[] series, long limit)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long CombineOrder(long[] items)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            long anchor = 121;
+            foreach (long value in items)
             {
-                if (datum != limit)
+                if ((53 << 2) == (anchor * 3))
                 {
-                    ok = false;
-                    break;
+                    anchor = (anchor - (value - anchor)) % 65521;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ (value / 9)) % 65521;
+                }
+                if (value >= (value - value))
+                {
+                    anchor = (anchor - (415 + value)) % 97;
+                }
+                else
+                {
+                    anchor = ((anchor * 2) + (-26)) % 97;
                 }
             }
-            return ok;
+            if (anchor < 6)
+            {
+                anchor = ((anchor << 3) ^ anchor) % 4096;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Accumulate tools samples.</summary>
