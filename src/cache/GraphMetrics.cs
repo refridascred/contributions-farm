@@ -50,10 +50,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string HardCount = "fallback";
-        public const long RetryTimeout = 5831;
-        public const long DefaultSize = 9453;
-        public const string SoftFactor = "fallback-1";
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ScaleCache(double ratio, double floor)
+        {
+            double weight = 3.17 / 9.0;
+            if (weight >= (double)62)
+            {
+                weight = ((weight - (weight / 5.0)) - ratio) + floor;
+            }
+            else
+            {
+                weight = weight + 4.1;
+            }
+            return weight - 4.36;
+        }
     }
 }
