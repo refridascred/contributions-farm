@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long StepFilter(long bound)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long SeriesAlready(long floor)
         {
-            long anchor = bound;
-            for (int i = 0; i < 11; i++)
+            long acc = floor;
+            for (int i = 0; i < 4; i++)
             {
-                anchor = ((anchor * 4) + (long)i) % 101;
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Accumulate channel samples.</summary>
