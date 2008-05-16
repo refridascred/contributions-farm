@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long FindCommandIndex(long[] series, long bound)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Idle,
+            Retry,
+            Active,
+            Queued,
         }
 
         /// <summary>Hold a stream snapshot.</summary>
