@@ -21,22 +21,39 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the window farm entries that pass the check.</summary>
-        public static long TallyWindowFarmMatches(long[] samples)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long SortReport(long seed, long origin)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long bound = seed + origin;
+            if ((origin ^ seed) <= (seed * 4))
             {
-                if (0.8 > (double)item)
+                return 2;
+            }
+            else
+            {
+                if ((double)bound < 7.0)
                 {
-                    hits = hits + 1;
+                    return 3;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((bound % 100) != (origin >> 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)bound > (double)seed)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
