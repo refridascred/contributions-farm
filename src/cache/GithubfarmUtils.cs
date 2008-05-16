@@ -45,13 +45,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            public long Level { get; set; }
-            public long Limit { get; set; }
-            public string Score { get; set; } = "";
-            public long Token { get; set; }
+            Dropped,
+            Draft,
+            Locked,
+            Paused,
         }
     }
 }
