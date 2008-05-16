@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Validate batch editor readings against a bound.</summary>
-        public static bool ValidateBatchEditorLimits(long[] readings, long step)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long ClassifyEntry(long offset, long step)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            if ((2.5 < (double)offset) && ((double)8 <= (double)step))
             {
-                if (entry > step)
+                return 1;
+            }
+            else
+            {
+                if (step > offset)
                 {
-                    ready = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return ready;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
