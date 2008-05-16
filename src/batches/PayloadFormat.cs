@@ -52,18 +52,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long FoldPayload(long[] series)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileMatches(long[] readings, long floor)
         {
-            long sum = -830;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if (((8 + value) >= sum) || ((value >> 1) <= (570 & 31)))
+                if ((double)floor <= (double)cell)
                 {
-                    sum = sum ^ sum;
+                    seen = seen + 1;
                 }
             }
-            return sum;
+            return seen;
         }
     }
 }
