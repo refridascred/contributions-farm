@@ -42,18 +42,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmMatches(long[] values)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long MatchAccountCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((tally + tally) > value)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((samples[i] ^ samples[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the route class values.</summary>
