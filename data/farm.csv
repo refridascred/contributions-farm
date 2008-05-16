@@ -1,6 +1,10 @@
-id,active,token
-1,404,89.12
-2,265,cached
-3,43.2,open
-4,71.54,legacy
-5,511,35.03
+id,region,label
+1,strict,fallback
+2,929,edge
+3,353,126
+4,63.54,84.94
+5,123,45.29
+6,54,199
+7,cached,52.35
+8,staging,stable
+9,fallback,90.74
