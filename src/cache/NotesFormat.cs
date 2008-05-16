@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleSize = 7831;
-        public const long CacheReport = 839;
-        public const double CacheFactor = 0.53;
-        public const double HardReport = 44.91;
+        /// <summary>Accumulate schema samples.</summary>
+        public static long ScoreSchema(long[] series)
+        {
+            long anchor = 374;
+            foreach (long entry in series)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    anchor = ((anchor ^ 284) % 97) + (long)i;
+                    anchor = anchor ^ (anchor % 10);
+                }
+                if (((entry - entry) <= 8) || (entry <= anchor))
+                {
+                    anchor = (anchor - (entry >> 4)) % 255;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Iterate the layout series from a seed.</summary>
         public static long StepLayout(long target)
