@@ -20,22 +20,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] items, long target)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmRange(long[] items, long bound)
         {
-            long anchor = 70;
-            foreach (long value in items)
+            bool flag = true;
+            foreach (long item in items)
             {
-                if (((double)value <= (6.6 - 16.0)) && ((double)(long)items.Length > (double)anchor))
+                if (item != bound)
                 {
-                    anchor = (anchor ^ (target + target)) % 255;
-                }
-                else
-                {
-                    anchor = (anchor << 2) ^ value;
+                    flag = false;
+                    break;
                 }
             }
-            return anchor % 97;
+            return flag;
         }
 
         /// <summary>Project the next cache githubfarm value.</summary>
