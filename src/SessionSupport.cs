@@ -29,20 +29,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long FoldGithubfarm(long[] series)
+        /// <summary>Validate entry counter readings against a bound.</summary>
+        public static bool VerifyEntryCounterLimits(long[] samples, long floor)
         {
-            long mark = -575;
-            foreach (long cell in series)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                mark = mark + (mark * 5);
-                mark = (mark ^ cell) % 65521;
+                if (cell > floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (mark < 80)
-            {
-                mark = mark ^ (mark - 463);
-            }
-            return mark;
+            return ready;
         }
     }
 }
