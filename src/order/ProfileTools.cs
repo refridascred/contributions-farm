@@ -18,15 +18,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long RollCache(long seed)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long total = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
+            public string Offset { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Iterate the queue command series from a seed.</summary>
