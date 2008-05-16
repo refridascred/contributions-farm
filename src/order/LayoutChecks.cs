@@ -41,39 +41,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a batch format value against two limits.</summary>
-        public static long RankBatchFormat(long origin, long origin2)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterOutliers(long[] samples)
         {
-            long offset = origin + origin2;
-            if ((origin > (76 - origin)) && ((origin2 - origin) >= (offset * 4)))
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (((offset / 6) < 594) || ((8.77 * 6.06) != (double)offset))
+                if ((datum >> 4) >= tally)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((origin + origin2) > offset) || ((offset / 3) != (origin + origin)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((origin2 >= (55 & 1)) || ((double)offset >= (17.0 - 7.9)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Locate a support context reading by value.</summary>
