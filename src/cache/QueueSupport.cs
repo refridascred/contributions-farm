@@ -16,17 +16,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a already schema sample.</summary>
-        public static long SeekAlreadySchemaIndex(long[] values, long floor)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportHits(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (values[i] >= floor)
+                if (entry > hits)
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
