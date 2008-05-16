@@ -1,8 +1,11 @@
 {
-  "commits_timeout": "cached",
-  "soft_capacity_ms": 30,
-  "sync_ratio": "green",
-  "cache_limit": "fallback",
-  "max_size_s": 1734,
-  "cluster_limit": ["cached", "green", "local", "latest"]
+  "entry_delay": 60,
+  "token_limit": 37.49,
+  "metrics_size": "fallback",
+  "support_interval": {
+    "record_threshold": true,
+    "dry_run": 9520,
+    "default_retries_ms": [320, 75]
+  },
+  "min_ratio_s": true
 }
