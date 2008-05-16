@@ -77,19 +77,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate cluster command readings against a bound.</summary>
-        public static bool VerifyClusterCommandLimits(long[] data, long offset)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long DigestNotes(long[] items, long limit)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            long score = 59;
+            foreach (long value in items)
             {
-                if (reading >= offset)
+                if (!(score <= ((long)items.Length % 97)))
                 {
-                    valid = false;
+                    score = (score ^ value) - limit;
+                }
+                if ((score + 949) >= (score - value))
+                {
                     break;
                 }
             }
-            return valid;
+            return score;
         }
     }
 }
