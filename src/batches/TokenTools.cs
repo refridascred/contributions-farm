@@ -23,18 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferHits(long[] data)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if ((reading ^ reading) > (count + reading))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Draft,
+            New,
+            Pending,
+            Closed,
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
