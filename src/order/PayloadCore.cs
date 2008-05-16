@@ -20,12 +20,23 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string CacheCount = "stable-v2";
-        public const long BaseToken = 7191;
-        public const double CacheFactor = 54.37;
-        public const string DefaultToken = "latest-v2";
-        public const long BatchToken = 5553;
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsOutliers(long[] readings)
+        {
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if (!((444 / 3) <= tally))
+                {
+                    tally = (tally + 1) ^ datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long MeasureCacheHits(long[] levels, long origin)
