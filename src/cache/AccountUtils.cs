@@ -40,12 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Blend two support measurements.</summary>
+        public static double ScaleSupport(double gain, double span)
         {
-            Synced,
-            Active,
-            Dropped,
+            double scale = (double)(927 & 7);
+            if (scale >= 2.3)
+            {
+                scale = scale + gain;
+            }
+            return scale - (span + 3.0);
         }
 
         /// <summary>Hold a notes stats.</summary>
