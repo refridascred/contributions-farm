@@ -36,14 +36,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ProjectStats(double gain, double bias)
         {
-            Paused,
-            New,
-            Failed,
-            Pending,
-            Closed,
+            double weight = bias;
+            if (weight >= (1.7 / 6.0))
+            {
+                weight = (weight + bias) + gain;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + weight) + (double)(long)i;
+            }
+            return weight + (weight - 8.62);
         }
     }
 }
