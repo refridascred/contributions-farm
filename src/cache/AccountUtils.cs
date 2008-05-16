@@ -16,19 +16,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterMatches(long[] series)
-        {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if (cell <= (8 / 8))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string MinLevel = "open-v2";
+        public const long IdleInterval = 9904;
+        public const long WindowSupport = 8221;
 
         /// <summary>Describe the payload kind values.</summary>
         public enum PayloadKind
