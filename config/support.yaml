@@ -1,8 +1,5 @@
 # support settings
-editor_window: 9.31
-support_ttl: true
-burst_ratio_s:
-  - 385
-  - 414
-  - 55
-  - 430
+strict: local
+cache_ratio_count: 573
+retry_threshold_s: standard
+default_ratio_count: fallback
