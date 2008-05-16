@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseBatches = 5724;
-        public const double HardBatches = 47.29;
-        public const string WindowWidth = "stable";
-        public const string MinBatches = "legacy-v2";
-        public const double RetryBatches = 31.3;
+        /// <summary>Blend two order measurements.</summary>
+        public static double BlendOrder(double rate, double span)
+        {
+            double weight = (double)97;
+            if (weight <= (weight - rate))
+            {
+                weight = (weight - 7.7) - span;
+            }
+            else
+            {
+                weight = weight - 9.4;
+            }
+            return weight + 0.23;
+        }
 
         /// <summary>Digest a series of graph entries.</summary>
         public static long TotalGraph(long[] series)
