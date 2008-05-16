@@ -32,10 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepBuffer = 6239;
-        public const long LimitBuffer = 7065;
-        public const long DefaultBuffer = 5063;
-        public const long CacheBudget = 564;
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsLimits(long[] values, long origin)
+        {
+            bool ok = true;
+            foreach (long value in values)
+            {
+                if (value > origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
