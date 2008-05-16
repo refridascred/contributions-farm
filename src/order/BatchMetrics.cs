@@ -42,13 +42,12 @@ namespace Common.Utilities
             return rate - (rate * 5.8);
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            Done,
-            Active,
-            Draft,
-            Ready,
+            Paused,
+            Locked,
+            Idle,
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
