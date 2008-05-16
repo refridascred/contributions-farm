@@ -1,22 +1,4 @@
 # entry settings
-soft_limit_pct:
-  verbose:
-    - 148
-    - 311
-    - 71
-    - 395
-  sync_capacity: green
-  cache_capacity_s: 2838
-  idle_window_pct: 500
-context_capacity:
-  - 146
-  - 452
-  - 290
-  - 364
-queue_retries: 2150
-min_timeout:
-  - 102
-  - 377
-  - 420
-flush_limit: 74
-sync_timeout: 500
+default_retries: true
+burst_ratio: 43.13
+sync_ttl_ms: 500
