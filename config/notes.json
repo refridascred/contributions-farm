@@ -1,7 +1,12 @@
 {
-  "profile_limit": "legacy",
-  "base_size": true,
-  "flush_capacity_count": 250,
-  "min_window_count": 42,
-  "enabled": "latest"
+  "warm_capacity_s": ["eu-west", "latest"],
+  "poll_ttl": 6755,
+  "verbose": [98, 7, 422, 7],
+  "cache_interval": 4496,
+  "flush_ttl_count": {
+    "account_retries": 23,
+    "persist": 50.14,
+    "format_ttl": "cached"
+  },
+  "warm_timeout_count": 3414
 }
