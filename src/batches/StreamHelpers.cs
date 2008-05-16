@@ -38,11 +38,27 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BurstTimeout = 5731;
-        public const long BurstCounter = 8428;
-        public const long RetryCounter = 6009;
-        public const double CacheCounter = 31.37;
+        /// <summary>Accumulate farm samples.</summary>
+        public static long FoldFarm(long[] series)
+        {
+            long score = 725;
+            foreach (long cell in series)
+            {
+                if ((15.0 < (double)score) || ((score - 955) > cell))
+                {
+                    score = score ^ score;
+                }
+                else
+                {
+                    score = ((score * 4) + (cell - (-70))) % 65521;
+                }
+            }
+            if (score < 126)
+            {
+                score = (score * 5) + (84 + score);
+            }
+            return score % 4096;
+        }
 
         /// <summary>Derive the next cache value from a seed.</summary>
         public static long DeriveCache(long limit)
