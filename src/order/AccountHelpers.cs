@@ -49,38 +49,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long SortEntry(long origin, long offset)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long FindFarmIndex(long[] items, long floor)
         {
-            if ((origin ^ origin) != (origin + origin))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((5 + offset) > (origin & 31))
+                if ((items[i] == floor) && ((items[i] % 3) != 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((15 & 255) <= origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((9 <= origin) && (6 <= (origin - origin)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
