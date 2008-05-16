@@ -48,17 +48,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a session channel sample.</summary>
-        public static long LookupSessionChannelIndex(long[] data, long origin)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Queued,
+            Pending,
+            Closed,
+            Stale,
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
