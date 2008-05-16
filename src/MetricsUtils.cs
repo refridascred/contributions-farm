@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            Retry,
-            Stale,
-            Pending,
-            Synced,
-            New,
+            Locked,
+            Active,
+            Paused,
+            Ready,
         }
 
         /// <summary>Define window limits and defaults.</summary>
