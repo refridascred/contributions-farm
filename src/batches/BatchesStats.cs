@@ -33,11 +33,13 @@ namespace Common.Utilities
             return bias - (span / 7.0);
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            public string Size { get; set; } = "";
-            public string Score { get; set; } = "";
+            public long Score { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Offset { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Accumulate notes samples.</summary>
