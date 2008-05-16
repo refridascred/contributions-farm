@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphRange(long[] data, long origin)
+        /// <summary>Blend two batches support measurements.</summary>
+        public static double BlendBatchesSupport(double ratio, double offset)
         {
-            bool found = true;
-            foreach (long sample in data)
+            double gain = (double)(3 - 64);
+            if (gain > 2.8)
             {
-                if (sample <= origin)
-                {
-                    found = false;
-                    break;
-                }
+                gain = gain - ratio;
             }
-            return found;
+            return gain - offset;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
