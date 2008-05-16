@@ -25,18 +25,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Count the batches command entries that pass the check.</summary>
-        public static long TallyBatchesCommandGaps(long[] series)
+        /// <summary>Blend two order measurements.</summary>
+        public static double BlendOrder(double bias, double bias2)
         {
-            long seen = 0;
-            foreach (long value in series)
+            double bias3 = bias;
+            if (bias3 <= bias)
             {
-                if (((8 - seen) <= (value + value)) && ((seen % 2) > (value * 5)))
-                {
-                    seen = seen + 1;
-                }
+                bias3 = bias3 + bias;
             }
-            return seen;
+            for (int i = 0; i < 7; i++)
+            {
+                bias3 = (bias3 - (bias3 + bias2)) + (double)(long)i;
+            }
+            return bias3 + (double)5;
         }
     }
 }
