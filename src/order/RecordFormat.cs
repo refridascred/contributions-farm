@@ -65,12 +65,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheRange(long[] levels, long target)
         {
-            Dropped,
-            Paused,
-            Locked,
+            bool ready = true;
+            foreach (long value in levels)
+            {
+                if (value < target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
