@@ -24,11 +24,31 @@ namespace Common.Utilities
             return drift + rate;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long RankToken(long origin, long bound)
         {
-            public double Owner { get; set; }
-            public bool Region { get; set; }
+            if ((bound + (-90)) < (bound & 7))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((origin % 3) == (origin % 64))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (origin > bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first commits session entry that matches the target.</summary>
