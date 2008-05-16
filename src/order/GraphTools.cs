@@ -20,18 +20,38 @@ namespace Common.Utilities
             return mean - (mean - ratio);
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesMatches(long[] values, long origin)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long ClassifyEditor(long offset, long step)
         {
-            long seen = 0;
-            foreach (long item in values)
+            if ((double)step <= (double)606)
             {
-                if (((double)seen != (8.2 * 7.5)) && (6 > seen))
+                return 5;
+            }
+            else
+            {
+                if (((offset * 2) > (offset - step)) && ((offset << 2) > offset))
                 {
-                    seen = ((seen + 1) + item) + origin;
+                    return 0;
+                }
+                else
+                {
+                    if ((33 + (-72)) > offset)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (step < (offset & 15))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the queue kind values.</summary>
