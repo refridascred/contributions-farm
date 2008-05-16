@@ -60,19 +60,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheHits(long[] levels, long origin)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteOutliers(long[] data)
         {
             long count = 0;
-            foreach (long entry in levels)
+            foreach (long reading in data)
             {
-                if (8.93 <= (double)entry)
+                if ((count * 4) < (reading + 9))
                 {
-                    count = (count + 1) + origin;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = count + 2;
                 }
             }
             return count;
