@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the cluster stream entries that pass the check.</summary>
-        public static long AuditClusterStreamMatches(long[] samples)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long FindCommandIndex(long[] series, long bound)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((tally > cell) || ((cell + (-173)) == (tally / 8)))
+                if (series[i] >= bound)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
