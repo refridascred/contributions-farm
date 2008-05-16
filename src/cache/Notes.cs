@@ -18,12 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long ClassifyAccount(long bound, long offset)
         {
-            public bool Weight { get; set; }
-            public bool Count { get; set; }
-            public long Label { get; set; }
+            if (4.0 <= (double)bound)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)offset < (double)bound)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((bound << 3) != (offset ^ 8)) && ((6.0 * 8.01) < (double)bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a window counter forward.</summary>
