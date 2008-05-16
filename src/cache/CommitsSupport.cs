@@ -20,18 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsMatches(long[] readings, long seed)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long OverlapStatsCount(long[] items)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(((long)readings.Length % 7) != (9 - hits)) && ((hits % 7) != ((-31) / 8)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = ((hits + 2) ^ sample) + seed;
+                    if ((items[i] ^ items[j]) > 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Hold a token info.</summary>
