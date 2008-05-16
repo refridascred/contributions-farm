@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Scale a profile cluster figure with a bias.</summary>
+        public static double ProjectProfileCluster(double weight, double bias)
         {
-            public long Offset { get; set; }
-            public long Level { get; set; }
-            public string Weight { get; set; } = "";
+            double gain = (double)40 - (weight + bias);
+            if (gain > (weight * 4.0))
+            {
+                gain = gain - (bias * 9.7);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain - weight) - (double)(long)i;
+            }
+            return gain - (gain / 4.0);
         }
 
         /// <summary>Combine notes metric values into a single score.</summary>
