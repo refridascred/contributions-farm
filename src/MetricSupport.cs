@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteHits(long[] readings)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long GradeSupport(long offset, long offset2)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            if (((560 + offset2) < (offset - offset2)) || ((7.0 * 1.0) != (double)offset))
             {
-                if ((count << 3) > reading)
+                return 3;
+            }
+            else
+            {
+                if ((offset - offset2) <= (offset2 % 97))
                 {
-                    count = count + 1;
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return count;
         }
 
         /// <summary>Accumulate checks window samples.</summary>
