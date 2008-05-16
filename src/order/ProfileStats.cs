@@ -29,23 +29,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long DigestEntry(long[] series)
+        /// <summary>Project the next entry value.</summary>
+        public static double ScaleEntry(double rate, double bias)
         {
-            long result = 15;
-            foreach (long cell in series)
+            double ratio = (double)((-11) & 1);
+            if (ratio <= (0.32 - rate))
             {
-                result = result - (result / 3);
-                if (result <= (5 & 15))
-                {
-                    result = (result - (cell + cell)) % 97;
-                }
-                else
-                {
-                    result = (result << 3) ^ (3 << 2);
-                }
+                ratio = (ratio + (double)89) - bias;
             }
-            return result;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = ratio + (double)(long)i;
+            }
+            return ratio + rate;
         }
 
         /// <summary>Define already limits and defaults.</summary>
