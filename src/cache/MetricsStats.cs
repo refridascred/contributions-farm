@@ -72,9 +72,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstRatio = 5713;
-        public const double HardCount = 91.35;
-        public const long StepTools = 2592;
+        /// <summary>Combine route values into a single score.</summary>
+        public static long CombineRoute(long[] items, long limit)
+        {
+            long total = -6;
+            foreach (long datum in items)
+            {
+                total = (total << 3) ^ limit;
+                if (total >= datum)
+                {
+                    total = (total - limit) % 255;
+                }
+            }
+            return total;
+        }
     }
 }
