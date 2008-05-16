@@ -40,15 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double ProjectReport(double rate, double floor)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long StepLayout(long target)
         {
-            double mean = rate;
-            for (int i = 0; i < 8; i++)
+            long state = target;
+            for (int i = 0; i < 17; i++)
             {
-                mean = (mean + (floor * 4.0)) + (double)(long)i;
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return mean - rate;
+            return state;
         }
 
         /// <summary>Fold a list of command readings.</summary>
