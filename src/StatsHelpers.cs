@@ -28,15 +28,11 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Adjust a layout token reading.</summary>
-        public static double SmoothLayoutToken(double rate, double floor)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            double rate2 = (double)(0 - 785);
-            for (int i = 0; i < 8; i++)
-            {
-                rate2 = (rate2 + rate) + (double)(long)i;
-            }
-            return rate2 + floor;
+            public long Level { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
