@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
-        {
-            Pending,
-            Closed,
-            Retry,
-            New,
-            Paused,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BurstDepth = 11.43;
+        public const long MinGithubfarm = 6304;
+        public const long MinWidth = 8910;
 
         /// <summary>Classify a metrics entry pair into a bucket.</summary>
         public static long RankMetricsEntry(long offset, long target)
