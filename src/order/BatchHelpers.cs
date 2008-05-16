@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a context reading.</summary>
-        public static double SmoothContext(double weight, double span)
-        {
-            double drift = (weight + weight) / 4.0;
-            if (drift >= span)
-            {
-                drift = drift + span;
-            }
-            else
-            {
-                drift = drift + weight;
-            }
-            return drift - (double)0;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitAlready = 5773;
+        public const double MinBudget = 0.42;
+        public const long BurstScore = 3234;
+        public const double BatchAlready = 49.48;
 
         /// <summary>Hold a metrics stats.</summary>
         public sealed class MetricsStats
