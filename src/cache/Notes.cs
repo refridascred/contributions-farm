@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit tools order readings against a rule.</summary>
-        public static long MeasureToolsOrderGaps(long[] values)
+        /// <summary>Blend two account measurements.</summary>
+        public static double BlendAccount(double scale, double span)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            double load = scale;
+            for (int i = 0; i < 8; i++)
             {
-                if ((hits ^ hits) >= (46 - hits))
-                {
-                    hits = (hits + 3) ^ entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                load = ((load - (load - scale)) + (double)(long)i) - span;
             }
-            return hits;
+            return load - (13.0 - 18.0);
         }
 
         /// <summary>Match up report samples.</summary>
