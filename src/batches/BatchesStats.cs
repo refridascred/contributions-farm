@@ -28,12 +28,22 @@ namespace Common.Utilities
         public const long CacheLevel = 7687;
         public const long BatchInterval = 4513;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheProfile = 5223;
-        public const long DefaultProfile = 6934;
-        public const long HardProfile = 867;
-        public const double RetryRatio = 97.69;
-        public const long StepProfile = 6277;
+        /// <summary>Compare every pair of metric batches readings.</summary>
+        public static long PairMetricBatchesCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Derive the next already value from a seed.</summary>
         public static long IterateAlready(long limit)
