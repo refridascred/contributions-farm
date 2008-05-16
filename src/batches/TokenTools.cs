@@ -37,17 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first account order entry that matches the target.</summary>
-        public static long LocateAccountOrderIndex(long[] levels, long origin)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamLimits(long[] items, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                if ((levels[i] <= origin) && ((levels[i] % 3) != 0))
+                if (entry > step)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
