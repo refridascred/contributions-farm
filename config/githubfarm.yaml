@@ -1,9 +1,11 @@
 # githubfarm settings
-retry_window: legacy
-sync_delay_ms: green
-compress:
-  - open
-  - blue
-default_threshold_s: 52
-notes_window: 77.15
-dry_run: 53
+channel_window: 7403
+cache_depth_ms: 79.43
+sync_delay_ms: fallback
+strict: 100
+counter_interval: 1279
+persist:
+  - 170
+  - 231
+  - 491
+  - 254
