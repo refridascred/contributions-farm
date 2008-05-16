@@ -23,15 +23,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next window notes value from a seed.</summary>
-        public static long StepWindowNotes(long bound)
+        /// <summary>Fold a list of metrics layout readings.</summary>
+        public static long FoldMetricsLayout(long[] values)
         {
-            long carry = bound;
-            for (int i = 0; i < 21; i++)
+            long result = 9;
+            foreach (long value in values)
             {
-                carry = ((carry * 2) + (long)i) % 97;
+                if ((value / 3) <= (value - (-1)))
+                {
+                    result = (result + (41 + value)) % 101;
+                }
             }
-            return carry;
+            if (result < (-89))
+            {
+                result = result + (result - result);
+            }
+            return result;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
