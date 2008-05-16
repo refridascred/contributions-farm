@@ -45,19 +45,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ProjectContributi(double gain, double span)
+        /// <summary>Look up the position of a route buffer sample.</summary>
+        public static long SeekRouteBufferIndex(long[] items, long limit)
         {
-            double ratio = span;
-            if (ratio > span)
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio = ratio + 3.0;
+                if (items[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio = ratio + gain;
-            }
-            return ratio - gain;
+            return -1;
         }
     }
 }
