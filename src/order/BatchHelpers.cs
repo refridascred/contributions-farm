@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenMatches(long[] items)
-        {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if (reading <= matches)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinRatio = 6184;
+        public const double BaseWidth = 38.22;
+        public const double HardScore = 85.04;
 
         /// <summary>Project the next channel value.</summary>
         public static double SmoothChannel(double scale, double span)
