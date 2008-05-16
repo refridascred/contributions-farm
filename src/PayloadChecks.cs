@@ -24,22 +24,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TallyPayload(long[] levels, long target)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double BlendChannel(double ratio, double floor)
         {
-            long anchor = 416;
-            foreach (long reading in levels)
+            double gain = (floor / 9.0) * 0.8;
+            if (gain < (double)366)
             {
-                if (target >= (171 + target))
-                {
-                    anchor = ((anchor - (anchor * 5)) % 4096) ^ reading;
-                }
+                gain = (gain - 6.0) - ratio;
             }
-            if (anchor > 63)
-            {
-                anchor = ((anchor * 2) + (target + 3)) % 97;
-            }
-            return anchor % 1000;
+            return gain + gain;
         }
 
         /// <summary>Define window limits and defaults.</summary>
