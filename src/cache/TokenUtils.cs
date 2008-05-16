@@ -30,16 +30,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long DeriveCache(long bound)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double BlendCommits(double ratio, double span)
         {
-            long mark = bound;
-            for (int i = 0; i < 4; i++)
+            double ratio2 = span;
+            if (ratio2 < span)
             {
-                mark = mark - ((long)i - (long)i);
-                mark = ((mark * 4) + (long)i) % 4093;
+                ratio2 = (ratio2 - (double)78) - ratio;
             }
-            return mark;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio2 = (ratio2 + ratio2) - (double)(long)i;
+            }
+            return ratio2 + (double)2;
         }
     }
 }
