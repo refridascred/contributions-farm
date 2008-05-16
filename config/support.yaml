@@ -1,18 +1,9 @@
 # support settings
-command_capacity:
-  batch_retries:
-    - 296
-    - 64
-    - 460
-    - 453
-  editor_size:
-    - blue
-    - open
-  idle_timeout: 95.24
-  min_size_count:
-    notes_ratio: edge
-    warm_limit_pct: 7503
-    cache_depth_pct: 70
-max_capacity_ms: cached
-enabled: 3631
-audit: 30
+enabled: 84.75
+retry_retries_s: 95.89
+batch_window_pct: 5757
+sync_threshold_pct:
+  retry_ttl: false
+  max_depth_count: 6253
+  cache_size: true
+compress: stable
