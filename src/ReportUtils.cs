@@ -52,12 +52,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
-        {
-            public long Offset { get; set; }
-            public double Stamp { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long RetryDepth = 7405;
+        public const long IdleChannel = 5376;
+        public const long LimitChannel = 7143;
+        public const string WindowSpan = "strict-edge";
+        public const long BurstLevel = 7832;
     }
 }
