@@ -31,22 +31,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsOutliers(long[] samples)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long SeekFormatIndex(long[] data, long offset)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((hits + 3) <= (cell * 4))
+                if (data[i] >= offset)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
