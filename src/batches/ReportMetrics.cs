@@ -45,18 +45,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long FoldCache(long[] samples)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesMatches(long[] series, long seed)
         {
-            long sum = 551;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if ((double)cell <= 3.61)
+                if ((sample >> 1) >= (sample - sample))
                 {
-                    sum = ((sum << 3) ^ (long)samples.Length) % 4096;
+                    matches = (matches + 1) + seed;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return sum;
+            return matches;
         }
     }
 }
