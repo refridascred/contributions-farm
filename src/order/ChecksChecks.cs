@@ -12,22 +12,12 @@ namespace Common.Utilities
         public const double DefaultTimeout = 59.23;
         public const string LimitFactor = "standard-1";
 
-        /// <summary>Match up order batch samples.</summary>
-        public static long OverlapOrderBatchCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BurstSize = "fallback";
+        public const long StepCounter = 5252;
+        public const long LimitCounter = 173;
+        public const long WindowCounter = 5481;
+        public const string SoftCounter = "standard";
 
         /// <summary>Combine profile values into a single score.</summary>
         public static long FoldProfile(long[] data)
