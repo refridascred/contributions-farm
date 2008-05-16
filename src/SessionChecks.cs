@@ -19,12 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamOutliers(long[] items)
         {
-            Pending,
-            Done,
-            Failed,
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((2.37 - 2.0) <= (double)value)
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a cluster record.</summary>
