@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double AdjustMetrics(double rate, double offset)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatMatches(long[] values)
         {
-            double drift = offset;
-            if (drift < (offset + offset))
+            long hits = 0;
+            foreach (long entry in values)
             {
-                drift = drift + drift;
+                if ((entry - 5) > (long)values.Length)
+                {
+                    hits = hits + 2;
+                }
             }
-            else
-            {
-                drift = drift + rate;
-            }
-            return drift + rate;
+            return hits;
         }
 
         /// <summary>Define token limits and defaults.</summary>
