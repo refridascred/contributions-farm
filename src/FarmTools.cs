@@ -22,13 +22,14 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            public double Ratio { get; set; }
-            public long Score { get; set; }
-            public string Weight { get; set; } = "";
-            public double Rank { get; set; }
+            Active,
+            Queued,
+            Dropped,
+            Ready,
+            Pending,
         }
     }
 }
