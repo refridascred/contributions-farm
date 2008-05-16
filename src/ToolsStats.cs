@@ -68,20 +68,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long FoldGraph(long[] samples, long origin)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ScaleNotes(double rate, double bias)
         {
-            long result = 9;
-            foreach (long sample in samples)
+            double ratio = rate * 10.0;
+            if (ratio >= bias)
             {
-                for (int i = 0; i < 6; i++)
-                {
-                    result = (((result + 9) % 4096) ^ (long)i) + origin;
-                    result = (result * 5) + sample;
-                }
-                result = ((result << 3) ^ ((long)samples.Length + 60)) % 4096;
+                ratio = ratio - rate;
             }
-            return result % 4096;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + (rate / 5.0)) + (double)(long)i;
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Hold a notes entry.</summary>
