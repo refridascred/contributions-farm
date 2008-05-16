@@ -37,18 +37,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long StepNotes(long floor)
-        {
-            long mark = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                mark = (mark * 2) + (mark / 9);
-                mark = (mark - (mark + (long)i)) % 255;
-                mark = ((mark * 2) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string DefaultReport = "open-1";
+        public const long RetryCount = 4369;
+        public const string SoftTimeout = "open-v2";
 
         /// <summary>Hold a profile entry.</summary>
         public sealed class ProfileEntry
