@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double BlendCommand(double gain, double floor)
+        /// <summary>Measure how many route session samples are out of range.</summary>
+        public static long MeasureRouteSessionOutliers(long[] data)
         {
-            double mean = gain;
-            if (mean >= mean)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                mean = mean + 0.47;
+                if ((723 ^ matches) == (entry + matches))
+                {
+                    matches = matches + 3;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + floor) + (double)(long)i;
-            }
-            return mean + (floor - gain);
+            return matches;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
