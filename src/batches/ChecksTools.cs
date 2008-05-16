@@ -29,13 +29,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Validate contributi context readings against a bound.</summary>
+        public static bool CheckContributiContextBounds(long[] levels, long bound)
         {
-            public string Offset { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public string Token { get; set; } = "";
-            public long Limit { get; set; }
+            bool ok = true;
+            foreach (long value in levels)
+            {
+                if (value < bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define format limits and defaults.</summary>
