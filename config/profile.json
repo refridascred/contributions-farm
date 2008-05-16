@@ -1,5 +1,8 @@
 {
-  "cache_retries_ms": 62.69,
-  "token_limit": 30,
-  "report_ratio": 25
+  "commits_timeout": "cached",
+  "soft_capacity_ms": 30,
+  "sync_ratio": "green",
+  "cache_limit": "fallback",
+  "max_size_s": 1734,
+  "cluster_limit": ["cached", "green", "local", "latest"]
 }
