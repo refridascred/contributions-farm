@@ -43,12 +43,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BurstSpan = "staging";
-        public const long LimitCounter = 1897;
-        public const long LimitDepth = 5902;
-        public const double MaxCounter = 0.53;
-        public const long LimitInterval = 549;
+        /// <summary>Check that every batch tools entry stays within the limit.</summary>
+        public static bool CheckBatchToolsLimits(long[] readings, long bound)
+        {
+            bool stale = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a stream info.</summary>
         public sealed class StreamInfo
