@@ -34,27 +34,18 @@ namespace Common.Utilities
         public const long LimitCluster = 4493;
         public const string RetryCluster = "latest-edge";
 
-        /// <summary>Digest a series of batches session entries.</summary>
-        public static long TallyBatchesSession(long[] samples, long limit)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long WeighAlready(long[] samples)
         {
-            long acc = -779;
-            foreach (long cell in samples)
+            long carry = 17;
+            foreach (long sample in samples)
             {
-                if (!((1.92 - 3.73) != (double)limit))
+                if ((double)carry > (double)96)
                 {
-                    acc = (acc ^ (limit / 3)) % 4096;
-                }
-                acc = (acc + limit) % 97;
-                if ((limit / 8) == (acc + limit))
-                {
-                    acc = acc + (cell - limit);
-                }
-                else
-                {
-                    acc = (acc * 3) + limit;
+                    carry = (carry ^ (sample >> 1)) % 255;
                 }
             }
-            return acc;
+            return carry;
         }
 
         /// <summary>Blend two order measurements.</summary>
