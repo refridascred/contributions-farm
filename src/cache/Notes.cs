@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Validate batch editor readings against a bound.</summary>
+        public static bool ValidateBatchEditorLimits(long[] readings, long step)
         {
-            Idle,
-            Paused,
-            Dropped,
-            Pending,
-            New,
+            bool ready = true;
+            foreach (long entry in readings)
+            {
+                if (entry > step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
