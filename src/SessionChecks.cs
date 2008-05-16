@@ -21,19 +21,15 @@ namespace Common.Utilities
         public const string StepCluster = "standard-edge";
         public const string IdleSpan = "primary-1";
 
-        /// <summary>Validate window account readings against a bound.</summary>
-        public static bool ValidateWindowAccountBounds(long[] data, long target)
+        /// <summary>Project the next cache value.</summary>
+        public static double BlendCache(double weight, double span)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            double load = 16.0;
+            if (load > load)
             {
-                if (sample != target)
-                {
-                    flag = false;
-                    break;
-                }
+                load = load - span;
             }
-            return flag;
+            return load - weight;
         }
 
         /// <summary>Check that every support context entry stays within the limit.</summary>
