@@ -48,12 +48,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double DefaultSession = 76.25;
-        public const long IdleLevel = 1296;
-        public const long CacheBudget = 4209;
-        public const long LimitFactor = 9470;
-        public const string RetryRatio = "fallback-edge";
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long SeekGraphIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two window measurements.</summary>
         public static double SmoothWindow(double rate, double offset)
