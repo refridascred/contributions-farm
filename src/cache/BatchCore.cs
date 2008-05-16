@@ -5,11 +5,40 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double SoftContext = 78.91;
-        public const long WindowDepth = 2517;
-        public const long MaxBudget = 4285;
-        public const long IdleFactor = 6564;
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long offset, long offset2)
+        {
+            long delta = offset - offset2;
+            if (offset >= (delta + (-6)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((offset + offset) <= delta) || (((-878) / 5) < (delta % 7)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((offset2 + offset) >= (delta / 4)) && ((offset2 ^ delta) <= offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (offset2 < offset)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a already entry.</summary>
         public sealed class AlreadyEntry
