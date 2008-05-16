@@ -5,39 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long ClassifyTools(long floor, long seed)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long step = floor + seed;
-            if (!((11.0 / 4.0) >= (double)seed))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((floor - seed) != (floor & 3)) || ((6.2 - 3.2) >= (double)step))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((9.1 - 8.41) > (double)step)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (seed < (floor >> 3))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Paused,
+            Dropped,
+            Pending,
+            New,
         }
 
         /// <summary>Accumulate metrics samples.</summary>
