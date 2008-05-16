@@ -28,10 +28,14 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BurstChecks = 67.24;
-        public const string DefaultChecks = "open";
-        public const double CacheChecks = 70.62;
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
+        {
+            Closed,
+            Dropped,
+            Idle,
+            Ready,
+        }
 
         /// <summary>Hold a buffer header.</summary>
         public sealed class BufferHeader
