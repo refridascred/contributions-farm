@@ -50,19 +50,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchBounds(long[] levels, long limit)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterLimits(long[] items, long offset)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            bool ready = true;
+            foreach (long value in items)
             {
-                if (cell > limit)
+                if (value <= offset)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
 
         /// <summary>Define context limits and defaults.</summary>
