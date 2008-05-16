@@ -87,19 +87,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double ScaleEditor(double bias, double span)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            double load = (double)34;
-            if (load >= load)
-            {
-                load = ((load - (6.0 + load)) + bias) - span;
-            }
-            else
-            {
-                load = load + (double)724;
-            }
-            return load + 7.83;
+            public long Token { get; set; }
+            public double Size { get; set; }
+            public double Total { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
