@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchBounds(long[] data, long target)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            bool valid = true;
-            foreach (long datum in data)
-            {
-                if (datum <= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Label { get; set; }
+            public long Flag { get; set; }
+            public double Rank { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
