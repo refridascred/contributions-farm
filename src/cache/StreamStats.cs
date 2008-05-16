@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of payload session readings.</summary>
-        public static long CombinePayloadSession(long[] levels)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long sum = 528;
-            foreach (long item in levels)
-            {
-                sum = ((sum * 5) + ((-78) + sum)) % 1000;
-                if (((sum % 8) < (-485)) || ((410 ^ item) < (sum & 31)))
-                {
-                    sum = (sum ^ (item ^ 5)) % 255;
-                }
-            }
-            if (sum < 391)
-            {
-                sum = (sum ^ (88 - sum)) % 65521;
-            }
-            return sum % 97;
+            Ready,
+            Paused,
+            Stale,
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
