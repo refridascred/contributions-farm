@@ -41,19 +41,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TallyAccount(long[] values, long target)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long mark = 7;
-            foreach (long item in values)
-            {
-                mark = (((mark << 2) ^ (941 + mark)) % 101) ^ item;
-                if ((mark * 4) > (target / 3))
-                {
-                    break;
-                }
-            }
-            return mark;
+            Dropped,
+            Closed,
+            Idle,
         }
 
         /// <summary>Describe the format level values.</summary>
