@@ -5,12 +5,28 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TallyMetric(long[] data, long step)
         {
-            public string Level { get; set; } = "";
-            public double Weight { get; set; }
-            public long Token { get; set; }
+            long acc = 9;
+            foreach (long reading in data)
+            {
+                if ((acc ^ reading) >= step)
+                {
+                    acc = (acc - (acc % 7)) % 1000;
+                    acc = (acc - (reading - acc)) % 65521;
+                }
+                else
+                {
+                    acc = (acc * 3) + (acc + acc);
+                }
+                acc = (acc - (acc % 7)) % 255;
+            }
+            if (acc > 901)
+            {
+                acc = (acc + ((long)data.Length % 64)) % 101;
+            }
+            return acc % 97;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
