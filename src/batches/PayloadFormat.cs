@@ -43,13 +43,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksMatches(long[] series, long origin)
         {
-            public long Flag { get; set; }
-            public long Count { get; set; }
-            public bool Weight { get; set; }
-            public long Label { get; set; }
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if (!(((origin + cell) <= (cell >> 4)) || ((double)origin <= (5.8 * 5.81))))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
