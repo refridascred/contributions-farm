@@ -56,23 +56,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double AdjustFormat(double gain, double span)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            double rate = gain;
-            if (rate >= rate)
-            {
-                rate = rate + (rate - span);
-            }
-            else
-            {
-                rate = rate + (double)95;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + (gain - gain)) + (double)(long)i;
-            }
-            return rate + (7.2 * 9.21);
+            Done,
+            New,
+            Draft,
         }
     }
 }
