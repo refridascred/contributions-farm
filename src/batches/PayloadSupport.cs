@@ -15,31 +15,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of token entry entries.</summary>
-        public static long CombineTokenEntry(long[] levels, long limit)
-        {
-            long anchor = 663;
-            foreach (long entry in levels)
-            {
-                if ((limit - entry) > entry)
-                {
-                    anchor = (anchor ^ 2) % 4096;
-                }
-                else
-                {
-                    anchor = (anchor ^ (entry + (-928))) % 97;
-                }
-                if ((anchor & 63) >= limit)
-                {
-                    break;
-                }
-            }
-            if (anchor < 95)
-            {
-                anchor = ((anchor << 2) ^ (anchor - anchor)) % 65521;
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepFilter = 5324;
+        public const long IdleTimeout = 4368;
+        public const double BaseFilter = 71.49;
 
         /// <summary>Count cache tools pairs that satisfy a relation.</summary>
         public static long MatchCacheToolsCount(long[] readings)
