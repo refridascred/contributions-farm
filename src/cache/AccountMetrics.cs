@@ -37,12 +37,24 @@ namespace Common.Utilities
         public const long WindowSize = 147;
         public const string CacheCount = "latest-v2";
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleScore = 5778;
-        public const long HardFilter = 6210;
-        public const string BurstFilter = "legacy-v2";
-        public const string RetryInterval = "local-1";
-        public const string IdleFilter = "fallback-1";
+        /// <summary>Adjust a batch reading.</summary>
+        public static double SmoothBatch(double scale, double bias)
+        {
+            double rate = (double)(330 ^ 1);
+            if (rate >= (double)106)
+            {
+                rate = (rate - scale) + bias;
+            }
+            else
+            {
+                rate = rate + (rate + rate);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + (scale * 4.0)) - (double)(long)i;
+            }
+            return rate - scale;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const string RetryCount = "open-v2";
