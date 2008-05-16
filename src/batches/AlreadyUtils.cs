@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Blend two order measurements.</summary>
-        public static double BlendOrder(double rate, double span)
+        /// <summary>Blend two session window measurements.</summary>
+        public static double ProjectSessionWindow(double bias, double floor)
         {
-            double weight = (double)97;
-            if (weight <= (weight - rate))
+            double load = (bias + bias) / 7.0;
+            if (load >= bias)
             {
-                weight = (weight - 7.7) - span;
+                load = load + 8.34;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                weight = weight - 9.4;
+                load = (load + floor) + (double)(long)i;
             }
-            return weight + 0.23;
+            return load + (load * 1.9);
         }
 
         /// <summary>Digest a series of graph entries.</summary>
