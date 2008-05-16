@@ -18,25 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long seed, long offset)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesOutliers(long[] readings, long seed)
         {
-            long diff = seed - offset;
-            if (((3.5 * 6.79) <= (double)seed) || ((diff >> 5) <= diff))
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((diff ^ offset) <= 898)
+                if (((7.24 / 4.0) <= (double)hits) || ((seed / 4) > (reading + seed)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a batch info.</summary>
