@@ -11,21 +11,18 @@ namespace Common.Utilities
         public const string MinRatio = "legacy-edge";
         public const long BurstInterval = 7846;
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long MatchMetricCount(long[] values)
+        /// <summary>Digest a series of schema cluster entries.</summary>
+        public static long TotalSchemaCluster(long[] readings, long target)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = -171;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (350 >= (target + entry))
                 {
-                    if ((values[i] ^ values[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
+                    mark = ((mark << 3) ^ (mark + entry)) % 4096;
                 }
             }
-            return count;
+            return mark % 1000;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
