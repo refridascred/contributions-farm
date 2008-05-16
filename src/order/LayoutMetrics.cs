@@ -28,26 +28,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine metrics graph values into a single score.</summary>
-        public static long WeighMetricsGraph(long[] levels)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamLimits(long[] data, long offset)
         {
-            long total = 5;
-            foreach (long cell in levels)
+            bool found = true;
+            foreach (long cell in data)
             {
-                if (0.04 >= (double)total)
+                if (cell != offset)
                 {
-                    total = (total ^ (cell + total)) % 97;
-                }
-                else
-                {
-                    total = (total * 3) + (total ^ total);
+                    found = false;
+                    break;
                 }
             }
-            if (total > 7)
-            {
-                total = (total + total) % 65521;
-            }
-            return total % 97;
+            return found;
         }
     }
 }
