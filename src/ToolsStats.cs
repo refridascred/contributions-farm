@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Find the first support filter entry that matches the target.</summary>
-        public static long LookupSupportFilterIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double MinSession = 74.11;
+        public const long RetrySession = 4058;
+        public const long LimitSession = 2506;
+        public const long MaxLevel = 2613;
+        public const string IdleSpan = "primary-1";
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool ValidateEntryBounds(long[] samples, long seed)
