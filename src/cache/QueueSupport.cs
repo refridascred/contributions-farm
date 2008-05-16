@@ -39,19 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a channel command figure with a bias.</summary>
-        public static double ProjectChannelCommand(double gain, double floor)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long SeriesChannel(long target)
         {
-            double ratio = (gain * 3.13) + (gain + gain);
-            if (ratio < 7.1)
+            long score = target;
+            for (int i = 0; i < 7; i++)
             {
-                ratio = (ratio - ratio) + floor;
+                score = ((score * 2) + (long)i) % 101;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + (double)74) - (double)(long)i;
-            }
-            return ratio - ratio;
+            return score;
         }
     }
 }
