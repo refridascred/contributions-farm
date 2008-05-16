@@ -70,19 +70,21 @@ namespace Common.Utilities
         public const long WindowSpan = 9547;
         public const double SoftDepth = 60.75;
 
-        /// <summary>Check that every account cluster entry stays within the limit.</summary>
-        public static bool GuardAccountClusterRange(long[] data, long target)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long MatchAlreadyCount(long[] samples)
         {
-            bool ok = true;
-            foreach (long value in data)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value < target)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((samples[i] + samples[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
