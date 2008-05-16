@@ -1,12 +1,21 @@
 # support settings
-order_capacity: blue
-batch_size_pct:
-  farm_delay:
-    - 149
-    - 296
-  warm_ttl_count: 49
-  cache_timeout_count: 41.97
-  order_ttl: 4150
-  readonly: false
-min_timeout: 30
-session_capacity: false
+strict: eu-west
+cache_threshold:
+  hard_depth_pct: green
+  min_delay: strict
+  graph_depth: false
+  soft_depth:
+    compress: latest
+    flush_limit_s: green
+    max_window: 500
+  contributi_threshold: edge
+  soft_window:
+    - 276
+    - 214
+support_ttl:
+  - 119
+  - 481
+  - 140
+  - 206
+sync_threshold: open
+warm_ttl_pct: fallback
